@@ -7,7 +7,7 @@ package airbyte_prod.public_api;
 import airbyte_prod.public_api.utils.HTTPClient;
 import airbyte_prod.public_api.utils.SpeakeasyHTTPClient;
 
-public class SDK {
+public class Airbyte {
 	/**
 	 * SERVERS contains the list of server urls available to the SDK.
 	 */
@@ -31,7 +31,7 @@ public class SDK {
 	private airbyte_prod.public_api.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
-	private String _sdkVersion = "1.0.0";
+	private String _sdkVersion = "1.0.1";
 	private String _genVersion = "2.16.1";
 	/**
 	 * The Builder class allows the configuration of a new instance of the SDK.
@@ -92,8 +92,8 @@ public class SDK {
 		 * @return The SDK instance.
 		 * @throws Exception Thrown if the SDK could not be built.
 		 */
-		public SDK build() throws Exception {
-			return new SDK(this.client, this.security, this.serverUrl, this.params);
+		public Airbyte build() throws Exception {
+			return new Airbyte(this.client, this.security, this.serverUrl, this.params);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class SDK {
 		return new Builder();
 	}
 
-	private SDK(HTTPClient client, airbyte_prod.public_api.models.shared.Security security, String serverUrl, java.util.Map<String, String> params) throws Exception {
+	private Airbyte(HTTPClient client, airbyte_prod.public_api.models.shared.Security security, String serverUrl, java.util.Map<String, String> params) throws Exception {
 		this._defaultClient = client;
 		
 		if (this._defaultClient == null) {

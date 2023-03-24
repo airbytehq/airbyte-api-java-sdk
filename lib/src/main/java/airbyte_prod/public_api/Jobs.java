@@ -42,7 +42,7 @@ public class Jobs {
      */
     public airbyte_prod.public_api.models.operations.CancelJobResponse cancelJob(airbyte_prod.public_api.models.operations.CancelJobRequest request) throws Exception {
         String baseUrl = this._serverUrl;
-        String url = airbyte_prod.public_api.utils.Utils.generateURL(airbyte_prod.public_api.models.operations.CancelJobPathParams.class, baseUrl, "/jobs/{jobId}", request.pathParams, null);
+        String url = airbyte_prod.public_api.utils.Utils.generateURL(airbyte_prod.public_api.models.operations.CancelJobRequest.class, baseUrl, "/jobs/{jobId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("DELETE");
@@ -79,7 +79,7 @@ public class Jobs {
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public airbyte_prod.public_api.models.operations.CreateJobResponse createJob(airbyte_prod.public_api.models.operations.CreateJobRequest request) throws Exception {
+    public airbyte_prod.public_api.models.operations.CreateJobResponse createJob(airbyte_prod.public_api.models.shared.JobCreate request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = airbyte_prod.public_api.utils.Utils.generateURL(baseUrl, "/jobs");
         
@@ -125,7 +125,7 @@ public class Jobs {
      */
     public airbyte_prod.public_api.models.operations.GetJobResponse getJob(airbyte_prod.public_api.models.operations.GetJobRequest request) throws Exception {
         String baseUrl = this._serverUrl;
-        String url = airbyte_prod.public_api.utils.Utils.generateURL(airbyte_prod.public_api.models.operations.GetJobPathParams.class, baseUrl, "/jobs/{jobId}", request.pathParams, null);
+        String url = airbyte_prod.public_api.utils.Utils.generateURL(airbyte_prod.public_api.models.operations.GetJobRequest.class, baseUrl, "/jobs/{jobId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
@@ -170,7 +170,7 @@ public class Jobs {
         req.setMethod("GET");
         req.setURL(url);
         
-        java.util.List<NameValuePair> queryParams = airbyte_prod.public_api.utils.Utils.getQueryParams(airbyte_prod.public_api.models.operations.ListJobsQueryParams.class, request.queryParams, null);
+        java.util.List<NameValuePair> queryParams = airbyte_prod.public_api.utils.Utils.getQueryParams(airbyte_prod.public_api.models.operations.ListJobsRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);

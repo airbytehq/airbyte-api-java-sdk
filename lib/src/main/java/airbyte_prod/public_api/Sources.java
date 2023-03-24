@@ -37,7 +37,7 @@ public class Sources {
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public airbyte_prod.public_api.models.operations.CreateSourceResponse createSource(airbyte_prod.public_api.models.operations.CreateSourceRequest request) throws Exception {
+    public airbyte_prod.public_api.models.operations.CreateSourceResponse createSource(airbyte_prod.public_api.models.shared.SourceCreate request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = airbyte_prod.public_api.utils.Utils.generateURL(baseUrl, "/sources");
         

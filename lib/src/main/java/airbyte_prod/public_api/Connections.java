@@ -36,7 +36,7 @@ public class Connections {
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public airbyte_prod.public_api.models.operations.CreateConnectionResponse createConnection(airbyte_prod.public_api.models.operations.CreateConnectionRequest request) throws Exception {
+    public airbyte_prod.public_api.models.operations.CreateConnectionResponse createConnection(airbyte_prod.public_api.models.shared.ConnectionCreate request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = airbyte_prod.public_api.utils.Utils.generateURL(baseUrl, "/connections");
         

@@ -4,12 +4,12 @@
 
 package airbyte_prod.public_api.models.operations;
 
-
+import airbyte_prod.public_api.utils.SpeakeasyMetadata;
 
 public class CancelJobRequest {
-    public CancelJobPathParams pathParams;
-    public CancelJobRequest withPathParams(CancelJobPathParams pathParams) {
-        this.pathParams = pathParams;
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=jobId")public Long jobId;
+    public CancelJobRequest withJobId(Long jobId) {
+        this.jobId = jobId;
         return this;
     }
     

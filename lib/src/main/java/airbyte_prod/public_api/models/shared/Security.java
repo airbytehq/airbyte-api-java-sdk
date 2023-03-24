@@ -7,8 +7,8 @@ package airbyte_prod.public_api.models.shared;
 import airbyte_prod.public_api.utils.SpeakeasyMetadata;
 
 public class Security {
-    @SpeakeasyMetadata("security:scheme=true,type=http,subtype=bearer")public SchemeBearerAuth bearerAuth;
-    public Security withBearerAuth(SchemeBearerAuth bearerAuth) {
+    @SpeakeasyMetadata("security:scheme=true,type=http,subtype=bearer,name=Authorization")public String bearerAuth;
+    public Security withBearerAuth(String bearerAuth) {
         this.bearerAuth = bearerAuth;
         return this;
     }

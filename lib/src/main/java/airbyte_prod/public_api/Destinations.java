@@ -37,7 +37,7 @@ public class Destinations {
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public airbyte_prod.public_api.models.operations.CreateDestinationResponse createDestination(airbyte_prod.public_api.models.operations.CreateDestinationRequest request) throws Exception {
+    public airbyte_prod.public_api.models.operations.CreateDestinationResponse createDestination(airbyte_prod.public_api.models.shared.DestinationCreate request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = airbyte_prod.public_api.utils.Utils.generateURL(baseUrl, "/destinations");
         
