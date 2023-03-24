@@ -1,0 +1,10 @@
+configVersion: 1.0.0
+generation:
+  telemetryEnabled: false
+  sdkClassName: SDK
+  sdkFlattening: false
+java:
+  version: ""
+  artifactID: api
+  groupID: com.airbyte
+  projectName: sdk
