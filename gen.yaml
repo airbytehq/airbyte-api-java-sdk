@@ -6,8 +6,8 @@ management:
   generationVersion: 2.16.1
 generation:
   telemetryEnabled: false
-  sdkClassName: SDK
-  sdkFlattening: false
+  sdkClassName: airbyte
+  sdkFlattening: true
   singleTagPerOp: false
 java:
   version: 1.0.0
