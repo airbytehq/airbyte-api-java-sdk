@@ -1,10 +1,16 @@
 configVersion: 1.0.0
+management:
+  docChecksum: c73e1b875a571841a5b726b7f610ff9d
+  docVersion: 0.1.0
+  speakeasyVersion: 1.18.7
+  generationVersion: 2.16.1
 generation:
   telemetryEnabled: false
   sdkClassName: SDK
   sdkFlattening: false
+  singleTagPerOp: false
 java:
-  version: ""
+  version: 1.0.0
   artifactID: public-api
   groupID: airbyte-prod
   projectName: public-api
