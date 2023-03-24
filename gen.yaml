@@ -5,6 +5,6 @@ generation:
   sdkFlattening: false
 java:
   version: ""
-  artifactID: api
-  groupID: com.airbyte
-  projectName: sdk
+  artifactID: public-api
+  groupID: airbyte-prod
+  projectName: public-api
