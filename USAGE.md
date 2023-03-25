@@ -2,10 +2,10 @@
 ```java
 package hello.world;
 
-import airbyte_prod.public_api.Airbyte;
-import airbyte_prod.public_api.models.shared.Security;
-import airbyte_prod.public_api.models.operations.CreateConnectionResponse;
-import airbyte_prod.public_api.models.shared.ConnectionCreate;
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.ConnectionCreate;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Application {
                 }})
                 .build();
 
-            airbyte_prod.public_api.models.shared.ConnectionCreate req = new ConnectionCreate() {{
+            com.airbyte.api.models.shared.ConnectionCreate req = new ConnectionCreate() {{
                 destinationId = "89bd9d8d-69a6-474e-8f46-7cc8796ed151";
                 name = "est";
                 sourceId = "05dfc2dd-f7cc-478c-a1ba-928fc816742c";
