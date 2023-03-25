@@ -11,6 +11,6 @@ generation:
   singleTagPerOp: false
 java:
   version: 1.0.1
-  artifactID: public-api
-  groupID: airbyte-prod
+  artifactID: api
+  groupID: com.airbyte
   projectName: public-api
