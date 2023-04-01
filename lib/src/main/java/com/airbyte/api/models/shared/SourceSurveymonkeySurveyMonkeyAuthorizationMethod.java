@@ -13,15 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
     /**
-     * Access Token for making authenticated requests. See the <a href="https://docs.airbyte.io/integrations/sources/surveymonkey">docs</a> for information on how to generate this key.
+     * Access Token for making authenticated requests. See the &lt;a href="https://docs.airbyte.io/integrations/sources/surveymonkey"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("auth_method")public SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod;
+    @JsonProperty("auth_method")
+    public SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod;
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withAuthMethod(SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;
@@ -31,7 +33,8 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
      * The Client ID of the SurveyMonkey developer application.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -41,7 +44,8 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
      * The Client Secret of the SurveyMonkey developer application.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;

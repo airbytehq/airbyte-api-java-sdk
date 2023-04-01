@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePunkApi - The values required to configure the source.
  */
 public class SourcePunkApi {
-    @JsonProperty("airbyte-source-name")public SourcePunkApiPunkApiEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourcePunkApiPunkApiEnum airbyteSourceName;
     public SourcePunkApi withAirbyteSourceName(SourcePunkApiPunkApiEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourcePunkApi {
     /**
      * To extract specific data with Unique ID
      */
-    @JsonProperty("brewed_after")public String brewedAfter;
+    @JsonProperty("brewed_after")
+    public String brewedAfter;
     public SourcePunkApi withBrewedAfter(String brewedAfter) {
         this.brewedAfter = brewedAfter;
         return this;
@@ -30,7 +32,8 @@ public class SourcePunkApi {
     /**
      * To extract specific data with Unique ID
      */
-    @JsonProperty("brewed_before")public String brewedBefore;
+    @JsonProperty("brewed_before")
+    public String brewedBefore;
     public SourcePunkApi withBrewedBefore(String brewedBefore) {
         this.brewedBefore = brewedBefore;
         return this;
@@ -40,7 +43,8 @@ public class SourcePunkApi {
      * To extract specific data with Unique ID
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("id")public String id;
+    @JsonProperty("id")
+    public String id;
     public SourcePunkApi withId(String id) {
         this.id = id;
         return this;

@@ -9,14 +9,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * DestinationGcsFormatParquetColumnarStorage - Output data format. One of the following formats must be selected - <a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro">AVRO</a> format, <a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas">PARQUET</a> format, <a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table">CSV</a> format, or <a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table">JSONL</a> format.
+ * DestinationGcsFormatParquetColumnarStorage - Output data format. One of the following formats must be selected - &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro"&gt;AVRO&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas"&gt;PARQUET&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table"&gt;CSV&lt;/a&gt; format, or &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table"&gt;JSONL&lt;/a&gt; format.
  */
 public class DestinationGcsFormatParquetColumnarStorage {
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("block_size_mb")public Long blockSizeMb;
+    @JsonProperty("block_size_mb")
+    public Long blockSizeMb;
     public DestinationGcsFormatParquetColumnarStorage withBlockSizeMb(Long blockSizeMb) {
         this.blockSizeMb = blockSizeMb;
         return this;
@@ -26,7 +27,8 @@ public class DestinationGcsFormatParquetColumnarStorage {
      * The compression algorithm used to compress data pages.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("compression_codec")public DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec;
+    @JsonProperty("compression_codec")
+    public DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec;
     public DestinationGcsFormatParquetColumnarStorage withCompressionCodec(DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
@@ -36,7 +38,8 @@ public class DestinationGcsFormatParquetColumnarStorage {
      * Default: true.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("dictionary_encoding")public Boolean dictionaryEncoding;
+    @JsonProperty("dictionary_encoding")
+    public Boolean dictionaryEncoding;
     public DestinationGcsFormatParquetColumnarStorage withDictionaryEncoding(Boolean dictionaryEncoding) {
         this.dictionaryEncoding = dictionaryEncoding;
         return this;
@@ -46,13 +49,15 @@ public class DestinationGcsFormatParquetColumnarStorage {
      * There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("dictionary_page_size_kb")public Long dictionaryPageSizeKb;
+    @JsonProperty("dictionary_page_size_kb")
+    public Long dictionaryPageSizeKb;
     public DestinationGcsFormatParquetColumnarStorage withDictionaryPageSizeKb(Long dictionaryPageSizeKb) {
         this.dictionaryPageSizeKb = dictionaryPageSizeKb;
         return this;
     }
     
-    @JsonProperty("format_type")public DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType;
+    @JsonProperty("format_type")
+    public DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType;
     public DestinationGcsFormatParquetColumnarStorage withFormatType(DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;
@@ -62,7 +67,8 @@ public class DestinationGcsFormatParquetColumnarStorage {
      * Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("max_padding_size_mb")public Long maxPaddingSizeMb;
+    @JsonProperty("max_padding_size_mb")
+    public Long maxPaddingSizeMb;
     public DestinationGcsFormatParquetColumnarStorage withMaxPaddingSizeMb(Long maxPaddingSizeMb) {
         this.maxPaddingSizeMb = maxPaddingSizeMb;
         return this;
@@ -72,7 +78,8 @@ public class DestinationGcsFormatParquetColumnarStorage {
      * The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("page_size_kb")public Long pageSizeKb;
+    @JsonProperty("page_size_kb")
+    public Long pageSizeKb;
     public DestinationGcsFormatParquetColumnarStorage withPageSizeKb(Long pageSizeKb) {
         this.pageSizeKb = pageSizeKb;
         return this;

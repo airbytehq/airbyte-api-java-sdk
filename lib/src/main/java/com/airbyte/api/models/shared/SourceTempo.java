@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceTempo - The values required to configure the source.
  */
 public class SourceTempo {
-    @JsonProperty("airbyte-source-name")public SourceTempoTempoEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceTempoTempoEnum airbyteSourceName;
     public SourceTempo withAirbyteSourceName(SourceTempoTempoEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Tempo API Token. Go to Tempo>Settings, scroll down to Data Access and select API integration.
+     * Tempo API Token. Go to Tempo&gt;Settings, scroll down to Data Access and select API integration.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceTempo withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;

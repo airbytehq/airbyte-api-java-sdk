@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceZuora - The values required to configure the source.
  */
 public class SourceZuora {
-    @JsonProperty("airbyte-source-name")public SourceZuoraZuoraEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceZuoraZuoraEnum airbyteSourceName;
     public SourceZuora withAirbyteSourceName(SourceZuoraZuoraEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceZuora {
     /**
      * Client ID
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceZuora withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -30,7 +32,8 @@ public class SourceZuora {
     /**
      * Client Secret
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceZuora withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -40,7 +43,8 @@ public class SourceZuora {
      * Defines whether use the SANDBOX or PRODUCTION environment.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("is_sandbox")public Boolean isSandbox;
+    @JsonProperty("is_sandbox")
+    public Boolean isSandbox;
     public SourceZuora withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
         return this;
@@ -49,7 +53,8 @@ public class SourceZuora {
     /**
      * Start Date in format: YYYY-MM-DD
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceZuora withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -59,7 +64,8 @@ public class SourceZuora {
      * The amount of days for each data-chunk begining from start_date. Bigger the value - faster the fetch. (Min=1, as for a Day; Max=364, as for a Year).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("window_in_days")public Long windowInDays;
+    @JsonProperty("window_in_days")
+    public Long windowInDays;
     public SourceZuora withWindowInDays(Long windowInDays) {
         this.windowInDays = windowInDays;
         return this;

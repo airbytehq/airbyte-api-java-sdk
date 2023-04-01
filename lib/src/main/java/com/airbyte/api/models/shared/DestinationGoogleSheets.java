@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationGoogleSheets - The values required to configure the destination.
  */
 public class DestinationGoogleSheets {
-    @JsonProperty("airbyte-destination-name")public DestinationGoogleSheetsGoogleSheetsEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationGoogleSheetsGoogleSheetsEnum airbyteDestinationName;
     public DestinationGoogleSheets withAirbyteDestinationName(DestinationGoogleSheetsGoogleSheetsEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -19,16 +20,18 @@ public class DestinationGoogleSheets {
     /**
      * Google API Credentials for connecting to Google Sheets and Google Drive APIs
      */
-    @JsonProperty("credentials")public DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials;
+    @JsonProperty("credentials")
+    public DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials;
     public DestinationGoogleSheets withCredentials(DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials) {
         this.credentials = credentials;
         return this;
     }
     
     /**
-     * The link to your spreadsheet. See <a href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'>this guide</a> for more details.
+     * The link to your spreadsheet. See &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#sheetlink'&gt;this guide&lt;/a&gt; for more details.
      */
-    @JsonProperty("spreadsheet_id")public String spreadsheetId;
+    @JsonProperty("spreadsheet_id")
+    public String spreadsheetId;
     public DestinationGoogleSheets withSpreadsheetId(String spreadsheetId) {
         this.spreadsheetId = spreadsheetId;
         return this;

@@ -12,14 +12,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceZendeskSunshine - The values required to configure the source.
  */
 public class SourceZendeskSunshine {
-    @JsonProperty("airbyte-source-name")public SourceZendeskSunshineZendeskSunshineEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceZendeskSunshineZendeskSunshineEnum airbyteSourceName;
     public SourceZendeskSunshine withAirbyteSourceName(SourceZendeskSunshineZendeskSunshineEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceZendeskSunshine withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -28,7 +30,8 @@ public class SourceZendeskSunshine {
     /**
      * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceZendeskSunshine withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -37,7 +40,8 @@ public class SourceZendeskSunshine {
     /**
      * The subdomain for your Zendesk Account.
      */
-    @JsonProperty("subdomain")public String subdomain;
+    @JsonProperty("subdomain")
+    public String subdomain;
     public SourceZendeskSunshine withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

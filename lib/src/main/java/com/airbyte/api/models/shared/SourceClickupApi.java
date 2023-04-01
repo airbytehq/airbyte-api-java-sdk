@@ -12,56 +12,62 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceClickupApi - The values required to configure the source.
  */
 public class SourceClickupApi {
-    @JsonProperty("airbyte-source-name")public SourceClickupApiClickupApiEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceClickupApiClickupApiEnum airbyteSourceName;
     public SourceClickupApi withAirbyteSourceName(SourceClickupApiClickupApiEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Every ClickUp API call required authentication. This field is your personal API token. See <a href="https://clickup.com/api/developer-portal/authentication/#personal-token">here</a>.
+     * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceClickupApi withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
     }
     
     /**
-     * The ID of your folder in your space. Retrieve it from the `/space/{space_id}/folder` of the ClickUp API. See <a href="https://clickup.com/api/clickupreference/operation/GetFolders/">here</a>.
+     * The ID of your folder in your space. Retrieve it from the `/space/{space_id}/folder` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetFolders/"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("folder_id")public String folderId;
+    @JsonProperty("folder_id")
+    public String folderId;
     public SourceClickupApi withFolderId(String folderId) {
         this.folderId = folderId;
         return this;
     }
     
     /**
-     * The ID of your list in your folder. Retrieve it from the `/folder/{folder_id}/list` of the ClickUp API. See <a href="https://clickup.com/api/clickupreference/operation/GetLists/">here</a>.
+     * The ID of your list in your folder. Retrieve it from the `/folder/{folder_id}/list` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetLists/"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("list_id")public String listId;
+    @JsonProperty("list_id")
+    public String listId;
     public SourceClickupApi withListId(String listId) {
         this.listId = listId;
         return this;
     }
     
     /**
-     * The ID of your space in your workspace. Retrieve it from the `/team/{team_id}/space` of the ClickUp API. See <a href="https://clickup.com/api/clickupreference/operation/GetSpaces/">here</a>.
+     * The ID of your space in your workspace. Retrieve it from the `/team/{team_id}/space` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetSpaces/"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("space_id")public String spaceId;
+    @JsonProperty("space_id")
+    public String spaceId;
     public SourceClickupApi withSpaceId(String spaceId) {
         this.spaceId = spaceId;
         return this;
     }
     
     /**
-     * The ID of your team in ClickUp. Retrieve it from the `/team` of the ClickUp API. See <a href="https://clickup.com/api/clickupreference/operation/GetAuthorizedTeams/">here</a>.
+     * The ID of your team in ClickUp. Retrieve it from the `/team` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetAuthorizedTeams/"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("team_id")public String teamId;
+    @JsonProperty("team_id")
+    public String teamId;
     public SourceClickupApi withTeamId(String teamId) {
         this.teamId = teamId;
         return this;

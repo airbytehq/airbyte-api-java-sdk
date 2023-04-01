@@ -8,15 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceOktaCredentialsAPIToken {
     /**
-     * An Okta token. See the <a href="https://docs.airbyte.com/integrations/sources/okta">docs</a> for instructions on how to generate it.
+     * An Okta token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceOktaCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
     }
     
-    @JsonProperty("auth_type")public SourceOktaCredentialsAPITokenAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceOktaCredentialsAPITokenAuthTypeEnum authType;
     public SourceOktaCredentialsAPIToken withAuthType(SourceOktaCredentialsAPITokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;

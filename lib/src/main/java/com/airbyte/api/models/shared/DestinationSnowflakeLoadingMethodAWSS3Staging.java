@@ -13,9 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationSnowflakeLoadingMethodAWSS3Staging {
     /**
-     * Enter your <a href="https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html">AWS access key ID</a>. Airbyte requires Read and Write permissions on your S3 bucket 
+     * Enter your &lt;a href="https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html"&gt;AWS access key ID&lt;/a&gt;. Airbyte requires Read and Write permissions on your S3 bucket 
      */
-    @JsonProperty("access_key_id")public String accessKeyId;
+    @JsonProperty("access_key_id")
+    public String accessKeyId;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withAccessKeyId(String accessKeyId) {
         this.accessKeyId = accessKeyId;
         return this;
@@ -25,7 +26,8 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
      * Choose a data encryption method for the staging data
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("encryption")public Object encryption;
+    @JsonProperty("encryption")
+    public Object encryption;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withEncryption(Object encryption) {
         this.encryption = encryption;
         return this;
@@ -35,13 +37,15 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
      * The pattern allows you to set the file-name format for the S3 staging file(s)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_name_pattern")public String fileNamePattern;
+    @JsonProperty("file_name_pattern")
+    public String fileNamePattern;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withFileNamePattern(String fileNamePattern) {
         this.fileNamePattern = fileNamePattern;
         return this;
     }
     
-    @JsonProperty("method")public DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method;
+    @JsonProperty("method")
+    public DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withMethod(DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method) {
         this.method = method;
         return this;
@@ -51,7 +55,8 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
      * Toggle to delete staging files from the S3 bucket after a successful sync
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("purge_staging_data")public Boolean purgeStagingData;
+    @JsonProperty("purge_staging_data")
+    public Boolean purgeStagingData;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withPurgeStagingData(Boolean purgeStagingData) {
         this.purgeStagingData = purgeStagingData;
         return this;
@@ -60,7 +65,8 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
     /**
      * Enter your S3 bucket name
      */
-    @JsonProperty("s3_bucket_name")public String s3BucketName;
+    @JsonProperty("s3_bucket_name")
+    public String s3BucketName;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withS3BucketName(String s3BucketName) {
         this.s3BucketName = s3BucketName;
         return this;
@@ -70,16 +76,18 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
      * Enter the region where your S3 bucket resides
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("s3_bucket_region")public DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegionEnum s3BucketRegion;
+    @JsonProperty("s3_bucket_region")
+    public DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegionEnum s3BucketRegion;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withS3BucketRegion(DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegionEnum s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
     }
     
     /**
-     * Enter your <a href="https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html">AWS secret access key</a>
+     * Enter your &lt;a href="https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html"&gt;AWS secret access key&lt;/a&gt;
      */
-    @JsonProperty("secret_access_key")public String secretAccessKey;
+    @JsonProperty("secret_access_key")
+    public String secretAccessKey;
     public DestinationSnowflakeLoadingMethodAWSS3Staging withSecretAccessKey(String secretAccessKey) {
         this.secretAccessKey = secretAccessKey;
         return this;

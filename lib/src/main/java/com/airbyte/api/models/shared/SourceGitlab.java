@@ -17,7 +17,8 @@ import java.time.OffsetDateTime;
  * SourceGitlab - The values required to configure the source.
  */
 public class SourceGitlab {
-    @JsonProperty("airbyte-source-name")public SourceGitlabGitlabEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceGitlabGitlabEnum airbyteSourceName;
     public SourceGitlab withAirbyteSourceName(SourceGitlabGitlabEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -26,13 +27,15 @@ public class SourceGitlab {
     /**
      * Please enter your basic URL from GitLab instance.
      */
-    @JsonProperty("api_url")public String apiUrl;
+    @JsonProperty("api_url")
+    public String apiUrl;
     public SourceGitlab withApiUrl(String apiUrl) {
         this.apiUrl = apiUrl;
         return this;
     }
     
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceGitlab withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -42,7 +45,8 @@ public class SourceGitlab {
      * Space-delimited list of groups. e.g. airbyte.io.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("groups")public String groups;
+    @JsonProperty("groups")
+    public String groups;
     public SourceGitlab withGroups(String groups) {
         this.groups = groups;
         return this;
@@ -52,7 +56,8 @@ public class SourceGitlab {
      * Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("projects")public String projects;
+    @JsonProperty("projects")
+    public String projects;
     public SourceGitlab withProjects(String projects) {
         this.projects = projects;
         return this;
@@ -63,7 +68,8 @@ public class SourceGitlab {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceGitlab withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

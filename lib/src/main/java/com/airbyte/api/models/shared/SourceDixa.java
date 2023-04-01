@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceDixa - The values required to configure the source.
  */
 public class SourceDixa {
-    @JsonProperty("airbyte-source-name")public SourceDixaDixaEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceDixaDixaEnum airbyteSourceName;
     public SourceDixa withAirbyteSourceName(SourceDixaDixaEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceDixa {
     /**
      * Dixa API token
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceDixa withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -31,7 +33,8 @@ public class SourceDixa {
      * Number of days to batch into one request. Max 31.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("batch_size")public Long batchSize;
+    @JsonProperty("batch_size")
+    public Long batchSize;
     public SourceDixa withBatchSize(Long batchSize) {
         this.batchSize = batchSize;
         return this;
@@ -40,7 +43,8 @@ public class SourceDixa {
     /**
      * The connector pulls records updated from this date onwards.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceDixa withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

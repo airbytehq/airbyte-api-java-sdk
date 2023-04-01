@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationElasticsearch - The values required to configure the destination.
  */
 public class DestinationElasticsearch {
-    @JsonProperty("airbyte-destination-name")public DestinationElasticsearchElasticsearchEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationElasticsearchElasticsearchEnum airbyteDestinationName;
     public DestinationElasticsearch withAirbyteDestinationName(DestinationElasticsearchElasticsearchEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -22,7 +23,8 @@ public class DestinationElasticsearch {
      * The type of authentication to be used
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("authenticationMethod")public Object authenticationMethod;
+    @JsonProperty("authenticationMethod")
+    public Object authenticationMethod;
     public DestinationElasticsearch withAuthenticationMethod(Object authenticationMethod) {
         this.authenticationMethod = authenticationMethod;
         return this;
@@ -32,7 +34,8 @@ public class DestinationElasticsearch {
      * CA certificate
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ca_certificate")public String caCertificate;
+    @JsonProperty("ca_certificate")
+    public String caCertificate;
     public DestinationElasticsearch withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -41,7 +44,8 @@ public class DestinationElasticsearch {
     /**
      * The full url of the Elasticsearch server
      */
-    @JsonProperty("endpoint")public String endpoint;
+    @JsonProperty("endpoint")
+    public String endpoint;
     public DestinationElasticsearch withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -51,7 +55,8 @@ public class DestinationElasticsearch {
      * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("upsert")public Boolean upsert;
+    @JsonProperty("upsert")
+    public Boolean upsert;
     public DestinationElasticsearch withUpsert(Boolean upsert) {
         this.upsert = upsert;
         return this;

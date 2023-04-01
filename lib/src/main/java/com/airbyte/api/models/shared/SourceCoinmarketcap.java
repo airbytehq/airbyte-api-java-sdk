@@ -12,25 +12,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceCoinmarketcap - The values required to configure the source.
  */
 public class SourceCoinmarketcap {
-    @JsonProperty("airbyte-source-name")public SourceCoinmarketcapCoinmarketcapEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceCoinmarketcapCoinmarketcapEnum airbyteSourceName;
     public SourceCoinmarketcap withAirbyteSourceName(SourceCoinmarketcapCoinmarketcapEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Your API Key. See <a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication">here</a>. The token is case sensitive.
+     * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceCoinmarketcap withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
     }
     
     /**
-     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See <a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview">here</a>.
+     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("data_type")public SourceCoinmarketcapDataTypeEnum dataType;
+    @JsonProperty("data_type")
+    public SourceCoinmarketcapDataTypeEnum dataType;
     public SourceCoinmarketcap withDataType(SourceCoinmarketcapDataTypeEnum dataType) {
         this.dataType = dataType;
         return this;
@@ -40,7 +43,8 @@ public class SourceCoinmarketcap {
      * Cryptocurrency symbols. (only used for quotes stream)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("symbols")public String[] symbols;
+    @JsonProperty("symbols")
+    public String[] symbols;
     public SourceCoinmarketcap withSymbols(String[] symbols) {
         this.symbols = symbols;
         return this;

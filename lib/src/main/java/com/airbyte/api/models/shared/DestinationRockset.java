@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationRockset - The values required to configure the destination.
  */
 public class DestinationRockset {
-    @JsonProperty("airbyte-destination-name")public DestinationRocksetRocksetEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationRocksetRocksetEnum airbyteDestinationName;
     public DestinationRockset withAirbyteDestinationName(DestinationRocksetRocksetEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationRockset {
     /**
      * Rockset api key
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public DestinationRockset withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class DestinationRockset {
      * Rockset api URL
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("api_server")public String apiServer;
+    @JsonProperty("api_server")
+    public String apiServer;
     public DestinationRockset withApiServer(String apiServer) {
         this.apiServer = apiServer;
         return this;
@@ -40,7 +43,8 @@ public class DestinationRockset {
     /**
      * The Rockset workspace in which collections will be created + written to.
      */
-    @JsonProperty("workspace")public String workspace;
+    @JsonProperty("workspace")
+    public String workspace;
     public DestinationRockset withWorkspace(String workspace) {
         this.workspace = workspace;
         return this;

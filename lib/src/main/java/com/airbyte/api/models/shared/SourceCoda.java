@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceCoda - The values required to configure the source.
  */
 public class SourceCoda {
-    @JsonProperty("airbyte-source-name")public SourceCodaCodaEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceCodaCodaEnum airbyteSourceName;
     public SourceCoda withAirbyteSourceName(SourceCodaCodaEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourceCoda {
     /**
      * Bearer token
      */
-    @JsonProperty("auth_token")public String authToken;
+    @JsonProperty("auth_token")
+    public String authToken;
     public SourceCoda withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;

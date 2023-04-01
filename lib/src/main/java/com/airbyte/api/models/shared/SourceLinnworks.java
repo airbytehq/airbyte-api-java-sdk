@@ -15,7 +15,8 @@ import java.time.OffsetDateTime;
  * SourceLinnworks - The values required to configure the source.
  */
 public class SourceLinnworks {
-    @JsonProperty("airbyte-source-name")public SourceLinnworksLinnworksEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceLinnworksLinnworksEnum airbyteSourceName;
     public SourceLinnworks withAirbyteSourceName(SourceLinnworksLinnworksEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -24,7 +25,8 @@ public class SourceLinnworks {
     /**
      * Linnworks Application ID
      */
-    @JsonProperty("application_id")public String applicationId;
+    @JsonProperty("application_id")
+    public String applicationId;
     public SourceLinnworks withApplicationId(String applicationId) {
         this.applicationId = applicationId;
         return this;
@@ -33,7 +35,8 @@ public class SourceLinnworks {
     /**
      * Linnworks Application Secret
      */
-    @JsonProperty("application_secret")public String applicationSecret;
+    @JsonProperty("application_secret")
+    public String applicationSecret;
     public SourceLinnworks withApplicationSecret(String applicationSecret) {
         this.applicationSecret = applicationSecret;
         return this;
@@ -44,13 +47,15 @@ public class SourceLinnworks {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceLinnworks withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
     
-    @JsonProperty("token")public String token;
+    @JsonProperty("token")
+    public String token;
     public SourceLinnworks withToken(String token) {
         this.token = token;
         return this;

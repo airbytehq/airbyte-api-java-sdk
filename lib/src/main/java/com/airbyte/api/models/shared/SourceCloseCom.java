@@ -17,16 +17,18 @@ import java.time.OffsetDateTime;
  * SourceCloseCom - The values required to configure the source.
  */
 public class SourceCloseCom {
-    @JsonProperty("airbyte-source-name")public SourceCloseComCloseComEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceCloseComCloseComEnum airbyteSourceName;
     public SourceCloseCom withAirbyteSourceName(SourceCloseComCloseComEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Close.com API key (usually starts with 'api_'; find yours <a href="https://app.close.com/settings/api/">here</a>).
+     * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceCloseCom withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -38,7 +40,8 @@ public class SourceCloseCom {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceCloseCom withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

@@ -13,15 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceSurveySparrow {
     /**
-     * Your access token. See <a href="https://developers.surveysparrow.com/rest-apis#authentication">here</a>. The key is case sensitive.
+     * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceSurveySparrow withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceSurveySparrowSurveySparrowEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSurveySparrowSurveySparrowEnum airbyteSourceName;
     public SourceSurveySparrow withAirbyteSourceName(SourceSurveySparrowSurveySparrowEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -31,7 +33,8 @@ public class SourceSurveySparrow {
      * Is your account location is EU based? If yes, the base url to retrieve data will be different.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("region")public Object region;
+    @JsonProperty("region")
+    public Object region;
     public SourceSurveySparrow withRegion(Object region) {
         this.region = region;
         return this;
@@ -41,7 +44,8 @@ public class SourceSurveySparrow {
      * A List of your survey ids for survey-specific stream
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("survey_id")public Object[] surveyId;
+    @JsonProperty("survey_id")
+    public Object[] surveyId;
     public SourceSurveySparrow withSurveyId(Object[] surveyId) {
         this.surveyId = surveyId;
         return this;

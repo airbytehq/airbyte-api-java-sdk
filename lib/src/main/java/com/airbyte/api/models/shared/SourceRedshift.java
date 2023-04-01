@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRedshift - The values required to configure the source.
  */
 public class SourceRedshift {
-    @JsonProperty("airbyte-source-name")public SourceRedshiftRedshiftEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceRedshiftRedshiftEnum airbyteSourceName;
     public SourceRedshift withAirbyteSourceName(SourceRedshiftRedshiftEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceRedshift {
     /**
      * Name of the database.
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public SourceRedshift withDatabase(String database) {
         this.database = database;
         return this;
@@ -30,17 +32,19 @@ public class SourceRedshift {
     /**
      * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com).
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceRedshift withHost(String host) {
         this.host = host;
         return this;
     }
     
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&'. (example: key1=value1&key2=value2&key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("jdbc_url_params")public String jdbcUrlParams;
+    @JsonProperty("jdbc_url_params")
+    public String jdbcUrlParams;
     public SourceRedshift withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -49,7 +53,8 @@ public class SourceRedshift {
     /**
      * Password associated with the username.
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceRedshift withPassword(String password) {
         this.password = password;
         return this;
@@ -58,7 +63,8 @@ public class SourceRedshift {
     /**
      * Port of the database.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceRedshift withPort(Long port) {
         this.port = port;
         return this;
@@ -68,7 +74,8 @@ public class SourceRedshift {
      * The list of schemas to sync from. Specify one or more explicitly or keep empty to process all schemas. Schema names are case sensitive.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("schemas")public String[] schemas;
+    @JsonProperty("schemas")
+    public String[] schemas;
     public SourceRedshift withSchemas(String[] schemas) {
         this.schemas = schemas;
         return this;
@@ -77,7 +84,8 @@ public class SourceRedshift {
     /**
      * Username to use to access the database.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceRedshift withUsername(String username) {
         this.username = username;
         return this;

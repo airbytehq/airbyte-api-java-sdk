@@ -15,7 +15,8 @@ public class SourceSquareCredentialsOauthAuthentication {
     /**
      * The Square-issued ID of your application
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceSquareCredentialsOauthAuthentication withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -24,14 +25,16 @@ public class SourceSquareCredentialsOauthAuthentication {
     /**
      * The Square-issued application secret for your application
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceSquareCredentialsOauthAuthentication withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials_title")public SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum credentialsTitle;
+    @JsonProperty("credentials_title")
+    public SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum credentialsTitle;
     public SourceSquareCredentialsOauthAuthentication withCredentialsTitle(SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;
@@ -40,7 +43,8 @@ public class SourceSquareCredentialsOauthAuthentication {
     /**
      * A refresh token generated using the above client ID and secret
      */
-    @JsonProperty("refresh_token")public String refreshToken;
+    @JsonProperty("refresh_token")
+    public String refreshToken;
     public SourceSquareCredentialsOauthAuthentication withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

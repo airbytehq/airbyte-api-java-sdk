@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceHubspot - The values required to configure the source.
  */
 public class SourceHubspot {
-    @JsonProperty("airbyte-source-name")public SourceHubspotHubspotEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceHubspotHubspotEnum airbyteSourceName;
     public SourceHubspot withAirbyteSourceName(SourceHubspotHubspotEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourceHubspot {
     /**
      * Choose how to authenticate to HubSpot.
      */
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceHubspot withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -28,7 +30,8 @@ public class SourceHubspot {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceHubspot withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceFileSecureProviderGCSGoogleCloudStorage {
     /**
-     * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described <a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank">here</a>. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("service_account_json")public String serviceAccountJson;
+    @JsonProperty("service_account_json")
+    public String serviceAccountJson;
     public SourceFileSecureProviderGCSGoogleCloudStorage withServiceAccountJson(String serviceAccountJson) {
         this.serviceAccountJson = serviceAccountJson;
         return this;
     }
     
-    @JsonProperty("storage")public SourceFileSecureProviderGCSGoogleCloudStorageStorageEnum storage;
+    @JsonProperty("storage")
+    public SourceFileSecureProviderGCSGoogleCloudStorageStorageEnum storage;
     public SourceFileSecureProviderGCSGoogleCloudStorage withStorage(SourceFileSecureProviderGCSGoogleCloudStorageStorageEnum storage) {
         this.storage = storage;
         return this;

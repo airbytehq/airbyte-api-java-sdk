@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceAmazonAdsRegionEnum - Region to pull data from (EU/NA/FE). See <a href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints">docs</a> for more details.
+ * SourceAmazonAdsRegionEnum - Region to pull data from (EU/NA/FE). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints"&gt;docs&lt;/a&gt; for more details.
  */
 public enum SourceAmazonAdsRegionEnum {
     NA("NA"),

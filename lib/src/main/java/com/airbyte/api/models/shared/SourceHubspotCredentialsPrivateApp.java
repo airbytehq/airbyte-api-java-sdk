@@ -11,9 +11,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceHubspotCredentialsPrivateApp {
     /**
-     * HubSpot Access token. See the <a href="https://developers.hubspot.com/docs/api/private-apps">Hubspot docs</a> if you need help finding this token.
+     * HubSpot Access token. See the &lt;a href="https://developers.hubspot.com/docs/api/private-apps"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceHubspotCredentialsPrivateApp withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,7 +23,8 @@ public class SourceHubspotCredentialsPrivateApp {
     /**
      * Name of the credentials set
      */
-    @JsonProperty("credentials_title")public SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle;
+    @JsonProperty("credentials_title")
+    public SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle;
     public SourceHubspotCredentialsPrivateApp withCredentialsTitle(SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;

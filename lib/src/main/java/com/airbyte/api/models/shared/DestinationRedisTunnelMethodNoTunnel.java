@@ -13,7 +13,8 @@ public class DestinationRedisTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public DestinationRedisTunnelMethodNoTunnel withTunnelMethod(DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

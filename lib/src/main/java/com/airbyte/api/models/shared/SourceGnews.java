@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGnews - The values required to configure the source.
  */
 public class SourceGnews {
-    @JsonProperty("airbyte-source-name")public SourceGnewsGnewsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceGnewsGnewsEnum airbyteSourceName;
     public SourceGnews withAirbyteSourceName(SourceGnewsGnewsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceGnews {
     /**
      * API Key
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceGnews withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class SourceGnews {
      * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("country")public SourceGnewsCountryEnum country;
+    @JsonProperty("country")
+    public SourceGnewsCountryEnum country;
     public SourceGnews withCountry(SourceGnewsCountryEnum country) {
         this.country = country;
         return this;
@@ -41,7 +44,8 @@ public class SourceGnews {
      * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_date")public String endDate;
+    @JsonProperty("end_date")
+    public String endDate;
     public SourceGnews withEndDate(String endDate) {
         this.endDate = endDate;
         return this;
@@ -51,14 +55,16 @@ public class SourceGnews {
      * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("in")public SourceGnewsInEnum[] in;
+    @JsonProperty("in")
+    public SourceGnewsInEnum[] in;
     public SourceGnews withIn(SourceGnewsInEnum[] in) {
         this.in = in;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("language")public SourceGnewsLanguageEnum language;
+    @JsonProperty("language")
+    public SourceGnewsLanguageEnum language;
     public SourceGnews withLanguage(SourceGnewsLanguageEnum language) {
         this.language = language;
         return this;
@@ -68,7 +74,8 @@ public class SourceGnews {
      * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("nullable")public SourceGnewsNullableEnum[] nullable;
+    @JsonProperty("nullable")
+    public SourceGnewsNullableEnum[] nullable;
     public SourceGnews withNullable(SourceGnewsNullableEnum[] nullable) {
         this.nullable = nullable;
         return this;
@@ -90,7 +97,8 @@ public class SourceGnews {
      *   For example the query: Apple NOT iPhone will return all articles matching the keyword Apple but not the keyword
      *   iPhone
      */
-    @JsonProperty("query")public String query;
+    @JsonProperty("query")
+    public String query;
     public SourceGnews withQuery(String query) {
         this.query = query;
         return this;
@@ -102,7 +110,8 @@ public class SourceGnews {
      *   - relevance = sort by best match to keywords, the articles with the best match are returned first
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("sortby")public SourceGnewsSortByEnum sortby;
+    @JsonProperty("sortby")
+    public SourceGnewsSortByEnum sortby;
     public SourceGnews withSortby(SourceGnewsSortByEnum sortby) {
         this.sortby = sortby;
         return this;
@@ -112,7 +121,8 @@ public class SourceGnews {
      * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceGnews withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -135,7 +145,8 @@ public class SourceGnews {
      *   iPhone
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("top_headlines_query")public String topHeadlinesQuery;
+    @JsonProperty("top_headlines_query")
+    public String topHeadlinesQuery;
     public SourceGnews withTopHeadlinesQuery(String topHeadlinesQuery) {
         this.topHeadlinesQuery = topHeadlinesQuery;
         return this;
@@ -145,7 +156,8 @@ public class SourceGnews {
      * This parameter allows you to change the category for the request.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("top_headlines_topic")public SourceGnewsTopHeadlinesTopicEnum topHeadlinesTopic;
+    @JsonProperty("top_headlines_topic")
+    public SourceGnewsTopHeadlinesTopicEnum topHeadlinesTopic;
     public SourceGnews withTopHeadlinesTopic(SourceGnewsTopHeadlinesTopicEnum topHeadlinesTopic) {
         this.topHeadlinesTopic = topHeadlinesTopic;
         return this;

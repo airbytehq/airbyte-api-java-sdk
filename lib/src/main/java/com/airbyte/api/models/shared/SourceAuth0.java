@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceAuth0 - The values required to configure the source.
  */
 public class SourceAuth0 {
-    @JsonProperty("airbyte-source-name")public SourceAuth0Auth0Enum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceAuth0Auth0Enum airbyteSourceName;
     public SourceAuth0 withAirbyteSourceName(SourceAuth0Auth0Enum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,13 +20,15 @@ public class SourceAuth0 {
     /**
      * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the following base `https://YOUR_DOMAIN`
      */
-    @JsonProperty("base_url")public String baseUrl;
+    @JsonProperty("base_url")
+    public String baseUrl;
     public SourceAuth0 withBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
     }
     
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceAuth0 withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;

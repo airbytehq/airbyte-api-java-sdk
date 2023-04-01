@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DestinationSnowflakeCredentialsKeyPairAuthentication {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_type")public DestinationSnowflakeCredentialsKeyPairAuthenticationAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public DestinationSnowflakeCredentialsKeyPairAuthenticationAuthTypeEnum authType;
     public DestinationSnowflakeCredentialsKeyPairAuthentication withAuthType(DestinationSnowflakeCredentialsKeyPairAuthenticationAuthTypeEnum authType) {
         this.authType = authType;
         return this;
     }
     
     /**
-     * RSA Private key to use for Snowflake connection. See the <a href="https://docs.airbyte.com/integrations/destinations/snowflake">docs</a> for more information on how to obtain this key.
+     * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/snowflake"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("private_key")public String privateKey;
+    @JsonProperty("private_key")
+    public String privateKey;
     public DestinationSnowflakeCredentialsKeyPairAuthentication withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -29,7 +31,8 @@ public class DestinationSnowflakeCredentialsKeyPairAuthentication {
      * Passphrase for private key
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("private_key_password")public String privateKeyPassword;
+    @JsonProperty("private_key_password")
+    public String privateKeyPassword;
     public DestinationSnowflakeCredentialsKeyPairAuthentication withPrivateKeyPassword(String privateKeyPassword) {
         this.privateKeyPassword = privateKeyPassword;
         return this;

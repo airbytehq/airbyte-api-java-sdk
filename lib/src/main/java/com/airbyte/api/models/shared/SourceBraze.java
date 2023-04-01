@@ -12,7 +12,8 @@ import java.time.LocalDate;
  * SourceBraze - The values required to configure the source.
  */
 public class SourceBraze {
-    @JsonProperty("airbyte-source-name")public SourceBrazeBrazeEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceBrazeBrazeEnum airbyteSourceName;
     public SourceBraze withAirbyteSourceName(SourceBrazeBrazeEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceBraze {
     /**
      * Braze REST API key
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceBraze withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class SourceBraze {
      * Rows after this date will be synced
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourceBraze withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
@@ -40,7 +43,8 @@ public class SourceBraze {
     /**
      * Braze REST API endpoint
      */
-    @JsonProperty("url")public String url;
+    @JsonProperty("url")
+    public String url;
     public SourceBraze withUrl(String url) {
         this.url = url;
         return this;

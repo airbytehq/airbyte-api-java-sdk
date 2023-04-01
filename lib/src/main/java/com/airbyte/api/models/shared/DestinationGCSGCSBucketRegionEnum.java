@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * DestinationGCSGCSBucketRegionEnum - Select a Region of the GCS Bucket. Read more <a href="https://cloud.google.com/storage/docs/locations">here</a>.
+ * DestinationGCSGCSBucketRegionEnum - Select a Region of the GCS Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/locations"&gt;here&lt;/a&gt;.
  */
 public enum DestinationGCSGCSBucketRegionEnum {
     NORTHAMERICA_NORTHEAST1("northamerica-northeast1"),

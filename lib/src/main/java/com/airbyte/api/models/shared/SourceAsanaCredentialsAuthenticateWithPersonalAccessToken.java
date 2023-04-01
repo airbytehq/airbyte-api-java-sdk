@@ -16,16 +16,18 @@ public class SourceAsanaCredentialsAuthenticateWithPersonalAccessToken {
      * PAT Credentials
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("option_title")public SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitleEnum optionTitle;
+    @JsonProperty("option_title")
+    public SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitleEnum optionTitle;
     public SourceAsanaCredentialsAuthenticateWithPersonalAccessToken withOptionTitle(SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }
     
     /**
-     * Asana Personal Access Token (generate yours <a href="https://app.asana.com/0/developer-console">here</a>).
+     * Asana Personal Access Token (generate yours &lt;a href="https://app.asana.com/0/developer-console"&gt;here&lt;/a&gt;).
      */
-    @JsonProperty("personal_access_token")public String personalAccessToken;
+    @JsonProperty("personal_access_token")
+    public String personalAccessToken;
     public SourceAsanaCredentialsAuthenticateWithPersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         this.personalAccessToken = personalAccessToken;
         return this;

@@ -17,7 +17,8 @@ import java.time.OffsetDateTime;
  * SourceSftpBulk - The values required to configure the source.
  */
 public class SourceSftpBulk {
-    @JsonProperty("airbyte-source-name")public SourceSftpBulkSftpBulkEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSftpBulkSftpBulkEnum airbyteSourceName;
     public SourceSftpBulk withAirbyteSourceName(SourceSftpBulkSftpBulkEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -27,7 +28,8 @@ public class SourceSftpBulk {
      * Sync only the most recent file for the configured folder path and file pattern
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_most_recent")public Boolean fileMostRecent;
+    @JsonProperty("file_most_recent")
+    public Boolean fileMostRecent;
     public SourceSftpBulk withFileMostRecent(Boolean fileMostRecent) {
         this.fileMostRecent = fileMostRecent;
         return this;
@@ -37,7 +39,8 @@ public class SourceSftpBulk {
      * The regular expression to specify files for sync in a chosen Folder Path
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_pattern")public String filePattern;
+    @JsonProperty("file_pattern")
+    public String filePattern;
     public SourceSftpBulk withFilePattern(String filePattern) {
         this.filePattern = filePattern;
         return this;
@@ -47,7 +50,8 @@ public class SourceSftpBulk {
      * The file type you want to sync. Currently only 'csv' and 'json' files are supported.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_type")public SourceSftpBulkFileTypeEnum fileType;
+    @JsonProperty("file_type")
+    public SourceSftpBulkFileTypeEnum fileType;
     public SourceSftpBulk withFileType(SourceSftpBulkFileTypeEnum fileType) {
         this.fileType = fileType;
         return this;
@@ -56,7 +60,8 @@ public class SourceSftpBulk {
     /**
      * The directory to search files for sync
      */
-    @JsonProperty("folder_path")public String folderPath;
+    @JsonProperty("folder_path")
+    public String folderPath;
     public SourceSftpBulk withFolderPath(String folderPath) {
         this.folderPath = folderPath;
         return this;
@@ -65,7 +70,8 @@ public class SourceSftpBulk {
     /**
      * The server host address
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceSftpBulk withHost(String host) {
         this.host = host;
         return this;
@@ -75,7 +81,8 @@ public class SourceSftpBulk {
      * OS-level password for logging into the jump server host
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceSftpBulk withPassword(String password) {
         this.password = password;
         return this;
@@ -84,7 +91,8 @@ public class SourceSftpBulk {
     /**
      * The server port
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceSftpBulk withPort(Long port) {
         this.port = port;
         return this;
@@ -94,7 +102,8 @@ public class SourceSftpBulk {
      * The private key
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("private_key")public String privateKey;
+    @JsonProperty("private_key")
+    public String privateKey;
     public SourceSftpBulk withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -105,7 +114,8 @@ public class SourceSftpBulk {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceSftpBulk withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -114,7 +124,8 @@ public class SourceSftpBulk {
     /**
      * The name of the stream or table you want to create
      */
-    @JsonProperty("stream_name")public String streamName;
+    @JsonProperty("stream_name")
+    public String streamName;
     public SourceSftpBulk withStreamName(String streamName) {
         this.streamName = streamName;
         return this;
@@ -123,7 +134,8 @@ public class SourceSftpBulk {
     /**
      * The server user
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceSftpBulk withUsername(String username) {
         this.username = username;
         return this;

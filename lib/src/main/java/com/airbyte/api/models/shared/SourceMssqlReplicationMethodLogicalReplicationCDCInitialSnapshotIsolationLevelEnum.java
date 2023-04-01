@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum - Existing data in the database are synced through an initial snapshot. This parameter controls the isolation level that will be used during the initial snapshotting. If you choose the "Snapshot" level, you must enable the <a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server">snapshot isolation mode</a> on the database.
+ * SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum - Existing data in the database are synced through an initial snapshot. This parameter controls the isolation level that will be used during the initial snapshotting. If you choose the "Snapshot" level, you must enable the &lt;a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server"&gt;snapshot isolation mode&lt;/a&gt; on the database.
  */
 public enum SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum {
     SNAPSHOT("Snapshot"),

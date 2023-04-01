@@ -8,15 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceMailchimpCredentialsAPIKey {
     /**
-     * Mailchimp API Key. See the <a href="https://docs.airbyte.com/integrations/sources/mailchimp">docs</a> for information on how to generate this key.
+     * Mailchimp API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/mailchimp"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
-    @JsonProperty("apikey")public String apikey;
+    @JsonProperty("apikey")
+    public String apikey;
     public SourceMailchimpCredentialsAPIKey withApikey(String apikey) {
         this.apikey = apikey;
         return this;
     }
     
-    @JsonProperty("auth_type")public SourceMailchimpCredentialsAPIKeyAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceMailchimpCredentialsAPIKeyAuthTypeEnum authType;
     public SourceMailchimpCredentialsAPIKey withAuthType(SourceMailchimpCredentialsAPIKeyAuthTypeEnum authType) {
         this.authType = authType;
         return this;

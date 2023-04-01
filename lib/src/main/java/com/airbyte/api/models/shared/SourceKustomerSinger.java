@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceKustomerSinger - The values required to configure the source.
  */
 public class SourceKustomerSinger {
-    @JsonProperty("airbyte-source-name")public SourceKustomerSingerKustomerSingerEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceKustomerSingerKustomerSingerEnum airbyteSourceName;
     public SourceKustomerSinger withAirbyteSourceName(SourceKustomerSingerKustomerSingerEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Kustomer API Token. See the <a href="https://developer.kustomer.com/kustomer-api-docs/reference/authentication">docs</a> on how to obtain this
+     * Kustomer API Token. See the &lt;a href="https://developer.kustomer.com/kustomer-api-docs/reference/authentication"&gt;docs&lt;/a&gt; on how to obtain this
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceKustomerSinger withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -28,7 +30,8 @@ public class SourceKustomerSinger {
     /**
      * The date from which you'd like to replicate the data
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceKustomerSinger withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

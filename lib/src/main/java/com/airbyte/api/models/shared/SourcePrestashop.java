@@ -13,15 +13,17 @@ import java.time.LocalDate;
  */
 public class SourcePrestashop {
     /**
-     * Your PrestaShop access key. See <a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"> the docs </a> for info on how to obtain this.
+     * Your PrestaShop access key. See &lt;a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
-    @JsonProperty("access_key")public String accessKey;
+    @JsonProperty("access_key")
+    public String accessKey;
     public SourcePrestashop withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourcePrestashopPrestashopEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourcePrestashopPrestashopEnum airbyteSourceName;
     public SourcePrestashop withAirbyteSourceName(SourcePrestashopPrestashopEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -31,7 +33,8 @@ public class SourcePrestashop {
      * The Start date in the format YYYY-MM-DD.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourcePrestashop withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
@@ -40,7 +43,8 @@ public class SourcePrestashop {
     /**
      * Shop URL without trailing slash.
      */
-    @JsonProperty("url")public String url;
+    @JsonProperty("url")
+    public String url;
     public SourcePrestashop withUrl(String url) {
         this.url = url;
         return this;

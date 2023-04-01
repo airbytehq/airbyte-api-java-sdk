@@ -9,24 +9,26 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * SourceS3FormatCSV - This connector utilises <a href="https: // arrow.apache.org/docs/python/generated/pyarrow.csv.open_csv.html" target="_blank">PyArrow (Apache Arrow)</a> for CSV parsing.
+ * SourceS3FormatCSV - This connector utilises &lt;a href="https: // arrow.apache.org/docs/python/generated/pyarrow.csv.open_csv.html" target="_blank"&gt;PyArrow (Apache Arrow)&lt;/a&gt; for CSV parsing.
  */
 public class SourceS3FormatCSV {
     /**
-     * Optionally add a valid JSON string here to provide additional options to the csv reader. Mappings must correspond to options <a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ConvertOptions.html#pyarrow.csv.ConvertOptions" target="_blank">detailed here</a>. 'column_types' is used internally to handle schema so overriding that would likely cause problems.
+     * Optionally add a valid JSON string here to provide additional options to the csv reader. Mappings must correspond to options &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ConvertOptions.html#pyarrow.csv.ConvertOptions" target="_blank"&gt;detailed here&lt;/a&gt;. 'column_types' is used internally to handle schema so overriding that would likely cause problems.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("additional_reader_options")public String additionalReaderOptions;
+    @JsonProperty("additional_reader_options")
+    public String additionalReaderOptions;
     public SourceS3FormatCSV withAdditionalReaderOptions(String additionalReaderOptions) {
         this.additionalReaderOptions = additionalReaderOptions;
         return this;
     }
     
     /**
-     * Optionally add a valid JSON string here to provide additional <a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ReadOptions.html#pyarrow.csv.ReadOptions" target="_blank">Pyarrow ReadOptions</a>. Specify 'column_names' here if your CSV doesn't have header, or if you want to use custom column names. 'block_size' and 'encoding' are already used above, specify them again here will override the values above.
+     * Optionally add a valid JSON string here to provide additional &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ReadOptions.html#pyarrow.csv.ReadOptions" target="_blank"&gt;Pyarrow ReadOptions&lt;/a&gt;. Specify 'column_names' here if your CSV doesn't have header, or if you want to use custom column names. 'block_size' and 'encoding' are already used above, specify them again here will override the values above.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("advanced_options")public String advancedOptions;
+    @JsonProperty("advanced_options")
+    public String advancedOptions;
     public SourceS3FormatCSV withAdvancedOptions(String advancedOptions) {
         this.advancedOptions = advancedOptions;
         return this;
@@ -36,7 +38,8 @@ public class SourceS3FormatCSV {
      * The chunk size in bytes to process at a time in memory from each file. If your data is particularly wide and failing during schema detection, increasing this should solve it. Beware of raising this too high as you could hit OOM errors.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("block_size")public Long blockSize;
+    @JsonProperty("block_size")
+    public Long blockSize;
     public SourceS3FormatCSV withBlockSize(Long blockSize) {
         this.blockSize = blockSize;
         return this;
@@ -46,7 +49,8 @@ public class SourceS3FormatCSV {
      * The character delimiting individual cells in the CSV data. This may only be a 1-character string. For tab-delimited data enter '\t'.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("delimiter")public String delimiter;
+    @JsonProperty("delimiter")
+    public String delimiter;
     public SourceS3FormatCSV withDelimiter(String delimiter) {
         this.delimiter = delimiter;
         return this;
@@ -56,17 +60,19 @@ public class SourceS3FormatCSV {
      * Whether two quotes in a quoted CSV value denote a single quote in the data.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("double_quote")public Boolean doubleQuote;
+    @JsonProperty("double_quote")
+    public Boolean doubleQuote;
     public SourceS3FormatCSV withDoubleQuote(Boolean doubleQuote) {
         this.doubleQuote = doubleQuote;
         return this;
     }
     
     /**
-     * The character encoding of the CSV data. Leave blank to default to <strong>UTF8</strong>. See <a href="https://docs.python.org/3/library/codecs.html#standard-encodings" target="_blank">list of python encodings</a> for allowable options.
+     * The character encoding of the CSV data. Leave blank to default to &lt;strong&gt;UTF8&lt;/strong&gt;. See &lt;a href="https://docs.python.org/3/library/codecs.html#standard-encodings" target="_blank"&gt;list of python encodings&lt;/a&gt; for allowable options.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("encoding")public String encoding;
+    @JsonProperty("encoding")
+    public String encoding;
     public SourceS3FormatCSV withEncoding(String encoding) {
         this.encoding = encoding;
         return this;
@@ -76,14 +82,16 @@ public class SourceS3FormatCSV {
      * The character used for escaping special characters. To disallow escaping, leave this field blank.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("escape_char")public String escapeChar;
+    @JsonProperty("escape_char")
+    public String escapeChar;
     public SourceS3FormatCSV withEscapeChar(String escapeChar) {
         this.escapeChar = escapeChar;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("filetype")public SourceS3FormatCSVFiletypeEnum filetype;
+    @JsonProperty("filetype")
+    public SourceS3FormatCSVFiletypeEnum filetype;
     public SourceS3FormatCSV withFiletype(SourceS3FormatCSVFiletypeEnum filetype) {
         this.filetype = filetype;
         return this;
@@ -93,7 +101,8 @@ public class SourceS3FormatCSV {
      * Configures whether a schema for the source should be inferred from the current data or not. If set to false and a custom schema is set, then the manually enforced schema is used. If a schema is not manually set, and this is set to false, then all fields will be read as strings
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("infer_datatypes")public Boolean inferDatatypes;
+    @JsonProperty("infer_datatypes")
+    public Boolean inferDatatypes;
     public SourceS3FormatCSV withInferDatatypes(Boolean inferDatatypes) {
         this.inferDatatypes = inferDatatypes;
         return this;
@@ -103,7 +112,8 @@ public class SourceS3FormatCSV {
      * Whether newline characters are allowed in CSV values. Turning this on may affect performance. Leave blank to default to False.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("newlines_in_values")public Boolean newlinesInValues;
+    @JsonProperty("newlines_in_values")
+    public Boolean newlinesInValues;
     public SourceS3FormatCSV withNewlinesInValues(Boolean newlinesInValues) {
         this.newlinesInValues = newlinesInValues;
         return this;
@@ -113,7 +123,8 @@ public class SourceS3FormatCSV {
      * The character used for quoting CSV values. To disallow quoting, make this field blank.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("quote_char")public String quoteChar;
+    @JsonProperty("quote_char")
+    public String quoteChar;
     public SourceS3FormatCSV withQuoteChar(String quoteChar) {
         this.quoteChar = quoteChar;
         return this;

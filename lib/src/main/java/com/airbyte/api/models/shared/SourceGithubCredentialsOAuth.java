@@ -15,14 +15,16 @@ public class SourceGithubCredentialsOAuth {
     /**
      * OAuth access token
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceGithubCredentialsOAuth withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("option_title")public SourceGithubCredentialsOAuthOptionTitleEnum optionTitle;
+    @JsonProperty("option_title")
+    public SourceGithubCredentialsOAuthOptionTitleEnum optionTitle;
     public SourceGithubCredentialsOAuth withOptionTitle(SourceGithubCredentialsOAuthOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;

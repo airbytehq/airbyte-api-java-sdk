@@ -10,19 +10,22 @@ public class SourceCreate {
     /**
      * The values required to configure the source.
      */
-    @JsonProperty("connectionConfiguration")public Object connectionConfiguration;
+    @JsonProperty("connectionConfiguration")
+    public Object connectionConfiguration;
     public SourceCreate withConnectionConfiguration(Object connectionConfiguration) {
         this.connectionConfiguration = connectionConfiguration;
         return this;
     }
     
-    @JsonProperty("name")public String name;
+    @JsonProperty("name")
+    public String name;
     public SourceCreate withName(String name) {
         this.name = name;
         return this;
     }
     
-    @JsonProperty("workspaceId")public String workspaceId;
+    @JsonProperty("workspaceId")
+    public String workspaceId;
     public SourceCreate withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

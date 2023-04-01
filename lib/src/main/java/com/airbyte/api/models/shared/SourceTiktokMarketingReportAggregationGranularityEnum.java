@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceTiktokMarketingReportAggregationGranularityEnum - The granularity used for aggregating performance data in reports. See <a href="https://docs.airbyte.com/integrations/sources/tiktok-marketing/#report-aggregation">the docs</a>.
+ * SourceTiktokMarketingReportAggregationGranularityEnum - The granularity used for aggregating performance data in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/tiktok-marketing/#report-aggregation"&gt;the docs&lt;/a&gt;.
  */
 public enum SourceTiktokMarketingReportAggregationGranularityEnum {
     LIFETIME("LIFETIME"),

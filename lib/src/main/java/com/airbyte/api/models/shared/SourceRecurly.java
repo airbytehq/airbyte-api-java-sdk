@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRecurly - The values required to configure the source.
  */
 public class SourceRecurly {
-    @JsonProperty("airbyte-source-name")public SourceRecurlyRecurlyEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceRecurlyRecurlyEnum airbyteSourceName;
     public SourceRecurly withAirbyteSourceName(SourceRecurlyRecurlyEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Recurly API Key. See the  <a href="https://docs.airbyte.com/integrations/sources/recurly">docs</a> for more information on how to generate this key.
+     * Recurly API Key. See the  &lt;a href="https://docs.airbyte.com/integrations/sources/recurly"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceRecurly withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class SourceRecurly {
      * ISO8601 timestamp from which the replication from Recurly API will start from.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("begin_time")public String beginTime;
+    @JsonProperty("begin_time")
+    public String beginTime;
     public SourceRecurly withBeginTime(String beginTime) {
         this.beginTime = beginTime;
         return this;
@@ -41,7 +44,8 @@ public class SourceRecurly {
      * ISO8601 timestamp to which the replication from Recurly API will stop. Records after that date won't be imported.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_time")public String endTime;
+    @JsonProperty("end_time")
+    public String endTime;
     public SourceRecurly withEndTime(String endTime) {
         this.endTime = endTime;
         return this;

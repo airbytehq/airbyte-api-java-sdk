@@ -12,16 +12,18 @@ import java.time.LocalDate;
  * SourceAwsCloudtrail - The values required to configure the source.
  */
 public class SourceAwsCloudtrail {
-    @JsonProperty("airbyte-source-name")public SourceAwsCloudtrailAwsCloudtrailEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceAwsCloudtrailAwsCloudtrailEnum airbyteSourceName;
     public SourceAwsCloudtrail withAirbyteSourceName(SourceAwsCloudtrailAwsCloudtrailEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * AWS CloudTrail Access Key ID. See the <a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail">docs</a> for more information on how to obtain this key.
+     * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("aws_key_id")public String awsKeyId;
+    @JsonProperty("aws_key_id")
+    public String awsKeyId;
     public SourceAwsCloudtrail withAwsKeyId(String awsKeyId) {
         this.awsKeyId = awsKeyId;
         return this;
@@ -30,16 +32,18 @@ public class SourceAwsCloudtrail {
     /**
      * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
      */
-    @JsonProperty("aws_region_name")public String awsRegionName;
+    @JsonProperty("aws_region_name")
+    public String awsRegionName;
     public SourceAwsCloudtrail withAwsRegionName(String awsRegionName) {
         this.awsRegionName = awsRegionName;
         return this;
     }
     
     /**
-     * AWS CloudTrail Access Key ID. See the <a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail">docs</a> for more information on how to obtain this key.
+     * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("aws_secret_key")public String awsSecretKey;
+    @JsonProperty("aws_secret_key")
+    public String awsSecretKey;
     public SourceAwsCloudtrail withAwsSecretKey(String awsSecretKey) {
         this.awsSecretKey = awsSecretKey;
         return this;
@@ -49,7 +53,8 @@ public class SourceAwsCloudtrail {
      * The date you would like to replicate data. Data in AWS CloudTrail is available for last 90 days only. Format: YYYY-MM-DD.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourceAwsCloudtrail withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

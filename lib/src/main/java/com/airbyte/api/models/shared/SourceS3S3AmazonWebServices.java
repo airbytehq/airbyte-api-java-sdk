@@ -16,7 +16,8 @@ public class SourceS3S3AmazonWebServices {
      * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("aws_access_key_id")public String awsAccessKeyId;
+    @JsonProperty("aws_access_key_id")
+    public String awsAccessKeyId;
     public SourceS3S3AmazonWebServices withAwsAccessKeyId(String awsAccessKeyId) {
         this.awsAccessKeyId = awsAccessKeyId;
         return this;
@@ -26,7 +27,8 @@ public class SourceS3S3AmazonWebServices {
      * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("aws_secret_access_key")public String awsSecretAccessKey;
+    @JsonProperty("aws_secret_access_key")
+    public String awsSecretAccessKey;
     public SourceS3S3AmazonWebServices withAwsSecretAccessKey(String awsSecretAccessKey) {
         this.awsSecretAccessKey = awsSecretAccessKey;
         return this;
@@ -35,7 +37,8 @@ public class SourceS3S3AmazonWebServices {
     /**
      * Name of the S3 bucket where the file(s) exist.
      */
-    @JsonProperty("bucket")public String bucket;
+    @JsonProperty("bucket")
+    public String bucket;
     public SourceS3S3AmazonWebServices withBucket(String bucket) {
         this.bucket = bucket;
         return this;
@@ -45,7 +48,8 @@ public class SourceS3S3AmazonWebServices {
      * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("endpoint")public String endpoint;
+    @JsonProperty("endpoint")
+    public String endpoint;
     public SourceS3S3AmazonWebServices withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -55,7 +59,8 @@ public class SourceS3S3AmazonWebServices {
      * By providing a path-like prefix (e.g. myFolder/thisTable/) under which all the relevant files sit, we can optimize finding these in S3. This is optional but recommended if your bucket contains many folders/files which you don't need to replicate.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("path_prefix")public String pathPrefix;
+    @JsonProperty("path_prefix")
+    public String pathPrefix;
     public SourceS3S3AmazonWebServices withPathPrefix(String pathPrefix) {
         this.pathPrefix = pathPrefix;
         return this;

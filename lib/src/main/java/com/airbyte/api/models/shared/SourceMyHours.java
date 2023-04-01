@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMyHours - The values required to configure the source.
  */
 public class SourceMyHours {
-    @JsonProperty("airbyte-source-name")public SourceMyHoursMyHoursEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMyHoursMyHoursEnum airbyteSourceName;
     public SourceMyHours withAirbyteSourceName(SourceMyHoursMyHoursEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceMyHours {
     /**
      * Your My Hours username
      */
-    @JsonProperty("email")public String email;
+    @JsonProperty("email")
+    public String email;
     public SourceMyHours withEmail(String email) {
         this.email = email;
         return this;
@@ -31,7 +33,8 @@ public class SourceMyHours {
      * Pagination size used for retrieving logs in days
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("logs_batch_size")public Long logsBatchSize;
+    @JsonProperty("logs_batch_size")
+    public Long logsBatchSize;
     public SourceMyHours withLogsBatchSize(Long logsBatchSize) {
         this.logsBatchSize = logsBatchSize;
         return this;
@@ -40,7 +43,8 @@ public class SourceMyHours {
     /**
      * The password associated to the username
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceMyHours withPassword(String password) {
         this.password = password;
         return this;
@@ -49,7 +53,8 @@ public class SourceMyHours {
     /**
      * Start date for collecting time logs
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceMyHours withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

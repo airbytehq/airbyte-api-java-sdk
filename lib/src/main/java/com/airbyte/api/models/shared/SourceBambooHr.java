@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceBambooHr - The values required to configure the source.
  */
 public class SourceBambooHr {
-    @JsonProperty("airbyte-source-name")public SourceBambooHrBambooHrEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceBambooHrBambooHrEnum airbyteSourceName;
     public SourceBambooHr withAirbyteSourceName(SourceBambooHrBambooHrEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceBambooHr {
     /**
      * Api key of bamboo hr
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceBambooHr withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class SourceBambooHr {
      * Comma-separated list of fields to include in custom reports.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("custom_reports_fields")public String customReportsFields;
+    @JsonProperty("custom_reports_fields")
+    public String customReportsFields;
     public SourceBambooHr withCustomReportsFields(String customReportsFields) {
         this.customReportsFields = customReportsFields;
         return this;
@@ -41,7 +44,8 @@ public class SourceBambooHr {
      * If true, the custom reports endpoint will include the default fields defined here: https://documentation.bamboohr.com/docs/list-of-field-names.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("custom_reports_include_default_fields")public Boolean customReportsIncludeDefaultFields;
+    @JsonProperty("custom_reports_include_default_fields")
+    public Boolean customReportsIncludeDefaultFields;
     public SourceBambooHr withCustomReportsIncludeDefaultFields(Boolean customReportsIncludeDefaultFields) {
         this.customReportsIncludeDefaultFields = customReportsIncludeDefaultFields;
         return this;
@@ -50,7 +54,8 @@ public class SourceBambooHr {
     /**
      * Sub Domain of bamboo hr
      */
-    @JsonProperty("subdomain")public String subdomain;
+    @JsonProperty("subdomain")
+    public String subdomain;
     public SourceBambooHr withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

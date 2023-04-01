@@ -21,7 +21,8 @@ public class SourceFacebookMarketingInsightConfig {
      * A list of chosen action_breakdowns for action_breakdowns
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("action_breakdowns")public SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns;
+    @JsonProperty("action_breakdowns")
+    public SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns;
     public SourceFacebookMarketingInsightConfig withActionBreakdowns(SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns) {
         this.actionBreakdowns = actionBreakdowns;
         return this;
@@ -31,7 +32,8 @@ public class SourceFacebookMarketingInsightConfig {
      * A list of chosen breakdowns for breakdowns
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("breakdowns")public SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns;
+    @JsonProperty("breakdowns")
+    public SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns;
     public SourceFacebookMarketingInsightConfig withBreakdowns(SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns) {
         this.breakdowns = breakdowns;
         return this;
@@ -43,7 +45,8 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("end_date")public OffsetDateTime endDate;
+    @JsonProperty("end_date")
+    public OffsetDateTime endDate;
     public SourceFacebookMarketingInsightConfig withEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
         return this;
@@ -53,7 +56,8 @@ public class SourceFacebookMarketingInsightConfig {
      * A list of chosen fields for fields parameter
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("fields")public SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields;
+    @JsonProperty("fields")
+    public SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields;
     public SourceFacebookMarketingInsightConfig withFields(SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields) {
         this.fields = fields;
         return this;
@@ -63,7 +67,8 @@ public class SourceFacebookMarketingInsightConfig {
      * The attribution window
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("insights_lookback_window")public Long insightsLookbackWindow;
+    @JsonProperty("insights_lookback_window")
+    public Long insightsLookbackWindow;
     public SourceFacebookMarketingInsightConfig withInsightsLookbackWindow(Long insightsLookbackWindow) {
         this.insightsLookbackWindow = insightsLookbackWindow;
         return this;
@@ -72,7 +77,8 @@ public class SourceFacebookMarketingInsightConfig {
     /**
      * The name value of insight
      */
-    @JsonProperty("name")public String name;
+    @JsonProperty("name")
+    public String name;
     public SourceFacebookMarketingInsightConfig withName(String name) {
         this.name = name;
         return this;
@@ -84,7 +90,8 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceFacebookMarketingInsightConfig withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -94,7 +101,8 @@ public class SourceFacebookMarketingInsightConfig {
      * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("time_increment")public Long timeIncrement;
+    @JsonProperty("time_increment")
+    public Long timeIncrement;
     public SourceFacebookMarketingInsightConfig withTimeIncrement(Long timeIncrement) {
         this.timeIncrement = timeIncrement;
         return this;

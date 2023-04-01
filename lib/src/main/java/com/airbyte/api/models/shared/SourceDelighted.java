@@ -15,7 +15,8 @@ import java.time.OffsetDateTime;
  * SourceDelighted - The values required to configure the source.
  */
 public class SourceDelighted {
-    @JsonProperty("airbyte-source-name")public SourceDelightedDelightedEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceDelightedDelightedEnum airbyteSourceName;
     public SourceDelighted withAirbyteSourceName(SourceDelightedDelightedEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -24,7 +25,8 @@ public class SourceDelighted {
     /**
      * A Delighted API key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceDelighted withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -35,7 +37,8 @@ public class SourceDelighted {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("since")public OffsetDateTime since;
+    @JsonProperty("since")
+    public OffsetDateTime since;
     public SourceDelighted withSince(OffsetDateTime since) {
         this.since = since;
         return this;

@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationPubsub - The values required to configure the destination.
  */
 public class DestinationPubsub {
-    @JsonProperty("airbyte-destination-name")public DestinationPubsubPubsubEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationPubsubPubsubEnum airbyteDestinationName;
     public DestinationPubsub withAirbyteDestinationName(DestinationPubsubPubsubEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -22,7 +23,8 @@ public class DestinationPubsub {
      * Number of ms before the buffer is flushed
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("batching_delay_threshold")public Long batchingDelayThreshold;
+    @JsonProperty("batching_delay_threshold")
+    public Long batchingDelayThreshold;
     public DestinationPubsub withBatchingDelayThreshold(Long batchingDelayThreshold) {
         this.batchingDelayThreshold = batchingDelayThreshold;
         return this;
@@ -32,7 +34,8 @@ public class DestinationPubsub {
      * Number of messages before the buffer is flushed
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("batching_element_count_threshold")public Long batchingElementCountThreshold;
+    @JsonProperty("batching_element_count_threshold")
+    public Long batchingElementCountThreshold;
     public DestinationPubsub withBatchingElementCountThreshold(Long batchingElementCountThreshold) {
         this.batchingElementCountThreshold = batchingElementCountThreshold;
         return this;
@@ -41,7 +44,8 @@ public class DestinationPubsub {
     /**
      * If TRUE messages will be buffered instead of sending them one by one
      */
-    @JsonProperty("batching_enabled")public Boolean batchingEnabled;
+    @JsonProperty("batching_enabled")
+    public Boolean batchingEnabled;
     public DestinationPubsub withBatchingEnabled(Boolean batchingEnabled) {
         this.batchingEnabled = batchingEnabled;
         return this;
@@ -51,25 +55,28 @@ public class DestinationPubsub {
      * Number of bytes before the buffer is flushed
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("batching_request_bytes_threshold")public Long batchingRequestBytesThreshold;
+    @JsonProperty("batching_request_bytes_threshold")
+    public Long batchingRequestBytesThreshold;
     public DestinationPubsub withBatchingRequestBytesThreshold(Long batchingRequestBytesThreshold) {
         this.batchingRequestBytesThreshold = batchingRequestBytesThreshold;
         return this;
     }
     
     /**
-     * The contents of the JSON service account key. Check out the <a href="https://docs.airbyte.com/integrations/destinations/pubsub">docs</a> if you need help generating this key.
+     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/pubsub"&gt;docs&lt;/a&gt; if you need help generating this key.
      */
-    @JsonProperty("credentials_json")public String credentialsJson;
+    @JsonProperty("credentials_json")
+    public String credentialsJson;
     public DestinationPubsub withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
     }
     
     /**
-     * If TRUE PubSub publisher will have <a href="https://cloud.google.com/pubsub/docs/ordering">message ordering</a> enabled. Every message will have an ordering key of stream
+     * If TRUE PubSub publisher will have &lt;a href="https://cloud.google.com/pubsub/docs/ordering"&gt;message ordering&lt;/a&gt; enabled. Every message will have an ordering key of stream
      */
-    @JsonProperty("ordering_enabled")public Boolean orderingEnabled;
+    @JsonProperty("ordering_enabled")
+    public Boolean orderingEnabled;
     public DestinationPubsub withOrderingEnabled(Boolean orderingEnabled) {
         this.orderingEnabled = orderingEnabled;
         return this;
@@ -78,7 +85,8 @@ public class DestinationPubsub {
     /**
      * The GCP project ID for the project containing the target PubSub.
      */
-    @JsonProperty("project_id")public String projectId;
+    @JsonProperty("project_id")
+    public String projectId;
     public DestinationPubsub withProjectId(String projectId) {
         this.projectId = projectId;
         return this;
@@ -87,7 +95,8 @@ public class DestinationPubsub {
     /**
      * The PubSub topic ID in the given GCP project ID.
      */
-    @JsonProperty("topic_id")public String topicId;
+    @JsonProperty("topic_id")
+    public String topicId;
     public DestinationPubsub withTopicId(String topicId) {
         this.topicId = topicId;
         return this;

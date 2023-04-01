@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOracleEncryptionTLSEncryptedVerifyCertificate - Verify and use the certificate provided by the server.
  */
 public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
-    @JsonProperty("encryption_method")public SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethodEnum encryptionMethod;
+    @JsonProperty("encryption_method")
+    public SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethodEnum encryptionMethod;
     public SourceOracleEncryptionTLSEncryptedVerifyCertificate withEncryptionMethod(SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethodEnum encryptionMethod) {
         this.encryptionMethod = encryptionMethod;
         return this;
@@ -19,7 +20,8 @@ public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
     /**
      * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
      */
-    @JsonProperty("ssl_certificate")public String sslCertificate;
+    @JsonProperty("ssl_certificate")
+    public String sslCertificate;
     public SourceOracleEncryptionTLSEncryptedVerifyCertificate withSslCertificate(String sslCertificate) {
         this.sslCertificate = sslCertificate;
         return this;

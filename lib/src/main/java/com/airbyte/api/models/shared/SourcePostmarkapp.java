@@ -13,7 +13,8 @@ public class SourcePostmarkapp {
     /**
      * API Key for account
      */
-    @JsonProperty("X-Postmark-Account-Token")public String xPostmarkAccountToken;
+    @JsonProperty("X-Postmark-Account-Token")
+    public String xPostmarkAccountToken;
     public SourcePostmarkapp withXPostmarkAccountToken(String xPostmarkAccountToken) {
         this.xPostmarkAccountToken = xPostmarkAccountToken;
         return this;
@@ -22,13 +23,15 @@ public class SourcePostmarkapp {
     /**
      * API Key for server
      */
-    @JsonProperty("X-Postmark-Server-Token")public String xPostmarkServerToken;
+    @JsonProperty("X-Postmark-Server-Token")
+    public String xPostmarkServerToken;
     public SourcePostmarkapp withXPostmarkServerToken(String xPostmarkServerToken) {
         this.xPostmarkServerToken = xPostmarkServerToken;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourcePostmarkappPostmarkappEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourcePostmarkappPostmarkappEnum airbyteSourceName;
     public SourcePostmarkapp withAirbyteSourceName(SourcePostmarkappPostmarkappEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;

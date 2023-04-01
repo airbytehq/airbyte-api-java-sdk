@@ -13,7 +13,8 @@ public class SourceAlloydbTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public SourceAlloydbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public SourceAlloydbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public SourceAlloydbTunnelMethodNoTunnel withTunnelMethod(SourceAlloydbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

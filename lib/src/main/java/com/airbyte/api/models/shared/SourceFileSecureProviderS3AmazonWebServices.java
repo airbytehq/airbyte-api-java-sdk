@@ -16,7 +16,8 @@ public class SourceFileSecureProviderS3AmazonWebServices {
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("aws_access_key_id")public String awsAccessKeyId;
+    @JsonProperty("aws_access_key_id")
+    public String awsAccessKeyId;
     public SourceFileSecureProviderS3AmazonWebServices withAwsAccessKeyId(String awsAccessKeyId) {
         this.awsAccessKeyId = awsAccessKeyId;
         return this;
@@ -26,13 +27,15 @@ public class SourceFileSecureProviderS3AmazonWebServices {
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("aws_secret_access_key")public String awsSecretAccessKey;
+    @JsonProperty("aws_secret_access_key")
+    public String awsSecretAccessKey;
     public SourceFileSecureProviderS3AmazonWebServices withAwsSecretAccessKey(String awsSecretAccessKey) {
         this.awsSecretAccessKey = awsSecretAccessKey;
         return this;
     }
     
-    @JsonProperty("storage")public SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage;
+    @JsonProperty("storage")
+    public SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage;
     public SourceFileSecureProviderS3AmazonWebServices withStorage(SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage) {
         this.storage = storage;
         return this;

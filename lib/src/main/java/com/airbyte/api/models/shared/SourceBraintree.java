@@ -17,7 +17,8 @@ import java.time.OffsetDateTime;
  * SourceBraintree - The values required to configure the source.
  */
 public class SourceBraintree {
-    @JsonProperty("airbyte-source-name")public SourceBraintreeBraintreeEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceBraintreeBraintreeEnum airbyteSourceName;
     public SourceBraintree withAirbyteSourceName(SourceBraintreeBraintreeEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -26,34 +27,38 @@ public class SourceBraintree {
     /**
      * Environment specifies where the data will come from.
      */
-    @JsonProperty("environment")public SourceBraintreeEnvironmentEnum environment;
+    @JsonProperty("environment")
+    public SourceBraintreeEnvironmentEnum environment;
     public SourceBraintree withEnvironment(SourceBraintreeEnvironmentEnum environment) {
         this.environment = environment;
         return this;
     }
     
     /**
-     * The unique identifier for your entire gateway account. See the <a href="https://docs.airbyte.io/integrations/sources/braintree">docs</a> for more information on how to obtain this ID.
+     * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.io/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
      */
-    @JsonProperty("merchant_id")public String merchantId;
+    @JsonProperty("merchant_id")
+    public String merchantId;
     public SourceBraintree withMerchantId(String merchantId) {
         this.merchantId = merchantId;
         return this;
     }
     
     /**
-     * Braintree Private Key. See the <a href="https://docs.airbyte.io/integrations/sources/braintree">docs</a> for more information on how to obtain this key.
+     * Braintree Private Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("private_key")public String privateKey;
+    @JsonProperty("private_key")
+    public String privateKey;
     public SourceBraintree withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
     }
     
     /**
-     * Braintree Public Key. See the <a href="https://docs.airbyte.io/integrations/sources/braintree">docs</a> for more information on how to obtain this key.
+     * Braintree Public Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("public_key")public String publicKey;
+    @JsonProperty("public_key")
+    public String publicKey;
     public SourceBraintree withPublicKey(String publicKey) {
         this.publicKey = publicKey;
         return this;
@@ -65,7 +70,8 @@ public class SourceBraintree {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceBraintree withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

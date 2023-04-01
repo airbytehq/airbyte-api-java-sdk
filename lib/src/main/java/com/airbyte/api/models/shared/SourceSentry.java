@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSentry - The values required to configure the source.
  */
 public class SourceSentry {
-    @JsonProperty("airbyte-source-name")public SourceSentrySentryEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSentrySentryEnum airbyteSourceName;
     public SourceSentry withAirbyteSourceName(SourceSentrySentryEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Log into Sentry and then <a href="https://sentry.io/settings/account/api/auth-tokens/">create authentication tokens</a>.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
+     * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
      */
-    @JsonProperty("auth_token")public String authToken;
+    @JsonProperty("auth_token")
+    public String authToken;
     public SourceSentry withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;
@@ -31,7 +33,8 @@ public class SourceSentry {
      * Fields to retrieve when fetching discover events
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("discover_fields")public Object[] discoverFields;
+    @JsonProperty("discover_fields")
+    public Object[] discoverFields;
     public SourceSentry withDiscoverFields(Object[] discoverFields) {
         this.discoverFields = discoverFields;
         return this;
@@ -41,7 +44,8 @@ public class SourceSentry {
      * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("hostname")public String hostname;
+    @JsonProperty("hostname")
+    public String hostname;
     public SourceSentry withHostname(String hostname) {
         this.hostname = hostname;
         return this;
@@ -50,7 +54,8 @@ public class SourceSentry {
     /**
      * The slug of the organization the groups belong to.
      */
-    @JsonProperty("organization")public String organization;
+    @JsonProperty("organization")
+    public String organization;
     public SourceSentry withOrganization(String organization) {
         this.organization = organization;
         return this;
@@ -59,7 +64,8 @@ public class SourceSentry {
     /**
      * The name (slug) of the Project you want to sync.
      */
-    @JsonProperty("project")public String project;
+    @JsonProperty("project")
+    public String project;
     public SourceSentry withProject(String project) {
         this.project = project;
         return this;

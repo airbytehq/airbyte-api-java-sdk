@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationRedis - The values required to configure the destination.
  */
 public class DestinationRedis {
-    @JsonProperty("airbyte-destination-name")public DestinationRedisRedisEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationRedisRedisEnum airbyteDestinationName;
     public DestinationRedis withAirbyteDestinationName(DestinationRedisRedisEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationRedis {
     /**
      * Redis cache type to store data in.
      */
-    @JsonProperty("cache_type")public DestinationRedisCacheTypeEnum cacheType;
+    @JsonProperty("cache_type")
+    public DestinationRedisCacheTypeEnum cacheType;
     public DestinationRedis withCacheType(DestinationRedisCacheTypeEnum cacheType) {
         this.cacheType = cacheType;
         return this;
@@ -30,7 +32,8 @@ public class DestinationRedis {
     /**
      * Redis host to connect to.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationRedis withHost(String host) {
         this.host = host;
         return this;
@@ -40,7 +43,8 @@ public class DestinationRedis {
      * Password associated with Redis.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public DestinationRedis withPassword(String password) {
         this.password = password;
         return this;
@@ -49,7 +53,8 @@ public class DestinationRedis {
     /**
      * Port of Redis.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public DestinationRedis withPort(Long port) {
         this.port = port;
         return this;
@@ -59,7 +64,8 @@ public class DestinationRedis {
      * Indicates whether SSL encryption protocol will be used to connect to Redis. It is recommended to use SSL connection if possible.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ssl")public Boolean ssl;
+    @JsonProperty("ssl")
+    public Boolean ssl;
     public DestinationRedis withSsl(Boolean ssl) {
         this.ssl = ssl;
         return this;
@@ -67,10 +73,11 @@ public class DestinationRedis {
     
     /**
      * SSL connection modes. 
-     *   <li><b>verify-full</b> - This is the most secure mode. Always require encryption and verifies the identity of the source database server
+     *   &lt;li&gt;&lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Always require encryption and verifies the identity of the source database server
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ssl_mode")public Object sslMode;
+    @JsonProperty("ssl_mode")
+    public Object sslMode;
     public DestinationRedis withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -80,7 +87,8 @@ public class DestinationRedis {
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("tunnel_method")public Object tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public Object tunnelMethod;
     public DestinationRedis withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -89,7 +97,8 @@ public class DestinationRedis {
     /**
      * Username associated with Redis.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public DestinationRedis withUsername(String username) {
         this.username = username;
         return this;

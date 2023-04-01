@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationDatabend - The values required to configure the destination.
  */
 public class DestinationDatabend {
-    @JsonProperty("airbyte-destination-name")public DestinationDatabendDatabendEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationDatabendDatabendEnum airbyteDestinationName;
     public DestinationDatabend withAirbyteDestinationName(DestinationDatabendDatabendEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationDatabend {
     /**
      * Name of the database.
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public DestinationDatabend withDatabase(String database) {
         this.database = database;
         return this;
@@ -30,7 +32,8 @@ public class DestinationDatabend {
     /**
      * Hostname of the database.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationDatabend withHost(String host) {
         this.host = host;
         return this;
@@ -40,7 +43,8 @@ public class DestinationDatabend {
      * Password associated with the username.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public DestinationDatabend withPassword(String password) {
         this.password = password;
         return this;
@@ -50,7 +54,8 @@ public class DestinationDatabend {
      * Port of the database.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public DestinationDatabend withPort(Long port) {
         this.port = port;
         return this;
@@ -60,7 +65,8 @@ public class DestinationDatabend {
      * The default  table was written to.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("table")public String table;
+    @JsonProperty("table")
+    public String table;
     public DestinationDatabend withTable(String table) {
         this.table = table;
         return this;
@@ -69,7 +75,8 @@ public class DestinationDatabend {
     /**
      * Username to use to access the database.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public DestinationDatabend withUsername(String username) {
         this.username = username;
         return this;

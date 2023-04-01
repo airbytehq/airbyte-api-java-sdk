@@ -17,22 +17,25 @@ import java.time.OffsetDateTime;
  * SourceSmartsheets - The values required to configure the source.
  */
 public class SourceSmartsheets {
-    @JsonProperty("airbyte-source-name")public SourceSmartsheetsSmartsheetsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSmartsheetsSmartsheetsEnum airbyteSourceName;
     public SourceSmartsheets withAirbyteSourceName(SourceSmartsheetsSmartsheetsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceSmartsheets withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
     }
     
     /**
-     * The spreadsheet ID. Find it by opening the spreadsheet then navigating to File > Properties
+     * The spreadsheet ID. Find it by opening the spreadsheet then navigating to File &gt; Properties
      */
-    @JsonProperty("spreadsheet_id")public String spreadsheetId;
+    @JsonProperty("spreadsheet_id")
+    public String spreadsheetId;
     public SourceSmartsheets withSpreadsheetId(String spreadsheetId) {
         this.spreadsheetId = spreadsheetId;
         return this;
@@ -44,7 +47,8 @@ public class SourceSmartsheets {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_datetime")public OffsetDateTime startDatetime;
+    @JsonProperty("start_datetime")
+    public OffsetDateTime startDatetime;
     public SourceSmartsheets withStartDatetime(OffsetDateTime startDatetime) {
         this.startDatetime = startDatetime;
         return this;

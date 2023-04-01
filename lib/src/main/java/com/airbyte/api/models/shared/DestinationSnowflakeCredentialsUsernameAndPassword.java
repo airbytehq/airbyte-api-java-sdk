@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DestinationSnowflakeCredentialsUsernameAndPassword {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_type")public DestinationSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public DestinationSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType;
     public DestinationSnowflakeCredentialsUsernameAndPassword withAuthType(DestinationSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -19,7 +20,8 @@ public class DestinationSnowflakeCredentialsUsernameAndPassword {
     /**
      * Enter the password associated with the username.
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public DestinationSnowflakeCredentialsUsernameAndPassword withPassword(String password) {
         this.password = password;
         return this;

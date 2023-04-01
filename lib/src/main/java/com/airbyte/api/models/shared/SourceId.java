@@ -13,7 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceId {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("sourceId")public String sourceId;
+    @JsonProperty("sourceId")
+    public String sourceId;
     public SourceId withSourceId(String sourceId) {
         this.sourceId = sourceId;
         return this;

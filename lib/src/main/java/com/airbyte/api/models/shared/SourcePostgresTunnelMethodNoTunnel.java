@@ -13,7 +13,8 @@ public class SourcePostgresTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public SourcePostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public SourcePostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public SourcePostgresTunnelMethodNoTunnel withTunnelMethod(SourcePostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

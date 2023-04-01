@@ -12,17 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceApifyDataset - The values required to configure the source.
  */
 public class SourceApifyDataset {
-    @JsonProperty("airbyte-source-name")public SourceApifyDatasetApifyDatasetEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceApifyDatasetApifyDatasetEnum airbyteSourceName;
     public SourceApifyDataset withAirbyteSourceName(SourceApifyDatasetApifyDatasetEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * If set to true, only clean items will be downloaded from the dataset. See description of what clean means in <a href="https://docs.apify.com/api/v2#/reference/datasets/item-collection/get-items">Apify API docs</a>. If not sure, set clean to false.
+     * If set to true, only clean items will be downloaded from the dataset. See description of what clean means in &lt;a href="https://docs.apify.com/api/v2#/reference/datasets/item-collection/get-items"&gt;Apify API docs&lt;/a&gt;. If not sure, set clean to false.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("clean")public Boolean clean;
+    @JsonProperty("clean")
+    public Boolean clean;
     public SourceApifyDataset withClean(Boolean clean) {
         this.clean = clean;
         return this;
@@ -31,7 +33,8 @@ public class SourceApifyDataset {
     /**
      * ID of the dataset you would like to load to Airbyte.
      */
-    @JsonProperty("datasetId")public String datasetId;
+    @JsonProperty("datasetId")
+    public String datasetId;
     public SourceApifyDataset withDatasetId(String datasetId) {
         this.datasetId = datasetId;
         return this;

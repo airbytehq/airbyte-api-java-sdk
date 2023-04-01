@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceChargebee - The values required to configure the source.
  */
 public class SourceChargebee {
-    @JsonProperty("airbyte-source-name")public SourceChargebeeChargebeeEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceChargebeeChargebeeEnum airbyteSourceName;
     public SourceChargebee withAirbyteSourceName(SourceChargebeeChargebeeEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version` section.
+     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section.
      */
-    @JsonProperty("product_catalog")public SourceChargebeeProductCatalogEnum productCatalog;
+    @JsonProperty("product_catalog")
+    public SourceChargebeeProductCatalogEnum productCatalog;
     public SourceChargebee withProductCatalog(SourceChargebeeProductCatalogEnum productCatalog) {
         this.productCatalog = productCatalog;
         return this;
@@ -28,16 +30,18 @@ public class SourceChargebee {
     /**
      * The site prefix for your Chargebee instance.
      */
-    @JsonProperty("site")public String site;
+    @JsonProperty("site")
+    public String site;
     public SourceChargebee withSite(String site) {
         this.site = site;
         return this;
     }
     
     /**
-     * Chargebee API Key. See the <a href="https://docs.airbyte.com/integrations/sources/chargebee">docs</a> for more information on how to obtain this key.
+     * Chargebee API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/chargebee"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("site_api_key")public String siteApiKey;
+    @JsonProperty("site_api_key")
+    public String siteApiKey;
     public SourceChargebee withSiteApiKey(String siteApiKey) {
         this.siteApiKey = siteApiKey;
         return this;
@@ -46,7 +50,8 @@ public class SourceChargebee {
     /**
      * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceChargebee withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

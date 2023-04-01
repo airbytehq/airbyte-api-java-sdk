@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceE2eTestCloud - The values required to configure the source.
  */
 public class SourceE2eTestCloud {
-    @JsonProperty("airbyte-source-name")public SourceE2eTestCloudE2eTestCloudEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceE2eTestCloudE2eTestCloudEnum airbyteSourceName;
     public SourceE2eTestCloud withAirbyteSourceName(SourceE2eTestCloudE2eTestCloudEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceE2eTestCloud {
     /**
      * Number of records to emit per stream. Min 1. Max 100 billion.
      */
-    @JsonProperty("max_messages")public Long maxMessages;
+    @JsonProperty("max_messages")
+    public Long maxMessages;
     public SourceE2eTestCloud withMaxMessages(Long maxMessages) {
         this.maxMessages = maxMessages;
         return this;
@@ -31,13 +33,15 @@ public class SourceE2eTestCloud {
      * Interval between messages in ms. Min 0 ms. Max 60000 ms (1 minute).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("message_interval_ms")public Long messageIntervalMs;
+    @JsonProperty("message_interval_ms")
+    public Long messageIntervalMs;
     public SourceE2eTestCloud withMessageIntervalMs(Long messageIntervalMs) {
         this.messageIntervalMs = messageIntervalMs;
         return this;
     }
     
-    @JsonProperty("mock_catalog")public Object mockCatalog;
+    @JsonProperty("mock_catalog")
+    public Object mockCatalog;
     public SourceE2eTestCloud withMockCatalog(Object mockCatalog) {
         this.mockCatalog = mockCatalog;
         return this;
@@ -47,14 +51,16 @@ public class SourceE2eTestCloud {
      * When the seed is unspecified, the current time millis will be used as the seed. Range: [0, 1000000].
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("seed")public Long seed;
+    @JsonProperty("seed")
+    public Long seed;
     public SourceE2eTestCloud withSeed(Long seed) {
         this.seed = seed;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("type")public SourceE2eTestCloudTypeEnum type;
+    @JsonProperty("type")
+    public SourceE2eTestCloudTypeEnum type;
     public SourceE2eTestCloud withType(SourceE2eTestCloudTypeEnum type) {
         this.type = type;
         return this;

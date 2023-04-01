@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRetently - The values required to configure the source.
  */
 public class SourceRetently {
-    @JsonProperty("airbyte-source-name")public SourceRetentlyRetentlyEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceRetentlyRetentlyEnum airbyteSourceName;
     public SourceRetently withAirbyteSourceName(SourceRetentlyRetentlyEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,7 +23,8 @@ public class SourceRetently {
      * Choose how to authenticate to Retently
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceRetently withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;

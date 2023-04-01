@@ -13,13 +13,15 @@ public class SourceNotionCredentialsOAuth20 {
     /**
      * Access Token is a token you received by complete the OauthWebFlow of Notion.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceNotionCredentialsOAuth20 withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("auth_type")public SourceNotionCredentialsOAuth20AuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceNotionCredentialsOAuth20AuthTypeEnum authType;
     public SourceNotionCredentialsOAuth20 withAuthType(SourceNotionCredentialsOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -28,7 +30,8 @@ public class SourceNotionCredentialsOAuth20 {
     /**
      * The ClientID of your Notion integration.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceNotionCredentialsOAuth20 withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -37,7 +40,8 @@ public class SourceNotionCredentialsOAuth20 {
     /**
      * The ClientSecret of your Notion integration.
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceNotionCredentialsOAuth20 withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;

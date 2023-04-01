@@ -17,14 +17,16 @@ public class SourceSmartsheetsCredentialsOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceSmartsheetsCredentialsOAuth20 withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_type")public SourceSmartsheetsCredentialsOAuth20AuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceSmartsheetsCredentialsOAuth20AuthTypeEnum authType;
     public SourceSmartsheetsCredentialsOAuth20 withAuthType(SourceSmartsheetsCredentialsOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -33,7 +35,8 @@ public class SourceSmartsheetsCredentialsOAuth20 {
     /**
      * The API ID of the SmartSheets developer application.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceSmartsheetsCredentialsOAuth20 withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -42,7 +45,8 @@ public class SourceSmartsheetsCredentialsOAuth20 {
     /**
      * The API Secret the SmartSheets developer application.
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceSmartsheetsCredentialsOAuth20 withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -51,7 +55,8 @@ public class SourceSmartsheetsCredentialsOAuth20 {
     /**
      * The key to refresh the expired access_token.
      */
-    @JsonProperty("refresh_token")public String refreshToken;
+    @JsonProperty("refresh_token")
+    public String refreshToken;
     public SourceSmartsheetsCredentialsOAuth20 withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -62,7 +67,8 @@ public class SourceSmartsheetsCredentialsOAuth20 {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("token_expiry_date")public OffsetDateTime tokenExpiryDate;
+    @JsonProperty("token_expiry_date")
+    public OffsetDateTime tokenExpiryDate;
     public SourceSmartsheetsCredentialsOAuth20 withTokenExpiryDate(OffsetDateTime tokenExpiryDate) {
         this.tokenExpiryDate = tokenExpiryDate;
         return this;

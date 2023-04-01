@@ -13,7 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationId {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("destinationId")public String destinationId;
+    @JsonProperty("destinationId")
+    public String destinationId;
     public DestinationId withDestinationId(String destinationId) {
         this.destinationId = destinationId;
         return this;

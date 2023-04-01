@@ -12,42 +12,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationSnowflake - The values required to configure the destination.
  */
 public class DestinationSnowflake {
-    @JsonProperty("airbyte-destination-name")public DestinationSnowflakeSnowflakeEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationSnowflakeSnowflakeEnum airbyteDestinationName;
     public DestinationSnowflake withAirbyteDestinationName(DestinationSnowflakeSnowflakeEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public DestinationSnowflake withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
     }
     
     /**
-     * Enter the name of the <a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">database</a> you want to sync data into
+     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;database&lt;/a&gt; you want to sync data into
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public DestinationSnowflake withDatabase(String database) {
         this.database = database;
         return this;
     }
     
     /**
-     * Enter your Snowflake account's <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier">locator</a> (in the format <account_locator>.<region>.<cloud>.snowflakecomputing.com)
+     * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationSnowflake withHost(String host) {
         this.host = host;
         return this;
     }
     
     /**
-     * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &). Example: key1=value1&key2=value2&key3=value3
+     * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("jdbc_url_params")public String jdbcUrlParams;
+    @JsonProperty("jdbc_url_params")
+    public String jdbcUrlParams;
     public DestinationSnowflake withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -57,25 +62,28 @@ public class DestinationSnowflake {
      * Select a data staging method
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("loading_method")public Object loadingMethod;
+    @JsonProperty("loading_method")
+    public Object loadingMethod;
     public DestinationSnowflake withLoadingMethod(Object loadingMethod) {
         this.loadingMethod = loadingMethod;
         return this;
     }
     
     /**
-     * Enter the <a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles">role</a> that you want to use to access Snowflake
+     * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
      */
-    @JsonProperty("role")public String role;
+    @JsonProperty("role")
+    public String role;
     public DestinationSnowflake withRole(String role) {
         this.role = role;
         return this;
     }
     
     /**
-     * Enter the name of the default <a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl">schema</a>
+     * Enter the name of the default &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;schema&lt;/a&gt;
      */
-    @JsonProperty("schema")public String schema;
+    @JsonProperty("schema")
+    public String schema;
     public DestinationSnowflake withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -84,16 +92,18 @@ public class DestinationSnowflake {
     /**
      * Enter the name of the user you want to use to access the database
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public DestinationSnowflake withUsername(String username) {
         this.username = username;
         return this;
     }
     
     /**
-     * Enter the name of the <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses">warehouse</a> that you want to sync data into
+     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to sync data into
      */
-    @JsonProperty("warehouse")public String warehouse;
+    @JsonProperty("warehouse")
+    public String warehouse;
     public DestinationSnowflake withWarehouse(String warehouse) {
         this.warehouse = warehouse;
         return this;

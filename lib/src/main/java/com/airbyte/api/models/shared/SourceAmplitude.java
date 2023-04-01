@@ -17,16 +17,18 @@ import java.time.OffsetDateTime;
  * SourceAmplitude - The values required to configure the source.
  */
 public class SourceAmplitude {
-    @JsonProperty("airbyte-source-name")public SourceAmplitudeAmplitudeEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceAmplitudeAmplitudeEnum airbyteSourceName;
     public SourceAmplitude withAirbyteSourceName(SourceAmplitudeAmplitudeEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Amplitude API Key. See the <a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more information on how to obtain this key.
+     * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceAmplitude withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -36,16 +38,18 @@ public class SourceAmplitude {
      * Amplitude data region server
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("data_region")public SourceAmplitudeDataRegionEnum dataRegion;
+    @JsonProperty("data_region")
+    public SourceAmplitudeDataRegionEnum dataRegion;
     public SourceAmplitude withDataRegion(SourceAmplitudeDataRegionEnum dataRegion) {
         this.dataRegion = dataRegion;
         return this;
     }
     
     /**
-     * Amplitude Secret Key. See the <a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more information on how to obtain this key.
+     * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("secret_key")public String secretKey;
+    @JsonProperty("secret_key")
+    public String secretKey;
     public SourceAmplitude withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;
@@ -56,7 +60,8 @@ public class SourceAmplitude {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceAmplitude withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

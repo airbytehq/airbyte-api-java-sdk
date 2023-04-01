@@ -13,25 +13,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceMixpanelCredentialsServiceAccount {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("option_title")public SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle;
+    @JsonProperty("option_title")
+    public SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle;
     public SourceMixpanelCredentialsServiceAccount withOptionTitle(SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }
     
     /**
-     * Mixpanel Service Account Secret. See the <a href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on how to obtain this.
+     * Mixpanel Service Account Secret. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
-    @JsonProperty("secret")public String secret;
+    @JsonProperty("secret")
+    public String secret;
     public SourceMixpanelCredentialsServiceAccount withSecret(String secret) {
         this.secret = secret;
         return this;
     }
     
     /**
-     * Mixpanel Service Account Username. See the <a href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on how to obtain this.
+     * Mixpanel Service Account Username. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceMixpanelCredentialsServiceAccount withUsername(String username) {
         this.username = username;
         return this;

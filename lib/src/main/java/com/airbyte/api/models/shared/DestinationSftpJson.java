@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationSftpJson - The values required to configure the destination.
  */
 public class DestinationSftpJson {
-    @JsonProperty("airbyte-destination-name")public DestinationSftpJsonSftpJsonEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationSftpJsonSftpJsonEnum airbyteDestinationName;
     public DestinationSftpJson withAirbyteDestinationName(DestinationSftpJsonSftpJsonEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationSftpJson {
     /**
      * Path to the directory where json files will be written.
      */
-    @JsonProperty("destination_path")public String destinationPath;
+    @JsonProperty("destination_path")
+    public String destinationPath;
     public DestinationSftpJson withDestinationPath(String destinationPath) {
         this.destinationPath = destinationPath;
         return this;
@@ -30,7 +32,8 @@ public class DestinationSftpJson {
     /**
      * Hostname of the SFTP server.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationSftpJson withHost(String host) {
         this.host = host;
         return this;
@@ -39,7 +42,8 @@ public class DestinationSftpJson {
     /**
      * Password associated with the username.
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public DestinationSftpJson withPassword(String password) {
         this.password = password;
         return this;
@@ -49,7 +53,8 @@ public class DestinationSftpJson {
      * Port of the SFTP server.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public DestinationSftpJson withPort(Long port) {
         this.port = port;
         return this;
@@ -58,7 +63,8 @@ public class DestinationSftpJson {
     /**
      * Username to use to access the SFTP server.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public DestinationSftpJson withUsername(String username) {
         this.username = username;
         return this;

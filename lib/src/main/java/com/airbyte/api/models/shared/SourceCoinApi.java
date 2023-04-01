@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceCoinApi - The values required to configure the source.
  */
 public class SourceCoinApi {
-    @JsonProperty("airbyte-source-name")public SourceCoinApiCoinApiEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceCoinApiCoinApiEnum airbyteSourceName;
     public SourceCoinApi withAirbyteSourceName(SourceCoinApiCoinApiEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceCoinApi {
     /**
      * API Key
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceCoinApi withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -34,7 +36,8 @@ public class SourceCoinApi {
      * 
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_date")public String endDate;
+    @JsonProperty("end_date")
+    public String endDate;
     public SourceCoinApi withEndDate(String endDate) {
         this.endDate = endDate;
         return this;
@@ -44,7 +47,8 @@ public class SourceCoinApi {
      * The environment to use. Either sandbox or production.
      * 
      */
-    @JsonProperty("environment")public SourceCoinApiEnvironmentEnum environment;
+    @JsonProperty("environment")
+    public SourceCoinApiEnvironmentEnum environment;
     public SourceCoinApi withEnvironment(SourceCoinApiEnvironmentEnum environment) {
         this.environment = environment;
         return this;
@@ -57,7 +61,8 @@ public class SourceCoinApi {
      * 
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("limit")public Long limit;
+    @JsonProperty("limit")
+    public Long limit;
     public SourceCoinApi withLimit(Long limit) {
         this.limit = limit;
         return this;
@@ -66,7 +71,8 @@ public class SourceCoinApi {
     /**
      * The period to use. See the documentation for a list. https://docs.coinapi.io/#list-all-periods-get
      */
-    @JsonProperty("period")public String period;
+    @JsonProperty("period")
+    public String period;
     public SourceCoinApi withPeriod(String period) {
         this.period = period;
         return this;
@@ -75,7 +81,8 @@ public class SourceCoinApi {
     /**
      * The start date in ISO 8601 format.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceCoinApi withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -86,7 +93,8 @@ public class SourceCoinApi {
      * https://docs.coinapi.io/#list-all-symbols-get
      * 
      */
-    @JsonProperty("symbol_id")public String symbolId;
+    @JsonProperty("symbol_id")
+    public String symbolId;
     public SourceCoinApi withSymbolId(String symbolId) {
         this.symbolId = symbolId;
         return this;

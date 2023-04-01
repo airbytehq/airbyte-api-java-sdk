@@ -15,27 +15,30 @@ public class SourceMysqlSslModeVerifyIdentity {
     /**
      * CA certificate
      */
-    @JsonProperty("ca_certificate")public String caCertificate;
+    @JsonProperty("ca_certificate")
+    public String caCertificate;
     public SourceMysqlSslModeVerifyIdentity withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
     }
     
     /**
-     * Client certificate (this is not a required field, but if you want to use it, you will need to add the <b>Client key</b> as well)
+     * Client certificate (this is not a required field, but if you want to use it, you will need to add the &lt;b&gt;Client key&lt;/b&gt; as well)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_certificate")public String clientCertificate;
+    @JsonProperty("client_certificate")
+    public String clientCertificate;
     public SourceMysqlSslModeVerifyIdentity withClientCertificate(String clientCertificate) {
         this.clientCertificate = clientCertificate;
         return this;
     }
     
     /**
-     * Client key (this is not a required field, but if you want to use it, you will need to add the <b>Client certificate</b> as well)
+     * Client key (this is not a required field, but if you want to use it, you will need to add the &lt;b&gt;Client certificate&lt;/b&gt; as well)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_key")public String clientKey;
+    @JsonProperty("client_key")
+    public String clientKey;
     public SourceMysqlSslModeVerifyIdentity withClientKey(String clientKey) {
         this.clientKey = clientKey;
         return this;
@@ -45,13 +48,15 @@ public class SourceMysqlSslModeVerifyIdentity {
      * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_key_password")public String clientKeyPassword;
+    @JsonProperty("client_key_password")
+    public String clientKeyPassword;
     public SourceMysqlSslModeVerifyIdentity withClientKeyPassword(String clientKeyPassword) {
         this.clientKeyPassword = clientKeyPassword;
         return this;
     }
     
-    @JsonProperty("mode")public SourceMysqlSslModeVerifyIdentityModeEnum mode;
+    @JsonProperty("mode")
+    public SourceMysqlSslModeVerifyIdentityModeEnum mode;
     public SourceMysqlSslModeVerifyIdentity withMode(SourceMysqlSslModeVerifyIdentityModeEnum mode) {
         this.mode = mode;
         return this;

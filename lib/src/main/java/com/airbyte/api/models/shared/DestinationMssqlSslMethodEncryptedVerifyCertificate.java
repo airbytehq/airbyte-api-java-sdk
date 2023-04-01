@@ -16,13 +16,15 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
      * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("hostNameInCertificate")public String hostNameInCertificate;
+    @JsonProperty("hostNameInCertificate")
+    public String hostNameInCertificate;
     public DestinationMssqlSslMethodEncryptedVerifyCertificate withHostNameInCertificate(String hostNameInCertificate) {
         this.hostNameInCertificate = hostNameInCertificate;
         return this;
     }
     
-    @JsonProperty("ssl_method")public DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod;
+    @JsonProperty("ssl_method")
+    public DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod;
     public DestinationMssqlSslMethodEncryptedVerifyCertificate withSslMethod(DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod) {
         this.sslMethod = sslMethod;
         return this;

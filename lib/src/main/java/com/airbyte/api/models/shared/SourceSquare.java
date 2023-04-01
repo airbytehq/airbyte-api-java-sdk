@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSquare - The values required to configure the source.
  */
 public class SourceSquare {
-    @JsonProperty("airbyte-source-name")public SourceSquareSquareEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSquareSquareEnum airbyteSourceName;
     public SourceSquare withAirbyteSourceName(SourceSquareSquareEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,7 +23,8 @@ public class SourceSquare {
      * Choose how to authenticate to Square.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceSquare withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -32,7 +34,8 @@ public class SourceSquare {
      * In some streams there is an option to include deleted objects (Items, Categories, Discounts, Taxes)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("include_deleted_objects")public Boolean includeDeletedObjects;
+    @JsonProperty("include_deleted_objects")
+    public Boolean includeDeletedObjects;
     public SourceSquare withIncludeDeletedObjects(Boolean includeDeletedObjects) {
         this.includeDeletedObjects = includeDeletedObjects;
         return this;
@@ -41,7 +44,8 @@ public class SourceSquare {
     /**
      * Determines whether to use the sandbox or production environment.
      */
-    @JsonProperty("is_sandbox")public Boolean isSandbox;
+    @JsonProperty("is_sandbox")
+    public Boolean isSandbox;
     public SourceSquare withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
         return this;
@@ -51,7 +55,8 @@ public class SourceSquare {
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceSquare withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

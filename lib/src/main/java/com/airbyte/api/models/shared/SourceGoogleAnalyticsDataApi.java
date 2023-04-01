@@ -14,7 +14,8 @@ import java.time.LocalDate;
  * SourceGoogleAnalyticsDataApi - The values required to configure the source.
  */
 public class SourceGoogleAnalyticsDataApi {
-    @JsonProperty("airbyte-source-name")public SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum airbyteSourceName;
     public SourceGoogleAnalyticsDataApi withAirbyteSourceName(SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -24,17 +25,19 @@ public class SourceGoogleAnalyticsDataApi {
      * Credentials for the service
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceGoogleAnalyticsDataApi withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
     }
     
     /**
-     * A JSON array describing the custom reports you want to sync from Google Analytics. See <a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#custom-reports">the docs</a> for more information about the exact format you can use to fill out this field.
+     * A JSON array describing the custom reports you want to sync from Google Analytics. See &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#custom-reports"&gt;the docs&lt;/a&gt; for more information about the exact format you can use to fill out this field.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("custom_reports")public String customReports;
+    @JsonProperty("custom_reports")
+    public String customReports;
     public SourceGoogleAnalyticsDataApi withCustomReports(String customReports) {
         this.customReports = customReports;
         return this;
@@ -44,7 +47,8 @@ public class SourceGoogleAnalyticsDataApi {
      * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("date_ranges_start_date")public LocalDate dateRangesStartDate;
+    @JsonProperty("date_ranges_start_date")
+    public LocalDate dateRangesStartDate;
     public SourceGoogleAnalyticsDataApi withDateRangesStartDate(LocalDate dateRangesStartDate) {
         this.dateRangesStartDate = dateRangesStartDate;
         return this;
@@ -53,17 +57,19 @@ public class SourceGoogleAnalyticsDataApi {
     /**
      * A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body
      */
-    @JsonProperty("property_id")public String propertyId;
+    @JsonProperty("property_id")
+    public String propertyId;
     public SourceGoogleAnalyticsDataApi withPropertyId(String propertyId) {
         this.propertyId = propertyId;
         return this;
     }
     
     /**
-     * The time increment used by the connector when requesting data from the Google Analytics API. More information is available in the <a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#sampling-in-reports">the docs</a>. The bigger this value is, the faster the sync will be, but the more likely that sampling will be applied to your data, potentially causing inaccuracies in the returned results. We recommend setting this to 1 unless you have a hard requirement to make the sync faster at the expense of accuracy. The minimum allowed value for this field is 1, and the maximum is 364.
+     * The time increment used by the connector when requesting data from the Google Analytics API. More information is available in the &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#sampling-in-reports"&gt;the docs&lt;/a&gt;. The bigger this value is, the faster the sync will be, but the more likely that sampling will be applied to your data, potentially causing inaccuracies in the returned results. We recommend setting this to 1 unless you have a hard requirement to make the sync faster at the expense of accuracy. The minimum allowed value for this field is 1, and the maximum is 364.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("window_in_days")public Long windowInDays;
+    @JsonProperty("window_in_days")
+    public Long windowInDays;
     public SourceGoogleAnalyticsDataApi withWindowInDays(Long windowInDays) {
         this.windowInDays = windowInDays;
         return this;

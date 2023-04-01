@@ -7,28 +7,31 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * DestinationGcsCredentialHMACKey - An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more <a href="https://cloud.google.com/storage/docs/authentication/hmackeys">here</a>.
+ * DestinationGcsCredentialHMACKey - An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
  */
 public class DestinationGcsCredentialHMACKey {
-    @JsonProperty("credential_type")public DestinationGcsCredentialHMACKeyCredentialTypeEnum credentialType;
+    @JsonProperty("credential_type")
+    public DestinationGcsCredentialHMACKeyCredentialTypeEnum credentialType;
     public DestinationGcsCredentialHMACKey withCredentialType(DestinationGcsCredentialHMACKeyCredentialTypeEnum credentialType) {
         this.credentialType = credentialType;
         return this;
     }
     
     /**
-     * When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long. Read more <a href="https://cloud.google.com/storage/docs/authentication/hmackeys#overview">here</a>.
+     * When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys#overview"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("hmac_key_access_id")public String hmacKeyAccessId;
+    @JsonProperty("hmac_key_access_id")
+    public String hmacKeyAccessId;
     public DestinationGcsCredentialHMACKey withHmacKeyAccessId(String hmacKeyAccessId) {
         this.hmacKeyAccessId = hmacKeyAccessId;
         return this;
     }
     
     /**
-     * The corresponding secret for the access ID. It is a 40-character base-64 encoded string.  Read more <a href="https://cloud.google.com/storage/docs/authentication/hmackeys#secrets">here</a>.
+     * The corresponding secret for the access ID. It is a 40-character base-64 encoded string.  Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys#secrets"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("hmac_key_secret")public String hmacKeySecret;
+    @JsonProperty("hmac_key_secret")
+    public String hmacKeySecret;
     public DestinationGcsCredentialHMACKey withHmacKeySecret(String hmacKeySecret) {
         this.hmacKeySecret = hmacKeySecret;
         return this;

@@ -13,7 +13,8 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
     /**
      * The Key ID to used when accessing an enterprise Elasticsearch instance.
      */
-    @JsonProperty("apiKeyId")public String apiKeyId;
+    @JsonProperty("apiKeyId")
+    public String apiKeyId;
     public DestinationElasticsearchAuthenticationMethodApiKeySecret withApiKeyId(String apiKeyId) {
         this.apiKeyId = apiKeyId;
         return this;
@@ -22,13 +23,15 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
     /**
      * The secret associated with the API Key ID.
      */
-    @JsonProperty("apiKeySecret")public String apiKeySecret;
+    @JsonProperty("apiKeySecret")
+    public String apiKeySecret;
     public DestinationElasticsearchAuthenticationMethodApiKeySecret withApiKeySecret(String apiKeySecret) {
         this.apiKeySecret = apiKeySecret;
         return this;
     }
     
-    @JsonProperty("method")public DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method;
+    @JsonProperty("method")
+    public DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method;
     public DestinationElasticsearchAuthenticationMethodApiKeySecret withMethod(DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method) {
         this.method = method;
         return this;

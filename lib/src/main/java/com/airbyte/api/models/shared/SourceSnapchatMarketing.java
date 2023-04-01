@@ -14,7 +14,8 @@ import java.time.LocalDate;
  * SourceSnapchatMarketing - The values required to configure the source.
  */
 public class SourceSnapchatMarketing {
-    @JsonProperty("airbyte-source-name")public SourceSnapchatMarketingSnapchatMarketingEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSnapchatMarketingSnapchatMarketingEnum airbyteSourceName;
     public SourceSnapchatMarketing withAirbyteSourceName(SourceSnapchatMarketingSnapchatMarketingEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -23,7 +24,8 @@ public class SourceSnapchatMarketing {
     /**
      * The Client ID of your Snapchat developer application.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceSnapchatMarketing withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -32,7 +34,8 @@ public class SourceSnapchatMarketing {
     /**
      * The Client Secret of your Snapchat developer application.
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceSnapchatMarketing withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -43,7 +46,8 @@ public class SourceSnapchatMarketing {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("end_date")public LocalDate endDate;
+    @JsonProperty("end_date")
+    public LocalDate endDate;
     public SourceSnapchatMarketing withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -52,7 +56,8 @@ public class SourceSnapchatMarketing {
     /**
      * Refresh Token to renew the expired Access Token.
      */
-    @JsonProperty("refresh_token")public String refreshToken;
+    @JsonProperty("refresh_token")
+    public String refreshToken;
     public SourceSnapchatMarketing withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -63,7 +68,8 @@ public class SourceSnapchatMarketing {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourceSnapchatMarketing withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

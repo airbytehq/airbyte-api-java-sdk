@@ -12,17 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationMeilisearch - The values required to configure the destination.
  */
 public class DestinationMeilisearch {
-    @JsonProperty("airbyte-destination-name")public DestinationMeilisearchMeilisearchEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationMeilisearchMeilisearchEnum airbyteDestinationName;
     public DestinationMeilisearch withAirbyteDestinationName(DestinationMeilisearchMeilisearchEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
     }
     
     /**
-     * MeiliSearch API Key. See the <a href="https://docs.airbyte.com/integrations/destinations/meilisearch">docs</a> for more information on how to obtain this key.
+     * MeiliSearch API Key. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/meilisearch"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public DestinationMeilisearch withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class DestinationMeilisearch {
     /**
      * Hostname of the MeiliSearch instance.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationMeilisearch withHost(String host) {
         this.host = host;
         return this;

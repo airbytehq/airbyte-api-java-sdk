@@ -14,7 +14,8 @@ import java.time.LocalDate;
  * SourceNytimes - The values required to configure the source.
  */
 public class SourceNytimes {
-    @JsonProperty("airbyte-source-name")public SourceNytimesNytimesEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceNytimesNytimesEnum airbyteSourceName;
     public SourceNytimes withAirbyteSourceName(SourceNytimesNytimesEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -23,7 +24,8 @@ public class SourceNytimes {
     /**
      * API Key
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceNytimes withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -34,7 +36,8 @@ public class SourceNytimes {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("end_date")public LocalDate endDate;
+    @JsonProperty("end_date")
+    public LocalDate endDate;
     public SourceNytimes withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -43,7 +46,8 @@ public class SourceNytimes {
     /**
      * Period of time (in days)
      */
-    @JsonProperty("period")public SourceNytimesPeriodUsedForMostPopularStreamsEnum period;
+    @JsonProperty("period")
+    public SourceNytimesPeriodUsedForMostPopularStreamsEnum period;
     public SourceNytimes withPeriod(SourceNytimesPeriodUsedForMostPopularStreamsEnum period) {
         this.period = period;
         return this;
@@ -53,7 +57,8 @@ public class SourceNytimes {
      * Share Type
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("share_type")public SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType;
+    @JsonProperty("share_type")
+    public SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType;
     public SourceNytimes withShareType(SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType) {
         this.shareType = shareType;
         return this;
@@ -63,7 +68,8 @@ public class SourceNytimes {
      * Start date to begin the article retrieval (format YYYY-MM)
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourceNytimes withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

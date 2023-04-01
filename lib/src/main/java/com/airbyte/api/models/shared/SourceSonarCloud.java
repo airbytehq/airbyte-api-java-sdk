@@ -14,7 +14,8 @@ import java.time.LocalDate;
  * SourceSonarCloud - The values required to configure the source.
  */
 public class SourceSonarCloud {
-    @JsonProperty("airbyte-source-name")public SourceSonarCloudSonarCloudEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSonarCloudSonarCloudEnum airbyteSourceName;
     public SourceSonarCloud withAirbyteSourceName(SourceSonarCloudSonarCloudEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -23,7 +24,8 @@ public class SourceSonarCloud {
     /**
      * Comma-separated list of component keys.
      */
-    @JsonProperty("component_keys")public Object[] componentKeys;
+    @JsonProperty("component_keys")
+    public Object[] componentKeys;
     public SourceSonarCloud withComponentKeys(Object[] componentKeys) {
         this.componentKeys = componentKeys;
         return this;
@@ -34,16 +36,18 @@ public class SourceSonarCloud {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("end_date")public LocalDate endDate;
+    @JsonProperty("end_date")
+    public LocalDate endDate;
     public SourceSonarCloud withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
     
     /**
-     * Organization key. See <a href="https://docs.sonarcloud.io/appendices/project-information/#project-and-organization-keys">here</a>.
+     * Organization key. See &lt;a href="https://docs.sonarcloud.io/appendices/project-information/#project-and-organization-keys"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("organization")public String organization;
+    @JsonProperty("organization")
+    public String organization;
     public SourceSonarCloud withOrganization(String organization) {
         this.organization = organization;
         return this;
@@ -54,16 +58,18 @@ public class SourceSonarCloud {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourceSonarCloud withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
     
     /**
-     * Your User Token. See <a href="https://docs.sonarcloud.io/advanced-setup/user-accounts/">here</a>. The token is case sensitive.
+     * Your User Token. See &lt;a href="https://docs.sonarcloud.io/advanced-setup/user-accounts/"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
-    @JsonProperty("user_token")public String userToken;
+    @JsonProperty("user_token")
+    public String userToken;
     public SourceSonarCloud withUserToken(String userToken) {
         this.userToken = userToken;
         return this;

@@ -12,17 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate - The compression algorithm used to compress data. Default to no compression.
  */
 public class DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate {
-    @JsonProperty("codec")public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec;
+    @JsonProperty("codec")
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec;
     public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate withCodec(DestinationGcsFormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec) {
         this.codec = codec;
         return this;
     }
     
     /**
-     * 0: no compression and fastest, 9: best compression and slowest.
+     * 0: no compression &amp; fastest, 9: best compression &amp; slowest.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("compression_level")public Long compressionLevel;
+    @JsonProperty("compression_level")
+    public Long compressionLevel;
     public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate withCompressionLevel(Long compressionLevel) {
         this.compressionLevel = compressionLevel;
         return this;

@@ -10,13 +10,15 @@ public class SourceMondayCredentialsAPIToken {
     /**
      * API Token for making authenticated requests.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceMondayCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
     }
     
-    @JsonProperty("auth_type")public SourceMondayCredentialsAPITokenAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceMondayCredentialsAPITokenAuthTypeEnum authType;
     public SourceMondayCredentialsAPIToken withAuthType(SourceMondayCredentialsAPITokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;

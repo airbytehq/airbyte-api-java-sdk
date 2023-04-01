@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceUsCensus - The values required to configure the source.
  */
 public class SourceUsCensus {
-    @JsonProperty("airbyte-source-name")public SourceUsCensusUsCensusEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceUsCensusUsCensusEnum airbyteSourceName;
     public SourceUsCensus withAirbyteSourceName(SourceUsCensusUsCensusEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Your API Key. Get your key <a href="https://api.census.gov/data/key_signup.html">here</a>.
+     * Your API Key. Get your key &lt;a href="https://api.census.gov/data/key_signup.html"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceUsCensus withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class SourceUsCensus {
      * The query parameters portion of the GET request, without the api key
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("query_params")public String queryParams;
+    @JsonProperty("query_params")
+    public String queryParams;
     public SourceUsCensus withQueryParams(String queryParams) {
         this.queryParams = queryParams;
         return this;
@@ -40,7 +43,8 @@ public class SourceUsCensus {
     /**
      * The path portion of the GET request
      */
-    @JsonProperty("query_path")public String queryPath;
+    @JsonProperty("query_path")
+    public String queryPath;
     public SourceUsCensus withQueryPath(String queryPath) {
         this.queryPath = queryPath;
         return this;

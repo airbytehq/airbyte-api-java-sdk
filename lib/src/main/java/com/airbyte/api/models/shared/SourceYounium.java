@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceYounium - The values required to configure the source.
  */
 public class SourceYounium {
-    @JsonProperty("airbyte-source-name")public SourceYouniumYouniumEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceYouniumYouniumEnum airbyteSourceName;
     public SourceYounium withAirbyteSourceName(SourceYouniumYouniumEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceYounium {
     /**
      * Legal Entity that data should be pulled from
      */
-    @JsonProperty("legal_entity")public String legalEntity;
+    @JsonProperty("legal_entity")
+    public String legalEntity;
     public SourceYounium withLegalEntity(String legalEntity) {
         this.legalEntity = legalEntity;
         return this;
@@ -30,7 +32,8 @@ public class SourceYounium {
     /**
      * Account password for younium account API key
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceYounium withPassword(String password) {
         this.password = password;
         return this;
@@ -40,7 +43,8 @@ public class SourceYounium {
      * Property defining if connector is used against playground or production environment
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("playground")public Boolean playground;
+    @JsonProperty("playground")
+    public Boolean playground;
     public SourceYounium withPlayground(Boolean playground) {
         this.playground = playground;
         return this;
@@ -49,7 +53,8 @@ public class SourceYounium {
     /**
      * Username for Younium account
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceYounium withUsername(String username) {
         this.username = username;
         return this;

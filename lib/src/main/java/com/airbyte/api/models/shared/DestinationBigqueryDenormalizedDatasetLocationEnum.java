@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * DestinationBigqueryDenormalizedDatasetLocationEnum - The location of the dataset. Warning: Changes made after creation will not be applied. The default "US" value is used if not set explicitly. Read more <a href="https://cloud.google.com/bigquery/docs/locations">here</a>.
+ * DestinationBigqueryDenormalizedDatasetLocationEnum - The location of the dataset. Warning: Changes made after creation will not be applied. The default "US" value is used if not set explicitly. Read more &lt;a href="https://cloud.google.com/bigquery/docs/locations"&gt;here&lt;/a&gt;.
  */
 public enum DestinationBigqueryDenormalizedDatasetLocationEnum {
     US("US"),

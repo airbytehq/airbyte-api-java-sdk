@@ -12,14 +12,16 @@ public class DestinationSnowflakeCredentialsOAuth20 {
     /**
      * Enter you application's Access Token
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public DestinationSnowflakeCredentialsOAuth20 withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_type")public DestinationSnowflakeCredentialsOAuth20AuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public DestinationSnowflakeCredentialsOAuth20AuthTypeEnum authType;
     public DestinationSnowflakeCredentialsOAuth20 withAuthType(DestinationSnowflakeCredentialsOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -29,7 +31,8 @@ public class DestinationSnowflakeCredentialsOAuth20 {
      * Enter your application's Client ID
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public DestinationSnowflakeCredentialsOAuth20 withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -39,7 +42,8 @@ public class DestinationSnowflakeCredentialsOAuth20 {
      * Enter your application's Client secret
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public DestinationSnowflakeCredentialsOAuth20 withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -48,7 +52,8 @@ public class DestinationSnowflakeCredentialsOAuth20 {
     /**
      * Enter your application's Refresh Token
      */
-    @JsonProperty("refresh_token")public String refreshToken;
+    @JsonProperty("refresh_token")
+    public String refreshToken;
     public DestinationSnowflakeCredentialsOAuth20 withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

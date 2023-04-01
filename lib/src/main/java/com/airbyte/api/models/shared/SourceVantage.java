@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceVantage {
     /**
-     * Your API Access token. See <a href="https://vantage.readme.io/reference/authentication">here</a>.
+     * Your API Access token. See &lt;a href="https://vantage.readme.io/reference/authentication"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceVantage withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceVantageVantageEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceVantageVantageEnum airbyteSourceName;
     public SourceVantage withAirbyteSourceName(SourceVantageVantageEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;

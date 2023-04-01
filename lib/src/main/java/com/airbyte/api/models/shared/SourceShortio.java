@@ -10,13 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceShortio - The values required to configure the source.
  */
 public class SourceShortio {
-    @JsonProperty("airbyte-source-name")public SourceShortioShortioEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceShortioShortioEnum airbyteSourceName;
     public SourceShortio withAirbyteSourceName(SourceShortioShortioEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
-    @JsonProperty("domain_id")public String domainId;
+    @JsonProperty("domain_id")
+    public String domainId;
     public SourceShortio withDomainId(String domainId) {
         this.domainId = domainId;
         return this;
@@ -25,7 +27,8 @@ public class SourceShortio {
     /**
      * Short.io Secret Key
      */
-    @JsonProperty("secret_key")public String secretKey;
+    @JsonProperty("secret_key")
+    public String secretKey;
     public SourceShortio withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;
@@ -34,7 +37,8 @@ public class SourceShortio {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceShortio withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

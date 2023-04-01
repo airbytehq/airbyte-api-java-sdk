@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceAzureTable - The values required to configure the source.
  */
 public class SourceAzureTable {
-    @JsonProperty("airbyte-source-name")public SourceAzureTableAzureTableEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceAzureTableAzureTableEnum airbyteSourceName;
     public SourceAzureTable withAirbyteSourceName(SourceAzureTableAzureTableEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Azure Table Storage Access Key. See the <a href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on how to obtain this key.
+     * Azure Table Storage Access Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("storage_access_key")public String storageAccessKey;
+    @JsonProperty("storage_access_key")
+    public String storageAccessKey;
     public SourceAzureTable withStorageAccessKey(String storageAccessKey) {
         this.storageAccessKey = storageAccessKey;
         return this;
@@ -30,17 +32,19 @@ public class SourceAzureTable {
     /**
      * The name of your storage account.
      */
-    @JsonProperty("storage_account_name")public String storageAccountName;
+    @JsonProperty("storage_account_name")
+    public String storageAccountName;
     public SourceAzureTable withStorageAccountName(String storageAccountName) {
         this.storageAccountName = storageAccountName;
         return this;
     }
     
     /**
-     * Azure Table Storage service account URL suffix. See the <a href="https://docs.airbyte.com/integrations/sources/azure-table">docs</a> for more information on how to obtain endpoint suffix
+     * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("storage_endpoint_suffix")public String storageEndpointSuffix;
+    @JsonProperty("storage_endpoint_suffix")
+    public String storageEndpointSuffix;
     public SourceAzureTable withStorageEndpointSuffix(String storageEndpointSuffix) {
         this.storageEndpointSuffix = storageEndpointSuffix;
         return this;

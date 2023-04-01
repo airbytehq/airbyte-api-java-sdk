@@ -11,33 +11,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging {
     /**
-     * Enter the <a href="https://cloud.google.com/storage/docs/creating-buckets">Cloud Storage bucket name</a>
+     * Enter the &lt;a href="https://cloud.google.com/storage/docs/creating-buckets"&gt;Cloud Storage bucket name&lt;/a&gt;
      */
-    @JsonProperty("bucket_name")public String bucketName;
+    @JsonProperty("bucket_name")
+    public String bucketName;
     public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging withBucketName(String bucketName) {
         this.bucketName = bucketName;
         return this;
     }
     
     /**
-     * Enter your <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">Google Cloud service account key</a> in the JSON format with read/write access to your Cloud Storage staging bucket
+     * Enter your &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;Google Cloud service account key&lt;/a&gt; in the JSON format with read/write access to your Cloud Storage staging bucket
      */
-    @JsonProperty("credentials_json")public String credentialsJson;
+    @JsonProperty("credentials_json")
+    public String credentialsJson;
     public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
     }
     
-    @JsonProperty("method")public DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum method;
+    @JsonProperty("method")
+    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum method;
     public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging withMethod(DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum method) {
         this.method = method;
         return this;
     }
     
     /**
-     * Enter the <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects">Google Cloud project ID</a>
+     * Enter the &lt;a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects"&gt;Google Cloud project ID&lt;/a&gt;
      */
-    @JsonProperty("project_id")public String projectId;
+    @JsonProperty("project_id")
+    public String projectId;
     public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging withProjectId(String projectId) {
         this.projectId = projectId;
         return this;

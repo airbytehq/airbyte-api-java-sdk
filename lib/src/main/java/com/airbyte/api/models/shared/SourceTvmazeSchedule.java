@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceTvmazeSchedule - The values required to configure the source.
  */
 public class SourceTvmazeSchedule {
-    @JsonProperty("airbyte-source-name")public SourceTvmazeScheduleTvmazeScheduleEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceTvmazeScheduleTvmazeScheduleEnum airbyteSourceName;
     public SourceTvmazeSchedule withAirbyteSourceName(SourceTvmazeScheduleTvmazeScheduleEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceTvmazeSchedule {
     /**
      * Country code for domestic TV schedule retrieval.
      */
-    @JsonProperty("domestic_schedule_country_code")public String domesticScheduleCountryCode;
+    @JsonProperty("domestic_schedule_country_code")
+    public String domesticScheduleCountryCode;
     public SourceTvmazeSchedule withDomesticScheduleCountryCode(String domesticScheduleCountryCode) {
         this.domesticScheduleCountryCode = domesticScheduleCountryCode;
         return this;
@@ -32,7 +34,8 @@ public class SourceTvmazeSchedule {
      * 
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_date")public String endDate;
+    @JsonProperty("end_date")
+    public String endDate;
     public SourceTvmazeSchedule withEndDate(String endDate) {
         this.endDate = endDate;
         return this;
@@ -41,7 +44,8 @@ public class SourceTvmazeSchedule {
     /**
      * Start date for TV schedule retrieval. May be in the future.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceTvmazeSchedule withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -54,7 +58,8 @@ public class SourceTvmazeSchedule {
      * 
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("web_schedule_country_code")public String webScheduleCountryCode;
+    @JsonProperty("web_schedule_country_code")
+    public String webScheduleCountryCode;
     public SourceTvmazeSchedule withWebScheduleCountryCode(String webScheduleCountryCode) {
         this.webScheduleCountryCode = webScheduleCountryCode;
         return this;

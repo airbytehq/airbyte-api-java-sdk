@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceOpenweatherLanguageEnum - You can use lang parameter to get the output in your language. The contents of the description field will be translated. See <a href="https://openweathermap.org/api/one-call-api#multi">here</a> for the list of supported languages.
+ * SourceOpenweatherLanguageEnum - You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
  */
 public enum SourceOpenweatherLanguageEnum {
     AF("af"),

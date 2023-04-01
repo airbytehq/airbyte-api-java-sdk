@@ -15,25 +15,28 @@ import java.time.OffsetDateTime;
  * SourceChartmogul - The values required to configure the source.
  */
 public class SourceChartmogul {
-    @JsonProperty("airbyte-source-name")public SourceChartmogulChartmogulEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceChartmogulChartmogulEnum airbyteSourceName;
     public SourceChartmogul withAirbyteSourceName(SourceChartmogulChartmogulEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Your Chartmogul API key. See <a href="https://help.chartmogul.com/hc/en-us/articles/4407796325906-Creating-and-Managing-API-keys#creating-an-api-key"> the docs </a> for info on how to obtain this.
+     * Your Chartmogul API key. See &lt;a href="https://help.chartmogul.com/hc/en-us/articles/4407796325906-Creating-and-Managing-API-keys#creating-an-api-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceChartmogul withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
     }
     
     /**
-     * Some APIs such as <a href="https://dev.chartmogul.com/reference/endpoint-overview-metrics-api">Metrics</a> require intervals to cluster data.
+     * Some APIs such as &lt;a href="https://dev.chartmogul.com/reference/endpoint-overview-metrics-api"&gt;Metrics&lt;/a&gt; require intervals to cluster data.
      */
-    @JsonProperty("interval")public SourceChartmogulIntervalEnum interval;
+    @JsonProperty("interval")
+    public SourceChartmogulIntervalEnum interval;
     public SourceChartmogul withInterval(SourceChartmogulIntervalEnum interval) {
         this.interval = interval;
         return this;
@@ -44,7 +47,8 @@ public class SourceChartmogul {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceChartmogul withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

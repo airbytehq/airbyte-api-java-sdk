@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceFauna - The values required to configure the source.
  */
 public class SourceFauna {
-    @JsonProperty("airbyte-source-name")public SourceFaunaFaunaEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceFaunaFaunaEnum airbyteSourceName;
     public SourceFauna withAirbyteSourceName(SourceFaunaFaunaEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,16 +23,18 @@ public class SourceFauna {
      * Settings for the Fauna Collection.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("collection")public SourceFaunaCollection collection;
+    @JsonProperty("collection")
+    public SourceFaunaCollection collection;
     public SourceFauna withCollection(SourceFaunaCollection collection) {
         this.collection = collection;
         return this;
     }
     
     /**
-     * Domain of Fauna to query. Defaults db.fauna.com. See <a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups>the docs</a>.
+     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
      */
-    @JsonProperty("domain")public String domain;
+    @JsonProperty("domain")
+    public String domain;
     public SourceFauna withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -40,7 +43,8 @@ public class SourceFauna {
     /**
      * Endpoint port.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceFauna withPort(Long port) {
         this.port = port;
         return this;
@@ -49,7 +53,8 @@ public class SourceFauna {
     /**
      * URL scheme.
      */
-    @JsonProperty("scheme")public String scheme;
+    @JsonProperty("scheme")
+    public String scheme;
     public SourceFauna withScheme(String scheme) {
         this.scheme = scheme;
         return this;
@@ -58,7 +63,8 @@ public class SourceFauna {
     /**
      * Fauna secret, used when authenticating with the database.
      */
-    @JsonProperty("secret")public String secret;
+    @JsonProperty("secret")
+    public String secret;
     public SourceFauna withSecret(String secret) {
         this.secret = secret;
         return this;

@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceClickhouse - The values required to configure the source.
  */
 public class SourceClickhouse {
-    @JsonProperty("airbyte-source-name")public SourceClickhouseClickhouseEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceClickhouseClickhouseEnum airbyteSourceName;
     public SourceClickhouse withAirbyteSourceName(SourceClickhouseClickhouseEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceClickhouse {
     /**
      * The name of the database.
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public SourceClickhouse withDatabase(String database) {
         this.database = database;
         return this;
@@ -30,7 +32,8 @@ public class SourceClickhouse {
     /**
      * The host endpoint of the Clickhouse cluster.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceClickhouse withHost(String host) {
         this.host = host;
         return this;
@@ -40,7 +43,8 @@ public class SourceClickhouse {
      * The password associated with this username.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceClickhouse withPassword(String password) {
         this.password = password;
         return this;
@@ -49,7 +53,8 @@ public class SourceClickhouse {
     /**
      * The port of the database.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceClickhouse withPort(Long port) {
         this.port = port;
         return this;
@@ -59,7 +64,8 @@ public class SourceClickhouse {
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("tunnel_method")public Object tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public Object tunnelMethod;
     public SourceClickhouse withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -68,7 +74,8 @@ public class SourceClickhouse {
     /**
      * The username which is used to access the database.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceClickhouse withUsername(String username) {
         this.username = username;
         return this;

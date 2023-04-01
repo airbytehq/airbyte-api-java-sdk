@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceAirtableCredentialsAPIKey {
     /**
-     * The API Key or PAT for the Airtable account. See the <a href="https://airtable.com/developers/web/guides/personal-access-tokens">Support Guide</a> for more information on how to obtain this key.
+     * The API Key or PAT for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceAirtableCredentialsAPIKey withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_method")public SourceAirtableCredentialsAPIKeyAuthMethodEnum authMethod;
+    @JsonProperty("auth_method")
+    public SourceAirtableCredentialsAPIKeyAuthMethodEnum authMethod;
     public SourceAirtableCredentialsAPIKey withAuthMethod(SourceAirtableCredentialsAPIKeyAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;

@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceIntercom {
     /**
-     * Access token for making authenticated requests. See the <a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token">Intercom docs</a> for more information.
+     * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceIntercom withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceIntercomIntercomEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceIntercomIntercomEnum airbyteSourceName;
     public SourceIntercom withAirbyteSourceName(SourceIntercomIntercomEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -28,7 +30,8 @@ public class SourceIntercom {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceIntercom withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

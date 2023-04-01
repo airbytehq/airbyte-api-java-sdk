@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication - Credentials for connecting to the Google Sheets API
  */
 public class SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication {
-    @JsonProperty("auth_type")public SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
     public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType) {
         this.authType = authType;
         return this;
     }
     
     /**
-     * Enter your Google Cloud <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys">service account key</a> in JSON format
+     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
      */
-    @JsonProperty("service_account_info")public String serviceAccountInfo;
+    @JsonProperty("service_account_info")
+    public String serviceAccountInfo;
     public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication withServiceAccountInfo(String serviceAccountInfo) {
         this.serviceAccountInfo = serviceAccountInfo;
         return this;

@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationKeen - The values required to configure the destination.
  */
 public class DestinationKeen {
-    @JsonProperty("airbyte-destination-name")public DestinationKeenKeenEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationKeenKeenEnum airbyteDestinationName;
     public DestinationKeen withAirbyteDestinationName(DestinationKeenKeenEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationKeen {
     /**
      * To get Keen Master API Key, navigate to the Access tab from the left-hand, side panel and check the Project Details section.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public DestinationKeen withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class DestinationKeen {
      * Allow connector to guess keen.timestamp value based on the streamed data.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("infer_timestamp")public Boolean inferTimestamp;
+    @JsonProperty("infer_timestamp")
+    public Boolean inferTimestamp;
     public DestinationKeen withInferTimestamp(Boolean inferTimestamp) {
         this.inferTimestamp = inferTimestamp;
         return this;
@@ -40,7 +43,8 @@ public class DestinationKeen {
     /**
      * To get Keen Project ID, navigate to the Access tab from the left-hand, side panel and check the Project Details section.
      */
-    @JsonProperty("project_id")public String projectId;
+    @JsonProperty("project_id")
+    public String projectId;
     public DestinationKeen withProjectId(String projectId) {
         this.projectId = projectId;
         return this;

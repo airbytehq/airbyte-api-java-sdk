@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOrbit - The values required to configure the source.
  */
 public class SourceOrbit {
-    @JsonProperty("airbyte-source-name")public SourceOrbitOrbitEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceOrbitOrbitEnum airbyteSourceName;
     public SourceOrbit withAirbyteSourceName(SourceOrbitOrbitEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceOrbit {
     /**
      * Authorizes you to work with Orbit workspaces associated with the token.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceOrbit withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -31,7 +33,8 @@ public class SourceOrbit {
      * Date in the format 2022-06-26. Only load members whose last activities are after this date.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceOrbit withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -40,7 +43,8 @@ public class SourceOrbit {
     /**
      * The unique name of the workspace that your API token is associated with.
      */
-    @JsonProperty("workspace")public String workspace;
+    @JsonProperty("workspace")
+    public String workspace;
     public SourceOrbit withWorkspace(String workspace) {
         this.workspace = workspace;
         return this;

@@ -13,7 +13,8 @@ public class DestinationMysqlTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public DestinationMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public DestinationMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public DestinationMysqlTunnelMethodNoTunnel withTunnelMethod(DestinationMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

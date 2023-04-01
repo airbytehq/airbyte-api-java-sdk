@@ -8,15 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceAuth0CredentialsOAuth2AccessToken {
     /**
-     * Also called <a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing">API Access Token </a> The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.
+     * Also called &lt;a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing"&gt;API Access Token &lt;/a&gt; The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceAuth0CredentialsOAuth2AccessToken withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("auth_type")public SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType;
+    @JsonProperty("auth_type")
+    public SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType;
     public SourceAuth0CredentialsOAuth2AccessToken withAuthType(SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType) {
         this.authType = authType;
         return this;

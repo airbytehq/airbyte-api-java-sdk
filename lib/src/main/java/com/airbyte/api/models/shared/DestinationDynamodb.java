@@ -15,13 +15,15 @@ public class DestinationDynamodb {
     /**
      * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.
      */
-    @JsonProperty("access_key_id")public String accessKeyId;
+    @JsonProperty("access_key_id")
+    public String accessKeyId;
     public DestinationDynamodb withAccessKeyId(String accessKeyId) {
         this.accessKeyId = accessKeyId;
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")public DestinationDynamodbDynamodbEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationDynamodbDynamodbEnum airbyteDestinationName;
     public DestinationDynamodb withAirbyteDestinationName(DestinationDynamodbDynamodbEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -31,7 +33,8 @@ public class DestinationDynamodb {
      * This is your DynamoDB endpoint url.(if you are working with AWS DynamoDB, just leave empty).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("dynamodb_endpoint")public String dynamodbEndpoint;
+    @JsonProperty("dynamodb_endpoint")
+    public String dynamodbEndpoint;
     public DestinationDynamodb withDynamodbEndpoint(String dynamodbEndpoint) {
         this.dynamodbEndpoint = dynamodbEndpoint;
         return this;
@@ -40,7 +43,8 @@ public class DestinationDynamodb {
     /**
      * The region of the DynamoDB.
      */
-    @JsonProperty("dynamodb_region")public DestinationDynamodbDynamoDBRegionEnum dynamodbRegion;
+    @JsonProperty("dynamodb_region")
+    public DestinationDynamodbDynamoDBRegionEnum dynamodbRegion;
     public DestinationDynamodb withDynamodbRegion(DestinationDynamodbDynamoDBRegionEnum dynamodbRegion) {
         this.dynamodbRegion = dynamodbRegion;
         return this;
@@ -49,7 +53,8 @@ public class DestinationDynamodb {
     /**
      * The prefix to use when naming DynamoDB tables.
      */
-    @JsonProperty("dynamodb_table_name_prefix")public String dynamodbTableNamePrefix;
+    @JsonProperty("dynamodb_table_name_prefix")
+    public String dynamodbTableNamePrefix;
     public DestinationDynamodb withDynamodbTableNamePrefix(String dynamodbTableNamePrefix) {
         this.dynamodbTableNamePrefix = dynamodbTableNamePrefix;
         return this;
@@ -58,7 +63,8 @@ public class DestinationDynamodb {
     /**
      * The corresponding secret to the access key id.
      */
-    @JsonProperty("secret_access_key")public String secretAccessKey;
+    @JsonProperty("secret_access_key")
+    public String secretAccessKey;
     public DestinationDynamodb withSecretAccessKey(String secretAccessKey) {
         this.secretAccessKey = secretAccessKey;
         return this;

@@ -20,13 +20,15 @@ public class SourceTwilio {
     /**
      * Twilio account SID
      */
-    @JsonProperty("account_sid")public String accountSid;
+    @JsonProperty("account_sid")
+    public String accountSid;
     public SourceTwilio withAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceTwilioTwilioEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceTwilioTwilioEnum airbyteSourceName;
     public SourceTwilio withAirbyteSourceName(SourceTwilioTwilioEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -35,7 +37,8 @@ public class SourceTwilio {
     /**
      * Twilio Auth Token.
      */
-    @JsonProperty("auth_token")public String authToken;
+    @JsonProperty("auth_token")
+    public String authToken;
     public SourceTwilio withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;
@@ -45,7 +48,8 @@ public class SourceTwilio {
      * How far into the past to look for records. (in minutes)
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("lookback_window")public Long lookbackWindow;
+    @JsonProperty("lookback_window")
+    public Long lookbackWindow;
     public SourceTwilio withLookbackWindow(Long lookbackWindow) {
         this.lookbackWindow = lookbackWindow;
         return this;
@@ -56,7 +60,8 @@ public class SourceTwilio {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceTwilio withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

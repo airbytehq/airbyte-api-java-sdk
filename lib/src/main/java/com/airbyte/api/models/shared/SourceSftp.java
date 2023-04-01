@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSftp - The values required to configure the source.
  */
 public class SourceSftp {
-    @JsonProperty("airbyte-source-name")public SourceSftpSftpEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSftpSftpEnum airbyteSourceName;
     public SourceSftp withAirbyteSourceName(SourceSftpSftpEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,7 +23,8 @@ public class SourceSftp {
      * The server authentication method
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceSftp withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -32,7 +34,8 @@ public class SourceSftp {
      * The regular expression to specify files for sync in a chosen Folder Path
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_pattern")public String filePattern;
+    @JsonProperty("file_pattern")
+    public String filePattern;
     public SourceSftp withFilePattern(String filePattern) {
         this.filePattern = filePattern;
         return this;
@@ -42,7 +45,8 @@ public class SourceSftp {
      * Coma separated file types. Currently only 'csv' and 'json' types are supported.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_types")public String fileTypes;
+    @JsonProperty("file_types")
+    public String fileTypes;
     public SourceSftp withFileTypes(String fileTypes) {
         this.fileTypes = fileTypes;
         return this;
@@ -52,7 +56,8 @@ public class SourceSftp {
      * The directory to search files for sync
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("folder_path")public String folderPath;
+    @JsonProperty("folder_path")
+    public String folderPath;
     public SourceSftp withFolderPath(String folderPath) {
         this.folderPath = folderPath;
         return this;
@@ -61,7 +66,8 @@ public class SourceSftp {
     /**
      * The server host address
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceSftp withHost(String host) {
         this.host = host;
         return this;
@@ -70,7 +76,8 @@ public class SourceSftp {
     /**
      * The server port
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceSftp withPort(Long port) {
         this.port = port;
         return this;
@@ -79,7 +86,8 @@ public class SourceSftp {
     /**
      * The server user
      */
-    @JsonProperty("user")public String user;
+    @JsonProperty("user")
+    public String user;
     public SourceSftp withUser(String user) {
         this.user = user;
         return this;

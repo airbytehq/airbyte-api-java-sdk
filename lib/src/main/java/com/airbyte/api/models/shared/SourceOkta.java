@@ -12,24 +12,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOkta - The values required to configure the source.
  */
 public class SourceOkta {
-    @JsonProperty("airbyte-source-name")public SourceOktaOktaEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceOktaOktaEnum airbyteSourceName;
     public SourceOkta withAirbyteSourceName(SourceOktaOktaEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceOkta withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
     }
     
     /**
-     * The Okta domain. See the <a href="https://docs.airbyte.com/integrations/sources/okta">docs</a> for instructions on how to find it.
+     * The Okta domain. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to find it.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("domain")public String domain;
+    @JsonProperty("domain")
+    public String domain;
     public SourceOkta withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -39,7 +42,8 @@ public class SourceOkta {
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceOkta withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

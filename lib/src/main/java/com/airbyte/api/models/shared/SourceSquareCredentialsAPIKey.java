@@ -15,14 +15,16 @@ public class SourceSquareCredentialsAPIKey {
     /**
      * The API key for a Square application
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceSquareCredentialsAPIKey withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials_title")public SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle;
+    @JsonProperty("credentials_title")
+    public SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle;
     public SourceSquareCredentialsAPIKey withCredentialsTitle(SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;

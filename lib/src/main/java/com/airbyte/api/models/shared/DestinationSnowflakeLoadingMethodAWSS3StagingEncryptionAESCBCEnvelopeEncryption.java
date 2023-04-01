@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption - Staging data will be encrypted using AES-CBC envelope encryption.
  */
 public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption {
-    @JsonProperty("encryption_type")public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType;
+    @JsonProperty("encryption_type")
+    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType;
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption withEncryptionType(DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType) {
         this.encryptionType = encryptionType;
         return this;
@@ -22,7 +23,8 @@ public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelo
      * The key, base64-encoded. Must be either 128, 192, or 256 bits. Leave blank to have Airbyte generate an ephemeral key for each sync.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("key_encrypting_key")public String keyEncryptingKey;
+    @JsonProperty("key_encrypting_key")
+    public String keyEncryptingKey;
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption withKeyEncryptingKey(String keyEncryptingKey) {
         this.keyEncryptingKey = keyEncryptingKey;
         return this;

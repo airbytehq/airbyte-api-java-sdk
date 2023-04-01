@@ -15,7 +15,8 @@ public class DestinationDatabricksDataSourceAzureBlobStorage {
     /**
      * The account's name of the Azure Blob Storage.
      */
-    @JsonProperty("azure_blob_storage_account_name")public String azureBlobStorageAccountName;
+    @JsonProperty("azure_blob_storage_account_name")
+    public String azureBlobStorageAccountName;
     public DestinationDatabricksDataSourceAzureBlobStorage withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         return this;
@@ -24,7 +25,8 @@ public class DestinationDatabricksDataSourceAzureBlobStorage {
     /**
      * The name of the Azure blob storage container.
      */
-    @JsonProperty("azure_blob_storage_container_name")public String azureBlobStorageContainerName;
+    @JsonProperty("azure_blob_storage_container_name")
+    public String azureBlobStorageContainerName;
     public DestinationDatabricksDataSourceAzureBlobStorage withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         return this;
@@ -34,7 +36,8 @@ public class DestinationDatabricksDataSourceAzureBlobStorage {
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("azure_blob_storage_endpoint_domain_name")public String azureBlobStorageEndpointDomainName;
+    @JsonProperty("azure_blob_storage_endpoint_domain_name")
+    public String azureBlobStorageEndpointDomainName;
     public DestinationDatabricksDataSourceAzureBlobStorage withAzureBlobStorageEndpointDomainName(String azureBlobStorageEndpointDomainName) {
         this.azureBlobStorageEndpointDomainName = azureBlobStorageEndpointDomainName;
         return this;
@@ -43,13 +46,15 @@ public class DestinationDatabricksDataSourceAzureBlobStorage {
     /**
      * Shared access signature (SAS) token to grant limited access to objects in your storage account.
      */
-    @JsonProperty("azure_blob_storage_sas_token")public String azureBlobStorageSasToken;
+    @JsonProperty("azure_blob_storage_sas_token")
+    public String azureBlobStorageSasToken;
     public DestinationDatabricksDataSourceAzureBlobStorage withAzureBlobStorageSasToken(String azureBlobStorageSasToken) {
         this.azureBlobStorageSasToken = azureBlobStorageSasToken;
         return this;
     }
     
-    @JsonProperty("data_source_type")public DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType;
+    @JsonProperty("data_source_type")
+    public DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType;
     public DestinationDatabricksDataSourceAzureBlobStorage withDataSourceType(DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType) {
         this.dataSourceType = dataSourceType;
         return this;

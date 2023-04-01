@@ -10,34 +10,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMarketo - The values required to configure the source.
  */
 public class SourceMarketo {
-    @JsonProperty("airbyte-source-name")public SourceMarketoMarketoEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMarketoMarketoEnum airbyteSourceName;
     public SourceMarketo withAirbyteSourceName(SourceMarketoMarketoEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * The Client ID of your Marketo developer application. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to obtain this.
+     * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceMarketo withClientId(String clientId) {
         this.clientId = clientId;
         return this;
     }
     
     /**
-     * The Client Secret of your Marketo developer application. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to obtain this.
+     * The Client Secret of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceMarketo withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
     }
     
     /**
-     * Your Marketo Base URL. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to obtain this.
+     * Your Marketo Base URL. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
-    @JsonProperty("domain_url")public String domainUrl;
+    @JsonProperty("domain_url")
+    public String domainUrl;
     public SourceMarketo withDomainUrl(String domainUrl) {
         this.domainUrl = domainUrl;
         return this;
@@ -46,7 +50,8 @@ public class SourceMarketo {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceMarketo withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

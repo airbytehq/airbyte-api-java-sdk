@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMssql - The values required to configure the source.
  */
 public class SourceMssql {
-    @JsonProperty("airbyte-source-name")public SourceMssqlMssqlEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMssqlMssqlEnum airbyteSourceName;
     public SourceMssql withAirbyteSourceName(SourceMssqlMssqlEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceMssql {
     /**
      * The name of the database.
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public SourceMssql withDatabase(String database) {
         this.database = database;
         return this;
@@ -30,17 +32,19 @@ public class SourceMssql {
     /**
      * The hostname of the database.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceMssql withHost(String host) {
         this.host = host;
         return this;
     }
     
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&'. (example: key1=value1&key2=value2&key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("jdbc_url_params")public String jdbcUrlParams;
+    @JsonProperty("jdbc_url_params")
+    public String jdbcUrlParams;
     public SourceMssql withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -50,7 +54,8 @@ public class SourceMssql {
      * The password associated with the username.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceMssql withPassword(String password) {
         this.password = password;
         return this;
@@ -59,7 +64,8 @@ public class SourceMssql {
     /**
      * The port of the database.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceMssql withPort(Long port) {
         this.port = port;
         return this;
@@ -69,7 +75,8 @@ public class SourceMssql {
      * The replication method used for extracting data from the database. STANDARD replication requires no setup on the DB side but will not be able to represent deletions incrementally. CDC uses {TBC} to detect inserts, updates, and deletes. This needs to be configured on the source database itself.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("replication_method")public Object replicationMethod;
+    @JsonProperty("replication_method")
+    public Object replicationMethod;
     public SourceMssql withReplicationMethod(Object replicationMethod) {
         this.replicationMethod = replicationMethod;
         return this;
@@ -79,7 +86,8 @@ public class SourceMssql {
      * The list of schemas to sync from. Defaults to user. Case sensitive.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("schemas")public String[] schemas;
+    @JsonProperty("schemas")
+    public String[] schemas;
     public SourceMssql withSchemas(String[] schemas) {
         this.schemas = schemas;
         return this;
@@ -89,7 +97,8 @@ public class SourceMssql {
      * The encryption method which is used when communicating with the database.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ssl_method")public Object sslMethod;
+    @JsonProperty("ssl_method")
+    public Object sslMethod;
     public SourceMssql withSslMethod(Object sslMethod) {
         this.sslMethod = sslMethod;
         return this;
@@ -99,7 +108,8 @@ public class SourceMssql {
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("tunnel_method")public Object tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public Object tunnelMethod;
     public SourceMssql withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -108,7 +118,8 @@ public class SourceMssql {
     /**
      * The username which is used to access the database.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceMssql withUsername(String username) {
         this.username = username;
         return this;

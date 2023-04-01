@@ -13,13 +13,15 @@ public class DestinationKinesis {
     /**
      * Generate the AWS Access Key for current user.
      */
-    @JsonProperty("accessKey")public String accessKey;
+    @JsonProperty("accessKey")
+    public String accessKey;
     public DestinationKinesis withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")public DestinationKinesisKinesisEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationKinesisKinesisEnum airbyteDestinationName;
     public DestinationKinesis withAirbyteDestinationName(DestinationKinesisKinesisEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -28,7 +30,8 @@ public class DestinationKinesis {
     /**
      * Buffer size for storing kinesis records before being batch streamed.
      */
-    @JsonProperty("bufferSize")public Long bufferSize;
+    @JsonProperty("bufferSize")
+    public Long bufferSize;
     public DestinationKinesis withBufferSize(Long bufferSize) {
         this.bufferSize = bufferSize;
         return this;
@@ -37,7 +40,8 @@ public class DestinationKinesis {
     /**
      * AWS Kinesis endpoint.
      */
-    @JsonProperty("endpoint")public String endpoint;
+    @JsonProperty("endpoint")
+    public String endpoint;
     public DestinationKinesis withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -46,7 +50,8 @@ public class DestinationKinesis {
     /**
      * The AWS Private Key - a string of numbers and letters that are unique for each account, also known as a "recovery phrase".
      */
-    @JsonProperty("privateKey")public String privateKey;
+    @JsonProperty("privateKey")
+    public String privateKey;
     public DestinationKinesis withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -55,7 +60,8 @@ public class DestinationKinesis {
     /**
      * AWS region. Your account determines the Regions that are available to you.
      */
-    @JsonProperty("region")public String region;
+    @JsonProperty("region")
+    public String region;
     public DestinationKinesis withRegion(String region) {
         this.region = region;
         return this;
@@ -64,7 +70,8 @@ public class DestinationKinesis {
     /**
      * Number of shards to which the data should be streamed.
      */
-    @JsonProperty("shardCount")public Long shardCount;
+    @JsonProperty("shardCount")
+    public Long shardCount;
     public DestinationKinesis withShardCount(Long shardCount) {
         this.shardCount = shardCount;
         return this;

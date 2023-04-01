@@ -13,13 +13,15 @@ public class SourceShopifyCredentialsAPIPassword {
     /**
      * The API Password for your private application in the `Shopify` store.
      */
-    @JsonProperty("api_password")public String apiPassword;
+    @JsonProperty("api_password")
+    public String apiPassword;
     public SourceShopifyCredentialsAPIPassword withApiPassword(String apiPassword) {
         this.apiPassword = apiPassword;
         return this;
     }
     
-    @JsonProperty("auth_method")public SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod;
+    @JsonProperty("auth_method")
+    public SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod;
     public SourceShopifyCredentialsAPIPassword withAuthMethod(SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;

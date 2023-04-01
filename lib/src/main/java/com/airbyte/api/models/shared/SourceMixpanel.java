@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMixpanel - The values required to configure the source.
  */
 public class SourceMixpanel {
-    @JsonProperty("airbyte-source-name")public SourceMixpanelMixpanelEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMixpanelMixpanelEnum airbyteSourceName;
     public SourceMixpanel withAirbyteSourceName(SourceMixpanelMixpanelEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,7 +23,8 @@ public class SourceMixpanel {
      *  A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("attribution_window")public Long attributionWindow;
+    @JsonProperty("attribution_window")
+    public Long attributionWindow;
     public SourceMixpanel withAttributionWindow(Long attributionWindow) {
         this.attributionWindow = attributionWindow;
         return this;
@@ -32,7 +34,8 @@ public class SourceMixpanel {
      * Choose how to authenticate to Mixpanel
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceMixpanel withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -42,7 +45,8 @@ public class SourceMixpanel {
      * Defines window size in days, that used to slice through data. You can reduce it, if amount of data in each window is too big for your environment.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("date_window_size")public Long dateWindowSize;
+    @JsonProperty("date_window_size")
+    public Long dateWindowSize;
     public SourceMixpanel withDateWindowSize(Long dateWindowSize) {
         this.dateWindowSize = dateWindowSize;
         return this;
@@ -52,27 +56,30 @@ public class SourceMixpanel {
      * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_date")public String endDate;
+    @JsonProperty("end_date")
+    public String endDate;
     public SourceMixpanel withEndDate(String endDate) {
         this.endDate = endDate;
         return this;
     }
     
     /**
-     * Your project ID number. See the <a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id">docs</a> for more information on how to obtain this.
+     * Your project ID number. See the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("project_id")public Long projectId;
+    @JsonProperty("project_id")
+    public Long projectId;
     public SourceMixpanel withProjectId(Long projectId) {
         this.projectId = projectId;
         return this;
     }
     
     /**
-     * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the <a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel">Mixpanel console</a>.
+     * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("project_timezone")public String projectTimezone;
+    @JsonProperty("project_timezone")
+    public String projectTimezone;
     public SourceMixpanel withProjectTimezone(String projectTimezone) {
         this.projectTimezone = projectTimezone;
         return this;
@@ -82,7 +89,8 @@ public class SourceMixpanel {
      * The region of mixpanel domain instance either US or EU.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("region")public SourceMixpanelRegionEnum region;
+    @JsonProperty("region")
+    public SourceMixpanelRegionEnum region;
     public SourceMixpanel withRegion(SourceMixpanelRegionEnum region) {
         this.region = region;
         return this;
@@ -92,7 +100,8 @@ public class SourceMixpanel {
      * Setting this config parameter to TRUE ensures that new properties on events and engage records are captured. Otherwise new properties will be ignored.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("select_properties_by_default")public Boolean selectPropertiesByDefault;
+    @JsonProperty("select_properties_by_default")
+    public Boolean selectPropertiesByDefault;
     public SourceMixpanel withSelectPropertiesByDefault(Boolean selectPropertiesByDefault) {
         this.selectPropertiesByDefault = selectPropertiesByDefault;
         return this;
@@ -102,7 +111,8 @@ public class SourceMixpanel {
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceMixpanel withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

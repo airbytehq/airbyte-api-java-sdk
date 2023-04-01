@@ -14,14 +14,16 @@ import java.time.LocalDate;
  * SourceBingAds - The values required to configure the source.
  */
 public class SourceBingAds {
-    @JsonProperty("airbyte-source-name")public SourceBingAdsBingAdsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceBingAdsBingAdsEnum airbyteSourceName;
     public SourceBingAds withAirbyteSourceName(SourceBingAdsBingAdsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_method")public SourceBingAdsAuthMethodEnum authMethod;
+    @JsonProperty("auth_method")
+    public SourceBingAdsAuthMethodEnum authMethod;
     public SourceBingAds withAuthMethod(SourceBingAdsAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;
@@ -30,7 +32,8 @@ public class SourceBingAds {
     /**
      * The Client ID of your Microsoft Advertising developer application.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceBingAds withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -40,16 +43,18 @@ public class SourceBingAds {
      * The Client Secret of your Microsoft Advertising developer application.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceBingAds withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
     }
     
     /**
-     * Developer token associated with user. See more info <a href="https://docs.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token"> in the docs</a>.
+     * Developer token associated with user. See more info &lt;a href="https://docs.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token"&gt; in the docs&lt;/a&gt;.
      */
-    @JsonProperty("developer_token")public String developerToken;
+    @JsonProperty("developer_token")
+    public String developerToken;
     public SourceBingAds withDeveloperToken(String developerToken) {
         this.developerToken = developerToken;
         return this;
@@ -58,7 +63,8 @@ public class SourceBingAds {
     /**
      * Refresh Token to renew the expired Access Token.
      */
-    @JsonProperty("refresh_token")public String refreshToken;
+    @JsonProperty("refresh_token")
+    public String refreshToken;
     public SourceBingAds withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -68,7 +74,8 @@ public class SourceBingAds {
      * The start date from which to begin replicating report data. Any data generated before this date will not be replicated in reports. This is a UTC date in YYYY-MM-DD format.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("reports_start_date")public LocalDate reportsStartDate;
+    @JsonProperty("reports_start_date")
+    public LocalDate reportsStartDate;
     public SourceBingAds withReportsStartDate(LocalDate reportsStartDate) {
         this.reportsStartDate = reportsStartDate;
         return this;
@@ -78,7 +85,8 @@ public class SourceBingAds {
      * The Tenant ID of your Microsoft Advertising developer application. Set this to "common" unless you know you need a different value.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("tenant_id")public String tenantId;
+    @JsonProperty("tenant_id")
+    public String tenantId;
     public SourceBingAds withTenantId(String tenantId) {
         this.tenantId = tenantId;
         return this;

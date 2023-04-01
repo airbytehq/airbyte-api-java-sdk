@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMailjetSms - The values required to configure the source.
  */
 public class SourceMailjetSms {
-    @JsonProperty("airbyte-source-name")public SourceMailjetSmsMailjetSmsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMailjetSmsMailjetSmsEnum airbyteSourceName;
     public SourceMailjetSms withAirbyteSourceName(SourceMailjetSmsMailjetSmsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,7 +23,8 @@ public class SourceMailjetSms {
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("end_date")public Long endDate;
+    @JsonProperty("end_date")
+    public Long endDate;
     public SourceMailjetSms withEndDate(Long endDate) {
         this.endDate = endDate;
         return this;
@@ -32,16 +34,18 @@ public class SourceMailjetSms {
      * Retrieve SMS messages created after the specified timestamp. Required format - Unix timestamp.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_date")public Long startDate;
+    @JsonProperty("start_date")
+    public Long startDate;
     public SourceMailjetSms withStartDate(Long startDate) {
         this.startDate = startDate;
         return this;
     }
     
     /**
-     * Your access token. See <a href="https://dev.mailjet.com/sms/reference/overview/authentication">here</a>.
+     * Your access token. See &lt;a href="https://dev.mailjet.com/sms/reference/overview/authentication"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("token")public String token;
+    @JsonProperty("token")
+    public String token;
     public SourceMailjetSms withToken(String token) {
         this.token = token;
         return this;

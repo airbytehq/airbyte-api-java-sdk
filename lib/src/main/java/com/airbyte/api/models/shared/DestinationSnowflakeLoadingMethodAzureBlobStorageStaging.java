@@ -15,41 +15,46 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
     /**
      * Enter your Azure Blob Storage account name
      */
-    @JsonProperty("azure_blob_storage_account_name")public String azureBlobStorageAccountName;
+    @JsonProperty("azure_blob_storage_account_name")
+    public String azureBlobStorageAccountName;
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         return this;
     }
     
     /**
-     * Enter your Azure Blob Storage <a href="https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names">container name</a>
+     * Enter your Azure Blob Storage &lt;a href="https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names"&gt;container name&lt;/a&gt;
      */
-    @JsonProperty("azure_blob_storage_container_name")public String azureBlobStorageContainerName;
+    @JsonProperty("azure_blob_storage_container_name")
+    public String azureBlobStorageContainerName;
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         return this;
     }
     
     /**
-     * Enter the Azure Blob Storage <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints">endpoint domain name</a>
+     * Enter the Azure Blob Storage &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints"&gt;endpoint domain name&lt;/a&gt;
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("azure_blob_storage_endpoint_domain_name")public String azureBlobStorageEndpointDomainName;
+    @JsonProperty("azure_blob_storage_endpoint_domain_name")
+    public String azureBlobStorageEndpointDomainName;
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageEndpointDomainName(String azureBlobStorageEndpointDomainName) {
         this.azureBlobStorageEndpointDomainName = azureBlobStorageEndpointDomainName;
         return this;
     }
     
     /**
-     * Enter the <a href="https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-2-generating-a-sas-token">Shared access signature</a> (SAS) token to grant Snowflake limited access to objects in your Azure Blob Storage account
+     * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-2-generating-a-sas-token"&gt;Shared access signature&lt;/a&gt; (SAS) token to grant Snowflake limited access to objects in your Azure Blob Storage account
      */
-    @JsonProperty("azure_blob_storage_sas_token")public String azureBlobStorageSasToken;
+    @JsonProperty("azure_blob_storage_sas_token")
+    public String azureBlobStorageSasToken;
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageSasToken(String azureBlobStorageSasToken) {
         this.azureBlobStorageSasToken = azureBlobStorageSasToken;
         return this;
     }
     
-    @JsonProperty("method")public DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum method;
+    @JsonProperty("method")
+    public DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum method;
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withMethod(DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum method) {
         this.method = method;
         return this;

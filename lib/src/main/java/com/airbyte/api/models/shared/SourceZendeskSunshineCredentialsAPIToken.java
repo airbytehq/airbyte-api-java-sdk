@@ -8,15 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceZendeskSunshineCredentialsAPIToken {
     /**
-     * API Token. See the <a href="https://docs.airbyte.io/integrations/sources/zendesk_sunshine">docs</a> for information on how to generate this key.
+     * API Token. See the &lt;a href="https://docs.airbyte.io/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceZendeskSunshineCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
     }
     
-    @JsonProperty("auth_method")public SourceZendeskSunshineCredentialsAPITokenAuthMethodEnum authMethod;
+    @JsonProperty("auth_method")
+    public SourceZendeskSunshineCredentialsAPITokenAuthMethodEnum authMethod;
     public SourceZendeskSunshineCredentialsAPIToken withAuthMethod(SourceZendeskSunshineCredentialsAPITokenAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;
@@ -25,7 +27,8 @@ public class SourceZendeskSunshineCredentialsAPIToken {
     /**
      * The user email for your Zendesk account
      */
-    @JsonProperty("email")public String email;
+    @JsonProperty("email")
+    public String email;
     public SourceZendeskSunshineCredentialsAPIToken withEmail(String email) {
         this.email = email;
         return this;

@@ -16,13 +16,15 @@ public class DestinationAmazonSqs {
      * The Access Key ID of the AWS IAM Role to use for sending  messages
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_key")public String accessKey;
+    @JsonProperty("access_key")
+    public String accessKey;
     public DestinationAmazonSqs withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")public DestinationAmazonSqsAmazonSqsEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationAmazonSqsAmazonSqsEnum airbyteDestinationName;
     public DestinationAmazonSqs withAirbyteDestinationName(DestinationAmazonSqsAmazonSqsEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -32,7 +34,8 @@ public class DestinationAmazonSqs {
      * Use this property to extract the contents of the named key in the input record to use as the SQS message body. If not set, the entire content of the input record data is used as the message body.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("message_body_key")public String messageBodyKey;
+    @JsonProperty("message_body_key")
+    public String messageBodyKey;
     public DestinationAmazonSqs withMessageBodyKey(String messageBodyKey) {
         this.messageBodyKey = messageBodyKey;
         return this;
@@ -42,7 +45,8 @@ public class DestinationAmazonSqs {
      * Modify the Message Delay of the individual message from the Queue's default (seconds).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("message_delay")public Long messageDelay;
+    @JsonProperty("message_delay")
+    public Long messageDelay;
     public DestinationAmazonSqs withMessageDelay(Long messageDelay) {
         this.messageDelay = messageDelay;
         return this;
@@ -52,7 +56,8 @@ public class DestinationAmazonSqs {
      * The tag that specifies that a message belongs to a specific message group. This parameter applies only to, and is REQUIRED by, FIFO queues.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("message_group_id")public String messageGroupId;
+    @JsonProperty("message_group_id")
+    public String messageGroupId;
     public DestinationAmazonSqs withMessageGroupId(String messageGroupId) {
         this.messageGroupId = messageGroupId;
         return this;
@@ -61,7 +66,8 @@ public class DestinationAmazonSqs {
     /**
      * URL of the SQS Queue
      */
-    @JsonProperty("queue_url")public String queueUrl;
+    @JsonProperty("queue_url")
+    public String queueUrl;
     public DestinationAmazonSqs withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
@@ -70,7 +76,8 @@ public class DestinationAmazonSqs {
     /**
      * AWS Region of the SQS Queue
      */
-    @JsonProperty("region")public DestinationAmazonSqsAWSRegionEnum region;
+    @JsonProperty("region")
+    public DestinationAmazonSqsAWSRegionEnum region;
     public DestinationAmazonSqs withRegion(DestinationAmazonSqsAWSRegionEnum region) {
         this.region = region;
         return this;
@@ -80,7 +87,8 @@ public class DestinationAmazonSqs {
      * The Secret Key of the AWS IAM Role to use for sending messages
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("secret_key")public String secretKey;
+    @JsonProperty("secret_key")
+    public String secretKey;
     public DestinationAmazonSqs withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;

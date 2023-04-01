@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceLaunchdarkly {
     /**
-     * Your Access token. See <a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication">here</a>.
+     * Your Access token. See &lt;a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceLaunchdarkly withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceLaunchdarklyLaunchdarklyEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceLaunchdarklyLaunchdarklyEnum airbyteSourceName;
     public SourceLaunchdarkly withAirbyteSourceName(SourceLaunchdarklyLaunchdarklyEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;

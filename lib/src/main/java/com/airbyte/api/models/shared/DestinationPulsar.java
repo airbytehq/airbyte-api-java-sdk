@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationPulsar - The values required to configure the destination.
  */
 public class DestinationPulsar {
-    @JsonProperty("airbyte-destination-name")public DestinationPulsarPulsarEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationPulsarPulsarEnum airbyteDestinationName;
     public DestinationPulsar withAirbyteDestinationName(DestinationPulsarPulsarEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationPulsar {
     /**
      * Control whether automatic batching of messages is enabled for the producer.
      */
-    @JsonProperty("batching_enabled")public Boolean batchingEnabled;
+    @JsonProperty("batching_enabled")
+    public Boolean batchingEnabled;
     public DestinationPulsar withBatchingEnabled(Boolean batchingEnabled) {
         this.batchingEnabled = batchingEnabled;
         return this;
@@ -30,7 +32,8 @@ public class DestinationPulsar {
     /**
      * Maximum number of messages permitted in a batch.
      */
-    @JsonProperty("batching_max_messages")public Long batchingMaxMessages;
+    @JsonProperty("batching_max_messages")
+    public Long batchingMaxMessages;
     public DestinationPulsar withBatchingMaxMessages(Long batchingMaxMessages) {
         this.batchingMaxMessages = batchingMaxMessages;
         return this;
@@ -39,7 +42,8 @@ public class DestinationPulsar {
     /**
      *  Time period in milliseconds within which the messages sent will be batched.
      */
-    @JsonProperty("batching_max_publish_delay")public Long batchingMaxPublishDelay;
+    @JsonProperty("batching_max_publish_delay")
+    public Long batchingMaxPublishDelay;
     public DestinationPulsar withBatchingMaxPublishDelay(Long batchingMaxPublishDelay) {
         this.batchingMaxPublishDelay = batchingMaxPublishDelay;
         return this;
@@ -48,7 +52,8 @@ public class DestinationPulsar {
     /**
      * If the send operation should block when the outgoing message queue is full.
      */
-    @JsonProperty("block_if_queue_full")public Boolean blockIfQueueFull;
+    @JsonProperty("block_if_queue_full")
+    public Boolean blockIfQueueFull;
     public DestinationPulsar withBlockIfQueueFull(Boolean blockIfQueueFull) {
         this.blockIfQueueFull = blockIfQueueFull;
         return this;
@@ -57,7 +62,8 @@ public class DestinationPulsar {
     /**
      * A list of host/port pairs to use for establishing the initial connection to the Pulsar cluster.
      */
-    @JsonProperty("brokers")public String brokers;
+    @JsonProperty("brokers")
+    public String brokers;
     public DestinationPulsar withBrokers(String brokers) {
         this.brokers = brokers;
         return this;
@@ -66,7 +72,8 @@ public class DestinationPulsar {
     /**
      * Compression type for the producer.
      */
-    @JsonProperty("compression_type")public DestinationPulsarCompressionTypeEnum compressionType;
+    @JsonProperty("compression_type")
+    public DestinationPulsarCompressionTypeEnum compressionType;
     public DestinationPulsar withCompressionType(DestinationPulsarCompressionTypeEnum compressionType) {
         this.compressionType = compressionType;
         return this;
@@ -75,7 +82,8 @@ public class DestinationPulsar {
     /**
      * The maximum size of a queue holding pending messages.
      */
-    @JsonProperty("max_pending_messages")public Long maxPendingMessages;
+    @JsonProperty("max_pending_messages")
+    public Long maxPendingMessages;
     public DestinationPulsar withMaxPendingMessages(Long maxPendingMessages) {
         this.maxPendingMessages = maxPendingMessages;
         return this;
@@ -84,7 +92,8 @@ public class DestinationPulsar {
     /**
      * The maximum number of pending messages across partitions.
      */
-    @JsonProperty("max_pending_messages_across_partitions")public Long maxPendingMessagesAcrossPartitions;
+    @JsonProperty("max_pending_messages_across_partitions")
+    public Long maxPendingMessagesAcrossPartitions;
     public DestinationPulsar withMaxPendingMessagesAcrossPartitions(Long maxPendingMessagesAcrossPartitions) {
         this.maxPendingMessagesAcrossPartitions = maxPendingMessagesAcrossPartitions;
         return this;
@@ -94,7 +103,8 @@ public class DestinationPulsar {
      * Name for the producer. If not filled, the system will generate a globally unique name which can be accessed with.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("producer_name")public String producerName;
+    @JsonProperty("producer_name")
+    public String producerName;
     public DestinationPulsar withProducerName(String producerName) {
         this.producerName = producerName;
         return this;
@@ -104,7 +114,8 @@ public class DestinationPulsar {
      * Wait synchronously until the record has been sent to Pulsar.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("producer_sync")public Boolean producerSync;
+    @JsonProperty("producer_sync")
+    public Boolean producerSync;
     public DestinationPulsar withProducerSync(Boolean producerSync) {
         this.producerSync = producerSync;
         return this;
@@ -113,7 +124,8 @@ public class DestinationPulsar {
     /**
      * If a message is not acknowledged by a server before the send-timeout expires, an error occurs (in ms).
      */
-    @JsonProperty("send_timeout_ms")public Long sendTimeoutMs;
+    @JsonProperty("send_timeout_ms")
+    public Long sendTimeoutMs;
     public DestinationPulsar withSendTimeoutMs(Long sendTimeoutMs) {
         this.sendTimeoutMs = sendTimeoutMs;
         return this;
@@ -122,7 +134,8 @@ public class DestinationPulsar {
     /**
      * The administrative unit of the topic, which acts as a grouping mechanism for related topics. Most topic configuration is performed at the namespace level. Each tenant has one or multiple namespaces.
      */
-    @JsonProperty("topic_namespace")public String topicNamespace;
+    @JsonProperty("topic_namespace")
+    public String topicNamespace;
     public DestinationPulsar withTopicNamespace(String topicNamespace) {
         this.topicNamespace = topicNamespace;
         return this;
@@ -131,7 +144,8 @@ public class DestinationPulsar {
     /**
      * Topic pattern in which the records will be sent. You can use patterns like '{namespace}' and/or '{stream}' to send the message to a specific topic based on these values. Notice that the topic name will be transformed to a standard naming convention.
      */
-    @JsonProperty("topic_pattern")public String topicPattern;
+    @JsonProperty("topic_pattern")
+    public String topicPattern;
     public DestinationPulsar withTopicPattern(String topicPattern) {
         this.topicPattern = topicPattern;
         return this;
@@ -140,7 +154,8 @@ public class DestinationPulsar {
     /**
      * The topic tenant within the instance. Tenants are essential to multi-tenancy in Pulsar, and spread across clusters.
      */
-    @JsonProperty("topic_tenant")public String topicTenant;
+    @JsonProperty("topic_tenant")
+    public String topicTenant;
     public DestinationPulsar withTopicTenant(String topicTenant) {
         this.topicTenant = topicTenant;
         return this;
@@ -150,7 +165,8 @@ public class DestinationPulsar {
      * Topic to test if Airbyte can produce messages.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("topic_test")public String topicTest;
+    @JsonProperty("topic_test")
+    public String topicTest;
     public DestinationPulsar withTopicTest(String topicTest) {
         this.topicTest = topicTest;
         return this;
@@ -159,7 +175,8 @@ public class DestinationPulsar {
     /**
      * It identifies type of topic. Pulsar supports two kind of topics: persistent and non-persistent. In persistent topic, all messages are durably persisted on disk (that means on multiple disks unless the broker is standalone), whereas non-persistent topic does not persist message into storage disk.
      */
-    @JsonProperty("topic_type")public DestinationPulsarTopicTypeEnum topicType;
+    @JsonProperty("topic_type")
+    public DestinationPulsarTopicTypeEnum topicType;
     public DestinationPulsar withTopicType(DestinationPulsarTopicTypeEnum topicType) {
         this.topicType = topicType;
         return this;
@@ -168,7 +185,8 @@ public class DestinationPulsar {
     /**
      * Whether to use TLS encryption on the connection.
      */
-    @JsonProperty("use_tls")public Boolean useTls;
+    @JsonProperty("use_tls")
+    public Boolean useTls;
     public DestinationPulsar withUseTls(Boolean useTls) {
         this.useTls = useTls;
         return this;

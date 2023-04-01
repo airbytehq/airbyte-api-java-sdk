@@ -17,7 +17,8 @@ import java.time.OffsetDateTime;
  * SourceMailgun - The values required to configure the source.
  */
 public class SourceMailgun {
-    @JsonProperty("airbyte-source-name")public SourceMailgunMailgunEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMailgunMailgunEnum airbyteSourceName;
     public SourceMailgun withAirbyteSourceName(SourceMailgunMailgunEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -27,7 +28,8 @@ public class SourceMailgun {
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("domain_region")public String domainRegion;
+    @JsonProperty("domain_region")
+    public String domainRegion;
     public SourceMailgun withDomainRegion(String domainRegion) {
         this.domainRegion = domainRegion;
         return this;
@@ -36,7 +38,8 @@ public class SourceMailgun {
     /**
      * Primary account API key to access your Mailgun data.
      */
-    @JsonProperty("private_key")public String privateKey;
+    @JsonProperty("private_key")
+    public String privateKey;
     public SourceMailgun withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -48,7 +51,8 @@ public class SourceMailgun {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceMailgun withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

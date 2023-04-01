@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceS3FormatJsonlUnexpectedFieldBehaviorEnum - How JSON fields outside of explicit_schema (if given) are treated. Check <a href="https://arrow.apache.org/docs/python/generated/pyarrow.json.ParseOptions.html" target="_blank">PyArrow documentation</a> for details
+ * SourceS3FormatJsonlUnexpectedFieldBehaviorEnum - How JSON fields outside of explicit_schema (if given) are treated. Check &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.json.ParseOptions.html" target="_blank"&gt;PyArrow documentation&lt;/a&gt; for details
  */
 public enum SourceS3FormatJsonlUnexpectedFieldBehaviorEnum {
     IGNORE("ignore"),

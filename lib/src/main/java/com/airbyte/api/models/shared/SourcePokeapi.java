@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePokeapi - The values required to configure the source.
  */
 public class SourcePokeapi {
-    @JsonProperty("airbyte-source-name")public SourcePokeapiPokeapiEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourcePokeapiPokeapiEnum airbyteSourceName;
     public SourcePokeapi withAirbyteSourceName(SourcePokeapiPokeapiEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourcePokeapi {
     /**
      * Pokemon requested from the API.
      */
-    @JsonProperty("pokemon_name")public String pokemonName;
+    @JsonProperty("pokemon_name")
+    public String pokemonName;
     public SourcePokeapi withPokemonName(String pokemonName) {
         this.pokemonName = pokemonName;
         return this;

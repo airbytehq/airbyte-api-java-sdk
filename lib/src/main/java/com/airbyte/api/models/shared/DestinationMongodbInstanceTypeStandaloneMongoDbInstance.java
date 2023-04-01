@@ -13,13 +13,15 @@ public class DestinationMongodbInstanceTypeStandaloneMongoDbInstance {
     /**
      * The Host of a Mongo database to be replicated.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationMongodbInstanceTypeStandaloneMongoDbInstance withHost(String host) {
         this.host = host;
         return this;
     }
     
-    @JsonProperty("instance")public DestinationMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance;
+    @JsonProperty("instance")
+    public DestinationMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance;
     public DestinationMongodbInstanceTypeStandaloneMongoDbInstance withInstance(DestinationMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance) {
         this.instance = instance;
         return this;
@@ -28,7 +30,8 @@ public class DestinationMongodbInstanceTypeStandaloneMongoDbInstance {
     /**
      * The Port of a Mongo database to be replicated.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public DestinationMongodbInstanceTypeStandaloneMongoDbInstance withPort(Long port) {
         this.port = port;
         return this;

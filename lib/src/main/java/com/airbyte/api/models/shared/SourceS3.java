@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceS3 - The values required to configure the source.
  */
 public class SourceS3 {
-    @JsonProperty("airbyte-source-name")public SourceS3S3Enum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceS3S3Enum airbyteSourceName;
     public SourceS3 withAirbyteSourceName(SourceS3S3Enum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceS3 {
     /**
      * The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
      */
-    @JsonProperty("dataset")public String dataset;
+    @JsonProperty("dataset")
+    public String dataset;
     public SourceS3 withDataset(String dataset) {
         this.dataset = dataset;
         return this;
@@ -31,16 +33,18 @@ public class SourceS3 {
      * The format of the files you'd like to replicate
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("format")public Object format;
+    @JsonProperty("format")
+    public Object format;
     public SourceS3 withFormat(Object format) {
         this.format = format;
         return this;
     }
     
     /**
-     * A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See <a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank">this page</a> to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern <strong>**</strong> to pick up all files.
+     * A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
      */
-    @JsonProperty("path_pattern")public String pathPattern;
+    @JsonProperty("path_pattern")
+    public String pathPattern;
     public SourceS3 withPathPattern(String pathPattern) {
         this.pathPattern = pathPattern;
         return this;
@@ -49,17 +53,19 @@ public class SourceS3 {
     /**
      * Use this to load files from S3 or S3-compatible services
      */
-    @JsonProperty("provider")public SourceS3S3AmazonWebServices provider;
+    @JsonProperty("provider")
+    public SourceS3S3AmazonWebServices provider;
     public SourceS3 withProvider(SourceS3S3AmazonWebServices provider) {
         this.provider = provider;
         return this;
     }
     
     /**
-     * Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of <strong>{ "column" : "type" }</strong>, where types are valid <a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank">JSON Schema datatypes</a>. Leave as {} to auto-infer the schema.
+     * Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("schema")public String schema;
+    @JsonProperty("schema")
+    public String schema;
     public SourceS3 withSchema(String schema) {
         this.schema = schema;
         return this;

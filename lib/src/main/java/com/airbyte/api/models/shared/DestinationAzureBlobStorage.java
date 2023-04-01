@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationAzureBlobStorage - The values required to configure the destination.
  */
 public class DestinationAzureBlobStorage {
-    @JsonProperty("airbyte-destination-name")public DestinationAzureBlobStorageAzureBlobStorageEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationAzureBlobStorageAzureBlobStorageEnum airbyteDestinationName;
     public DestinationAzureBlobStorage withAirbyteDestinationName(DestinationAzureBlobStorageAzureBlobStorageEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationAzureBlobStorage {
     /**
      * The Azure blob storage account key.
      */
-    @JsonProperty("azure_blob_storage_account_key")public String azureBlobStorageAccountKey;
+    @JsonProperty("azure_blob_storage_account_key")
+    public String azureBlobStorageAccountKey;
     public DestinationAzureBlobStorage withAzureBlobStorageAccountKey(String azureBlobStorageAccountKey) {
         this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
         return this;
@@ -30,7 +32,8 @@ public class DestinationAzureBlobStorage {
     /**
      * The account's name of the Azure Blob Storage.
      */
-    @JsonProperty("azure_blob_storage_account_name")public String azureBlobStorageAccountName;
+    @JsonProperty("azure_blob_storage_account_name")
+    public String azureBlobStorageAccountName;
     public DestinationAzureBlobStorage withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         return this;
@@ -40,7 +43,8 @@ public class DestinationAzureBlobStorage {
      * The name of the Azure blob storage container. If not exists - will be created automatically. May be empty, then will be created automatically airbytecontainer+timestamp
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("azure_blob_storage_container_name")public String azureBlobStorageContainerName;
+    @JsonProperty("azure_blob_storage_container_name")
+    public String azureBlobStorageContainerName;
     public DestinationAzureBlobStorage withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         return this;
@@ -50,7 +54,8 @@ public class DestinationAzureBlobStorage {
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("azure_blob_storage_endpoint_domain_name")public String azureBlobStorageEndpointDomainName;
+    @JsonProperty("azure_blob_storage_endpoint_domain_name")
+    public String azureBlobStorageEndpointDomainName;
     public DestinationAzureBlobStorage withAzureBlobStorageEndpointDomainName(String azureBlobStorageEndpointDomainName) {
         this.azureBlobStorageEndpointDomainName = azureBlobStorageEndpointDomainName;
         return this;
@@ -60,7 +65,8 @@ public class DestinationAzureBlobStorage {
      * The amount of megabytes to buffer for the output stream to Azure. This will impact memory footprint on workers, but may need adjustment for performance and appropriate block size in Azure.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("azure_blob_storage_output_buffer_size")public Long azureBlobStorageOutputBufferSize;
+    @JsonProperty("azure_blob_storage_output_buffer_size")
+    public Long azureBlobStorageOutputBufferSize;
     public DestinationAzureBlobStorage withAzureBlobStorageOutputBufferSize(Long azureBlobStorageOutputBufferSize) {
         this.azureBlobStorageOutputBufferSize = azureBlobStorageOutputBufferSize;
         return this;
@@ -70,7 +76,8 @@ public class DestinationAzureBlobStorage {
      * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("azure_blob_storage_spill_size")public Long azureBlobStorageSpillSize;
+    @JsonProperty("azure_blob_storage_spill_size")
+    public Long azureBlobStorageSpillSize;
     public DestinationAzureBlobStorage withAzureBlobStorageSpillSize(Long azureBlobStorageSpillSize) {
         this.azureBlobStorageSpillSize = azureBlobStorageSpillSize;
         return this;
@@ -79,7 +86,8 @@ public class DestinationAzureBlobStorage {
     /**
      * Output data format
      */
-    @JsonProperty("format")public Object format;
+    @JsonProperty("format")
+    public Object format;
     public DestinationAzureBlobStorage withFormat(Object format) {
         this.format = format;
         return this;

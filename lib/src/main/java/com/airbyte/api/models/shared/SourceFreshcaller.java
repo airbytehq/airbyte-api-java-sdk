@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceFreshcaller - The values required to configure the source.
  */
 public class SourceFreshcaller {
-    @JsonProperty("airbyte-source-name")public SourceFreshcallerFreshcallerEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceFreshcallerFreshcallerEnum airbyteSourceName;
     public SourceFreshcaller withAirbyteSourceName(SourceFreshcallerFreshcallerEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Freshcaller API Key. See the <a href="https://docs.airbyte.io/integrations/sources/freshcaller">docs</a> for more information on how to obtain this key.
+     * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceFreshcaller withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -30,7 +32,8 @@ public class SourceFreshcaller {
     /**
      * Used to construct Base URL for the Freshcaller APIs
      */
-    @JsonProperty("domain")public String domain;
+    @JsonProperty("domain")
+    public String domain;
     public SourceFreshcaller withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -40,7 +43,8 @@ public class SourceFreshcaller {
      * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("requests_per_minute")public Long requestsPerMinute;
+    @JsonProperty("requests_per_minute")
+    public Long requestsPerMinute;
     public SourceFreshcaller withRequestsPerMinute(Long requestsPerMinute) {
         this.requestsPerMinute = requestsPerMinute;
         return this;
@@ -49,7 +53,8 @@ public class SourceFreshcaller {
     /**
      * UTC date and time. Any data created after this date will be replicated.
      */
-    @JsonProperty("start_date")public Object startDate;
+    @JsonProperty("start_date")
+    public Object startDate;
     public SourceFreshcaller withStartDate(Object startDate) {
         this.startDate = startDate;
         return this;
@@ -59,7 +64,8 @@ public class SourceFreshcaller {
      * Lag in minutes for each sync, i.e., at time T, data for the time range [prev_sync_time, T-30] will be fetched
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("sync_lag_minutes")public Long syncLagMinutes;
+    @JsonProperty("sync_lag_minutes")
+    public Long syncLagMinutes;
     public SourceFreshcaller withSyncLagMinutes(Long syncLagMinutes) {
         this.syncLagMinutes = syncLagMinutes;
         return this;

@@ -13,7 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_type")public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
     public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -22,7 +23,8 @@ public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticat
     /**
      * The JSON key of the service account to use for authorization
      */
-    @JsonProperty("credentials_json")public String credentialsJson;
+    @JsonProperty("credentials_json")
+    public String credentialsJson;
     public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;

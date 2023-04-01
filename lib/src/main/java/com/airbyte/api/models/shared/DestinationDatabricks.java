@@ -13,15 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationDatabricks {
     /**
-     * You must agree to the Databricks JDBC Driver <a href="https://databricks.com/jdbc-odbc-driver-license">Terms and Conditions</a> to use this connector.
+     * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
      */
-    @JsonProperty("accept_terms")public Boolean acceptTerms;
+    @JsonProperty("accept_terms")
+    public Boolean acceptTerms;
     public DestinationDatabricks withAcceptTerms(Boolean acceptTerms) {
         this.acceptTerms = acceptTerms;
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")public DestinationDatabricksDatabricksEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationDatabricksDatabricksEnum airbyteDestinationName;
     public DestinationDatabricks withAirbyteDestinationName(DestinationDatabricksDatabricksEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -30,7 +32,8 @@ public class DestinationDatabricks {
     /**
      * Storage on which the delta lake is built.
      */
-    @JsonProperty("data_source")public Object dataSource;
+    @JsonProperty("data_source")
+    public Object dataSource;
     public DestinationDatabricks withDataSource(Object dataSource) {
         this.dataSource = dataSource;
         return this;
@@ -40,7 +43,8 @@ public class DestinationDatabricks {
      * The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is "public".
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("database_schema")public String databaseSchema;
+    @JsonProperty("database_schema")
+    public String databaseSchema;
     public DestinationDatabricks withDatabaseSchema(String databaseSchema) {
         this.databaseSchema = databaseSchema;
         return this;
@@ -49,7 +53,8 @@ public class DestinationDatabricks {
     /**
      * Databricks Cluster HTTP Path.
      */
-    @JsonProperty("databricks_http_path")public String databricksHttpPath;
+    @JsonProperty("databricks_http_path")
+    public String databricksHttpPath;
     public DestinationDatabricks withDatabricksHttpPath(String databricksHttpPath) {
         this.databricksHttpPath = databricksHttpPath;
         return this;
@@ -58,7 +63,8 @@ public class DestinationDatabricks {
     /**
      * Databricks Personal Access Token for making authenticated requests.
      */
-    @JsonProperty("databricks_personal_access_token")public String databricksPersonalAccessToken;
+    @JsonProperty("databricks_personal_access_token")
+    public String databricksPersonalAccessToken;
     public DestinationDatabricks withDatabricksPersonalAccessToken(String databricksPersonalAccessToken) {
         this.databricksPersonalAccessToken = databricksPersonalAccessToken;
         return this;
@@ -68,7 +74,8 @@ public class DestinationDatabricks {
      * Databricks Cluster Port.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("databricks_port")public String databricksPort;
+    @JsonProperty("databricks_port")
+    public String databricksPort;
     public DestinationDatabricks withDatabricksPort(String databricksPort) {
         this.databricksPort = databricksPort;
         return this;
@@ -77,7 +84,8 @@ public class DestinationDatabricks {
     /**
      * Databricks Cluster Server Hostname.
      */
-    @JsonProperty("databricks_server_hostname")public String databricksServerHostname;
+    @JsonProperty("databricks_server_hostname")
+    public String databricksServerHostname;
     public DestinationDatabricks withDatabricksServerHostname(String databricksServerHostname) {
         this.databricksServerHostname = databricksServerHostname;
         return this;
@@ -87,7 +95,8 @@ public class DestinationDatabricks {
      * Default to 'true'. Switch it to 'false' for debugging purpose.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("purge_staging_data")public Boolean purgeStagingData;
+    @JsonProperty("purge_staging_data")
+    public Boolean purgeStagingData;
     public DestinationDatabricks withPurgeStagingData(Boolean purgeStagingData) {
         this.purgeStagingData = purgeStagingData;
         return this;

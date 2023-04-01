@@ -12,13 +12,15 @@ public class SourceMondayCredentialsOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceMondayCredentialsOAuth20 withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("auth_type")public SourceMondayCredentialsOAuth20AuthTypeEnum authType;
+    @JsonProperty("auth_type")
+    public SourceMondayCredentialsOAuth20AuthTypeEnum authType;
     public SourceMondayCredentialsOAuth20 withAuthType(SourceMondayCredentialsOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -27,7 +29,8 @@ public class SourceMondayCredentialsOAuth20 {
     /**
      * The Client ID of your OAuth application.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceMondayCredentialsOAuth20 withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -36,7 +39,8 @@ public class SourceMondayCredentialsOAuth20 {
     /**
      * The Client Secret of your OAuth application.
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public SourceMondayCredentialsOAuth20 withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -46,7 +50,8 @@ public class SourceMondayCredentialsOAuth20 {
      * Slug/subdomain of the account, or the first part of the URL that comes before .monday.com
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("subdomain")public String subdomain;
+    @JsonProperty("subdomain")
+    public String subdomain;
     public SourceMondayCredentialsOAuth20 withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleWorkspaceAdminReports - The values required to configure the source.
  */
 public class SourceGoogleWorkspaceAdminReports {
-    @JsonProperty("airbyte-source-name")public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum airbyteSourceName;
     public SourceGoogleWorkspaceAdminReports withAirbyteSourceName(SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * The contents of the JSON service account key. See the <a href="https://developers.google.com/admin-sdk/reports/v1/guides/delegation">docs</a> for more information on how to generate this key.
+     * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/reports/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
-    @JsonProperty("credentials_json")public String credentialsJson;
+    @JsonProperty("credentials_json")
+    public String credentialsJson;
     public SourceGoogleWorkspaceAdminReports withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -30,7 +32,8 @@ public class SourceGoogleWorkspaceAdminReports {
     /**
      * The email of the user, which has permissions to access the Google Workspace Admin APIs.
      */
-    @JsonProperty("email")public String email;
+    @JsonProperty("email")
+    public String email;
     public SourceGoogleWorkspaceAdminReports withEmail(String email) {
         this.email = email;
         return this;
@@ -40,7 +43,8 @@ public class SourceGoogleWorkspaceAdminReports {
      * Sets the range of time shown in the report. Reports API allows from up to 180 days ago. 
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("lookback")public Long lookback;
+    @JsonProperty("lookback")
+    public Long lookback;
     public SourceGoogleWorkspaceAdminReports withLookback(Long lookback) {
         this.lookback = lookback;
         return this;

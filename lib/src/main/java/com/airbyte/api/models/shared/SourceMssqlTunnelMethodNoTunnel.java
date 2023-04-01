@@ -13,7 +13,8 @@ public class SourceMssqlTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public SourceMssqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public SourceMssqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public SourceMssqlTunnelMethodNoTunnel withTunnelMethod(SourceMssqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

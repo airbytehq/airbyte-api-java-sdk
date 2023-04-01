@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePosthog - The values required to configure the source.
  */
 public class SourcePosthog {
-    @JsonProperty("airbyte-source-name")public SourcePosthogPosthogEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourcePosthogPosthogEnum airbyteSourceName;
     public SourcePosthog withAirbyteSourceName(SourcePosthogPosthogEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * API Key. See the <a href="https://docs.airbyte.com/integrations/sources/posthog">docs</a> for information on how to generate this key.
+     * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourcePosthog withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,7 +33,8 @@ public class SourcePosthog {
      * Base PostHog url. Defaults to PostHog Cloud (https://app.posthog.com).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("base_url")public String baseUrl;
+    @JsonProperty("base_url")
+    public String baseUrl;
     public SourcePosthog withBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
@@ -40,7 +43,8 @@ public class SourcePosthog {
     /**
      * The date from which you'd like to replicate the data. Any data before this date will not be replicated.
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourcePosthog withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

@@ -15,7 +15,8 @@ public class DestinationPostgresSslModeVerifyFull {
     /**
      * CA certificate
      */
-    @JsonProperty("ca_certificate")public String caCertificate;
+    @JsonProperty("ca_certificate")
+    public String caCertificate;
     public DestinationPostgresSslModeVerifyFull withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -24,7 +25,8 @@ public class DestinationPostgresSslModeVerifyFull {
     /**
      * Client certificate
      */
-    @JsonProperty("client_certificate")public String clientCertificate;
+    @JsonProperty("client_certificate")
+    public String clientCertificate;
     public DestinationPostgresSslModeVerifyFull withClientCertificate(String clientCertificate) {
         this.clientCertificate = clientCertificate;
         return this;
@@ -33,7 +35,8 @@ public class DestinationPostgresSslModeVerifyFull {
     /**
      * Client key
      */
-    @JsonProperty("client_key")public String clientKey;
+    @JsonProperty("client_key")
+    public String clientKey;
     public DestinationPostgresSslModeVerifyFull withClientKey(String clientKey) {
         this.clientKey = clientKey;
         return this;
@@ -43,13 +46,15 @@ public class DestinationPostgresSslModeVerifyFull {
      * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_key_password")public String clientKeyPassword;
+    @JsonProperty("client_key_password")
+    public String clientKeyPassword;
     public DestinationPostgresSslModeVerifyFull withClientKeyPassword(String clientKeyPassword) {
         this.clientKeyPassword = clientKeyPassword;
         return this;
     }
     
-    @JsonProperty("mode")public DestinationPostgresSslModeVerifyFullModeEnum mode;
+    @JsonProperty("mode")
+    public DestinationPostgresSslModeVerifyFullModeEnum mode;
     public DestinationPostgresSslModeVerifyFull withMode(DestinationPostgresSslModeVerifyFullModeEnum mode) {
         this.mode = mode;
         return this;

@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMicrosoftTeams - The values required to configure the source.
  */
 public class SourceMicrosoftTeams {
-    @JsonProperty("airbyte-source-name")public SourceMicrosoftTeamsMicrosoftTeamsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceMicrosoftTeamsMicrosoftTeamsEnum airbyteSourceName;
     public SourceMicrosoftTeams withAirbyteSourceName(SourceMicrosoftTeamsMicrosoftTeamsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -22,7 +23,8 @@ public class SourceMicrosoftTeams {
      * Choose how to authenticate to Microsoft
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceMicrosoftTeams withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -31,7 +33,8 @@ public class SourceMicrosoftTeams {
     /**
      * Specifies the length of time over which the Team Device Report stream is aggregated. The supported values are: D7, D30, D90, and D180.
      */
-    @JsonProperty("period")public String period;
+    @JsonProperty("period")
+    public String period;
     public SourceMicrosoftTeams withPeriod(String period) {
         this.period = period;
         return this;

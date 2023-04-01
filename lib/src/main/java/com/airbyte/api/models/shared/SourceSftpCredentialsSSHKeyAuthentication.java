@@ -13,7 +13,8 @@ public class SourceSftpCredentialsSSHKeyAuthentication {
     /**
      * Connect through ssh key
      */
-    @JsonProperty("auth_method")public SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod;
+    @JsonProperty("auth_method")
+    public SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod;
     public SourceSftpCredentialsSSHKeyAuthentication withAuthMethod(SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;
@@ -22,7 +23,8 @@ public class SourceSftpCredentialsSSHKeyAuthentication {
     /**
      * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
      */
-    @JsonProperty("auth_ssh_key")public String authSshKey;
+    @JsonProperty("auth_ssh_key")
+    public String authSshKey;
     public SourceSftpCredentialsSSHKeyAuthentication withAuthSshKey(String authSshKey) {
         this.authSshKey = authSshKey;
         return this;

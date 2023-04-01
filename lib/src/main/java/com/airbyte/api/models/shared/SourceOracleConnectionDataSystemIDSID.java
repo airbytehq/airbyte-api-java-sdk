@@ -13,13 +13,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceOracleConnectionDataSystemIDSID {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("connection_type")public SourceOracleConnectionDataSystemIDSIDConnectionTypeEnum connectionType;
+    @JsonProperty("connection_type")
+    public SourceOracleConnectionDataSystemIDSIDConnectionTypeEnum connectionType;
     public SourceOracleConnectionDataSystemIDSID withConnectionType(SourceOracleConnectionDataSystemIDSIDConnectionTypeEnum connectionType) {
         this.connectionType = connectionType;
         return this;
     }
     
-    @JsonProperty("sid")public String sid;
+    @JsonProperty("sid")
+    public String sid;
     public SourceOracleConnectionDataSystemIDSID withSid(String sid) {
         this.sid = sid;
         return this;

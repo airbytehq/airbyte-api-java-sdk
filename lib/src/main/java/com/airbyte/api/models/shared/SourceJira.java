@@ -17,16 +17,18 @@ import java.time.OffsetDateTime;
  * SourceJira - The values required to configure the source.
  */
 public class SourceJira {
-    @JsonProperty("airbyte-source-name")public SourceJiraJiraEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceJiraJiraEnum airbyteSourceName;
     public SourceJira withAirbyteSourceName(SourceJiraJiraEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Jira API Token. See the <a href="https://docs.airbyte.com/integrations/sources/jira">docs</a> for more information on how to generate this key.
+     * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceJira withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -35,7 +37,8 @@ public class SourceJira {
     /**
      * The Domain for your Jira account, e.g. airbyteio.atlassian.net
      */
-    @JsonProperty("domain")public String domain;
+    @JsonProperty("domain")
+    public String domain;
     public SourceJira withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -44,7 +47,8 @@ public class SourceJira {
     /**
      * The user email for your Jira account.
      */
-    @JsonProperty("email")public String email;
+    @JsonProperty("email")
+    public String email;
     public SourceJira withEmail(String email) {
         this.email = email;
         return this;
@@ -54,7 +58,8 @@ public class SourceJira {
      * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("enable_experimental_streams")public Boolean enableExperimentalStreams;
+    @JsonProperty("enable_experimental_streams")
+    public Boolean enableExperimentalStreams;
     public SourceJira withEnableExperimentalStreams(Boolean enableExperimentalStreams) {
         this.enableExperimentalStreams = enableExperimentalStreams;
         return this;
@@ -64,7 +69,8 @@ public class SourceJira {
      * Expand the changelog when replicating issues.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("expand_issue_changelog")public Boolean expandIssueChangelog;
+    @JsonProperty("expand_issue_changelog")
+    public Boolean expandIssueChangelog;
     public SourceJira withExpandIssueChangelog(Boolean expandIssueChangelog) {
         this.expandIssueChangelog = expandIssueChangelog;
         return this;
@@ -74,7 +80,8 @@ public class SourceJira {
      * List of Jira project keys to replicate data for.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("projects")public String[] projects;
+    @JsonProperty("projects")
+    public String[] projects;
     public SourceJira withProjects(String[] projects) {
         this.projects = projects;
         return this;
@@ -84,19 +91,21 @@ public class SourceJira {
      * Render issue fields in HTML format in addition to Jira JSON-like format.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("render_fields")public Boolean renderFields;
+    @JsonProperty("render_fields")
+    public Boolean renderFields;
     public SourceJira withRenderFields(Boolean renderFields) {
         this.renderFields = renderFields;
         return this;
     }
     
     /**
-     * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. For more information, refer to the <a href="https://docs.airbyte.com/integrations/sources/jira/">documentation</a>.
+     * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceJira withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

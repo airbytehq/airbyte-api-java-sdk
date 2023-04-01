@@ -7,19 +7,21 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * DestinationS3FormatAvroApacheAvro - Format of the data output. See <a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema">here</a> for more details
+ * DestinationS3FormatAvroApacheAvro - Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
  */
 public class DestinationS3FormatAvroApacheAvro {
     /**
      * The compression algorithm used to compress data. Default to no compression.
      */
-    @JsonProperty("compression_codec")public Object compressionCodec;
+    @JsonProperty("compression_codec")
+    public Object compressionCodec;
     public DestinationS3FormatAvroApacheAvro withCompressionCodec(Object compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
     }
     
-    @JsonProperty("format_type")public DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType;
+    @JsonProperty("format_type")
+    public DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType;
     public DestinationS3FormatAvroApacheAvro withFormatType(DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

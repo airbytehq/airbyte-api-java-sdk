@@ -12,17 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationFirestore - The values required to configure the destination.
  */
 public class DestinationFirestore {
-    @JsonProperty("airbyte-destination-name")public DestinationFirestoreFirestoreEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationFirestoreFirestoreEnum airbyteDestinationName;
     public DestinationFirestore withAirbyteDestinationName(DestinationFirestoreFirestoreEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
     }
     
     /**
-     * The contents of the JSON service account key. Check out the <a href="https://docs.airbyte.io/integrations/destinations/firestore">docs</a> if you need help generating this key. Default credentials will be used if this field is left empty.
+     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials_json")public String credentialsJson;
+    @JsonProperty("credentials_json")
+    public String credentialsJson;
     public DestinationFirestore withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -31,7 +33,8 @@ public class DestinationFirestore {
     /**
      * The GCP project ID for the project containing the target BigQuery dataset.
      */
-    @JsonProperty("project_id")public String projectId;
+    @JsonProperty("project_id")
+    public String projectId;
     public DestinationFirestore withProjectId(String projectId) {
         this.projectId = projectId;
         return this;

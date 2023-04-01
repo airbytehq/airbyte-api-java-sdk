@@ -13,7 +13,8 @@ public class DestinationOracleTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public DestinationOracleTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public DestinationOracleTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public DestinationOracleTunnelMethodNoTunnel withTunnelMethod(DestinationOracleTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

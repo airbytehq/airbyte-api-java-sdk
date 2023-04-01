@@ -13,7 +13,8 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
      */
-    @JsonProperty("tunnel_host")public String tunnelHost;
+    @JsonProperty("tunnel_host")
+    public String tunnelHost;
     public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -22,7 +23,8 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
     /**
      * Connect through a jump server tunnel host using username and password authentication
      */
-    @JsonProperty("tunnel_method")public DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
     public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -31,7 +33,8 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
-    @JsonProperty("tunnel_port")public Long tunnelPort;
+    @JsonProperty("tunnel_port")
+    public Long tunnelPort;
     public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -40,7 +43,8 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
     /**
      * OS-level username for logging into the jump server host
      */
-    @JsonProperty("tunnel_user")public String tunnelUser;
+    @JsonProperty("tunnel_user")
+    public String tunnelUser;
     public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;
@@ -49,7 +53,8 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
     /**
      * OS-level password for logging into the jump server host
      */
-    @JsonProperty("tunnel_user_password")public String tunnelUserPassword;
+    @JsonProperty("tunnel_user_password")
+    public String tunnelUserPassword;
     public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelUserPassword(String tunnelUserPassword) {
         this.tunnelUserPassword = tunnelUserPassword;
         return this;

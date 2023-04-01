@@ -13,7 +13,8 @@ public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
     /**
      * The Client ID of your Google Sheets developer application.
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -22,7 +23,8 @@ public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
     /**
      * The Client Secret of your Google Sheets developer application.
      */
-    @JsonProperty("client_secret")public String clientSecret;
+    @JsonProperty("client_secret")
+    public String clientSecret;
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -31,7 +33,8 @@ public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
     /**
      * The token for obtaining new access token.
      */
-    @JsonProperty("refresh_token")public String refreshToken;
+    @JsonProperty("refresh_token")
+    public String refreshToken;
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

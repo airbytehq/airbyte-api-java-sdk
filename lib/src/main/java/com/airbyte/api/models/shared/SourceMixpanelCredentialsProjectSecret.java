@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceMixpanelCredentialsProjectSecret {
     /**
-     * Mixpanel project secret. See the <a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret">docs</a> for more information on how to obtain this.
+     * Mixpanel project secret. See the &lt;a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
-    @JsonProperty("api_secret")public String apiSecret;
+    @JsonProperty("api_secret")
+    public String apiSecret;
     public SourceMixpanelCredentialsProjectSecret withApiSecret(String apiSecret) {
         this.apiSecret = apiSecret;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("option_title")public SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle;
+    @JsonProperty("option_title")
+    public SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle;
     public SourceMixpanelCredentialsProjectSecret withOptionTitle(SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;

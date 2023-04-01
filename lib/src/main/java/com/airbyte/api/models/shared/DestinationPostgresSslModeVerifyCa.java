@@ -15,7 +15,8 @@ public class DestinationPostgresSslModeVerifyCa {
     /**
      * CA certificate
      */
-    @JsonProperty("ca_certificate")public String caCertificate;
+    @JsonProperty("ca_certificate")
+    public String caCertificate;
     public DestinationPostgresSslModeVerifyCa withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -25,13 +26,15 @@ public class DestinationPostgresSslModeVerifyCa {
      * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_key_password")public String clientKeyPassword;
+    @JsonProperty("client_key_password")
+    public String clientKeyPassword;
     public DestinationPostgresSslModeVerifyCa withClientKeyPassword(String clientKeyPassword) {
         this.clientKeyPassword = clientKeyPassword;
         return this;
     }
     
-    @JsonProperty("mode")public DestinationPostgresSslModeVerifyCaModeEnum mode;
+    @JsonProperty("mode")
+    public DestinationPostgresSslModeVerifyCaModeEnum mode;
     public DestinationPostgresSslModeVerifyCa withMode(DestinationPostgresSslModeVerifyCaModeEnum mode) {
         this.mode = mode;
         return this;

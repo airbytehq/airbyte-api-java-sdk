@@ -9,14 +9,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * DestinationS3FormatJSONLinesNewlineDelimitedJSON - Format of the data output. See <a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema">here</a> for more details
+ * DestinationS3FormatJSONLinesNewlineDelimitedJSON - Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
  */
 public class DestinationS3FormatJSONLinesNewlineDelimitedJSON {
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("compression")public Object compression;
+    @JsonProperty("compression")
+    public Object compression;
     public DestinationS3FormatJSONLinesNewlineDelimitedJSON withCompression(Object compression) {
         this.compression = compression;
         return this;
@@ -26,13 +27,15 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSON {
      * Whether the input json data should be normalized (flattened) in the output JSON Lines. Please refer to docs for details.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("flattening")public DestinationS3FormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening;
+    @JsonProperty("flattening")
+    public DestinationS3FormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening;
     public DestinationS3FormatJSONLinesNewlineDelimitedJSON withFlattening(DestinationS3FormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening) {
         this.flattening = flattening;
         return this;
     }
     
-    @JsonProperty("format_type")public DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+    @JsonProperty("format_type")
+    public DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
     public DestinationS3FormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

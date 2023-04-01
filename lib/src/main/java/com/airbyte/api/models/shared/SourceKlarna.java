@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceKlarna - The values required to configure the source.
  */
 public class SourceKlarna {
-    @JsonProperty("airbyte-source-name")public SourceKlarnaKlarnaEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceKlarnaKlarnaEnum airbyteSourceName;
     public SourceKlarna withAirbyteSourceName(SourceKlarnaKlarnaEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourceKlarna {
     /**
      * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceKlarna withPassword(String password) {
         this.password = password;
         return this;
@@ -28,7 +30,8 @@ public class SourceKlarna {
     /**
      * Propertie defining if connector is used against playground or production environment
      */
-    @JsonProperty("playground")public Boolean playground;
+    @JsonProperty("playground")
+    public Boolean playground;
     public SourceKlarna withPlayground(Boolean playground) {
         this.playground = playground;
         return this;
@@ -37,7 +40,8 @@ public class SourceKlarna {
     /**
      * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
      */
-    @JsonProperty("region")public SourceKlarnaRegionEnum region;
+    @JsonProperty("region")
+    public SourceKlarnaRegionEnum region;
     public SourceKlarna withRegion(SourceKlarnaRegionEnum region) {
         this.region = region;
         return this;
@@ -46,7 +50,8 @@ public class SourceKlarna {
     /**
      * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string (https://developers.klarna.com/api/#authentication)
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceKlarna withUsername(String username) {
         this.username = username;
         return this;

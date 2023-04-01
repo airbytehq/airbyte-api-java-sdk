@@ -13,13 +13,15 @@ public class SourceMongodbInstanceTypeMongoDBAtlas {
     /**
      * The URL of a cluster to connect to.
      */
-    @JsonProperty("cluster_url")public String clusterUrl;
+    @JsonProperty("cluster_url")
+    public String clusterUrl;
     public SourceMongodbInstanceTypeMongoDBAtlas withClusterUrl(String clusterUrl) {
         this.clusterUrl = clusterUrl;
         return this;
     }
     
-    @JsonProperty("instance")public SourceMongodbInstanceTypeMongoDBAtlasInstanceEnum instance;
+    @JsonProperty("instance")
+    public SourceMongodbInstanceTypeMongoDBAtlasInstanceEnum instance;
     public SourceMongodbInstanceTypeMongoDBAtlas withInstance(SourceMongodbInstanceTypeMongoDBAtlasInstanceEnum instance) {
         this.instance = instance;
         return this;

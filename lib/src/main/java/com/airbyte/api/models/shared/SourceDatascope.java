@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceDatascope - The values required to configure the source.
  */
 public class SourceDatascope {
-    @JsonProperty("airbyte-source-name")public SourceDatascopeDatascopeEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceDatascopeDatascopeEnum airbyteSourceName;
     public SourceDatascope withAirbyteSourceName(SourceDatascopeDatascopeEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourceDatascope {
     /**
      * API Key
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceDatascope withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,7 +30,8 @@ public class SourceDatascope {
     /**
      * Start date for the data to be replicated
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceDatascope withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

@@ -16,13 +16,15 @@ public class SourceFirebolt {
      * Firebolt account to login.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("account")public String account;
+    @JsonProperty("account")
+    public String account;
     public SourceFirebolt withAccount(String account) {
         this.account = account;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceFireboltFireboltEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceFireboltFireboltEnum airbyteSourceName;
     public SourceFirebolt withAirbyteSourceName(SourceFireboltFireboltEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -31,7 +33,8 @@ public class SourceFirebolt {
     /**
      * The database to connect to.
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public SourceFirebolt withDatabase(String database) {
         this.database = database;
         return this;
@@ -41,7 +44,8 @@ public class SourceFirebolt {
      * Engine name or url to connect to.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("engine")public String engine;
+    @JsonProperty("engine")
+    public String engine;
     public SourceFirebolt withEngine(String engine) {
         this.engine = engine;
         return this;
@@ -51,7 +55,8 @@ public class SourceFirebolt {
      * The host name of your Firebolt database.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceFirebolt withHost(String host) {
         this.host = host;
         return this;
@@ -60,7 +65,8 @@ public class SourceFirebolt {
     /**
      * Firebolt password.
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public SourceFirebolt withPassword(String password) {
         this.password = password;
         return this;
@@ -69,7 +75,8 @@ public class SourceFirebolt {
     /**
      * Firebolt email address you use to login.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public SourceFirebolt withUsername(String username) {
         this.username = username;
         return this;

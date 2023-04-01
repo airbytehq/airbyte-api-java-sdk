@@ -16,7 +16,8 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("sas_token")public String sasToken;
+    @JsonProperty("sas_token")
+    public String sasToken;
     public SourceFileSecureProviderAzBlobAzureBlobStorage withSasToken(String sasToken) {
         this.sasToken = sasToken;
         return this;
@@ -26,22 +27,25 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a storage account shared key (aka account key or access key). If accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("shared_key")public String sharedKey;
+    @JsonProperty("shared_key")
+    public String sharedKey;
     public SourceFileSecureProviderAzBlobAzureBlobStorage withSharedKey(String sharedKey) {
         this.sharedKey = sharedKey;
         return this;
     }
     
-    @JsonProperty("storage")public SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage;
+    @JsonProperty("storage")
+    public SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage;
     public SourceFileSecureProviderAzBlobAzureBlobStorage withStorage(SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage) {
         this.storage = storage;
         return this;
     }
     
     /**
-     * The globally unique name of the storage account that the desired blob sits within. See <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank">here</a> for more details.
+     * The globally unique name of the storage account that the desired blob sits within. See &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank"&gt;here&lt;/a&gt; for more details.
      */
-    @JsonProperty("storage_account")public String storageAccount;
+    @JsonProperty("storage_account")
+    public String storageAccount;
     public SourceFileSecureProviderAzBlobAzureBlobStorage withStorageAccount(String storageAccount) {
         this.storageAccount = storageAccount;
         return this;

@@ -10,16 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSendinblue - The values required to configure the source.
  */
 public class SourceSendinblue {
-    @JsonProperty("airbyte-source-name")public SourceSendinblueSendinblueEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSendinblueSendinblueEnum airbyteSourceName;
     public SourceSendinblue withAirbyteSourceName(SourceSendinblueSendinblueEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Your API Key. See <a href="https://developers.sendinblue.com/docs/getting-started">here</a>.
+     * Your API Key. See &lt;a href="https://developers.sendinblue.com/docs/getting-started"&gt;here&lt;/a&gt;.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceSendinblue withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;

@@ -13,13 +13,15 @@ public class SourceMongodbInstanceTypeStandaloneMongoDbInstance {
     /**
      * The host name of the Mongo database.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public SourceMongodbInstanceTypeStandaloneMongoDbInstance withHost(String host) {
         this.host = host;
         return this;
     }
     
-    @JsonProperty("instance")public SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance;
+    @JsonProperty("instance")
+    public SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance;
     public SourceMongodbInstanceTypeStandaloneMongoDbInstance withInstance(SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance) {
         this.instance = instance;
         return this;
@@ -28,7 +30,8 @@ public class SourceMongodbInstanceTypeStandaloneMongoDbInstance {
     /**
      * The port of the Mongo database.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public SourceMongodbInstanceTypeStandaloneMongoDbInstance withPort(Long port) {
         this.port = port;
         return this;

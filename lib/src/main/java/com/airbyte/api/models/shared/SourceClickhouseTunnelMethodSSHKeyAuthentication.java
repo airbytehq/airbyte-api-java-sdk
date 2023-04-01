@@ -13,7 +13,8 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
     /**
      * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
      */
-    @JsonProperty("ssh_key")public String sshKey;
+    @JsonProperty("ssh_key")
+    public String sshKey;
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withSshKey(String sshKey) {
         this.sshKey = sshKey;
         return this;
@@ -22,7 +23,8 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
      */
-    @JsonProperty("tunnel_host")public String tunnelHost;
+    @JsonProperty("tunnel_host")
+    public String tunnelHost;
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -31,7 +33,8 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
     /**
      * Connect through a jump server tunnel host using username and ssh key
      */
-    @JsonProperty("tunnel_method")public SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelMethod(SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -40,7 +43,8 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
-    @JsonProperty("tunnel_port")public Long tunnelPort;
+    @JsonProperty("tunnel_port")
+    public Long tunnelPort;
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -49,7 +53,8 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
     /**
      * OS-level username for logging into the jump server host.
      */
-    @JsonProperty("tunnel_user")public String tunnelUser;
+    @JsonProperty("tunnel_user")
+    public String tunnelUser;
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;

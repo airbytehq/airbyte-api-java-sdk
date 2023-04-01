@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceSlackCredentialsAPIToken {
     /**
-     * A Slack bot token. See the <a href="https://docs.airbyte.com/integrations/sources/slack">docs</a> for instructions on how to generate it.
+     * A Slack bot token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceSlackCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
     }
     
-    @JsonProperty("option_title")public SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle;
+    @JsonProperty("option_title")
+    public SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle;
     public SourceSlackCredentialsAPIToken withOptionTitle(SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;

@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * JobResponse - Provides details of a single job.
  */
 public class JobResponse {
-    @JsonProperty("jobId")public Long jobId;
+    @JsonProperty("jobId")
+    public Long jobId;
     public JobResponse withJobId(Long jobId) {
         this.jobId = jobId;
         return this;
@@ -19,13 +20,15 @@ public class JobResponse {
     /**
      * enum that describes the different types of jobs that the platform runs.
      */
-    @JsonProperty("jobType")public JobTypeEnum jobType;
+    @JsonProperty("jobType")
+    public JobTypeEnum jobType;
     public JobResponse withJobType(JobTypeEnum jobType) {
         this.jobType = jobType;
         return this;
     }
     
-    @JsonProperty("status")public JobStatusEnum status;
+    @JsonProperty("status")
+    public JobStatusEnum status;
     public JobResponse withStatus(JobStatusEnum status) {
         this.status = status;
         return this;

@@ -16,15 +16,17 @@ import java.time.OffsetDateTime;
  */
 public class SourceRecharge {
     /**
-     * The value of the Access Token generated. See the <a href="https://docs.airbyte.com/integrations/sources/recharge">docs</a> for more information.
+     * The value of the Access Token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/recharge"&gt;docs&lt;/a&gt; for more information.
      */
-    @JsonProperty("access_token")public String accessToken;
+    @JsonProperty("access_token")
+    public String accessToken;
     public SourceRecharge withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceRechargeRechargeEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceRechargeRechargeEnum airbyteSourceName;
     public SourceRecharge withAirbyteSourceName(SourceRechargeRechargeEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -35,7 +37,8 @@ public class SourceRecharge {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceRecharge withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

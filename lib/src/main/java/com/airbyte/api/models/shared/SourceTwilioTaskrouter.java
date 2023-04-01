@@ -13,13 +13,15 @@ public class SourceTwilioTaskrouter {
     /**
      * Twilio Account ID
      */
-    @JsonProperty("account_sid")public String accountSid;
+    @JsonProperty("account_sid")
+    public String accountSid;
     public SourceTwilioTaskrouter withAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceTwilioTaskrouterTwilioTaskrouterEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceTwilioTaskrouterTwilioTaskrouterEnum airbyteSourceName;
     public SourceTwilioTaskrouter withAirbyteSourceName(SourceTwilioTaskrouterTwilioTaskrouterEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -28,7 +30,8 @@ public class SourceTwilioTaskrouter {
     /**
      * Twilio Auth Token
      */
-    @JsonProperty("auth_token")public String authToken;
+    @JsonProperty("auth_token")
+    public String authToken;
     public SourceTwilioTaskrouter withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;

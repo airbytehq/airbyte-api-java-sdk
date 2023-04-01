@@ -13,7 +13,8 @@ public class DestinationClickhouseTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
-    @JsonProperty("tunnel_method")public DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
     public DestinationClickhouseTunnelMethodNoTunnel withTunnelMethod(DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

@@ -18,7 +18,7 @@ public class Application {
 
             com.airbyte.api.models.shared.ConnectionCreate req = new ConnectionCreate() {{
                 destinationId = "89bd9d8d-69a6-474e-8f46-7cc8796ed151";
-                name = "est";
+                name = "deserunt";
                 sourceId = "05dfc2dd-f7cc-478c-a1ba-928fc816742c";
             }}            
 

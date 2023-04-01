@@ -12,16 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceZenloop - The values required to configure the source.
  */
 public class SourceZenloop {
-    @JsonProperty("airbyte-source-name")public SourceZenloopZenloopEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceZenloopZenloopEnum airbyteSourceName;
     public SourceZenloop withAirbyteSourceName(SourceZenloopZenloopEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Zenloop API Token. You can get the API token in settings page <a href="https://app.zenloop.com/settings/api">here</a> 
+     * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt; 
      */
-    @JsonProperty("api_token")public String apiToken;
+    @JsonProperty("api_token")
+    public String apiToken;
     public SourceZenloop withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -31,7 +33,8 @@ public class SourceZenloop {
      * Zenloop date_from. Format: 2021-10-24T03:30:30Z or 2021-10-24. Leave empty if only data from current data should be synced
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("date_from")public String dateFrom;
+    @JsonProperty("date_from")
+    public String dateFrom;
     public SourceZenloop withDateFrom(String dateFrom) {
         this.dateFrom = dateFrom;
         return this;
@@ -41,17 +44,19 @@ public class SourceZenloop {
      * Zenloop Survey Group ID. Can be found by pulling All Survey Groups via SurveyGroups stream. Leave empty to pull answers from all survey groups
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("survey_group_id")public String surveyGroupId;
+    @JsonProperty("survey_group_id")
+    public String surveyGroupId;
     public SourceZenloop withSurveyGroupId(String surveyGroupId) {
         this.surveyGroupId = surveyGroupId;
         return this;
     }
     
     /**
-     * Zenloop Survey ID. Can be found <a href="https://app.zenloop.com/settings/api">here</a>. Leave empty to pull answers from all surveys
+     * Zenloop Survey ID. Can be found &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;. Leave empty to pull answers from all surveys
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("survey_id")public String surveyId;
+    @JsonProperty("survey_id")
+    public String surveyId;
     public SourceZenloop withSurveyId(String surveyId) {
         this.surveyId = surveyId;
         return this;

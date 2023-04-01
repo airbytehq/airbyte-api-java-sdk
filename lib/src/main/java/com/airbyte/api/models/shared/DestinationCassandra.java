@@ -15,13 +15,15 @@ public class DestinationCassandra {
     /**
      * Address to connect to.
      */
-    @JsonProperty("address")public String address;
+    @JsonProperty("address")
+    public String address;
     public DestinationCassandra withAddress(String address) {
         this.address = address;
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")public DestinationCassandraCassandraEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationCassandraCassandraEnum airbyteDestinationName;
     public DestinationCassandra withAirbyteDestinationName(DestinationCassandraCassandraEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -31,7 +33,8 @@ public class DestinationCassandra {
      * Datacenter of the cassandra cluster.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("datacenter")public String datacenter;
+    @JsonProperty("datacenter")
+    public String datacenter;
     public DestinationCassandra withDatacenter(String datacenter) {
         this.datacenter = datacenter;
         return this;
@@ -40,7 +43,8 @@ public class DestinationCassandra {
     /**
      * Default Cassandra keyspace to create data in.
      */
-    @JsonProperty("keyspace")public String keyspace;
+    @JsonProperty("keyspace")
+    public String keyspace;
     public DestinationCassandra withKeyspace(String keyspace) {
         this.keyspace = keyspace;
         return this;
@@ -49,7 +53,8 @@ public class DestinationCassandra {
     /**
      * Password associated with Cassandra.
      */
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public DestinationCassandra withPassword(String password) {
         this.password = password;
         return this;
@@ -58,7 +63,8 @@ public class DestinationCassandra {
     /**
      * Port of Cassandra.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public DestinationCassandra withPort(Long port) {
         this.port = port;
         return this;
@@ -68,7 +74,8 @@ public class DestinationCassandra {
      * Indicates to how many nodes the data should be replicated to.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("replication")public Long replication;
+    @JsonProperty("replication")
+    public Long replication;
     public DestinationCassandra withReplication(Long replication) {
         this.replication = replication;
         return this;
@@ -77,7 +84,8 @@ public class DestinationCassandra {
     /**
      * Username to use to access Cassandra.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public DestinationCassandra withUsername(String username) {
         this.username = username;
         return this;

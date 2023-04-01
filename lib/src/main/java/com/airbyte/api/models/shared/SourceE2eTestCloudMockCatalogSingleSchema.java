@@ -16,7 +16,8 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
      * Duplicate the stream for easy load testing. Each stream name will have a number suffix. For example, if the stream name is "ds", the duplicated streams will be "ds_0", "ds_1", etc.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("stream_duplication")public Long streamDuplication;
+    @JsonProperty("stream_duplication")
+    public Long streamDuplication;
     public SourceE2eTestCloudMockCatalogSingleSchema withStreamDuplication(Long streamDuplication) {
         this.streamDuplication = streamDuplication;
         return this;
@@ -25,22 +26,25 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
     /**
      * Name of the data stream.
      */
-    @JsonProperty("stream_name")public String streamName;
+    @JsonProperty("stream_name")
+    public String streamName;
     public SourceE2eTestCloudMockCatalogSingleSchema withStreamName(String streamName) {
         this.streamName = streamName;
         return this;
     }
     
     /**
-     * A Json schema for the stream. The schema should be compatible with <a href="https://json-schema.org/draft-07/json-schema-release-notes.html">draft-07</a>. See <a href="https://cswr.github.io/JsonSchema/spec/introduction/">this doc</a> for examples.
+     * A Json schema for the stream. The schema should be compatible with &lt;a href="https://json-schema.org/draft-07/json-schema-release-notes.html"&gt;draft-07&lt;/a&gt;. See &lt;a href="https://cswr.github.io/JsonSchema/spec/introduction/"&gt;this doc&lt;/a&gt; for examples.
      */
-    @JsonProperty("stream_schema")public String streamSchema;
+    @JsonProperty("stream_schema")
+    public String streamSchema;
     public SourceE2eTestCloudMockCatalogSingleSchema withStreamSchema(String streamSchema) {
         this.streamSchema = streamSchema;
         return this;
     }
     
-    @JsonProperty("type")public SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type;
+    @JsonProperty("type")
+    public SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type;
     public SourceE2eTestCloudMockCatalogSingleSchema withType(SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type) {
         this.type = type;
         return this;

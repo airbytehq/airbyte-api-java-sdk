@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceGithubCredentialsPersonalAccessToken {
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("option_title")public SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle;
+    @JsonProperty("option_title")
+    public SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle;
     public SourceGithubCredentialsPersonalAccessToken withOptionTitle(SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }
     
     /**
-     * Log into GitHub and then generate a <a href="https://github.com/settings/tokens">personal access token</a>. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
+     * Log into GitHub and then generate a &lt;a href="https://github.com/settings/tokens"&gt;personal access token&lt;/a&gt;. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
      */
-    @JsonProperty("personal_access_token")public String personalAccessToken;
+    @JsonProperty("personal_access_token")
+    public String personalAccessToken;
     public SourceGithubCredentialsPersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         this.personalAccessToken = personalAccessToken;
         return this;

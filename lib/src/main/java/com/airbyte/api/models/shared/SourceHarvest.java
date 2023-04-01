@@ -15,13 +15,15 @@ public class SourceHarvest {
     /**
      * Harvest account ID. Required for all Harvest requests in pair with Personal Access Token
      */
-    @JsonProperty("account_id")public String accountId;
+    @JsonProperty("account_id")
+    public String accountId;
     public SourceHarvest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourceHarvestHarvestEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceHarvestHarvestEnum airbyteSourceName;
     public SourceHarvest withAirbyteSourceName(SourceHarvestHarvestEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -31,7 +33,8 @@ public class SourceHarvest {
      * Choose how to authenticate to Harvest.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceHarvest withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -41,7 +44,8 @@ public class SourceHarvest {
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("replication_end_date")public String replicationEndDate;
+    @JsonProperty("replication_end_date")
+    public String replicationEndDate;
     public SourceHarvest withReplicationEndDate(String replicationEndDate) {
         this.replicationEndDate = replicationEndDate;
         return this;
@@ -50,7 +54,8 @@ public class SourceHarvest {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonProperty("replication_start_date")public String replicationStartDate;
+    @JsonProperty("replication_start_date")
+    public String replicationStartDate;
     public SourceHarvest withReplicationStartDate(String replicationStartDate) {
         this.replicationStartDate = replicationStartDate;
         return this;

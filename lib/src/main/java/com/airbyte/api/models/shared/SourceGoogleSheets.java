@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleSheets - The values required to configure the source.
  */
 public class SourceGoogleSheets {
-    @JsonProperty("airbyte-source-name")public SourceGoogleSheetsGoogleSheetsEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceGoogleSheetsGoogleSheetsEnum airbyteSourceName;
     public SourceGoogleSheets withAirbyteSourceName(SourceGoogleSheetsGoogleSheetsEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -21,7 +22,8 @@ public class SourceGoogleSheets {
     /**
      * Credentials for connecting to the Google Sheets API
      */
-    @JsonProperty("credentials")public Object credentials;
+    @JsonProperty("credentials")
+    public Object credentials;
     public SourceGoogleSheets withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -31,7 +33,8 @@ public class SourceGoogleSheets {
      * Number of rows fetched when making a Google Sheet API call. Defaults to 200.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("row_batch_size")public Long rowBatchSize;
+    @JsonProperty("row_batch_size")
+    public Long rowBatchSize;
     public SourceGoogleSheets withRowBatchSize(Long rowBatchSize) {
         this.rowBatchSize = rowBatchSize;
         return this;
@@ -40,7 +43,8 @@ public class SourceGoogleSheets {
     /**
      * Enter the link to the Google spreadsheet you want to sync
      */
-    @JsonProperty("spreadsheet_id")public String spreadsheetId;
+    @JsonProperty("spreadsheet_id")
+    public String spreadsheetId;
     public SourceGoogleSheets withSpreadsheetId(String spreadsheetId) {
         this.spreadsheetId = spreadsheetId;
         return this;

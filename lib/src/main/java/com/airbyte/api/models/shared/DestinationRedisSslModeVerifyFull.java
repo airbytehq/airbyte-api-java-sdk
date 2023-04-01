@@ -15,7 +15,8 @@ public class DestinationRedisSslModeVerifyFull {
     /**
      * CA certificate
      */
-    @JsonProperty("ca_certificate")public String caCertificate;
+    @JsonProperty("ca_certificate")
+    public String caCertificate;
     public DestinationRedisSslModeVerifyFull withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -24,7 +25,8 @@ public class DestinationRedisSslModeVerifyFull {
     /**
      * Client certificate
      */
-    @JsonProperty("client_certificate")public String clientCertificate;
+    @JsonProperty("client_certificate")
+    public String clientCertificate;
     public DestinationRedisSslModeVerifyFull withClientCertificate(String clientCertificate) {
         this.clientCertificate = clientCertificate;
         return this;
@@ -33,7 +35,8 @@ public class DestinationRedisSslModeVerifyFull {
     /**
      * Client key
      */
-    @JsonProperty("client_key")public String clientKey;
+    @JsonProperty("client_key")
+    public String clientKey;
     public DestinationRedisSslModeVerifyFull withClientKey(String clientKey) {
         this.clientKey = clientKey;
         return this;
@@ -43,13 +46,15 @@ public class DestinationRedisSslModeVerifyFull {
      * Password for keystorage. If you do not add it - the password will be generated automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_key_password")public String clientKeyPassword;
+    @JsonProperty("client_key_password")
+    public String clientKeyPassword;
     public DestinationRedisSslModeVerifyFull withClientKeyPassword(String clientKeyPassword) {
         this.clientKeyPassword = clientKeyPassword;
         return this;
     }
     
-    @JsonProperty("mode")public DestinationRedisSslModeVerifyFullModeEnum mode;
+    @JsonProperty("mode")
+    public DestinationRedisSslModeVerifyFullModeEnum mode;
     public DestinationRedisSslModeVerifyFull withMode(DestinationRedisSslModeVerifyFullModeEnum mode) {
         this.mode = mode;
         return this;

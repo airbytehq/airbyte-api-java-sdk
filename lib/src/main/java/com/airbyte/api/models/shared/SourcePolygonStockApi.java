@@ -18,13 +18,15 @@ public class SourcePolygonStockApi {
      * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("adjusted")public String adjusted;
+    @JsonProperty("adjusted")
+    public String adjusted;
     public SourcePolygonStockApi withAdjusted(String adjusted) {
         this.adjusted = adjusted;
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")public SourcePolygonStockApiPolygonStockApiEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourcePolygonStockApiPolygonStockApiEnum airbyteSourceName;
     public SourcePolygonStockApi withAirbyteSourceName(SourcePolygonStockApiPolygonStockApiEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -33,7 +35,8 @@ public class SourcePolygonStockApi {
     /**
      * Your API ACCESS Key
      */
-    @JsonProperty("apiKey")public String apiKey;
+    @JsonProperty("apiKey")
+    public String apiKey;
     public SourcePolygonStockApi withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -43,7 +46,8 @@ public class SourcePolygonStockApi {
      * The target date for the aggregate window.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("end_date")public LocalDate endDate;
+    @JsonProperty("end_date")
+    public LocalDate endDate;
     public SourcePolygonStockApi withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -53,7 +57,8 @@ public class SourcePolygonStockApi {
      * The target date for the aggregate window.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("limit")public Long limit;
+    @JsonProperty("limit")
+    public Long limit;
     public SourcePolygonStockApi withLimit(Long limit) {
         this.limit = limit;
         return this;
@@ -62,7 +67,8 @@ public class SourcePolygonStockApi {
     /**
      * The size of the timespan multiplier.
      */
-    @JsonProperty("multiplier")public Long multiplier;
+    @JsonProperty("multiplier")
+    public Long multiplier;
     public SourcePolygonStockApi withMultiplier(Long multiplier) {
         this.multiplier = multiplier;
         return this;
@@ -72,7 +78,8 @@ public class SourcePolygonStockApi {
      * Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("sort")public String sort;
+    @JsonProperty("sort")
+    public String sort;
     public SourcePolygonStockApi withSort(String sort) {
         this.sort = sort;
         return this;
@@ -82,7 +89,8 @@ public class SourcePolygonStockApi {
      * The beginning date for the aggregate window.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonProperty("start_date")public LocalDate startDate;
+    @JsonProperty("start_date")
+    public LocalDate startDate;
     public SourcePolygonStockApi withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
@@ -91,7 +99,8 @@ public class SourcePolygonStockApi {
     /**
      * The exchange symbol that this item is traded under.
      */
-    @JsonProperty("stocksTicker")public String stocksTicker;
+    @JsonProperty("stocksTicker")
+    public String stocksTicker;
     public SourcePolygonStockApi withStocksTicker(String stocksTicker) {
         this.stocksTicker = stocksTicker;
         return this;
@@ -100,7 +109,8 @@ public class SourcePolygonStockApi {
     /**
      * The size of the time window.
      */
-    @JsonProperty("timespan")public String timespan;
+    @JsonProperty("timespan")
+    public String timespan;
     public SourcePolygonStockApi withTimespan(String timespan) {
         this.timespan = timespan;
         return this;

@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceChartmogulIntervalEnum - Some APIs such as <a href="https://dev.chartmogul.com/reference/endpoint-overview-metrics-api">Metrics</a> require intervals to cluster data.
+ * SourceChartmogulIntervalEnum - Some APIs such as &lt;a href="https://dev.chartmogul.com/reference/endpoint-overview-metrics-api"&gt;Metrics&lt;/a&gt; require intervals to cluster data.
  */
 public enum SourceChartmogulIntervalEnum {
     DAY("day"),

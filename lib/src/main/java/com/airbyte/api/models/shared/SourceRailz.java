@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRailz - The values required to configure the source.
  */
 public class SourceRailz {
-    @JsonProperty("airbyte-source-name")public SourceRailzRailzEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceRailzRailzEnum airbyteSourceName;
     public SourceRailz withAirbyteSourceName(SourceRailzRailzEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourceRailz {
     /**
      * Client ID (client_id)
      */
-    @JsonProperty("client_id")public String clientId;
+    @JsonProperty("client_id")
+    public String clientId;
     public SourceRailz withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -28,7 +30,8 @@ public class SourceRailz {
     /**
      * Secret key (secret_key)
      */
-    @JsonProperty("secret_key")public String secretKey;
+    @JsonProperty("secret_key")
+    public String secretKey;
     public SourceRailz withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;
@@ -37,7 +40,8 @@ public class SourceRailz {
     /**
      * Start date
      */
-    @JsonProperty("start_date")public String startDate;
+    @JsonProperty("start_date")
+    public String startDate;
     public SourceRailz withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

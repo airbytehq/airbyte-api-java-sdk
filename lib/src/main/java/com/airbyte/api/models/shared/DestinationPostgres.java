@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationPostgres - The values required to configure the destination.
  */
 public class DestinationPostgres {
-    @JsonProperty("airbyte-destination-name")public DestinationPostgresPostgresEnum airbyteDestinationName;
+    @JsonProperty("airbyte-destination-name")
+    public DestinationPostgresPostgresEnum airbyteDestinationName;
     public DestinationPostgres withAirbyteDestinationName(DestinationPostgresPostgresEnum airbyteDestinationName) {
         this.airbyteDestinationName = airbyteDestinationName;
         return this;
@@ -21,7 +22,8 @@ public class DestinationPostgres {
     /**
      * Name of the database.
      */
-    @JsonProperty("database")public String database;
+    @JsonProperty("database")
+    public String database;
     public DestinationPostgres withDatabase(String database) {
         this.database = database;
         return this;
@@ -30,17 +32,19 @@ public class DestinationPostgres {
     /**
      * Hostname of the database.
      */
-    @JsonProperty("host")public String host;
+    @JsonProperty("host")
+    public String host;
     public DestinationPostgres withHost(String host) {
         this.host = host;
         return this;
     }
     
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&'. (example: key1=value1&key2=value2&key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("jdbc_url_params")public String jdbcUrlParams;
+    @JsonProperty("jdbc_url_params")
+    public String jdbcUrlParams;
     public DestinationPostgres withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -50,7 +54,8 @@ public class DestinationPostgres {
      * Password associated with the username.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("password")public String password;
+    @JsonProperty("password")
+    public String password;
     public DestinationPostgres withPassword(String password) {
         this.password = password;
         return this;
@@ -59,7 +64,8 @@ public class DestinationPostgres {
     /**
      * Port of the database.
      */
-    @JsonProperty("port")public Long port;
+    @JsonProperty("port")
+    public Long port;
     public DestinationPostgres withPort(Long port) {
         this.port = port;
         return this;
@@ -68,7 +74,8 @@ public class DestinationPostgres {
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
-    @JsonProperty("schema")public String schema;
+    @JsonProperty("schema")
+    public String schema;
     public DestinationPostgres withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -76,16 +83,17 @@ public class DestinationPostgres {
     
     /**
      * SSL connection modes. 
-     *  <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  <b>allow</b> - Chose this mode to enable encryption only when required by the source database
-     *  <b>prefer</b> - Chose this mode to allow unencrypted connection only if the source database does not support encryption
-     *  <b>require</b> - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
-     *   <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
-     *   <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
-     *  See more information - <a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"> in the docs</a>.
+     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
+     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
+     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the source database does not support encryption
+     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the source database server does not support encryption, connection will fail
+     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the source database server has a valid SSL certificate
+     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
+     *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ssl_mode")public Object sslMode;
+    @JsonProperty("ssl_mode")
+    public Object sslMode;
     public DestinationPostgres withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -95,7 +103,8 @@ public class DestinationPostgres {
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("tunnel_method")public Object tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public Object tunnelMethod;
     public DestinationPostgres withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -104,7 +113,8 @@ public class DestinationPostgres {
     /**
      * Username to use to access the database.
      */
-    @JsonProperty("username")public String username;
+    @JsonProperty("username")
+    public String username;
     public DestinationPostgres withUsername(String username) {
         this.username = username;
         return this;

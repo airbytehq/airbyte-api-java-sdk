@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSmaily - The values required to configure the source.
  */
 public class SourceSmaily {
-    @JsonProperty("airbyte-source-name")public SourceSmailySmailyEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceSmailySmailyEnum airbyteSourceName;
     public SourceSmaily withAirbyteSourceName(SourceSmailySmailyEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
@@ -19,7 +20,8 @@ public class SourceSmaily {
     /**
      * API user password. See https://smaily.com/help/api/general/create-api-user/
      */
-    @JsonProperty("api_password")public String apiPassword;
+    @JsonProperty("api_password")
+    public String apiPassword;
     public SourceSmaily withApiPassword(String apiPassword) {
         this.apiPassword = apiPassword;
         return this;
@@ -28,7 +30,8 @@ public class SourceSmaily {
     /**
      * API Subdomain. See https://smaily.com/help/api/general/create-api-user/
      */
-    @JsonProperty("api_subdomain")public String apiSubdomain;
+    @JsonProperty("api_subdomain")
+    public String apiSubdomain;
     public SourceSmaily withApiSubdomain(String apiSubdomain) {
         this.apiSubdomain = apiSubdomain;
         return this;
@@ -37,7 +40,8 @@ public class SourceSmaily {
     /**
      * API user username. See https://smaily.com/help/api/general/create-api-user/
      */
-    @JsonProperty("api_username")public String apiUsername;
+    @JsonProperty("api_username")
+    public String apiUsername;
     public SourceSmaily withApiUsername(String apiUsername) {
         this.apiUsername = apiUsername;
         return this;

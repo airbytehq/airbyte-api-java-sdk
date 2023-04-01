@@ -15,16 +15,18 @@ import java.time.OffsetDateTime;
  * SourceIterable - The values required to configure the source.
  */
 public class SourceIterable {
-    @JsonProperty("airbyte-source-name")public SourceIterableIterableEnum airbyteSourceName;
+    @JsonProperty("airbyte-source-name")
+    public SourceIterableIterableEnum airbyteSourceName;
     public SourceIterable withAirbyteSourceName(SourceIterableIterableEnum airbyteSourceName) {
         this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
     /**
-     * Iterable API Key. See the <a href="https://docs.airbyte.com/integrations/sources/iterable">docs</a> for more information on how to obtain this key.
+     * Iterable API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/iterable"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
-    @JsonProperty("api_key")public String apiKey;
+    @JsonProperty("api_key")
+    public String apiKey;
     public SourceIterable withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -35,7 +37,8 @@ public class SourceIterable {
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("start_date")public OffsetDateTime startDate;
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
     public SourceIterable withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

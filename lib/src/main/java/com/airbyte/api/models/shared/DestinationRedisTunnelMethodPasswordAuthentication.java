@@ -13,7 +13,8 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
      */
-    @JsonProperty("tunnel_host")public String tunnelHost;
+    @JsonProperty("tunnel_host")
+    public String tunnelHost;
     public DestinationRedisTunnelMethodPasswordAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -22,7 +23,8 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
     /**
      * Connect through a jump server tunnel host using username and password authentication
      */
-    @JsonProperty("tunnel_method")public DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    @JsonProperty("tunnel_method")
+    public DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
     public DestinationRedisTunnelMethodPasswordAuthentication withTunnelMethod(DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -31,7 +33,8 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
-    @JsonProperty("tunnel_port")public Long tunnelPort;
+    @JsonProperty("tunnel_port")
+    public Long tunnelPort;
     public DestinationRedisTunnelMethodPasswordAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -40,7 +43,8 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
     /**
      * OS-level username for logging into the jump server host
      */
-    @JsonProperty("tunnel_user")public String tunnelUser;
+    @JsonProperty("tunnel_user")
+    public String tunnelUser;
     public DestinationRedisTunnelMethodPasswordAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;
@@ -49,7 +53,8 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
     /**
      * OS-level password for logging into the jump server host
      */
-    @JsonProperty("tunnel_user_password")public String tunnelUserPassword;
+    @JsonProperty("tunnel_user_password")
+    public String tunnelUserPassword;
     public DestinationRedisTunnelMethodPasswordAuthentication withTunnelUserPassword(String tunnelUserPassword) {
         this.tunnelUserPassword = tunnelUserPassword;
         return this;
