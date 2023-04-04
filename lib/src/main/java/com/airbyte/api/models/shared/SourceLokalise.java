@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceLokalise - The values required to configure the source.
  */
 public class SourceLokalise {
-    @JsonProperty("airbyte-source-name")
-    public SourceLokaliseLokaliseEnum airbyteSourceName;
-    public SourceLokalise withAirbyteSourceName(SourceLokaliseLokaliseEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Lokalise API Key with read-access. Available at Profile settings &gt; API tokens. See &lt;a href="https://docs.lokalise.com/en/articles/1929556-api-tokens"&gt;here&lt;/a&gt;.
      */
@@ -34,6 +27,13 @@ public class SourceLokalise {
     public String projectId;
     public SourceLokalise withProjectId(String projectId) {
         this.projectId = projectId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceLokaliseLokaliseEnum sourceType;
+    public SourceLokalise withSourceType(SourceLokaliseLokaliseEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

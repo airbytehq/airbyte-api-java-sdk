@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationPubsub - The values required to configure the destination.
  */
 public class DestinationPubsub {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationPubsubPubsubEnum airbyteDestinationName;
-    public DestinationPubsub withAirbyteDestinationName(DestinationPubsubPubsubEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Number of ms before the buffer is flushed
      */
@@ -69,6 +62,13 @@ public class DestinationPubsub {
     public String credentialsJson;
     public DestinationPubsub withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationPubsubPubsubEnum destinationType;
+    public DestinationPubsub withDestinationType(DestinationPubsubPubsubEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

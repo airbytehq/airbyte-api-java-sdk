@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceFreshcaller - The values required to configure the source.
  */
 public class SourceFreshcaller {
-    @JsonProperty("airbyte-source-name")
-    public SourceFreshcallerFreshcallerEnum airbyteSourceName;
-    public SourceFreshcaller withAirbyteSourceName(SourceFreshcallerFreshcallerEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -47,6 +40,13 @@ public class SourceFreshcaller {
     public Long requestsPerMinute;
     public SourceFreshcaller withRequestsPerMinute(Long requestsPerMinute) {
         this.requestsPerMinute = requestsPerMinute;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFreshcallerFreshcallerEnum sourceType;
+    public SourceFreshcaller withSourceType(SourceFreshcallerFreshcallerEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

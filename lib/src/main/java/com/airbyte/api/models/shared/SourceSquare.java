@@ -4,21 +4,16 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 /**
  * SourceSquare - The values required to configure the source.
  */
 public class SourceSquare {
-    @JsonProperty("airbyte-source-name")
-    public SourceSquareSquareEnum airbyteSourceName;
-    public SourceSquare withAirbyteSourceName(SourceSquareSquareEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Choose how to authenticate to Square.
      */
@@ -51,13 +46,21 @@ public class SourceSquare {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceSquareSquareEnum sourceType;
+    public SourceSquare withSourceType(SourceSquareSquareEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceSquare withStartDate(String startDate) {
+    public LocalDate startDate;
+    public SourceSquare withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }

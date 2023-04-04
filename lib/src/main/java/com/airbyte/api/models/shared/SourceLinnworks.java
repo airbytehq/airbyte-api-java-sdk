@@ -15,13 +15,6 @@ import java.time.OffsetDateTime;
  * SourceLinnworks - The values required to configure the source.
  */
 public class SourceLinnworks {
-    @JsonProperty("airbyte-source-name")
-    public SourceLinnworksLinnworksEnum airbyteSourceName;
-    public SourceLinnworks withAirbyteSourceName(SourceLinnworksLinnworksEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Linnworks Application ID
      */
@@ -39,6 +32,13 @@ public class SourceLinnworks {
     public String applicationSecret;
     public SourceLinnworks withApplicationSecret(String applicationSecret) {
         this.applicationSecret = applicationSecret;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceLinnworksLinnworksEnum sourceType;
+    public SourceLinnworks withSourceType(SourceLinnworksLinnworksEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

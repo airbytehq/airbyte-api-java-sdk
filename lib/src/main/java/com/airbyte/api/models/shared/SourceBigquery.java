@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceBigquery - The values required to configure the source.
  */
 public class SourceBigquery {
-    @JsonProperty("airbyte-source-name")
-    public SourceBigqueryBigqueryEnum airbyteSourceName;
-    public SourceBigquery withAirbyteSourceName(SourceBigqueryBigqueryEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The contents of your Service Account Key JSON file. See the &lt;a href="https://docs.airbyte.com/integrations/sources/bigquery#setup-the-bigquery-source-in-airbyte"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -47,6 +40,13 @@ public class SourceBigquery {
     public String projectId;
     public SourceBigquery withProjectId(String projectId) {
         this.projectId = projectId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceBigqueryBigqueryEnum sourceType;
+    public SourceBigquery withSourceType(SourceBigqueryBigqueryEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

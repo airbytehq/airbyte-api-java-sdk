@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOpenweather - The values required to configure the source.
  */
 public class SourceOpenweather {
-    @JsonProperty("airbyte-source-name")
-    public SourceOpenweatherOpenweatherEnum airbyteSourceName;
-    public SourceOpenweather withAirbyteSourceName(SourceOpenweatherOpenweatherEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your OpenWeather API Key. See &lt;a href="https://openweathermap.org/api"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
@@ -57,6 +50,13 @@ public class SourceOpenweather {
     public String lon;
     public SourceOpenweather withLon(String lon) {
         this.lon = lon;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceOpenweatherOpenweatherEnum sourceType;
+    public SourceOpenweather withSourceType(SourceOpenweatherOpenweatherEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,18 +12,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePinterest - The values required to configure the source.
  */
 public class SourcePinterest {
-    @JsonProperty("airbyte-source-name")
-    public SourcePinterestPinterestEnum airbyteSourceName;
-    public SourcePinterest withAirbyteSourceName(SourcePinterestPinterestEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
     public SourcePinterest withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePinterestPinterestEnum sourceType;
+    public SourcePinterest withSourceType(SourcePinterestPinterestEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

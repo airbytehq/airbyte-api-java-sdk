@@ -4,21 +4,16 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 /**
  * SourceGoogleAds - The values required to configure the source.
  */
 public class SourceGoogleAds {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleAdsGoogleAdsEnum airbyteSourceName;
-    public SourceGoogleAds withAirbyteSourceName(SourceGoogleAdsGoogleAdsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * A conversion window is the period of time after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see Google's &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;documentation&lt;/a&gt;.
      */
@@ -59,9 +54,10 @@ public class SourceGoogleAds {
      * UTC date and time in the format 2017-01-25. Any data after this date will not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
-    public String endDate;
-    public SourceGoogleAds withEndDate(String endDate) {
+    public LocalDate endDate;
+    public SourceGoogleAds withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -77,12 +73,20 @@ public class SourceGoogleAds {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceGoogleAdsGoogleAdsEnum sourceType;
+    public SourceGoogleAds withSourceType(SourceGoogleAdsGoogleAdsEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date and time in the format 2017-01-25. Any data before this date will not be replicated.
      */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceGoogleAds withStartDate(String startDate) {
+    public LocalDate startDate;
+    public SourceGoogleAds withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }

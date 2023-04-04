@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceDremio - The values required to configure the source.
  */
 public class SourceDremio {
-    @JsonProperty("airbyte-source-name")
-    public SourceDremioDremioEnum airbyteSourceName;
-    public SourceDremio withAirbyteSourceName(SourceDremioDremioEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key that is generated when you authenticate to Dremio API
      */
@@ -34,6 +27,13 @@ public class SourceDremio {
     public String baseUrl;
     public SourceDremio withBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceDremioDremioEnum sourceType;
+    public SourceDremio withSourceType(SourceDremioDremioEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

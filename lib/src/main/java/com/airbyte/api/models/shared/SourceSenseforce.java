@@ -24,13 +24,6 @@ public class SourceSenseforce {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceSenseforceSenseforceEnum airbyteSourceName;
-    public SourceSenseforce withAirbyteSourceName(SourceSenseforceSenseforceEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your Senseforce API backend URL. This is the URL shown during the Login screen. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt; for more details. (Note: Most Senseforce backend APIs have the term 'galaxy' in their ULR)
      */
@@ -59,6 +52,13 @@ public class SourceSenseforce {
     public Long sliceRange;
     public SourceSenseforce withSliceRange(Long sliceRange) {
         this.sliceRange = sliceRange;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSenseforceSenseforceEnum sourceType;
+    public SourceSenseforce withSourceType(SourceSenseforceSenseforceEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

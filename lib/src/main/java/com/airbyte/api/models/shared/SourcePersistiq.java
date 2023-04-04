@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePersistiq - The values required to configure the source.
  */
 public class SourcePersistiq {
-    @JsonProperty("airbyte-source-name")
-    public SourcePersistiqPersistiqEnum airbyteSourceName;
-    public SourcePersistiq withAirbyteSourceName(SourcePersistiqPersistiqEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * PersistIq API Key. See the &lt;a href="https://apidocs.persistiq.com/#authentication"&gt;docs&lt;/a&gt; for more information on where to find that key.
      */
@@ -24,6 +17,13 @@ public class SourcePersistiq {
     public String apiKey;
     public SourcePersistiq withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePersistiqPersistiqEnum sourceType;
+    public SourcePersistiq withSourceType(SourcePersistiqPersistiqEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -4,21 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourcePosthog - The values required to configure the source.
  */
 public class SourcePosthog {
-    @JsonProperty("airbyte-source-name")
-    public SourcePosthogPosthogEnum airbyteSourceName;
-    public SourcePosthog withAirbyteSourceName(SourcePosthogPosthogEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
@@ -40,12 +38,21 @@ public class SourcePosthog {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourcePosthogPosthogEnum sourceType;
+    public SourcePosthog withSourceType(SourcePosthogPosthogEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The date from which you'd like to replicate the data. Any data before this date will not be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourcePosthog withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourcePosthog withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

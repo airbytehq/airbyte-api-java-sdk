@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceFaker - The values required to configure the source.
  */
 public class SourceFaker {
-    @JsonProperty("airbyte-source-name")
-    public SourceFakerFakerEnum airbyteSourceName;
-    public SourceFaker withAirbyteSourceName(SourceFakerFakerEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * How many users should be generated in total.  This setting does not apply to the purchases or products stream.
      */
@@ -70,6 +63,13 @@ public class SourceFaker {
     public Long seed;
     public SourceFaker withSeed(Long seed) {
         this.seed = seed;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFakerFakerEnum sourceType;
+    public SourceFaker withSourceType(SourceFakerFakerEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

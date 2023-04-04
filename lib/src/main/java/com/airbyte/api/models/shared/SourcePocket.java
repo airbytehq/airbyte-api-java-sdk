@@ -22,13 +22,6 @@ public class SourcePocket {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourcePocketPocketEnum airbyteSourceName;
-    public SourcePocket withAirbyteSourceName(SourcePocketPocketEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your application's Consumer Key.
      */
@@ -113,6 +106,13 @@ public class SourcePocket {
     public SourcePocketSortByEnum sort;
     public SourcePocket withSort(SourcePocketSortByEnum sort) {
         this.sort = sort;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePocketPocketEnum sourceType;
+    public SourcePocket withSourceType(SourcePocketPocketEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

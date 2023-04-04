@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceNotion - The values required to configure the source.
  */
 public class SourceNotion {
-    @JsonProperty("airbyte-source-name")
-    public SourceNotionNotionEnum airbyteSourceName;
-    public SourceNotion withAirbyteSourceName(SourceNotionNotionEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Pick an authentication method.
      */
@@ -32,6 +25,13 @@ public class SourceNotion {
     public Object credentials;
     public SourceNotion withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceNotionNotionEnum sourceType;
+    public SourceNotion withSourceType(SourceNotionNotionEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

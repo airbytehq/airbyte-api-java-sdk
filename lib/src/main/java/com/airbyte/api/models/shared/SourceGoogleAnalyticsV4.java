@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleAnalyticsV4 - The values required to configure the source.
  */
 public class SourceGoogleAnalyticsV4 {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum airbyteSourceName;
-    public SourceGoogleAnalyticsV4 withAirbyteSourceName(SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Credentials for the service
      */
@@ -38,6 +31,13 @@ public class SourceGoogleAnalyticsV4 {
     public String customReports;
     public SourceGoogleAnalyticsV4 withCustomReports(String customReports) {
         this.customReports = customReports;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType;
+    public SourceGoogleAnalyticsV4 withSourceType(SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

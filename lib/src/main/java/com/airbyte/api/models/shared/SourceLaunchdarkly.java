@@ -20,10 +20,10 @@ public class SourceLaunchdarkly {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceLaunchdarklyLaunchdarklyEnum airbyteSourceName;
-    public SourceLaunchdarkly withAirbyteSourceName(SourceLaunchdarklyLaunchdarklyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceLaunchdarklyLaunchdarklyEnum sourceType;
+    public SourceLaunchdarkly withSourceType(SourceLaunchdarklyLaunchdarklyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

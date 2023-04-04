@@ -22,10 +22,10 @@ public class SourcePrestashop {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourcePrestashopPrestashopEnum airbyteSourceName;
-    public SourcePrestashop withAirbyteSourceName(SourcePrestashopPrestashopEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourcePrestashopPrestashopEnum sourceType;
+    public SourcePrestashop withSourceType(SourcePrestashopPrestashopEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

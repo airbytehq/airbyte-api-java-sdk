@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceSftpBulk - The values required to configure the source.
  */
 public class SourceSftpBulk {
-    @JsonProperty("airbyte-source-name")
-    public SourceSftpBulkSftpBulkEnum airbyteSourceName;
-    public SourceSftpBulk withAirbyteSourceName(SourceSftpBulkSftpBulkEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Sync only the most recent file for the configured folder path and file pattern
      */
@@ -106,6 +99,13 @@ public class SourceSftpBulk {
     public String privateKey;
     public SourceSftpBulk withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSftpBulkSftpBulkEnum sourceType;
+    public SourceSftpBulk withSourceType(SourceSftpBulkSftpBulkEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

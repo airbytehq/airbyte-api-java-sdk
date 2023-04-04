@@ -20,10 +20,10 @@ public class SourceBigcommerce {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceBigcommerceBigcommerceEnum airbyteSourceName;
-    public SourceBigcommerce withAirbyteSourceName(SourceBigcommerceBigcommerceEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceBigcommerceBigcommerceEnum sourceType;
+    public SourceBigcommerce withSourceType(SourceBigcommerceBigcommerceEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

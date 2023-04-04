@@ -14,13 +14,6 @@ import java.time.LocalDate;
  * SourceGoogleAnalyticsDataApi - The values required to configure the source.
  */
 public class SourceGoogleAnalyticsDataApi {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum airbyteSourceName;
-    public SourceGoogleAnalyticsDataApi withAirbyteSourceName(SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Credentials for the service
      */
@@ -61,6 +54,13 @@ public class SourceGoogleAnalyticsDataApi {
     public String propertyId;
     public SourceGoogleAnalyticsDataApi withPropertyId(String propertyId) {
         this.propertyId = propertyId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum sourceType;
+    public SourceGoogleAnalyticsDataApi withSourceType(SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

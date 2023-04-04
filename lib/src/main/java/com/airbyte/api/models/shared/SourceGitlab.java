@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceGitlab - The values required to configure the source.
  */
 public class SourceGitlab {
-    @JsonProperty("airbyte-source-name")
-    public SourceGitlabGitlabEnum airbyteSourceName;
-    public SourceGitlab withAirbyteSourceName(SourceGitlabGitlabEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Please enter your basic URL from GitLab instance.
      */
@@ -60,6 +53,13 @@ public class SourceGitlab {
     public String projects;
     public SourceGitlab withProjects(String projects) {
         this.projects = projects;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGitlabGitlabEnum sourceType;
+    public SourceGitlab withSourceType(SourceGitlabGitlabEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

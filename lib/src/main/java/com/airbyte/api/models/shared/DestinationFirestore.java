@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationFirestore - The values required to configure the destination.
  */
 public class DestinationFirestore {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationFirestoreFirestoreEnum airbyteDestinationName;
-    public DestinationFirestore withAirbyteDestinationName(DestinationFirestoreFirestoreEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
@@ -27,6 +20,13 @@ public class DestinationFirestore {
     public String credentialsJson;
     public DestinationFirestore withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationFirestoreFirestoreEnum destinationType;
+    public DestinationFirestore withDestinationType(DestinationFirestoreFirestoreEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

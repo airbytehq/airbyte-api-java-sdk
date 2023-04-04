@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGridly - The values required to configure the source.
  */
 public class SourceGridly {
-    @JsonProperty("airbyte-source-name")
-    public SourceGridlyGridlyEnum airbyteSourceName;
-    public SourceGridly withAirbyteSourceName(SourceGridlyGridlyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonProperty("api_key")
     public String apiKey;
     public SourceGridly withApiKey(String apiKey) {
@@ -31,6 +24,13 @@ public class SourceGridly {
     public String gridId;
     public SourceGridly withGridId(String gridId) {
         this.gridId = gridId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGridlyGridlyEnum sourceType;
+    public SourceGridly withSourceType(SourceGridlyGridlyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

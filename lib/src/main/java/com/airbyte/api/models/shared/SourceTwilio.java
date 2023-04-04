@@ -27,13 +27,6 @@ public class SourceTwilio {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceTwilioTwilioEnum airbyteSourceName;
-    public SourceTwilio withAirbyteSourceName(SourceTwilioTwilioEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Twilio Auth Token.
      */
@@ -52,6 +45,13 @@ public class SourceTwilio {
     public Long lookbackWindow;
     public SourceTwilio withLookbackWindow(Long lookbackWindow) {
         this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceTwilioTwilioEnum sourceType;
+    public SourceTwilio withSourceType(SourceTwilioTwilioEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

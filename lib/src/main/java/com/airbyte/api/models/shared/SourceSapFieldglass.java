@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSapFieldglass - The values required to configure the source.
  */
 public class SourceSapFieldglass {
-    @JsonProperty("airbyte-source-name")
-    public SourceSapFieldglassSapFieldglassEnum airbyteSourceName;
-    public SourceSapFieldglass withAirbyteSourceName(SourceSapFieldglassSapFieldglassEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key
      */
@@ -24,6 +17,13 @@ public class SourceSapFieldglass {
     public String apiKey;
     public SourceSapFieldglass withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSapFieldglassSapFieldglassEnum sourceType;
+    public SourceSapFieldglass withSourceType(SourceSapFieldglassSapFieldglassEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

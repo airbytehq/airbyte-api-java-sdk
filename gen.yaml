@@ -1,7 +1,7 @@
 configVersion: 1.0.0
 management:
-  docChecksum: c73e1b875a571841a5b726b7f610ff9d
-  docVersion: 0.1.0
+  docChecksum: 0ef6c4b2917927fcb43d7d40bb0564a8
+  docVersion: 1.0.0
   speakeasyVersion: 1.19.3
   generationVersion: 2.16.7
 generation:
@@ -10,7 +10,7 @@ generation:
   sdkFlattening: true
   singleTagPerOp: false
 java:
-  version: ""
+  version: 1.0.0
   artifactID: api
   companyEmail: info@mycompany.com
   companyName: My Company

@@ -40,7 +40,7 @@ public class SourceFacebookMarketingInsightConfig {
     }
     
     /**
-     * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this date will be replicated. Not setting this option will result in always syncing the latest data.
+     * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
@@ -71,6 +71,17 @@ public class SourceFacebookMarketingInsightConfig {
     public Long insightsLookbackWindow;
     public SourceFacebookMarketingInsightConfig withInsightsLookbackWindow(Long insightsLookbackWindow) {
         this.insightsLookbackWindow = insightsLookbackWindow;
+        return this;
+    }
+    
+    /**
+     * Chosen level for API
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("level")
+    public SourceFacebookMarketingInsightConfigLevelEnum level;
+    public SourceFacebookMarketingInsightConfig withLevel(SourceFacebookMarketingInsightConfigLevelEnum level) {
+        this.level = level;
         return this;
     }
     

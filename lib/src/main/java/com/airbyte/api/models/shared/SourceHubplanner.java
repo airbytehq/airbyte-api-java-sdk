@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceHubplanner - The values required to configure the source.
  */
 public class SourceHubplanner {
-    @JsonProperty("airbyte-source-name")
-    public SourceHubplannerHubplannerEnum airbyteSourceName;
-    public SourceHubplanner withAirbyteSourceName(SourceHubplannerHubplannerEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Hubplanner API key. See https://github.com/hubplanner/API#authentication for more details.
      */
@@ -24,6 +17,13 @@ public class SourceHubplanner {
     public String apiKey;
     public SourceHubplanner withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceHubplannerHubplannerEnum sourceType;
+    public SourceHubplanner withSourceType(SourceHubplannerHubplannerEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

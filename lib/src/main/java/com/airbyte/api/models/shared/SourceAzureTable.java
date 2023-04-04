@@ -12,10 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceAzureTable - The values required to configure the source.
  */
 public class SourceAzureTable {
-    @JsonProperty("airbyte-source-name")
-    public SourceAzureTableAzureTableEnum airbyteSourceName;
-    public SourceAzureTable withAirbyteSourceName(SourceAzureTableAzureTableEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceAzureTableAzureTableEnum sourceType;
+    public SourceAzureTable withSourceType(SourceAzureTableAzureTableEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

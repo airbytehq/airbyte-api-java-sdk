@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceAsana - The values required to configure the source.
  */
 public class SourceAsana {
-    @JsonProperty("airbyte-source-name")
-    public SourceAsanaAsanaEnum airbyteSourceName;
-    public SourceAsana withAirbyteSourceName(SourceAsanaAsanaEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Choose how to authenticate to Github
      */
@@ -27,6 +20,13 @@ public class SourceAsana {
     public Object credentials;
     public SourceAsana withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceAsanaAsanaEnum sourceType;
+    public SourceAsana withSourceType(SourceAsanaAsanaEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

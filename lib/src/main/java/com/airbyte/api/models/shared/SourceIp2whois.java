@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceIp2whois - The values required to configure the source.
  */
 public class SourceIp2whois {
-    @JsonProperty("airbyte-source-name")
-    public SourceIp2whoisIp2whoisEnum airbyteSourceName;
-    public SourceIp2whois withAirbyteSourceName(SourceIp2whoisIp2whoisEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
      */
@@ -38,6 +31,13 @@ public class SourceIp2whois {
     public String domain;
     public SourceIp2whois withDomain(String domain) {
         this.domain = domain;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceIp2whoisIp2whoisEnum sourceType;
+    public SourceIp2whois withSourceType(SourceIp2whoisIp2whoisEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

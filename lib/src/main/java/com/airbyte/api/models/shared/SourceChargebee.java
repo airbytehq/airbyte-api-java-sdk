@@ -4,19 +4,17 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceChargebee - The values required to configure the source.
  */
 public class SourceChargebee {
-    @JsonProperty("airbyte-source-name")
-    public SourceChargebeeChargebeeEnum airbyteSourceName;
-    public SourceChargebee withAirbyteSourceName(SourceChargebeeChargebeeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section.
      */
@@ -47,12 +45,21 @@ public class SourceChargebee {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceChargebeeChargebeeEnum sourceType;
+    public SourceChargebee withSourceType(SourceChargebeeChargebeeEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceChargebee withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceChargebee withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

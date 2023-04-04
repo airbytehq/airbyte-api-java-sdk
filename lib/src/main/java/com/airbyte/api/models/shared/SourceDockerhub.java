@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceDockerhub - The values required to configure the source.
  */
 public class SourceDockerhub {
-    @JsonProperty("airbyte-source-name")
-    public SourceDockerhubDockerhubEnum airbyteSourceName;
-    public SourceDockerhub withAirbyteSourceName(SourceDockerhubDockerhubEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Username of DockerHub person or organization (for https://hub.docker.com/v2/repositories/USERNAME/ API call)
      */
@@ -24,6 +17,13 @@ public class SourceDockerhub {
     public String dockerUsername;
     public SourceDockerhub withDockerUsername(String dockerUsername) {
         this.dockerUsername = dockerUsername;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceDockerhubDockerhubEnum sourceType;
+    public SourceDockerhub withSourceType(SourceDockerhubDockerhubEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceBraintree - The values required to configure the source.
  */
 public class SourceBraintree {
-    @JsonProperty("airbyte-source-name")
-    public SourceBraintreeBraintreeEnum airbyteSourceName;
-    public SourceBraintree withAirbyteSourceName(SourceBraintreeBraintreeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Environment specifies where the data will come from.
      */
@@ -35,7 +28,7 @@ public class SourceBraintree {
     }
     
     /**
-     * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.io/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
+     * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
      */
     @JsonProperty("merchant_id")
     public String merchantId;
@@ -45,7 +38,7 @@ public class SourceBraintree {
     }
     
     /**
-     * Braintree Private Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Private Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonProperty("private_key")
     public String privateKey;
@@ -55,12 +48,19 @@ public class SourceBraintree {
     }
     
     /**
-     * Braintree Public Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Braintree Public Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonProperty("public_key")
     public String publicKey;
     public SourceBraintree withPublicKey(String publicKey) {
         this.publicKey = publicKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceBraintreeBraintreeEnum sourceType;
+    public SourceBraintree withSourceType(SourceBraintreeBraintreeEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

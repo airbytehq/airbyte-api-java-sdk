@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationMssql - The values required to configure the destination.
  */
 public class DestinationMssql {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationMssqlMssqlEnum airbyteDestinationName;
-    public DestinationMssql withAirbyteDestinationName(DestinationMssqlMssqlEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * The name of the MSSQL database.
      */
@@ -26,6 +19,13 @@ public class DestinationMssql {
     public String database;
     public DestinationMssql withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationMssqlMssqlEnum destinationType;
+    public DestinationMssql withDestinationType(DestinationMssqlMssqlEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

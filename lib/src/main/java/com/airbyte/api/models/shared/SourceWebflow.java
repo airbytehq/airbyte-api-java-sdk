@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceWebflow - The values required to configure the source.
  */
 public class SourceWebflow {
-    @JsonProperty("airbyte-source-name")
-    public SourceWebflowWebflowEnum airbyteSourceName;
-    public SourceWebflow withAirbyteSourceName(SourceWebflowWebflowEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api
      */
@@ -34,6 +27,13 @@ public class SourceWebflow {
     public String siteId;
     public SourceWebflow withSiteId(String siteId) {
         this.siteId = siteId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceWebflowWebflowEnum sourceType;
+    public SourceWebflow withSourceType(SourceWebflowWebflowEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

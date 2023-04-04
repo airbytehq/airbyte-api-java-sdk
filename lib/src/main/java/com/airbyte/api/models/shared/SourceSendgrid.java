@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceSendgrid - The values required to configure the source.
  */
 public class SourceSendgrid {
-    @JsonProperty("airbyte-source-name")
-    public SourceSendgridSendgridEnum airbyteSourceName;
-    public SourceSendgrid withAirbyteSourceName(SourceSendgridSendgridEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key, use &lt;a href="https://app.sendgrid.com/settings/api_keys/"&gt;admin&lt;/a&gt; to generate this key.
      */
@@ -31,6 +24,13 @@ public class SourceSendgrid {
     public String apikey;
     public SourceSendgrid withApikey(String apikey) {
         this.apikey = apikey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSendgridSendgridEnum sourceType;
+    public SourceSendgrid withSourceType(SourceSendgridSendgridEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

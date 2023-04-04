@@ -14,13 +14,6 @@ import java.time.LocalDate;
  * SourceSnapchatMarketing - The values required to configure the source.
  */
 public class SourceSnapchatMarketing {
-    @JsonProperty("airbyte-source-name")
-    public SourceSnapchatMarketingSnapchatMarketingEnum airbyteSourceName;
-    public SourceSnapchatMarketing withAirbyteSourceName(SourceSnapchatMarketingSnapchatMarketingEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The Client ID of your Snapchat developer application.
      */
@@ -60,6 +53,13 @@ public class SourceSnapchatMarketing {
     public String refreshToken;
     public SourceSnapchatMarketing withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSnapchatMarketingSnapchatMarketingEnum sourceType;
+    public SourceSnapchatMarketing withSourceType(SourceSnapchatMarketingSnapchatMarketingEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

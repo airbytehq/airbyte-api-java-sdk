@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DestinationDatabricksDataSourceAmazonS3DataSourceTypeEnum {
-    S3("S3");
+    S3_STORAGE("S3_STORAGE");
 
     @JsonValue
     public final String value;

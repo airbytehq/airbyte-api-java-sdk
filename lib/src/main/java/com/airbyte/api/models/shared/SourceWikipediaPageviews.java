@@ -30,13 +30,6 @@ public class SourceWikipediaPageviews {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceWikipediaPageviewsWikipediaPageviewsEnum airbyteSourceName;
-    public SourceWikipediaPageviews withAirbyteSourceName(SourceWikipediaPageviewsWikipediaPageviewsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The title of any article in the specified project. Any spaces should be replaced with underscores. It also should be URI-encoded, so that non-URI-safe characters like %, / or ? are accepted.
      */
@@ -74,6 +67,13 @@ public class SourceWikipediaPageviews {
     public String project;
     public SourceWikipediaPageviews withProject(String project) {
         this.project = project;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceWikipediaPageviewsWikipediaPageviewsEnum sourceType;
+    public SourceWikipediaPageviews withSourceType(SourceWikipediaPageviewsWikipediaPageviewsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

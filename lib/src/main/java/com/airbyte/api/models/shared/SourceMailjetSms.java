@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMailjetSms - The values required to configure the source.
  */
 public class SourceMailjetSms {
-    @JsonProperty("airbyte-source-name")
-    public SourceMailjetSmsMailjetSmsEnum airbyteSourceName;
-    public SourceMailjetSms withAirbyteSourceName(SourceMailjetSmsMailjetSmsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
      */
@@ -27,6 +20,13 @@ public class SourceMailjetSms {
     public Long endDate;
     public SourceMailjetSms withEndDate(Long endDate) {
         this.endDate = endDate;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMailjetSmsMailjetSmsEnum sourceType;
+    public SourceMailjetSms withSourceType(SourceMailjetSmsMailjetSmsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

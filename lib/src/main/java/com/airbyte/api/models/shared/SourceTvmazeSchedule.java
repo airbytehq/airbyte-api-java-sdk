@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceTvmazeSchedule - The values required to configure the source.
  */
 public class SourceTvmazeSchedule {
-    @JsonProperty("airbyte-source-name")
-    public SourceTvmazeScheduleTvmazeScheduleEnum airbyteSourceName;
-    public SourceTvmazeSchedule withAirbyteSourceName(SourceTvmazeScheduleTvmazeScheduleEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Country code for domestic TV schedule retrieval.
      */
@@ -38,6 +31,13 @@ public class SourceTvmazeSchedule {
     public String endDate;
     public SourceTvmazeSchedule withEndDate(String endDate) {
         this.endDate = endDate;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceTvmazeScheduleTvmazeScheduleEnum sourceType;
+    public SourceTvmazeSchedule withSourceType(SourceTvmazeScheduleTvmazeScheduleEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

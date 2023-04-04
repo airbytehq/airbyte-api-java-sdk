@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationDatabend - The values required to configure the destination.
  */
 public class DestinationDatabend {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationDatabendDatabendEnum airbyteDestinationName;
-    public DestinationDatabend withAirbyteDestinationName(DestinationDatabendDatabendEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -26,6 +19,13 @@ public class DestinationDatabend {
     public String database;
     public DestinationDatabend withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationDatabendDatabendEnum destinationType;
+    public DestinationDatabend withDestinationType(DestinationDatabendDatabendEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOmnisend - The values required to configure the source.
  */
 public class SourceOmnisend {
-    @JsonProperty("airbyte-source-name")
-    public SourceOmnisendOmnisendEnum airbyteSourceName;
-    public SourceOmnisend withAirbyteSourceName(SourceOmnisendOmnisendEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key
      */
@@ -24,6 +17,13 @@ public class SourceOmnisend {
     public String apiKey;
     public SourceOmnisend withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceOmnisendOmnisendEnum sourceType;
+    public SourceOmnisend withSourceType(SourceOmnisendOmnisendEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

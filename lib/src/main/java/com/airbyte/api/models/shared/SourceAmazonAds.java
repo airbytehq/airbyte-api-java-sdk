@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceAmazonAds - The values required to configure the source.
  */
 public class SourceAmazonAds {
-    @JsonProperty("airbyte-source-name")
-    public SourceAmazonAdsAmazonAdsEnum airbyteSourceName;
-    public SourceAmazonAds withAirbyteSourceName(SourceAmazonAdsAmazonAdsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceAmazonAdsAuthTypeEnum authType;
@@ -87,6 +80,24 @@ public class SourceAmazonAds {
     public SourceAmazonAdsRegionEnum region;
     public SourceAmazonAds withRegion(SourceAmazonAdsRegionEnum region) {
         this.region = region;
+        return this;
+    }
+    
+    /**
+     * Optional configuration which accepts an array of string of record types. Leave blank for default behaviour to pull all report types. Use this config option only if you want to pull specific report type(s). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/reporting/v2/report-types"&gt;docs&lt;/a&gt; for more details
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("report_record_types")
+    public SourceAmazonAdsReportRecordTypesEnum[] reportRecordTypes;
+    public SourceAmazonAds withReportRecordTypes(SourceAmazonAdsReportRecordTypesEnum[] reportRecordTypes) {
+        this.reportRecordTypes = reportRecordTypes;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceAmazonAdsAmazonAdsEnum sourceType;
+    public SourceAmazonAds withSourceType(SourceAmazonAdsAmazonAdsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

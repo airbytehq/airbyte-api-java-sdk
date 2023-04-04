@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationRedis - The values required to configure the destination.
  */
 public class DestinationRedis {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationRedisRedisEnum airbyteDestinationName;
-    public DestinationRedis withAirbyteDestinationName(DestinationRedisRedisEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Redis cache type to store data in.
      */
@@ -26,6 +19,13 @@ public class DestinationRedis {
     public DestinationRedisCacheTypeEnum cacheType;
     public DestinationRedis withCacheType(DestinationRedisCacheTypeEnum cacheType) {
         this.cacheType = cacheType;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationRedisRedisEnum destinationType;
+    public DestinationRedis withDestinationType(DestinationRedisRedisEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

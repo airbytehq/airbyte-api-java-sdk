@@ -11,9 +11,9 @@ public class CreateConnectionResponse {
      * Successful operation
      */
     
-    public com.airbyte.api.models.shared.ConnectionId connectionId;
-    public CreateConnectionResponse withConnectionId(com.airbyte.api.models.shared.ConnectionId connectionId) {
-        this.connectionId = connectionId;
+    public com.airbyte.api.models.shared.ConnectionResponse connectionResponse;
+    public CreateConnectionResponse withConnectionResponse(com.airbyte.api.models.shared.ConnectionResponse connectionResponse) {
+        this.connectionResponse = connectionResponse;
         return this;
     }
     

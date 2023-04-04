@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMailchimp - The values required to configure the source.
  */
 public class SourceMailchimp {
-    @JsonProperty("airbyte-source-name")
-    public SourceMailchimpMailchimpEnum airbyteSourceName;
-    public SourceMailchimp withAirbyteSourceName(SourceMailchimpMailchimpEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaign_id")
     public String campaignId;
@@ -32,6 +25,13 @@ public class SourceMailchimp {
     public Object credentials;
     public SourceMailchimp withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMailchimpMailchimpEnum sourceType;
+    public SourceMailchimp withSourceType(SourceMailchimpMailchimpEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

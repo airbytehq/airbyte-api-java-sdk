@@ -22,13 +22,6 @@ public class DestinationDatabricks {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationDatabricksDatabricksEnum airbyteDestinationName;
-    public DestinationDatabricks withAirbyteDestinationName(DestinationDatabricksDatabricksEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Storage on which the delta lake is built.
      */
@@ -40,13 +33,13 @@ public class DestinationDatabricks {
     }
     
     /**
-     * The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is "public".
+     * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("database_schema")
-    public String databaseSchema;
-    public DestinationDatabricks withDatabaseSchema(String databaseSchema) {
-        this.databaseSchema = databaseSchema;
+    @JsonProperty("database")
+    public String database;
+    public DestinationDatabricks withDatabase(String database) {
+        this.database = database;
         return this;
     }
     
@@ -91,6 +84,13 @@ public class DestinationDatabricks {
         return this;
     }
     
+    @JsonProperty("destinationType")
+    public DestinationDatabricksDatabricksEnum destinationType;
+    public DestinationDatabricks withDestinationType(DestinationDatabricksDatabricksEnum destinationType) {
+        this.destinationType = destinationType;
+        return this;
+    }
+    
     /**
      * Default to 'true'. Switch it to 'false' for debugging purpose.
      */
@@ -99,6 +99,17 @@ public class DestinationDatabricks {
     public Boolean purgeStagingData;
     public DestinationDatabricks withPurgeStagingData(Boolean purgeStagingData) {
         this.purgeStagingData = purgeStagingData;
+        return this;
+    }
+    
+    /**
+     * The default schema tables are written. If not specified otherwise, the "default" will be used.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("schema")
+    public String schema;
+    public DestinationDatabricks withSchema(String schema) {
+        this.schema = schema;
         return this;
     }
     

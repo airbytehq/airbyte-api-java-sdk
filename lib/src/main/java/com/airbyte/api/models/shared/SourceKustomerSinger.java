@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceKustomerSinger - The values required to configure the source.
  */
 public class SourceKustomerSinger {
-    @JsonProperty("airbyte-source-name")
-    public SourceKustomerSingerKustomerSingerEnum airbyteSourceName;
-    public SourceKustomerSinger withAirbyteSourceName(SourceKustomerSingerKustomerSingerEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Kustomer API Token. See the &lt;a href="https://developer.kustomer.com/kustomer-api-docs/reference/authentication"&gt;docs&lt;/a&gt; on how to obtain this
      */
@@ -24,6 +17,13 @@ public class SourceKustomerSinger {
     public String apiToken;
     public SourceKustomerSinger withApiToken(String apiToken) {
         this.apiToken = apiToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceKustomerSingerKustomerSingerEnum sourceType;
+    public SourceKustomerSinger withSourceType(SourceKustomerSingerKustomerSingerEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

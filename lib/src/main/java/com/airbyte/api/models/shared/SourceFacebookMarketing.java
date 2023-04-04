@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
  */
 public class SourceFacebookMarketing {
     /**
-     * The value of the access token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information
+     * The value of the generated access token. From your App\u2019s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
     @JsonProperty("access_token")
     public String accessToken;
@@ -28,7 +28,7 @@ public class SourceFacebookMarketing {
     }
     
     /**
-     * The Facebook Ad account ID to use when pulling data from the Facebook Marketing API.
+     * The Facebook Ad account ID to use when pulling data from the Facebook Marketing API. Open your Meta Ads Manager. The Ad account ID number is in the account dropdown menu or in your browser's address bar. See the &lt;a href="https://www.facebook.com/business/help/1492627900875762"&gt;docs&lt;/a&gt; for more information.
      */
     @JsonProperty("account_id")
     public String accountId;
@@ -48,15 +48,8 @@ public class SourceFacebookMarketing {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceFacebookMarketingFacebookMarketingEnum airbyteSourceName;
-    public SourceFacebookMarketing withAirbyteSourceName(SourceFacebookMarketingFacebookMarketingEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
-     * A list which contains insights entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns)
+     * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_insights")
@@ -67,7 +60,7 @@ public class SourceFacebookMarketing {
     }
     
     /**
-     * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the latest data.
+     * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
@@ -78,7 +71,7 @@ public class SourceFacebookMarketing {
     }
     
     /**
-     * In each Ad Creative, fetch the thumbnail_url and store the result in thumbnail_data_url
+     * Set to active if you want to fetch the thumbnail_url and store the result in thumbnail_data_url for each Ad Creative.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("fetch_thumbnail_images")
@@ -89,7 +82,7 @@ public class SourceFacebookMarketing {
     }
     
     /**
-     * Include data from deleted Campaigns, Ads, and AdSets
+     * Set to active if you want to include data from deleted Campaigns, Ads, and AdSets.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_deleted")
@@ -100,7 +93,7 @@ public class SourceFacebookMarketing {
     }
     
     /**
-     * The attribution window
+     * The attribution window. Facebook freezes insight data 28 days after it was generated, which means that all data from the past 28 days may have changed since we last emitted it, so you can retrieve refreshed insights from the past by setting this parameter. If you set a custom lookback window value in Facebook account, please provide the same value here.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("insights_lookback_window")
@@ -129,6 +122,13 @@ public class SourceFacebookMarketing {
     public Long pageSize;
     public SourceFacebookMarketing withPageSize(Long pageSize) {
         this.pageSize = pageSize;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFacebookMarketingFacebookMarketingEnum sourceType;
+    public SourceFacebookMarketing withSourceType(SourceFacebookMarketingFacebookMarketingEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

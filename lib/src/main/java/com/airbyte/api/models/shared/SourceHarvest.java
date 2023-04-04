@@ -22,13 +22,6 @@ public class SourceHarvest {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceHarvestHarvestEnum airbyteSourceName;
-    public SourceHarvest withAirbyteSourceName(SourceHarvestHarvestEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Choose how to authenticate to Harvest.
      */
@@ -58,6 +51,13 @@ public class SourceHarvest {
     public String replicationStartDate;
     public SourceHarvest withReplicationStartDate(String replicationStartDate) {
         this.replicationStartDate = replicationStartDate;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceHarvestHarvestEnum sourceType;
+    public SourceHarvest withSourceType(SourceHarvestHarvestEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

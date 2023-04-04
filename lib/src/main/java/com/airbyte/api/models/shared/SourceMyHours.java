@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMyHours - The values required to configure the source.
  */
 public class SourceMyHours {
-    @JsonProperty("airbyte-source-name")
-    public SourceMyHoursMyHoursEnum airbyteSourceName;
-    public SourceMyHours withAirbyteSourceName(SourceMyHoursMyHoursEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your My Hours username
      */
@@ -47,6 +40,13 @@ public class SourceMyHours {
     public String password;
     public SourceMyHours withPassword(String password) {
         this.password = password;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMyHoursMyHoursEnum sourceType;
+    public SourceMyHours withSourceType(SourceMyHoursMyHoursEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

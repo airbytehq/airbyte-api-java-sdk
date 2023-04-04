@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOrb - The values required to configure the source.
  */
 public class SourceOrb {
-    @JsonProperty("airbyte-source-name")
-    public SourceOrbOrbEnum airbyteSourceName;
-    public SourceOrb withAirbyteSourceName(SourceOrbOrbEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Orb API Key, issued from the Orb admin console.
      */
@@ -59,6 +52,13 @@ public class SourceOrb {
     public String planId;
     public SourceOrb withPlanId(String planId) {
         this.planId = planId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceOrbOrbEnum sourceType;
+    public SourceOrb withSourceType(SourceOrbOrbEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOkta - The values required to configure the source.
  */
 public class SourceOkta {
-    @JsonProperty("airbyte-source-name")
-    public SourceOktaOktaEnum airbyteSourceName;
-    public SourceOkta withAirbyteSourceName(SourceOktaOktaEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
@@ -35,6 +28,13 @@ public class SourceOkta {
     public String domain;
     public SourceOkta withDomain(String domain) {
         this.domain = domain;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceOktaOktaEnum sourceType;
+    public SourceOkta withSourceType(SourceOktaOktaEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

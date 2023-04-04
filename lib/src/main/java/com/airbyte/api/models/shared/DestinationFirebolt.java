@@ -23,13 +23,6 @@ public class DestinationFirebolt {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationFireboltFireboltEnum airbyteDestinationName;
-    public DestinationFirebolt withAirbyteDestinationName(DestinationFireboltFireboltEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * The database to connect to.
      */
@@ -37,6 +30,13 @@ public class DestinationFirebolt {
     public String database;
     public DestinationFirebolt withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationFireboltFireboltEnum destinationType;
+    public DestinationFirebolt withDestinationType(DestinationFireboltFireboltEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

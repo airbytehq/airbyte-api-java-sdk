@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceQualaroo - The values required to configure the source.
  */
 public class SourceQualaroo {
-    @JsonProperty("airbyte-source-name")
-    public SourceQualarooQualarooEnum airbyteSourceName;
-    public SourceQualaroo withAirbyteSourceName(SourceQualarooQualarooEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
@@ -26,6 +19,13 @@ public class SourceQualaroo {
     public String key;
     public SourceQualaroo withKey(String key) {
         this.key = key;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceQualarooQualarooEnum sourceType;
+    public SourceQualaroo withSourceType(SourceQualarooQualarooEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

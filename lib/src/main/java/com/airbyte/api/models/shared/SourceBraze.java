@@ -12,13 +12,6 @@ import java.time.LocalDate;
  * SourceBraze - The values required to configure the source.
  */
 public class SourceBraze {
-    @JsonProperty("airbyte-source-name")
-    public SourceBrazeBrazeEnum airbyteSourceName;
-    public SourceBraze withAirbyteSourceName(SourceBrazeBrazeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Braze REST API key
      */
@@ -26,6 +19,13 @@ public class SourceBraze {
     public String apiKey;
     public SourceBraze withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceBrazeBrazeEnum sourceType;
+    public SourceBraze withSourceType(SourceBrazeBrazeEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

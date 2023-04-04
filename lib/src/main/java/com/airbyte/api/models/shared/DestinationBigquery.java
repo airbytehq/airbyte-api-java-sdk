@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationBigquery - The values required to configure the destination.
  */
 public class DestinationBigquery {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationBigqueryBigqueryEnum airbyteDestinationName;
-    public DestinationBigquery withAirbyteDestinationName(DestinationBigqueryBigqueryEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
      */
@@ -58,6 +51,13 @@ public class DestinationBigquery {
     public DestinationBigqueryDatasetLocationEnum datasetLocation;
     public DestinationBigquery withDatasetLocation(DestinationBigqueryDatasetLocationEnum datasetLocation) {
         this.datasetLocation = datasetLocation;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationBigqueryBigqueryEnum destinationType;
+    public DestinationBigquery withDestinationType(DestinationBigqueryBigqueryEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

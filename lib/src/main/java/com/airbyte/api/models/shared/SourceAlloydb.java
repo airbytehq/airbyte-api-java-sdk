@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceAlloydb - The values required to configure the source.
  */
 public class SourceAlloydb {
-    @JsonProperty("airbyte-source-name")
-    public SourceAlloydbAlloydbEnum airbyteSourceName;
-    public SourceAlloydb withAirbyteSourceName(SourceAlloydbAlloydbEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -90,6 +83,13 @@ public class SourceAlloydb {
     public String[] schemas;
     public SourceAlloydb withSchemas(String[] schemas) {
         this.schemas = schemas;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceAlloydbAlloydbEnum sourceType;
+    public SourceAlloydb withSourceType(SourceAlloydbAlloydbEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

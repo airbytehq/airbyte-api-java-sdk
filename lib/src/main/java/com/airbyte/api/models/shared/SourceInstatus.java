@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceInstatus - The values required to configure the source.
  */
 public class SourceInstatus {
-    @JsonProperty("airbyte-source-name")
-    public SourceInstatusInstatusEnum airbyteSourceName;
-    public SourceInstatus withAirbyteSourceName(SourceInstatusInstatusEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Instatus REST API key
      */
@@ -24,6 +17,13 @@ public class SourceInstatus {
     public String apiKey;
     public SourceInstatus withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceInstatusInstatusEnum sourceType;
+    public SourceInstatus withSourceType(SourceInstatusInstatusEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -22,13 +22,6 @@ public class DestinationCassandra {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationCassandraCassandraEnum airbyteDestinationName;
-    public DestinationCassandra withAirbyteDestinationName(DestinationCassandraCassandraEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Datacenter of the cassandra cluster.
      */
@@ -37,6 +30,13 @@ public class DestinationCassandra {
     public String datacenter;
     public DestinationCassandra withDatacenter(String datacenter) {
         this.datacenter = datacenter;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationCassandraCassandraEnum destinationType;
+    public DestinationCassandra withDestinationType(DestinationCassandraCassandraEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

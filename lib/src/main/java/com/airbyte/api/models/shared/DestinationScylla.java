@@ -22,10 +22,10 @@ public class DestinationScylla {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationScyllaScyllaEnum airbyteDestinationName;
-    public DestinationScylla withAirbyteDestinationName(DestinationScyllaScyllaEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationScyllaScyllaEnum destinationType;
+    public DestinationScylla withDestinationType(DestinationScyllaScyllaEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

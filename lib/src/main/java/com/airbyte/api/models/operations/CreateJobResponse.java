@@ -15,8 +15,7 @@ public class CreateJobResponse {
     }
     
     /**
-     * Kicks off a new Job based on the JobType. The connectionId is the resource that 
-     * Job will be run for.
+     * Kicks off a new Job based on the JobType. The connectionId is the resource that Job will be run for.
      */
     
     public com.airbyte.api.models.shared.JobResponse jobResponse;

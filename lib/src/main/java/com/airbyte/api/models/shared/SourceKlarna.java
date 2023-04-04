@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceKlarna - The values required to configure the source.
  */
 public class SourceKlarna {
-    @JsonProperty("airbyte-source-name")
-    public SourceKlarnaKlarnaEnum airbyteSourceName;
-    public SourceKlarna withAirbyteSourceName(SourceKlarnaKlarnaEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
      */
@@ -44,6 +37,13 @@ public class SourceKlarna {
     public SourceKlarnaRegionEnum region;
     public SourceKlarna withRegion(SourceKlarnaRegionEnum region) {
         this.region = region;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceKlarnaKlarnaEnum sourceType;
+    public SourceKlarna withSourceType(SourceKlarnaKlarnaEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

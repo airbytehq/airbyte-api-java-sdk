@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourcePipedrive - The values required to configure the source.
  */
 public class SourcePipedrive {
-    @JsonProperty("airbyte-source-name")
-    public SourcePipedrivePipedriveEnum airbyteSourceName;
-    public SourcePipedrive withAirbyteSourceName(SourcePipedrivePipedriveEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorization")
     public SourcePipedriveAPIKeyAuthentication authorization;
@@ -41,6 +34,13 @@ public class SourcePipedrive {
     public OffsetDateTime replicationStartDate;
     public SourcePipedrive withReplicationStartDate(OffsetDateTime replicationStartDate) {
         this.replicationStartDate = replicationStartDate;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePipedrivePipedriveEnum sourceType;
+    public SourcePipedrive withSourceType(SourcePipedrivePipedriveEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

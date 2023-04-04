@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationElasticsearch - The values required to configure the destination.
  */
 public class DestinationElasticsearch {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationElasticsearchElasticsearchEnum airbyteDestinationName;
-    public DestinationElasticsearch withAirbyteDestinationName(DestinationElasticsearchElasticsearchEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * The type of authentication to be used
      */
@@ -38,6 +31,13 @@ public class DestinationElasticsearch {
     public String caCertificate;
     public DestinationElasticsearch withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationElasticsearchElasticsearchEnum destinationType;
+    public DestinationElasticsearch withDestinationType(DestinationElasticsearchElasticsearchEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

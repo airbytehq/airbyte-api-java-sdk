@@ -7,7 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum {
-    AZURE_BLOB_STORAGE("Azure_Blob_Storage");
+    AZURE_BLOB_STORAGE("AZURE_BLOB_STORAGE");
 
     @JsonValue
     public final String value;

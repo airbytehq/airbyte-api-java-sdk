@@ -4,23 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceSalesforce - The values required to configure the source.
  */
 public class SourceSalesforce {
-    @JsonProperty("airbyte-source-name")
-    public SourceSalesforceSalesforceEnum airbyteSourceName;
-    public SourceSalesforce withAirbyteSourceName(SourceSalesforceSalesforceEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceSalesforceAuthTypeEnum authType;
@@ -70,14 +66,22 @@ public class SourceSalesforce {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceSalesforceSalesforceEnum sourceType;
+    public SourceSalesforce withSourceType(SourceSalesforceSalesforceEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
-     * Enter the date in the YYYY-MM-DD format. Airbyte will replicate the data added on and after this date. If this field is blank, Airbyte will replicate all data.
+     * Enter the date in the YYYY-MM-DD format. Airbyte will replicate the data added on and after this date. If this field is blank, Airbyte will replicate the data for last two years.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public LocalDate startDate;
-    public SourceSalesforce withStartDate(LocalDate startDate) {
+    public OffsetDateTime startDate;
+    public SourceSalesforce withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

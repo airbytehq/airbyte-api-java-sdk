@@ -4,21 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceSlack - The values required to configure the source.
  */
 public class SourceSlack {
-    @JsonProperty("airbyte-source-name")
-    public SourceSlackSlackEnum airbyteSourceName;
-    public SourceSlack withAirbyteSourceName(SourceSlackSlackEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.
      */
@@ -61,12 +59,21 @@ public class SourceSlack {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceSlackSlackEnum sourceType;
+    public SourceSlack withSourceType(SourceSlackSlackEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceSlack withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceSlack withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

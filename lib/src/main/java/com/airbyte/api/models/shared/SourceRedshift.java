@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRedshift - The values required to configure the source.
  */
 public class SourceRedshift {
-    @JsonProperty("airbyte-source-name")
-    public SourceRedshiftRedshiftEnum airbyteSourceName;
-    public SourceRedshift withAirbyteSourceName(SourceRedshiftRedshiftEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -78,6 +71,13 @@ public class SourceRedshift {
     public String[] schemas;
     public SourceRedshift withSchemas(String[] schemas) {
         this.schemas = schemas;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceRedshiftRedshiftEnum sourceType;
+    public SourceRedshift withSourceType(SourceRedshiftRedshiftEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

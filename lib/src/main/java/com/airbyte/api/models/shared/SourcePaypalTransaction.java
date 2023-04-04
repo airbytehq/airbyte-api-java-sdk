@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePaypalTransaction - The values required to configure the source.
  */
 public class SourcePaypalTransaction {
-    @JsonProperty("airbyte-source-name")
-    public SourcePaypalTransactionPaypalTransactionEnum airbyteSourceName;
-    public SourcePaypalTransaction withAirbyteSourceName(SourcePaypalTransactionPaypalTransactionEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The Client ID of your Paypal developer application.
      */
@@ -59,6 +52,13 @@ public class SourcePaypalTransaction {
     public String refreshToken;
     public SourcePaypalTransaction withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePaypalTransactionPaypalTransactionEnum sourceType;
+    public SourcePaypalTransaction withSourceType(SourcePaypalTransactionPaypalTransactionEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

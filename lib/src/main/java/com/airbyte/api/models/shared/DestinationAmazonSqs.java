@@ -23,10 +23,10 @@ public class DestinationAmazonSqs {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationAmazonSqsAmazonSqsEnum airbyteDestinationName;
-    public DestinationAmazonSqs withAirbyteDestinationName(DestinationAmazonSqsAmazonSqsEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationAmazonSqsAmazonSqsEnum destinationType;
+    public DestinationAmazonSqs withDestinationType(DestinationAmazonSqsAmazonSqsEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceZoom - The values required to configure the source.
  */
 public class SourceZoom {
-    @JsonProperty("airbyte-source-name")
-    public SourceZoomZoomEnum airbyteSourceName;
-    public SourceZoom withAirbyteSourceName(SourceZoomZoomEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * JWT Token
      */
@@ -24,6 +17,13 @@ public class SourceZoom {
     public String jwtToken;
     public SourceZoom withJwtToken(String jwtToken) {
         this.jwtToken = jwtToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceZoomZoomEnum sourceType;
+    public SourceZoom withSourceType(SourceZoomZoomEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

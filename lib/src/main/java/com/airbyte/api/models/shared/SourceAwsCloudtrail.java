@@ -12,13 +12,6 @@ import java.time.LocalDate;
  * SourceAwsCloudtrail - The values required to configure the source.
  */
 public class SourceAwsCloudtrail {
-    @JsonProperty("airbyte-source-name")
-    public SourceAwsCloudtrailAwsCloudtrailEnum airbyteSourceName;
-    public SourceAwsCloudtrail withAirbyteSourceName(SourceAwsCloudtrailAwsCloudtrailEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -46,6 +39,13 @@ public class SourceAwsCloudtrail {
     public String awsSecretKey;
     public SourceAwsCloudtrail withAwsSecretKey(String awsSecretKey) {
         this.awsSecretKey = awsSecretKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceAwsCloudtrailAwsCloudtrailEnum sourceType;
+    public SourceAwsCloudtrail withSourceType(SourceAwsCloudtrailAwsCloudtrailEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleDirectory - The values required to configure the source.
  */
 public class SourceGoogleDirectory {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleDirectoryGoogleDirectoryEnum airbyteSourceName;
-    public SourceGoogleDirectory withAirbyteSourceName(SourceGoogleDirectoryGoogleDirectoryEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
@@ -34,6 +27,13 @@ public class SourceGoogleDirectory {
     public String email;
     public SourceGoogleDirectory withEmail(String email) {
         this.email = email;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGoogleDirectoryGoogleDirectoryEnum sourceType;
+    public SourceGoogleDirectory withSourceType(SourceGoogleDirectoryGoogleDirectoryEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

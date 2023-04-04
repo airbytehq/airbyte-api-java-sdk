@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceFauna - The values required to configure the source.
  */
 public class SourceFauna {
-    @JsonProperty("airbyte-source-name")
-    public SourceFaunaFaunaEnum airbyteSourceName;
-    public SourceFauna withAirbyteSourceName(SourceFaunaFaunaEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Settings for the Fauna Collection.
      */
@@ -67,6 +60,13 @@ public class SourceFauna {
     public String secret;
     public SourceFauna withSecret(String secret) {
         this.secret = secret;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFaunaFaunaEnum sourceType;
+    public SourceFauna withSourceType(SourceFaunaFaunaEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

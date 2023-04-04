@@ -20,13 +20,6 @@ public class SourceTwilioTaskrouter {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceTwilioTaskrouterTwilioTaskrouterEnum airbyteSourceName;
-    public SourceTwilioTaskrouter withAirbyteSourceName(SourceTwilioTaskrouterTwilioTaskrouterEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Twilio Auth Token
      */
@@ -34,6 +27,13 @@ public class SourceTwilioTaskrouter {
     public String authToken;
     public SourceTwilioTaskrouter withAuthToken(String authToken) {
         this.authToken = authToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceTwilioTaskrouterTwilioTaskrouterEnum sourceType;
+    public SourceTwilioTaskrouter withSourceType(SourceTwilioTaskrouterTwilioTaskrouterEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceApifyDataset - The values required to configure the source.
  */
 public class SourceApifyDataset {
-    @JsonProperty("airbyte-source-name")
-    public SourceApifyDatasetApifyDatasetEnum airbyteSourceName;
-    public SourceApifyDataset withAirbyteSourceName(SourceApifyDatasetApifyDatasetEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * If set to true, only clean items will be downloaded from the dataset. See description of what clean means in &lt;a href="https://docs.apify.com/api/v2#/reference/datasets/item-collection/get-items"&gt;Apify API docs&lt;/a&gt;. If not sure, set clean to false.
      */
@@ -37,6 +30,13 @@ public class SourceApifyDataset {
     public String datasetId;
     public SourceApifyDataset withDatasetId(String datasetId) {
         this.datasetId = datasetId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceApifyDatasetApifyDatasetEnum sourceType;
+    public SourceApifyDataset withSourceType(SourceApifyDatasetApifyDatasetEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

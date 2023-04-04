@@ -21,14 +21,14 @@ public class ListJobsRequest {
      * Filter the Jobs by jobType.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=jobType")
-    public com.airbyte.api.models.shared.JobTypeEnum jobType;
-    public ListJobsRequest withJobType(com.airbyte.api.models.shared.JobTypeEnum jobType) {
+    public com.airbyte.api.models.shared.JobTypeEnumEnum jobType;
+    public ListJobsRequest withJobType(com.airbyte.api.models.shared.JobTypeEnumEnum jobType) {
         this.jobType = jobType;
         return this;
     }
     
     /**
-     * Set the limit on the number of Jobs returned. The default is 20 Jobs
+     * Set the limit on the number of Jobs returned. The default is 20 Jobs.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")
     public Integer limit;
@@ -38,7 +38,7 @@ public class ListJobsRequest {
     }
     
     /**
-     * Set the offset to start at when returning Jobs. The default is 0
+     * Set the offset to start at when returning Jobs. The default is 0.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=offset")
     public Integer offset;

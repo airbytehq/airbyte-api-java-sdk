@@ -4,9 +4,14 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceStripe - The values required to configure the source.
@@ -19,13 +24,6 @@ public class SourceStripe {
     public String accountId;
     public SourceStripe withAccountId(String accountId) {
         this.accountId = accountId;
-        return this;
-    }
-    
-    @JsonProperty("airbyte-source-name")
-    public SourceStripeStripeEnum airbyteSourceName;
-    public SourceStripe withAirbyteSourceName(SourceStripeStripeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
         return this;
     }
     
@@ -61,12 +59,21 @@ public class SourceStripe {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceStripeStripeEnum sourceType;
+    public SourceStripe withSourceType(SourceStripeStripeEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceStripe withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceStripe withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

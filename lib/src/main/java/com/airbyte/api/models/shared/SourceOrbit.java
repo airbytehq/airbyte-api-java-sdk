@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOrbit - The values required to configure the source.
  */
 public class SourceOrbit {
-    @JsonProperty("airbyte-source-name")
-    public SourceOrbitOrbitEnum airbyteSourceName;
-    public SourceOrbit withAirbyteSourceName(SourceOrbitOrbitEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Authorizes you to work with Orbit workspaces associated with the token.
      */
@@ -26,6 +19,13 @@ public class SourceOrbit {
     public String apiToken;
     public SourceOrbit withApiToken(String apiToken) {
         this.apiToken = apiToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceOrbitOrbitEnum sourceType;
+    public SourceOrbit withSourceType(SourceOrbitOrbitEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

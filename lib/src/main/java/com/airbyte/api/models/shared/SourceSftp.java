@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSftp - The values required to configure the source.
  */
 public class SourceSftp {
-    @JsonProperty("airbyte-source-name")
-    public SourceSftpSftpEnum airbyteSourceName;
-    public SourceSftp withAirbyteSourceName(SourceSftpSftpEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The server authentication method
      */
@@ -80,6 +73,13 @@ public class SourceSftp {
     public Long port;
     public SourceSftp withPort(Long port) {
         this.port = port;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSftpSftpEnum sourceType;
+    public SourceSftp withSourceType(SourceSftpSftpEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

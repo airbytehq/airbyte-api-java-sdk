@@ -23,13 +23,6 @@ public class SourceAmazonSqs {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceAmazonSqsAmazonSqsEnum airbyteSourceName;
-    public SourceAmazonSqs withAirbyteSourceName(SourceAmazonSqsAmazonSqsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Comma separated list of Mesage Attribute names to return
      */
@@ -101,6 +94,13 @@ public class SourceAmazonSqs {
     public String secretKey;
     public SourceAmazonSqs withSecretKey(String secretKey) {
         this.secretKey = secretKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceAmazonSqsAmazonSqsEnum sourceType;
+    public SourceAmazonSqs withSourceType(SourceAmazonSqsAmazonSqsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

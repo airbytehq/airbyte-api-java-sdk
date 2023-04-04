@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceShopify - The values required to configure the source.
  */
 public class SourceShopify {
-    @JsonProperty("airbyte-source-name")
-    public SourceShopifyShopifyEnum airbyteSourceName;
-    public SourceShopify withAirbyteSourceName(SourceShopifyShopifyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The authorization method to use to retrieve data from Shopify
      */
@@ -37,6 +30,13 @@ public class SourceShopify {
     public String shop;
     public SourceShopify withShop(String shop) {
         this.shop = shop;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceShopifyShopifyEnum sourceType;
+    public SourceShopify withSourceType(SourceShopifyShopifyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

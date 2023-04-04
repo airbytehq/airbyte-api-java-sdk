@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceJira - The values required to configure the source.
  */
 public class SourceJira {
-    @JsonProperty("airbyte-source-name")
-    public SourceJiraJiraEnum airbyteSourceName;
-    public SourceJira withAirbyteSourceName(SourceJiraJiraEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
@@ -95,6 +88,13 @@ public class SourceJira {
     public Boolean renderFields;
     public SourceJira withRenderFields(Boolean renderFields) {
         this.renderFields = renderFields;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceJiraJiraEnum sourceType;
+    public SourceJira withSourceType(SourceJiraJiraEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

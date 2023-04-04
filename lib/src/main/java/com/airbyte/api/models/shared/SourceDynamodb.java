@@ -22,13 +22,6 @@ public class SourceDynamodb {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceDynamodbDynamodbEnum airbyteSourceName;
-    public SourceDynamodb withAirbyteSourceName(SourceDynamodbDynamodbEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * the URL of the Dynamodb database
      */
@@ -69,6 +62,13 @@ public class SourceDynamodb {
     public String secretAccessKey;
     public SourceDynamodb withSecretAccessKey(String secretAccessKey) {
         this.secretAccessKey = secretAccessKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceDynamodbDynamodbEnum sourceType;
+    public SourceDynamodb withSourceType(SourceDynamodbDynamodbEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

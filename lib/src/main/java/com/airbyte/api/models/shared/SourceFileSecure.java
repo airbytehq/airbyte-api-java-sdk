@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceFileSecure - The values required to configure the source.
  */
 public class SourceFileSecure {
-    @JsonProperty("airbyte-source-name")
-    public SourceFileSecureFileSecureEnum airbyteSourceName;
-    public SourceFileSecure withAirbyteSourceName(SourceFileSecureFileSecureEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).
      */
@@ -57,6 +50,13 @@ public class SourceFileSecure {
     public String readerOptions;
     public SourceFileSecure withReaderOptions(String readerOptions) {
         this.readerOptions = readerOptions;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFileSecureFileSecureEnum sourceType;
+    public SourceFileSecure withSourceType(SourceFileSecureFileSecureEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import java.time.LocalDate;
  * SourceWoocommerce - The values required to configure the source.
  */
 public class SourceWoocommerce {
-    @JsonProperty("airbyte-source-name")
-    public SourceWoocommerceWoocommerceEnum airbyteSourceName;
-    public SourceWoocommerce withAirbyteSourceName(SourceWoocommerceWoocommerceEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Customer Key for API in WooCommerce shop
      */
@@ -46,6 +39,13 @@ public class SourceWoocommerce {
     public String shop;
     public SourceWoocommerce withShop(String shop) {
         this.shop = shop;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceWoocommerceWoocommerceEnum sourceType;
+    public SourceWoocommerce withSourceType(SourceWoocommerceWoocommerceEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

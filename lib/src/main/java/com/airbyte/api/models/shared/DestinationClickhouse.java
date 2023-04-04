@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationClickhouse - The values required to configure the destination.
  */
 public class DestinationClickhouse {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationClickhouseClickhouseEnum airbyteDestinationName;
-    public DestinationClickhouse withAirbyteDestinationName(DestinationClickhouseClickhouseEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -26,6 +19,13 @@ public class DestinationClickhouse {
     public String database;
     public DestinationClickhouse withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationClickhouseClickhouseEnum destinationType;
+    public DestinationClickhouse withDestinationType(DestinationClickhouseClickhouseEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

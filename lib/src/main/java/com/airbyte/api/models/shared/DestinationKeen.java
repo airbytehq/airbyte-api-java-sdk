@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationKeen - The values required to configure the destination.
  */
 public class DestinationKeen {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationKeenKeenEnum airbyteDestinationName;
-    public DestinationKeen withAirbyteDestinationName(DestinationKeenKeenEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * To get Keen Master API Key, navigate to the Access tab from the left-hand, side panel and check the Project Details section.
      */
@@ -26,6 +19,13 @@ public class DestinationKeen {
     public String apiKey;
     public DestinationKeen withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationKeenKeenEnum destinationType;
+    public DestinationKeen withDestinationType(DestinationKeenKeenEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

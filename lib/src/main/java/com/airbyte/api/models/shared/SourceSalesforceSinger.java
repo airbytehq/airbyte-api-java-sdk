@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSalesforceSinger - The values required to configure the source.
  */
 public class SourceSalesforceSinger {
-    @JsonProperty("airbyte-source-name")
-    public SourceSalesforceSingerSalesforceSingerEnum airbyteSourceName;
-    public SourceSalesforceSinger withAirbyteSourceName(SourceSalesforceSingerSalesforceSingerEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Unless you know that you are transferring a very small amount of data, prefer using the BULK API. This will help avoid using up all of your API call quota with Salesforce. Valid values are BULK or REST.
      */
@@ -89,6 +82,13 @@ public class SourceSalesforceSinger {
     public String refreshToken;
     public SourceSalesforceSinger withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSalesforceSingerSalesforceSingerEnum sourceType;
+    public SourceSalesforceSinger withSourceType(SourceSalesforceSingerSalesforceSingerEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

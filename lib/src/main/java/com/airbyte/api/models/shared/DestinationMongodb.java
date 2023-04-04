@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationMongodb - The values required to configure the destination.
  */
 public class DestinationMongodb {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationMongodbMongodbEnum airbyteDestinationName;
-    public DestinationMongodb withAirbyteDestinationName(DestinationMongodbMongodbEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Authorization type.
      */
@@ -36,6 +29,13 @@ public class DestinationMongodb {
     public String database;
     public DestinationMongodb withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationMongodbMongodbEnum destinationType;
+    public DestinationMongodb withDestinationType(DestinationMongodbMongodbEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

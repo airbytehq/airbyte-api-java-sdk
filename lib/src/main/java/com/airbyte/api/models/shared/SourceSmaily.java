@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSmaily - The values required to configure the source.
  */
 public class SourceSmaily {
-    @JsonProperty("airbyte-source-name")
-    public SourceSmailySmailyEnum airbyteSourceName;
-    public SourceSmaily withAirbyteSourceName(SourceSmailySmailyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API user password. See https://smaily.com/help/api/general/create-api-user/
      */
@@ -44,6 +37,13 @@ public class SourceSmaily {
     public String apiUsername;
     public SourceSmaily withApiUsername(String apiUsername) {
         this.apiUsername = apiUsername;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSmailySmailyEnum sourceType;
+    public SourceSmaily withSourceType(SourceSmailySmailyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

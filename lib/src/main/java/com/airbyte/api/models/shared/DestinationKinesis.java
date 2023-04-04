@@ -20,13 +20,6 @@ public class DestinationKinesis {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationKinesisKinesisEnum airbyteDestinationName;
-    public DestinationKinesis withAirbyteDestinationName(DestinationKinesisKinesisEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Buffer size for storing kinesis records before being batch streamed.
      */
@@ -34,6 +27,13 @@ public class DestinationKinesis {
     public Long bufferSize;
     public DestinationKinesis withBufferSize(Long bufferSize) {
         this.bufferSize = bufferSize;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationKinesisKinesisEnum destinationType;
+    public DestinationKinesis withDestinationType(DestinationKinesisKinesisEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

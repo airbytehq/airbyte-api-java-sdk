@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceZenloop - The values required to configure the source.
  */
 public class SourceZenloop {
-    @JsonProperty("airbyte-source-name")
-    public SourceZenloopZenloopEnum airbyteSourceName;
-    public SourceZenloop withAirbyteSourceName(SourceZenloopZenloopEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt; 
      */
@@ -37,6 +30,13 @@ public class SourceZenloop {
     public String dateFrom;
     public SourceZenloop withDateFrom(String dateFrom) {
         this.dateFrom = dateFrom;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceZenloopZenloopEnum sourceType;
+    public SourceZenloop withSourceType(SourceZenloopZenloopEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     
