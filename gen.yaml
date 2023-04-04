@@ -10,7 +10,7 @@ generation:
   sdkFlattening: true
   singleTagPerOp: false
 java:
-  version: ""
+  version: 0.0.1
   artifactID: public-api
   companyEmail: info@mycompany.com
   companyName: My Company
