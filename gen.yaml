@@ -10,12 +10,12 @@ generation:
   sdkFlattening: true
   singleTagPerOp: false
 java:
-  version: ""
-  artifactID: public-api
+  version: "0.1.0"
+  artifactID: api
   companyEmail: info@mycompany.com
-  companyName: My Company
-  companyURL: www.mycompany.com
+  companyName: Airbyte
+  companyURL: www.airbyte.com
   githubURL: github.com/owner/repo
-  groupID: airbyte-prod
+  groupID: com.airbyte
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   projectName: public-api
