@@ -11,11 +11,11 @@ generation:
   singleTagPerOp: false
 java:
   version: ""
-  artifactID: api
+  artifactID: public-api
   companyEmail: info@mycompany.com
   companyName: My Company
   companyURL: www.mycompany.com
   githubURL: github.com/owner/repo
-  groupID: com.airbyte
+  groupID: airbyte-prod
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   projectName: public-api
