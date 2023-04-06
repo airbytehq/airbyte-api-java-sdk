@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMicrosoftTeams - The values required to configure the source.
  */
 public class SourceMicrosoftTeams {
-    @JsonProperty("airbyte-source-name")
-    public SourceMicrosoftTeamsMicrosoftTeamsEnum airbyteSourceName;
-    public SourceMicrosoftTeams withAirbyteSourceName(SourceMicrosoftTeamsMicrosoftTeamsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Choose how to authenticate to Microsoft
      */
@@ -37,6 +30,13 @@ public class SourceMicrosoftTeams {
     public String period;
     public SourceMicrosoftTeams withPeriod(String period) {
         this.period = period;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType;
+    public SourceMicrosoftTeams withSourceType(SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

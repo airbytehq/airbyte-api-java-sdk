@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceCoinmarketcap - The values required to configure the source.
  */
 public class SourceCoinmarketcap {
-    @JsonProperty("airbyte-source-name")
-    public SourceCoinmarketcapCoinmarketcapEnum airbyteSourceName;
-    public SourceCoinmarketcap withAirbyteSourceName(SourceCoinmarketcapCoinmarketcapEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
@@ -36,6 +29,13 @@ public class SourceCoinmarketcap {
     public SourceCoinmarketcapDataTypeEnum dataType;
     public SourceCoinmarketcap withDataType(SourceCoinmarketcapDataTypeEnum dataType) {
         this.dataType = dataType;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceCoinmarketcapCoinmarketcapEnum sourceType;
+    public SourceCoinmarketcap withSourceType(SourceCoinmarketcapCoinmarketcapEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

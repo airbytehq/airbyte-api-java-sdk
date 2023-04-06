@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationPulsar - The values required to configure the destination.
  */
 public class DestinationPulsar {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationPulsarPulsarEnum airbyteDestinationName;
-    public DestinationPulsar withAirbyteDestinationName(DestinationPulsarPulsarEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Control whether automatic batching of messages is enabled for the producer.
      */
@@ -76,6 +69,13 @@ public class DestinationPulsar {
     public DestinationPulsarCompressionTypeEnum compressionType;
     public DestinationPulsar withCompressionType(DestinationPulsarCompressionTypeEnum compressionType) {
         this.compressionType = compressionType;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationPulsarPulsarEnum destinationType;
+    public DestinationPulsar withDestinationType(DestinationPulsarPulsarEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceDixa - The values required to configure the source.
  */
 public class SourceDixa {
-    @JsonProperty("airbyte-source-name")
-    public SourceDixaDixaEnum airbyteSourceName;
-    public SourceDixa withAirbyteSourceName(SourceDixaDixaEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Dixa API token
      */
@@ -37,6 +30,13 @@ public class SourceDixa {
     public Long batchSize;
     public SourceDixa withBatchSize(Long batchSize) {
         this.batchSize = batchSize;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceDixaDixaEnum sourceType;
+    public SourceDixa withSourceType(SourceDixaDixaEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -14,13 +14,6 @@ import java.time.LocalDate;
  * SourceBingAds - The values required to configure the source.
  */
 public class SourceBingAds {
-    @JsonProperty("airbyte-source-name")
-    public SourceBingAdsBingAdsEnum airbyteSourceName;
-    public SourceBingAds withAirbyteSourceName(SourceBingAdsBingAdsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
     public SourceBingAdsAuthMethodEnum authMethod;
@@ -78,6 +71,13 @@ public class SourceBingAds {
     public LocalDate reportsStartDate;
     public SourceBingAds withReportsStartDate(LocalDate reportsStartDate) {
         this.reportsStartDate = reportsStartDate;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceBingAdsBingAdsEnum sourceType;
+    public SourceBingAds withSourceType(SourceBingAdsBingAdsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

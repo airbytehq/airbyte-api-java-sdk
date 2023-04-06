@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMixpanel - The values required to configure the source.
  */
 public class SourceMixpanel {
-    @JsonProperty("airbyte-source-name")
-    public SourceMixpanelMixpanelEnum airbyteSourceName;
-    public SourceMixpanel withAirbyteSourceName(SourceMixpanelMixpanelEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      *  A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days.
      */
@@ -104,6 +97,13 @@ public class SourceMixpanel {
     public Boolean selectPropertiesByDefault;
     public SourceMixpanel withSelectPropertiesByDefault(Boolean selectPropertiesByDefault) {
         this.selectPropertiesByDefault = selectPropertiesByDefault;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMixpanelMixpanelEnum sourceType;
+    public SourceMixpanel withSourceType(SourceMixpanelMixpanelEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

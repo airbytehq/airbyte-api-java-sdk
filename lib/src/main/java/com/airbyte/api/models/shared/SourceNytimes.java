@@ -14,13 +14,6 @@ import java.time.LocalDate;
  * SourceNytimes - The values required to configure the source.
  */
 public class SourceNytimes {
-    @JsonProperty("airbyte-source-name")
-    public SourceNytimesNytimesEnum airbyteSourceName;
-    public SourceNytimes withAirbyteSourceName(SourceNytimesNytimesEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key
      */
@@ -61,6 +54,13 @@ public class SourceNytimes {
     public SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType;
     public SourceNytimes withShareType(SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType) {
         this.shareType = shareType;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceNytimesNytimesEnum sourceType;
+    public SourceNytimes withSourceType(SourceNytimesNytimesEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

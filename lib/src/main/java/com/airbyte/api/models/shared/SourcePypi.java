@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePypi - The values required to configure the source.
  */
 public class SourcePypi {
-    @JsonProperty("airbyte-source-name")
-    public SourcePypiPypiEnum airbyteSourceName;
-    public SourcePypi withAirbyteSourceName(SourcePypiPypiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.
      */
@@ -26,6 +19,13 @@ public class SourcePypi {
     public String projectName;
     public SourcePypi withProjectName(String projectName) {
         this.projectName = projectName;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePypiPypiEnum sourceType;
+    public SourcePypi withSourceType(SourcePypiPypiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

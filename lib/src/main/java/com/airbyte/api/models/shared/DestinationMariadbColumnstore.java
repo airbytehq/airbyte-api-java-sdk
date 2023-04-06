@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationMariadbColumnstore - The values required to configure the destination.
  */
 public class DestinationMariadbColumnstore {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationMariadbColumnstoreMariadbColumnstoreEnum airbyteDestinationName;
-    public DestinationMariadbColumnstore withAirbyteDestinationName(DestinationMariadbColumnstoreMariadbColumnstoreEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -26,6 +19,13 @@ public class DestinationMariadbColumnstore {
     public String database;
     public DestinationMariadbColumnstore withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationMariadbColumnstoreMariadbColumnstoreEnum destinationType;
+    public DestinationMariadbColumnstore withDestinationType(DestinationMariadbColumnstoreMariadbColumnstoreEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

@@ -17,18 +17,18 @@ import java.time.OffsetDateTime;
  * SourceZendeskChat - The values required to configure the source.
  */
 public class SourceZendeskChat {
-    @JsonProperty("airbyte-source-name")
-    public SourceZendeskChatZendeskChatEnum airbyteSourceName;
-    public SourceZendeskChat withAirbyteSourceName(SourceZendeskChatZendeskChatEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
     public SourceZendeskChat withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceZendeskChatZendeskChatEnum sourceType;
+    public SourceZendeskChat withSourceType(SourceZendeskChatZendeskChatEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

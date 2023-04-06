@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMetabase - The values required to configure the source.
  */
 public class SourceMetabase {
-    @JsonProperty("airbyte-source-name")
-    public SourceMetabaseMetabaseEnum airbyteSourceName;
-    public SourceMetabase withAirbyteSourceName(SourceMetabaseMetabaseEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * URL to your metabase instance API
      */
@@ -50,6 +43,13 @@ public class SourceMetabase {
     public String sessionToken;
     public SourceMetabase withSessionToken(String sessionToken) {
         this.sessionToken = sessionToken;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMetabaseMetabaseEnum sourceType;
+    public SourceMetabase withSourceType(SourceMetabaseMetabaseEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -4,21 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceGithub - The values required to configure the source.
  */
 public class SourceGithub {
-    @JsonProperty("airbyte-source-name")
-    public SourceGithubGithubEnum airbyteSourceName;
-    public SourceGithub withAirbyteSourceName(SourceGithubGithubEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
      */
@@ -62,12 +60,21 @@ public class SourceGithub {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceGithubGithubEnum sourceType;
+    public SourceGithub withSourceType(SourceGithubGithubEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceGithub withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceGithub withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceLemlist - The values required to configure the source.
  */
 public class SourceLemlist {
-    @JsonProperty("airbyte-source-name")
-    public SourceLemlistLemlistEnum airbyteSourceName;
-    public SourceLemlist withAirbyteSourceName(SourceLemlistLemlistEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Lemlist API key.
      */
@@ -24,6 +17,13 @@ public class SourceLemlist {
     public String apiKey;
     public SourceLemlist withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceLemlistLemlistEnum sourceType;
+    public SourceLemlist withSourceType(SourceLemlistLemlistEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationSnowflake - The values required to configure the destination.
  */
 public class DestinationSnowflake {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationSnowflakeSnowflakeEnum airbyteDestinationName;
-    public DestinationSnowflake withAirbyteDestinationName(DestinationSnowflakeSnowflakeEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
@@ -34,6 +27,24 @@ public class DestinationSnowflake {
     public String database;
     public DestinationSnowflake withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationSnowflakeSnowflakeEnum destinationType;
+    public DestinationSnowflake withDestinationType(DestinationSnowflakeSnowflakeEnum destinationType) {
+        this.destinationType = destinationType;
+        return this;
+    }
+    
+    /**
+     * Number of file buffers allocated for writing data. Increasing this number is beneficial for connections using Change Data Capture (CDC) and up to the number of streams within a connection. Increasing the number of file buffers past the maximum number of streams has deteriorating effects
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("file_buffer_count")
+    public Long fileBufferCount;
+    public DestinationSnowflake withFileBufferCount(Long fileBufferCount) {
+        this.fileBufferCount = fileBufferCount;
         return this;
     }
     

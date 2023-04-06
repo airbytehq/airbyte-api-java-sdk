@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGnews - The values required to configure the source.
  */
 public class SourceGnews {
-    @JsonProperty("airbyte-source-name")
-    public SourceGnewsGnewsEnum airbyteSourceName;
-    public SourceGnews withAirbyteSourceName(SourceGnewsGnewsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key
      */
@@ -114,6 +107,13 @@ public class SourceGnews {
     public SourceGnewsSortByEnum sortby;
     public SourceGnews withSortby(SourceGnewsSortByEnum sortby) {
         this.sortby = sortby;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGnewsGnewsEnum sourceType;
+    public SourceGnews withSourceType(SourceGnewsGnewsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,10 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationSftpJson - The values required to configure the destination.
  */
 public class DestinationSftpJson {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationSftpJsonSftpJsonEnum airbyteDestinationName;
-    public DestinationSftpJson withAirbyteDestinationName(DestinationSftpJsonSftpJsonEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationSftpJsonSftpJsonEnum destinationType;
+    public DestinationSftpJson withDestinationType(DestinationSftpJsonSftpJsonEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

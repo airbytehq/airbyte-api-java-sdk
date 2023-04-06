@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMongodb - The values required to configure the source.
  */
 public class SourceMongodb {
-    @JsonProperty("airbyte-source-name")
-    public SourceMongodbMongodbEnum airbyteSourceName;
-    public SourceMongodb withAirbyteSourceName(SourceMongodbMongodbEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The authentication source where the user information is stored.
      */
@@ -59,6 +52,13 @@ public class SourceMongodb {
     public String password;
     public SourceMongodb withPassword(String password) {
         this.password = password;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMongodbMongodbEnum sourceType;
+    public SourceMongodb withSourceType(SourceMongodbMongodbEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

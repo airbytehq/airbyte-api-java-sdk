@@ -25,18 +25,18 @@ public class SourceLinkedinAds {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceLinkedinAdsLinkedinAdsEnum airbyteSourceName;
-    public SourceLinkedinAds withAirbyteSourceName(SourceLinkedinAdsLinkedinAdsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
     public SourceLinkedinAds withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceLinkedinAdsLinkedinAdsEnum sourceType;
+    public SourceLinkedinAds withSourceType(SourceLinkedinAdsLinkedinAdsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

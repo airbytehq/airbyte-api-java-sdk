@@ -10,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceXkcd - The values required to configure the source.
  */
 public class SourceXkcd {
-    @JsonProperty("airbyte-source-name")
-    public SourceXkcdXkcdEnum airbyteSourceName;
-    public SourceXkcd withAirbyteSourceName(SourceXkcdXkcdEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceXkcdXkcdEnum sourceType;
+    public SourceXkcd withSourceType(SourceXkcdXkcdEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

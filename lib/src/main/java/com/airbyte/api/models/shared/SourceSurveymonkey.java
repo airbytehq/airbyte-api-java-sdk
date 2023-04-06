@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceSurveymonkey - The values required to configure the source.
  */
 public class SourceSurveymonkey {
-    @JsonProperty("airbyte-source-name")
-    public SourceSurveymonkeySurveymonkeyEnum airbyteSourceName;
-    public SourceSurveymonkey withAirbyteSourceName(SourceSurveymonkeySurveymonkeyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The authorization method to use to retrieve data from SurveyMonkey
      */
@@ -43,6 +36,13 @@ public class SourceSurveymonkey {
     public SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccountEnum origin;
     public SourceSurveymonkey withOrigin(SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccountEnum origin) {
         this.origin = origin;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSurveymonkeySurveymonkeyEnum sourceType;
+    public SourceSurveymonkey withSourceType(SourceSurveymonkeySurveymonkeyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

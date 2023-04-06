@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSecoda - The values required to configure the source.
  */
 public class SourceSecoda {
-    @JsonProperty("airbyte-source-name")
-    public SourceSecodaSecodaEnum airbyteSourceName;
-    public SourceSecoda withAirbyteSourceName(SourceSecodaSecodaEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
@@ -24,6 +17,13 @@ public class SourceSecoda {
     public String apiKey;
     public SourceSecoda withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSecodaSecodaEnum sourceType;
+    public SourceSecoda withSourceType(SourceSecodaSecodaEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

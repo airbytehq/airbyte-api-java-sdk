@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceOracle - The values required to configure the source.
  */
 public class SourceOracle {
-    @JsonProperty("airbyte-source-name")
-    public SourceOracleOracleEnum airbyteSourceName;
-    public SourceOracle withAirbyteSourceName(SourceOracleOracleEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Connect data that will be used for DB connection
      */
@@ -93,6 +86,13 @@ public class SourceOracle {
     public String[] schemas;
     public SourceOracle withSchemas(String[] schemas) {
         this.schemas = schemas;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceOracleOracleEnum sourceType;
+    public SourceOracle withSourceType(SourceOracleOracleEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

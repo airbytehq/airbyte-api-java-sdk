@@ -22,13 +22,6 @@ public class SourceSurveySparrow {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceSurveySparrowSurveySparrowEnum airbyteSourceName;
-    public SourceSurveySparrow withAirbyteSourceName(SourceSurveySparrowSurveySparrowEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Is your account location is EU based? If yes, the base url to retrieve data will be different.
      */
@@ -37,6 +30,13 @@ public class SourceSurveySparrow {
     public Object region;
     public SourceSurveySparrow withRegion(Object region) {
         this.region = region;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSurveySparrowSurveySparrowEnum sourceType;
+    public SourceSurveySparrow withSourceType(SourceSurveySparrowSurveySparrowEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

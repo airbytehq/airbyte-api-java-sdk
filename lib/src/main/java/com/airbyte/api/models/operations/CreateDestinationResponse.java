@@ -18,9 +18,9 @@ public class CreateDestinationResponse {
      * Successful operation
      */
     
-    public com.airbyte.api.models.shared.DestinationId destinationId;
-    public CreateDestinationResponse withDestinationId(com.airbyte.api.models.shared.DestinationId destinationId) {
-        this.destinationId = destinationId;
+    public com.airbyte.api.models.shared.DestinationResponse destinationResponse;
+    public CreateDestinationResponse withDestinationResponse(com.airbyte.api.models.shared.DestinationResponse destinationResponse) {
+        this.destinationResponse = destinationResponse;
         return this;
     }
     

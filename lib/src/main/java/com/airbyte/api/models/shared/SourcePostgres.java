@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourcePostgres - The values required to configure the source.
  */
 public class SourcePostgres {
-    @JsonProperty("airbyte-source-name")
-    public SourcePostgresPostgresEnum airbyteSourceName;
-    public SourcePostgres withAirbyteSourceName(SourcePostgresPostgresEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -90,6 +83,13 @@ public class SourcePostgres {
     public String[] schemas;
     public SourcePostgres withSchemas(String[] schemas) {
         this.schemas = schemas;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePostgresPostgresEnum sourceType;
+    public SourcePostgres withSourceType(SourcePostgresPostgresEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

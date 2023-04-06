@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSpacexApi - The values required to configure the source.
  */
 public class SourceSpacexApi {
-    @JsonProperty("airbyte-source-name")
-    public SourceSpacexApiSpacexApiEnum airbyteSourceName;
-    public SourceSpacexApi withAirbyteSourceName(SourceSpacexApiSpacexApiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
     public String id;
@@ -32,6 +25,13 @@ public class SourceSpacexApi {
     public String options;
     public SourceSpacexApi withOptions(String options) {
         this.options = options;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSpacexApiSpacexApiEnum sourceType;
+    public SourceSpacexApi withSourceType(SourceSpacexApiSpacexApiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

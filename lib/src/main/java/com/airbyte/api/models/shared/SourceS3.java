@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceS3 - The values required to configure the source.
  */
 public class SourceS3 {
-    @JsonProperty("airbyte-source-name")
-    public SourceS3S3Enum airbyteSourceName;
-    public SourceS3 withAirbyteSourceName(SourceS3S3Enum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
      */
@@ -68,6 +61,13 @@ public class SourceS3 {
     public String schema;
     public SourceS3 withSchema(String schema) {
         this.schema = schema;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceS3S3Enum sourceType;
+    public SourceS3 withSourceType(SourceS3S3Enum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

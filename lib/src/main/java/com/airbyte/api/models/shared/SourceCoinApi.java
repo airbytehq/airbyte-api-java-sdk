@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceCoinApi - The values required to configure the source.
  */
 public class SourceCoinApi {
-    @JsonProperty("airbyte-source-name")
-    public SourceCoinApiCoinApiEnum airbyteSourceName;
-    public SourceCoinApi withAirbyteSourceName(SourceCoinApiCoinApiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * API Key
      */
@@ -75,6 +68,13 @@ public class SourceCoinApi {
     public String period;
     public SourceCoinApi withPeriod(String period) {
         this.period = period;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceCoinApiCoinApiEnum sourceType;
+    public SourceCoinApi withSourceType(SourceCoinApiCoinApiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -4,26 +4,14 @@
 
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.DateTimeDeserializer;
-import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.time.OffsetDateTime;
 
 /**
  * SourceAmplitude - The values required to configure the source.
  */
 public class SourceAmplitude {
-    @JsonProperty("airbyte-source-name")
-    public SourceAmplitudeAmplitudeEnum airbyteSourceName;
-    public SourceAmplitude withAirbyteSourceName(SourceAmplitudeAmplitudeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -46,6 +34,17 @@ public class SourceAmplitude {
     }
     
     /**
+     * Amplitude event stream time interval
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("event_time_interval")
+    public SourceAmplitudeEventStreamTimeInterval eventTimeInterval;
+    public SourceAmplitude withEventTimeInterval(SourceAmplitudeEventStreamTimeInterval eventTimeInterval) {
+        this.eventTimeInterval = eventTimeInterval;
+        return this;
+    }
+    
+    /**
      * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonProperty("secret_key")
@@ -55,14 +54,19 @@ public class SourceAmplitude {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceAmplitudeAmplitudeEnum sourceType;
+    public SourceAmplitude withSourceType(SourceAmplitudeAmplitudeEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonSerialize(using = DateTimeSerializer.class)
-    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public OffsetDateTime startDate;
-    public SourceAmplitude withStartDate(OffsetDateTime startDate) {
+    public String startDate;
+    public SourceAmplitude withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
     }

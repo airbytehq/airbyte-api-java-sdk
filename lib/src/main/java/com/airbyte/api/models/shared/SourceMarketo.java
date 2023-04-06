@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMarketo - The values required to configure the source.
  */
 public class SourceMarketo {
-    @JsonProperty("airbyte-source-name")
-    public SourceMarketoMarketoEnum airbyteSourceName;
-    public SourceMarketo withAirbyteSourceName(SourceMarketoMarketoEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
@@ -44,6 +37,13 @@ public class SourceMarketo {
     public String domainUrl;
     public SourceMarketo withDomainUrl(String domainUrl) {
         this.domainUrl = domainUrl;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMarketoMarketoEnum sourceType;
+    public SourceMarketo withSourceType(SourceMarketoMarketoEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

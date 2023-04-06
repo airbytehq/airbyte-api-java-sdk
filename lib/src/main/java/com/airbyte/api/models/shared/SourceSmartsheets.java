@@ -17,17 +17,17 @@ import java.time.OffsetDateTime;
  * SourceSmartsheets - The values required to configure the source.
  */
 public class SourceSmartsheets {
-    @JsonProperty("airbyte-source-name")
-    public SourceSmartsheetsSmartsheetsEnum airbyteSourceName;
-    public SourceSmartsheets withAirbyteSourceName(SourceSmartsheetsSmartsheetsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonProperty("credentials")
     public Object credentials;
     public SourceSmartsheets withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSmartsheetsSmartsheetsEnum sourceType;
+    public SourceSmartsheets withSourceType(SourceSmartsheetsSmartsheetsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

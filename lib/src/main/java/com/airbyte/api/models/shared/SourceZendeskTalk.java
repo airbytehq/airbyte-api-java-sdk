@@ -4,21 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceZendeskTalk - The values required to configure the source.
  */
 public class SourceZendeskTalk {
-    @JsonProperty("airbyte-source-name")
-    public SourceZendeskTalkZendeskTalkEnum airbyteSourceName;
-    public SourceZendeskTalk withAirbyteSourceName(SourceZendeskTalkZendeskTalkEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
      */
@@ -30,12 +28,21 @@ public class SourceZendeskTalk {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceZendeskTalkZendeskTalkEnum sourceType;
+    public SourceZendeskTalk withSourceType(SourceZendeskTalkZendeskTalkEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The date from which you'd like to replicate data for Zendesk Talk API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceZendeskTalk withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceZendeskTalk withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

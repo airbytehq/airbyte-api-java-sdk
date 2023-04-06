@@ -25,13 +25,6 @@ public class SourcePolygonStockApi {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourcePolygonStockApiPolygonStockApiEnum airbyteSourceName;
-    public SourcePolygonStockApi withAirbyteSourceName(SourcePolygonStockApiPolygonStockApiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API ACCESS Key
      */
@@ -82,6 +75,13 @@ public class SourcePolygonStockApi {
     public String sort;
     public SourcePolygonStockApi withSort(String sort) {
         this.sort = sort;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourcePolygonStockApiPolygonStockApiEnum sourceType;
+    public SourcePolygonStockApi withSourceType(SourcePolygonStockApiPolygonStockApiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

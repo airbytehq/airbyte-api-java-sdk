@@ -12,10 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationRabbitmq - The values required to configure the destination.
  */
 public class DestinationRabbitmq {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationRabbitmqRabbitmqEnum airbyteDestinationName;
-    public DestinationRabbitmq withAirbyteDestinationName(DestinationRabbitmqRabbitmqEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationRabbitmqRabbitmqEnum destinationType;
+    public DestinationRabbitmq withDestinationType(DestinationRabbitmqRabbitmqEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

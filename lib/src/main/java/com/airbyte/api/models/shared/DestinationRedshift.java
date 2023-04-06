@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationRedshift - The values required to configure the destination.
  */
 public class DestinationRedshift {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationRedshiftRedshiftEnum airbyteDestinationName;
-    public DestinationRedshift withAirbyteDestinationName(DestinationRedshiftRedshiftEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -26,6 +19,13 @@ public class DestinationRedshift {
     public String database;
     public DestinationRedshift withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationRedshiftRedshiftEnum destinationType;
+    public DestinationRedshift withDestinationType(DestinationRedshiftRedshiftEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     
@@ -77,6 +77,17 @@ public class DestinationRedshift {
     public String schema;
     public DestinationRedshift withSchema(String schema) {
         this.schema = schema;
+        return this;
+    }
+    
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tunnel_method")
+    public Object tunnelMethod;
+    public DestinationRedshift withTunnelMethod(Object tunnelMethod) {
+        this.tunnelMethod = tunnelMethod;
         return this;
     }
     

@@ -22,10 +22,10 @@ public class DestinationDynamodb {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationDynamodbDynamodbEnum airbyteDestinationName;
-    public DestinationDynamodb withAirbyteDestinationName(DestinationDynamodbDynamodbEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationDynamodbDynamodbEnum destinationType;
+    public DestinationDynamodb withDestinationType(DestinationDynamodbDynamodbEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

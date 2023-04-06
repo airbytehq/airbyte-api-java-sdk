@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRecurly - The values required to configure the source.
  */
 public class SourceRecurly {
-    @JsonProperty("airbyte-source-name")
-    public SourceRecurlyRecurlyEnum airbyteSourceName;
-    public SourceRecurly withAirbyteSourceName(SourceRecurlyRecurlyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Recurly API Key. See the  &lt;a href="https://docs.airbyte.com/integrations/sources/recurly"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
@@ -48,6 +41,13 @@ public class SourceRecurly {
     public String endTime;
     public SourceRecurly withEndTime(String endTime) {
         this.endTime = endTime;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceRecurlyRecurlyEnum sourceType;
+    public SourceRecurly withSourceType(SourceRecurlyRecurlyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

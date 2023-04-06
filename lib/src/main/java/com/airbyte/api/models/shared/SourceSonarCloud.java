@@ -14,13 +14,6 @@ import java.time.LocalDate;
  * SourceSonarCloud - The values required to configure the source.
  */
 public class SourceSonarCloud {
-    @JsonProperty("airbyte-source-name")
-    public SourceSonarCloudSonarCloudEnum airbyteSourceName;
-    public SourceSonarCloud withAirbyteSourceName(SourceSonarCloudSonarCloudEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Comma-separated list of component keys.
      */
@@ -50,6 +43,13 @@ public class SourceSonarCloud {
     public String organization;
     public SourceSonarCloud withOrganization(String organization) {
         this.organization = organization;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSonarCloudSonarCloudEnum sourceType;
+    public SourceSonarCloud withSourceType(SourceSonarCloudSonarCloudEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

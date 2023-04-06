@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceUsCensus - The values required to configure the source.
  */
 public class SourceUsCensus {
-    @JsonProperty("airbyte-source-name")
-    public SourceUsCensusUsCensusEnum airbyteSourceName;
-    public SourceUsCensus withAirbyteSourceName(SourceUsCensusUsCensusEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API Key. Get your key &lt;a href="https://api.census.gov/data/key_signup.html"&gt;here&lt;/a&gt;.
      */
@@ -47,6 +40,13 @@ public class SourceUsCensus {
     public String queryPath;
     public SourceUsCensus withQueryPath(String queryPath) {
         this.queryPath = queryPath;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceUsCensusUsCensusEnum sourceType;
+    public SourceUsCensus withSourceType(SourceUsCensusUsCensusEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

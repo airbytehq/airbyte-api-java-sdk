@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGreenhouse - The values required to configure the source.
  */
 public class SourceGreenhouse {
-    @JsonProperty("airbyte-source-name")
-    public SourceGreenhouseGreenhouseEnum airbyteSourceName;
-    public SourceGreenhouse withAirbyteSourceName(SourceGreenhouseGreenhouseEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Greenhouse API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/greenhouse"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
@@ -24,6 +17,13 @@ public class SourceGreenhouse {
     public String apiKey;
     public SourceGreenhouse withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGreenhouseGreenhouseEnum sourceType;
+    public SourceGreenhouse withSourceType(SourceGreenhouseGreenhouseEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

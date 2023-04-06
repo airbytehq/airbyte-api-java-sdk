@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMssql - The values required to configure the source.
  */
 public class SourceMssql {
-    @JsonProperty("airbyte-source-name")
-    public SourceMssqlMssqlEnum airbyteSourceName;
-    public SourceMssql withAirbyteSourceName(SourceMssqlMssqlEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The name of the database.
      */
@@ -90,6 +83,13 @@ public class SourceMssql {
     public String[] schemas;
     public SourceMssql withSchemas(String[] schemas) {
         this.schemas = schemas;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMssqlMssqlEnum sourceType;
+    public SourceMssql withSourceType(SourceMssqlMssqlEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

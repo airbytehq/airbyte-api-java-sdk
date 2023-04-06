@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceConfigcat - The values required to configure the source.
  */
 public class SourceConfigcat {
-    @JsonProperty("airbyte-source-name")
-    public SourceConfigcatConfigcatEnum airbyteSourceName;
-    public SourceConfigcat withAirbyteSourceName(SourceConfigcatConfigcatEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
      */
@@ -24,6 +17,13 @@ public class SourceConfigcat {
     public String password;
     public SourceConfigcat withPassword(String password) {
         this.password = password;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceConfigcatConfigcatEnum sourceType;
+    public SourceConfigcat withSourceType(SourceConfigcatConfigcatEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

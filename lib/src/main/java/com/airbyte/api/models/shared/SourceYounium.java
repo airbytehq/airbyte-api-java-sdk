@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceYounium - The values required to configure the source.
  */
 public class SourceYounium {
-    @JsonProperty("airbyte-source-name")
-    public SourceYouniumYouniumEnum airbyteSourceName;
-    public SourceYounium withAirbyteSourceName(SourceYouniumYouniumEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Legal Entity that data should be pulled from
      */
@@ -47,6 +40,13 @@ public class SourceYounium {
     public Boolean playground;
     public SourceYounium withPlayground(Boolean playground) {
         this.playground = playground;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceYouniumYouniumEnum sourceType;
+    public SourceYounium withSourceType(SourceYouniumYouniumEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

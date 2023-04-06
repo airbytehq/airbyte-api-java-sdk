@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceRecruitee - The values required to configure the source.
  */
 public class SourceRecruitee {
-    @JsonProperty("airbyte-source-name")
-    public SourceRecruiteeRecruiteeEnum airbyteSourceName;
-    public SourceRecruitee withAirbyteSourceName(SourceRecruiteeRecruiteeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Recruitee API Key. See &lt;a href="https://docs.recruitee.com/reference/getting-started#generate-api-token"&gt;here&lt;/a&gt;.
      */
@@ -34,6 +27,13 @@ public class SourceRecruitee {
     public Long companyId;
     public SourceRecruitee withCompanyId(Long companyId) {
         this.companyId = companyId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceRecruiteeRecruiteeEnum sourceType;
+    public SourceRecruitee withSourceType(SourceRecruiteeRecruiteeEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

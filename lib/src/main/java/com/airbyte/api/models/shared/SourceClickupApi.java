@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceClickupApi - The values required to configure the source.
  */
 public class SourceClickupApi {
-    @JsonProperty("airbyte-source-name")
-    public SourceClickupApiClickupApiEnum airbyteSourceName;
-    public SourceClickupApi withAirbyteSourceName(SourceClickupApiClickupApiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.
      */
@@ -41,6 +34,17 @@ public class SourceClickupApi {
     }
     
     /**
+     * Include or exclude closed tasks. By default, they are excluded. See &lt;a https://clickup.com/api/clickupreference/operation/GetTasks/#!in=query&amp;path=include_closed&amp;t=request"&gt;here&lt;/a&gt;.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("include_closed_tasks")
+    public Boolean includeClosedTasks;
+    public SourceClickupApi withIncludeClosedTasks(Boolean includeClosedTasks) {
+        this.includeClosedTasks = includeClosedTasks;
+        return this;
+    }
+    
+    /**
      * The ID of your list in your folder. Retrieve it from the `/folder/{folder_id}/list` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetLists/"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -48,6 +52,13 @@ public class SourceClickupApi {
     public String listId;
     public SourceClickupApi withListId(String listId) {
         this.listId = listId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceClickupApiClickupApiEnum sourceType;
+    public SourceClickupApi withSourceType(SourceClickupApiClickupApiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

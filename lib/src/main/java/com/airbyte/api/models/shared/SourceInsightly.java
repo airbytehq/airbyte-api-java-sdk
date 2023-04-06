@@ -10,10 +10,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceInsightly - The values required to configure the source.
  */
 public class SourceInsightly {
-    @JsonProperty("airbyte-source-name")
-    public SourceInsightlyInsightlyEnum airbyteSourceName;
-    public SourceInsightly withAirbyteSourceName(SourceInsightlyInsightlyEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceInsightlyInsightlyEnum sourceType;
+    public SourceInsightly withSourceType(SourceInsightlyInsightlyEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -23,13 +23,6 @@ public class SourceFirebolt {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceFireboltFireboltEnum airbyteSourceName;
-    public SourceFirebolt withAirbyteSourceName(SourceFireboltFireboltEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The database to connect to.
      */
@@ -69,6 +62,13 @@ public class SourceFirebolt {
     public String password;
     public SourceFirebolt withPassword(String password) {
         this.password = password;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFireboltFireboltEnum sourceType;
+    public SourceFirebolt withSourceType(SourceFireboltFireboltEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

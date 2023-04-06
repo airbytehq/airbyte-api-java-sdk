@@ -12,10 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationOracle - The values required to configure the destination.
  */
 public class DestinationOracle {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationOracleOracleEnum airbyteDestinationName;
-    public DestinationOracle withAirbyteDestinationName(DestinationOracleOracleEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationOracleOracleEnum destinationType;
+    public DestinationOracle withDestinationType(DestinationOracleOracleEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

@@ -4,21 +4,16 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 /**
  * SourceTiktokMarketing - The values required to configure the source.
  */
 public class SourceTiktokMarketing {
-    @JsonProperty("airbyte-source-name")
-    public SourceTiktokMarketingTiktokMarketingEnum airbyteSourceName;
-    public SourceTiktokMarketing withAirbyteSourceName(SourceTiktokMarketingTiktokMarketingEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Authentication method
      */
@@ -34,9 +29,10 @@ public class SourceTiktokMarketing {
      * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
      */
     @JsonInclude(Include.NON_ABSENT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
-    public String endDate;
-    public SourceTiktokMarketing withEndDate(String endDate) {
+    public LocalDate endDate;
+    public SourceTiktokMarketing withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -52,13 +48,21 @@ public class SourceTiktokMarketing {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceTiktokMarketingTiktokMarketingEnum sourceType;
+    public SourceTiktokMarketing withSourceType(SourceTiktokMarketingTiktokMarketingEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceTiktokMarketing withStartDate(String startDate) {
+    public LocalDate startDate;
+    public SourceTiktokMarketing withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }

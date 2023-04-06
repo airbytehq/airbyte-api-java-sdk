@@ -20,13 +20,6 @@ public class SourceFacebookPages {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceFacebookPagesFacebookPagesEnum airbyteSourceName;
-    public SourceFacebookPages withAirbyteSourceName(SourceFacebookPagesFacebookPagesEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Page ID
      */
@@ -34,6 +27,13 @@ public class SourceFacebookPages {
     public String pageId;
     public SourceFacebookPages withPageId(String pageId) {
         this.pageId = pageId;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFacebookPagesFacebookPagesEnum sourceType;
+    public SourceFacebookPages withSourceType(SourceFacebookPagesFacebookPagesEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

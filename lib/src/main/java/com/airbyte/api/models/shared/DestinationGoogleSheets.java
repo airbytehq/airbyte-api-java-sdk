@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationGoogleSheets - The values required to configure the destination.
  */
 public class DestinationGoogleSheets {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationGoogleSheetsGoogleSheetsEnum airbyteDestinationName;
-    public DestinationGoogleSheets withAirbyteDestinationName(DestinationGoogleSheetsGoogleSheetsEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Google API Credentials for connecting to Google Sheets and Google Drive APIs
      */
@@ -24,6 +17,13 @@ public class DestinationGoogleSheets {
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials;
     public DestinationGoogleSheets withCredentials(DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationGoogleSheetsGoogleSheetsEnum destinationType;
+    public DestinationGoogleSheets withDestinationType(DestinationGoogleSheetsGoogleSheetsEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

@@ -13,9 +13,6 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import org.apache.http.NameValuePair;
 
-/**
- * Jobs
- */
 public class Jobs {
 	
 	private HTTPClient _defaultClient;
@@ -69,6 +66,8 @@ public class Jobs {
                 res.jobResponse = out;
             }
         }
+        else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
+        }
 
         return res;
     }
@@ -79,7 +78,7 @@ public class Jobs {
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public com.airbyte.api.models.operations.CreateJobResponse createJob(com.airbyte.api.models.shared.JobCreate request) throws Exception {
+    public com.airbyte.api.models.operations.CreateJobResponse createJob(com.airbyte.api.models.shared.JobCreateRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/jobs");
         
@@ -112,6 +111,8 @@ public class Jobs {
                 com.airbyte.api.models.shared.JobResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.JobResponse.class);
                 res.jobResponse = out;
             }
+        }
+        else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
 
         return res;
@@ -151,6 +152,8 @@ public class Jobs {
                 com.airbyte.api.models.shared.JobResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.JobResponse.class);
                 res.jobResponse = out;
             }
+        }
+        else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
 
         return res;
@@ -196,6 +199,8 @@ public class Jobs {
                 com.airbyte.api.models.shared.JobsResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.JobsResponse.class);
                 res.jobsResponse = out;
             }
+        }
+        else if (httpRes.statusCode() == 403) {
         }
 
         return res;

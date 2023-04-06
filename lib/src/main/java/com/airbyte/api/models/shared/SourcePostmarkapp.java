@@ -30,10 +30,10 @@ public class SourcePostmarkapp {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourcePostmarkappPostmarkappEnum airbyteSourceName;
-    public SourcePostmarkapp withAirbyteSourceName(SourcePostmarkappPostmarkappEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourcePostmarkappPostmarkappEnum sourceType;
+    public SourcePostmarkapp withSourceType(SourcePostmarkappPostmarkappEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

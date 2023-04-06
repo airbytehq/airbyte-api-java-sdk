@@ -18,9 +18,9 @@ public class CreateSourceResponse {
      * Successful operation
      */
     
-    public com.airbyte.api.models.shared.SourceId sourceId;
-    public CreateSourceResponse withSourceId(com.airbyte.api.models.shared.SourceId sourceId) {
-        this.sourceId = sourceId;
+    public com.airbyte.api.models.shared.SourceResponse sourceResponse;
+    public CreateSourceResponse withSourceResponse(com.airbyte.api.models.shared.SourceResponse sourceResponse) {
+        this.sourceResponse = sourceResponse;
         return this;
     }
     

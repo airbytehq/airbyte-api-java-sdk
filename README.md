@@ -23,7 +23,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:1.0.3'
+implementation 'com.airbyte.api:public-api:1.1.0'
 ```
 <!-- End SDK Installation -->
 
@@ -35,7 +35,10 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
-import com.airbyte.api.models.shared.ConnectionCreate;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionScheduleCreate;
+import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
+import com.airbyte.api.models.shared.GeographyEnumEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -46,15 +49,20 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreate req = new ConnectionCreate() {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
                 destinationId = "89bd9d8d-69a6-474e-8f46-7cc8796ed151";
-                name = "deserunt";
-                sourceId = "05dfc2dd-f7cc-478c-a1ba-928fc816742c";
+                geography = "us";
+                name = "perferendis";
+                schedule = new ConnectionScheduleCreate() {{
+                    cronExpression = "ipsam";
+                    scheduleType = "cron";
+                }};
+                sourceId = "fc2ddf7c-c78c-4a1b-a928-fc816742cb73";
             }}            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
 
-            if (res.connectionId.isPresent()) {
+            if (res.connectionResponse.isPresent()) {
                 // handle response
             }
         } catch (Exception e) {
@@ -70,10 +78,14 @@ public class Application {
 ### connections
 
 * `createConnection` - Create a connection
+* `getConnection` - Get Connection details
+* `listConnections` - List connections
 
 ### destinations
 
 * `createDestination` - Create a destination
+* `getDestination` - Get Destination details
+* `listDestinations` - List destinations
 
 ### jobs
 
@@ -85,6 +97,14 @@ public class Application {
 ### sources
 
 * `createSource` - Create a source
+* `getSource` - Get Source details
+* `listSources` - List sources
+
+### workspaces
+
+* `createWorkspace` - Create a workspace
+* `getWorkspace` - Get Workspace details
+* `listWorkspaces` - List workspaces
 <!-- End SDK Available Operations -->
 
 ### Maturity

@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceMailgun - The values required to configure the source.
  */
 public class SourceMailgun {
-    @JsonProperty("airbyte-source-name")
-    public SourceMailgunMailgunEnum airbyteSourceName;
-    public SourceMailgun withAirbyteSourceName(SourceMailgunMailgunEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
      */
@@ -42,6 +35,13 @@ public class SourceMailgun {
     public String privateKey;
     public SourceMailgun withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMailgunMailgunEnum sourceType;
+    public SourceMailgun withSourceType(SourceMailgunMailgunEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

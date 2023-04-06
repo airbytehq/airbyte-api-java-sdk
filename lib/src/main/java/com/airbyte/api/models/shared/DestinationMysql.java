@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationMysql - The values required to configure the destination.
  */
 public class DestinationMysql {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationMysqlMysqlEnum airbyteDestinationName;
-    public DestinationMysql withAirbyteDestinationName(DestinationMysqlMysqlEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -26,6 +19,13 @@ public class DestinationMysql {
     public String database;
     public DestinationMysql withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationMysqlMysqlEnum destinationType;
+    public DestinationMysql withDestinationType(DestinationMysqlMysqlEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

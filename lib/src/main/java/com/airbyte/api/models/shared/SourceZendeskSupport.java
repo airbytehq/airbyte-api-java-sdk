@@ -4,21 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceZendeskSupport - The values required to configure the source.
  */
 public class SourceZendeskSupport {
-    @JsonProperty("airbyte-source-name")
-    public SourceZendeskSupportZendeskSupportEnum airbyteSourceName;
-    public SourceZendeskSupport withAirbyteSourceName(SourceZendeskSupportZendeskSupportEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
      */
@@ -41,12 +39,21 @@ public class SourceZendeskSupport {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceZendeskSupportZendeskSupportEnum sourceType;
+    public SourceZendeskSupport withSourceType(SourceZendeskSupportZendeskSupportEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The date from which you'd like to replicate data for Zendesk Support API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceZendeskSupport withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceZendeskSupport withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

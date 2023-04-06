@@ -15,13 +15,6 @@ import java.time.OffsetDateTime;
  * SourceIterable - The values required to configure the source.
  */
 public class SourceIterable {
-    @JsonProperty("airbyte-source-name")
-    public SourceIterableIterableEnum airbyteSourceName;
-    public SourceIterable withAirbyteSourceName(SourceIterableIterableEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Iterable API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/iterable"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -29,6 +22,13 @@ public class SourceIterable {
     public String apiKey;
     public SourceIterable withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceIterableIterableEnum sourceType;
+    public SourceIterable withSourceType(SourceIterableIterableEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

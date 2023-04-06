@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceNetsuite - The values required to configure the source.
  */
 public class SourceNetsuite {
-    @JsonProperty("airbyte-source-name")
-    public SourceNetsuiteNetsuiteEnum airbyteSourceName;
-    public SourceNetsuite withAirbyteSourceName(SourceNetsuiteNetsuiteEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Consumer key associated with your integration
      */
@@ -57,6 +50,13 @@ public class SourceNetsuite {
     public String realm;
     public SourceNetsuite withRealm(String realm) {
         this.realm = realm;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceNetsuiteNetsuiteEnum sourceType;
+    public SourceNetsuite withSourceType(SourceNetsuiteNetsuiteEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

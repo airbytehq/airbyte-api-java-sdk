@@ -17,13 +17,6 @@ import java.time.OffsetDateTime;
  * SourceFreshdesk - The values required to configure the source.
  */
 public class SourceFreshdesk {
-    @JsonProperty("airbyte-source-name")
-    public SourceFreshdeskFreshdeskEnum airbyteSourceName;
-    public SourceFreshdesk withAirbyteSourceName(SourceFreshdeskFreshdeskEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -52,6 +45,13 @@ public class SourceFreshdesk {
     public Long requestsPerMinute;
     public SourceFreshdesk withRequestsPerMinute(Long requestsPerMinute) {
         this.requestsPerMinute = requestsPerMinute;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceFreshdeskFreshdeskEnum sourceType;
+    public SourceFreshdesk withSourceType(SourceFreshdeskFreshdeskEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

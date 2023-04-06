@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationGcs - The values required to configure the destination.
  */
 public class DestinationGcs {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationGcsGcsEnum airbyteDestinationName;
-    public DestinationGcs withAirbyteDestinationName(DestinationGcsGcsEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
@@ -26,6 +19,13 @@ public class DestinationGcs {
     public Object credential;
     public DestinationGcs withCredential(Object credential) {
         this.credential = credential;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationGcsGcsEnum destinationType;
+    public DestinationGcs withDestinationType(DestinationGcsGcsEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

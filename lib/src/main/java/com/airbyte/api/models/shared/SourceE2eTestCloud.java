@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceE2eTestCloud - The values required to configure the source.
  */
 public class SourceE2eTestCloud {
-    @JsonProperty("airbyte-source-name")
-    public SourceE2eTestCloudE2eTestCloudEnum airbyteSourceName;
-    public SourceE2eTestCloud withAirbyteSourceName(SourceE2eTestCloudE2eTestCloudEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Number of records to emit per stream. Min 1. Max 100 billion.
      */
@@ -55,6 +48,13 @@ public class SourceE2eTestCloud {
     public Long seed;
     public SourceE2eTestCloud withSeed(Long seed) {
         this.seed = seed;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceE2eTestCloudE2eTestCloudEnum sourceType;
+    public SourceE2eTestCloud withSourceType(SourceE2eTestCloudE2eTestCloudEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

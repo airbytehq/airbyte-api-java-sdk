@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceBambooHr - The values required to configure the source.
  */
 public class SourceBambooHr {
-    @JsonProperty("airbyte-source-name")
-    public SourceBambooHrBambooHrEnum airbyteSourceName;
-    public SourceBambooHr withAirbyteSourceName(SourceBambooHrBambooHrEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Api key of bamboo hr
      */
@@ -48,6 +41,13 @@ public class SourceBambooHr {
     public Boolean customReportsIncludeDefaultFields;
     public SourceBambooHr withCustomReportsIncludeDefaultFields(Boolean customReportsIncludeDefaultFields) {
         this.customReportsIncludeDefaultFields = customReportsIncludeDefaultFields;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceBambooHrBambooHrEnum sourceType;
+    public SourceBambooHr withSourceType(SourceBambooHrBambooHrEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceClickhouse - The values required to configure the source.
  */
 public class SourceClickhouse {
-    @JsonProperty("airbyte-source-name")
-    public SourceClickhouseClickhouseEnum airbyteSourceName;
-    public SourceClickhouse withAirbyteSourceName(SourceClickhouseClickhouseEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The name of the database.
      */
@@ -57,6 +50,13 @@ public class SourceClickhouse {
     public Long port;
     public SourceClickhouse withPort(Long port) {
         this.port = port;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceClickhouseClickhouseEnum sourceType;
+    public SourceClickhouse withSourceType(SourceClickhouseClickhouseEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

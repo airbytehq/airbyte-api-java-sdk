@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationPostgres - The values required to configure the destination.
  */
 public class DestinationPostgres {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationPostgresPostgresEnum airbyteDestinationName;
-    public DestinationPostgres withAirbyteDestinationName(DestinationPostgresPostgresEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * Name of the database.
      */
@@ -26,6 +19,13 @@ public class DestinationPostgres {
     public String database;
     public DestinationPostgres withDatabase(String database) {
         this.database = database;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationPostgresPostgresEnum destinationType;
+    public DestinationPostgres withDestinationType(DestinationPostgresPostgresEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

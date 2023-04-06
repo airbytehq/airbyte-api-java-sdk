@@ -4,21 +4,19 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceTypeform - The values required to configure the source.
  */
 public class SourceTypeform {
-    @JsonProperty("airbyte-source-name")
-    public SourceTypeformTypeformEnum airbyteSourceName;
-    public SourceTypeform withAirbyteSourceName(SourceTypeformTypeformEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
      */
@@ -30,12 +28,21 @@ public class SourceTypeform {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public SourceTypeformTypeformEnum sourceType;
+    public SourceTypeform withSourceType(SourceTypeformTypeformEnum sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * UTC date and time in the format: YYYY-MM-DDTHH:mm:ss[Z]. Any data before this date will not be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceTypeform withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceTypeform withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

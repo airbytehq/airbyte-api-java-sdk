@@ -9,6 +9,8 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
+    id 'maven-publish'
+    id 'signing'
 }
 
 compileJava.options.encoding = "UTF-8"
@@ -17,6 +19,73 @@ compileTestJava.options.encoding = "UTF-8"
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "OSSRH"
+            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+          }
+        }
+    }
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.airbyte'
+            artifactId = 'api'
+            version = '1.1.0'
+
+            from components.java
+
+            pom {
+                name = 'My Company Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the My Company API.'
+                url = 'https://github.com/owner/repo'
+                scm {
+                    url = 'github.com/owner/repo'
+                    connection = 'scm:git:ssh://git@github.com/owner/repo.git'
+                }
+                licenses {
+                    license {
+                        name = 'The MIT License (MIT)'
+                        url = 'https://mit-license.org/'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'My Company'
+                        organization = 'My Company'
+                        email = 'info@mycompany.com'
+                    }
+                }
+                organization {
+                    name = 'My Company'
+                    url = 'www.mycompany.com'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    def signingKey = findProperty("signingKey")
+    def signingPassphrase = findProperty("signingPassphrase")
+    useInMemoryPgpKeys(signingKey, signingPassphrase)
+    sign publishing.publications.maven
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
 }
 
 dependencies {

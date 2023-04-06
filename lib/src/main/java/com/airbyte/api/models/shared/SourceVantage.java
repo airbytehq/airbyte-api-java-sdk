@@ -20,10 +20,10 @@ public class SourceVantage {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceVantageVantageEnum airbyteSourceName;
-    public SourceVantage withAirbyteSourceName(SourceVantageVantageEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceVantageVantageEnum sourceType;
+    public SourceVantage withSourceType(SourceVantageVantageEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

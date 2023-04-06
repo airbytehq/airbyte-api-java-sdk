@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationAzureBlobStorage - The values required to configure the destination.
  */
 public class DestinationAzureBlobStorage {
-    @JsonProperty("airbyte-destination-name")
-    public DestinationAzureBlobStorageAzureBlobStorageEnum airbyteDestinationName;
-    public DestinationAzureBlobStorage withAirbyteDestinationName(DestinationAzureBlobStorageAzureBlobStorageEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
-        return this;
-    }
-    
     /**
      * The Azure blob storage account key.
      */
@@ -80,6 +73,13 @@ public class DestinationAzureBlobStorage {
     public Long azureBlobStorageSpillSize;
     public DestinationAzureBlobStorage withAzureBlobStorageSpillSize(Long azureBlobStorageSpillSize) {
         this.azureBlobStorageSpillSize = azureBlobStorageSpillSize;
+        return this;
+    }
+    
+    @JsonProperty("destinationType")
+    public DestinationAzureBlobStorageAzureBlobStorageEnum destinationType;
+    public DestinationAzureBlobStorage withDestinationType(DestinationAzureBlobStorageAzureBlobStorageEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     

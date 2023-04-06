@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleSheets - The values required to configure the source.
  */
 public class SourceGoogleSheets {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleSheetsGoogleSheetsEnum airbyteSourceName;
-    public SourceGoogleSheets withAirbyteSourceName(SourceGoogleSheetsGoogleSheetsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Credentials for connecting to the Google Sheets API
      */
@@ -37,6 +30,13 @@ public class SourceGoogleSheets {
     public Long rowBatchSize;
     public SourceGoogleSheets withRowBatchSize(Long rowBatchSize) {
         this.rowBatchSize = rowBatchSize;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGoogleSheetsGoogleSheetsEnum sourceType;
+    public SourceGoogleSheets withSourceType(SourceGoogleSheetsGoogleSheetsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

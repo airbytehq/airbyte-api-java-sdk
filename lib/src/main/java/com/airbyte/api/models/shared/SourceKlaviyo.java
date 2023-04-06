@@ -15,13 +15,6 @@ import java.time.OffsetDateTime;
  * SourceKlaviyo - The values required to configure the source.
  */
 public class SourceKlaviyo {
-    @JsonProperty("airbyte-source-name")
-    public SourceKlaviyoKlaviyoEnum airbyteSourceName;
-    public SourceKlaviyo withAirbyteSourceName(SourceKlaviyoKlaviyoEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.
      */
@@ -29,6 +22,13 @@ public class SourceKlaviyo {
     public String apiKey;
     public SourceKlaviyo withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceKlaviyoKlaviyoEnum sourceType;
+    public SourceKlaviyo withSourceType(SourceKlaviyoKlaviyoEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceZuora - The values required to configure the source.
  */
 public class SourceZuora {
-    @JsonProperty("airbyte-source-name")
-    public SourceZuoraZuoraEnum airbyteSourceName;
-    public SourceZuora withAirbyteSourceName(SourceZuoraZuoraEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Client ID
      */
@@ -47,6 +40,13 @@ public class SourceZuora {
     public Boolean isSandbox;
     public SourceZuora withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceZuoraZuoraEnum sourceType;
+    public SourceZuora withSourceType(SourceZuoraZuoraEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

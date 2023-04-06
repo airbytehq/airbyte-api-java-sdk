@@ -4,7 +4,12 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceIntercom - The values required to configure the source.
@@ -20,19 +25,21 @@ public class SourceIntercom {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceIntercomIntercomEnum airbyteSourceName;
-    public SourceIntercom withAirbyteSourceName(SourceIntercomIntercomEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceIntercomIntercomEnum sourceType;
+    public SourceIntercom withSourceType(SourceIntercomIntercomEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
-    public SourceIntercom withStartDate(String startDate) {
+    public OffsetDateTime startDate;
+    public SourceIntercom withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }

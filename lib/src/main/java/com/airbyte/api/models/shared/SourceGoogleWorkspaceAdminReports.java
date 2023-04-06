@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleWorkspaceAdminReports - The values required to configure the source.
  */
 public class SourceGoogleWorkspaceAdminReports {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum airbyteSourceName;
-    public SourceGoogleWorkspaceAdminReports withAirbyteSourceName(SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/reports/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
@@ -47,6 +40,13 @@ public class SourceGoogleWorkspaceAdminReports {
     public Long lookback;
     public SourceGoogleWorkspaceAdminReports withLookback(Long lookback) {
         this.lookback = lookback;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType;
+    public SourceGoogleWorkspaceAdminReports withSourceType(SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

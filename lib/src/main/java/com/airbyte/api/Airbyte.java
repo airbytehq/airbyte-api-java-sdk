@@ -20,19 +20,17 @@ public class Airbyte {
   	
     public Connections connections;
     public Destinations destinations;
-    /**
-     * Jobs
-     */
     public Jobs jobs;
-    public Sources sources;	
+    public Sources sources;
+    public Workspaces workspaces;	
 
 	private HTTPClient _defaultClient;
 	private HTTPClient _securityClient;
 	private com.airbyte.api.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
-	private String _sdkVersion = "1.0.3";
-	private String _genVersion = "2.16.7";
+	private String _sdkVersion = "1.1.0";
+	private String _genVersion = "2.17.8";
 	/**
 	 * The Builder class allows the configuration of a new instance of the SDK.
 	 */
@@ -158,6 +156,15 @@ public class Airbyte {
 		);
 		
 		this.sources = new Sources(
+			this._defaultClient,
+			this._securityClient,
+			this._serverUrl,
+			this._language,
+			this._sdkVersion,
+			this._genVersion
+		);
+		
+		this.workspaces = new Workspaces(
 			this._defaultClient,
 			this._securityClient,
 			this._serverUrl,

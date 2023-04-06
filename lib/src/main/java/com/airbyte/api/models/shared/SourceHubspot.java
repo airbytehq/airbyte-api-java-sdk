@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceHubspot - The values required to configure the source.
  */
 public class SourceHubspot {
-    @JsonProperty("airbyte-source-name")
-    public SourceHubspotHubspotEnum airbyteSourceName;
-    public SourceHubspot withAirbyteSourceName(SourceHubspotHubspotEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Choose how to authenticate to HubSpot.
      */
@@ -24,6 +17,13 @@ public class SourceHubspot {
     public Object credentials;
     public SourceHubspot withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceHubspotHubspotEnum sourceType;
+    public SourceHubspot withSourceType(SourceHubspotHubspotEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

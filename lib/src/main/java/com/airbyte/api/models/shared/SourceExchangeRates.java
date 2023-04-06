@@ -24,13 +24,6 @@ public class SourceExchangeRates {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceExchangeRatesExchangeRatesEnum airbyteSourceName;
-    public SourceExchangeRates withAirbyteSourceName(SourceExchangeRatesExchangeRatesEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
      */
@@ -50,6 +43,13 @@ public class SourceExchangeRates {
     public Boolean ignoreWeekends;
     public SourceExchangeRates withIgnoreWeekends(Boolean ignoreWeekends) {
         this.ignoreWeekends = ignoreWeekends;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceExchangeRatesExchangeRatesEnum sourceType;
+    public SourceExchangeRates withSourceType(SourceExchangeRatesExchangeRatesEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

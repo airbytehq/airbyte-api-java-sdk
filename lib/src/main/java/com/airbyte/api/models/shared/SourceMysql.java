@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceMysql - The values required to configure the source.
  */
 public class SourceMysql {
-    @JsonProperty("airbyte-source-name")
-    public SourceMysqlMysqlEnum airbyteSourceName;
-    public SourceMysql withAirbyteSourceName(SourceMysqlMysqlEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * The database name.
      */
@@ -78,6 +71,13 @@ public class SourceMysql {
     public Object replicationMethod;
     public SourceMysql withReplicationMethod(Object replicationMethod) {
         this.replicationMethod = replicationMethod;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceMysqlMysqlEnum sourceType;
+    public SourceMysql withSourceType(SourceMysqlMysqlEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

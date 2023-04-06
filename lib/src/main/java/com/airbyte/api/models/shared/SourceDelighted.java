@@ -15,13 +15,6 @@ import java.time.OffsetDateTime;
  * SourceDelighted - The values required to configure the source.
  */
 public class SourceDelighted {
-    @JsonProperty("airbyte-source-name")
-    public SourceDelightedDelightedEnum airbyteSourceName;
-    public SourceDelighted withAirbyteSourceName(SourceDelightedDelightedEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * A Delighted API key.
      */
@@ -41,6 +34,13 @@ public class SourceDelighted {
     public OffsetDateTime since;
     public SourceDelighted withSince(OffsetDateTime since) {
         this.since = since;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceDelightedDelightedEnum sourceType;
+    public SourceDelighted withSourceType(SourceDelightedDelightedEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

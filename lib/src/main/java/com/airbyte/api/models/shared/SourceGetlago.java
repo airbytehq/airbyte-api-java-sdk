@@ -10,13 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGetlago - The values required to configure the source.
  */
 public class SourceGetlago {
-    @JsonProperty("airbyte-source-name")
-    public SourceGetlagoGetlagoEnum airbyteSourceName;
-    public SourceGetlago withAirbyteSourceName(SourceGetlagoGetlagoEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.
      */
@@ -24,6 +17,13 @@ public class SourceGetlago {
     public String apiKey;
     public SourceGetlago withApiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGetlagoGetlagoEnum sourceType;
+    public SourceGetlago withSourceType(SourceGetlagoGetlagoEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

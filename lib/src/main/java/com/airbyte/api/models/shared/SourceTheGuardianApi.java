@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceTheGuardianApi - The values required to configure the source.
  */
 public class SourceTheGuardianApi {
-    @JsonProperty("airbyte-source-name")
-    public SourceTheGuardianApiTheGuardianApiEnum airbyteSourceName;
-    public SourceTheGuardianApi withAirbyteSourceName(SourceTheGuardianApiTheGuardianApiEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Your API Key. See &lt;a href="https://open-platform.theguardian.com/access/"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
@@ -59,6 +52,13 @@ public class SourceTheGuardianApi {
     public String section;
     public SourceTheGuardianApi withSection(String section) {
         this.section = section;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceTheGuardianApiTheGuardianApiEnum sourceType;
+    public SourceTheGuardianApi withSourceType(SourceTheGuardianApiTheGuardianApiEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

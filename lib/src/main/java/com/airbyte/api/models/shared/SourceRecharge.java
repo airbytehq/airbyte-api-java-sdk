@@ -25,10 +25,10 @@ public class SourceRecharge {
         return this;
     }
     
-    @JsonProperty("airbyte-source-name")
-    public SourceRechargeRechargeEnum airbyteSourceName;
-    public SourceRecharge withAirbyteSourceName(SourceRechargeRechargeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
+    @JsonProperty("sourceType")
+    public SourceRechargeRechargeEnum sourceType;
+    public SourceRecharge withSourceType(SourceRechargeRechargeEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

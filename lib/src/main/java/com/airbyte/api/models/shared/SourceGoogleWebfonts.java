@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceGoogleWebfonts - The values required to configure the source.
  */
 public class SourceGoogleWebfonts {
-    @JsonProperty("airbyte-source-name")
-    public SourceGoogleWebfontsGoogleWebfontsEnum airbyteSourceName;
-    public SourceGoogleWebfonts withAirbyteSourceName(SourceGoogleWebfontsGoogleWebfontsEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     /**
      * Optional, Available params- json, media, proto
      */
@@ -59,6 +52,13 @@ public class SourceGoogleWebfonts {
     public String sort;
     public SourceGoogleWebfonts withSort(String sort) {
         this.sort = sort;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGoogleWebfontsGoogleWebfontsEnum sourceType;
+    public SourceGoogleWebfonts withSourceType(SourceGoogleWebfontsGoogleWebfontsEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

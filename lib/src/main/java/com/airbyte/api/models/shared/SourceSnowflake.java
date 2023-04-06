@@ -12,13 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceSnowflake - The values required to configure the source.
  */
 public class SourceSnowflake {
-    @JsonProperty("airbyte-source-name")
-    public SourceSnowflakeSnowflakeEnum airbyteSourceName;
-    public SourceSnowflake withAirbyteSourceName(SourceSnowflakeSnowflakeEnum airbyteSourceName) {
-        this.airbyteSourceName = airbyteSourceName;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
@@ -76,6 +69,13 @@ public class SourceSnowflake {
     public String schema;
     public SourceSnowflake withSchema(String schema) {
         this.schema = schema;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceSnowflakeSnowflakeEnum sourceType;
+    public SourceSnowflake withSourceType(SourceSnowflakeSnowflakeEnum sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     

@@ -23,10 +23,10 @@ public class DestinationS3Glue {
         return this;
     }
     
-    @JsonProperty("airbyte-destination-name")
-    public DestinationS3GlueS3GlueEnum airbyteDestinationName;
-    public DestinationS3Glue withAirbyteDestinationName(DestinationS3GlueS3GlueEnum airbyteDestinationName) {
-        this.airbyteDestinationName = airbyteDestinationName;
+    @JsonProperty("destinationType")
+    public DestinationS3GlueS3GlueEnum destinationType;
+    public DestinationS3Glue withDestinationType(DestinationS3GlueS3GlueEnum destinationType) {
+        this.destinationType = destinationType;
         return this;
     }
     
