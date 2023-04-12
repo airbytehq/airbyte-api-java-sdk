@@ -2,13 +2,13 @@
 ```java
 package hello.world;
 
-import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionScheduleCreate;
-import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
-import com.airbyte.api.models.shared.GeographyEnumEnum;
+import airbyte_prod.api.Airbyte;
+import airbyte_prod.api.models.shared.Security;
+import airbyte_prod.api.models.operations.CreateConnectionResponse;
+import airbyte_prod.api.models.shared.ConnectionCreateRequest;
+import airbyte_prod.api.models.shared.ConnectionScheduleCreate;
+import airbyte_prod.api.models.shared.ScheduleTypeEnumEnum;
+import airbyte_prod.api.models.shared.GeographyEnumEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
+            airbyte_prod.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
                 destinationId = "89bd9d8d-69a6-474e-8f46-7cc8796ed151";
                 geography = "us";
                 name = "perferendis";
