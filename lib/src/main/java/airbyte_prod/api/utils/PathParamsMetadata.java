@@ -10,6 +10,7 @@ public class PathParamsMetadata extends Metadata {
     public String style = "simple";
     public boolean explode;
     public String name;
+    public String serialization;
 
     // pathParam:style=simple,explode=false,name=apiID
     public static PathParamsMetadata parse(Field field) throws IllegalArgumentException, IllegalAccessException {

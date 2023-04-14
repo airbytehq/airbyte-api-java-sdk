@@ -6,6 +6,8 @@ package airbyte_prod.api.utils;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,6 +18,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.apache.http.NameValuePair;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class Utils {
     public static String generateURL(String baseURL, String path)
@@ -29,7 +34,7 @@ public final class Utils {
 
     public static <T extends Object> String generateURL(Class<T> type, String baseURL, String path, T params,
             Map<String, Map<String, Map<String, Object>>> globals)
-            throws IllegalArgumentException, IllegalAccessException {
+            throws IllegalArgumentException, IllegalAccessException, JsonProcessingException {
         if (baseURL != null && baseURL.endsWith("/")) {
             baseURL = baseURL.split("/")[0];
         }
@@ -50,68 +55,73 @@ public final class Utils {
                 continue;
             }
 
-            switch (pathParamsMetadata.style) {
-                case "simple":
-                    switch (Types.getType(value.getClass())) {
-                        case ARRAY:
-                            Object[] array = (Object[]) value;
-                            if (array.length == 0) {
-                                continue;
-                            }
-
-                            pathParams.put(pathParamsMetadata.name,
-                                    String.join(",",
-                                            Arrays.asList(array).stream().map(v -> Utils.valToString(v))
-                                                    .collect(Collectors.toList())));
-                            break;
-                        case MAP:
-                            Map<?, ?> map = (Map<?, ?>) value;
-                            if (map.size() == 0) {
-                                continue;
-                            }
-
-                            pathParams.put(pathParamsMetadata.name,
-                                    String.join(",", map.entrySet().stream().map(e -> {
-                                        if (pathParamsMetadata.explode) {
-                                            return String.format("%s=%s", Utils.valToString(e.getKey()),
-                                                    Utils.valToString(e.getValue()));
-                                        } else {
-                                            return String.format("%s,%s", Utils.valToString(e.getKey()),
-                                                    Utils.valToString(e.getValue()));
-                                        }
-                                    }).collect(Collectors.toList())));
-                            break;
-                        case OBJECT:
-                            List<String> values = new ArrayList<String>();
-
-                            Field[] valueFields = value.getClass().getFields();
-                            for (Field valueField : valueFields) {
-                                PathParamsMetadata valuePathParamsMetadata = PathParamsMetadata.parse(valueField);
-                                if (valuePathParamsMetadata == null) {
+            if (pathParamsMetadata.serialization != null && !pathParamsMetadata.serialization.isBlank()) {
+                Map<String, String> serialized = parseSerializedParams(pathParamsMetadata, value);
+                pathParams.putAll(serialized);
+            } else {
+                switch (pathParamsMetadata.style) {
+                    case "simple":
+                        switch (Types.getType(value.getClass())) {
+                            case ARRAY:
+                                Object[] array = (Object[]) value;
+                                if (array.length == 0) {
                                     continue;
                                 }
 
-                                Object val = valueField.get(value);
-
-                                if (val == null) {
+                                pathParams.put(pathParamsMetadata.name,
+                                        String.join(",",
+                                                Arrays.asList(array).stream().map(v -> Utils.valToString(v))
+                                                        .collect(Collectors.toList())));
+                                break;
+                            case MAP:
+                                Map<?, ?> map = (Map<?, ?>) value;
+                                if (map.size() == 0) {
                                     continue;
                                 }
 
-                                if (pathParamsMetadata.explode) {
-                                    values.add(String.format("%s=%s", valuePathParamsMetadata.name,
-                                            Utils.valToString(val)));
-                                } else {
-                                    values.add(String.format("%s,%s", valuePathParamsMetadata.name,
-                                            Utils.valToString(val)));
-                                }
-                            }
+                                pathParams.put(pathParamsMetadata.name,
+                                        String.join(",", map.entrySet().stream().map(e -> {
+                                            if (pathParamsMetadata.explode) {
+                                                return String.format("%s=%s", Utils.valToString(e.getKey()),
+                                                        Utils.valToString(e.getValue()));
+                                            } else {
+                                                return String.format("%s,%s", Utils.valToString(e.getKey()),
+                                                        Utils.valToString(e.getValue()));
+                                            }
+                                        }).collect(Collectors.toList())));
+                                break;
+                            case OBJECT:
+                                List<String> values = new ArrayList<String>();
 
-                            pathParams.put(pathParamsMetadata.name, String.join(",", values));
-                            break;
-                        default:
-                            pathParams.put(pathParamsMetadata.name, Utils.valToString(value));
-                            break;
-                    }
+                                Field[] valueFields = value.getClass().getFields();
+                                for (Field valueField : valueFields) {
+                                    PathParamsMetadata valuePathParamsMetadata = PathParamsMetadata.parse(valueField);
+                                    if (valuePathParamsMetadata == null) {
+                                        continue;
+                                    }
+
+                                    Object val = valueField.get(value);
+
+                                    if (val == null) {
+                                        continue;
+                                    }
+
+                                    if (pathParamsMetadata.explode) {
+                                        values.add(String.format("%s=%s", valuePathParamsMetadata.name,
+                                                Utils.valToString(val)));
+                                    } else {
+                                        values.add(String.format("%s,%s", valuePathParamsMetadata.name,
+                                                Utils.valToString(val)));
+                                    }
+                                }
+
+                                pathParams.put(pathParamsMetadata.name, String.join(",", values));
+                                break;
+                            default:
+                                pathParams.put(pathParamsMetadata.name, Utils.valToString(value));
+                                break;
+                        }
+                }
             }
         }
 
@@ -328,6 +338,22 @@ public final class Utils {
         }
 
         return value;
+    }
+
+    private static Map<String, String> parseSerializedParams(PathParamsMetadata pathParamsMetadata, Object value)
+            throws JsonProcessingException {
+        Map<String, String> params = new HashMap<>();
+
+        switch (pathParamsMetadata.serialization) {
+            case "json":
+                ObjectMapper mapper = JSON.getMapper();
+                String json = mapper.writeValueAsString(value);
+
+                params.put(pathParamsMetadata.name, URLEncoder.encode(json, StandardCharsets.UTF_8));
+                break;
+        }
+
+        return params;
     }
 
     private Utils() {

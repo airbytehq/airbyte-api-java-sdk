@@ -23,7 +23,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'airbyte_prod.api:public-api:1.1.1'
+implementation 'airbyte_prod.api:public-api:1.2.0'
 ```
 <!-- End SDK Installation -->
 
@@ -52,12 +52,12 @@ public class Application {
             airbyte_prod.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
                 destinationId = "89bd9d8d-69a6-474e-8f46-7cc8796ed151";
                 geography = "us";
-                name = "perferendis";
+                name = "Roberta Sipes";
                 schedule = new ConnectionScheduleCreate() {{
-                    cronExpression = "ipsam";
+                    cronExpression = "odit";
                     scheduleType = "cron";
                 }};
-                sourceId = "fc2ddf7c-c78c-4a1b-a928-fc816742cb73";
+                sourceId = "df7cc78c-a1ba-4928-bc81-6742cb739205";
             }}            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
