@@ -10,7 +10,7 @@ generation:
   sdkFlattening: false
   singleTagPerOp: false
 java:
-  version: 0.0.5
+  version: 0.0.6
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
