@@ -2,17 +2,17 @@
 ```java
 package hello.world;
 
-import airbyte_prod.api.Airbyte;
+import com.airbyte.api.Airbyte;
 
-import airbyte_prod.api.models.operations.CreateConnectionResponse;
-import airbyte_prod.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
-import airbyte_prod.api.models.shared.ConnectionCreateRequest;
-import airbyte_prod.api.models.shared.ConnectionScheduleCreate;
-import airbyte_prod.api.models.shared.ScheduleTypeEnumEnum;
-import airbyte_prod.api.models.shared.GeographyEnumEnum;
-import airbyte_prod.api.models.shared.StreamConfigurations;
-import airbyte_prod.api.models.shared.StreamConfiguration;
-import airbyte_prod.api.models.shared.ConnectionSyncModeEnumEnum;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionScheduleCreate;
+import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
+import com.airbyte.api.models.shared.GeographyEnumEnum;
+import com.airbyte.api.models.shared.StreamConfigurations;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -20,9 +20,9 @@ public class Application {
             Airbyte sdk = Airbyte.builder()
                 .build();
 
-            airbyte_prod.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
                 configurations = new StreamConfigurations() {{
-                    streams = new airbyte_prod.api.models.shared.StreamConfiguration[]{{
+                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
                         add(new StreamConfiguration() {{
                             cursorField = new String[]{{
                                 add("distinctio"),
