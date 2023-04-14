@@ -7,15 +7,15 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: airbyte
-  sdkFlattening: false
+  sdkFlattening: true
   singleTagPerOp: false
 java:
-  version: 0.1.0
+  version: ""
   artifactID: api
   companyEmail: info@mycompany.com
   companyName: My Company
   companyURL: www.mycompany.com
   githubURL: github.com/owner/repo
-  groupID: airbyte-prod
+  groupID: com.airbyte
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   projectName: public-api
