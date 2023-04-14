@@ -41,17 +41,17 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '0.0.2'
+            version = '0.0.3'
 
             from components.java
 
             pom {
-                name = 'My Company Java SDK'
-                description = 'SDK enabling Java developers to easily integrate with the My Company API.'
-                url = 'https://github.com/owner/repo'
+                name = 'Airbyte Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the Airbyte API.'
+                url = 'https://github.com/airbytehq/airbyte-api-java-sdk'
                 scm {
-                    url = 'github.com/owner/repo'
-                    connection = 'scm:git:ssh://git@github.com/owner/repo.git'
+                    url = 'github.com/airbytehq/airbyte-api-java-sdk'
+                    connection = 'scm:git:ssh://git@github.com/airbytehq/airbyte-api-java-sdk.git'
                 }
                 licenses {
                     license {
@@ -61,14 +61,14 @@ publishing {
                 }
                 developers {
                     developer {
-                        name = 'My Company'
-                        organization = 'My Company'
-                        email = 'info@mycompany.com'
+                        name = 'Airbyte'
+                        organization = 'Airbyte'
+                        email = 'info@airbyte.com'
                     }
                 }
                 organization {
-                    name = 'My Company'
-                    url = 'www.mycompany.com'
+                    name = 'Airbyte'
+                    url = 'www.airbyte.com'
                 }
             }
         }
