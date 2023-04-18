@@ -31,5 +31,5 @@ jobs:
       speakeasy_api_key: ${{ secrets.SPEAKEASY_PROD_API_KEY }}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       maven_username: ${{ secrets.MAVEN_USERNAME }}
-      maven_password: ${{ secrets.MAVEN_PASSWORD }}
+maven_password: ${{ secrets.MAVEN_PASSWORD }}
       openapi_doc_auth_token: ${{ secrets.SPEAKEASY_API_KEY }}
