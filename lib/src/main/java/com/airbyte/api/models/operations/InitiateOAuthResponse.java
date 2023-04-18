@@ -14,6 +14,16 @@ public class InitiateOAuthResponse {
         return this;
     }
     
+    /**
+     * The result of creating an OAuth link
+     */
+    
+    public com.airbyte.api.models.shared.InitiateOauthResponse initiateOauthResponse;
+    public InitiateOAuthResponse withInitiateOauthResponse(com.airbyte.api.models.shared.InitiateOauthResponse initiateOauthResponse) {
+        this.initiateOauthResponse = initiateOauthResponse;
+        return this;
+    }
+    
     
     public Integer statusCode;
     public InitiateOAuthResponse withStatusCode(Integer statusCode) {

@@ -49,7 +49,8 @@ public class Sources {
         req.setBody(serializedRequestBody);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -89,7 +90,8 @@ public class Sources {
         req.setURL(url);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -121,7 +123,8 @@ public class Sources {
         req.setURL(url);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -171,18 +174,27 @@ public class Sources {
         req.setBody(serializedRequestBody);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         com.airbyte.api.models.operations.InitiateOAuthResponse res = new com.airbyte.api.models.operations.InitiateOAuthResponse() {{
+            initiateOauthResponse = null;
         }};
         res.statusCode = httpRes.statusCode();
         res.contentType = contentType;
         res.rawResponse = httpRes;
         
-        if (httpRes.statusCode() == 200 || httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
+        if (httpRes.statusCode() == 200) {
+            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.InitiateOauthResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.InitiateOauthResponse.class);
+                res.initiateOauthResponse = out;
+            }
+        }
+        else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
 
         return res;
@@ -209,7 +221,8 @@ public class Sources {
             }
         }
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");

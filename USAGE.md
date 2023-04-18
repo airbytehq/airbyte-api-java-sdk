@@ -3,7 +3,7 @@
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-
+import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
@@ -18,6 +18,9 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
+                .setSecurity(new Security() {{
+                    bearerAuth = "Bearer YOUR_BEARER_TOKEN_HERE";
+                }})
                 .build();
 
             com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{

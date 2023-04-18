@@ -49,7 +49,8 @@ public class Destinations {
         req.setBody(serializedRequestBody);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -89,7 +90,8 @@ public class Destinations {
         req.setURL(url);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -121,7 +123,8 @@ public class Destinations {
         req.setURL(url);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -167,7 +170,8 @@ public class Destinations {
             }
         }
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
