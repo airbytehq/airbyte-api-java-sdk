@@ -5,7 +5,7 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
-  
+
 on:
   workflow_dispatch:
     inputs:
@@ -26,9 +26,10 @@ jobs:
       openapi_doc_auth_header: x-api-key
       languages: |-
         - java
-      mode: pr
-      publish_java: true 
+      publish_java: true
     secrets:
       speakeasy_api_key: ${{ secrets.SPEAKEASY_PROD_API_KEY }}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      ossrh_username: ${{ secrets.MAVEN_USERNAME }}
+      ossrh_password: ${{ secrets.MAVEN_PASSWORD }}
       openapi_doc_auth_token: ${{ secrets.SPEAKEASY_API_KEY }}

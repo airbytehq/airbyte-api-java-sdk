@@ -21,25 +21,24 @@ public class Airbyte {
     public Connections connections;
     public Destinations destinations;
     public Jobs jobs;
-    public OAuth oAuth;
     public Sources sources;
     public Streams streams;
-    public Workspaces workspaces;
-    public Health health;	
+    public Workspaces workspaces;	
 
 	private HTTPClient _defaultClient;
 	private HTTPClient _securityClient;
-	
+	private com.airbyte.api.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
 	private String _sdkVersion = "0.0.7";
 	private String _genVersion = "2.18.1";
+
 	/**
 	 * The Builder class allows the configuration of a new instance of the SDK.
 	 */
 	public static class Builder {
 		private HTTPClient client;
-		
+		private com.airbyte.api.models.shared.Security security;
 		private String serverUrl;
 		private java.util.Map<String, String> params = new java.util.HashMap<String, String>();
 
@@ -53,6 +52,16 @@ public class Airbyte {
 		 */
 		public Builder setClient(HTTPClient client) {
 			this.client = client;
+			return this;
+		}
+		
+		/**
+		 * Configures the SDK to use the provided security details.
+		 * @param security The security details to use for all requests.
+		 * @return The builder instance.
+		 */
+		public Builder setSecurity(com.airbyte.api.models.shared.Security security) {
+			this.security = security;
 			return this;
 		}
 		
@@ -84,7 +93,7 @@ public class Airbyte {
 		 * @throws Exception Thrown if the SDK could not be built.
 		 */
 		public Airbyte build() throws Exception {
-			return new Airbyte(this.client, this.serverUrl, this.params);
+			return new Airbyte(this.client, this.security, this.serverUrl, this.params);
 		}
 	}
 
@@ -96,11 +105,16 @@ public class Airbyte {
 		return new Builder();
 	}
 
-	private Airbyte(HTTPClient client, String serverUrl, java.util.Map<String, String> params) throws Exception {
+	private Airbyte(HTTPClient client, com.airbyte.api.models.shared.Security security, String serverUrl, java.util.Map<String, String> params) throws Exception {
 		this._defaultClient = client;
 		
 		if (this._defaultClient == null) {
 			this._defaultClient = new SpeakeasyHTTPClient();
+		}
+		
+		if (security != null) {
+			this._security = security;
+			this._securityClient = com.airbyte.api.utils.Utils.configureSecurityClient(this._defaultClient, this._security);
 		}
 		
 		if (this._securityClient == null) {
@@ -143,15 +157,6 @@ public class Airbyte {
 			this._genVersion
 		);
 		
-		this.oAuth = new OAuth(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion
-		);
-		
 		this.sources = new Sources(
 			this._defaultClient,
 			this._securityClient,
@@ -171,15 +176,6 @@ public class Airbyte {
 		);
 		
 		this.workspaces = new Workspaces(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion
-		);
-		
-		this.health = new Health(
 			this._defaultClient,
 			this._securityClient,
 			this._serverUrl,

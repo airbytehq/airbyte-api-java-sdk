@@ -33,7 +33,7 @@ implementation 'com.airbyte.api:public-api:0.0.7'
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-
+import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
@@ -48,6 +48,9 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
+                .setSecurity(new Security() {{
+                    bearerAuth = "Bearer YOUR_BEARER_TOKEN_HERE";
+                }})
                 .build();
 
             com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
@@ -162,11 +165,6 @@ public class Application {
 * `getJob` - Get Job status and details
 * `listJobs` - List Jobs by sync type
 
-### oAuth
-
-* `createOrUpdateWorkspaceOAuthCredentials` - Initiate OAuth for a source.
-* `oauthCallback` - Receive OAuth callbacks
-
 ### sources
 
 * `createSource` - Create a source
@@ -185,10 +183,6 @@ public class Application {
 * `deleteWorkspace` - Delete a Workspace
 * `getWorkspace` - Get Workspace details
 * `listWorkspaces` - List workspaces
-
-### health
-
-* `getHealthCheck` - Health Check
 <!-- End SDK Available Operations -->
 
 ### Maturity

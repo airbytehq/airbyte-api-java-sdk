@@ -51,7 +51,8 @@ public class Workspaces {
         req.setBody(serializedRequestBody);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -91,7 +92,8 @@ public class Workspaces {
         req.setURL(url);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -123,7 +125,8 @@ public class Workspaces {
         req.setURL(url);
         
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -169,7 +172,8 @@ public class Workspaces {
             }
         }
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this._securityClient;
+        
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
