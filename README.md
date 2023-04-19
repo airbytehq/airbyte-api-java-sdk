@@ -15,8 +15,6 @@ Developers will need to create an API Key within your [Developer Portal](https:/
 
 The Developer Portal UI can also be used to help build your integration by showing information about network requests in the Requests tab. API usage information is also available to you in the Usage tab.
 
-***(Installation will not work until published to a package manager, please clone locally and run `maven install` to try out the artifact locally)***
-
 <!-- Start SDK Installation -->
 ## SDK Installation
 
