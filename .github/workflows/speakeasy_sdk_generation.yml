@@ -27,6 +27,7 @@ jobs:
       languages: |-
         - java
       publish_java: true
+      mode: pr
     secrets:
       speakeasy_api_key: ${{ secrets.SPEAKEASY_PROD_API_KEY }}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
