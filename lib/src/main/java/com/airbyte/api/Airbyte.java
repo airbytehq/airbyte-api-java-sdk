@@ -30,8 +30,9 @@ public class Airbyte {
 	private com.airbyte.api.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
-	private String _sdkVersion = "0.0.2";
-	private String _genVersion = "2.18.2";
+	private String _sdkVersion = "0.0.7";
+	private String _genVersion = "2.18.1";
+
 	/**
 	 * The Builder class allows the configuration of a new instance of the SDK.
 	 */
