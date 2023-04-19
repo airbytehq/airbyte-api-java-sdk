@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.0.7'
+implementation 'com.airbyte.api:public-api:0.0.8'
 ```
 <!-- End SDK Installation -->
 
