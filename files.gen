@@ -66,9 +66,9 @@ lib/src/main/java/com/airbyte/api/models/operations/ListSourcesRequest.java
 lib/src/main/java/com/airbyte/api/models/operations/ListSourcesResponse.java
 lib/src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequest.java
 lib/src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesResponse.java
+lib/src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.java
+lib/src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.java
 lib/src/main/java/com/airbyte/api/models/operations/CreateWorkspaceResponse.java
-lib/src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceRequest.java
-lib/src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceResponse.java
 lib/src/main/java/com/airbyte/api/models/operations/GetWorkspaceRequest.java
 lib/src/main/java/com/airbyte/api/models/operations/GetWorkspaceResponse.java
 lib/src/main/java/com/airbyte/api/models/operations/ListWorkspacesRequest.java
@@ -1089,10 +1089,11 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceZoomZoomEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceZoom.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceZuoraZuoraEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceZuora.java
-lib/src/main/java/com/airbyte/api/models/shared/InitiateOauthResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/InitiateOauthRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/StreamProperties.java
+lib/src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequestActorTypeEnum.java
+lib/src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceCreateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspacesResponse.java

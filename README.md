@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.0.10'
+implementation 'com.airbyte.api:public-api:0.0.1'
 ```
 <!-- End SDK Installation -->
 
@@ -168,7 +168,7 @@ public class Application {
 * `createSource` - Create a source
 * `deleteSource` - Delete a Source
 * `getSource` - Get Source details
-* `initiateOAuth` - Initiate OAuth for a source.
+* `initiateOAuth` - Initiate OAuth for a source
 * `listSources` - List sources
 
 ### streams
@@ -177,8 +177,8 @@ public class Application {
 
 ### workspaces
 
+* `createOrUpdateWorkspaceOAuthCredentials` - Create OAuth override credentials for a workspace and source type.
 * `createWorkspace` - Create a workspace
-* `deleteWorkspace` - Delete a Workspace
 * `getWorkspace` - Get Workspace details
 * `listWorkspaces` - List workspaces
 <!-- End SDK Available Operations -->

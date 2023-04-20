@@ -15,7 +15,6 @@ public class InitiateOauthRequest {
     /**
      * The name of the source to authenticate to
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     public String name;
     public InitiateOauthRequest withName(String name) {
@@ -47,7 +46,6 @@ public class InitiateOauthRequest {
     /**
      * The workspace to create the secret and eventually the full source.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("workspaceId")
     public String workspaceId;
     public InitiateOauthRequest withWorkspaceId(String workspaceId) {

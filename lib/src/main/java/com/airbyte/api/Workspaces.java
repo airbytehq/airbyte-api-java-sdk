@@ -32,6 +32,46 @@ public class Workspaces {
 	}
 
     /**
+     * Create OAuth override credentials for a workspace and source type.
+     * Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception {
+        String baseUrl = this._serverUrl;
+        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest.class, baseUrl, "/workspaces/{workspaceId}/oauthCredentials", request, null);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PUT");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(request, "workspaceOAuthCredentialsRequest", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+        
+        
+        HTTPClient client = this._securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse res = new com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse() {{
+        }};
+        res.statusCode = httpRes.statusCode();
+        res.contentType = contentType;
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200 || httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
+        }
+
+        return res;
+    }
+
+    /**
      * Create a workspace
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
@@ -72,39 +112,6 @@ public class Workspaces {
             }
         }
         else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
-        }
-
-        return res;
-    }
-
-    /**
-     * Delete a Workspace
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
-    public com.airbyte.api.models.operations.DeleteWorkspaceResponse deleteWorkspace(com.airbyte.api.models.operations.DeleteWorkspaceRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
-        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.DeleteWorkspaceRequest.class, baseUrl, "/workspaces/{workspaceId}", request, null);
-        
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("DELETE");
-        req.setURL(url);
-        
-        
-        HTTPClient client = this._securityClient;
-        
-        HttpResponse<byte[]> httpRes = client.send(req);
-
-        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.DeleteWorkspaceResponse res = new com.airbyte.api.models.operations.DeleteWorkspaceResponse() {{
-        }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
-        res.rawResponse = httpRes;
-        
-        if (httpRes.statusCode() == 204 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
 
         return res;
