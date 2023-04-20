@@ -7,9 +7,10 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: airbyte
+  sdkFlattening: true
   singleTagPerOp: false
 java:
-  version: 0.0.10
+  version: ""
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
