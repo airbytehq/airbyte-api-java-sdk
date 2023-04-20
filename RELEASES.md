@@ -112,3 +112,11 @@ Based on:
 - Speakeasy CLI 1.21.3 (2.18.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Maven Central v0.0.10] https://central.sonatype.com/artifact/com.airbyte/api/0.0.10 - .
+
+## 2023-04-20 00:18:58
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 https://prod.speakeasyapi.dev/v1/apis/public-api/version/v0.1.0/schema/download
+- Speakeasy CLI 1.21.3 (2.18.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Maven Central v0.0.1] https://central.sonatype.com/artifact/com.airbyte/api/0.0.1 - .

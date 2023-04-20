@@ -4,9 +4,14 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceS3S3AmazonWebServices - Use this to load files from S3 or S3-compatible services
@@ -63,6 +68,19 @@ public class SourceS3S3AmazonWebServices {
     public String pathPrefix;
     public SourceS3S3AmazonWebServices withPathPrefix(String pathPrefix) {
         this.pathPrefix = pathPrefix;
+        return this;
+    }
+    
+    /**
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any file modified before this date will not be replicated.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
+    @JsonProperty("start_date")
+    public OffsetDateTime startDate;
+    public SourceS3S3AmazonWebServices withStartDate(OffsetDateTime startDate) {
+        this.startDate = startDate;
         return this;
     }
     

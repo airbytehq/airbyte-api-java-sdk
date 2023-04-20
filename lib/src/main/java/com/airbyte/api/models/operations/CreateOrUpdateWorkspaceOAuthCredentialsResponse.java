@@ -6,24 +6,24 @@ package com.airbyte.api.models.operations;
 
 import java.net.http.HttpResponse;
 
-public class DeleteWorkspaceResponse {
+public class CreateOrUpdateWorkspaceOAuthCredentialsResponse {
     
     public String contentType;
-    public DeleteWorkspaceResponse withContentType(String contentType) {
+    public CreateOrUpdateWorkspaceOAuthCredentialsResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
     }
     
     
     public Integer statusCode;
-    public DeleteWorkspaceResponse withStatusCode(Integer statusCode) {
+    public CreateOrUpdateWorkspaceOAuthCredentialsResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
     }
     
     
     public HttpResponse<byte[]> rawResponse;
-    public DeleteWorkspaceResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
+    public CreateOrUpdateWorkspaceOAuthCredentialsResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;
     }
