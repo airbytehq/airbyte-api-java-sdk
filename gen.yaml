@@ -9,7 +9,7 @@ generation:
   sdkClassName: airbyte
   singleTagPerOp: false
 java:
-  version: 0.1.0
+  version: 0.1.1
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
