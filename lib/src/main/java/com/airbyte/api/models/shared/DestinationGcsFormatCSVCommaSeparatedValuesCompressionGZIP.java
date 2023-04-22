@@ -20,4 +20,6 @@ public class DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP {
         return this;
     }
     
+
+    public DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP(){}
 }

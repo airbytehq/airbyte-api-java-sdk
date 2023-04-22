@@ -27,4 +27,9 @@ public class SourceShopifyCredentialsAPIPassword {
         return this;
     }
     
+
+    public SourceShopifyCredentialsAPIPassword(@JsonProperty("api_password") String apiPassword, @JsonProperty("auth_method") SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod) {
+    this.apiPassword = apiPassword;
+this.authMethod = authMethod;
+  }
 }

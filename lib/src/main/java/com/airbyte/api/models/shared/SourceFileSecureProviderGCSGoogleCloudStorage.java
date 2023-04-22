@@ -30,4 +30,8 @@ public class SourceFileSecureProviderGCSGoogleCloudStorage {
         return this;
     }
     
+
+    public SourceFileSecureProviderGCSGoogleCloudStorage(@JsonProperty("storage") SourceFileSecureProviderGCSGoogleCloudStorageStorageEnum storage) {
+    this.storage = storage;
+  }
 }

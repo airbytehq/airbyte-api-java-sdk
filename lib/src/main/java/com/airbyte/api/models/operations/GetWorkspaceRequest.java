@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetWorkspaceRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
@@ -14,4 +15,8 @@ public class GetWorkspaceRequest {
         return this;
     }
     
+
+    public GetWorkspaceRequest(@JsonProperty("workspaceId") String workspaceId) {
+    this.workspaceId = workspaceId;
+  }
 }

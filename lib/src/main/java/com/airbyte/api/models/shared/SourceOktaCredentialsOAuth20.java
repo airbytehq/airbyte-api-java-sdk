@@ -44,4 +44,11 @@ public class SourceOktaCredentialsOAuth20 {
         return this;
     }
     
+
+    public SourceOktaCredentialsOAuth20(@JsonProperty("auth_type") SourceOktaCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    this.authType = authType;
+this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.refreshToken = refreshToken;
+  }
 }

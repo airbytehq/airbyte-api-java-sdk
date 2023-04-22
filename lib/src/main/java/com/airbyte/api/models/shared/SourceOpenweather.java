@@ -71,4 +71,11 @@ public class SourceOpenweather {
         return this;
     }
     
+
+    public SourceOpenweather(@JsonProperty("appid") String appid, @JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("sourceType") SourceOpenweatherOpenweatherEnum sourceType) {
+    this.appid = appid;
+this.lat = lat;
+this.lon = lon;
+this.sourceType = sourceType;
+  }
 }

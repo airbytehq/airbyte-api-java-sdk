@@ -20,4 +20,6 @@ public class SourceSurveySparrowRegionEUBasedAccount {
         return this;
     }
     
+
+    public SourceSurveySparrowRegionEUBasedAccount(){}
 }

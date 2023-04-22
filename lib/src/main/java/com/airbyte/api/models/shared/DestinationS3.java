@@ -114,4 +114,12 @@ public class DestinationS3 {
         return this;
     }
     
+
+    public DestinationS3(@JsonProperty("destinationType") DestinationS3S3Enum destinationType, @JsonProperty("format") Object format, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3S3BucketRegionEnum s3BucketRegion) {
+    this.destinationType = destinationType;
+this.format = format;
+this.s3BucketName = s3BucketName;
+this.s3BucketPath = s3BucketPath;
+this.s3BucketRegion = s3BucketRegion;
+  }
 }

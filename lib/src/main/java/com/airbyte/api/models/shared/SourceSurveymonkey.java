@@ -69,4 +69,9 @@ public class SourceSurveymonkey {
         return this;
     }
     
+
+    public SourceSurveymonkey(@JsonProperty("sourceType") SourceSurveymonkeySurveymonkeyEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

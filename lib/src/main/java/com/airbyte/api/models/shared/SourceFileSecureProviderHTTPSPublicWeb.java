@@ -30,4 +30,8 @@ public class SourceFileSecureProviderHTTPSPublicWeb {
         return this;
     }
     
+
+    public SourceFileSecureProviderHTTPSPublicWeb(@JsonProperty("storage") SourceFileSecureProviderHTTPSPublicWebStorageEnum storage) {
+    this.storage = storage;
+  }
 }

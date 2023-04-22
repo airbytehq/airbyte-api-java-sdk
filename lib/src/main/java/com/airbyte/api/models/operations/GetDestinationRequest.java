@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetDestinationRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=destinationId")
@@ -14,4 +15,8 @@ public class GetDestinationRequest {
         return this;
     }
     
+
+    public GetDestinationRequest(@JsonProperty("destinationId") String destinationId) {
+    this.destinationId = destinationId;
+  }
 }

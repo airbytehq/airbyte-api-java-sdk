@@ -27,4 +27,8 @@ public class SourceAirtableCredentialsPersonalAccessToken {
         return this;
     }
     
+
+    public SourceAirtableCredentialsPersonalAccessToken(@JsonProperty("api_key") String apiKey) {
+    this.apiKey = apiKey;
+  }
 }

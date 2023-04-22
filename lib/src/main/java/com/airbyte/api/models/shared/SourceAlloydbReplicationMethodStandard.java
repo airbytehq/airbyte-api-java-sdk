@@ -17,4 +17,8 @@ public class SourceAlloydbReplicationMethodStandard {
         return this;
     }
     
+
+    public SourceAlloydbReplicationMethodStandard(@JsonProperty("method") SourceAlloydbReplicationMethodStandardMethodEnum method) {
+    this.method = method;
+  }
 }

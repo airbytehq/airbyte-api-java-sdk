@@ -18,86 +18,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security("corrupti") {{
                     bearerAuth = "Bearer YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest() {{
-                configurations = new StreamConfigurations() {{
-                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration() {{
-                            cursorField = new String[]{{
-                                add("distinctio"),
-                                add("quibusdam"),
-                                add("unde"),
-                            }};
-                            name = "Johnnie Stamm";
-                            primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("iure"),
-                                    add("magnam"),
-                                }}),
-                                add(new String[]{{
-                                    add("ipsa"),
-                                    add("delectus"),
-                                    add("tempora"),
-                                    add("suscipit"),
-                                }}),
-                                add(new String[]{{
-                                    add("minus"),
-                                    add("placeat"),
-                                }}),
-                            }};
-                            syncMode = "incremental_append";
-                        }}),
-                        add(new StreamConfiguration() {{
-                            cursorField = new String[]{{
-                                add("excepturi"),
-                                add("nisi"),
-                            }};
-                            name = "Jake Bernier MD";
-                            primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("repellendus"),
-                                    add("sapiente"),
-                                }}),
-                            }};
-                            syncMode = "incremental_deduped_history";
-                        }}),
-                        add(new StreamConfiguration() {{
-                            cursorField = new String[]{{
-                                add("at"),
-                            }};
-                            name = "Emilio Krajcik";
-                            primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("porro"),
-                                    add("dolorum"),
-                                    add("dicta"),
-                                }}),
-                                add(new String[]{{
-                                    add("officia"),
-                                    add("occaecati"),
-                                    add("fugit"),
-                                }}),
-                            }};
-                            syncMode = "incremental_append";
-                        }}),
-                    }};
-                }};
-                dataResidency = "eu";
-                destinationId = "c816742c-b739-4205-9293-96fea7596eb1";
-                name = "Lela Orn";
-                namespaceDefinition = "source";
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("9bd9d8d6-9a67-44e0-b467-cc8796ed151a", "05dfc2dd-f7cc-478c-a1ba-928fc816742c") {{
+                dataResidency = "us";
+                name = "Kayla O'Kon";
+                namespaceDefinition = "custom_format";
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                prefix = "dolorem";
-                schedule = new ConnectionScheduleCreate() {{
-                    cronExpression = "corporis";
-                    scheduleType = "manual";
-                }};
-                sourceId = "c5955907-aff1-4a3a-afa9-467739251aa5";
-            }}            
+                prefix = "sequi";
+            }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
 

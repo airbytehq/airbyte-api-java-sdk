@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetStreamPropertiesRequest {
     /**
@@ -27,4 +28,9 @@ public class GetStreamPropertiesRequest {
         return this;
     }
     
+
+    public GetStreamPropertiesRequest(@JsonProperty("destinationId") String destinationId, @JsonProperty("sourceId") String sourceId) {
+    this.destinationId = destinationId;
+this.sourceId = sourceId;
+  }
 }

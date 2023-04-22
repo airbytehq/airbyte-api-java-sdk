@@ -60,4 +60,11 @@ public class SourceGoogleAdsGoogleCredentials {
         return this;
     }
     
+
+    public SourceGoogleAdsGoogleCredentials(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("developer_token") String developerToken, @JsonProperty("refresh_token") String refreshToken) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.developerToken = developerToken;
+this.refreshToken = refreshToken;
+  }
 }

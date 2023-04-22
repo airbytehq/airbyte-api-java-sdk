@@ -30,4 +30,8 @@ public class SourceGithubCredentialsOAuth {
         return this;
     }
     
+
+    public SourceGithubCredentialsOAuth(@JsonProperty("access_token") String accessToken) {
+    this.accessToken = accessToken;
+  }
 }

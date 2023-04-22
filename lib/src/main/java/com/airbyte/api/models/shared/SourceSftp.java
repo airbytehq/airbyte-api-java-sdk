@@ -93,4 +93,11 @@ public class SourceSftp {
         return this;
     }
     
+
+    public SourceSftp(@JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpSftpEnum sourceType, @JsonProperty("user") String user) {
+    this.host = host;
+this.port = port;
+this.sourceType = sourceType;
+this.user = user;
+  }
 }

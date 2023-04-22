@@ -80,4 +80,13 @@ public class DestinationDatabricksDataSourceAmazonS3 {
         return this;
     }
     
+
+    public DestinationDatabricksDataSourceAmazonS3(@JsonProperty("data_source_type") DestinationDatabricksDataSourceAmazonS3DataSourceTypeEnum dataSourceType, @JsonProperty("s3_access_key_id") String s3AccessKeyId, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationDatabricksDataSourceAmazonS3S3BucketRegionEnum s3BucketRegion, @JsonProperty("s3_secret_access_key") String s3SecretAccessKey) {
+    this.dataSourceType = dataSourceType;
+this.s3AccessKeyId = s3AccessKeyId;
+this.s3BucketName = s3BucketName;
+this.s3BucketPath = s3BucketPath;
+this.s3BucketRegion = s3BucketRegion;
+this.s3SecretAccessKey = s3SecretAccessKey;
+  }
 }

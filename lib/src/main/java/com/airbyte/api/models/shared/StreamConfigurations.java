@@ -20,4 +20,6 @@ public class StreamConfigurations {
         return this;
     }
     
+
+    public StreamConfigurations(){}
 }

@@ -87,4 +87,15 @@ public class SourceWikipediaPageviews {
         return this;
     }
     
+
+    public SourceWikipediaPageviews(@JsonProperty("access") String access, @JsonProperty("agent") String agent, @JsonProperty("article") String article, @JsonProperty("country") String country, @JsonProperty("end") String end, @JsonProperty("project") String project, @JsonProperty("sourceType") SourceWikipediaPageviewsWikipediaPageviewsEnum sourceType, @JsonProperty("start") String start) {
+    this.access = access;
+this.agent = agent;
+this.article = article;
+this.country = country;
+this.end = end;
+this.project = project;
+this.sourceType = sourceType;
+this.start = start;
+  }
 }

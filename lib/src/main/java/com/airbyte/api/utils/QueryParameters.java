@@ -25,7 +25,7 @@ public class QueryParameters {
 
         for (Field field : fields) {
             Object value = queryParams != null ? field.get(queryParams) : null;
-            value = Utils.popualteGlobal(value, field.getName(), "queryParam", globals);
+            value = Utils.populateGlobal(value, field.getName(), "queryParam", globals);
             if (value == null) {
                 continue;
             }

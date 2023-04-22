@@ -60,4 +60,12 @@ public class SourceMysqlTunnelMethodPasswordAuthentication {
         return this;
     }
     
+
+    public SourceMysqlTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") SourceMysqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    this.tunnelUser = tunnelUser;
+this.tunnelUserPassword = tunnelUserPassword;
+this.tunnelHost = tunnelHost;
+this.tunnelMethod = tunnelMethod;
+this.tunnelPort = tunnelPort;
+  }
 }

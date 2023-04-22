@@ -20,4 +20,6 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionNoCo
         return this;
     }
     
+
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionNoCompression(){}
 }

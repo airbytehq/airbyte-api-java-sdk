@@ -30,4 +30,9 @@ public class SourceFaunaCollectionDeletionsEnabled {
         return this;
     }
     
+
+    public SourceFaunaCollectionDeletionsEnabled(@JsonProperty("column") String column, @JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsEnabledDeletionModeEnum deletionMode) {
+    this.column = column;
+this.deletionMode = deletionMode;
+  }
 }

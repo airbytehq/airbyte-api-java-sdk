@@ -17,4 +17,8 @@ public class SourceMssqlReplicationMethodStandard {
         return this;
     }
     
+
+    public SourceMssqlReplicationMethodStandard(@JsonProperty("method") SourceMssqlReplicationMethodStandardMethodEnum method) {
+    this.method = method;
+  }
 }

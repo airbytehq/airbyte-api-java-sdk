@@ -20,4 +20,8 @@ public class DestinationOracleTunnelMethodNoTunnel {
         return this;
     }
     
+
+    public DestinationOracleTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationOracleTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    this.tunnelMethod = tunnelMethod;
+  }
 }

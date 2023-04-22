@@ -37,4 +37,10 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
     
+
+    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") WorkspaceOAuthCredentialsRequestActorTypeEnum actorType, @JsonProperty("configuration") java.util.Map<String, Object> configuration, @JsonProperty("name") String name) {
+    this.actorType = actorType;
+this.configuration = configuration;
+this.name = name;
+  }
 }

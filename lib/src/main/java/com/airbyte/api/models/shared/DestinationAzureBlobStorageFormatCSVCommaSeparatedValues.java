@@ -27,4 +27,9 @@ public class DestinationAzureBlobStorageFormatCSVCommaSeparatedValues {
         return this;
     }
     
+
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlatteningEnum flattening, @JsonProperty("format_type") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    this.flattening = flattening;
+this.formatType = formatType;
+  }
 }

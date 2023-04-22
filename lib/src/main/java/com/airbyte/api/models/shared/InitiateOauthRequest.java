@@ -53,4 +53,10 @@ public class InitiateOauthRequest {
         return this;
     }
     
+
+    public InitiateOauthRequest(@JsonProperty("name") String name, @JsonProperty("redirectUrl") String redirectUrl, @JsonProperty("workspaceId") String workspaceId) {
+    this.name = name;
+this.redirectUrl = redirectUrl;
+this.workspaceId = workspaceId;
+  }
 }

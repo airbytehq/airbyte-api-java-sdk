@@ -51,4 +51,11 @@ public class SourceXero {
         return this;
     }
     
+
+    public SourceXero(@JsonProperty("authentication") SourceXeroAuthenticateViaXeroOAuth authentication, @JsonProperty("sourceType") SourceXeroXeroEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("tenant_id") String tenantId) {
+    this.authentication = authentication;
+this.sourceType = sourceType;
+this.startDate = startDate;
+this.tenantId = tenantId;
+  }
 }

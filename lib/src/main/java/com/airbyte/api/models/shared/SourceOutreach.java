@@ -67,4 +67,13 @@ public class SourceOutreach {
         return this;
     }
     
+
+    public SourceOutreach(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("redirect_uri") String redirectUri, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceOutreachOutreachEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.redirectUri = redirectUri;
+this.refreshToken = refreshToken;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

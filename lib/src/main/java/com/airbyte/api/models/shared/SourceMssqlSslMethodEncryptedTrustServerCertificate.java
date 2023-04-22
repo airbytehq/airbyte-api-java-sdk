@@ -17,4 +17,8 @@ public class SourceMssqlSslMethodEncryptedTrustServerCertificate {
         return this;
     }
     
+
+    public SourceMssqlSslMethodEncryptedTrustServerCertificate(@JsonProperty("ssl_method") SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethodEnum sslMethod) {
+    this.sslMethod = sslMethod;
+  }
 }

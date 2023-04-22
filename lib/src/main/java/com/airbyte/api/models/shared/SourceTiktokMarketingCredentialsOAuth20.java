@@ -61,4 +61,10 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
         return this;
     }
     
+
+    public SourceTiktokMarketingCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("app_id") String appId, @JsonProperty("secret") String secret) {
+    this.accessToken = accessToken;
+this.appId = appId;
+this.secret = secret;
+  }
 }

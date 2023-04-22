@@ -55,11 +55,9 @@ public class Destinations {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.CreateDestinationResponse res = new com.airbyte.api.models.operations.CreateDestinationResponse() {{
+        com.airbyte.api.models.operations.CreateDestinationResponse res = new com.airbyte.api.models.operations.CreateDestinationResponse(contentType, httpRes.statusCode()) {{
             destinationResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
@@ -96,10 +94,8 @@ public class Destinations {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.DeleteDestinationResponse res = new com.airbyte.api.models.operations.DeleteDestinationResponse() {{
+        com.airbyte.api.models.operations.DeleteDestinationResponse res = new com.airbyte.api.models.operations.DeleteDestinationResponse(contentType, httpRes.statusCode()) {{
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 204 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
@@ -129,11 +125,9 @@ public class Destinations {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.GetDestinationResponse res = new com.airbyte.api.models.operations.GetDestinationResponse() {{
+        com.airbyte.api.models.operations.GetDestinationResponse res = new com.airbyte.api.models.operations.GetDestinationResponse(contentType, httpRes.statusCode()) {{
             destinationResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
@@ -176,11 +170,9 @@ public class Destinations {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.ListDestinationsResponse res = new com.airbyte.api.models.operations.ListDestinationsResponse() {{
+        com.airbyte.api.models.operations.ListDestinationsResponse res = new com.airbyte.api.models.operations.ListDestinationsResponse(contentType, httpRes.statusCode()) {{
             destinationsResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {

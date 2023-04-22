@@ -37,4 +37,10 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
         return this;
     }
     
+
+    public DestinationElasticsearchAuthenticationMethodApiKeySecret(@JsonProperty("apiKeyId") String apiKeyId, @JsonProperty("apiKeySecret") String apiKeySecret, @JsonProperty("method") DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method) {
+    this.apiKeyId = apiKeyId;
+this.apiKeySecret = apiKeySecret;
+this.method = method;
+  }
 }

@@ -44,4 +44,11 @@ public class SourceZendeskSunshineCredentialsOAuth20 {
         return this;
     }
     
+
+    public SourceZendeskSunshineCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourceZendeskSunshineCredentialsOAuth20AuthMethodEnum authMethod, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    this.accessToken = accessToken;
+this.authMethod = authMethod;
+this.clientId = clientId;
+this.clientSecret = clientSecret;
+  }
 }

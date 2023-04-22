@@ -117,4 +117,12 @@ public class SourceOracle {
         return this;
     }
     
+
+    public SourceOracle(@JsonProperty("encryption") Object encryption, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceOracleOracleEnum sourceType, @JsonProperty("username") String username) {
+    this.encryption = encryption;
+this.host = host;
+this.port = port;
+this.sourceType = sourceType;
+this.username = username;
+  }
 }

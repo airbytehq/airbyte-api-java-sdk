@@ -37,4 +37,10 @@ public class SourceDatascope {
         return this;
     }
     
+
+    public SourceDatascope(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceDatascopeDatascopeEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

@@ -30,4 +30,9 @@ public class DestinationAwsDatalakeCredentialsIAMRole {
         return this;
     }
     
+
+    public DestinationAwsDatalakeCredentialsIAMRole(@JsonProperty("credentials_title") DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitleEnum credentialsTitle, @JsonProperty("role_arn") String roleArn) {
+    this.credentialsTitle = credentialsTitle;
+this.roleArn = roleArn;
+  }
 }

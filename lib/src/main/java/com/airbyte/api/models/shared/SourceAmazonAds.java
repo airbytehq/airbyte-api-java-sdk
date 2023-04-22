@@ -123,4 +123,11 @@ public class SourceAmazonAds {
         return this;
     }
     
+
+    public SourceAmazonAds(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceAmazonAdsAmazonAdsEnum sourceType) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.refreshToken = refreshToken;
+this.sourceType = sourceType;
+  }
 }

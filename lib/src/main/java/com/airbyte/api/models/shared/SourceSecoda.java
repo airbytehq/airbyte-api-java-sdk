@@ -27,4 +27,9 @@ public class SourceSecoda {
         return this;
     }
     
+
+    public SourceSecoda(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSecodaSecodaEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

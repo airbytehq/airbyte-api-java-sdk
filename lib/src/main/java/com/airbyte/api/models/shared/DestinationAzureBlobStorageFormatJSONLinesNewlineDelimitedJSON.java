@@ -17,4 +17,8 @@ public class DestinationAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+
+    public DestinationAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    this.formatType = formatType;
+  }
 }

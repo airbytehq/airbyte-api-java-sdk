@@ -120,4 +120,14 @@ public class DestinationSnowflake {
         return this;
     }
     
+
+    public DestinationSnowflake(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationSnowflakeSnowflakeEnum destinationType, @JsonProperty("host") String host, @JsonProperty("role") String role, @JsonProperty("schema") String schema, @JsonProperty("username") String username, @JsonProperty("warehouse") String warehouse) {
+    this.database = database;
+this.destinationType = destinationType;
+this.host = host;
+this.role = role;
+this.schema = schema;
+this.username = username;
+this.warehouse = warehouse;
+  }
 }

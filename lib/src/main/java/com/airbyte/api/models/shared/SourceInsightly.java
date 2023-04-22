@@ -37,4 +37,10 @@ public class SourceInsightly {
         return this;
     }
     
+
+    public SourceInsightly(@JsonProperty("sourceType") SourceInsightlyInsightlyEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("token") String token) {
+    this.sourceType = sourceType;
+this.startDate = startDate;
+this.token = token;
+  }
 }

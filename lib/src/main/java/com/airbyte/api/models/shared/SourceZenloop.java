@@ -62,4 +62,9 @@ public class SourceZenloop {
         return this;
     }
     
+
+    public SourceZenloop(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceZenloopZenloopEnum sourceType) {
+    this.apiToken = apiToken;
+this.sourceType = sourceType;
+  }
 }

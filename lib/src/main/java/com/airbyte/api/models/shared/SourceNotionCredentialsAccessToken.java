@@ -27,4 +27,9 @@ public class SourceNotionCredentialsAccessToken {
         return this;
     }
     
+
+    public SourceNotionCredentialsAccessToken(@JsonProperty("auth_type") SourceNotionCredentialsAccessTokenAuthTypeEnum authType, @JsonProperty("token") String token) {
+    this.authType = authType;
+this.token = token;
+  }
 }

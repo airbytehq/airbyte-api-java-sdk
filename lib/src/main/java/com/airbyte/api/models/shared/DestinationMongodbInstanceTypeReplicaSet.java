@@ -40,4 +40,9 @@ public class DestinationMongodbInstanceTypeReplicaSet {
         return this;
     }
     
+
+    public DestinationMongodbInstanceTypeReplicaSet(@JsonProperty("instance") DestinationMongodbInstanceTypeReplicaSetInstanceEnum instance, @JsonProperty("server_addresses") String serverAddresses) {
+    this.instance = instance;
+this.serverAddresses = serverAddresses;
+  }
 }

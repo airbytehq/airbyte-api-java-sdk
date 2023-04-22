@@ -17,4 +17,8 @@ public class SourceXkcd {
         return this;
     }
     
+
+    public SourceXkcd(@JsonProperty("sourceType") SourceXkcdXkcdEnum sourceType) {
+    this.sourceType = sourceType;
+  }
 }

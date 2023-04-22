@@ -50,4 +50,10 @@ public class SourceOrbit {
         return this;
     }
     
+
+    public SourceOrbit(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceOrbitOrbitEnum sourceType, @JsonProperty("workspace") String workspace) {
+    this.apiToken = apiToken;
+this.sourceType = sourceType;
+this.workspace = workspace;
+  }
 }

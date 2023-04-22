@@ -57,4 +57,12 @@ public class SourceXeroAuthenticateViaXeroOAuth {
         return this;
     }
     
+
+    public SourceXeroAuthenticateViaXeroOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("token_expiry_date") String tokenExpiryDate) {
+    this.accessToken = accessToken;
+this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.refreshToken = refreshToken;
+this.tokenExpiryDate = tokenExpiryDate;
+  }
 }

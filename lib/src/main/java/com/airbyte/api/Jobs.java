@@ -52,11 +52,9 @@ public class Jobs {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.CancelJobResponse res = new com.airbyte.api.models.operations.CancelJobResponse() {{
+        com.airbyte.api.models.operations.CancelJobResponse res = new com.airbyte.api.models.operations.CancelJobResponse(contentType, httpRes.statusCode()) {{
             jobResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
@@ -98,11 +96,9 @@ public class Jobs {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.CreateJobResponse res = new com.airbyte.api.models.operations.CreateJobResponse() {{
+        com.airbyte.api.models.operations.CreateJobResponse res = new com.airbyte.api.models.operations.CreateJobResponse(contentType, httpRes.statusCode()) {{
             jobResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
@@ -139,11 +135,9 @@ public class Jobs {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.GetJobResponse res = new com.airbyte.api.models.operations.GetJobResponse() {{
+        com.airbyte.api.models.operations.GetJobResponse res = new com.airbyte.api.models.operations.GetJobResponse(contentType, httpRes.statusCode()) {{
             jobResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
@@ -186,11 +180,9 @@ public class Jobs {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.ListJobsResponse res = new com.airbyte.api.models.operations.ListJobsResponse() {{
+        com.airbyte.api.models.operations.ListJobsResponse res = new com.airbyte.api.models.operations.ListJobsResponse(contentType, httpRes.statusCode()) {{
             jobsResponse = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {

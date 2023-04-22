@@ -44,4 +44,10 @@ public class SourceCreateRequest {
         return this;
     }
     
+
+    public SourceCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    this.configuration = configuration;
+this.name = name;
+this.workspaceId = workspaceId;
+  }
 }

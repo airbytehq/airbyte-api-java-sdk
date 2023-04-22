@@ -40,4 +40,9 @@ public class SourceMicrosoftTeams {
         return this;
     }
     
+
+    public SourceMicrosoftTeams(@JsonProperty("period") String period, @JsonProperty("sourceType") SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType) {
+    this.period = period;
+this.sourceType = sourceType;
+  }
 }

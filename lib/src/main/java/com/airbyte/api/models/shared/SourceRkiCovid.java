@@ -27,4 +27,9 @@ public class SourceRkiCovid {
         return this;
     }
     
+
+    public SourceRkiCovid(@JsonProperty("sourceType") SourceRkiCovidRkiCovidEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

@@ -64,4 +64,11 @@ public class SourceYandexMetrica {
         return this;
     }
     
+
+    public SourceYandexMetrica(@JsonProperty("auth_token") String authToken, @JsonProperty("counter_id") String counterId, @JsonProperty("sourceType") SourceYandexMetricaYandexMetricaEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    this.authToken = authToken;
+this.counterId = counterId;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

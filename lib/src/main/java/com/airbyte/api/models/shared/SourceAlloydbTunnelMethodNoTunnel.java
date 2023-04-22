@@ -20,4 +20,8 @@ public class SourceAlloydbTunnelMethodNoTunnel {
         return this;
     }
     
+
+    public SourceAlloydbTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceAlloydbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    this.tunnelMethod = tunnelMethod;
+  }
 }

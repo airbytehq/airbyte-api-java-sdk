@@ -24,4 +24,9 @@ public class SourcePinterestCredentialsAccessToken {
         return this;
     }
     
+
+    public SourcePinterestCredentialsAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourcePinterestCredentialsAccessTokenAuthMethodEnum authMethod) {
+    this.accessToken = accessToken;
+this.authMethod = authMethod;
+  }
 }

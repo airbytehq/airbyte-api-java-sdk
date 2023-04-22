@@ -62,4 +62,9 @@ public class DestinationElasticsearch {
         return this;
     }
     
+
+    public DestinationElasticsearch(@JsonProperty("destinationType") DestinationElasticsearchElasticsearchEnum destinationType, @JsonProperty("endpoint") String endpoint) {
+    this.destinationType = destinationType;
+this.endpoint = endpoint;
+  }
 }

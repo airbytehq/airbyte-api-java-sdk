@@ -60,4 +60,11 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
         return this;
     }
     
+
+    public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("tenant_id") String tenantId) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.refreshToken = refreshToken;
+this.tenantId = tenantId;
+  }
 }

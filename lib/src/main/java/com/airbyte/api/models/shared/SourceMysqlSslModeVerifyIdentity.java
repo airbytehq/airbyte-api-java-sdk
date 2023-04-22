@@ -62,4 +62,9 @@ public class SourceMysqlSslModeVerifyIdentity {
         return this;
     }
     
+
+    public SourceMysqlSslModeVerifyIdentity(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("mode") SourceMysqlSslModeVerifyIdentityModeEnum mode) {
+    this.caCertificate = caCertificate;
+this.mode = mode;
+  }
 }

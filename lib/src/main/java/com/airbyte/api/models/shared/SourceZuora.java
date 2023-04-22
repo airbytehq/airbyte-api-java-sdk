@@ -71,4 +71,11 @@ public class SourceZuora {
         return this;
     }
     
+
+    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourceZuoraZuoraEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

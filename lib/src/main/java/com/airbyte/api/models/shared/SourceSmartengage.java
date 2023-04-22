@@ -27,4 +27,9 @@ public class SourceSmartengage {
         return this;
     }
     
+
+    public SourceSmartengage(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSmartengageSmartengageEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

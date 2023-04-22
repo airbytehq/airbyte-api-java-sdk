@@ -47,4 +47,11 @@ public class SourceSmaily {
         return this;
     }
     
+
+    public SourceSmaily(@JsonProperty("api_username") String apiUsername, @JsonProperty("api_password") String apiPassword, @JsonProperty("api_subdomain") String apiSubdomain, @JsonProperty("sourceType") SourceSmailySmailyEnum sourceType) {
+    this.apiUsername = apiUsername;
+this.apiPassword = apiPassword;
+this.apiSubdomain = apiSubdomain;
+this.sourceType = sourceType;
+  }
 }

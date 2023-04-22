@@ -30,4 +30,8 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
         return this;
     }
     
+
+    public DestinationMssqlSslMethodEncryptedVerifyCertificate(@JsonProperty("ssl_method") DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod) {
+    this.sslMethod = sslMethod;
+  }
 }

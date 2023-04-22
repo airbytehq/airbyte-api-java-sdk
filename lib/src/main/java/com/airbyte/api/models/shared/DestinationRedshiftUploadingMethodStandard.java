@@ -17,4 +17,8 @@ public class DestinationRedshiftUploadingMethodStandard {
         return this;
     }
     
+
+    public DestinationRedshiftUploadingMethodStandard(@JsonProperty("method") DestinationRedshiftUploadingMethodStandardMethodEnum method) {
+    this.method = method;
+  }
 }

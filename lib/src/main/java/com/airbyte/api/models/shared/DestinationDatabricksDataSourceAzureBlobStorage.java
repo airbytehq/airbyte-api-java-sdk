@@ -60,4 +60,11 @@ public class DestinationDatabricksDataSourceAzureBlobStorage {
         return this;
     }
     
+
+    public DestinationDatabricksDataSourceAzureBlobStorage(@JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("azure_blob_storage_sas_token") String azureBlobStorageSasToken, @JsonProperty("data_source_type") DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType) {
+    this.azureBlobStorageAccountName = azureBlobStorageAccountName;
+this.azureBlobStorageContainerName = azureBlobStorageContainerName;
+this.azureBlobStorageSasToken = azureBlobStorageSasToken;
+this.dataSourceType = dataSourceType;
+  }
 }

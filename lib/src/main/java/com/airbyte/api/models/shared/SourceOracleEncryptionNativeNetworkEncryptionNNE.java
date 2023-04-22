@@ -30,4 +30,8 @@ public class SourceOracleEncryptionNativeNetworkEncryptionNNE {
         return this;
     }
     
+
+    public SourceOracleEncryptionNativeNetworkEncryptionNNE(@JsonProperty("encryption_method") SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethodEnum encryptionMethod) {
+    this.encryptionMethod = encryptionMethod;
+  }
 }

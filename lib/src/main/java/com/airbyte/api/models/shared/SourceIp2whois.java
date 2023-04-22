@@ -41,4 +41,8 @@ public class SourceIp2whois {
         return this;
     }
     
+
+    public SourceIp2whois(@JsonProperty("sourceType") SourceIp2whoisIp2whoisEnum sourceType) {
+    this.sourceType = sourceType;
+  }
 }

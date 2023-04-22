@@ -60,4 +60,11 @@ public class DestinationBigqueryDenormalizedLoadingMethodGCSStaging {
         return this;
     }
     
+
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging(@JsonProperty("credential") Object credential, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath, @JsonProperty("method") DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethodEnum method) {
+    this.credential = credential;
+this.gcsBucketName = gcsBucketName;
+this.gcsBucketPath = gcsBucketPath;
+this.method = method;
+  }
 }

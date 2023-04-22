@@ -41,4 +41,8 @@ public class SourceMysqlReplicationMethodLogicalReplicationCDC {
         return this;
     }
     
+
+    public SourceMysqlReplicationMethodLogicalReplicationCDC(@JsonProperty("method") SourceMysqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
+    this.method = method;
+  }
 }

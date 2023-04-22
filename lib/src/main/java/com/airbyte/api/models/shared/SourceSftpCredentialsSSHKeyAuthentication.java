@@ -30,4 +30,9 @@ public class SourceSftpCredentialsSSHKeyAuthentication {
         return this;
     }
     
+
+    public SourceSftpCredentialsSSHKeyAuthentication(@JsonProperty("auth_method") SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod, @JsonProperty("auth_ssh_key") String authSshKey) {
+    this.authMethod = authMethod;
+this.authSshKey = authSshKey;
+  }
 }

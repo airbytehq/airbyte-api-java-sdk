@@ -41,4 +41,8 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+
+    public DestinationS3FormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    this.formatType = formatType;
+  }
 }

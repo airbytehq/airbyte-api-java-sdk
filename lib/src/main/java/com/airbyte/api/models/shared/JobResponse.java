@@ -78,4 +78,11 @@ public class JobResponse {
         return this;
     }
     
+
+    public JobResponse(@JsonProperty("jobId") Long jobId, @JsonProperty("jobType") JobTypeEnumEnum jobType, @JsonProperty("startTime") String startTime, @JsonProperty("status") JobStatusEnumEnum status) {
+    this.jobId = jobId;
+this.jobType = jobType;
+this.startTime = startTime;
+this.status = status;
+  }
 }

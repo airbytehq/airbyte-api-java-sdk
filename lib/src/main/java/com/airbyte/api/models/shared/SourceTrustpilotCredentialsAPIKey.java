@@ -30,4 +30,8 @@ public class SourceTrustpilotCredentialsAPIKey {
         return this;
     }
     
+
+    public SourceTrustpilotCredentialsAPIKey(@JsonProperty("client_id") String clientId) {
+    this.clientId = clientId;
+  }
 }

@@ -50,4 +50,10 @@ public class DestinationRockset {
         return this;
     }
     
+
+    public DestinationRockset(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationRocksetRocksetEnum destinationType, @JsonProperty("workspace") String workspace) {
+    this.apiKey = apiKey;
+this.destinationType = destinationType;
+this.workspace = workspace;
+  }
 }

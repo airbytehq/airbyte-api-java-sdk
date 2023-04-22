@@ -61,4 +61,12 @@ public class SourceLinnworks {
         return this;
     }
     
+
+    public SourceLinnworks(@JsonProperty("application_id") String applicationId, @JsonProperty("application_secret") String applicationSecret, @JsonProperty("sourceType") SourceLinnworksLinnworksEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
+    this.applicationId = applicationId;
+this.applicationSecret = applicationSecret;
+this.sourceType = sourceType;
+this.startDate = startDate;
+this.token = token;
+  }
 }

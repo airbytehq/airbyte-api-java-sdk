@@ -50,4 +50,10 @@ public class SourceAzureTable {
         return this;
     }
     
+
+    public SourceAzureTable(@JsonProperty("sourceType") SourceAzureTableAzureTableEnum sourceType, @JsonProperty("storage_access_key") String storageAccessKey, @JsonProperty("storage_account_name") String storageAccountName) {
+    this.sourceType = sourceType;
+this.storageAccessKey = storageAccessKey;
+this.storageAccountName = storageAccountName;
+  }
 }

@@ -17,4 +17,8 @@ public class DestinationRedisSslModeDisable {
         return this;
     }
     
+
+    public DestinationRedisSslModeDisable(@JsonProperty("mode") DestinationRedisSslModeDisableModeEnum mode) {
+    this.mode = mode;
+  }
 }

@@ -4,6 +4,7 @@
 
 package com.airbyte.api.models.operations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.http.HttpResponse;
 
 public class CreateDestinationResponse {
@@ -38,4 +39,9 @@ public class CreateDestinationResponse {
         return this;
     }
     
+
+    public CreateDestinationResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    this.contentType = contentType;
+this.statusCode = statusCode;
+  }
 }

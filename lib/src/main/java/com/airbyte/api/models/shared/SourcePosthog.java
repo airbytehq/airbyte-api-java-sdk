@@ -57,4 +57,10 @@ public class SourcePosthog {
         return this;
     }
     
+
+    public SourcePosthog(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePosthogPosthogEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

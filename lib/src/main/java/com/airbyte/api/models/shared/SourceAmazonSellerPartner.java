@@ -174,4 +174,15 @@ public class SourceAmazonSellerPartner {
         return this;
     }
     
+
+    public SourceAmazonSellerPartner(@JsonProperty("app_id") String appId, @JsonProperty("aws_environment") SourceAmazonSellerPartnerAWSEnvironmentEnum awsEnvironment, @JsonProperty("lwa_app_id") String lwaAppId, @JsonProperty("lwa_client_secret") String lwaClientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("region") SourceAmazonSellerPartnerAWSRegionEnum region, @JsonProperty("replication_start_date") String replicationStartDate, @JsonProperty("sourceType") SourceAmazonSellerPartnerAmazonSellerPartnerEnum sourceType) {
+    this.appId = appId;
+this.awsEnvironment = awsEnvironment;
+this.lwaAppId = lwaAppId;
+this.lwaClientSecret = lwaClientSecret;
+this.refreshToken = refreshToken;
+this.region = region;
+this.replicationStartDate = replicationStartDate;
+this.sourceType = sourceType;
+  }
 }

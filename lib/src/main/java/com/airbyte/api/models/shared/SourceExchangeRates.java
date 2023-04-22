@@ -64,4 +64,10 @@ public class SourceExchangeRates {
         return this;
     }
     
+
+    public SourceExchangeRates(@JsonProperty("access_key") String accessKey, @JsonProperty("sourceType") SourceExchangeRatesExchangeRatesEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    this.accessKey = accessKey;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

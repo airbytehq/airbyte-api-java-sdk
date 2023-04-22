@@ -40,4 +40,9 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
         return this;
     }
     
+
+    public DestinationS3FormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationS3FormatCSVCommaSeparatedValuesFlatteningEnum flattening, @JsonProperty("format_type") DestinationS3FormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    this.flattening = flattening;
+this.formatType = formatType;
+  }
 }

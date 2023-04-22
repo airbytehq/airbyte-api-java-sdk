@@ -47,4 +47,6 @@ public class ListDestinationsRequest {
         return this;
     }
     
+
+    public ListDestinationsRequest(){}
 }

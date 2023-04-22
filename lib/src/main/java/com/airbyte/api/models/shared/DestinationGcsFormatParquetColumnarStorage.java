@@ -85,4 +85,8 @@ public class DestinationGcsFormatParquetColumnarStorage {
         return this;
     }
     
+
+    public DestinationGcsFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType) {
+    this.formatType = formatType;
+  }
 }

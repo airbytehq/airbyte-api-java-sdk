@@ -37,4 +37,10 @@ public class SourceGoogleDirectory {
         return this;
     }
     
+
+    public SourceGoogleDirectory(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleDirectoryGoogleDirectoryEnum sourceType) {
+    this.credentialsJson = credentialsJson;
+this.email = email;
+this.sourceType = sourceType;
+  }
 }

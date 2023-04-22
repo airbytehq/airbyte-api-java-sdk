@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CancelJobRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=jobId")
@@ -14,4 +15,8 @@ public class CancelJobRequest {
         return this;
     }
     
+
+    public CancelJobRequest(@JsonProperty("jobId") Long jobId) {
+    this.jobId = jobId;
+  }
 }

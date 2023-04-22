@@ -35,4 +35,8 @@ public class SourceMailchimp {
         return this;
     }
     
+
+    public SourceMailchimp(@JsonProperty("sourceType") SourceMailchimpMailchimpEnum sourceType) {
+    this.sourceType = sourceType;
+  }
 }

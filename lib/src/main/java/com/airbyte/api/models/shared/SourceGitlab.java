@@ -75,4 +75,11 @@ public class SourceGitlab {
         return this;
     }
     
+
+    public SourceGitlab(@JsonProperty("api_url") String apiUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGitlabGitlabEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.apiUrl = apiUrl;
+this.credentials = credentials;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }
