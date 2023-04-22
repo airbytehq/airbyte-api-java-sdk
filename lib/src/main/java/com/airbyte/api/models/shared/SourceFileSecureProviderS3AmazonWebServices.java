@@ -41,4 +41,8 @@ public class SourceFileSecureProviderS3AmazonWebServices {
         return this;
     }
     
+
+    public SourceFileSecureProviderS3AmazonWebServices(@JsonProperty("storage") SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage) {
+    this.storage = storage;
+  }
 }

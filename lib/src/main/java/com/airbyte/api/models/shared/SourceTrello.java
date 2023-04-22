@@ -67,4 +67,11 @@ public class SourceTrello {
         return this;
     }
     
+
+    public SourceTrello(@JsonProperty("key") String key, @JsonProperty("sourceType") SourceTrelloTrelloEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
+    this.key = key;
+this.sourceType = sourceType;
+this.startDate = startDate;
+this.token = token;
+  }
 }

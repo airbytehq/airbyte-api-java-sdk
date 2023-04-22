@@ -82,4 +82,11 @@ public class DestinationDatabend {
         return this;
     }
     
+
+    public DestinationDatabend(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationDatabendDatabendEnum destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
+    this.database = database;
+this.destinationType = destinationType;
+this.host = host;
+this.username = username;
+  }
 }

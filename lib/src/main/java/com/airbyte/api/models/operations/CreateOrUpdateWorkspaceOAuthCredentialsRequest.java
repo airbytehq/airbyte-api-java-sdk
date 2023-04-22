@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
     @SpeakeasyMetadata("request:mediaType=application/json")
@@ -21,4 +22,9 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
         return this;
     }
     
+
+    public CreateOrUpdateWorkspaceOAuthCredentialsRequest(@JsonProperty("WorkspaceOAuthCredentialsRequest") com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest, @JsonProperty("workspaceId") String workspaceId) {
+    this.workspaceOAuthCredentialsRequest = workspaceOAuthCredentialsRequest;
+this.workspaceId = workspaceId;
+  }
 }

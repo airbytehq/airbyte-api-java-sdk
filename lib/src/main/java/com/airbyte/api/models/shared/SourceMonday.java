@@ -27,4 +27,8 @@ public class SourceMonday {
         return this;
     }
     
+
+    public SourceMonday(@JsonProperty("sourceType") SourceMondayMondayEnum sourceType) {
+    this.sourceType = sourceType;
+  }
 }

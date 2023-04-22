@@ -44,4 +44,11 @@ public class SourceShortio {
         return this;
     }
     
+
+    public SourceShortio(@JsonProperty("domain_id") String domainId, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceShortioShortioEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.domainId = domainId;
+this.secretKey = secretKey;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

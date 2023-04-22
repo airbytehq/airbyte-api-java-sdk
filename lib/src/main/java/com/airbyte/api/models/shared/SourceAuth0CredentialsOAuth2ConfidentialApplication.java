@@ -44,4 +44,11 @@ public class SourceAuth0CredentialsOAuth2ConfidentialApplication {
         return this;
     }
     
+
+    public SourceAuth0CredentialsOAuth2ConfidentialApplication(@JsonProperty("audience") String audience, @JsonProperty("auth_type") SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethodEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    this.audience = audience;
+this.authType = authType;
+this.clientId = clientId;
+this.clientSecret = clientSecret;
+  }
 }

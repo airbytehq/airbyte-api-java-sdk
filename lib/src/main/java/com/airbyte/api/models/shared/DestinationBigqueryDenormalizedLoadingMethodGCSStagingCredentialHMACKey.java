@@ -37,4 +37,10 @@ public class DestinationBigqueryDenormalizedLoadingMethodGCSStagingCredentialHMA
         return this;
     }
     
+
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStagingCredentialHMACKey(@JsonProperty("credential_type") DestinationBigqueryDenormalizedLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum credentialType, @JsonProperty("hmac_key_access_id") String hmacKeyAccessId, @JsonProperty("hmac_key_secret") String hmacKeySecret) {
+    this.credentialType = credentialType;
+this.hmacKeyAccessId = hmacKeyAccessId;
+this.hmacKeySecret = hmacKeySecret;
+  }
 }

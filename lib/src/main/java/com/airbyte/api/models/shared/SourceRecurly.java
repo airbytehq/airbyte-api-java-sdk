@@ -51,4 +51,9 @@ public class SourceRecurly {
         return this;
     }
     
+
+    public SourceRecurly(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceRecurlyRecurlyEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

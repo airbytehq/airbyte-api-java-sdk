@@ -59,4 +59,9 @@ public class DestinationSnowflakeCredentialsOAuth20 {
         return this;
     }
     
+
+    public DestinationSnowflakeCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("refresh_token") String refreshToken) {
+    this.accessToken = accessToken;
+this.refreshToken = refreshToken;
+  }
 }

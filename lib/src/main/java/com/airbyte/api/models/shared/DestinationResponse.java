@@ -38,4 +38,11 @@ public class DestinationResponse {
         return this;
     }
     
+
+    public DestinationResponse(@JsonProperty("destinationId") String destinationId, @JsonProperty("destinationType") String destinationType, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    this.destinationId = destinationId;
+this.destinationType = destinationType;
+this.name = name;
+this.workspaceId = workspaceId;
+  }
 }

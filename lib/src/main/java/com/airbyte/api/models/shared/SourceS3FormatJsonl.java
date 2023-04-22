@@ -53,4 +53,6 @@ public class SourceS3FormatJsonl {
         return this;
     }
     
+
+    public SourceS3FormatJsonl(){}
 }

@@ -72,4 +72,10 @@ public class DestinationTypesense {
         return this;
     }
     
+
+    public DestinationTypesense(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationTypesenseTypesenseEnum destinationType, @JsonProperty("host") String host) {
+    this.apiKey = apiKey;
+this.destinationType = destinationType;
+this.host = host;
+  }
 }

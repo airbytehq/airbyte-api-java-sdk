@@ -83,4 +83,10 @@ public class DestinationBigqueryDenormalized {
         return this;
     }
     
+
+    public DestinationBigqueryDenormalized(@JsonProperty("dataset_id") String datasetId, @JsonProperty("destinationType") DestinationBigqueryDenormalizedBigqueryDenormalizedEnum destinationType, @JsonProperty("project_id") String projectId) {
+    this.datasetId = datasetId;
+this.destinationType = destinationType;
+this.projectId = projectId;
+  }
 }

@@ -50,4 +50,10 @@ public class SourceUsCensus {
         return this;
     }
     
+
+    public SourceUsCensus(@JsonProperty("api_key") String apiKey, @JsonProperty("query_path") String queryPath, @JsonProperty("sourceType") SourceUsCensusUsCensusEnum sourceType) {
+    this.apiKey = apiKey;
+this.queryPath = queryPath;
+this.sourceType = sourceType;
+  }
 }

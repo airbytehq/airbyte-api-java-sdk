@@ -17,4 +17,8 @@ public class DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption {
         return this;
     }
     
+
+    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType) {
+    this.encryptionType = encryptionType;
+  }
 }

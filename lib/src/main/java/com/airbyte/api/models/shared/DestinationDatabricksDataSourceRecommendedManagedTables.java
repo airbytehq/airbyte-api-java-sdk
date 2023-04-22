@@ -17,4 +17,8 @@ public class DestinationDatabricksDataSourceRecommendedManagedTables {
         return this;
     }
     
+
+    public DestinationDatabricksDataSourceRecommendedManagedTables(@JsonProperty("data_source_type") DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceTypeEnum dataSourceType) {
+    this.dataSourceType = dataSourceType;
+  }
 }

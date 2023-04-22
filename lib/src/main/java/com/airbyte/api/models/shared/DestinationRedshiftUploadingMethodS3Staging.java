@@ -114,4 +114,12 @@ public class DestinationRedshiftUploadingMethodS3Staging {
         return this;
     }
     
+
+    public DestinationRedshiftUploadingMethodS3Staging(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("method") DestinationRedshiftUploadingMethodS3StagingMethodEnum method, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_region") DestinationRedshiftUploadingMethodS3StagingS3BucketRegionEnum s3BucketRegion, @JsonProperty("secret_access_key") String secretAccessKey) {
+    this.accessKeyId = accessKeyId;
+this.method = method;
+this.s3BucketName = s3BucketName;
+this.s3BucketRegion = s3BucketRegion;
+this.secretAccessKey = secretAccessKey;
+  }
 }

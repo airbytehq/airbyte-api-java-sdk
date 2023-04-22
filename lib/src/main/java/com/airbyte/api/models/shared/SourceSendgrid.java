@@ -47,4 +47,9 @@ public class SourceSendgrid {
         return this;
     }
     
+
+    public SourceSendgrid(@JsonProperty("apikey") String apikey, @JsonProperty("sourceType") SourceSendgridSendgridEnum sourceType) {
+    this.apikey = apikey;
+this.sourceType = sourceType;
+  }
 }

@@ -66,4 +66,10 @@ public class SourceE2eTestCloud {
         return this;
     }
     
+
+    public SourceE2eTestCloud(@JsonProperty("max_messages") Long maxMessages, @JsonProperty("mock_catalog") Object mockCatalog, @JsonProperty("sourceType") SourceE2eTestCloudE2eTestCloudEnum sourceType) {
+    this.maxMessages = maxMessages;
+this.mockCatalog = mockCatalog;
+this.sourceType = sourceType;
+  }
 }

@@ -30,4 +30,8 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    this.formatType = formatType;
+  }
 }

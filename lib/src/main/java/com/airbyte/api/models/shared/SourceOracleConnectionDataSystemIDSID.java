@@ -27,4 +27,8 @@ public class SourceOracleConnectionDataSystemIDSID {
         return this;
     }
     
+
+    public SourceOracleConnectionDataSystemIDSID(@JsonProperty("sid") String sid) {
+    this.sid = sid;
+  }
 }

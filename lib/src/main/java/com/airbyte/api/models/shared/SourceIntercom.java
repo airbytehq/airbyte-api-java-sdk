@@ -44,4 +44,10 @@ public class SourceIntercom {
         return this;
     }
     
+
+    public SourceIntercom(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceIntercomIntercomEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.accessToken = accessToken;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

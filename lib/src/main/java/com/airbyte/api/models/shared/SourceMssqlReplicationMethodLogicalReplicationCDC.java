@@ -52,4 +52,8 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
         return this;
     }
     
+
+    public SourceMssqlReplicationMethodLogicalReplicationCDC(@JsonProperty("method") SourceMssqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
+    this.method = method;
+  }
 }

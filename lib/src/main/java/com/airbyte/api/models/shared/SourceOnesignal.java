@@ -64,4 +64,12 @@ public class SourceOnesignal {
         return this;
     }
     
+
+    public SourceOnesignal(@JsonProperty("applications") SourceOnesignalApplications[] applications, @JsonProperty("outcome_names") String outcomeNames, @JsonProperty("sourceType") SourceOnesignalOnesignalEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("user_auth_key") String userAuthKey) {
+    this.applications = applications;
+this.outcomeNames = outcomeNames;
+this.sourceType = sourceType;
+this.startDate = startDate;
+this.userAuthKey = userAuthKey;
+  }
 }

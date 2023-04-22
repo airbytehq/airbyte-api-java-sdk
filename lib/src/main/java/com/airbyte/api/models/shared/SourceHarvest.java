@@ -70,4 +70,10 @@ public class SourceHarvest {
         return this;
     }
     
+
+    public SourceHarvest(@JsonProperty("account_id") String accountId, @JsonProperty("replication_start_date") OffsetDateTime replicationStartDate, @JsonProperty("sourceType") SourceHarvestHarvestEnum sourceType) {
+    this.accountId = accountId;
+this.replicationStartDate = replicationStartDate;
+this.sourceType = sourceType;
+  }
 }

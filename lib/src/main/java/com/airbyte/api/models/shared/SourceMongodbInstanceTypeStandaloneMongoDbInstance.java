@@ -37,4 +37,10 @@ public class SourceMongodbInstanceTypeStandaloneMongoDbInstance {
         return this;
     }
     
+
+    public SourceMongodbInstanceTypeStandaloneMongoDbInstance(@JsonProperty("host") String host, @JsonProperty("instance") SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance, @JsonProperty("port") Long port) {
+    this.host = host;
+this.instance = instance;
+this.port = port;
+  }
 }

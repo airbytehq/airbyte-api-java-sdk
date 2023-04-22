@@ -30,4 +30,8 @@ public class DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate {
         return this;
     }
     
+
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec) {
+    this.codec = codec;
+  }
 }

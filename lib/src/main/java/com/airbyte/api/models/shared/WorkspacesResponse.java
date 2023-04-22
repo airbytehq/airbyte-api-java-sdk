@@ -31,4 +31,10 @@ public class WorkspacesResponse {
         return this;
     }
     
+
+    public WorkspacesResponse(@JsonProperty("data") WorkspaceResponse[] data, @JsonProperty("next") String next, @JsonProperty("previous") String previous) {
+    this.data = data;
+this.next = next;
+this.previous = previous;
+  }
 }

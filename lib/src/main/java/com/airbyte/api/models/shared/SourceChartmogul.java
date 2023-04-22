@@ -54,4 +54,11 @@ public class SourceChartmogul {
         return this;
     }
     
+
+    public SourceChartmogul(@JsonProperty("api_key") String apiKey, @JsonProperty("interval") SourceChartmogulIntervalEnum interval, @JsonProperty("sourceType") SourceChartmogulChartmogulEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.apiKey = apiKey;
+this.interval = interval;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

@@ -65,4 +65,9 @@ public class SourceSquare {
         return this;
     }
     
+
+    public SourceSquare(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourceSquareSquareEnum sourceType) {
+    this.isSandbox = isSandbox;
+this.sourceType = sourceType;
+  }
 }

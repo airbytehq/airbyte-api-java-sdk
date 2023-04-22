@@ -27,4 +27,9 @@ public class SourceK6Cloud {
         return this;
     }
     
+
+    public SourceK6Cloud(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceK6CloudK6CloudEnum sourceType) {
+    this.apiToken = apiToken;
+this.sourceType = sourceType;
+  }
 }

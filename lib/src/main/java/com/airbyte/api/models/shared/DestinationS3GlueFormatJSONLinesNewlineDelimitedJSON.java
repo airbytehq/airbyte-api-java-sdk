@@ -41,4 +41,8 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    this.formatType = formatType;
+  }
 }

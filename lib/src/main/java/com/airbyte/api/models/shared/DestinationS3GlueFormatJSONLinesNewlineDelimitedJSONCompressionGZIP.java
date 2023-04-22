@@ -20,4 +20,6 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIP
         return this;
     }
     
+
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIP(){}
 }

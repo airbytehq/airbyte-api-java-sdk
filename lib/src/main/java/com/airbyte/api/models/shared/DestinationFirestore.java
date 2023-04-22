@@ -40,4 +40,9 @@ public class DestinationFirestore {
         return this;
     }
     
+
+    public DestinationFirestore(@JsonProperty("destinationType") DestinationFirestoreFirestoreEnum destinationType, @JsonProperty("project_id") String projectId) {
+    this.destinationType = destinationType;
+this.projectId = projectId;
+  }
 }

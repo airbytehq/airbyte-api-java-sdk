@@ -50,7 +50,7 @@ public final class Utils {
             }
 
             Object value = params != null ? field.get(params) : null;
-            value = Utils.popualteGlobal(value, field.getName(), "pathParam", globals);
+            value = Utils.populateGlobal(value, field.getName(), "pathParam", globals);
             if (value == null) {
                 continue;
             }
@@ -325,7 +325,7 @@ public final class Utils {
         }
     }
 
-    public static Object popualteGlobal(Object value, String fieldName, String paramType,
+    public static Object populateGlobal(Object value, String fieldName, String paramType,
             Map<String, Map<String, Map<String, Object>>> globals) {
         if (value == null &&
                 globals != null &&

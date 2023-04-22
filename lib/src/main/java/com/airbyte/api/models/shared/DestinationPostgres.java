@@ -120,4 +120,13 @@ public class DestinationPostgres {
         return this;
     }
     
+
+    public DestinationPostgres(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationPostgresPostgresEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
+    this.database = database;
+this.destinationType = destinationType;
+this.host = host;
+this.port = port;
+this.schema = schema;
+this.username = username;
+  }
 }

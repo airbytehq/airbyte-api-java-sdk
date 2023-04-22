@@ -61,4 +61,10 @@ public class SourceBambooHr {
         return this;
     }
     
+
+    public SourceBambooHr(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceBambooHrBambooHrEnum sourceType, @JsonProperty("subdomain") String subdomain) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+this.subdomain = subdomain;
+  }
 }

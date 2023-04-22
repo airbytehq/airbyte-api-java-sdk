@@ -38,4 +38,11 @@ public class SourceResponse {
         return this;
     }
     
+
+    public SourceResponse(@JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
+    this.name = name;
+this.sourceId = sourceId;
+this.sourceType = sourceType;
+this.workspaceId = workspaceId;
+  }
 }

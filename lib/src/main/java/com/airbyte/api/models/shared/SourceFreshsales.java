@@ -37,4 +37,10 @@ public class SourceFreshsales {
         return this;
     }
     
+
+    public SourceFreshsales(@JsonProperty("api_key") String apiKey, @JsonProperty("domain_name") String domainName, @JsonProperty("sourceType") SourceFreshsalesFreshsalesEnum sourceType) {
+    this.apiKey = apiKey;
+this.domainName = domainName;
+this.sourceType = sourceType;
+  }
 }

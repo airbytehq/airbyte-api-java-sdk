@@ -68,4 +68,10 @@ public class SourceFreshdesk {
         return this;
     }
     
+
+    public SourceFreshdesk(@JsonProperty("api_key") String apiKey, @JsonProperty("domain") String domain, @JsonProperty("sourceType") SourceFreshdeskFreshdeskEnum sourceType) {
+    this.apiKey = apiKey;
+this.domain = domain;
+this.sourceType = sourceType;
+  }
 }

@@ -27,4 +27,9 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecDeflate {
         return this;
     }
     
+
+    public DestinationS3FormatAvroApacheAvroCompressionCodecDeflate(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec, @JsonProperty("compression_level") Long compressionLevel) {
+    this.codec = codec;
+this.compressionLevel = compressionLevel;
+  }
 }

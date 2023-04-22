@@ -47,4 +47,10 @@ public class SourceLinkedinAdsCredentialsOAuth20 {
         return this;
     }
     
+
+    public SourceLinkedinAdsCredentialsOAuth20(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.refreshToken = refreshToken;
+  }
 }

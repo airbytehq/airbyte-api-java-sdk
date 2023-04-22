@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeleteDestinationRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=destinationId")
@@ -14,4 +15,8 @@ public class DeleteDestinationRequest {
         return this;
     }
     
+
+    public DeleteDestinationRequest(@JsonProperty("destinationId") String destinationId) {
+    this.destinationId = destinationId;
+  }
 }

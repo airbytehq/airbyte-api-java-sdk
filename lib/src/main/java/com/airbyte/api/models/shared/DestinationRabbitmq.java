@@ -105,4 +105,10 @@ public class DestinationRabbitmq {
         return this;
     }
     
+
+    public DestinationRabbitmq(@JsonProperty("destinationType") DestinationRabbitmqRabbitmqEnum destinationType, @JsonProperty("host") String host, @JsonProperty("routing_key") String routingKey) {
+    this.destinationType = destinationType;
+this.host = host;
+this.routingKey = routingKey;
+  }
 }

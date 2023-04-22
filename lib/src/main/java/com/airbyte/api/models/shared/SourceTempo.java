@@ -27,4 +27,9 @@ public class SourceTempo {
         return this;
     }
     
+
+    public SourceTempo(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceTempoTempoEnum sourceType) {
+    this.apiToken = apiToken;
+this.sourceType = sourceType;
+  }
 }

@@ -37,4 +37,10 @@ public class SourceKustomerSinger {
         return this;
     }
     
+
+    public SourceKustomerSinger(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceKustomerSingerKustomerSingerEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.apiToken = apiToken;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

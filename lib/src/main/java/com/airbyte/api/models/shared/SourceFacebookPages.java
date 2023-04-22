@@ -37,4 +37,10 @@ public class SourceFacebookPages {
         return this;
     }
     
+
+    public SourceFacebookPages(@JsonProperty("access_token") String accessToken, @JsonProperty("page_id") String pageId, @JsonProperty("sourceType") SourceFacebookPagesFacebookPagesEnum sourceType) {
+    this.accessToken = accessToken;
+this.pageId = pageId;
+this.sourceType = sourceType;
+  }
 }

@@ -102,4 +102,13 @@ public class DestinationPubsub {
         return this;
     }
     
+
+    public DestinationPubsub(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("credentials_json") String credentialsJson, @JsonProperty("destinationType") DestinationPubsubPubsubEnum destinationType, @JsonProperty("ordering_enabled") Boolean orderingEnabled, @JsonProperty("project_id") String projectId, @JsonProperty("topic_id") String topicId) {
+    this.batchingEnabled = batchingEnabled;
+this.credentialsJson = credentialsJson;
+this.destinationType = destinationType;
+this.orderingEnabled = orderingEnabled;
+this.projectId = projectId;
+this.topicId = topicId;
+  }
 }

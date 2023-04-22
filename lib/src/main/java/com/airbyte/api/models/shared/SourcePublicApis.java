@@ -17,4 +17,8 @@ public class SourcePublicApis {
         return this;
     }
     
+
+    public SourcePublicApis(@JsonProperty("sourceType") SourcePublicApisPublicApisEnum sourceType) {
+    this.sourceType = sourceType;
+  }
 }

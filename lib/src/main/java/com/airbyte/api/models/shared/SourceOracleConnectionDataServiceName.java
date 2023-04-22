@@ -27,4 +27,8 @@ public class SourceOracleConnectionDataServiceName {
         return this;
     }
     
+
+    public SourceOracleConnectionDataServiceName(@JsonProperty("service_name") String serviceName) {
+    this.serviceName = serviceName;
+  }
 }

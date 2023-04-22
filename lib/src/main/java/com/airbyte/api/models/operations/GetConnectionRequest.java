@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetConnectionRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=connectionId")
@@ -14,4 +15,8 @@ public class GetConnectionRequest {
         return this;
     }
     
+
+    public GetConnectionRequest(@JsonProperty("connectionId") String connectionId) {
+    this.connectionId = connectionId;
+  }
 }

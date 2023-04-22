@@ -24,4 +24,9 @@ public class SourceZendeskChatCredentialsAccessToken {
         return this;
     }
     
+
+    public SourceZendeskChatCredentialsAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("credentials") SourceZendeskChatCredentialsAccessTokenCredentialsEnum credentials) {
+    this.accessToken = accessToken;
+this.credentials = credentials;
+  }
 }

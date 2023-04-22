@@ -70,4 +70,10 @@ public class SourceTwitter {
         return this;
     }
     
+
+    public SourceTwitter(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourceTwitterTwitterEnum sourceType) {
+    this.apiKey = apiKey;
+this.query = query;
+this.sourceType = sourceType;
+  }
 }

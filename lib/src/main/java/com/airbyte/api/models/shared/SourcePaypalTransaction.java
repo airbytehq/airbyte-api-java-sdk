@@ -72,4 +72,10 @@ public class SourcePaypalTransaction {
         return this;
     }
     
+
+    public SourcePaypalTransaction(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransactionEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.isSandbox = isSandbox;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

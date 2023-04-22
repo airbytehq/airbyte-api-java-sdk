@@ -17,4 +17,8 @@ public class SourceMysqlReplicationMethodStandard {
         return this;
     }
     
+
+    public SourceMysqlReplicationMethodStandard(@JsonProperty("method") SourceMysqlReplicationMethodStandardMethodEnum method) {
+    this.method = method;
+  }
 }

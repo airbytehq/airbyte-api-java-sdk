@@ -47,4 +47,11 @@ public class SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth {
         return this;
     }
     
+
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    this.authType = authType;
+this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.refreshToken = refreshToken;
+  }
 }

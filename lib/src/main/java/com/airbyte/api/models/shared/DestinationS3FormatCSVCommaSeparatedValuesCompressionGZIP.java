@@ -20,4 +20,6 @@ public class DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIP {
         return this;
     }
     
+
+    public DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIP(){}
 }

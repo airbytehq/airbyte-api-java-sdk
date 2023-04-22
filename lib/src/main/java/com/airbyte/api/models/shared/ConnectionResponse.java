@@ -69,4 +69,15 @@ public class ConnectionResponse {
         return this;
     }
     
+
+    public ConnectionResponse(@JsonProperty("connectionId") String connectionId, @JsonProperty("dataResidency") GeographyEnumEnum dataResidency, @JsonProperty("destinationId") String destinationId, @JsonProperty("name") String name, @JsonProperty("schedule") ConnectionScheduleResponse schedule, @JsonProperty("sourceId") String sourceId, @JsonProperty("status") ConnectionStatusEnumEnum status, @JsonProperty("workspaceId") String workspaceId) {
+    this.connectionId = connectionId;
+this.dataResidency = dataResidency;
+this.destinationId = destinationId;
+this.name = name;
+this.schedule = schedule;
+this.sourceId = sourceId;
+this.status = status;
+this.workspaceId = workspaceId;
+  }
 }

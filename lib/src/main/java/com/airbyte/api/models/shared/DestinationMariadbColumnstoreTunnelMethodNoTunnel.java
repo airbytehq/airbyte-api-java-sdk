@@ -20,4 +20,8 @@ public class DestinationMariadbColumnstoreTunnelMethodNoTunnel {
         return this;
     }
     
+
+    public DestinationMariadbColumnstoreTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    this.tunnelMethod = tunnelMethod;
+  }
 }

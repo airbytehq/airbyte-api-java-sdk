@@ -47,4 +47,6 @@ public class ListSourcesRequest {
         return this;
     }
     
+
+    public ListSourcesRequest(){}
 }

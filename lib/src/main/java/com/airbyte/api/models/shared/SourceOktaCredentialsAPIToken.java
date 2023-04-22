@@ -24,4 +24,9 @@ public class SourceOktaCredentialsAPIToken {
         return this;
     }
     
+
+    public SourceOktaCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourceOktaCredentialsAPITokenAuthTypeEnum authType) {
+    this.apiToken = apiToken;
+this.authType = authType;
+  }
 }

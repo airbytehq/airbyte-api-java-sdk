@@ -85,4 +85,8 @@ public class DestinationS3FormatParquetColumnarStorage {
         return this;
     }
     
+
+    public DestinationS3FormatParquetColumnarStorage(@JsonProperty("format_type") DestinationS3FormatParquetColumnarStorageFormatTypeEnum formatType) {
+    this.formatType = formatType;
+  }
 }

@@ -91,4 +91,13 @@ public class SourceRedshift {
         return this;
     }
     
+
+    public SourceRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceRedshiftRedshiftEnum sourceType) {
+    this.username = username;
+this.password = password;
+this.database = database;
+this.host = host;
+this.port = port;
+this.sourceType = sourceType;
+  }
 }

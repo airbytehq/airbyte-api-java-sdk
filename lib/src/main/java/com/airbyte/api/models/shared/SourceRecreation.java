@@ -37,4 +37,9 @@ public class SourceRecreation {
         return this;
     }
     
+
+    public SourceRecreation(@JsonProperty("apikey") String apikey, @JsonProperty("sourceType") SourceRecreationRecreationEnum sourceType) {
+    this.apikey = apikey;
+this.sourceType = sourceType;
+  }
 }

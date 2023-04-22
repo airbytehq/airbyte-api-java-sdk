@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ListJobsRequest {
     /**
@@ -47,4 +48,8 @@ public class ListJobsRequest {
         return this;
     }
     
+
+    public ListJobsRequest(@JsonProperty("connectionId") String connectionId) {
+    this.connectionId = connectionId;
+  }
 }

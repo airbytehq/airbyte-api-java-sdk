@@ -27,4 +27,9 @@ public class SourceMongodbInstanceTypeMongoDBAtlas {
         return this;
     }
     
+
+    public SourceMongodbInstanceTypeMongoDBAtlas(@JsonProperty("cluster_url") String clusterUrl, @JsonProperty("instance") SourceMongodbInstanceTypeMongoDBAtlasInstanceEnum instance) {
+    this.clusterUrl = clusterUrl;
+this.instance = instance;
+  }
 }

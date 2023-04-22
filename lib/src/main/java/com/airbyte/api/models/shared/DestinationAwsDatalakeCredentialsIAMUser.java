@@ -40,4 +40,10 @@ public class DestinationAwsDatalakeCredentialsIAMUser {
         return this;
     }
     
+
+    public DestinationAwsDatalakeCredentialsIAMUser(@JsonProperty("aws_access_key_id") String awsAccessKeyId, @JsonProperty("aws_secret_access_key") String awsSecretAccessKey, @JsonProperty("credentials_title") DestinationAwsDatalakeCredentialsIAMUserCredentialsTitleEnum credentialsTitle) {
+    this.awsAccessKeyId = awsAccessKeyId;
+this.awsSecretAccessKey = awsSecretAccessKey;
+this.credentialsTitle = credentialsTitle;
+  }
 }

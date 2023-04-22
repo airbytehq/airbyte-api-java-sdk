@@ -94,4 +94,10 @@ public class DestinationAmazonSqs {
         return this;
     }
     
+
+    public DestinationAmazonSqs(@JsonProperty("destinationType") DestinationAmazonSqsAmazonSqsEnum destinationType, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") DestinationAmazonSqsAWSRegionEnum region) {
+    this.destinationType = destinationType;
+this.queueUrl = queueUrl;
+this.region = region;
+  }
 }

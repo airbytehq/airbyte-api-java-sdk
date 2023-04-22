@@ -70,4 +70,12 @@ public class DestinationSftpJson {
         return this;
     }
     
+
+    public DestinationSftpJson(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("destinationType") DestinationSftpJsonSftpJsonEnum destinationType, @JsonProperty("destination_path") String destinationPath, @JsonProperty("host") String host) {
+    this.username = username;
+this.password = password;
+this.destinationType = destinationType;
+this.destinationPath = destinationPath;
+this.host = host;
+  }
 }

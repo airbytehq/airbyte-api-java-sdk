@@ -37,4 +37,10 @@ public class SourcePostmarkapp {
         return this;
     }
     
+
+    public SourcePostmarkapp(@JsonProperty("X-Postmark-Account-Token") String xPostmarkAccountToken, @JsonProperty("X-Postmark-Server-Token") String xPostmarkServerToken, @JsonProperty("sourceType") SourcePostmarkappPostmarkappEnum sourceType) {
+    this.xPostmarkAccountToken = xPostmarkAccountToken;
+this.xPostmarkServerToken = xPostmarkServerToken;
+this.sourceType = sourceType;
+  }
 }

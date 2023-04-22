@@ -27,4 +27,9 @@ public class SourceCoda {
         return this;
     }
     
+
+    public SourceCoda(@JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceCodaCodaEnum sourceType) {
+    this.authToken = authToken;
+this.sourceType = sourceType;
+  }
 }

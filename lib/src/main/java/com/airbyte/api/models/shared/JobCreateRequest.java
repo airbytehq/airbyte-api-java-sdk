@@ -27,4 +27,9 @@ public class JobCreateRequest {
         return this;
     }
     
+
+    public JobCreateRequest(@JsonProperty("connectionId") String connectionId, @JsonProperty("jobType") JobTypeEnumEnum jobType) {
+    this.connectionId = connectionId;
+this.jobType = jobType;
+  }
 }

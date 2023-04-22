@@ -113,4 +113,13 @@ public class SourceMysql {
         return this;
     }
     
+
+    public SourceMysql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("replication_method") Object replicationMethod, @JsonProperty("sourceType") SourceMysqlMysqlEnum sourceType, @JsonProperty("username") String username) {
+    this.database = database;
+this.host = host;
+this.port = port;
+this.replicationMethod = replicationMethod;
+this.sourceType = sourceType;
+this.username = username;
+  }
 }

@@ -27,4 +27,9 @@ public class SourceGlassfrog {
         return this;
     }
     
+
+    public SourceGlassfrog(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGlassfrogGlassfrogEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

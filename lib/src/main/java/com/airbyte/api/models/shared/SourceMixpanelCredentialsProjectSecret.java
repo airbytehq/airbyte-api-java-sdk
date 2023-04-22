@@ -30,4 +30,8 @@ public class SourceMixpanelCredentialsProjectSecret {
         return this;
     }
     
+
+    public SourceMixpanelCredentialsProjectSecret(@JsonProperty("api_secret") String apiSecret) {
+    this.apiSecret = apiSecret;
+  }
 }

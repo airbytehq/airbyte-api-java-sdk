@@ -49,4 +49,10 @@ public class SourceFileSecureProviderSFTPSecureFileTransferProtocol {
         return this;
     }
     
+
+    public SourceFileSecureProviderSFTPSecureFileTransferProtocol(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSFTPSecureFileTransferProtocolStorageEnum storage, @JsonProperty("user") String user) {
+    this.host = host;
+this.storage = storage;
+this.user = user;
+  }
 }

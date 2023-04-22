@@ -82,4 +82,11 @@ public class SourceFirebolt {
         return this;
     }
     
+
+    public SourceFirebolt(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("sourceType") SourceFireboltFireboltEnum sourceType) {
+    this.username = username;
+this.password = password;
+this.database = database;
+this.sourceType = sourceType;
+  }
 }

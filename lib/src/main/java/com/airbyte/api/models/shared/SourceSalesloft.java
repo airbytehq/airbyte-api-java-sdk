@@ -41,4 +41,10 @@ public class SourceSalesloft {
         return this;
     }
     
+
+    public SourceSalesloft(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceSalesloftSalesloftEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.credentials = credentials;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

@@ -72,4 +72,11 @@ public class SourceGoogleSearchConsole {
         return this;
     }
     
+
+    public SourceGoogleSearchConsole(@JsonProperty("authorization") Object authorization, @JsonProperty("site_urls") String[] siteUrls, @JsonProperty("sourceType") SourceGoogleSearchConsoleGoogleSearchConsoleEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    this.authorization = authorization;
+this.siteUrls = siteUrls;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

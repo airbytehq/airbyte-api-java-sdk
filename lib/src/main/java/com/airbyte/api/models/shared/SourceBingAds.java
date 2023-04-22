@@ -92,4 +92,12 @@ public class SourceBingAds {
         return this;
     }
     
+
+    public SourceBingAds(@JsonProperty("client_id") String clientId, @JsonProperty("developer_token") String developerToken, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("reports_start_date") LocalDate reportsStartDate, @JsonProperty("sourceType") SourceBingAdsBingAdsEnum sourceType) {
+    this.clientId = clientId;
+this.developerToken = developerToken;
+this.refreshToken = refreshToken;
+this.reportsStartDate = reportsStartDate;
+this.sourceType = sourceType;
+  }
 }

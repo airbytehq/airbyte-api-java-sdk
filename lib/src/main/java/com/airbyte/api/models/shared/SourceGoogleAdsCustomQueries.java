@@ -27,4 +27,9 @@ public class SourceGoogleAdsCustomQueries {
         return this;
     }
     
+
+    public SourceGoogleAdsCustomQueries(@JsonProperty("query") String query, @JsonProperty("table_name") String tableName) {
+    this.query = query;
+this.tableName = tableName;
+  }
 }

@@ -84,4 +84,9 @@ public class SourceClickupApi {
         return this;
     }
     
+
+    public SourceClickupApi(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceClickupApiClickupApiEnum sourceType) {
+    this.apiToken = apiToken;
+this.sourceType = sourceType;
+  }
 }

@@ -48,4 +48,9 @@ public class SourcePinterest {
         return this;
     }
     
+
+    public SourcePinterest(@JsonProperty("sourceType") SourcePinterestPinterestEnum sourceType, @JsonProperty("start_date") String startDate) {
+    this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

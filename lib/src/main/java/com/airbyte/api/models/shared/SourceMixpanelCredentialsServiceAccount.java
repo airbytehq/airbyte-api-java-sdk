@@ -40,4 +40,9 @@ public class SourceMixpanelCredentialsServiceAccount {
         return this;
     }
     
+
+    public SourceMixpanelCredentialsServiceAccount(@JsonProperty("secret") String secret, @JsonProperty("username") String username) {
+    this.secret = secret;
+this.username = username;
+  }
 }

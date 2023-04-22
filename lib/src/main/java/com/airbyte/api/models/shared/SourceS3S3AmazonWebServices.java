@@ -84,4 +84,8 @@ public class SourceS3S3AmazonWebServices {
         return this;
     }
     
+
+    public SourceS3S3AmazonWebServices(@JsonProperty("bucket") String bucket) {
+    this.bucket = bucket;
+  }
 }

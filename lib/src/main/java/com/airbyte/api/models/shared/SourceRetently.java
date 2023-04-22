@@ -30,4 +30,8 @@ public class SourceRetently {
         return this;
     }
     
+
+    public SourceRetently(@JsonProperty("sourceType") SourceRetentlyRetentlyEnum sourceType) {
+    this.sourceType = sourceType;
+  }
 }

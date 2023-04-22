@@ -58,4 +58,10 @@ public class SourceSnowflakeCredentialsOAuth20 {
         return this;
     }
     
+
+    public SourceSnowflakeCredentialsOAuth20(@JsonProperty("auth_type") SourceSnowflakeCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    this.authType = authType;
+this.clientId = clientId;
+this.clientSecret = clientSecret;
+  }
 }

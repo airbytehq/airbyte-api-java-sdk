@@ -5,6 +5,7 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Security {
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=bearer,name=Authorization")
@@ -14,4 +15,8 @@ public class Security {
         return this;
     }
     
+
+    public Security(@JsonProperty("bearerAuth") String bearerAuth) {
+    this.bearerAuth = bearerAuth;
+  }
 }

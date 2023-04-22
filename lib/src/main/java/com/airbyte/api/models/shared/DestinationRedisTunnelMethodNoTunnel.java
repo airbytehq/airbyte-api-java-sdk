@@ -20,4 +20,8 @@ public class DestinationRedisTunnelMethodNoTunnel {
         return this;
     }
     
+
+    public DestinationRedisTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    this.tunnelMethod = tunnelMethod;
+  }
 }

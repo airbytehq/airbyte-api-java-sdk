@@ -57,11 +57,9 @@ public class Streams {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        com.airbyte.api.models.operations.GetStreamPropertiesResponse res = new com.airbyte.api.models.operations.GetStreamPropertiesResponse() {{
+        com.airbyte.api.models.operations.GetStreamPropertiesResponse res = new com.airbyte.api.models.operations.GetStreamPropertiesResponse(contentType, httpRes.statusCode()) {{
             streamProperties = null;
         }};
-        res.statusCode = httpRes.statusCode();
-        res.contentType = contentType;
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {

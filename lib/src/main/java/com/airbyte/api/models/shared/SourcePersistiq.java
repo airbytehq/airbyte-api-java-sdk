@@ -27,4 +27,9 @@ public class SourcePersistiq {
         return this;
     }
     
+
+    public SourcePersistiq(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePersistiqPersistiqEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

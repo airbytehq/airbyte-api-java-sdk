@@ -47,4 +47,9 @@ public class SourceCloseCom {
         return this;
     }
     
+
+    public SourceCloseCom(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceCloseComCloseComEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

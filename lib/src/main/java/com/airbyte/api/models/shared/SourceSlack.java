@@ -78,4 +78,11 @@ public class SourceSlack {
         return this;
     }
     
+
+    public SourceSlack(@JsonProperty("join_channels") Boolean joinChannels, @JsonProperty("lookback_window") Long lookbackWindow, @JsonProperty("sourceType") SourceSlackSlackEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.joinChannels = joinChannels;
+this.lookbackWindow = lookbackWindow;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

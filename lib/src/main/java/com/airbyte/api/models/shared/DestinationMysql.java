@@ -92,4 +92,12 @@ public class DestinationMysql {
         return this;
     }
     
+
+    public DestinationMysql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMysqlMysqlEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
+    this.database = database;
+this.destinationType = destinationType;
+this.host = host;
+this.port = port;
+this.username = username;
+  }
 }

@@ -115,4 +115,11 @@ public class SourceAmazonSqs {
         return this;
     }
     
+
+    public SourceAmazonSqs(@JsonProperty("delete_messages") Boolean deleteMessages, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") SourceAmazonSqsAWSRegionEnum region, @JsonProperty("sourceType") SourceAmazonSqsAmazonSqsEnum sourceType) {
+    this.deleteMessages = deleteMessages;
+this.queueUrl = queueUrl;
+this.region = region;
+this.sourceType = sourceType;
+  }
 }

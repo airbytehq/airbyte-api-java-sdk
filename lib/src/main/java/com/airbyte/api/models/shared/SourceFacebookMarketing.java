@@ -144,4 +144,11 @@ public class SourceFacebookMarketing {
         return this;
     }
     
+
+    public SourceFacebookMarketing(@JsonProperty("access_token") String accessToken, @JsonProperty("account_id") String accountId, @JsonProperty("sourceType") SourceFacebookMarketingFacebookMarketingEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.accessToken = accessToken;
+this.accountId = accountId;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

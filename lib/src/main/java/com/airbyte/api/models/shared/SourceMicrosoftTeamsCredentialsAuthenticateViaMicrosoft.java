@@ -50,4 +50,10 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft {
         return this;
     }
     
+
+    public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("tenant_id") String tenantId) {
+    this.clientId = clientId;
+this.clientSecret = clientSecret;
+this.tenantId = tenantId;
+  }
 }

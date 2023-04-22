@@ -70,4 +70,12 @@ public class DestinationGcs {
         return this;
     }
     
+
+    public DestinationGcs(@JsonProperty("credential") Object credential, @JsonProperty("destinationType") DestinationGcsGcsEnum destinationType, @JsonProperty("format") Object format, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath) {
+    this.credential = credential;
+this.destinationType = destinationType;
+this.format = format;
+this.gcsBucketName = gcsBucketName;
+this.gcsBucketPath = gcsBucketPath;
+  }
 }

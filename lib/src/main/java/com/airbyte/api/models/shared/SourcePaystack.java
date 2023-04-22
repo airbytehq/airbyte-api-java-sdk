@@ -57,4 +57,10 @@ public class SourcePaystack {
         return this;
     }
     
+
+    public SourcePaystack(@JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourcePaystackPaystackEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    this.secretKey = secretKey;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

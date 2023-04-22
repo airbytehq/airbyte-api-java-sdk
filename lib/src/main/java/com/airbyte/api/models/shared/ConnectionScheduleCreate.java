@@ -27,4 +27,8 @@ public class ConnectionScheduleCreate {
         return this;
     }
     
+
+    public ConnectionScheduleCreate(@JsonProperty("scheduleType") ScheduleTypeEnumEnum scheduleType) {
+    this.scheduleType = scheduleType;
+  }
 }

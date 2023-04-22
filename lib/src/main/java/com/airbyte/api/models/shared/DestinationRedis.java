@@ -104,4 +104,12 @@ public class DestinationRedis {
         return this;
     }
     
+
+    public DestinationRedis(@JsonProperty("cache_type") DestinationRedisCacheTypeEnum cacheType, @JsonProperty("destinationType") DestinationRedisRedisEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
+    this.cacheType = cacheType;
+this.destinationType = destinationType;
+this.host = host;
+this.port = port;
+this.username = username;
+  }
 }

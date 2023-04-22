@@ -60,4 +60,6 @@ public class StreamProperties {
         return this;
     }
     
+
+    public StreamProperties(){}
 }

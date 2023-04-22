@@ -75,4 +75,11 @@ public class SourceSonarCloud {
         return this;
     }
     
+
+    public SourceSonarCloud(@JsonProperty("component_keys") Object[] componentKeys, @JsonProperty("organization") String organization, @JsonProperty("sourceType") SourceSonarCloudSonarCloudEnum sourceType, @JsonProperty("user_token") String userToken) {
+    this.componentKeys = componentKeys;
+this.organization = organization;
+this.sourceType = sourceType;
+this.userToken = userToken;
+  }
 }

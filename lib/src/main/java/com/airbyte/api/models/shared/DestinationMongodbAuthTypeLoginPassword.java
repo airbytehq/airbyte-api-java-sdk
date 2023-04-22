@@ -37,4 +37,10 @@ public class DestinationMongodbAuthTypeLoginPassword {
         return this;
     }
     
+
+    public DestinationMongodbAuthTypeLoginPassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("authorization") DestinationMongodbAuthTypeLoginPasswordAuthorizationEnum authorization) {
+    this.username = username;
+this.password = password;
+this.authorization = authorization;
+  }
 }

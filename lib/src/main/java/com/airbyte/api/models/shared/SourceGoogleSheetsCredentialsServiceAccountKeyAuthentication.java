@@ -27,4 +27,9 @@ public class SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication {
         return this;
     }
     
+
+    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType, @JsonProperty("service_account_info") String serviceAccountInfo) {
+    this.authType = authType;
+this.serviceAccountInfo = serviceAccountInfo;
+  }
 }

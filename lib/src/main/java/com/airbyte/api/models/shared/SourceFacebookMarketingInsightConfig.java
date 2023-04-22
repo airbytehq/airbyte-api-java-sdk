@@ -119,4 +119,8 @@ public class SourceFacebookMarketingInsightConfig {
         return this;
     }
     
+
+    public SourceFacebookMarketingInsightConfig(@JsonProperty("name") String name) {
+    this.name = name;
+  }
 }

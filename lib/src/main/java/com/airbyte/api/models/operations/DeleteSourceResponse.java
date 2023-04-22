@@ -4,6 +4,7 @@
 
 package com.airbyte.api.models.operations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.http.HttpResponse;
 
 public class DeleteSourceResponse {
@@ -28,4 +29,9 @@ public class DeleteSourceResponse {
         return this;
     }
     
+
+    public DeleteSourceResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode) {
+    this.contentType = contentType;
+this.statusCode = statusCode;
+  }
 }

@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GetJobRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=jobId")
@@ -14,4 +15,8 @@ public class GetJobRequest {
         return this;
     }
     
+
+    public GetJobRequest(@JsonProperty("jobId") Long jobId) {
+    this.jobId = jobId;
+  }
 }

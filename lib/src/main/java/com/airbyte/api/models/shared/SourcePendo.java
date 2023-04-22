@@ -24,4 +24,9 @@ public class SourcePendo {
         return this;
     }
     
+
+    public SourcePendo(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePendoPendoEnum sourceType) {
+    this.apiKey = apiKey;
+this.sourceType = sourceType;
+  }
 }

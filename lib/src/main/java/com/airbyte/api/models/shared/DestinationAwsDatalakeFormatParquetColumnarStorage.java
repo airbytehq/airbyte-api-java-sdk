@@ -30,4 +30,8 @@ public class DestinationAwsDatalakeFormatParquetColumnarStorage {
         return this;
     }
     
+
+    public DestinationAwsDatalakeFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcardEnum formatType) {
+    this.formatType = formatType;
+  }
 }

@@ -30,4 +30,8 @@ public class SourceGithubCredentialsPersonalAccessToken {
         return this;
     }
     
+
+    public SourceGithubCredentialsPersonalAccessToken(@JsonProperty("personal_access_token") String personalAccessToken) {
+    this.personalAccessToken = personalAccessToken;
+  }
 }

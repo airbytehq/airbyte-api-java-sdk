@@ -38,4 +38,8 @@ public class DestinationSnowflakeCredentialsKeyPairAuthentication {
         return this;
     }
     
+
+    public DestinationSnowflakeCredentialsKeyPairAuthentication(@JsonProperty("private_key") String privateKey) {
+    this.privateKey = privateKey;
+  }
 }

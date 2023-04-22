@@ -17,4 +17,8 @@ public class DestinationMongodbAuthTypeNone {
         return this;
     }
     
+
+    public DestinationMongodbAuthTypeNone(@JsonProperty("authorization") DestinationMongodbAuthTypeNoneAuthorizationEnum authorization) {
+    this.authorization = authorization;
+  }
 }

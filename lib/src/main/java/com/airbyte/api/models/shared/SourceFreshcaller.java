@@ -71,4 +71,11 @@ public class SourceFreshcaller {
         return this;
     }
     
+
+    public SourceFreshcaller(@JsonProperty("api_key") String apiKey, @JsonProperty("domain") String domain, @JsonProperty("sourceType") SourceFreshcallerFreshcallerEnum sourceType, @JsonProperty("start_date") Object startDate) {
+    this.apiKey = apiKey;
+this.domain = domain;
+this.sourceType = sourceType;
+this.startDate = startDate;
+  }
 }

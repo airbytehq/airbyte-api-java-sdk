@@ -72,4 +72,10 @@ public class SourceDynamodb {
         return this;
     }
     
+
+    public SourceDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("secret_access_key") String secretAccessKey, @JsonProperty("sourceType") SourceDynamodbDynamodbEnum sourceType) {
+    this.accessKeyId = accessKeyId;
+this.secretAccessKey = secretAccessKey;
+this.sourceType = sourceType;
+  }
 }

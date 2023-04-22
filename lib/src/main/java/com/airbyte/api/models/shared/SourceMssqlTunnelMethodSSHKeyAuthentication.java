@@ -60,4 +60,12 @@ public class SourceMssqlTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
+
+    public SourceMssqlTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") SourceMssqlTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
+    this.sshKey = sshKey;
+this.tunnelHost = tunnelHost;
+this.tunnelMethod = tunnelMethod;
+this.tunnelPort = tunnelPort;
+this.tunnelUser = tunnelUser;
+  }
 }

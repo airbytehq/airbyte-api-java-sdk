@@ -34,4 +34,10 @@ public class SourceZendeskSunshineCredentialsAPIToken {
         return this;
     }
     
+
+    public SourceZendeskSunshineCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_method") SourceZendeskSunshineCredentialsAPITokenAuthMethodEnum authMethod, @JsonProperty("email") String email) {
+    this.apiToken = apiToken;
+this.authMethod = authMethod;
+this.email = email;
+  }
 }
