@@ -44,6 +44,7 @@ public class Streams {
         req.setMethod("GET");
         req.setURL(url);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = com.airbyte.api.utils.Utils.getQueryParams(com.airbyte.api.models.operations.GetStreamPropertiesRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
