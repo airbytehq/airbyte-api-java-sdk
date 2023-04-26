@@ -101,14 +101,13 @@ public class SourceNetsuite {
         return this;
     }
     
-
     public SourceNetsuite(@JsonProperty("consumer_key") String consumerKey, @JsonProperty("consumer_secret") String consumerSecret, @JsonProperty("realm") String realm, @JsonProperty("sourceType") SourceNetsuiteNetsuiteEnum sourceType, @JsonProperty("start_datetime") String startDatetime, @JsonProperty("token_key") String tokenKey, @JsonProperty("token_secret") String tokenSecret) {
-    this.consumerKey = consumerKey;
-this.consumerSecret = consumerSecret;
-this.realm = realm;
-this.sourceType = sourceType;
-this.startDatetime = startDatetime;
-this.tokenKey = tokenKey;
-this.tokenSecret = tokenSecret;
+        this.consumerKey = consumerKey;
+        this.consumerSecret = consumerSecret;
+        this.realm = realm;
+        this.sourceType = sourceType;
+        this.startDatetime = startDatetime;
+        this.tokenKey = tokenKey;
+        this.tokenSecret = tokenSecret;
   }
 }

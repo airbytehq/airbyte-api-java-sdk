@@ -31,10 +31,9 @@ public class WorkspaceResponse {
         return this;
     }
     
-
     public WorkspaceResponse(@JsonProperty("dataResidency") GeographyEnumEnum dataResidency, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
-    this.dataResidency = dataResidency;
-this.name = name;
-this.workspaceId = workspaceId;
+        this.dataResidency = dataResidency;
+        this.name = name;
+        this.workspaceId = workspaceId;
   }
 }

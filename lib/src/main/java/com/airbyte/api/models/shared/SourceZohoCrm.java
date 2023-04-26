@@ -97,14 +97,13 @@ public class SourceZohoCrm {
         return this;
     }
     
-
     public SourceZohoCrm(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("dc_region") SourceZohoCrmDataCenterLocationEnum dcRegion, @JsonProperty("edition") SourceZohoCRMZohoCRMEditionEnum edition, @JsonProperty("environment") SourceZohoCrmEnvironmentEnum environment, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceZohoCrmZohoCrmEnum sourceType) {
-    this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.dcRegion = dcRegion;
-this.edition = edition;
-this.environment = environment;
-this.refreshToken = refreshToken;
-this.sourceType = sourceType;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.dcRegion = dcRegion;
+        this.edition = edition;
+        this.environment = environment;
+        this.refreshToken = refreshToken;
+        this.sourceType = sourceType;
   }
 }

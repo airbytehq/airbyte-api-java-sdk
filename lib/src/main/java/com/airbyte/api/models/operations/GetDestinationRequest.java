@@ -15,8 +15,7 @@ public class GetDestinationRequest {
         return this;
     }
     
-
     public GetDestinationRequest(@JsonProperty("destinationId") String destinationId) {
-    this.destinationId = destinationId;
+        this.destinationId = destinationId;
   }
 }

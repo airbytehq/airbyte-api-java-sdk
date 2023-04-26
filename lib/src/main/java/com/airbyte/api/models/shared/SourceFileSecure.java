@@ -70,12 +70,11 @@ public class SourceFileSecure {
         return this;
     }
     
-
     public SourceFileSecure(@JsonProperty("dataset_name") String datasetName, @JsonProperty("format") SourceFileSecureFileFormatEnum format, @JsonProperty("provider") Object provider, @JsonProperty("sourceType") SourceFileSecureFileSecureEnum sourceType, @JsonProperty("url") String url) {
-    this.datasetName = datasetName;
-this.format = format;
-this.provider = provider;
-this.sourceType = sourceType;
-this.url = url;
+        this.datasetName = datasetName;
+        this.format = format;
+        this.provider = provider;
+        this.sourceType = sourceType;
+        this.url = url;
   }
 }

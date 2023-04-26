@@ -47,6 +47,5 @@ public class ListConnectionsRequest {
         return this;
     }
     
-
     public ListConnectionsRequest(){}
 }

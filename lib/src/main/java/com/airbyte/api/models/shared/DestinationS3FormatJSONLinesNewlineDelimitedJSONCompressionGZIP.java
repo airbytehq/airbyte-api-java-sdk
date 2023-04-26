@@ -20,6 +20,5 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionGZIP {
         return this;
     }
     
-
     public DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionGZIP(){}
 }

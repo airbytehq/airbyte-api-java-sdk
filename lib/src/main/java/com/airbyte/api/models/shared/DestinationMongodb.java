@@ -61,10 +61,9 @@ public class DestinationMongodb {
         return this;
     }
     
-
     public DestinationMongodb(@JsonProperty("auth_type") Object authType, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMongodbMongodbEnum destinationType) {
-    this.authType = authType;
-this.database = database;
-this.destinationType = destinationType;
+        this.authType = authType;
+        this.database = database;
+        this.destinationType = destinationType;
   }
 }

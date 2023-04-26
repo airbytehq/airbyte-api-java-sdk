@@ -71,11 +71,10 @@ public class SourceAmplitude {
         return this;
     }
     
-
     public SourceAmplitude(@JsonProperty("api_key") String apiKey, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceAmplitudeAmplitudeEnum sourceType, @JsonProperty("start_date") String startDate) {
-    this.apiKey = apiKey;
-this.secretKey = secretKey;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.apiKey = apiKey;
+        this.secretKey = secretKey;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

@@ -30,8 +30,7 @@ public class SourceGoogleAnalyticsV4CredentialsServiceAccountKeyAuthentication {
         return this;
     }
     
-
     public SourceGoogleAnalyticsV4CredentialsServiceAccountKeyAuthentication(@JsonProperty("credentials_json") String credentialsJson) {
-    this.credentialsJson = credentialsJson;
+        this.credentialsJson = credentialsJson;
   }
 }

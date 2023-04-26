@@ -47,10 +47,9 @@ public class SourceZendeskSunshine {
         return this;
     }
     
-
     public SourceZendeskSunshine(@JsonProperty("sourceType") SourceZendeskSunshineZendeskSunshineEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("subdomain") String subdomain) {
-    this.sourceType = sourceType;
-this.startDate = startDate;
-this.subdomain = subdomain;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.subdomain = subdomain;
   }
 }

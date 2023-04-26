@@ -50,10 +50,9 @@ public class SourceShopify {
         return this;
     }
     
-
     public SourceShopify(@JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceShopifyShopifyEnum sourceType, @JsonProperty("start_date") String startDate) {
-    this.shop = shop;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.shop = shop;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

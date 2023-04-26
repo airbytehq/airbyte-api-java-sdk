@@ -47,11 +47,10 @@ public class SourceSlackCredentialsSignInViaSlackOAuth {
         return this;
     }
     
-
     public SourceSlackCredentialsSignInViaSlackOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("option_title") SourceSlackCredentialsSignInViaSlackOAuthOptionTitleEnum optionTitle) {
-    this.accessToken = accessToken;
-this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.optionTitle = optionTitle;
+        this.accessToken = accessToken;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.optionTitle = optionTitle;
   }
 }

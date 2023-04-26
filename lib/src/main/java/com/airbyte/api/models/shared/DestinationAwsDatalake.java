@@ -147,12 +147,11 @@ public class DestinationAwsDatalake {
         return this;
     }
     
-
     public DestinationAwsDatalake(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials") Object credentials, @JsonProperty("destinationType") DestinationAwsDatalakeAwsDatalakeEnum destinationType, @JsonProperty("lakeformation_database_name") String lakeformationDatabaseName, @JsonProperty("region") DestinationAwsDatalakeS3BucketRegionEnum region) {
-    this.bucketName = bucketName;
-this.credentials = credentials;
-this.destinationType = destinationType;
-this.lakeformationDatabaseName = lakeformationDatabaseName;
-this.region = region;
+        this.bucketName = bucketName;
+        this.credentials = credentials;
+        this.destinationType = destinationType;
+        this.lakeformationDatabaseName = lakeformationDatabaseName;
+        this.region = region;
   }
 }

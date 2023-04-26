@@ -57,12 +57,11 @@ public class SourceKlarna {
         return this;
     }
     
-
     public SourceKlarna(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("playground") Boolean playground, @JsonProperty("region") SourceKlarnaRegionEnum region, @JsonProperty("sourceType") SourceKlarnaKlarnaEnum sourceType) {
-    this.username = username;
-this.password = password;
-this.playground = playground;
-this.region = region;
-this.sourceType = sourceType;
+        this.username = username;
+        this.password = password;
+        this.playground = playground;
+        this.region = region;
+        this.sourceType = sourceType;
   }
 }

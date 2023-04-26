@@ -15,8 +15,7 @@ public class DeleteConnectionRequest {
         return this;
     }
     
-
     public DeleteConnectionRequest(@JsonProperty("connectionId") String connectionId) {
-    this.connectionId = connectionId;
+        this.connectionId = connectionId;
   }
 }

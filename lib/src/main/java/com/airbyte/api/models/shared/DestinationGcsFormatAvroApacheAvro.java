@@ -27,9 +27,8 @@ public class DestinationGcsFormatAvroApacheAvro {
         return this;
     }
     
-
     public DestinationGcsFormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationGcsFormatAvroApacheAvroFormatTypeEnum formatType) {
-    this.compressionCodec = compressionCodec;
-this.formatType = formatType;
+        this.compressionCodec = compressionCodec;
+        this.formatType = formatType;
   }
 }

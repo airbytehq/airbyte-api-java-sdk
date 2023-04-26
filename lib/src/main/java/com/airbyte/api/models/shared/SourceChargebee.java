@@ -64,12 +64,11 @@ public class SourceChargebee {
         return this;
     }
     
-
     public SourceChargebee(@JsonProperty("product_catalog") SourceChargebeeProductCatalogEnum productCatalog, @JsonProperty("site") String site, @JsonProperty("site_api_key") String siteApiKey, @JsonProperty("sourceType") SourceChargebeeChargebeeEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.productCatalog = productCatalog;
-this.site = site;
-this.siteApiKey = siteApiKey;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.productCatalog = productCatalog;
+        this.site = site;
+        this.siteApiKey = siteApiKey;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

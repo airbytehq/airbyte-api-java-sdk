@@ -20,6 +20,5 @@ public class SourceS3FormatAvro {
         return this;
     }
     
-
     public SourceS3FormatAvro(){}
 }

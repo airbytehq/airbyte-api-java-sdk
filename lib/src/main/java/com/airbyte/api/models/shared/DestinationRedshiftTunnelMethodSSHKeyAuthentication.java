@@ -60,12 +60,11 @@ public class DestinationRedshiftTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
-
     public DestinationRedshiftTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
-    this.sshKey = sshKey;
-this.tunnelHost = tunnelHost;
-this.tunnelMethod = tunnelMethod;
-this.tunnelPort = tunnelPort;
-this.tunnelUser = tunnelUser;
+        this.sshKey = sshKey;
+        this.tunnelHost = tunnelHost;
+        this.tunnelMethod = tunnelMethod;
+        this.tunnelPort = tunnelPort;
+        this.tunnelUser = tunnelUser;
   }
 }

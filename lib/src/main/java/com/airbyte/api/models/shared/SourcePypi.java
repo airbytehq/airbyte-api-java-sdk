@@ -40,9 +40,8 @@ public class SourcePypi {
         return this;
     }
     
-
     public SourcePypi(@JsonProperty("project_name") String projectName, @JsonProperty("sourceType") SourcePypiPypiEnum sourceType) {
-    this.projectName = projectName;
-this.sourceType = sourceType;
+        this.projectName = projectName;
+        this.sourceType = sourceType;
   }
 }

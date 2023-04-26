@@ -68,10 +68,9 @@ public class SourceZendeskSupport {
         return this;
     }
     
-
     public SourceZendeskSupport(@JsonProperty("sourceType") SourceZendeskSupportZendeskSupportEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("subdomain") String subdomain) {
-    this.sourceType = sourceType;
-this.startDate = startDate;
-this.subdomain = subdomain;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.subdomain = subdomain;
   }
 }

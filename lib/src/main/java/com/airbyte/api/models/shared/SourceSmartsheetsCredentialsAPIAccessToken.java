@@ -27,8 +27,7 @@ public class SourceSmartsheetsCredentialsAPIAccessToken {
         return this;
     }
     
-
     public SourceSmartsheetsCredentialsAPIAccessToken(@JsonProperty("access_token") String accessToken) {
-    this.accessToken = accessToken;
+        this.accessToken = accessToken;
   }
 }

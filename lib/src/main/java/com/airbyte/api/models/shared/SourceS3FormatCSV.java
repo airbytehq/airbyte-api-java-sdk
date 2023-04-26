@@ -130,6 +130,5 @@ public class SourceS3FormatCSV {
         return this;
     }
     
-
     public SourceS3FormatCSV(){}
 }

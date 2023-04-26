@@ -50,10 +50,9 @@ public class DestinationKeen {
         return this;
     }
     
-
     public DestinationKeen(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationKeenKeenEnum destinationType, @JsonProperty("project_id") String projectId) {
-    this.apiKey = apiKey;
-this.destinationType = destinationType;
-this.projectId = projectId;
+        this.apiKey = apiKey;
+        this.destinationType = destinationType;
+        this.projectId = projectId;
   }
 }

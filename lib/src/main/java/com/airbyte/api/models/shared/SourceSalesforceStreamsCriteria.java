@@ -21,9 +21,8 @@ public class SourceSalesforceStreamsCriteria {
         return this;
     }
     
-
     public SourceSalesforceStreamsCriteria(@JsonProperty("criteria") SourceSalesforceStreamsCriteriaSearchCriteriaEnum criteria, @JsonProperty("value") String value) {
-    this.criteria = criteria;
-this.value = value;
+        this.criteria = criteria;
+        this.value = value;
   }
 }

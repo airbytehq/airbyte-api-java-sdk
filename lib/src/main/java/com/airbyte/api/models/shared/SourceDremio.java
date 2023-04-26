@@ -37,10 +37,9 @@ public class SourceDremio {
         return this;
     }
     
-
     public SourceDremio(@JsonProperty("api_key") String apiKey, @JsonProperty("base_url") String baseUrl, @JsonProperty("sourceType") SourceDremioDremioEnum sourceType) {
-    this.apiKey = apiKey;
-this.baseUrl = baseUrl;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.baseUrl = baseUrl;
+        this.sourceType = sourceType;
   }
 }

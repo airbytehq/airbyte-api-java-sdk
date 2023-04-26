@@ -113,13 +113,12 @@ public class DestinationDatabricks {
         return this;
     }
     
-
     public DestinationDatabricks(@JsonProperty("accept_terms") Boolean acceptTerms, @JsonProperty("data_source") Object dataSource, @JsonProperty("databricks_http_path") String databricksHttpPath, @JsonProperty("databricks_personal_access_token") String databricksPersonalAccessToken, @JsonProperty("databricks_server_hostname") String databricksServerHostname, @JsonProperty("destinationType") DestinationDatabricksDatabricksEnum destinationType) {
-    this.acceptTerms = acceptTerms;
-this.dataSource = dataSource;
-this.databricksHttpPath = databricksHttpPath;
-this.databricksPersonalAccessToken = databricksPersonalAccessToken;
-this.databricksServerHostname = databricksServerHostname;
-this.destinationType = destinationType;
+        this.acceptTerms = acceptTerms;
+        this.dataSource = dataSource;
+        this.databricksHttpPath = databricksHttpPath;
+        this.databricksPersonalAccessToken = databricksPersonalAccessToken;
+        this.databricksServerHostname = databricksServerHostname;
+        this.destinationType = destinationType;
   }
 }

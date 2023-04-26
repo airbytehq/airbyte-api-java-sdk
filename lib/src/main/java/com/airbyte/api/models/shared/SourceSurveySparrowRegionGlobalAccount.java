@@ -20,6 +20,5 @@ public class SourceSurveySparrowRegionGlobalAccount {
         return this;
     }
     
-
     public SourceSurveySparrowRegionGlobalAccount(){}
 }

@@ -27,9 +27,8 @@ public class SourceSendinblue {
         return this;
     }
     
-
     public SourceSendinblue(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSendinblueSendinblueEnum sourceType) {
-    this.apiKey = apiKey;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.sourceType = sourceType;
   }
 }

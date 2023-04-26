@@ -44,9 +44,8 @@ public class SourcePipedrive {
         return this;
     }
     
-
     public SourcePipedrive(@JsonProperty("replication_start_date") OffsetDateTime replicationStartDate, @JsonProperty("sourceType") SourcePipedrivePipedriveEnum sourceType) {
-    this.replicationStartDate = replicationStartDate;
-this.sourceType = sourceType;
+        this.replicationStartDate = replicationStartDate;
+        this.sourceType = sourceType;
   }
 }

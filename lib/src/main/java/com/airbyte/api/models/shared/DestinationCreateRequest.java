@@ -31,10 +31,9 @@ public class DestinationCreateRequest {
         return this;
     }
     
-
     public DestinationCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
-    this.configuration = configuration;
-this.name = name;
-this.workspaceId = workspaceId;
+        this.configuration = configuration;
+        this.name = name;
+        this.workspaceId = workspaceId;
   }
 }

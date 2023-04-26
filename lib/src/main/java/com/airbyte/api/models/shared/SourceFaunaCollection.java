@@ -35,9 +35,8 @@ public class SourceFaunaCollection {
         return this;
     }
     
-
     public SourceFaunaCollection(@JsonProperty("deletions") Object deletions, @JsonProperty("page_size") Long pageSize) {
-    this.deletions = deletions;
-this.pageSize = pageSize;
+        this.deletions = deletions;
+        this.pageSize = pageSize;
   }
 }

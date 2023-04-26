@@ -75,10 +75,9 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
     
-
     public SourceGoogleAnalyticsDataApi(@JsonProperty("date_ranges_start_date") LocalDate dateRangesStartDate, @JsonProperty("property_id") String propertyId, @JsonProperty("sourceType") SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApiEnum sourceType) {
-    this.dateRangesStartDate = dateRangesStartDate;
-this.propertyId = propertyId;
-this.sourceType = sourceType;
+        this.dateRangesStartDate = dateRangesStartDate;
+        this.propertyId = propertyId;
+        this.sourceType = sourceType;
   }
 }

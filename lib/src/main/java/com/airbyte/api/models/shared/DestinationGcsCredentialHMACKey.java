@@ -37,10 +37,9 @@ public class DestinationGcsCredentialHMACKey {
         return this;
     }
     
-
     public DestinationGcsCredentialHMACKey(@JsonProperty("credential_type") DestinationGcsCredentialHMACKeyCredentialTypeEnum credentialType, @JsonProperty("hmac_key_access_id") String hmacKeyAccessId, @JsonProperty("hmac_key_secret") String hmacKeySecret) {
-    this.credentialType = credentialType;
-this.hmacKeyAccessId = hmacKeyAccessId;
-this.hmacKeySecret = hmacKeySecret;
+        this.credentialType = credentialType;
+        this.hmacKeyAccessId = hmacKeyAccessId;
+        this.hmacKeySecret = hmacKeySecret;
   }
 }

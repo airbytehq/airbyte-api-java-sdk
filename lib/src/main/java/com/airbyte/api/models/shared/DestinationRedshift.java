@@ -112,14 +112,13 @@ public class DestinationRedshift {
         return this;
     }
     
-
     public DestinationRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationRedshiftRedshiftEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema) {
-    this.username = username;
-this.password = password;
-this.database = database;
-this.destinationType = destinationType;
-this.host = host;
-this.port = port;
-this.schema = schema;
+        this.username = username;
+        this.password = password;
+        this.database = database;
+        this.destinationType = destinationType;
+        this.host = host;
+        this.port = port;
+        this.schema = schema;
   }
 }

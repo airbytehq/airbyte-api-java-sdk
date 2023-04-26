@@ -24,9 +24,8 @@ public class SourceMondayCredentialsAPIToken {
         return this;
     }
     
-
     public SourceMondayCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourceMondayCredentialsAPITokenAuthTypeEnum authType) {
-    this.apiToken = apiToken;
-this.authType = authType;
+        this.apiToken = apiToken;
+        this.authType = authType;
   }
 }

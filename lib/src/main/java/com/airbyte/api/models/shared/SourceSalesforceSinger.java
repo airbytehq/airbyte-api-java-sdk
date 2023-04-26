@@ -102,13 +102,12 @@ public class SourceSalesforceSinger {
         return this;
     }
     
-
     public SourceSalesforceSinger(@JsonProperty("api_type") SourceSalesforceSingerApiTypeEnum apiType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSalesforceSingerSalesforceSingerEnum sourceType, @JsonProperty("start_date") String startDate) {
-    this.apiType = apiType;
-this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.refreshToken = refreshToken;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.apiType = apiType;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

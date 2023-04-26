@@ -20,8 +20,7 @@ public class SourceMssqlTunnelMethodNoTunnel {
         return this;
     }
     
-
     public SourceMssqlTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceMssqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
-    this.tunnelMethod = tunnelMethod;
+        this.tunnelMethod = tunnelMethod;
   }
 }

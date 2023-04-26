@@ -47,11 +47,10 @@ public class SourceRailz {
         return this;
     }
     
-
     public SourceRailz(@JsonProperty("client_id") String clientId, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceRailzRailzEnum sourceType, @JsonProperty("start_date") String startDate) {
-    this.clientId = clientId;
-this.secretKey = secretKey;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.clientId = clientId;
+        this.secretKey = secretKey;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

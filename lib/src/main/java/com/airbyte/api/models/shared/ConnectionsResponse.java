@@ -35,8 +35,7 @@ public class ConnectionsResponse {
         return this;
     }
     
-
     public ConnectionsResponse(@JsonProperty("data") ConnectionResponse[] data) {
-    this.data = data;
+        this.data = data;
   }
 }

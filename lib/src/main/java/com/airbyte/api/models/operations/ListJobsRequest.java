@@ -48,8 +48,7 @@ public class ListJobsRequest {
         return this;
     }
     
-
     public ListJobsRequest(@JsonProperty("connectionId") String connectionId) {
-    this.connectionId = connectionId;
+        this.connectionId = connectionId;
   }
 }

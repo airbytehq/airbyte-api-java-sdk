@@ -47,6 +47,5 @@ public class ListWorkspacesRequest {
         return this;
     }
     
-
     public ListWorkspacesRequest(){}
 }

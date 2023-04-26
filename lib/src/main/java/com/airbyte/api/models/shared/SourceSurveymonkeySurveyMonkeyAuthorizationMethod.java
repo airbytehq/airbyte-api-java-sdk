@@ -51,9 +51,8 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
         return this;
     }
     
-
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod) {
-    this.accessToken = accessToken;
-this.authMethod = authMethod;
+        this.accessToken = accessToken;
+        this.authMethod = authMethod;
   }
 }

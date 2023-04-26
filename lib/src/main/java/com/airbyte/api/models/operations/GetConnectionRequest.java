@@ -15,8 +15,7 @@ public class GetConnectionRequest {
         return this;
     }
     
-
     public GetConnectionRequest(@JsonProperty("connectionId") String connectionId) {
-    this.connectionId = connectionId;
+        this.connectionId = connectionId;
   }
 }

@@ -20,8 +20,7 @@ public class SourceFaunaCollectionDeletionsDisabled {
         return this;
     }
     
-
     public SourceFaunaCollectionDeletionsDisabled(@JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsDisabledDeletionModeEnum deletionMode) {
-    this.deletionMode = deletionMode;
+        this.deletionMode = deletionMode;
   }
 }

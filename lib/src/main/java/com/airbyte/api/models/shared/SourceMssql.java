@@ -125,12 +125,11 @@ public class SourceMssql {
         return this;
     }
     
-
     public SourceMssql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceMssqlMssqlEnum sourceType, @JsonProperty("username") String username) {
-    this.database = database;
-this.host = host;
-this.port = port;
-this.sourceType = sourceType;
-this.username = username;
+        this.database = database;
+        this.host = host;
+        this.port = port;
+        this.sourceType = sourceType;
+        this.username = username;
   }
 }

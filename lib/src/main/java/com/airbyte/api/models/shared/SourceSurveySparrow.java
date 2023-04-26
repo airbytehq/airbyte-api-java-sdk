@@ -51,9 +51,8 @@ public class SourceSurveySparrow {
         return this;
     }
     
-
     public SourceSurveySparrow(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceSurveySparrowSurveySparrowEnum sourceType) {
-    this.accessToken = accessToken;
-this.sourceType = sourceType;
+        this.accessToken = accessToken;
+        this.sourceType = sourceType;
   }
 }

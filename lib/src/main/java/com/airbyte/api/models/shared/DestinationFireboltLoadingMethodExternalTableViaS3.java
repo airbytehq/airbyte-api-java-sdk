@@ -57,12 +57,11 @@ public class DestinationFireboltLoadingMethodExternalTableViaS3 {
         return this;
     }
     
-
     public DestinationFireboltLoadingMethodExternalTableViaS3(@JsonProperty("aws_key_id") String awsKeyId, @JsonProperty("aws_key_secret") String awsKeySecret, @JsonProperty("method") DestinationFireboltLoadingMethodExternalTableViaS3MethodEnum method, @JsonProperty("s3_bucket") String s3Bucket, @JsonProperty("s3_region") String s3Region) {
-    this.awsKeyId = awsKeyId;
-this.awsKeySecret = awsKeySecret;
-this.method = method;
-this.s3Bucket = s3Bucket;
-this.s3Region = s3Region;
+        this.awsKeyId = awsKeyId;
+        this.awsKeySecret = awsKeySecret;
+        this.method = method;
+        this.s3Bucket = s3Bucket;
+        this.s3Region = s3Region;
   }
 }

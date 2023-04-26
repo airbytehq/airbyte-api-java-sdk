@@ -126,12 +126,11 @@ public class SourcePostgres {
         return this;
     }
     
-
     public SourcePostgres(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourcePostgresPostgresEnum sourceType, @JsonProperty("username") String username) {
-    this.database = database;
-this.host = host;
-this.port = port;
-this.sourceType = sourceType;
-this.username = username;
+        this.database = database;
+        this.host = host;
+        this.port = port;
+        this.sourceType = sourceType;
+        this.username = username;
   }
 }

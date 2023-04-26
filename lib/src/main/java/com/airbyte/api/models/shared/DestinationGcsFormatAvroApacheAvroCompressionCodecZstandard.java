@@ -41,8 +41,7 @@ public class DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard {
         return this;
     }
     
-
     public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodecEnum codec) {
-    this.codec = codec;
+        this.codec = codec;
   }
 }

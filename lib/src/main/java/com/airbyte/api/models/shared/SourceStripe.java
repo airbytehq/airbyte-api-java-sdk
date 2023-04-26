@@ -78,11 +78,10 @@ public class SourceStripe {
         return this;
     }
     
-
     public SourceStripe(@JsonProperty("account_id") String accountId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourceStripeStripeEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.accountId = accountId;
-this.clientSecret = clientSecret;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.accountId = accountId;
+        this.clientSecret = clientSecret;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

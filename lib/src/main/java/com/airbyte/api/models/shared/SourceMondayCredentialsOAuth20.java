@@ -57,11 +57,10 @@ public class SourceMondayCredentialsOAuth20 {
         return this;
     }
     
-
     public SourceMondayCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceMondayCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
-    this.accessToken = accessToken;
-this.authType = authType;
-this.clientId = clientId;
-this.clientSecret = clientSecret;
+        this.accessToken = accessToken;
+        this.authType = authType;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
   }
 }

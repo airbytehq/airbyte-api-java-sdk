@@ -50,10 +50,9 @@ public class SourceBigquery {
         return this;
     }
     
-
     public SourceBigquery(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("project_id") String projectId, @JsonProperty("sourceType") SourceBigqueryBigqueryEnum sourceType) {
-    this.credentialsJson = credentialsJson;
-this.projectId = projectId;
-this.sourceType = sourceType;
+        this.credentialsJson = credentialsJson;
+        this.projectId = projectId;
+        this.sourceType = sourceType;
   }
 }

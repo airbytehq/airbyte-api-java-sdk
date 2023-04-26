@@ -20,8 +20,7 @@ public class SourceClickhouseTunnelMethodNoTunnel {
         return this;
     }
     
-
     public SourceClickhouseTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
-    this.tunnelMethod = tunnelMethod;
+        this.tunnelMethod = tunnelMethod;
   }
 }

@@ -89,12 +89,11 @@ public class SourceSnowflake {
         return this;
     }
     
-
     public SourceSnowflake(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("role") String role, @JsonProperty("sourceType") SourceSnowflakeSnowflakeEnum sourceType, @JsonProperty("warehouse") String warehouse) {
-    this.database = database;
-this.host = host;
-this.role = role;
-this.sourceType = sourceType;
-this.warehouse = warehouse;
+        this.database = database;
+        this.host = host;
+        this.role = role;
+        this.sourceType = sourceType;
+        this.warehouse = warehouse;
   }
 }

@@ -24,9 +24,8 @@ public class SourceYoutubeAnalytics {
         return this;
     }
     
-
     public SourceYoutubeAnalytics(@JsonProperty("credentials") java.util.Map<String, Object> credentials, @JsonProperty("sourceType") SourceYoutubeAnalyticsYoutubeAnalyticsEnum sourceType) {
-    this.credentials = credentials;
-this.sourceType = sourceType;
+        this.credentials = credentials;
+        this.sourceType = sourceType;
   }
 }

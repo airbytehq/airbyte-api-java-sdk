@@ -34,10 +34,9 @@ public class SourceAuth0 {
         return this;
     }
     
-
     public SourceAuth0(@JsonProperty("base_url") String baseUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceAuth0Auth0Enum sourceType) {
-    this.baseUrl = baseUrl;
-this.credentials = credentials;
-this.sourceType = sourceType;
+        this.baseUrl = baseUrl;
+        this.credentials = credentials;
+        this.sourceType = sourceType;
   }
 }

@@ -71,11 +71,10 @@ public class SourceS3 {
         return this;
     }
     
-
     public SourceS3(@JsonProperty("dataset") String dataset, @JsonProperty("path_pattern") String pathPattern, @JsonProperty("provider") SourceS3S3AmazonWebServices provider, @JsonProperty("sourceType") SourceS3S3Enum sourceType) {
-    this.dataset = dataset;
-this.pathPattern = pathPattern;
-this.provider = provider;
-this.sourceType = sourceType;
+        this.dataset = dataset;
+        this.pathPattern = pathPattern;
+        this.provider = provider;
+        this.sourceType = sourceType;
   }
 }

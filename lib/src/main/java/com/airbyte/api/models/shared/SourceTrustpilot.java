@@ -44,11 +44,10 @@ public class SourceTrustpilot {
         return this;
     }
     
-
     public SourceTrustpilot(@JsonProperty("business_units") String[] businessUnits, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceTrustpilotTrustpilotEnum sourceType, @JsonProperty("start_date") String startDate) {
-    this.businessUnits = businessUnits;
-this.credentials = credentials;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.businessUnits = businessUnits;
+        this.credentials = credentials;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

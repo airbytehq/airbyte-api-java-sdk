@@ -27,9 +27,8 @@ public class SourceVantage {
         return this;
     }
     
-
     public SourceVantage(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceVantageVantageEnum sourceType) {
-    this.accessToken = accessToken;
-this.sourceType = sourceType;
+        this.accessToken = accessToken;
+        this.sourceType = sourceType;
   }
 }

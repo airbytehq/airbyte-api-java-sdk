@@ -111,11 +111,10 @@ public class SourceJira {
         return this;
     }
     
-
     public SourceJira(@JsonProperty("api_token") String apiToken, @JsonProperty("domain") String domain, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceJiraJiraEnum sourceType) {
-    this.apiToken = apiToken;
-this.domain = domain;
-this.email = email;
-this.sourceType = sourceType;
+        this.apiToken = apiToken;
+        this.domain = domain;
+        this.email = email;
+        this.sourceType = sourceType;
   }
 }

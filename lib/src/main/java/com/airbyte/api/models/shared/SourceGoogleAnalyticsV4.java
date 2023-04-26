@@ -72,10 +72,9 @@ public class SourceGoogleAnalyticsV4 {
         return this;
     }
     
-
     public SourceGoogleAnalyticsV4(@JsonProperty("sourceType") SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("view_id") String viewId) {
-    this.sourceType = sourceType;
-this.startDate = startDate;
-this.viewId = viewId;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.viewId = viewId;
   }
 }

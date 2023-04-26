@@ -40,9 +40,8 @@ public class DestinationPostgresSslModeVerifyCa {
         return this;
     }
     
-
     public DestinationPostgresSslModeVerifyCa(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("mode") DestinationPostgresSslModeVerifyCaModeEnum mode) {
-    this.caCertificate = caCertificate;
-this.mode = mode;
+        this.caCertificate = caCertificate;
+        this.mode = mode;
   }
 }

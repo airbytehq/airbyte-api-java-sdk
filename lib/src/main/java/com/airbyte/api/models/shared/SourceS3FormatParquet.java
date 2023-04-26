@@ -53,6 +53,5 @@ public class SourceS3FormatParquet {
         return this;
     }
     
-
     public SourceS3FormatParquet(){}
 }

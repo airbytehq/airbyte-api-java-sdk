@@ -20,6 +20,5 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionNoCompr
         return this;
     }
     
-
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionNoCompression(){}
 }

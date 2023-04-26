@@ -60,12 +60,11 @@ public class SourceWoocommerce {
         return this;
     }
     
-
     public SourceWoocommerce(@JsonProperty("api_key") String apiKey, @JsonProperty("api_secret") String apiSecret, @JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceWoocommerceWoocommerceEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
-    this.apiKey = apiKey;
-this.apiSecret = apiSecret;
-this.shop = shop;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.apiKey = apiKey;
+        this.apiSecret = apiSecret;
+        this.shop = shop;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

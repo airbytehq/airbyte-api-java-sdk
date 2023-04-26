@@ -44,10 +44,9 @@ public class SourceDelighted {
         return this;
     }
     
-
     public SourceDelighted(@JsonProperty("api_key") String apiKey, @JsonProperty("since") OffsetDateTime since, @JsonProperty("sourceType") SourceDelightedDelightedEnum sourceType) {
-    this.apiKey = apiKey;
-this.since = since;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.since = since;
+        this.sourceType = sourceType;
   }
 }

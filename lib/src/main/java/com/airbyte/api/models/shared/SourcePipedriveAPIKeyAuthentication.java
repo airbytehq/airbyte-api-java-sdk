@@ -24,9 +24,8 @@ public class SourcePipedriveAPIKeyAuthentication {
         return this;
     }
     
-
     public SourcePipedriveAPIKeyAuthentication(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourcePipedriveAPIKeyAuthenticationAuthTypeEnum authType) {
-    this.apiToken = apiToken;
-this.authType = authType;
+        this.apiToken = apiToken;
+        this.authType = authType;
   }
 }

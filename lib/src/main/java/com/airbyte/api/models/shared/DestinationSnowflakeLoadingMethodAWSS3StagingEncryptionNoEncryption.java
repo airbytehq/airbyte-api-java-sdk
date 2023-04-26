@@ -17,8 +17,7 @@ public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption
         return this;
     }
     
-
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType) {
-    this.encryptionType = encryptionType;
+        this.encryptionType = encryptionType;
   }
 }

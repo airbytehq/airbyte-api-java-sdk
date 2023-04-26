@@ -40,9 +40,8 @@ public class SourceApifyDataset {
         return this;
     }
     
-
     public SourceApifyDataset(@JsonProperty("datasetId") String datasetId, @JsonProperty("sourceType") SourceApifyDatasetApifyDatasetEnum sourceType) {
-    this.datasetId = datasetId;
-this.sourceType = sourceType;
+        this.datasetId = datasetId;
+        this.sourceType = sourceType;
   }
 }

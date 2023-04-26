@@ -71,13 +71,12 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
         return this;
     }
     
-
     public SourceSalesloftCredentialsAuthenticateViaOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceSalesloftCredentialsAuthenticateViaOAuthAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("token_expiry_date") OffsetDateTime tokenExpiryDate) {
-    this.accessToken = accessToken;
-this.authType = authType;
-this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.refreshToken = refreshToken;
-this.tokenExpiryDate = tokenExpiryDate;
+        this.accessToken = accessToken;
+        this.authType = authType;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+        this.tokenExpiryDate = tokenExpiryDate;
   }
 }

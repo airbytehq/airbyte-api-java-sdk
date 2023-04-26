@@ -15,8 +15,7 @@ public class DeleteSourceRequest {
         return this;
     }
     
-
     public DeleteSourceRequest(@JsonProperty("sourceId") String sourceId) {
-    this.sourceId = sourceId;
+        this.sourceId = sourceId;
   }
 }

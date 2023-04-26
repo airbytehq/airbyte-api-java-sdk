@@ -17,8 +17,7 @@ public class DestinationPostgresSslModeRequire {
         return this;
     }
     
-
     public DestinationPostgresSslModeRequire(@JsonProperty("mode") DestinationPostgresSslModeRequireModeEnum mode) {
-    this.mode = mode;
+        this.mode = mode;
   }
 }

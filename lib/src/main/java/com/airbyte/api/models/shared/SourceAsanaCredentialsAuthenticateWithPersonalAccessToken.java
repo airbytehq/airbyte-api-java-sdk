@@ -33,8 +33,7 @@ public class SourceAsanaCredentialsAuthenticateWithPersonalAccessToken {
         return this;
     }
     
-
     public SourceAsanaCredentialsAuthenticateWithPersonalAccessToken(@JsonProperty("personal_access_token") String personalAccessToken) {
-    this.personalAccessToken = personalAccessToken;
+        this.personalAccessToken = personalAccessToken;
   }
 }

@@ -27,9 +27,8 @@ public class SourcePokeapi {
         return this;
     }
     
-
     public SourcePokeapi(@JsonProperty("pokemon_name") String pokemonName, @JsonProperty("sourceType") SourcePokeapiPokeapiEnum sourceType) {
-    this.pokemonName = pokemonName;
-this.sourceType = sourceType;
+        this.pokemonName = pokemonName;
+        this.sourceType = sourceType;
   }
 }

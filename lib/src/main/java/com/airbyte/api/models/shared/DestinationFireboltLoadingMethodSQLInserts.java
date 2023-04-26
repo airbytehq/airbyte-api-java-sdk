@@ -17,8 +17,7 @@ public class DestinationFireboltLoadingMethodSQLInserts {
         return this;
     }
     
-
     public DestinationFireboltLoadingMethodSQLInserts(@JsonProperty("method") DestinationFireboltLoadingMethodSQLInsertsMethodEnum method) {
-    this.method = method;
+        this.method = method;
   }
 }

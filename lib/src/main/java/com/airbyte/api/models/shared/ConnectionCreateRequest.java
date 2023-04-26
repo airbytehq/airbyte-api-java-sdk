@@ -97,9 +97,8 @@ public class ConnectionCreateRequest {
         return this;
     }
     
-
     public ConnectionCreateRequest(@JsonProperty("destinationId") String destinationId, @JsonProperty("sourceId") String sourceId) {
-    this.destinationId = destinationId;
-this.sourceId = sourceId;
+        this.destinationId = destinationId;
+        this.sourceId = sourceId;
   }
 }

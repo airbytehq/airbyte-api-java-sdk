@@ -67,8 +67,7 @@ public class SourceTiktokMarketing {
         return this;
     }
     
-
     public SourceTiktokMarketing(@JsonProperty("sourceType") SourceTiktokMarketingTiktokMarketingEnum sourceType) {
-    this.sourceType = sourceType;
+        this.sourceType = sourceType;
   }
 }

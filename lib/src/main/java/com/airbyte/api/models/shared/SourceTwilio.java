@@ -67,11 +67,10 @@ public class SourceTwilio {
         return this;
     }
     
-
     public SourceTwilio(@JsonProperty("account_sid") String accountSid, @JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceTwilioTwilioEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.accountSid = accountSid;
-this.authToken = authToken;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.accountSid = accountSid;
+        this.authToken = authToken;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

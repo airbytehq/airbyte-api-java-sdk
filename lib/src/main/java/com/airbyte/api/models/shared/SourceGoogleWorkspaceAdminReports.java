@@ -50,10 +50,9 @@ public class SourceGoogleWorkspaceAdminReports {
         return this;
     }
     
-
     public SourceGoogleWorkspaceAdminReports(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType) {
-    this.credentialsJson = credentialsJson;
-this.email = email;
-this.sourceType = sourceType;
+        this.credentialsJson = credentialsJson;
+        this.email = email;
+        this.sourceType = sourceType;
   }
 }

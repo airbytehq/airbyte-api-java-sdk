@@ -20,8 +20,7 @@ public class DestinationMysqlTunnelMethodNoTunnel {
         return this;
     }
     
-
     public DestinationMysqlTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
-    this.tunnelMethod = tunnelMethod;
+        this.tunnelMethod = tunnelMethod;
   }
 }

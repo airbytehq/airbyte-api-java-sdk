@@ -27,8 +27,7 @@ public class SourceLinkedinAdsCredentialsAccessToken {
         return this;
     }
     
-
     public SourceLinkedinAdsCredentialsAccessToken(@JsonProperty("access_token") String accessToken) {
-    this.accessToken = accessToken;
+        this.accessToken = accessToken;
   }
 }

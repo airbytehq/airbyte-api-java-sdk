@@ -24,9 +24,8 @@ public class SourceAuth0CredentialsOAuth2AccessToken {
         return this;
     }
     
-
     public SourceAuth0CredentialsOAuth2AccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType) {
-    this.accessToken = accessToken;
-this.authType = authType;
+        this.accessToken = accessToken;
+        this.authType = authType;
   }
 }

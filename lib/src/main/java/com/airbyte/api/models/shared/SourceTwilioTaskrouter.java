@@ -37,10 +37,9 @@ public class SourceTwilioTaskrouter {
         return this;
     }
     
-
     public SourceTwilioTaskrouter(@JsonProperty("account_sid") String accountSid, @JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceTwilioTaskrouterTwilioTaskrouterEnum sourceType) {
-    this.accountSid = accountSid;
-this.authToken = authToken;
-this.sourceType = sourceType;
+        this.accountSid = accountSid;
+        this.authToken = authToken;
+        this.sourceType = sourceType;
   }
 }

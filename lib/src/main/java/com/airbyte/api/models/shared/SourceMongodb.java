@@ -73,9 +73,8 @@ public class SourceMongodb {
         return this;
     }
     
-
     public SourceMongodb(@JsonProperty("database") String database, @JsonProperty("sourceType") SourceMongodbMongodbEnum sourceType) {
-    this.database = database;
-this.sourceType = sourceType;
+        this.database = database;
+        this.sourceType = sourceType;
   }
 }

@@ -192,22 +192,21 @@ public class DestinationPulsar {
         return this;
     }
     
-
     public DestinationPulsar(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("batching_max_messages") Long batchingMaxMessages, @JsonProperty("batching_max_publish_delay") Long batchingMaxPublishDelay, @JsonProperty("block_if_queue_full") Boolean blockIfQueueFull, @JsonProperty("brokers") String brokers, @JsonProperty("compression_type") DestinationPulsarCompressionTypeEnum compressionType, @JsonProperty("destinationType") DestinationPulsarPulsarEnum destinationType, @JsonProperty("max_pending_messages") Long maxPendingMessages, @JsonProperty("max_pending_messages_across_partitions") Long maxPendingMessagesAcrossPartitions, @JsonProperty("send_timeout_ms") Long sendTimeoutMs, @JsonProperty("topic_namespace") String topicNamespace, @JsonProperty("topic_pattern") String topicPattern, @JsonProperty("topic_tenant") String topicTenant, @JsonProperty("topic_type") DestinationPulsarTopicTypeEnum topicType, @JsonProperty("use_tls") Boolean useTls) {
-    this.batchingEnabled = batchingEnabled;
-this.batchingMaxMessages = batchingMaxMessages;
-this.batchingMaxPublishDelay = batchingMaxPublishDelay;
-this.blockIfQueueFull = blockIfQueueFull;
-this.brokers = brokers;
-this.compressionType = compressionType;
-this.destinationType = destinationType;
-this.maxPendingMessages = maxPendingMessages;
-this.maxPendingMessagesAcrossPartitions = maxPendingMessagesAcrossPartitions;
-this.sendTimeoutMs = sendTimeoutMs;
-this.topicNamespace = topicNamespace;
-this.topicPattern = topicPattern;
-this.topicTenant = topicTenant;
-this.topicType = topicType;
-this.useTls = useTls;
+        this.batchingEnabled = batchingEnabled;
+        this.batchingMaxMessages = batchingMaxMessages;
+        this.batchingMaxPublishDelay = batchingMaxPublishDelay;
+        this.blockIfQueueFull = blockIfQueueFull;
+        this.brokers = brokers;
+        this.compressionType = compressionType;
+        this.destinationType = destinationType;
+        this.maxPendingMessages = maxPendingMessages;
+        this.maxPendingMessagesAcrossPartitions = maxPendingMessagesAcrossPartitions;
+        this.sendTimeoutMs = sendTimeoutMs;
+        this.topicNamespace = topicNamespace;
+        this.topicPattern = topicPattern;
+        this.topicTenant = topicTenant;
+        this.topicType = topicType;
+        this.useTls = useTls;
   }
 }

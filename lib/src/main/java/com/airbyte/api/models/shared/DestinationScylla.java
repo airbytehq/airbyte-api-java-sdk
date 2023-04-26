@@ -80,13 +80,12 @@ public class DestinationScylla {
         return this;
     }
     
-
     public DestinationScylla(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("address") String address, @JsonProperty("destinationType") DestinationScyllaScyllaEnum destinationType, @JsonProperty("keyspace") String keyspace, @JsonProperty("port") Long port) {
-    this.username = username;
-this.password = password;
-this.address = address;
-this.destinationType = destinationType;
-this.keyspace = keyspace;
-this.port = port;
+        this.username = username;
+        this.password = password;
+        this.address = address;
+        this.destinationType = destinationType;
+        this.keyspace = keyspace;
+        this.port = port;
   }
 }

@@ -20,6 +20,5 @@ public class DestinationGcsFormatCSVCommaSeparatedValuesCompressionNoCompression
         return this;
     }
     
-
     public DestinationGcsFormatCSVCommaSeparatedValuesCompressionNoCompression(){}
 }

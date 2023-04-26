@@ -83,10 +83,9 @@ public class SourcePexelsApi {
         return this;
     }
     
-
     public SourcePexelsApi(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourcePexelsApiPexelsApiEnum sourceType) {
-    this.apiKey = apiKey;
-this.query = query;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.query = query;
+        this.sourceType = sourceType;
   }
 }

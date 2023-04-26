@@ -35,8 +35,7 @@ public class ConnectionScheduleResponse {
         return this;
     }
     
-
     public ConnectionScheduleResponse(@JsonProperty("scheduleType") ScheduleTypeWithBasicEnumEnum scheduleType) {
-    this.scheduleType = scheduleType;
+        this.scheduleType = scheduleType;
   }
 }

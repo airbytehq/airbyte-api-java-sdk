@@ -27,9 +27,8 @@ public class SourceRss {
         return this;
     }
     
-
     public SourceRss(@JsonProperty("sourceType") SourceRssRssEnum sourceType, @JsonProperty("url") String url) {
-    this.sourceType = sourceType;
-this.url = url;
+        this.sourceType = sourceType;
+        this.url = url;
   }
 }

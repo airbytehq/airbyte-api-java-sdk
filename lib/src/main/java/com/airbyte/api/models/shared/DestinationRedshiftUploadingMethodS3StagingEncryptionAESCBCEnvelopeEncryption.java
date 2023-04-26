@@ -30,8 +30,7 @@ public class DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelope
         return this;
     }
     
-
     public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption(@JsonProperty("encryption_type") DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType) {
-    this.encryptionType = encryptionType;
+        this.encryptionType = encryptionType;
   }
 }

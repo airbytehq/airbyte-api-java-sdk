@@ -27,9 +27,8 @@ public class SourceSlackCredentialsAPIToken {
         return this;
     }
     
-
     public SourceSlackCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("option_title") SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle) {
-    this.apiToken = apiToken;
-this.optionTitle = optionTitle;
+        this.apiToken = apiToken;
+        this.optionTitle = optionTitle;
   }
 }

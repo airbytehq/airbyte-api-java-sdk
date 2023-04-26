@@ -44,10 +44,9 @@ public class SourceRecharge {
         return this;
     }
     
-
     public SourceRecharge(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceRechargeRechargeEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.accessToken = accessToken;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.accessToken = accessToken;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

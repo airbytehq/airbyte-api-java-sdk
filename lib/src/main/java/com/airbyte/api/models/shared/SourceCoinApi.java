@@ -100,13 +100,12 @@ public class SourceCoinApi {
         return this;
     }
     
-
     public SourceCoinApi(@JsonProperty("api_key") String apiKey, @JsonProperty("environment") SourceCoinApiEnvironmentEnum environment, @JsonProperty("period") String period, @JsonProperty("sourceType") SourceCoinApiCoinApiEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("symbol_id") String symbolId) {
-    this.apiKey = apiKey;
-this.environment = environment;
-this.period = period;
-this.sourceType = sourceType;
-this.startDate = startDate;
-this.symbolId = symbolId;
+        this.apiKey = apiKey;
+        this.environment = environment;
+        this.period = period;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.symbolId = symbolId;
   }
 }

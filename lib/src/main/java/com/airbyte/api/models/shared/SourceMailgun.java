@@ -58,9 +58,8 @@ public class SourceMailgun {
         return this;
     }
     
-
     public SourceMailgun(@JsonProperty("private_key") String privateKey, @JsonProperty("sourceType") SourceMailgunMailgunEnum sourceType) {
-    this.privateKey = privateKey;
-this.sourceType = sourceType;
+        this.privateKey = privateKey;
+        this.sourceType = sourceType;
   }
 }

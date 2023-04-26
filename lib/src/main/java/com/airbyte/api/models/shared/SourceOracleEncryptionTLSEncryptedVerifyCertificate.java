@@ -27,9 +27,8 @@ public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
         return this;
     }
     
-
     public SourceOracleEncryptionTLSEncryptedVerifyCertificate(@JsonProperty("encryption_method") SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethodEnum encryptionMethod, @JsonProperty("ssl_certificate") String sslCertificate) {
-    this.encryptionMethod = encryptionMethod;
-this.sslCertificate = sslCertificate;
+        this.encryptionMethod = encryptionMethod;
+        this.sslCertificate = sslCertificate;
   }
 }

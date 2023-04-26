@@ -27,8 +27,7 @@ public class SourceGitlabCredentialsPrivateToken {
         return this;
     }
     
-
     public SourceGitlabCredentialsPrivateToken(@JsonProperty("access_token") String accessToken) {
-    this.accessToken = accessToken;
+        this.accessToken = accessToken;
   }
 }

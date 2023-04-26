@@ -70,12 +70,11 @@ public class DestinationDynamodb {
         return this;
     }
     
-
     public DestinationDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("destinationType") DestinationDynamodbDynamodbEnum destinationType, @JsonProperty("dynamodb_region") DestinationDynamodbDynamoDBRegionEnum dynamodbRegion, @JsonProperty("dynamodb_table_name_prefix") String dynamodbTableNamePrefix, @JsonProperty("secret_access_key") String secretAccessKey) {
-    this.accessKeyId = accessKeyId;
-this.destinationType = destinationType;
-this.dynamodbRegion = dynamodbRegion;
-this.dynamodbTableNamePrefix = dynamodbTableNamePrefix;
-this.secretAccessKey = secretAccessKey;
+        this.accessKeyId = accessKeyId;
+        this.destinationType = destinationType;
+        this.dynamodbRegion = dynamodbRegion;
+        this.dynamodbTableNamePrefix = dynamodbTableNamePrefix;
+        this.secretAccessKey = secretAccessKey;
   }
 }
