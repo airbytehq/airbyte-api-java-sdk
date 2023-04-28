@@ -20,6 +20,5 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP {
         return this;
     }
     
-
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP(){}
 }

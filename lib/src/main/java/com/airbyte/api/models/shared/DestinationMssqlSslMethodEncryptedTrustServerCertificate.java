@@ -17,8 +17,7 @@ public class DestinationMssqlSslMethodEncryptedTrustServerCertificate {
         return this;
     }
     
-
     public DestinationMssqlSslMethodEncryptedTrustServerCertificate(@JsonProperty("ssl_method") DestinationMssqlSslMethodEncryptedTrustServerCertificateSslMethodEnum sslMethod) {
-    this.sslMethod = sslMethod;
+        this.sslMethod = sslMethod;
   }
 }

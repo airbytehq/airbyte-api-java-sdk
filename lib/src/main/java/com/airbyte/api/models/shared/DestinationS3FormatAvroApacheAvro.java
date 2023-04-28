@@ -27,9 +27,8 @@ public class DestinationS3FormatAvroApacheAvro {
         return this;
     }
     
-
     public DestinationS3FormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType) {
-    this.compressionCodec = compressionCodec;
-this.formatType = formatType;
+        this.compressionCodec = compressionCodec;
+        this.formatType = formatType;
   }
 }

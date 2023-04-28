@@ -49,8 +49,7 @@ public class SourceOkta {
         return this;
     }
     
-
     public SourceOkta(@JsonProperty("sourceType") SourceOktaOktaEnum sourceType) {
-    this.sourceType = sourceType;
+        this.sourceType = sourceType;
   }
 }

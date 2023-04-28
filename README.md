@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.2.1'
+implementation 'com.airbyte.api:public-api:0.5.0'
 ```
 <!-- End SDK Installation -->
 
@@ -31,16 +31,16 @@ implementation 'com.airbyte.api:public-api:0.2.1'
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
-import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionScheduleCreate;
-import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
-import com.airbyte.api.models.shared.GeographyEnumEnum;
-import com.airbyte.api.models.shared.StreamConfigurations;
-import com.airbyte.api.models.shared.StreamConfiguration;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
+import com.airbyte.api.models.shared.GeographyEnumEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.StreamConfigurations;
 
 public class Application {
     public static void main(String[] args) {
@@ -52,21 +52,91 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("9bd9d8d6-9a67-44e0-b467-cc8796ed151a", "05dfc2dd-f7cc-478c-a1ba-928fc816742c") {{
-                dataResidency = "us";
+                configurations = new StreamConfigurations() {{
+                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
+                        add(new StreamConfiguration("saepe") {{
+                            cursorField = new String[]{{
+                                add("ipsum"),
+                                add("excepturi"),
+                            }};
+                            name = "Dorothy Hane";
+                            primaryKey = new String[][]{{
+                                add(new String[]{{
+                                    add("natus"),
+                                }}),
+                                add(new String[]{{
+                                    add("hic"),
+                                    add("saepe"),
+                                }}),
+                                add(new String[]{{
+                                    add("in"),
+                                    add("corporis"),
+                                    add("iste"),
+                                }}),
+                            }};
+                            syncMode = ConnectionSyncModeEnumEnum.FULL_REFRESH_APPEND;
+                        }}),
+                        add(new StreamConfiguration("excepturi") {{
+                            cursorField = new String[]{{
+                                add("architecto"),
+                                add("ipsa"),
+                                add("reiciendis"),
+                            }};
+                            name = "Shaun Osinski";
+                            primaryKey = new String[][]{{
+                                add(new String[]{{
+                                    add("nobis"),
+                                }}),
+                                add(new String[]{{
+                                    add("omnis"),
+                                    add("nemo"),
+                                }}),
+                            }};
+                            syncMode = ConnectionSyncModeEnumEnum.FULL_REFRESH_APPEND;
+                        }}),
+                        add(new StreamConfiguration("quia") {{
+                            cursorField = new String[]{{
+                                add("iure"),
+                            }};
+                            name = "Miss Aubrey Williamson";
+                            primaryKey = new String[][]{{
+                                add(new String[]{{
+                                    add("repellat"),
+                                }}),
+                                add(new String[]{{
+                                    add("occaecati"),
+                                    add("numquam"),
+                                    add("commodi"),
+                                }}),
+                                add(new String[]{{
+                                    add("molestiae"),
+                                    add("velit"),
+                                }}),
+                            }};
+                            syncMode = ConnectionSyncModeEnumEnum.INCREMENTAL_APPEND;
+                        }}),
+                    }};
+                }};;
+                dataResidency = GeographyEnumEnum.US;
                 name = "Kayla O'Kon";
-                namespaceDefinition = "custom_format";
+                namespaceDefinition = ConnectionCreateRequestNamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 prefix = "sequi";
+                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.CRON) {{
+                    cronExpression = "ipsam";
+                }};;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
 
-            if (res.connectionResponse.isPresent()) {
+            if (res.connectionResponse != null) {
                 // handle response
             }
         } catch (Exception e) {
             // handle exception
         }
+    }
+}
 ```
 <!-- End SDK Example Usage -->
 
@@ -74,45 +144,45 @@ public class Application {
 ## Available Resources and Operations
 
 
-### connections
+### [connections](docs/connections/README.md)
 
-* `createConnection` - Create a connection
-* `deleteConnection` - Delete a Connection
-* `getConnection` - Get Connection details
-* `listConnections` - List connections
+* [createConnection](docs/connections/README.md#createconnection) - Create a connection
+* [deleteConnection](docs/connections/README.md#deleteconnection) - Delete a Connection
+* [getConnection](docs/connections/README.md#getconnection) - Get Connection details
+* [listConnections](docs/connections/README.md#listconnections) - List connections
 
-### destinations
+### [destinations](docs/destinations/README.md)
 
-* `createDestination` - Create a destination
-* `deleteDestination` - Delete a Destination
-* `getDestination` - Get Destination details
-* `listDestinations` - List destinations
+* [createDestination](docs/destinations/README.md#createdestination) - Create a destination
+* [deleteDestination](docs/destinations/README.md#deletedestination) - Delete a Destination
+* [getDestination](docs/destinations/README.md#getdestination) - Get Destination details
+* [listDestinations](docs/destinations/README.md#listdestinations) - List destinations
 
-### jobs
+### [jobs](docs/jobs/README.md)
 
-* `cancelJob` - Cancel a running Job
-* `createJob` - Trigger a sync or reset job of a connection
-* `getJob` - Get Job status and details
-* `listJobs` - List Jobs by sync type
+* [cancelJob](docs/jobs/README.md#canceljob) - Cancel a running Job
+* [createJob](docs/jobs/README.md#createjob) - Trigger a sync or reset job of a connection
+* [getJob](docs/jobs/README.md#getjob) - Get Job status and details
+* [listJobs](docs/jobs/README.md#listjobs) - List Jobs by sync type
 
-### sources
+### [sources](docs/sources/README.md)
 
-* `createSource` - Create a source
-* `deleteSource` - Delete a Source
-* `getSource` - Get Source details
-* `initiateOAuth` - Initiate OAuth for a source
-* `listSources` - List sources
+* [createSource](docs/sources/README.md#createsource) - Create a source
+* [deleteSource](docs/sources/README.md#deletesource) - Delete a Source
+* [getSource](docs/sources/README.md#getsource) - Get Source details
+* [initiateOAuth](docs/sources/README.md#initiateoauth) - Initiate OAuth for a source
+* [listSources](docs/sources/README.md#listsources) - List sources
 
-### streams
+### [streams](docs/streams/README.md)
 
-* `getStreamProperties` - Get stream properties
+* [getStreamProperties](docs/streams/README.md#getstreamproperties) - Get stream properties
 
-### workspaces
+### [workspaces](docs/workspaces/README.md)
 
-* `createOrUpdateWorkspaceOAuthCredentials` - Create OAuth override credentials for a workspace and source type.
-* `createWorkspace` - Create a workspace
-* `getWorkspace` - Get Workspace details
-* `listWorkspaces` - List workspaces
+* [createOrUpdateWorkspaceOAuthCredentials](docs/workspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
+* [createWorkspace](docs/workspaces/README.md#createworkspace) - Create a workspace
+* [getWorkspace](docs/workspaces/README.md#getworkspace) - Get Workspace details
+* [listWorkspaces](docs/workspaces/README.md#listworkspaces) - List workspaces
 <!-- End SDK Available Operations -->
 
 ### Maturity

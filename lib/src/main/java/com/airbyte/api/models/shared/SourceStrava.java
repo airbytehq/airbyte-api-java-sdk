@@ -84,13 +84,12 @@ public class SourceStrava {
         return this;
     }
     
-
     public SourceStrava(@JsonProperty("athlete_id") Long athleteId, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceStravaStravaEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.athleteId = athleteId;
-this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.refreshToken = refreshToken;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.athleteId = athleteId;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

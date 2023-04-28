@@ -20,6 +20,5 @@ public class DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompression 
         return this;
     }
     
-
     public DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompression(){}
 }

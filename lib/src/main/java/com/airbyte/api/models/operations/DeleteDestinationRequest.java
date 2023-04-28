@@ -15,8 +15,7 @@ public class DeleteDestinationRequest {
         return this;
     }
     
-
     public DeleteDestinationRequest(@JsonProperty("destinationId") String destinationId) {
-    this.destinationId = destinationId;
+        this.destinationId = destinationId;
   }
 }

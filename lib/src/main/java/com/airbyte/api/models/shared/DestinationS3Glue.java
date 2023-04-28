@@ -134,14 +134,13 @@ public class DestinationS3Glue {
         return this;
     }
     
-
     public DestinationS3Glue(@JsonProperty("destinationType") DestinationS3GlueS3GlueEnum destinationType, @JsonProperty("format") Object format, @JsonProperty("glue_database") String glueDatabase, @JsonProperty("glue_serialization_library") DestinationS3GlueSerializationLibraryEnum glueSerializationLibrary, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3GlueS3BucketRegionEnum s3BucketRegion) {
-    this.destinationType = destinationType;
-this.format = format;
-this.glueDatabase = glueDatabase;
-this.glueSerializationLibrary = glueSerializationLibrary;
-this.s3BucketName = s3BucketName;
-this.s3BucketPath = s3BucketPath;
-this.s3BucketRegion = s3BucketRegion;
+        this.destinationType = destinationType;
+        this.format = format;
+        this.glueDatabase = glueDatabase;
+        this.glueSerializationLibrary = glueSerializationLibrary;
+        this.s3BucketName = s3BucketName;
+        this.s3BucketPath = s3BucketPath;
+        this.s3BucketRegion = s3BucketRegion;
   }
 }

@@ -17,8 +17,7 @@ public class SourceWhiskyHunter {
         return this;
     }
     
-
     public SourceWhiskyHunter(@JsonProperty("sourceType") SourceWhiskyHunterWhiskyHunterEnum sourceType) {
-    this.sourceType = sourceType;
+        this.sourceType = sourceType;
   }
 }

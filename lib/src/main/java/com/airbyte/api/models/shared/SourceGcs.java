@@ -47,11 +47,10 @@ public class SourceGcs {
         return this;
     }
     
-
     public SourceGcs(@JsonProperty("gcs_bucket") String gcsBucket, @JsonProperty("gcs_path") String gcsPath, @JsonProperty("service_account") String serviceAccount, @JsonProperty("sourceType") SourceGcsGcsEnum sourceType) {
-    this.gcsBucket = gcsBucket;
-this.gcsPath = gcsPath;
-this.serviceAccount = serviceAccount;
-this.sourceType = sourceType;
+        this.gcsBucket = gcsBucket;
+        this.gcsPath = gcsPath;
+        this.serviceAccount = serviceAccount;
+        this.sourceType = sourceType;
   }
 }

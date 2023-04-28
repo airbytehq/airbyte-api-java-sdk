@@ -60,11 +60,10 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
         return this;
     }
     
-
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging(@JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("azure_blob_storage_sas_token") String azureBlobStorageSasToken, @JsonProperty("method") DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum method) {
-    this.azureBlobStorageAccountName = azureBlobStorageAccountName;
-this.azureBlobStorageContainerName = azureBlobStorageContainerName;
-this.azureBlobStorageSasToken = azureBlobStorageSasToken;
-this.method = method;
+        this.azureBlobStorageAccountName = azureBlobStorageAccountName;
+        this.azureBlobStorageContainerName = azureBlobStorageContainerName;
+        this.azureBlobStorageSasToken = azureBlobStorageSasToken;
+        this.method = method;
   }
 }

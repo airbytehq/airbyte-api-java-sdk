@@ -17,8 +17,7 @@ public class DestinationSnowflakeLoadingMethodSelectAnotherOption {
         return this;
     }
     
-
     public DestinationSnowflakeLoadingMethodSelectAnotherOption(@JsonProperty("method") DestinationSnowflakeLoadingMethodSelectAnotherOptionMethodEnum method) {
-    this.method = method;
+        this.method = method;
   }
 }

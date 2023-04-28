@@ -40,9 +40,8 @@ public class SourceTiktokMarketingCredentialsSandboxAccessToken {
         return this;
     }
     
-
     public SourceTiktokMarketingCredentialsSandboxAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("advertiser_id") String advertiserId) {
-    this.accessToken = accessToken;
-this.advertiserId = advertiserId;
+        this.accessToken = accessToken;
+        this.advertiserId = advertiserId;
   }
 }

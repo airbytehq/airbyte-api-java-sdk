@@ -41,8 +41,7 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
         return this;
     }
     
-
     public DestinationGcsFormatCSVCommaSeparatedValues(@JsonProperty("format_type") DestinationGcsFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
-    this.formatType = formatType;
+        this.formatType = formatType;
   }
 }

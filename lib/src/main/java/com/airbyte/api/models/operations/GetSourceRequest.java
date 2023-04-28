@@ -15,8 +15,7 @@ public class GetSourceRequest {
         return this;
     }
     
-
     public GetSourceRequest(@JsonProperty("sourceId") String sourceId) {
-    this.sourceId = sourceId;
+        this.sourceId = sourceId;
   }
 }

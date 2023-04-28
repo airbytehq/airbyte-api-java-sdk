@@ -35,8 +35,7 @@ public class SourceSpacexApi {
         return this;
     }
     
-
     public SourceSpacexApi(@JsonProperty("sourceType") SourceSpacexApiSpacexApiEnum sourceType) {
-    this.sourceType = sourceType;
+        this.sourceType = sourceType;
   }
 }

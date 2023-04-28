@@ -17,8 +17,7 @@ public class SourcePostgresReplicationMethodStandard {
         return this;
     }
     
-
     public SourcePostgresReplicationMethodStandard(@JsonProperty("method") SourcePostgresReplicationMethodStandardMethodEnum method) {
-    this.method = method;
+        this.method = method;
   }
 }

@@ -30,8 +30,7 @@ public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
-
     public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcardEnum formatType) {
-    this.formatType = formatType;
+        this.formatType = formatType;
   }
 }

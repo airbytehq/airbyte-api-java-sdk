@@ -141,14 +141,13 @@ public class SourceSftpBulk {
         return this;
     }
     
-
     public SourceSftpBulk(@JsonProperty("folder_path") String folderPath, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpBulkSftpBulkEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("stream_name") String streamName, @JsonProperty("username") String username) {
-    this.folderPath = folderPath;
-this.host = host;
-this.port = port;
-this.sourceType = sourceType;
-this.startDate = startDate;
-this.streamName = streamName;
-this.username = username;
+        this.folderPath = folderPath;
+        this.host = host;
+        this.port = port;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.streamName = streamName;
+        this.username = username;
   }
 }

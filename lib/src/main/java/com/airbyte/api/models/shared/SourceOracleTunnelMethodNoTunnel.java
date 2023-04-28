@@ -20,8 +20,7 @@ public class SourceOracleTunnelMethodNoTunnel {
         return this;
     }
     
-
     public SourceOracleTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceOracleTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
-    this.tunnelMethod = tunnelMethod;
+        this.tunnelMethod = tunnelMethod;
   }
 }

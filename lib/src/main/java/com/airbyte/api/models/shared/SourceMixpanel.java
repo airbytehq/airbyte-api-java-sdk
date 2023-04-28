@@ -127,8 +127,7 @@ public class SourceMixpanel {
         return this;
     }
     
-
     public SourceMixpanel(@JsonProperty("sourceType") SourceMixpanelMixpanelEnum sourceType) {
-    this.sourceType = sourceType;
+        this.sourceType = sourceType;
   }
 }

@@ -27,9 +27,8 @@ public class SourceDockerhub {
         return this;
     }
     
-
     public SourceDockerhub(@JsonProperty("docker_username") String dockerUsername, @JsonProperty("sourceType") SourceDockerhubDockerhubEnum sourceType) {
-    this.dockerUsername = dockerUsername;
-this.sourceType = sourceType;
+        this.dockerUsername = dockerUsername;
+        this.sourceType = sourceType;
   }
 }

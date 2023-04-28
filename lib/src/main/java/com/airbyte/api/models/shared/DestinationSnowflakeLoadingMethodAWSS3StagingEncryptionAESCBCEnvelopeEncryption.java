@@ -30,8 +30,7 @@ public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelo
         return this;
     }
     
-
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption(@JsonProperty("encryption_type") DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType) {
-    this.encryptionType = encryptionType;
+        this.encryptionType = encryptionType;
   }
 }

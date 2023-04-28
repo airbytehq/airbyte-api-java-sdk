@@ -27,9 +27,8 @@ public class SourceTodoist {
         return this;
     }
     
-
     public SourceTodoist(@JsonProperty("sourceType") SourceTodoistTodoistEnum sourceType, @JsonProperty("token") String token) {
-    this.sourceType = sourceType;
-this.token = token;
+        this.sourceType = sourceType;
+        this.token = token;
   }
 }

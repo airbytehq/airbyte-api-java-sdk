@@ -34,10 +34,9 @@ public class SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticati
         return this;
     }
     
-
     public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication(@JsonProperty("auth_type") SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthTypeEnum authType, @JsonProperty("email") String email, @JsonProperty("service_account_info") String serviceAccountInfo) {
-    this.authType = authType;
-this.email = email;
-this.serviceAccountInfo = serviceAccountInfo;
+        this.authType = authType;
+        this.email = email;
+        this.serviceAccountInfo = serviceAccountInfo;
   }
 }

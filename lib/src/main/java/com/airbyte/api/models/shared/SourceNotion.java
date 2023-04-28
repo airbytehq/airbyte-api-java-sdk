@@ -47,9 +47,8 @@ public class SourceNotion {
         return this;
     }
     
-
     public SourceNotion(@JsonProperty("sourceType") SourceNotionNotionEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.sourceType = sourceType;
-this.startDate = startDate;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

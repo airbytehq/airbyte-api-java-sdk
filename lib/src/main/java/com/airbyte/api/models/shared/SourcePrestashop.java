@@ -50,11 +50,10 @@ public class SourcePrestashop {
         return this;
     }
     
-
     public SourcePrestashop(@JsonProperty("access_key") String accessKey, @JsonProperty("sourceType") SourcePrestashopPrestashopEnum sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("url") String url) {
-    this.accessKey = accessKey;
-this.sourceType = sourceType;
-this.startDate = startDate;
-this.url = url;
+        this.accessKey = accessKey;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.url = url;
   }
 }

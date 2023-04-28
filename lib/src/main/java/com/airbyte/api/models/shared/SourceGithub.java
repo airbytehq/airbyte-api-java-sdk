@@ -79,10 +79,9 @@ public class SourceGithub {
         return this;
     }
     
-
     public SourceGithub(@JsonProperty("repository") String repository, @JsonProperty("sourceType") SourceGithubGithubEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.repository = repository;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.repository = repository;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

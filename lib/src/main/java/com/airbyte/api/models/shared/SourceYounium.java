@@ -60,11 +60,10 @@ public class SourceYounium {
         return this;
     }
     
-
     public SourceYounium(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("legal_entity") String legalEntity, @JsonProperty("sourceType") SourceYouniumYouniumEnum sourceType) {
-    this.username = username;
-this.password = password;
-this.legalEntity = legalEntity;
-this.sourceType = sourceType;
+        this.username = username;
+        this.password = password;
+        this.legalEntity = legalEntity;
+        this.sourceType = sourceType;
   }
 }

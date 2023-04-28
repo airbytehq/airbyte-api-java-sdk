@@ -24,9 +24,8 @@ public class SourceSalesloftCredentialsAuthenticateViaAPIKey {
         return this;
     }
     
-
     public SourceSalesloftCredentialsAuthenticateViaAPIKey(@JsonProperty("api_key") String apiKey, @JsonProperty("auth_type") SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthTypeEnum authType) {
-    this.apiKey = apiKey;
-this.authType = authType;
+        this.apiKey = apiKey;
+        this.authType = authType;
   }
 }

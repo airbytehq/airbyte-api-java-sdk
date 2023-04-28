@@ -57,10 +57,9 @@ public class SourceTypeform {
         return this;
     }
     
-
     public SourceTypeform(@JsonProperty("sourceType") SourceTypeformTypeformEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
-    this.sourceType = sourceType;
-this.startDate = startDate;
-this.token = token;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.token = token;
   }
 }

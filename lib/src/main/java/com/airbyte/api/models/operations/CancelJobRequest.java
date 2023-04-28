@@ -15,8 +15,7 @@ public class CancelJobRequest {
         return this;
     }
     
-
     public CancelJobRequest(@JsonProperty("jobId") Long jobId) {
-    this.jobId = jobId;
+        this.jobId = jobId;
   }
 }

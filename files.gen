@@ -1098,4 +1098,11 @@ lib/src/main/java/com/airbyte/api/models/shared/WorkspaceResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceCreateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspacesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/Security.java
+docs/airbyte/README.md
+docs/connections/README.md
+docs/destinations/README.md
+docs/jobs/README.md
+docs/sources/README.md
+docs/streams/README.md
+docs/workspaces/README.md
 USAGE.md

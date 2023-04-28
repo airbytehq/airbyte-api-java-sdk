@@ -27,9 +27,8 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecXz {
         return this;
     }
     
-
     public DestinationS3FormatAvroApacheAvroCompressionCodecXz(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecXzCodecEnum codec, @JsonProperty("compression_level") Long compressionLevel) {
-    this.codec = codec;
-this.compressionLevel = compressionLevel;
+        this.codec = codec;
+        this.compressionLevel = compressionLevel;
   }
 }

@@ -77,12 +77,11 @@ public class SourceBraintree {
         return this;
     }
     
-
     public SourceBraintree(@JsonProperty("environment") SourceBraintreeEnvironmentEnum environment, @JsonProperty("merchant_id") String merchantId, @JsonProperty("private_key") String privateKey, @JsonProperty("public_key") String publicKey, @JsonProperty("sourceType") SourceBraintreeBraintreeEnum sourceType) {
-    this.environment = environment;
-this.merchantId = merchantId;
-this.privateKey = privateKey;
-this.publicKey = publicKey;
-this.sourceType = sourceType;
+        this.environment = environment;
+        this.merchantId = merchantId;
+        this.privateKey = privateKey;
+        this.publicKey = publicKey;
+        this.sourceType = sourceType;
   }
 }

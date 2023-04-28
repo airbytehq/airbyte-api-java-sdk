@@ -49,8 +49,7 @@ public class StreamConfiguration {
         return this;
     }
     
-
     public StreamConfiguration(@JsonProperty("name") String name) {
-    this.name = name;
+        this.name = name;
   }
 }

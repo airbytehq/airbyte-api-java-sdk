@@ -31,10 +31,9 @@ public class JobsResponse {
         return this;
     }
     
-
     public JobsResponse(@JsonProperty("data") JobResponse[] data, @JsonProperty("next") String next, @JsonProperty("previous") String previous) {
-    this.data = data;
-this.next = next;
-this.previous = previous;
+        this.data = data;
+        this.next = next;
+        this.previous = previous;
   }
 }

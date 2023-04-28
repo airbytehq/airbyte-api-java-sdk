@@ -50,10 +50,9 @@ public class SourcePunkApi {
         return this;
     }
     
-
     public SourcePunkApi(@JsonProperty("brewed_after") String brewedAfter, @JsonProperty("brewed_before") String brewedBefore, @JsonProperty("sourceType") SourcePunkApiPunkApiEnum sourceType) {
-    this.brewedAfter = brewedAfter;
-this.brewedBefore = brewedBefore;
-this.sourceType = sourceType;
+        this.brewedAfter = brewedAfter;
+        this.brewedBefore = brewedBefore;
+        this.sourceType = sourceType;
   }
 }

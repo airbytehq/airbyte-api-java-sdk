@@ -75,11 +75,10 @@ public class SourceNytimes {
         return this;
     }
     
-
     public SourceNytimes(@JsonProperty("api_key") String apiKey, @JsonProperty("period") SourceNytimesPeriodUsedForMostPopularStreamsEnum period, @JsonProperty("sourceType") SourceNytimesNytimesEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
-    this.apiKey = apiKey;
-this.period = period;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.apiKey = apiKey;
+        this.period = period;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

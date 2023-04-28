@@ -37,10 +37,9 @@ public class DestinationGoogleSheets {
         return this;
     }
     
-
     public DestinationGoogleSheets(@JsonProperty("credentials") DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials, @JsonProperty("destinationType") DestinationGoogleSheetsGoogleSheetsEnum destinationType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
-    this.credentials = credentials;
-this.destinationType = destinationType;
-this.spreadsheetId = spreadsheetId;
+        this.credentials = credentials;
+        this.destinationType = destinationType;
+        this.spreadsheetId = spreadsheetId;
   }
 }

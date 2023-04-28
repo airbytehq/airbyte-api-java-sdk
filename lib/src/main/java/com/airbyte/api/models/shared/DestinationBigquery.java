@@ -93,11 +93,10 @@ public class DestinationBigquery {
         return this;
     }
     
-
     public DestinationBigquery(@JsonProperty("dataset_id") String datasetId, @JsonProperty("dataset_location") DestinationBigqueryDatasetLocationEnum datasetLocation, @JsonProperty("destinationType") DestinationBigqueryBigqueryEnum destinationType, @JsonProperty("project_id") String projectId) {
-    this.datasetId = datasetId;
-this.datasetLocation = datasetLocation;
-this.destinationType = destinationType;
-this.projectId = projectId;
+        this.datasetId = datasetId;
+        this.datasetLocation = datasetLocation;
+        this.destinationType = destinationType;
+        this.projectId = projectId;
   }
 }

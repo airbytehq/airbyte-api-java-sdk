@@ -92,12 +92,11 @@ public class DestinationMariadbColumnstore {
         return this;
     }
     
-
     public DestinationMariadbColumnstore(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMariadbColumnstoreMariadbColumnstoreEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
-    this.database = database;
-this.destinationType = destinationType;
-this.host = host;
-this.port = port;
-this.username = username;
+        this.database = database;
+        this.destinationType = destinationType;
+        this.host = host;
+        this.port = port;
+        this.username = username;
   }
 }

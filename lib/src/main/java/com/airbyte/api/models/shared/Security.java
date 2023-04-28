@@ -15,8 +15,7 @@ public class Security {
         return this;
     }
     
-
     public Security(@JsonProperty("bearerAuth") String bearerAuth) {
-    this.bearerAuth = bearerAuth;
+        this.bearerAuth = bearerAuth;
   }
 }

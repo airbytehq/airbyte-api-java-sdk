@@ -24,9 +24,8 @@ public class SourceMailchimpCredentialsAPIKey {
         return this;
     }
     
-
     public SourceMailchimpCredentialsAPIKey(@JsonProperty("apikey") String apikey, @JsonProperty("auth_type") SourceMailchimpCredentialsAPIKeyAuthTypeEnum authType) {
-    this.apikey = apikey;
-this.authType = authType;
+        this.apikey = apikey;
+        this.authType = authType;
   }
 }

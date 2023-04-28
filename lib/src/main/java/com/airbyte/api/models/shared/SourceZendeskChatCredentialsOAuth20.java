@@ -60,8 +60,7 @@ public class SourceZendeskChatCredentialsOAuth20 {
         return this;
     }
     
-
     public SourceZendeskChatCredentialsOAuth20(@JsonProperty("credentials") SourceZendeskChatCredentialsOAuth20CredentialsEnum credentials) {
-    this.credentials = credentials;
+        this.credentials = credentials;
   }
 }

@@ -77,14 +77,13 @@ public class DestinationKinesis {
         return this;
     }
     
-
     public DestinationKinesis(@JsonProperty("accessKey") String accessKey, @JsonProperty("bufferSize") Long bufferSize, @JsonProperty("destinationType") DestinationKinesisKinesisEnum destinationType, @JsonProperty("endpoint") String endpoint, @JsonProperty("privateKey") String privateKey, @JsonProperty("region") String region, @JsonProperty("shardCount") Long shardCount) {
-    this.accessKey = accessKey;
-this.bufferSize = bufferSize;
-this.destinationType = destinationType;
-this.endpoint = endpoint;
-this.privateKey = privateKey;
-this.region = region;
-this.shardCount = shardCount;
+        this.accessKey = accessKey;
+        this.bufferSize = bufferSize;
+        this.destinationType = destinationType;
+        this.endpoint = endpoint;
+        this.privateKey = privateKey;
+        this.region = region;
+        this.shardCount = shardCount;
   }
 }

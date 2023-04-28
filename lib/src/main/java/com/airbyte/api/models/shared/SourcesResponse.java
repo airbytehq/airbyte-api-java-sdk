@@ -31,10 +31,9 @@ public class SourcesResponse {
         return this;
     }
     
-
     public SourcesResponse(@JsonProperty("data") SourceResponse[] data, @JsonProperty("next") String next, @JsonProperty("previous") String previous) {
-    this.data = data;
-this.next = next;
-this.previous = previous;
+        this.data = data;
+        this.next = next;
+        this.previous = previous;
   }
 }

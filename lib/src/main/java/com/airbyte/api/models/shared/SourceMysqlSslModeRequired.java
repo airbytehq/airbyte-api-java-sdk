@@ -17,8 +17,7 @@ public class SourceMysqlSslModeRequired {
         return this;
     }
     
-
     public SourceMysqlSslModeRequired(@JsonProperty("mode") SourceMysqlSslModeRequiredModeEnum mode) {
-    this.mode = mode;
+        this.mode = mode;
   }
 }

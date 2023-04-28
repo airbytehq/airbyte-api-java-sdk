@@ -103,12 +103,11 @@ public class DestinationOracle {
         return this;
     }
     
-
     public DestinationOracle(@JsonProperty("destinationType") DestinationOracleOracleEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sid") String sid, @JsonProperty("username") String username) {
-    this.destinationType = destinationType;
-this.host = host;
-this.port = port;
-this.sid = sid;
-this.username = username;
+        this.destinationType = destinationType;
+        this.host = host;
+        this.port = port;
+        this.sid = sid;
+        this.username = username;
   }
 }

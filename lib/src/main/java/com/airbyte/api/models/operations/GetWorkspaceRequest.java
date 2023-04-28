@@ -15,8 +15,7 @@ public class GetWorkspaceRequest {
         return this;
     }
     
-
     public GetWorkspaceRequest(@JsonProperty("workspaceId") String workspaceId) {
-    this.workspaceId = workspaceId;
+        this.workspaceId = workspaceId;
   }
 }

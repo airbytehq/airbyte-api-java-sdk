@@ -60,11 +60,10 @@ public class SourceMyHours {
         return this;
     }
     
-
     public SourceMyHours(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("sourceType") SourceMyHoursMyHoursEnum sourceType, @JsonProperty("start_date") String startDate) {
-    this.email = email;
-this.password = password;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.email = email;
+        this.password = password;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

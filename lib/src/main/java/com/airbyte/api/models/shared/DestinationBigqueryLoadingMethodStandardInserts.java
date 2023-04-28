@@ -17,8 +17,7 @@ public class DestinationBigqueryLoadingMethodStandardInserts {
         return this;
     }
     
-
     public DestinationBigqueryLoadingMethodStandardInserts(@JsonProperty("method") DestinationBigqueryLoadingMethodStandardInsertsMethodEnum method) {
-    this.method = method;
+        this.method = method;
   }
 }

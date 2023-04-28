@@ -34,10 +34,9 @@ public class SourceSnowflakeCredentialsUsernameAndPassword {
         return this;
     }
     
-
     public SourceSnowflakeCredentialsUsernameAndPassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("auth_type") SourceSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType) {
-    this.username = username;
-this.password = password;
-this.authType = authType;
+        this.username = username;
+        this.password = password;
+        this.authType = authType;
   }
 }

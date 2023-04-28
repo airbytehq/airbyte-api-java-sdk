@@ -27,8 +27,7 @@ public class DestinationSnowflakeCredentialsUsernameAndPassword {
         return this;
     }
     
-
     public DestinationSnowflakeCredentialsUsernameAndPassword(@JsonProperty("password") String password) {
-    this.password = password;
+        this.password = password;
   }
 }

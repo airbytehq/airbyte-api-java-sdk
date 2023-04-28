@@ -31,9 +31,8 @@ public class SourceOnesignalApplications {
         return this;
     }
     
-
     public SourceOnesignalApplications(@JsonProperty("app_api_key") String appApiKey, @JsonProperty("app_id") String appId) {
-    this.appApiKey = appApiKey;
-this.appId = appId;
+        this.appApiKey = appApiKey;
+        this.appId = appId;
   }
 }

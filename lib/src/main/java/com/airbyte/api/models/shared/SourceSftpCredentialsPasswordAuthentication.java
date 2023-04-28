@@ -30,9 +30,8 @@ public class SourceSftpCredentialsPasswordAuthentication {
         return this;
     }
     
-
     public SourceSftpCredentialsPasswordAuthentication(@JsonProperty("auth_method") SourceSftpCredentialsPasswordAuthenticationAuthMethodEnum authMethod, @JsonProperty("auth_user_password") String authUserPassword) {
-    this.authMethod = authMethod;
-this.authUserPassword = authUserPassword;
+        this.authMethod = authMethod;
+        this.authUserPassword = authUserPassword;
   }
 }

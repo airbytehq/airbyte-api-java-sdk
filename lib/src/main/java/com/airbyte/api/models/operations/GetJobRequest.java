@@ -15,8 +15,7 @@ public class GetJobRequest {
         return this;
     }
     
-
     public GetJobRequest(@JsonProperty("jobId") Long jobId) {
-    this.jobId = jobId;
+        this.jobId = jobId;
   }
 }

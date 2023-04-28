@@ -20,6 +20,5 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionNoCompre
         return this;
     }
     
-
     public DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionNoCompression(){}
 }

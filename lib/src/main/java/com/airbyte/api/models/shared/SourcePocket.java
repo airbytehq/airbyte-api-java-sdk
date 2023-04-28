@@ -138,10 +138,9 @@ public class SourcePocket {
         return this;
     }
     
-
     public SourcePocket(@JsonProperty("access_token") String accessToken, @JsonProperty("consumer_key") String consumerKey, @JsonProperty("sourceType") SourcePocketPocketEnum sourceType) {
-    this.accessToken = accessToken;
-this.consumerKey = consumerKey;
-this.sourceType = sourceType;
+        this.accessToken = accessToken;
+        this.consumerKey = consumerKey;
+        this.sourceType = sourceType;
   }
 }

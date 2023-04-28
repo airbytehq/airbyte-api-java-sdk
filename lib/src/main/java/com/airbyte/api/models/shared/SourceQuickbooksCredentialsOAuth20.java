@@ -84,13 +84,12 @@ public class SourceQuickbooksCredentialsOAuth20 {
         return this;
     }
     
-
     public SourceQuickbooksCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("realm_id") String realmId, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("token_expiry_date") OffsetDateTime tokenExpiryDate) {
-    this.accessToken = accessToken;
-this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.realmId = realmId;
-this.refreshToken = refreshToken;
-this.tokenExpiryDate = tokenExpiryDate;
+        this.accessToken = accessToken;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.realmId = realmId;
+        this.refreshToken = refreshToken;
+        this.tokenExpiryDate = tokenExpiryDate;
   }
 }

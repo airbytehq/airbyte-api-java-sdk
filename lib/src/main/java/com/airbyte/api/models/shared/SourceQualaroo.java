@@ -60,11 +60,10 @@ public class SourceQualaroo {
         return this;
     }
     
-
     public SourceQualaroo(@JsonProperty("key") String key, @JsonProperty("sourceType") SourceQualarooQualarooEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("token") String token) {
-    this.key = key;
-this.sourceType = sourceType;
-this.startDate = startDate;
-this.token = token;
+        this.key = key;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
+        this.token = token;
   }
 }

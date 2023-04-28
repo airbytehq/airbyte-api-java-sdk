@@ -17,8 +17,7 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecBzip2 {
         return this;
     }
     
-
     public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecBzip2CodecEnum codec) {
-    this.codec = codec;
+        this.codec = codec;
   }
 }

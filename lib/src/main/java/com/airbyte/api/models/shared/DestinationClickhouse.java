@@ -92,12 +92,11 @@ public class DestinationClickhouse {
         return this;
     }
     
-
     public DestinationClickhouse(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationClickhouseClickhouseEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
-    this.database = database;
-this.destinationType = destinationType;
-this.host = host;
-this.port = port;
-this.username = username;
+        this.database = database;
+        this.destinationType = destinationType;
+        this.host = host;
+        this.port = port;
+        this.username = username;
   }
 }

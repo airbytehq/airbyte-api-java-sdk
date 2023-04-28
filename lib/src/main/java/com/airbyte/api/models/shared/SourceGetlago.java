@@ -27,9 +27,8 @@ public class SourceGetlago {
         return this;
     }
     
-
     public SourceGetlago(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGetlagoGetlagoEnum sourceType) {
-    this.apiKey = apiKey;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.sourceType = sourceType;
   }
 }

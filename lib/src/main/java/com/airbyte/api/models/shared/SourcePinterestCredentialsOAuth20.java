@@ -48,9 +48,8 @@ public class SourcePinterestCredentialsOAuth20 {
         return this;
     }
     
-
     public SourcePinterestCredentialsOAuth20(@JsonProperty("auth_method") SourcePinterestCredentialsOAuth20AuthMethodEnum authMethod, @JsonProperty("refresh_token") String refreshToken) {
-    this.authMethod = authMethod;
-this.refreshToken = refreshToken;
+        this.authMethod = authMethod;
+        this.refreshToken = refreshToken;
   }
 }

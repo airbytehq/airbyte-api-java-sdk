@@ -17,8 +17,7 @@ public class DestinationSnowflakeLoadingMethodRecommendedInternalStaging {
         return this;
     }
     
-
     public DestinationSnowflakeLoadingMethodRecommendedInternalStaging(@JsonProperty("method") DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethodEnum method) {
-    this.method = method;
+        this.method = method;
   }
 }

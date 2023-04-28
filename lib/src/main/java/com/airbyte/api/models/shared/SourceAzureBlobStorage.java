@@ -92,12 +92,11 @@ public class SourceAzureBlobStorage {
         return this;
     }
     
-
     public SourceAzureBlobStorage(@JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey, @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("format") Object format, @JsonProperty("sourceType") SourceAzureBlobStorageAzureBlobStorageEnum sourceType) {
-    this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
-this.azureBlobStorageAccountName = azureBlobStorageAccountName;
-this.azureBlobStorageContainerName = azureBlobStorageContainerName;
-this.format = format;
-this.sourceType = sourceType;
+        this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
+        this.azureBlobStorageAccountName = azureBlobStorageAccountName;
+        this.azureBlobStorageContainerName = azureBlobStorageContainerName;
+        this.format = format;
+        this.sourceType = sourceType;
   }
 }

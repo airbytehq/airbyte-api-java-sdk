@@ -37,10 +37,9 @@ public class SourceConfigcat {
         return this;
     }
     
-
     public SourceConfigcat(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("sourceType") SourceConfigcatConfigcatEnum sourceType) {
-    this.username = username;
-this.password = password;
-this.sourceType = sourceType;
+        this.username = username;
+        this.password = password;
+        this.sourceType = sourceType;
   }
 }

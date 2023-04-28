@@ -50,10 +50,9 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
         return this;
     }
     
-
     public SourceE2eTestCloudMockCatalogSingleSchema(@JsonProperty("stream_name") String streamName, @JsonProperty("stream_schema") String streamSchema, @JsonProperty("type") SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type) {
-    this.streamName = streamName;
-this.streamSchema = streamSchema;
-this.type = type;
+        this.streamName = streamName;
+        this.streamSchema = streamSchema;
+        this.type = type;
   }
 }

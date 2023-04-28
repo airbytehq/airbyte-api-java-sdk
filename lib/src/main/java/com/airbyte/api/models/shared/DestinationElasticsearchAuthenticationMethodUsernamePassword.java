@@ -37,10 +37,9 @@ public class DestinationElasticsearchAuthenticationMethodUsernamePassword {
         return this;
     }
     
-
     public DestinationElasticsearchAuthenticationMethodUsernamePassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("method") DestinationElasticsearchAuthenticationMethodUsernamePasswordMethodEnum method) {
-    this.username = username;
-this.password = password;
-this.method = method;
+        this.username = username;
+        this.password = password;
+        this.method = method;
   }
 }

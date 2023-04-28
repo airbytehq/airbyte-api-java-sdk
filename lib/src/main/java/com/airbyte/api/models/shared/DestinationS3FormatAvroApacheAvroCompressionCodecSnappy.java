@@ -17,8 +17,7 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecSnappy {
         return this;
     }
     
-
     public DestinationS3FormatAvroApacheAvroCompressionCodecSnappy(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecSnappyCodecEnum codec) {
-    this.codec = codec;
+        this.codec = codec;
   }
 }

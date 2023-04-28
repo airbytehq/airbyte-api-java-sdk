@@ -97,11 +97,10 @@ public class SourceSalesforce {
         return this;
     }
     
-
     public SourceSalesforce(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSalesforceSalesforceEnum sourceType) {
-    this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.refreshToken = refreshToken;
-this.sourceType = sourceType;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
+        this.sourceType = sourceType;
   }
 }

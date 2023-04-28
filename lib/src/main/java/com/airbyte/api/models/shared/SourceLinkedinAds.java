@@ -51,9 +51,8 @@ public class SourceLinkedinAds {
         return this;
     }
     
-
     public SourceLinkedinAds(@JsonProperty("sourceType") SourceLinkedinAdsLinkedinAdsEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
-    this.sourceType = sourceType;
-this.startDate = startDate;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

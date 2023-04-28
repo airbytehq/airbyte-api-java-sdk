@@ -70,12 +70,11 @@ public class SourceFauna {
         return this;
     }
     
-
     public SourceFauna(@JsonProperty("domain") String domain, @JsonProperty("port") Long port, @JsonProperty("scheme") String scheme, @JsonProperty("secret") String secret, @JsonProperty("sourceType") SourceFaunaFaunaEnum sourceType) {
-    this.domain = domain;
-this.port = port;
-this.scheme = scheme;
-this.secret = secret;
-this.sourceType = sourceType;
+        this.domain = domain;
+        this.port = port;
+        this.scheme = scheme;
+        this.secret = secret;
+        this.sourceType = sourceType;
   }
 }

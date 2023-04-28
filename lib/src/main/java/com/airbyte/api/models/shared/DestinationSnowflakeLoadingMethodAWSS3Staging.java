@@ -93,11 +93,10 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
         return this;
     }
     
-
     public DestinationSnowflakeLoadingMethodAWSS3Staging(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("method") DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("secret_access_key") String secretAccessKey) {
-    this.accessKeyId = accessKeyId;
-this.method = method;
-this.s3BucketName = s3BucketName;
-this.secretAccessKey = secretAccessKey;
+        this.accessKeyId = accessKeyId;
+        this.method = method;
+        this.s3BucketName = s3BucketName;
+        this.secretAccessKey = secretAccessKey;
   }
 }

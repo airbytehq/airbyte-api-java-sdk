@@ -51,9 +51,8 @@ public class SourceMailjetSms {
         return this;
     }
     
-
     public SourceMailjetSms(@JsonProperty("sourceType") SourceMailjetSmsMailjetSmsEnum sourceType, @JsonProperty("token") String token) {
-    this.sourceType = sourceType;
-this.token = token;
+        this.sourceType = sourceType;
+        this.token = token;
   }
 }

@@ -52,8 +52,7 @@ public class SourceShopifyCredentialsOAuth20 {
         return this;
     }
     
-
     public SourceShopifyCredentialsOAuth20(@JsonProperty("auth_method") SourceShopifyCredentialsOAuth20AuthMethodEnum authMethod) {
-    this.authMethod = authMethod;
+        this.authMethod = authMethod;
   }
 }

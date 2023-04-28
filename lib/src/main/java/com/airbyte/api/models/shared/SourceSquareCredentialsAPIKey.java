@@ -30,8 +30,7 @@ public class SourceSquareCredentialsAPIKey {
         return this;
     }
     
-
     public SourceSquareCredentialsAPIKey(@JsonProperty("api_key") String apiKey) {
-    this.apiKey = apiKey;
+        this.apiKey = apiKey;
   }
 }

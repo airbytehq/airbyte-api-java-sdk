@@ -27,9 +27,8 @@ public class SourceEmailoctopus {
         return this;
     }
     
-
     public SourceEmailoctopus(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceEmailoctopusEmailoctopusEnum sourceType) {
-    this.apiKey = apiKey;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.sourceType = sourceType;
   }
 }

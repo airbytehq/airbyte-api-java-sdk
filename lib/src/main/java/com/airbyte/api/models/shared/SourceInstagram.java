@@ -44,10 +44,9 @@ public class SourceInstagram {
         return this;
     }
     
-
     public SourceInstagram(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceInstagramInstagramEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.accessToken = accessToken;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.accessToken = accessToken;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

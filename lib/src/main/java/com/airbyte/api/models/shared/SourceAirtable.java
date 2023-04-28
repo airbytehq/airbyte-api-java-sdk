@@ -27,8 +27,7 @@ public class SourceAirtable {
         return this;
     }
     
-
     public SourceAirtable(@JsonProperty("sourceType") SourceAirtableAirtableEnum sourceType) {
-    this.sourceType = sourceType;
+        this.sourceType = sourceType;
   }
 }

@@ -50,11 +50,10 @@ public class SourceHubspotCredentialsOAuth {
         return this;
     }
     
-
     public SourceHubspotCredentialsOAuth(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("credentials_title") SourceHubspotCredentialsOAuthCredentialsEnum credentialsTitle, @JsonProperty("refresh_token") String refreshToken) {
-    this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.credentialsTitle = credentialsTitle;
-this.refreshToken = refreshToken;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.credentialsTitle = credentialsTitle;
+        this.refreshToken = refreshToken;
   }
 }

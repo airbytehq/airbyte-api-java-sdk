@@ -50,10 +50,9 @@ public class SourceCoinmarketcap {
         return this;
     }
     
-
     public SourceCoinmarketcap(@JsonProperty("api_key") String apiKey, @JsonProperty("data_type") SourceCoinmarketcapDataTypeEnum dataType, @JsonProperty("sourceType") SourceCoinmarketcapCoinmarketcapEnum sourceType) {
-    this.apiKey = apiKey;
-this.dataType = dataType;
-this.sourceType = sourceType;
+        this.apiKey = apiKey;
+        this.dataType = dataType;
+        this.sourceType = sourceType;
   }
 }

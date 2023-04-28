@@ -91,13 +91,12 @@ public class DestinationCassandra {
         return this;
     }
     
-
     public DestinationCassandra(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("address") String address, @JsonProperty("destinationType") DestinationCassandraCassandraEnum destinationType, @JsonProperty("keyspace") String keyspace, @JsonProperty("port") Long port) {
-    this.username = username;
-this.password = password;
-this.address = address;
-this.destinationType = destinationType;
-this.keyspace = keyspace;
-this.port = port;
+        this.username = username;
+        this.password = password;
+        this.address = address;
+        this.destinationType = destinationType;
+        this.keyspace = keyspace;
+        this.port = port;
   }
 }

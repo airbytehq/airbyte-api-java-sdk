@@ -64,12 +64,11 @@ public class SourceMarketo {
         return this;
     }
     
-
     public SourceMarketo(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("domain_url") String domainUrl, @JsonProperty("sourceType") SourceMarketoMarketoEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-    this.clientId = clientId;
-this.clientSecret = clientSecret;
-this.domainUrl = domainUrl;
-this.sourceType = sourceType;
-this.startDate = startDate;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.domainUrl = domainUrl;
+        this.sourceType = sourceType;
+        this.startDate = startDate;
   }
 }

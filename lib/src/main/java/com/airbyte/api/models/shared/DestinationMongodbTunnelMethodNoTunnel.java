@@ -20,8 +20,7 @@ public class DestinationMongodbTunnelMethodNoTunnel {
         return this;
     }
     
-
     public DestinationMongodbTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMongodbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
-    this.tunnelMethod = tunnelMethod;
+        this.tunnelMethod = tunnelMethod;
   }
 }
