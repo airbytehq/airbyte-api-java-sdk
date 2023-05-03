@@ -22,8 +22,8 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("action_breakdowns")
-    public SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns;
-    public SourceFacebookMarketingInsightConfig withActionBreakdowns(SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns) {
+    public Object[] actionBreakdowns;
+    public SourceFacebookMarketingInsightConfig withActionBreakdowns(Object[] actionBreakdowns) {
         this.actionBreakdowns = actionBreakdowns;
         return this;
     }
@@ -33,8 +33,8 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("breakdowns")
-    public SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns;
-    public SourceFacebookMarketingInsightConfig withBreakdowns(SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns) {
+    public Object[] breakdowns;
+    public SourceFacebookMarketingInsightConfig withBreakdowns(Object[] breakdowns) {
         this.breakdowns = breakdowns;
         return this;
     }
@@ -57,8 +57,8 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("fields")
-    public SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields;
-    public SourceFacebookMarketingInsightConfig withFields(SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields) {
+    public Object[] fields;
+    public SourceFacebookMarketingInsightConfig withFields(Object[] fields) {
         this.fields = fields;
         return this;
     }
