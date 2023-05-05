@@ -31,12 +31,6 @@ public class Jobs {
 		this._genVersion = genVersion;
 	}
 
-    /**
-     * Cancel a running Job
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.CancelJobResponse cancelJob(com.airbyte.api.models.operations.CancelJobRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.CancelJobRequest.class, baseUrl, "/jobs/{jobId}", request, null);
@@ -71,12 +65,6 @@ public class Jobs {
         return res;
     }
 
-    /**
-     * Trigger a sync or reset job of a connection
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.CreateJobResponse createJob(com.airbyte.api.models.shared.JobCreateRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/jobs");
@@ -116,12 +104,6 @@ public class Jobs {
         return res;
     }
 
-    /**
-     * Get Job status and details
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.GetJobResponse getJob(com.airbyte.api.models.operations.GetJobRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.GetJobRequest.class, baseUrl, "/jobs/{jobId}", request, null);
@@ -156,12 +138,6 @@ public class Jobs {
         return res;
     }
 
-    /**
-     * List Jobs by sync type
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.ListJobsResponse listJobs(com.airbyte.api.models.operations.ListJobsRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/jobs");

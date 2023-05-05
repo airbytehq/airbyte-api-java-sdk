@@ -30,12 +30,6 @@ public class Streams {
 		this._genVersion = genVersion;
 	}
 
-    /**
-     * Get stream properties
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.GetStreamPropertiesResponse getStreamProperties(com.airbyte.api.models.operations.GetStreamPropertiesRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/streams");

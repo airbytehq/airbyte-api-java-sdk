@@ -31,13 +31,6 @@ public class Destinations {
 		this._genVersion = genVersion;
 	}
 
-    /**
-     * Create a destination
-     * Creates a destination given a name, workspace id, and a json blob containing the configuration for the source.
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.CreateDestinationResponse createDestination(com.airbyte.api.models.shared.DestinationCreateRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/destinations");
@@ -74,12 +67,6 @@ public class Destinations {
         return res;
     }
 
-    /**
-     * Delete a Destination
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.DeleteDestinationResponse deleteDestination(com.airbyte.api.models.operations.DeleteDestinationRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.DeleteDestinationRequest.class, baseUrl, "/destinations/{destinationId}", request, null);
@@ -106,12 +93,6 @@ public class Destinations {
         return res;
     }
 
-    /**
-     * Get Destination details
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.GetDestinationResponse getDestination(com.airbyte.api.models.operations.GetDestinationRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.GetDestinationRequest.class, baseUrl, "/destinations/{destinationId}", request, null);
@@ -146,12 +127,6 @@ public class Destinations {
         return res;
     }
 
-    /**
-     * List destinations
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.ListDestinationsResponse listDestinations(com.airbyte.api.models.operations.ListDestinationsRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/destinations");

@@ -31,13 +31,6 @@ public class Sources {
 		this._genVersion = genVersion;
 	}
 
-    /**
-     * Create a source
-     * Creates a source given a name, workspace id, and a json blob containing the configuration for the source.
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.CreateSourceResponse createSource(com.airbyte.api.models.shared.SourceCreateRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/sources");
@@ -74,12 +67,6 @@ public class Sources {
         return res;
     }
 
-    /**
-     * Delete a Source
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.DeleteSourceResponse deleteSource(com.airbyte.api.models.operations.DeleteSourceRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.DeleteSourceRequest.class, baseUrl, "/sources/{sourceId}", request, null);
@@ -106,12 +93,6 @@ public class Sources {
         return res;
     }
 
-    /**
-     * Get Source details
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.GetSourceResponse getSource(com.airbyte.api.models.operations.GetSourceRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.GetSourceRequest.class, baseUrl, "/sources/{sourceId}", request, null);
@@ -146,17 +127,6 @@ public class Sources {
         return res;
     }
 
-    /**
-     * Initiate OAuth for a source
-     * Given a source ID, workspace ID, and redirect URL, initiates OAuth for the source.
-     * 
-     * This returns a fully formed URL for performing user authentication against the relevant source identity provider (IdP). Once authentication has been completed, the IdP will redirect to an Airbyte endpoint which will save the access and refresh tokens off as a secret and return the secret ID to the redirect URL specified in the `secret_id` query string parameter.
-     * 
-     * That secret ID can be used to create a source with credentials in place of actual tokens.
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.InitiateOAuthResponse initiateOAuth(com.airbyte.api.models.shared.InitiateOauthRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/sources/initiateOAuth");
@@ -188,12 +158,6 @@ public class Sources {
         return res;
     }
 
-    /**
-     * List sources
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.ListSourcesResponse listSources(com.airbyte.api.models.operations.ListSourcesRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/sources");

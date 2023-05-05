@@ -31,14 +31,6 @@ public class Workspaces {
 		this._genVersion = genVersion;
 	}
 
-    /**
-     * Create OAuth override credentials for a workspace and source type.
-     * Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
-     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest.class, baseUrl, "/workspaces/{workspaceId}/oauthCredentials", request, null);
@@ -70,12 +62,6 @@ public class Workspaces {
         return res;
     }
 
-    /**
-     * Create a workspace
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.CreateWorkspaceResponse createWorkspace(com.airbyte.api.models.shared.WorkspaceCreateRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/workspaces");
@@ -115,12 +101,6 @@ public class Workspaces {
         return res;
     }
 
-    /**
-     * Get Workspace details
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.GetWorkspaceResponse getWorkspace(com.airbyte.api.models.operations.GetWorkspaceRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.GetWorkspaceRequest.class, baseUrl, "/workspaces/{workspaceId}", request, null);
@@ -155,12 +135,6 @@ public class Workspaces {
         return res;
     }
 
-    /**
-     * List workspaces
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
     public com.airbyte.api.models.operations.ListWorkspacesResponse listWorkspaces(com.airbyte.api.models.operations.ListWorkspacesRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/workspaces");

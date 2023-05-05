@@ -2,19 +2,20 @@ configVersion: 1.0.0
 management:
   docChecksum: b33273ead3e10c4bc4f9bfeed6ad97a4
   docVersion: 1.0.0
-  speakeasyVersion: 1.27.0
-  generationVersion: 2.24.0
+  speakeasyVersion: 1.29.0
+  generationVersion: 2.26.0
 generation:
   telemetryEnabled: true
   sdkClassName: airbyte
   singleTagPerOp: false
 java:
-  version: 0.6.0
+  version: 0.7.0
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
   companyURL: www.airbyte.com
   githubURL: github.com/airbytehq/airbyte-api-java-sdk
   groupID: com.airbyte
+  maxMethodParams: 0
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   projectName: public-api
