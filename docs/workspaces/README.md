@@ -22,7 +22,6 @@ import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentials
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest;
-import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequestActorTypeEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -33,7 +32,7 @@ public class Application {
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequestActorTypeEnum.SOURCE,                 new java.util.HashMap<String, Object>() {{
+            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest("inventore",                 new java.util.HashMap<String, Object>() {{
                                                 put("totam", "accusamus");
                                                 put("aliquam", "odio");
                                             }}, "occaecati");, "commodi");            

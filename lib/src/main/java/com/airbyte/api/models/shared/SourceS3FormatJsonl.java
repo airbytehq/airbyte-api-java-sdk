@@ -47,8 +47,8 @@ public class SourceS3FormatJsonl {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unexpected_field_behavior")
-    public SourceS3FormatJsonlUnexpectedFieldBehaviorEnum unexpectedFieldBehavior;
-    public SourceS3FormatJsonl withUnexpectedFieldBehavior(SourceS3FormatJsonlUnexpectedFieldBehaviorEnum unexpectedFieldBehavior) {
+    public Object unexpectedFieldBehavior;
+    public SourceS3FormatJsonl withUnexpectedFieldBehavior(Object unexpectedFieldBehavior) {
         this.unexpectedFieldBehavior = unexpectedFieldBehavior;
         return this;
     }

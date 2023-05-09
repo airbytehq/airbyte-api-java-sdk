@@ -41,12 +41,16 @@ public class QueryParameters {
             } else {
                 switch (queryParamsMetadata.style) {
                     case "form":
-                        List<NameValuePair> params = parseFormParams(queryParamsMetadata, value);
-                        allParams.addAll(params);
+                        List<NameValuePair> formParams = parseDelimitedParams(queryParamsMetadata, value, ",");
+                        allParams.addAll(formParams);
                         break;
                     case "deepObject":
                         List<NameValuePair> deepObjectParams = parseDeepObjectParams(queryParamsMetadata, value);
                         allParams.addAll(deepObjectParams);
+                        break;
+                    case "pipeDelimited":
+                        List<NameValuePair> pipeDelimitedParams = parseDelimitedParams(queryParamsMetadata, value, "|");
+                        allParams.addAll(pipeDelimitedParams);
                         break;
                 }
             }
@@ -71,7 +75,7 @@ public class QueryParameters {
         return params;
     }
 
-    private static List<NameValuePair> parseFormParams(QueryParamsMetadata queryParamsMetadata, Object value)
+    private static List<NameValuePair> parseDelimitedParams(QueryParamsMetadata queryParamsMetadata, Object value, String delimiter)
             throws IllegalArgumentException, IllegalAccessException {
         List<NameValuePair> params = new ArrayList<>();
 
@@ -91,7 +95,7 @@ public class QueryParameters {
                 }
 
                 if (items.size() > 0) {
-                    values.add(String.join(",", items));
+                    values.add(String.join(delimiter, items));
                 }
 
                 params.addAll(values.stream().map(v -> new BasicNameValuePair(queryParamsMetadata.name, v))

@@ -10,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * SourceNytimesPeriodUsedForMostPopularStreamsEnum - Period of time (in days)
  */
 public enum SourceNytimesPeriodUsedForMostPopularStreamsEnum {
-    ONE("1"),
-    SEVEN("7"),
-    THIRTY("30");
+    ONE(1L),
+    SEVEN(7L),
+    THIRTY(30L);
 
     @JsonValue
-    public final String value;
+    public final Long value;
 
-    private SourceNytimesPeriodUsedForMostPopularStreamsEnum(String value) {
+    private SourceNytimesPeriodUsedForMostPopularStreamsEnum(Long value) {
         this.value = value;
     }
 }
