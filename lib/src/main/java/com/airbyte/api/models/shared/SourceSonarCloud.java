@@ -19,6 +19,7 @@ public class SourceSonarCloud {
      */
     @JsonProperty("component_keys")
     public Object[] componentKeys;
+
     public SourceSonarCloud withComponentKeys(Object[] componentKeys) {
         this.componentKeys = componentKeys;
         return this;
@@ -31,6 +32,7 @@ public class SourceSonarCloud {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
     public LocalDate endDate;
+
     public SourceSonarCloud withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -41,6 +43,7 @@ public class SourceSonarCloud {
      */
     @JsonProperty("organization")
     public String organization;
+
     public SourceSonarCloud withOrganization(String organization) {
         this.organization = organization;
         return this;
@@ -48,6 +51,7 @@ public class SourceSonarCloud {
     
     @JsonProperty("sourceType")
     public SourceSonarCloudSonarCloudEnum sourceType;
+
     public SourceSonarCloud withSourceType(SourceSonarCloudSonarCloudEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -60,6 +64,7 @@ public class SourceSonarCloud {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceSonarCloud withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
@@ -70,6 +75,7 @@ public class SourceSonarCloud {
      */
     @JsonProperty("user_token")
     public String userToken;
+
     public SourceSonarCloud withUserToken(String userToken) {
         this.userToken = userToken;
         return this;

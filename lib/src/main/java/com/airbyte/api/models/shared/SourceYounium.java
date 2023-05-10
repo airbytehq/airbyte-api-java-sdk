@@ -17,6 +17,7 @@ public class SourceYounium {
      */
     @JsonProperty("legal_entity")
     public String legalEntity;
+
     public SourceYounium withLegalEntity(String legalEntity) {
         this.legalEntity = legalEntity;
         return this;
@@ -27,6 +28,7 @@ public class SourceYounium {
      */
     @JsonProperty("password")
     public String password;
+
     public SourceYounium withPassword(String password) {
         this.password = password;
         return this;
@@ -38,6 +40,7 @@ public class SourceYounium {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("playground")
     public Boolean playground;
+
     public SourceYounium withPlayground(Boolean playground) {
         this.playground = playground;
         return this;
@@ -45,6 +48,7 @@ public class SourceYounium {
     
     @JsonProperty("sourceType")
     public SourceYouniumYouniumEnum sourceType;
+
     public SourceYounium withSourceType(SourceYouniumYouniumEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -55,6 +59,7 @@ public class SourceYounium {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceYounium withUsername(String username) {
         this.username = username;
         return this;

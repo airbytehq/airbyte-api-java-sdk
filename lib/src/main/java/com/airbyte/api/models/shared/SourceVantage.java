@@ -15,6 +15,7 @@ public class SourceVantage {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceVantage withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceVantage {
     
     @JsonProperty("sourceType")
     public SourceVantageVantageEnum sourceType;
+
     public SourceVantage withSourceType(SourceVantageVantageEnum sourceType) {
         this.sourceType = sourceType;
         return this;

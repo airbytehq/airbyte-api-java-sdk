@@ -15,6 +15,7 @@ public class SourceGlassfrog {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceGlassfrog withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceGlassfrog {
     
     @JsonProperty("sourceType")
     public SourceGlassfrogGlassfrogEnum sourceType;
+
     public SourceGlassfrog withSourceType(SourceGlassfrogGlassfrogEnum sourceType) {
         this.sourceType = sourceType;
         return this;

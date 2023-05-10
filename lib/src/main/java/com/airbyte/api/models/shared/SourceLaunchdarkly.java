@@ -15,6 +15,7 @@ public class SourceLaunchdarkly {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceLaunchdarkly withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceLaunchdarkly {
     
     @JsonProperty("sourceType")
     public SourceLaunchdarklyLaunchdarklyEnum sourceType;
+
     public SourceLaunchdarkly withSourceType(SourceLaunchdarklyLaunchdarklyEnum sourceType) {
         this.sourceType = sourceType;
         return this;

@@ -17,6 +17,7 @@ public class SourceE2eTestCloud {
      */
     @JsonProperty("max_messages")
     public Long maxMessages;
+
     public SourceE2eTestCloud withMaxMessages(Long maxMessages) {
         this.maxMessages = maxMessages;
         return this;
@@ -28,6 +29,7 @@ public class SourceE2eTestCloud {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_interval_ms")
     public Long messageIntervalMs;
+
     public SourceE2eTestCloud withMessageIntervalMs(Long messageIntervalMs) {
         this.messageIntervalMs = messageIntervalMs;
         return this;
@@ -35,6 +37,7 @@ public class SourceE2eTestCloud {
     
     @JsonProperty("mock_catalog")
     public Object mockCatalog;
+
     public SourceE2eTestCloud withMockCatalog(Object mockCatalog) {
         this.mockCatalog = mockCatalog;
         return this;
@@ -46,6 +49,7 @@ public class SourceE2eTestCloud {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("seed")
     public Long seed;
+
     public SourceE2eTestCloud withSeed(Long seed) {
         this.seed = seed;
         return this;
@@ -53,6 +57,7 @@ public class SourceE2eTestCloud {
     
     @JsonProperty("sourceType")
     public SourceE2eTestCloudE2eTestCloudEnum sourceType;
+
     public SourceE2eTestCloud withSourceType(SourceE2eTestCloudE2eTestCloudEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -61,6 +66,7 @@ public class SourceE2eTestCloud {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     public SourceE2eTestCloudTypeEnum type;
+
     public SourceE2eTestCloud withType(SourceE2eTestCloudTypeEnum type) {
         this.type = type;
         return this;

@@ -12,6 +12,7 @@ public class DestinationCreateRequest {
      */
     @JsonProperty("configuration")
     public Object configuration;
+
     public DestinationCreateRequest withConfiguration(Object configuration) {
         this.configuration = configuration;
         return this;
@@ -19,6 +20,7 @@ public class DestinationCreateRequest {
     
     @JsonProperty("name")
     public String name;
+
     public DestinationCreateRequest withName(String name) {
         this.name = name;
         return this;
@@ -26,6 +28,7 @@ public class DestinationCreateRequest {
     
     @JsonProperty("workspaceId")
     public String workspaceId;
+
     public DestinationCreateRequest withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

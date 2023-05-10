@@ -17,6 +17,7 @@ public class DestinationDatabricks {
      */
     @JsonProperty("accept_terms")
     public Boolean acceptTerms;
+
     public DestinationDatabricks withAcceptTerms(Boolean acceptTerms) {
         this.acceptTerms = acceptTerms;
         return this;
@@ -27,6 +28,7 @@ public class DestinationDatabricks {
      */
     @JsonProperty("data_source")
     public Object dataSource;
+
     public DestinationDatabricks withDataSource(Object dataSource) {
         this.dataSource = dataSource;
         return this;
@@ -38,6 +40,7 @@ public class DestinationDatabricks {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("database")
     public String database;
+
     public DestinationDatabricks withDatabase(String database) {
         this.database = database;
         return this;
@@ -48,6 +51,7 @@ public class DestinationDatabricks {
      */
     @JsonProperty("databricks_http_path")
     public String databricksHttpPath;
+
     public DestinationDatabricks withDatabricksHttpPath(String databricksHttpPath) {
         this.databricksHttpPath = databricksHttpPath;
         return this;
@@ -58,6 +62,7 @@ public class DestinationDatabricks {
      */
     @JsonProperty("databricks_personal_access_token")
     public String databricksPersonalAccessToken;
+
     public DestinationDatabricks withDatabricksPersonalAccessToken(String databricksPersonalAccessToken) {
         this.databricksPersonalAccessToken = databricksPersonalAccessToken;
         return this;
@@ -69,6 +74,7 @@ public class DestinationDatabricks {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("databricks_port")
     public String databricksPort;
+
     public DestinationDatabricks withDatabricksPort(String databricksPort) {
         this.databricksPort = databricksPort;
         return this;
@@ -79,6 +85,7 @@ public class DestinationDatabricks {
      */
     @JsonProperty("databricks_server_hostname")
     public String databricksServerHostname;
+
     public DestinationDatabricks withDatabricksServerHostname(String databricksServerHostname) {
         this.databricksServerHostname = databricksServerHostname;
         return this;
@@ -86,6 +93,7 @@ public class DestinationDatabricks {
     
     @JsonProperty("destinationType")
     public DestinationDatabricksDatabricksEnum destinationType;
+
     public DestinationDatabricks withDestinationType(DestinationDatabricksDatabricksEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -97,6 +105,7 @@ public class DestinationDatabricks {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("purge_staging_data")
     public Boolean purgeStagingData;
+
     public DestinationDatabricks withPurgeStagingData(Boolean purgeStagingData) {
         this.purgeStagingData = purgeStagingData;
         return this;
@@ -108,6 +117,7 @@ public class DestinationDatabricks {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
     public String schema;
+
     public DestinationDatabricks withSchema(String schema) {
         this.schema = schema;
         return this;

@@ -15,6 +15,7 @@ public class SourceSpacexApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
     public String id;
+
     public SourceSpacexApi withId(String id) {
         this.id = id;
         return this;
@@ -23,6 +24,7 @@ public class SourceSpacexApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("options")
     public String options;
+
     public SourceSpacexApi withOptions(String options) {
         this.options = options;
         return this;
@@ -30,6 +32,7 @@ public class SourceSpacexApi {
     
     @JsonProperty("sourceType")
     public SourceSpacexApiSpacexApiEnum sourceType;
+
     public SourceSpacexApi withSourceType(SourceSpacexApiSpacexApiEnum sourceType) {
         this.sourceType = sourceType;
         return this;

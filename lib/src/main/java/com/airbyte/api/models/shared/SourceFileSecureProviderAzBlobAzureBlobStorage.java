@@ -18,6 +18,7 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sas_token")
     public String sasToken;
+
     public SourceFileSecureProviderAzBlobAzureBlobStorage withSasToken(String sasToken) {
         this.sasToken = sasToken;
         return this;
@@ -29,6 +30,7 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shared_key")
     public String sharedKey;
+
     public SourceFileSecureProviderAzBlobAzureBlobStorage withSharedKey(String sharedKey) {
         this.sharedKey = sharedKey;
         return this;
@@ -36,6 +38,7 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
     
     @JsonProperty("storage")
     public SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage;
+
     public SourceFileSecureProviderAzBlobAzureBlobStorage withStorage(SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage) {
         this.storage = storage;
         return this;
@@ -46,6 +49,7 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
      */
     @JsonProperty("storage_account")
     public String storageAccount;
+
     public SourceFileSecureProviderAzBlobAzureBlobStorage withStorageAccount(String storageAccount) {
         this.storageAccount = storageAccount;
         return this;

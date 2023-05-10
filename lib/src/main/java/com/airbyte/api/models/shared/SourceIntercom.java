@@ -20,6 +20,7 @@ public class SourceIntercom {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceIntercom withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -27,6 +28,7 @@ public class SourceIntercom {
     
     @JsonProperty("sourceType")
     public SourceIntercomIntercomEnum sourceType;
+
     public SourceIntercom withSourceType(SourceIntercomIntercomEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +41,7 @@ public class SourceIntercom {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceIntercom withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

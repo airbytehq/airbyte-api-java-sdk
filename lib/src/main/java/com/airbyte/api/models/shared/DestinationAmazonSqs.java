@@ -18,6 +18,7 @@ public class DestinationAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_key")
     public String accessKey;
+
     public DestinationAmazonSqs withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
@@ -25,6 +26,7 @@ public class DestinationAmazonSqs {
     
     @JsonProperty("destinationType")
     public DestinationAmazonSqsAmazonSqsEnum destinationType;
+
     public DestinationAmazonSqs withDestinationType(DestinationAmazonSqsAmazonSqsEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -36,6 +38,7 @@ public class DestinationAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_body_key")
     public String messageBodyKey;
+
     public DestinationAmazonSqs withMessageBodyKey(String messageBodyKey) {
         this.messageBodyKey = messageBodyKey;
         return this;
@@ -47,6 +50,7 @@ public class DestinationAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_delay")
     public Long messageDelay;
+
     public DestinationAmazonSqs withMessageDelay(Long messageDelay) {
         this.messageDelay = messageDelay;
         return this;
@@ -58,6 +62,7 @@ public class DestinationAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("message_group_id")
     public String messageGroupId;
+
     public DestinationAmazonSqs withMessageGroupId(String messageGroupId) {
         this.messageGroupId = messageGroupId;
         return this;
@@ -68,6 +73,7 @@ public class DestinationAmazonSqs {
      */
     @JsonProperty("queue_url")
     public String queueUrl;
+
     public DestinationAmazonSqs withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
@@ -78,6 +84,7 @@ public class DestinationAmazonSqs {
      */
     @JsonProperty("region")
     public DestinationAmazonSqsAWSRegionEnum region;
+
     public DestinationAmazonSqs withRegion(DestinationAmazonSqsAWSRegionEnum region) {
         this.region = region;
         return this;
@@ -89,6 +96,7 @@ public class DestinationAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secret_key")
     public String secretKey;
+
     public DestinationAmazonSqs withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;

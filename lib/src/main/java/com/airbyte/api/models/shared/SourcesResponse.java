@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourcesResponse {
     @JsonProperty("data")
     public SourceResponse[] data;
+
     public SourcesResponse withData(SourceResponse[] data) {
         this.data = data;
         return this;
@@ -19,6 +20,7 @@ public class SourcesResponse {
     
     @JsonProperty("next")
     public String next;
+
     public SourcesResponse withNext(String next) {
         this.next = next;
         return this;
@@ -26,6 +28,7 @@ public class SourcesResponse {
     
     @JsonProperty("previous")
     public String previous;
+
     public SourcesResponse withPrevious(String previous) {
         this.previous = previous;
         return this;

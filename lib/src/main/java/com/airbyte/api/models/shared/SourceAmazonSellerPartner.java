@@ -17,6 +17,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("app_id")
     public String appId;
+
     public SourceAmazonSellerPartner withAppId(String appId) {
         this.appId = appId;
         return this;
@@ -25,6 +26,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceAmazonSellerPartnerAuthTypeEnum authType;
+
     public SourceAmazonSellerPartner withAuthType(SourceAmazonSellerPartnerAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -36,6 +38,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_access_key")
     public String awsAccessKey;
+
     public SourceAmazonSellerPartner withAwsAccessKey(String awsAccessKey) {
         this.awsAccessKey = awsAccessKey;
         return this;
@@ -46,6 +49,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("aws_environment")
     public SourceAmazonSellerPartnerAWSEnvironmentEnum awsEnvironment;
+
     public SourceAmazonSellerPartner withAwsEnvironment(SourceAmazonSellerPartnerAWSEnvironmentEnum awsEnvironment) {
         this.awsEnvironment = awsEnvironment;
         return this;
@@ -57,6 +61,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_secret_key")
     public String awsSecretKey;
+
     public SourceAmazonSellerPartner withAwsSecretKey(String awsSecretKey) {
         this.awsSecretKey = awsSecretKey;
         return this;
@@ -67,6 +72,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("lwa_app_id")
     public String lwaAppId;
+
     public SourceAmazonSellerPartner withLwaAppId(String lwaAppId) {
         this.lwaAppId = lwaAppId;
         return this;
@@ -77,6 +83,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("lwa_client_secret")
     public String lwaClientSecret;
+
     public SourceAmazonSellerPartner withLwaClientSecret(String lwaClientSecret) {
         this.lwaClientSecret = lwaClientSecret;
         return this;
@@ -88,6 +95,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_wait_seconds")
     public Long maxWaitSeconds;
+
     public SourceAmazonSellerPartner withMaxWaitSeconds(Long maxWaitSeconds) {
         this.maxWaitSeconds = maxWaitSeconds;
         return this;
@@ -99,6 +107,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("period_in_days")
     public Long periodInDays;
+
     public SourceAmazonSellerPartner withPeriodInDays(Long periodInDays) {
         this.periodInDays = periodInDays;
         return this;
@@ -109,6 +118,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceAmazonSellerPartner withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -119,6 +129,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("region")
     public SourceAmazonSellerPartnerAWSRegionEnum region;
+
     public SourceAmazonSellerPartner withRegion(SourceAmazonSellerPartnerAWSRegionEnum region) {
         this.region = region;
         return this;
@@ -130,6 +141,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication_end_date")
     public String replicationEndDate;
+
     public SourceAmazonSellerPartner withReplicationEndDate(String replicationEndDate) {
         this.replicationEndDate = replicationEndDate;
         return this;
@@ -140,6 +152,7 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("replication_start_date")
     public String replicationStartDate;
+
     public SourceAmazonSellerPartner withReplicationStartDate(String replicationStartDate) {
         this.replicationStartDate = replicationStartDate;
         return this;
@@ -151,6 +164,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("report_options")
     public String reportOptions;
+
     public SourceAmazonSellerPartner withReportOptions(String reportOptions) {
         this.reportOptions = reportOptions;
         return this;
@@ -162,6 +176,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("role_arn")
     public String roleArn;
+
     public SourceAmazonSellerPartner withRoleArn(String roleArn) {
         this.roleArn = roleArn;
         return this;
@@ -169,6 +184,7 @@ public class SourceAmazonSellerPartner {
     
     @JsonProperty("sourceType")
     public SourceAmazonSellerPartnerAmazonSellerPartnerEnum sourceType;
+
     public SourceAmazonSellerPartner withSourceType(SourceAmazonSellerPartnerAmazonSellerPartnerEnum sourceType) {
         this.sourceType = sourceType;
         return this;

@@ -18,6 +18,7 @@ public class DestinationBigqueryDenormalized {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("big_query_client_buffer_size_mb")
     public Long bigQueryClientBufferSizeMb;
+
     public DestinationBigqueryDenormalized withBigQueryClientBufferSizeMb(Long bigQueryClientBufferSizeMb) {
         this.bigQueryClientBufferSizeMb = bigQueryClientBufferSizeMb;
         return this;
@@ -29,6 +30,7 @@ public class DestinationBigqueryDenormalized {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public DestinationBigqueryDenormalized withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -39,6 +41,7 @@ public class DestinationBigqueryDenormalized {
      */
     @JsonProperty("dataset_id")
     public String datasetId;
+
     public DestinationBigqueryDenormalized withDatasetId(String datasetId) {
         this.datasetId = datasetId;
         return this;
@@ -50,6 +53,7 @@ public class DestinationBigqueryDenormalized {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataset_location")
     public DestinationBigqueryDenormalizedDatasetLocationEnum datasetLocation;
+
     public DestinationBigqueryDenormalized withDatasetLocation(DestinationBigqueryDenormalizedDatasetLocationEnum datasetLocation) {
         this.datasetLocation = datasetLocation;
         return this;
@@ -57,6 +61,7 @@ public class DestinationBigqueryDenormalized {
     
     @JsonProperty("destinationType")
     public DestinationBigqueryDenormalizedBigqueryDenormalizedEnum destinationType;
+
     public DestinationBigqueryDenormalized withDestinationType(DestinationBigqueryDenormalizedBigqueryDenormalizedEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -68,6 +73,7 @@ public class DestinationBigqueryDenormalized {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("loading_method")
     public Object loadingMethod;
+
     public DestinationBigqueryDenormalized withLoadingMethod(Object loadingMethod) {
         this.loadingMethod = loadingMethod;
         return this;
@@ -78,6 +84,7 @@ public class DestinationBigqueryDenormalized {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public DestinationBigqueryDenormalized withProjectId(String projectId) {
         this.projectId = projectId;
         return this;

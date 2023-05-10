@@ -15,6 +15,7 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionNoCo
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
     public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionNoCompressionCompressionTypeEnum compressionType;
+
     public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionNoCompression withCompressionType(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionNoCompressionCompressionTypeEnum compressionType) {
         this.compressionType = compressionType;
         return this;

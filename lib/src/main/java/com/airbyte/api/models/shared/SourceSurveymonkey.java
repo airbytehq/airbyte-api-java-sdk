@@ -23,6 +23,7 @@ public class SourceSurveymonkey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod credentials;
+
     public SourceSurveymonkey withCredentials(SourceSurveymonkeySurveyMonkeyAuthorizationMethod credentials) {
         this.credentials = credentials;
         return this;
@@ -34,6 +35,7 @@ public class SourceSurveymonkey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin")
     public SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccountEnum origin;
+
     public SourceSurveymonkey withOrigin(SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccountEnum origin) {
         this.origin = origin;
         return this;
@@ -41,6 +43,7 @@ public class SourceSurveymonkey {
     
     @JsonProperty("sourceType")
     public SourceSurveymonkeySurveymonkeyEnum sourceType;
+
     public SourceSurveymonkey withSourceType(SourceSurveymonkeySurveymonkeyEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -53,6 +56,7 @@ public class SourceSurveymonkey {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceSurveymonkey withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -64,6 +68,7 @@ public class SourceSurveymonkey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("survey_ids")
     public String[] surveyIds;
+
     public SourceSurveymonkey withSurveyIds(String[] surveyIds) {
         this.surveyIds = surveyIds;
         return this;

@@ -22,6 +22,7 @@ public class SourceTwitter {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceTwitter withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -35,6 +36,7 @@ public class SourceTwitter {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("end_date")
     public OffsetDateTime endDate;
+
     public SourceTwitter withEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
         return this;
@@ -45,6 +47,7 @@ public class SourceTwitter {
      */
     @JsonProperty("query")
     public String query;
+
     public SourceTwitter withQuery(String query) {
         this.query = query;
         return this;
@@ -52,6 +55,7 @@ public class SourceTwitter {
     
     @JsonProperty("sourceType")
     public SourceTwitterTwitterEnum sourceType;
+
     public SourceTwitter withSourceType(SourceTwitterTwitterEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -65,6 +69,7 @@ public class SourceTwitter {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceTwitter withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

@@ -18,6 +18,7 @@ public class SourceMicrosoftTeams {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceMicrosoftTeams withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -28,6 +29,7 @@ public class SourceMicrosoftTeams {
      */
     @JsonProperty("period")
     public String period;
+
     public SourceMicrosoftTeams withPeriod(String period) {
         this.period = period;
         return this;
@@ -35,6 +37,7 @@ public class SourceMicrosoftTeams {
     
     @JsonProperty("sourceType")
     public SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType;
+
     public SourceMicrosoftTeams withSourceType(SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType) {
         this.sourceType = sourceType;
         return this;

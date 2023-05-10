@@ -17,6 +17,7 @@ public class SourceFileSecure {
      */
     @JsonProperty("dataset_name")
     public String datasetName;
+
     public SourceFileSecure withDatasetName(String datasetName) {
         this.datasetName = datasetName;
         return this;
@@ -27,6 +28,7 @@ public class SourceFileSecure {
      */
     @JsonProperty("format")
     public SourceFileSecureFileFormatEnum format;
+
     public SourceFileSecure withFormat(SourceFileSecureFileFormatEnum format) {
         this.format = format;
         return this;
@@ -37,6 +39,7 @@ public class SourceFileSecure {
      */
     @JsonProperty("provider")
     public Object provider;
+
     public SourceFileSecure withProvider(Object provider) {
         this.provider = provider;
         return this;
@@ -48,6 +51,7 @@ public class SourceFileSecure {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reader_options")
     public String readerOptions;
+
     public SourceFileSecure withReaderOptions(String readerOptions) {
         this.readerOptions = readerOptions;
         return this;
@@ -55,6 +59,7 @@ public class SourceFileSecure {
     
     @JsonProperty("sourceType")
     public SourceFileSecureFileSecureEnum sourceType;
+
     public SourceFileSecure withSourceType(SourceFileSecureFileSecureEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -65,6 +70,7 @@ public class SourceFileSecure {
      */
     @JsonProperty("url")
     public String url;
+
     public SourceFileSecure withUrl(String url) {
         this.url = url;
         return this;

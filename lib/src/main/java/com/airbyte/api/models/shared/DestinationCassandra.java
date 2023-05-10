@@ -17,6 +17,7 @@ public class DestinationCassandra {
      */
     @JsonProperty("address")
     public String address;
+
     public DestinationCassandra withAddress(String address) {
         this.address = address;
         return this;
@@ -28,6 +29,7 @@ public class DestinationCassandra {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("datacenter")
     public String datacenter;
+
     public DestinationCassandra withDatacenter(String datacenter) {
         this.datacenter = datacenter;
         return this;
@@ -35,6 +37,7 @@ public class DestinationCassandra {
     
     @JsonProperty("destinationType")
     public DestinationCassandraCassandraEnum destinationType;
+
     public DestinationCassandra withDestinationType(DestinationCassandraCassandraEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -45,6 +48,7 @@ public class DestinationCassandra {
      */
     @JsonProperty("keyspace")
     public String keyspace;
+
     public DestinationCassandra withKeyspace(String keyspace) {
         this.keyspace = keyspace;
         return this;
@@ -55,6 +59,7 @@ public class DestinationCassandra {
      */
     @JsonProperty("password")
     public String password;
+
     public DestinationCassandra withPassword(String password) {
         this.password = password;
         return this;
@@ -65,6 +70,7 @@ public class DestinationCassandra {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationCassandra withPort(Long port) {
         this.port = port;
         return this;
@@ -76,6 +82,7 @@ public class DestinationCassandra {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication")
     public Long replication;
+
     public DestinationCassandra withReplication(Long replication) {
         this.replication = replication;
         return this;
@@ -86,6 +93,7 @@ public class DestinationCassandra {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationCassandra withUsername(String username) {
         this.username = username;
         return this;

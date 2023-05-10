@@ -17,6 +17,7 @@ public class SourceUsCensus {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceUsCensus withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class SourceUsCensus {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query_params")
     public String queryParams;
+
     public SourceUsCensus withQueryParams(String queryParams) {
         this.queryParams = queryParams;
         return this;
@@ -38,6 +40,7 @@ public class SourceUsCensus {
      */
     @JsonProperty("query_path")
     public String queryPath;
+
     public SourceUsCensus withQueryPath(String queryPath) {
         this.queryPath = queryPath;
         return this;
@@ -45,6 +48,7 @@ public class SourceUsCensus {
     
     @JsonProperty("sourceType")
     public SourceUsCensusUsCensusEnum sourceType;
+
     public SourceUsCensus withSourceType(SourceUsCensusUsCensusEnum sourceType) {
         this.sourceType = sourceType;
         return this;

@@ -17,6 +17,7 @@ public class SourceTvmazeSchedule {
      */
     @JsonProperty("domestic_schedule_country_code")
     public String domesticScheduleCountryCode;
+
     public SourceTvmazeSchedule withDomesticScheduleCountryCode(String domesticScheduleCountryCode) {
         this.domesticScheduleCountryCode = domesticScheduleCountryCode;
         return this;
@@ -29,6 +30,7 @@ public class SourceTvmazeSchedule {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     public String endDate;
+
     public SourceTvmazeSchedule withEndDate(String endDate) {
         this.endDate = endDate;
         return this;
@@ -36,6 +38,7 @@ public class SourceTvmazeSchedule {
     
     @JsonProperty("sourceType")
     public SourceTvmazeScheduleTvmazeScheduleEnum sourceType;
+
     public SourceTvmazeSchedule withSourceType(SourceTvmazeScheduleTvmazeScheduleEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -46,6 +49,7 @@ public class SourceTvmazeSchedule {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceTvmazeSchedule withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -60,6 +64,7 @@ public class SourceTvmazeSchedule {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("web_schedule_country_code")
     public String webScheduleCountryCode;
+
     public SourceTvmazeSchedule withWebScheduleCountryCode(String webScheduleCountryCode) {
         this.webScheduleCountryCode = webScheduleCountryCode;
         return this;

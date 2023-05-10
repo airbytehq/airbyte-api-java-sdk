@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceNotionCredentialsAccessToken {
     @JsonProperty("auth_type")
     public SourceNotionCredentialsAccessTokenAuthTypeEnum authType;
+
     public SourceNotionCredentialsAccessToken withAuthType(SourceNotionCredentialsAccessTokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -22,6 +23,7 @@ public class SourceNotionCredentialsAccessToken {
      */
     @JsonProperty("token")
     public String token;
+
     public SourceNotionCredentialsAccessToken withToken(String token) {
         this.token = token;
         return this;

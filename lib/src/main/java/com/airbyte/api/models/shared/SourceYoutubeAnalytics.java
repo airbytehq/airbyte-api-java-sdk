@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceYoutubeAnalytics {
     @JsonProperty("credentials")
     public java.util.Map<String, Object> credentials;
+
     public SourceYoutubeAnalytics withCredentials(java.util.Map<String, Object> credentials) {
         this.credentials = credentials;
         return this;
@@ -19,6 +20,7 @@ public class SourceYoutubeAnalytics {
     
     @JsonProperty("sourceType")
     public SourceYoutubeAnalyticsYoutubeAnalyticsEnum sourceType;
+
     public SourceYoutubeAnalytics withSourceType(SourceYoutubeAnalyticsYoutubeAnalyticsEnum sourceType) {
         this.sourceType = sourceType;
         return this;

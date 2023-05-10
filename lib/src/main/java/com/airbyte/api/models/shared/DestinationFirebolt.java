@@ -18,6 +18,7 @@ public class DestinationFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account")
     public String account;
+
     public DestinationFirebolt withAccount(String account) {
         this.account = account;
         return this;
@@ -28,6 +29,7 @@ public class DestinationFirebolt {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationFirebolt withDatabase(String database) {
         this.database = database;
         return this;
@@ -35,6 +37,7 @@ public class DestinationFirebolt {
     
     @JsonProperty("destinationType")
     public DestinationFireboltFireboltEnum destinationType;
+
     public DestinationFirebolt withDestinationType(DestinationFireboltFireboltEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -46,6 +49,7 @@ public class DestinationFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("engine")
     public String engine;
+
     public DestinationFirebolt withEngine(String engine) {
         this.engine = engine;
         return this;
@@ -57,6 +61,7 @@ public class DestinationFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("host")
     public String host;
+
     public DestinationFirebolt withHost(String host) {
         this.host = host;
         return this;
@@ -68,6 +73,7 @@ public class DestinationFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("loading_method")
     public Object loadingMethod;
+
     public DestinationFirebolt withLoadingMethod(Object loadingMethod) {
         this.loadingMethod = loadingMethod;
         return this;
@@ -78,6 +84,7 @@ public class DestinationFirebolt {
      */
     @JsonProperty("password")
     public String password;
+
     public DestinationFirebolt withPassword(String password) {
         this.password = password;
         return this;
@@ -88,6 +95,7 @@ public class DestinationFirebolt {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationFirebolt withUsername(String username) {
         this.username = username;
         return this;

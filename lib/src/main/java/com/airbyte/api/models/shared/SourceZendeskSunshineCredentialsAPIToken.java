@@ -12,6 +12,7 @@ public class SourceZendeskSunshineCredentialsAPIToken {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceZendeskSunshineCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -19,6 +20,7 @@ public class SourceZendeskSunshineCredentialsAPIToken {
     
     @JsonProperty("auth_method")
     public SourceZendeskSunshineCredentialsAPITokenAuthMethodEnum authMethod;
+
     public SourceZendeskSunshineCredentialsAPIToken withAuthMethod(SourceZendeskSunshineCredentialsAPITokenAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;
@@ -29,6 +31,7 @@ public class SourceZendeskSunshineCredentialsAPIToken {
      */
     @JsonProperty("email")
     public String email;
+
     public SourceZendeskSunshineCredentialsAPIToken withEmail(String email) {
         this.email = email;
         return this;

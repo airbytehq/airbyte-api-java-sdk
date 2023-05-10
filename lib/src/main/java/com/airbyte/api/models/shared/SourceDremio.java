@@ -15,6 +15,7 @@ public class SourceDremio {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceDremio withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceDremio {
      */
     @JsonProperty("base_url")
     public String baseUrl;
+
     public SourceDremio withBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
@@ -32,6 +34,7 @@ public class SourceDremio {
     
     @JsonProperty("sourceType")
     public SourceDremioDremioEnum sourceType;
+
     public SourceDremio withSourceType(SourceDremioDremioEnum sourceType) {
         this.sourceType = sourceType;
         return this;

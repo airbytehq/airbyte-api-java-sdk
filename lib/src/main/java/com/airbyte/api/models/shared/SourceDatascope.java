@@ -15,6 +15,7 @@ public class SourceDatascope {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceDatascope withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceDatascope {
     
     @JsonProperty("sourceType")
     public SourceDatascopeDatascopeEnum sourceType;
+
     public SourceDatascope withSourceType(SourceDatascopeDatascopeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -32,6 +34,7 @@ public class SourceDatascope {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceDatascope withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

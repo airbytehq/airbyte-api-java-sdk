@@ -15,6 +15,7 @@ public class SourceHubplanner {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceHubplanner withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceHubplanner {
     
     @JsonProperty("sourceType")
     public SourceHubplannerHubplannerEnum sourceType;
+
     public SourceHubplanner withSourceType(SourceHubplannerHubplannerEnum sourceType) {
         this.sourceType = sourceType;
         return this;

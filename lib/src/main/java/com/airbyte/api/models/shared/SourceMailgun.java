@@ -23,6 +23,7 @@ public class SourceMailgun {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain_region")
     public String domainRegion;
+
     public SourceMailgun withDomainRegion(String domainRegion) {
         this.domainRegion = domainRegion;
         return this;
@@ -33,6 +34,7 @@ public class SourceMailgun {
      */
     @JsonProperty("private_key")
     public String privateKey;
+
     public SourceMailgun withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -40,6 +42,7 @@ public class SourceMailgun {
     
     @JsonProperty("sourceType")
     public SourceMailgunMailgunEnum sourceType;
+
     public SourceMailgun withSourceType(SourceMailgunMailgunEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -53,6 +56,7 @@ public class SourceMailgun {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceMailgun withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

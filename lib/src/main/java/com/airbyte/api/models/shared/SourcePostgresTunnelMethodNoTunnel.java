@@ -15,6 +15,7 @@ public class SourcePostgresTunnelMethodNoTunnel {
      */
     @JsonProperty("tunnel_method")
     public SourcePostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+
     public SourcePostgresTunnelMethodNoTunnel withTunnelMethod(SourcePostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

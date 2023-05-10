@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationFireboltLoadingMethodSQLInserts {
     @JsonProperty("method")
     public DestinationFireboltLoadingMethodSQLInsertsMethodEnum method;
+
     public DestinationFireboltLoadingMethodSQLInserts withMethod(DestinationFireboltLoadingMethodSQLInsertsMethodEnum method) {
         this.method = method;
         return this;

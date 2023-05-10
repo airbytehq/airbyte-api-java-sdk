@@ -17,6 +17,7 @@ public class SourceTheGuardianApi {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceTheGuardianApi withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class SourceTheGuardianApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     public String endDate;
+
     public SourceTheGuardianApi withEndDate(String endDate) {
         this.endDate = endDate;
         return this;
@@ -39,6 +41,7 @@ public class SourceTheGuardianApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query")
     public String query;
+
     public SourceTheGuardianApi withQuery(String query) {
         this.query = query;
         return this;
@@ -50,6 +53,7 @@ public class SourceTheGuardianApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("section")
     public String section;
+
     public SourceTheGuardianApi withSection(String section) {
         this.section = section;
         return this;
@@ -57,6 +61,7 @@ public class SourceTheGuardianApi {
     
     @JsonProperty("sourceType")
     public SourceTheGuardianApiTheGuardianApiEnum sourceType;
+
     public SourceTheGuardianApi withSourceType(SourceTheGuardianApiTheGuardianApiEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -67,6 +72,7 @@ public class SourceTheGuardianApi {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceTheGuardianApi withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -78,6 +84,7 @@ public class SourceTheGuardianApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tag")
     public String tag;
+
     public SourceTheGuardianApi withTag(String tag) {
         this.tag = tag;
         return this;

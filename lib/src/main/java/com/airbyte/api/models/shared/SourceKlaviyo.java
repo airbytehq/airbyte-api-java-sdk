@@ -20,6 +20,7 @@ public class SourceKlaviyo {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceKlaviyo withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceKlaviyo {
     
     @JsonProperty("sourceType")
     public SourceKlaviyoKlaviyoEnum sourceType;
+
     public SourceKlaviyo withSourceType(SourceKlaviyoKlaviyoEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +41,7 @@ public class SourceKlaviyo {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceKlaviyo withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

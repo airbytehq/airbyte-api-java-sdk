@@ -12,6 +12,7 @@ public class SourceZendeskChatCredentialsAccessToken {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceZendeskChatCredentialsAccessToken withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -19,6 +20,7 @@ public class SourceZendeskChatCredentialsAccessToken {
     
     @JsonProperty("credentials")
     public SourceZendeskChatCredentialsAccessTokenCredentialsEnum credentials;
+
     public SourceZendeskChatCredentialsAccessToken withCredentials(SourceZendeskChatCredentialsAccessTokenCredentialsEnum credentials) {
         this.credentials = credentials;
         return this;

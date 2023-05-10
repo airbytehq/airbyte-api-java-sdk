@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption {
     @JsonProperty("encryption_type")
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType;
+
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption withEncryptionType(DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType) {
         this.encryptionType = encryptionType;
         return this;
@@ -25,6 +26,7 @@ public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelo
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("key_encrypting_key")
     public String keyEncryptingKey;
+
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionAESCBCEnvelopeEncryption withKeyEncryptingKey(String keyEncryptingKey) {
         this.keyEncryptingKey = keyEncryptingKey;
         return this;

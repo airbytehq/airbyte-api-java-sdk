@@ -17,6 +17,7 @@ public class SourceAzureBlobStorage {
      */
     @JsonProperty("azure_blob_storage_account_key")
     public String azureBlobStorageAccountKey;
+
     public SourceAzureBlobStorage withAzureBlobStorageAccountKey(String azureBlobStorageAccountKey) {
         this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceAzureBlobStorage {
      */
     @JsonProperty("azure_blob_storage_account_name")
     public String azureBlobStorageAccountName;
+
     public SourceAzureBlobStorage withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         return this;
@@ -38,6 +40,7 @@ public class SourceAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_blobs_prefix")
     public String azureBlobStorageBlobsPrefix;
+
     public SourceAzureBlobStorage withAzureBlobStorageBlobsPrefix(String azureBlobStorageBlobsPrefix) {
         this.azureBlobStorageBlobsPrefix = azureBlobStorageBlobsPrefix;
         return this;
@@ -48,6 +51,7 @@ public class SourceAzureBlobStorage {
      */
     @JsonProperty("azure_blob_storage_container_name")
     public String azureBlobStorageContainerName;
+
     public SourceAzureBlobStorage withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         return this;
@@ -59,6 +63,7 @@ public class SourceAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_endpoint")
     public String azureBlobStorageEndpoint;
+
     public SourceAzureBlobStorage withAzureBlobStorageEndpoint(String azureBlobStorageEndpoint) {
         this.azureBlobStorageEndpoint = azureBlobStorageEndpoint;
         return this;
@@ -70,6 +75,7 @@ public class SourceAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_schema_inference_limit")
     public Long azureBlobStorageSchemaInferenceLimit;
+
     public SourceAzureBlobStorage withAzureBlobStorageSchemaInferenceLimit(Long azureBlobStorageSchemaInferenceLimit) {
         this.azureBlobStorageSchemaInferenceLimit = azureBlobStorageSchemaInferenceLimit;
         return this;
@@ -80,6 +86,7 @@ public class SourceAzureBlobStorage {
      */
     @JsonProperty("format")
     public Object format;
+
     public SourceAzureBlobStorage withFormat(Object format) {
         this.format = format;
         return this;
@@ -87,6 +94,7 @@ public class SourceAzureBlobStorage {
     
     @JsonProperty("sourceType")
     public SourceAzureBlobStorageAzureBlobStorageEnum sourceType;
+
     public SourceAzureBlobStorage withSourceType(SourceAzureBlobStorageAzureBlobStorageEnum sourceType) {
         this.sourceType = sourceType;
         return this;

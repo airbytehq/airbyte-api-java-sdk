@@ -17,6 +17,7 @@ public class InitiateOauthRequest {
      */
     @JsonProperty("name")
     public String name;
+
     public InitiateOauthRequest withName(String name) {
         this.name = name;
         return this;
@@ -28,6 +29,7 @@ public class InitiateOauthRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("oAuthInputConfiguration")
     public java.util.Map<String, Object> oAuthInputConfiguration;
+
     public InitiateOauthRequest withOAuthInputConfiguration(java.util.Map<String, Object> oAuthInputConfiguration) {
         this.oAuthInputConfiguration = oAuthInputConfiguration;
         return this;
@@ -38,6 +40,7 @@ public class InitiateOauthRequest {
      */
     @JsonProperty("redirectUrl")
     public String redirectUrl;
+
     public InitiateOauthRequest withRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
         return this;
@@ -48,6 +51,7 @@ public class InitiateOauthRequest {
      */
     @JsonProperty("workspaceId")
     public String workspaceId;
+
     public InitiateOauthRequest withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

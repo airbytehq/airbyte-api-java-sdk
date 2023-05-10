@@ -17,6 +17,7 @@ public class DestinationRedshift {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationRedshift withDatabase(String database) {
         this.database = database;
         return this;
@@ -24,6 +25,7 @@ public class DestinationRedshift {
     
     @JsonProperty("destinationType")
     public DestinationRedshiftRedshiftEnum destinationType;
+
     public DestinationRedshift withDestinationType(DestinationRedshiftRedshiftEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationRedshift {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationRedshift withHost(String host) {
         this.host = host;
         return this;
@@ -45,6 +48,7 @@ public class DestinationRedshift {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public DestinationRedshift withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -55,6 +59,7 @@ public class DestinationRedshift {
      */
     @JsonProperty("password")
     public String password;
+
     public DestinationRedshift withPassword(String password) {
         this.password = password;
         return this;
@@ -65,6 +70,7 @@ public class DestinationRedshift {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationRedshift withPort(Long port) {
         this.port = port;
         return this;
@@ -75,6 +81,7 @@ public class DestinationRedshift {
      */
     @JsonProperty("schema")
     public String schema;
+
     public DestinationRedshift withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -86,6 +93,7 @@ public class DestinationRedshift {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationRedshift withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -97,6 +105,7 @@ public class DestinationRedshift {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("uploading_method")
     public Object uploadingMethod;
+
     public DestinationRedshift withUploadingMethod(Object uploadingMethod) {
         this.uploadingMethod = uploadingMethod;
         return this;
@@ -107,6 +116,7 @@ public class DestinationRedshift {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationRedshift withUsername(String username) {
         this.username = username;
         return this;

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceAzureTable {
     @JsonProperty("sourceType")
     public SourceAzureTableAzureTableEnum sourceType;
+
     public SourceAzureTable withSourceType(SourceAzureTableAzureTableEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -24,6 +25,7 @@ public class SourceAzureTable {
      */
     @JsonProperty("storage_access_key")
     public String storageAccessKey;
+
     public SourceAzureTable withStorageAccessKey(String storageAccessKey) {
         this.storageAccessKey = storageAccessKey;
         return this;
@@ -34,6 +36,7 @@ public class SourceAzureTable {
      */
     @JsonProperty("storage_account_name")
     public String storageAccountName;
+
     public SourceAzureTable withStorageAccountName(String storageAccountName) {
         this.storageAccountName = storageAccountName;
         return this;
@@ -45,6 +48,7 @@ public class SourceAzureTable {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("storage_endpoint_suffix")
     public String storageEndpointSuffix;
+
     public SourceAzureTable withStorageEndpointSuffix(String storageEndpointSuffix) {
         this.storageEndpointSuffix = storageEndpointSuffix;
         return this;

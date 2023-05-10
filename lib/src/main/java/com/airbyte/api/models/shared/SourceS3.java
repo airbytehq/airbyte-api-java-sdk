@@ -17,6 +17,7 @@ public class SourceS3 {
      */
     @JsonProperty("dataset")
     public String dataset;
+
     public SourceS3 withDataset(String dataset) {
         this.dataset = dataset;
         return this;
@@ -28,6 +29,7 @@ public class SourceS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format")
     public Object format;
+
     public SourceS3 withFormat(Object format) {
         this.format = format;
         return this;
@@ -38,6 +40,7 @@ public class SourceS3 {
      */
     @JsonProperty("path_pattern")
     public String pathPattern;
+
     public SourceS3 withPathPattern(String pathPattern) {
         this.pathPattern = pathPattern;
         return this;
@@ -48,6 +51,7 @@ public class SourceS3 {
      */
     @JsonProperty("provider")
     public SourceS3S3AmazonWebServices provider;
+
     public SourceS3 withProvider(SourceS3S3AmazonWebServices provider) {
         this.provider = provider;
         return this;
@@ -59,6 +63,7 @@ public class SourceS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
     public String schema;
+
     public SourceS3 withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -66,6 +71,7 @@ public class SourceS3 {
     
     @JsonProperty("sourceType")
     public SourceS3S3Enum sourceType;
+
     public SourceS3 withSourceType(SourceS3S3Enum sourceType) {
         this.sourceType = sourceType;
         return this;

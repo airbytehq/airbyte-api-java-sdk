@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationPostgresSslModeDisable {
     @JsonProperty("mode")
     public DestinationPostgresSslModeDisableModeEnum mode;
+
     public DestinationPostgresSslModeDisable withMode(DestinationPostgresSslModeDisableModeEnum mode) {
         this.mode = mode;
         return this;

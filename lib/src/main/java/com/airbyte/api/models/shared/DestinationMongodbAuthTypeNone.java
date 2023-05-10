@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationMongodbAuthTypeNone {
     @JsonProperty("authorization")
     public DestinationMongodbAuthTypeNoneAuthorizationEnum authorization;
+
     public DestinationMongodbAuthTypeNone withAuthorization(DestinationMongodbAuthTypeNoneAuthorizationEnum authorization) {
         this.authorization = authorization;
         return this;

@@ -15,6 +15,7 @@ public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -25,6 +26,7 @@ public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -35,6 +37,7 @@ public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public DestinationGoogleSheetsAuthenticationViaGoogleOAuth withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

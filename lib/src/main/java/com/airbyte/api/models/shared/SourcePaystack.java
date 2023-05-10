@@ -23,6 +23,7 @@ public class SourcePaystack {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window_days")
     public Long lookbackWindowDays;
+
     public SourcePaystack withLookbackWindowDays(Long lookbackWindowDays) {
         this.lookbackWindowDays = lookbackWindowDays;
         return this;
@@ -33,6 +34,7 @@ public class SourcePaystack {
      */
     @JsonProperty("secret_key")
     public String secretKey;
+
     public SourcePaystack withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;
@@ -40,6 +42,7 @@ public class SourcePaystack {
     
     @JsonProperty("sourceType")
     public SourcePaystackPaystackEnum sourceType;
+
     public SourcePaystack withSourceType(SourcePaystackPaystackEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -52,6 +55,7 @@ public class SourcePaystack {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourcePaystack withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

@@ -17,6 +17,7 @@ public class SourceZuora {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceZuora withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -27,6 +28,7 @@ public class SourceZuora {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceZuora withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -38,6 +40,7 @@ public class SourceZuora {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_sandbox")
     public Boolean isSandbox;
+
     public SourceZuora withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
         return this;
@@ -45,6 +48,7 @@ public class SourceZuora {
     
     @JsonProperty("sourceType")
     public SourceZuoraZuoraEnum sourceType;
+
     public SourceZuora withSourceType(SourceZuoraZuoraEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -55,6 +59,7 @@ public class SourceZuora {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceZuora withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -66,6 +71,7 @@ public class SourceZuora {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")
     public Long windowInDays;
+
     public SourceZuora withWindowInDays(Long windowInDays) {
         this.windowInDays = windowInDays;
         return this;

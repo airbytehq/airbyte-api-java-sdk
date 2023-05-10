@@ -14,6 +14,7 @@ public class SourceGitlabCredentialsPrivateToken {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceGitlabCredentialsPrivateToken withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceGitlabCredentialsPrivateToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceGitlabCredentialsPrivateTokenAuthTypeEnum authType;
+
     public SourceGitlabCredentialsPrivateToken withAuthType(SourceGitlabCredentialsPrivateTokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;

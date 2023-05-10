@@ -15,6 +15,7 @@ public class SourceCoda {
      */
     @JsonProperty("auth_token")
     public String authToken;
+
     public SourceCoda withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceCoda {
     
     @JsonProperty("sourceType")
     public SourceCodaCodaEnum sourceType;
+
     public SourceCoda withSourceType(SourceCodaCodaEnum sourceType) {
         this.sourceType = sourceType;
         return this;

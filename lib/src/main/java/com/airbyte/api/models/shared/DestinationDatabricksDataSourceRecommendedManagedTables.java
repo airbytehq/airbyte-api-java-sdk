@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationDatabricksDataSourceRecommendedManagedTables {
     @JsonProperty("data_source_type")
     public DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceTypeEnum dataSourceType;
+
     public DestinationDatabricksDataSourceRecommendedManagedTables withDataSourceType(DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceTypeEnum dataSourceType) {
         this.dataSourceType = dataSourceType;
         return this;

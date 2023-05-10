@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourcePendo {
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourcePendo withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -19,6 +20,7 @@ public class SourcePendo {
     
     @JsonProperty("sourceType")
     public SourcePendoPendoEnum sourceType;
+
     public SourcePendo withSourceType(SourcePendoPendoEnum sourceType) {
         this.sourceType = sourceType;
         return this;

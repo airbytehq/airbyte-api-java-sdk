@@ -15,6 +15,7 @@ public class DestinationConvex {
      */
     @JsonProperty("access_key")
     public String accessKey;
+
     public DestinationConvex withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
@@ -25,6 +26,7 @@ public class DestinationConvex {
      */
     @JsonProperty("deployment_url")
     public String deploymentUrl;
+
     public DestinationConvex withDeploymentUrl(String deploymentUrl) {
         this.deploymentUrl = deploymentUrl;
         return this;
@@ -32,6 +34,7 @@ public class DestinationConvex {
     
     @JsonProperty("destinationType")
     public DestinationConvexConvexEnum destinationType;
+
     public DestinationConvex withDestinationType(DestinationConvexConvexEnum destinationType) {
         this.destinationType = destinationType;
         return this;

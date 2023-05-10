@@ -15,6 +15,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftAuthTypeEnum authType;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft withAuthType(SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -25,6 +26,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -35,6 +37,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -45,6 +48,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft {
      */
     @JsonProperty("tenant_id")
     public String tenantId;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoft withTenantId(String tenantId) {
         this.tenantId = tenantId;
         return this;

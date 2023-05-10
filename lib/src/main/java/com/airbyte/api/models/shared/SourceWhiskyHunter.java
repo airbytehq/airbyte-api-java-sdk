@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceWhiskyHunter {
     @JsonProperty("sourceType")
     public SourceWhiskyHunterWhiskyHunterEnum sourceType;
+
     public SourceWhiskyHunter withSourceType(SourceWhiskyHunterWhiskyHunterEnum sourceType) {
         this.sourceType = sourceType;
         return this;

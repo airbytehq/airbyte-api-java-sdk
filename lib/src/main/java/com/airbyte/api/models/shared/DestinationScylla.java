@@ -17,6 +17,7 @@ public class DestinationScylla {
      */
     @JsonProperty("address")
     public String address;
+
     public DestinationScylla withAddress(String address) {
         this.address = address;
         return this;
@@ -24,6 +25,7 @@ public class DestinationScylla {
     
     @JsonProperty("destinationType")
     public DestinationScyllaScyllaEnum destinationType;
+
     public DestinationScylla withDestinationType(DestinationScyllaScyllaEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationScylla {
      */
     @JsonProperty("keyspace")
     public String keyspace;
+
     public DestinationScylla withKeyspace(String keyspace) {
         this.keyspace = keyspace;
         return this;
@@ -44,6 +47,7 @@ public class DestinationScylla {
      */
     @JsonProperty("password")
     public String password;
+
     public DestinationScylla withPassword(String password) {
         this.password = password;
         return this;
@@ -54,6 +58,7 @@ public class DestinationScylla {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationScylla withPort(Long port) {
         this.port = port;
         return this;
@@ -65,6 +70,7 @@ public class DestinationScylla {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication")
     public Long replication;
+
     public DestinationScylla withReplication(Long replication) {
         this.replication = replication;
         return this;
@@ -75,6 +81,7 @@ public class DestinationScylla {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationScylla withUsername(String username) {
         this.username = username;
         return this;

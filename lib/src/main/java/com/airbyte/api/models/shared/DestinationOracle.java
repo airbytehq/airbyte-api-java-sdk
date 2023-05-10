@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationOracle {
     @JsonProperty("destinationType")
     public DestinationOracleOracleEnum destinationType;
+
     public DestinationOracle withDestinationType(DestinationOracleOracleEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -24,6 +25,7 @@ public class DestinationOracle {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationOracle withHost(String host) {
         this.host = host;
         return this;
@@ -35,6 +37,7 @@ public class DestinationOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public DestinationOracle withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -46,6 +49,7 @@ public class DestinationOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public DestinationOracle withPassword(String password) {
         this.password = password;
         return this;
@@ -56,6 +60,7 @@ public class DestinationOracle {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationOracle withPort(Long port) {
         this.port = port;
         return this;
@@ -67,6 +72,7 @@ public class DestinationOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
     public String schema;
+
     public DestinationOracle withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -77,6 +83,7 @@ public class DestinationOracle {
      */
     @JsonProperty("sid")
     public String sid;
+
     public DestinationOracle withSid(String sid) {
         this.sid = sid;
         return this;
@@ -88,6 +95,7 @@ public class DestinationOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationOracle withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -98,6 +106,7 @@ public class DestinationOracle {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationOracle withUsername(String username) {
         this.username = username;
         return this;

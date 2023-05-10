@@ -17,6 +17,7 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -24,6 +25,7 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
     
     @JsonProperty("auth_method")
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod;
+
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withAuthMethod(SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;
@@ -35,6 +37,7 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -46,6 +49,7 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;

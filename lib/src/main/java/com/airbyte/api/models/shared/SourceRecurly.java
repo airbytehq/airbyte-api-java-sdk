@@ -17,6 +17,7 @@ public class SourceRecurly {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceRecurly withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class SourceRecurly {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("begin_time")
     public String beginTime;
+
     public SourceRecurly withBeginTime(String beginTime) {
         this.beginTime = beginTime;
         return this;
@@ -39,6 +41,7 @@ public class SourceRecurly {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_time")
     public String endTime;
+
     public SourceRecurly withEndTime(String endTime) {
         this.endTime = endTime;
         return this;
@@ -46,6 +49,7 @@ public class SourceRecurly {
     
     @JsonProperty("sourceType")
     public SourceRecurlyRecurlyEnum sourceType;
+
     public SourceRecurly withSourceType(SourceRecurlyRecurlyEnum sourceType) {
         this.sourceType = sourceType;
         return this;

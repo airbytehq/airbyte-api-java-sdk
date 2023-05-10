@@ -19,6 +19,7 @@ import java.time.OffsetDateTime;
 public class SourceSmartsheets {
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceSmartsheets withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -26,6 +27,7 @@ public class SourceSmartsheets {
     
     @JsonProperty("sourceType")
     public SourceSmartsheetsSmartsheetsEnum sourceType;
+
     public SourceSmartsheets withSourceType(SourceSmartsheetsSmartsheetsEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -36,6 +38,7 @@ public class SourceSmartsheets {
      */
     @JsonProperty("spreadsheet_id")
     public String spreadsheetId;
+
     public SourceSmartsheets withSpreadsheetId(String spreadsheetId) {
         this.spreadsheetId = spreadsheetId;
         return this;
@@ -49,6 +52,7 @@ public class SourceSmartsheets {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_datetime")
     public OffsetDateTime startDatetime;
+
     public SourceSmartsheets withStartDatetime(OffsetDateTime startDatetime) {
         this.startDatetime = startDatetime;
         return this;

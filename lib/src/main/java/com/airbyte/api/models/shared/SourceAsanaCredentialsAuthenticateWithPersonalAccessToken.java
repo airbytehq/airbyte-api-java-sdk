@@ -18,6 +18,7 @@ public class SourceAsanaCredentialsAuthenticateWithPersonalAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     public SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitleEnum optionTitle;
+
     public SourceAsanaCredentialsAuthenticateWithPersonalAccessToken withOptionTitle(SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;
@@ -28,6 +29,7 @@ public class SourceAsanaCredentialsAuthenticateWithPersonalAccessToken {
      */
     @JsonProperty("personal_access_token")
     public String personalAccessToken;
+
     public SourceAsanaCredentialsAuthenticateWithPersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         this.personalAccessToken = personalAccessToken;
         return this;

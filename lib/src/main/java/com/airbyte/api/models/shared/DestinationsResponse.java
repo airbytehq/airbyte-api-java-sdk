@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationsResponse {
     @JsonProperty("data")
     public DestinationResponse[] data;
+
     public DestinationsResponse withData(DestinationResponse[] data) {
         this.data = data;
         return this;
@@ -19,6 +20,7 @@ public class DestinationsResponse {
     
     @JsonProperty("next")
     public String next;
+
     public DestinationsResponse withNext(String next) {
         this.next = next;
         return this;
@@ -26,6 +28,7 @@ public class DestinationsResponse {
     
     @JsonProperty("previous")
     public String previous;
+
     public DestinationsResponse withPrevious(String previous) {
         this.previous = previous;
         return this;

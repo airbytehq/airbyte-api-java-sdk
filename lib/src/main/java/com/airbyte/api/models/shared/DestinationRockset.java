@@ -17,6 +17,7 @@ public class DestinationRockset {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public DestinationRockset withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class DestinationRockset {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_server")
     public String apiServer;
+
     public DestinationRockset withApiServer(String apiServer) {
         this.apiServer = apiServer;
         return this;
@@ -35,6 +37,7 @@ public class DestinationRockset {
     
     @JsonProperty("destinationType")
     public DestinationRocksetRocksetEnum destinationType;
+
     public DestinationRockset withDestinationType(DestinationRocksetRocksetEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -45,6 +48,7 @@ public class DestinationRockset {
      */
     @JsonProperty("workspace")
     public String workspace;
+
     public DestinationRockset withWorkspace(String workspace) {
         this.workspace = workspace;
         return this;

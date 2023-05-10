@@ -15,6 +15,7 @@ public class SourceWebflow {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceWebflow withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceWebflow {
      */
     @JsonProperty("site_id")
     public String siteId;
+
     public SourceWebflow withSiteId(String siteId) {
         this.siteId = siteId;
         return this;
@@ -32,6 +34,7 @@ public class SourceWebflow {
     
     @JsonProperty("sourceType")
     public SourceWebflowWebflowEnum sourceType;
+
     public SourceWebflow withSourceType(SourceWebflowWebflowEnum sourceType) {
         this.sourceType = sourceType;
         return this;

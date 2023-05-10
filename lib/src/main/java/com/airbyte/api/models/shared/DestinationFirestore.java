@@ -18,6 +18,7 @@ public class DestinationFirestore {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public DestinationFirestore withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -25,6 +26,7 @@ public class DestinationFirestore {
     
     @JsonProperty("destinationType")
     public DestinationFirestoreFirestoreEnum destinationType;
+
     public DestinationFirestore withDestinationType(DestinationFirestoreFirestoreEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -35,6 +37,7 @@ public class DestinationFirestore {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public DestinationFirestore withProjectId(String projectId) {
         this.projectId = projectId;
         return this;

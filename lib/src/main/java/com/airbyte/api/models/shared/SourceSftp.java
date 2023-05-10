@@ -18,6 +18,7 @@ public class SourceSftp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceSftp withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -29,6 +30,7 @@ public class SourceSftp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_pattern")
     public String filePattern;
+
     public SourceSftp withFilePattern(String filePattern) {
         this.filePattern = filePattern;
         return this;
@@ -40,6 +42,7 @@ public class SourceSftp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_types")
     public String fileTypes;
+
     public SourceSftp withFileTypes(String fileTypes) {
         this.fileTypes = fileTypes;
         return this;
@@ -51,6 +54,7 @@ public class SourceSftp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("folder_path")
     public String folderPath;
+
     public SourceSftp withFolderPath(String folderPath) {
         this.folderPath = folderPath;
         return this;
@@ -61,6 +65,7 @@ public class SourceSftp {
      */
     @JsonProperty("host")
     public String host;
+
     public SourceSftp withHost(String host) {
         this.host = host;
         return this;
@@ -71,6 +76,7 @@ public class SourceSftp {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceSftp withPort(Long port) {
         this.port = port;
         return this;
@@ -78,6 +84,7 @@ public class SourceSftp {
     
     @JsonProperty("sourceType")
     public SourceSftpSftpEnum sourceType;
+
     public SourceSftp withSourceType(SourceSftpSftpEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -88,6 +95,7 @@ public class SourceSftp {
      */
     @JsonProperty("user")
     public String user;
+
     public SourceSftp withUser(String user) {
         this.user = user;
         return this;

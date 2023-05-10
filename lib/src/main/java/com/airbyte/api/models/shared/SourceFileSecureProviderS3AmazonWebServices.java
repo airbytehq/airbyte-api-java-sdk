@@ -18,6 +18,7 @@ public class SourceFileSecureProviderS3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_access_key_id")
     public String awsAccessKeyId;
+
     public SourceFileSecureProviderS3AmazonWebServices withAwsAccessKeyId(String awsAccessKeyId) {
         this.awsAccessKeyId = awsAccessKeyId;
         return this;
@@ -29,6 +30,7 @@ public class SourceFileSecureProviderS3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_secret_access_key")
     public String awsSecretAccessKey;
+
     public SourceFileSecureProviderS3AmazonWebServices withAwsSecretAccessKey(String awsSecretAccessKey) {
         this.awsSecretAccessKey = awsSecretAccessKey;
         return this;
@@ -36,6 +38,7 @@ public class SourceFileSecureProviderS3AmazonWebServices {
     
     @JsonProperty("storage")
     public SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage;
+
     public SourceFileSecureProviderS3AmazonWebServices withStorage(SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage) {
         this.storage = storage;
         return this;

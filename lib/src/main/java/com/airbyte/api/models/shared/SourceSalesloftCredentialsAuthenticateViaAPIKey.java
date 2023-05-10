@@ -12,6 +12,7 @@ public class SourceSalesloftCredentialsAuthenticateViaAPIKey {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceSalesloftCredentialsAuthenticateViaAPIKey withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -19,6 +20,7 @@ public class SourceSalesloftCredentialsAuthenticateViaAPIKey {
     
     @JsonProperty("auth_type")
     public SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthTypeEnum authType;
+
     public SourceSalesloftCredentialsAuthenticateViaAPIKey withAuthType(SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthTypeEnum authType) {
         this.authType = authType;
         return this;

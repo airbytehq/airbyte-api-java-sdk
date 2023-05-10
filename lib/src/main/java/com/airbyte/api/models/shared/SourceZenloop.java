@@ -17,6 +17,7 @@ public class SourceZenloop {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceZenloop withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -28,6 +29,7 @@ public class SourceZenloop {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_from")
     public String dateFrom;
+
     public SourceZenloop withDateFrom(String dateFrom) {
         this.dateFrom = dateFrom;
         return this;
@@ -35,6 +37,7 @@ public class SourceZenloop {
     
     @JsonProperty("sourceType")
     public SourceZenloopZenloopEnum sourceType;
+
     public SourceZenloop withSourceType(SourceZenloopZenloopEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -46,6 +49,7 @@ public class SourceZenloop {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("survey_group_id")
     public String surveyGroupId;
+
     public SourceZenloop withSurveyGroupId(String surveyGroupId) {
         this.surveyGroupId = surveyGroupId;
         return this;
@@ -57,6 +61,7 @@ public class SourceZenloop {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("survey_id")
     public String surveyId;
+
     public SourceZenloop withSurveyId(String surveyId) {
         this.surveyId = surveyId;
         return this;

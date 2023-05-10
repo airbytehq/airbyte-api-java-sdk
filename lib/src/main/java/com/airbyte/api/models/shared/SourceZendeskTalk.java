@@ -23,6 +23,7 @@ public class SourceZendeskTalk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceZendeskTalk withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -30,6 +31,7 @@ public class SourceZendeskTalk {
     
     @JsonProperty("sourceType")
     public SourceZendeskTalkZendeskTalkEnum sourceType;
+
     public SourceZendeskTalk withSourceType(SourceZendeskTalkZendeskTalkEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -42,6 +44,7 @@ public class SourceZendeskTalk {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceZendeskTalk withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -52,6 +55,7 @@ public class SourceZendeskTalk {
      */
     @JsonProperty("subdomain")
     public String subdomain;
+
     public SourceZendeskTalk withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

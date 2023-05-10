@@ -17,6 +17,7 @@ public class SourceMysql {
      */
     @JsonProperty("database")
     public String database;
+
     public SourceMysql withDatabase(String database) {
         this.database = database;
         return this;
@@ -27,6 +28,7 @@ public class SourceMysql {
      */
     @JsonProperty("host")
     public String host;
+
     public SourceMysql withHost(String host) {
         this.host = host;
         return this;
@@ -38,6 +40,7 @@ public class SourceMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public SourceMysql withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -49,6 +52,7 @@ public class SourceMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourceMysql withPassword(String password) {
         this.password = password;
         return this;
@@ -59,6 +63,7 @@ public class SourceMysql {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceMysql withPort(Long port) {
         this.port = port;
         return this;
@@ -69,6 +74,7 @@ public class SourceMysql {
      */
     @JsonProperty("replication_method")
     public Object replicationMethod;
+
     public SourceMysql withReplicationMethod(Object replicationMethod) {
         this.replicationMethod = replicationMethod;
         return this;
@@ -76,6 +82,7 @@ public class SourceMysql {
     
     @JsonProperty("sourceType")
     public SourceMysqlMysqlEnum sourceType;
+
     public SourceMysql withSourceType(SourceMysqlMysqlEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -87,6 +94,7 @@ public class SourceMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     public Object sslMode;
+
     public SourceMysql withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -98,6 +106,7 @@ public class SourceMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public SourceMysql withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -108,6 +117,7 @@ public class SourceMysql {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceMysql withUsername(String username) {
         this.username = username;
         return this;

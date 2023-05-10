@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceRss {
     @JsonProperty("sourceType")
     public SourceRssRssEnum sourceType;
+
     public SourceRss withSourceType(SourceRssRssEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -22,6 +23,7 @@ public class SourceRss {
      */
     @JsonProperty("url")
     public String url;
+
     public SourceRss withUrl(String url) {
         this.url = url;
         return this;

@@ -13,6 +13,7 @@ public class GetStreamPropertiesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=destinationId")
     public String destinationId;
+
     public GetStreamPropertiesRequest withDestinationId(String destinationId) {
         this.destinationId = destinationId;
         return this;
@@ -23,6 +24,7 @@ public class GetStreamPropertiesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=sourceId")
     public String sourceId;
+
     public GetStreamPropertiesRequest withSourceId(String sourceId) {
         this.sourceId = sourceId;
         return this;

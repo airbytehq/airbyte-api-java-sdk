@@ -15,6 +15,7 @@ public class SourceTrustpilot {
      */
     @JsonProperty("business_units")
     public String[] businessUnits;
+
     public SourceTrustpilot withBusinessUnits(String[] businessUnits) {
         this.businessUnits = businessUnits;
         return this;
@@ -22,6 +23,7 @@ public class SourceTrustpilot {
     
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceTrustpilot withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -29,6 +31,7 @@ public class SourceTrustpilot {
     
     @JsonProperty("sourceType")
     public SourceTrustpilotTrustpilotEnum sourceType;
+
     public SourceTrustpilot withSourceType(SourceTrustpilotTrustpilotEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +42,7 @@ public class SourceTrustpilot {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceTrustpilot withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

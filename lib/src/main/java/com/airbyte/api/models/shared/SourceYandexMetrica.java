@@ -19,6 +19,7 @@ public class SourceYandexMetrica {
      */
     @JsonProperty("auth_token")
     public String authToken;
+
     public SourceYandexMetrica withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;
@@ -29,6 +30,7 @@ public class SourceYandexMetrica {
      */
     @JsonProperty("counter_id")
     public String counterId;
+
     public SourceYandexMetrica withCounterId(String counterId) {
         this.counterId = counterId;
         return this;
@@ -41,6 +43,7 @@ public class SourceYandexMetrica {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
     public LocalDate endDate;
+
     public SourceYandexMetrica withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -48,6 +51,7 @@ public class SourceYandexMetrica {
     
     @JsonProperty("sourceType")
     public SourceYandexMetricaYandexMetricaEnum sourceType;
+
     public SourceYandexMetrica withSourceType(SourceYandexMetricaYandexMetricaEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -59,6 +63,7 @@ public class SourceYandexMetrica {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceYandexMetrica withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

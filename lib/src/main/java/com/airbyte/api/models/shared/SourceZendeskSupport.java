@@ -23,6 +23,7 @@ public class SourceZendeskSupport {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceZendeskSupport withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -34,6 +35,7 @@ public class SourceZendeskSupport {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ignore_pagination")
     public Boolean ignorePagination;
+
     public SourceZendeskSupport withIgnorePagination(Boolean ignorePagination) {
         this.ignorePagination = ignorePagination;
         return this;
@@ -41,6 +43,7 @@ public class SourceZendeskSupport {
     
     @JsonProperty("sourceType")
     public SourceZendeskSupportZendeskSupportEnum sourceType;
+
     public SourceZendeskSupport withSourceType(SourceZendeskSupportZendeskSupportEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -53,6 +56,7 @@ public class SourceZendeskSupport {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceZendeskSupport withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -63,6 +67,7 @@ public class SourceZendeskSupport {
      */
     @JsonProperty("subdomain")
     public String subdomain;
+
     public SourceZendeskSupport withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

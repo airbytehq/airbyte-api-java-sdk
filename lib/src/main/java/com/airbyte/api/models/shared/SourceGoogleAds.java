@@ -20,6 +20,7 @@ public class SourceGoogleAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("conversion_window_days")
     public Long conversionWindowDays;
+
     public SourceGoogleAds withConversionWindowDays(Long conversionWindowDays) {
         this.conversionWindowDays = conversionWindowDays;
         return this;
@@ -27,6 +28,7 @@ public class SourceGoogleAds {
     
     @JsonProperty("credentials")
     public SourceGoogleAdsGoogleCredentials credentials;
+
     public SourceGoogleAds withCredentials(SourceGoogleAdsGoogleCredentials credentials) {
         this.credentials = credentials;
         return this;
@@ -35,6 +37,7 @@ public class SourceGoogleAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_queries")
     public SourceGoogleAdsCustomQueries[] customQueries;
+
     public SourceGoogleAds withCustomQueries(SourceGoogleAdsCustomQueries[] customQueries) {
         this.customQueries = customQueries;
         return this;
@@ -45,6 +48,7 @@ public class SourceGoogleAds {
      */
     @JsonProperty("customer_id")
     public String customerId;
+
     public SourceGoogleAds withCustomerId(String customerId) {
         this.customerId = customerId;
         return this;
@@ -57,6 +61,7 @@ public class SourceGoogleAds {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
     public LocalDate endDate;
+
     public SourceGoogleAds withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -68,6 +73,7 @@ public class SourceGoogleAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("login_customer_id")
     public String loginCustomerId;
+
     public SourceGoogleAds withLoginCustomerId(String loginCustomerId) {
         this.loginCustomerId = loginCustomerId;
         return this;
@@ -75,6 +81,7 @@ public class SourceGoogleAds {
     
     @JsonProperty("sourceType")
     public SourceGoogleAdsGoogleAdsEnum sourceType;
+
     public SourceGoogleAds withSourceType(SourceGoogleAdsGoogleAdsEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -86,6 +93,7 @@ public class SourceGoogleAds {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceGoogleAds withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

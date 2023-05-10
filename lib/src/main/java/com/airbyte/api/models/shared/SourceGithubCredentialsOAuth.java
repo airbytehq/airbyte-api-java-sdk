@@ -17,6 +17,7 @@ public class SourceGithubCredentialsOAuth {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceGithubCredentialsOAuth withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -25,6 +26,7 @@ public class SourceGithubCredentialsOAuth {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     public SourceGithubCredentialsOAuthOptionTitleEnum optionTitle;
+
     public SourceGithubCredentialsOAuth withOptionTitle(SourceGithubCredentialsOAuthOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;

@@ -20,6 +20,7 @@ public class SourceMarketo {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceMarketo withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -30,6 +31,7 @@ public class SourceMarketo {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceMarketo withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -40,6 +42,7 @@ public class SourceMarketo {
      */
     @JsonProperty("domain_url")
     public String domainUrl;
+
     public SourceMarketo withDomainUrl(String domainUrl) {
         this.domainUrl = domainUrl;
         return this;
@@ -47,6 +50,7 @@ public class SourceMarketo {
     
     @JsonProperty("sourceType")
     public SourceMarketoMarketoEnum sourceType;
+
     public SourceMarketo withSourceType(SourceMarketoMarketoEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -59,6 +63,7 @@ public class SourceMarketo {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceMarketo withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

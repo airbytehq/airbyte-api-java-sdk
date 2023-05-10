@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationSnowflakeLoadingMethodRecommendedInternalStaging {
     @JsonProperty("method")
     public DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethodEnum method;
+
     public DestinationSnowflakeLoadingMethodRecommendedInternalStaging withMethod(DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethodEnum method) {
         this.method = method;
         return this;

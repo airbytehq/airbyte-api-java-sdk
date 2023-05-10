@@ -15,6 +15,7 @@ public class ConnectionScheduleResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("basicTiming")
     public String basicTiming;
+
     public ConnectionScheduleResponse withBasicTiming(String basicTiming) {
         this.basicTiming = basicTiming;
         return this;
@@ -23,6 +24,7 @@ public class ConnectionScheduleResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cronExpression")
     public String cronExpression;
+
     public ConnectionScheduleResponse withCronExpression(String cronExpression) {
         this.cronExpression = cronExpression;
         return this;
@@ -30,6 +32,7 @@ public class ConnectionScheduleResponse {
     
     @JsonProperty("scheduleType")
     public ScheduleTypeWithBasicEnumEnum scheduleType;
+
     public ConnectionScheduleResponse withScheduleType(ScheduleTypeWithBasicEnumEnum scheduleType) {
         this.scheduleType = scheduleType;
         return this;

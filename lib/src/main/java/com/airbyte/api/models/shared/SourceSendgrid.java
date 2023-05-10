@@ -22,6 +22,7 @@ public class SourceSendgrid {
      */
     @JsonProperty("apikey")
     public String apikey;
+
     public SourceSendgrid withApikey(String apikey) {
         this.apikey = apikey;
         return this;
@@ -29,6 +30,7 @@ public class SourceSendgrid {
     
     @JsonProperty("sourceType")
     public SourceSendgridSendgridEnum sourceType;
+
     public SourceSendgrid withSourceType(SourceSendgridSendgridEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -42,6 +44,7 @@ public class SourceSendgrid {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_time")
     public OffsetDateTime startTime;
+
     public SourceSendgrid withStartTime(OffsetDateTime startTime) {
         this.startTime = startTime;
         return this;

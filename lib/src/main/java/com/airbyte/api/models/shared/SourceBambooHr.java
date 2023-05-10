@@ -17,6 +17,7 @@ public class SourceBambooHr {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceBambooHr withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class SourceBambooHr {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports_fields")
     public String customReportsFields;
+
     public SourceBambooHr withCustomReportsFields(String customReportsFields) {
         this.customReportsFields = customReportsFields;
         return this;
@@ -39,6 +41,7 @@ public class SourceBambooHr {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports_include_default_fields")
     public Boolean customReportsIncludeDefaultFields;
+
     public SourceBambooHr withCustomReportsIncludeDefaultFields(Boolean customReportsIncludeDefaultFields) {
         this.customReportsIncludeDefaultFields = customReportsIncludeDefaultFields;
         return this;
@@ -46,6 +49,7 @@ public class SourceBambooHr {
     
     @JsonProperty("sourceType")
     public SourceBambooHrBambooHrEnum sourceType;
+
     public SourceBambooHr withSourceType(SourceBambooHrBambooHrEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -56,6 +60,7 @@ public class SourceBambooHr {
      */
     @JsonProperty("subdomain")
     public String subdomain;
+
     public SourceBambooHr withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

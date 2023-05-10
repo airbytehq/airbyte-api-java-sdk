@@ -15,6 +15,7 @@ public class SourceGreenhouse {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceGreenhouse withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceGreenhouse {
     
     @JsonProperty("sourceType")
     public SourceGreenhouseGreenhouseEnum sourceType;
+
     public SourceGreenhouse withSourceType(SourceGreenhouseGreenhouseEnum sourceType) {
         this.sourceType = sourceType;
         return this;

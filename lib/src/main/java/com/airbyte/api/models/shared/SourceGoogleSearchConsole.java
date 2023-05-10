@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class SourceGoogleSearchConsole {
     @JsonProperty("authorization")
     public Object authorization;
+
     public SourceGoogleSearchConsole withAuthorization(Object authorization) {
         this.authorization = authorization;
         return this;
@@ -27,6 +28,7 @@ public class SourceGoogleSearchConsole {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports")
     public String customReports;
+
     public SourceGoogleSearchConsole withCustomReports(String customReports) {
         this.customReports = customReports;
         return this;
@@ -39,6 +41,7 @@ public class SourceGoogleSearchConsole {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
     public LocalDate endDate;
+
     public SourceGoogleSearchConsole withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -49,6 +52,7 @@ public class SourceGoogleSearchConsole {
      */
     @JsonProperty("site_urls")
     public String[] siteUrls;
+
     public SourceGoogleSearchConsole withSiteUrls(String[] siteUrls) {
         this.siteUrls = siteUrls;
         return this;
@@ -56,6 +60,7 @@ public class SourceGoogleSearchConsole {
     
     @JsonProperty("sourceType")
     public SourceGoogleSearchConsoleGoogleSearchConsoleEnum sourceType;
+
     public SourceGoogleSearchConsole withSourceType(SourceGoogleSearchConsoleGoogleSearchConsoleEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -67,6 +72,7 @@ public class SourceGoogleSearchConsole {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceGoogleSearchConsole withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

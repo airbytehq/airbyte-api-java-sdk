@@ -22,6 +22,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceZohoCrm withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -32,6 +33,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceZohoCrm withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -42,6 +44,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("dc_region")
     public SourceZohoCrmDataCenterLocationEnum dcRegion;
+
     public SourceZohoCrm withDcRegion(SourceZohoCrmDataCenterLocationEnum dcRegion) {
         this.dcRegion = dcRegion;
         return this;
@@ -52,6 +55,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("edition")
     public SourceZohoCRMZohoCRMEditionEnum edition;
+
     public SourceZohoCrm withEdition(SourceZohoCRMZohoCRMEditionEnum edition) {
         this.edition = edition;
         return this;
@@ -62,6 +66,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("environment")
     public SourceZohoCrmEnvironmentEnum environment;
+
     public SourceZohoCrm withEnvironment(SourceZohoCrmEnvironmentEnum environment) {
         this.environment = environment;
         return this;
@@ -72,6 +77,7 @@ public class SourceZohoCrm {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceZohoCrm withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -79,6 +85,7 @@ public class SourceZohoCrm {
     
     @JsonProperty("sourceType")
     public SourceZohoCrmZohoCrmEnum sourceType;
+
     public SourceZohoCrm withSourceType(SourceZohoCrmZohoCrmEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -92,6 +99,7 @@ public class SourceZohoCrm {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_datetime")
     public OffsetDateTime startDatetime;
+
     public SourceZohoCrm withStartDatetime(OffsetDateTime startDatetime) {
         this.startDatetime = startDatetime;
         return this;

@@ -15,6 +15,7 @@ public class JobResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bytesSynced")
     public Long bytesSynced;
+
     public JobResponse withBytesSynced(Long bytesSynced) {
         this.bytesSynced = bytesSynced;
         return this;
@@ -26,6 +27,7 @@ public class JobResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("duration")
     public String duration;
+
     public JobResponse withDuration(String duration) {
         this.duration = duration;
         return this;
@@ -33,6 +35,7 @@ public class JobResponse {
     
     @JsonProperty("jobId")
     public Long jobId;
+
     public JobResponse withJobId(Long jobId) {
         this.jobId = jobId;
         return this;
@@ -43,6 +46,7 @@ public class JobResponse {
      */
     @JsonProperty("jobType")
     public JobTypeEnumEnum jobType;
+
     public JobResponse withJobType(JobTypeEnumEnum jobType) {
         this.jobType = jobType;
         return this;
@@ -51,6 +55,7 @@ public class JobResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lastUpdatedAt")
     public String lastUpdatedAt;
+
     public JobResponse withLastUpdatedAt(String lastUpdatedAt) {
         this.lastUpdatedAt = lastUpdatedAt;
         return this;
@@ -59,6 +64,7 @@ public class JobResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("rowsSynced")
     public Long rowsSynced;
+
     public JobResponse withRowsSynced(Long rowsSynced) {
         this.rowsSynced = rowsSynced;
         return this;
@@ -66,6 +72,7 @@ public class JobResponse {
     
     @JsonProperty("startTime")
     public String startTime;
+
     public JobResponse withStartTime(String startTime) {
         this.startTime = startTime;
         return this;
@@ -73,6 +80,7 @@ public class JobResponse {
     
     @JsonProperty("status")
     public JobStatusEnumEnum status;
+
     public JobResponse withStatus(JobStatusEnumEnum status) {
         this.status = status;
         return this;

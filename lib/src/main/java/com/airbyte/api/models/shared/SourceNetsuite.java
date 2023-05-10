@@ -17,6 +17,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("consumer_key")
     public String consumerKey;
+
     public SourceNetsuite withConsumerKey(String consumerKey) {
         this.consumerKey = consumerKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("consumer_secret")
     public String consumerSecret;
+
     public SourceNetsuite withConsumerSecret(String consumerSecret) {
         this.consumerSecret = consumerSecret;
         return this;
@@ -38,6 +40,7 @@ public class SourceNetsuite {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("object_types")
     public String[] objectTypes;
+
     public SourceNetsuite withObjectTypes(String[] objectTypes) {
         this.objectTypes = objectTypes;
         return this;
@@ -48,6 +51,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("realm")
     public String realm;
+
     public SourceNetsuite withRealm(String realm) {
         this.realm = realm;
         return this;
@@ -55,6 +59,7 @@ public class SourceNetsuite {
     
     @JsonProperty("sourceType")
     public SourceNetsuiteNetsuiteEnum sourceType;
+
     public SourceNetsuite withSourceType(SourceNetsuiteNetsuiteEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -65,6 +70,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("start_datetime")
     public String startDatetime;
+
     public SourceNetsuite withStartDatetime(String startDatetime) {
         this.startDatetime = startDatetime;
         return this;
@@ -75,6 +81,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("token_key")
     public String tokenKey;
+
     public SourceNetsuite withTokenKey(String tokenKey) {
         this.tokenKey = tokenKey;
         return this;
@@ -85,6 +92,7 @@ public class SourceNetsuite {
      */
     @JsonProperty("token_secret")
     public String tokenSecret;
+
     public SourceNetsuite withTokenSecret(String tokenSecret) {
         this.tokenSecret = tokenSecret;
         return this;
@@ -96,6 +104,7 @@ public class SourceNetsuite {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")
     public Long windowInDays;
+
     public SourceNetsuite withWindowInDays(Long windowInDays) {
         this.windowInDays = windowInDays;
         return this;

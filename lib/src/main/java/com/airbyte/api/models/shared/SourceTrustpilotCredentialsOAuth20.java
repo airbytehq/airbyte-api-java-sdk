@@ -19,6 +19,7 @@ public class SourceTrustpilotCredentialsOAuth20 {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceTrustpilotCredentialsOAuth20 withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -27,6 +28,7 @@ public class SourceTrustpilotCredentialsOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceTrustpilotCredentialsOAuth20AuthTypeEnum authType;
+
     public SourceTrustpilotCredentialsOAuth20 withAuthType(SourceTrustpilotCredentialsOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -37,6 +39,7 @@ public class SourceTrustpilotCredentialsOAuth20 {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceTrustpilotCredentialsOAuth20 withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -47,6 +50,7 @@ public class SourceTrustpilotCredentialsOAuth20 {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceTrustpilotCredentialsOAuth20 withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -57,6 +61,7 @@ public class SourceTrustpilotCredentialsOAuth20 {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceTrustpilotCredentialsOAuth20 withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -69,6 +74,7 @@ public class SourceTrustpilotCredentialsOAuth20 {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("token_expiry_date")
     public OffsetDateTime tokenExpiryDate;
+
     public SourceTrustpilotCredentialsOAuth20 withTokenExpiryDate(OffsetDateTime tokenExpiryDate) {
         this.tokenExpiryDate = tokenExpiryDate;
         return this;

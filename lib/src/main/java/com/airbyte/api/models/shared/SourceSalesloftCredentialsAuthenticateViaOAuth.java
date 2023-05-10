@@ -17,6 +17,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceSalesloftCredentialsAuthenticateViaOAuth withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -24,6 +25,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
     
     @JsonProperty("auth_type")
     public SourceSalesloftCredentialsAuthenticateViaOAuthAuthTypeEnum authType;
+
     public SourceSalesloftCredentialsAuthenticateViaOAuth withAuthType(SourceSalesloftCredentialsAuthenticateViaOAuthAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -34,6 +36,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceSalesloftCredentialsAuthenticateViaOAuth withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -44,6 +47,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceSalesloftCredentialsAuthenticateViaOAuth withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -54,6 +58,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceSalesloftCredentialsAuthenticateViaOAuth withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -66,6 +71,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("token_expiry_date")
     public OffsetDateTime tokenExpiryDate;
+
     public SourceSalesloftCredentialsAuthenticateViaOAuth withTokenExpiryDate(OffsetDateTime tokenExpiryDate) {
         this.tokenExpiryDate = tokenExpiryDate;
         return this;

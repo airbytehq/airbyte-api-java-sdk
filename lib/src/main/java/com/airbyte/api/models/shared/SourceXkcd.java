@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceXkcd {
     @JsonProperty("sourceType")
     public SourceXkcdXkcdEnum sourceType;
+
     public SourceXkcd withSourceType(SourceXkcdXkcdEnum sourceType) {
         this.sourceType = sourceType;
         return this;

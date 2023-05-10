@@ -22,6 +22,7 @@ public class SourceTwilio {
      */
     @JsonProperty("account_sid")
     public String accountSid;
+
     public SourceTwilio withAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;
@@ -32,6 +33,7 @@ public class SourceTwilio {
      */
     @JsonProperty("auth_token")
     public String authToken;
+
     public SourceTwilio withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;
@@ -43,6 +45,7 @@ public class SourceTwilio {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window")
     public Long lookbackWindow;
+
     public SourceTwilio withLookbackWindow(Long lookbackWindow) {
         this.lookbackWindow = lookbackWindow;
         return this;
@@ -50,6 +53,7 @@ public class SourceTwilio {
     
     @JsonProperty("sourceType")
     public SourceTwilioTwilioEnum sourceType;
+
     public SourceTwilio withSourceType(SourceTwilioTwilioEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -62,6 +66,7 @@ public class SourceTwilio {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceTwilio withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

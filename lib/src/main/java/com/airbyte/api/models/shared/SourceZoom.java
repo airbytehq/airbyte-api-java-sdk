@@ -15,6 +15,7 @@ public class SourceZoom {
      */
     @JsonProperty("jwt_token")
     public String jwtToken;
+
     public SourceZoom withJwtToken(String jwtToken) {
         this.jwtToken = jwtToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceZoom {
     
     @JsonProperty("sourceType")
     public SourceZoomZoomEnum sourceType;
+
     public SourceZoom withSourceType(SourceZoomZoomEnum sourceType) {
         this.sourceType = sourceType;
         return this;

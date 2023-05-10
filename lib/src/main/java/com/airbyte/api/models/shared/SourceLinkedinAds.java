@@ -20,6 +20,7 @@ public class SourceLinkedinAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_ids")
     public Long[] accountIds;
+
     public SourceLinkedinAds withAccountIds(Long[] accountIds) {
         this.accountIds = accountIds;
         return this;
@@ -28,6 +29,7 @@ public class SourceLinkedinAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceLinkedinAds withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -35,6 +37,7 @@ public class SourceLinkedinAds {
     
     @JsonProperty("sourceType")
     public SourceLinkedinAdsLinkedinAdsEnum sourceType;
+
     public SourceLinkedinAds withSourceType(SourceLinkedinAdsLinkedinAdsEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -46,6 +49,7 @@ public class SourceLinkedinAds {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceLinkedinAds withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

@@ -18,6 +18,7 @@ public class SourceGoogleAnalyticsV4 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceGoogleAnalyticsV4 withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -29,6 +30,7 @@ public class SourceGoogleAnalyticsV4 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports")
     public String customReports;
+
     public SourceGoogleAnalyticsV4 withCustomReports(String customReports) {
         this.customReports = customReports;
         return this;
@@ -36,6 +38,7 @@ public class SourceGoogleAnalyticsV4 {
     
     @JsonProperty("sourceType")
     public SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType;
+
     public SourceGoogleAnalyticsV4 withSourceType(SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -46,6 +49,7 @@ public class SourceGoogleAnalyticsV4 {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceGoogleAnalyticsV4 withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -56,6 +60,7 @@ public class SourceGoogleAnalyticsV4 {
      */
     @JsonProperty("view_id")
     public String viewId;
+
     public SourceGoogleAnalyticsV4 withViewId(String viewId) {
         this.viewId = viewId;
         return this;
@@ -67,6 +72,7 @@ public class SourceGoogleAnalyticsV4 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")
     public Long windowInDays;
+
     public SourceGoogleAnalyticsV4 withWindowInDays(Long windowInDays) {
         this.windowInDays = windowInDays;
         return this;

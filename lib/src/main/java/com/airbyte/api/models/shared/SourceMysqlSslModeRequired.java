@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceMysqlSslModeRequired {
     @JsonProperty("mode")
     public SourceMysqlSslModeRequiredModeEnum mode;
+
     public SourceMysqlSslModeRequired withMode(SourceMysqlSslModeRequiredModeEnum mode) {
         this.mode = mode;
         return this;

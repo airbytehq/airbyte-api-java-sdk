@@ -18,6 +18,7 @@ public class SourceFaunaCollection {
      */
     @JsonProperty("deletions")
     public Object deletions;
+
     public SourceFaunaCollection withDeletions(Object deletions) {
         this.deletions = deletions;
         return this;
@@ -30,6 +31,7 @@ public class SourceFaunaCollection {
      */
     @JsonProperty("page_size")
     public Long pageSize;
+
     public SourceFaunaCollection withPageSize(Long pageSize) {
         this.pageSize = pageSize;
         return this;

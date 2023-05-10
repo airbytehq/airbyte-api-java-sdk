@@ -17,6 +17,7 @@ import java.time.OffsetDateTime;
 public class SourceQuickbooks {
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceQuickbooks withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -27,6 +28,7 @@ public class SourceQuickbooks {
      */
     @JsonProperty("sandbox")
     public Boolean sandbox;
+
     public SourceQuickbooks withSandbox(Boolean sandbox) {
         this.sandbox = sandbox;
         return this;
@@ -34,6 +36,7 @@ public class SourceQuickbooks {
     
     @JsonProperty("sourceType")
     public SourceQuickbooksQuickbooksEnum sourceType;
+
     public SourceQuickbooks withSourceType(SourceQuickbooksQuickbooksEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -46,6 +49,7 @@ public class SourceQuickbooks {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceQuickbooks withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

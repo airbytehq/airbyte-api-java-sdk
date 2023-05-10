@@ -17,6 +17,7 @@ public class SourcePypi {
      */
     @JsonProperty("project_name")
     public String projectName;
+
     public SourcePypi withProjectName(String projectName) {
         this.projectName = projectName;
         return this;
@@ -24,6 +25,7 @@ public class SourcePypi {
     
     @JsonProperty("sourceType")
     public SourcePypiPypiEnum sourceType;
+
     public SourcePypi withSourceType(SourcePypiPypiEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -35,6 +37,7 @@ public class SourcePypi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("version")
     public String version;
+
     public SourcePypi withVersion(String version) {
         this.version = version;
         return this;

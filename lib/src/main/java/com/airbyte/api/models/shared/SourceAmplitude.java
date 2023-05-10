@@ -17,6 +17,7 @@ public class SourceAmplitude {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceAmplitude withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class SourceAmplitude {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_region")
     public SourceAmplitudeDataRegionEnum dataRegion;
+
     public SourceAmplitude withDataRegion(SourceAmplitudeDataRegionEnum dataRegion) {
         this.dataRegion = dataRegion;
         return this;
@@ -39,6 +41,7 @@ public class SourceAmplitude {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("request_time_range")
     public Long requestTimeRange;
+
     public SourceAmplitude withRequestTimeRange(Long requestTimeRange) {
         this.requestTimeRange = requestTimeRange;
         return this;
@@ -49,6 +52,7 @@ public class SourceAmplitude {
      */
     @JsonProperty("secret_key")
     public String secretKey;
+
     public SourceAmplitude withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;
@@ -56,6 +60,7 @@ public class SourceAmplitude {
     
     @JsonProperty("sourceType")
     public SourceAmplitudeAmplitudeEnum sourceType;
+
     public SourceAmplitude withSourceType(SourceAmplitudeAmplitudeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -66,6 +71,7 @@ public class SourceAmplitude {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceAmplitude withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

@@ -20,6 +20,7 @@ public class SourceChargebee {
      */
     @JsonProperty("product_catalog")
     public SourceChargebeeProductCatalogEnum productCatalog;
+
     public SourceChargebee withProductCatalog(SourceChargebeeProductCatalogEnum productCatalog) {
         this.productCatalog = productCatalog;
         return this;
@@ -30,6 +31,7 @@ public class SourceChargebee {
      */
     @JsonProperty("site")
     public String site;
+
     public SourceChargebee withSite(String site) {
         this.site = site;
         return this;
@@ -40,6 +42,7 @@ public class SourceChargebee {
      */
     @JsonProperty("site_api_key")
     public String siteApiKey;
+
     public SourceChargebee withSiteApiKey(String siteApiKey) {
         this.siteApiKey = siteApiKey;
         return this;
@@ -47,6 +50,7 @@ public class SourceChargebee {
     
     @JsonProperty("sourceType")
     public SourceChargebeeChargebeeEnum sourceType;
+
     public SourceChargebee withSourceType(SourceChargebeeChargebeeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -59,6 +63,7 @@ public class SourceChargebee {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceChargebee withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

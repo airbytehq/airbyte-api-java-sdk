@@ -13,6 +13,7 @@ public class GetConnectionResponse {
      */
     
     public com.airbyte.api.models.shared.ConnectionResponse connectionResponse;
+
     public GetConnectionResponse withConnectionResponse(com.airbyte.api.models.shared.ConnectionResponse connectionResponse) {
         this.connectionResponse = connectionResponse;
         return this;
@@ -20,6 +21,7 @@ public class GetConnectionResponse {
     
     
     public String contentType;
+
     public GetConnectionResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -27,6 +29,7 @@ public class GetConnectionResponse {
     
     
     public Integer statusCode;
+
     public GetConnectionResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
@@ -34,6 +37,7 @@ public class GetConnectionResponse {
     
     
     public HttpResponse<byte[]> rawResponse;
+
     public GetConnectionResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;

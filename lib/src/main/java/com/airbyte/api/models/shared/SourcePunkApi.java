@@ -17,6 +17,7 @@ public class SourcePunkApi {
      */
     @JsonProperty("brewed_after")
     public String brewedAfter;
+
     public SourcePunkApi withBrewedAfter(String brewedAfter) {
         this.brewedAfter = brewedAfter;
         return this;
@@ -27,6 +28,7 @@ public class SourcePunkApi {
      */
     @JsonProperty("brewed_before")
     public String brewedBefore;
+
     public SourcePunkApi withBrewedBefore(String brewedBefore) {
         this.brewedBefore = brewedBefore;
         return this;
@@ -38,6 +40,7 @@ public class SourcePunkApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")
     public String id;
+
     public SourcePunkApi withId(String id) {
         this.id = id;
         return this;
@@ -45,6 +48,7 @@ public class SourcePunkApi {
     
     @JsonProperty("sourceType")
     public SourcePunkApiPunkApiEnum sourceType;
+
     public SourcePunkApi withSourceType(SourcePunkApiPunkApiEnum sourceType) {
         this.sourceType = sourceType;
         return this;

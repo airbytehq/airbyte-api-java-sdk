@@ -15,6 +15,7 @@ public class SourceSmaily {
      */
     @JsonProperty("api_password")
     public String apiPassword;
+
     public SourceSmaily withApiPassword(String apiPassword) {
         this.apiPassword = apiPassword;
         return this;
@@ -25,6 +26,7 @@ public class SourceSmaily {
      */
     @JsonProperty("api_subdomain")
     public String apiSubdomain;
+
     public SourceSmaily withApiSubdomain(String apiSubdomain) {
         this.apiSubdomain = apiSubdomain;
         return this;
@@ -35,6 +37,7 @@ public class SourceSmaily {
      */
     @JsonProperty("api_username")
     public String apiUsername;
+
     public SourceSmaily withApiUsername(String apiUsername) {
         this.apiUsername = apiUsername;
         return this;
@@ -42,6 +45,7 @@ public class SourceSmaily {
     
     @JsonProperty("sourceType")
     public SourceSmailySmailyEnum sourceType;
+
     public SourceSmaily withSourceType(SourceSmailySmailyEnum sourceType) {
         this.sourceType = sourceType;
         return this;

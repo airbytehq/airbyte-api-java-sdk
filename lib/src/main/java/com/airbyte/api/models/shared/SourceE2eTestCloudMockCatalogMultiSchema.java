@@ -15,6 +15,7 @@ public class SourceE2eTestCloudMockCatalogMultiSchema {
      */
     @JsonProperty("stream_schemas")
     public String streamSchemas;
+
     public SourceE2eTestCloudMockCatalogMultiSchema withStreamSchemas(String streamSchemas) {
         this.streamSchemas = streamSchemas;
         return this;
@@ -22,6 +23,7 @@ public class SourceE2eTestCloudMockCatalogMultiSchema {
     
     @JsonProperty("type")
     public SourceE2eTestCloudMockCatalogMultiSchemaTypeEnum type;
+
     public SourceE2eTestCloudMockCatalogMultiSchema withType(SourceE2eTestCloudMockCatalogMultiSchemaTypeEnum type) {
         this.type = type;
         return this;

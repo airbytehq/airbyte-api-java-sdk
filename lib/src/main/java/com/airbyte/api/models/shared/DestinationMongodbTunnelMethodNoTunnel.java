@@ -15,6 +15,7 @@ public class DestinationMongodbTunnelMethodNoTunnel {
      */
     @JsonProperty("tunnel_method")
     public DestinationMongodbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+
     public DestinationMongodbTunnelMethodNoTunnel withTunnelMethod(DestinationMongodbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

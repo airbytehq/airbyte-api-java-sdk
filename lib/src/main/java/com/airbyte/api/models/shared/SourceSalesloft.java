@@ -17,6 +17,7 @@ import java.time.OffsetDateTime;
 public class SourceSalesloft {
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceSalesloft withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -24,6 +25,7 @@ public class SourceSalesloft {
     
     @JsonProperty("sourceType")
     public SourceSalesloftSalesloftEnum sourceType;
+
     public SourceSalesloft withSourceType(SourceSalesloftSalesloftEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -36,6 +38,7 @@ public class SourceSalesloft {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceSalesloft withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

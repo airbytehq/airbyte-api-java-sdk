@@ -18,6 +18,7 @@ public class DestinationMeilisearch {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_key")
     public String apiKey;
+
     public DestinationMeilisearch withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class DestinationMeilisearch {
     
     @JsonProperty("destinationType")
     public DestinationMeilisearchMeilisearchEnum destinationType;
+
     public DestinationMeilisearch withDestinationType(DestinationMeilisearchMeilisearchEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -35,6 +37,7 @@ public class DestinationMeilisearch {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationMeilisearch withHost(String host) {
         this.host = host;
         return this;

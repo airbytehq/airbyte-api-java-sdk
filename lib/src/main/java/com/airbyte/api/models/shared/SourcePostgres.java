@@ -17,6 +17,7 @@ public class SourcePostgres {
      */
     @JsonProperty("database")
     public String database;
+
     public SourcePostgres withDatabase(String database) {
         this.database = database;
         return this;
@@ -27,6 +28,7 @@ public class SourcePostgres {
      */
     @JsonProperty("host")
     public String host;
+
     public SourcePostgres withHost(String host) {
         this.host = host;
         return this;
@@ -38,6 +40,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public SourcePostgres withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -49,6 +52,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourcePostgres withPassword(String password) {
         this.password = password;
         return this;
@@ -59,6 +63,7 @@ public class SourcePostgres {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourcePostgres withPort(Long port) {
         this.port = port;
         return this;
@@ -70,6 +75,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication_method")
     public Object replicationMethod;
+
     public SourcePostgres withReplicationMethod(Object replicationMethod) {
         this.replicationMethod = replicationMethod;
         return this;
@@ -81,6 +87,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     public String[] schemas;
+
     public SourcePostgres withSchemas(String[] schemas) {
         this.schemas = schemas;
         return this;
@@ -88,6 +95,7 @@ public class SourcePostgres {
     
     @JsonProperty("sourceType")
     public SourcePostgresPostgresEnum sourceType;
+
     public SourcePostgres withSourceType(SourcePostgresPostgresEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -100,6 +108,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     public Object sslMode;
+
     public SourcePostgres withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -111,6 +120,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public SourcePostgres withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -121,6 +131,7 @@ public class SourcePostgres {
      */
     @JsonProperty("username")
     public String username;
+
     public SourcePostgres withUsername(String username) {
         this.username = username;
         return this;

@@ -17,6 +17,7 @@ public class SourceSentry {
      */
     @JsonProperty("auth_token")
     public String authToken;
+
     public SourceSentry withAuthToken(String authToken) {
         this.authToken = authToken;
         return this;
@@ -28,6 +29,7 @@ public class SourceSentry {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("discover_fields")
     public Object[] discoverFields;
+
     public SourceSentry withDiscoverFields(Object[] discoverFields) {
         this.discoverFields = discoverFields;
         return this;
@@ -39,6 +41,7 @@ public class SourceSentry {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hostname")
     public String hostname;
+
     public SourceSentry withHostname(String hostname) {
         this.hostname = hostname;
         return this;
@@ -49,6 +52,7 @@ public class SourceSentry {
      */
     @JsonProperty("organization")
     public String organization;
+
     public SourceSentry withOrganization(String organization) {
         this.organization = organization;
         return this;
@@ -59,6 +63,7 @@ public class SourceSentry {
      */
     @JsonProperty("project")
     public String project;
+
     public SourceSentry withProject(String project) {
         this.project = project;
         return this;
@@ -66,6 +71,7 @@ public class SourceSentry {
     
     @JsonProperty("sourceType")
     public SourceSentrySentryEnum sourceType;
+
     public SourceSentry withSourceType(SourceSentrySentryEnum sourceType) {
         this.sourceType = sourceType;
         return this;

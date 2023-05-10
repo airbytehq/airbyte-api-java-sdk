@@ -20,6 +20,7 @@ public class SourcePipedrive {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorization")
     public SourcePipedriveAPIKeyAuthentication authorization;
+
     public SourcePipedrive withAuthorization(SourcePipedriveAPIKeyAuthentication authorization) {
         this.authorization = authorization;
         return this;
@@ -32,6 +33,7 @@ public class SourcePipedrive {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("replication_start_date")
     public OffsetDateTime replicationStartDate;
+
     public SourcePipedrive withReplicationStartDate(OffsetDateTime replicationStartDate) {
         this.replicationStartDate = replicationStartDate;
         return this;
@@ -39,6 +41,7 @@ public class SourcePipedrive {
     
     @JsonProperty("sourceType")
     public SourcePipedrivePipedriveEnum sourceType;
+
     public SourcePipedrive withSourceType(SourcePipedrivePipedriveEnum sourceType) {
         this.sourceType = sourceType;
         return this;

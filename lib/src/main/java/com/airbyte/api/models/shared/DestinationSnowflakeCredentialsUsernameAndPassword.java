@@ -12,6 +12,7 @@ public class DestinationSnowflakeCredentialsUsernameAndPassword {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public DestinationSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType;
+
     public DestinationSnowflakeCredentialsUsernameAndPassword withAuthType(DestinationSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -22,6 +23,7 @@ public class DestinationSnowflakeCredentialsUsernameAndPassword {
      */
     @JsonProperty("password")
     public String password;
+
     public DestinationSnowflakeCredentialsUsernameAndPassword withPassword(String password) {
         this.password = password;
         return this;

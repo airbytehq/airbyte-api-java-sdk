@@ -18,6 +18,7 @@ public class SourceFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account")
     public String account;
+
     public SourceFirebolt withAccount(String account) {
         this.account = account;
         return this;
@@ -28,6 +29,7 @@ public class SourceFirebolt {
      */
     @JsonProperty("database")
     public String database;
+
     public SourceFirebolt withDatabase(String database) {
         this.database = database;
         return this;
@@ -39,6 +41,7 @@ public class SourceFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("engine")
     public String engine;
+
     public SourceFirebolt withEngine(String engine) {
         this.engine = engine;
         return this;
@@ -50,6 +53,7 @@ public class SourceFirebolt {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("host")
     public String host;
+
     public SourceFirebolt withHost(String host) {
         this.host = host;
         return this;
@@ -60,6 +64,7 @@ public class SourceFirebolt {
      */
     @JsonProperty("password")
     public String password;
+
     public SourceFirebolt withPassword(String password) {
         this.password = password;
         return this;
@@ -67,6 +72,7 @@ public class SourceFirebolt {
     
     @JsonProperty("sourceType")
     public SourceFireboltFireboltEnum sourceType;
+
     public SourceFirebolt withSourceType(SourceFireboltFireboltEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -77,6 +83,7 @@ public class SourceFirebolt {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceFirebolt withUsername(String username) {
         this.username = username;
         return this;

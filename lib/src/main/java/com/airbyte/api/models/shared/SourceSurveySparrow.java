@@ -17,6 +17,7 @@ public class SourceSurveySparrow {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceSurveySparrow withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -28,6 +29,7 @@ public class SourceSurveySparrow {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     public Object region;
+
     public SourceSurveySparrow withRegion(Object region) {
         this.region = region;
         return this;
@@ -35,6 +37,7 @@ public class SourceSurveySparrow {
     
     @JsonProperty("sourceType")
     public SourceSurveySparrowSurveySparrowEnum sourceType;
+
     public SourceSurveySparrow withSourceType(SourceSurveySparrowSurveySparrowEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -46,6 +49,7 @@ public class SourceSurveySparrow {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("survey_id")
     public Object[] surveyId;
+
     public SourceSurveySparrow withSurveyId(Object[] surveyId) {
         this.surveyId = surveyId;
         return this;

@@ -13,6 +13,7 @@ public class ListJobsRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=connectionId")
     public String connectionId;
+
     public ListJobsRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
@@ -23,6 +24,7 @@ public class ListJobsRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=jobType")
     public com.airbyte.api.models.shared.JobTypeEnumEnum jobType;
+
     public ListJobsRequest withJobType(com.airbyte.api.models.shared.JobTypeEnumEnum jobType) {
         this.jobType = jobType;
         return this;
@@ -33,6 +35,7 @@ public class ListJobsRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")
     public Integer limit;
+
     public ListJobsRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
@@ -43,6 +46,7 @@ public class ListJobsRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=offset")
     public Integer offset;
+
     public ListJobsRequest withOffset(Integer offset) {
         this.offset = offset;
         return this;

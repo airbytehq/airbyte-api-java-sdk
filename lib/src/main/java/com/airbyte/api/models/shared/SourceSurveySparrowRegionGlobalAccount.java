@@ -15,6 +15,7 @@ public class SourceSurveySparrowRegionGlobalAccount {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url_base")
     public SourceSurveySparrowRegionGlobalAccountUrlBaseEnum urlBase;
+
     public SourceSurveySparrowRegionGlobalAccount withUrlBase(SourceSurveySparrowRegionGlobalAccountUrlBaseEnum urlBase) {
         this.urlBase = urlBase;
         return this;

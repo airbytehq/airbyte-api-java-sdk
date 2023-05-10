@@ -20,6 +20,7 @@ public class SourceSquare {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceSquare withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -31,6 +32,7 @@ public class SourceSquare {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_deleted_objects")
     public Boolean includeDeletedObjects;
+
     public SourceSquare withIncludeDeletedObjects(Boolean includeDeletedObjects) {
         this.includeDeletedObjects = includeDeletedObjects;
         return this;
@@ -41,6 +43,7 @@ public class SourceSquare {
      */
     @JsonProperty("is_sandbox")
     public Boolean isSandbox;
+
     public SourceSquare withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
         return this;
@@ -48,6 +51,7 @@ public class SourceSquare {
     
     @JsonProperty("sourceType")
     public SourceSquareSquareEnum sourceType;
+
     public SourceSquare withSourceType(SourceSquareSquareEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -60,6 +64,7 @@ public class SourceSquare {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceSquare withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

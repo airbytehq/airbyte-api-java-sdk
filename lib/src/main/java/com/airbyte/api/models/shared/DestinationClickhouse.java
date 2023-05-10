@@ -17,6 +17,7 @@ public class DestinationClickhouse {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationClickhouse withDatabase(String database) {
         this.database = database;
         return this;
@@ -24,6 +25,7 @@ public class DestinationClickhouse {
     
     @JsonProperty("destinationType")
     public DestinationClickhouseClickhouseEnum destinationType;
+
     public DestinationClickhouse withDestinationType(DestinationClickhouseClickhouseEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationClickhouse {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationClickhouse withHost(String host) {
         this.host = host;
         return this;
@@ -45,6 +48,7 @@ public class DestinationClickhouse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public DestinationClickhouse withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -56,6 +60,7 @@ public class DestinationClickhouse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public DestinationClickhouse withPassword(String password) {
         this.password = password;
         return this;
@@ -66,6 +71,7 @@ public class DestinationClickhouse {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationClickhouse withPort(Long port) {
         this.port = port;
         return this;
@@ -77,6 +83,7 @@ public class DestinationClickhouse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationClickhouse withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -87,6 +94,7 @@ public class DestinationClickhouse {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationClickhouse withUsername(String username) {
         this.username = username;
         return this;

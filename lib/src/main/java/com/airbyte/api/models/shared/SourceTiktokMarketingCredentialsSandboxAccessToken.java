@@ -17,6 +17,7 @@ public class SourceTiktokMarketingCredentialsSandboxAccessToken {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceTiktokMarketingCredentialsSandboxAccessToken withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -27,6 +28,7 @@ public class SourceTiktokMarketingCredentialsSandboxAccessToken {
      */
     @JsonProperty("advertiser_id")
     public String advertiserId;
+
     public SourceTiktokMarketingCredentialsSandboxAccessToken withAdvertiserId(String advertiserId) {
         this.advertiserId = advertiserId;
         return this;
@@ -35,6 +37,7 @@ public class SourceTiktokMarketingCredentialsSandboxAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceTiktokMarketingCredentialsSandboxAccessTokenAuthTypeEnum authType;
+
     public SourceTiktokMarketingCredentialsSandboxAccessToken withAuthType(SourceTiktokMarketingCredentialsSandboxAccessTokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;

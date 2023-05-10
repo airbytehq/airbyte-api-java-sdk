@@ -18,6 +18,7 @@ public class SourceFileSecureProviderGCSGoogleCloudStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("service_account_json")
     public String serviceAccountJson;
+
     public SourceFileSecureProviderGCSGoogleCloudStorage withServiceAccountJson(String serviceAccountJson) {
         this.serviceAccountJson = serviceAccountJson;
         return this;
@@ -25,6 +26,7 @@ public class SourceFileSecureProviderGCSGoogleCloudStorage {
     
     @JsonProperty("storage")
     public SourceFileSecureProviderGCSGoogleCloudStorageStorageEnum storage;
+
     public SourceFileSecureProviderGCSGoogleCloudStorage withStorage(SourceFileSecureProviderGCSGoogleCloudStorageStorageEnum storage) {
         this.storage = storage;
         return this;

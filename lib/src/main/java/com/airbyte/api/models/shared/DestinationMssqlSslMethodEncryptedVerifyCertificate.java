@@ -18,6 +18,7 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hostNameInCertificate")
     public String hostNameInCertificate;
+
     public DestinationMssqlSslMethodEncryptedVerifyCertificate withHostNameInCertificate(String hostNameInCertificate) {
         this.hostNameInCertificate = hostNameInCertificate;
         return this;
@@ -25,6 +26,7 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
     
     @JsonProperty("ssl_method")
     public DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod;
+
     public DestinationMssqlSslMethodEncryptedVerifyCertificate withSslMethod(DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod) {
         this.sslMethod = sslMethod;
         return this;

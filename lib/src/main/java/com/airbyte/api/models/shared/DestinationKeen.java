@@ -17,6 +17,7 @@ public class DestinationKeen {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public DestinationKeen withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -24,6 +25,7 @@ public class DestinationKeen {
     
     @JsonProperty("destinationType")
     public DestinationKeenKeenEnum destinationType;
+
     public DestinationKeen withDestinationType(DestinationKeenKeenEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -35,6 +37,7 @@ public class DestinationKeen {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("infer_timestamp")
     public Boolean inferTimestamp;
+
     public DestinationKeen withInferTimestamp(Boolean inferTimestamp) {
         this.inferTimestamp = inferTimestamp;
         return this;
@@ -45,6 +48,7 @@ public class DestinationKeen {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public DestinationKeen withProjectId(String projectId) {
         this.projectId = projectId;
         return this;

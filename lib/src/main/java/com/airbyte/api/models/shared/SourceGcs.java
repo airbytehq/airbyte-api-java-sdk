@@ -15,6 +15,7 @@ public class SourceGcs {
      */
     @JsonProperty("gcs_bucket")
     public String gcsBucket;
+
     public SourceGcs withGcsBucket(String gcsBucket) {
         this.gcsBucket = gcsBucket;
         return this;
@@ -25,6 +26,7 @@ public class SourceGcs {
      */
     @JsonProperty("gcs_path")
     public String gcsPath;
+
     public SourceGcs withGcsPath(String gcsPath) {
         this.gcsPath = gcsPath;
         return this;
@@ -35,6 +37,7 @@ public class SourceGcs {
      */
     @JsonProperty("service_account")
     public String serviceAccount;
+
     public SourceGcs withServiceAccount(String serviceAccount) {
         this.serviceAccount = serviceAccount;
         return this;
@@ -42,6 +45,7 @@ public class SourceGcs {
     
     @JsonProperty("sourceType")
     public SourceGcsGcsEnum sourceType;
+
     public SourceGcs withSourceType(SourceGcsGcsEnum sourceType) {
         this.sourceType = sourceType;
         return this;

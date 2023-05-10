@@ -12,6 +12,7 @@ public class ListWorkspacesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeDeleted")
     public Boolean includeDeleted;
+
     public ListWorkspacesRequest withIncludeDeleted(Boolean includeDeleted) {
         this.includeDeleted = includeDeleted;
         return this;
@@ -22,6 +23,7 @@ public class ListWorkspacesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")
     public Integer limit;
+
     public ListWorkspacesRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
@@ -32,6 +34,7 @@ public class ListWorkspacesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=offset")
     public Integer offset;
+
     public ListWorkspacesRequest withOffset(Integer offset) {
         this.offset = offset;
         return this;
@@ -42,6 +45,7 @@ public class ListWorkspacesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
     public String[] workspaceIds;
+
     public ListWorkspacesRequest withWorkspaceIds(String[] workspaceIds) {
         this.workspaceIds = workspaceIds;
         return this;

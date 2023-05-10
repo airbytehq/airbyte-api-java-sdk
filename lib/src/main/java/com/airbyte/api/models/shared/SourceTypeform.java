@@ -23,6 +23,7 @@ public class SourceTypeform {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("form_ids")
     public String[] formIds;
+
     public SourceTypeform withFormIds(String[] formIds) {
         this.formIds = formIds;
         return this;
@@ -30,6 +31,7 @@ public class SourceTypeform {
     
     @JsonProperty("sourceType")
     public SourceTypeformTypeformEnum sourceType;
+
     public SourceTypeform withSourceType(SourceTypeformTypeformEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -42,6 +44,7 @@ public class SourceTypeform {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceTypeform withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -52,6 +55,7 @@ public class SourceTypeform {
      */
     @JsonProperty("token")
     public String token;
+
     public SourceTypeform withToken(String token) {
         this.token = token;
         return this;

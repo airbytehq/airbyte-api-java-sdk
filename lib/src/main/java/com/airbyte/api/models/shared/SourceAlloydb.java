@@ -17,6 +17,7 @@ public class SourceAlloydb {
      */
     @JsonProperty("database")
     public String database;
+
     public SourceAlloydb withDatabase(String database) {
         this.database = database;
         return this;
@@ -27,6 +28,7 @@ public class SourceAlloydb {
      */
     @JsonProperty("host")
     public String host;
+
     public SourceAlloydb withHost(String host) {
         this.host = host;
         return this;
@@ -38,6 +40,7 @@ public class SourceAlloydb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public SourceAlloydb withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -49,6 +52,7 @@ public class SourceAlloydb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourceAlloydb withPassword(String password) {
         this.password = password;
         return this;
@@ -59,6 +63,7 @@ public class SourceAlloydb {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceAlloydb withPort(Long port) {
         this.port = port;
         return this;
@@ -70,6 +75,7 @@ public class SourceAlloydb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication_method")
     public Object replicationMethod;
+
     public SourceAlloydb withReplicationMethod(Object replicationMethod) {
         this.replicationMethod = replicationMethod;
         return this;
@@ -81,6 +87,7 @@ public class SourceAlloydb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     public String[] schemas;
+
     public SourceAlloydb withSchemas(String[] schemas) {
         this.schemas = schemas;
         return this;
@@ -88,6 +95,7 @@ public class SourceAlloydb {
     
     @JsonProperty("sourceType")
     public SourceAlloydbAlloydbEnum sourceType;
+
     public SourceAlloydb withSourceType(SourceAlloydbAlloydbEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -100,6 +108,7 @@ public class SourceAlloydb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     public Object sslMode;
+
     public SourceAlloydb withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -111,6 +120,7 @@ public class SourceAlloydb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public SourceAlloydb withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -121,6 +131,7 @@ public class SourceAlloydb {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceAlloydb withUsername(String username) {
         this.username = username;
         return this;

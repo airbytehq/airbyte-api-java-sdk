@@ -18,6 +18,7 @@ public class DestinationBigquery {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("big_query_client_buffer_size_mb")
     public Long bigQueryClientBufferSizeMb;
+
     public DestinationBigquery withBigQueryClientBufferSizeMb(Long bigQueryClientBufferSizeMb) {
         this.bigQueryClientBufferSizeMb = bigQueryClientBufferSizeMb;
         return this;
@@ -29,6 +30,7 @@ public class DestinationBigquery {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public DestinationBigquery withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -39,6 +41,7 @@ public class DestinationBigquery {
      */
     @JsonProperty("dataset_id")
     public String datasetId;
+
     public DestinationBigquery withDatasetId(String datasetId) {
         this.datasetId = datasetId;
         return this;
@@ -49,6 +52,7 @@ public class DestinationBigquery {
      */
     @JsonProperty("dataset_location")
     public DestinationBigqueryDatasetLocationEnum datasetLocation;
+
     public DestinationBigquery withDatasetLocation(DestinationBigqueryDatasetLocationEnum datasetLocation) {
         this.datasetLocation = datasetLocation;
         return this;
@@ -56,6 +60,7 @@ public class DestinationBigquery {
     
     @JsonProperty("destinationType")
     public DestinationBigqueryBigqueryEnum destinationType;
+
     public DestinationBigquery withDestinationType(DestinationBigqueryBigqueryEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -67,6 +72,7 @@ public class DestinationBigquery {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("loading_method")
     public Object loadingMethod;
+
     public DestinationBigquery withLoadingMethod(Object loadingMethod) {
         this.loadingMethod = loadingMethod;
         return this;
@@ -77,6 +83,7 @@ public class DestinationBigquery {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public DestinationBigquery withProjectId(String projectId) {
         this.projectId = projectId;
         return this;
@@ -88,6 +95,7 @@ public class DestinationBigquery {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("transformation_priority")
     public DestinationBigqueryTransformationQueryRunTypeEnum transformationPriority;
+
     public DestinationBigquery withTransformationPriority(DestinationBigqueryTransformationQueryRunTypeEnum transformationPriority) {
         this.transformationPriority = transformationPriority;
         return this;

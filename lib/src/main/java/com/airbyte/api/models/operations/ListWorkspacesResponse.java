@@ -10,6 +10,7 @@ import java.net.http.HttpResponse;
 public class ListWorkspacesResponse {
     
     public String contentType;
+
     public ListWorkspacesResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -17,6 +18,7 @@ public class ListWorkspacesResponse {
     
     
     public Integer statusCode;
+
     public ListWorkspacesResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
@@ -24,6 +26,7 @@ public class ListWorkspacesResponse {
     
     
     public HttpResponse<byte[]> rawResponse;
+
     public ListWorkspacesResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;
@@ -34,6 +37,7 @@ public class ListWorkspacesResponse {
      */
     
     public com.airbyte.api.models.shared.WorkspacesResponse workspacesResponse;
+
     public ListWorkspacesResponse withWorkspacesResponse(com.airbyte.api.models.shared.WorkspacesResponse workspacesResponse) {
         this.workspacesResponse = workspacesResponse;
         return this;

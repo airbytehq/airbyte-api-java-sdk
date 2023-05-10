@@ -15,6 +15,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("access")
     public String access;
+
     public SourceWikipediaPageviews withAccess(String access) {
         this.access = access;
         return this;
@@ -25,6 +26,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("agent")
     public String agent;
+
     public SourceWikipediaPageviews withAgent(String agent) {
         this.agent = agent;
         return this;
@@ -35,6 +37,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("article")
     public String article;
+
     public SourceWikipediaPageviews withArticle(String article) {
         this.article = article;
         return this;
@@ -45,6 +48,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("country")
     public String country;
+
     public SourceWikipediaPageviews withCountry(String country) {
         this.country = country;
         return this;
@@ -55,6 +59,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("end")
     public String end;
+
     public SourceWikipediaPageviews withEnd(String end) {
         this.end = end;
         return this;
@@ -65,6 +70,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("project")
     public String project;
+
     public SourceWikipediaPageviews withProject(String project) {
         this.project = project;
         return this;
@@ -72,6 +78,7 @@ public class SourceWikipediaPageviews {
     
     @JsonProperty("sourceType")
     public SourceWikipediaPageviewsWikipediaPageviewsEnum sourceType;
+
     public SourceWikipediaPageviews withSourceType(SourceWikipediaPageviewsWikipediaPageviewsEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -82,6 +89,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("start")
     public String start;
+
     public SourceWikipediaPageviews withStart(String start) {
         this.start = start;
         return this;

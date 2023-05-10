@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeleteConnectionRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=connectionId")
     public String connectionId;
+
     public DeleteConnectionRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;

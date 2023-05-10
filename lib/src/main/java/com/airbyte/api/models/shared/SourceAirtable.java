@@ -15,6 +15,7 @@ public class SourceAirtable {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceAirtable withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -22,6 +23,7 @@ public class SourceAirtable {
     
     @JsonProperty("sourceType")
     public SourceAirtableAirtableEnum sourceType;
+
     public SourceAirtable withSourceType(SourceAirtableAirtableEnum sourceType) {
         this.sourceType = sourceType;
         return this;

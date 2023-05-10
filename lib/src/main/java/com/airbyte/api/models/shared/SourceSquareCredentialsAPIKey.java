@@ -17,6 +17,7 @@ public class SourceSquareCredentialsAPIKey {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceSquareCredentialsAPIKey withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceSquareCredentialsAPIKey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_title")
     public SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle;
+
     public SourceSquareCredentialsAPIKey withCredentialsTitle(SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;

@@ -15,6 +15,7 @@ public class SourceMixpanelCredentialsServiceAccount {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     public SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle;
+
     public SourceMixpanelCredentialsServiceAccount withOptionTitle(SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;
@@ -25,6 +26,7 @@ public class SourceMixpanelCredentialsServiceAccount {
      */
     @JsonProperty("secret")
     public String secret;
+
     public SourceMixpanelCredentialsServiceAccount withSecret(String secret) {
         this.secret = secret;
         return this;
@@ -35,6 +37,7 @@ public class SourceMixpanelCredentialsServiceAccount {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceMixpanelCredentialsServiceAccount withUsername(String username) {
         this.username = username;
         return this;

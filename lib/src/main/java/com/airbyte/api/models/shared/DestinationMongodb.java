@@ -17,6 +17,7 @@ public class DestinationMongodb {
      */
     @JsonProperty("auth_type")
     public Object authType;
+
     public DestinationMongodb withAuthType(Object authType) {
         this.authType = authType;
         return this;
@@ -27,6 +28,7 @@ public class DestinationMongodb {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationMongodb withDatabase(String database) {
         this.database = database;
         return this;
@@ -34,6 +36,7 @@ public class DestinationMongodb {
     
     @JsonProperty("destinationType")
     public DestinationMongodbMongodbEnum destinationType;
+
     public DestinationMongodb withDestinationType(DestinationMongodbMongodbEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -45,6 +48,7 @@ public class DestinationMongodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance_type")
     public Object instanceType;
+
     public DestinationMongodb withInstanceType(Object instanceType) {
         this.instanceType = instanceType;
         return this;
@@ -56,6 +60,7 @@ public class DestinationMongodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationMongodb withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

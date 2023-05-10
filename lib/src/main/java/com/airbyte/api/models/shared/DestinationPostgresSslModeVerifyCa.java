@@ -17,6 +17,7 @@ public class DestinationPostgresSslModeVerifyCa {
      */
     @JsonProperty("ca_certificate")
     public String caCertificate;
+
     public DestinationPostgresSslModeVerifyCa withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -28,6 +29,7 @@ public class DestinationPostgresSslModeVerifyCa {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key_password")
     public String clientKeyPassword;
+
     public DestinationPostgresSslModeVerifyCa withClientKeyPassword(String clientKeyPassword) {
         this.clientKeyPassword = clientKeyPassword;
         return this;
@@ -35,6 +37,7 @@ public class DestinationPostgresSslModeVerifyCa {
     
     @JsonProperty("mode")
     public DestinationPostgresSslModeVerifyCaModeEnum mode;
+
     public DestinationPostgresSslModeVerifyCa withMode(DestinationPostgresSslModeVerifyCaModeEnum mode) {
         this.mode = mode;
         return this;

@@ -20,6 +20,7 @@ public class SourceInstagram {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceInstagram withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -27,6 +28,7 @@ public class SourceInstagram {
     
     @JsonProperty("sourceType")
     public SourceInstagramInstagramEnum sourceType;
+
     public SourceInstagram withSourceType(SourceInstagramInstagramEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +41,7 @@ public class SourceInstagram {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceInstagram withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

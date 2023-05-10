@@ -15,6 +15,7 @@ public class SourceLemlist {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceLemlist withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceLemlist {
     
     @JsonProperty("sourceType")
     public SourceLemlistLemlistEnum sourceType;
+
     public SourceLemlist withSourceType(SourceLemlistLemlistEnum sourceType) {
         this.sourceType = sourceType;
         return this;

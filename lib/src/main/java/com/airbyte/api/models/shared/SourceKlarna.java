@@ -15,6 +15,7 @@ public class SourceKlarna {
      */
     @JsonProperty("password")
     public String password;
+
     public SourceKlarna withPassword(String password) {
         this.password = password;
         return this;
@@ -25,6 +26,7 @@ public class SourceKlarna {
      */
     @JsonProperty("playground")
     public Boolean playground;
+
     public SourceKlarna withPlayground(Boolean playground) {
         this.playground = playground;
         return this;
@@ -35,6 +37,7 @@ public class SourceKlarna {
      */
     @JsonProperty("region")
     public SourceKlarnaRegionEnum region;
+
     public SourceKlarna withRegion(SourceKlarnaRegionEnum region) {
         this.region = region;
         return this;
@@ -42,6 +45,7 @@ public class SourceKlarna {
     
     @JsonProperty("sourceType")
     public SourceKlarnaKlarnaEnum sourceType;
+
     public SourceKlarna withSourceType(SourceKlarnaKlarnaEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -52,6 +56,7 @@ public class SourceKlarna {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceKlarna withUsername(String username) {
         this.username = username;
         return this;

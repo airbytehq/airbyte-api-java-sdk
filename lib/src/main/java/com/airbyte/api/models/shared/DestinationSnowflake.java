@@ -15,6 +15,7 @@ public class DestinationSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public DestinationSnowflake withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -25,6 +26,7 @@ public class DestinationSnowflake {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationSnowflake withDatabase(String database) {
         this.database = database;
         return this;
@@ -32,6 +34,7 @@ public class DestinationSnowflake {
     
     @JsonProperty("destinationType")
     public DestinationSnowflakeSnowflakeEnum destinationType;
+
     public DestinationSnowflake withDestinationType(DestinationSnowflakeSnowflakeEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -43,6 +46,7 @@ public class DestinationSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_buffer_count")
     public Long fileBufferCount;
+
     public DestinationSnowflake withFileBufferCount(Long fileBufferCount) {
         this.fileBufferCount = fileBufferCount;
         return this;
@@ -53,6 +57,7 @@ public class DestinationSnowflake {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationSnowflake withHost(String host) {
         this.host = host;
         return this;
@@ -64,6 +69,7 @@ public class DestinationSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public DestinationSnowflake withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -75,6 +81,7 @@ public class DestinationSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("loading_method")
     public Object loadingMethod;
+
     public DestinationSnowflake withLoadingMethod(Object loadingMethod) {
         this.loadingMethod = loadingMethod;
         return this;
@@ -85,6 +92,7 @@ public class DestinationSnowflake {
      */
     @JsonProperty("role")
     public String role;
+
     public DestinationSnowflake withRole(String role) {
         this.role = role;
         return this;
@@ -95,6 +103,7 @@ public class DestinationSnowflake {
      */
     @JsonProperty("schema")
     public String schema;
+
     public DestinationSnowflake withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -105,6 +114,7 @@ public class DestinationSnowflake {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationSnowflake withUsername(String username) {
         this.username = username;
         return this;
@@ -115,6 +125,7 @@ public class DestinationSnowflake {
      */
     @JsonProperty("warehouse")
     public String warehouse;
+
     public DestinationSnowflake withWarehouse(String warehouse) {
         this.warehouse = warehouse;
         return this;

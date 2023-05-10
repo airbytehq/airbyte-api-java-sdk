@@ -23,6 +23,7 @@ public class SourceGithub {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("branch")
     public String branch;
+
     public SourceGithub withBranch(String branch) {
         this.branch = branch;
         return this;
@@ -34,6 +35,7 @@ public class SourceGithub {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceGithub withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -45,6 +47,7 @@ public class SourceGithub {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("page_size_for_large_streams")
     public Long pageSizeForLargeStreams;
+
     public SourceGithub withPageSizeForLargeStreams(Long pageSizeForLargeStreams) {
         this.pageSizeForLargeStreams = pageSizeForLargeStreams;
         return this;
@@ -55,6 +58,7 @@ public class SourceGithub {
      */
     @JsonProperty("repository")
     public String repository;
+
     public SourceGithub withRepository(String repository) {
         this.repository = repository;
         return this;
@@ -62,6 +66,7 @@ public class SourceGithub {
     
     @JsonProperty("sourceType")
     public SourceGithubGithubEnum sourceType;
+
     public SourceGithub withSourceType(SourceGithubGithubEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -74,6 +79,7 @@ public class SourceGithub {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceGithub withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

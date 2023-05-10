@@ -18,6 +18,7 @@ public class DestinationElasticsearch {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authenticationMethod")
     public Object authenticationMethod;
+
     public DestinationElasticsearch withAuthenticationMethod(Object authenticationMethod) {
         this.authenticationMethod = authenticationMethod;
         return this;
@@ -29,6 +30,7 @@ public class DestinationElasticsearch {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ca_certificate")
     public String caCertificate;
+
     public DestinationElasticsearch withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -36,6 +38,7 @@ public class DestinationElasticsearch {
     
     @JsonProperty("destinationType")
     public DestinationElasticsearchElasticsearchEnum destinationType;
+
     public DestinationElasticsearch withDestinationType(DestinationElasticsearchElasticsearchEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -46,6 +49,7 @@ public class DestinationElasticsearch {
      */
     @JsonProperty("endpoint")
     public String endpoint;
+
     public DestinationElasticsearch withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -57,6 +61,7 @@ public class DestinationElasticsearch {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("upsert")
     public Boolean upsert;
+
     public DestinationElasticsearch withUpsert(Boolean upsert) {
         this.upsert = upsert;
         return this;

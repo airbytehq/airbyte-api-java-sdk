@@ -15,6 +15,7 @@ public class SourceGithubCredentialsPersonalAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     public SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle;
+
     public SourceGithubCredentialsPersonalAccessToken withOptionTitle(SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;
@@ -25,6 +26,7 @@ public class SourceGithubCredentialsPersonalAccessToken {
      */
     @JsonProperty("personal_access_token")
     public String personalAccessToken;
+
     public SourceGithubCredentialsPersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
         this.personalAccessToken = personalAccessToken;
         return this;

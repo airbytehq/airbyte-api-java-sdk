@@ -15,6 +15,7 @@ public class SourceInstatus {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceInstatus withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceInstatus {
     
     @JsonProperty("sourceType")
     public SourceInstatusInstatusEnum sourceType;
+
     public SourceInstatus withSourceType(SourceInstatusInstatusEnum sourceType) {
         this.sourceType = sourceType;
         return this;

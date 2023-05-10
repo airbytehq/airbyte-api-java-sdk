@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceRkiCovid {
     @JsonProperty("sourceType")
     public SourceRkiCovidRkiCovidEnum sourceType;
+
     public SourceRkiCovid withSourceType(SourceRkiCovidRkiCovidEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -22,6 +23,7 @@ public class SourceRkiCovid {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceRkiCovid withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

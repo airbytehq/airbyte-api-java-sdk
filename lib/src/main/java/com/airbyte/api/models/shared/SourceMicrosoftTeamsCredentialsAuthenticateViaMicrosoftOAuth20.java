@@ -15,6 +15,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20AuthTypeEnum authType;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withAuthType(SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -25,6 +26,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -35,6 +37,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -45,6 +48,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -55,6 +59,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
      */
     @JsonProperty("tenant_id")
     public String tenantId;
+
     public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withTenantId(String tenantId) {
         this.tenantId = tenantId;
         return this;

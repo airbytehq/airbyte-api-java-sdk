@@ -17,6 +17,7 @@ public class SourceOpenweather {
      */
     @JsonProperty("appid")
     public String appid;
+
     public SourceOpenweather withAppid(String appid) {
         this.appid = appid;
         return this;
@@ -28,6 +29,7 @@ public class SourceOpenweather {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lang")
     public SourceOpenweatherLanguageEnum lang;
+
     public SourceOpenweather withLang(SourceOpenweatherLanguageEnum lang) {
         this.lang = lang;
         return this;
@@ -38,6 +40,7 @@ public class SourceOpenweather {
      */
     @JsonProperty("lat")
     public String lat;
+
     public SourceOpenweather withLat(String lat) {
         this.lat = lat;
         return this;
@@ -48,6 +51,7 @@ public class SourceOpenweather {
      */
     @JsonProperty("lon")
     public String lon;
+
     public SourceOpenweather withLon(String lon) {
         this.lon = lon;
         return this;
@@ -55,6 +59,7 @@ public class SourceOpenweather {
     
     @JsonProperty("sourceType")
     public SourceOpenweatherOpenweatherEnum sourceType;
+
     public SourceOpenweather withSourceType(SourceOpenweatherOpenweatherEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -66,6 +71,7 @@ public class SourceOpenweather {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("units")
     public SourceOpenweatherUnitsEnum units;
+
     public SourceOpenweather withUnits(SourceOpenweatherUnitsEnum units) {
         this.units = units;
         return this;

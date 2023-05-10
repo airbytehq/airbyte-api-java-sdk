@@ -18,6 +18,7 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression")
     public Object compression;
+
     public DestinationGcsFormatCSVCommaSeparatedValues withCompression(Object compression) {
         this.compression = compression;
         return this;
@@ -29,6 +30,7 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     public DestinationGcsFormatCSVCommaSeparatedValuesNormalizationEnum flattening;
+
     public DestinationGcsFormatCSVCommaSeparatedValues withFlattening(DestinationGcsFormatCSVCommaSeparatedValuesNormalizationEnum flattening) {
         this.flattening = flattening;
         return this;
@@ -36,6 +38,7 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
     
     @JsonProperty("format_type")
     public DestinationGcsFormatCSVCommaSeparatedValuesFormatTypeEnum formatType;
+
     public DestinationGcsFormatCSVCommaSeparatedValues withFormatType(DestinationGcsFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

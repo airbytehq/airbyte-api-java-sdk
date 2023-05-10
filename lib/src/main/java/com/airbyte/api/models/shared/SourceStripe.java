@@ -22,6 +22,7 @@ public class SourceStripe {
      */
     @JsonProperty("account_id")
     public String accountId;
+
     public SourceStripe withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
@@ -32,6 +33,7 @@ public class SourceStripe {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceStripe withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -43,6 +45,7 @@ public class SourceStripe {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window_days")
     public Long lookbackWindowDays;
+
     public SourceStripe withLookbackWindowDays(Long lookbackWindowDays) {
         this.lookbackWindowDays = lookbackWindowDays;
         return this;
@@ -54,6 +57,7 @@ public class SourceStripe {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("slice_range")
     public Long sliceRange;
+
     public SourceStripe withSliceRange(Long sliceRange) {
         this.sliceRange = sliceRange;
         return this;
@@ -61,6 +65,7 @@ public class SourceStripe {
     
     @JsonProperty("sourceType")
     public SourceStripeStripeEnum sourceType;
+
     public SourceStripe withSourceType(SourceStripeStripeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -73,6 +78,7 @@ public class SourceStripe {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceStripe withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

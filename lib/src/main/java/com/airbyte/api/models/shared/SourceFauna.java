@@ -18,6 +18,7 @@ public class SourceFauna {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("collection")
     public SourceFaunaCollection collection;
+
     public SourceFauna withCollection(SourceFaunaCollection collection) {
         this.collection = collection;
         return this;
@@ -28,6 +29,7 @@ public class SourceFauna {
      */
     @JsonProperty("domain")
     public String domain;
+
     public SourceFauna withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -38,6 +40,7 @@ public class SourceFauna {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceFauna withPort(Long port) {
         this.port = port;
         return this;
@@ -48,6 +51,7 @@ public class SourceFauna {
      */
     @JsonProperty("scheme")
     public String scheme;
+
     public SourceFauna withScheme(String scheme) {
         this.scheme = scheme;
         return this;
@@ -58,6 +62,7 @@ public class SourceFauna {
      */
     @JsonProperty("secret")
     public String secret;
+
     public SourceFauna withSecret(String secret) {
         this.secret = secret;
         return this;
@@ -65,6 +70,7 @@ public class SourceFauna {
     
     @JsonProperty("sourceType")
     public SourceFaunaFaunaEnum sourceType;
+
     public SourceFauna withSourceType(SourceFaunaFaunaEnum sourceType) {
         this.sourceType = sourceType;
         return this;

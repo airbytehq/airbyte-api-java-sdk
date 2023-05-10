@@ -23,6 +23,7 @@ public class SourceS3S3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_access_key_id")
     public String awsAccessKeyId;
+
     public SourceS3S3AmazonWebServices withAwsAccessKeyId(String awsAccessKeyId) {
         this.awsAccessKeyId = awsAccessKeyId;
         return this;
@@ -34,6 +35,7 @@ public class SourceS3S3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_secret_access_key")
     public String awsSecretAccessKey;
+
     public SourceS3S3AmazonWebServices withAwsSecretAccessKey(String awsSecretAccessKey) {
         this.awsSecretAccessKey = awsSecretAccessKey;
         return this;
@@ -44,6 +46,7 @@ public class SourceS3S3AmazonWebServices {
      */
     @JsonProperty("bucket")
     public String bucket;
+
     public SourceS3S3AmazonWebServices withBucket(String bucket) {
         this.bucket = bucket;
         return this;
@@ -55,6 +58,7 @@ public class SourceS3S3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endpoint")
     public String endpoint;
+
     public SourceS3S3AmazonWebServices withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -66,6 +70,7 @@ public class SourceS3S3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("path_prefix")
     public String pathPrefix;
+
     public SourceS3S3AmazonWebServices withPathPrefix(String pathPrefix) {
         this.pathPrefix = pathPrefix;
         return this;
@@ -79,6 +84,7 @@ public class SourceS3S3AmazonWebServices {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceS3S3AmazonWebServices withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

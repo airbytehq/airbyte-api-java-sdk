@@ -15,6 +15,7 @@ public class SourceS3FormatAvro {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
     public SourceS3FormatAvroFiletypeEnum filetype;
+
     public SourceS3FormatAvro withFiletype(SourceS3FormatAvroFiletypeEnum filetype) {
         this.filetype = filetype;
         return this;

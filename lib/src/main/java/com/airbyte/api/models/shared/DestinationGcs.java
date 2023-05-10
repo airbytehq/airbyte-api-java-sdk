@@ -17,6 +17,7 @@ public class DestinationGcs {
      */
     @JsonProperty("credential")
     public Object credential;
+
     public DestinationGcs withCredential(Object credential) {
         this.credential = credential;
         return this;
@@ -24,6 +25,7 @@ public class DestinationGcs {
     
     @JsonProperty("destinationType")
     public DestinationGcsGcsEnum destinationType;
+
     public DestinationGcs withDestinationType(DestinationGcsGcsEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationGcs {
      */
     @JsonProperty("format")
     public Object format;
+
     public DestinationGcs withFormat(Object format) {
         this.format = format;
         return this;
@@ -44,6 +47,7 @@ public class DestinationGcs {
      */
     @JsonProperty("gcs_bucket_name")
     public String gcsBucketName;
+
     public DestinationGcs withGcsBucketName(String gcsBucketName) {
         this.gcsBucketName = gcsBucketName;
         return this;
@@ -54,6 +58,7 @@ public class DestinationGcs {
      */
     @JsonProperty("gcs_bucket_path")
     public String gcsBucketPath;
+
     public DestinationGcs withGcsBucketPath(String gcsBucketPath) {
         this.gcsBucketPath = gcsBucketPath;
         return this;
@@ -65,6 +70,7 @@ public class DestinationGcs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gcs_bucket_region")
     public DestinationGCSGCSBucketRegionEnum gcsBucketRegion;
+
     public DestinationGcs withGcsBucketRegion(DestinationGCSGCSBucketRegionEnum gcsBucketRegion) {
         this.gcsBucketRegion = gcsBucketRegion;
         return this;

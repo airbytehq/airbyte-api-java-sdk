@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeleteDestinationRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=destinationId")
     public String destinationId;
+
     public DeleteDestinationRequest withDestinationId(String destinationId) {
         this.destinationId = destinationId;
         return this;

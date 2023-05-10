@@ -20,6 +20,7 @@ public class SourceIterable {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceIterable withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceIterable {
     
     @JsonProperty("sourceType")
     public SourceIterableIterableEnum sourceType;
+
     public SourceIterable withSourceType(SourceIterableIterableEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +41,7 @@ public class SourceIterable {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceIterable withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

@@ -15,6 +15,7 @@ public class DestinationClickhouseTunnelMethodNoTunnel {
      */
     @JsonProperty("tunnel_method")
     public DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+
     public DestinationClickhouseTunnelMethodNoTunnel withTunnelMethod(DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

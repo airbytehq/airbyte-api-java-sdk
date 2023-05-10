@@ -18,6 +18,7 @@ public class SourceRetently {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceRetently withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -25,6 +26,7 @@ public class SourceRetently {
     
     @JsonProperty("sourceType")
     public SourceRetentlyRetentlyEnum sourceType;
+
     public SourceRetently withSourceType(SourceRetentlyRetentlyEnum sourceType) {
         this.sourceType = sourceType;
         return this;

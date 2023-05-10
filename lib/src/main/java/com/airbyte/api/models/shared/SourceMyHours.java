@@ -17,6 +17,7 @@ public class SourceMyHours {
      */
     @JsonProperty("email")
     public String email;
+
     public SourceMyHours withEmail(String email) {
         this.email = email;
         return this;
@@ -28,6 +29,7 @@ public class SourceMyHours {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logs_batch_size")
     public Long logsBatchSize;
+
     public SourceMyHours withLogsBatchSize(Long logsBatchSize) {
         this.logsBatchSize = logsBatchSize;
         return this;
@@ -38,6 +40,7 @@ public class SourceMyHours {
      */
     @JsonProperty("password")
     public String password;
+
     public SourceMyHours withPassword(String password) {
         this.password = password;
         return this;
@@ -45,6 +48,7 @@ public class SourceMyHours {
     
     @JsonProperty("sourceType")
     public SourceMyHoursMyHoursEnum sourceType;
+
     public SourceMyHours withSourceType(SourceMyHoursMyHoursEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -55,6 +59,7 @@ public class SourceMyHours {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceMyHours withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

@@ -15,6 +15,7 @@ public class SourceShopifyCredentialsAPIPassword {
      */
     @JsonProperty("api_password")
     public String apiPassword;
+
     public SourceShopifyCredentialsAPIPassword withApiPassword(String apiPassword) {
         this.apiPassword = apiPassword;
         return this;
@@ -22,6 +23,7 @@ public class SourceShopifyCredentialsAPIPassword {
     
     @JsonProperty("auth_method")
     public SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod;
+
     public SourceShopifyCredentialsAPIPassword withAuthMethod(SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;

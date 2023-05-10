@@ -18,6 +18,7 @@ public class SourceIp2whois {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceIp2whois withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -29,6 +30,7 @@ public class SourceIp2whois {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     public String domain;
+
     public SourceIp2whois withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -36,6 +38,7 @@ public class SourceIp2whois {
     
     @JsonProperty("sourceType")
     public SourceIp2whoisIp2whoisEnum sourceType;
+
     public SourceIp2whois withSourceType(SourceIp2whoisIp2whoisEnum sourceType) {
         this.sourceType = sourceType;
         return this;

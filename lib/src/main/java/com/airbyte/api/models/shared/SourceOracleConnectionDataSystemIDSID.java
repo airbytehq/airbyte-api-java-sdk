@@ -15,6 +15,7 @@ public class SourceOracleConnectionDataSystemIDSID {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")
     public SourceOracleConnectionDataSystemIDSIDConnectionTypeEnum connectionType;
+
     public SourceOracleConnectionDataSystemIDSID withConnectionType(SourceOracleConnectionDataSystemIDSIDConnectionTypeEnum connectionType) {
         this.connectionType = connectionType;
         return this;
@@ -22,6 +23,7 @@ public class SourceOracleConnectionDataSystemIDSID {
     
     @JsonProperty("sid")
     public String sid;
+
     public SourceOracleConnectionDataSystemIDSID withSid(String sid) {
         this.sid = sid;
         return this;

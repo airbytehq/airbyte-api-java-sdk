@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationRedshiftUploadingMethodStandard {
     @JsonProperty("method")
     public DestinationRedshiftUploadingMethodStandardMethodEnum method;
+
     public DestinationRedshiftUploadingMethodStandard withMethod(DestinationRedshiftUploadingMethodStandardMethodEnum method) {
         this.method = method;
         return this;

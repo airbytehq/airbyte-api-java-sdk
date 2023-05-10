@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceOnesignalApplications {
     @JsonProperty("app_api_key")
     public String appApiKey;
+
     public SourceOnesignalApplications withAppApiKey(String appApiKey) {
         this.appApiKey = appApiKey;
         return this;
@@ -18,6 +19,7 @@ public class SourceOnesignalApplications {
     
     @JsonProperty("app_id")
     public String appId;
+
     public SourceOnesignalApplications withAppId(String appId) {
         this.appId = appId;
         return this;
@@ -26,6 +28,7 @@ public class SourceOnesignalApplications {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("app_name")
     public String appName;
+
     public SourceOnesignalApplications withAppName(String appName) {
         this.appName = appName;
         return this;

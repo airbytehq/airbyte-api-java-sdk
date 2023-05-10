@@ -17,6 +17,7 @@ public class SourceFreshcaller {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceFreshcaller withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceFreshcaller {
      */
     @JsonProperty("domain")
     public String domain;
+
     public SourceFreshcaller withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -38,6 +40,7 @@ public class SourceFreshcaller {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requests_per_minute")
     public Long requestsPerMinute;
+
     public SourceFreshcaller withRequestsPerMinute(Long requestsPerMinute) {
         this.requestsPerMinute = requestsPerMinute;
         return this;
@@ -45,6 +48,7 @@ public class SourceFreshcaller {
     
     @JsonProperty("sourceType")
     public SourceFreshcallerFreshcallerEnum sourceType;
+
     public SourceFreshcaller withSourceType(SourceFreshcallerFreshcallerEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -55,6 +59,7 @@ public class SourceFreshcaller {
      */
     @JsonProperty("start_date")
     public Object startDate;
+
     public SourceFreshcaller withStartDate(Object startDate) {
         this.startDate = startDate;
         return this;
@@ -66,6 +71,7 @@ public class SourceFreshcaller {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sync_lag_minutes")
     public Long syncLagMinutes;
+
     public SourceFreshcaller withSyncLagMinutes(Long syncLagMinutes) {
         this.syncLagMinutes = syncLagMinutes;
         return this;
