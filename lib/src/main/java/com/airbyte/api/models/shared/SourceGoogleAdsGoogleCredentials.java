@@ -15,6 +15,7 @@ public class SourceGoogleAdsGoogleCredentials {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceGoogleAdsGoogleCredentials withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -25,6 +26,7 @@ public class SourceGoogleAdsGoogleCredentials {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceGoogleAdsGoogleCredentials withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -35,6 +37,7 @@ public class SourceGoogleAdsGoogleCredentials {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceGoogleAdsGoogleCredentials withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -45,6 +48,7 @@ public class SourceGoogleAdsGoogleCredentials {
      */
     @JsonProperty("developer_token")
     public String developerToken;
+
     public SourceGoogleAdsGoogleCredentials withDeveloperToken(String developerToken) {
         this.developerToken = developerToken;
         return this;
@@ -55,6 +59,7 @@ public class SourceGoogleAdsGoogleCredentials {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceGoogleAdsGoogleCredentials withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

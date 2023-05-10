@@ -15,6 +15,7 @@ public class SourceTempo {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceTempo withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceTempo {
     
     @JsonProperty("sourceType")
     public SourceTempoTempoEnum sourceType;
+
     public SourceTempo withSourceType(SourceTempoTempoEnum sourceType) {
         this.sourceType = sourceType;
         return this;

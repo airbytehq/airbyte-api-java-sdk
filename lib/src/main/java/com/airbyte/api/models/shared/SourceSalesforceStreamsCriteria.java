@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceSalesforceStreamsCriteria {
     @JsonProperty("criteria")
     public SourceSalesforceStreamsCriteriaSearchCriteriaEnum criteria;
+
     public SourceSalesforceStreamsCriteria withCriteria(SourceSalesforceStreamsCriteriaSearchCriteriaEnum criteria) {
         this.criteria = criteria;
         return this;
@@ -16,6 +17,7 @@ public class SourceSalesforceStreamsCriteria {
     
     @JsonProperty("value")
     public String value;
+
     public SourceSalesforceStreamsCriteria withValue(String value) {
         this.value = value;
         return this;

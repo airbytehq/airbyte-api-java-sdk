@@ -18,6 +18,7 @@ public class SourcePaypalTransaction {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;
+
     public SourcePaypalTransaction withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -29,6 +30,7 @@ public class SourcePaypalTransaction {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourcePaypalTransaction withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -39,6 +41,7 @@ public class SourcePaypalTransaction {
      */
     @JsonProperty("is_sandbox")
     public Boolean isSandbox;
+
     public SourcePaypalTransaction withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
         return this;
@@ -50,6 +53,7 @@ public class SourcePaypalTransaction {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourcePaypalTransaction withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -57,6 +61,7 @@ public class SourcePaypalTransaction {
     
     @JsonProperty("sourceType")
     public SourcePaypalTransactionPaypalTransactionEnum sourceType;
+
     public SourcePaypalTransaction withSourceType(SourcePaypalTransactionPaypalTransactionEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -67,6 +72,7 @@ public class SourcePaypalTransaction {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourcePaypalTransaction withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

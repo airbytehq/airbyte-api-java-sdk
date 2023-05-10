@@ -15,6 +15,7 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("ssh_key")
     public String sshKey;
+
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withSshKey(String sshKey) {
         this.sshKey = sshKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     public String tunnelHost;
+
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -35,6 +37,7 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_method")
     public SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelMethod(SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -45,6 +48,7 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
+
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -55,6 +59,7 @@ public class SourceClickhouseTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_user")
     public String tunnelUser;
+
     public SourceClickhouseTunnelMethodSSHKeyAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;

@@ -18,6 +18,7 @@ public class SourceAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_key")
     public String accessKey;
+
     public SourceAmazonSqs withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
@@ -29,6 +30,7 @@ public class SourceAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attributes_to_return")
     public String attributesToReturn;
+
     public SourceAmazonSqs withAttributesToReturn(String attributesToReturn) {
         this.attributesToReturn = attributesToReturn;
         return this;
@@ -39,6 +41,7 @@ public class SourceAmazonSqs {
      */
     @JsonProperty("delete_messages")
     public Boolean deleteMessages;
+
     public SourceAmazonSqs withDeleteMessages(Boolean deleteMessages) {
         this.deleteMessages = deleteMessages;
         return this;
@@ -50,6 +53,7 @@ public class SourceAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_batch_size")
     public Long maxBatchSize;
+
     public SourceAmazonSqs withMaxBatchSize(Long maxBatchSize) {
         this.maxBatchSize = maxBatchSize;
         return this;
@@ -61,6 +65,7 @@ public class SourceAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_wait_time")
     public Long maxWaitTime;
+
     public SourceAmazonSqs withMaxWaitTime(Long maxWaitTime) {
         this.maxWaitTime = maxWaitTime;
         return this;
@@ -71,6 +76,7 @@ public class SourceAmazonSqs {
      */
     @JsonProperty("queue_url")
     public String queueUrl;
+
     public SourceAmazonSqs withQueueUrl(String queueUrl) {
         this.queueUrl = queueUrl;
         return this;
@@ -81,6 +87,7 @@ public class SourceAmazonSqs {
      */
     @JsonProperty("region")
     public SourceAmazonSqsAWSRegionEnum region;
+
     public SourceAmazonSqs withRegion(SourceAmazonSqsAWSRegionEnum region) {
         this.region = region;
         return this;
@@ -92,6 +99,7 @@ public class SourceAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secret_key")
     public String secretKey;
+
     public SourceAmazonSqs withSecretKey(String secretKey) {
         this.secretKey = secretKey;
         return this;
@@ -99,6 +107,7 @@ public class SourceAmazonSqs {
     
     @JsonProperty("sourceType")
     public SourceAmazonSqsAmazonSqsEnum sourceType;
+
     public SourceAmazonSqs withSourceType(SourceAmazonSqsAmazonSqsEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -110,6 +119,7 @@ public class SourceAmazonSqs {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("visibility_timeout")
     public Long visibilityTimeout;
+
     public SourceAmazonSqs withVisibilityTimeout(Long visibilityTimeout) {
         this.visibilityTimeout = visibilityTimeout;
         return this;

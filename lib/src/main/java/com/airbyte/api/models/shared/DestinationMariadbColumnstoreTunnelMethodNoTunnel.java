@@ -15,6 +15,7 @@ public class DestinationMariadbColumnstoreTunnelMethodNoTunnel {
      */
     @JsonProperty("tunnel_method")
     public DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+
     public DestinationMariadbColumnstoreTunnelMethodNoTunnel withTunnelMethod(DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

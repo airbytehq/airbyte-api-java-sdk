@@ -22,6 +22,7 @@ public class SourceHarvest {
      */
     @JsonProperty("account_id")
     public String accountId;
+
     public SourceHarvest withAccountId(String accountId) {
         this.accountId = accountId;
         return this;
@@ -33,6 +34,7 @@ public class SourceHarvest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceHarvest withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -46,6 +48,7 @@ public class SourceHarvest {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("replication_end_date")
     public OffsetDateTime replicationEndDate;
+
     public SourceHarvest withReplicationEndDate(OffsetDateTime replicationEndDate) {
         this.replicationEndDate = replicationEndDate;
         return this;
@@ -58,6 +61,7 @@ public class SourceHarvest {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("replication_start_date")
     public OffsetDateTime replicationStartDate;
+
     public SourceHarvest withReplicationStartDate(OffsetDateTime replicationStartDate) {
         this.replicationStartDate = replicationStartDate;
         return this;
@@ -65,6 +69,7 @@ public class SourceHarvest {
     
     @JsonProperty("sourceType")
     public SourceHarvestHarvestEnum sourceType;
+
     public SourceHarvest withSourceType(SourceHarvestHarvestEnum sourceType) {
         this.sourceType = sourceType;
         return this;

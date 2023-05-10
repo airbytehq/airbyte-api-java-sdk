@@ -15,6 +15,7 @@ public class SourceK6Cloud {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceK6Cloud withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceK6Cloud {
     
     @JsonProperty("sourceType")
     public SourceK6CloudK6CloudEnum sourceType;
+
     public SourceK6Cloud withSourceType(SourceK6CloudK6CloudEnum sourceType) {
         this.sourceType = sourceType;
         return this;

@@ -17,6 +17,7 @@ public class DestinationBigqueryLoadingMethodGCSStaging {
      */
     @JsonProperty("credential")
     public Object credential;
+
     public DestinationBigqueryLoadingMethodGCSStaging withCredential(Object credential) {
         this.credential = credential;
         return this;
@@ -27,6 +28,7 @@ public class DestinationBigqueryLoadingMethodGCSStaging {
      */
     @JsonProperty("gcs_bucket_name")
     public String gcsBucketName;
+
     public DestinationBigqueryLoadingMethodGCSStaging withGcsBucketName(String gcsBucketName) {
         this.gcsBucketName = gcsBucketName;
         return this;
@@ -37,6 +39,7 @@ public class DestinationBigqueryLoadingMethodGCSStaging {
      */
     @JsonProperty("gcs_bucket_path")
     public String gcsBucketPath;
+
     public DestinationBigqueryLoadingMethodGCSStaging withGcsBucketPath(String gcsBucketPath) {
         this.gcsBucketPath = gcsBucketPath;
         return this;
@@ -48,6 +51,7 @@ public class DestinationBigqueryLoadingMethodGCSStaging {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("keep_files_in_gcs-bucket")
     public DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum keepFilesInGcsBucket;
+
     public DestinationBigqueryLoadingMethodGCSStaging withKeepFilesInGcsBucket(DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum keepFilesInGcsBucket) {
         this.keepFilesInGcsBucket = keepFilesInGcsBucket;
         return this;
@@ -55,6 +59,7 @@ public class DestinationBigqueryLoadingMethodGCSStaging {
     
     @JsonProperty("method")
     public DestinationBigqueryLoadingMethodGCSStagingMethodEnum method;
+
     public DestinationBigqueryLoadingMethodGCSStaging withMethod(DestinationBigqueryLoadingMethodGCSStagingMethodEnum method) {
         this.method = method;
         return this;

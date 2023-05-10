@@ -17,6 +17,7 @@ public class SourceMixpanelCredentialsProjectSecret {
      */
     @JsonProperty("api_secret")
     public String apiSecret;
+
     public SourceMixpanelCredentialsProjectSecret withApiSecret(String apiSecret) {
         this.apiSecret = apiSecret;
         return this;
@@ -25,6 +26,7 @@ public class SourceMixpanelCredentialsProjectSecret {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     public SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle;
+
     public SourceMixpanelCredentialsProjectSecret withOptionTitle(SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle) {
         this.optionTitle = optionTitle;
         return this;

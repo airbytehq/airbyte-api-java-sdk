@@ -31,6 +31,12 @@ public class Connections {
 		this._genVersion = genVersion;
 	}
 
+    /**
+     * Create a connection
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
     public com.airbyte.api.models.operations.CreateConnectionResponse createConnection(com.airbyte.api.models.shared.ConnectionCreateRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/connections");
@@ -70,6 +76,12 @@ public class Connections {
         return res;
     }
 
+    /**
+     * Delete a Connection
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
     public com.airbyte.api.models.operations.DeleteConnectionResponse deleteConnection(com.airbyte.api.models.operations.DeleteConnectionRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.DeleteConnectionRequest.class, baseUrl, "/connections/{connectionId}", request, null);
@@ -96,6 +108,12 @@ public class Connections {
         return res;
     }
 
+    /**
+     * Get Connection details
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
     public com.airbyte.api.models.operations.GetConnectionResponse getConnection(com.airbyte.api.models.operations.GetConnectionRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.GetConnectionRequest.class, baseUrl, "/connections/{connectionId}", request, null);
@@ -130,6 +148,12 @@ public class Connections {
         return res;
     }
 
+    /**
+     * List connections
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
     public com.airbyte.api.models.operations.ListConnectionsResponse listConnections(com.airbyte.api.models.operations.ListConnectionsRequest request) throws Exception {
         String baseUrl = this._serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/connections");

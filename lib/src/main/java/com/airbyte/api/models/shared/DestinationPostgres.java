@@ -17,6 +17,7 @@ public class DestinationPostgres {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationPostgres withDatabase(String database) {
         this.database = database;
         return this;
@@ -24,6 +25,7 @@ public class DestinationPostgres {
     
     @JsonProperty("destinationType")
     public DestinationPostgresPostgresEnum destinationType;
+
     public DestinationPostgres withDestinationType(DestinationPostgresPostgresEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationPostgres {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationPostgres withHost(String host) {
         this.host = host;
         return this;
@@ -45,6 +48,7 @@ public class DestinationPostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public DestinationPostgres withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -56,6 +60,7 @@ public class DestinationPostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public DestinationPostgres withPassword(String password) {
         this.password = password;
         return this;
@@ -66,6 +71,7 @@ public class DestinationPostgres {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationPostgres withPort(Long port) {
         this.port = port;
         return this;
@@ -76,6 +82,7 @@ public class DestinationPostgres {
      */
     @JsonProperty("schema")
     public String schema;
+
     public DestinationPostgres withSchema(String schema) {
         this.schema = schema;
         return this;
@@ -94,6 +101,7 @@ public class DestinationPostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     public Object sslMode;
+
     public DestinationPostgres withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -105,6 +113,7 @@ public class DestinationPostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationPostgres withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -115,6 +124,7 @@ public class DestinationPostgres {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationPostgres withUsername(String username) {
         this.username = username;
         return this;

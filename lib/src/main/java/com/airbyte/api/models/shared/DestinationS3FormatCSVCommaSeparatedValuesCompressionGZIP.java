@@ -15,6 +15,7 @@ public class DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIP {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
     public DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIPCompressionTypeEnum compressionType;
+
     public DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIP withCompressionType(DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIPCompressionTypeEnum compressionType) {
         this.compressionType = compressionType;
         return this;

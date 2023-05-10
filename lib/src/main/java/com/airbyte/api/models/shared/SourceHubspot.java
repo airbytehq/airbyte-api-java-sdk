@@ -20,6 +20,7 @@ public class SourceHubspot {
      */
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceHubspot withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -27,6 +28,7 @@ public class SourceHubspot {
     
     @JsonProperty("sourceType")
     public SourceHubspotHubspotEnum sourceType;
+
     public SourceHubspot withSourceType(SourceHubspotHubspotEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +41,7 @@ public class SourceHubspot {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceHubspot withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

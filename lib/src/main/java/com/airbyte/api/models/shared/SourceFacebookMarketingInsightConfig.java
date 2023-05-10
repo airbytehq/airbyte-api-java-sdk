@@ -22,8 +22,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("action_breakdowns")
-    public Object[] actionBreakdowns;
-    public SourceFacebookMarketingInsightConfig withActionBreakdowns(Object[] actionBreakdowns) {
+    public SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns;
+
+    public SourceFacebookMarketingInsightConfig withActionBreakdowns(SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns) {
         this.actionBreakdowns = actionBreakdowns;
         return this;
     }
@@ -33,8 +34,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("breakdowns")
-    public Object[] breakdowns;
-    public SourceFacebookMarketingInsightConfig withBreakdowns(Object[] breakdowns) {
+    public SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns;
+
+    public SourceFacebookMarketingInsightConfig withBreakdowns(SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns) {
         this.breakdowns = breakdowns;
         return this;
     }
@@ -47,6 +49,7 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("end_date")
     public OffsetDateTime endDate;
+
     public SourceFacebookMarketingInsightConfig withEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
         return this;
@@ -57,8 +60,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("fields")
-    public Object[] fields;
-    public SourceFacebookMarketingInsightConfig withFields(Object[] fields) {
+    public SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields;
+
+    public SourceFacebookMarketingInsightConfig withFields(SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields) {
         this.fields = fields;
         return this;
     }
@@ -69,6 +73,7 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("insights_lookback_window")
     public Long insightsLookbackWindow;
+
     public SourceFacebookMarketingInsightConfig withInsightsLookbackWindow(Long insightsLookbackWindow) {
         this.insightsLookbackWindow = insightsLookbackWindow;
         return this;
@@ -80,6 +85,7 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("level")
     public SourceFacebookMarketingInsightConfigLevelEnum level;
+
     public SourceFacebookMarketingInsightConfig withLevel(SourceFacebookMarketingInsightConfigLevelEnum level) {
         this.level = level;
         return this;
@@ -90,6 +96,7 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonProperty("name")
     public String name;
+
     public SourceFacebookMarketingInsightConfig withName(String name) {
         this.name = name;
         return this;
@@ -103,6 +110,7 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceFacebookMarketingInsightConfig withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -114,6 +122,7 @@ public class SourceFacebookMarketingInsightConfig {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("time_increment")
     public Long timeIncrement;
+
     public SourceFacebookMarketingInsightConfig withTimeIncrement(Long timeIncrement) {
         this.timeIncrement = timeIncrement;
         return this;

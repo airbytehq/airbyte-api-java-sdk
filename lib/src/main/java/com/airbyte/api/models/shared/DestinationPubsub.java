@@ -18,6 +18,7 @@ public class DestinationPubsub {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batching_delay_threshold")
     public Long batchingDelayThreshold;
+
     public DestinationPubsub withBatchingDelayThreshold(Long batchingDelayThreshold) {
         this.batchingDelayThreshold = batchingDelayThreshold;
         return this;
@@ -29,6 +30,7 @@ public class DestinationPubsub {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batching_element_count_threshold")
     public Long batchingElementCountThreshold;
+
     public DestinationPubsub withBatchingElementCountThreshold(Long batchingElementCountThreshold) {
         this.batchingElementCountThreshold = batchingElementCountThreshold;
         return this;
@@ -39,6 +41,7 @@ public class DestinationPubsub {
      */
     @JsonProperty("batching_enabled")
     public Boolean batchingEnabled;
+
     public DestinationPubsub withBatchingEnabled(Boolean batchingEnabled) {
         this.batchingEnabled = batchingEnabled;
         return this;
@@ -50,6 +53,7 @@ public class DestinationPubsub {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batching_request_bytes_threshold")
     public Long batchingRequestBytesThreshold;
+
     public DestinationPubsub withBatchingRequestBytesThreshold(Long batchingRequestBytesThreshold) {
         this.batchingRequestBytesThreshold = batchingRequestBytesThreshold;
         return this;
@@ -60,6 +64,7 @@ public class DestinationPubsub {
      */
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public DestinationPubsub withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -67,6 +72,7 @@ public class DestinationPubsub {
     
     @JsonProperty("destinationType")
     public DestinationPubsubPubsubEnum destinationType;
+
     public DestinationPubsub withDestinationType(DestinationPubsubPubsubEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -77,6 +83,7 @@ public class DestinationPubsub {
      */
     @JsonProperty("ordering_enabled")
     public Boolean orderingEnabled;
+
     public DestinationPubsub withOrderingEnabled(Boolean orderingEnabled) {
         this.orderingEnabled = orderingEnabled;
         return this;
@@ -87,6 +94,7 @@ public class DestinationPubsub {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public DestinationPubsub withProjectId(String projectId) {
         this.projectId = projectId;
         return this;
@@ -97,6 +105,7 @@ public class DestinationPubsub {
      */
     @JsonProperty("topic_id")
     public String topicId;
+
     public DestinationPubsub withTopicId(String topicId) {
         this.topicId = topicId;
         return this;

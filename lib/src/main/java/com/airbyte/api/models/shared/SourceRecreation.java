@@ -17,6 +17,7 @@ public class SourceRecreation {
      */
     @JsonProperty("apikey")
     public String apikey;
+
     public SourceRecreation withApikey(String apikey) {
         this.apikey = apikey;
         return this;
@@ -25,6 +26,7 @@ public class SourceRecreation {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query_campsites")
     public String queryCampsites;
+
     public SourceRecreation withQueryCampsites(String queryCampsites) {
         this.queryCampsites = queryCampsites;
         return this;
@@ -32,6 +34,7 @@ public class SourceRecreation {
     
     @JsonProperty("sourceType")
     public SourceRecreationRecreationEnum sourceType;
+
     public SourceRecreation withSourceType(SourceRecreationRecreationEnum sourceType) {
         this.sourceType = sourceType;
         return this;

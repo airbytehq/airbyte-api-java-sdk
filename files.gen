@@ -538,6 +538,9 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceEmailoctopusEmailoctopusEn
 lib/src/main/java/com/airbyte/api/models/shared/SourceEmailoctopus.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceExchangeRatesExchangeRatesEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceExchangeRates.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigValidBreakdownsEnum.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigValidEnumsEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigLevelEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfig.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingFacebookMarketingEnum.java
@@ -902,6 +905,7 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceRkiCovid.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceRssRssEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceRss.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceS3FormatJsonlFiletypeEnum.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceS3FormatJsonlUnexpectedFieldBehaviorEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceS3FormatJsonl.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceS3FormatAvroFiletypeEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceS3FormatAvro.java
@@ -1088,6 +1092,7 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceZuora.java
 lib/src/main/java/com/airbyte/api/models/shared/InitiateOauthRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/StreamProperties.java
+lib/src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequestActorTypeEnum.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceCreateRequest.java

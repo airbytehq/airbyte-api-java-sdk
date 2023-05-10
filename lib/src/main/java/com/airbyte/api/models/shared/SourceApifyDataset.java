@@ -18,6 +18,7 @@ public class SourceApifyDataset {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("clean")
     public Boolean clean;
+
     public SourceApifyDataset withClean(Boolean clean) {
         this.clean = clean;
         return this;
@@ -28,6 +29,7 @@ public class SourceApifyDataset {
      */
     @JsonProperty("datasetId")
     public String datasetId;
+
     public SourceApifyDataset withDatasetId(String datasetId) {
         this.datasetId = datasetId;
         return this;
@@ -35,6 +37,7 @@ public class SourceApifyDataset {
     
     @JsonProperty("sourceType")
     public SourceApifyDatasetApifyDatasetEnum sourceType;
+
     public SourceApifyDataset withSourceType(SourceApifyDatasetApifyDatasetEnum sourceType) {
         this.sourceType = sourceType;
         return this;

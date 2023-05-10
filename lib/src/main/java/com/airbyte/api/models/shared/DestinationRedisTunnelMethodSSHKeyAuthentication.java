@@ -15,6 +15,7 @@ public class DestinationRedisTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("ssh_key")
     public String sshKey;
+
     public DestinationRedisTunnelMethodSSHKeyAuthentication withSshKey(String sshKey) {
         this.sshKey = sshKey;
         return this;
@@ -25,6 +26,7 @@ public class DestinationRedisTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     public String tunnelHost;
+
     public DestinationRedisTunnelMethodSSHKeyAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -35,6 +37,7 @@ public class DestinationRedisTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_method")
     public DestinationRedisTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+
     public DestinationRedisTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationRedisTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -45,6 +48,7 @@ public class DestinationRedisTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
+
     public DestinationRedisTunnelMethodSSHKeyAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -55,6 +59,7 @@ public class DestinationRedisTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_user")
     public String tunnelUser;
+
     public DestinationRedisTunnelMethodSSHKeyAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;

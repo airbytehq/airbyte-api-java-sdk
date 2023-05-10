@@ -17,6 +17,7 @@ public class SourcePrestashop {
      */
     @JsonProperty("access_key")
     public String accessKey;
+
     public SourcePrestashop withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
@@ -24,6 +25,7 @@ public class SourcePrestashop {
     
     @JsonProperty("sourceType")
     public SourcePrestashopPrestashopEnum sourceType;
+
     public SourcePrestashop withSourceType(SourcePrestashopPrestashopEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -35,6 +37,7 @@ public class SourcePrestashop {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourcePrestashop withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
@@ -45,6 +48,7 @@ public class SourcePrestashop {
      */
     @JsonProperty("url")
     public String url;
+
     public SourcePrestashop withUrl(String url) {
         this.url = url;
         return this;

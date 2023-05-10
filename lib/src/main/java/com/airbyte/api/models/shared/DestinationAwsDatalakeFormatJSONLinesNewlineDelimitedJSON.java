@@ -18,6 +18,7 @@ public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
     public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONCompressionCodecOptionalEnum compressionCodec;
+
     public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON withCompressionCodec(DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONCompressionCodecOptionalEnum compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
@@ -25,6 +26,7 @@ public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
     
     @JsonProperty("format_type")
     public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcardEnum formatType;
+
     public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcardEnum formatType) {
         this.formatType = formatType;
         return this;

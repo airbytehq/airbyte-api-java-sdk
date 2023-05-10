@@ -17,6 +17,7 @@ public class SourceBigquery {
      */
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public SourceBigquery withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -28,6 +29,7 @@ public class SourceBigquery {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataset_id")
     public String datasetId;
+
     public SourceBigquery withDatasetId(String datasetId) {
         this.datasetId = datasetId;
         return this;
@@ -38,6 +40,7 @@ public class SourceBigquery {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public SourceBigquery withProjectId(String projectId) {
         this.projectId = projectId;
         return this;
@@ -45,6 +48,7 @@ public class SourceBigquery {
     
     @JsonProperty("sourceType")
     public SourceBigqueryBigqueryEnum sourceType;
+
     public SourceBigquery withSourceType(SourceBigqueryBigqueryEnum sourceType) {
         this.sourceType = sourceType;
         return this;

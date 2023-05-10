@@ -12,6 +12,7 @@ public class SourceOktaCredentialsAPIToken {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceOktaCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -19,6 +20,7 @@ public class SourceOktaCredentialsAPIToken {
     
     @JsonProperty("auth_type")
     public SourceOktaCredentialsAPITokenAuthTypeEnum authType;
+
     public SourceOktaCredentialsAPIToken withAuthType(SourceOktaCredentialsAPITokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationMongodbInstanceTypeReplicaSet {
     @JsonProperty("instance")
     public DestinationMongodbInstanceTypeReplicaSetInstanceEnum instance;
+
     public DestinationMongodbInstanceTypeReplicaSet withInstance(DestinationMongodbInstanceTypeReplicaSetInstanceEnum instance) {
         this.instance = instance;
         return this;
@@ -25,6 +26,7 @@ public class DestinationMongodbInstanceTypeReplicaSet {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replica_set")
     public String replicaSet;
+
     public DestinationMongodbInstanceTypeReplicaSet withReplicaSet(String replicaSet) {
         this.replicaSet = replicaSet;
         return this;
@@ -35,6 +37,7 @@ public class DestinationMongodbInstanceTypeReplicaSet {
      */
     @JsonProperty("server_addresses")
     public String serverAddresses;
+
     public DestinationMongodbInstanceTypeReplicaSet withServerAddresses(String serverAddresses) {
         this.serverAddresses = serverAddresses;
         return this;

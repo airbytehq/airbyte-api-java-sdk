@@ -17,6 +17,7 @@ public class SourcePocket {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourcePocket withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -27,6 +28,7 @@ public class SourcePocket {
      */
     @JsonProperty("consumer_key")
     public String consumerKey;
+
     public SourcePocket withConsumerKey(String consumerKey) {
         this.consumerKey = consumerKey;
         return this;
@@ -38,6 +40,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content_type")
     public SourcePocketContentTypeEnum contentType;
+
     public SourcePocket withContentType(SourcePocketContentTypeEnum contentType) {
         this.contentType = contentType;
         return this;
@@ -49,6 +52,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("detail_type")
     public SourcePocketDetailTypeEnum detailType;
+
     public SourcePocket withDetailType(SourcePocketDetailTypeEnum detailType) {
         this.detailType = detailType;
         return this;
@@ -60,6 +64,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     public String domain;
+
     public SourcePocket withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -71,6 +76,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("favorite")
     public Boolean favorite;
+
     public SourcePocket withFavorite(Boolean favorite) {
         this.favorite = favorite;
         return this;
@@ -82,6 +88,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("search")
     public String search;
+
     public SourcePocket withSearch(String search) {
         this.search = search;
         return this;
@@ -93,6 +100,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("since")
     public String since;
+
     public SourcePocket withSince(String since) {
         this.since = since;
         return this;
@@ -104,6 +112,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sort")
     public SourcePocketSortByEnum sort;
+
     public SourcePocket withSort(SourcePocketSortByEnum sort) {
         this.sort = sort;
         return this;
@@ -111,6 +120,7 @@ public class SourcePocket {
     
     @JsonProperty("sourceType")
     public SourcePocketPocketEnum sourceType;
+
     public SourcePocket withSourceType(SourcePocketPocketEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -122,6 +132,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("state")
     public SourcePocketStateEnum state;
+
     public SourcePocket withState(SourcePocketStateEnum state) {
         this.state = state;
         return this;
@@ -133,6 +144,7 @@ public class SourcePocket {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tag")
     public String tag;
+
     public SourcePocket withTag(String tag) {
         this.tag = tag;
         return this;

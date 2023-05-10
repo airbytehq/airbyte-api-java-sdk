@@ -18,6 +18,7 @@ public class DestinationS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_key_id")
     public String accessKeyId;
+
     public DestinationS3 withAccessKeyId(String accessKeyId) {
         this.accessKeyId = accessKeyId;
         return this;
@@ -25,6 +26,7 @@ public class DestinationS3 {
     
     @JsonProperty("destinationType")
     public DestinationS3S3Enum destinationType;
+
     public DestinationS3 withDestinationType(DestinationS3S3Enum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -36,6 +38,7 @@ public class DestinationS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_name_pattern")
     public String fileNamePattern;
+
     public DestinationS3 withFileNamePattern(String fileNamePattern) {
         this.fileNamePattern = fileNamePattern;
         return this;
@@ -46,6 +49,7 @@ public class DestinationS3 {
      */
     @JsonProperty("format")
     public Object format;
+
     public DestinationS3 withFormat(Object format) {
         this.format = format;
         return this;
@@ -56,6 +60,7 @@ public class DestinationS3 {
      */
     @JsonProperty("s3_bucket_name")
     public String s3BucketName;
+
     public DestinationS3 withS3BucketName(String s3BucketName) {
         this.s3BucketName = s3BucketName;
         return this;
@@ -66,6 +71,7 @@ public class DestinationS3 {
      */
     @JsonProperty("s3_bucket_path")
     public String s3BucketPath;
+
     public DestinationS3 withS3BucketPath(String s3BucketPath) {
         this.s3BucketPath = s3BucketPath;
         return this;
@@ -76,6 +82,7 @@ public class DestinationS3 {
      */
     @JsonProperty("s3_bucket_region")
     public DestinationS3S3BucketRegionEnum s3BucketRegion;
+
     public DestinationS3 withS3BucketRegion(DestinationS3S3BucketRegionEnum s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
@@ -87,6 +94,7 @@ public class DestinationS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("s3_endpoint")
     public String s3Endpoint;
+
     public DestinationS3 withS3Endpoint(String s3Endpoint) {
         this.s3Endpoint = s3Endpoint;
         return this;
@@ -98,6 +106,7 @@ public class DestinationS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("s3_path_format")
     public String s3PathFormat;
+
     public DestinationS3 withS3PathFormat(String s3PathFormat) {
         this.s3PathFormat = s3PathFormat;
         return this;
@@ -109,6 +118,7 @@ public class DestinationS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secret_access_key")
     public String secretAccessKey;
+
     public DestinationS3 withSecretAccessKey(String secretAccessKey) {
         this.secretAccessKey = secretAccessKey;
         return this;

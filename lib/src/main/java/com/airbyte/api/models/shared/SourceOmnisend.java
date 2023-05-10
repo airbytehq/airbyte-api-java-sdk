@@ -15,6 +15,7 @@ public class SourceOmnisend {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceOmnisend withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceOmnisend {
     
     @JsonProperty("sourceType")
     public SourceOmnisendOmnisendEnum sourceType;
+
     public SourceOmnisend withSourceType(SourceOmnisendOmnisendEnum sourceType) {
         this.sourceType = sourceType;
         return this;

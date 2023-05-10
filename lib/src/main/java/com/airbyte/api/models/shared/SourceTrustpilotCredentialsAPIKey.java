@@ -15,6 +15,7 @@ public class SourceTrustpilotCredentialsAPIKey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceTrustpilotCredentialsAPIKeyAuthTypeEnum authType;
+
     public SourceTrustpilotCredentialsAPIKey withAuthType(SourceTrustpilotCredentialsAPIKeyAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -25,6 +26,7 @@ public class SourceTrustpilotCredentialsAPIKey {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceTrustpilotCredentialsAPIKey withClientId(String clientId) {
         this.clientId = clientId;
         return this;

@@ -15,6 +15,7 @@ public class SourceGetlago {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceGetlago withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceGetlago {
     
     @JsonProperty("sourceType")
     public SourceGetlagoGetlagoEnum sourceType;
+
     public SourceGetlago withSourceType(SourceGetlagoGetlagoEnum sourceType) {
         this.sourceType = sourceType;
         return this;

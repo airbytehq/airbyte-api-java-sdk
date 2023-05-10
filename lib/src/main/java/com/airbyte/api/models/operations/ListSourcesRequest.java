@@ -12,6 +12,7 @@ public class ListSourcesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeDeleted")
     public Boolean includeDeleted;
+
     public ListSourcesRequest withIncludeDeleted(Boolean includeDeleted) {
         this.includeDeleted = includeDeleted;
         return this;
@@ -22,6 +23,7 @@ public class ListSourcesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")
     public Integer limit;
+
     public ListSourcesRequest withLimit(Integer limit) {
         this.limit = limit;
         return this;
@@ -32,6 +34,7 @@ public class ListSourcesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=offset")
     public Integer offset;
+
     public ListSourcesRequest withOffset(Integer offset) {
         this.offset = offset;
         return this;
@@ -42,6 +45,7 @@ public class ListSourcesRequest {
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
     public String[] workspaceIds;
+
     public ListSourcesRequest withWorkspaceIds(String[] workspaceIds) {
         this.workspaceIds = workspaceIds;
         return this;

@@ -17,6 +17,7 @@ public class SourceDynamodb {
      */
     @JsonProperty("access_key_id")
     public String accessKeyId;
+
     public SourceDynamodb withAccessKeyId(String accessKeyId) {
         this.accessKeyId = accessKeyId;
         return this;
@@ -28,6 +29,7 @@ public class SourceDynamodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endpoint")
     public String endpoint;
+
     public SourceDynamodb withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -39,6 +41,7 @@ public class SourceDynamodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     public SourceDynamodbDynamodbRegionEnum region;
+
     public SourceDynamodb withRegion(SourceDynamodbDynamodbRegionEnum region) {
         this.region = region;
         return this;
@@ -50,6 +53,7 @@ public class SourceDynamodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("reserved_attribute_names")
     public String reservedAttributeNames;
+
     public SourceDynamodb withReservedAttributeNames(String reservedAttributeNames) {
         this.reservedAttributeNames = reservedAttributeNames;
         return this;
@@ -60,6 +64,7 @@ public class SourceDynamodb {
      */
     @JsonProperty("secret_access_key")
     public String secretAccessKey;
+
     public SourceDynamodb withSecretAccessKey(String secretAccessKey) {
         this.secretAccessKey = secretAccessKey;
         return this;
@@ -67,6 +72,7 @@ public class SourceDynamodb {
     
     @JsonProperty("sourceType")
     public SourceDynamodbDynamodbEnum sourceType;
+
     public SourceDynamodb withSourceType(SourceDynamodbDynamodbEnum sourceType) {
         this.sourceType = sourceType;
         return this;

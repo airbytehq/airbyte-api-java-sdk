@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceFileSecureProviderHTTPSPublicWeb {
     @JsonProperty("storage")
     public SourceFileSecureProviderHTTPSPublicWebStorageEnum storage;
+
     public SourceFileSecureProviderHTTPSPublicWeb withStorage(SourceFileSecureProviderHTTPSPublicWebStorageEnum storage) {
         this.storage = storage;
         return this;
@@ -25,6 +26,7 @@ public class SourceFileSecureProviderHTTPSPublicWeb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("user_agent")
     public Boolean userAgent;
+
     public SourceFileSecureProviderHTTPSPublicWeb withUserAgent(Boolean userAgent) {
         this.userAgent = userAgent;
         return this;

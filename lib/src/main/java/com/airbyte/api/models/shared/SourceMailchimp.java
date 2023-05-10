@@ -15,6 +15,7 @@ public class SourceMailchimp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaign_id")
     public String campaignId;
+
     public SourceMailchimp withCampaignId(String campaignId) {
         this.campaignId = campaignId;
         return this;
@@ -23,6 +24,7 @@ public class SourceMailchimp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceMailchimp withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -30,6 +32,7 @@ public class SourceMailchimp {
     
     @JsonProperty("sourceType")
     public SourceMailchimpMailchimpEnum sourceType;
+
     public SourceMailchimp withSourceType(SourceMailchimpMailchimpEnum sourceType) {
         this.sourceType = sourceType;
         return this;

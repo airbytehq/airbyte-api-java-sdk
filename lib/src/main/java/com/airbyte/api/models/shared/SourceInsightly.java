@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceInsightly {
     @JsonProperty("sourceType")
     public SourceInsightlyInsightlyEnum sourceType;
+
     public SourceInsightly withSourceType(SourceInsightlyInsightlyEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -22,6 +23,7 @@ public class SourceInsightly {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceInsightly withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -32,6 +34,7 @@ public class SourceInsightly {
      */
     @JsonProperty("token")
     public String token;
+
     public SourceInsightly withToken(String token) {
         this.token = token;
         return this;

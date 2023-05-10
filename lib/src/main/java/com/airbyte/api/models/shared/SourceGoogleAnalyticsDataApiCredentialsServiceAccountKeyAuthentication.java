@@ -15,6 +15,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticat
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
+
     public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -25,6 +26,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticat
      */
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;

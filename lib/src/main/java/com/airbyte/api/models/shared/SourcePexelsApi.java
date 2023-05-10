@@ -17,6 +17,7 @@ public class SourcePexelsApi {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourcePexelsApi withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class SourcePexelsApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("color")
     public String color;
+
     public SourcePexelsApi withColor(String color) {
         this.color = color;
         return this;
@@ -39,6 +41,7 @@ public class SourcePexelsApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("locale")
     public String locale;
+
     public SourcePexelsApi withLocale(String locale) {
         this.locale = locale;
         return this;
@@ -50,6 +53,7 @@ public class SourcePexelsApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("orientation")
     public String orientation;
+
     public SourcePexelsApi withOrientation(String orientation) {
         this.orientation = orientation;
         return this;
@@ -60,6 +64,7 @@ public class SourcePexelsApi {
      */
     @JsonProperty("query")
     public String query;
+
     public SourcePexelsApi withQuery(String query) {
         this.query = query;
         return this;
@@ -71,6 +76,7 @@ public class SourcePexelsApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("size")
     public String size;
+
     public SourcePexelsApi withSize(String size) {
         this.size = size;
         return this;
@@ -78,6 +84,7 @@ public class SourcePexelsApi {
     
     @JsonProperty("sourceType")
     public SourcePexelsApiPexelsApiEnum sourceType;
+
     public SourcePexelsApi withSourceType(SourcePexelsApiPexelsApiEnum sourceType) {
         this.sourceType = sourceType;
         return this;

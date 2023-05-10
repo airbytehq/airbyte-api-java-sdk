@@ -19,6 +19,7 @@ public class SourceNytimes {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceNytimes withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -31,6 +32,7 @@ public class SourceNytimes {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
     public LocalDate endDate;
+
     public SourceNytimes withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -41,6 +43,7 @@ public class SourceNytimes {
      */
     @JsonProperty("period")
     public SourceNytimesPeriodUsedForMostPopularStreamsEnum period;
+
     public SourceNytimes withPeriod(SourceNytimesPeriodUsedForMostPopularStreamsEnum period) {
         this.period = period;
         return this;
@@ -52,6 +55,7 @@ public class SourceNytimes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("share_type")
     public SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType;
+
     public SourceNytimes withShareType(SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType) {
         this.shareType = shareType;
         return this;
@@ -59,6 +63,7 @@ public class SourceNytimes {
     
     @JsonProperty("sourceType")
     public SourceNytimesNytimesEnum sourceType;
+
     public SourceNytimes withSourceType(SourceNytimesNytimesEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -70,6 +75,7 @@ public class SourceNytimes {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceNytimes withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

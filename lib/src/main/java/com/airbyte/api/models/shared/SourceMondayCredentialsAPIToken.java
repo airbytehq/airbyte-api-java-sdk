@@ -12,6 +12,7 @@ public class SourceMondayCredentialsAPIToken {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceMondayCredentialsAPIToken withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -19,6 +20,7 @@ public class SourceMondayCredentialsAPIToken {
     
     @JsonProperty("auth_type")
     public SourceMondayCredentialsAPITokenAuthTypeEnum authType;
+
     public SourceMondayCredentialsAPIToken withAuthType(SourceMondayCredentialsAPITokenAuthTypeEnum authType) {
         this.authType = authType;
         return this;

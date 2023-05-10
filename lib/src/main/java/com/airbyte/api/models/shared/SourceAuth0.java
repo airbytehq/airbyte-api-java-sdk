@@ -15,6 +15,7 @@ public class SourceAuth0 {
      */
     @JsonProperty("base_url")
     public String baseUrl;
+
     public SourceAuth0 withBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
@@ -22,6 +23,7 @@ public class SourceAuth0 {
     
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceAuth0 withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -29,6 +31,7 @@ public class SourceAuth0 {
     
     @JsonProperty("sourceType")
     public SourceAuth0Auth0Enum sourceType;
+
     public SourceAuth0 withSourceType(SourceAuth0Auth0Enum sourceType) {
         this.sourceType = sourceType;
         return this;

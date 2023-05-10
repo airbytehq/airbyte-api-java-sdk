@@ -15,6 +15,7 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("ssh_key")
     public String sshKey;
+
     public DestinationOracleTunnelMethodSSHKeyAuthentication withSshKey(String sshKey) {
         this.sshKey = sshKey;
         return this;
@@ -25,6 +26,7 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     public String tunnelHost;
+
     public DestinationOracleTunnelMethodSSHKeyAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -35,6 +37,7 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_method")
     public DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+
     public DestinationOracleTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -45,6 +48,7 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
+
     public DestinationOracleTunnelMethodSSHKeyAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -55,6 +59,7 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_user")
     public String tunnelUser;
+
     public DestinationOracleTunnelMethodSSHKeyAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;

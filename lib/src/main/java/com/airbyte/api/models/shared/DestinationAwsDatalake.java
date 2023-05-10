@@ -18,6 +18,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_account_id")
     public String awsAccountId;
+
     public DestinationAwsDatalake withAwsAccountId(String awsAccountId) {
         this.awsAccountId = awsAccountId;
         return this;
@@ -28,6 +29,7 @@ public class DestinationAwsDatalake {
      */
     @JsonProperty("bucket_name")
     public String bucketName;
+
     public DestinationAwsDatalake withBucketName(String bucketName) {
         this.bucketName = bucketName;
         return this;
@@ -39,6 +41,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bucket_prefix")
     public String bucketPrefix;
+
     public DestinationAwsDatalake withBucketPrefix(String bucketPrefix) {
         this.bucketPrefix = bucketPrefix;
         return this;
@@ -49,6 +52,7 @@ public class DestinationAwsDatalake {
      */
     @JsonProperty("credentials")
     public Object credentials;
+
     public DestinationAwsDatalake withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -56,6 +60,7 @@ public class DestinationAwsDatalake {
     
     @JsonProperty("destinationType")
     public DestinationAwsDatalakeAwsDatalakeEnum destinationType;
+
     public DestinationAwsDatalake withDestinationType(DestinationAwsDatalakeAwsDatalakeEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -67,6 +72,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format")
     public Object format;
+
     public DestinationAwsDatalake withFormat(Object format) {
         this.format = format;
         return this;
@@ -78,6 +84,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("glue_catalog_float_as_decimal")
     public Boolean glueCatalogFloatAsDecimal;
+
     public DestinationAwsDatalake withGlueCatalogFloatAsDecimal(Boolean glueCatalogFloatAsDecimal) {
         this.glueCatalogFloatAsDecimal = glueCatalogFloatAsDecimal;
         return this;
@@ -89,6 +96,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lakeformation_database_default_tag_key")
     public String lakeformationDatabaseDefaultTagKey;
+
     public DestinationAwsDatalake withLakeformationDatabaseDefaultTagKey(String lakeformationDatabaseDefaultTagKey) {
         this.lakeformationDatabaseDefaultTagKey = lakeformationDatabaseDefaultTagKey;
         return this;
@@ -100,6 +108,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lakeformation_database_default_tag_values")
     public String lakeformationDatabaseDefaultTagValues;
+
     public DestinationAwsDatalake withLakeformationDatabaseDefaultTagValues(String lakeformationDatabaseDefaultTagValues) {
         this.lakeformationDatabaseDefaultTagValues = lakeformationDatabaseDefaultTagValues;
         return this;
@@ -110,6 +119,7 @@ public class DestinationAwsDatalake {
      */
     @JsonProperty("lakeformation_database_name")
     public String lakeformationDatabaseName;
+
     public DestinationAwsDatalake withLakeformationDatabaseName(String lakeformationDatabaseName) {
         this.lakeformationDatabaseName = lakeformationDatabaseName;
         return this;
@@ -121,6 +131,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lakeformation_governed_tables")
     public Boolean lakeformationGovernedTables;
+
     public DestinationAwsDatalake withLakeformationGovernedTables(Boolean lakeformationGovernedTables) {
         this.lakeformationGovernedTables = lakeformationGovernedTables;
         return this;
@@ -132,6 +143,7 @@ public class DestinationAwsDatalake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("partitioning")
     public DestinationAwsDatalakeChooseHowToPartitionDataEnum partitioning;
+
     public DestinationAwsDatalake withPartitioning(DestinationAwsDatalakeChooseHowToPartitionDataEnum partitioning) {
         this.partitioning = partitioning;
         return this;
@@ -142,6 +154,7 @@ public class DestinationAwsDatalake {
      */
     @JsonProperty("region")
     public DestinationAwsDatalakeS3BucketRegionEnum region;
+
     public DestinationAwsDatalake withRegion(DestinationAwsDatalakeS3BucketRegionEnum region) {
         this.region = region;
         return this;

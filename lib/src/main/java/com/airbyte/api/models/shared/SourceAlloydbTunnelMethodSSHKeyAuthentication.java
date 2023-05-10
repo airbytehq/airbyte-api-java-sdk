@@ -15,6 +15,7 @@ public class SourceAlloydbTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("ssh_key")
     public String sshKey;
+
     public SourceAlloydbTunnelMethodSSHKeyAuthentication withSshKey(String sshKey) {
         this.sshKey = sshKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceAlloydbTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     public String tunnelHost;
+
     public SourceAlloydbTunnelMethodSSHKeyAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -35,6 +37,7 @@ public class SourceAlloydbTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_method")
     public SourceAlloydbTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+
     public SourceAlloydbTunnelMethodSSHKeyAuthentication withTunnelMethod(SourceAlloydbTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -45,6 +48,7 @@ public class SourceAlloydbTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
+
     public SourceAlloydbTunnelMethodSSHKeyAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -55,6 +59,7 @@ public class SourceAlloydbTunnelMethodSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_user")
     public String tunnelUser;
+
     public SourceAlloydbTunnelMethodSSHKeyAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;

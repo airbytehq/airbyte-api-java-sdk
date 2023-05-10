@@ -14,6 +14,7 @@ public class SourceAirtableCredentialsPersonalAccessToken {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceAirtableCredentialsPersonalAccessToken withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceAirtableCredentialsPersonalAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
     public SourceAirtableCredentialsPersonalAccessTokenAuthMethodEnum authMethod;
+
     public SourceAirtableCredentialsPersonalAccessToken withAuthMethod(SourceAirtableCredentialsPersonalAccessTokenAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;

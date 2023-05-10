@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON {
     @JsonProperty("format_type")
     public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+
     public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON withFormatType(SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

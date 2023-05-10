@@ -22,6 +22,7 @@ public class SourceBraintree {
      */
     @JsonProperty("environment")
     public SourceBraintreeEnvironmentEnum environment;
+
     public SourceBraintree withEnvironment(SourceBraintreeEnvironmentEnum environment) {
         this.environment = environment;
         return this;
@@ -32,6 +33,7 @@ public class SourceBraintree {
      */
     @JsonProperty("merchant_id")
     public String merchantId;
+
     public SourceBraintree withMerchantId(String merchantId) {
         this.merchantId = merchantId;
         return this;
@@ -42,6 +44,7 @@ public class SourceBraintree {
      */
     @JsonProperty("private_key")
     public String privateKey;
+
     public SourceBraintree withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -52,6 +55,7 @@ public class SourceBraintree {
      */
     @JsonProperty("public_key")
     public String publicKey;
+
     public SourceBraintree withPublicKey(String publicKey) {
         this.publicKey = publicKey;
         return this;
@@ -59,6 +63,7 @@ public class SourceBraintree {
     
     @JsonProperty("sourceType")
     public SourceBraintreeBraintreeEnum sourceType;
+
     public SourceBraintree withSourceType(SourceBraintreeBraintreeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -72,6 +77,7 @@ public class SourceBraintree {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceBraintree withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

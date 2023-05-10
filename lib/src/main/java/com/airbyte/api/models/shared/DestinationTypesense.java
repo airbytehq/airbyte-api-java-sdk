@@ -17,6 +17,7 @@ public class DestinationTypesense {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public DestinationTypesense withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -28,6 +29,7 @@ public class DestinationTypesense {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batch_size")
     public String batchSize;
+
     public DestinationTypesense withBatchSize(String batchSize) {
         this.batchSize = batchSize;
         return this;
@@ -35,6 +37,7 @@ public class DestinationTypesense {
     
     @JsonProperty("destinationType")
     public DestinationTypesenseTypesenseEnum destinationType;
+
     public DestinationTypesense withDestinationType(DestinationTypesenseTypesenseEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -45,6 +48,7 @@ public class DestinationTypesense {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationTypesense withHost(String host) {
         this.host = host;
         return this;
@@ -56,6 +60,7 @@ public class DestinationTypesense {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public String port;
+
     public DestinationTypesense withPort(String port) {
         this.port = port;
         return this;
@@ -67,6 +72,7 @@ public class DestinationTypesense {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("protocol")
     public String protocol;
+
     public DestinationTypesense withProtocol(String protocol) {
         this.protocol = protocol;
         return this;

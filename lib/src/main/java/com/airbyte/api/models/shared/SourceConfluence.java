@@ -15,6 +15,7 @@ public class SourceConfluence {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceConfluence withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -25,6 +26,7 @@ public class SourceConfluence {
      */
     @JsonProperty("domain_name")
     public String domainName;
+
     public SourceConfluence withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
@@ -35,6 +37,7 @@ public class SourceConfluence {
      */
     @JsonProperty("email")
     public String email;
+
     public SourceConfluence withEmail(String email) {
         this.email = email;
         return this;
@@ -42,6 +45,7 @@ public class SourceConfluence {
     
     @JsonProperty("sourceType")
     public SourceConfluenceConfluenceEnum sourceType;
+
     public SourceConfluence withSourceType(SourceConfluenceConfluenceEnum sourceType) {
         this.sourceType = sourceType;
         return this;

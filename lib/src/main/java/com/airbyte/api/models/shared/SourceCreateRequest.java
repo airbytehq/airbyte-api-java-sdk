@@ -14,6 +14,7 @@ public class SourceCreateRequest {
      */
     @JsonProperty("configuration")
     public Object configuration;
+
     public SourceCreateRequest withConfiguration(Object configuration) {
         this.configuration = configuration;
         return this;
@@ -21,6 +22,7 @@ public class SourceCreateRequest {
     
     @JsonProperty("name")
     public String name;
+
     public SourceCreateRequest withName(String name) {
         this.name = name;
         return this;
@@ -32,6 +34,7 @@ public class SourceCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secretId")
     public String secretId;
+
     public SourceCreateRequest withSecretId(String secretId) {
         this.secretId = secretId;
         return this;
@@ -39,6 +42,7 @@ public class SourceCreateRequest {
     
     @JsonProperty("workspaceId")
     public String workspaceId;
+
     public SourceCreateRequest withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

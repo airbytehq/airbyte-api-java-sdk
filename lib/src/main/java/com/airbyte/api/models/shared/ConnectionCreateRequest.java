@@ -15,6 +15,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("configurations")
     public StreamConfigurations configurations;
+
     public ConnectionCreateRequest withConfigurations(StreamConfigurations configurations) {
         this.configurations = configurations;
         return this;
@@ -23,6 +24,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
     public GeographyEnumEnum dataResidency;
+
     public ConnectionCreateRequest withDataResidency(GeographyEnumEnum dataResidency) {
         this.dataResidency = dataResidency;
         return this;
@@ -30,6 +32,7 @@ public class ConnectionCreateRequest {
     
     @JsonProperty("destinationId")
     public String destinationId;
+
     public ConnectionCreateRequest withDestinationId(String destinationId) {
         this.destinationId = destinationId;
         return this;
@@ -41,6 +44,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     public String name;
+
     public ConnectionCreateRequest withName(String name) {
         this.name = name;
         return this;
@@ -52,6 +56,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceDefinition")
     public ConnectionCreateRequestNamespaceDefinitionEnum namespaceDefinition;
+
     public ConnectionCreateRequest withNamespaceDefinition(ConnectionCreateRequestNamespaceDefinitionEnum namespaceDefinition) {
         this.namespaceDefinition = namespaceDefinition;
         return this;
@@ -63,6 +68,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceFormat")
     public String namespaceFormat;
+
     public ConnectionCreateRequest withNamespaceFormat(String namespaceFormat) {
         this.namespaceFormat = namespaceFormat;
         return this;
@@ -74,6 +80,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
     public String prefix;
+
     public ConnectionCreateRequest withPrefix(String prefix) {
         this.prefix = prefix;
         return this;
@@ -85,6 +92,7 @@ public class ConnectionCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schedule")
     public ConnectionScheduleCreate schedule;
+
     public ConnectionCreateRequest withSchedule(ConnectionScheduleCreate schedule) {
         this.schedule = schedule;
         return this;
@@ -92,6 +100,7 @@ public class ConnectionCreateRequest {
     
     @JsonProperty("sourceId")
     public String sourceId;
+
     public ConnectionCreateRequest withSourceId(String sourceId) {
         this.sourceId = sourceId;
         return this;

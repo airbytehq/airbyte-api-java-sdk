@@ -15,6 +15,7 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionTypeEnum compressionType;
+
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP withCompressionType(DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionTypeEnum compressionType) {
         this.compressionType = compressionType;
         return this;

@@ -15,6 +15,7 @@ public class SourceBigcommerce {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceBigcommerce withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceBigcommerce {
     
     @JsonProperty("sourceType")
     public SourceBigcommerceBigcommerceEnum sourceType;
+
     public SourceBigcommerce withSourceType(SourceBigcommerceBigcommerceEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -32,6 +34,7 @@ public class SourceBigcommerce {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceBigcommerce withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -42,6 +45,7 @@ public class SourceBigcommerce {
      */
     @JsonProperty("store_hash")
     public String storeHash;
+
     public SourceBigcommerce withStoreHash(String storeHash) {
         this.storeHash = storeHash;
         return this;

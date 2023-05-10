@@ -18,6 +18,7 @@ public class SourceS3FormatParquet {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batch_size")
     public Long batchSize;
+
     public SourceS3FormatParquet withBatchSize(Long batchSize) {
         this.batchSize = batchSize;
         return this;
@@ -29,6 +30,7 @@ public class SourceS3FormatParquet {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("buffer_size")
     public Long bufferSize;
+
     public SourceS3FormatParquet withBufferSize(Long bufferSize) {
         this.bufferSize = bufferSize;
         return this;
@@ -40,6 +42,7 @@ public class SourceS3FormatParquet {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("columns")
     public String[] columns;
+
     public SourceS3FormatParquet withColumns(String[] columns) {
         this.columns = columns;
         return this;
@@ -48,6 +51,7 @@ public class SourceS3FormatParquet {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
     public SourceS3FormatParquetFiletypeEnum filetype;
+
     public SourceS3FormatParquet withFiletype(SourceS3FormatParquetFiletypeEnum filetype) {
         this.filetype = filetype;
         return this;

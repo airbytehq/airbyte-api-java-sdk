@@ -15,6 +15,7 @@ public class SourceSapFieldglass {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceSapFieldglass withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceSapFieldglass {
     
     @JsonProperty("sourceType")
     public SourceSapFieldglassSapFieldglassEnum sourceType;
+
     public SourceSapFieldglass withSourceType(SourceSapFieldglassSapFieldglassEnum sourceType) {
         this.sourceType = sourceType;
         return this;

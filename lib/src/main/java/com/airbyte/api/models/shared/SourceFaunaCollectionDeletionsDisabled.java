@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceFaunaCollectionDeletionsDisabled {
     @JsonProperty("deletion_mode")
     public SourceFaunaCollectionDeletionsDisabledDeletionModeEnum deletionMode;
+
     public SourceFaunaCollectionDeletionsDisabled withDeletionMode(SourceFaunaCollectionDeletionsDisabledDeletionModeEnum deletionMode) {
         this.deletionMode = deletionMode;
         return this;

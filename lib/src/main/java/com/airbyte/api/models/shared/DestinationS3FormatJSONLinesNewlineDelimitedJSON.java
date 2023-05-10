@@ -18,6 +18,7 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSON {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression")
     public Object compression;
+
     public DestinationS3FormatJSONLinesNewlineDelimitedJSON withCompression(Object compression) {
         this.compression = compression;
         return this;
@@ -29,6 +30,7 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSON {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     public DestinationS3FormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening;
+
     public DestinationS3FormatJSONLinesNewlineDelimitedJSON withFlattening(DestinationS3FormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening) {
         this.flattening = flattening;
         return this;
@@ -36,6 +38,7 @@ public class DestinationS3FormatJSONLinesNewlineDelimitedJSON {
     
     @JsonProperty("format_type")
     public DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+
     public DestinationS3FormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

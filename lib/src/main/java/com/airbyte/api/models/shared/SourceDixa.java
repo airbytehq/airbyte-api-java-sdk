@@ -17,6 +17,7 @@ public class SourceDixa {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceDixa withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -28,6 +29,7 @@ public class SourceDixa {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batch_size")
     public Long batchSize;
+
     public SourceDixa withBatchSize(Long batchSize) {
         this.batchSize = batchSize;
         return this;
@@ -35,6 +37,7 @@ public class SourceDixa {
     
     @JsonProperty("sourceType")
     public SourceDixaDixaEnum sourceType;
+
     public SourceDixa withSourceType(SourceDixaDixaEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -45,6 +48,7 @@ public class SourceDixa {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceDixa withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

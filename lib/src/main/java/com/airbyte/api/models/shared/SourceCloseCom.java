@@ -22,6 +22,7 @@ public class SourceCloseCom {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceCloseCom withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -29,6 +30,7 @@ public class SourceCloseCom {
     
     @JsonProperty("sourceType")
     public SourceCloseComCloseComEnum sourceType;
+
     public SourceCloseCom withSourceType(SourceCloseComCloseComEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -42,6 +44,7 @@ public class SourceCloseCom {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceCloseCom withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

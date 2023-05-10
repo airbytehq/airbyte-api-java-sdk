@@ -18,6 +18,7 @@ public class SourceS3FormatJsonl {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("block_size")
     public Long blockSize;
+
     public SourceS3FormatJsonl withBlockSize(Long blockSize) {
         this.blockSize = blockSize;
         return this;
@@ -26,6 +27,7 @@ public class SourceS3FormatJsonl {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
     public SourceS3FormatJsonlFiletypeEnum filetype;
+
     public SourceS3FormatJsonl withFiletype(SourceS3FormatJsonlFiletypeEnum filetype) {
         this.filetype = filetype;
         return this;
@@ -37,6 +39,7 @@ public class SourceS3FormatJsonl {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("newlines_in_values")
     public Boolean newlinesInValues;
+
     public SourceS3FormatJsonl withNewlinesInValues(Boolean newlinesInValues) {
         this.newlinesInValues = newlinesInValues;
         return this;
@@ -47,8 +50,9 @@ public class SourceS3FormatJsonl {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unexpected_field_behavior")
-    public Object unexpectedFieldBehavior;
-    public SourceS3FormatJsonl withUnexpectedFieldBehavior(Object unexpectedFieldBehavior) {
+    public SourceS3FormatJsonlUnexpectedFieldBehaviorEnum unexpectedFieldBehavior;
+
+    public SourceS3FormatJsonl withUnexpectedFieldBehavior(SourceS3FormatJsonlUnexpectedFieldBehaviorEnum unexpectedFieldBehavior) {
         this.unexpectedFieldBehavior = unexpectedFieldBehavior;
         return this;
     }

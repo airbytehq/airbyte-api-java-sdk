@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate {
     @JsonProperty("codec")
     public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec;
+
     public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate withCodec(DestinationGcsFormatAvroApacheAvroCompressionCodecDeflateCodecEnum codec) {
         this.codec = codec;
         return this;
@@ -25,6 +26,7 @@ public class DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_level")
     public Long compressionLevel;
+
     public DestinationGcsFormatAvroApacheAvroCompressionCodecDeflate withCompressionLevel(Long compressionLevel) {
         this.compressionLevel = compressionLevel;
         return this;

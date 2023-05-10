@@ -17,6 +17,7 @@ public class SourceCoinmarketcap {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceCoinmarketcap withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceCoinmarketcap {
      */
     @JsonProperty("data_type")
     public SourceCoinmarketcapDataTypeEnum dataType;
+
     public SourceCoinmarketcap withDataType(SourceCoinmarketcapDataTypeEnum dataType) {
         this.dataType = dataType;
         return this;
@@ -34,6 +36,7 @@ public class SourceCoinmarketcap {
     
     @JsonProperty("sourceType")
     public SourceCoinmarketcapCoinmarketcapEnum sourceType;
+
     public SourceCoinmarketcap withSourceType(SourceCoinmarketcapCoinmarketcapEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -45,6 +48,7 @@ public class SourceCoinmarketcap {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("symbols")
     public String[] symbols;
+
     public SourceCoinmarketcap withSymbols(String[] symbols) {
         this.symbols = symbols;
         return this;

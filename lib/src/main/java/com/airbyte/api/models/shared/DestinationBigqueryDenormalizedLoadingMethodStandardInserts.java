@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationBigqueryDenormalizedLoadingMethodStandardInserts {
     @JsonProperty("method")
     public DestinationBigqueryDenormalizedLoadingMethodStandardInsertsMethodEnum method;
+
     public DestinationBigqueryDenormalizedLoadingMethodStandardInserts withMethod(DestinationBigqueryDenormalizedLoadingMethodStandardInsertsMethodEnum method) {
         this.method = method;
         return this;

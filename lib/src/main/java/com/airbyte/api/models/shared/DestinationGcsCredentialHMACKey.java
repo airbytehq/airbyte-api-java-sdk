@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationGcsCredentialHMACKey {
     @JsonProperty("credential_type")
     public DestinationGcsCredentialHMACKeyCredentialTypeEnum credentialType;
+
     public DestinationGcsCredentialHMACKey withCredentialType(DestinationGcsCredentialHMACKeyCredentialTypeEnum credentialType) {
         this.credentialType = credentialType;
         return this;
@@ -22,6 +23,7 @@ public class DestinationGcsCredentialHMACKey {
      */
     @JsonProperty("hmac_key_access_id")
     public String hmacKeyAccessId;
+
     public DestinationGcsCredentialHMACKey withHmacKeyAccessId(String hmacKeyAccessId) {
         this.hmacKeyAccessId = hmacKeyAccessId;
         return this;
@@ -32,6 +34,7 @@ public class DestinationGcsCredentialHMACKey {
      */
     @JsonProperty("hmac_key_secret")
     public String hmacKeySecret;
+
     public DestinationGcsCredentialHMACKey withHmacKeySecret(String hmacKeySecret) {
         this.hmacKeySecret = hmacKeySecret;
         return this;

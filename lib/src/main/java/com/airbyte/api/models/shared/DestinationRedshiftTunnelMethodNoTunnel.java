@@ -15,6 +15,7 @@ public class DestinationRedshiftTunnelMethodNoTunnel {
      */
     @JsonProperty("tunnel_method")
     public DestinationRedshiftTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+
     public DestinationRedshiftTunnelMethodNoTunnel withTunnelMethod(DestinationRedshiftTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;

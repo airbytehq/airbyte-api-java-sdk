@@ -18,6 +18,7 @@ public class SourceOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_data")
     public Object connectionData;
+
     public SourceOracle withConnectionData(Object connectionData) {
         this.connectionData = connectionData;
         return this;
@@ -28,6 +29,7 @@ public class SourceOracle {
      */
     @JsonProperty("encryption")
     public Object encryption;
+
     public SourceOracle withEncryption(Object encryption) {
         this.encryption = encryption;
         return this;
@@ -38,6 +40,7 @@ public class SourceOracle {
      */
     @JsonProperty("host")
     public String host;
+
     public SourceOracle withHost(String host) {
         this.host = host;
         return this;
@@ -49,6 +52,7 @@ public class SourceOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public SourceOracle withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -60,6 +64,7 @@ public class SourceOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourceOracle withPassword(String password) {
         this.password = password;
         return this;
@@ -73,6 +78,7 @@ public class SourceOracle {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceOracle withPort(Long port) {
         this.port = port;
         return this;
@@ -84,6 +90,7 @@ public class SourceOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     public String[] schemas;
+
     public SourceOracle withSchemas(String[] schemas) {
         this.schemas = schemas;
         return this;
@@ -91,6 +98,7 @@ public class SourceOracle {
     
     @JsonProperty("sourceType")
     public SourceOracleOracleEnum sourceType;
+
     public SourceOracle withSourceType(SourceOracleOracleEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -102,6 +110,7 @@ public class SourceOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public SourceOracle withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -112,6 +121,7 @@ public class SourceOracle {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceOracle withUsername(String username) {
         this.username = username;
         return this;

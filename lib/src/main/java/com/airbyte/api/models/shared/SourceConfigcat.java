@@ -15,6 +15,7 @@ public class SourceConfigcat {
      */
     @JsonProperty("password")
     public String password;
+
     public SourceConfigcat withPassword(String password) {
         this.password = password;
         return this;
@@ -22,6 +23,7 @@ public class SourceConfigcat {
     
     @JsonProperty("sourceType")
     public SourceConfigcatConfigcatEnum sourceType;
+
     public SourceConfigcat withSourceType(SourceConfigcatConfigcatEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -32,6 +34,7 @@ public class SourceConfigcat {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceConfigcat withUsername(String username) {
         this.username = username;
         return this;

@@ -10,6 +10,7 @@ import java.net.http.HttpResponse;
 public class CreateDestinationResponse {
     
     public String contentType;
+
     public CreateDestinationResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -20,6 +21,7 @@ public class CreateDestinationResponse {
      */
     
     public com.airbyte.api.models.shared.DestinationResponse destinationResponse;
+
     public CreateDestinationResponse withDestinationResponse(com.airbyte.api.models.shared.DestinationResponse destinationResponse) {
         this.destinationResponse = destinationResponse;
         return this;
@@ -27,6 +29,7 @@ public class CreateDestinationResponse {
     
     
     public Integer statusCode;
+
     public CreateDestinationResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
@@ -34,6 +37,7 @@ public class CreateDestinationResponse {
     
     
     public HttpResponse<byte[]> rawResponse;
+
     public CreateDestinationResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;

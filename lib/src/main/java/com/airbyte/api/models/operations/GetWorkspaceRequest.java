@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetWorkspaceRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     public String workspaceId;
+
     public GetWorkspaceRequest withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

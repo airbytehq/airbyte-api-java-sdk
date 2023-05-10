@@ -12,6 +12,7 @@ public class SourceXeroAuthenticateViaXeroOAuth {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceXeroAuthenticateViaXeroOAuth withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceXeroAuthenticateViaXeroOAuth {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceXeroAuthenticateViaXeroOAuth withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -32,6 +34,7 @@ public class SourceXeroAuthenticateViaXeroOAuth {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceXeroAuthenticateViaXeroOAuth withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -42,6 +45,7 @@ public class SourceXeroAuthenticateViaXeroOAuth {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceXeroAuthenticateViaXeroOAuth withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -52,6 +56,7 @@ public class SourceXeroAuthenticateViaXeroOAuth {
      */
     @JsonProperty("token_expiry_date")
     public String tokenExpiryDate;
+
     public SourceXeroAuthenticateViaXeroOAuth withTokenExpiryDate(String tokenExpiryDate) {
         this.tokenExpiryDate = tokenExpiryDate;
         return this;

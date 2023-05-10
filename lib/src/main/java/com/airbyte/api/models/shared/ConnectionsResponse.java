@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConnectionsResponse {
     @JsonProperty("data")
     public ConnectionResponse[] data;
+
     public ConnectionsResponse withData(ConnectionResponse[] data) {
         this.data = data;
         return this;
@@ -22,6 +23,7 @@ public class ConnectionsResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     public String next;
+
     public ConnectionsResponse withNext(String next) {
         this.next = next;
         return this;
@@ -30,6 +32,7 @@ public class ConnectionsResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("previous")
     public String previous;
+
     public ConnectionsResponse withPrevious(String previous) {
         this.previous = previous;
         return this;

@@ -15,6 +15,7 @@ public class SourceZendeskSunshine {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceZendeskSunshine withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -22,6 +23,7 @@ public class SourceZendeskSunshine {
     
     @JsonProperty("sourceType")
     public SourceZendeskSunshineZendeskSunshineEnum sourceType;
+
     public SourceZendeskSunshine withSourceType(SourceZendeskSunshineZendeskSunshineEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -32,6 +34,7 @@ public class SourceZendeskSunshine {
      */
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceZendeskSunshine withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -42,6 +45,7 @@ public class SourceZendeskSunshine {
      */
     @JsonProperty("subdomain")
     public String subdomain;
+
     public SourceZendeskSunshine withSubdomain(String subdomain) {
         this.subdomain = subdomain;
         return this;

@@ -23,6 +23,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attribution_window")
     public Long attributionWindow;
+
     public SourceMixpanel withAttributionWindow(Long attributionWindow) {
         this.attributionWindow = attributionWindow;
         return this;
@@ -34,6 +35,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceMixpanel withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -45,6 +47,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_window_size")
     public Long dateWindowSize;
+
     public SourceMixpanel withDateWindowSize(Long dateWindowSize) {
         this.dateWindowSize = dateWindowSize;
         return this;
@@ -58,6 +61,7 @@ public class SourceMixpanel {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("end_date")
     public OffsetDateTime endDate;
+
     public SourceMixpanel withEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
         return this;
@@ -69,6 +73,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("project_id")
     public Long projectId;
+
     public SourceMixpanel withProjectId(Long projectId) {
         this.projectId = projectId;
         return this;
@@ -80,6 +85,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("project_timezone")
     public String projectTimezone;
+
     public SourceMixpanel withProjectTimezone(String projectTimezone) {
         this.projectTimezone = projectTimezone;
         return this;
@@ -91,6 +97,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     public SourceMixpanelRegionEnum region;
+
     public SourceMixpanel withRegion(SourceMixpanelRegionEnum region) {
         this.region = region;
         return this;
@@ -102,6 +109,7 @@ public class SourceMixpanel {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("select_properties_by_default")
     public Boolean selectPropertiesByDefault;
+
     public SourceMixpanel withSelectPropertiesByDefault(Boolean selectPropertiesByDefault) {
         this.selectPropertiesByDefault = selectPropertiesByDefault;
         return this;
@@ -109,6 +117,7 @@ public class SourceMixpanel {
     
     @JsonProperty("sourceType")
     public SourceMixpanelMixpanelEnum sourceType;
+
     public SourceMixpanel withSourceType(SourceMixpanelMixpanelEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -122,6 +131,7 @@ public class SourceMixpanel {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceMixpanel withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

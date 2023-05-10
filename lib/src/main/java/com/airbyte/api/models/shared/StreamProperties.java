@@ -15,6 +15,7 @@ public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultCursorField")
     public String[] defaultCursorField;
+
     public StreamProperties withDefaultCursorField(String[] defaultCursorField) {
         this.defaultCursorField = defaultCursorField;
         return this;
@@ -23,6 +24,7 @@ public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("propertyFields")
     public String[][] propertyFields;
+
     public StreamProperties withPropertyFields(String[][] propertyFields) {
         this.propertyFields = propertyFields;
         return this;
@@ -31,6 +33,7 @@ public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceDefinedCursorField")
     public Boolean sourceDefinedCursorField;
+
     public StreamProperties withSourceDefinedCursorField(Boolean sourceDefinedCursorField) {
         this.sourceDefinedCursorField = sourceDefinedCursorField;
         return this;
@@ -39,6 +42,7 @@ public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceDefinedPrimaryKey")
     public String[][] sourceDefinedPrimaryKey;
+
     public StreamProperties withSourceDefinedPrimaryKey(String[][] sourceDefinedPrimaryKey) {
         this.sourceDefinedPrimaryKey = sourceDefinedPrimaryKey;
         return this;
@@ -47,6 +51,7 @@ public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streamName")
     public String streamName;
+
     public StreamProperties withStreamName(String streamName) {
         this.streamName = streamName;
         return this;
@@ -55,6 +60,7 @@ public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncModes")
     public ConnectionSyncModeEnumEnum[] syncModes;
+
     public StreamProperties withSyncModes(ConnectionSyncModeEnumEnum[] syncModes) {
         this.syncModes = syncModes;
         return this;

@@ -22,6 +22,7 @@ public class SourceGitlab {
      */
     @JsonProperty("api_url")
     public String apiUrl;
+
     public SourceGitlab withApiUrl(String apiUrl) {
         this.apiUrl = apiUrl;
         return this;
@@ -29,6 +30,7 @@ public class SourceGitlab {
     
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceGitlab withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -40,6 +42,7 @@ public class SourceGitlab {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("groups")
     public String groups;
+
     public SourceGitlab withGroups(String groups) {
         this.groups = groups;
         return this;
@@ -51,6 +54,7 @@ public class SourceGitlab {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("projects")
     public String projects;
+
     public SourceGitlab withProjects(String projects) {
         this.projects = projects;
         return this;
@@ -58,6 +62,7 @@ public class SourceGitlab {
     
     @JsonProperty("sourceType")
     public SourceGitlabGitlabEnum sourceType;
+
     public SourceGitlab withSourceType(SourceGitlabGitlabEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -70,6 +75,7 @@ public class SourceGitlab {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceGitlab withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

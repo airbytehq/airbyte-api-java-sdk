@@ -18,6 +18,7 @@ public class SourceGoogleWebfonts {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("alt")
     public String alt;
+
     public SourceGoogleWebfonts withAlt(String alt) {
         this.alt = alt;
         return this;
@@ -28,6 +29,7 @@ public class SourceGoogleWebfonts {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceGoogleWebfonts withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -39,6 +41,7 @@ public class SourceGoogleWebfonts {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prettyPrint")
     public String prettyPrint;
+
     public SourceGoogleWebfonts withPrettyPrint(String prettyPrint) {
         this.prettyPrint = prettyPrint;
         return this;
@@ -50,6 +53,7 @@ public class SourceGoogleWebfonts {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sort")
     public String sort;
+
     public SourceGoogleWebfonts withSort(String sort) {
         this.sort = sort;
         return this;
@@ -57,6 +61,7 @@ public class SourceGoogleWebfonts {
     
     @JsonProperty("sourceType")
     public SourceGoogleWebfontsGoogleWebfontsEnum sourceType;
+
     public SourceGoogleWebfonts withSourceType(SourceGoogleWebfontsGoogleWebfontsEnum sourceType) {
         this.sourceType = sourceType;
         return this;

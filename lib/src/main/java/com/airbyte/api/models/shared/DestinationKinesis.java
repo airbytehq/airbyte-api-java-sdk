@@ -15,6 +15,7 @@ public class DestinationKinesis {
      */
     @JsonProperty("accessKey")
     public String accessKey;
+
     public DestinationKinesis withAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
@@ -25,6 +26,7 @@ public class DestinationKinesis {
      */
     @JsonProperty("bufferSize")
     public Long bufferSize;
+
     public DestinationKinesis withBufferSize(Long bufferSize) {
         this.bufferSize = bufferSize;
         return this;
@@ -32,6 +34,7 @@ public class DestinationKinesis {
     
     @JsonProperty("destinationType")
     public DestinationKinesisKinesisEnum destinationType;
+
     public DestinationKinesis withDestinationType(DestinationKinesisKinesisEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -42,6 +45,7 @@ public class DestinationKinesis {
      */
     @JsonProperty("endpoint")
     public String endpoint;
+
     public DestinationKinesis withEndpoint(String endpoint) {
         this.endpoint = endpoint;
         return this;
@@ -52,6 +56,7 @@ public class DestinationKinesis {
      */
     @JsonProperty("privateKey")
     public String privateKey;
+
     public DestinationKinesis withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -62,6 +67,7 @@ public class DestinationKinesis {
      */
     @JsonProperty("region")
     public String region;
+
     public DestinationKinesis withRegion(String region) {
         this.region = region;
         return this;
@@ -72,6 +78,7 @@ public class DestinationKinesis {
      */
     @JsonProperty("shardCount")
     public Long shardCount;
+
     public DestinationKinesis withShardCount(Long shardCount) {
         this.shardCount = shardCount;
         return this;

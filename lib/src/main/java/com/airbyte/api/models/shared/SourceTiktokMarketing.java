@@ -20,6 +20,7 @@ public class SourceTiktokMarketing {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("attribution_window")
     public Long attributionWindow;
+
     public SourceTiktokMarketing withAttributionWindow(Long attributionWindow) {
         this.attributionWindow = attributionWindow;
         return this;
@@ -31,6 +32,7 @@ public class SourceTiktokMarketing {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceTiktokMarketing withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -43,6 +45,7 @@ public class SourceTiktokMarketing {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
     public LocalDate endDate;
+
     public SourceTiktokMarketing withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
@@ -50,6 +53,7 @@ public class SourceTiktokMarketing {
     
     @JsonProperty("sourceType")
     public SourceTiktokMarketingTiktokMarketingEnum sourceType;
+
     public SourceTiktokMarketing withSourceType(SourceTiktokMarketingTiktokMarketingEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -62,6 +66,7 @@ public class SourceTiktokMarketing {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceTiktokMarketing withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

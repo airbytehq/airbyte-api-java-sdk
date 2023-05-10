@@ -17,6 +17,7 @@ public class DestinationRedis {
      */
     @JsonProperty("cache_type")
     public DestinationRedisCacheTypeEnum cacheType;
+
     public DestinationRedis withCacheType(DestinationRedisCacheTypeEnum cacheType) {
         this.cacheType = cacheType;
         return this;
@@ -24,6 +25,7 @@ public class DestinationRedis {
     
     @JsonProperty("destinationType")
     public DestinationRedisRedisEnum destinationType;
+
     public DestinationRedis withDestinationType(DestinationRedisRedisEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationRedis {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationRedis withHost(String host) {
         this.host = host;
         return this;
@@ -45,6 +48,7 @@ public class DestinationRedis {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public DestinationRedis withPassword(String password) {
         this.password = password;
         return this;
@@ -55,6 +59,7 @@ public class DestinationRedis {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationRedis withPort(Long port) {
         this.port = port;
         return this;
@@ -66,6 +71,7 @@ public class DestinationRedis {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl")
     public Boolean ssl;
+
     public DestinationRedis withSsl(Boolean ssl) {
         this.ssl = ssl;
         return this;
@@ -78,6 +84,7 @@ public class DestinationRedis {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
     public Object sslMode;
+
     public DestinationRedis withSslMode(Object sslMode) {
         this.sslMode = sslMode;
         return this;
@@ -89,6 +96,7 @@ public class DestinationRedis {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationRedis withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -99,6 +107,7 @@ public class DestinationRedis {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationRedis withUsername(String username) {
         this.username = username;
         return this;

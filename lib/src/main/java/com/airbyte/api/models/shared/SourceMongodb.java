@@ -18,6 +18,7 @@ public class SourceMongodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_source")
     public String authSource;
+
     public SourceMongodb withAuthSource(String authSource) {
         this.authSource = authSource;
         return this;
@@ -28,6 +29,7 @@ public class SourceMongodb {
      */
     @JsonProperty("database")
     public String database;
+
     public SourceMongodb withDatabase(String database) {
         this.database = database;
         return this;
@@ -39,6 +41,7 @@ public class SourceMongodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance_type")
     public Object instanceType;
+
     public SourceMongodb withInstanceType(Object instanceType) {
         this.instanceType = instanceType;
         return this;
@@ -50,6 +53,7 @@ public class SourceMongodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourceMongodb withPassword(String password) {
         this.password = password;
         return this;
@@ -57,6 +61,7 @@ public class SourceMongodb {
     
     @JsonProperty("sourceType")
     public SourceMongodbMongodbEnum sourceType;
+
     public SourceMongodb withSourceType(SourceMongodbMongodbEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -68,6 +73,7 @@ public class SourceMongodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("user")
     public String user;
+
     public SourceMongodb withUser(String user) {
         this.user = user;
         return this;

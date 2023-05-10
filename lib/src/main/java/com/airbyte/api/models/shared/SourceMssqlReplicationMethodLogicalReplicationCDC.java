@@ -18,6 +18,7 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_to_sync")
     public SourceMssqlReplicationMethodLogicalReplicationCDCDataToSyncEnum dataToSync;
+
     public SourceMssqlReplicationMethodLogicalReplicationCDC withDataToSync(SourceMssqlReplicationMethodLogicalReplicationCDCDataToSyncEnum dataToSync) {
         this.dataToSync = dataToSync;
         return this;
@@ -29,6 +30,7 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("initial_waiting_seconds")
     public Long initialWaitingSeconds;
+
     public SourceMssqlReplicationMethodLogicalReplicationCDC withInitialWaitingSeconds(Long initialWaitingSeconds) {
         this.initialWaitingSeconds = initialWaitingSeconds;
         return this;
@@ -36,6 +38,7 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
     
     @JsonProperty("method")
     public SourceMssqlReplicationMethodLogicalReplicationCDCMethodEnum method;
+
     public SourceMssqlReplicationMethodLogicalReplicationCDC withMethod(SourceMssqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
         this.method = method;
         return this;
@@ -47,6 +50,7 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("snapshot_isolation")
     public SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum snapshotIsolation;
+
     public SourceMssqlReplicationMethodLogicalReplicationCDC withSnapshotIsolation(SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum snapshotIsolation) {
         this.snapshotIsolation = snapshotIsolation;
         return this;

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetJobRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=jobId")
     public Long jobId;
+
     public GetJobRequest withJobId(Long jobId) {
         this.jobId = jobId;
         return this;

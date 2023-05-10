@@ -15,6 +15,7 @@ public class SourceRecruitee {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceRecruitee withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceRecruitee {
      */
     @JsonProperty("company_id")
     public Long companyId;
+
     public SourceRecruitee withCompanyId(Long companyId) {
         this.companyId = companyId;
         return this;
@@ -32,6 +34,7 @@ public class SourceRecruitee {
     
     @JsonProperty("sourceType")
     public SourceRecruiteeRecruiteeEnum sourceType;
+
     public SourceRecruitee withSourceType(SourceRecruiteeRecruiteeEnum sourceType) {
         this.sourceType = sourceType;
         return this;

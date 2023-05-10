@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceGridly {
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceGridly withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceGridly {
      */
     @JsonProperty("grid_id")
     public String gridId;
+
     public SourceGridly withGridId(String gridId) {
         this.gridId = gridId;
         return this;
@@ -29,6 +31,7 @@ public class SourceGridly {
     
     @JsonProperty("sourceType")
     public SourceGridlyGridlyEnum sourceType;
+
     public SourceGridly withSourceType(SourceGridlyGridlyEnum sourceType) {
         this.sourceType = sourceType;
         return this;

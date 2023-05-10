@@ -15,6 +15,7 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceGoogleSearchConsoleAuthorizationOAuth withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
     
     @JsonProperty("auth_type")
     public SourceGoogleSearchConsoleAuthorizationOAuthAuthTypeEnum authType;
+
     public SourceGoogleSearchConsoleAuthorizationOAuth withAuthType(SourceGoogleSearchConsoleAuthorizationOAuthAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -32,6 +34,7 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceGoogleSearchConsoleAuthorizationOAuth withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -42,6 +45,7 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceGoogleSearchConsoleAuthorizationOAuth withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -52,6 +56,7 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceGoogleSearchConsoleAuthorizationOAuth withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

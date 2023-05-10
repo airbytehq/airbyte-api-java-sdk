@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationS3FormatAvroApacheAvroCompressionCodecSnappy {
     @JsonProperty("codec")
     public DestinationS3FormatAvroApacheAvroCompressionCodecSnappyCodecEnum codec;
+
     public DestinationS3FormatAvroApacheAvroCompressionCodecSnappy withCodec(DestinationS3FormatAvroApacheAvroCompressionCodecSnappyCodecEnum codec) {
         this.codec = codec;
         return this;

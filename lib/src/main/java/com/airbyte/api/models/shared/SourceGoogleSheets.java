@@ -17,6 +17,7 @@ public class SourceGoogleSheets {
      */
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceGoogleSheets withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -28,6 +29,7 @@ public class SourceGoogleSheets {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("row_batch_size")
     public Long rowBatchSize;
+
     public SourceGoogleSheets withRowBatchSize(Long rowBatchSize) {
         this.rowBatchSize = rowBatchSize;
         return this;
@@ -35,6 +37,7 @@ public class SourceGoogleSheets {
     
     @JsonProperty("sourceType")
     public SourceGoogleSheetsGoogleSheetsEnum sourceType;
+
     public SourceGoogleSheets withSourceType(SourceGoogleSheetsGoogleSheetsEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -45,6 +48,7 @@ public class SourceGoogleSheets {
      */
     @JsonProperty("spreadsheet_id")
     public String spreadsheetId;
+
     public SourceGoogleSheets withSpreadsheetId(String spreadsheetId) {
         this.spreadsheetId = spreadsheetId;
         return this;

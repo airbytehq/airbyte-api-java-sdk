@@ -23,6 +23,7 @@ public class SourceSftpBulk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_most_recent")
     public Boolean fileMostRecent;
+
     public SourceSftpBulk withFileMostRecent(Boolean fileMostRecent) {
         this.fileMostRecent = fileMostRecent;
         return this;
@@ -34,6 +35,7 @@ public class SourceSftpBulk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_pattern")
     public String filePattern;
+
     public SourceSftpBulk withFilePattern(String filePattern) {
         this.filePattern = filePattern;
         return this;
@@ -45,6 +47,7 @@ public class SourceSftpBulk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_type")
     public SourceSftpBulkFileTypeEnum fileType;
+
     public SourceSftpBulk withFileType(SourceSftpBulkFileTypeEnum fileType) {
         this.fileType = fileType;
         return this;
@@ -55,6 +58,7 @@ public class SourceSftpBulk {
      */
     @JsonProperty("folder_path")
     public String folderPath;
+
     public SourceSftpBulk withFolderPath(String folderPath) {
         this.folderPath = folderPath;
         return this;
@@ -65,6 +69,7 @@ public class SourceSftpBulk {
      */
     @JsonProperty("host")
     public String host;
+
     public SourceSftpBulk withHost(String host) {
         this.host = host;
         return this;
@@ -76,6 +81,7 @@ public class SourceSftpBulk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourceSftpBulk withPassword(String password) {
         this.password = password;
         return this;
@@ -86,6 +92,7 @@ public class SourceSftpBulk {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceSftpBulk withPort(Long port) {
         this.port = port;
         return this;
@@ -97,6 +104,7 @@ public class SourceSftpBulk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("private_key")
     public String privateKey;
+
     public SourceSftpBulk withPrivateKey(String privateKey) {
         this.privateKey = privateKey;
         return this;
@@ -104,6 +112,7 @@ public class SourceSftpBulk {
     
     @JsonProperty("sourceType")
     public SourceSftpBulkSftpBulkEnum sourceType;
+
     public SourceSftpBulk withSourceType(SourceSftpBulkSftpBulkEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -116,6 +125,7 @@ public class SourceSftpBulk {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceSftpBulk withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -126,6 +136,7 @@ public class SourceSftpBulk {
      */
     @JsonProperty("stream_name")
     public String streamName;
+
     public SourceSftpBulk withStreamName(String streamName) {
         this.streamName = streamName;
         return this;
@@ -136,6 +147,7 @@ public class SourceSftpBulk {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceSftpBulk withUsername(String username) {
         this.username = username;
         return this;

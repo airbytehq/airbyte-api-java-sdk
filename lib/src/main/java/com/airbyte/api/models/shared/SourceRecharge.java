@@ -20,6 +20,7 @@ public class SourceRecharge {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceRecharge withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -27,6 +28,7 @@ public class SourceRecharge {
     
     @JsonProperty("sourceType")
     public SourceRechargeRechargeEnum sourceType;
+
     public SourceRecharge withSourceType(SourceRechargeRechargeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -39,6 +41,7 @@ public class SourceRecharge {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceRecharge withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

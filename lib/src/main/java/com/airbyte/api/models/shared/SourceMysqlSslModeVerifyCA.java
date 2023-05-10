@@ -17,6 +17,7 @@ public class SourceMysqlSslModeVerifyCA {
      */
     @JsonProperty("ca_certificate")
     public String caCertificate;
+
     public SourceMysqlSslModeVerifyCA withCaCertificate(String caCertificate) {
         this.caCertificate = caCertificate;
         return this;
@@ -28,6 +29,7 @@ public class SourceMysqlSslModeVerifyCA {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_certificate")
     public String clientCertificate;
+
     public SourceMysqlSslModeVerifyCA withClientCertificate(String clientCertificate) {
         this.clientCertificate = clientCertificate;
         return this;
@@ -39,6 +41,7 @@ public class SourceMysqlSslModeVerifyCA {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key")
     public String clientKey;
+
     public SourceMysqlSslModeVerifyCA withClientKey(String clientKey) {
         this.clientKey = clientKey;
         return this;
@@ -50,6 +53,7 @@ public class SourceMysqlSslModeVerifyCA {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key_password")
     public String clientKeyPassword;
+
     public SourceMysqlSslModeVerifyCA withClientKeyPassword(String clientKeyPassword) {
         this.clientKeyPassword = clientKeyPassword;
         return this;
@@ -57,6 +61,7 @@ public class SourceMysqlSslModeVerifyCA {
     
     @JsonProperty("mode")
     public SourceMysqlSslModeVerifyCAModeEnum mode;
+
     public SourceMysqlSslModeVerifyCA withMode(SourceMysqlSslModeVerifyCAModeEnum mode) {
         this.mode = mode;
         return this;

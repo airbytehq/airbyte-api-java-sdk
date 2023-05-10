@@ -15,6 +15,7 @@ public class SourceOkta {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceOkta withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -26,6 +27,7 @@ public class SourceOkta {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     public String domain;
+
     public SourceOkta withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -33,6 +35,7 @@ public class SourceOkta {
     
     @JsonProperty("sourceType")
     public SourceOktaOktaEnum sourceType;
+
     public SourceOkta withSourceType(SourceOktaOktaEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -44,6 +47,7 @@ public class SourceOkta {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceOkta withStartDate(String startDate) {
         this.startDate = startDate;
         return this;

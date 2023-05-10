@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GetSourceRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sourceId")
     public String sourceId;
+
     public GetSourceRequest withSourceId(String sourceId) {
         this.sourceId = sourceId;
         return this;

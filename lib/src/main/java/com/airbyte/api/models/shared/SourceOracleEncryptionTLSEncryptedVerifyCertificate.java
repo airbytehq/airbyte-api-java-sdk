@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
     @JsonProperty("encryption_method")
     public SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethodEnum encryptionMethod;
+
     public SourceOracleEncryptionTLSEncryptedVerifyCertificate withEncryptionMethod(SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethodEnum encryptionMethod) {
         this.encryptionMethod = encryptionMethod;
         return this;
@@ -22,6 +23,7 @@ public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
      */
     @JsonProperty("ssl_certificate")
     public String sslCertificate;
+
     public SourceOracleEncryptionTLSEncryptedVerifyCertificate withSslCertificate(String sslCertificate) {
         this.sslCertificate = sslCertificate;
         return this;

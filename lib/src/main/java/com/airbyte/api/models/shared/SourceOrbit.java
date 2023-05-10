@@ -17,6 +17,7 @@ public class SourceOrbit {
      */
     @JsonProperty("api_token")
     public String apiToken;
+
     public SourceOrbit withApiToken(String apiToken) {
         this.apiToken = apiToken;
         return this;
@@ -24,6 +25,7 @@ public class SourceOrbit {
     
     @JsonProperty("sourceType")
     public SourceOrbitOrbitEnum sourceType;
+
     public SourceOrbit withSourceType(SourceOrbitOrbitEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -35,6 +37,7 @@ public class SourceOrbit {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     public String startDate;
+
     public SourceOrbit withStartDate(String startDate) {
         this.startDate = startDate;
         return this;
@@ -45,6 +48,7 @@ public class SourceOrbit {
      */
     @JsonProperty("workspace")
     public String workspace;
+
     public SourceOrbit withWorkspace(String workspace) {
         this.workspace = workspace;
         return this;

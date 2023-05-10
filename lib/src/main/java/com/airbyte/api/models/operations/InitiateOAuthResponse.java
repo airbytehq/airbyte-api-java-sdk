@@ -10,6 +10,7 @@ import java.net.http.HttpResponse;
 public class InitiateOAuthResponse {
     
     public String contentType;
+
     public InitiateOAuthResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -17,6 +18,7 @@ public class InitiateOAuthResponse {
     
     
     public Integer statusCode;
+
     public InitiateOAuthResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
@@ -24,6 +26,7 @@ public class InitiateOAuthResponse {
     
     
     public HttpResponse<byte[]> rawResponse;
+
     public InitiateOAuthResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;

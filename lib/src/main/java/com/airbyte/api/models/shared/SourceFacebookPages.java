@@ -15,6 +15,7 @@ public class SourceFacebookPages {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceFacebookPages withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -25,6 +26,7 @@ public class SourceFacebookPages {
      */
     @JsonProperty("page_id")
     public String pageId;
+
     public SourceFacebookPages withPageId(String pageId) {
         this.pageId = pageId;
         return this;
@@ -32,6 +34,7 @@ public class SourceFacebookPages {
     
     @JsonProperty("sourceType")
     public SourceFacebookPagesFacebookPagesEnum sourceType;
+
     public SourceFacebookPages withSourceType(SourceFacebookPagesFacebookPagesEnum sourceType) {
         this.sourceType = sourceType;
         return this;

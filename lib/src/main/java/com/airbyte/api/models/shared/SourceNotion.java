@@ -23,6 +23,7 @@ public class SourceNotion {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceNotion withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -30,6 +31,7 @@ public class SourceNotion {
     
     @JsonProperty("sourceType")
     public SourceNotionNotionEnum sourceType;
+
     public SourceNotion withSourceType(SourceNotionNotionEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -42,6 +44,7 @@ public class SourceNotion {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceNotion withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

@@ -17,6 +17,7 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceTiktokMarketingCredentialsOAuth20 withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -28,6 +29,7 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("advertiser_id")
     public String advertiserId;
+
     public SourceTiktokMarketingCredentialsOAuth20 withAdvertiserId(String advertiserId) {
         this.advertiserId = advertiserId;
         return this;
@@ -38,6 +40,7 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
      */
     @JsonProperty("app_id")
     public String appId;
+
     public SourceTiktokMarketingCredentialsOAuth20 withAppId(String appId) {
         this.appId = appId;
         return this;
@@ -46,6 +49,7 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceTiktokMarketingCredentialsOAuth20AuthTypeEnum authType;
+
     public SourceTiktokMarketingCredentialsOAuth20 withAuthType(SourceTiktokMarketingCredentialsOAuth20AuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -56,6 +60,7 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
      */
     @JsonProperty("secret")
     public String secret;
+
     public SourceTiktokMarketingCredentialsOAuth20 withSecret(String secret) {
         this.secret = secret;
         return this;

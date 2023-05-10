@@ -15,6 +15,7 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
      */
     @JsonProperty("apiKeyId")
     public String apiKeyId;
+
     public DestinationElasticsearchAuthenticationMethodApiKeySecret withApiKeyId(String apiKeyId) {
         this.apiKeyId = apiKeyId;
         return this;
@@ -25,6 +26,7 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
      */
     @JsonProperty("apiKeySecret")
     public String apiKeySecret;
+
     public DestinationElasticsearchAuthenticationMethodApiKeySecret withApiKeySecret(String apiKeySecret) {
         this.apiKeySecret = apiKeySecret;
         return this;
@@ -32,6 +34,7 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
     
     @JsonProperty("method")
     public DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method;
+
     public DestinationElasticsearchAuthenticationMethodApiKeySecret withMethod(DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method) {
         this.method = method;
         return this;

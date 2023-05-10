@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationMongodbAuthTypeLoginPassword {
     @JsonProperty("authorization")
     public DestinationMongodbAuthTypeLoginPasswordAuthorizationEnum authorization;
+
     public DestinationMongodbAuthTypeLoginPassword withAuthorization(DestinationMongodbAuthTypeLoginPasswordAuthorizationEnum authorization) {
         this.authorization = authorization;
         return this;
@@ -22,6 +23,7 @@ public class DestinationMongodbAuthTypeLoginPassword {
      */
     @JsonProperty("password")
     public String password;
+
     public DestinationMongodbAuthTypeLoginPassword withPassword(String password) {
         this.password = password;
         return this;
@@ -32,6 +34,7 @@ public class DestinationMongodbAuthTypeLoginPassword {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationMongodbAuthTypeLoginPassword withUsername(String username) {
         this.username = username;
         return this;

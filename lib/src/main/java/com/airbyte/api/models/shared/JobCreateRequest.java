@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class JobCreateRequest {
     @JsonProperty("connectionId")
     public String connectionId;
+
     public JobCreateRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
@@ -22,6 +23,7 @@ public class JobCreateRequest {
      */
     @JsonProperty("jobType")
     public JobTypeEnumEnum jobType;
+
     public JobCreateRequest withJobType(JobTypeEnumEnum jobType) {
         this.jobType = jobType;
         return this;

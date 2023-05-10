@@ -15,6 +15,7 @@ public class ConnectionScheduleCreate {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cronExpression")
     public String cronExpression;
+
     public ConnectionScheduleCreate withCronExpression(String cronExpression) {
         this.cronExpression = cronExpression;
         return this;
@@ -22,6 +23,7 @@ public class ConnectionScheduleCreate {
     
     @JsonProperty("scheduleType")
     public ScheduleTypeEnumEnum scheduleType;
+
     public ConnectionScheduleCreate withScheduleType(ScheduleTypeEnumEnum scheduleType) {
         this.scheduleType = scheduleType;
         return this;

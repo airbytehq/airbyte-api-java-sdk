@@ -15,6 +15,7 @@ public class StreamConfigurations {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streams")
     public StreamConfiguration[] streams;
+
     public StreamConfigurations withStreams(StreamConfiguration[] streams) {
         this.streams = streams;
         return this;

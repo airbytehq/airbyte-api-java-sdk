@@ -17,6 +17,7 @@ public class SourceGoogleWorkspaceAdminReports {
      */
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public SourceGoogleWorkspaceAdminReports withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -27,6 +28,7 @@ public class SourceGoogleWorkspaceAdminReports {
      */
     @JsonProperty("email")
     public String email;
+
     public SourceGoogleWorkspaceAdminReports withEmail(String email) {
         this.email = email;
         return this;
@@ -38,6 +40,7 @@ public class SourceGoogleWorkspaceAdminReports {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback")
     public Long lookback;
+
     public SourceGoogleWorkspaceAdminReports withLookback(Long lookback) {
         this.lookback = lookback;
         return this;
@@ -45,6 +48,7 @@ public class SourceGoogleWorkspaceAdminReports {
     
     @JsonProperty("sourceType")
     public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType;
+
     public SourceGoogleWorkspaceAdminReports withSourceType(SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType) {
         this.sourceType = sourceType;
         return this;

@@ -20,6 +20,7 @@ public class SourceDelighted {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceDelighted withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -32,6 +33,7 @@ public class SourceDelighted {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("since")
     public OffsetDateTime since;
+
     public SourceDelighted withSince(OffsetDateTime since) {
         this.since = since;
         return this;
@@ -39,6 +41,7 @@ public class SourceDelighted {
     
     @JsonProperty("sourceType")
     public SourceDelightedDelightedEnum sourceType;
+
     public SourceDelighted withSourceType(SourceDelightedDelightedEnum sourceType) {
         this.sourceType = sourceType;
         return this;

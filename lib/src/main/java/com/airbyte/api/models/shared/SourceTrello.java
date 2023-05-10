@@ -23,6 +23,7 @@ public class SourceTrello {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("board_ids")
     public String[] boardIds;
+
     public SourceTrello withBoardIds(String[] boardIds) {
         this.boardIds = boardIds;
         return this;
@@ -33,6 +34,7 @@ public class SourceTrello {
      */
     @JsonProperty("key")
     public String key;
+
     public SourceTrello withKey(String key) {
         this.key = key;
         return this;
@@ -40,6 +42,7 @@ public class SourceTrello {
     
     @JsonProperty("sourceType")
     public SourceTrelloTrelloEnum sourceType;
+
     public SourceTrello withSourceType(SourceTrelloTrelloEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -52,6 +55,7 @@ public class SourceTrello {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceTrello withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -62,6 +66,7 @@ public class SourceTrello {
      */
     @JsonProperty("token")
     public String token;
+
     public SourceTrello withToken(String token) {
         this.token = token;
         return this;

@@ -12,6 +12,7 @@ public class SourceMailchimpCredentialsAPIKey {
      */
     @JsonProperty("apikey")
     public String apikey;
+
     public SourceMailchimpCredentialsAPIKey withApikey(String apikey) {
         this.apikey = apikey;
         return this;
@@ -19,6 +20,7 @@ public class SourceMailchimpCredentialsAPIKey {
     
     @JsonProperty("auth_type")
     public SourceMailchimpCredentialsAPIKeyAuthTypeEnum authType;
+
     public SourceMailchimpCredentialsAPIKey withAuthType(SourceMailchimpCredentialsAPIKeyAuthTypeEnum authType) {
         this.authType = authType;
         return this;

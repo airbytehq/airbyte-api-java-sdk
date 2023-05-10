@@ -18,6 +18,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("block_size_mb")
     public Long blockSizeMb;
+
     public DestinationGcsFormatParquetColumnarStorage withBlockSizeMb(Long blockSizeMb) {
         this.blockSizeMb = blockSizeMb;
         return this;
@@ -29,6 +30,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
     public DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec;
+
     public DestinationGcsFormatParquetColumnarStorage withCompressionCodec(DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
@@ -40,6 +42,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dictionary_encoding")
     public Boolean dictionaryEncoding;
+
     public DestinationGcsFormatParquetColumnarStorage withDictionaryEncoding(Boolean dictionaryEncoding) {
         this.dictionaryEncoding = dictionaryEncoding;
         return this;
@@ -51,6 +54,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dictionary_page_size_kb")
     public Long dictionaryPageSizeKb;
+
     public DestinationGcsFormatParquetColumnarStorage withDictionaryPageSizeKb(Long dictionaryPageSizeKb) {
         this.dictionaryPageSizeKb = dictionaryPageSizeKb;
         return this;
@@ -58,6 +62,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     
     @JsonProperty("format_type")
     public DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType;
+
     public DestinationGcsFormatParquetColumnarStorage withFormatType(DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;
@@ -69,6 +74,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_padding_size_mb")
     public Long maxPaddingSizeMb;
+
     public DestinationGcsFormatParquetColumnarStorage withMaxPaddingSizeMb(Long maxPaddingSizeMb) {
         this.maxPaddingSizeMb = maxPaddingSizeMb;
         return this;
@@ -80,6 +86,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("page_size_kb")
     public Long pageSizeKb;
+
     public DestinationGcsFormatParquetColumnarStorage withPageSizeKb(Long pageSizeKb) {
         this.pageSizeKb = pageSizeKb;
         return this;

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
     @SpeakeasyMetadata("request:mediaType=application/json")
     public com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest;
+
     public CreateOrUpdateWorkspaceOAuthCredentialsRequest withWorkspaceOAuthCredentialsRequest(com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest) {
         this.workspaceOAuthCredentialsRequest = workspaceOAuthCredentialsRequest;
         return this;
@@ -17,6 +18,7 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
     
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     public String workspaceId;
+
     public CreateOrUpdateWorkspaceOAuthCredentialsRequest withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceAlloydbReplicationMethodStandard {
     @JsonProperty("method")
     public SourceAlloydbReplicationMethodStandardMethodEnum method;
+
     public SourceAlloydbReplicationMethodStandard withMethod(SourceAlloydbReplicationMethodStandardMethodEnum method) {
         this.method = method;
         return this;

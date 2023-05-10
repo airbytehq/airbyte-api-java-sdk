@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey {
     @JsonProperty("credential_type")
     public DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum credentialType;
+
     public DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey withCredentialType(DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum credentialType) {
         this.credentialType = credentialType;
         return this;
@@ -22,6 +23,7 @@ public class DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey {
      */
     @JsonProperty("hmac_key_access_id")
     public String hmacKeyAccessId;
+
     public DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey withHmacKeyAccessId(String hmacKeyAccessId) {
         this.hmacKeyAccessId = hmacKeyAccessId;
         return this;
@@ -32,6 +34,7 @@ public class DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey {
      */
     @JsonProperty("hmac_key_secret")
     public String hmacKeySecret;
+
     public DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey withHmacKeySecret(String hmacKeySecret) {
         this.hmacKeySecret = hmacKeySecret;
         return this;

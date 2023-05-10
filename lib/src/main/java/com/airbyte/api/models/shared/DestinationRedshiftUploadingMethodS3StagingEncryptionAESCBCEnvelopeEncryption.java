@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption {
     @JsonProperty("encryption_type")
     public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType;
+
     public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption withEncryptionType(DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionTypeEnum encryptionType) {
         this.encryptionType = encryptionType;
         return this;
@@ -25,6 +26,7 @@ public class DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelope
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("key_encrypting_key")
     public String keyEncryptingKey;
+
     public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption withKeyEncryptingKey(String keyEncryptingKey) {
         this.keyEncryptingKey = keyEncryptingKey;
         return this;

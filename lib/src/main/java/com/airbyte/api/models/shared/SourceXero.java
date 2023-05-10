@@ -17,6 +17,7 @@ import java.time.OffsetDateTime;
 public class SourceXero {
     @JsonProperty("authentication")
     public SourceXeroAuthenticateViaXeroOAuth authentication;
+
     public SourceXero withAuthentication(SourceXeroAuthenticateViaXeroOAuth authentication) {
         this.authentication = authentication;
         return this;
@@ -24,6 +25,7 @@ public class SourceXero {
     
     @JsonProperty("sourceType")
     public SourceXeroXeroEnum sourceType;
+
     public SourceXero withSourceType(SourceXeroXeroEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -36,6 +38,7 @@ public class SourceXero {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceXero withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -46,6 +49,7 @@ public class SourceXero {
      */
     @JsonProperty("tenant_id")
     public String tenantId;
+
     public SourceXero withTenantId(String tenantId) {
         this.tenantId = tenantId;
         return this;

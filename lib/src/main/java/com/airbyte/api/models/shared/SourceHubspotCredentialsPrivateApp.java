@@ -15,6 +15,7 @@ public class SourceHubspotCredentialsPrivateApp {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceHubspotCredentialsPrivateApp withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -25,6 +26,7 @@ public class SourceHubspotCredentialsPrivateApp {
      */
     @JsonProperty("credentials_title")
     public SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle;
+
     public SourceHubspotCredentialsPrivateApp withCredentialsTitle(SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;

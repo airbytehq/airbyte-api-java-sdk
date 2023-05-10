@@ -18,6 +18,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -26,6 +27,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauthAuthTypeEnum authType;
+
     public SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth withAuthType(SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauthAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -36,6 +38,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -46,6 +49,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -56,6 +60,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceGoogleAnalyticsDataApiCredentialsAuthenticateViaGoogleOauth withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;

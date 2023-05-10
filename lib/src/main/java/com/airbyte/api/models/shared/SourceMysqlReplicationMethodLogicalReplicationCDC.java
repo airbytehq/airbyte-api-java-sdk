@@ -18,6 +18,7 @@ public class SourceMysqlReplicationMethodLogicalReplicationCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("initial_waiting_seconds")
     public Long initialWaitingSeconds;
+
     public SourceMysqlReplicationMethodLogicalReplicationCDC withInitialWaitingSeconds(Long initialWaitingSeconds) {
         this.initialWaitingSeconds = initialWaitingSeconds;
         return this;
@@ -25,6 +26,7 @@ public class SourceMysqlReplicationMethodLogicalReplicationCDC {
     
     @JsonProperty("method")
     public SourceMysqlReplicationMethodLogicalReplicationCDCMethodEnum method;
+
     public SourceMysqlReplicationMethodLogicalReplicationCDC withMethod(SourceMysqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
         this.method = method;
         return this;
@@ -36,6 +38,7 @@ public class SourceMysqlReplicationMethodLogicalReplicationCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("server_time_zone")
     public String serverTimeZone;
+
     public SourceMysqlReplicationMethodLogicalReplicationCDC withServerTimeZone(String serverTimeZone) {
         this.serverTimeZone = serverTimeZone;
         return this;

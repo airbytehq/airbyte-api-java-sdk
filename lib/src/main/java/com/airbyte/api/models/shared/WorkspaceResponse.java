@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class WorkspaceResponse {
     @JsonProperty("dataResidency")
     public GeographyEnumEnum dataResidency;
+
     public WorkspaceResponse withDataResidency(GeographyEnumEnum dataResidency) {
         this.dataResidency = dataResidency;
         return this;
@@ -19,6 +20,7 @@ public class WorkspaceResponse {
     
     @JsonProperty("name")
     public String name;
+
     public WorkspaceResponse withName(String name) {
         this.name = name;
         return this;
@@ -26,6 +28,7 @@ public class WorkspaceResponse {
     
     @JsonProperty("workspaceId")
     public String workspaceId;
+
     public WorkspaceResponse withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

@@ -17,6 +17,7 @@ public class SourceBraze {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceBraze withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -24,6 +25,7 @@ public class SourceBraze {
     
     @JsonProperty("sourceType")
     public SourceBrazeBrazeEnum sourceType;
+
     public SourceBraze withSourceType(SourceBrazeBrazeEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -35,6 +37,7 @@ public class SourceBraze {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceBraze withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
@@ -45,6 +48,7 @@ public class SourceBraze {
      */
     @JsonProperty("url")
     public String url;
+
     public SourceBraze withUrl(String url) {
         this.url = url;
         return this;

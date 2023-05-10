@@ -17,6 +17,7 @@ public class SourceWoocommerce {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceWoocommerce withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -27,6 +28,7 @@ public class SourceWoocommerce {
      */
     @JsonProperty("api_secret")
     public String apiSecret;
+
     public SourceWoocommerce withApiSecret(String apiSecret) {
         this.apiSecret = apiSecret;
         return this;
@@ -37,6 +39,7 @@ public class SourceWoocommerce {
      */
     @JsonProperty("shop")
     public String shop;
+
     public SourceWoocommerce withShop(String shop) {
         this.shop = shop;
         return this;
@@ -44,6 +47,7 @@ public class SourceWoocommerce {
     
     @JsonProperty("sourceType")
     public SourceWoocommerceWoocommerceEnum sourceType;
+
     public SourceWoocommerce withSourceType(SourceWoocommerceWoocommerceEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -55,6 +59,7 @@ public class SourceWoocommerce {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceWoocommerce withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

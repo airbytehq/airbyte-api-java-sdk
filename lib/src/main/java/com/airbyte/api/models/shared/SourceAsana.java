@@ -18,6 +18,7 @@ public class SourceAsana {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceAsana withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -25,6 +26,7 @@ public class SourceAsana {
     
     @JsonProperty("sourceType")
     public SourceAsanaAsanaEnum sourceType;
+
     public SourceAsana withSourceType(SourceAsanaAsanaEnum sourceType) {
         this.sourceType = sourceType;
         return this;

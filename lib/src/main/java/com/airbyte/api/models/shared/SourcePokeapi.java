@@ -15,6 +15,7 @@ public class SourcePokeapi {
      */
     @JsonProperty("pokemon_name")
     public String pokemonName;
+
     public SourcePokeapi withPokemonName(String pokemonName) {
         this.pokemonName = pokemonName;
         return this;
@@ -22,6 +23,7 @@ public class SourcePokeapi {
     
     @JsonProperty("sourceType")
     public SourcePokeapiPokeapiEnum sourceType;
+
     public SourcePokeapi withSourceType(SourcePokeapiPokeapiEnum sourceType) {
         this.sourceType = sourceType;
         return this;

@@ -12,6 +12,7 @@ public class WorkspaceCreateRequest {
      */
     @JsonProperty("name")
     public String name;
+
     public WorkspaceCreateRequest withName(String name) {
         this.name = name;
         return this;

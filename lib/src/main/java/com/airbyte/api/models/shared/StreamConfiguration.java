@@ -18,6 +18,7 @@ public class StreamConfiguration {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursorField")
     public String[] cursorField;
+
     public StreamConfiguration withCursorField(String[] cursorField) {
         this.cursorField = cursorField;
         return this;
@@ -25,6 +26,7 @@ public class StreamConfiguration {
     
     @JsonProperty("name")
     public String name;
+
     public StreamConfiguration withName(String name) {
         this.name = name;
         return this;
@@ -36,6 +38,7 @@ public class StreamConfiguration {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("primaryKey")
     public String[][] primaryKey;
+
     public StreamConfiguration withPrimaryKey(String[][] primaryKey) {
         this.primaryKey = primaryKey;
         return this;
@@ -44,6 +47,7 @@ public class StreamConfiguration {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncMode")
     public ConnectionSyncModeEnumEnum syncMode;
+
     public StreamConfiguration withSyncMode(ConnectionSyncModeEnumEnum syncMode) {
         this.syncMode = syncMode;
         return this;

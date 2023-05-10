@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationResponse {
     @JsonProperty("destinationId")
     public String destinationId;
+
     public DestinationResponse withDestinationId(String destinationId) {
         this.destinationId = destinationId;
         return this;
@@ -19,6 +20,7 @@ public class DestinationResponse {
     
     @JsonProperty("destinationType")
     public String destinationType;
+
     public DestinationResponse withDestinationType(String destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -26,6 +28,7 @@ public class DestinationResponse {
     
     @JsonProperty("name")
     public String name;
+
     public DestinationResponse withName(String name) {
         this.name = name;
         return this;
@@ -33,6 +36,7 @@ public class DestinationResponse {
     
     @JsonProperty("workspaceId")
     public String workspaceId;
+
     public DestinationResponse withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

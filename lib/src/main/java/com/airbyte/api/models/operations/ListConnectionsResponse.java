@@ -13,6 +13,7 @@ public class ListConnectionsResponse {
      */
     
     public com.airbyte.api.models.shared.ConnectionsResponse connectionsResponse;
+
     public ListConnectionsResponse withConnectionsResponse(com.airbyte.api.models.shared.ConnectionsResponse connectionsResponse) {
         this.connectionsResponse = connectionsResponse;
         return this;
@@ -20,6 +21,7 @@ public class ListConnectionsResponse {
     
     
     public String contentType;
+
     public ListConnectionsResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -27,6 +29,7 @@ public class ListConnectionsResponse {
     
     
     public Integer statusCode;
+
     public ListConnectionsResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
@@ -34,6 +37,7 @@ public class ListConnectionsResponse {
     
     
     public HttpResponse<byte[]> rawResponse;
+
     public ListConnectionsResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;

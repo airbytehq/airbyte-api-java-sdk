@@ -15,6 +15,7 @@ public class SourceGoogleDirectory {
      */
     @JsonProperty("credentials_json")
     public String credentialsJson;
+
     public SourceGoogleDirectory withCredentialsJson(String credentialsJson) {
         this.credentialsJson = credentialsJson;
         return this;
@@ -25,6 +26,7 @@ public class SourceGoogleDirectory {
      */
     @JsonProperty("email")
     public String email;
+
     public SourceGoogleDirectory withEmail(String email) {
         this.email = email;
         return this;
@@ -32,6 +34,7 @@ public class SourceGoogleDirectory {
     
     @JsonProperty("sourceType")
     public SourceGoogleDirectoryGoogleDirectoryEnum sourceType;
+
     public SourceGoogleDirectory withSourceType(SourceGoogleDirectoryGoogleDirectoryEnum sourceType) {
         this.sourceType = sourceType;
         return this;

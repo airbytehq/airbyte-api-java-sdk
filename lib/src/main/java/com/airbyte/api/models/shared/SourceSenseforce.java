@@ -19,6 +19,7 @@ public class SourceSenseforce {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceSenseforce withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -29,6 +30,7 @@ public class SourceSenseforce {
      */
     @JsonProperty("backend_url")
     public String backendUrl;
+
     public SourceSenseforce withBackendUrl(String backendUrl) {
         this.backendUrl = backendUrl;
         return this;
@@ -39,6 +41,7 @@ public class SourceSenseforce {
      */
     @JsonProperty("dataset_id")
     public String datasetId;
+
     public SourceSenseforce withDatasetId(String datasetId) {
         this.datasetId = datasetId;
         return this;
@@ -50,6 +53,7 @@ public class SourceSenseforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("slice_range")
     public Long sliceRange;
+
     public SourceSenseforce withSliceRange(Long sliceRange) {
         this.sliceRange = sliceRange;
         return this;
@@ -57,6 +61,7 @@ public class SourceSenseforce {
     
     @JsonProperty("sourceType")
     public SourceSenseforceSenseforceEnum sourceType;
+
     public SourceSenseforce withSourceType(SourceSenseforceSenseforceEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -68,6 +73,7 @@ public class SourceSenseforce {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
+
     public SourceSenseforce withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;

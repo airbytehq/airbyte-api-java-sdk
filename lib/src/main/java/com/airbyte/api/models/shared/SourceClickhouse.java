@@ -17,6 +17,7 @@ public class SourceClickhouse {
      */
     @JsonProperty("database")
     public String database;
+
     public SourceClickhouse withDatabase(String database) {
         this.database = database;
         return this;
@@ -27,6 +28,7 @@ public class SourceClickhouse {
      */
     @JsonProperty("host")
     public String host;
+
     public SourceClickhouse withHost(String host) {
         this.host = host;
         return this;
@@ -38,6 +40,7 @@ public class SourceClickhouse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public SourceClickhouse withPassword(String password) {
         this.password = password;
         return this;
@@ -48,6 +51,7 @@ public class SourceClickhouse {
      */
     @JsonProperty("port")
     public Long port;
+
     public SourceClickhouse withPort(Long port) {
         this.port = port;
         return this;
@@ -55,6 +59,7 @@ public class SourceClickhouse {
     
     @JsonProperty("sourceType")
     public SourceClickhouseClickhouseEnum sourceType;
+
     public SourceClickhouse withSourceType(SourceClickhouseClickhouseEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -66,6 +71,7 @@ public class SourceClickhouse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public SourceClickhouse withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -76,6 +82,7 @@ public class SourceClickhouse {
      */
     @JsonProperty("username")
     public String username;
+
     public SourceClickhouse withUsername(String username) {
         this.username = username;
         return this;

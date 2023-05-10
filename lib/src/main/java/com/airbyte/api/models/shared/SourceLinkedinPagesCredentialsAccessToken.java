@@ -14,6 +14,7 @@ public class SourceLinkedinPagesCredentialsAccessToken {
      */
     @JsonProperty("access_token")
     public String accessToken;
+
     public SourceLinkedinPagesCredentialsAccessToken withAccessToken(String accessToken) {
         this.accessToken = accessToken;
         return this;
@@ -22,6 +23,7 @@ public class SourceLinkedinPagesCredentialsAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
     public SourceLinkedinPagesCredentialsAccessTokenAuthMethodEnum authMethod;
+
     public SourceLinkedinPagesCredentialsAccessToken withAuthMethod(SourceLinkedinPagesCredentialsAccessTokenAuthMethodEnum authMethod) {
         this.authMethod = authMethod;
         return this;

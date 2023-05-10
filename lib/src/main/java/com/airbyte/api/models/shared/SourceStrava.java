@@ -22,6 +22,7 @@ public class SourceStrava {
      */
     @JsonProperty("athlete_id")
     public Long athleteId;
+
     public SourceStrava withAthleteId(Long athleteId) {
         this.athleteId = athleteId;
         return this;
@@ -30,6 +31,7 @@ public class SourceStrava {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceStravaAuthTypeEnum authType;
+
     public SourceStrava withAuthType(SourceStravaAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -40,6 +42,7 @@ public class SourceStrava {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceStrava withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -50,6 +53,7 @@ public class SourceStrava {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceStrava withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -60,6 +64,7 @@ public class SourceStrava {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceStrava withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -67,6 +72,7 @@ public class SourceStrava {
     
     @JsonProperty("sourceType")
     public SourceStravaStravaEnum sourceType;
+
     public SourceStrava withSourceType(SourceStravaStravaEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -79,6 +85,7 @@ public class SourceStrava {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceStrava withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

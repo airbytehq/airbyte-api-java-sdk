@@ -17,6 +17,7 @@ public class SourceFaker {
      */
     @JsonProperty("count")
     public Long count;
+
     public SourceFaker withCount(Long count) {
         this.count = count;
         return this;
@@ -28,6 +29,7 @@ public class SourceFaker {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("parallelism")
     public Long parallelism;
+
     public SourceFaker withParallelism(Long parallelism) {
         this.parallelism = parallelism;
         return this;
@@ -39,6 +41,7 @@ public class SourceFaker {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("records_per_slice")
     public Long recordsPerSlice;
+
     public SourceFaker withRecordsPerSlice(Long recordsPerSlice) {
         this.recordsPerSlice = recordsPerSlice;
         return this;
@@ -50,6 +53,7 @@ public class SourceFaker {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("records_per_sync")
     public Long recordsPerSync;
+
     public SourceFaker withRecordsPerSync(Long recordsPerSync) {
         this.recordsPerSync = recordsPerSync;
         return this;
@@ -61,6 +65,7 @@ public class SourceFaker {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("seed")
     public Long seed;
+
     public SourceFaker withSeed(Long seed) {
         this.seed = seed;
         return this;
@@ -68,6 +73,7 @@ public class SourceFaker {
     
     @JsonProperty("sourceType")
     public SourceFakerFakerEnum sourceType;
+
     public SourceFaker withSourceType(SourceFakerFakerEnum sourceType) {
         this.sourceType = sourceType;
         return this;

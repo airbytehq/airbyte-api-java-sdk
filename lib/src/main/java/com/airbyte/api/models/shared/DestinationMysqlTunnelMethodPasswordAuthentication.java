@@ -15,6 +15,7 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_host")
     public String tunnelHost;
+
     public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -25,6 +26,7 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_method")
     public DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+
     public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -35,6 +37,7 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
+
     public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -45,6 +48,7 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_user")
     public String tunnelUser;
+
     public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;
@@ -55,6 +59,7 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_user_password")
     public String tunnelUserPassword;
+
     public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelUserPassword(String tunnelUserPassword) {
         this.tunnelUserPassword = tunnelUserPassword;
         return this;

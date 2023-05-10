@@ -18,6 +18,7 @@ public class DestinationAwsDatalakeFormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
     public DestinationAwsDatalakeFormatParquetColumnarStorageCompressionCodecOptionalEnum compressionCodec;
+
     public DestinationAwsDatalakeFormatParquetColumnarStorage withCompressionCodec(DestinationAwsDatalakeFormatParquetColumnarStorageCompressionCodecOptionalEnum compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
@@ -25,6 +26,7 @@ public class DestinationAwsDatalakeFormatParquetColumnarStorage {
     
     @JsonProperty("format_type")
     public DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcardEnum formatType;
+
     public DestinationAwsDatalakeFormatParquetColumnarStorage withFormatType(DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcardEnum formatType) {
         this.formatType = formatType;
         return this;

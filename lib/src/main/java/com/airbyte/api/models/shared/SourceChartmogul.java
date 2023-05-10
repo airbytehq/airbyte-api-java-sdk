@@ -20,6 +20,7 @@ public class SourceChartmogul {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceChartmogul withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -30,6 +31,7 @@ public class SourceChartmogul {
      */
     @JsonProperty("interval")
     public SourceChartmogulIntervalEnum interval;
+
     public SourceChartmogul withInterval(SourceChartmogulIntervalEnum interval) {
         this.interval = interval;
         return this;
@@ -37,6 +39,7 @@ public class SourceChartmogul {
     
     @JsonProperty("sourceType")
     public SourceChartmogulChartmogulEnum sourceType;
+
     public SourceChartmogul withSourceType(SourceChartmogulChartmogulEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -49,6 +52,7 @@ public class SourceChartmogul {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceChartmogul withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

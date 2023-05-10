@@ -15,6 +15,7 @@ public class SourceEmailoctopus {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceEmailoctopus withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -22,6 +23,7 @@ public class SourceEmailoctopus {
     
     @JsonProperty("sourceType")
     public SourceEmailoctopusEmailoctopusEnum sourceType;
+
     public SourceEmailoctopus withSourceType(SourceEmailoctopusEmailoctopusEnum sourceType) {
         this.sourceType = sourceType;
         return this;

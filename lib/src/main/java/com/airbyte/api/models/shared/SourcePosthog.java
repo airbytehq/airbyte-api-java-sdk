@@ -22,6 +22,7 @@ public class SourcePosthog {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourcePosthog withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -33,6 +34,7 @@ public class SourcePosthog {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("base_url")
     public String baseUrl;
+
     public SourcePosthog withBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
         return this;
@@ -40,6 +42,7 @@ public class SourcePosthog {
     
     @JsonProperty("sourceType")
     public SourcePosthogPosthogEnum sourceType;
+
     public SourcePosthog withSourceType(SourcePosthogPosthogEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -52,6 +55,7 @@ public class SourcePosthog {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourcePosthog withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

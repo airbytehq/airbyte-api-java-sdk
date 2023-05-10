@@ -18,6 +18,7 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression")
     public Object compression;
+
     public DestinationS3FormatCSVCommaSeparatedValues withCompression(Object compression) {
         this.compression = compression;
         return this;
@@ -28,6 +29,7 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
      */
     @JsonProperty("flattening")
     public DestinationS3FormatCSVCommaSeparatedValuesFlatteningEnum flattening;
+
     public DestinationS3FormatCSVCommaSeparatedValues withFlattening(DestinationS3FormatCSVCommaSeparatedValuesFlatteningEnum flattening) {
         this.flattening = flattening;
         return this;
@@ -35,6 +37,7 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
     
     @JsonProperty("format_type")
     public DestinationS3FormatCSVCommaSeparatedValuesFormatTypeEnum formatType;
+
     public DestinationS3FormatCSVCommaSeparatedValues withFormatType(DestinationS3FormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

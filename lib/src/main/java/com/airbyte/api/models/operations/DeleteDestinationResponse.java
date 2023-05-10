@@ -10,6 +10,7 @@ import java.net.http.HttpResponse;
 public class DeleteDestinationResponse {
     
     public String contentType;
+
     public DeleteDestinationResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
@@ -17,6 +18,7 @@ public class DeleteDestinationResponse {
     
     
     public Integer statusCode;
+
     public DeleteDestinationResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
@@ -24,6 +26,7 @@ public class DeleteDestinationResponse {
     
     
     public HttpResponse<byte[]> rawResponse;
+
     public DeleteDestinationResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;

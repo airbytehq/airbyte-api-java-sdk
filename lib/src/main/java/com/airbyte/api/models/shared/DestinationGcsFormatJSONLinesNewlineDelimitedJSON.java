@@ -18,6 +18,7 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSON {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression")
     public Object compression;
+
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSON withCompression(Object compression) {
         this.compression = compression;
         return this;
@@ -25,6 +26,7 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSON {
     
     @JsonProperty("format_type")
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;

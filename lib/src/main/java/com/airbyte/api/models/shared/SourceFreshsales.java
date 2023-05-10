@@ -15,6 +15,7 @@ public class SourceFreshsales {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceFreshsales withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceFreshsales {
      */
     @JsonProperty("domain_name")
     public String domainName;
+
     public SourceFreshsales withDomainName(String domainName) {
         this.domainName = domainName;
         return this;
@@ -32,6 +34,7 @@ public class SourceFreshsales {
     
     @JsonProperty("sourceType")
     public SourceFreshsalesFreshsalesEnum sourceType;
+
     public SourceFreshsales withSourceType(SourceFreshsalesFreshsalesEnum sourceType) {
         this.sourceType = sourceType;
         return this;

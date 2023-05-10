@@ -15,6 +15,7 @@ public class SourceMonday {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
+
     public SourceMonday withCredentials(Object credentials) {
         this.credentials = credentials;
         return this;
@@ -22,6 +23,7 @@ public class SourceMonday {
     
     @JsonProperty("sourceType")
     public SourceMondayMondayEnum sourceType;
+
     public SourceMonday withSourceType(SourceMondayMondayEnum sourceType) {
         this.sourceType = sourceType;
         return this;

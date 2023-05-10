@@ -18,6 +18,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("block_size_mb")
     public Long blockSizeMb;
+
     public DestinationS3FormatParquetColumnarStorage withBlockSizeMb(Long blockSizeMb) {
         this.blockSizeMb = blockSizeMb;
         return this;
@@ -29,6 +30,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
     public DestinationS3FormatParquetColumnarStorageCompressionCodecEnum compressionCodec;
+
     public DestinationS3FormatParquetColumnarStorage withCompressionCodec(DestinationS3FormatParquetColumnarStorageCompressionCodecEnum compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
@@ -40,6 +42,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dictionary_encoding")
     public Boolean dictionaryEncoding;
+
     public DestinationS3FormatParquetColumnarStorage withDictionaryEncoding(Boolean dictionaryEncoding) {
         this.dictionaryEncoding = dictionaryEncoding;
         return this;
@@ -51,6 +54,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dictionary_page_size_kb")
     public Long dictionaryPageSizeKb;
+
     public DestinationS3FormatParquetColumnarStorage withDictionaryPageSizeKb(Long dictionaryPageSizeKb) {
         this.dictionaryPageSizeKb = dictionaryPageSizeKb;
         return this;
@@ -58,6 +62,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     
     @JsonProperty("format_type")
     public DestinationS3FormatParquetColumnarStorageFormatTypeEnum formatType;
+
     public DestinationS3FormatParquetColumnarStorage withFormatType(DestinationS3FormatParquetColumnarStorageFormatTypeEnum formatType) {
         this.formatType = formatType;
         return this;
@@ -69,6 +74,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_padding_size_mb")
     public Long maxPaddingSizeMb;
+
     public DestinationS3FormatParquetColumnarStorage withMaxPaddingSizeMb(Long maxPaddingSizeMb) {
         this.maxPaddingSizeMb = maxPaddingSizeMb;
         return this;
@@ -80,6 +86,7 @@ public class DestinationS3FormatParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("page_size_kb")
     public Long pageSizeKb;
+
     public DestinationS3FormatParquetColumnarStorage withPageSizeKb(Long pageSizeKb) {
         this.pageSizeKb = pageSizeKb;
         return this;

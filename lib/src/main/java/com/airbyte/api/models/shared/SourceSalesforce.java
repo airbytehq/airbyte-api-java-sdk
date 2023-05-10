@@ -20,6 +20,7 @@ public class SourceSalesforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
     public SourceSalesforceAuthTypeEnum authType;
+
     public SourceSalesforce withAuthType(SourceSalesforceAuthTypeEnum authType) {
         this.authType = authType;
         return this;
@@ -30,6 +31,7 @@ public class SourceSalesforce {
      */
     @JsonProperty("client_id")
     public String clientId;
+
     public SourceSalesforce withClientId(String clientId) {
         this.clientId = clientId;
         return this;
@@ -40,6 +42,7 @@ public class SourceSalesforce {
      */
     @JsonProperty("client_secret")
     public String clientSecret;
+
     public SourceSalesforce withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
         return this;
@@ -51,6 +54,7 @@ public class SourceSalesforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_sandbox")
     public Boolean isSandbox;
+
     public SourceSalesforce withIsSandbox(Boolean isSandbox) {
         this.isSandbox = isSandbox;
         return this;
@@ -61,6 +65,7 @@ public class SourceSalesforce {
      */
     @JsonProperty("refresh_token")
     public String refreshToken;
+
     public SourceSalesforce withRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
         return this;
@@ -68,6 +73,7 @@ public class SourceSalesforce {
     
     @JsonProperty("sourceType")
     public SourceSalesforceSalesforceEnum sourceType;
+
     public SourceSalesforce withSourceType(SourceSalesforceSalesforceEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -81,6 +87,7 @@ public class SourceSalesforce {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceSalesforce withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -92,6 +99,7 @@ public class SourceSalesforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streams_criteria")
     public SourceSalesforceStreamsCriteria[] streamsCriteria;
+
     public SourceSalesforce withStreamsCriteria(SourceSalesforceStreamsCriteria[] streamsCriteria) {
         this.streamsCriteria = streamsCriteria;
         return this;

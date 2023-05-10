@@ -17,6 +17,7 @@ public class DestinationMysql {
      */
     @JsonProperty("database")
     public String database;
+
     public DestinationMysql withDatabase(String database) {
         this.database = database;
         return this;
@@ -24,6 +25,7 @@ public class DestinationMysql {
     
     @JsonProperty("destinationType")
     public DestinationMysqlMysqlEnum destinationType;
+
     public DestinationMysql withDestinationType(DestinationMysqlMysqlEnum destinationType) {
         this.destinationType = destinationType;
         return this;
@@ -34,6 +36,7 @@ public class DestinationMysql {
      */
     @JsonProperty("host")
     public String host;
+
     public DestinationMysql withHost(String host) {
         this.host = host;
         return this;
@@ -45,6 +48,7 @@ public class DestinationMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     public String jdbcUrlParams;
+
     public DestinationMysql withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
         return this;
@@ -56,6 +60,7 @@ public class DestinationMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     public String password;
+
     public DestinationMysql withPassword(String password) {
         this.password = password;
         return this;
@@ -66,6 +71,7 @@ public class DestinationMysql {
      */
     @JsonProperty("port")
     public Long port;
+
     public DestinationMysql withPort(Long port) {
         this.port = port;
         return this;
@@ -77,6 +83,7 @@ public class DestinationMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
     public Object tunnelMethod;
+
     public DestinationMysql withTunnelMethod(Object tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -87,6 +94,7 @@ public class DestinationMysql {
      */
     @JsonProperty("username")
     public String username;
+
     public DestinationMysql withUsername(String username) {
         this.username = username;
         return this;

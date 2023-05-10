@@ -22,6 +22,7 @@ public class SourceFreshdesk {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceFreshdesk withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -32,6 +33,7 @@ public class SourceFreshdesk {
      */
     @JsonProperty("domain")
     public String domain;
+
     public SourceFreshdesk withDomain(String domain) {
         this.domain = domain;
         return this;
@@ -43,6 +45,7 @@ public class SourceFreshdesk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requests_per_minute")
     public Long requestsPerMinute;
+
     public SourceFreshdesk withRequestsPerMinute(Long requestsPerMinute) {
         this.requestsPerMinute = requestsPerMinute;
         return this;
@@ -50,6 +53,7 @@ public class SourceFreshdesk {
     
     @JsonProperty("sourceType")
     public SourceFreshdeskFreshdeskEnum sourceType;
+
     public SourceFreshdesk withSourceType(SourceFreshdeskFreshdeskEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -63,6 +67,7 @@ public class SourceFreshdesk {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceFreshdesk withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;

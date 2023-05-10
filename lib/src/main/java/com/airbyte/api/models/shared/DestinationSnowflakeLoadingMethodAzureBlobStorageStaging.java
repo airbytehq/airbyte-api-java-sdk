@@ -17,6 +17,7 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
      */
     @JsonProperty("azure_blob_storage_account_name")
     public String azureBlobStorageAccountName;
+
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageAccountName(String azureBlobStorageAccountName) {
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         return this;
@@ -27,6 +28,7 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
      */
     @JsonProperty("azure_blob_storage_container_name")
     public String azureBlobStorageContainerName;
+
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageContainerName(String azureBlobStorageContainerName) {
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         return this;
@@ -38,6 +40,7 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_endpoint_domain_name")
     public String azureBlobStorageEndpointDomainName;
+
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageEndpointDomainName(String azureBlobStorageEndpointDomainName) {
         this.azureBlobStorageEndpointDomainName = azureBlobStorageEndpointDomainName;
         return this;
@@ -48,6 +51,7 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
      */
     @JsonProperty("azure_blob_storage_sas_token")
     public String azureBlobStorageSasToken;
+
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withAzureBlobStorageSasToken(String azureBlobStorageSasToken) {
         this.azureBlobStorageSasToken = azureBlobStorageSasToken;
         return this;
@@ -55,6 +59,7 @@ public class DestinationSnowflakeLoadingMethodAzureBlobStorageStaging {
     
     @JsonProperty("method")
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum method;
+
     public DestinationSnowflakeLoadingMethodAzureBlobStorageStaging withMethod(DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum method) {
         this.method = method;
         return this;

@@ -15,6 +15,7 @@ public class DestinationRedshiftTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_host")
     public String tunnelHost;
+
     public DestinationRedshiftTunnelMethodPasswordAuthentication withTunnelHost(String tunnelHost) {
         this.tunnelHost = tunnelHost;
         return this;
@@ -25,6 +26,7 @@ public class DestinationRedshiftTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_method")
     public DestinationRedshiftTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+
     public DestinationRedshiftTunnelMethodPasswordAuthentication withTunnelMethod(DestinationRedshiftTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
@@ -35,6 +37,7 @@ public class DestinationRedshiftTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
+
     public DestinationRedshiftTunnelMethodPasswordAuthentication withTunnelPort(Long tunnelPort) {
         this.tunnelPort = tunnelPort;
         return this;
@@ -45,6 +48,7 @@ public class DestinationRedshiftTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_user")
     public String tunnelUser;
+
     public DestinationRedshiftTunnelMethodPasswordAuthentication withTunnelUser(String tunnelUser) {
         this.tunnelUser = tunnelUser;
         return this;
@@ -55,6 +59,7 @@ public class DestinationRedshiftTunnelMethodPasswordAuthentication {
      */
     @JsonProperty("tunnel_user_password")
     public String tunnelUserPassword;
+
     public DestinationRedshiftTunnelMethodPasswordAuthentication withTunnelUserPassword(String tunnelUserPassword) {
         this.tunnelUserPassword = tunnelUserPassword;
         return this;

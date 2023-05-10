@@ -20,6 +20,7 @@ public class SourceLinnworks {
      */
     @JsonProperty("application_id")
     public String applicationId;
+
     public SourceLinnworks withApplicationId(String applicationId) {
         this.applicationId = applicationId;
         return this;
@@ -30,6 +31,7 @@ public class SourceLinnworks {
      */
     @JsonProperty("application_secret")
     public String applicationSecret;
+
     public SourceLinnworks withApplicationSecret(String applicationSecret) {
         this.applicationSecret = applicationSecret;
         return this;
@@ -37,6 +39,7 @@ public class SourceLinnworks {
     
     @JsonProperty("sourceType")
     public SourceLinnworksLinnworksEnum sourceType;
+
     public SourceLinnworks withSourceType(SourceLinnworksLinnworksEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -49,6 +52,7 @@ public class SourceLinnworks {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceLinnworks withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -56,6 +60,7 @@ public class SourceLinnworks {
     
     @JsonProperty("token")
     public String token;
+
     public SourceLinnworks withToken(String token) {
         this.token = token;
         return this;

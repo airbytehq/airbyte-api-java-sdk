@@ -15,6 +15,7 @@ public class SourceLokalise {
      */
     @JsonProperty("api_key")
     public String apiKey;
+
     public SourceLokalise withApiKey(String apiKey) {
         this.apiKey = apiKey;
         return this;
@@ -25,6 +26,7 @@ public class SourceLokalise {
      */
     @JsonProperty("project_id")
     public String projectId;
+
     public SourceLokalise withProjectId(String projectId) {
         this.projectId = projectId;
         return this;
@@ -32,6 +34,7 @@ public class SourceLokalise {
     
     @JsonProperty("sourceType")
     public SourceLokaliseLokaliseEnum sourceType;
+
     public SourceLokalise withSourceType(SourceLokaliseLokaliseEnum sourceType) {
         this.sourceType = sourceType;
         return this;

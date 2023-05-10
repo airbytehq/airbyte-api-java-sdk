@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ConnectionResponse {
     @JsonProperty("connectionId")
     public String connectionId;
+
     public ConnectionResponse withConnectionId(String connectionId) {
         this.connectionId = connectionId;
         return this;
@@ -19,6 +20,7 @@ public class ConnectionResponse {
     
     @JsonProperty("dataResidency")
     public GeographyEnumEnum dataResidency;
+
     public ConnectionResponse withDataResidency(GeographyEnumEnum dataResidency) {
         this.dataResidency = dataResidency;
         return this;
@@ -26,6 +28,7 @@ public class ConnectionResponse {
     
     @JsonProperty("destinationId")
     public String destinationId;
+
     public ConnectionResponse withDestinationId(String destinationId) {
         this.destinationId = destinationId;
         return this;
@@ -33,6 +36,7 @@ public class ConnectionResponse {
     
     @JsonProperty("name")
     public String name;
+
     public ConnectionResponse withName(String name) {
         this.name = name;
         return this;
@@ -43,6 +47,7 @@ public class ConnectionResponse {
      */
     @JsonProperty("schedule")
     public ConnectionScheduleResponse schedule;
+
     public ConnectionResponse withSchedule(ConnectionScheduleResponse schedule) {
         this.schedule = schedule;
         return this;
@@ -50,6 +55,7 @@ public class ConnectionResponse {
     
     @JsonProperty("sourceId")
     public String sourceId;
+
     public ConnectionResponse withSourceId(String sourceId) {
         this.sourceId = sourceId;
         return this;
@@ -57,6 +63,7 @@ public class ConnectionResponse {
     
     @JsonProperty("status")
     public ConnectionStatusEnumEnum status;
+
     public ConnectionResponse withStatus(ConnectionStatusEnumEnum status) {
         this.status = status;
         return this;
@@ -64,6 +71,7 @@ public class ConnectionResponse {
     
     @JsonProperty("workspaceId")
     public String workspaceId;
+
     public ConnectionResponse withWorkspaceId(String workspaceId) {
         this.workspaceId = workspaceId;
         return this;

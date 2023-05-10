@@ -20,6 +20,7 @@ public class SourceOnesignal {
      */
     @JsonProperty("applications")
     public SourceOnesignalApplications[] applications;
+
     public SourceOnesignal withApplications(SourceOnesignalApplications[] applications) {
         this.applications = applications;
         return this;
@@ -30,6 +31,7 @@ public class SourceOnesignal {
      */
     @JsonProperty("outcome_names")
     public String outcomeNames;
+
     public SourceOnesignal withOutcomeNames(String outcomeNames) {
         this.outcomeNames = outcomeNames;
         return this;
@@ -37,6 +39,7 @@ public class SourceOnesignal {
     
     @JsonProperty("sourceType")
     public SourceOnesignalOnesignalEnum sourceType;
+
     public SourceOnesignal withSourceType(SourceOnesignalOnesignalEnum sourceType) {
         this.sourceType = sourceType;
         return this;
@@ -49,6 +52,7 @@ public class SourceOnesignal {
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
     public OffsetDateTime startDate;
+
     public SourceOnesignal withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
@@ -59,6 +63,7 @@ public class SourceOnesignal {
      */
     @JsonProperty("user_auth_key")
     public String userAuthKey;
+
     public SourceOnesignal withUserAuthKey(String userAuthKey) {
         this.userAuthKey = userAuthKey;
         return this;
