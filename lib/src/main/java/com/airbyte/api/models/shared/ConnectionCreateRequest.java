@@ -75,7 +75,7 @@ public class ConnectionCreateRequest {
     }
     
     /**
-     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. \u201cairbyte_\u201d causes \u201cprojects\u201d =&gt; \u201cairbyte_projects\u201d).
+     * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("prefix")
