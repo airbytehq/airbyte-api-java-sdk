@@ -114,12 +114,12 @@ public class QueryParameters {
                     if (queryParamsMetadata.explode) {
                         params.add(new BasicNameValuePair(key, val));
                     } else {
-                        items.add(String.format("%s,%s", key, val));
+                        items.add(String.format("%s%s%s", key, delimiter, val));
                     }
                 }
 
                 if (items.size() > 0) {
-                    params.add(new BasicNameValuePair(queryParamsMetadata.name, String.join(",", items)));
+                    params.add(new BasicNameValuePair(queryParamsMetadata.name, String.join(delimiter, items)));
                 }
                 break;
             }
@@ -142,12 +142,12 @@ public class QueryParameters {
                     if (queryParamsMetadata.explode) {
                         params.add(new BasicNameValuePair(metadata.name, Utils.valToString(val)));
                     } else {
-                        items.add(String.format("%s,%s", metadata.name, Utils.valToString(val)));
+                        items.add(String.format("%s%s%s", metadata.name, delimiter, Utils.valToString(val)));
                     }
                 }
 
                 if (items.size() > 0) {
-                    params.add(new BasicNameValuePair(queryParamsMetadata.name, String.join(",", items)));
+                    params.add(new BasicNameValuePair(queryParamsMetadata.name, String.join(delimiter, items)));
                 }
                 break;
             }
