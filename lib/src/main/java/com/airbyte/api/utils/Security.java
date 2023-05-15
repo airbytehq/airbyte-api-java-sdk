@@ -128,7 +128,7 @@ public class Security {
             case "http":
                 switch (schemeMetadata.subtype) {
                     case "bearer":
-                        client.addHeader(securityMetadata.name, Utils.valToString(value));
+                        client.addHeader(securityMetadata.name, Utils.prefixBearer(Utils.valToString(value)));
                         break;
                     default:
                         throw new Error("Unsupported security scheme subtype for bearer");

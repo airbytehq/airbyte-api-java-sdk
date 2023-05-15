@@ -325,6 +325,13 @@ public final class Utils {
         }
     }
 
+    public static String prefixBearer(String authHeaderValue) {
+        if (authHeaderValue.toLowerCase().startsWith("bearer ")) {
+            return authHeaderValue;
+        }
+        return "Bearer " + authHeaderValue;
+    }
+
     public static Object populateGlobal(Object value, String fieldName, String paramType,
             Map<String, Map<String, Map<String, Object>>> globals) {
         if (value == null &&

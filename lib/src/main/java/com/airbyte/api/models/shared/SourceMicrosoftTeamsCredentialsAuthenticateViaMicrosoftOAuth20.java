@@ -55,7 +55,7 @@ public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
     }
     
     /**
-     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the \u2026 next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
+     * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
      */
     @JsonProperty("tenant_id")
     public String tenantId;
