@@ -67,10 +67,12 @@ public class SourceFacebookMarketing {
      * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
      */
     @JsonInclude(Include.NON_ABSENT)
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("end_date")
-    public String endDate;
+    public OffsetDateTime endDate;
 
-    public SourceFacebookMarketing withEndDate(String endDate) {
+    public SourceFacebookMarketing withEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
         return this;
     }

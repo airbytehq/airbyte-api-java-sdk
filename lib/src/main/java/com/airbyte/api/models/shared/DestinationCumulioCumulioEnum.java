@@ -6,13 +6,13 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum {
-    AZURE_BLOB_STAGING("Azure Blob Staging");
+public enum DestinationCumulioCumulioEnum {
+    CUMULIO("cumulio");
 
     @JsonValue
     public final String value;
 
-    private DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum(String value) {
+    private DestinationCumulioCumulioEnum(String value) {
         this.value = value;
     }
 }

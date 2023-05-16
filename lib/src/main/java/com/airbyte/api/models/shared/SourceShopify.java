@@ -4,9 +4,11 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 /**
  * SourceShopify - The values required to configure the source.
@@ -46,15 +48,16 @@ public class SourceShopify {
     /**
      * The date you would like to replicate data from. Format: YYYY-MM-DD. Any data before this date will not be replicated.
      */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public String startDate;
+    public LocalDate startDate;
 
-    public SourceShopify withStartDate(String startDate) {
+    public SourceShopify withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
     
-    public SourceShopify(@JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceShopifyShopifyEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceShopify(@JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceShopifyShopifyEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.shop = shop;
         this.sourceType = sourceType;
         this.startDate = startDate;

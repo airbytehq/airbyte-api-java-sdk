@@ -116,6 +116,38 @@ public class Workspaces {
     }
 
     /**
+     * Delete a Workspace
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.DeleteWorkspaceResponse deleteWorkspace(com.airbyte.api.models.operations.DeleteWorkspaceRequest request) throws Exception {
+        String baseUrl = this._serverUrl;
+        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.DeleteWorkspaceRequest.class, baseUrl, "/workspaces/{workspaceId}", request, null);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("DELETE");
+        req.setURL(url);
+        
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        
+        HTTPClient client = this._securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        com.airbyte.api.models.operations.DeleteWorkspaceResponse res = new com.airbyte.api.models.operations.DeleteWorkspaceResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 204 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
+        }
+
+        return res;
+    }
+
+    /**
      * Get Workspace details
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
@@ -196,6 +228,51 @@ public class Workspaces {
             }
         }
         else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
+        }
+
+        return res;
+    }
+
+    /**
+     * Update a workspace
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.UpdateWorkspaceResponse updateWorkspace(com.airbyte.api.models.operations.UpdateWorkspaceRequest request) throws Exception {
+        String baseUrl = this._serverUrl;
+        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.UpdateWorkspaceRequest.class, baseUrl, "/workspaces/{workspaceId}", request, null);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PATCH");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(request, "workspaceUpdateRequest", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+        
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        
+        HTTPClient client = this._securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        com.airbyte.api.models.operations.UpdateWorkspaceResponse res = new com.airbyte.api.models.operations.UpdateWorkspaceResponse(contentType, httpRes.statusCode()) {{
+            workspaceResponse = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.WorkspaceResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.WorkspaceResponse.class);
+                res.workspaceResponse = out;
+            }
+        }
+        else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
 
         return res;

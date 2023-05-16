@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceZuora {
     /**
-     * Client ID
+     * Your OAuth user Client ID
      */
     @JsonProperty("client_id")
     public String clientId;
@@ -24,7 +24,7 @@ public class SourceZuora {
     }
     
     /**
-     * Client Secret
+     * Your OAuth user Client Secret
      */
     @JsonProperty("client_secret")
     public String clientSecret;
@@ -35,14 +35,13 @@ public class SourceZuora {
     }
     
     /**
-     * Defines whether use the SANDBOX or PRODUCTION environment.
+     * Choose between `Live`, or `Unlimited` - the optimized, replicated database at 12 hours freshness for high volume extraction &lt;a href="https://knowledgecenter.zuora.com/Central_Platform/Query/Data_Query/A_Overview_of_Data_Query#Query_Processing_Limitations"&gt;Link&lt;/a&gt;
      */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("is_sandbox")
-    public Boolean isSandbox;
+    @JsonProperty("data_query")
+    public SourceZuoraDataQueryTypeEnum dataQuery;
 
-    public SourceZuora withIsSandbox(Boolean isSandbox) {
-        this.isSandbox = isSandbox;
+    public SourceZuora withDataQuery(SourceZuoraDataQueryTypeEnum dataQuery) {
+        this.dataQuery = dataQuery;
         return this;
     }
     
@@ -66,21 +65,34 @@ public class SourceZuora {
     }
     
     /**
-     * The amount of days for each data-chunk begining from start_date. Bigger the value - faster the fetch. (Min=1, as for a Day; Max=364, as for a Year).
+     * Please choose the right endpoint where your Tenant is located. More info by this &lt;a href="https://www.zuora.com/developer/api-reference/#section/Introduction/Access-to-the-API"&gt;Link&lt;/a&gt;
+     */
+    @JsonProperty("tenant_endpoint")
+    public SourceZuoraTenantEndpointLocationEnum tenantEndpoint;
+
+    public SourceZuora withTenantEndpoint(SourceZuoraTenantEndpointLocationEnum tenantEndpoint) {
+        this.tenantEndpoint = tenantEndpoint;
+        return this;
+    }
+    
+    /**
+     * The amount of days for each data-chunk begining from start_date. Bigger the value - faster the fetch. (0.1 - as for couple of hours, 1 - as for a Day; 364 - as for a Year).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")
-    public Long windowInDays;
+    public String windowInDays;
 
-    public SourceZuora withWindowInDays(Long windowInDays) {
+    public SourceZuora withWindowInDays(String windowInDays) {
         this.windowInDays = windowInDays;
         return this;
     }
     
-    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourceZuoraZuoraEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("data_query") SourceZuoraDataQueryTypeEnum dataQuery, @JsonProperty("sourceType") SourceZuoraZuoraEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("tenant_endpoint") SourceZuoraTenantEndpointLocationEnum tenantEndpoint) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
+        this.dataQuery = dataQuery;
         this.sourceType = sourceType;
         this.startDate = startDate;
+        this.tenantEndpoint = tenantEndpoint;
   }
 }

@@ -4,8 +4,6 @@
 
 package com.airbyte.api.models.shared;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -23,16 +21,16 @@ public class SourceSquareCredentialsAPIKey {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials_title")
-    public SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle;
+    @JsonProperty("auth_type")
+    public SourceSquareCredentialsAPIKeyAuthTypeEnum authType;
 
-    public SourceSquareCredentialsAPIKey withCredentialsTitle(SourceSquareCredentialsAPIKeyCredentialsTitleEnum credentialsTitle) {
-        this.credentialsTitle = credentialsTitle;
+    public SourceSquareCredentialsAPIKey withAuthType(SourceSquareCredentialsAPIKeyAuthTypeEnum authType) {
+        this.authType = authType;
         return this;
     }
     
-    public SourceSquareCredentialsAPIKey(@JsonProperty("api_key") String apiKey) {
+    public SourceSquareCredentialsAPIKey(@JsonProperty("api_key") String apiKey, @JsonProperty("auth_type") SourceSquareCredentialsAPIKeyAuthTypeEnum authType) {
         this.apiKey = apiKey;
+        this.authType = authType;
   }
 }

@@ -110,6 +110,18 @@ public class SourceSftpBulk {
         return this;
     }
     
+    /**
+     * The separator used in the CSV files. Define None if you want to use the Sniffer functionality
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("separator")
+    public String separator;
+
+    public SourceSftpBulk withSeparator(String separator) {
+        this.separator = separator;
+        return this;
+    }
+    
     @JsonProperty("sourceType")
     public SourceSftpBulkSftpBulkEnum sourceType;
 

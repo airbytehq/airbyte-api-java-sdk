@@ -6,13 +6,17 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum {
-    O_AUTH_CREDENTIALS("OAuth Credentials");
+/**
+ * ActorTypeEnumEnum - Whether you're setting this override for a source or destination
+ */
+public enum ActorTypeEnumEnum {
+    SOURCE("source"),
+    DESTINATION("destination");
 
     @JsonValue
     public final String value;
 
-    private SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum(String value) {
+    private ActorTypeEnumEnum(String value) {
         this.value = value;
     }
 }

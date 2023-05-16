@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -18,6 +20,7 @@ public class JobsResponse {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     public String next;
 
@@ -26,6 +29,7 @@ public class JobsResponse {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("previous")
     public String previous;
 
@@ -34,9 +38,7 @@ public class JobsResponse {
         return this;
     }
     
-    public JobsResponse(@JsonProperty("data") JobResponse[] data, @JsonProperty("next") String next, @JsonProperty("previous") String previous) {
+    public JobsResponse(@JsonProperty("data") JobResponse[] data) {
         this.data = data;
-        this.next = next;
-        this.previous = previous;
   }
 }
