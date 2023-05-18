@@ -28,9 +28,9 @@ public class SourceOpenweather {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lang")
-    public SourceOpenweatherLanguageEnum lang;
+    public SourceOpenweatherLanguage lang;
 
-    public SourceOpenweather withLang(SourceOpenweatherLanguageEnum lang) {
+    public SourceOpenweather withLang(SourceOpenweatherLanguage lang) {
         this.lang = lang;
         return this;
     }
@@ -58,9 +58,9 @@ public class SourceOpenweather {
     }
     
     @JsonProperty("sourceType")
-    public SourceOpenweatherOpenweatherEnum sourceType;
+    public SourceOpenweatherOpenweather sourceType;
 
-    public SourceOpenweather withSourceType(SourceOpenweatherOpenweatherEnum sourceType) {
+    public SourceOpenweather withSourceType(SourceOpenweatherOpenweather sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -70,14 +70,14 @@ public class SourceOpenweather {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("units")
-    public SourceOpenweatherUnitsEnum units;
+    public SourceOpenweatherUnits units;
 
-    public SourceOpenweather withUnits(SourceOpenweatherUnitsEnum units) {
+    public SourceOpenweather withUnits(SourceOpenweatherUnits units) {
         this.units = units;
         return this;
     }
     
-    public SourceOpenweather(@JsonProperty("appid") String appid, @JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("sourceType") SourceOpenweatherOpenweatherEnum sourceType) {
+    public SourceOpenweather(@JsonProperty("appid") String appid, @JsonProperty("lat") String lat, @JsonProperty("lon") String lon, @JsonProperty("sourceType") SourceOpenweatherOpenweather sourceType) {
         this.appid = appid;
         this.lat = lat;
         this.lon = lon;

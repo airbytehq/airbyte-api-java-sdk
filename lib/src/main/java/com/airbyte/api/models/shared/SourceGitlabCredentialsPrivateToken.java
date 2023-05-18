@@ -22,9 +22,9 @@ public class SourceGitlabCredentialsPrivateToken {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceGitlabCredentialsPrivateTokenAuthTypeEnum authType;
+    public SourceGitlabCredentialsPrivateTokenAuthType authType;
 
-    public SourceGitlabCredentialsPrivateToken withAuthType(SourceGitlabCredentialsPrivateTokenAuthTypeEnum authType) {
+    public SourceGitlabCredentialsPrivateToken withAuthType(SourceGitlabCredentialsPrivateTokenAuthType authType) {
         this.authType = authType;
         return this;
     }

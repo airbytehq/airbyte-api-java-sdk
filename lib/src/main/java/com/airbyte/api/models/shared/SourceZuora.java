@@ -38,17 +38,17 @@ public class SourceZuora {
      * Choose between `Live`, or `Unlimited` - the optimized, replicated database at 12 hours freshness for high volume extraction &lt;a href="https://knowledgecenter.zuora.com/Central_Platform/Query/Data_Query/A_Overview_of_Data_Query#Query_Processing_Limitations"&gt;Link&lt;/a&gt;
      */
     @JsonProperty("data_query")
-    public SourceZuoraDataQueryTypeEnum dataQuery;
+    public SourceZuoraDataQueryType dataQuery;
 
-    public SourceZuora withDataQuery(SourceZuoraDataQueryTypeEnum dataQuery) {
+    public SourceZuora withDataQuery(SourceZuoraDataQueryType dataQuery) {
         this.dataQuery = dataQuery;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceZuoraZuoraEnum sourceType;
+    public SourceZuoraZuora sourceType;
 
-    public SourceZuora withSourceType(SourceZuoraZuoraEnum sourceType) {
+    public SourceZuora withSourceType(SourceZuoraZuora sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -68,9 +68,9 @@ public class SourceZuora {
      * Please choose the right endpoint where your Tenant is located. More info by this &lt;a href="https://www.zuora.com/developer/api-reference/#section/Introduction/Access-to-the-API"&gt;Link&lt;/a&gt;
      */
     @JsonProperty("tenant_endpoint")
-    public SourceZuoraTenantEndpointLocationEnum tenantEndpoint;
+    public SourceZuoraTenantEndpointLocation tenantEndpoint;
 
-    public SourceZuora withTenantEndpoint(SourceZuoraTenantEndpointLocationEnum tenantEndpoint) {
+    public SourceZuora withTenantEndpoint(SourceZuoraTenantEndpointLocation tenantEndpoint) {
         this.tenantEndpoint = tenantEndpoint;
         return this;
     }
@@ -87,7 +87,7 @@ public class SourceZuora {
         return this;
     }
     
-    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("data_query") SourceZuoraDataQueryTypeEnum dataQuery, @JsonProperty("sourceType") SourceZuoraZuoraEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("tenant_endpoint") SourceZuoraTenantEndpointLocationEnum tenantEndpoint) {
+    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("data_query") SourceZuoraDataQueryType dataQuery, @JsonProperty("sourceType") SourceZuoraZuora sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("tenant_endpoint") SourceZuoraTenantEndpointLocation tenantEndpoint) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.dataQuery = dataQuery;

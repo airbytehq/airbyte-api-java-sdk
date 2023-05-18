@@ -22,9 +22,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("action_breakdowns")
-    public SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns;
+    public SourceFacebookMarketingInsightConfigValidActionBreakdowns[] actionBreakdowns;
 
-    public SourceFacebookMarketingInsightConfig withActionBreakdowns(SourceFacebookMarketingInsightConfigValidActionBreakdownsEnum[] actionBreakdowns) {
+    public SourceFacebookMarketingInsightConfig withActionBreakdowns(SourceFacebookMarketingInsightConfigValidActionBreakdowns[] actionBreakdowns) {
         this.actionBreakdowns = actionBreakdowns;
         return this;
     }
@@ -34,9 +34,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("breakdowns")
-    public SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns;
+    public SourceFacebookMarketingInsightConfigValidBreakdowns[] breakdowns;
 
-    public SourceFacebookMarketingInsightConfig withBreakdowns(SourceFacebookMarketingInsightConfigValidBreakdownsEnum[] breakdowns) {
+    public SourceFacebookMarketingInsightConfig withBreakdowns(SourceFacebookMarketingInsightConfigValidBreakdowns[] breakdowns) {
         this.breakdowns = breakdowns;
         return this;
     }
@@ -60,9 +60,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("fields")
-    public SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields;
+    public SourceFacebookMarketingInsightConfigValidEnums[] fields;
 
-    public SourceFacebookMarketingInsightConfig withFields(SourceFacebookMarketingInsightConfigValidEnumsEnum[] fields) {
+    public SourceFacebookMarketingInsightConfig withFields(SourceFacebookMarketingInsightConfigValidEnums[] fields) {
         this.fields = fields;
         return this;
     }
@@ -84,9 +84,9 @@ public class SourceFacebookMarketingInsightConfig {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("level")
-    public SourceFacebookMarketingInsightConfigLevelEnum level;
+    public SourceFacebookMarketingInsightConfigLevel level;
 
-    public SourceFacebookMarketingInsightConfig withLevel(SourceFacebookMarketingInsightConfigLevelEnum level) {
+    public SourceFacebookMarketingInsightConfig withLevel(SourceFacebookMarketingInsightConfigLevel level) {
         this.level = level;
         return this;
     }

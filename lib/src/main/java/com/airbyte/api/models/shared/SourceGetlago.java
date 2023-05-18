@@ -22,14 +22,14 @@ public class SourceGetlago {
     }
     
     @JsonProperty("sourceType")
-    public SourceGetlagoGetlagoEnum sourceType;
+    public SourceGetlagoGetlago sourceType;
 
-    public SourceGetlago withSourceType(SourceGetlagoGetlagoEnum sourceType) {
+    public SourceGetlago withSourceType(SourceGetlagoGetlago sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGetlago(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGetlagoGetlagoEnum sourceType) {
+    public SourceGetlago(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGetlagoGetlago sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

@@ -22,9 +22,9 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
     }
     
     @JsonProperty("auth_type")
-    public SourceGoogleSearchConsoleAuthorizationOAuthAuthTypeEnum authType;
+    public SourceGoogleSearchConsoleAuthorizationOAuthAuthType authType;
 
-    public SourceGoogleSearchConsoleAuthorizationOAuth withAuthType(SourceGoogleSearchConsoleAuthorizationOAuthAuthTypeEnum authType) {
+    public SourceGoogleSearchConsoleAuthorizationOAuth withAuthType(SourceGoogleSearchConsoleAuthorizationOAuthAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -62,7 +62,7 @@ public class SourceGoogleSearchConsoleAuthorizationOAuth {
         return this;
     }
     
-    public SourceGoogleSearchConsoleAuthorizationOAuth(@JsonProperty("auth_type") SourceGoogleSearchConsoleAuthorizationOAuthAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    public SourceGoogleSearchConsoleAuthorizationOAuth(@JsonProperty("auth_type") SourceGoogleSearchConsoleAuthorizationOAuthAuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
         this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

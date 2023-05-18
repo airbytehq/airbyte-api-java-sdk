@@ -21,9 +21,9 @@ public class SourceMailchimpCredentialsOAuth20 {
     }
     
     @JsonProperty("auth_type")
-    public SourceMailchimpCredentialsOAuth20AuthTypeEnum authType;
+    public SourceMailchimpCredentialsOAuth20AuthType authType;
 
-    public SourceMailchimpCredentialsOAuth20 withAuthType(SourceMailchimpCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceMailchimpCredentialsOAuth20 withAuthType(SourceMailchimpCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -52,7 +52,7 @@ public class SourceMailchimpCredentialsOAuth20 {
         return this;
     }
     
-    public SourceMailchimpCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceMailchimpCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceMailchimpCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceMailchimpCredentialsOAuth20AuthType authType) {
         this.accessToken = accessToken;
         this.authType = authType;
   }

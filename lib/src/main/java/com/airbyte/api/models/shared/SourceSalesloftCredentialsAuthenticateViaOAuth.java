@@ -24,9 +24,9 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
     }
     
     @JsonProperty("auth_type")
-    public SourceSalesloftCredentialsAuthenticateViaOAuthAuthTypeEnum authType;
+    public SourceSalesloftCredentialsAuthenticateViaOAuthAuthType authType;
 
-    public SourceSalesloftCredentialsAuthenticateViaOAuth withAuthType(SourceSalesloftCredentialsAuthenticateViaOAuthAuthTypeEnum authType) {
+    public SourceSalesloftCredentialsAuthenticateViaOAuth withAuthType(SourceSalesloftCredentialsAuthenticateViaOAuthAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -77,7 +77,7 @@ public class SourceSalesloftCredentialsAuthenticateViaOAuth {
         return this;
     }
     
-    public SourceSalesloftCredentialsAuthenticateViaOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceSalesloftCredentialsAuthenticateViaOAuthAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("token_expiry_date") OffsetDateTime tokenExpiryDate) {
+    public SourceSalesloftCredentialsAuthenticateViaOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceSalesloftCredentialsAuthenticateViaOAuthAuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("token_expiry_date") OffsetDateTime tokenExpiryDate) {
         this.accessToken = accessToken;
         this.authType = authType;
         this.clientId = clientId;

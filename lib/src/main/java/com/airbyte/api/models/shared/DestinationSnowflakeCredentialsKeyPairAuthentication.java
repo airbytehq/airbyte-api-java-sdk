@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationSnowflakeCredentialsKeyPairAuthentication {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public DestinationSnowflakeCredentialsKeyPairAuthenticationAuthTypeEnum authType;
+    public DestinationSnowflakeCredentialsKeyPairAuthenticationAuthType authType;
 
-    public DestinationSnowflakeCredentialsKeyPairAuthentication withAuthType(DestinationSnowflakeCredentialsKeyPairAuthenticationAuthTypeEnum authType) {
+    public DestinationSnowflakeCredentialsKeyPairAuthentication withAuthType(DestinationSnowflakeCredentialsKeyPairAuthenticationAuthType authType) {
         this.authType = authType;
         return this;
     }

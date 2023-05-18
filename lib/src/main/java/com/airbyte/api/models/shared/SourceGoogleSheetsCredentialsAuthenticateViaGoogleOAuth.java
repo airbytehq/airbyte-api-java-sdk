@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth {
     @JsonProperty("auth_type")
-    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthTypeEnum authType;
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType authType;
 
-    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth withAuthType(SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthTypeEnum authType) {
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth withAuthType(SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -51,7 +51,7 @@ public class SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth {
         return this;
     }
     
-    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
         this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

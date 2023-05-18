@@ -22,14 +22,14 @@ public class SourceSecoda {
     }
     
     @JsonProperty("sourceType")
-    public SourceSecodaSecodaEnum sourceType;
+    public SourceSecodaSecoda sourceType;
 
-    public SourceSecoda withSourceType(SourceSecodaSecodaEnum sourceType) {
+    public SourceSecoda withSourceType(SourceSecodaSecoda sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceSecoda(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSecodaSecodaEnum sourceType) {
+    public SourceSecoda(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSecodaSecoda sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

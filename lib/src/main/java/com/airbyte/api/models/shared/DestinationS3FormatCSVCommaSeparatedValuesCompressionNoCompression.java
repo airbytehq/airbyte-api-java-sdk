@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompression {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
-    public DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompressionCompressionTypeEnum compressionType;
+    public DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompressionCompressionType compressionType;
 
-    public DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompression withCompressionType(DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompressionCompressionTypeEnum compressionType) {
+    public DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompression withCompressionType(DestinationS3FormatCSVCommaSeparatedValuesCompressionNoCompressionCompressionType compressionType) {
         this.compressionType = compressionType;
         return this;
     }

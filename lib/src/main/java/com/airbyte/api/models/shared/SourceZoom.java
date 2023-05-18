@@ -22,14 +22,14 @@ public class SourceZoom {
     }
     
     @JsonProperty("sourceType")
-    public SourceZoomZoomEnum sourceType;
+    public SourceZoomZoom sourceType;
 
-    public SourceZoom withSourceType(SourceZoomZoomEnum sourceType) {
+    public SourceZoom withSourceType(SourceZoomZoom sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceZoom(@JsonProperty("jwt_token") String jwtToken, @JsonProperty("sourceType") SourceZoomZoomEnum sourceType) {
+    public SourceZoom(@JsonProperty("jwt_token") String jwtToken, @JsonProperty("sourceType") SourceZoomZoom sourceType) {
         this.jwtToken = jwtToken;
         this.sourceType = sourceType;
   }

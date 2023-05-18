@@ -30,9 +30,9 @@ public class SourceNotion {
     }
     
     @JsonProperty("sourceType")
-    public SourceNotionNotionEnum sourceType;
+    public SourceNotionNotion sourceType;
 
-    public SourceNotion withSourceType(SourceNotionNotionEnum sourceType) {
+    public SourceNotion withSourceType(SourceNotionNotion sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -50,7 +50,7 @@ public class SourceNotion {
         return this;
     }
     
-    public SourceNotion(@JsonProperty("sourceType") SourceNotionNotionEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceNotion(@JsonProperty("sourceType") SourceNotionNotion sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

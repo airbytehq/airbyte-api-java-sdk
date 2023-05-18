@@ -14,9 +14,9 @@ public class SourceSftpCredentialsSSHKeyAuthentication {
      * Connect through ssh key
      */
     @JsonProperty("auth_method")
-    public SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod;
+    public SourceSftpCredentialsSSHKeyAuthenticationAuthMethod authMethod;
 
-    public SourceSftpCredentialsSSHKeyAuthentication withAuthMethod(SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod) {
+    public SourceSftpCredentialsSSHKeyAuthentication withAuthMethod(SourceSftpCredentialsSSHKeyAuthenticationAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
@@ -32,7 +32,7 @@ public class SourceSftpCredentialsSSHKeyAuthentication {
         return this;
     }
     
-    public SourceSftpCredentialsSSHKeyAuthentication(@JsonProperty("auth_method") SourceSftpCredentialsSSHKeyAuthenticationAuthMethodEnum authMethod, @JsonProperty("auth_ssh_key") String authSshKey) {
+    public SourceSftpCredentialsSSHKeyAuthentication(@JsonProperty("auth_method") SourceSftpCredentialsSSHKeyAuthenticationAuthMethod authMethod, @JsonProperty("auth_ssh_key") String authSshKey) {
         this.authMethod = authMethod;
         this.authSshKey = authSshKey;
   }

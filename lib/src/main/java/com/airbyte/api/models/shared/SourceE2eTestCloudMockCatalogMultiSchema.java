@@ -22,14 +22,14 @@ public class SourceE2eTestCloudMockCatalogMultiSchema {
     }
     
     @JsonProperty("type")
-    public SourceE2eTestCloudMockCatalogMultiSchemaTypeEnum type;
+    public SourceE2eTestCloudMockCatalogMultiSchemaType type;
 
-    public SourceE2eTestCloudMockCatalogMultiSchema withType(SourceE2eTestCloudMockCatalogMultiSchemaTypeEnum type) {
+    public SourceE2eTestCloudMockCatalogMultiSchema withType(SourceE2eTestCloudMockCatalogMultiSchemaType type) {
         this.type = type;
         return this;
     }
     
-    public SourceE2eTestCloudMockCatalogMultiSchema(@JsonProperty("stream_schemas") String streamSchemas, @JsonProperty("type") SourceE2eTestCloudMockCatalogMultiSchemaTypeEnum type) {
+    public SourceE2eTestCloudMockCatalogMultiSchema(@JsonProperty("stream_schemas") String streamSchemas, @JsonProperty("type") SourceE2eTestCloudMockCatalogMultiSchemaType type) {
         this.streamSchemas = streamSchemas;
         this.type = type;
   }

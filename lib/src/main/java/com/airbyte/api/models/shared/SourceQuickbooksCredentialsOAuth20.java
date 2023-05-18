@@ -27,9 +27,9 @@ public class SourceQuickbooksCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceQuickbooksCredentialsOAuth20AuthTypeEnum authType;
+    public SourceQuickbooksCredentialsOAuth20AuthType authType;
 
-    public SourceQuickbooksCredentialsOAuth20 withAuthType(SourceQuickbooksCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceQuickbooksCredentialsOAuth20 withAuthType(SourceQuickbooksCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

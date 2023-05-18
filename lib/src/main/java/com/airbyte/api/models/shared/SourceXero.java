@@ -24,9 +24,9 @@ public class SourceXero {
     }
     
     @JsonProperty("sourceType")
-    public SourceXeroXeroEnum sourceType;
+    public SourceXeroXero sourceType;
 
-    public SourceXero withSourceType(SourceXeroXeroEnum sourceType) {
+    public SourceXero withSourceType(SourceXeroXero sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -55,7 +55,7 @@ public class SourceXero {
         return this;
     }
     
-    public SourceXero(@JsonProperty("authentication") SourceXeroAuthenticateViaXeroOAuth authentication, @JsonProperty("sourceType") SourceXeroXeroEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("tenant_id") String tenantId) {
+    public SourceXero(@JsonProperty("authentication") SourceXeroAuthenticateViaXeroOAuth authentication, @JsonProperty("sourceType") SourceXeroXero sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("tenant_id") String tenantId) {
         this.authentication = authentication;
         this.sourceType = sourceType;
         this.startDate = startDate;

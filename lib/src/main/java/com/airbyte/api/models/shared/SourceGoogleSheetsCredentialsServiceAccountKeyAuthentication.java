@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication {
     @JsonProperty("auth_type")
-    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
+    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType authType;
 
-    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType) {
+    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -29,7 +29,7 @@ public class SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication {
         return this;
     }
     
-    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType, @JsonProperty("service_account_info") String serviceAccountInfo) {
+    public SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType authType, @JsonProperty("service_account_info") String serviceAccountInfo) {
         this.authType = authType;
         this.serviceAccountInfo = serviceAccountInfo;
   }

@@ -46,9 +46,9 @@ public class StreamConfiguration {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncMode")
-    public ConnectionSyncModeEnumEnum syncMode;
+    public ConnectionSyncModeEnum syncMode;
 
-    public StreamConfiguration withSyncMode(ConnectionSyncModeEnumEnum syncMode) {
+    public StreamConfiguration withSyncMode(ConnectionSyncModeEnum syncMode) {
         this.syncMode = syncMode;
         return this;
     }

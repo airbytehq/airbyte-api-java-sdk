@@ -34,9 +34,9 @@ public class SourceOkta {
     }
     
     @JsonProperty("sourceType")
-    public SourceOktaOktaEnum sourceType;
+    public SourceOktaOkta sourceType;
 
-    public SourceOkta withSourceType(SourceOktaOktaEnum sourceType) {
+    public SourceOkta withSourceType(SourceOktaOkta sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -53,7 +53,7 @@ public class SourceOkta {
         return this;
     }
     
-    public SourceOkta(@JsonProperty("sourceType") SourceOktaOktaEnum sourceType) {
+    public SourceOkta(@JsonProperty("sourceType") SourceOktaOkta sourceType) {
         this.sourceType = sourceType;
   }
 }

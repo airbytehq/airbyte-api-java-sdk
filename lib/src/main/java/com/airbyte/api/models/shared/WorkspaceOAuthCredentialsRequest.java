@@ -14,9 +14,9 @@ public class WorkspaceOAuthCredentialsRequest {
      * Whether you're setting this override for a source or destination
      */
     @JsonProperty("actorType")
-    public ActorTypeEnumEnum actorType;
+    public ActorTypeEnum actorType;
 
-    public WorkspaceOAuthCredentialsRequest withActorType(ActorTypeEnumEnum actorType) {
+    public WorkspaceOAuthCredentialsRequest withActorType(ActorTypeEnum actorType) {
         this.actorType = actorType;
         return this;
     }
@@ -40,7 +40,7 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
     
-    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnumEnum actorType, @JsonProperty("configuration") java.util.Map<String, Object> configuration, @JsonProperty("name") String name) {
+    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") java.util.Map<String, Object> configuration, @JsonProperty("name") String name) {
         this.actorType = actorType;
         this.configuration = configuration;
         this.name = name;

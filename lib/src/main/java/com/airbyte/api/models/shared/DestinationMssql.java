@@ -24,9 +24,9 @@ public class DestinationMssql {
     }
     
     @JsonProperty("destinationType")
-    public DestinationMssqlMssqlEnum destinationType;
+    public DestinationMssqlMssql destinationType;
 
-    public DestinationMssql withDestinationType(DestinationMssqlMssqlEnum destinationType) {
+    public DestinationMssql withDestinationType(DestinationMssqlMssql destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -123,7 +123,7 @@ public class DestinationMssql {
         return this;
     }
     
-    public DestinationMssql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMssqlMssqlEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
+    public DestinationMssql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMssqlMssql destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;

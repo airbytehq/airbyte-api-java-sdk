@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationSnowflakeLoadingMethodRecommendedInternalStaging {
     @JsonProperty("method")
-    public DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethodEnum method;
+    public DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethod method;
 
-    public DestinationSnowflakeLoadingMethodRecommendedInternalStaging withMethod(DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethodEnum method) {
+    public DestinationSnowflakeLoadingMethodRecommendedInternalStaging withMethod(DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethod method) {
         this.method = method;
         return this;
     }
     
-    public DestinationSnowflakeLoadingMethodRecommendedInternalStaging(@JsonProperty("method") DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethodEnum method) {
+    public DestinationSnowflakeLoadingMethodRecommendedInternalStaging(@JsonProperty("method") DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethod method) {
         this.method = method;
   }
 }

@@ -30,14 +30,14 @@ public class SourceAuth0 {
     }
     
     @JsonProperty("sourceType")
-    public SourceAuth0Auth0Enum sourceType;
+    public SourceAuth0Auth0 sourceType;
 
-    public SourceAuth0 withSourceType(SourceAuth0Auth0Enum sourceType) {
+    public SourceAuth0 withSourceType(SourceAuth0Auth0 sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceAuth0(@JsonProperty("base_url") String baseUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceAuth0Auth0Enum sourceType) {
+    public SourceAuth0(@JsonProperty("base_url") String baseUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceAuth0Auth0 sourceType) {
         this.baseUrl = baseUrl;
         this.credentials = credentials;
         this.sourceType = sourceType;

@@ -25,14 +25,14 @@ public class SourceAsana {
     }
     
     @JsonProperty("sourceType")
-    public SourceAsanaAsanaEnum sourceType;
+    public SourceAsanaAsana sourceType;
 
-    public SourceAsana withSourceType(SourceAsanaAsanaEnum sourceType) {
+    public SourceAsana withSourceType(SourceAsanaAsana sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceAsana(@JsonProperty("sourceType") SourceAsanaAsanaEnum sourceType) {
+    public SourceAsana(@JsonProperty("sourceType") SourceAsanaAsana sourceType) {
         this.sourceType = sourceType;
   }
 }

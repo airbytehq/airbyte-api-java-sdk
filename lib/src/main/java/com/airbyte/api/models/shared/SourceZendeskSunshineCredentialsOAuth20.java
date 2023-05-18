@@ -19,9 +19,9 @@ public class SourceZendeskSunshineCredentialsOAuth20 {
     }
     
     @JsonProperty("auth_method")
-    public SourceZendeskSunshineCredentialsOAuth20AuthMethodEnum authMethod;
+    public SourceZendeskSunshineCredentialsOAuth20AuthMethod authMethod;
 
-    public SourceZendeskSunshineCredentialsOAuth20 withAuthMethod(SourceZendeskSunshineCredentialsOAuth20AuthMethodEnum authMethod) {
+    public SourceZendeskSunshineCredentialsOAuth20 withAuthMethod(SourceZendeskSunshineCredentialsOAuth20AuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
@@ -48,7 +48,7 @@ public class SourceZendeskSunshineCredentialsOAuth20 {
         return this;
     }
     
-    public SourceZendeskSunshineCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourceZendeskSunshineCredentialsOAuth20AuthMethodEnum authMethod, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    public SourceZendeskSunshineCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourceZendeskSunshineCredentialsOAuth20AuthMethod authMethod, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
         this.accessToken = accessToken;
         this.authMethod = authMethod;
         this.clientId = clientId;

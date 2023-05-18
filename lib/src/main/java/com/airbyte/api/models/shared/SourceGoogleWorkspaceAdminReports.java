@@ -47,14 +47,14 @@ public class SourceGoogleWorkspaceAdminReports {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType;
+    public SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReports sourceType;
 
-    public SourceGoogleWorkspaceAdminReports withSourceType(SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType) {
+    public SourceGoogleWorkspaceAdminReports withSourceType(SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReports sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGoogleWorkspaceAdminReports(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReportsEnum sourceType) {
+    public SourceGoogleWorkspaceAdminReports(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleWorkspaceAdminReportsGoogleWorkspaceAdminReports sourceType) {
         this.credentialsJson = credentialsJson;
         this.email = email;
         this.sourceType = sourceType;

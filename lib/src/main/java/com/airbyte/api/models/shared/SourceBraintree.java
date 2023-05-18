@@ -21,9 +21,9 @@ public class SourceBraintree {
      * Environment specifies where the data will come from.
      */
     @JsonProperty("environment")
-    public SourceBraintreeEnvironmentEnum environment;
+    public SourceBraintreeEnvironment environment;
 
-    public SourceBraintree withEnvironment(SourceBraintreeEnvironmentEnum environment) {
+    public SourceBraintree withEnvironment(SourceBraintreeEnvironment environment) {
         this.environment = environment;
         return this;
     }
@@ -62,9 +62,9 @@ public class SourceBraintree {
     }
     
     @JsonProperty("sourceType")
-    public SourceBraintreeBraintreeEnum sourceType;
+    public SourceBraintreeBraintree sourceType;
 
-    public SourceBraintree withSourceType(SourceBraintreeBraintreeEnum sourceType) {
+    public SourceBraintree withSourceType(SourceBraintreeBraintree sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -83,7 +83,7 @@ public class SourceBraintree {
         return this;
     }
     
-    public SourceBraintree(@JsonProperty("environment") SourceBraintreeEnvironmentEnum environment, @JsonProperty("merchant_id") String merchantId, @JsonProperty("private_key") String privateKey, @JsonProperty("public_key") String publicKey, @JsonProperty("sourceType") SourceBraintreeBraintreeEnum sourceType) {
+    public SourceBraintree(@JsonProperty("environment") SourceBraintreeEnvironment environment, @JsonProperty("merchant_id") String merchantId, @JsonProperty("private_key") String privateKey, @JsonProperty("public_key") String publicKey, @JsonProperty("sourceType") SourceBraintreeBraintree sourceType) {
         this.environment = environment;
         this.merchantId = merchantId;
         this.privateKey = privateKey;

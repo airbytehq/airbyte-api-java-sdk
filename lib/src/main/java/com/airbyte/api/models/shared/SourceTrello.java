@@ -41,9 +41,9 @@ public class SourceTrello {
     }
     
     @JsonProperty("sourceType")
-    public SourceTrelloTrelloEnum sourceType;
+    public SourceTrelloTrello sourceType;
 
-    public SourceTrello withSourceType(SourceTrelloTrelloEnum sourceType) {
+    public SourceTrello withSourceType(SourceTrelloTrello sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -72,7 +72,7 @@ public class SourceTrello {
         return this;
     }
     
-    public SourceTrello(@JsonProperty("key") String key, @JsonProperty("sourceType") SourceTrelloTrelloEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
+    public SourceTrello(@JsonProperty("key") String key, @JsonProperty("sourceType") SourceTrelloTrello sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
         this.key = key;
         this.sourceType = sourceType;
         this.startDate = startDate;

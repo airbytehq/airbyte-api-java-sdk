@@ -83,14 +83,14 @@ public class SourcePexelsApi {
     }
     
     @JsonProperty("sourceType")
-    public SourcePexelsApiPexelsApiEnum sourceType;
+    public SourcePexelsApiPexelsApi sourceType;
 
-    public SourcePexelsApi withSourceType(SourcePexelsApiPexelsApiEnum sourceType) {
+    public SourcePexelsApi withSourceType(SourcePexelsApiPexelsApi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourcePexelsApi(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourcePexelsApiPexelsApiEnum sourceType) {
+    public SourcePexelsApi(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourcePexelsApiPexelsApi sourceType) {
         this.apiKey = apiKey;
         this.query = query;
         this.sourceType = sourceType;

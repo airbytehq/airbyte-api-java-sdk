@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceMixpanelCredentialsServiceAccount {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
-    public SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle;
+    public SourceMixpanelCredentialsServiceAccountOptionTitle optionTitle;
 
-    public SourceMixpanelCredentialsServiceAccount withOptionTitle(SourceMixpanelCredentialsServiceAccountOptionTitleEnum optionTitle) {
+    public SourceMixpanelCredentialsServiceAccount withOptionTitle(SourceMixpanelCredentialsServiceAccountOptionTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }

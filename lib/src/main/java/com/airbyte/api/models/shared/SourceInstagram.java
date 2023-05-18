@@ -27,9 +27,9 @@ public class SourceInstagram {
     }
     
     @JsonProperty("sourceType")
-    public SourceInstagramInstagramEnum sourceType;
+    public SourceInstagramInstagram sourceType;
 
-    public SourceInstagram withSourceType(SourceInstagramInstagramEnum sourceType) {
+    public SourceInstagram withSourceType(SourceInstagramInstagram sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -47,7 +47,7 @@ public class SourceInstagram {
         return this;
     }
     
-    public SourceInstagram(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceInstagramInstagramEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceInstagram(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceInstagramInstagram sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.accessToken = accessToken;
         this.sourceType = sourceType;
         this.startDate = startDate;

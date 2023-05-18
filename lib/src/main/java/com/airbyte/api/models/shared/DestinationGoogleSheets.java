@@ -22,9 +22,9 @@ public class DestinationGoogleSheets {
     }
     
     @JsonProperty("destinationType")
-    public DestinationGoogleSheetsGoogleSheetsEnum destinationType;
+    public DestinationGoogleSheetsGoogleSheets destinationType;
 
-    public DestinationGoogleSheets withDestinationType(DestinationGoogleSheetsGoogleSheetsEnum destinationType) {
+    public DestinationGoogleSheets withDestinationType(DestinationGoogleSheetsGoogleSheets destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -40,7 +40,7 @@ public class DestinationGoogleSheets {
         return this;
     }
     
-    public DestinationGoogleSheets(@JsonProperty("credentials") DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials, @JsonProperty("destinationType") DestinationGoogleSheetsGoogleSheetsEnum destinationType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
+    public DestinationGoogleSheets(@JsonProperty("credentials") DestinationGoogleSheetsAuthenticationViaGoogleOAuth credentials, @JsonProperty("destinationType") DestinationGoogleSheetsGoogleSheets destinationType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
         this.credentials = credentials;
         this.destinationType = destinationType;
         this.spreadsheetId = spreadsheetId;

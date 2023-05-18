@@ -24,9 +24,9 @@ public class DestinationRedshift {
     }
     
     @JsonProperty("destinationType")
-    public DestinationRedshiftRedshiftEnum destinationType;
+    public DestinationRedshiftRedshift destinationType;
 
-    public DestinationRedshift withDestinationType(DestinationRedshiftRedshiftEnum destinationType) {
+    public DestinationRedshift withDestinationType(DestinationRedshiftRedshift destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -122,7 +122,7 @@ public class DestinationRedshift {
         return this;
     }
     
-    public DestinationRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationRedshiftRedshiftEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema) {
+    public DestinationRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationRedshiftRedshift destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema) {
         this.username = username;
         this.password = password;
         this.database = database;

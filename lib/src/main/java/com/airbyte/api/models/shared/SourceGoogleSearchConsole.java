@@ -59,9 +59,9 @@ public class SourceGoogleSearchConsole {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleSearchConsoleGoogleSearchConsoleEnum sourceType;
+    public SourceGoogleSearchConsoleGoogleSearchConsole sourceType;
 
-    public SourceGoogleSearchConsole withSourceType(SourceGoogleSearchConsoleGoogleSearchConsoleEnum sourceType) {
+    public SourceGoogleSearchConsole withSourceType(SourceGoogleSearchConsoleGoogleSearchConsole sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -78,7 +78,7 @@ public class SourceGoogleSearchConsole {
         return this;
     }
     
-    public SourceGoogleSearchConsole(@JsonProperty("authorization") Object authorization, @JsonProperty("site_urls") String[] siteUrls, @JsonProperty("sourceType") SourceGoogleSearchConsoleGoogleSearchConsoleEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceGoogleSearchConsole(@JsonProperty("authorization") Object authorization, @JsonProperty("site_urls") String[] siteUrls, @JsonProperty("sourceType") SourceGoogleSearchConsoleGoogleSearchConsole sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.authorization = authorization;
         this.siteUrls = siteUrls;
         this.sourceType = sourceType;

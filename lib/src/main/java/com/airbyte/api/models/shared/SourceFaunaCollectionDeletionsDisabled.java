@@ -14,14 +14,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceFaunaCollectionDeletionsDisabled {
     @JsonProperty("deletion_mode")
-    public SourceFaunaCollectionDeletionsDisabledDeletionModeEnum deletionMode;
+    public SourceFaunaCollectionDeletionsDisabledDeletionMode deletionMode;
 
-    public SourceFaunaCollectionDeletionsDisabled withDeletionMode(SourceFaunaCollectionDeletionsDisabledDeletionModeEnum deletionMode) {
+    public SourceFaunaCollectionDeletionsDisabled withDeletionMode(SourceFaunaCollectionDeletionsDisabledDeletionMode deletionMode) {
         this.deletionMode = deletionMode;
         return this;
     }
     
-    public SourceFaunaCollectionDeletionsDisabled(@JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsDisabledDeletionModeEnum deletionMode) {
+    public SourceFaunaCollectionDeletionsDisabled(@JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsDisabledDeletionMode deletionMode) {
         this.deletionMode = deletionMode;
   }
 }

@@ -25,9 +25,9 @@ public class DestinationMeilisearch {
     }
     
     @JsonProperty("destinationType")
-    public DestinationMeilisearchMeilisearchEnum destinationType;
+    public DestinationMeilisearchMeilisearch destinationType;
 
-    public DestinationMeilisearch withDestinationType(DestinationMeilisearchMeilisearchEnum destinationType) {
+    public DestinationMeilisearch withDestinationType(DestinationMeilisearchMeilisearch destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -43,7 +43,7 @@ public class DestinationMeilisearch {
         return this;
     }
     
-    public DestinationMeilisearch(@JsonProperty("destinationType") DestinationMeilisearchMeilisearchEnum destinationType, @JsonProperty("host") String host) {
+    public DestinationMeilisearch(@JsonProperty("destinationType") DestinationMeilisearchMeilisearch destinationType, @JsonProperty("host") String host) {
         this.destinationType = destinationType;
         this.host = host;
   }

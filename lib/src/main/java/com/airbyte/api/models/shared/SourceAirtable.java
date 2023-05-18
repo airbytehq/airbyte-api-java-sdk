@@ -22,14 +22,14 @@ public class SourceAirtable {
     }
     
     @JsonProperty("sourceType")
-    public SourceAirtableAirtableEnum sourceType;
+    public SourceAirtableAirtable sourceType;
 
-    public SourceAirtable withSourceType(SourceAirtableAirtableEnum sourceType) {
+    public SourceAirtable withSourceType(SourceAirtableAirtable sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceAirtable(@JsonProperty("sourceType") SourceAirtableAirtableEnum sourceType) {
+    public SourceAirtable(@JsonProperty("sourceType") SourceAirtableAirtable sourceType) {
         this.sourceType = sourceType;
   }
 }

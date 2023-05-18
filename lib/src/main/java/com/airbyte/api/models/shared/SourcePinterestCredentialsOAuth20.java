@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourcePinterestCredentialsOAuth20 {
     @JsonProperty("auth_method")
-    public SourcePinterestCredentialsOAuth20AuthMethodEnum authMethod;
+    public SourcePinterestCredentialsOAuth20AuthMethod authMethod;
 
-    public SourcePinterestCredentialsOAuth20 withAuthMethod(SourcePinterestCredentialsOAuth20AuthMethodEnum authMethod) {
+    public SourcePinterestCredentialsOAuth20 withAuthMethod(SourcePinterestCredentialsOAuth20AuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
@@ -52,7 +52,7 @@ public class SourcePinterestCredentialsOAuth20 {
         return this;
     }
     
-    public SourcePinterestCredentialsOAuth20(@JsonProperty("auth_method") SourcePinterestCredentialsOAuth20AuthMethodEnum authMethod, @JsonProperty("refresh_token") String refreshToken) {
+    public SourcePinterestCredentialsOAuth20(@JsonProperty("auth_method") SourcePinterestCredentialsOAuth20AuthMethod authMethod, @JsonProperty("refresh_token") String refreshToken) {
         this.authMethod = authMethod;
         this.refreshToken = refreshToken;
   }

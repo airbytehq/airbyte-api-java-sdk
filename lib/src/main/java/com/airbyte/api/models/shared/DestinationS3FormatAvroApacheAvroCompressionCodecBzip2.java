@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationS3FormatAvroApacheAvroCompressionCodecBzip2 {
     @JsonProperty("codec")
-    public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2CodecEnum codec;
+    public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2Codec codec;
 
-    public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2 withCodec(DestinationS3FormatAvroApacheAvroCompressionCodecBzip2CodecEnum codec) {
+    public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2 withCodec(DestinationS3FormatAvroApacheAvroCompressionCodecBzip2Codec codec) {
         this.codec = codec;
         return this;
     }
     
-    public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecBzip2CodecEnum codec) {
+    public DestinationS3FormatAvroApacheAvroCompressionCodecBzip2(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecBzip2Codec codec) {
         this.codec = codec;
   }
 }

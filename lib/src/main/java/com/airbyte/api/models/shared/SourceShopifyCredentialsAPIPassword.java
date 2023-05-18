@@ -22,14 +22,14 @@ public class SourceShopifyCredentialsAPIPassword {
     }
     
     @JsonProperty("auth_method")
-    public SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod;
+    public SourceShopifyCredentialsAPIPasswordAuthMethod authMethod;
 
-    public SourceShopifyCredentialsAPIPassword withAuthMethod(SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod) {
+    public SourceShopifyCredentialsAPIPassword withAuthMethod(SourceShopifyCredentialsAPIPasswordAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
     
-    public SourceShopifyCredentialsAPIPassword(@JsonProperty("api_password") String apiPassword, @JsonProperty("auth_method") SourceShopifyCredentialsAPIPasswordAuthMethodEnum authMethod) {
+    public SourceShopifyCredentialsAPIPassword(@JsonProperty("api_password") String apiPassword, @JsonProperty("auth_method") SourceShopifyCredentialsAPIPasswordAuthMethod authMethod) {
         this.apiPassword = apiPassword;
         this.authMethod = authMethod;
   }

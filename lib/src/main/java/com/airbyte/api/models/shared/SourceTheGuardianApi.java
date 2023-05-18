@@ -60,9 +60,9 @@ public class SourceTheGuardianApi {
     }
     
     @JsonProperty("sourceType")
-    public SourceTheGuardianApiTheGuardianApiEnum sourceType;
+    public SourceTheGuardianApiTheGuardianApi sourceType;
 
-    public SourceTheGuardianApi withSourceType(SourceTheGuardianApiTheGuardianApiEnum sourceType) {
+    public SourceTheGuardianApi withSourceType(SourceTheGuardianApiTheGuardianApi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -90,7 +90,7 @@ public class SourceTheGuardianApi {
         return this;
     }
     
-    public SourceTheGuardianApi(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceTheGuardianApiTheGuardianApiEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceTheGuardianApi(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceTheGuardianApiTheGuardianApi sourceType, @JsonProperty("start_date") String startDate) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

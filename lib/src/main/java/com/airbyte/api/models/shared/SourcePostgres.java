@@ -94,9 +94,9 @@ public class SourcePostgres {
     }
     
     @JsonProperty("sourceType")
-    public SourcePostgresPostgresEnum sourceType;
+    public SourcePostgresPostgres sourceType;
 
-    public SourcePostgres withSourceType(SourcePostgresPostgresEnum sourceType) {
+    public SourcePostgres withSourceType(SourcePostgresPostgres sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -137,7 +137,7 @@ public class SourcePostgres {
         return this;
     }
     
-    public SourcePostgres(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourcePostgresPostgresEnum sourceType, @JsonProperty("username") String username) {
+    public SourcePostgres(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourcePostgresPostgres sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
         this.port = port;

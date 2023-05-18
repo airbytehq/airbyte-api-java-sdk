@@ -41,9 +41,9 @@ public class SourcePosthog {
     }
     
     @JsonProperty("sourceType")
-    public SourcePosthogPosthogEnum sourceType;
+    public SourcePosthogPosthog sourceType;
 
-    public SourcePosthog withSourceType(SourcePosthogPosthogEnum sourceType) {
+    public SourcePosthog withSourceType(SourcePosthogPosthog sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -61,7 +61,7 @@ public class SourcePosthog {
         return this;
     }
     
-    public SourcePosthog(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePosthogPosthogEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourcePosthog(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePosthogPosthog sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

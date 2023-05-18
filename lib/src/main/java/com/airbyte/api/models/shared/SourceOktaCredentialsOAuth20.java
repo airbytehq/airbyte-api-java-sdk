@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceOktaCredentialsOAuth20 {
     @JsonProperty("auth_type")
-    public SourceOktaCredentialsOAuth20AuthTypeEnum authType;
+    public SourceOktaCredentialsOAuth20AuthType authType;
 
-    public SourceOktaCredentialsOAuth20 withAuthType(SourceOktaCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceOktaCredentialsOAuth20 withAuthType(SourceOktaCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -48,7 +48,7 @@ public class SourceOktaCredentialsOAuth20 {
         return this;
     }
     
-    public SourceOktaCredentialsOAuth20(@JsonProperty("auth_type") SourceOktaCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    public SourceOktaCredentialsOAuth20(@JsonProperty("auth_type") SourceOktaCredentialsOAuth20AuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
         this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

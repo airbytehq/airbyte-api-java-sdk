@@ -22,14 +22,14 @@ public class SourceMonday {
     }
     
     @JsonProperty("sourceType")
-    public SourceMondayMondayEnum sourceType;
+    public SourceMondayMonday sourceType;
 
-    public SourceMonday withSourceType(SourceMondayMondayEnum sourceType) {
+    public SourceMonday withSourceType(SourceMondayMonday sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceMonday(@JsonProperty("sourceType") SourceMondayMondayEnum sourceType) {
+    public SourceMonday(@JsonProperty("sourceType") SourceMondayMonday sourceType) {
         this.sourceType = sourceType;
   }
 }

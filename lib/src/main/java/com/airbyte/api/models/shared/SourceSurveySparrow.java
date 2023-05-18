@@ -36,9 +36,9 @@ public class SourceSurveySparrow {
     }
     
     @JsonProperty("sourceType")
-    public SourceSurveySparrowSurveySparrowEnum sourceType;
+    public SourceSurveySparrowSurveySparrow sourceType;
 
-    public SourceSurveySparrow withSourceType(SourceSurveySparrowSurveySparrowEnum sourceType) {
+    public SourceSurveySparrow withSourceType(SourceSurveySparrowSurveySparrow sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -55,7 +55,7 @@ public class SourceSurveySparrow {
         return this;
     }
     
-    public SourceSurveySparrow(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceSurveySparrowSurveySparrowEnum sourceType) {
+    public SourceSurveySparrow(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceSurveySparrowSurveySparrow sourceType) {
         this.accessToken = accessToken;
         this.sourceType = sourceType;
   }

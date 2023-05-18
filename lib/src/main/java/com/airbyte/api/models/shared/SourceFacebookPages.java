@@ -33,14 +33,14 @@ public class SourceFacebookPages {
     }
     
     @JsonProperty("sourceType")
-    public SourceFacebookPagesFacebookPagesEnum sourceType;
+    public SourceFacebookPagesFacebookPages sourceType;
 
-    public SourceFacebookPages withSourceType(SourceFacebookPagesFacebookPagesEnum sourceType) {
+    public SourceFacebookPages withSourceType(SourceFacebookPagesFacebookPages sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceFacebookPages(@JsonProperty("access_token") String accessToken, @JsonProperty("page_id") String pageId, @JsonProperty("sourceType") SourceFacebookPagesFacebookPagesEnum sourceType) {
+    public SourceFacebookPages(@JsonProperty("access_token") String accessToken, @JsonProperty("page_id") String pageId, @JsonProperty("sourceType") SourceFacebookPagesFacebookPages sourceType) {
         this.accessToken = accessToken;
         this.pageId = pageId;
         this.sourceType = sourceType;

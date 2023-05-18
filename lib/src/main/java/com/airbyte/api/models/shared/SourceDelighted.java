@@ -40,14 +40,14 @@ public class SourceDelighted {
     }
     
     @JsonProperty("sourceType")
-    public SourceDelightedDelightedEnum sourceType;
+    public SourceDelightedDelighted sourceType;
 
-    public SourceDelighted withSourceType(SourceDelightedDelightedEnum sourceType) {
+    public SourceDelighted withSourceType(SourceDelightedDelighted sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceDelighted(@JsonProperty("api_key") String apiKey, @JsonProperty("since") OffsetDateTime since, @JsonProperty("sourceType") SourceDelightedDelightedEnum sourceType) {
+    public SourceDelighted(@JsonProperty("api_key") String apiKey, @JsonProperty("since") OffsetDateTime since, @JsonProperty("sourceType") SourceDelightedDelighted sourceType) {
         this.apiKey = apiKey;
         this.since = since;
         this.sourceType = sourceType;

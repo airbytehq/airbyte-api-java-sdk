@@ -28,9 +28,9 @@ public class SourceGnews {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("country")
-    public SourceGnewsCountryEnum country;
+    public SourceGnewsCountry country;
 
-    public SourceGnews withCountry(SourceGnewsCountryEnum country) {
+    public SourceGnews withCountry(SourceGnewsCountry country) {
         this.country = country;
         return this;
     }
@@ -52,18 +52,18 @@ public class SourceGnews {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("in")
-    public SourceGnewsInEnum[] in;
+    public SourceGnewsIn[] in;
 
-    public SourceGnews withIn(SourceGnewsInEnum[] in) {
+    public SourceGnews withIn(SourceGnewsIn[] in) {
         this.in = in;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("language")
-    public SourceGnewsLanguageEnum language;
+    public SourceGnewsLanguage language;
 
-    public SourceGnews withLanguage(SourceGnewsLanguageEnum language) {
+    public SourceGnews withLanguage(SourceGnewsLanguage language) {
         this.language = language;
         return this;
     }
@@ -73,9 +73,9 @@ public class SourceGnews {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nullable")
-    public SourceGnewsNullableEnum[] nullable;
+    public SourceGnewsNullable[] nullable;
 
-    public SourceGnews withNullable(SourceGnewsNullableEnum[] nullable) {
+    public SourceGnews withNullable(SourceGnewsNullable[] nullable) {
         this.nullable = nullable;
         return this;
     }
@@ -111,17 +111,17 @@ public class SourceGnews {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sortby")
-    public SourceGnewsSortByEnum sortby;
+    public SourceGnewsSortBy sortby;
 
-    public SourceGnews withSortby(SourceGnewsSortByEnum sortby) {
+    public SourceGnews withSortby(SourceGnewsSortBy sortby) {
         this.sortby = sortby;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceGnewsGnewsEnum sourceType;
+    public SourceGnewsGnews sourceType;
 
-    public SourceGnews withSourceType(SourceGnewsGnewsEnum sourceType) {
+    public SourceGnews withSourceType(SourceGnewsGnews sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -168,14 +168,14 @@ public class SourceGnews {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("top_headlines_topic")
-    public SourceGnewsTopHeadlinesTopicEnum topHeadlinesTopic;
+    public SourceGnewsTopHeadlinesTopic topHeadlinesTopic;
 
-    public SourceGnews withTopHeadlinesTopic(SourceGnewsTopHeadlinesTopicEnum topHeadlinesTopic) {
+    public SourceGnews withTopHeadlinesTopic(SourceGnewsTopHeadlinesTopic topHeadlinesTopic) {
         this.topHeadlinesTopic = topHeadlinesTopic;
         return this;
     }
     
-    public SourceGnews(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourceGnewsGnewsEnum sourceType) {
+    public SourceGnews(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourceGnewsGnews sourceType) {
         this.apiKey = apiKey;
         this.query = query;
         this.sourceType = sourceType;

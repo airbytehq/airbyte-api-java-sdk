@@ -19,9 +19,9 @@ import java.time.OffsetDateTime;
 public class SourceSalesforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceSalesforceAuthTypeEnum authType;
+    public SourceSalesforceAuthType authType;
 
-    public SourceSalesforce withAuthType(SourceSalesforceAuthTypeEnum authType) {
+    public SourceSalesforce withAuthType(SourceSalesforceAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -72,9 +72,9 @@ public class SourceSalesforce {
     }
     
     @JsonProperty("sourceType")
-    public SourceSalesforceSalesforceEnum sourceType;
+    public SourceSalesforceSalesforce sourceType;
 
-    public SourceSalesforce withSourceType(SourceSalesforceSalesforceEnum sourceType) {
+    public SourceSalesforce withSourceType(SourceSalesforceSalesforce sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -105,7 +105,7 @@ public class SourceSalesforce {
         return this;
     }
     
-    public SourceSalesforce(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSalesforceSalesforceEnum sourceType) {
+    public SourceSalesforce(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSalesforceSalesforce sourceType) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;

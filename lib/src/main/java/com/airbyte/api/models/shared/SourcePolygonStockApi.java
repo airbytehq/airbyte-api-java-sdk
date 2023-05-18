@@ -85,9 +85,9 @@ public class SourcePolygonStockApi {
     }
     
     @JsonProperty("sourceType")
-    public SourcePolygonStockApiPolygonStockApiEnum sourceType;
+    public SourcePolygonStockApiPolygonStockApi sourceType;
 
-    public SourcePolygonStockApi withSourceType(SourcePolygonStockApiPolygonStockApiEnum sourceType) {
+    public SourcePolygonStockApi withSourceType(SourcePolygonStockApiPolygonStockApi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -126,7 +126,7 @@ public class SourcePolygonStockApi {
         return this;
     }
     
-    public SourcePolygonStockApi(@JsonProperty("apiKey") String apiKey, @JsonProperty("end_date") LocalDate endDate, @JsonProperty("multiplier") Long multiplier, @JsonProperty("sourceType") SourcePolygonStockApiPolygonStockApiEnum sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("stocksTicker") String stocksTicker, @JsonProperty("timespan") String timespan) {
+    public SourcePolygonStockApi(@JsonProperty("apiKey") String apiKey, @JsonProperty("end_date") LocalDate endDate, @JsonProperty("multiplier") Long multiplier, @JsonProperty("sourceType") SourcePolygonStockApiPolygonStockApi sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("stocksTicker") String stocksTicker, @JsonProperty("timespan") String timespan) {
         this.apiKey = apiKey;
         this.endDate = endDate;
         this.multiplier = multiplier;

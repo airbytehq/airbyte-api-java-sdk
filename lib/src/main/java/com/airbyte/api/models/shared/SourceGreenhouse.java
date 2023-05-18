@@ -22,14 +22,14 @@ public class SourceGreenhouse {
     }
     
     @JsonProperty("sourceType")
-    public SourceGreenhouseGreenhouseEnum sourceType;
+    public SourceGreenhouseGreenhouse sourceType;
 
-    public SourceGreenhouse withSourceType(SourceGreenhouseGreenhouseEnum sourceType) {
+    public SourceGreenhouse withSourceType(SourceGreenhouseGreenhouse sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGreenhouse(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGreenhouseGreenhouseEnum sourceType) {
+    public SourceGreenhouse(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGreenhouseGreenhouse sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

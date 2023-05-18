@@ -22,14 +22,14 @@ public class DestinationS3FormatAvroApacheAvro {
     }
     
     @JsonProperty("format_type")
-    public DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType;
+    public DestinationS3FormatAvroApacheAvroFormatType formatType;
 
-    public DestinationS3FormatAvroApacheAvro withFormatType(DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType) {
+    public DestinationS3FormatAvroApacheAvro withFormatType(DestinationS3FormatAvroApacheAvroFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationS3FormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationS3FormatAvroApacheAvroFormatTypeEnum formatType) {
+    public DestinationS3FormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationS3FormatAvroApacheAvroFormatType formatType) {
         this.compressionCodec = compressionCodec;
         this.formatType = formatType;
   }

@@ -58,9 +58,9 @@ public class SourceClickhouse {
     }
     
     @JsonProperty("sourceType")
-    public SourceClickhouseClickhouseEnum sourceType;
+    public SourceClickhouseClickhouse sourceType;
 
-    public SourceClickhouse withSourceType(SourceClickhouseClickhouseEnum sourceType) {
+    public SourceClickhouse withSourceType(SourceClickhouseClickhouse sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -88,7 +88,7 @@ public class SourceClickhouse {
         return this;
     }
     
-    public SourceClickhouse(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceClickhouseClickhouseEnum sourceType, @JsonProperty("username") String username) {
+    public SourceClickhouse(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceClickhouseClickhouse sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
         this.port = port;

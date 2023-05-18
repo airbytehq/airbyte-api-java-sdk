@@ -83,9 +83,9 @@ public class DestinationAzureBlobStorage {
     }
     
     @JsonProperty("destinationType")
-    public DestinationAzureBlobStorageAzureBlobStorageEnum destinationType;
+    public DestinationAzureBlobStorageAzureBlobStorage destinationType;
 
-    public DestinationAzureBlobStorage withDestinationType(DestinationAzureBlobStorageAzureBlobStorageEnum destinationType) {
+    public DestinationAzureBlobStorage withDestinationType(DestinationAzureBlobStorageAzureBlobStorage destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -101,7 +101,7 @@ public class DestinationAzureBlobStorage {
         return this;
     }
     
-    public DestinationAzureBlobStorage(@JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey, @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("destinationType") DestinationAzureBlobStorageAzureBlobStorageEnum destinationType, @JsonProperty("format") Object format) {
+    public DestinationAzureBlobStorage(@JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey, @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("destinationType") DestinationAzureBlobStorageAzureBlobStorage destinationType, @JsonProperty("format") Object format) {
         this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         this.destinationType = destinationType;

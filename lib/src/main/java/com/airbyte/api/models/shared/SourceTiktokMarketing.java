@@ -52,9 +52,9 @@ public class SourceTiktokMarketing {
     }
     
     @JsonProperty("sourceType")
-    public SourceTiktokMarketingTiktokMarketingEnum sourceType;
+    public SourceTiktokMarketingTiktokMarketing sourceType;
 
-    public SourceTiktokMarketing withSourceType(SourceTiktokMarketingTiktokMarketingEnum sourceType) {
+    public SourceTiktokMarketing withSourceType(SourceTiktokMarketingTiktokMarketing sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -72,7 +72,7 @@ public class SourceTiktokMarketing {
         return this;
     }
     
-    public SourceTiktokMarketing(@JsonProperty("sourceType") SourceTiktokMarketingTiktokMarketingEnum sourceType) {
+    public SourceTiktokMarketing(@JsonProperty("sourceType") SourceTiktokMarketingTiktokMarketing sourceType) {
         this.sourceType = sourceType;
   }
 }

@@ -54,9 +54,9 @@ public class SourceTwitter {
     }
     
     @JsonProperty("sourceType")
-    public SourceTwitterTwitterEnum sourceType;
+    public SourceTwitterTwitter sourceType;
 
-    public SourceTwitter withSourceType(SourceTwitterTwitterEnum sourceType) {
+    public SourceTwitter withSourceType(SourceTwitterTwitter sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -75,7 +75,7 @@ public class SourceTwitter {
         return this;
     }
     
-    public SourceTwitter(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourceTwitterTwitterEnum sourceType) {
+    public SourceTwitter(@JsonProperty("api_key") String apiKey, @JsonProperty("query") String query, @JsonProperty("sourceType") SourceTwitterTwitter sourceType) {
         this.apiKey = apiKey;
         this.query = query;
         this.sourceType = sourceType;

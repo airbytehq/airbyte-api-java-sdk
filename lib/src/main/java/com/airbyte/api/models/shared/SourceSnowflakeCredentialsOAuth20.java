@@ -22,9 +22,9 @@ public class SourceSnowflakeCredentialsOAuth20 {
     }
     
     @JsonProperty("auth_type")
-    public SourceSnowflakeCredentialsOAuth20AuthTypeEnum authType;
+    public SourceSnowflakeCredentialsOAuth20AuthType authType;
 
-    public SourceSnowflakeCredentialsOAuth20 withAuthType(SourceSnowflakeCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceSnowflakeCredentialsOAuth20 withAuthType(SourceSnowflakeCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -63,7 +63,7 @@ public class SourceSnowflakeCredentialsOAuth20 {
         return this;
     }
     
-    public SourceSnowflakeCredentialsOAuth20(@JsonProperty("auth_type") SourceSnowflakeCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    public SourceSnowflakeCredentialsOAuth20(@JsonProperty("auth_type") SourceSnowflakeCredentialsOAuth20AuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
         this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

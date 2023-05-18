@@ -16,9 +16,9 @@ public class SourceSalesforceSinger {
      * Unless you know that you are transferring a very small amount of data, prefer using the BULK API. This will help avoid using up all of your API call quota with Salesforce. Valid values are BULK or REST.
      */
     @JsonProperty("api_type")
-    public SourceSalesforceSingerApiTypeEnum apiType;
+    public SourceSalesforceSingerApiType apiType;
 
-    public SourceSalesforceSinger withApiType(SourceSalesforceSingerApiTypeEnum apiType) {
+    public SourceSalesforceSinger withApiType(SourceSalesforceSingerApiType apiType) {
         this.apiType = apiType;
         return this;
     }
@@ -93,9 +93,9 @@ public class SourceSalesforceSinger {
     }
     
     @JsonProperty("sourceType")
-    public SourceSalesforceSingerSalesforceSingerEnum sourceType;
+    public SourceSalesforceSingerSalesforceSinger sourceType;
 
-    public SourceSalesforceSinger withSourceType(SourceSalesforceSingerSalesforceSingerEnum sourceType) {
+    public SourceSalesforceSinger withSourceType(SourceSalesforceSingerSalesforceSinger sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -111,7 +111,7 @@ public class SourceSalesforceSinger {
         return this;
     }
     
-    public SourceSalesforceSinger(@JsonProperty("api_type") SourceSalesforceSingerApiTypeEnum apiType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSalesforceSingerSalesforceSingerEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceSalesforceSinger(@JsonProperty("api_type") SourceSalesforceSingerApiType apiType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSalesforceSingerSalesforceSinger sourceType, @JsonProperty("start_date") String startDate) {
         this.apiType = apiType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

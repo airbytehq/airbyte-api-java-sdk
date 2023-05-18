@@ -36,9 +36,9 @@ public class DestinationRedshiftTunnelMethodSSHKeyAuthentication {
      * Connect through a jump server tunnel host using username and ssh key
      */
     @JsonProperty("tunnel_method")
-    public DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationRedshiftTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationRedshiftTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationRedshiftTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
-    public DestinationRedshiftTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
+    public DestinationRedshiftTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationRedshiftTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
         this.sshKey = sshKey;
         this.tunnelHost = tunnelHost;
         this.tunnelMethod = tunnelMethod;

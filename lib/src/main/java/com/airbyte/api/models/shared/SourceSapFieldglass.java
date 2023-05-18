@@ -22,14 +22,14 @@ public class SourceSapFieldglass {
     }
     
     @JsonProperty("sourceType")
-    public SourceSapFieldglassSapFieldglassEnum sourceType;
+    public SourceSapFieldglassSapFieldglass sourceType;
 
-    public SourceSapFieldglass withSourceType(SourceSapFieldglassSapFieldglassEnum sourceType) {
+    public SourceSapFieldglass withSourceType(SourceSapFieldglassSapFieldglass sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceSapFieldglass(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSapFieldglassSapFieldglassEnum sourceType) {
+    public SourceSapFieldglass(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSapFieldglassSapFieldglass sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

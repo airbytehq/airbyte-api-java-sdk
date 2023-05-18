@@ -30,14 +30,14 @@ public class SourceGridly {
     }
     
     @JsonProperty("sourceType")
-    public SourceGridlyGridlyEnum sourceType;
+    public SourceGridlyGridly sourceType;
 
-    public SourceGridly withSourceType(SourceGridlyGridlyEnum sourceType) {
+    public SourceGridly withSourceType(SourceGridlyGridly sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGridly(@JsonProperty("api_key") String apiKey, @JsonProperty("grid_id") String gridId, @JsonProperty("sourceType") SourceGridlyGridlyEnum sourceType) {
+    public SourceGridly(@JsonProperty("api_key") String apiKey, @JsonProperty("grid_id") String gridId, @JsonProperty("sourceType") SourceGridlyGridly sourceType) {
         this.apiKey = apiKey;
         this.gridId = gridId;
         this.sourceType = sourceType;

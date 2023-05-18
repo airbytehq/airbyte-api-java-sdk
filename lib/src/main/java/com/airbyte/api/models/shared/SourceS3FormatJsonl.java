@@ -26,9 +26,9 @@ public class SourceS3FormatJsonl {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    public SourceS3FormatJsonlFiletypeEnum filetype;
+    public SourceS3FormatJsonlFiletype filetype;
 
-    public SourceS3FormatJsonl withFiletype(SourceS3FormatJsonlFiletypeEnum filetype) {
+    public SourceS3FormatJsonl withFiletype(SourceS3FormatJsonlFiletype filetype) {
         this.filetype = filetype;
         return this;
     }
@@ -50,9 +50,9 @@ public class SourceS3FormatJsonl {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unexpected_field_behavior")
-    public SourceS3FormatJsonlUnexpectedFieldBehaviorEnum unexpectedFieldBehavior;
+    public SourceS3FormatJsonlUnexpectedFieldBehavior unexpectedFieldBehavior;
 
-    public SourceS3FormatJsonl withUnexpectedFieldBehavior(SourceS3FormatJsonlUnexpectedFieldBehaviorEnum unexpectedFieldBehavior) {
+    public SourceS3FormatJsonl withUnexpectedFieldBehavior(SourceS3FormatJsonlUnexpectedFieldBehavior unexpectedFieldBehavior) {
         this.unexpectedFieldBehavior = unexpectedFieldBehavior;
         return this;
     }

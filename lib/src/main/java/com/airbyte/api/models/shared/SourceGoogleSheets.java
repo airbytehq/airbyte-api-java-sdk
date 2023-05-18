@@ -36,9 +36,9 @@ public class SourceGoogleSheets {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleSheetsGoogleSheetsEnum sourceType;
+    public SourceGoogleSheetsGoogleSheets sourceType;
 
-    public SourceGoogleSheets withSourceType(SourceGoogleSheetsGoogleSheetsEnum sourceType) {
+    public SourceGoogleSheets withSourceType(SourceGoogleSheetsGoogleSheets sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceGoogleSheets {
         return this;
     }
     
-    public SourceGoogleSheets(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGoogleSheetsGoogleSheetsEnum sourceType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
+    public SourceGoogleSheets(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGoogleSheetsGoogleSheets sourceType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
         this.credentials = credentials;
         this.sourceType = sourceType;
         this.spreadsheetId = spreadsheetId;

@@ -68,14 +68,14 @@ public class SourceHarvest {
     }
     
     @JsonProperty("sourceType")
-    public SourceHarvestHarvestEnum sourceType;
+    public SourceHarvestHarvest sourceType;
 
-    public SourceHarvest withSourceType(SourceHarvestHarvestEnum sourceType) {
+    public SourceHarvest withSourceType(SourceHarvestHarvest sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceHarvest(@JsonProperty("account_id") String accountId, @JsonProperty("replication_start_date") OffsetDateTime replicationStartDate, @JsonProperty("sourceType") SourceHarvestHarvestEnum sourceType) {
+    public SourceHarvest(@JsonProperty("account_id") String accountId, @JsonProperty("replication_start_date") OffsetDateTime replicationStartDate, @JsonProperty("sourceType") SourceHarvestHarvest sourceType) {
         this.accountId = accountId;
         this.replicationStartDate = replicationStartDate;
         this.sourceType = sourceType;

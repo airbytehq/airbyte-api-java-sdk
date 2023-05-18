@@ -64,10 +64,22 @@ public class SourceGithub {
         return this;
     }
     
-    @JsonProperty("sourceType")
-    public SourceGithubGithubEnum sourceType;
+    /**
+     * The GitHub API allows for a maximum of 5000 requests per hour (15000 for Github Enterprise). You can specify a lower value to limit your use of the API quota.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("requests_per_hour")
+    public Long requestsPerHour;
 
-    public SourceGithub withSourceType(SourceGithubGithubEnum sourceType) {
+    public SourceGithub withRequestsPerHour(Long requestsPerHour) {
+        this.requestsPerHour = requestsPerHour;
+        return this;
+    }
+    
+    @JsonProperty("sourceType")
+    public SourceGithubGithub sourceType;
+
+    public SourceGithub withSourceType(SourceGithubGithub sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -85,7 +97,7 @@ public class SourceGithub {
         return this;
     }
     
-    public SourceGithub(@JsonProperty("repository") String repository, @JsonProperty("sourceType") SourceGithubGithubEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceGithub(@JsonProperty("repository") String repository, @JsonProperty("sourceType") SourceGithubGithub sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.repository = repository;
         this.sourceType = sourceType;
         this.startDate = startDate;

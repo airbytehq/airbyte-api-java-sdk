@@ -25,14 +25,14 @@ public class SourceHubspotCredentialsPrivateApp {
      * Name of the credentials set
      */
     @JsonProperty("credentials_title")
-    public SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle;
+    public SourceHubspotCredentialsPrivateAppCredentials credentialsTitle;
 
-    public SourceHubspotCredentialsPrivateApp withCredentialsTitle(SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle) {
+    public SourceHubspotCredentialsPrivateApp withCredentialsTitle(SourceHubspotCredentialsPrivateAppCredentials credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;
     }
     
-    public SourceHubspotCredentialsPrivateApp(@JsonProperty("access_token") String accessToken, @JsonProperty("credentials_title") SourceHubspotCredentialsPrivateAppCredentialsEnum credentialsTitle) {
+    public SourceHubspotCredentialsPrivateApp(@JsonProperty("access_token") String accessToken, @JsonProperty("credentials_title") SourceHubspotCredentialsPrivateAppCredentials credentialsTitle) {
         this.accessToken = accessToken;
         this.credentialsTitle = credentialsTitle;
   }

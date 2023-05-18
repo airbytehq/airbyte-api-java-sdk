@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceTrustpilotCredentialsAPIKey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceTrustpilotCredentialsAPIKeyAuthTypeEnum authType;
+    public SourceTrustpilotCredentialsAPIKeyAuthType authType;
 
-    public SourceTrustpilotCredentialsAPIKey withAuthType(SourceTrustpilotCredentialsAPIKeyAuthTypeEnum authType) {
+    public SourceTrustpilotCredentialsAPIKey withAuthType(SourceTrustpilotCredentialsAPIKeyAuthType authType) {
         this.authType = authType;
         return this;
     }

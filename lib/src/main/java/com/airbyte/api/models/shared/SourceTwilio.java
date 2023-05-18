@@ -52,9 +52,9 @@ public class SourceTwilio {
     }
     
     @JsonProperty("sourceType")
-    public SourceTwilioTwilioEnum sourceType;
+    public SourceTwilioTwilio sourceType;
 
-    public SourceTwilio withSourceType(SourceTwilioTwilioEnum sourceType) {
+    public SourceTwilio withSourceType(SourceTwilioTwilio sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -72,7 +72,7 @@ public class SourceTwilio {
         return this;
     }
     
-    public SourceTwilio(@JsonProperty("account_sid") String accountSid, @JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceTwilioTwilioEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceTwilio(@JsonProperty("account_sid") String accountSid, @JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceTwilioTwilio sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.accountSid = accountSid;
         this.authToken = authToken;
         this.sourceType = sourceType;

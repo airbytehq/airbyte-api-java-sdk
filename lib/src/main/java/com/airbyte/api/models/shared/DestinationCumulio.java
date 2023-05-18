@@ -44,14 +44,14 @@ public class DestinationCumulio {
     }
     
     @JsonProperty("destinationType")
-    public DestinationCumulioCumulioEnum destinationType;
+    public DestinationCumulioCumulio destinationType;
 
-    public DestinationCumulio withDestinationType(DestinationCumulioCumulioEnum destinationType) {
+    public DestinationCumulio withDestinationType(DestinationCumulioCumulio destinationType) {
         this.destinationType = destinationType;
         return this;
     }
     
-    public DestinationCumulio(@JsonProperty("api_host") String apiHost, @JsonProperty("api_key") String apiKey, @JsonProperty("api_token") String apiToken, @JsonProperty("destinationType") DestinationCumulioCumulioEnum destinationType) {
+    public DestinationCumulio(@JsonProperty("api_host") String apiHost, @JsonProperty("api_key") String apiKey, @JsonProperty("api_token") String apiToken, @JsonProperty("destinationType") DestinationCumulioCumulio destinationType) {
         this.apiHost = apiHost;
         this.apiKey = apiKey;
         this.apiToken = apiToken;

@@ -138,9 +138,9 @@ public class SourceFacebookMarketing {
     }
     
     @JsonProperty("sourceType")
-    public SourceFacebookMarketingFacebookMarketingEnum sourceType;
+    public SourceFacebookMarketingFacebookMarketing sourceType;
 
-    public SourceFacebookMarketing withSourceType(SourceFacebookMarketingFacebookMarketingEnum sourceType) {
+    public SourceFacebookMarketing withSourceType(SourceFacebookMarketingFacebookMarketing sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -158,7 +158,7 @@ public class SourceFacebookMarketing {
         return this;
     }
     
-    public SourceFacebookMarketing(@JsonProperty("access_token") String accessToken, @JsonProperty("account_id") String accountId, @JsonProperty("sourceType") SourceFacebookMarketingFacebookMarketingEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceFacebookMarketing(@JsonProperty("access_token") String accessToken, @JsonProperty("account_id") String accountId, @JsonProperty("sourceType") SourceFacebookMarketingFacebookMarketing sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.accessToken = accessToken;
         this.accountId = accountId;
         this.sourceType = sourceType;

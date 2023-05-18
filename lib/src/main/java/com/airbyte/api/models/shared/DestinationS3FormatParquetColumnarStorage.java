@@ -29,9 +29,9 @@ public class DestinationS3FormatParquetColumnarStorage {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
-    public DestinationS3FormatParquetColumnarStorageCompressionCodecEnum compressionCodec;
+    public DestinationS3FormatParquetColumnarStorageCompressionCodec compressionCodec;
 
-    public DestinationS3FormatParquetColumnarStorage withCompressionCodec(DestinationS3FormatParquetColumnarStorageCompressionCodecEnum compressionCodec) {
+    public DestinationS3FormatParquetColumnarStorage withCompressionCodec(DestinationS3FormatParquetColumnarStorageCompressionCodec compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
     }
@@ -61,9 +61,9 @@ public class DestinationS3FormatParquetColumnarStorage {
     }
     
     @JsonProperty("format_type")
-    public DestinationS3FormatParquetColumnarStorageFormatTypeEnum formatType;
+    public DestinationS3FormatParquetColumnarStorageFormatType formatType;
 
-    public DestinationS3FormatParquetColumnarStorage withFormatType(DestinationS3FormatParquetColumnarStorageFormatTypeEnum formatType) {
+    public DestinationS3FormatParquetColumnarStorage withFormatType(DestinationS3FormatParquetColumnarStorageFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
@@ -92,7 +92,7 @@ public class DestinationS3FormatParquetColumnarStorage {
         return this;
     }
     
-    public DestinationS3FormatParquetColumnarStorage(@JsonProperty("format_type") DestinationS3FormatParquetColumnarStorageFormatTypeEnum formatType) {
+    public DestinationS3FormatParquetColumnarStorage(@JsonProperty("format_type") DestinationS3FormatParquetColumnarStorageFormatType formatType) {
         this.formatType = formatType;
   }
 }

@@ -38,9 +38,9 @@ public class SourceLinnworks {
     }
     
     @JsonProperty("sourceType")
-    public SourceLinnworksLinnworksEnum sourceType;
+    public SourceLinnworksLinnworks sourceType;
 
-    public SourceLinnworks withSourceType(SourceLinnworksLinnworksEnum sourceType) {
+    public SourceLinnworks withSourceType(SourceLinnworksLinnworks sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -66,7 +66,7 @@ public class SourceLinnworks {
         return this;
     }
     
-    public SourceLinnworks(@JsonProperty("application_id") String applicationId, @JsonProperty("application_secret") String applicationSecret, @JsonProperty("sourceType") SourceLinnworksLinnworksEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
+    public SourceLinnworks(@JsonProperty("application_id") String applicationId, @JsonProperty("application_secret") String applicationSecret, @JsonProperty("sourceType") SourceLinnworksLinnworks sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
         this.applicationId = applicationId;
         this.applicationSecret = applicationSecret;
         this.sourceType = sourceType;

@@ -27,17 +27,17 @@ public class SourceCoinmarketcap {
      * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("data_type")
-    public SourceCoinmarketcapDataTypeEnum dataType;
+    public SourceCoinmarketcapDataType dataType;
 
-    public SourceCoinmarketcap withDataType(SourceCoinmarketcapDataTypeEnum dataType) {
+    public SourceCoinmarketcap withDataType(SourceCoinmarketcapDataType dataType) {
         this.dataType = dataType;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceCoinmarketcapCoinmarketcapEnum sourceType;
+    public SourceCoinmarketcapCoinmarketcap sourceType;
 
-    public SourceCoinmarketcap withSourceType(SourceCoinmarketcapCoinmarketcapEnum sourceType) {
+    public SourceCoinmarketcap withSourceType(SourceCoinmarketcapCoinmarketcap sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceCoinmarketcap {
         return this;
     }
     
-    public SourceCoinmarketcap(@JsonProperty("api_key") String apiKey, @JsonProperty("data_type") SourceCoinmarketcapDataTypeEnum dataType, @JsonProperty("sourceType") SourceCoinmarketcapCoinmarketcapEnum sourceType) {
+    public SourceCoinmarketcap(@JsonProperty("api_key") String apiKey, @JsonProperty("data_type") SourceCoinmarketcapDataType dataType, @JsonProperty("sourceType") SourceCoinmarketcapCoinmarketcap sourceType) {
         this.apiKey = apiKey;
         this.dataType = dataType;
         this.sourceType = sourceType;

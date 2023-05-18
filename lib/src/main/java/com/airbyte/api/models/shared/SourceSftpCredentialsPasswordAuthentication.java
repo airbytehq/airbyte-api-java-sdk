@@ -14,9 +14,9 @@ public class SourceSftpCredentialsPasswordAuthentication {
      * Connect through password authentication
      */
     @JsonProperty("auth_method")
-    public SourceSftpCredentialsPasswordAuthenticationAuthMethodEnum authMethod;
+    public SourceSftpCredentialsPasswordAuthenticationAuthMethod authMethod;
 
-    public SourceSftpCredentialsPasswordAuthentication withAuthMethod(SourceSftpCredentialsPasswordAuthenticationAuthMethodEnum authMethod) {
+    public SourceSftpCredentialsPasswordAuthentication withAuthMethod(SourceSftpCredentialsPasswordAuthenticationAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
@@ -32,7 +32,7 @@ public class SourceSftpCredentialsPasswordAuthentication {
         return this;
     }
     
-    public SourceSftpCredentialsPasswordAuthentication(@JsonProperty("auth_method") SourceSftpCredentialsPasswordAuthenticationAuthMethodEnum authMethod, @JsonProperty("auth_user_password") String authUserPassword) {
+    public SourceSftpCredentialsPasswordAuthentication(@JsonProperty("auth_method") SourceSftpCredentialsPasswordAuthenticationAuthMethod authMethod, @JsonProperty("auth_user_password") String authUserPassword) {
         this.authMethod = authMethod;
         this.authUserPassword = authUserPassword;
   }

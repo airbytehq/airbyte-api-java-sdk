@@ -22,14 +22,14 @@ public class SourcePokeapi {
     }
     
     @JsonProperty("sourceType")
-    public SourcePokeapiPokeapiEnum sourceType;
+    public SourcePokeapiPokeapi sourceType;
 
-    public SourcePokeapi withSourceType(SourcePokeapiPokeapiEnum sourceType) {
+    public SourcePokeapi withSourceType(SourcePokeapiPokeapi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourcePokeapi(@JsonProperty("pokemon_name") String pokemonName, @JsonProperty("sourceType") SourcePokeapiPokeapiEnum sourceType) {
+    public SourcePokeapi(@JsonProperty("pokemon_name") String pokemonName, @JsonProperty("sourceType") SourcePokeapiPokeapi sourceType) {
         this.pokemonName = pokemonName;
         this.sourceType = sourceType;
   }

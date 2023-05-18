@@ -50,9 +50,9 @@ public class SourceS3FormatParquet {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    public SourceS3FormatParquetFiletypeEnum filetype;
+    public SourceS3FormatParquetFiletype filetype;
 
-    public SourceS3FormatParquet withFiletype(SourceS3FormatParquetFiletypeEnum filetype) {
+    public SourceS3FormatParquet withFiletype(SourceS3FormatParquetFiletype filetype) {
         this.filetype = filetype;
         return this;
     }

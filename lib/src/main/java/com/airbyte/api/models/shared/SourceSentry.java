@@ -70,14 +70,14 @@ public class SourceSentry {
     }
     
     @JsonProperty("sourceType")
-    public SourceSentrySentryEnum sourceType;
+    public SourceSentrySentry sourceType;
 
-    public SourceSentry withSourceType(SourceSentrySentryEnum sourceType) {
+    public SourceSentry withSourceType(SourceSentrySentry sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceSentry(@JsonProperty("auth_token") String authToken, @JsonProperty("organization") String organization, @JsonProperty("project") String project, @JsonProperty("sourceType") SourceSentrySentryEnum sourceType) {
+    public SourceSentry(@JsonProperty("auth_token") String authToken, @JsonProperty("organization") String organization, @JsonProperty("project") String project, @JsonProperty("sourceType") SourceSentrySentry sourceType) {
         this.authToken = authToken;
         this.organization = organization;
         this.project = project;

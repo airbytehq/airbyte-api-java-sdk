@@ -40,9 +40,9 @@ public class SourceDynamodb {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
-    public SourceDynamodbDynamodbRegionEnum region;
+    public SourceDynamodbDynamodbRegion region;
 
-    public SourceDynamodb withRegion(SourceDynamodbDynamodbRegionEnum region) {
+    public SourceDynamodb withRegion(SourceDynamodbDynamodbRegion region) {
         this.region = region;
         return this;
     }
@@ -71,14 +71,14 @@ public class SourceDynamodb {
     }
     
     @JsonProperty("sourceType")
-    public SourceDynamodbDynamodbEnum sourceType;
+    public SourceDynamodbDynamodb sourceType;
 
-    public SourceDynamodb withSourceType(SourceDynamodbDynamodbEnum sourceType) {
+    public SourceDynamodb withSourceType(SourceDynamodbDynamodb sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("secret_access_key") String secretAccessKey, @JsonProperty("sourceType") SourceDynamodbDynamodbEnum sourceType) {
+    public SourceDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("secret_access_key") String secretAccessKey, @JsonProperty("sourceType") SourceDynamodbDynamodb sourceType) {
         this.accessKeyId = accessKeyId;
         this.secretAccessKey = secretAccessKey;
         this.sourceType = sourceType;

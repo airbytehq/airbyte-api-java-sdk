@@ -25,9 +25,9 @@ public class DestinationS3 {
     }
     
     @JsonProperty("destinationType")
-    public DestinationS3S3Enum destinationType;
+    public DestinationS3S3 destinationType;
 
-    public DestinationS3 withDestinationType(DestinationS3S3Enum destinationType) {
+    public DestinationS3 withDestinationType(DestinationS3S3 destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -81,9 +81,9 @@ public class DestinationS3 {
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
     @JsonProperty("s3_bucket_region")
-    public DestinationS3S3BucketRegionEnum s3BucketRegion;
+    public DestinationS3S3BucketRegion s3BucketRegion;
 
-    public DestinationS3 withS3BucketRegion(DestinationS3S3BucketRegionEnum s3BucketRegion) {
+    public DestinationS3 withS3BucketRegion(DestinationS3S3BucketRegion s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
     }
@@ -124,7 +124,7 @@ public class DestinationS3 {
         return this;
     }
     
-    public DestinationS3(@JsonProperty("destinationType") DestinationS3S3Enum destinationType, @JsonProperty("format") Object format, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3S3BucketRegionEnum s3BucketRegion) {
+    public DestinationS3(@JsonProperty("destinationType") DestinationS3S3 destinationType, @JsonProperty("format") Object format, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3S3BucketRegion s3BucketRegion) {
         this.destinationType = destinationType;
         this.format = format;
         this.s3BucketName = s3BucketName;

@@ -79,9 +79,9 @@ public class SourceSnowflake {
     }
     
     @JsonProperty("sourceType")
-    public SourceSnowflakeSnowflakeEnum sourceType;
+    public SourceSnowflakeSnowflake sourceType;
 
-    public SourceSnowflake withSourceType(SourceSnowflakeSnowflakeEnum sourceType) {
+    public SourceSnowflake withSourceType(SourceSnowflakeSnowflake sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -97,7 +97,7 @@ public class SourceSnowflake {
         return this;
     }
     
-    public SourceSnowflake(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("role") String role, @JsonProperty("sourceType") SourceSnowflakeSnowflakeEnum sourceType, @JsonProperty("warehouse") String warehouse) {
+    public SourceSnowflake(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("role") String role, @JsonProperty("sourceType") SourceSnowflakeSnowflake sourceType, @JsonProperty("warehouse") String warehouse) {
         this.database = database;
         this.host = host;
         this.role = role;

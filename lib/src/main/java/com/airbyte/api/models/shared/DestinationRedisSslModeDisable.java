@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationRedisSslModeDisable {
     @JsonProperty("mode")
-    public DestinationRedisSslModeDisableModeEnum mode;
+    public DestinationRedisSslModeDisableMode mode;
 
-    public DestinationRedisSslModeDisable withMode(DestinationRedisSslModeDisableModeEnum mode) {
+    public DestinationRedisSslModeDisable withMode(DestinationRedisSslModeDisableMode mode) {
         this.mode = mode;
         return this;
     }
     
-    public DestinationRedisSslModeDisable(@JsonProperty("mode") DestinationRedisSslModeDisableModeEnum mode) {
+    public DestinationRedisSslModeDisable(@JsonProperty("mode") DestinationRedisSslModeDisableMode mode) {
         this.mode = mode;
   }
 }

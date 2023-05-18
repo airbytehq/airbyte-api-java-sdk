@@ -27,9 +27,9 @@ public class SourceGitlabCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceGitlabCredentialsOAuth20AuthTypeEnum authType;
+    public SourceGitlabCredentialsOAuth20AuthType authType;
 
-    public SourceGitlabCredentialsOAuth20 withAuthType(SourceGitlabCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceGitlabCredentialsOAuth20 withAuthType(SourceGitlabCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

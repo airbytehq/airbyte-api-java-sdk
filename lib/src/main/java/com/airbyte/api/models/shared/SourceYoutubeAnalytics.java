@@ -19,14 +19,14 @@ public class SourceYoutubeAnalytics {
     }
     
     @JsonProperty("sourceType")
-    public SourceYoutubeAnalyticsYoutubeAnalyticsEnum sourceType;
+    public SourceYoutubeAnalyticsYoutubeAnalytics sourceType;
 
-    public SourceYoutubeAnalytics withSourceType(SourceYoutubeAnalyticsYoutubeAnalyticsEnum sourceType) {
+    public SourceYoutubeAnalytics withSourceType(SourceYoutubeAnalyticsYoutubeAnalytics sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceYoutubeAnalytics(@JsonProperty("credentials") java.util.Map<String, Object> credentials, @JsonProperty("sourceType") SourceYoutubeAnalyticsYoutubeAnalyticsEnum sourceType) {
+    public SourceYoutubeAnalytics(@JsonProperty("credentials") java.util.Map<String, Object> credentials, @JsonProperty("sourceType") SourceYoutubeAnalyticsYoutubeAnalytics sourceType) {
         this.credentials = credentials;
         this.sourceType = sourceType;
   }

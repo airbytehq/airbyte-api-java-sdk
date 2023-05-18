@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceWhiskyHunter {
     @JsonProperty("sourceType")
-    public SourceWhiskyHunterWhiskyHunterEnum sourceType;
+    public SourceWhiskyHunterWhiskyHunter sourceType;
 
-    public SourceWhiskyHunter withSourceType(SourceWhiskyHunterWhiskyHunterEnum sourceType) {
+    public SourceWhiskyHunter withSourceType(SourceWhiskyHunterWhiskyHunter sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceWhiskyHunter(@JsonProperty("sourceType") SourceWhiskyHunterWhiskyHunterEnum sourceType) {
+    public SourceWhiskyHunter(@JsonProperty("sourceType") SourceWhiskyHunterWhiskyHunter sourceType) {
         this.sourceType = sourceType;
   }
 }

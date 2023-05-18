@@ -30,9 +30,9 @@ public class SourceStrava {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceStravaAuthTypeEnum authType;
+    public SourceStravaAuthType authType;
 
-    public SourceStrava withAuthType(SourceStravaAuthTypeEnum authType) {
+    public SourceStrava withAuthType(SourceStravaAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -71,9 +71,9 @@ public class SourceStrava {
     }
     
     @JsonProperty("sourceType")
-    public SourceStravaStravaEnum sourceType;
+    public SourceStravaStrava sourceType;
 
-    public SourceStrava withSourceType(SourceStravaStravaEnum sourceType) {
+    public SourceStrava withSourceType(SourceStravaStrava sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -91,7 +91,7 @@ public class SourceStrava {
         return this;
     }
     
-    public SourceStrava(@JsonProperty("athlete_id") Long athleteId, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceStravaStravaEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceStrava(@JsonProperty("athlete_id") Long athleteId, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceStravaStrava sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.athleteId = athleteId;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

@@ -33,9 +33,9 @@ public class DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging {
     }
     
     @JsonProperty("method")
-    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum method;
+    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethod method;
 
-    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging withMethod(DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum method) {
+    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging withMethod(DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethod method) {
         this.method = method;
         return this;
     }
@@ -51,7 +51,7 @@ public class DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging {
         return this;
     }
     
-    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials_json") String credentialsJson, @JsonProperty("method") DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum method, @JsonProperty("project_id") String projectId) {
+    public DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials_json") String credentialsJson, @JsonProperty("method") DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethod method, @JsonProperty("project_id") String projectId) {
         this.bucketName = bucketName;
         this.credentialsJson = credentialsJson;
         this.method = method;

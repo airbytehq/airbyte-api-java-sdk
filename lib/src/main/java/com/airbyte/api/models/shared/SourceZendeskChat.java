@@ -27,9 +27,9 @@ public class SourceZendeskChat {
     }
     
     @JsonProperty("sourceType")
-    public SourceZendeskChatZendeskChatEnum sourceType;
+    public SourceZendeskChatZendeskChat sourceType;
 
-    public SourceZendeskChat withSourceType(SourceZendeskChatZendeskChatEnum sourceType) {
+    public SourceZendeskChat withSourceType(SourceZendeskChatZendeskChat sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -59,7 +59,7 @@ public class SourceZendeskChat {
         return this;
     }
     
-    public SourceZendeskChat(@JsonProperty("sourceType") SourceZendeskChatZendeskChatEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceZendeskChat(@JsonProperty("sourceType") SourceZendeskChatZendeskChat sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

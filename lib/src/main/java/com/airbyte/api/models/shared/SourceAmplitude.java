@@ -28,9 +28,9 @@ public class SourceAmplitude {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_region")
-    public SourceAmplitudeDataRegionEnum dataRegion;
+    public SourceAmplitudeDataRegion dataRegion;
 
-    public SourceAmplitude withDataRegion(SourceAmplitudeDataRegionEnum dataRegion) {
+    public SourceAmplitude withDataRegion(SourceAmplitudeDataRegion dataRegion) {
         this.dataRegion = dataRegion;
         return this;
     }
@@ -59,9 +59,9 @@ public class SourceAmplitude {
     }
     
     @JsonProperty("sourceType")
-    public SourceAmplitudeAmplitudeEnum sourceType;
+    public SourceAmplitudeAmplitude sourceType;
 
-    public SourceAmplitude withSourceType(SourceAmplitudeAmplitudeEnum sourceType) {
+    public SourceAmplitude withSourceType(SourceAmplitudeAmplitude sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -77,7 +77,7 @@ public class SourceAmplitude {
         return this;
     }
     
-    public SourceAmplitude(@JsonProperty("api_key") String apiKey, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceAmplitudeAmplitudeEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceAmplitude(@JsonProperty("api_key") String apiKey, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceAmplitudeAmplitude sourceType, @JsonProperty("start_date") String startDate) {
         this.apiKey = apiKey;
         this.secretKey = secretKey;
         this.sourceType = sourceType;

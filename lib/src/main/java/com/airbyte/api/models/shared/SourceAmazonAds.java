@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceAmazonAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceAmazonAdsAuthTypeEnum authType;
+    public SourceAmazonAdsAuthType authType;
 
-    public SourceAmazonAds withAuthType(SourceAmazonAdsAuthTypeEnum authType) {
+    public SourceAmazonAds withAuthType(SourceAmazonAdsAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -83,9 +83,9 @@ public class SourceAmazonAds {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
-    public SourceAmazonAdsRegionEnum region;
+    public SourceAmazonAdsRegion region;
 
-    public SourceAmazonAds withRegion(SourceAmazonAdsRegionEnum region) {
+    public SourceAmazonAds withRegion(SourceAmazonAdsRegion region) {
         this.region = region;
         return this;
     }
@@ -95,17 +95,17 @@ public class SourceAmazonAds {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("report_record_types")
-    public SourceAmazonAdsReportRecordTypesEnum[] reportRecordTypes;
+    public SourceAmazonAdsReportRecordTypes[] reportRecordTypes;
 
-    public SourceAmazonAds withReportRecordTypes(SourceAmazonAdsReportRecordTypesEnum[] reportRecordTypes) {
+    public SourceAmazonAds withReportRecordTypes(SourceAmazonAdsReportRecordTypes[] reportRecordTypes) {
         this.reportRecordTypes = reportRecordTypes;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceAmazonAdsAmazonAdsEnum sourceType;
+    public SourceAmazonAdsAmazonAds sourceType;
 
-    public SourceAmazonAds withSourceType(SourceAmazonAdsAmazonAdsEnum sourceType) {
+    public SourceAmazonAds withSourceType(SourceAmazonAdsAmazonAds sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -127,14 +127,14 @@ public class SourceAmazonAds {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("state_filter")
-    public SourceAmazonAdsStateFilterEnum[] stateFilter;
+    public SourceAmazonAdsStateFilter[] stateFilter;
 
-    public SourceAmazonAds withStateFilter(SourceAmazonAdsStateFilterEnum[] stateFilter) {
+    public SourceAmazonAds withStateFilter(SourceAmazonAdsStateFilter[] stateFilter) {
         this.stateFilter = stateFilter;
         return this;
     }
     
-    public SourceAmazonAds(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceAmazonAdsAmazonAdsEnum sourceType) {
+    public SourceAmazonAds(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceAmazonAdsAmazonAds sourceType) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;

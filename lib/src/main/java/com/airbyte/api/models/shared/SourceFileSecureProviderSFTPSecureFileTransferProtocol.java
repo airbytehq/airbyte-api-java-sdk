@@ -39,9 +39,9 @@ public class SourceFileSecureProviderSFTPSecureFileTransferProtocol {
     }
     
     @JsonProperty("storage")
-    public SourceFileSecureProviderSFTPSecureFileTransferProtocolStorageEnum storage;
+    public SourceFileSecureProviderSFTPSecureFileTransferProtocolStorage storage;
 
-    public SourceFileSecureProviderSFTPSecureFileTransferProtocol withStorage(SourceFileSecureProviderSFTPSecureFileTransferProtocolStorageEnum storage) {
+    public SourceFileSecureProviderSFTPSecureFileTransferProtocol withStorage(SourceFileSecureProviderSFTPSecureFileTransferProtocolStorage storage) {
         this.storage = storage;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceFileSecureProviderSFTPSecureFileTransferProtocol {
         return this;
     }
     
-    public SourceFileSecureProviderSFTPSecureFileTransferProtocol(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSFTPSecureFileTransferProtocolStorageEnum storage, @JsonProperty("user") String user) {
+    public SourceFileSecureProviderSFTPSecureFileTransferProtocol(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSFTPSecureFileTransferProtocolStorage storage, @JsonProperty("user") String user) {
         this.host = host;
         this.storage = storage;
         this.user = user;

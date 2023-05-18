@@ -30,9 +30,9 @@ public class SourceTypeform {
     }
     
     @JsonProperty("sourceType")
-    public SourceTypeformTypeformEnum sourceType;
+    public SourceTypeformTypeform sourceType;
 
-    public SourceTypeform withSourceType(SourceTypeformTypeformEnum sourceType) {
+    public SourceTypeform withSourceType(SourceTypeformTypeform sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -61,7 +61,7 @@ public class SourceTypeform {
         return this;
     }
     
-    public SourceTypeform(@JsonProperty("sourceType") SourceTypeformTypeformEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
+    public SourceTypeform(@JsonProperty("sourceType") SourceTypeformTypeform sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
         this.sourceType = sourceType;
         this.startDate = startDate;
         this.token = token;

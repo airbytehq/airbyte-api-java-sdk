@@ -24,9 +24,9 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
     }
     
     @JsonProperty("auth_method")
-    public SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod;
+    public SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethod authMethod;
 
-    public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withAuthMethod(SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod) {
+    public SourceSurveymonkeySurveyMonkeyAuthorizationMethod withAuthMethod(SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
@@ -55,7 +55,7 @@ public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
         return this;
     }
     
-    public SourceSurveymonkeySurveyMonkeyAuthorizationMethod(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethodEnum authMethod) {
+    public SourceSurveymonkeySurveyMonkeyAuthorizationMethod(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourceSurveymonkeySurveyMonkeyAuthorizationMethodAuthMethod authMethod) {
         this.accessToken = accessToken;
         this.authMethod = authMethod;
   }

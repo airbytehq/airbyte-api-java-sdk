@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourcePostgresReplicationMethodStandard {
     @JsonProperty("method")
-    public SourcePostgresReplicationMethodStandardMethodEnum method;
+    public SourcePostgresReplicationMethodStandardMethod method;
 
-    public SourcePostgresReplicationMethodStandard withMethod(SourcePostgresReplicationMethodStandardMethodEnum method) {
+    public SourcePostgresReplicationMethodStandard withMethod(SourcePostgresReplicationMethodStandardMethod method) {
         this.method = method;
         return this;
     }
     
-    public SourcePostgresReplicationMethodStandard(@JsonProperty("method") SourcePostgresReplicationMethodStandardMethodEnum method) {
+    public SourcePostgresReplicationMethodStandard(@JsonProperty("method") SourcePostgresReplicationMethodStandardMethod method) {
         this.method = method;
   }
 }

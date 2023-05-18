@@ -58,14 +58,14 @@ public class DestinationPostgresSslModeVerifyFull {
     }
     
     @JsonProperty("mode")
-    public DestinationPostgresSslModeVerifyFullModeEnum mode;
+    public DestinationPostgresSslModeVerifyFullMode mode;
 
-    public DestinationPostgresSslModeVerifyFull withMode(DestinationPostgresSslModeVerifyFullModeEnum mode) {
+    public DestinationPostgresSslModeVerifyFull withMode(DestinationPostgresSslModeVerifyFullMode mode) {
         this.mode = mode;
         return this;
     }
     
-    public DestinationPostgresSslModeVerifyFull(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("client_certificate") String clientCertificate, @JsonProperty("client_key") String clientKey, @JsonProperty("mode") DestinationPostgresSslModeVerifyFullModeEnum mode) {
+    public DestinationPostgresSslModeVerifyFull(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("client_certificate") String clientCertificate, @JsonProperty("client_key") String clientKey, @JsonProperty("mode") DestinationPostgresSslModeVerifyFullMode mode) {
         this.caCertificate = caCertificate;
         this.clientCertificate = clientCertificate;
         this.clientKey = clientKey;

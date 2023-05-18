@@ -60,14 +60,14 @@ public class SourceGoogleWebfonts {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleWebfontsGoogleWebfontsEnum sourceType;
+    public SourceGoogleWebfontsGoogleWebfonts sourceType;
 
-    public SourceGoogleWebfonts withSourceType(SourceGoogleWebfontsGoogleWebfontsEnum sourceType) {
+    public SourceGoogleWebfonts withSourceType(SourceGoogleWebfontsGoogleWebfonts sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGoogleWebfonts(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGoogleWebfontsGoogleWebfontsEnum sourceType) {
+    public SourceGoogleWebfonts(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGoogleWebfontsGoogleWebfonts sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

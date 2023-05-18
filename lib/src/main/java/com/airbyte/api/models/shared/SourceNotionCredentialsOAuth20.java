@@ -22,9 +22,9 @@ public class SourceNotionCredentialsOAuth20 {
     }
     
     @JsonProperty("auth_type")
-    public SourceNotionCredentialsOAuth20AuthTypeEnum authType;
+    public SourceNotionCredentialsOAuth20AuthType authType;
 
-    public SourceNotionCredentialsOAuth20 withAuthType(SourceNotionCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceNotionCredentialsOAuth20 withAuthType(SourceNotionCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -51,7 +51,7 @@ public class SourceNotionCredentialsOAuth20 {
         return this;
     }
     
-    public SourceNotionCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceNotionCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    public SourceNotionCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceNotionCredentialsOAuth20AuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
         this.accessToken = accessToken;
         this.authType = authType;
         this.clientId = clientId;

@@ -36,9 +36,9 @@ public class DestinationPostgresTunnelMethodSSHKeyAuthentication {
      * Connect through a jump server tunnel host using username and ssh key
      */
     @JsonProperty("tunnel_method")
-    public DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationPostgresTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationPostgresTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationPostgresTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
-    public DestinationPostgresTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
+    public DestinationPostgresTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
         this.sshKey = sshKey;
         this.tunnelHost = tunnelHost;
         this.tunnelMethod = tunnelMethod;

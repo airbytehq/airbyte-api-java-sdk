@@ -33,14 +33,14 @@ public class SourceWebflow {
     }
     
     @JsonProperty("sourceType")
-    public SourceWebflowWebflowEnum sourceType;
+    public SourceWebflowWebflow sourceType;
 
-    public SourceWebflow withSourceType(SourceWebflowWebflowEnum sourceType) {
+    public SourceWebflow withSourceType(SourceWebflowWebflow sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceWebflow(@JsonProperty("api_key") String apiKey, @JsonProperty("site_id") String siteId, @JsonProperty("sourceType") SourceWebflowWebflowEnum sourceType) {
+    public SourceWebflow(@JsonProperty("api_key") String apiKey, @JsonProperty("site_id") String siteId, @JsonProperty("sourceType") SourceWebflowWebflow sourceType) {
         this.apiKey = apiKey;
         this.siteId = siteId;
         this.sourceType = sourceType;

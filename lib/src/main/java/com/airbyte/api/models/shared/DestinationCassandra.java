@@ -36,9 +36,9 @@ public class DestinationCassandra {
     }
     
     @JsonProperty("destinationType")
-    public DestinationCassandraCassandraEnum destinationType;
+    public DestinationCassandraCassandra destinationType;
 
-    public DestinationCassandra withDestinationType(DestinationCassandraCassandraEnum destinationType) {
+    public DestinationCassandra withDestinationType(DestinationCassandraCassandra destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -99,7 +99,7 @@ public class DestinationCassandra {
         return this;
     }
     
-    public DestinationCassandra(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("address") String address, @JsonProperty("destinationType") DestinationCassandraCassandraEnum destinationType, @JsonProperty("keyspace") String keyspace, @JsonProperty("port") Long port) {
+    public DestinationCassandra(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("address") String address, @JsonProperty("destinationType") DestinationCassandraCassandra destinationType, @JsonProperty("keyspace") String keyspace, @JsonProperty("port") Long port) {
         this.username = username;
         this.password = password;
         this.address = address;

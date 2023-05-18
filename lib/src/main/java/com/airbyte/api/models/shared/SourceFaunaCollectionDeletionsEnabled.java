@@ -25,14 +25,14 @@ public class SourceFaunaCollectionDeletionsEnabled {
     }
     
     @JsonProperty("deletion_mode")
-    public SourceFaunaCollectionDeletionsEnabledDeletionModeEnum deletionMode;
+    public SourceFaunaCollectionDeletionsEnabledDeletionMode deletionMode;
 
-    public SourceFaunaCollectionDeletionsEnabled withDeletionMode(SourceFaunaCollectionDeletionsEnabledDeletionModeEnum deletionMode) {
+    public SourceFaunaCollectionDeletionsEnabled withDeletionMode(SourceFaunaCollectionDeletionsEnabledDeletionMode deletionMode) {
         this.deletionMode = deletionMode;
         return this;
     }
     
-    public SourceFaunaCollectionDeletionsEnabled(@JsonProperty("column") String column, @JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsEnabledDeletionModeEnum deletionMode) {
+    public SourceFaunaCollectionDeletionsEnabled(@JsonProperty("column") String column, @JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsEnabledDeletionMode deletionMode) {
         this.column = column;
         this.deletionMode = deletionMode;
   }

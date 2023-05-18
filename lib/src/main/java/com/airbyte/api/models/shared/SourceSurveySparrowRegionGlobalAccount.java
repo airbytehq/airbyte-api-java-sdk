@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceSurveySparrowRegionGlobalAccount {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url_base")
-    public SourceSurveySparrowRegionGlobalAccountUrlBaseEnum urlBase;
+    public SourceSurveySparrowRegionGlobalAccountUrlBase urlBase;
 
-    public SourceSurveySparrowRegionGlobalAccount withUrlBase(SourceSurveySparrowRegionGlobalAccountUrlBaseEnum urlBase) {
+    public SourceSurveySparrowRegionGlobalAccount withUrlBase(SourceSurveySparrowRegionGlobalAccountUrlBase urlBase) {
         this.urlBase = urlBase;
         return this;
     }

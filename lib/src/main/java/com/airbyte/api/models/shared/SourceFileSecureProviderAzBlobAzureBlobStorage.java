@@ -37,9 +37,9 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
     }
     
     @JsonProperty("storage")
-    public SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage;
+    public SourceFileSecureProviderAzBlobAzureBlobStorageStorage storage;
 
-    public SourceFileSecureProviderAzBlobAzureBlobStorage withStorage(SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage) {
+    public SourceFileSecureProviderAzBlobAzureBlobStorage withStorage(SourceFileSecureProviderAzBlobAzureBlobStorageStorage storage) {
         this.storage = storage;
         return this;
     }
@@ -55,7 +55,7 @@ public class SourceFileSecureProviderAzBlobAzureBlobStorage {
         return this;
     }
     
-    public SourceFileSecureProviderAzBlobAzureBlobStorage(@JsonProperty("storage") SourceFileSecureProviderAzBlobAzureBlobStorageStorageEnum storage, @JsonProperty("storage_account") String storageAccount) {
+    public SourceFileSecureProviderAzBlobAzureBlobStorage(@JsonProperty("storage") SourceFileSecureProviderAzBlobAzureBlobStorageStorage storage, @JsonProperty("storage_account") String storageAccount) {
         this.storage = storage;
         this.storageAccount = storageAccount;
   }

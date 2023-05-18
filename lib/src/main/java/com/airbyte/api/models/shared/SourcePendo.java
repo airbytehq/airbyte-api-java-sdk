@@ -19,14 +19,14 @@ public class SourcePendo {
     }
     
     @JsonProperty("sourceType")
-    public SourcePendoPendoEnum sourceType;
+    public SourcePendoPendo sourceType;
 
-    public SourcePendo withSourceType(SourcePendoPendoEnum sourceType) {
+    public SourcePendo withSourceType(SourcePendoPendo sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourcePendo(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePendoPendoEnum sourceType) {
+    public SourcePendo(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePendoPendo sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

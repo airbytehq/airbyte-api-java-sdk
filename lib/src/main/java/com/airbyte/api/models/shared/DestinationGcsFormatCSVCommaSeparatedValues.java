@@ -29,22 +29,22 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
-    public DestinationGcsFormatCSVCommaSeparatedValuesNormalizationEnum flattening;
+    public DestinationGcsFormatCSVCommaSeparatedValuesNormalization flattening;
 
-    public DestinationGcsFormatCSVCommaSeparatedValues withFlattening(DestinationGcsFormatCSVCommaSeparatedValuesNormalizationEnum flattening) {
+    public DestinationGcsFormatCSVCommaSeparatedValues withFlattening(DestinationGcsFormatCSVCommaSeparatedValuesNormalization flattening) {
         this.flattening = flattening;
         return this;
     }
     
     @JsonProperty("format_type")
-    public DestinationGcsFormatCSVCommaSeparatedValuesFormatTypeEnum formatType;
+    public DestinationGcsFormatCSVCommaSeparatedValuesFormatType formatType;
 
-    public DestinationGcsFormatCSVCommaSeparatedValues withFormatType(DestinationGcsFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    public DestinationGcsFormatCSVCommaSeparatedValues withFormatType(DestinationGcsFormatCSVCommaSeparatedValuesFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationGcsFormatCSVCommaSeparatedValues(@JsonProperty("format_type") DestinationGcsFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    public DestinationGcsFormatCSVCommaSeparatedValues(@JsonProperty("format_type") DestinationGcsFormatCSVCommaSeparatedValuesFormatType formatType) {
         this.formatType = formatType;
   }
 }

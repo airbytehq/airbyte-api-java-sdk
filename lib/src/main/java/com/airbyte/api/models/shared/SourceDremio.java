@@ -33,14 +33,14 @@ public class SourceDremio {
     }
     
     @JsonProperty("sourceType")
-    public SourceDremioDremioEnum sourceType;
+    public SourceDremioDremio sourceType;
 
-    public SourceDremio withSourceType(SourceDremioDremioEnum sourceType) {
+    public SourceDremio withSourceType(SourceDremioDremio sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceDremio(@JsonProperty("api_key") String apiKey, @JsonProperty("base_url") String baseUrl, @JsonProperty("sourceType") SourceDremioDremioEnum sourceType) {
+    public SourceDremio(@JsonProperty("api_key") String apiKey, @JsonProperty("base_url") String baseUrl, @JsonProperty("sourceType") SourceDremioDremio sourceType) {
         this.apiKey = apiKey;
         this.baseUrl = baseUrl;
         this.sourceType = sourceType;

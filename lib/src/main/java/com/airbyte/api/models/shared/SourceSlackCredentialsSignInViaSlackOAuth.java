@@ -44,14 +44,14 @@ public class SourceSlackCredentialsSignInViaSlackOAuth {
     }
     
     @JsonProperty("option_title")
-    public SourceSlackCredentialsSignInViaSlackOAuthOptionTitleEnum optionTitle;
+    public SourceSlackCredentialsSignInViaSlackOAuthOptionTitle optionTitle;
 
-    public SourceSlackCredentialsSignInViaSlackOAuth withOptionTitle(SourceSlackCredentialsSignInViaSlackOAuthOptionTitleEnum optionTitle) {
+    public SourceSlackCredentialsSignInViaSlackOAuth withOptionTitle(SourceSlackCredentialsSignInViaSlackOAuthOptionTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }
     
-    public SourceSlackCredentialsSignInViaSlackOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("option_title") SourceSlackCredentialsSignInViaSlackOAuthOptionTitleEnum optionTitle) {
+    public SourceSlackCredentialsSignInViaSlackOAuth(@JsonProperty("access_token") String accessToken, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("option_title") SourceSlackCredentialsSignInViaSlackOAuthOptionTitle optionTitle) {
         this.accessToken = accessToken;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

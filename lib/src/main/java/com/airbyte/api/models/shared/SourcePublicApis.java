@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourcePublicApis {
     @JsonProperty("sourceType")
-    public SourcePublicApisPublicApisEnum sourceType;
+    public SourcePublicApisPublicApis sourceType;
 
-    public SourcePublicApis withSourceType(SourcePublicApisPublicApisEnum sourceType) {
+    public SourcePublicApis withSourceType(SourcePublicApisPublicApis sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourcePublicApis(@JsonProperty("sourceType") SourcePublicApisPublicApisEnum sourceType) {
+    public SourcePublicApis(@JsonProperty("sourceType") SourcePublicApisPublicApis sourceType) {
         this.sourceType = sourceType;
   }
 }

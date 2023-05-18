@@ -98,9 +98,9 @@ public class SourceS3FormatCSV {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    public SourceS3FormatCSVFiletypeEnum filetype;
+    public SourceS3FormatCSVFiletype filetype;
 
-    public SourceS3FormatCSV withFiletype(SourceS3FormatCSVFiletypeEnum filetype) {
+    public SourceS3FormatCSV withFiletype(SourceS3FormatCSVFiletype filetype) {
         this.filetype = filetype;
         return this;
     }

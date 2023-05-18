@@ -22,14 +22,14 @@ public class SourceInstatus {
     }
     
     @JsonProperty("sourceType")
-    public SourceInstatusInstatusEnum sourceType;
+    public SourceInstatusInstatus sourceType;
 
-    public SourceInstatus withSourceType(SourceInstatusInstatusEnum sourceType) {
+    public SourceInstatus withSourceType(SourceInstatusInstatus sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceInstatus(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceInstatusInstatusEnum sourceType) {
+    public SourceInstatus(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceInstatusInstatus sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

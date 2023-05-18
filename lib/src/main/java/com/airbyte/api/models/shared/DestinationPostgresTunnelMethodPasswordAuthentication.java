@@ -25,9 +25,9 @@ public class DestinationPostgresTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationPostgresTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationPostgresTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationPostgresTunnelMethodPasswordAuthentication withTunnelMethod(DestinationPostgresTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationPostgresTunnelMethodPasswordAuthentication withTunnelMethod(DestinationPostgresTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationPostgresTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationPostgresTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationPostgresTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationPostgresTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationPostgresTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

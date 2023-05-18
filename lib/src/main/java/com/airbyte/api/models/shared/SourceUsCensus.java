@@ -47,14 +47,14 @@ public class SourceUsCensus {
     }
     
     @JsonProperty("sourceType")
-    public SourceUsCensusUsCensusEnum sourceType;
+    public SourceUsCensusUsCensus sourceType;
 
-    public SourceUsCensus withSourceType(SourceUsCensusUsCensusEnum sourceType) {
+    public SourceUsCensus withSourceType(SourceUsCensusUsCensus sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceUsCensus(@JsonProperty("api_key") String apiKey, @JsonProperty("query_path") String queryPath, @JsonProperty("sourceType") SourceUsCensusUsCensusEnum sourceType) {
+    public SourceUsCensus(@JsonProperty("api_key") String apiKey, @JsonProperty("query_path") String queryPath, @JsonProperty("sourceType") SourceUsCensusUsCensus sourceType) {
         this.apiKey = apiKey;
         this.queryPath = queryPath;
         this.sourceType = sourceType;

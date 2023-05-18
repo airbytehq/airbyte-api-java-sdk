@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationDatabricksDataSourceRecommendedManagedTables {
     @JsonProperty("data_source_type")
-    public DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceTypeEnum dataSourceType;
+    public DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceType dataSourceType;
 
-    public DestinationDatabricksDataSourceRecommendedManagedTables withDataSourceType(DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceTypeEnum dataSourceType) {
+    public DestinationDatabricksDataSourceRecommendedManagedTables withDataSourceType(DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceType dataSourceType) {
         this.dataSourceType = dataSourceType;
         return this;
     }
     
-    public DestinationDatabricksDataSourceRecommendedManagedTables(@JsonProperty("data_source_type") DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceTypeEnum dataSourceType) {
+    public DestinationDatabricksDataSourceRecommendedManagedTables(@JsonProperty("data_source_type") DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceType dataSourceType) {
         this.dataSourceType = dataSourceType;
   }
 }

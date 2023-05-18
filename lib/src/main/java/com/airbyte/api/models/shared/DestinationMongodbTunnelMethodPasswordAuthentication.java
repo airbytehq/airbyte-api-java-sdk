@@ -25,9 +25,9 @@ public class DestinationMongodbTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationMongodbTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationMongodbTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationMongodbTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMongodbTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationMongodbTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMongodbTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationMongodbTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationMongodbTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMongodbTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationMongodbTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMongodbTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

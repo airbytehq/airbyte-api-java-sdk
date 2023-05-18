@@ -25,9 +25,9 @@ public class DestinationFirestore {
     }
     
     @JsonProperty("destinationType")
-    public DestinationFirestoreFirestoreEnum destinationType;
+    public DestinationFirestoreFirestore destinationType;
 
-    public DestinationFirestore withDestinationType(DestinationFirestoreFirestoreEnum destinationType) {
+    public DestinationFirestore withDestinationType(DestinationFirestoreFirestore destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -43,7 +43,7 @@ public class DestinationFirestore {
         return this;
     }
     
-    public DestinationFirestore(@JsonProperty("destinationType") DestinationFirestoreFirestoreEnum destinationType, @JsonProperty("project_id") String projectId) {
+    public DestinationFirestore(@JsonProperty("destinationType") DestinationFirestoreFirestore destinationType, @JsonProperty("project_id") String projectId) {
         this.destinationType = destinationType;
         this.projectId = projectId;
   }

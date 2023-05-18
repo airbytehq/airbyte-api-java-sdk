@@ -27,9 +27,9 @@ public class SourceRecharge {
     }
     
     @JsonProperty("sourceType")
-    public SourceRechargeRechargeEnum sourceType;
+    public SourceRechargeRecharge sourceType;
 
-    public SourceRecharge withSourceType(SourceRechargeRechargeEnum sourceType) {
+    public SourceRecharge withSourceType(SourceRechargeRecharge sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -47,7 +47,7 @@ public class SourceRecharge {
         return this;
     }
     
-    public SourceRecharge(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceRechargeRechargeEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceRecharge(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceRechargeRecharge sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.accessToken = accessToken;
         this.sourceType = sourceType;
         this.startDate = startDate;

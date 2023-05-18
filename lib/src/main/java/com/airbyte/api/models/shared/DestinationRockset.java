@@ -36,9 +36,9 @@ public class DestinationRockset {
     }
     
     @JsonProperty("destinationType")
-    public DestinationRocksetRocksetEnum destinationType;
+    public DestinationRocksetRockset destinationType;
 
-    public DestinationRockset withDestinationType(DestinationRocksetRocksetEnum destinationType) {
+    public DestinationRockset withDestinationType(DestinationRocksetRockset destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -54,7 +54,7 @@ public class DestinationRockset {
         return this;
     }
     
-    public DestinationRockset(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationRocksetRocksetEnum destinationType, @JsonProperty("workspace") String workspace) {
+    public DestinationRockset(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationRocksetRockset destinationType, @JsonProperty("workspace") String workspace) {
         this.apiKey = apiKey;
         this.destinationType = destinationType;
         this.workspace = workspace;

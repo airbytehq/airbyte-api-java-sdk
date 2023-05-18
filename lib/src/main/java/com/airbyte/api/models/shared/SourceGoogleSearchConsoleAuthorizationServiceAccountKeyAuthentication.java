@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication {
     @JsonProperty("auth_type")
-    public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthTypeEnum authType;
+    public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType authType;
 
-    public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication withAuthType(SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthTypeEnum authType) {
+    public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication withAuthType(SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -37,7 +37,7 @@ public class SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticati
         return this;
     }
     
-    public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication(@JsonProperty("auth_type") SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthTypeEnum authType, @JsonProperty("email") String email, @JsonProperty("service_account_info") String serviceAccountInfo) {
+    public SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication(@JsonProperty("auth_type") SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType authType, @JsonProperty("email") String email, @JsonProperty("service_account_info") String serviceAccountInfo) {
         this.authType = authType;
         this.email = email;
         this.serviceAccountInfo = serviceAccountInfo;

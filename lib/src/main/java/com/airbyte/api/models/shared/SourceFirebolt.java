@@ -71,9 +71,9 @@ public class SourceFirebolt {
     }
     
     @JsonProperty("sourceType")
-    public SourceFireboltFireboltEnum sourceType;
+    public SourceFireboltFirebolt sourceType;
 
-    public SourceFirebolt withSourceType(SourceFireboltFireboltEnum sourceType) {
+    public SourceFirebolt withSourceType(SourceFireboltFirebolt sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -89,7 +89,7 @@ public class SourceFirebolt {
         return this;
     }
     
-    public SourceFirebolt(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("sourceType") SourceFireboltFireboltEnum sourceType) {
+    public SourceFirebolt(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("sourceType") SourceFireboltFirebolt sourceType) {
         this.username = username;
         this.password = password;
         this.database = database;

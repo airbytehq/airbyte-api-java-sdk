@@ -33,9 +33,9 @@ public class DestinationSnowflake {
     }
     
     @JsonProperty("destinationType")
-    public DestinationSnowflakeSnowflakeEnum destinationType;
+    public DestinationSnowflakeSnowflake destinationType;
 
-    public DestinationSnowflake withDestinationType(DestinationSnowflakeSnowflakeEnum destinationType) {
+    public DestinationSnowflake withDestinationType(DestinationSnowflakeSnowflake destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -131,7 +131,7 @@ public class DestinationSnowflake {
         return this;
     }
     
-    public DestinationSnowflake(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationSnowflakeSnowflakeEnum destinationType, @JsonProperty("host") String host, @JsonProperty("role") String role, @JsonProperty("schema") String schema, @JsonProperty("username") String username, @JsonProperty("warehouse") String warehouse) {
+    public DestinationSnowflake(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationSnowflakeSnowflake destinationType, @JsonProperty("host") String host, @JsonProperty("role") String role, @JsonProperty("schema") String schema, @JsonProperty("username") String username, @JsonProperty("warehouse") String warehouse) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;

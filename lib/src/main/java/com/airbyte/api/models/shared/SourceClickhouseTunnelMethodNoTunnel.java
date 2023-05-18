@@ -14,14 +14,14 @@ public class SourceClickhouseTunnelMethodNoTunnel {
      * No ssh tunnel needed to connect to database
      */
     @JsonProperty("tunnel_method")
-    public SourceClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    public SourceClickhouseTunnelMethodNoTunnelTunnelMethod tunnelMethod;
 
-    public SourceClickhouseTunnelMethodNoTunnel withTunnelMethod(SourceClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public SourceClickhouseTunnelMethodNoTunnel withTunnelMethod(SourceClickhouseTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
     
-    public SourceClickhouseTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceClickhouseTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public SourceClickhouseTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceClickhouseTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
   }
 }

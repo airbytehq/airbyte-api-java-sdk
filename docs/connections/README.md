@@ -20,11 +20,11 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
 import com.airbyte.api.models.shared.ConnectionScheduleCreate;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
-import com.airbyte.api.models.shared.GeographyEnumEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnumEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
 import com.airbyte.api.models.shared.StreamConfigurations;
@@ -71,17 +71,17 @@ public class Application {
                                     add("illum"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnumEnum.INCREMENTAL_DEDUPED_HISTORY;
+                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_DEDUPED_HISTORY;
                         }}),
                     }};
                 }};;
-                dataResidency = GeographyEnumEnum.AUTO;
+                dataResidency = GeographyEnum.AUTO;
                 name = "Blanca Schulist";
-                namespaceDefinition = NamespaceDefinitionEnumEnum.CUSTOM_FORMAT;
+                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumEnum.DISABLE_CONNECTION;
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.DISABLE_CONNECTION;
                 prefix = "non";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.CRON) {{
+                schedule = new ConnectionScheduleCreate(ScheduleTypeEnum.CRON) {{
                     cronExpression = "enim";
                 }};;
             }};            

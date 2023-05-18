@@ -24,9 +24,9 @@ public class SourceQualaroo {
     }
     
     @JsonProperty("sourceType")
-    public SourceQualarooQualarooEnum sourceType;
+    public SourceQualarooQualaroo sourceType;
 
-    public SourceQualaroo withSourceType(SourceQualarooQualarooEnum sourceType) {
+    public SourceQualaroo withSourceType(SourceQualarooQualaroo sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceQualaroo {
         return this;
     }
     
-    public SourceQualaroo(@JsonProperty("key") String key, @JsonProperty("sourceType") SourceQualarooQualarooEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("token") String token) {
+    public SourceQualaroo(@JsonProperty("key") String key, @JsonProperty("sourceType") SourceQualarooQualaroo sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("token") String token) {
         this.key = key;
         this.sourceType = sourceType;
         this.startDate = startDate;

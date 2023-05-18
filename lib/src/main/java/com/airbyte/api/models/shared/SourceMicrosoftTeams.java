@@ -36,14 +36,14 @@ public class SourceMicrosoftTeams {
     }
     
     @JsonProperty("sourceType")
-    public SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType;
+    public SourceMicrosoftTeamsMicrosoftTeams sourceType;
 
-    public SourceMicrosoftTeams withSourceType(SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType) {
+    public SourceMicrosoftTeams withSourceType(SourceMicrosoftTeamsMicrosoftTeams sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceMicrosoftTeams(@JsonProperty("period") String period, @JsonProperty("sourceType") SourceMicrosoftTeamsMicrosoftTeamsEnum sourceType) {
+    public SourceMicrosoftTeams(@JsonProperty("period") String period, @JsonProperty("sourceType") SourceMicrosoftTeamsMicrosoftTeams sourceType) {
         this.period = period;
         this.sourceType = sourceType;
   }

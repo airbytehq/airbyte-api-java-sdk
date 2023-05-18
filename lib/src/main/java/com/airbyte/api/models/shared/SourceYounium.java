@@ -47,9 +47,9 @@ public class SourceYounium {
     }
     
     @JsonProperty("sourceType")
-    public SourceYouniumYouniumEnum sourceType;
+    public SourceYouniumYounium sourceType;
 
-    public SourceYounium withSourceType(SourceYouniumYouniumEnum sourceType) {
+    public SourceYounium withSourceType(SourceYouniumYounium sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceYounium {
         return this;
     }
     
-    public SourceYounium(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("legal_entity") String legalEntity, @JsonProperty("sourceType") SourceYouniumYouniumEnum sourceType) {
+    public SourceYounium(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("legal_entity") String legalEntity, @JsonProperty("sourceType") SourceYouniumYounium sourceType) {
         this.username = username;
         this.password = password;
         this.legalEntity = legalEntity;

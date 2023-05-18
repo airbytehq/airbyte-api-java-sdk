@@ -14,14 +14,14 @@ public class DestinationPostgresTunnelMethodNoTunnel {
      * No ssh tunnel needed to connect to database
      */
     @JsonProperty("tunnel_method")
-    public DestinationPostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    public DestinationPostgresTunnelMethodNoTunnelTunnelMethod tunnelMethod;
 
-    public DestinationPostgresTunnelMethodNoTunnel withTunnelMethod(DestinationPostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationPostgresTunnelMethodNoTunnel withTunnelMethod(DestinationPostgresTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
     
-    public DestinationPostgresTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationPostgresTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationPostgresTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationPostgresTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
   }
 }

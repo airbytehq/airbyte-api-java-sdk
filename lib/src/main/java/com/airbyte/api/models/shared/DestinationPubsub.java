@@ -71,9 +71,9 @@ public class DestinationPubsub {
     }
     
     @JsonProperty("destinationType")
-    public DestinationPubsubPubsubEnum destinationType;
+    public DestinationPubsubPubsub destinationType;
 
-    public DestinationPubsub withDestinationType(DestinationPubsubPubsubEnum destinationType) {
+    public DestinationPubsub withDestinationType(DestinationPubsubPubsub destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -111,7 +111,7 @@ public class DestinationPubsub {
         return this;
     }
     
-    public DestinationPubsub(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("credentials_json") String credentialsJson, @JsonProperty("destinationType") DestinationPubsubPubsubEnum destinationType, @JsonProperty("ordering_enabled") Boolean orderingEnabled, @JsonProperty("project_id") String projectId, @JsonProperty("topic_id") String topicId) {
+    public DestinationPubsub(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("credentials_json") String credentialsJson, @JsonProperty("destinationType") DestinationPubsubPubsub destinationType, @JsonProperty("ordering_enabled") Boolean orderingEnabled, @JsonProperty("project_id") String projectId, @JsonProperty("topic_id") String topicId) {
         this.batchingEnabled = batchingEnabled;
         this.credentialsJson = credentialsJson;
         this.destinationType = destinationType;

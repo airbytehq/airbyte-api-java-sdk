@@ -14,14 +14,14 @@ public class DestinationRedisTunnelMethodNoTunnel {
      * No ssh tunnel needed to connect to database
      */
     @JsonProperty("tunnel_method")
-    public DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    public DestinationRedisTunnelMethodNoTunnelTunnelMethod tunnelMethod;
 
-    public DestinationRedisTunnelMethodNoTunnel withTunnelMethod(DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationRedisTunnelMethodNoTunnel withTunnelMethod(DestinationRedisTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
     
-    public DestinationRedisTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationRedisTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationRedisTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationRedisTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
   }
 }

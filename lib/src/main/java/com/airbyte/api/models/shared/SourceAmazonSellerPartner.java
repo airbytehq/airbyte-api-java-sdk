@@ -25,9 +25,9 @@ public class SourceAmazonSellerPartner {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceAmazonSellerPartnerAuthTypeEnum authType;
+    public SourceAmazonSellerPartnerAuthType authType;
 
-    public SourceAmazonSellerPartner withAuthType(SourceAmazonSellerPartnerAuthTypeEnum authType) {
+    public SourceAmazonSellerPartner withAuthType(SourceAmazonSellerPartnerAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -48,9 +48,9 @@ public class SourceAmazonSellerPartner {
      * An enumeration.
      */
     @JsonProperty("aws_environment")
-    public SourceAmazonSellerPartnerAWSEnvironmentEnum awsEnvironment;
+    public SourceAmazonSellerPartnerAWSEnvironment awsEnvironment;
 
-    public SourceAmazonSellerPartner withAwsEnvironment(SourceAmazonSellerPartnerAWSEnvironmentEnum awsEnvironment) {
+    public SourceAmazonSellerPartner withAwsEnvironment(SourceAmazonSellerPartnerAWSEnvironment awsEnvironment) {
         this.awsEnvironment = awsEnvironment;
         return this;
     }
@@ -128,9 +128,9 @@ public class SourceAmazonSellerPartner {
      * An enumeration.
      */
     @JsonProperty("region")
-    public SourceAmazonSellerPartnerAWSRegionEnum region;
+    public SourceAmazonSellerPartnerAWSRegion region;
 
-    public SourceAmazonSellerPartner withRegion(SourceAmazonSellerPartnerAWSRegionEnum region) {
+    public SourceAmazonSellerPartner withRegion(SourceAmazonSellerPartnerAWSRegion region) {
         this.region = region;
         return this;
     }
@@ -183,14 +183,14 @@ public class SourceAmazonSellerPartner {
     }
     
     @JsonProperty("sourceType")
-    public SourceAmazonSellerPartnerAmazonSellerPartnerEnum sourceType;
+    public SourceAmazonSellerPartnerAmazonSellerPartner sourceType;
 
-    public SourceAmazonSellerPartner withSourceType(SourceAmazonSellerPartnerAmazonSellerPartnerEnum sourceType) {
+    public SourceAmazonSellerPartner withSourceType(SourceAmazonSellerPartnerAmazonSellerPartner sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceAmazonSellerPartner(@JsonProperty("app_id") String appId, @JsonProperty("aws_environment") SourceAmazonSellerPartnerAWSEnvironmentEnum awsEnvironment, @JsonProperty("lwa_app_id") String lwaAppId, @JsonProperty("lwa_client_secret") String lwaClientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("region") SourceAmazonSellerPartnerAWSRegionEnum region, @JsonProperty("replication_start_date") String replicationStartDate, @JsonProperty("sourceType") SourceAmazonSellerPartnerAmazonSellerPartnerEnum sourceType) {
+    public SourceAmazonSellerPartner(@JsonProperty("app_id") String appId, @JsonProperty("aws_environment") SourceAmazonSellerPartnerAWSEnvironment awsEnvironment, @JsonProperty("lwa_app_id") String lwaAppId, @JsonProperty("lwa_client_secret") String lwaClientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("region") SourceAmazonSellerPartnerAWSRegion region, @JsonProperty("replication_start_date") String replicationStartDate, @JsonProperty("sourceType") SourceAmazonSellerPartnerAmazonSellerPartner sourceType) {
         this.appId = appId;
         this.awsEnvironment = awsEnvironment;
         this.lwaAppId = lwaAppId;

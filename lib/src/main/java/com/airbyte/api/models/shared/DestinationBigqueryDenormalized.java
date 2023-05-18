@@ -52,17 +52,17 @@ public class DestinationBigqueryDenormalized {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataset_location")
-    public DestinationBigqueryDenormalizedDatasetLocationEnum datasetLocation;
+    public DestinationBigqueryDenormalizedDatasetLocation datasetLocation;
 
-    public DestinationBigqueryDenormalized withDatasetLocation(DestinationBigqueryDenormalizedDatasetLocationEnum datasetLocation) {
+    public DestinationBigqueryDenormalized withDatasetLocation(DestinationBigqueryDenormalizedDatasetLocation datasetLocation) {
         this.datasetLocation = datasetLocation;
         return this;
     }
     
     @JsonProperty("destinationType")
-    public DestinationBigqueryDenormalizedBigqueryDenormalizedEnum destinationType;
+    public DestinationBigqueryDenormalizedBigqueryDenormalized destinationType;
 
-    public DestinationBigqueryDenormalized withDestinationType(DestinationBigqueryDenormalizedBigqueryDenormalizedEnum destinationType) {
+    public DestinationBigqueryDenormalized withDestinationType(DestinationBigqueryDenormalizedBigqueryDenormalized destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -90,7 +90,7 @@ public class DestinationBigqueryDenormalized {
         return this;
     }
     
-    public DestinationBigqueryDenormalized(@JsonProperty("dataset_id") String datasetId, @JsonProperty("destinationType") DestinationBigqueryDenormalizedBigqueryDenormalizedEnum destinationType, @JsonProperty("project_id") String projectId) {
+    public DestinationBigqueryDenormalized(@JsonProperty("dataset_id") String datasetId, @JsonProperty("destinationType") DestinationBigqueryDenormalizedBigqueryDenormalized destinationType, @JsonProperty("project_id") String projectId) {
         this.datasetId = datasetId;
         this.destinationType = destinationType;
         this.projectId = projectId;

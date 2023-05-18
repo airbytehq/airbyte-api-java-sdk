@@ -46,9 +46,9 @@ public class SourceWoocommerce {
     }
     
     @JsonProperty("sourceType")
-    public SourceWoocommerceWoocommerceEnum sourceType;
+    public SourceWoocommerceWoocommerce sourceType;
 
-    public SourceWoocommerce withSourceType(SourceWoocommerceWoocommerceEnum sourceType) {
+    public SourceWoocommerce withSourceType(SourceWoocommerceWoocommerce sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceWoocommerce {
         return this;
     }
     
-    public SourceWoocommerce(@JsonProperty("api_key") String apiKey, @JsonProperty("api_secret") String apiSecret, @JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceWoocommerceWoocommerceEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceWoocommerce(@JsonProperty("api_key") String apiKey, @JsonProperty("api_secret") String apiSecret, @JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceWoocommerceWoocommerce sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.apiKey = apiKey;
         this.apiSecret = apiSecret;
         this.shop = shop;

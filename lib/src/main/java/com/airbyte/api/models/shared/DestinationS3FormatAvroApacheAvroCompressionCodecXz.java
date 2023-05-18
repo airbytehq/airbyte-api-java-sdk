@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationS3FormatAvroApacheAvroCompressionCodecXz {
     @JsonProperty("codec")
-    public DestinationS3FormatAvroApacheAvroCompressionCodecXzCodecEnum codec;
+    public DestinationS3FormatAvroApacheAvroCompressionCodecXzCodec codec;
 
-    public DestinationS3FormatAvroApacheAvroCompressionCodecXz withCodec(DestinationS3FormatAvroApacheAvroCompressionCodecXzCodecEnum codec) {
+    public DestinationS3FormatAvroApacheAvroCompressionCodecXz withCodec(DestinationS3FormatAvroApacheAvroCompressionCodecXzCodec codec) {
         this.codec = codec;
         return this;
     }
@@ -29,7 +29,7 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecXz {
         return this;
     }
     
-    public DestinationS3FormatAvroApacheAvroCompressionCodecXz(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecXzCodecEnum codec, @JsonProperty("compression_level") Long compressionLevel) {
+    public DestinationS3FormatAvroApacheAvroCompressionCodecXz(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecXzCodec codec, @JsonProperty("compression_level") Long compressionLevel) {
         this.codec = codec;
         this.compressionLevel = compressionLevel;
   }

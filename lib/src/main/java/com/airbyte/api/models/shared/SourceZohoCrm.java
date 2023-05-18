@@ -43,9 +43,9 @@ public class SourceZohoCrm {
      * Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
      */
     @JsonProperty("dc_region")
-    public SourceZohoCrmDataCenterLocationEnum dcRegion;
+    public SourceZohoCrmDataCenterLocation dcRegion;
 
-    public SourceZohoCrm withDcRegion(SourceZohoCrmDataCenterLocationEnum dcRegion) {
+    public SourceZohoCrm withDcRegion(SourceZohoCrmDataCenterLocation dcRegion) {
         this.dcRegion = dcRegion;
         return this;
     }
@@ -54,9 +54,9 @@ public class SourceZohoCrm {
      * Choose your Edition of Zoho CRM to determine API Concurrency Limits
      */
     @JsonProperty("edition")
-    public SourceZohoCRMZohoCRMEditionEnum edition;
+    public SourceZohoCRMZohoCRMEdition edition;
 
-    public SourceZohoCrm withEdition(SourceZohoCRMZohoCRMEditionEnum edition) {
+    public SourceZohoCrm withEdition(SourceZohoCRMZohoCRMEdition edition) {
         this.edition = edition;
         return this;
     }
@@ -65,9 +65,9 @@ public class SourceZohoCrm {
      * Please choose the environment
      */
     @JsonProperty("environment")
-    public SourceZohoCrmEnvironmentEnum environment;
+    public SourceZohoCrmEnvironment environment;
 
-    public SourceZohoCrm withEnvironment(SourceZohoCrmEnvironmentEnum environment) {
+    public SourceZohoCrm withEnvironment(SourceZohoCrmEnvironment environment) {
         this.environment = environment;
         return this;
     }
@@ -84,9 +84,9 @@ public class SourceZohoCrm {
     }
     
     @JsonProperty("sourceType")
-    public SourceZohoCrmZohoCrmEnum sourceType;
+    public SourceZohoCrmZohoCrm sourceType;
 
-    public SourceZohoCrm withSourceType(SourceZohoCrmZohoCrmEnum sourceType) {
+    public SourceZohoCrm withSourceType(SourceZohoCrmZohoCrm sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -105,7 +105,7 @@ public class SourceZohoCrm {
         return this;
     }
     
-    public SourceZohoCrm(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("dc_region") SourceZohoCrmDataCenterLocationEnum dcRegion, @JsonProperty("edition") SourceZohoCRMZohoCRMEditionEnum edition, @JsonProperty("environment") SourceZohoCrmEnvironmentEnum environment, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceZohoCrmZohoCrmEnum sourceType) {
+    public SourceZohoCrm(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("dc_region") SourceZohoCrmDataCenterLocation dcRegion, @JsonProperty("edition") SourceZohoCRMZohoCRMEdition edition, @JsonProperty("environment") SourceZohoCrmEnvironment environment, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceZohoCrmZohoCrm sourceType) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.dcRegion = dcRegion;

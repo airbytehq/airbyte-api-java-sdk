@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationRabbitmq {
     @JsonProperty("destinationType")
-    public DestinationRabbitmqRabbitmqEnum destinationType;
+    public DestinationRabbitmqRabbitmq destinationType;
 
-    public DestinationRabbitmq withDestinationType(DestinationRabbitmqRabbitmqEnum destinationType) {
+    public DestinationRabbitmq withDestinationType(DestinationRabbitmqRabbitmq destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -114,7 +114,7 @@ public class DestinationRabbitmq {
         return this;
     }
     
-    public DestinationRabbitmq(@JsonProperty("destinationType") DestinationRabbitmqRabbitmqEnum destinationType, @JsonProperty("host") String host, @JsonProperty("routing_key") String routingKey) {
+    public DestinationRabbitmq(@JsonProperty("destinationType") DestinationRabbitmqRabbitmq destinationType, @JsonProperty("host") String host, @JsonProperty("routing_key") String routingKey) {
         this.destinationType = destinationType;
         this.host = host;
         this.routingKey = routingKey;

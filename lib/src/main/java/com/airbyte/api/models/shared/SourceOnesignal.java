@@ -38,9 +38,9 @@ public class SourceOnesignal {
     }
     
     @JsonProperty("sourceType")
-    public SourceOnesignalOnesignalEnum sourceType;
+    public SourceOnesignalOnesignal sourceType;
 
-    public SourceOnesignal withSourceType(SourceOnesignalOnesignalEnum sourceType) {
+    public SourceOnesignal withSourceType(SourceOnesignalOnesignal sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -69,7 +69,7 @@ public class SourceOnesignal {
         return this;
     }
     
-    public SourceOnesignal(@JsonProperty("applications") SourceOnesignalApplications[] applications, @JsonProperty("outcome_names") String outcomeNames, @JsonProperty("sourceType") SourceOnesignalOnesignalEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("user_auth_key") String userAuthKey) {
+    public SourceOnesignal(@JsonProperty("applications") SourceOnesignalApplications[] applications, @JsonProperty("outcome_names") String outcomeNames, @JsonProperty("sourceType") SourceOnesignalOnesignal sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("user_auth_key") String userAuthKey) {
         this.applications = applications;
         this.outcomeNames = outcomeNames;
         this.sourceType = sourceType;

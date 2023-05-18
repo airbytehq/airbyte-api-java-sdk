@@ -27,9 +27,9 @@ public class SourceSmartsheetsCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceSmartsheetsCredentialsOAuth20AuthTypeEnum authType;
+    public SourceSmartsheetsCredentialsOAuth20AuthType authType;
 
-    public SourceSmartsheetsCredentialsOAuth20 withAuthType(SourceSmartsheetsCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceSmartsheetsCredentialsOAuth20 withAuthType(SourceSmartsheetsCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

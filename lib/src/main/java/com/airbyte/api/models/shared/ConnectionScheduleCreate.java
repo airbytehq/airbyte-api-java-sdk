@@ -22,14 +22,14 @@ public class ConnectionScheduleCreate {
     }
     
     @JsonProperty("scheduleType")
-    public ScheduleTypeEnumEnum scheduleType;
+    public ScheduleTypeEnum scheduleType;
 
-    public ConnectionScheduleCreate withScheduleType(ScheduleTypeEnumEnum scheduleType) {
+    public ConnectionScheduleCreate withScheduleType(ScheduleTypeEnum scheduleType) {
         this.scheduleType = scheduleType;
         return this;
     }
     
-    public ConnectionScheduleCreate(@JsonProperty("scheduleType") ScheduleTypeEnumEnum scheduleType) {
+    public ConnectionScheduleCreate(@JsonProperty("scheduleType") ScheduleTypeEnum scheduleType) {
         this.scheduleType = scheduleType;
   }
 }

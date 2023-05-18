@@ -24,9 +24,9 @@ public class DestinationPostgres {
     }
     
     @JsonProperty("destinationType")
-    public DestinationPostgresPostgresEnum destinationType;
+    public DestinationPostgresPostgres destinationType;
 
-    public DestinationPostgres withDestinationType(DestinationPostgresPostgresEnum destinationType) {
+    public DestinationPostgres withDestinationType(DestinationPostgresPostgres destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -130,7 +130,7 @@ public class DestinationPostgres {
         return this;
     }
     
-    public DestinationPostgres(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationPostgresPostgresEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
+    public DestinationPostgres(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationPostgresPostgres destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;

@@ -14,22 +14,22 @@ public class DestinationAzureBlobStorageFormatCSVCommaSeparatedValues {
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
     @JsonProperty("flattening")
-    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlatteningEnum flattening;
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlattening flattening;
 
-    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues withFlattening(DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlatteningEnum flattening) {
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues withFlattening(DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlattening flattening) {
         this.flattening = flattening;
         return this;
     }
     
     @JsonProperty("format_type")
-    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatTypeEnum formatType;
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatType formatType;
 
-    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues withFormatType(DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues withFormatType(DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlatteningEnum flattening, @JsonProperty("format_type") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlattening flattening, @JsonProperty("format_type") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatType formatType) {
         this.flattening = flattening;
         this.formatType = formatType;
   }

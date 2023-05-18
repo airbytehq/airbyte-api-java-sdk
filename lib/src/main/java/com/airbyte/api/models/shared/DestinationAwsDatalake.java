@@ -59,9 +59,9 @@ public class DestinationAwsDatalake {
     }
     
     @JsonProperty("destinationType")
-    public DestinationAwsDatalakeAwsDatalakeEnum destinationType;
+    public DestinationAwsDatalakeAwsDatalake destinationType;
 
-    public DestinationAwsDatalake withDestinationType(DestinationAwsDatalakeAwsDatalakeEnum destinationType) {
+    public DestinationAwsDatalake withDestinationType(DestinationAwsDatalakeAwsDatalake destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -142,9 +142,9 @@ public class DestinationAwsDatalake {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("partitioning")
-    public DestinationAwsDatalakeChooseHowToPartitionDataEnum partitioning;
+    public DestinationAwsDatalakeChooseHowToPartitionData partitioning;
 
-    public DestinationAwsDatalake withPartitioning(DestinationAwsDatalakeChooseHowToPartitionDataEnum partitioning) {
+    public DestinationAwsDatalake withPartitioning(DestinationAwsDatalakeChooseHowToPartitionData partitioning) {
         this.partitioning = partitioning;
         return this;
     }
@@ -153,14 +153,14 @@ public class DestinationAwsDatalake {
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
     @JsonProperty("region")
-    public DestinationAwsDatalakeS3BucketRegionEnum region;
+    public DestinationAwsDatalakeS3BucketRegion region;
 
-    public DestinationAwsDatalake withRegion(DestinationAwsDatalakeS3BucketRegionEnum region) {
+    public DestinationAwsDatalake withRegion(DestinationAwsDatalakeS3BucketRegion region) {
         this.region = region;
         return this;
     }
     
-    public DestinationAwsDatalake(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials") Object credentials, @JsonProperty("destinationType") DestinationAwsDatalakeAwsDatalakeEnum destinationType, @JsonProperty("lakeformation_database_name") String lakeformationDatabaseName, @JsonProperty("region") DestinationAwsDatalakeS3BucketRegionEnum region) {
+    public DestinationAwsDatalake(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials") Object credentials, @JsonProperty("destinationType") DestinationAwsDatalakeAwsDatalake destinationType, @JsonProperty("lakeformation_database_name") String lakeformationDatabaseName, @JsonProperty("region") DestinationAwsDatalakeS3BucketRegion region) {
         this.bucketName = bucketName;
         this.credentials = credentials;
         this.destinationType = destinationType;

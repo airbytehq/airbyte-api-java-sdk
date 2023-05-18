@@ -22,9 +22,9 @@ public class SourceDatascope {
     }
     
     @JsonProperty("sourceType")
-    public SourceDatascopeDatascopeEnum sourceType;
+    public SourceDatascopeDatascope sourceType;
 
-    public SourceDatascope withSourceType(SourceDatascopeDatascopeEnum sourceType) {
+    public SourceDatascope withSourceType(SourceDatascopeDatascope sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -40,7 +40,7 @@ public class SourceDatascope {
         return this;
     }
     
-    public SourceDatascope(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceDatascopeDatascopeEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceDatascope(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceDatascopeDatascope sourceType, @JsonProperty("start_date") String startDate) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

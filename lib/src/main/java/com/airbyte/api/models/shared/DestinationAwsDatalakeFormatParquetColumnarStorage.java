@@ -17,22 +17,22 @@ public class DestinationAwsDatalakeFormatParquetColumnarStorage {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
-    public DestinationAwsDatalakeFormatParquetColumnarStorageCompressionCodecOptionalEnum compressionCodec;
+    public DestinationAwsDatalakeFormatParquetColumnarStorageCompressionCodecOptional compressionCodec;
 
-    public DestinationAwsDatalakeFormatParquetColumnarStorage withCompressionCodec(DestinationAwsDatalakeFormatParquetColumnarStorageCompressionCodecOptionalEnum compressionCodec) {
+    public DestinationAwsDatalakeFormatParquetColumnarStorage withCompressionCodec(DestinationAwsDatalakeFormatParquetColumnarStorageCompressionCodecOptional compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
     }
     
     @JsonProperty("format_type")
-    public DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcardEnum formatType;
+    public DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcard formatType;
 
-    public DestinationAwsDatalakeFormatParquetColumnarStorage withFormatType(DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcardEnum formatType) {
+    public DestinationAwsDatalakeFormatParquetColumnarStorage withFormatType(DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcard formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationAwsDatalakeFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcardEnum formatType) {
+    public DestinationAwsDatalakeFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcard formatType) {
         this.formatType = formatType;
   }
 }

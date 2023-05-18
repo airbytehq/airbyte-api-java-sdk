@@ -25,9 +25,9 @@ public class DestinationClickhouseTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationClickhouseTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationClickhouseTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationClickhouseTunnelMethodPasswordAuthentication withTunnelMethod(DestinationClickhouseTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationClickhouseTunnelMethodPasswordAuthentication withTunnelMethod(DestinationClickhouseTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationClickhouseTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationClickhouseTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationClickhouseTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationClickhouseTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationClickhouseTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

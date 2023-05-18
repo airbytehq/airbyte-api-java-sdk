@@ -71,17 +71,17 @@ public class DestinationPulsar {
      * Compression type for the producer.
      */
     @JsonProperty("compression_type")
-    public DestinationPulsarCompressionTypeEnum compressionType;
+    public DestinationPulsarCompressionType compressionType;
 
-    public DestinationPulsar withCompressionType(DestinationPulsarCompressionTypeEnum compressionType) {
+    public DestinationPulsar withCompressionType(DestinationPulsarCompressionType compressionType) {
         this.compressionType = compressionType;
         return this;
     }
     
     @JsonProperty("destinationType")
-    public DestinationPulsarPulsarEnum destinationType;
+    public DestinationPulsarPulsar destinationType;
 
-    public DestinationPulsar withDestinationType(DestinationPulsarPulsarEnum destinationType) {
+    public DestinationPulsar withDestinationType(DestinationPulsarPulsar destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -192,9 +192,9 @@ public class DestinationPulsar {
      * It identifies type of topic. Pulsar supports two kind of topics: persistent and non-persistent. In persistent topic, all messages are durably persisted on disk (that means on multiple disks unless the broker is standalone), whereas non-persistent topic does not persist message into storage disk.
      */
     @JsonProperty("topic_type")
-    public DestinationPulsarTopicTypeEnum topicType;
+    public DestinationPulsarTopicType topicType;
 
-    public DestinationPulsar withTopicType(DestinationPulsarTopicTypeEnum topicType) {
+    public DestinationPulsar withTopicType(DestinationPulsarTopicType topicType) {
         this.topicType = topicType;
         return this;
     }
@@ -210,7 +210,7 @@ public class DestinationPulsar {
         return this;
     }
     
-    public DestinationPulsar(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("batching_max_messages") Long batchingMaxMessages, @JsonProperty("batching_max_publish_delay") Long batchingMaxPublishDelay, @JsonProperty("block_if_queue_full") Boolean blockIfQueueFull, @JsonProperty("brokers") String brokers, @JsonProperty("compression_type") DestinationPulsarCompressionTypeEnum compressionType, @JsonProperty("destinationType") DestinationPulsarPulsarEnum destinationType, @JsonProperty("max_pending_messages") Long maxPendingMessages, @JsonProperty("max_pending_messages_across_partitions") Long maxPendingMessagesAcrossPartitions, @JsonProperty("send_timeout_ms") Long sendTimeoutMs, @JsonProperty("topic_namespace") String topicNamespace, @JsonProperty("topic_pattern") String topicPattern, @JsonProperty("topic_tenant") String topicTenant, @JsonProperty("topic_type") DestinationPulsarTopicTypeEnum topicType, @JsonProperty("use_tls") Boolean useTls) {
+    public DestinationPulsar(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("batching_max_messages") Long batchingMaxMessages, @JsonProperty("batching_max_publish_delay") Long batchingMaxPublishDelay, @JsonProperty("block_if_queue_full") Boolean blockIfQueueFull, @JsonProperty("brokers") String brokers, @JsonProperty("compression_type") DestinationPulsarCompressionType compressionType, @JsonProperty("destinationType") DestinationPulsarPulsar destinationType, @JsonProperty("max_pending_messages") Long maxPendingMessages, @JsonProperty("max_pending_messages_across_partitions") Long maxPendingMessagesAcrossPartitions, @JsonProperty("send_timeout_ms") Long sendTimeoutMs, @JsonProperty("topic_namespace") String topicNamespace, @JsonProperty("topic_pattern") String topicPattern, @JsonProperty("topic_tenant") String topicTenant, @JsonProperty("topic_type") DestinationPulsarTopicType topicType, @JsonProperty("use_tls") Boolean useTls) {
         this.batchingEnabled = batchingEnabled;
         this.batchingMaxMessages = batchingMaxMessages;
         this.batchingMaxPublishDelay = batchingMaxPublishDelay;

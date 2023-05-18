@@ -44,14 +44,14 @@ public class SourceGcs {
     }
     
     @JsonProperty("sourceType")
-    public SourceGcsGcsEnum sourceType;
+    public SourceGcsGcs sourceType;
 
-    public SourceGcs withSourceType(SourceGcsGcsEnum sourceType) {
+    public SourceGcs withSourceType(SourceGcsGcs sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGcs(@JsonProperty("gcs_bucket") String gcsBucket, @JsonProperty("gcs_path") String gcsPath, @JsonProperty("service_account") String serviceAccount, @JsonProperty("sourceType") SourceGcsGcsEnum sourceType) {
+    public SourceGcs(@JsonProperty("gcs_bucket") String gcsBucket, @JsonProperty("gcs_path") String gcsPath, @JsonProperty("service_account") String serviceAccount, @JsonProperty("sourceType") SourceGcsGcs sourceType) {
         this.gcsBucket = gcsBucket;
         this.gcsPath = gcsPath;
         this.serviceAccount = serviceAccount;

@@ -16,17 +16,17 @@ public class DestinationRedis {
      * Redis cache type to store data in.
      */
     @JsonProperty("cache_type")
-    public DestinationRedisCacheTypeEnum cacheType;
+    public DestinationRedisCacheType cacheType;
 
-    public DestinationRedis withCacheType(DestinationRedisCacheTypeEnum cacheType) {
+    public DestinationRedis withCacheType(DestinationRedisCacheType cacheType) {
         this.cacheType = cacheType;
         return this;
     }
     
     @JsonProperty("destinationType")
-    public DestinationRedisRedisEnum destinationType;
+    public DestinationRedisRedis destinationType;
 
-    public DestinationRedis withDestinationType(DestinationRedisRedisEnum destinationType) {
+    public DestinationRedis withDestinationType(DestinationRedisRedis destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -113,7 +113,7 @@ public class DestinationRedis {
         return this;
     }
     
-    public DestinationRedis(@JsonProperty("cache_type") DestinationRedisCacheTypeEnum cacheType, @JsonProperty("destinationType") DestinationRedisRedisEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
+    public DestinationRedis(@JsonProperty("cache_type") DestinationRedisCacheType cacheType, @JsonProperty("destinationType") DestinationRedisRedis destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
         this.cacheType = cacheType;
         this.destinationType = destinationType;
         this.host = host;

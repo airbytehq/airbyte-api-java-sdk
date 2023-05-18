@@ -22,14 +22,14 @@ public class SourceSlackCredentialsAPIToken {
     }
     
     @JsonProperty("option_title")
-    public SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle;
+    public SourceSlackCredentialsAPITokenOptionTitle optionTitle;
 
-    public SourceSlackCredentialsAPIToken withOptionTitle(SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle) {
+    public SourceSlackCredentialsAPIToken withOptionTitle(SourceSlackCredentialsAPITokenOptionTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }
     
-    public SourceSlackCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("option_title") SourceSlackCredentialsAPITokenOptionTitleEnum optionTitle) {
+    public SourceSlackCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("option_title") SourceSlackCredentialsAPITokenOptionTitle optionTitle) {
         this.apiToken = apiToken;
         this.optionTitle = optionTitle;
   }

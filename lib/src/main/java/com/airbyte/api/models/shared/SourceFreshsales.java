@@ -33,14 +33,14 @@ public class SourceFreshsales {
     }
     
     @JsonProperty("sourceType")
-    public SourceFreshsalesFreshsalesEnum sourceType;
+    public SourceFreshsalesFreshsales sourceType;
 
-    public SourceFreshsales withSourceType(SourceFreshsalesFreshsalesEnum sourceType) {
+    public SourceFreshsales withSourceType(SourceFreshsalesFreshsales sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceFreshsales(@JsonProperty("api_key") String apiKey, @JsonProperty("domain_name") String domainName, @JsonProperty("sourceType") SourceFreshsalesFreshsalesEnum sourceType) {
+    public SourceFreshsales(@JsonProperty("api_key") String apiKey, @JsonProperty("domain_name") String domainName, @JsonProperty("sourceType") SourceFreshsalesFreshsales sourceType) {
         this.apiKey = apiKey;
         this.domainName = domainName;
         this.sourceType = sourceType;

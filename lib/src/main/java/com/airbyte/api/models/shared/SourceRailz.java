@@ -33,9 +33,9 @@ public class SourceRailz {
     }
     
     @JsonProperty("sourceType")
-    public SourceRailzRailzEnum sourceType;
+    public SourceRailzRailz sourceType;
 
-    public SourceRailz withSourceType(SourceRailzRailzEnum sourceType) {
+    public SourceRailz withSourceType(SourceRailzRailz sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -51,7 +51,7 @@ public class SourceRailz {
         return this;
     }
     
-    public SourceRailz(@JsonProperty("client_id") String clientId, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceRailzRailzEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceRailz(@JsonProperty("client_id") String clientId, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceRailzRailz sourceType, @JsonProperty("start_date") String startDate) {
         this.clientId = clientId;
         this.secretKey = secretKey;
         this.sourceType = sourceType;

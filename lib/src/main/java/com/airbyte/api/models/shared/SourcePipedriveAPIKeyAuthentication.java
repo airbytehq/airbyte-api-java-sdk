@@ -19,14 +19,14 @@ public class SourcePipedriveAPIKeyAuthentication {
     }
     
     @JsonProperty("auth_type")
-    public SourcePipedriveAPIKeyAuthenticationAuthTypeEnum authType;
+    public SourcePipedriveAPIKeyAuthenticationAuthType authType;
 
-    public SourcePipedriveAPIKeyAuthentication withAuthType(SourcePipedriveAPIKeyAuthenticationAuthTypeEnum authType) {
+    public SourcePipedriveAPIKeyAuthentication withAuthType(SourcePipedriveAPIKeyAuthenticationAuthType authType) {
         this.authType = authType;
         return this;
     }
     
-    public SourcePipedriveAPIKeyAuthentication(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourcePipedriveAPIKeyAuthenticationAuthTypeEnum authType) {
+    public SourcePipedriveAPIKeyAuthentication(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourcePipedriveAPIKeyAuthenticationAuthType authType) {
         this.apiToken = apiToken;
         this.authType = authType;
   }

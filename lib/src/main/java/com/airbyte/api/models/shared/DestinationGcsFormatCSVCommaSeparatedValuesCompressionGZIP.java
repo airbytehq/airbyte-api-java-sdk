@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
-    public DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIPCompressionTypeEnum compressionType;
+    public DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIPCompressionType compressionType;
 
-    public DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP withCompressionType(DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIPCompressionTypeEnum compressionType) {
+    public DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP withCompressionType(DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIPCompressionType compressionType) {
         this.compressionType = compressionType;
         return this;
     }

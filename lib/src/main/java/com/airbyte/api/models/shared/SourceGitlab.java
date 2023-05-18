@@ -61,9 +61,9 @@ public class SourceGitlab {
     }
     
     @JsonProperty("sourceType")
-    public SourceGitlabGitlabEnum sourceType;
+    public SourceGitlabGitlab sourceType;
 
-    public SourceGitlab withSourceType(SourceGitlabGitlabEnum sourceType) {
+    public SourceGitlab withSourceType(SourceGitlabGitlab sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -81,7 +81,7 @@ public class SourceGitlab {
         return this;
     }
     
-    public SourceGitlab(@JsonProperty("api_url") String apiUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGitlabGitlabEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceGitlab(@JsonProperty("api_url") String apiUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGitlabGitlab sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiUrl = apiUrl;
         this.credentials = credentials;
         this.sourceType = sourceType;

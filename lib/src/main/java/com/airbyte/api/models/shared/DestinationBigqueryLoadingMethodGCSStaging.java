@@ -62,22 +62,22 @@ public class DestinationBigqueryLoadingMethodGCSStaging {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("keep_files_in_gcs-bucket")
-    public DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum keepFilesInGcsBucket;
+    public DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessing keepFilesInGcsBucket;
 
-    public DestinationBigqueryLoadingMethodGCSStaging withKeepFilesInGcsBucket(DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum keepFilesInGcsBucket) {
+    public DestinationBigqueryLoadingMethodGCSStaging withKeepFilesInGcsBucket(DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessing keepFilesInGcsBucket) {
         this.keepFilesInGcsBucket = keepFilesInGcsBucket;
         return this;
     }
     
     @JsonProperty("method")
-    public DestinationBigqueryLoadingMethodGCSStagingMethodEnum method;
+    public DestinationBigqueryLoadingMethodGCSStagingMethod method;
 
-    public DestinationBigqueryLoadingMethodGCSStaging withMethod(DestinationBigqueryLoadingMethodGCSStagingMethodEnum method) {
+    public DestinationBigqueryLoadingMethodGCSStaging withMethod(DestinationBigqueryLoadingMethodGCSStagingMethod method) {
         this.method = method;
         return this;
     }
     
-    public DestinationBigqueryLoadingMethodGCSStaging(@JsonProperty("credential") Object credential, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath, @JsonProperty("method") DestinationBigqueryLoadingMethodGCSStagingMethodEnum method) {
+    public DestinationBigqueryLoadingMethodGCSStaging(@JsonProperty("credential") Object credential, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath, @JsonProperty("method") DestinationBigqueryLoadingMethodGCSStagingMethod method) {
         this.credential = credential;
         this.gcsBucketName = gcsBucketName;
         this.gcsBucketPath = gcsBucketPath;

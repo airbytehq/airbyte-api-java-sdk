@@ -39,9 +39,9 @@ public class SourceFileSecureProviderSSHSecureShell {
     }
     
     @JsonProperty("storage")
-    public SourceFileSecureProviderSSHSecureShellStorageEnum storage;
+    public SourceFileSecureProviderSSHSecureShellStorage storage;
 
-    public SourceFileSecureProviderSSHSecureShell withStorage(SourceFileSecureProviderSSHSecureShellStorageEnum storage) {
+    public SourceFileSecureProviderSSHSecureShell withStorage(SourceFileSecureProviderSSHSecureShellStorage storage) {
         this.storage = storage;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceFileSecureProviderSSHSecureShell {
         return this;
     }
     
-    public SourceFileSecureProviderSSHSecureShell(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSSHSecureShellStorageEnum storage, @JsonProperty("user") String user) {
+    public SourceFileSecureProviderSSHSecureShell(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSSHSecureShellStorage storage, @JsonProperty("user") String user) {
         this.host = host;
         this.storage = storage;
         this.user = user;

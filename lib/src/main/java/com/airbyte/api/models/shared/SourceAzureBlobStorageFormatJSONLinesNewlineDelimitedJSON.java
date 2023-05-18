@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON {
     @JsonProperty("format_type")
-    public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+    public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatType formatType;
 
-    public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON withFormatType(SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON withFormatType(SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
         this.formatType = formatType;
   }
 }

@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceMssqlReplicationMethodStandard {
     @JsonProperty("method")
-    public SourceMssqlReplicationMethodStandardMethodEnum method;
+    public SourceMssqlReplicationMethodStandardMethod method;
 
-    public SourceMssqlReplicationMethodStandard withMethod(SourceMssqlReplicationMethodStandardMethodEnum method) {
+    public SourceMssqlReplicationMethodStandard withMethod(SourceMssqlReplicationMethodStandardMethod method) {
         this.method = method;
         return this;
     }
     
-    public SourceMssqlReplicationMethodStandard(@JsonProperty("method") SourceMssqlReplicationMethodStandardMethodEnum method) {
+    public SourceMssqlReplicationMethodStandard(@JsonProperty("method") SourceMssqlReplicationMethodStandardMethod method) {
         this.method = method;
   }
 }

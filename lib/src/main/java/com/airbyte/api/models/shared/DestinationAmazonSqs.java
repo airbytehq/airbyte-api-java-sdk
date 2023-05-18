@@ -25,9 +25,9 @@ public class DestinationAmazonSqs {
     }
     
     @JsonProperty("destinationType")
-    public DestinationAmazonSqsAmazonSqsEnum destinationType;
+    public DestinationAmazonSqsAmazonSqs destinationType;
 
-    public DestinationAmazonSqs withDestinationType(DestinationAmazonSqsAmazonSqsEnum destinationType) {
+    public DestinationAmazonSqs withDestinationType(DestinationAmazonSqsAmazonSqs destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -83,9 +83,9 @@ public class DestinationAmazonSqs {
      * AWS Region of the SQS Queue
      */
     @JsonProperty("region")
-    public DestinationAmazonSqsAWSRegionEnum region;
+    public DestinationAmazonSqsAWSRegion region;
 
-    public DestinationAmazonSqs withRegion(DestinationAmazonSqsAWSRegionEnum region) {
+    public DestinationAmazonSqs withRegion(DestinationAmazonSqsAWSRegion region) {
         this.region = region;
         return this;
     }
@@ -102,7 +102,7 @@ public class DestinationAmazonSqs {
         return this;
     }
     
-    public DestinationAmazonSqs(@JsonProperty("destinationType") DestinationAmazonSqsAmazonSqsEnum destinationType, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") DestinationAmazonSqsAWSRegionEnum region) {
+    public DestinationAmazonSqs(@JsonProperty("destinationType") DestinationAmazonSqsAmazonSqs destinationType, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") DestinationAmazonSqsAWSRegion region) {
         this.destinationType = destinationType;
         this.queueUrl = queueUrl;
         this.region = region;

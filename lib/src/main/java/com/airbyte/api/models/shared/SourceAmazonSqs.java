@@ -86,9 +86,9 @@ public class SourceAmazonSqs {
      * AWS Region of the SQS Queue
      */
     @JsonProperty("region")
-    public SourceAmazonSqsAWSRegionEnum region;
+    public SourceAmazonSqsAWSRegion region;
 
-    public SourceAmazonSqs withRegion(SourceAmazonSqsAWSRegionEnum region) {
+    public SourceAmazonSqs withRegion(SourceAmazonSqsAWSRegion region) {
         this.region = region;
         return this;
     }
@@ -106,9 +106,9 @@ public class SourceAmazonSqs {
     }
     
     @JsonProperty("sourceType")
-    public SourceAmazonSqsAmazonSqsEnum sourceType;
+    public SourceAmazonSqsAmazonSqs sourceType;
 
-    public SourceAmazonSqs withSourceType(SourceAmazonSqsAmazonSqsEnum sourceType) {
+    public SourceAmazonSqs withSourceType(SourceAmazonSqsAmazonSqs sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -125,7 +125,7 @@ public class SourceAmazonSqs {
         return this;
     }
     
-    public SourceAmazonSqs(@JsonProperty("delete_messages") Boolean deleteMessages, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") SourceAmazonSqsAWSRegionEnum region, @JsonProperty("sourceType") SourceAmazonSqsAmazonSqsEnum sourceType) {
+    public SourceAmazonSqs(@JsonProperty("delete_messages") Boolean deleteMessages, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") SourceAmazonSqsAWSRegion region, @JsonProperty("sourceType") SourceAmazonSqsAmazonSqs sourceType) {
         this.deleteMessages = deleteMessages;
         this.queueUrl = queueUrl;
         this.region = region;
