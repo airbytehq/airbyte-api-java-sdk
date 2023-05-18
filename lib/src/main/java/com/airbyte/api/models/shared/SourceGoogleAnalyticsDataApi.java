@@ -39,7 +39,7 @@ public class SourceGoogleAnalyticsDataApi {
     }
     
     /**
-     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report.
+     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("date_ranges_start_date")
@@ -51,7 +51,7 @@ public class SourceGoogleAnalyticsDataApi {
     }
     
     /**
-     * A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body
+     * A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body such as "123...". See &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id"&gt;the docs&lt;/a&gt; for more details.
      */
     @JsonProperty("property_id")
     public String propertyId;
@@ -70,7 +70,7 @@ public class SourceGoogleAnalyticsDataApi {
     }
     
     /**
-     * The time increment used by the connector when requesting data from the Google Analytics API. More information is available in the &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#sampling-in-reports"&gt;the docs&lt;/a&gt;. The bigger this value is, the faster the sync will be, but the more likely that sampling will be applied to your data, potentially causing inaccuracies in the returned results. We recommend setting this to 1 unless you have a hard requirement to make the sync faster at the expense of accuracy. The minimum allowed value for this field is 1, and the maximum is 364.
+     * The time increment used by the connector when requesting data from the Google Analytics API. More information is available in the &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#sampling-in-reports"&gt;the docs&lt;/a&gt;. The bigger this value is, the faster the sync will be, but the more likely that sampling will be applied to your data, potentially causing inaccuracies in the returned results. We recommend setting this to 1 unless you have a hard requirement to make the sync faster at the expense of accuracy. The minimum allowed value for this field is 1, and the maximum is 364. Not applied to custom Cohort reports.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")

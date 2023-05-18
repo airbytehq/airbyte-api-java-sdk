@@ -4,9 +4,14 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourcePaypalTransaction - The values required to configure the source.
@@ -70,15 +75,17 @@ public class SourcePaypalTransaction {
     /**
      * Start Date for data extraction in &lt;a href="https://datatracker.ietf.org/doc/html/rfc3339#section-5.6"&gt;ISO format&lt;/a&gt;. Date must be in range from 3 years till 12 hrs before present time.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
+    public OffsetDateTime startDate;
 
-    public SourcePaypalTransaction withStartDate(String startDate) {
+    public SourcePaypalTransaction withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
     
-    public SourcePaypalTransaction(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransactionEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourcePaypalTransaction(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransactionEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.isSandbox = isSandbox;
         this.sourceType = sourceType;
         this.startDate = startDate;

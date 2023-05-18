@@ -55,9 +55,9 @@ public class ConnectionCreateRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceDefinition")
-    public ConnectionCreateRequestNamespaceDefinitionEnum namespaceDefinition;
+    public NamespaceDefinitionEnumEnum namespaceDefinition;
 
-    public ConnectionCreateRequest withNamespaceDefinition(ConnectionCreateRequestNamespaceDefinitionEnum namespaceDefinition) {
+    public ConnectionCreateRequest withNamespaceDefinition(NamespaceDefinitionEnumEnum namespaceDefinition) {
         this.namespaceDefinition = namespaceDefinition;
         return this;
     }
@@ -71,6 +71,18 @@ public class ConnectionCreateRequest {
 
     public ConnectionCreateRequest withNamespaceFormat(String namespaceFormat) {
         this.namespaceFormat = namespaceFormat;
+        return this;
+    }
+    
+    /**
+     * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("nonBreakingSchemaUpdatesBehavior")
+    public NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior;
+
+    public ConnectionCreateRequest withNonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior) {
+        this.nonBreakingSchemaUpdatesBehavior = nonBreakingSchemaUpdatesBehavior;
         return this;
     }
     

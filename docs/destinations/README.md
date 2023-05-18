@@ -76,6 +76,8 @@ import com.airbyte.api.models.shared.DestinationClickhouseTunnelMethodSSHKeyAuth
 import com.airbyte.api.models.shared.DestinationConvex;
 import com.airbyte.api.models.shared.DestinationConvexConvexEnum;
 import com.airbyte.api.models.shared.DestinationCreateRequest;
+import com.airbyte.api.models.shared.DestinationCumulio;
+import com.airbyte.api.models.shared.DestinationCumulioCumulioEnum;
 import com.airbyte.api.models.shared.DestinationDatabend;
 import com.airbyte.api.models.shared.DestinationDatabendDatabendEnum;
 import com.airbyte.api.models.shared.DestinationDatabricks;
@@ -325,8 +327,6 @@ import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodAWSS3Stagi
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionTypeEnum;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegionEnum;
-import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodAzureBlobStorageStaging;
-import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodAzureBlobStorageStagingMethodEnum;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodGoogleCloudStorageStagingMethodEnum;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodRecommendedInternalStaging;
@@ -342,35 +342,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("architecto") {{
+                .setSecurity(new Security("nobis") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationBigquery("excepturi", DestinationBigqueryDatasetLocationEnum.ASIA_NORTHEAST2, DestinationBigqueryBigqueryEnum.BIGQUERY, "ea") {{
-                                bigQueryClientBufferSizeMb = 919483L;
-                                credentialsJson = "ullam";
-                                datasetId = "expedita";
-                                datasetLocation = DestinationBigqueryDatasetLocationEnum.EUROPE_WEST2;
-                                destinationType = DestinationBigqueryBigqueryEnum.BIGQUERY;
-                                loadingMethod = new DestinationBigqueryLoadingMethodGCSStaging(                new DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey(DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum.HMAC_KEY, "sunt", "quo") {{
-                                                    credentialType = DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum.HMAC_KEY;
-                                                    hmacKeyAccessId = "natus";
-                                                    hmacKeySecret = "magni";
-                                                }}, "illum", "pariatur", DestinationBigqueryLoadingMethodGCSStagingMethodEnum.GCS_STAGING) {{
-                                    credential = new DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKey(DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum.HMAC_KEY, "saepe", "pariatur") {{
-                                        credentialType = DestinationBigqueryLoadingMethodGCSStagingCredentialHMACKeyCredentialTypeEnum.HMAC_KEY;
-                                        hmacKeyAccessId = "quibusdam";
-                                        hmacKeySecret = "sed";
-                                    }};
-                                    gcsBucketName = "accusantium";
-                                    gcsBucketPath = "consequuntur";
-                                    keepFilesInGcsBucket = DestinationBigqueryLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum.KEEP_ALL_TMP_FILES_IN_GCS;
-                                    method = DestinationBigqueryLoadingMethodGCSStagingMethodEnum.GCS_STAGING;
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationClickhouse("quam", DestinationClickhouseClickhouseEnum.CLICKHOUSE, "dolor", 874573L, "nostrum") {{
+                                database = "quis";
+                                destinationType = DestinationClickhouseClickhouseEnum.CLICKHOUSE;
+                                host = "totam";
+                                jdbcUrlParams = "dignissimos";
+                                password = "eaque";
+                                port = 338985L;
+                                tunnelMethod = new DestinationClickhouseTunnelMethodNoTunnel(DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum.NO_TUNNEL) {{
+                                    tunnelMethod = DestinationClickhouseTunnelMethodNoTunnelTunnelMethodEnum.NO_TUNNEL;
                                 }};
-                                projectId = "maxime";
-                                transformationPriority = DestinationBigqueryTransformationQueryRunTypeEnum.INTERACTIVE;
-                            }}, "accusantium", "1fb576b0-d5f0-4d30-85fb-b2587053202c");            
+                                username = "Chelsea79";
+                            }}, "hic", "e9b90c28-909b-43fe-89a8-d9cbf4863332");            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
@@ -402,12 +390,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quam") {{
+                .setSecurity(new Security("ipsum") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("dolor");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("hic");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -439,12 +427,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("vero") {{
+                .setSecurity(new Security("excepturi") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("nostrum");            
+            GetDestinationRequest req = new GetDestinationRequest("cum");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -476,19 +464,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("hic") {{
+                .setSecurity(new Security("voluptate") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
             ListDestinationsRequest req = new ListDestinationsRequest() {{
                 includeDeleted = false;
-                limit = 928082;
-                offset = 608253;
+                limit = 490459;
+                offset = 970237;
                 workspaceIds = new String[]{{
-                    add("90c28909-b3fe-449a-8d9c-bf48633323f9"),
-                    add("b77f3a41-0067-44eb-b692-80d1ba77a89e"),
-                    add("bf737ae4-203c-4e5e-aa95-d8a0d446ce2a"),
+                    add("a4100674-ebf6-4928-8d1b-a77a89ebf737"),
                 }};
             }};            
 

@@ -30,7 +30,7 @@ public class SourcePinterest {
     }
     
     /**
-     * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by api (914 days from today).
+     * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by api (89 days from today).
      */
     @JsonProperty("start_date")
     public String startDate;

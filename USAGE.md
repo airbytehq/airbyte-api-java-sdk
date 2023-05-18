@@ -5,10 +5,11 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionScheduleCreate;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
 import com.airbyte.api.models.shared.GeographyEnumEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnumEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumEnum;
 import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
@@ -91,11 +92,12 @@ public class Application {
                 }};;
                 dataResidency = GeographyEnumEnum.US;
                 name = "Kayla O'Kon";
-                namespaceDefinition = ConnectionCreateRequestNamespaceDefinitionEnum.CUSTOM_FORMAT;
+                namespaceDefinition = NamespaceDefinitionEnumEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                prefix = "sequi";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.CRON) {{
-                    cronExpression = "ipsam";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumEnum.IGNORE;
+                prefix = "tenetur";
+                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.MANUAL) {{
+                    cronExpression = "id";
                 }};;
             }};            
 

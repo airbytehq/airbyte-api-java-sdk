@@ -25,12 +25,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("a") {{
+                .setSecurity(new Security("id") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(456130L);            
+            CancelJobRequest req = new CancelJobRequest(906418L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -63,12 +63,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("harum") {{
+                .setSecurity(new Security("eius") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("iusto", JobTypeEnumEnum.SYNC);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("aspernatur", JobTypeEnumEnum.SYNC);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -100,12 +100,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quisquam") {{
+                .setSecurity(new Security("amet") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(947371L);            
+            GetJobRequest req = new GetJobRequest(758379L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -138,15 +138,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("amet") {{
+                .setSecurity(new Security("accusamus") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            ListJobsRequest req = new ListJobsRequest("tempore") {{
+            ListJobsRequest req = new ListJobsRequest("ad") {{
                 jobType = JobTypeEnumEnum.RESET;
-                limit = 253941;
-                offset = 313692;
+                limit = 383464;
+                offset = 645785;
             }};            
 
             ListJobsResponse res = sdk.jobs.listJobs(req);

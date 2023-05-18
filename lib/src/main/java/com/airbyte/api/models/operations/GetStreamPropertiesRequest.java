@@ -20,6 +20,17 @@ public class GetStreamPropertiesRequest {
     }
     
     /**
+     * If true pull the latest schema from the source, else pull from cache (default false)
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=ignoreCache")
+    public Boolean ignoreCache;
+
+    public GetStreamPropertiesRequest withIgnoreCache(Boolean ignoreCache) {
+        this.ignoreCache = ignoreCache;
+        return this;
+    }
+    
+    /**
      * ID of the source
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=sourceId")

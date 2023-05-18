@@ -19,10 +19,11 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionScheduleCreate;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
 import com.airbyte.api.models.shared.GeographyEnumEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnumEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumEnum;
 import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
@@ -32,41 +33,56 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("id") {{
+                .setSecurity(new Security("possimus") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d019da1f-fe78-4f09-bb00-74f15471b5e6", "e13b99d4-88e1-4e91-a450-ad2abd442698") {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("019da1ff-e78f-4097-b007-4f15471b5e6e", "13b99d48-8e1e-491e-850a-d2abd4426980") {{
                 configurations = new StreamConfigurations() {{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("aliquid") {{
+                        add(new StreamConfiguration("rerum") {{
                             cursorField = new String[]{{
-                                add("assumenda"),
+                                add("ipsam"),
+                                add("alias"),
+                                add("fugit"),
+                                add("dolorum"),
                             }};
-                            name = "Linda Corkery";
+                            name = "Eddie Prosacco";
                             primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("tempore"),
-                                    add("labore"),
-                                    add("delectus"),
-                                }}),
                                 add(new String[]{{
                                     add("non"),
                                     add("eligendi"),
                                 }}),
+                                add(new String[]{{
+                                    add("aliquid"),
+                                    add("provident"),
+                                    add("necessitatibus"),
+                                }}),
+                                add(new String[]{{
+                                    add("officia"),
+                                    add("dolor"),
+                                    add("debitis"),
+                                }}),
+                                add(new String[]{{
+                                    add("dolorum"),
+                                    add("in"),
+                                    add("in"),
+                                    add("illum"),
+                                }}),
                             }};
-                            syncMode = ConnectionSyncModeEnumEnum.INCREMENTAL_APPEND;
+                            syncMode = ConnectionSyncModeEnumEnum.INCREMENTAL_DEDUPED_HISTORY;
                         }}),
                     }};
                 }};;
-                dataResidency = GeographyEnumEnum.US;
-                name = "Perry Nikolaus";
-                namespaceDefinition = ConnectionCreateRequestNamespaceDefinitionEnum.CUSTOM_FORMAT;
+                dataResidency = GeographyEnumEnum.AUTO;
+                name = "Blanca Schulist";
+                namespaceDefinition = NamespaceDefinitionEnumEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                prefix = "dolorum";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.MANUAL) {{
-                    cronExpression = "in";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumEnum.DISABLE_CONNECTION;
+                prefix = "non";
+                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.CRON) {{
+                    cronExpression = "enim";
                 }};;
             }};            
 
@@ -100,12 +116,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("illum") {{
+                .setSecurity(new Security("accusamus") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            DeleteConnectionRequest req = new DeleteConnectionRequest("maiores");            
+            DeleteConnectionRequest req = new DeleteConnectionRequest("delectus");            
 
             DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
@@ -137,12 +153,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("rerum") {{
+                .setSecurity(new Security("quidem") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            GetConnectionRequest req = new GetConnectionRequest("dicta");            
+            GetConnectionRequest req = new GetConnectionRequest("provident");            
 
             GetConnectionResponse res = sdk.connections.getConnection(req);
 
@@ -174,18 +190,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("magnam") {{
+                .setSecurity(new Security("nam") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
             ListConnectionsRequest req = new ListConnectionsRequest() {{
                 includeDeleted = false;
-                limit = 767024;
-                offset = 813798;
+                limit = 659669;
+                offset = 501324;
                 workspaceIds = new String[]{{
-                    add("6ae395ef-b9ba-488f-ba66-997074ba4469"),
-                    add("b6e21419-5989-40af-a563-e2516fe4c8b7"),
+                    add("f3a66997-074b-4a44-a9b6-e2141959890a"),
+                    add("fa563e25-16fe-44c8-b711-e5b7fd2ed028"),
+                    add("921cddc6-9260-41fb-976b-0d5f0d30c5fb"),
                 }};
             }};            
 

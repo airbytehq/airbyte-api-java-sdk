@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -39,6 +41,48 @@ public class ConnectionResponse {
 
     public ConnectionResponse withName(String name) {
         this.name = name;
+        return this;
+    }
+    
+    /**
+     * Define the location where the data will be stored in the destination
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("namespaceDefinition")
+    public NamespaceDefinitionEnumEnum namespaceDefinition;
+
+    public ConnectionResponse withNamespaceDefinition(NamespaceDefinitionEnumEnum namespaceDefinition) {
+        this.namespaceDefinition = namespaceDefinition;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("namespaceFormat")
+    public String namespaceFormat;
+
+    public ConnectionResponse withNamespaceFormat(String namespaceFormat) {
+        this.namespaceFormat = namespaceFormat;
+        return this;
+    }
+    
+    /**
+     * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("nonBreakingSchemaUpdatesBehavior")
+    public NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior;
+
+    public ConnectionResponse withNonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior) {
+        this.nonBreakingSchemaUpdatesBehavior = nonBreakingSchemaUpdatesBehavior;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("prefix")
+    public String prefix;
+
+    public ConnectionResponse withPrefix(String prefix) {
+        this.prefix = prefix;
         return this;
     }
     

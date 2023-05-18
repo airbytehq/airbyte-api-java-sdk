@@ -58,6 +58,18 @@ public class SourceBingAds {
     }
     
     /**
+     * Also known as attribution or conversion window. How far into the past to look for records (in days). If your conversion window has an hours/minutes granularity, round it up to the number of days exceeding. Used only for performance report streams in incremental mode.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_window")
+    public Long lookbackWindow;
+
+    public SourceBingAds withLookbackWindow(Long lookbackWindow) {
+        this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+    
+    /**
      * Refresh Token to renew the expired Access Token.
      */
     @JsonProperty("refresh_token")

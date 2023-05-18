@@ -7,16 +7,17 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * WorkspaceOAuthCredentialsRequestActorTypeEnum - Whether you're setting this override for a source or destination
+ * NamespaceDefinitionEnumEnum - Define the location where the data will be stored in the destination
  */
-public enum WorkspaceOAuthCredentialsRequestActorTypeEnum {
+public enum NamespaceDefinitionEnumEnum {
     SOURCE("source"),
-    DESTINATION("destination");
+    DESTINATION("destination"),
+    CUSTOM_FORMAT("custom_format");
 
     @JsonValue
     public final String value;
 
-    private WorkspaceOAuthCredentialsRequestActorTypeEnum(String value) {
+    private NamespaceDefinitionEnumEnum(String value) {
         this.value = value;
     }
 }

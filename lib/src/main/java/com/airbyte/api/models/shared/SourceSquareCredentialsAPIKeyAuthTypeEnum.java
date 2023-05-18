@@ -6,13 +6,13 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum SourceSquareCredentialsAPIKeyCredentialsTitleEnum {
+public enum SourceSquareCredentialsAPIKeyAuthTypeEnum {
     API_KEY("API Key");
 
     @JsonValue
     public final String value;
 
-    private SourceSquareCredentialsAPIKeyCredentialsTitleEnum(String value) {
+    private SourceSquareCredentialsAPIKeyAuthTypeEnum(String value) {
         this.value = value;
     }
 }

@@ -20,6 +20,8 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateSourceResponse;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.SourceAircall;
+import com.airbyte.api.models.shared.SourceAircallAircallEnum;
 import com.airbyte.api.models.shared.SourceAirtable;
 import com.airbyte.api.models.shared.SourceAirtableAirtableEnum;
 import com.airbyte.api.models.shared.SourceAirtableCredentialsOAuth20;
@@ -597,9 +599,9 @@ import com.airbyte.api.models.shared.SourceSpacexApi;
 import com.airbyte.api.models.shared.SourceSpacexApiSpacexApiEnum;
 import com.airbyte.api.models.shared.SourceSquare;
 import com.airbyte.api.models.shared.SourceSquareCredentialsAPIKey;
-import com.airbyte.api.models.shared.SourceSquareCredentialsAPIKeyCredentialsTitleEnum;
+import com.airbyte.api.models.shared.SourceSquareCredentialsAPIKeyAuthTypeEnum;
 import com.airbyte.api.models.shared.SourceSquareCredentialsOauthAuthentication;
-import com.airbyte.api.models.shared.SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum;
+import com.airbyte.api.models.shared.SourceSquareCredentialsOauthAuthenticationAuthTypeEnum;
 import com.airbyte.api.models.shared.SourceSquareSquareEnum;
 import com.airbyte.api.models.shared.SourceStrava;
 import com.airbyte.api.models.shared.SourceStravaAuthTypeEnum;
@@ -696,6 +698,8 @@ import com.airbyte.api.models.shared.SourceZohoCrmZohoCrmEnum;
 import com.airbyte.api.models.shared.SourceZoom;
 import com.airbyte.api.models.shared.SourceZoomZoomEnum;
 import com.airbyte.api.models.shared.SourceZuora;
+import com.airbyte.api.models.shared.SourceZuoraDataQueryTypeEnum;
+import com.airbyte.api.models.shared.SourceZuoraTenantEndpointLocationEnum;
 import com.airbyte.api.models.shared.SourceZuoraZuoraEnum;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -704,24 +708,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("dolorem") {{
+                .setSecurity(new Security("provident") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceYoutubeAnalytics(                new java.util.HashMap<String, Object>() {{
-                                                put("voluptas", "deserunt");
-                                                put("quam", "ipsum");
-                                                put("incidunt", "qui");
-                                            }}, SourceYoutubeAnalyticsYoutubeAnalyticsEnum.YOUTUBE_ANALYTICS) {{
-                                credentials = new java.util.HashMap<String, Object>() {{
-                                    put("nihil", "sit");
-                                    put("expedita", "neque");
-                                    put("sed", "vel");
-                                }};
-                                sourceType = SourceYoutubeAnalyticsYoutubeAnalyticsEnum.YOUTUBE_ANALYTICS;
-                            }}, "cupiditate", "cdb1a842-2bb6-479d-a322-715bf0cbb1e3") {{
-                secretId = "veritatis";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceGreenhouse("totam", SourceGreenhouseGreenhouseEnum.GREENHOUSE) {{
+                                apiKey = "repellendus";
+                                sourceType = SourceGreenhouseGreenhouseEnum.GREENHOUSE;
+                            }}, "similique", "0d446ce2-af7a-473c-b3be-453f870b326b") {{
+                secretId = "voluptas";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -754,12 +750,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("nobis") {{
+                .setSecurity(new Security("deserunt") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("quos");            
+            DeleteSourceRequest req = new DeleteSourceRequest("quam");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -791,12 +787,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("tempore") {{
+                .setSecurity(new Security("ipsum") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("cupiditate");            
+            GetSourceRequest req = new GetSourceRequest("incidunt");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -832,17 +828,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aperiam") {{
+                .setSecurity(new Security("qui") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("delectus", "dolorem", "443a1108-e0ad-4cf4-b921-879fce953f73") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("cupiditate", "maxime", "db1a8422-bb67-49d2-b227-15bf0cbb1e31") {{
                 oAuthInputConfiguration = new java.util.HashMap<String, Object>() {{
-                    put("tenetur", "dignissimos");
-                    put("hic", "distinctio");
-                    put("quod", "odio");
-                    put("similique", "facilis");
+                    put("quos", "tempore");
+                    put("cupiditate", "aperiam");
+                    put("delectus", "dolorem");
                 }};
             }};            
 
@@ -876,20 +871,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("vero") {{
+                .setSecurity(new Security("dolore") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 498140;
-                offset = 293020;
+                limit = 286915;
+                offset = 240829;
                 workspaceIds = new String[]{{
-                    add("d39c0f5d-2cff-47c7-8a45-626d436813f1"),
-                    add("6d9f5fce-6c55-4614-ac3e-250fb008c42e"),
-                    add("141aac36-6c8d-4d6b-9442-907474778a7b"),
-                    add("d466d28c-10ab-43cd-8a42-51904e523c7e"),
+                    add("1108e0ad-cf4b-4921-879f-ce953f73ef7f"),
+                    add("bc7abd74-dd39-4c0f-9d2c-ff7c70a45626"),
+                    add("d436813f-16d9-4f5f-8e6c-556146c3e250"),
                 }};
             }};            
 

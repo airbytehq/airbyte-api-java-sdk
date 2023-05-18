@@ -22,12 +22,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aperiam") {{
+                .setSecurity(new Security("a") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("distinctio", "quod");            
+            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("libero", "aut") {{
+                ignoreCache = false;
+            }};            
 
             GetStreamPropertiesResponse res = sdk.streams.getStreamProperties(req);
 

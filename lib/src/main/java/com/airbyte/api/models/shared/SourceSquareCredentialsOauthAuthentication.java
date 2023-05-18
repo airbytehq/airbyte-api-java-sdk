@@ -4,14 +4,20 @@
 
 package com.airbyte.api.models.shared;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * SourceSquareCredentialsOauthAuthentication - Choose how to authenticate to Square.
  */
 public class SourceSquareCredentialsOauthAuthentication {
+    @JsonProperty("auth_type")
+    public SourceSquareCredentialsOauthAuthenticationAuthTypeEnum authType;
+
+    public SourceSquareCredentialsOauthAuthentication withAuthType(SourceSquareCredentialsOauthAuthenticationAuthTypeEnum authType) {
+        this.authType = authType;
+        return this;
+    }
+    
     /**
      * The Square-issued ID of your application
      */
@@ -34,15 +40,6 @@ public class SourceSquareCredentialsOauthAuthentication {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("credentials_title")
-    public SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum credentialsTitle;
-
-    public SourceSquareCredentialsOauthAuthentication withCredentialsTitle(SourceSquareCredentialsOauthAuthenticationCredentialsTitleEnum credentialsTitle) {
-        this.credentialsTitle = credentialsTitle;
-        return this;
-    }
-    
     /**
      * A refresh token generated using the above client ID and secret
      */
@@ -54,7 +51,8 @@ public class SourceSquareCredentialsOauthAuthentication {
         return this;
     }
     
-    public SourceSquareCredentialsOauthAuthentication(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    public SourceSquareCredentialsOauthAuthentication(@JsonProperty("auth_type") SourceSquareCredentialsOauthAuthenticationAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+        this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;

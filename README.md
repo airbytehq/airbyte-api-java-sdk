@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.9.0'
+implementation 'com.airbyte.api:public-api:0.11.0'
 ```
 <!-- End SDK Installation -->
 
@@ -33,10 +33,11 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionCreateRequestNamespaceDefinitionEnum;
 import com.airbyte.api.models.shared.ConnectionScheduleCreate;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
 import com.airbyte.api.models.shared.GeographyEnumEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnumEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumEnum;
 import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
@@ -119,11 +120,12 @@ public class Application {
                 }};;
                 dataResidency = GeographyEnumEnum.US;
                 name = "Kayla O'Kon";
-                namespaceDefinition = ConnectionCreateRequestNamespaceDefinitionEnum.CUSTOM_FORMAT;
+                namespaceDefinition = NamespaceDefinitionEnumEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                prefix = "sequi";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.CRON) {{
-                    cronExpression = "ipsam";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumEnum.IGNORE;
+                prefix = "tenetur";
+                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.MANUAL) {{
+                    cronExpression = "id";
                 }};;
             }};            
 
@@ -181,8 +183,10 @@ public class Application {
 
 * [createOrUpdateWorkspaceOAuthCredentials](docs/workspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
 * [createWorkspace](docs/workspaces/README.md#createworkspace) - Create a workspace
+* [deleteWorkspace](docs/workspaces/README.md#deleteworkspace) - Delete a Workspace
 * [getWorkspace](docs/workspaces/README.md#getworkspace) - Get Workspace details
 * [listWorkspaces](docs/workspaces/README.md#listworkspaces) - List workspaces
+* [updateWorkspace](docs/workspaces/README.md#updateworkspace) - Update a workspace
 <!-- End SDK Available Operations -->
 
 ### Maturity
