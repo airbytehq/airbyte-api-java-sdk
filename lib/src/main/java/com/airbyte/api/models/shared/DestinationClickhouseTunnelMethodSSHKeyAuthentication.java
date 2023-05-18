@@ -36,9 +36,9 @@ public class DestinationClickhouseTunnelMethodSSHKeyAuthentication {
      * Connect through a jump server tunnel host using username and ssh key
      */
     @JsonProperty("tunnel_method")
-    public DestinationClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationClickhouseTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationClickhouseTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationClickhouseTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
-    public DestinationClickhouseTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
+    public DestinationClickhouseTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
         this.sshKey = sshKey;
         this.tunnelHost = tunnelHost;
         this.tunnelMethod = tunnelMethod;

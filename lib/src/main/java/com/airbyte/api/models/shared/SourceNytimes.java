@@ -42,9 +42,9 @@ public class SourceNytimes {
      * Period of time (in days)
      */
     @JsonProperty("period")
-    public SourceNytimesPeriodUsedForMostPopularStreamsEnum period;
+    public SourceNytimesPeriodUsedForMostPopularStreams period;
 
-    public SourceNytimes withPeriod(SourceNytimesPeriodUsedForMostPopularStreamsEnum period) {
+    public SourceNytimes withPeriod(SourceNytimesPeriodUsedForMostPopularStreams period) {
         this.period = period;
         return this;
     }
@@ -54,17 +54,17 @@ public class SourceNytimes {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("share_type")
-    public SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType;
+    public SourceNytimesShareTypeUsedForMostPopularSharedStream shareType;
 
-    public SourceNytimes withShareType(SourceNytimesShareTypeUsedForMostPopularSharedStreamEnum shareType) {
+    public SourceNytimes withShareType(SourceNytimesShareTypeUsedForMostPopularSharedStream shareType) {
         this.shareType = shareType;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceNytimesNytimesEnum sourceType;
+    public SourceNytimesNytimes sourceType;
 
-    public SourceNytimes withSourceType(SourceNytimesNytimesEnum sourceType) {
+    public SourceNytimes withSourceType(SourceNytimesNytimes sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -81,7 +81,7 @@ public class SourceNytimes {
         return this;
     }
     
-    public SourceNytimes(@JsonProperty("api_key") String apiKey, @JsonProperty("period") SourceNytimesPeriodUsedForMostPopularStreamsEnum period, @JsonProperty("sourceType") SourceNytimesNytimesEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceNytimes(@JsonProperty("api_key") String apiKey, @JsonProperty("period") SourceNytimesPeriodUsedForMostPopularStreams period, @JsonProperty("sourceType") SourceNytimesNytimes sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.apiKey = apiKey;
         this.period = period;
         this.sourceType = sourceType;

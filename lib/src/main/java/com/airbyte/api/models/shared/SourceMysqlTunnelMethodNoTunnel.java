@@ -14,14 +14,14 @@ public class SourceMysqlTunnelMethodNoTunnel {
      * No ssh tunnel needed to connect to database
      */
     @JsonProperty("tunnel_method")
-    public SourceMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    public SourceMysqlTunnelMethodNoTunnelTunnelMethod tunnelMethod;
 
-    public SourceMysqlTunnelMethodNoTunnel withTunnelMethod(SourceMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public SourceMysqlTunnelMethodNoTunnel withTunnelMethod(SourceMysqlTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
     
-    public SourceMysqlTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceMysqlTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public SourceMysqlTunnelMethodNoTunnel(@JsonProperty("tunnel_method") SourceMysqlTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
   }
 }

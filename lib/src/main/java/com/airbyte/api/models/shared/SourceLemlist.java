@@ -22,14 +22,14 @@ public class SourceLemlist {
     }
     
     @JsonProperty("sourceType")
-    public SourceLemlistLemlistEnum sourceType;
+    public SourceLemlistLemlist sourceType;
 
-    public SourceLemlist withSourceType(SourceLemlistLemlistEnum sourceType) {
+    public SourceLemlist withSourceType(SourceLemlistLemlist sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceLemlist(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceLemlistLemlistEnum sourceType) {
+    public SourceLemlist(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceLemlistLemlist sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

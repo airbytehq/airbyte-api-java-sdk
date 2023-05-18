@@ -17,9 +17,9 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_to_sync")
-    public SourceMssqlReplicationMethodLogicalReplicationCDCDataToSyncEnum dataToSync;
+    public SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync dataToSync;
 
-    public SourceMssqlReplicationMethodLogicalReplicationCDC withDataToSync(SourceMssqlReplicationMethodLogicalReplicationCDCDataToSyncEnum dataToSync) {
+    public SourceMssqlReplicationMethodLogicalReplicationCDC withDataToSync(SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync dataToSync) {
         this.dataToSync = dataToSync;
         return this;
     }
@@ -37,9 +37,9 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
     }
     
     @JsonProperty("method")
-    public SourceMssqlReplicationMethodLogicalReplicationCDCMethodEnum method;
+    public SourceMssqlReplicationMethodLogicalReplicationCDCMethod method;
 
-    public SourceMssqlReplicationMethodLogicalReplicationCDC withMethod(SourceMssqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
+    public SourceMssqlReplicationMethodLogicalReplicationCDC withMethod(SourceMssqlReplicationMethodLogicalReplicationCDCMethod method) {
         this.method = method;
         return this;
     }
@@ -49,14 +49,14 @@ public class SourceMssqlReplicationMethodLogicalReplicationCDC {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("snapshot_isolation")
-    public SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum snapshotIsolation;
+    public SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel snapshotIsolation;
 
-    public SourceMssqlReplicationMethodLogicalReplicationCDC withSnapshotIsolation(SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevelEnum snapshotIsolation) {
+    public SourceMssqlReplicationMethodLogicalReplicationCDC withSnapshotIsolation(SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel snapshotIsolation) {
         this.snapshotIsolation = snapshotIsolation;
         return this;
     }
     
-    public SourceMssqlReplicationMethodLogicalReplicationCDC(@JsonProperty("method") SourceMssqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
+    public SourceMssqlReplicationMethodLogicalReplicationCDC(@JsonProperty("method") SourceMssqlReplicationMethodLogicalReplicationCDCMethod method) {
         this.method = method;
   }
 }

@@ -22,14 +22,14 @@ public class DestinationMongodbInstanceTypeMongoDBAtlas {
     }
     
     @JsonProperty("instance")
-    public DestinationMongodbInstanceTypeMongoDBAtlasInstanceEnum instance;
+    public DestinationMongodbInstanceTypeMongoDBAtlasInstance instance;
 
-    public DestinationMongodbInstanceTypeMongoDBAtlas withInstance(DestinationMongodbInstanceTypeMongoDBAtlasInstanceEnum instance) {
+    public DestinationMongodbInstanceTypeMongoDBAtlas withInstance(DestinationMongodbInstanceTypeMongoDBAtlasInstance instance) {
         this.instance = instance;
         return this;
     }
     
-    public DestinationMongodbInstanceTypeMongoDBAtlas(@JsonProperty("cluster_url") String clusterUrl, @JsonProperty("instance") DestinationMongodbInstanceTypeMongoDBAtlasInstanceEnum instance) {
+    public DestinationMongodbInstanceTypeMongoDBAtlas(@JsonProperty("cluster_url") String clusterUrl, @JsonProperty("instance") DestinationMongodbInstanceTypeMongoDBAtlasInstance instance) {
         this.clusterUrl = clusterUrl;
         this.instance = instance;
   }

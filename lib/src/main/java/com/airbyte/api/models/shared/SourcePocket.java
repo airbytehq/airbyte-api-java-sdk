@@ -39,9 +39,9 @@ public class SourcePocket {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("content_type")
-    public SourcePocketContentTypeEnum contentType;
+    public SourcePocketContentType contentType;
 
-    public SourcePocket withContentType(SourcePocketContentTypeEnum contentType) {
+    public SourcePocket withContentType(SourcePocketContentType contentType) {
         this.contentType = contentType;
         return this;
     }
@@ -51,9 +51,9 @@ public class SourcePocket {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("detail_type")
-    public SourcePocketDetailTypeEnum detailType;
+    public SourcePocketDetailType detailType;
 
-    public SourcePocket withDetailType(SourcePocketDetailTypeEnum detailType) {
+    public SourcePocket withDetailType(SourcePocketDetailType detailType) {
         this.detailType = detailType;
         return this;
     }
@@ -111,17 +111,17 @@ public class SourcePocket {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sort")
-    public SourcePocketSortByEnum sort;
+    public SourcePocketSortBy sort;
 
-    public SourcePocket withSort(SourcePocketSortByEnum sort) {
+    public SourcePocket withSort(SourcePocketSortBy sort) {
         this.sort = sort;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourcePocketPocketEnum sourceType;
+    public SourcePocketPocket sourceType;
 
-    public SourcePocket withSourceType(SourcePocketPocketEnum sourceType) {
+    public SourcePocket withSourceType(SourcePocketPocket sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -131,9 +131,9 @@ public class SourcePocket {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("state")
-    public SourcePocketStateEnum state;
+    public SourcePocketState state;
 
-    public SourcePocket withState(SourcePocketStateEnum state) {
+    public SourcePocket withState(SourcePocketState state) {
         this.state = state;
         return this;
     }
@@ -150,7 +150,7 @@ public class SourcePocket {
         return this;
     }
     
-    public SourcePocket(@JsonProperty("access_token") String accessToken, @JsonProperty("consumer_key") String consumerKey, @JsonProperty("sourceType") SourcePocketPocketEnum sourceType) {
+    public SourcePocket(@JsonProperty("access_token") String accessToken, @JsonProperty("consumer_key") String consumerKey, @JsonProperty("sourceType") SourcePocketPocket sourceType) {
         this.accessToken = accessToken;
         this.consumerKey = consumerKey;
         this.sourceType = sourceType;

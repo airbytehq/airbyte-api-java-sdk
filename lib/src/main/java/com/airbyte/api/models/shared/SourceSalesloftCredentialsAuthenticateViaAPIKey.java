@@ -19,14 +19,14 @@ public class SourceSalesloftCredentialsAuthenticateViaAPIKey {
     }
     
     @JsonProperty("auth_type")
-    public SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthTypeEnum authType;
+    public SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthType authType;
 
-    public SourceSalesloftCredentialsAuthenticateViaAPIKey withAuthType(SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthTypeEnum authType) {
+    public SourceSalesloftCredentialsAuthenticateViaAPIKey withAuthType(SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthType authType) {
         this.authType = authType;
         return this;
     }
     
-    public SourceSalesloftCredentialsAuthenticateViaAPIKey(@JsonProperty("api_key") String apiKey, @JsonProperty("auth_type") SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthTypeEnum authType) {
+    public SourceSalesloftCredentialsAuthenticateViaAPIKey(@JsonProperty("api_key") String apiKey, @JsonProperty("auth_type") SourceSalesloftCredentialsAuthenticateViaAPIKeyAuthType authType) {
         this.apiKey = apiKey;
         this.authType = authType;
   }

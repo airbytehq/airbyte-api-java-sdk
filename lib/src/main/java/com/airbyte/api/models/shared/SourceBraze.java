@@ -24,9 +24,9 @@ public class SourceBraze {
     }
     
     @JsonProperty("sourceType")
-    public SourceBrazeBrazeEnum sourceType;
+    public SourceBrazeBraze sourceType;
 
-    public SourceBraze withSourceType(SourceBrazeBrazeEnum sourceType) {
+    public SourceBraze withSourceType(SourceBrazeBraze sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceBraze {
         return this;
     }
     
-    public SourceBraze(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceBrazeBrazeEnum sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("url") String url) {
+    public SourceBraze(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceBrazeBraze sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("url") String url) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

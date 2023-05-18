@@ -36,9 +36,9 @@ public class SourceTiktokMarketingCredentialsSandboxAccessToken {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceTiktokMarketingCredentialsSandboxAccessTokenAuthTypeEnum authType;
+    public SourceTiktokMarketingCredentialsSandboxAccessTokenAuthType authType;
 
-    public SourceTiktokMarketingCredentialsSandboxAccessToken withAuthType(SourceTiktokMarketingCredentialsSandboxAccessTokenAuthTypeEnum authType) {
+    public SourceTiktokMarketingCredentialsSandboxAccessToken withAuthType(SourceTiktokMarketingCredentialsSandboxAccessTokenAuthType authType) {
         this.authType = authType;
         return this;
     }

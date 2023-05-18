@@ -27,9 +27,9 @@ public class SourceTrustpilotCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceTrustpilotCredentialsOAuth20AuthTypeEnum authType;
+    public SourceTrustpilotCredentialsOAuth20AuthType authType;
 
-    public SourceTrustpilotCredentialsOAuth20 withAuthType(SourceTrustpilotCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceTrustpilotCredentialsOAuth20 withAuthType(SourceTrustpilotCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

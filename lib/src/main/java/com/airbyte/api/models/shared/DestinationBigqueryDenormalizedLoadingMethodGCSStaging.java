@@ -62,22 +62,22 @@ public class DestinationBigqueryDenormalizedLoadingMethodGCSStaging {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("keep_files_in_gcs-bucket")
-    public DestinationBigqueryDenormalizedLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum keepFilesInGcsBucket;
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessing keepFilesInGcsBucket;
 
-    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging withKeepFilesInGcsBucket(DestinationBigqueryDenormalizedLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessingEnum keepFilesInGcsBucket) {
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging withKeepFilesInGcsBucket(DestinationBigqueryDenormalizedLoadingMethodGCSStagingGCSTmpFilesAfterwardProcessing keepFilesInGcsBucket) {
         this.keepFilesInGcsBucket = keepFilesInGcsBucket;
         return this;
     }
     
     @JsonProperty("method")
-    public DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethodEnum method;
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethod method;
 
-    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging withMethod(DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethodEnum method) {
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging withMethod(DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethod method) {
         this.method = method;
         return this;
     }
     
-    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging(@JsonProperty("credential") Object credential, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath, @JsonProperty("method") DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethodEnum method) {
+    public DestinationBigqueryDenormalizedLoadingMethodGCSStaging(@JsonProperty("credential") Object credential, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath, @JsonProperty("method") DestinationBigqueryDenormalizedLoadingMethodGCSStagingMethod method) {
         this.credential = credential;
         this.gcsBucketName = gcsBucketName;
         this.gcsBucketPath = gcsBucketPath;

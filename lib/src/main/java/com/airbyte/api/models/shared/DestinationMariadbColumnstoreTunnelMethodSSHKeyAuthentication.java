@@ -36,9 +36,9 @@ public class DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication {
      * Connect through a jump server tunnel host using username and ssh key
      */
     @JsonProperty("tunnel_method")
-    public DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication withTunnelMethod(DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
-    public DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
+    public DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
         this.sshKey = sshKey;
         this.tunnelHost = tunnelHost;
         this.tunnelMethod = tunnelMethod;

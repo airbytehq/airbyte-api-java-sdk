@@ -22,14 +22,14 @@ public class SourceSquareCredentialsAPIKey {
     }
     
     @JsonProperty("auth_type")
-    public SourceSquareCredentialsAPIKeyAuthTypeEnum authType;
+    public SourceSquareCredentialsAPIKeyAuthType authType;
 
-    public SourceSquareCredentialsAPIKey withAuthType(SourceSquareCredentialsAPIKeyAuthTypeEnum authType) {
+    public SourceSquareCredentialsAPIKey withAuthType(SourceSquareCredentialsAPIKeyAuthType authType) {
         this.authType = authType;
         return this;
     }
     
-    public SourceSquareCredentialsAPIKey(@JsonProperty("api_key") String apiKey, @JsonProperty("auth_type") SourceSquareCredentialsAPIKeyAuthTypeEnum authType) {
+    public SourceSquareCredentialsAPIKey(@JsonProperty("api_key") String apiKey, @JsonProperty("auth_type") SourceSquareCredentialsAPIKeyAuthType authType) {
         this.apiKey = apiKey;
         this.authType = authType;
   }

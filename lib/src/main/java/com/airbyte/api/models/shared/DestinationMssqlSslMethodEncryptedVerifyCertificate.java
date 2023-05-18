@@ -25,14 +25,14 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
     }
     
     @JsonProperty("ssl_method")
-    public DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod;
+    public DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethod sslMethod;
 
-    public DestinationMssqlSslMethodEncryptedVerifyCertificate withSslMethod(DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod) {
+    public DestinationMssqlSslMethodEncryptedVerifyCertificate withSslMethod(DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethod sslMethod) {
         this.sslMethod = sslMethod;
         return this;
     }
     
-    public DestinationMssqlSslMethodEncryptedVerifyCertificate(@JsonProperty("ssl_method") DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethodEnum sslMethod) {
+    public DestinationMssqlSslMethodEncryptedVerifyCertificate(@JsonProperty("ssl_method") DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethod sslMethod) {
         this.sslMethod = sslMethod;
   }
 }

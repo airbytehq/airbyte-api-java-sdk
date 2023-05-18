@@ -29,9 +29,9 @@ public class DestinationGcsFormatParquetColumnarStorage {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
-    public DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec;
+    public DestinationGcsFormatParquetColumnarStorageCompressionCodec compressionCodec;
 
-    public DestinationGcsFormatParquetColumnarStorage withCompressionCodec(DestinationGcsFormatParquetColumnarStorageCompressionCodecEnum compressionCodec) {
+    public DestinationGcsFormatParquetColumnarStorage withCompressionCodec(DestinationGcsFormatParquetColumnarStorageCompressionCodec compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
     }
@@ -61,9 +61,9 @@ public class DestinationGcsFormatParquetColumnarStorage {
     }
     
     @JsonProperty("format_type")
-    public DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType;
+    public DestinationGcsFormatParquetColumnarStorageFormatType formatType;
 
-    public DestinationGcsFormatParquetColumnarStorage withFormatType(DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType) {
+    public DestinationGcsFormatParquetColumnarStorage withFormatType(DestinationGcsFormatParquetColumnarStorageFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
@@ -92,7 +92,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
         return this;
     }
     
-    public DestinationGcsFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationGcsFormatParquetColumnarStorageFormatTypeEnum formatType) {
+    public DestinationGcsFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationGcsFormatParquetColumnarStorageFormatType formatType) {
         this.formatType = formatType;
   }
 }

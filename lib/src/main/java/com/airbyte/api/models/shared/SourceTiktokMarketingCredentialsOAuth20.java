@@ -48,9 +48,9 @@ public class SourceTiktokMarketingCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceTiktokMarketingCredentialsOAuth20AuthTypeEnum authType;
+    public SourceTiktokMarketingCredentialsOAuth20AuthType authType;
 
-    public SourceTiktokMarketingCredentialsOAuth20 withAuthType(SourceTiktokMarketingCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceTiktokMarketingCredentialsOAuth20 withAuthType(SourceTiktokMarketingCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

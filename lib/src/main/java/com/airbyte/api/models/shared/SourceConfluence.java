@@ -44,14 +44,14 @@ public class SourceConfluence {
     }
     
     @JsonProperty("sourceType")
-    public SourceConfluenceConfluenceEnum sourceType;
+    public SourceConfluenceConfluence sourceType;
 
-    public SourceConfluence withSourceType(SourceConfluenceConfluenceEnum sourceType) {
+    public SourceConfluence withSourceType(SourceConfluenceConfluence sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceConfluence(@JsonProperty("api_token") String apiToken, @JsonProperty("domain_name") String domainName, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceConfluenceConfluenceEnum sourceType) {
+    public SourceConfluence(@JsonProperty("api_token") String apiToken, @JsonProperty("domain_name") String domainName, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceConfluenceConfluence sourceType) {
         this.apiToken = apiToken;
         this.domainName = domainName;
         this.email = email;

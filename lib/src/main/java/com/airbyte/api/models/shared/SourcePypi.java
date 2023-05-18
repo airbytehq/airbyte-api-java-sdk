@@ -24,9 +24,9 @@ public class SourcePypi {
     }
     
     @JsonProperty("sourceType")
-    public SourcePypiPypiEnum sourceType;
+    public SourcePypiPypi sourceType;
 
-    public SourcePypi withSourceType(SourcePypiPypiEnum sourceType) {
+    public SourcePypi withSourceType(SourcePypiPypi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -43,7 +43,7 @@ public class SourcePypi {
         return this;
     }
     
-    public SourcePypi(@JsonProperty("project_name") String projectName, @JsonProperty("sourceType") SourcePypiPypiEnum sourceType) {
+    public SourcePypi(@JsonProperty("project_name") String projectName, @JsonProperty("sourceType") SourcePypiPypi sourceType) {
         this.projectName = projectName;
         this.sourceType = sourceType;
   }

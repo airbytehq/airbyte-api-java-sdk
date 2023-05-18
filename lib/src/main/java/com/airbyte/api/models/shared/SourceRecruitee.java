@@ -33,14 +33,14 @@ public class SourceRecruitee {
     }
     
     @JsonProperty("sourceType")
-    public SourceRecruiteeRecruiteeEnum sourceType;
+    public SourceRecruiteeRecruitee sourceType;
 
-    public SourceRecruitee withSourceType(SourceRecruiteeRecruiteeEnum sourceType) {
+    public SourceRecruitee withSourceType(SourceRecruiteeRecruitee sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceRecruitee(@JsonProperty("api_key") String apiKey, @JsonProperty("company_id") Long companyId, @JsonProperty("sourceType") SourceRecruiteeRecruiteeEnum sourceType) {
+    public SourceRecruitee(@JsonProperty("api_key") String apiKey, @JsonProperty("company_id") Long companyId, @JsonProperty("sourceType") SourceRecruiteeRecruitee sourceType) {
         this.apiKey = apiKey;
         this.companyId = companyId;
         this.sourceType = sourceType;

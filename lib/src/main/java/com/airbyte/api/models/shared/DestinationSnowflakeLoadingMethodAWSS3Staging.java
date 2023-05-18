@@ -48,9 +48,9 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
     }
     
     @JsonProperty("method")
-    public DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method;
+    public DestinationSnowflakeLoadingMethodAWSS3StagingMethod method;
 
-    public DestinationSnowflakeLoadingMethodAWSS3Staging withMethod(DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method) {
+    public DestinationSnowflakeLoadingMethodAWSS3Staging withMethod(DestinationSnowflakeLoadingMethodAWSS3StagingMethod method) {
         this.method = method;
         return this;
     }
@@ -83,9 +83,9 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("s3_bucket_region")
-    public DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegionEnum s3BucketRegion;
+    public DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegion s3BucketRegion;
 
-    public DestinationSnowflakeLoadingMethodAWSS3Staging withS3BucketRegion(DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegionEnum s3BucketRegion) {
+    public DestinationSnowflakeLoadingMethodAWSS3Staging withS3BucketRegion(DestinationSnowflakeLoadingMethodAWSS3StagingS3BucketRegion s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
     }
@@ -101,7 +101,7 @@ public class DestinationSnowflakeLoadingMethodAWSS3Staging {
         return this;
     }
     
-    public DestinationSnowflakeLoadingMethodAWSS3Staging(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("method") DestinationSnowflakeLoadingMethodAWSS3StagingMethodEnum method, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("secret_access_key") String secretAccessKey) {
+    public DestinationSnowflakeLoadingMethodAWSS3Staging(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("method") DestinationSnowflakeLoadingMethodAWSS3StagingMethod method, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("secret_access_key") String secretAccessKey) {
         this.accessKeyId = accessKeyId;
         this.method = method;
         this.s3BucketName = s3BucketName;

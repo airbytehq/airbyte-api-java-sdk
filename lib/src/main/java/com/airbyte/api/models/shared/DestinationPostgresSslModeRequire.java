@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationPostgresSslModeRequire {
     @JsonProperty("mode")
-    public DestinationPostgresSslModeRequireModeEnum mode;
+    public DestinationPostgresSslModeRequireMode mode;
 
-    public DestinationPostgresSslModeRequire withMode(DestinationPostgresSslModeRequireModeEnum mode) {
+    public DestinationPostgresSslModeRequire withMode(DestinationPostgresSslModeRequireMode mode) {
         this.mode = mode;
         return this;
     }
     
-    public DestinationPostgresSslModeRequire(@JsonProperty("mode") DestinationPostgresSslModeRequireModeEnum mode) {
+    public DestinationPostgresSslModeRequire(@JsonProperty("mode") DestinationPostgresSslModeRequireMode mode) {
         this.mode = mode;
   }
 }

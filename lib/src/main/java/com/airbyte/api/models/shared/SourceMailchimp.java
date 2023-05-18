@@ -31,14 +31,14 @@ public class SourceMailchimp {
     }
     
     @JsonProperty("sourceType")
-    public SourceMailchimpMailchimpEnum sourceType;
+    public SourceMailchimpMailchimp sourceType;
 
-    public SourceMailchimp withSourceType(SourceMailchimpMailchimpEnum sourceType) {
+    public SourceMailchimp withSourceType(SourceMailchimpMailchimp sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceMailchimp(@JsonProperty("sourceType") SourceMailchimpMailchimpEnum sourceType) {
+    public SourceMailchimp(@JsonProperty("sourceType") SourceMailchimpMailchimp sourceType) {
         this.sourceType = sourceType;
   }
 }

@@ -41,9 +41,9 @@ public class SourceMailgun {
     }
     
     @JsonProperty("sourceType")
-    public SourceMailgunMailgunEnum sourceType;
+    public SourceMailgunMailgun sourceType;
 
-    public SourceMailgun withSourceType(SourceMailgunMailgunEnum sourceType) {
+    public SourceMailgun withSourceType(SourceMailgunMailgun sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -62,7 +62,7 @@ public class SourceMailgun {
         return this;
     }
     
-    public SourceMailgun(@JsonProperty("private_key") String privateKey, @JsonProperty("sourceType") SourceMailgunMailgunEnum sourceType) {
+    public SourceMailgun(@JsonProperty("private_key") String privateKey, @JsonProperty("sourceType") SourceMailgunMailgun sourceType) {
         this.privateKey = privateKey;
         this.sourceType = sourceType;
   }

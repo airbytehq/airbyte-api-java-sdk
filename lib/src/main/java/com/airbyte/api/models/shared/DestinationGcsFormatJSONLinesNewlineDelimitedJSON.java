@@ -25,14 +25,14 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSON {
     }
     
     @JsonProperty("format_type")
-    public DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatType formatType;
 
-    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
         this.formatType = formatType;
   }
 }

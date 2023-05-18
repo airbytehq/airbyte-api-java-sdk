@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationBigqueryLoadingMethodStandardInserts {
     @JsonProperty("method")
-    public DestinationBigqueryLoadingMethodStandardInsertsMethodEnum method;
+    public DestinationBigqueryLoadingMethodStandardInsertsMethod method;
 
-    public DestinationBigqueryLoadingMethodStandardInserts withMethod(DestinationBigqueryLoadingMethodStandardInsertsMethodEnum method) {
+    public DestinationBigqueryLoadingMethodStandardInserts withMethod(DestinationBigqueryLoadingMethodStandardInsertsMethod method) {
         this.method = method;
         return this;
     }
     
-    public DestinationBigqueryLoadingMethodStandardInserts(@JsonProperty("method") DestinationBigqueryLoadingMethodStandardInsertsMethodEnum method) {
+    public DestinationBigqueryLoadingMethodStandardInserts(@JsonProperty("method") DestinationBigqueryLoadingMethodStandardInsertsMethod method) {
         this.method = method;
   }
 }

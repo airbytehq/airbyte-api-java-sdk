@@ -21,9 +21,9 @@ public class ConnectionResponse {
     }
     
     @JsonProperty("dataResidency")
-    public GeographyEnumEnum dataResidency;
+    public GeographyEnum dataResidency;
 
-    public ConnectionResponse withDataResidency(GeographyEnumEnum dataResidency) {
+    public ConnectionResponse withDataResidency(GeographyEnum dataResidency) {
         this.dataResidency = dataResidency;
         return this;
     }
@@ -49,9 +49,9 @@ public class ConnectionResponse {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceDefinition")
-    public NamespaceDefinitionEnumEnum namespaceDefinition;
+    public NamespaceDefinitionEnum namespaceDefinition;
 
-    public ConnectionResponse withNamespaceDefinition(NamespaceDefinitionEnumEnum namespaceDefinition) {
+    public ConnectionResponse withNamespaceDefinition(NamespaceDefinitionEnum namespaceDefinition) {
         this.namespaceDefinition = namespaceDefinition;
         return this;
     }
@@ -70,9 +70,9 @@ public class ConnectionResponse {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nonBreakingSchemaUpdatesBehavior")
-    public NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior;
+    public NonBreakingSchemaUpdatesBehaviorEnum nonBreakingSchemaUpdatesBehavior;
 
-    public ConnectionResponse withNonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior) {
+    public ConnectionResponse withNonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum nonBreakingSchemaUpdatesBehavior) {
         this.nonBreakingSchemaUpdatesBehavior = nonBreakingSchemaUpdatesBehavior;
         return this;
     }
@@ -106,9 +106,9 @@ public class ConnectionResponse {
     }
     
     @JsonProperty("status")
-    public ConnectionStatusEnumEnum status;
+    public ConnectionStatusEnum status;
 
-    public ConnectionResponse withStatus(ConnectionStatusEnumEnum status) {
+    public ConnectionResponse withStatus(ConnectionStatusEnum status) {
         this.status = status;
         return this;
     }
@@ -121,7 +121,7 @@ public class ConnectionResponse {
         return this;
     }
     
-    public ConnectionResponse(@JsonProperty("connectionId") String connectionId, @JsonProperty("dataResidency") GeographyEnumEnum dataResidency, @JsonProperty("destinationId") String destinationId, @JsonProperty("name") String name, @JsonProperty("schedule") ConnectionScheduleResponse schedule, @JsonProperty("sourceId") String sourceId, @JsonProperty("status") ConnectionStatusEnumEnum status, @JsonProperty("workspaceId") String workspaceId) {
+    public ConnectionResponse(@JsonProperty("connectionId") String connectionId, @JsonProperty("dataResidency") GeographyEnum dataResidency, @JsonProperty("destinationId") String destinationId, @JsonProperty("name") String name, @JsonProperty("schedule") ConnectionScheduleResponse schedule, @JsonProperty("sourceId") String sourceId, @JsonProperty("status") ConnectionStatusEnum status, @JsonProperty("workspaceId") String workspaceId) {
         this.connectionId = connectionId;
         this.dataResidency = dataResidency;
         this.destinationId = destinationId;

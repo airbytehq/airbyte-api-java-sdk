@@ -47,14 +47,14 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
     }
     
     @JsonProperty("type")
-    public SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type;
+    public SourceE2eTestCloudMockCatalogSingleSchemaType type;
 
-    public SourceE2eTestCloudMockCatalogSingleSchema withType(SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type) {
+    public SourceE2eTestCloudMockCatalogSingleSchema withType(SourceE2eTestCloudMockCatalogSingleSchemaType type) {
         this.type = type;
         return this;
     }
     
-    public SourceE2eTestCloudMockCatalogSingleSchema(@JsonProperty("stream_name") String streamName, @JsonProperty("stream_schema") String streamSchema, @JsonProperty("type") SourceE2eTestCloudMockCatalogSingleSchemaTypeEnum type) {
+    public SourceE2eTestCloudMockCatalogSingleSchema(@JsonProperty("stream_name") String streamName, @JsonProperty("stream_schema") String streamSchema, @JsonProperty("type") SourceE2eTestCloudMockCatalogSingleSchemaType type) {
         this.streamName = streamName;
         this.streamSchema = streamSchema;
         this.type = type;

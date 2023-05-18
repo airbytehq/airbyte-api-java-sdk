@@ -25,9 +25,9 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationRedisTunnelMethodPasswordAuthentication withTunnelMethod(DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationRedisTunnelMethodPasswordAuthentication withTunnelMethod(DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationRedisTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationRedisTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationRedisTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationRedisTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

@@ -28,9 +28,9 @@ public class SourceAirtableCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
-    public SourceAirtableCredentialsOAuth20AuthMethodEnum authMethod;
+    public SourceAirtableCredentialsOAuth20AuthMethod authMethod;
 
-    public SourceAirtableCredentialsOAuth20 withAuthMethod(SourceAirtableCredentialsOAuth20AuthMethodEnum authMethod) {
+    public SourceAirtableCredentialsOAuth20 withAuthMethod(SourceAirtableCredentialsOAuth20AuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }

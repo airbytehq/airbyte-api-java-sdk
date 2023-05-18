@@ -14,14 +14,14 @@ public class DestinationMongodbTunnelMethodNoTunnel {
      * No ssh tunnel needed to connect to database
      */
     @JsonProperty("tunnel_method")
-    public DestinationMongodbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    public DestinationMongodbTunnelMethodNoTunnelTunnelMethod tunnelMethod;
 
-    public DestinationMongodbTunnelMethodNoTunnel withTunnelMethod(DestinationMongodbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationMongodbTunnelMethodNoTunnel withTunnelMethod(DestinationMongodbTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
     
-    public DestinationMongodbTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMongodbTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationMongodbTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMongodbTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
   }
 }

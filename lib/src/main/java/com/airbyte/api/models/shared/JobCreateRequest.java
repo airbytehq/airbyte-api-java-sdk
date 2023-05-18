@@ -22,14 +22,14 @@ public class JobCreateRequest {
      * Enum that describes the different types of jobs that the platform runs.
      */
     @JsonProperty("jobType")
-    public JobTypeEnumEnum jobType;
+    public JobTypeEnum jobType;
 
-    public JobCreateRequest withJobType(JobTypeEnumEnum jobType) {
+    public JobCreateRequest withJobType(JobTypeEnum jobType) {
         this.jobType = jobType;
         return this;
     }
     
-    public JobCreateRequest(@JsonProperty("connectionId") String connectionId, @JsonProperty("jobType") JobTypeEnumEnum jobType) {
+    public JobCreateRequest(@JsonProperty("connectionId") String connectionId, @JsonProperty("jobType") JobTypeEnum jobType) {
         this.connectionId = connectionId;
         this.jobType = jobType;
   }

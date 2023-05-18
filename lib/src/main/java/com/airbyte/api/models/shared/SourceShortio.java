@@ -30,9 +30,9 @@ public class SourceShortio {
     }
     
     @JsonProperty("sourceType")
-    public SourceShortioShortioEnum sourceType;
+    public SourceShortioShortio sourceType;
 
-    public SourceShortio withSourceType(SourceShortioShortioEnum sourceType) {
+    public SourceShortio withSourceType(SourceShortioShortio sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -48,7 +48,7 @@ public class SourceShortio {
         return this;
     }
     
-    public SourceShortio(@JsonProperty("domain_id") String domainId, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceShortioShortioEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceShortio(@JsonProperty("domain_id") String domainId, @JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourceShortioShortio sourceType, @JsonProperty("start_date") String startDate) {
         this.domainId = domainId;
         this.secretKey = secretKey;
         this.sourceType = sourceType;

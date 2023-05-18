@@ -37,14 +37,14 @@ public class SourceFileSecureProviderS3AmazonWebServices {
     }
     
     @JsonProperty("storage")
-    public SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage;
+    public SourceFileSecureProviderS3AmazonWebServicesStorage storage;
 
-    public SourceFileSecureProviderS3AmazonWebServices withStorage(SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage) {
+    public SourceFileSecureProviderS3AmazonWebServices withStorage(SourceFileSecureProviderS3AmazonWebServicesStorage storage) {
         this.storage = storage;
         return this;
     }
     
-    public SourceFileSecureProviderS3AmazonWebServices(@JsonProperty("storage") SourceFileSecureProviderS3AmazonWebServicesStorageEnum storage) {
+    public SourceFileSecureProviderS3AmazonWebServices(@JsonProperty("storage") SourceFileSecureProviderS3AmazonWebServicesStorage storage) {
         this.storage = storage;
   }
 }

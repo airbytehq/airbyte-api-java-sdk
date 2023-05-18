@@ -22,14 +22,14 @@ public class DestinationGcsFormatAvroApacheAvro {
     }
     
     @JsonProperty("format_type")
-    public DestinationGcsFormatAvroApacheAvroFormatTypeEnum formatType;
+    public DestinationGcsFormatAvroApacheAvroFormatType formatType;
 
-    public DestinationGcsFormatAvroApacheAvro withFormatType(DestinationGcsFormatAvroApacheAvroFormatTypeEnum formatType) {
+    public DestinationGcsFormatAvroApacheAvro withFormatType(DestinationGcsFormatAvroApacheAvroFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationGcsFormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationGcsFormatAvroApacheAvroFormatTypeEnum formatType) {
+    public DestinationGcsFormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationGcsFormatAvroApacheAvroFormatType formatType) {
         this.compressionCodec = compressionCodec;
         this.formatType = formatType;
   }

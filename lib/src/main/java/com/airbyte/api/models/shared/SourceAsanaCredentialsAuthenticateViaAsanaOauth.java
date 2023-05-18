@@ -33,9 +33,9 @@ public class SourceAsanaCredentialsAuthenticateViaAsanaOauth {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
-    public SourceAsanaCredentialsAuthenticateViaAsanaOauthCredentialsTitleEnum optionTitle;
+    public SourceAsanaCredentialsAuthenticateViaAsanaOauthCredentialsTitle optionTitle;
 
-    public SourceAsanaCredentialsAuthenticateViaAsanaOauth withOptionTitle(SourceAsanaCredentialsAuthenticateViaAsanaOauthCredentialsTitleEnum optionTitle) {
+    public SourceAsanaCredentialsAuthenticateViaAsanaOauth withOptionTitle(SourceAsanaCredentialsAuthenticateViaAsanaOauthCredentialsTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }

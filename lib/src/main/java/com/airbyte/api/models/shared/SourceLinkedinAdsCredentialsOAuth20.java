@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceLinkedinAdsCredentialsOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
-    public SourceLinkedinAdsCredentialsOAuth20AuthMethodEnum authMethod;
+    public SourceLinkedinAdsCredentialsOAuth20AuthMethod authMethod;
 
-    public SourceLinkedinAdsCredentialsOAuth20 withAuthMethod(SourceLinkedinAdsCredentialsOAuth20AuthMethodEnum authMethod) {
+    public SourceLinkedinAdsCredentialsOAuth20 withAuthMethod(SourceLinkedinAdsCredentialsOAuth20AuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }

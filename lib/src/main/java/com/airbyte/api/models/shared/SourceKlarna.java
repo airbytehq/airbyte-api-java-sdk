@@ -36,17 +36,17 @@ public class SourceKlarna {
      * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
      */
     @JsonProperty("region")
-    public SourceKlarnaRegionEnum region;
+    public SourceKlarnaRegion region;
 
-    public SourceKlarna withRegion(SourceKlarnaRegionEnum region) {
+    public SourceKlarna withRegion(SourceKlarnaRegion region) {
         this.region = region;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceKlarnaKlarnaEnum sourceType;
+    public SourceKlarnaKlarna sourceType;
 
-    public SourceKlarna withSourceType(SourceKlarnaKlarnaEnum sourceType) {
+    public SourceKlarna withSourceType(SourceKlarnaKlarna sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -62,7 +62,7 @@ public class SourceKlarna {
         return this;
     }
     
-    public SourceKlarna(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("playground") Boolean playground, @JsonProperty("region") SourceKlarnaRegionEnum region, @JsonProperty("sourceType") SourceKlarnaKlarnaEnum sourceType) {
+    public SourceKlarna(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("playground") Boolean playground, @JsonProperty("region") SourceKlarnaRegion region, @JsonProperty("sourceType") SourceKlarnaKlarna sourceType) {
         this.username = username;
         this.password = password;
         this.playground = playground;

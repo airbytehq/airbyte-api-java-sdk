@@ -26,9 +26,9 @@ public class SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauthAuthTypeEnum authType;
+    public SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauthAuthType authType;
 
-    public SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth withAuthType(SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauthAuthTypeEnum authType) {
+    public SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth withAuthType(SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauthAuthType authType) {
         this.authType = authType;
         return this;
     }

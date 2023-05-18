@@ -58,14 +58,14 @@ public class DestinationRedisSslModeVerifyFull {
     }
     
     @JsonProperty("mode")
-    public DestinationRedisSslModeVerifyFullModeEnum mode;
+    public DestinationRedisSslModeVerifyFullMode mode;
 
-    public DestinationRedisSslModeVerifyFull withMode(DestinationRedisSslModeVerifyFullModeEnum mode) {
+    public DestinationRedisSslModeVerifyFull withMode(DestinationRedisSslModeVerifyFullMode mode) {
         this.mode = mode;
         return this;
     }
     
-    public DestinationRedisSslModeVerifyFull(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("client_certificate") String clientCertificate, @JsonProperty("client_key") String clientKey, @JsonProperty("mode") DestinationRedisSslModeVerifyFullModeEnum mode) {
+    public DestinationRedisSslModeVerifyFull(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("client_certificate") String clientCertificate, @JsonProperty("client_key") String clientKey, @JsonProperty("mode") DestinationRedisSslModeVerifyFullMode mode) {
         this.caCertificate = caCertificate;
         this.clientCertificate = clientCertificate;
         this.clientKey = clientKey;

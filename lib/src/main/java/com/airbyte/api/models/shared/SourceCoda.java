@@ -22,14 +22,14 @@ public class SourceCoda {
     }
     
     @JsonProperty("sourceType")
-    public SourceCodaCodaEnum sourceType;
+    public SourceCodaCoda sourceType;
 
-    public SourceCoda withSourceType(SourceCodaCodaEnum sourceType) {
+    public SourceCoda withSourceType(SourceCodaCoda sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceCoda(@JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceCodaCodaEnum sourceType) {
+    public SourceCoda(@JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceCodaCoda sourceType) {
         this.authToken = authToken;
         this.sourceType = sourceType;
   }

@@ -35,9 +35,9 @@ public class SourceQuickbooks {
     }
     
     @JsonProperty("sourceType")
-    public SourceQuickbooksQuickbooksEnum sourceType;
+    public SourceQuickbooksQuickbooks sourceType;
 
-    public SourceQuickbooks withSourceType(SourceQuickbooksQuickbooksEnum sourceType) {
+    public SourceQuickbooks withSourceType(SourceQuickbooksQuickbooks sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -55,7 +55,7 @@ public class SourceQuickbooks {
         return this;
     }
     
-    public SourceQuickbooks(@JsonProperty("credentials") Object credentials, @JsonProperty("sandbox") Boolean sandbox, @JsonProperty("sourceType") SourceQuickbooksQuickbooksEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceQuickbooks(@JsonProperty("credentials") Object credentials, @JsonProperty("sandbox") Boolean sandbox, @JsonProperty("sourceType") SourceQuickbooksQuickbooks sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.credentials = credentials;
         this.sandbox = sandbox;
         this.sourceType = sourceType;

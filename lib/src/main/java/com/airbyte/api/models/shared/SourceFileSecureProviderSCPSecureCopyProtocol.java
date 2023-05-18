@@ -39,9 +39,9 @@ public class SourceFileSecureProviderSCPSecureCopyProtocol {
     }
     
     @JsonProperty("storage")
-    public SourceFileSecureProviderSCPSecureCopyProtocolStorageEnum storage;
+    public SourceFileSecureProviderSCPSecureCopyProtocolStorage storage;
 
-    public SourceFileSecureProviderSCPSecureCopyProtocol withStorage(SourceFileSecureProviderSCPSecureCopyProtocolStorageEnum storage) {
+    public SourceFileSecureProviderSCPSecureCopyProtocol withStorage(SourceFileSecureProviderSCPSecureCopyProtocolStorage storage) {
         this.storage = storage;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceFileSecureProviderSCPSecureCopyProtocol {
         return this;
     }
     
-    public SourceFileSecureProviderSCPSecureCopyProtocol(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSCPSecureCopyProtocolStorageEnum storage, @JsonProperty("user") String user) {
+    public SourceFileSecureProviderSCPSecureCopyProtocol(@JsonProperty("host") String host, @JsonProperty("storage") SourceFileSecureProviderSCPSecureCopyProtocolStorage storage, @JsonProperty("user") String user) {
         this.host = host;
         this.storage = storage;
         this.user = user;

@@ -16,9 +16,9 @@ import java.time.LocalDate;
 public class SourceBingAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
-    public SourceBingAdsAuthMethodEnum authMethod;
+    public SourceBingAdsAuthMethod authMethod;
 
-    public SourceBingAds withAuthMethod(SourceBingAdsAuthMethodEnum authMethod) {
+    public SourceBingAds withAuthMethod(SourceBingAdsAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
@@ -93,9 +93,9 @@ public class SourceBingAds {
     }
     
     @JsonProperty("sourceType")
-    public SourceBingAdsBingAdsEnum sourceType;
+    public SourceBingAdsBingAds sourceType;
 
-    public SourceBingAds withSourceType(SourceBingAdsBingAdsEnum sourceType) {
+    public SourceBingAds withSourceType(SourceBingAdsBingAds sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -112,7 +112,7 @@ public class SourceBingAds {
         return this;
     }
     
-    public SourceBingAds(@JsonProperty("client_id") String clientId, @JsonProperty("developer_token") String developerToken, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("reports_start_date") LocalDate reportsStartDate, @JsonProperty("sourceType") SourceBingAdsBingAdsEnum sourceType) {
+    public SourceBingAds(@JsonProperty("client_id") String clientId, @JsonProperty("developer_token") String developerToken, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("reports_start_date") LocalDate reportsStartDate, @JsonProperty("sourceType") SourceBingAdsBingAds sourceType) {
         this.clientId = clientId;
         this.developerToken = developerToken;
         this.refreshToken = refreshToken;

@@ -22,14 +22,14 @@ public class SourceTempo {
     }
     
     @JsonProperty("sourceType")
-    public SourceTempoTempoEnum sourceType;
+    public SourceTempoTempo sourceType;
 
-    public SourceTempo withSourceType(SourceTempoTempoEnum sourceType) {
+    public SourceTempo withSourceType(SourceTempoTempo sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceTempo(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceTempoTempoEnum sourceType) {
+    public SourceTempo(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceTempoTempo sourceType) {
         this.apiToken = apiToken;
         this.sourceType = sourceType;
   }

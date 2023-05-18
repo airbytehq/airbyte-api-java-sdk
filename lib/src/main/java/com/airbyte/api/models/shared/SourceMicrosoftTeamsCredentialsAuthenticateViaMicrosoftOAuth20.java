@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20AuthTypeEnum authType;
+    public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20AuthType authType;
 
-    public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withAuthType(SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20AuthTypeEnum authType) {
+    public SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 withAuthType(SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

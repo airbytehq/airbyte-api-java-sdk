@@ -33,14 +33,14 @@ public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
     }
     
     @JsonProperty("method")
-    public DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method;
+    public DestinationElasticsearchAuthenticationMethodApiKeySecretMethod method;
 
-    public DestinationElasticsearchAuthenticationMethodApiKeySecret withMethod(DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method) {
+    public DestinationElasticsearchAuthenticationMethodApiKeySecret withMethod(DestinationElasticsearchAuthenticationMethodApiKeySecretMethod method) {
         this.method = method;
         return this;
     }
     
-    public DestinationElasticsearchAuthenticationMethodApiKeySecret(@JsonProperty("apiKeyId") String apiKeyId, @JsonProperty("apiKeySecret") String apiKeySecret, @JsonProperty("method") DestinationElasticsearchAuthenticationMethodApiKeySecretMethodEnum method) {
+    public DestinationElasticsearchAuthenticationMethodApiKeySecret(@JsonProperty("apiKeyId") String apiKeyId, @JsonProperty("apiKeySecret") String apiKeySecret, @JsonProperty("method") DestinationElasticsearchAuthenticationMethodApiKeySecretMethod method) {
         this.apiKeyId = apiKeyId;
         this.apiKeySecret = apiKeySecret;
         this.method = method;

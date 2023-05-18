@@ -60,9 +60,9 @@ public class DestinationRedshiftUploadingMethodS3Staging {
     }
     
     @JsonProperty("method")
-    public DestinationRedshiftUploadingMethodS3StagingMethodEnum method;
+    public DestinationRedshiftUploadingMethodS3StagingMethod method;
 
-    public DestinationRedshiftUploadingMethodS3Staging withMethod(DestinationRedshiftUploadingMethodS3StagingMethodEnum method) {
+    public DestinationRedshiftUploadingMethodS3Staging withMethod(DestinationRedshiftUploadingMethodS3StagingMethod method) {
         this.method = method;
         return this;
     }
@@ -106,9 +106,9 @@ public class DestinationRedshiftUploadingMethodS3Staging {
      * The region of the S3 staging bucket to use if utilising a COPY strategy. See &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html#:~:text=In-,Region,-%2C%20choose%20the%20AWS"&gt;AWS docs&lt;/a&gt; for details.
      */
     @JsonProperty("s3_bucket_region")
-    public DestinationRedshiftUploadingMethodS3StagingS3BucketRegionEnum s3BucketRegion;
+    public DestinationRedshiftUploadingMethodS3StagingS3BucketRegion s3BucketRegion;
 
-    public DestinationRedshiftUploadingMethodS3Staging withS3BucketRegion(DestinationRedshiftUploadingMethodS3StagingS3BucketRegionEnum s3BucketRegion) {
+    public DestinationRedshiftUploadingMethodS3Staging withS3BucketRegion(DestinationRedshiftUploadingMethodS3StagingS3BucketRegion s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
     }
@@ -124,7 +124,7 @@ public class DestinationRedshiftUploadingMethodS3Staging {
         return this;
     }
     
-    public DestinationRedshiftUploadingMethodS3Staging(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("method") DestinationRedshiftUploadingMethodS3StagingMethodEnum method, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_region") DestinationRedshiftUploadingMethodS3StagingS3BucketRegionEnum s3BucketRegion, @JsonProperty("secret_access_key") String secretAccessKey) {
+    public DestinationRedshiftUploadingMethodS3Staging(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("method") DestinationRedshiftUploadingMethodS3StagingMethod method, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_region") DestinationRedshiftUploadingMethodS3StagingS3BucketRegion s3BucketRegion, @JsonProperty("secret_access_key") String secretAccessKey) {
         this.accessKeyId = accessKeyId;
         this.method = method;
         this.s3BucketName = s3BucketName;

@@ -47,9 +47,9 @@ public class SourceMyHours {
     }
     
     @JsonProperty("sourceType")
-    public SourceMyHoursMyHoursEnum sourceType;
+    public SourceMyHoursMyHours sourceType;
 
-    public SourceMyHours withSourceType(SourceMyHoursMyHoursEnum sourceType) {
+    public SourceMyHours withSourceType(SourceMyHoursMyHours sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceMyHours {
         return this;
     }
     
-    public SourceMyHours(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("sourceType") SourceMyHoursMyHoursEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceMyHours(@JsonProperty("email") String email, @JsonProperty("password") String password, @JsonProperty("sourceType") SourceMyHoursMyHours sourceType, @JsonProperty("start_date") String startDate) {
         this.email = email;
         this.password = password;
         this.sourceType = sourceType;

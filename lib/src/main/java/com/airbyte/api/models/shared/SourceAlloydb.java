@@ -94,9 +94,9 @@ public class SourceAlloydb {
     }
     
     @JsonProperty("sourceType")
-    public SourceAlloydbAlloydbEnum sourceType;
+    public SourceAlloydbAlloydb sourceType;
 
-    public SourceAlloydb withSourceType(SourceAlloydbAlloydbEnum sourceType) {
+    public SourceAlloydb withSourceType(SourceAlloydbAlloydb sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -137,7 +137,7 @@ public class SourceAlloydb {
         return this;
     }
     
-    public SourceAlloydb(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceAlloydbAlloydbEnum sourceType, @JsonProperty("username") String username) {
+    public SourceAlloydb(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceAlloydbAlloydb sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
         this.port = port;

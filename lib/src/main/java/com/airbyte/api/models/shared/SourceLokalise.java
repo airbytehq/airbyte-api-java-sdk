@@ -33,14 +33,14 @@ public class SourceLokalise {
     }
     
     @JsonProperty("sourceType")
-    public SourceLokaliseLokaliseEnum sourceType;
+    public SourceLokaliseLokalise sourceType;
 
-    public SourceLokalise withSourceType(SourceLokaliseLokaliseEnum sourceType) {
+    public SourceLokalise withSourceType(SourceLokaliseLokalise sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceLokalise(@JsonProperty("api_key") String apiKey, @JsonProperty("project_id") String projectId, @JsonProperty("sourceType") SourceLokaliseLokaliseEnum sourceType) {
+    public SourceLokalise(@JsonProperty("api_key") String apiKey, @JsonProperty("project_id") String projectId, @JsonProperty("sourceType") SourceLokaliseLokalise sourceType) {
         this.apiKey = apiKey;
         this.projectId = projectId;
         this.sourceType = sourceType;

@@ -19,9 +19,9 @@ public class SourceAuth0CredentialsOAuth2ConfidentialApplication {
     }
     
     @JsonProperty("auth_type")
-    public SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethodEnum authType;
+    public SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethod authType;
 
-    public SourceAuth0CredentialsOAuth2ConfidentialApplication withAuthType(SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethodEnum authType) {
+    public SourceAuth0CredentialsOAuth2ConfidentialApplication withAuthType(SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethod authType) {
         this.authType = authType;
         return this;
     }
@@ -48,7 +48,7 @@ public class SourceAuth0CredentialsOAuth2ConfidentialApplication {
         return this;
     }
     
-    public SourceAuth0CredentialsOAuth2ConfidentialApplication(@JsonProperty("audience") String audience, @JsonProperty("auth_type") SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethodEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    public SourceAuth0CredentialsOAuth2ConfidentialApplication(@JsonProperty("audience") String audience, @JsonProperty("auth_type") SourceAuth0CredentialsOAuth2ConfidentialApplicationAuthenticationMethod authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
         this.audience = audience;
         this.authType = authType;
         this.clientId = clientId;

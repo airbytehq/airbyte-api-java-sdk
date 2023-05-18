@@ -22,14 +22,14 @@ public class SourceLaunchdarkly {
     }
     
     @JsonProperty("sourceType")
-    public SourceLaunchdarklyLaunchdarklyEnum sourceType;
+    public SourceLaunchdarklyLaunchdarkly sourceType;
 
-    public SourceLaunchdarkly withSourceType(SourceLaunchdarklyLaunchdarklyEnum sourceType) {
+    public SourceLaunchdarkly withSourceType(SourceLaunchdarklyLaunchdarkly sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceLaunchdarkly(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceLaunchdarklyLaunchdarklyEnum sourceType) {
+    public SourceLaunchdarkly(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceLaunchdarklyLaunchdarkly sourceType) {
         this.accessToken = accessToken;
         this.sourceType = sourceType;
   }

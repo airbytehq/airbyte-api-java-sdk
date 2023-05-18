@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceSquareCredentialsOauthAuthentication {
     @JsonProperty("auth_type")
-    public SourceSquareCredentialsOauthAuthenticationAuthTypeEnum authType;
+    public SourceSquareCredentialsOauthAuthenticationAuthType authType;
 
-    public SourceSquareCredentialsOauthAuthentication withAuthType(SourceSquareCredentialsOauthAuthenticationAuthTypeEnum authType) {
+    public SourceSquareCredentialsOauthAuthentication withAuthType(SourceSquareCredentialsOauthAuthenticationAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -51,7 +51,7 @@ public class SourceSquareCredentialsOauthAuthentication {
         return this;
     }
     
-    public SourceSquareCredentialsOauthAuthentication(@JsonProperty("auth_type") SourceSquareCredentialsOauthAuthenticationAuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+    public SourceSquareCredentialsOauthAuthentication(@JsonProperty("auth_type") SourceSquareCredentialsOauthAuthenticationAuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
         this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;

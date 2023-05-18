@@ -19,14 +19,14 @@ public class SourceZendeskChatCredentialsAccessToken {
     }
     
     @JsonProperty("credentials")
-    public SourceZendeskChatCredentialsAccessTokenCredentialsEnum credentials;
+    public SourceZendeskChatCredentialsAccessTokenCredentials credentials;
 
-    public SourceZendeskChatCredentialsAccessToken withCredentials(SourceZendeskChatCredentialsAccessTokenCredentialsEnum credentials) {
+    public SourceZendeskChatCredentialsAccessToken withCredentials(SourceZendeskChatCredentialsAccessTokenCredentials credentials) {
         this.credentials = credentials;
         return this;
     }
     
-    public SourceZendeskChatCredentialsAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("credentials") SourceZendeskChatCredentialsAccessTokenCredentialsEnum credentials) {
+    public SourceZendeskChatCredentialsAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("credentials") SourceZendeskChatCredentialsAccessTokenCredentials credentials) {
         this.accessToken = accessToken;
         this.credentials = credentials;
   }

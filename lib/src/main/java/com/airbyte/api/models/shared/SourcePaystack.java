@@ -41,9 +41,9 @@ public class SourcePaystack {
     }
     
     @JsonProperty("sourceType")
-    public SourcePaystackPaystackEnum sourceType;
+    public SourcePaystackPaystack sourceType;
 
-    public SourcePaystack withSourceType(SourcePaystackPaystackEnum sourceType) {
+    public SourcePaystack withSourceType(SourcePaystackPaystack sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -61,7 +61,7 @@ public class SourcePaystack {
         return this;
     }
     
-    public SourcePaystack(@JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourcePaystackPaystackEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourcePaystack(@JsonProperty("secret_key") String secretKey, @JsonProperty("sourceType") SourcePaystackPaystack sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.secretKey = secretKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

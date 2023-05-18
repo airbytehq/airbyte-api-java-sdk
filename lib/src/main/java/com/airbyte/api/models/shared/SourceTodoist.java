@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceTodoist {
     @JsonProperty("sourceType")
-    public SourceTodoistTodoistEnum sourceType;
+    public SourceTodoistTodoist sourceType;
 
-    public SourceTodoist withSourceType(SourceTodoistTodoistEnum sourceType) {
+    public SourceTodoist withSourceType(SourceTodoistTodoist sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -29,7 +29,7 @@ public class SourceTodoist {
         return this;
     }
     
-    public SourceTodoist(@JsonProperty("sourceType") SourceTodoistTodoistEnum sourceType, @JsonProperty("token") String token) {
+    public SourceTodoist(@JsonProperty("sourceType") SourceTodoistTodoist sourceType, @JsonProperty("token") String token) {
         this.sourceType = sourceType;
         this.token = token;
   }

@@ -25,9 +25,9 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationMysqlTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationMysqlTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationMysqlTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationMysqlTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMysqlTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

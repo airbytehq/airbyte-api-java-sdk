@@ -93,14 +93,14 @@ public class SourceAzureBlobStorage {
     }
     
     @JsonProperty("sourceType")
-    public SourceAzureBlobStorageAzureBlobStorageEnum sourceType;
+    public SourceAzureBlobStorageAzureBlobStorage sourceType;
 
-    public SourceAzureBlobStorage withSourceType(SourceAzureBlobStorageAzureBlobStorageEnum sourceType) {
+    public SourceAzureBlobStorage withSourceType(SourceAzureBlobStorageAzureBlobStorage sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceAzureBlobStorage(@JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey, @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("format") Object format, @JsonProperty("sourceType") SourceAzureBlobStorageAzureBlobStorageEnum sourceType) {
+    public SourceAzureBlobStorage(@JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey, @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("format") Object format, @JsonProperty("sourceType") SourceAzureBlobStorageAzureBlobStorage sourceType) {
         this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;

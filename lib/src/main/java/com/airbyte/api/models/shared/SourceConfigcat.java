@@ -22,9 +22,9 @@ public class SourceConfigcat {
     }
     
     @JsonProperty("sourceType")
-    public SourceConfigcatConfigcatEnum sourceType;
+    public SourceConfigcatConfigcat sourceType;
 
-    public SourceConfigcat withSourceType(SourceConfigcatConfigcatEnum sourceType) {
+    public SourceConfigcat withSourceType(SourceConfigcatConfigcat sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -40,7 +40,7 @@ public class SourceConfigcat {
         return this;
     }
     
-    public SourceConfigcat(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("sourceType") SourceConfigcatConfigcatEnum sourceType) {
+    public SourceConfigcat(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("sourceType") SourceConfigcatConfigcat sourceType) {
         this.username = username;
         this.password = password;
         this.sourceType = sourceType;

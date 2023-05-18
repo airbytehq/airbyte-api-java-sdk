@@ -96,9 +96,9 @@ public class SourceMixpanel {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
-    public SourceMixpanelRegionEnum region;
+    public SourceMixpanelRegion region;
 
-    public SourceMixpanel withRegion(SourceMixpanelRegionEnum region) {
+    public SourceMixpanel withRegion(SourceMixpanelRegion region) {
         this.region = region;
         return this;
     }
@@ -116,9 +116,9 @@ public class SourceMixpanel {
     }
     
     @JsonProperty("sourceType")
-    public SourceMixpanelMixpanelEnum sourceType;
+    public SourceMixpanelMixpanel sourceType;
 
-    public SourceMixpanel withSourceType(SourceMixpanelMixpanelEnum sourceType) {
+    public SourceMixpanel withSourceType(SourceMixpanelMixpanel sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -137,7 +137,7 @@ public class SourceMixpanel {
         return this;
     }
     
-    public SourceMixpanel(@JsonProperty("sourceType") SourceMixpanelMixpanelEnum sourceType) {
+    public SourceMixpanel(@JsonProperty("sourceType") SourceMixpanelMixpanel sourceType) {
         this.sourceType = sourceType;
   }
 }

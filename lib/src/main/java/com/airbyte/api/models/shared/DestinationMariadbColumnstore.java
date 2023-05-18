@@ -24,9 +24,9 @@ public class DestinationMariadbColumnstore {
     }
     
     @JsonProperty("destinationType")
-    public DestinationMariadbColumnstoreMariadbColumnstoreEnum destinationType;
+    public DestinationMariadbColumnstoreMariadbColumnstore destinationType;
 
-    public DestinationMariadbColumnstore withDestinationType(DestinationMariadbColumnstoreMariadbColumnstoreEnum destinationType) {
+    public DestinationMariadbColumnstore withDestinationType(DestinationMariadbColumnstoreMariadbColumnstore destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -100,7 +100,7 @@ public class DestinationMariadbColumnstore {
         return this;
     }
     
-    public DestinationMariadbColumnstore(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMariadbColumnstoreMariadbColumnstoreEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
+    public DestinationMariadbColumnstore(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMariadbColumnstoreMariadbColumnstore destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;

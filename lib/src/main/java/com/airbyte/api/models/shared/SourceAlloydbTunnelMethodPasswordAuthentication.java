@@ -25,9 +25,9 @@ public class SourceAlloydbTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public SourceAlloydbTunnelMethodPasswordAuthentication withTunnelMethod(SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public SourceAlloydbTunnelMethodPasswordAuthentication withTunnelMethod(SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceAlloydbTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public SourceAlloydbTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public SourceAlloydbTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceSnowflakeCredentialsUsernameAndPassword {
     @JsonProperty("auth_type")
-    public SourceSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType;
+    public SourceSnowflakeCredentialsUsernameAndPasswordAuthType authType;
 
-    public SourceSnowflakeCredentialsUsernameAndPassword withAuthType(SourceSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType) {
+    public SourceSnowflakeCredentialsUsernameAndPassword withAuthType(SourceSnowflakeCredentialsUsernameAndPasswordAuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -37,7 +37,7 @@ public class SourceSnowflakeCredentialsUsernameAndPassword {
         return this;
     }
     
-    public SourceSnowflakeCredentialsUsernameAndPassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("auth_type") SourceSnowflakeCredentialsUsernameAndPasswordAuthTypeEnum authType) {
+    public SourceSnowflakeCredentialsUsernameAndPassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("auth_type") SourceSnowflakeCredentialsUsernameAndPasswordAuthType authType) {
         this.username = username;
         this.password = password;
         this.authType = authType;

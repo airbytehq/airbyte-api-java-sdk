@@ -37,14 +37,14 @@ public class SourceIp2whois {
     }
     
     @JsonProperty("sourceType")
-    public SourceIp2whoisIp2whoisEnum sourceType;
+    public SourceIp2whoisIp2whois sourceType;
 
-    public SourceIp2whois withSourceType(SourceIp2whoisIp2whoisEnum sourceType) {
+    public SourceIp2whois withSourceType(SourceIp2whoisIp2whois sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceIp2whois(@JsonProperty("sourceType") SourceIp2whoisIp2whoisEnum sourceType) {
+    public SourceIp2whois(@JsonProperty("sourceType") SourceIp2whoisIp2whois sourceType) {
         this.sourceType = sourceType;
   }
 }

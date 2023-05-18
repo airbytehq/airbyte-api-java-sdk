@@ -22,9 +22,9 @@ public class SourceMongodbInstanceTypeStandaloneMongoDbInstance {
     }
     
     @JsonProperty("instance")
-    public SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance;
+    public SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance instance;
 
-    public SourceMongodbInstanceTypeStandaloneMongoDbInstance withInstance(SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance) {
+    public SourceMongodbInstanceTypeStandaloneMongoDbInstance withInstance(SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance instance) {
         this.instance = instance;
         return this;
     }
@@ -40,7 +40,7 @@ public class SourceMongodbInstanceTypeStandaloneMongoDbInstance {
         return this;
     }
     
-    public SourceMongodbInstanceTypeStandaloneMongoDbInstance(@JsonProperty("host") String host, @JsonProperty("instance") SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstanceEnum instance, @JsonProperty("port") Long port) {
+    public SourceMongodbInstanceTypeStandaloneMongoDbInstance(@JsonProperty("host") String host, @JsonProperty("instance") SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance instance, @JsonProperty("port") Long port) {
         this.host = host;
         this.instance = instance;
         this.port = port;

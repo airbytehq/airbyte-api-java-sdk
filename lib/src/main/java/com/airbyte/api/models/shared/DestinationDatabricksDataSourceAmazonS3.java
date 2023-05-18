@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationDatabricksDataSourceAmazonS3 {
     @JsonProperty("data_source_type")
-    public DestinationDatabricksDataSourceAmazonS3DataSourceTypeEnum dataSourceType;
+    public DestinationDatabricksDataSourceAmazonS3DataSourceType dataSourceType;
 
-    public DestinationDatabricksDataSourceAmazonS3 withDataSourceType(DestinationDatabricksDataSourceAmazonS3DataSourceTypeEnum dataSourceType) {
+    public DestinationDatabricksDataSourceAmazonS3 withDataSourceType(DestinationDatabricksDataSourceAmazonS3DataSourceType dataSourceType) {
         this.dataSourceType = dataSourceType;
         return this;
     }
@@ -69,9 +69,9 @@ public class DestinationDatabricksDataSourceAmazonS3 {
      * The region of the S3 staging bucket to use if utilising a copy strategy.
      */
     @JsonProperty("s3_bucket_region")
-    public DestinationDatabricksDataSourceAmazonS3S3BucketRegionEnum s3BucketRegion;
+    public DestinationDatabricksDataSourceAmazonS3S3BucketRegion s3BucketRegion;
 
-    public DestinationDatabricksDataSourceAmazonS3 withS3BucketRegion(DestinationDatabricksDataSourceAmazonS3S3BucketRegionEnum s3BucketRegion) {
+    public DestinationDatabricksDataSourceAmazonS3 withS3BucketRegion(DestinationDatabricksDataSourceAmazonS3S3BucketRegion s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
     }
@@ -87,7 +87,7 @@ public class DestinationDatabricksDataSourceAmazonS3 {
         return this;
     }
     
-    public DestinationDatabricksDataSourceAmazonS3(@JsonProperty("data_source_type") DestinationDatabricksDataSourceAmazonS3DataSourceTypeEnum dataSourceType, @JsonProperty("s3_access_key_id") String s3AccessKeyId, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationDatabricksDataSourceAmazonS3S3BucketRegionEnum s3BucketRegion, @JsonProperty("s3_secret_access_key") String s3SecretAccessKey) {
+    public DestinationDatabricksDataSourceAmazonS3(@JsonProperty("data_source_type") DestinationDatabricksDataSourceAmazonS3DataSourceType dataSourceType, @JsonProperty("s3_access_key_id") String s3AccessKeyId, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationDatabricksDataSourceAmazonS3S3BucketRegion s3BucketRegion, @JsonProperty("s3_secret_access_key") String s3SecretAccessKey) {
         this.dataSourceType = dataSourceType;
         this.s3AccessKeyId = s3AccessKeyId;
         this.s3BucketName = s3BucketName;

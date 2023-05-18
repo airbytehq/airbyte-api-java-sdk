@@ -23,9 +23,9 @@ public class ListJobsRequest {
      * Filter the Jobs by jobType.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=jobType")
-    public com.airbyte.api.models.shared.JobTypeEnumEnum jobType;
+    public com.airbyte.api.models.shared.JobTypeEnum jobType;
 
-    public ListJobsRequest withJobType(com.airbyte.api.models.shared.JobTypeEnumEnum jobType) {
+    public ListJobsRequest withJobType(com.airbyte.api.models.shared.JobTypeEnum jobType) {
         this.jobType = jobType;
         return this;
     }

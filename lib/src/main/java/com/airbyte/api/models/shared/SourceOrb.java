@@ -60,9 +60,9 @@ public class SourceOrb {
     }
     
     @JsonProperty("sourceType")
-    public SourceOrbOrbEnum sourceType;
+    public SourceOrbOrb sourceType;
 
-    public SourceOrb withSourceType(SourceOrbOrbEnum sourceType) {
+    public SourceOrb withSourceType(SourceOrbOrb sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -102,7 +102,7 @@ public class SourceOrb {
         return this;
     }
     
-    public SourceOrb(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceOrbOrbEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceOrb(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceOrbOrb sourceType, @JsonProperty("start_date") String startDate) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

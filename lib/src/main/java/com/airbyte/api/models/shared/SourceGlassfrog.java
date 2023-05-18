@@ -22,14 +22,14 @@ public class SourceGlassfrog {
     }
     
     @JsonProperty("sourceType")
-    public SourceGlassfrogGlassfrogEnum sourceType;
+    public SourceGlassfrogGlassfrog sourceType;
 
-    public SourceGlassfrog withSourceType(SourceGlassfrogGlassfrogEnum sourceType) {
+    public SourceGlassfrog withSourceType(SourceGlassfrogGlassfrog sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGlassfrog(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGlassfrogGlassfrogEnum sourceType) {
+    public SourceGlassfrog(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceGlassfrogGlassfrog sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

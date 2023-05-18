@@ -45,9 +45,9 @@ public class JobResponse {
      * Enum that describes the different types of jobs that the platform runs.
      */
     @JsonProperty("jobType")
-    public JobTypeEnumEnum jobType;
+    public JobTypeEnum jobType;
 
-    public JobResponse withJobType(JobTypeEnumEnum jobType) {
+    public JobResponse withJobType(JobTypeEnum jobType) {
         this.jobType = jobType;
         return this;
     }
@@ -79,14 +79,14 @@ public class JobResponse {
     }
     
     @JsonProperty("status")
-    public JobStatusEnumEnum status;
+    public JobStatusEnum status;
 
-    public JobResponse withStatus(JobStatusEnumEnum status) {
+    public JobResponse withStatus(JobStatusEnum status) {
         this.status = status;
         return this;
     }
     
-    public JobResponse(@JsonProperty("jobId") Long jobId, @JsonProperty("jobType") JobTypeEnumEnum jobType, @JsonProperty("startTime") String startTime, @JsonProperty("status") JobStatusEnumEnum status) {
+    public JobResponse(@JsonProperty("jobId") Long jobId, @JsonProperty("jobType") JobTypeEnum jobType, @JsonProperty("startTime") String startTime, @JsonProperty("status") JobStatusEnum status) {
         this.jobId = jobId;
         this.jobType = jobType;
         this.startTime = startTime;

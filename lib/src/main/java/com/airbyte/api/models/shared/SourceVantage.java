@@ -22,14 +22,14 @@ public class SourceVantage {
     }
     
     @JsonProperty("sourceType")
-    public SourceVantageVantageEnum sourceType;
+    public SourceVantageVantage sourceType;
 
-    public SourceVantage withSourceType(SourceVantageVantageEnum sourceType) {
+    public SourceVantage withSourceType(SourceVantageVantage sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceVantage(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceVantageVantageEnum sourceType) {
+    public SourceVantage(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceVantageVantage sourceType) {
         this.accessToken = accessToken;
         this.sourceType = sourceType;
   }

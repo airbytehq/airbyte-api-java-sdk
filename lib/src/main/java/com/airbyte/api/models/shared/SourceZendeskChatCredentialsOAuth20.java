@@ -46,9 +46,9 @@ public class SourceZendeskChatCredentialsOAuth20 {
     }
     
     @JsonProperty("credentials")
-    public SourceZendeskChatCredentialsOAuth20CredentialsEnum credentials;
+    public SourceZendeskChatCredentialsOAuth20Credentials credentials;
 
-    public SourceZendeskChatCredentialsOAuth20 withCredentials(SourceZendeskChatCredentialsOAuth20CredentialsEnum credentials) {
+    public SourceZendeskChatCredentialsOAuth20 withCredentials(SourceZendeskChatCredentialsOAuth20Credentials credentials) {
         this.credentials = credentials;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceZendeskChatCredentialsOAuth20 {
         return this;
     }
     
-    public SourceZendeskChatCredentialsOAuth20(@JsonProperty("credentials") SourceZendeskChatCredentialsOAuth20CredentialsEnum credentials) {
+    public SourceZendeskChatCredentialsOAuth20(@JsonProperty("credentials") SourceZendeskChatCredentialsOAuth20Credentials credentials) {
         this.credentials = credentials;
   }
 }

@@ -23,9 +23,9 @@ public class ConnectionCreateRequest {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
-    public GeographyEnumEnum dataResidency;
+    public GeographyEnum dataResidency;
 
-    public ConnectionCreateRequest withDataResidency(GeographyEnumEnum dataResidency) {
+    public ConnectionCreateRequest withDataResidency(GeographyEnum dataResidency) {
         this.dataResidency = dataResidency;
         return this;
     }
@@ -55,9 +55,9 @@ public class ConnectionCreateRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("namespaceDefinition")
-    public NamespaceDefinitionEnumEnum namespaceDefinition;
+    public NamespaceDefinitionEnum namespaceDefinition;
 
-    public ConnectionCreateRequest withNamespaceDefinition(NamespaceDefinitionEnumEnum namespaceDefinition) {
+    public ConnectionCreateRequest withNamespaceDefinition(NamespaceDefinitionEnum namespaceDefinition) {
         this.namespaceDefinition = namespaceDefinition;
         return this;
     }
@@ -79,9 +79,9 @@ public class ConnectionCreateRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nonBreakingSchemaUpdatesBehavior")
-    public NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior;
+    public NonBreakingSchemaUpdatesBehaviorEnum nonBreakingSchemaUpdatesBehavior;
 
-    public ConnectionCreateRequest withNonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnumEnum nonBreakingSchemaUpdatesBehavior) {
+    public ConnectionCreateRequest withNonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum nonBreakingSchemaUpdatesBehavior) {
         this.nonBreakingSchemaUpdatesBehavior = nonBreakingSchemaUpdatesBehavior;
         return this;
     }

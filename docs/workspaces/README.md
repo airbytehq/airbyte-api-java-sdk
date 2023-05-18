@@ -22,7 +22,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest;
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse;
-import com.airbyte.api.models.shared.ActorTypeEnumEnum;
+import com.airbyte.api.models.shared.ActorTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest;
 
@@ -35,7 +35,7 @@ public class Application {
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnumEnum.DESTINATION,                 new java.util.HashMap<String, Object>() {{
+            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.DESTINATION,                 new java.util.HashMap<String, Object>() {{
                                                 put("aliquam", "fugit");
                                                 put("accusamus", "inventore");
                                                 put("non", "et");

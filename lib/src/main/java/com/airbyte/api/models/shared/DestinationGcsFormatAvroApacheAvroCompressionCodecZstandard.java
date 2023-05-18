@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard {
     @JsonProperty("codec")
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodecEnum codec;
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodec codec;
 
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard withCodec(DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodecEnum codec) {
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard withCodec(DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodec codec) {
         this.codec = codec;
         return this;
     }
@@ -44,7 +44,7 @@ public class DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard {
         return this;
     }
     
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodecEnum codec) {
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecZstandard(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecZstandardCodec codec) {
         this.codec = codec;
   }
 }

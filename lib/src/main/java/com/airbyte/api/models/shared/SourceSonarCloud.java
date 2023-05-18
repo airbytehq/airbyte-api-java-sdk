@@ -50,9 +50,9 @@ public class SourceSonarCloud {
     }
     
     @JsonProperty("sourceType")
-    public SourceSonarCloudSonarCloudEnum sourceType;
+    public SourceSonarCloudSonarCloud sourceType;
 
-    public SourceSonarCloud withSourceType(SourceSonarCloudSonarCloudEnum sourceType) {
+    public SourceSonarCloud withSourceType(SourceSonarCloudSonarCloud sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -81,7 +81,7 @@ public class SourceSonarCloud {
         return this;
     }
     
-    public SourceSonarCloud(@JsonProperty("component_keys") Object[] componentKeys, @JsonProperty("organization") String organization, @JsonProperty("sourceType") SourceSonarCloudSonarCloudEnum sourceType, @JsonProperty("user_token") String userToken) {
+    public SourceSonarCloud(@JsonProperty("component_keys") Object[] componentKeys, @JsonProperty("organization") String organization, @JsonProperty("sourceType") SourceSonarCloudSonarCloud sourceType, @JsonProperty("user_token") String userToken) {
         this.componentKeys = componentKeys;
         this.organization = organization;
         this.sourceType = sourceType;

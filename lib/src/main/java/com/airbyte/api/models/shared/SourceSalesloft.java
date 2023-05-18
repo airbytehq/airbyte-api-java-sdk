@@ -24,9 +24,9 @@ public class SourceSalesloft {
     }
     
     @JsonProperty("sourceType")
-    public SourceSalesloftSalesloftEnum sourceType;
+    public SourceSalesloftSalesloft sourceType;
 
-    public SourceSalesloft withSourceType(SourceSalesloftSalesloftEnum sourceType) {
+    public SourceSalesloft withSourceType(SourceSalesloftSalesloft sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -44,7 +44,7 @@ public class SourceSalesloft {
         return this;
     }
     
-    public SourceSalesloft(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceSalesloftSalesloftEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceSalesloft(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceSalesloftSalesloft sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.credentials = credentials;
         this.sourceType = sourceType;
         this.startDate = startDate;

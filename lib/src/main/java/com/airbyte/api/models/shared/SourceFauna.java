@@ -69,14 +69,14 @@ public class SourceFauna {
     }
     
     @JsonProperty("sourceType")
-    public SourceFaunaFaunaEnum sourceType;
+    public SourceFaunaFauna sourceType;
 
-    public SourceFauna withSourceType(SourceFaunaFaunaEnum sourceType) {
+    public SourceFauna withSourceType(SourceFaunaFauna sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceFauna(@JsonProperty("domain") String domain, @JsonProperty("port") Long port, @JsonProperty("scheme") String scheme, @JsonProperty("secret") String secret, @JsonProperty("sourceType") SourceFaunaFaunaEnum sourceType) {
+    public SourceFauna(@JsonProperty("domain") String domain, @JsonProperty("port") Long port, @JsonProperty("scheme") String scheme, @JsonProperty("secret") String secret, @JsonProperty("sourceType") SourceFaunaFauna sourceType) {
         this.domain = domain;
         this.port = port;
         this.scheme = scheme;

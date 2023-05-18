@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")
-    public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionTypeEnum compressionType;
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionType compressionType;
 
-    public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP withCompressionType(DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionTypeEnum compressionType) {
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP withCompressionType(DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionType compressionType) {
         this.compressionType = compressionType;
         return this;
     }

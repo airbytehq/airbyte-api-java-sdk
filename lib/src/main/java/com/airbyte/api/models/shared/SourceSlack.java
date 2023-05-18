@@ -53,7 +53,7 @@ public class SourceSlack {
     }
     
     /**
-     * How far into the past to look for messages in threads.
+     * How far into the past to look for messages in threads, default is 0 days
      */
     @JsonProperty("lookback_window")
     public Long lookbackWindow;
@@ -64,9 +64,9 @@ public class SourceSlack {
     }
     
     @JsonProperty("sourceType")
-    public SourceSlackSlackEnum sourceType;
+    public SourceSlackSlack sourceType;
 
-    public SourceSlack withSourceType(SourceSlackSlackEnum sourceType) {
+    public SourceSlack withSourceType(SourceSlackSlack sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -84,7 +84,7 @@ public class SourceSlack {
         return this;
     }
     
-    public SourceSlack(@JsonProperty("join_channels") Boolean joinChannels, @JsonProperty("lookback_window") Long lookbackWindow, @JsonProperty("sourceType") SourceSlackSlackEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceSlack(@JsonProperty("join_channels") Boolean joinChannels, @JsonProperty("lookback_window") Long lookbackWindow, @JsonProperty("sourceType") SourceSlackSlack sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.joinChannels = joinChannels;
         this.lookbackWindow = lookbackWindow;
         this.sourceType = sourceType;

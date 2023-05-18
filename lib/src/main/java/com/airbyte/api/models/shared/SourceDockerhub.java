@@ -22,14 +22,14 @@ public class SourceDockerhub {
     }
     
     @JsonProperty("sourceType")
-    public SourceDockerhubDockerhubEnum sourceType;
+    public SourceDockerhubDockerhub sourceType;
 
-    public SourceDockerhub withSourceType(SourceDockerhubDockerhubEnum sourceType) {
+    public SourceDockerhub withSourceType(SourceDockerhubDockerhub sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceDockerhub(@JsonProperty("docker_username") String dockerUsername, @JsonProperty("sourceType") SourceDockerhubDockerhubEnum sourceType) {
+    public SourceDockerhub(@JsonProperty("docker_username") String dockerUsername, @JsonProperty("sourceType") SourceDockerhubDockerhub sourceType) {
         this.dockerUsername = dockerUsername;
         this.sourceType = sourceType;
   }

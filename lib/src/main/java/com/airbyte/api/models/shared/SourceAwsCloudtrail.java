@@ -46,9 +46,9 @@ public class SourceAwsCloudtrail {
     }
     
     @JsonProperty("sourceType")
-    public SourceAwsCloudtrailAwsCloudtrailEnum sourceType;
+    public SourceAwsCloudtrailAwsCloudtrail sourceType;
 
-    public SourceAwsCloudtrail withSourceType(SourceAwsCloudtrailAwsCloudtrailEnum sourceType) {
+    public SourceAwsCloudtrail withSourceType(SourceAwsCloudtrailAwsCloudtrail sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -65,7 +65,7 @@ public class SourceAwsCloudtrail {
         return this;
     }
     
-    public SourceAwsCloudtrail(@JsonProperty("aws_key_id") String awsKeyId, @JsonProperty("aws_region_name") String awsRegionName, @JsonProperty("aws_secret_key") String awsSecretKey, @JsonProperty("sourceType") SourceAwsCloudtrailAwsCloudtrailEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceAwsCloudtrail(@JsonProperty("aws_key_id") String awsKeyId, @JsonProperty("aws_region_name") String awsRegionName, @JsonProperty("aws_secret_key") String awsSecretKey, @JsonProperty("sourceType") SourceAwsCloudtrailAwsCloudtrail sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.awsKeyId = awsKeyId;
         this.awsRegionName = awsRegionName;
         this.awsSecretKey = awsSecretKey;

@@ -27,9 +27,9 @@ public class SourceIterable {
     }
     
     @JsonProperty("sourceType")
-    public SourceIterableIterableEnum sourceType;
+    public SourceIterableIterable sourceType;
 
-    public SourceIterable withSourceType(SourceIterableIterableEnum sourceType) {
+    public SourceIterable withSourceType(SourceIterableIterable sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -47,7 +47,7 @@ public class SourceIterable {
         return this;
     }
     
-    public SourceIterable(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceIterableIterableEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceIterable(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceIterableIterable sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

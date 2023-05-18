@@ -22,14 +22,14 @@ public class SourceK6Cloud {
     }
     
     @JsonProperty("sourceType")
-    public SourceK6CloudK6CloudEnum sourceType;
+    public SourceK6CloudK6Cloud sourceType;
 
-    public SourceK6Cloud withSourceType(SourceK6CloudK6CloudEnum sourceType) {
+    public SourceK6Cloud withSourceType(SourceK6CloudK6Cloud sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceK6Cloud(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceK6CloudK6CloudEnum sourceType) {
+    public SourceK6Cloud(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceK6CloudK6Cloud sourceType) {
         this.apiToken = apiToken;
         this.sourceType = sourceType;
   }

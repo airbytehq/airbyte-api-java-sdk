@@ -31,14 +31,14 @@ public class SourceSpacexApi {
     }
     
     @JsonProperty("sourceType")
-    public SourceSpacexApiSpacexApiEnum sourceType;
+    public SourceSpacexApiSpacexApi sourceType;
 
-    public SourceSpacexApi withSourceType(SourceSpacexApiSpacexApiEnum sourceType) {
+    public SourceSpacexApi withSourceType(SourceSpacexApiSpacexApi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceSpacexApi(@JsonProperty("sourceType") SourceSpacexApiSpacexApiEnum sourceType) {
+    public SourceSpacexApi(@JsonProperty("sourceType") SourceSpacexApiSpacexApi sourceType) {
         this.sourceType = sourceType;
   }
 }

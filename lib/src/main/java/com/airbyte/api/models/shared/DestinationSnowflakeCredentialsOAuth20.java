@@ -22,9 +22,9 @@ public class DestinationSnowflakeCredentialsOAuth20 {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public DestinationSnowflakeCredentialsOAuth20AuthTypeEnum authType;
+    public DestinationSnowflakeCredentialsOAuth20AuthType authType;
 
-    public DestinationSnowflakeCredentialsOAuth20 withAuthType(DestinationSnowflakeCredentialsOAuth20AuthTypeEnum authType) {
+    public DestinationSnowflakeCredentialsOAuth20 withAuthType(DestinationSnowflakeCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }

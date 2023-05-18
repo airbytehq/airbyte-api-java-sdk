@@ -19,14 +19,14 @@ public class SourceOktaCredentialsAPIToken {
     }
     
     @JsonProperty("auth_type")
-    public SourceOktaCredentialsAPITokenAuthTypeEnum authType;
+    public SourceOktaCredentialsAPITokenAuthType authType;
 
-    public SourceOktaCredentialsAPIToken withAuthType(SourceOktaCredentialsAPITokenAuthTypeEnum authType) {
+    public SourceOktaCredentialsAPIToken withAuthType(SourceOktaCredentialsAPITokenAuthType authType) {
         this.authType = authType;
         return this;
     }
     
-    public SourceOktaCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourceOktaCredentialsAPITokenAuthTypeEnum authType) {
+    public SourceOktaCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourceOktaCredentialsAPITokenAuthType authType) {
         this.apiToken = apiToken;
         this.authType = authType;
   }

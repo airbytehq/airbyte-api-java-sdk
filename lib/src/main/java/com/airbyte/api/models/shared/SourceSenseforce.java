@@ -60,9 +60,9 @@ public class SourceSenseforce {
     }
     
     @JsonProperty("sourceType")
-    public SourceSenseforceSenseforceEnum sourceType;
+    public SourceSenseforceSenseforce sourceType;
 
-    public SourceSenseforce withSourceType(SourceSenseforceSenseforceEnum sourceType) {
+    public SourceSenseforce withSourceType(SourceSenseforceSenseforce sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -79,7 +79,7 @@ public class SourceSenseforce {
         return this;
     }
     
-    public SourceSenseforce(@JsonProperty("access_token") String accessToken, @JsonProperty("backend_url") String backendUrl, @JsonProperty("dataset_id") String datasetId, @JsonProperty("sourceType") SourceSenseforceSenseforceEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceSenseforce(@JsonProperty("access_token") String accessToken, @JsonProperty("backend_url") String backendUrl, @JsonProperty("dataset_id") String datasetId, @JsonProperty("sourceType") SourceSenseforceSenseforce sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.accessToken = accessToken;
         this.backendUrl = backendUrl;
         this.datasetId = datasetId;

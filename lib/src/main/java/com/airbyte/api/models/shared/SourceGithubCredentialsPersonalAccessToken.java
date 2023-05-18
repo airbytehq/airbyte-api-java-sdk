@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceGithubCredentialsPersonalAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
-    public SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle;
+    public SourceGithubCredentialsPersonalAccessTokenOptionTitle optionTitle;
 
-    public SourceGithubCredentialsPersonalAccessToken withOptionTitle(SourceGithubCredentialsPersonalAccessTokenOptionTitleEnum optionTitle) {
+    public SourceGithubCredentialsPersonalAccessToken withOptionTitle(SourceGithubCredentialsPersonalAccessTokenOptionTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }

@@ -22,9 +22,9 @@ public class SourcePinterest {
     }
     
     @JsonProperty("sourceType")
-    public SourcePinterestPinterestEnum sourceType;
+    public SourcePinterestPinterest sourceType;
 
-    public SourcePinterest withSourceType(SourcePinterestPinterestEnum sourceType) {
+    public SourcePinterest withSourceType(SourcePinterestPinterest sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -45,14 +45,14 @@ public class SourcePinterest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
-    public SourcePinterestStatusEnum[] status;
+    public SourcePinterestStatus[] status;
 
-    public SourcePinterest withStatus(SourcePinterestStatusEnum[] status) {
+    public SourcePinterest withStatus(SourcePinterestStatus[] status) {
         this.status = status;
         return this;
     }
     
-    public SourcePinterest(@JsonProperty("sourceType") SourcePinterestPinterestEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourcePinterest(@JsonProperty("sourceType") SourcePinterestPinterest sourceType, @JsonProperty("start_date") String startDate) {
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

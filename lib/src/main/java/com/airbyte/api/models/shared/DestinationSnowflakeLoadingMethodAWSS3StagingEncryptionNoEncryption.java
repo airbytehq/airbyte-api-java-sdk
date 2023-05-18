@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption {
     @JsonProperty("encryption_type")
-    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType;
+    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionType encryptionType;
 
-    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption withEncryptionType(DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType) {
+    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption withEncryptionType(DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionType encryptionType) {
         this.encryptionType = encryptionType;
         return this;
     }
     
-    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType) {
+    public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionType encryptionType) {
         this.encryptionType = encryptionType;
   }
 }

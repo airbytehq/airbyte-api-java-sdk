@@ -65,9 +65,9 @@ public class SourcePaypalTransaction {
     }
     
     @JsonProperty("sourceType")
-    public SourcePaypalTransactionPaypalTransactionEnum sourceType;
+    public SourcePaypalTransactionPaypalTransaction sourceType;
 
-    public SourcePaypalTransaction withSourceType(SourcePaypalTransactionPaypalTransactionEnum sourceType) {
+    public SourcePaypalTransaction withSourceType(SourcePaypalTransactionPaypalTransaction sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -85,7 +85,7 @@ public class SourcePaypalTransaction {
         return this;
     }
     
-    public SourcePaypalTransaction(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransactionEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourcePaypalTransaction(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransaction sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.isSandbox = isSandbox;
         this.sourceType = sourceType;
         this.startDate = startDate;

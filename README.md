@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.11.0'
+implementation 'com.airbyte.api:public-api:0.12.0'
 ```
 <!-- End SDK Installation -->
 
@@ -34,11 +34,11 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
 import com.airbyte.api.models.shared.ConnectionScheduleCreate;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnumEnum;
-import com.airbyte.api.models.shared.GeographyEnumEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnumEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnumEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
 import com.airbyte.api.models.shared.StreamConfigurations;
@@ -75,7 +75,7 @@ public class Application {
                                     add("iste"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnumEnum.FULL_REFRESH_APPEND;
+                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_APPEND;
                         }}),
                         add(new StreamConfiguration("excepturi") {{
                             cursorField = new String[]{{
@@ -93,7 +93,7 @@ public class Application {
                                     add("nemo"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnumEnum.FULL_REFRESH_APPEND;
+                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_APPEND;
                         }}),
                         add(new StreamConfiguration("quia") {{
                             cursorField = new String[]{{
@@ -114,17 +114,17 @@ public class Application {
                                     add("velit"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnumEnum.INCREMENTAL_APPEND;
+                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
                         }}),
                     }};
                 }};;
-                dataResidency = GeographyEnumEnum.US;
+                dataResidency = GeographyEnum.US;
                 name = "Kayla O'Kon";
-                namespaceDefinition = NamespaceDefinitionEnumEnum.CUSTOM_FORMAT;
+                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumEnum.IGNORE;
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "tenetur";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnumEnum.MANUAL) {{
+                schedule = new ConnectionScheduleCreate(ScheduleTypeEnum.MANUAL) {{
                     cronExpression = "id";
                 }};;
             }};            

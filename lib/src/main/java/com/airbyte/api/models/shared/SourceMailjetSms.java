@@ -25,9 +25,9 @@ public class SourceMailjetSms {
     }
     
     @JsonProperty("sourceType")
-    public SourceMailjetSmsMailjetSmsEnum sourceType;
+    public SourceMailjetSmsMailjetSms sourceType;
 
-    public SourceMailjetSms withSourceType(SourceMailjetSmsMailjetSmsEnum sourceType) {
+    public SourceMailjetSms withSourceType(SourceMailjetSmsMailjetSms sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -55,7 +55,7 @@ public class SourceMailjetSms {
         return this;
     }
     
-    public SourceMailjetSms(@JsonProperty("sourceType") SourceMailjetSmsMailjetSmsEnum sourceType, @JsonProperty("token") String token) {
+    public SourceMailjetSms(@JsonProperty("sourceType") SourceMailjetSmsMailjetSms sourceType, @JsonProperty("token") String token) {
         this.sourceType = sourceType;
         this.token = token;
   }

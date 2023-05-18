@@ -50,9 +50,9 @@ public class SourceExchangeRates {
     }
     
     @JsonProperty("sourceType")
-    public SourceExchangeRatesExchangeRatesEnum sourceType;
+    public SourceExchangeRatesExchangeRates sourceType;
 
-    public SourceExchangeRates withSourceType(SourceExchangeRatesExchangeRatesEnum sourceType) {
+    public SourceExchangeRates withSourceType(SourceExchangeRatesExchangeRates sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -69,7 +69,7 @@ public class SourceExchangeRates {
         return this;
     }
     
-    public SourceExchangeRates(@JsonProperty("access_key") String accessKey, @JsonProperty("sourceType") SourceExchangeRatesExchangeRatesEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceExchangeRates(@JsonProperty("access_key") String accessKey, @JsonProperty("sourceType") SourceExchangeRatesExchangeRates sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.accessKey = accessKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

@@ -94,9 +94,9 @@ public class SourceMssql {
     }
     
     @JsonProperty("sourceType")
-    public SourceMssqlMssqlEnum sourceType;
+    public SourceMssqlMssql sourceType;
 
-    public SourceMssql withSourceType(SourceMssqlMssqlEnum sourceType) {
+    public SourceMssql withSourceType(SourceMssqlMssql sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -136,7 +136,7 @@ public class SourceMssql {
         return this;
     }
     
-    public SourceMssql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceMssqlMssqlEnum sourceType, @JsonProperty("username") String username) {
+    public SourceMssql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceMssqlMssql sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
         this.port = port;

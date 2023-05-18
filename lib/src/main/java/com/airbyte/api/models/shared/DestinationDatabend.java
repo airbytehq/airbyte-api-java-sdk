@@ -24,9 +24,9 @@ public class DestinationDatabend {
     }
     
     @JsonProperty("destinationType")
-    public DestinationDatabendDatabendEnum destinationType;
+    public DestinationDatabendDatabend destinationType;
 
-    public DestinationDatabend withDestinationType(DestinationDatabendDatabendEnum destinationType) {
+    public DestinationDatabend withDestinationType(DestinationDatabendDatabend destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -89,7 +89,7 @@ public class DestinationDatabend {
         return this;
     }
     
-    public DestinationDatabend(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationDatabendDatabendEnum destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
+    public DestinationDatabend(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationDatabendDatabend destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;

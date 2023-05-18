@@ -25,9 +25,9 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationMssqlTunnelMethodPasswordAuthentication withTunnelMethod(DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationMssqlTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationMssqlTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationMssqlTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationMssqlTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

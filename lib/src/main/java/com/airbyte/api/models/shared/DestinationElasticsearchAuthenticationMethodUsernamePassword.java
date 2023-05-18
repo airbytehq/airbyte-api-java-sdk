@@ -11,9 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationElasticsearchAuthenticationMethodUsernamePassword {
     @JsonProperty("method")
-    public DestinationElasticsearchAuthenticationMethodUsernamePasswordMethodEnum method;
+    public DestinationElasticsearchAuthenticationMethodUsernamePasswordMethod method;
 
-    public DestinationElasticsearchAuthenticationMethodUsernamePassword withMethod(DestinationElasticsearchAuthenticationMethodUsernamePasswordMethodEnum method) {
+    public DestinationElasticsearchAuthenticationMethodUsernamePassword withMethod(DestinationElasticsearchAuthenticationMethodUsernamePasswordMethod method) {
         this.method = method;
         return this;
     }
@@ -40,7 +40,7 @@ public class DestinationElasticsearchAuthenticationMethodUsernamePassword {
         return this;
     }
     
-    public DestinationElasticsearchAuthenticationMethodUsernamePassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("method") DestinationElasticsearchAuthenticationMethodUsernamePasswordMethodEnum method) {
+    public DestinationElasticsearchAuthenticationMethodUsernamePassword(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("method") DestinationElasticsearchAuthenticationMethodUsernamePasswordMethod method) {
         this.username = username;
         this.password = password;
         this.method = method;

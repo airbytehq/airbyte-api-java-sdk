@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType;
+    public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthType authType;
 
-    public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthTypeEnum authType) {
+    public SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication withAuthType(SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticationAuthType authType) {
         this.authType = authType;
         return this;
     }

@@ -17,22 +17,22 @@ public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
-    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONCompressionCodecOptionalEnum compressionCodec;
+    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONCompressionCodecOptional compressionCodec;
 
-    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON withCompressionCodec(DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONCompressionCodecOptionalEnum compressionCodec) {
+    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON withCompressionCodec(DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONCompressionCodecOptional compressionCodec) {
         this.compressionCodec = compressionCodec;
         return this;
     }
     
     @JsonProperty("format_type")
-    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcardEnum formatType;
+    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcard formatType;
 
-    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcardEnum formatType) {
+    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcard formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcardEnum formatType) {
+    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcard formatType) {
         this.formatType = formatType;
   }
 }

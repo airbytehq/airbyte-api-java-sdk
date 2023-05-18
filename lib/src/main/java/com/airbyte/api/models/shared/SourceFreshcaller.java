@@ -4,16 +4,21 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceFreshcaller - The values required to configure the source.
  */
 public class SourceFreshcaller {
     /**
-     * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.io/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonProperty("api_key")
     public String apiKey;
@@ -47,9 +52,9 @@ public class SourceFreshcaller {
     }
     
     @JsonProperty("sourceType")
-    public SourceFreshcallerFreshcallerEnum sourceType;
+    public SourceFreshcallerFreshcaller sourceType;
 
-    public SourceFreshcaller withSourceType(SourceFreshcallerFreshcallerEnum sourceType) {
+    public SourceFreshcaller withSourceType(SourceFreshcallerFreshcaller sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -57,10 +62,12 @@ public class SourceFreshcaller {
     /**
      * UTC date and time. Any data created after this date will be replicated.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public Object startDate;
+    public OffsetDateTime startDate;
 
-    public SourceFreshcaller withStartDate(Object startDate) {
+    public SourceFreshcaller withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -77,7 +84,7 @@ public class SourceFreshcaller {
         return this;
     }
     
-    public SourceFreshcaller(@JsonProperty("api_key") String apiKey, @JsonProperty("domain") String domain, @JsonProperty("sourceType") SourceFreshcallerFreshcallerEnum sourceType, @JsonProperty("start_date") Object startDate) {
+    public SourceFreshcaller(@JsonProperty("api_key") String apiKey, @JsonProperty("domain") String domain, @JsonProperty("sourceType") SourceFreshcallerFreshcaller sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiKey = apiKey;
         this.domain = domain;
         this.sourceType = sourceType;

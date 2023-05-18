@@ -19,14 +19,14 @@ public class SourceAuth0CredentialsOAuth2AccessToken {
     }
     
     @JsonProperty("auth_type")
-    public SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType;
+    public SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethod authType;
 
-    public SourceAuth0CredentialsOAuth2AccessToken withAuthType(SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType) {
+    public SourceAuth0CredentialsOAuth2AccessToken withAuthType(SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethod authType) {
         this.authType = authType;
         return this;
     }
     
-    public SourceAuth0CredentialsOAuth2AccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethodEnum authType) {
+    public SourceAuth0CredentialsOAuth2AccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceAuth0CredentialsOAuth2AccessTokenAuthenticationMethod authType) {
         this.accessToken = accessToken;
         this.authType = authType;
   }

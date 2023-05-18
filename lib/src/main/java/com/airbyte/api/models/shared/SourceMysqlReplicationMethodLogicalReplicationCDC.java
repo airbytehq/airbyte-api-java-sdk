@@ -25,9 +25,9 @@ public class SourceMysqlReplicationMethodLogicalReplicationCDC {
     }
     
     @JsonProperty("method")
-    public SourceMysqlReplicationMethodLogicalReplicationCDCMethodEnum method;
+    public SourceMysqlReplicationMethodLogicalReplicationCDCMethod method;
 
-    public SourceMysqlReplicationMethodLogicalReplicationCDC withMethod(SourceMysqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
+    public SourceMysqlReplicationMethodLogicalReplicationCDC withMethod(SourceMysqlReplicationMethodLogicalReplicationCDCMethod method) {
         this.method = method;
         return this;
     }
@@ -44,7 +44,7 @@ public class SourceMysqlReplicationMethodLogicalReplicationCDC {
         return this;
     }
     
-    public SourceMysqlReplicationMethodLogicalReplicationCDC(@JsonProperty("method") SourceMysqlReplicationMethodLogicalReplicationCDCMethodEnum method) {
+    public SourceMysqlReplicationMethodLogicalReplicationCDC(@JsonProperty("method") SourceMysqlReplicationMethodLogicalReplicationCDCMethod method) {
         this.method = method;
   }
 }

@@ -26,9 +26,9 @@ public class SourceSmartsheets {
     }
     
     @JsonProperty("sourceType")
-    public SourceSmartsheetsSmartsheetsEnum sourceType;
+    public SourceSmartsheetsSmartsheets sourceType;
 
-    public SourceSmartsheets withSourceType(SourceSmartsheetsSmartsheetsEnum sourceType) {
+    public SourceSmartsheets withSourceType(SourceSmartsheetsSmartsheets sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -58,7 +58,7 @@ public class SourceSmartsheets {
         return this;
     }
     
-    public SourceSmartsheets(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceSmartsheetsSmartsheetsEnum sourceType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
+    public SourceSmartsheets(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceSmartsheetsSmartsheets sourceType, @JsonProperty("spreadsheet_id") String spreadsheetId) {
         this.credentials = credentials;
         this.sourceType = sourceType;
         this.spreadsheetId = spreadsheetId;

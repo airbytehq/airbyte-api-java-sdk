@@ -18,7 +18,7 @@ import java.time.OffsetDateTime;
  */
 public class SourceJira {
     /**
-     * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key. API Token is used for Authorization to your account by BasicAuth.
      */
     @JsonProperty("api_token")
     public String apiToken;
@@ -40,7 +40,7 @@ public class SourceJira {
     }
     
     /**
-     * The user email for your Jira account.
+     * The user email for your Jira account which you used to generate the API token. This field is used for Authorization to your account by BasicAuth.
      */
     @JsonProperty("email")
     public String email;
@@ -75,7 +75,7 @@ public class SourceJira {
     }
     
     /**
-     * List of Jira project keys to replicate data for.
+     * List of Jira project keys to replicate data for, or leave it empty if you want to replicate data for all projects.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("projects")
@@ -99,15 +99,15 @@ public class SourceJira {
     }
     
     @JsonProperty("sourceType")
-    public SourceJiraJiraEnum sourceType;
+    public SourceJiraJira sourceType;
 
-    public SourceJira withSourceType(SourceJiraJiraEnum sourceType) {
+    public SourceJira withSourceType(SourceJiraJira sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
     /**
-     * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
+     * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. Or leave it empty if you want to replicate all data. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
@@ -120,7 +120,7 @@ public class SourceJira {
         return this;
     }
     
-    public SourceJira(@JsonProperty("api_token") String apiToken, @JsonProperty("domain") String domain, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceJiraJiraEnum sourceType) {
+    public SourceJira(@JsonProperty("api_token") String apiToken, @JsonProperty("domain") String domain, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceJiraJira sourceType) {
         this.apiToken = apiToken;
         this.domain = domain;
         this.email = email;

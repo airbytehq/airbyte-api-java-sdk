@@ -36,9 +36,9 @@ public class DestinationFirebolt {
     }
     
     @JsonProperty("destinationType")
-    public DestinationFireboltFireboltEnum destinationType;
+    public DestinationFireboltFirebolt destinationType;
 
-    public DestinationFirebolt withDestinationType(DestinationFireboltFireboltEnum destinationType) {
+    public DestinationFirebolt withDestinationType(DestinationFireboltFirebolt destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -101,7 +101,7 @@ public class DestinationFirebolt {
         return this;
     }
     
-    public DestinationFirebolt(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationFireboltFireboltEnum destinationType) {
+    public DestinationFirebolt(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationFireboltFirebolt destinationType) {
         this.username = username;
         this.password = password;
         this.database = database;

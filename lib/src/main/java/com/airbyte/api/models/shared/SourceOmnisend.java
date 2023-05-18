@@ -22,14 +22,14 @@ public class SourceOmnisend {
     }
     
     @JsonProperty("sourceType")
-    public SourceOmnisendOmnisendEnum sourceType;
+    public SourceOmnisendOmnisend sourceType;
 
-    public SourceOmnisend withSourceType(SourceOmnisendOmnisendEnum sourceType) {
+    public SourceOmnisend withSourceType(SourceOmnisendOmnisend sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceOmnisend(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceOmnisendOmnisendEnum sourceType) {
+    public SourceOmnisend(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceOmnisendOmnisend sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

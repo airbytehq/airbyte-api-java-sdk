@@ -27,9 +27,9 @@ public class SourceHubspot {
     }
     
     @JsonProperty("sourceType")
-    public SourceHubspotHubspotEnum sourceType;
+    public SourceHubspotHubspot sourceType;
 
-    public SourceHubspot withSourceType(SourceHubspotHubspotEnum sourceType) {
+    public SourceHubspot withSourceType(SourceHubspotHubspot sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -47,7 +47,7 @@ public class SourceHubspot {
         return this;
     }
     
-    public SourceHubspot(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceHubspotHubspotEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceHubspot(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceHubspotHubspot sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.credentials = credentials;
         this.sourceType = sourceType;
         this.startDate = startDate;

@@ -14,14 +14,14 @@ public class DestinationMariadbColumnstoreTunnelMethodNoTunnel {
      * No ssh tunnel needed to connect to database
      */
     @JsonProperty("tunnel_method")
-    public DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod;
+    public DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethod tunnelMethod;
 
-    public DestinationMariadbColumnstoreTunnelMethodNoTunnel withTunnelMethod(DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationMariadbColumnstoreTunnelMethodNoTunnel withTunnelMethod(DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
     
-    public DestinationMariadbColumnstoreTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethodEnum tunnelMethod) {
+    public DestinationMariadbColumnstoreTunnelMethodNoTunnel(@JsonProperty("tunnel_method") DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
   }
 }

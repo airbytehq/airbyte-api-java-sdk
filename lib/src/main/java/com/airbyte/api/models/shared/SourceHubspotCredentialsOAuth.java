@@ -36,9 +36,9 @@ public class SourceHubspotCredentialsOAuth {
      * Name of the credentials
      */
     @JsonProperty("credentials_title")
-    public SourceHubspotCredentialsOAuthCredentialsEnum credentialsTitle;
+    public SourceHubspotCredentialsOAuthCredentials credentialsTitle;
 
-    public SourceHubspotCredentialsOAuth withCredentialsTitle(SourceHubspotCredentialsOAuthCredentialsEnum credentialsTitle) {
+    public SourceHubspotCredentialsOAuth withCredentialsTitle(SourceHubspotCredentialsOAuthCredentials credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceHubspotCredentialsOAuth {
         return this;
     }
     
-    public SourceHubspotCredentialsOAuth(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("credentials_title") SourceHubspotCredentialsOAuthCredentialsEnum credentialsTitle, @JsonProperty("refresh_token") String refreshToken) {
+    public SourceHubspotCredentialsOAuth(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("credentials_title") SourceHubspotCredentialsOAuthCredentials credentialsTitle, @JsonProperty("refresh_token") String refreshToken) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.credentialsTitle = credentialsTitle;

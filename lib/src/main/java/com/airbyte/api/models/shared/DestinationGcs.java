@@ -24,9 +24,9 @@ public class DestinationGcs {
     }
     
     @JsonProperty("destinationType")
-    public DestinationGcsGcsEnum destinationType;
+    public DestinationGcsGcs destinationType;
 
-    public DestinationGcs withDestinationType(DestinationGcsGcsEnum destinationType) {
+    public DestinationGcs withDestinationType(DestinationGcsGcs destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -69,14 +69,14 @@ public class DestinationGcs {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("gcs_bucket_region")
-    public DestinationGCSGCSBucketRegionEnum gcsBucketRegion;
+    public DestinationGCSGCSBucketRegion gcsBucketRegion;
 
-    public DestinationGcs withGcsBucketRegion(DestinationGCSGCSBucketRegionEnum gcsBucketRegion) {
+    public DestinationGcs withGcsBucketRegion(DestinationGCSGCSBucketRegion gcsBucketRegion) {
         this.gcsBucketRegion = gcsBucketRegion;
         return this;
     }
     
-    public DestinationGcs(@JsonProperty("credential") Object credential, @JsonProperty("destinationType") DestinationGcsGcsEnum destinationType, @JsonProperty("format") Object format, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath) {
+    public DestinationGcs(@JsonProperty("credential") Object credential, @JsonProperty("destinationType") DestinationGcsGcs destinationType, @JsonProperty("format") Object format, @JsonProperty("gcs_bucket_name") String gcsBucketName, @JsonProperty("gcs_bucket_path") String gcsBucketPath) {
         this.credential = credential;
         this.destinationType = destinationType;
         this.format = format;

@@ -22,9 +22,9 @@ public class SourceKustomerSinger {
     }
     
     @JsonProperty("sourceType")
-    public SourceKustomerSingerKustomerSingerEnum sourceType;
+    public SourceKustomerSingerKustomerSinger sourceType;
 
-    public SourceKustomerSinger withSourceType(SourceKustomerSingerKustomerSingerEnum sourceType) {
+    public SourceKustomerSinger withSourceType(SourceKustomerSingerKustomerSinger sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -40,7 +40,7 @@ public class SourceKustomerSinger {
         return this;
     }
     
-    public SourceKustomerSinger(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceKustomerSingerKustomerSingerEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceKustomerSinger(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceKustomerSingerKustomerSinger sourceType, @JsonProperty("start_date") String startDate) {
         this.apiToken = apiToken;
         this.sourceType = sourceType;
         this.startDate = startDate;

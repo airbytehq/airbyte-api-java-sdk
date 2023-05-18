@@ -58,14 +58,14 @@ public class DestinationDatabricksDataSourceAzureBlobStorage {
     }
     
     @JsonProperty("data_source_type")
-    public DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType;
+    public DestinationDatabricksDataSourceAzureBlobStorageDataSourceType dataSourceType;
 
-    public DestinationDatabricksDataSourceAzureBlobStorage withDataSourceType(DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType) {
+    public DestinationDatabricksDataSourceAzureBlobStorage withDataSourceType(DestinationDatabricksDataSourceAzureBlobStorageDataSourceType dataSourceType) {
         this.dataSourceType = dataSourceType;
         return this;
     }
     
-    public DestinationDatabricksDataSourceAzureBlobStorage(@JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("azure_blob_storage_sas_token") String azureBlobStorageSasToken, @JsonProperty("data_source_type") DestinationDatabricksDataSourceAzureBlobStorageDataSourceTypeEnum dataSourceType) {
+    public DestinationDatabricksDataSourceAzureBlobStorage(@JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName, @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName, @JsonProperty("azure_blob_storage_sas_token") String azureBlobStorageSasToken, @JsonProperty("data_source_type") DestinationDatabricksDataSourceAzureBlobStorageDataSourceType dataSourceType) {
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         this.azureBlobStorageSasToken = azureBlobStorageSasToken;

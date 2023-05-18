@@ -44,14 +44,14 @@ public class SourceSmaily {
     }
     
     @JsonProperty("sourceType")
-    public SourceSmailySmailyEnum sourceType;
+    public SourceSmailySmaily sourceType;
 
-    public SourceSmaily withSourceType(SourceSmailySmailyEnum sourceType) {
+    public SourceSmaily withSourceType(SourceSmailySmaily sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceSmaily(@JsonProperty("api_username") String apiUsername, @JsonProperty("api_password") String apiPassword, @JsonProperty("api_subdomain") String apiSubdomain, @JsonProperty("sourceType") SourceSmailySmailyEnum sourceType) {
+    public SourceSmaily(@JsonProperty("api_username") String apiUsername, @JsonProperty("api_password") String apiPassword, @JsonProperty("api_subdomain") String apiSubdomain, @JsonProperty("sourceType") SourceSmailySmaily sourceType) {
         this.apiUsername = apiUsername;
         this.apiPassword = apiPassword;
         this.apiSubdomain = apiSubdomain;

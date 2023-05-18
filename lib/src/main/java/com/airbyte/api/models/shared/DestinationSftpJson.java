@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationSftpJson {
     @JsonProperty("destinationType")
-    public DestinationSftpJsonSftpJsonEnum destinationType;
+    public DestinationSftpJsonSftpJson destinationType;
 
-    public DestinationSftpJson withDestinationType(DestinationSftpJsonSftpJsonEnum destinationType) {
+    public DestinationSftpJson withDestinationType(DestinationSftpJsonSftpJson destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -76,7 +76,7 @@ public class DestinationSftpJson {
         return this;
     }
     
-    public DestinationSftpJson(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("destinationType") DestinationSftpJsonSftpJsonEnum destinationType, @JsonProperty("destination_path") String destinationPath, @JsonProperty("host") String host) {
+    public DestinationSftpJson(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("destinationType") DestinationSftpJsonSftpJson destinationType, @JsonProperty("destination_path") String destinationPath, @JsonProperty("host") String host) {
         this.username = username;
         this.password = password;
         this.destinationType = destinationType;

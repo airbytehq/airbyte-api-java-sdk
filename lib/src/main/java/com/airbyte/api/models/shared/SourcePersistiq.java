@@ -22,14 +22,14 @@ public class SourcePersistiq {
     }
     
     @JsonProperty("sourceType")
-    public SourcePersistiqPersistiqEnum sourceType;
+    public SourcePersistiqPersistiq sourceType;
 
-    public SourcePersistiq withSourceType(SourcePersistiqPersistiqEnum sourceType) {
+    public SourcePersistiq withSourceType(SourcePersistiqPersistiq sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourcePersistiq(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePersistiqPersistiqEnum sourceType) {
+    public SourcePersistiq(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourcePersistiqPersistiq sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

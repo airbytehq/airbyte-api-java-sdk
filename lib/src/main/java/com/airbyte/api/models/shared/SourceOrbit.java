@@ -24,9 +24,9 @@ public class SourceOrbit {
     }
     
     @JsonProperty("sourceType")
-    public SourceOrbitOrbitEnum sourceType;
+    public SourceOrbitOrbit sourceType;
 
-    public SourceOrbit withSourceType(SourceOrbitOrbitEnum sourceType) {
+    public SourceOrbit withSourceType(SourceOrbitOrbit sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceOrbit {
         return this;
     }
     
-    public SourceOrbit(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceOrbitOrbitEnum sourceType, @JsonProperty("workspace") String workspace) {
+    public SourceOrbit(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceOrbitOrbit sourceType, @JsonProperty("workspace") String workspace) {
         this.apiToken = apiToken;
         this.sourceType = sourceType;
         this.workspace = workspace;

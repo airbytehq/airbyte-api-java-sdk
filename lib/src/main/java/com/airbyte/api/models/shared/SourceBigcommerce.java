@@ -22,9 +22,9 @@ public class SourceBigcommerce {
     }
     
     @JsonProperty("sourceType")
-    public SourceBigcommerceBigcommerceEnum sourceType;
+    public SourceBigcommerceBigcommerce sourceType;
 
-    public SourceBigcommerce withSourceType(SourceBigcommerceBigcommerceEnum sourceType) {
+    public SourceBigcommerce withSourceType(SourceBigcommerceBigcommerce sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -51,7 +51,7 @@ public class SourceBigcommerce {
         return this;
     }
     
-    public SourceBigcommerce(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceBigcommerceBigcommerceEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("store_hash") String storeHash) {
+    public SourceBigcommerce(@JsonProperty("access_token") String accessToken, @JsonProperty("sourceType") SourceBigcommerceBigcommerce sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("store_hash") String storeHash) {
         this.accessToken = accessToken;
         this.sourceType = sourceType;
         this.startDate = startDate;

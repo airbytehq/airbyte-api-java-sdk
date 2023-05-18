@@ -55,9 +55,9 @@ public class SourceOutreach {
     }
     
     @JsonProperty("sourceType")
-    public SourceOutreachOutreachEnum sourceType;
+    public SourceOutreachOutreach sourceType;
 
-    public SourceOutreach withSourceType(SourceOutreachOutreachEnum sourceType) {
+    public SourceOutreach withSourceType(SourceOutreachOutreach sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -73,7 +73,7 @@ public class SourceOutreach {
         return this;
     }
     
-    public SourceOutreach(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("redirect_uri") String redirectUri, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceOutreachOutreachEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceOutreach(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("redirect_uri") String redirectUri, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceOutreachOutreach sourceType, @JsonProperty("start_date") String startDate) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectUri = redirectUri;

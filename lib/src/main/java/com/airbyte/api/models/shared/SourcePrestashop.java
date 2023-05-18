@@ -24,9 +24,9 @@ public class SourcePrestashop {
     }
     
     @JsonProperty("sourceType")
-    public SourcePrestashopPrestashopEnum sourceType;
+    public SourcePrestashopPrestashop sourceType;
 
-    public SourcePrestashop withSourceType(SourcePrestashopPrestashopEnum sourceType) {
+    public SourcePrestashop withSourceType(SourcePrestashopPrestashop sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourcePrestashop {
         return this;
     }
     
-    public SourcePrestashop(@JsonProperty("access_key") String accessKey, @JsonProperty("sourceType") SourcePrestashopPrestashopEnum sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("url") String url) {
+    public SourcePrestashop(@JsonProperty("access_key") String accessKey, @JsonProperty("sourceType") SourcePrestashopPrestashop sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("url") String url) {
         this.accessKey = accessKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

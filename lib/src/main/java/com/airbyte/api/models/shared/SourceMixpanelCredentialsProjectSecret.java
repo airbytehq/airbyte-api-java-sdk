@@ -25,9 +25,9 @@ public class SourceMixpanelCredentialsProjectSecret {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
-    public SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle;
+    public SourceMixpanelCredentialsProjectSecretOptionTitle optionTitle;
 
-    public SourceMixpanelCredentialsProjectSecret withOptionTitle(SourceMixpanelCredentialsProjectSecretOptionTitleEnum optionTitle) {
+    public SourceMixpanelCredentialsProjectSecret withOptionTitle(SourceMixpanelCredentialsProjectSecretOptionTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }

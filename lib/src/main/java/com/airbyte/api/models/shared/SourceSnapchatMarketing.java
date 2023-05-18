@@ -61,9 +61,9 @@ public class SourceSnapchatMarketing {
     }
     
     @JsonProperty("sourceType")
-    public SourceSnapchatMarketingSnapchatMarketingEnum sourceType;
+    public SourceSnapchatMarketingSnapchatMarketing sourceType;
 
-    public SourceSnapchatMarketing withSourceType(SourceSnapchatMarketingSnapchatMarketingEnum sourceType) {
+    public SourceSnapchatMarketing withSourceType(SourceSnapchatMarketingSnapchatMarketing sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -81,7 +81,7 @@ public class SourceSnapchatMarketing {
         return this;
     }
     
-    public SourceSnapchatMarketing(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSnapchatMarketingSnapchatMarketingEnum sourceType) {
+    public SourceSnapchatMarketing(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceSnapchatMarketingSnapchatMarketing sourceType) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;

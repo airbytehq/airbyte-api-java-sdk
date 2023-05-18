@@ -30,17 +30,17 @@ public class SourceChartmogul {
      * Some APIs such as &lt;a href="https://dev.chartmogul.com/reference/endpoint-overview-metrics-api"&gt;Metrics&lt;/a&gt; require intervals to cluster data.
      */
     @JsonProperty("interval")
-    public SourceChartmogulIntervalEnum interval;
+    public SourceChartmogulInterval interval;
 
-    public SourceChartmogul withInterval(SourceChartmogulIntervalEnum interval) {
+    public SourceChartmogul withInterval(SourceChartmogulInterval interval) {
         this.interval = interval;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceChartmogulChartmogulEnum sourceType;
+    public SourceChartmogulChartmogul sourceType;
 
-    public SourceChartmogul withSourceType(SourceChartmogulChartmogulEnum sourceType) {
+    public SourceChartmogul withSourceType(SourceChartmogulChartmogul sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -58,7 +58,7 @@ public class SourceChartmogul {
         return this;
     }
     
-    public SourceChartmogul(@JsonProperty("api_key") String apiKey, @JsonProperty("interval") SourceChartmogulIntervalEnum interval, @JsonProperty("sourceType") SourceChartmogulChartmogulEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceChartmogul(@JsonProperty("api_key") String apiKey, @JsonProperty("interval") SourceChartmogulInterval interval, @JsonProperty("sourceType") SourceChartmogulChartmogul sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiKey = apiKey;
         this.interval = interval;
         this.sourceType = sourceType;

@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationSnowflakeLoadingMethodSelectAnotherOption {
     @JsonProperty("method")
-    public DestinationSnowflakeLoadingMethodSelectAnotherOptionMethodEnum method;
+    public DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod method;
 
-    public DestinationSnowflakeLoadingMethodSelectAnotherOption withMethod(DestinationSnowflakeLoadingMethodSelectAnotherOptionMethodEnum method) {
+    public DestinationSnowflakeLoadingMethodSelectAnotherOption withMethod(DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod method) {
         this.method = method;
         return this;
     }
     
-    public DestinationSnowflakeLoadingMethodSelectAnotherOption(@JsonProperty("method") DestinationSnowflakeLoadingMethodSelectAnotherOptionMethodEnum method) {
+    public DestinationSnowflakeLoadingMethodSelectAnotherOption(@JsonProperty("method") DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod method) {
         this.method = method;
   }
 }

@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceMssqlSslMethodEncryptedTrustServerCertificate {
     @JsonProperty("ssl_method")
-    public SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethodEnum sslMethod;
+    public SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod sslMethod;
 
-    public SourceMssqlSslMethodEncryptedTrustServerCertificate withSslMethod(SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethodEnum sslMethod) {
+    public SourceMssqlSslMethodEncryptedTrustServerCertificate withSslMethod(SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod sslMethod) {
         this.sslMethod = sslMethod;
         return this;
     }
     
-    public SourceMssqlSslMethodEncryptedTrustServerCertificate(@JsonProperty("ssl_method") SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethodEnum sslMethod) {
+    public SourceMssqlSslMethodEncryptedTrustServerCertificate(@JsonProperty("ssl_method") SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod sslMethod) {
         this.sslMethod = sslMethod;
   }
 }

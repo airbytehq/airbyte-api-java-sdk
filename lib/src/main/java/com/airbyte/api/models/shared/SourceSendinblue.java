@@ -22,14 +22,14 @@ public class SourceSendinblue {
     }
     
     @JsonProperty("sourceType")
-    public SourceSendinblueSendinblueEnum sourceType;
+    public SourceSendinblueSendinblue sourceType;
 
-    public SourceSendinblue withSourceType(SourceSendinblueSendinblueEnum sourceType) {
+    public SourceSendinblue withSourceType(SourceSendinblueSendinblue sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceSendinblue(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSendinblueSendinblueEnum sourceType) {
+    public SourceSendinblue(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceSendinblueSendinblue sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

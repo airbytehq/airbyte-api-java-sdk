@@ -21,9 +21,9 @@ public class SourceMondayCredentialsOAuth20 {
     }
     
     @JsonProperty("auth_type")
-    public SourceMondayCredentialsOAuth20AuthTypeEnum authType;
+    public SourceMondayCredentialsOAuth20AuthType authType;
 
-    public SourceMondayCredentialsOAuth20 withAuthType(SourceMondayCredentialsOAuth20AuthTypeEnum authType) {
+    public SourceMondayCredentialsOAuth20 withAuthType(SourceMondayCredentialsOAuth20AuthType authType) {
         this.authType = authType;
         return this;
     }
@@ -62,7 +62,7 @@ public class SourceMondayCredentialsOAuth20 {
         return this;
     }
     
-    public SourceMondayCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceMondayCredentialsOAuth20AuthTypeEnum authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    public SourceMondayCredentialsOAuth20(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_type") SourceMondayCredentialsOAuth20AuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
         this.accessToken = accessToken;
         this.authType = authType;
         this.clientId = clientId;

@@ -37,9 +37,9 @@ public class SourceTvmazeSchedule {
     }
     
     @JsonProperty("sourceType")
-    public SourceTvmazeScheduleTvmazeScheduleEnum sourceType;
+    public SourceTvmazeScheduleTvmazeSchedule sourceType;
 
-    public SourceTvmazeSchedule withSourceType(SourceTvmazeScheduleTvmazeScheduleEnum sourceType) {
+    public SourceTvmazeSchedule withSourceType(SourceTvmazeScheduleTvmazeSchedule sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -70,7 +70,7 @@ public class SourceTvmazeSchedule {
         return this;
     }
     
-    public SourceTvmazeSchedule(@JsonProperty("domestic_schedule_country_code") String domesticScheduleCountryCode, @JsonProperty("sourceType") SourceTvmazeScheduleTvmazeScheduleEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceTvmazeSchedule(@JsonProperty("domestic_schedule_country_code") String domesticScheduleCountryCode, @JsonProperty("sourceType") SourceTvmazeScheduleTvmazeSchedule sourceType, @JsonProperty("start_date") String startDate) {
         this.domesticScheduleCountryCode = domesticScheduleCountryCode;
         this.sourceType = sourceType;
         this.startDate = startDate;

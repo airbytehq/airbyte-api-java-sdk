@@ -33,14 +33,14 @@ public class SourceTwilioTaskrouter {
     }
     
     @JsonProperty("sourceType")
-    public SourceTwilioTaskrouterTwilioTaskrouterEnum sourceType;
+    public SourceTwilioTaskrouterTwilioTaskrouter sourceType;
 
-    public SourceTwilioTaskrouter withSourceType(SourceTwilioTaskrouterTwilioTaskrouterEnum sourceType) {
+    public SourceTwilioTaskrouter withSourceType(SourceTwilioTaskrouterTwilioTaskrouter sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceTwilioTaskrouter(@JsonProperty("account_sid") String accountSid, @JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceTwilioTaskrouterTwilioTaskrouterEnum sourceType) {
+    public SourceTwilioTaskrouter(@JsonProperty("account_sid") String accountSid, @JsonProperty("auth_token") String authToken, @JsonProperty("sourceType") SourceTwilioTaskrouterTwilioTaskrouter sourceType) {
         this.accountSid = accountSid;
         this.authToken = authToken;
         this.sourceType = sourceType;

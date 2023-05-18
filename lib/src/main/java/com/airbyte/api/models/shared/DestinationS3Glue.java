@@ -25,9 +25,9 @@ public class DestinationS3Glue {
     }
     
     @JsonProperty("destinationType")
-    public DestinationS3GlueS3GlueEnum destinationType;
+    public DestinationS3GlueS3Glue destinationType;
 
-    public DestinationS3Glue withDestinationType(DestinationS3GlueS3GlueEnum destinationType) {
+    public DestinationS3Glue withDestinationType(DestinationS3GlueS3Glue destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -70,9 +70,9 @@ public class DestinationS3Glue {
      * The library that your query engine will use for reading and writing data in your lake.
      */
     @JsonProperty("glue_serialization_library")
-    public DestinationS3GlueSerializationLibraryEnum glueSerializationLibrary;
+    public DestinationS3GlueSerializationLibrary glueSerializationLibrary;
 
-    public DestinationS3Glue withGlueSerializationLibrary(DestinationS3GlueSerializationLibraryEnum glueSerializationLibrary) {
+    public DestinationS3Glue withGlueSerializationLibrary(DestinationS3GlueSerializationLibrary glueSerializationLibrary) {
         this.glueSerializationLibrary = glueSerializationLibrary;
         return this;
     }
@@ -103,9 +103,9 @@ public class DestinationS3Glue {
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
     @JsonProperty("s3_bucket_region")
-    public DestinationS3GlueS3BucketRegionEnum s3BucketRegion;
+    public DestinationS3GlueS3BucketRegion s3BucketRegion;
 
-    public DestinationS3Glue withS3BucketRegion(DestinationS3GlueS3BucketRegionEnum s3BucketRegion) {
+    public DestinationS3Glue withS3BucketRegion(DestinationS3GlueS3BucketRegion s3BucketRegion) {
         this.s3BucketRegion = s3BucketRegion;
         return this;
     }
@@ -146,7 +146,7 @@ public class DestinationS3Glue {
         return this;
     }
     
-    public DestinationS3Glue(@JsonProperty("destinationType") DestinationS3GlueS3GlueEnum destinationType, @JsonProperty("format") Object format, @JsonProperty("glue_database") String glueDatabase, @JsonProperty("glue_serialization_library") DestinationS3GlueSerializationLibraryEnum glueSerializationLibrary, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3GlueS3BucketRegionEnum s3BucketRegion) {
+    public DestinationS3Glue(@JsonProperty("destinationType") DestinationS3GlueS3Glue destinationType, @JsonProperty("format") Object format, @JsonProperty("glue_database") String glueDatabase, @JsonProperty("glue_serialization_library") DestinationS3GlueSerializationLibrary glueSerializationLibrary, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3GlueS3BucketRegion s3BucketRegion) {
         this.destinationType = destinationType;
         this.format = format;
         this.glueDatabase = glueDatabase;

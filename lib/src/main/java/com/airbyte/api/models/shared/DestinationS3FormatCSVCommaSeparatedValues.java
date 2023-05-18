@@ -28,22 +28,22 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
     @JsonProperty("flattening")
-    public DestinationS3FormatCSVCommaSeparatedValuesFlatteningEnum flattening;
+    public DestinationS3FormatCSVCommaSeparatedValuesFlattening flattening;
 
-    public DestinationS3FormatCSVCommaSeparatedValues withFlattening(DestinationS3FormatCSVCommaSeparatedValuesFlatteningEnum flattening) {
+    public DestinationS3FormatCSVCommaSeparatedValues withFlattening(DestinationS3FormatCSVCommaSeparatedValuesFlattening flattening) {
         this.flattening = flattening;
         return this;
     }
     
     @JsonProperty("format_type")
-    public DestinationS3FormatCSVCommaSeparatedValuesFormatTypeEnum formatType;
+    public DestinationS3FormatCSVCommaSeparatedValuesFormatType formatType;
 
-    public DestinationS3FormatCSVCommaSeparatedValues withFormatType(DestinationS3FormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    public DestinationS3FormatCSVCommaSeparatedValues withFormatType(DestinationS3FormatCSVCommaSeparatedValuesFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationS3FormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationS3FormatCSVCommaSeparatedValuesFlatteningEnum flattening, @JsonProperty("format_type") DestinationS3FormatCSVCommaSeparatedValuesFormatTypeEnum formatType) {
+    public DestinationS3FormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationS3FormatCSVCommaSeparatedValuesFlattening flattening, @JsonProperty("format_type") DestinationS3FormatCSVCommaSeparatedValuesFormatType formatType) {
         this.flattening = flattening;
         this.formatType = formatType;
   }

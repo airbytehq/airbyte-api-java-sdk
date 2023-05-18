@@ -81,9 +81,9 @@ public class SourceMysql {
     }
     
     @JsonProperty("sourceType")
-    public SourceMysqlMysqlEnum sourceType;
+    public SourceMysqlMysql sourceType;
 
-    public SourceMysql withSourceType(SourceMysqlMysqlEnum sourceType) {
+    public SourceMysql withSourceType(SourceMysqlMysql sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -123,7 +123,7 @@ public class SourceMysql {
         return this;
     }
     
-    public SourceMysql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("replication_method") Object replicationMethod, @JsonProperty("sourceType") SourceMysqlMysqlEnum sourceType, @JsonProperty("username") String username) {
+    public SourceMysql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("replication_method") Object replicationMethod, @JsonProperty("sourceType") SourceMysqlMysql sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
         this.port = port;

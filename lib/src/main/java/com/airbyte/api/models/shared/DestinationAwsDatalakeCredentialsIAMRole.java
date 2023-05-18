@@ -14,9 +14,9 @@ public class DestinationAwsDatalakeCredentialsIAMRole {
      * Name of the credentials
      */
     @JsonProperty("credentials_title")
-    public DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitleEnum credentialsTitle;
+    public DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitle credentialsTitle;
 
-    public DestinationAwsDatalakeCredentialsIAMRole withCredentialsTitle(DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitleEnum credentialsTitle) {
+    public DestinationAwsDatalakeCredentialsIAMRole withCredentialsTitle(DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitle credentialsTitle) {
         this.credentialsTitle = credentialsTitle;
         return this;
     }
@@ -32,7 +32,7 @@ public class DestinationAwsDatalakeCredentialsIAMRole {
         return this;
     }
     
-    public DestinationAwsDatalakeCredentialsIAMRole(@JsonProperty("credentials_title") DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitleEnum credentialsTitle, @JsonProperty("role_arn") String roleArn) {
+    public DestinationAwsDatalakeCredentialsIAMRole(@JsonProperty("credentials_title") DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitle credentialsTitle, @JsonProperty("role_arn") String roleArn) {
         this.credentialsTitle = credentialsTitle;
         this.roleArn = roleArn;
   }

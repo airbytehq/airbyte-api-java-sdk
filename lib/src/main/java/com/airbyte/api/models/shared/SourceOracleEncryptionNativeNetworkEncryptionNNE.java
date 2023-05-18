@@ -17,22 +17,22 @@ public class SourceOracleEncryptionNativeNetworkEncryptionNNE {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_algorithm")
-    public SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionAlgorithmEnum encryptionAlgorithm;
+    public SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionAlgorithm encryptionAlgorithm;
 
-    public SourceOracleEncryptionNativeNetworkEncryptionNNE withEncryptionAlgorithm(SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionAlgorithmEnum encryptionAlgorithm) {
+    public SourceOracleEncryptionNativeNetworkEncryptionNNE withEncryptionAlgorithm(SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionAlgorithm encryptionAlgorithm) {
         this.encryptionAlgorithm = encryptionAlgorithm;
         return this;
     }
     
     @JsonProperty("encryption_method")
-    public SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethodEnum encryptionMethod;
+    public SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethod encryptionMethod;
 
-    public SourceOracleEncryptionNativeNetworkEncryptionNNE withEncryptionMethod(SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethodEnum encryptionMethod) {
+    public SourceOracleEncryptionNativeNetworkEncryptionNNE withEncryptionMethod(SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethod encryptionMethod) {
         this.encryptionMethod = encryptionMethod;
         return this;
     }
     
-    public SourceOracleEncryptionNativeNetworkEncryptionNNE(@JsonProperty("encryption_method") SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethodEnum encryptionMethod) {
+    public SourceOracleEncryptionNativeNetworkEncryptionNNE(@JsonProperty("encryption_method") SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethod encryptionMethod) {
         this.encryptionMethod = encryptionMethod;
   }
 }

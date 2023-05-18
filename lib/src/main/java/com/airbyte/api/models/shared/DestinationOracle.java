@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationOracle {
     @JsonProperty("destinationType")
-    public DestinationOracleOracleEnum destinationType;
+    public DestinationOracleOracle destinationType;
 
-    public DestinationOracle withDestinationType(DestinationOracleOracleEnum destinationType) {
+    public DestinationOracle withDestinationType(DestinationOracleOracle destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -112,7 +112,7 @@ public class DestinationOracle {
         return this;
     }
     
-    public DestinationOracle(@JsonProperty("destinationType") DestinationOracleOracleEnum destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sid") String sid, @JsonProperty("username") String username) {
+    public DestinationOracle(@JsonProperty("destinationType") DestinationOracleOracle destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sid") String sid, @JsonProperty("username") String username) {
         this.destinationType = destinationType;
         this.host = host;
         this.port = port;

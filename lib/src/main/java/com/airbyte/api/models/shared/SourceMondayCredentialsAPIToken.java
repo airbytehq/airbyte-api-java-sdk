@@ -19,14 +19,14 @@ public class SourceMondayCredentialsAPIToken {
     }
     
     @JsonProperty("auth_type")
-    public SourceMondayCredentialsAPITokenAuthTypeEnum authType;
+    public SourceMondayCredentialsAPITokenAuthType authType;
 
-    public SourceMondayCredentialsAPIToken withAuthType(SourceMondayCredentialsAPITokenAuthTypeEnum authType) {
+    public SourceMondayCredentialsAPIToken withAuthType(SourceMondayCredentialsAPITokenAuthType authType) {
         this.authType = authType;
         return this;
     }
     
-    public SourceMondayCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourceMondayCredentialsAPITokenAuthTypeEnum authType) {
+    public SourceMondayCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_type") SourceMondayCredentialsAPITokenAuthType authType) {
         this.apiToken = apiToken;
         this.authType = authType;
   }

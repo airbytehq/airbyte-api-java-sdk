@@ -24,9 +24,9 @@ public class DestinationScylla {
     }
     
     @JsonProperty("destinationType")
-    public DestinationScyllaScyllaEnum destinationType;
+    public DestinationScyllaScylla destinationType;
 
-    public DestinationScylla withDestinationType(DestinationScyllaScyllaEnum destinationType) {
+    public DestinationScylla withDestinationType(DestinationScyllaScylla destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -87,7 +87,7 @@ public class DestinationScylla {
         return this;
     }
     
-    public DestinationScylla(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("address") String address, @JsonProperty("destinationType") DestinationScyllaScyllaEnum destinationType, @JsonProperty("keyspace") String keyspace, @JsonProperty("port") Long port) {
+    public DestinationScylla(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("address") String address, @JsonProperty("destinationType") DestinationScyllaScylla destinationType, @JsonProperty("keyspace") String keyspace, @JsonProperty("port") Long port) {
         this.username = username;
         this.password = password;
         this.address = address;

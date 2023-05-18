@@ -50,9 +50,9 @@ public class SourceMetabase {
     }
     
     @JsonProperty("sourceType")
-    public SourceMetabaseMetabaseEnum sourceType;
+    public SourceMetabaseMetabase sourceType;
 
-    public SourceMetabase withSourceType(SourceMetabaseMetabaseEnum sourceType) {
+    public SourceMetabase withSourceType(SourceMetabaseMetabase sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -66,7 +66,7 @@ public class SourceMetabase {
         return this;
     }
     
-    public SourceMetabase(@JsonProperty("instance_api_url") String instanceApiUrl, @JsonProperty("sourceType") SourceMetabaseMetabaseEnum sourceType) {
+    public SourceMetabase(@JsonProperty("instance_api_url") String instanceApiUrl, @JsonProperty("sourceType") SourceMetabaseMetabase sourceType) {
         this.instanceApiUrl = instanceApiUrl;
         this.sourceType = sourceType;
   }

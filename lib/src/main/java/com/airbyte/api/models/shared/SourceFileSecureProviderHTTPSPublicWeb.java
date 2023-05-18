@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SourceFileSecureProviderHTTPSPublicWeb {
     @JsonProperty("storage")
-    public SourceFileSecureProviderHTTPSPublicWebStorageEnum storage;
+    public SourceFileSecureProviderHTTPSPublicWebStorage storage;
 
-    public SourceFileSecureProviderHTTPSPublicWeb withStorage(SourceFileSecureProviderHTTPSPublicWebStorageEnum storage) {
+    public SourceFileSecureProviderHTTPSPublicWeb withStorage(SourceFileSecureProviderHTTPSPublicWebStorage storage) {
         this.storage = storage;
         return this;
     }
@@ -32,7 +32,7 @@ public class SourceFileSecureProviderHTTPSPublicWeb {
         return this;
     }
     
-    public SourceFileSecureProviderHTTPSPublicWeb(@JsonProperty("storage") SourceFileSecureProviderHTTPSPublicWebStorageEnum storage) {
+    public SourceFileSecureProviderHTTPSPublicWeb(@JsonProperty("storage") SourceFileSecureProviderHTTPSPublicWebStorage storage) {
         this.storage = storage;
   }
 }

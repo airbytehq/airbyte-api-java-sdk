@@ -59,9 +59,9 @@ public class StreamProperties {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncModes")
-    public ConnectionSyncModeEnumEnum[] syncModes;
+    public ConnectionSyncModeEnum[] syncModes;
 
-    public StreamProperties withSyncModes(ConnectionSyncModeEnumEnum[] syncModes) {
+    public StreamProperties withSyncModes(ConnectionSyncModeEnum[] syncModes) {
         this.syncModes = syncModes;
         return this;
     }

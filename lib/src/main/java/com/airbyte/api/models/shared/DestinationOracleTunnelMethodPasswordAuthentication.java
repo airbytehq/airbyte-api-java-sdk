@@ -25,9 +25,9 @@ public class DestinationOracleTunnelMethodPasswordAuthentication {
      * Connect through a jump server tunnel host using username and password authentication
      */
     @JsonProperty("tunnel_method")
-    public DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod;
+    public DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod;
 
-    public DestinationOracleTunnelMethodPasswordAuthentication withTunnelMethod(DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod) {
+    public DestinationOracleTunnelMethodPasswordAuthentication withTunnelMethod(DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelMethod = tunnelMethod;
         return this;
     }
@@ -65,7 +65,7 @@ public class DestinationOracleTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public DestinationOracleTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethodEnum tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public DestinationOracleTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;

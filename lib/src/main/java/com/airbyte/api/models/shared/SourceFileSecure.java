@@ -27,9 +27,9 @@ public class SourceFileSecure {
      * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
      */
     @JsonProperty("format")
-    public SourceFileSecureFileFormatEnum format;
+    public SourceFileSecureFileFormat format;
 
-    public SourceFileSecure withFormat(SourceFileSecureFileFormatEnum format) {
+    public SourceFileSecure withFormat(SourceFileSecureFileFormat format) {
         this.format = format;
         return this;
     }
@@ -58,9 +58,9 @@ public class SourceFileSecure {
     }
     
     @JsonProperty("sourceType")
-    public SourceFileSecureFileSecureEnum sourceType;
+    public SourceFileSecureFileSecure sourceType;
 
-    public SourceFileSecure withSourceType(SourceFileSecureFileSecureEnum sourceType) {
+    public SourceFileSecure withSourceType(SourceFileSecureFileSecure sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -76,7 +76,7 @@ public class SourceFileSecure {
         return this;
     }
     
-    public SourceFileSecure(@JsonProperty("dataset_name") String datasetName, @JsonProperty("format") SourceFileSecureFileFormatEnum format, @JsonProperty("provider") Object provider, @JsonProperty("sourceType") SourceFileSecureFileSecureEnum sourceType, @JsonProperty("url") String url) {
+    public SourceFileSecure(@JsonProperty("dataset_name") String datasetName, @JsonProperty("format") SourceFileSecureFileFormat format, @JsonProperty("provider") Object provider, @JsonProperty("sourceType") SourceFileSecureFileSecure sourceType, @JsonProperty("url") String url) {
         this.datasetName = datasetName;
         this.format = format;
         this.provider = provider;

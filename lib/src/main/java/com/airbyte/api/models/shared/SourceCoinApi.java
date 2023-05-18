@@ -43,9 +43,9 @@ public class SourceCoinApi {
      * 
      */
     @JsonProperty("environment")
-    public SourceCoinApiEnvironmentEnum environment;
+    public SourceCoinApiEnvironment environment;
 
-    public SourceCoinApi withEnvironment(SourceCoinApiEnvironmentEnum environment) {
+    public SourceCoinApi withEnvironment(SourceCoinApiEnvironment environment) {
         this.environment = environment;
         return this;
     }
@@ -77,9 +77,9 @@ public class SourceCoinApi {
     }
     
     @JsonProperty("sourceType")
-    public SourceCoinApiCoinApiEnum sourceType;
+    public SourceCoinApiCoinApi sourceType;
 
-    public SourceCoinApi withSourceType(SourceCoinApiCoinApiEnum sourceType) {
+    public SourceCoinApi withSourceType(SourceCoinApiCoinApi sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -108,7 +108,7 @@ public class SourceCoinApi {
         return this;
     }
     
-    public SourceCoinApi(@JsonProperty("api_key") String apiKey, @JsonProperty("environment") SourceCoinApiEnvironmentEnum environment, @JsonProperty("period") String period, @JsonProperty("sourceType") SourceCoinApiCoinApiEnum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("symbol_id") String symbolId) {
+    public SourceCoinApi(@JsonProperty("api_key") String apiKey, @JsonProperty("environment") SourceCoinApiEnvironment environment, @JsonProperty("period") String period, @JsonProperty("sourceType") SourceCoinApiCoinApi sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("symbol_id") String symbolId) {
         this.apiKey = apiKey;
         this.environment = environment;
         this.period = period;

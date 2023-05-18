@@ -22,9 +22,9 @@ public class SourceSmartsheetsCredentialsAPIAccessToken {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    public SourceSmartsheetsCredentialsAPIAccessTokenAuthTypeEnum authType;
+    public SourceSmartsheetsCredentialsAPIAccessTokenAuthType authType;
 
-    public SourceSmartsheetsCredentialsAPIAccessToken withAuthType(SourceSmartsheetsCredentialsAPIAccessTokenAuthTypeEnum authType) {
+    public SourceSmartsheetsCredentialsAPIAccessToken withAuthType(SourceSmartsheetsCredentialsAPIAccessTokenAuthType authType) {
         this.authType = authType;
         return this;
     }

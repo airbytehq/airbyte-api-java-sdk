@@ -24,9 +24,9 @@ public class DestinationDynamodb {
     }
     
     @JsonProperty("destinationType")
-    public DestinationDynamodbDynamodbEnum destinationType;
+    public DestinationDynamodbDynamodb destinationType;
 
-    public DestinationDynamodb withDestinationType(DestinationDynamodbDynamodbEnum destinationType) {
+    public DestinationDynamodb withDestinationType(DestinationDynamodbDynamodb destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -47,9 +47,9 @@ public class DestinationDynamodb {
      * The region of the DynamoDB.
      */
     @JsonProperty("dynamodb_region")
-    public DestinationDynamodbDynamoDBRegionEnum dynamodbRegion;
+    public DestinationDynamodbDynamoDBRegion dynamodbRegion;
 
-    public DestinationDynamodb withDynamodbRegion(DestinationDynamodbDynamoDBRegionEnum dynamodbRegion) {
+    public DestinationDynamodb withDynamodbRegion(DestinationDynamodbDynamoDBRegion dynamodbRegion) {
         this.dynamodbRegion = dynamodbRegion;
         return this;
     }
@@ -76,7 +76,7 @@ public class DestinationDynamodb {
         return this;
     }
     
-    public DestinationDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("destinationType") DestinationDynamodbDynamodbEnum destinationType, @JsonProperty("dynamodb_region") DestinationDynamodbDynamoDBRegionEnum dynamodbRegion, @JsonProperty("dynamodb_table_name_prefix") String dynamodbTableNamePrefix, @JsonProperty("secret_access_key") String secretAccessKey) {
+    public DestinationDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("destinationType") DestinationDynamodbDynamodb destinationType, @JsonProperty("dynamodb_region") DestinationDynamodbDynamoDBRegion dynamodbRegion, @JsonProperty("dynamodb_table_name_prefix") String dynamodbTableNamePrefix, @JsonProperty("secret_access_key") String secretAccessKey) {
         this.accessKeyId = accessKeyId;
         this.destinationType = destinationType;
         this.dynamodbRegion = dynamodbRegion;

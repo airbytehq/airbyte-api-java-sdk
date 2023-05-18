@@ -37,9 +37,9 @@ public class SourceGoogleAnalyticsV4 {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType;
+    public SourceGoogleAnalyticsV4GoogleAnalyticsV4 sourceType;
 
-    public SourceGoogleAnalyticsV4 withSourceType(SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType) {
+    public SourceGoogleAnalyticsV4 withSourceType(SourceGoogleAnalyticsV4GoogleAnalyticsV4 sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -78,7 +78,7 @@ public class SourceGoogleAnalyticsV4 {
         return this;
     }
     
-    public SourceGoogleAnalyticsV4(@JsonProperty("sourceType") SourceGoogleAnalyticsV4GoogleAnalyticsV4Enum sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("view_id") String viewId) {
+    public SourceGoogleAnalyticsV4(@JsonProperty("sourceType") SourceGoogleAnalyticsV4GoogleAnalyticsV4 sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("view_id") String viewId) {
         this.sourceType = sourceType;
         this.startDate = startDate;
         this.viewId = viewId;

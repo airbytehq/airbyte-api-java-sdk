@@ -22,14 +22,14 @@ public class SourceEmailoctopus {
     }
     
     @JsonProperty("sourceType")
-    public SourceEmailoctopusEmailoctopusEnum sourceType;
+    public SourceEmailoctopusEmailoctopus sourceType;
 
-    public SourceEmailoctopus withSourceType(SourceEmailoctopusEmailoctopusEnum sourceType) {
+    public SourceEmailoctopus withSourceType(SourceEmailoctopusEmailoctopus sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceEmailoctopus(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceEmailoctopusEmailoctopusEnum sourceType) {
+    public SourceEmailoctopus(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceEmailoctopusEmailoctopus sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

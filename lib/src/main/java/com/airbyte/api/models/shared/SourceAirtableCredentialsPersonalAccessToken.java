@@ -22,9 +22,9 @@ public class SourceAirtableCredentialsPersonalAccessToken {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
-    public SourceAirtableCredentialsPersonalAccessTokenAuthMethodEnum authMethod;
+    public SourceAirtableCredentialsPersonalAccessTokenAuthMethod authMethod;
 
-    public SourceAirtableCredentialsPersonalAccessToken withAuthMethod(SourceAirtableCredentialsPersonalAccessTokenAuthMethodEnum authMethod) {
+    public SourceAirtableCredentialsPersonalAccessToken withAuthMethod(SourceAirtableCredentialsPersonalAccessTokenAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }

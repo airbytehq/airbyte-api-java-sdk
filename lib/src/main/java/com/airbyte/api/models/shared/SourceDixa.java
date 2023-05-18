@@ -36,9 +36,9 @@ public class SourceDixa {
     }
     
     @JsonProperty("sourceType")
-    public SourceDixaDixaEnum sourceType;
+    public SourceDixaDixa sourceType;
 
-    public SourceDixa withSourceType(SourceDixaDixaEnum sourceType) {
+    public SourceDixa withSourceType(SourceDixaDixa sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -54,7 +54,7 @@ public class SourceDixa {
         return this;
     }
     
-    public SourceDixa(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceDixaDixaEnum sourceType, @JsonProperty("start_date") String startDate) {
+    public SourceDixa(@JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceDixaDixa sourceType, @JsonProperty("start_date") String startDate) {
         this.apiToken = apiToken;
         this.sourceType = sourceType;
         this.startDate = startDate;

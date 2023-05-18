@@ -56,7 +56,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateJobResponse;
 import com.airbyte.api.models.shared.JobCreateRequest;
-import com.airbyte.api.models.shared.JobTypeEnumEnum;
+import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
 
 public class Application {
@@ -68,7 +68,7 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("aspernatur", JobTypeEnumEnum.SYNC);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("aspernatur", JobTypeEnum.SYNC);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -131,7 +131,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.ListJobsRequest;
 import com.airbyte.api.models.operations.ListJobsResponse;
-import com.airbyte.api.models.shared.JobTypeEnumEnum;
+import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
 
 public class Application {
@@ -144,7 +144,7 @@ public class Application {
                 .build();
 
             ListJobsRequest req = new ListJobsRequest("ad") {{
-                jobType = JobTypeEnumEnum.RESET;
+                jobType = JobTypeEnum.RESET;
                 limit = 383464;
                 offset = 645785;
             }};            

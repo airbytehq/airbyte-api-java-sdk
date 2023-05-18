@@ -38,9 +38,9 @@ public class SourceAircall {
     }
     
     @JsonProperty("sourceType")
-    public SourceAircallAircallEnum sourceType;
+    public SourceAircallAircall sourceType;
 
-    public SourceAircall withSourceType(SourceAircallAircallEnum sourceType) {
+    public SourceAircall withSourceType(SourceAircallAircall sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -58,7 +58,7 @@ public class SourceAircall {
         return this;
     }
     
-    public SourceAircall(@JsonProperty("api_id") String apiId, @JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceAircallAircallEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceAircall(@JsonProperty("api_id") String apiId, @JsonProperty("api_token") String apiToken, @JsonProperty("sourceType") SourceAircallAircall sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiId = apiId;
         this.apiToken = apiToken;
         this.sourceType = sourceType;

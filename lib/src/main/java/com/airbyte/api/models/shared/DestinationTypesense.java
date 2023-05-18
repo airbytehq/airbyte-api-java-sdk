@@ -36,9 +36,9 @@ public class DestinationTypesense {
     }
     
     @JsonProperty("destinationType")
-    public DestinationTypesenseTypesenseEnum destinationType;
+    public DestinationTypesenseTypesense destinationType;
 
-    public DestinationTypesense withDestinationType(DestinationTypesenseTypesenseEnum destinationType) {
+    public DestinationTypesense withDestinationType(DestinationTypesenseTypesense destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -78,7 +78,7 @@ public class DestinationTypesense {
         return this;
     }
     
-    public DestinationTypesense(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationTypesenseTypesenseEnum destinationType, @JsonProperty("host") String host) {
+    public DestinationTypesense(@JsonProperty("api_key") String apiKey, @JsonProperty("destinationType") DestinationTypesenseTypesense destinationType, @JsonProperty("host") String host) {
         this.apiKey = apiKey;
         this.destinationType = destinationType;
         this.host = host;

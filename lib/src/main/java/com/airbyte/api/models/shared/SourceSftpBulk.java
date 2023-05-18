@@ -46,9 +46,9 @@ public class SourceSftpBulk {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("file_type")
-    public SourceSftpBulkFileTypeEnum fileType;
+    public SourceSftpBulkFileType fileType;
 
-    public SourceSftpBulk withFileType(SourceSftpBulkFileTypeEnum fileType) {
+    public SourceSftpBulk withFileType(SourceSftpBulkFileType fileType) {
         this.fileType = fileType;
         return this;
     }
@@ -123,9 +123,9 @@ public class SourceSftpBulk {
     }
     
     @JsonProperty("sourceType")
-    public SourceSftpBulkSftpBulkEnum sourceType;
+    public SourceSftpBulkSftpBulk sourceType;
 
-    public SourceSftpBulk withSourceType(SourceSftpBulkSftpBulkEnum sourceType) {
+    public SourceSftpBulk withSourceType(SourceSftpBulkSftpBulk sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -165,7 +165,7 @@ public class SourceSftpBulk {
         return this;
     }
     
-    public SourceSftpBulk(@JsonProperty("folder_path") String folderPath, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpBulkSftpBulkEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("stream_name") String streamName, @JsonProperty("username") String username) {
+    public SourceSftpBulk(@JsonProperty("folder_path") String folderPath, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpBulkSftpBulk sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("stream_name") String streamName, @JsonProperty("username") String username) {
         this.folderPath = folderPath;
         this.host = host;
         this.port = port;

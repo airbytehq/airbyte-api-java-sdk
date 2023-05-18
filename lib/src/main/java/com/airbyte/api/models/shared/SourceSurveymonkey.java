@@ -34,17 +34,17 @@ public class SourceSurveymonkey {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin")
-    public SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccountEnum origin;
+    public SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccount origin;
 
-    public SourceSurveymonkey withOrigin(SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccountEnum origin) {
+    public SourceSurveymonkey withOrigin(SourceSurveymonkeyOriginDatacenterOfTheSurveyMonkeyAccount origin) {
         this.origin = origin;
         return this;
     }
     
     @JsonProperty("sourceType")
-    public SourceSurveymonkeySurveymonkeyEnum sourceType;
+    public SourceSurveymonkeySurveymonkey sourceType;
 
-    public SourceSurveymonkey withSourceType(SourceSurveymonkeySurveymonkeyEnum sourceType) {
+    public SourceSurveymonkey withSourceType(SourceSurveymonkeySurveymonkey sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -74,7 +74,7 @@ public class SourceSurveymonkey {
         return this;
     }
     
-    public SourceSurveymonkey(@JsonProperty("sourceType") SourceSurveymonkeySurveymonkeyEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceSurveymonkey(@JsonProperty("sourceType") SourceSurveymonkeySurveymonkey sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

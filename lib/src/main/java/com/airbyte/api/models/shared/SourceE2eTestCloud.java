@@ -56,23 +56,23 @@ public class SourceE2eTestCloud {
     }
     
     @JsonProperty("sourceType")
-    public SourceE2eTestCloudE2eTestCloudEnum sourceType;
+    public SourceE2eTestCloudE2eTestCloud sourceType;
 
-    public SourceE2eTestCloud withSourceType(SourceE2eTestCloudE2eTestCloudEnum sourceType) {
+    public SourceE2eTestCloud withSourceType(SourceE2eTestCloudE2eTestCloud sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
-    public SourceE2eTestCloudTypeEnum type;
+    public SourceE2eTestCloudType type;
 
-    public SourceE2eTestCloud withType(SourceE2eTestCloudTypeEnum type) {
+    public SourceE2eTestCloud withType(SourceE2eTestCloudType type) {
         this.type = type;
         return this;
     }
     
-    public SourceE2eTestCloud(@JsonProperty("max_messages") Long maxMessages, @JsonProperty("mock_catalog") Object mockCatalog, @JsonProperty("sourceType") SourceE2eTestCloudE2eTestCloudEnum sourceType) {
+    public SourceE2eTestCloud(@JsonProperty("max_messages") Long maxMessages, @JsonProperty("mock_catalog") Object mockCatalog, @JsonProperty("sourceType") SourceE2eTestCloudE2eTestCloud sourceType) {
         this.maxMessages = maxMessages;
         this.mockCatalog = mockCatalog;
         this.sourceType = sourceType;

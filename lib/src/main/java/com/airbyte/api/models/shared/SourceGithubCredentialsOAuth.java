@@ -25,9 +25,9 @@ public class SourceGithubCredentialsOAuth {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
-    public SourceGithubCredentialsOAuthOptionTitleEnum optionTitle;
+    public SourceGithubCredentialsOAuthOptionTitle optionTitle;
 
-    public SourceGithubCredentialsOAuth withOptionTitle(SourceGithubCredentialsOAuthOptionTitleEnum optionTitle) {
+    public SourceGithubCredentialsOAuth withOptionTitle(SourceGithubCredentialsOAuthOptionTitle optionTitle) {
         this.optionTitle = optionTitle;
         return this;
     }

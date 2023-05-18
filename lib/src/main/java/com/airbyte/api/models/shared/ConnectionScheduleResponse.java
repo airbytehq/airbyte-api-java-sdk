@@ -31,14 +31,14 @@ public class ConnectionScheduleResponse {
     }
     
     @JsonProperty("scheduleType")
-    public ScheduleTypeWithBasicEnumEnum scheduleType;
+    public ScheduleTypeWithBasicEnum scheduleType;
 
-    public ConnectionScheduleResponse withScheduleType(ScheduleTypeWithBasicEnumEnum scheduleType) {
+    public ConnectionScheduleResponse withScheduleType(ScheduleTypeWithBasicEnum scheduleType) {
         this.scheduleType = scheduleType;
         return this;
     }
     
-    public ConnectionScheduleResponse(@JsonProperty("scheduleType") ScheduleTypeWithBasicEnumEnum scheduleType) {
+    public ConnectionScheduleResponse(@JsonProperty("scheduleType") ScheduleTypeWithBasicEnum scheduleType) {
         this.scheduleType = scheduleType;
   }
 }

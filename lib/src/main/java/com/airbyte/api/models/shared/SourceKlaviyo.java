@@ -27,9 +27,9 @@ public class SourceKlaviyo {
     }
     
     @JsonProperty("sourceType")
-    public SourceKlaviyoKlaviyoEnum sourceType;
+    public SourceKlaviyoKlaviyo sourceType;
 
-    public SourceKlaviyo withSourceType(SourceKlaviyoKlaviyoEnum sourceType) {
+    public SourceKlaviyo withSourceType(SourceKlaviyoKlaviyo sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -47,7 +47,7 @@ public class SourceKlaviyo {
         return this;
     }
     
-    public SourceKlaviyo(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceKlaviyoKlaviyoEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceKlaviyo(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceKlaviyoKlaviyo sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
         this.startDate = startDate;

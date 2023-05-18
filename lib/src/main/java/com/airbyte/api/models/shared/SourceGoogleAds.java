@@ -80,9 +80,9 @@ public class SourceGoogleAds {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleAdsGoogleAdsEnum sourceType;
+    public SourceGoogleAdsGoogleAds sourceType;
 
-    public SourceGoogleAds withSourceType(SourceGoogleAdsGoogleAdsEnum sourceType) {
+    public SourceGoogleAds withSourceType(SourceGoogleAdsGoogleAds sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -99,7 +99,7 @@ public class SourceGoogleAds {
         return this;
     }
     
-    public SourceGoogleAds(@JsonProperty("credentials") SourceGoogleAdsGoogleCredentials credentials, @JsonProperty("customer_id") String customerId, @JsonProperty("sourceType") SourceGoogleAdsGoogleAdsEnum sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceGoogleAds(@JsonProperty("credentials") SourceGoogleAdsGoogleCredentials credentials, @JsonProperty("customer_id") String customerId, @JsonProperty("sourceType") SourceGoogleAdsGoogleAds sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.credentials = credentials;
         this.customerId = customerId;
         this.sourceType = sourceType;

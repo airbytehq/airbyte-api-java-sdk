@@ -48,14 +48,14 @@ public class SourceRecurly {
     }
     
     @JsonProperty("sourceType")
-    public SourceRecurlyRecurlyEnum sourceType;
+    public SourceRecurlyRecurly sourceType;
 
-    public SourceRecurly withSourceType(SourceRecurlyRecurlyEnum sourceType) {
+    public SourceRecurly withSourceType(SourceRecurlyRecurly sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceRecurly(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceRecurlyRecurlyEnum sourceType) {
+    public SourceRecurly(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceRecurlyRecurly sourceType) {
         this.apiKey = apiKey;
         this.sourceType = sourceType;
   }

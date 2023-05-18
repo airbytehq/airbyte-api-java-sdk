@@ -83,9 +83,9 @@ public class SourceSftp {
     }
     
     @JsonProperty("sourceType")
-    public SourceSftpSftpEnum sourceType;
+    public SourceSftpSftp sourceType;
 
-    public SourceSftp withSourceType(SourceSftpSftpEnum sourceType) {
+    public SourceSftp withSourceType(SourceSftpSftp sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -101,7 +101,7 @@ public class SourceSftp {
         return this;
     }
     
-    public SourceSftp(@JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpSftpEnum sourceType, @JsonProperty("user") String user) {
+    public SourceSftp(@JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpSftp sourceType, @JsonProperty("user") String user) {
         this.host = host;
         this.port = port;
         this.sourceType = sourceType;

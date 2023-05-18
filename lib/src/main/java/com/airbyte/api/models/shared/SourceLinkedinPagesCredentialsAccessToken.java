@@ -22,9 +22,9 @@ public class SourceLinkedinPagesCredentialsAccessToken {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
-    public SourceLinkedinPagesCredentialsAccessTokenAuthMethodEnum authMethod;
+    public SourceLinkedinPagesCredentialsAccessTokenAuthMethod authMethod;
 
-    public SourceLinkedinPagesCredentialsAccessToken withAuthMethod(SourceLinkedinPagesCredentialsAccessTokenAuthMethodEnum authMethod) {
+    public SourceLinkedinPagesCredentialsAccessToken withAuthMethod(SourceLinkedinPagesCredentialsAccessTokenAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }

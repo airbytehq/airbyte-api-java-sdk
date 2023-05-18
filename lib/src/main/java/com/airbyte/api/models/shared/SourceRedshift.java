@@ -81,9 +81,9 @@ public class SourceRedshift {
     }
     
     @JsonProperty("sourceType")
-    public SourceRedshiftRedshiftEnum sourceType;
+    public SourceRedshiftRedshift sourceType;
 
-    public SourceRedshift withSourceType(SourceRedshiftRedshiftEnum sourceType) {
+    public SourceRedshift withSourceType(SourceRedshiftRedshift sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -99,7 +99,7 @@ public class SourceRedshift {
         return this;
     }
     
-    public SourceRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceRedshiftRedshiftEnum sourceType) {
+    public SourceRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceRedshiftRedshift sourceType) {
         this.username = username;
         this.password = password;
         this.database = database;

@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceS3FormatAvro {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    public SourceS3FormatAvroFiletypeEnum filetype;
+    public SourceS3FormatAvroFiletype filetype;
 
-    public SourceS3FormatAvro withFiletype(SourceS3FormatAvroFiletypeEnum filetype) {
+    public SourceS3FormatAvro withFiletype(SourceS3FormatAvroFiletype filetype) {
         this.filetype = filetype;
         return this;
     }

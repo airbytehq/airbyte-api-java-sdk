@@ -72,14 +72,14 @@ public class SourceFaker {
     }
     
     @JsonProperty("sourceType")
-    public SourceFakerFakerEnum sourceType;
+    public SourceFakerFaker sourceType;
 
-    public SourceFaker withSourceType(SourceFakerFakerEnum sourceType) {
+    public SourceFaker withSourceType(SourceFakerFaker sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceFaker(@JsonProperty("count") Long count, @JsonProperty("sourceType") SourceFakerFakerEnum sourceType) {
+    public SourceFaker(@JsonProperty("count") Long count, @JsonProperty("sourceType") SourceFakerFaker sourceType) {
         this.count = count;
         this.sourceType = sourceType;
   }

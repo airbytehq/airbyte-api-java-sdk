@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationGcsFormatAvroApacheAvroCompressionCodecSnappy {
     @JsonProperty("codec")
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodecEnum codec;
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodec codec;
 
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecSnappy withCodec(DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodecEnum codec) {
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecSnappy withCodec(DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodec codec) {
         this.codec = codec;
         return this;
     }
     
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecSnappy(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodecEnum codec) {
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecSnappy(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodec codec) {
         this.codec = codec;
   }
 }

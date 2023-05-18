@@ -51,17 +51,17 @@ public class DestinationBigquery {
      * The location of the dataset. Warning: Changes made after creation will not be applied. Read more &lt;a href="https://cloud.google.com/bigquery/docs/locations"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("dataset_location")
-    public DestinationBigqueryDatasetLocationEnum datasetLocation;
+    public DestinationBigqueryDatasetLocation datasetLocation;
 
-    public DestinationBigquery withDatasetLocation(DestinationBigqueryDatasetLocationEnum datasetLocation) {
+    public DestinationBigquery withDatasetLocation(DestinationBigqueryDatasetLocation datasetLocation) {
         this.datasetLocation = datasetLocation;
         return this;
     }
     
     @JsonProperty("destinationType")
-    public DestinationBigqueryBigqueryEnum destinationType;
+    public DestinationBigqueryBigquery destinationType;
 
-    public DestinationBigquery withDestinationType(DestinationBigqueryBigqueryEnum destinationType) {
+    public DestinationBigquery withDestinationType(DestinationBigqueryBigquery destinationType) {
         this.destinationType = destinationType;
         return this;
     }
@@ -94,14 +94,14 @@ public class DestinationBigquery {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("transformation_priority")
-    public DestinationBigqueryTransformationQueryRunTypeEnum transformationPriority;
+    public DestinationBigqueryTransformationQueryRunType transformationPriority;
 
-    public DestinationBigquery withTransformationPriority(DestinationBigqueryTransformationQueryRunTypeEnum transformationPriority) {
+    public DestinationBigquery withTransformationPriority(DestinationBigqueryTransformationQueryRunType transformationPriority) {
         this.transformationPriority = transformationPriority;
         return this;
     }
     
-    public DestinationBigquery(@JsonProperty("dataset_id") String datasetId, @JsonProperty("dataset_location") DestinationBigqueryDatasetLocationEnum datasetLocation, @JsonProperty("destinationType") DestinationBigqueryBigqueryEnum destinationType, @JsonProperty("project_id") String projectId) {
+    public DestinationBigquery(@JsonProperty("dataset_id") String datasetId, @JsonProperty("dataset_location") DestinationBigqueryDatasetLocation datasetLocation, @JsonProperty("destinationType") DestinationBigqueryBigquery destinationType, @JsonProperty("project_id") String projectId) {
         this.datasetId = datasetId;
         this.datasetLocation = datasetLocation;
         this.destinationType = destinationType;

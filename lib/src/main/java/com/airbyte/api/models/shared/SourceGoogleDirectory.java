@@ -33,14 +33,14 @@ public class SourceGoogleDirectory {
     }
     
     @JsonProperty("sourceType")
-    public SourceGoogleDirectoryGoogleDirectoryEnum sourceType;
+    public SourceGoogleDirectoryGoogleDirectory sourceType;
 
-    public SourceGoogleDirectory withSourceType(SourceGoogleDirectoryGoogleDirectoryEnum sourceType) {
+    public SourceGoogleDirectory withSourceType(SourceGoogleDirectoryGoogleDirectory sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceGoogleDirectory(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleDirectoryGoogleDirectoryEnum sourceType) {
+    public SourceGoogleDirectory(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleDirectoryGoogleDirectory sourceType) {
         this.credentialsJson = credentialsJson;
         this.email = email;
         this.sourceType = sourceType;

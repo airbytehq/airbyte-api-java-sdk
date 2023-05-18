@@ -14,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SourceOracleConnectionDataServiceName {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")
-    public SourceOracleConnectionDataServiceNameConnectionTypeEnum connectionType;
+    public SourceOracleConnectionDataServiceNameConnectionType connectionType;
 
-    public SourceOracleConnectionDataServiceName withConnectionType(SourceOracleConnectionDataServiceNameConnectionTypeEnum connectionType) {
+    public SourceOracleConnectionDataServiceName withConnectionType(SourceOracleConnectionDataServiceNameConnectionType connectionType) {
         this.connectionType = connectionType;
         return this;
     }

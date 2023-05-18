@@ -25,14 +25,14 @@ public class SourceRetently {
     }
     
     @JsonProperty("sourceType")
-    public SourceRetentlyRetentlyEnum sourceType;
+    public SourceRetentlyRetently sourceType;
 
-    public SourceRetently withSourceType(SourceRetentlyRetentlyEnum sourceType) {
+    public SourceRetently withSourceType(SourceRetentlyRetently sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceRetently(@JsonProperty("sourceType") SourceRetentlyRetentlyEnum sourceType) {
+    public SourceRetently(@JsonProperty("sourceType") SourceRetentlyRetently sourceType) {
         this.sourceType = sourceType;
   }
 }

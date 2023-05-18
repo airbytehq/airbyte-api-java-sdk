@@ -33,14 +33,14 @@ public class SourceLinkedinPages {
     }
     
     @JsonProperty("sourceType")
-    public SourceLinkedinPagesLinkedinPagesEnum sourceType;
+    public SourceLinkedinPagesLinkedinPages sourceType;
 
-    public SourceLinkedinPages withSourceType(SourceLinkedinPagesLinkedinPagesEnum sourceType) {
+    public SourceLinkedinPages withSourceType(SourceLinkedinPagesLinkedinPages sourceType) {
         this.sourceType = sourceType;
         return this;
     }
     
-    public SourceLinkedinPages(@JsonProperty("org_id") String orgId, @JsonProperty("sourceType") SourceLinkedinPagesLinkedinPagesEnum sourceType) {
+    public SourceLinkedinPages(@JsonProperty("org_id") String orgId, @JsonProperty("sourceType") SourceLinkedinPagesLinkedinPages sourceType) {
         this.orgId = orgId;
         this.sourceType = sourceType;
   }

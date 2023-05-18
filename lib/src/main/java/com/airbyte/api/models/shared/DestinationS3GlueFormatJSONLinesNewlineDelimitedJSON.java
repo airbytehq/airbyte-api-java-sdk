@@ -29,22 +29,22 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
-    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening;
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlattening flattening;
 
-    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON withFlattening(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlatteningEnum flattening) {
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON withFlattening(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlattening flattening) {
         this.flattening = flattening;
         return this;
     }
     
     @JsonProperty("format_type")
-    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType;
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType formatType;
 
-    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON withFormatType(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
         this.formatType = formatType;
         return this;
     }
     
-    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatTypeEnum formatType) {
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
         this.formatType = formatType;
   }
 }

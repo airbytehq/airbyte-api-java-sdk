@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption {
     @JsonProperty("encryption_type")
-    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType;
+    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionType encryptionType;
 
-    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption withEncryptionType(DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType) {
+    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption withEncryptionType(DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionType encryptionType) {
         this.encryptionType = encryptionType;
         return this;
     }
     
-    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionTypeEnum encryptionType) {
+    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionType encryptionType) {
         this.encryptionType = encryptionType;
   }
 }

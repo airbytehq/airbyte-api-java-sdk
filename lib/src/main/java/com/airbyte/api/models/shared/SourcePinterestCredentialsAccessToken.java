@@ -19,14 +19,14 @@ public class SourcePinterestCredentialsAccessToken {
     }
     
     @JsonProperty("auth_method")
-    public SourcePinterestCredentialsAccessTokenAuthMethodEnum authMethod;
+    public SourcePinterestCredentialsAccessTokenAuthMethod authMethod;
 
-    public SourcePinterestCredentialsAccessToken withAuthMethod(SourcePinterestCredentialsAccessTokenAuthMethodEnum authMethod) {
+    public SourcePinterestCredentialsAccessToken withAuthMethod(SourcePinterestCredentialsAccessTokenAuthMethod authMethod) {
         this.authMethod = authMethod;
         return this;
     }
     
-    public SourcePinterestCredentialsAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourcePinterestCredentialsAccessTokenAuthMethodEnum authMethod) {
+    public SourcePinterestCredentialsAccessToken(@JsonProperty("access_token") String accessToken, @JsonProperty("auth_method") SourcePinterestCredentialsAccessTokenAuthMethod authMethod) {
         this.accessToken = accessToken;
         this.authMethod = authMethod;
   }

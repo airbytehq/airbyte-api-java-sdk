@@ -19,9 +19,9 @@ public class SourceChargebee {
      * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section.
      */
     @JsonProperty("product_catalog")
-    public SourceChargebeeProductCatalogEnum productCatalog;
+    public SourceChargebeeProductCatalog productCatalog;
 
-    public SourceChargebee withProductCatalog(SourceChargebeeProductCatalogEnum productCatalog) {
+    public SourceChargebee withProductCatalog(SourceChargebeeProductCatalog productCatalog) {
         this.productCatalog = productCatalog;
         return this;
     }
@@ -49,9 +49,9 @@ public class SourceChargebee {
     }
     
     @JsonProperty("sourceType")
-    public SourceChargebeeChargebeeEnum sourceType;
+    public SourceChargebeeChargebee sourceType;
 
-    public SourceChargebee withSourceType(SourceChargebeeChargebeeEnum sourceType) {
+    public SourceChargebee withSourceType(SourceChargebeeChargebee sourceType) {
         this.sourceType = sourceType;
         return this;
     }
@@ -69,7 +69,7 @@ public class SourceChargebee {
         return this;
     }
     
-    public SourceChargebee(@JsonProperty("product_catalog") SourceChargebeeProductCatalogEnum productCatalog, @JsonProperty("site") String site, @JsonProperty("site_api_key") String siteApiKey, @JsonProperty("sourceType") SourceChargebeeChargebeeEnum sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceChargebee(@JsonProperty("product_catalog") SourceChargebeeProductCatalog productCatalog, @JsonProperty("site") String site, @JsonProperty("site_api_key") String siteApiKey, @JsonProperty("sourceType") SourceChargebeeChargebee sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.productCatalog = productCatalog;
         this.site = site;
         this.siteApiKey = siteApiKey;
