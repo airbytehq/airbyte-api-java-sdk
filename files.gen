@@ -1,3 +1,4 @@
+lib/src/main/java/com/airbyte/api/SDKConfiguration.java
 lib/src/main/java/com/airbyte/api/Connections.java
 lib/src/main/java/com/airbyte/api/Destinations.java
 lib/src/main/java/com/airbyte/api/Jobs.java

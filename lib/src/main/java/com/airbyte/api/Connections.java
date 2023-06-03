@@ -15,20 +15,10 @@ import org.apache.http.NameValuePair;
 
 public class Connections {
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
+	private SDKConfiguration sdkConfiguration;
 
-	public Connections(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
+	public Connections(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     /**
@@ -38,7 +28,7 @@ public class Connections {
      * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.CreateConnectionResponse createConnection(com.airbyte.api.models.shared.ConnectionCreateRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/connections");
         
         HTTPRequest req = new HTTPRequest();
@@ -51,9 +41,9 @@ public class Connections {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -84,7 +74,7 @@ public class Connections {
      * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.DeleteConnectionResponse deleteConnection(com.airbyte.api.models.operations.DeleteConnectionRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.DeleteConnectionRequest.class, baseUrl, "/connections/{connectionId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -92,9 +82,9 @@ public class Connections {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -117,7 +107,7 @@ public class Connections {
      * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.GetConnectionResponse getConnection(com.airbyte.api.models.operations.GetConnectionRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.GetConnectionRequest.class, baseUrl, "/connections/{connectionId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -125,9 +115,9 @@ public class Connections {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -158,7 +148,7 @@ public class Connections {
      * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.ListConnectionsResponse listConnections(com.airbyte.api.models.operations.ListConnectionsRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = com.airbyte.api.utils.Utils.generateURL(baseUrl, "/connections");
         
         HTTPRequest req = new HTTPRequest();
@@ -166,7 +156,7 @@ public class Connections {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.List<NameValuePair> queryParams = com.airbyte.api.utils.Utils.getQueryParams(com.airbyte.api.models.operations.ListConnectionsRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -174,7 +164,7 @@ public class Connections {
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 

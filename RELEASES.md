@@ -344,3 +344,11 @@ Based on:
 - Speakeasy CLI 1.40.3 (2.34.7) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Maven Central v0.14.2] https://central.sonatype.com/artifact/com.airbyte/api/0.14.2 - .
+
+## 2023-06-03 00:12:41
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.43.0 (2.35.3) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Maven Central v0.15.0] https://central.sonatype.com/artifact/com.airbyte/api/0.15.0 - .
