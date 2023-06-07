@@ -35,6 +35,18 @@ public class SourceGoogleSearchConsole {
     }
     
     /**
+     * If "final" or if this parameter is omitted, the returned data will include only finalized data. Setting this parameter to "all" should not be used with Incremental Sync mode as it may cause data loss. If "all", data will include fresh data.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("data_state")
+    public SourceGoogleSearchConsoleDataState dataState;
+
+    public SourceGoogleSearchConsole withDataState(SourceGoogleSearchConsoleDataState dataState) {
+        this.dataState = dataState;
+        return this;
+    }
+    
+    /**
      * UTC date in the format 2017-01-25. Any data after this date will not be replicated. Must be greater or equal to the start date field.
      */
     @JsonInclude(Include.NON_ABSENT)

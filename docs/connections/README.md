@@ -6,6 +6,7 @@
 * [deleteConnection](#deleteconnection) - Delete a Connection
 * [getConnection](#getconnection) - Get Connection details
 * [listConnections](#listconnections) - List connections
+* [patchConnection](#patchconnection) - Update Connection details
 
 ## createConnection
 
@@ -19,7 +20,8 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionScheduleCreate;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
 import com.airbyte.api.models.shared.GeographyEnum;
 import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
@@ -33,42 +35,108 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("possimus") {{
+                .setSecurity(new Security("aut") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("019da1ff-e78f-4097-b007-4f15471b5e6e", "13b99d48-8e1e-491e-850a-d2abd4426980") {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("19da1ffe-78f0-497b-8074-f15471b5e6e1", "3b99d488-e1e9-41e4-90ad-2abd44269802") {{
                 configurations = new StreamConfigurations() {{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("rerum") {{
+                        add(new StreamConfiguration("officia") {{
                             cursorField = new String[]{{
-                                add("ipsam"),
                                 add("alias"),
                                 add("fugit"),
-                                add("dolorum"),
                             }};
-                            name = "Eddie Prosacco";
+                            name = "Marshall Glover";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
+                                    add("eum"),
                                     add("non"),
                                     add("eligendi"),
+                                    add("sint"),
                                 }}),
                                 add(new String[]{{
-                                    add("aliquid"),
                                     add("provident"),
                                     add("necessitatibus"),
                                 }}),
+                            }};
+                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
+                        }}),
+                        add(new StreamConfiguration("provident") {{
+                            cursorField = new String[]{{
+                                add("debitis"),
+                            }};
+                            name = "Wilbur King";
+                            primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("officia"),
-                                    add("dolor"),
-                                    add("debitis"),
+                                    add("dicta"),
+                                    add("magnam"),
+                                    add("cumque"),
                                 }}),
                                 add(new String[]{{
-                                    add("dolorum"),
-                                    add("in"),
-                                    add("in"),
-                                    add("illum"),
+                                    add("ea"),
+                                    add("aliquid"),
+                                    add("laborum"),
+                                    add("accusamus"),
+                                }}),
+                                add(new String[]{{
+                                    add("occaecati"),
+                                }}),
+                                add(new String[]{{
+                                    add("accusamus"),
+                                    add("delectus"),
+                                }}),
+                            }};
+                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
+                        }}),
+                        add(new StreamConfiguration("nobis") {{
+                            cursorField = new String[]{{
+                                add("id"),
+                                add("blanditiis"),
+                                add("deleniti"),
+                            }};
+                            name = "Vincent Nolan";
+                            primaryKey = new String[][]{{
+                                add(new String[]{{
+                                    add("molestiae"),
+                                    add("perferendis"),
+                                    add("nihil"),
+                                }}),
+                                add(new String[]{{
+                                    add("distinctio"),
+                                    add("id"),
+                                }}),
+                                add(new String[]{{
+                                    add("labore"),
+                                    add("suscipit"),
+                                }}),
+                            }};
+                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
+                        }}),
+                        add(new StreamConfiguration("debitis") {{
+                            cursorField = new String[]{{
+                                add("vero"),
+                                add("aspernatur"),
+                            }};
+                            name = "Danielle Bosco";
+                            primaryKey = new String[][]{{
+                                add(new String[]{{
+                                    add("sint"),
+                                    add("accusantium"),
+                                    add("mollitia"),
+                                }}),
+                                add(new String[]{{
+                                    add("mollitia"),
+                                    add("ad"),
+                                    add("eum"),
+                                    add("dolor"),
+                                }}),
+                                add(new String[]{{
+                                    add("odit"),
+                                    add("nemo"),
+                                    add("quasi"),
+                                    add("iure"),
                                 }}),
                             }};
                             syncMode = ConnectionSyncModeEnum.INCREMENTAL_DEDUPED_HISTORY;
@@ -76,14 +144,15 @@ public class Application {
                     }};
                 }};;
                 dataResidency = GeographyEnum.AUTO;
-                name = "Blanca Schulist";
+                name = "Alfredo Prosacco Sr.";
                 namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.DISABLE_CONNECTION;
-                prefix = "non";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnum.CRON) {{
-                    cronExpression = "enim";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
+                prefix = "expedita";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
+                    cronExpression = "repellat";
                 }};;
+                status = ConnectionStatusEnum.DEPRECATED;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
@@ -116,12 +185,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("accusamus") {{
+                .setSecurity(new Security("sed") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            DeleteConnectionRequest req = new DeleteConnectionRequest("delectus");            
+            DeleteConnectionRequest req = new DeleteConnectionRequest("saepe");            
 
             DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
@@ -153,12 +222,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quidem") {{
+                .setSecurity(new Security("pariatur") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
-            GetConnectionRequest req = new GetConnectionRequest("provident");            
+            GetConnectionRequest req = new GetConnectionRequest("accusantium");            
 
             GetConnectionResponse res = sdk.connections.getConnection(req);
 
@@ -190,25 +259,133 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("nam") {{
+                .setSecurity(new Security("consequuntur") {{
                     bearerAuth = "YOUR_BEARER_TOKEN_HERE";
                 }})
                 .build();
 
             ListConnectionsRequest req = new ListConnectionsRequest() {{
                 includeDeleted = false;
-                limit = 659669;
-                offset = 501324;
+                limit = 508315;
+                offset = 615560;
                 workspaceIds = new String[]{{
-                    add("f3a66997-074b-4a44-a9b6-e2141959890a"),
-                    add("fa563e25-16fe-44c8-b711-e5b7fd2ed028"),
-                    add("921cddc6-9260-41fb-976b-0d5f0d30c5fb"),
+                    add("1cddc692-601f-4b57-ab0d-5f0d30c5fbb2"),
                 }};
             }};            
 
             ListConnectionsResponse res = sdk.connections.listConnections(req);
 
             if (res.connectionsResponse != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+## patchConnection
+
+Update Connection details
+
+### Example Usage
+
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.PatchConnectionRequest;
+import com.airbyte.api.models.operations.PatchConnectionResponse;
+import com.airbyte.api.models.shared.ConnectionPatchRequest;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnumNoDefault;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnumNoDefault;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumNoDefault;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.StreamConfigurations;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            Airbyte sdk = Airbyte.builder()
+                .setSecurity(new Security("quis") {{
+                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                }})
+                .build();
+
+            PatchConnectionRequest req = new PatchConnectionRequest(                new ConnectionPatchRequest() {{
+                                configurations = new StreamConfigurations() {{
+                                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
+                                        add(new StreamConfiguration("facilis") {{
+                                            cursorField = new String[]{{
+                                                add("eaque"),
+                                                add("quis"),
+                                            }};
+                                            name = "Ruby Auer";
+                                            primaryKey = new String[][]{{
+                                                add(new String[]{{
+                                                    add("vero"),
+                                                }}),
+                                                add(new String[]{{
+                                                    add("hic"),
+                                                    add("recusandae"),
+                                                }}),
+                                            }};
+                                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
+                                        }}),
+                                        add(new StreamConfiguration("pariatur") {{
+                                            cursorField = new String[]{{
+                                                add("voluptatem"),
+                                                add("porro"),
+                                                add("consequuntur"),
+                                            }};
+                                            name = "Jeremiah Beatty";
+                                            primaryKey = new String[][]{{
+                                                add(new String[]{{
+                                                    add("earum"),
+                                                    add("modi"),
+                                                    add("iste"),
+                                                    add("dolorum"),
+                                                }}),
+                                            }};
+                                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
+                                        }}),
+                                        add(new StreamConfiguration("excepturi") {{
+                                            cursorField = new String[]{{
+                                                add("nobis"),
+                                                add("libero"),
+                                                add("delectus"),
+                                            }};
+                                            name = "Billie Jacobi";
+                                            primaryKey = new String[][]{{
+                                                add(new String[]{{
+                                                    add("ipsum"),
+                                                }}),
+                                            }};
+                                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_DEDUPED_HISTORY;
+                                        }}),
+                                    }};
+                                }};;
+                                dataResidency = GeographyEnumNoDefault.EU;
+                                name = "Marian Wisozk";
+                                namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
+                                namespaceFormat = "${SOURCE_NAMESPACE}";
+                                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.IGNORE;
+                                prefix = "ipsa";
+                                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
+                                    cronExpression = "iure";
+                                }};;
+                                status = ConnectionStatusEnum.INACTIVE;
+                            }};, "quaerat");            
+
+            PatchConnectionResponse res = sdk.connections.patchConnection(req);
+
+            if (res.connectionResponse != null) {
                 // handle response
             }
         } catch (Exception e) {

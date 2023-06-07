@@ -24,6 +24,7 @@ public class SourceRetently {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceRetentlyRetently sourceType;
 
@@ -32,7 +33,5 @@ public class SourceRetently {
         return this;
     }
     
-    public SourceRetently(@JsonProperty("sourceType") SourceRetentlyRetently sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceRetently(){}
 }

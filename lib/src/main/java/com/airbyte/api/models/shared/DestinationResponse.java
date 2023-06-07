@@ -10,6 +10,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * DestinationResponse - Provides details of a single destination.
  */
 public class DestinationResponse {
+    /**
+     * The values required to configure the destination.
+     */
+    @JsonProperty("configuration")
+    public Object configuration;
+
+    public DestinationResponse withConfiguration(Object configuration) {
+        this.configuration = configuration;
+        return this;
+    }
+    
     @JsonProperty("destinationId")
     public String destinationId;
 
@@ -42,7 +53,8 @@ public class DestinationResponse {
         return this;
     }
     
-    public DestinationResponse(@JsonProperty("destinationId") String destinationId, @JsonProperty("destinationType") String destinationType, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    public DestinationResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("destinationId") String destinationId, @JsonProperty("destinationType") String destinationType, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+        this.configuration = configuration;
         this.destinationId = destinationId;
         this.destinationType = destinationType;
         this.name = name;

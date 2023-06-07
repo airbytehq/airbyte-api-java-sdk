@@ -12,6 +12,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * ConnectionResponse - Provides details of a single connection.
  */
 public class ConnectionResponse {
+    /**
+     * A list of configured stream options for a connection.
+     */
+    @JsonProperty("configurations")
+    public StreamConfigurations configurations;
+
+    public ConnectionResponse withConfigurations(StreamConfigurations configurations) {
+        this.configurations = configurations;
+        return this;
+    }
+    
     @JsonProperty("connectionId")
     public String connectionId;
 
@@ -121,7 +132,8 @@ public class ConnectionResponse {
         return this;
     }
     
-    public ConnectionResponse(@JsonProperty("connectionId") String connectionId, @JsonProperty("dataResidency") GeographyEnum dataResidency, @JsonProperty("destinationId") String destinationId, @JsonProperty("name") String name, @JsonProperty("schedule") ConnectionScheduleResponse schedule, @JsonProperty("sourceId") String sourceId, @JsonProperty("status") ConnectionStatusEnum status, @JsonProperty("workspaceId") String workspaceId) {
+    public ConnectionResponse(@JsonProperty("configurations") StreamConfigurations configurations, @JsonProperty("connectionId") String connectionId, @JsonProperty("dataResidency") GeographyEnum dataResidency, @JsonProperty("destinationId") String destinationId, @JsonProperty("name") String name, @JsonProperty("schedule") ConnectionScheduleResponse schedule, @JsonProperty("sourceId") String sourceId, @JsonProperty("status") ConnectionStatusEnum status, @JsonProperty("workspaceId") String workspaceId) {
+        this.configurations = configurations;
         this.connectionId = connectionId;
         this.dataResidency = dataResidency;
         this.destinationId = destinationId;

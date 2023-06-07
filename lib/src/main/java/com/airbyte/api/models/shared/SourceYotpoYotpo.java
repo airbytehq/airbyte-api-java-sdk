@@ -6,17 +6,13 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-/**
- * SourceAmazonSellerPartnerAWSEnvironment - An enumeration.
- */
-public enum SourceAmazonSellerPartnerAWSEnvironment {
-    PRODUCTION("PRODUCTION"),
-    SANDBOX("SANDBOX");
+public enum SourceYotpoYotpo {
+    YOTPO("yotpo");
 
     @JsonValue
     public final String value;
 
-    private SourceAmazonSellerPartnerAWSEnvironment(String value) {
+    private SourceYotpoYotpo(String value) {
         this.value = value;
     }
 }

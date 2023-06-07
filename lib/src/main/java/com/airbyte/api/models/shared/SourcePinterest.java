@@ -4,9 +4,11 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 /**
  * SourcePinterest - The values required to configure the source.
@@ -32,10 +34,11 @@ public class SourcePinterest {
     /**
      * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by api (89 days from today).
      */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public String startDate;
+    public LocalDate startDate;
 
-    public SourcePinterest withStartDate(String startDate) {
+    public SourcePinterest withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -52,7 +55,7 @@ public class SourcePinterest {
         return this;
     }
     
-    public SourcePinterest(@JsonProperty("sourceType") SourcePinterestPinterest sourceType, @JsonProperty("start_date") String startDate) {
+    public SourcePinterest(@JsonProperty("sourceType") SourcePinterestPinterest sourceType, @JsonProperty("start_date") LocalDate startDate) {
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

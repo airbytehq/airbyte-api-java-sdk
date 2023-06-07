@@ -6,13 +6,13 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum SourceAmazonSellerPartnerAuthType {
-    OAUTH20("oauth2.0");
+public enum DestinationVerticaVertica {
+    VERTICA("vertica");
 
     @JsonValue
     public final String value;
 
-    private SourceAmazonSellerPartnerAuthType(String value) {
+    private DestinationVerticaVertica(String value) {
         this.value = value;
     }
 }

@@ -42,18 +42,6 @@ public class SourceGithub {
     }
     
     /**
-     * The Github connector contains several streams with a large amount of data. The page size of such streams depends on the size of your repository. We recommended that you specify values between 10 and 30.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("page_size_for_large_streams")
-    public Long pageSizeForLargeStreams;
-
-    public SourceGithub withPageSizeForLargeStreams(Long pageSizeForLargeStreams) {
-        this.pageSizeForLargeStreams = pageSizeForLargeStreams;
-        return this;
-    }
-    
-    /**
      * Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
      */
     @JsonProperty("repository")

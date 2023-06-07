@@ -51,6 +51,7 @@ public class SourceTiktokMarketing {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceTiktokMarketingTiktokMarketing sourceType;
 
@@ -72,7 +73,5 @@ public class SourceTiktokMarketing {
         return this;
     }
     
-    public SourceTiktokMarketing(@JsonProperty("sourceType") SourceTiktokMarketingTiktokMarketing sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceTiktokMarketing(){}
 }

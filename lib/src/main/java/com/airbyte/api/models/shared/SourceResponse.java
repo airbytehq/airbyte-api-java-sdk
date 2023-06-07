@@ -10,6 +10,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * SourceResponse - Provides details of a single source.
  */
 public class SourceResponse {
+    /**
+     * The values required to configure the source.
+     */
+    @JsonProperty("configuration")
+    public Object configuration;
+
+    public SourceResponse withConfiguration(Object configuration) {
+        this.configuration = configuration;
+        return this;
+    }
+    
     @JsonProperty("name")
     public String name;
 
@@ -42,7 +53,8 @@ public class SourceResponse {
         return this;
     }
     
-    public SourceResponse(@JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
+    public SourceResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
+        this.configuration = configuration;
         this.name = name;
         this.sourceId = sourceId;
         this.sourceType = sourceType;

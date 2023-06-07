@@ -103,9 +103,9 @@ public class ConnectionCreateRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schedule")
-    public ConnectionScheduleCreate schedule;
+    public ConnectionSchedule schedule;
 
-    public ConnectionCreateRequest withSchedule(ConnectionScheduleCreate schedule) {
+    public ConnectionCreateRequest withSchedule(ConnectionSchedule schedule) {
         this.schedule = schedule;
         return this;
     }
@@ -115,6 +115,15 @@ public class ConnectionCreateRequest {
 
     public ConnectionCreateRequest withSourceId(String sourceId) {
         this.sourceId = sourceId;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("status")
+    public ConnectionStatusEnum status;
+
+    public ConnectionCreateRequest withStatus(ConnectionStatusEnum status) {
+        this.status = status;
         return this;
     }
     

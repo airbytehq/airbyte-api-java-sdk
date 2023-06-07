@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.15.1'
+implementation 'com.airbyte.api:public-api:0.15.2'
 ```
 <!-- End SDK Installation -->
 
@@ -33,7 +33,8 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionScheduleCreate;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
 import com.airbyte.api.models.shared.GeographyEnum;
 import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
@@ -124,9 +125,10 @@ public class Application {
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "tenetur";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnum.MANUAL) {{
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
                     cronExpression = "id";
                 }};;
+                status = ConnectionStatusEnum.DEPRECATED;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
@@ -152,6 +154,7 @@ public class Application {
 * [deleteConnection](docs/connections/README.md#deleteconnection) - Delete a Connection
 * [getConnection](docs/connections/README.md#getconnection) - Get Connection details
 * [listConnections](docs/connections/README.md#listconnections) - List connections
+* [patchConnection](docs/connections/README.md#patchconnection) - Update Connection details
 
 ### [destinations](docs/destinations/README.md)
 
@@ -159,6 +162,8 @@ public class Application {
 * [deleteDestination](docs/destinations/README.md#deletedestination) - Delete a Destination
 * [getDestination](docs/destinations/README.md#getdestination) - Get Destination details
 * [listDestinations](docs/destinations/README.md#listdestinations) - List destinations
+* [patchDestination](docs/destinations/README.md#patchdestination) - Update a Destination
+* [putDestination](docs/destinations/README.md#putdestination) - Update a Destination and fully overwrite it
 
 ### [jobs](docs/jobs/README.md)
 
@@ -174,6 +179,8 @@ public class Application {
 * [getSource](docs/sources/README.md#getsource) - Get Source details
 * [initiateOAuth](docs/sources/README.md#initiateoauth) - Initiate OAuth for a source
 * [listSources](docs/sources/README.md#listsources) - List sources
+* [patchSource](docs/sources/README.md#patchsource) - Update a Source
+* [putSource](docs/sources/README.md#putsource) - Update a Source and fully overwrite it
 
 ### [streams](docs/streams/README.md)
 

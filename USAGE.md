@@ -5,7 +5,8 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionScheduleCreate;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
 import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
 import com.airbyte.api.models.shared.GeographyEnum;
 import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
@@ -96,9 +97,10 @@ public class Application {
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "tenetur";
-                schedule = new ConnectionScheduleCreate(ScheduleTypeEnum.MANUAL) {{
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
                     cronExpression = "id";
                 }};;
+                status = ConnectionStatusEnum.DEPRECATED;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);

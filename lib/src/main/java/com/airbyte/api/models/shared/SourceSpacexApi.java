@@ -30,6 +30,7 @@ public class SourceSpacexApi {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceSpacexApiSpacexApi sourceType;
 
@@ -38,7 +39,5 @@ public class SourceSpacexApi {
         return this;
     }
     
-    public SourceSpacexApi(@JsonProperty("sourceType") SourceSpacexApiSpacexApi sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceSpacexApi(){}
 }

@@ -187,4 +187,50 @@ public class Connections {
 
         return res;
     }
+
+    /**
+     * Update Connection details
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.PatchConnectionResponse patchConnection(com.airbyte.api.models.operations.PatchConnectionRequest request) throws Exception {
+        String baseUrl = this.sdkConfiguration.serverUrl;
+        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.PatchConnectionRequest.class, baseUrl, "/connections/{connectionId}", request, null);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PATCH");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(request, "connectionPatchRequest", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        com.airbyte.api.models.operations.PatchConnectionResponse res = new com.airbyte.api.models.operations.PatchConnectionResponse(contentType, httpRes.statusCode()) {{
+            connectionResponse = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.ConnectionResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.ConnectionResponse.class);
+                res.connectionResponse = out;
+            }
+        }
+        else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
+        }
+
+        return res;
+    }
 }
