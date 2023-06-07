@@ -7,15 +7,15 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceHubspotCredentialsOAuthCredentials - Name of the credentials
+ * SourceHubspotCredentialsPrivateAppAuthType - Name of the credentials set
  */
-public enum SourceHubspotCredentialsOAuthCredentials {
-    O_AUTH_CREDENTIALS("OAuth Credentials");
+public enum SourceHubspotCredentialsPrivateAppAuthType {
+    PRIVATE_APP_CREDENTIALS("Private App Credentials");
 
     @JsonValue
     public final String value;
 
-    private SourceHubspotCredentialsOAuthCredentials(String value) {
+    private SourceHubspotCredentialsPrivateAppAuthType(String value) {
         this.value = value;
     }
 }

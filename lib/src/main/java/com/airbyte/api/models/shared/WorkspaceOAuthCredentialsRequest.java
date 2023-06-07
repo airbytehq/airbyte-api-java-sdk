@@ -32,6 +32,9 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
     
+    /**
+     * The name of the source i.e. google-ads
+     */
     @JsonProperty("name")
     public String name;
 

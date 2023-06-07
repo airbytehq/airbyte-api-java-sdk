@@ -24,6 +24,7 @@ public class SourceAsana {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceAsanaAsana sourceType;
 
@@ -32,7 +33,5 @@ public class SourceAsana {
         return this;
     }
     
-    public SourceAsana(@JsonProperty("sourceType") SourceAsanaAsana sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceAsana(){}
 }

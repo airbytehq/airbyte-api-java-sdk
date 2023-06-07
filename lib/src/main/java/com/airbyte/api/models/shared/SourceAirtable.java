@@ -21,6 +21,7 @@ public class SourceAirtable {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceAirtableAirtable sourceType;
 
@@ -29,7 +30,5 @@ public class SourceAirtable {
         return this;
     }
     
-    public SourceAirtable(@JsonProperty("sourceType") SourceAirtableAirtable sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceAirtable(){}
 }

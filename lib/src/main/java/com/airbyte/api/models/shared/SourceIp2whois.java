@@ -36,6 +36,7 @@ public class SourceIp2whois {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceIp2whoisIp2whois sourceType;
 
@@ -44,7 +45,5 @@ public class SourceIp2whois {
         return this;
     }
     
-    public SourceIp2whois(@JsonProperty("sourceType") SourceIp2whoisIp2whois sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceIp2whois(){}
 }

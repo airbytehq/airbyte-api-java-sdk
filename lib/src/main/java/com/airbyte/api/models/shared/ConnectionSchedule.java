@@ -9,14 +9,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * ConnectionScheduleCreate - schedule for when the the connection should run, per the schedule type
+ * ConnectionSchedule - schedule for when the the connection should run, per the schedule type
  */
-public class ConnectionScheduleCreate {
+public class ConnectionSchedule {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cronExpression")
     public String cronExpression;
 
-    public ConnectionScheduleCreate withCronExpression(String cronExpression) {
+    public ConnectionSchedule withCronExpression(String cronExpression) {
         this.cronExpression = cronExpression;
         return this;
     }
@@ -24,12 +24,12 @@ public class ConnectionScheduleCreate {
     @JsonProperty("scheduleType")
     public ScheduleTypeEnum scheduleType;
 
-    public ConnectionScheduleCreate withScheduleType(ScheduleTypeEnum scheduleType) {
+    public ConnectionSchedule withScheduleType(ScheduleTypeEnum scheduleType) {
         this.scheduleType = scheduleType;
         return this;
     }
     
-    public ConnectionScheduleCreate(@JsonProperty("scheduleType") ScheduleTypeEnum scheduleType) {
+    public ConnectionSchedule(@JsonProperty("scheduleType") ScheduleTypeEnum scheduleType) {
         this.scheduleType = scheduleType;
   }
 }

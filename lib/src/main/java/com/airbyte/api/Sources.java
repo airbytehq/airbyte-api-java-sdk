@@ -228,4 +228,90 @@ public class Sources {
 
         return res;
     }
+
+    /**
+     * Update a Source
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.PatchSourceResponse patchSource(com.airbyte.api.models.operations.PatchSourceRequest request) throws Exception {
+        String baseUrl = this.sdkConfiguration.serverUrl;
+        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.PatchSourceRequest.class, baseUrl, "/sources/{sourceId}", request, null);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PATCH");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(request, "sourcePatchRequest", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        com.airbyte.api.models.operations.PatchSourceResponse res = new com.airbyte.api.models.operations.PatchSourceResponse(contentType, httpRes.statusCode()) {{
+            sourceResponse = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.SourceResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.SourceResponse.class);
+                res.sourceResponse = out;
+            }
+        }
+        else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
+        }
+
+        return res;
+    }
+
+    /**
+     * Update a Source and fully overwrite it
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.PutSourceResponse putSource(com.airbyte.api.models.operations.PutSourceRequest request) throws Exception {
+        String baseUrl = this.sdkConfiguration.serverUrl;
+        String url = com.airbyte.api.utils.Utils.generateURL(com.airbyte.api.models.operations.PutSourceRequest.class, baseUrl, "/sources/{sourceId}", request, null);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PUT");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(request, "sourcePutRequest", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        com.airbyte.api.models.operations.PutSourceResponse res = new com.airbyte.api.models.operations.PutSourceResponse(contentType, httpRes.statusCode()) {{
+            sourceResponse = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.SourceResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.SourceResponse.class);
+                res.sourceResponse = out;
+            }
+        }
+        else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
+        }
+
+        return res;
+    }
 }

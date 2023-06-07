@@ -115,6 +115,7 @@ public class SourceMixpanel {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceMixpanelMixpanel sourceType;
 
@@ -137,7 +138,5 @@ public class SourceMixpanel {
         return this;
     }
     
-    public SourceMixpanel(@JsonProperty("sourceType") SourceMixpanelMixpanel sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceMixpanel(){}
 }

@@ -6,13 +6,16 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum SourceAmazonSellerPartnerAmazonSellerPartner {
-    AMAZON_SELLER_PARTNER("amazon-seller-partner");
+/**
+ * SourceHubspotCredentialsOAuthAuthType - Name of the credentials
+ */
+public enum SourceHubspotCredentialsOAuthAuthType {
+    O_AUTH_CREDENTIALS("OAuth Credentials");
 
     @JsonValue
     public final String value;
 
-    private SourceAmazonSellerPartnerAmazonSellerPartner(String value) {
+    private SourceHubspotCredentialsOAuthAuthType(String value) {
         this.value = value;
     }
 }

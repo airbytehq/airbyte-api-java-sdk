@@ -15,7 +15,7 @@ public class Airbyte {
         /**
          * Airbyte API v1
          */
-        "https://api.airbyte.com/v1/",
+        "https://api.airbyte.com/v1",
 	};
   	
     public Connections connections;

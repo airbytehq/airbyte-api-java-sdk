@@ -4,12 +4,15 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * SourceXkcd - The values required to configure the source.
  */
 public class SourceXkcd {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceXkcdXkcd sourceType;
 
@@ -18,7 +21,5 @@ public class SourceXkcd {
         return this;
     }
     
-    public SourceXkcd(@JsonProperty("sourceType") SourceXkcdXkcd sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceXkcd(){}
 }

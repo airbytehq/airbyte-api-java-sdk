@@ -50,15 +50,15 @@ public class Streams {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         com.airbyte.api.models.operations.GetStreamPropertiesResponse res = new com.airbyte.api.models.operations.GetStreamPropertiesResponse(contentType, httpRes.statusCode()) {{
-            streamProperties = null;
+            streamPropertiesResponse = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.StreamProperties out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.StreamProperties.class);
-                res.streamProperties = out;
+                com.airbyte.api.models.shared.StreamPropertiesResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), com.airbyte.api.models.shared.StreamPropertiesResponse.class);
+                res.streamPropertiesResponse = out;
             }
         }
         else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {

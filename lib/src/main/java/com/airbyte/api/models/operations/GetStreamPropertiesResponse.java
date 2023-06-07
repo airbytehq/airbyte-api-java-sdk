@@ -36,10 +36,10 @@ public class GetStreamPropertiesResponse {
      * Get the available streams properties for a source/destination pair.
      */
     
-    public com.airbyte.api.models.shared.StreamProperties streamProperties;
+    public com.airbyte.api.models.shared.StreamPropertiesResponse streamPropertiesResponse;
 
-    public GetStreamPropertiesResponse withStreamProperties(com.airbyte.api.models.shared.StreamProperties streamProperties) {
-        this.streamProperties = streamProperties;
+    public GetStreamPropertiesResponse withStreamPropertiesResponse(com.airbyte.api.models.shared.StreamPropertiesResponse streamPropertiesResponse) {
+        this.streamPropertiesResponse = streamPropertiesResponse;
         return this;
     }
     

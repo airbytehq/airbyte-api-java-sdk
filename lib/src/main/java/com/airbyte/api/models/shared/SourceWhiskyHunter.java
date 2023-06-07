@@ -4,12 +4,15 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * SourceWhiskyHunter - The values required to configure the source.
  */
 public class SourceWhiskyHunter {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceWhiskyHunterWhiskyHunter sourceType;
 
@@ -18,7 +21,5 @@ public class SourceWhiskyHunter {
         return this;
     }
     
-    public SourceWhiskyHunter(@JsonProperty("sourceType") SourceWhiskyHunterWhiskyHunter sourceType) {
-        this.sourceType = sourceType;
-  }
+    public SourceWhiskyHunter(){}
 }
