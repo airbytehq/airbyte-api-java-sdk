@@ -25,12 +25,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("hic") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("occaecati") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(715561L);            
+            CancelJobRequest req = new CancelJobRequest(977496L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -63,12 +63,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quod") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("quisquam") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("odio", JobTypeEnum.RESET);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("vero", JobTypeEnum.RESET);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -100,12 +100,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("facilis") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("quis") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(874288L);            
+            GetJobRequest req = new GetJobRequest(218403L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -138,15 +138,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("ducimus") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("delectus") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            ListJobsRequest req = new ListJobsRequest("dolore") {{
-                jobType = JobTypeEnum.RESET;
-                limit = 848944;
-                offset = 194342;
+            ListJobsRequest req = new ListJobsRequest("voluptate") {{
+                jobType = JobTypeEnum.SYNC;
+                limit = 878870;
+                offset = 949319;
             }};            
 
             ListJobsResponse res = sdk.jobs.listJobs(req);
