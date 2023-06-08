@@ -357,7 +357,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("accusamus") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
@@ -404,7 +404,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("tempora") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
@@ -441,7 +441,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("quod") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
@@ -478,7 +478,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("qui") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
@@ -853,7 +853,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("cupiditate") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
@@ -1229,37 +1229,37 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("consequatur") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
             PutDestinationRequest req = new PutDestinationRequest("est") {{
-                destinationPutRequest = new DestinationPutRequest(                new DestinationS3(DestinationS3S3.S3,                 new DestinationS3FormatParquetColumnarStorage(DestinationS3FormatParquetColumnarStorageFormatType.PARQUET) {{
-                                                    blockSizeMb = 606476L;
-                                                    compressionCodec = DestinationS3FormatParquetColumnarStorageCompressionCodec.GZIP;
-                                                    dictionaryEncoding = false;
-                                                    dictionaryPageSizeKb = 218403L;
-                                                    formatType = DestinationS3FormatParquetColumnarStorageFormatType.PARQUET;
-                                                    maxPaddingSizeMb = 961571L;
-                                                    pageSizeKb = 455169L;
-                                                }}, "consectetur", "vero", DestinationS3S3BucketRegion.US_GOV_EAST1) {{
-                                    accessKeyId = "porro";
+                destinationPutRequest = new DestinationPutRequest(                new DestinationS3(DestinationS3S3.S3,                 new DestinationS3FormatJSONLinesNewlineDelimitedJSON(DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatType.JSONL) {{
+                                                    compression = new DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionNoCompression() {{
+                                                        compressionType = DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionNoCompressionCompressionType.NO_COMPRESSION;
+                                                    }};
+                                                    flattening = DestinationS3FormatJSONLinesNewlineDelimitedJSONFlattening.NO_FLATTENING;
+                                                    formatType = DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatType.JSONL;
+                                                }}, "airbyte_sync", "data_sync/test", DestinationS3S3BucketRegion.CA_CENTRAL1) {{
+                                    accessKeyId = "A012345678910EXAMPLE";
                                     destinationType = DestinationS3S3.S3;
-                                    fileNamePattern = "doloribus";
-                                    format = new DestinationS3FormatCSVCommaSeparatedValues(DestinationS3FormatCSVCommaSeparatedValuesFlattening.NO_FLATTENING, DestinationS3FormatCSVCommaSeparatedValuesFormatType.CSV) {{
-                                        compression = new DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIP() {{
-                                            compressionType = DestinationS3FormatCSVCommaSeparatedValuesCompressionGZIPCompressionType.GZIP;
-                                        }};
-                                        flattening = DestinationS3FormatCSVCommaSeparatedValuesFlattening.ROOT_LEVEL_FLATTENING;
-                                        formatType = DestinationS3FormatCSVCommaSeparatedValuesFormatType.CSV;
+                                    fileNamePattern = "{part_number}";
+                                    format = new DestinationS3FormatParquetColumnarStorage(DestinationS3FormatParquetColumnarStorageFormatType.PARQUET) {{
+                                        blockSizeMb = 128L;
+                                        compressionCodec = DestinationS3FormatParquetColumnarStorageCompressionCodec.SNAPPY;
+                                        dictionaryEncoding = false;
+                                        dictionaryPageSizeKb = 1024L;
+                                        formatType = DestinationS3FormatParquetColumnarStorageFormatType.PARQUET;
+                                        maxPaddingSizeMb = 8L;
+                                        pageSizeKb = 1024L;
                                     }};
-                                    s3BucketName = "quae";
-                                    s3BucketPath = "laudantium";
-                                    s3BucketRegion = DestinationS3S3BucketRegion.AP_SOUTHEAST2;
-                                    s3Endpoint = "occaecati";
-                                    s3PathFormat = "voluptatibus";
-                                    secretAccessKey = "quisquam";
-                                }}, "dignissimos");;
+                                    s3BucketName = "airbyte_sync";
+                                    s3BucketPath = "data_sync/test";
+                                    s3BucketRegion = DestinationS3S3BucketRegion.EU_SOUTH1;
+                                    s3Endpoint = "http://localhost:9000";
+                                    s3PathFormat = "${NAMESPACE}/${STREAM_NAME}/${YEAR}_${MONTH}_${DAY}_${EPOCH}_";
+                                    secretAccessKey = "a012345678910ABCDEFGH/AbCdEfGhEXAMPLEKEY";
+                                }}, "odio");;
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);

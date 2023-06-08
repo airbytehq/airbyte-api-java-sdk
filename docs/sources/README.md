@@ -714,27 +714,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("natus") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("dignissimos") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceSlack(false, 639473L, SourceSlackSlack.SLACK, OffsetDateTime.parse("2022-08-19T11:11:55.326Z")) {{
-                                channelFilter = new String[]{{
-                                    add("voluptatibus"),
-                                }};
-                                credentials = new SourceSlackCredentialsSignInViaSlackOAuth("maiores", "doloribus", "iusto", SourceSlackCredentialsSignInViaSlackOAuthOptionTitle.DEFAULT_O_AUTH20_AUTHORIZATION) {{
-                                    accessToken = "nulla";
-                                    clientId = "fugit";
-                                    clientSecret = "porro";
-                                    optionTitle = SourceSlackCredentialsSignInViaSlackOAuthOptionTitle.DEFAULT_O_AUTH20_AUTHORIZATION;
-                                }};
-                                joinChannels = false;
-                                lookbackWindow = 753570L;
-                                sourceType = SourceSlackSlack.SLACK;
-                                startDate = OffsetDateTime.parse("2022-12-30T12:32:17.948Z");
-                            }}, "ea", "26d43681-3f16-4d9f-9fce-6c556146c3e2") {{
-                secretId = "minima";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceYandexMetrica("odio", "similique", SourceYandexMetricaYandexMetrica.YANDEX_METRICA, LocalDate.parse("2022-01-01")) {{
+                                authToken = "distinctio";
+                                counterId = "quod";
+                                endDate = LocalDate.parse("2022-01-01");
+                                sourceType = SourceYandexMetricaYandexMetrica.YANDEX_METRICA;
+                                startDate = LocalDate.parse("2022-01-01");
+                            }}, "facilis", "d74dd39c-0f5d-42cf-b7c7-0a45626d4368") {{
+                secretId = "dicta";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -767,12 +759,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("eaque") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("dolor") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("a");            
+            DeleteSourceRequest req = new DeleteSourceRequest("maiores");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -804,12 +796,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("libero") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("quasi") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("aut");            
+            GetSourceRequest req = new GetSourceRequest("ex");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -845,16 +837,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aut") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("nulla") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("deleniti", "impedit", "42e141aa-c366-4c8d-96b1-442907474778") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("excepturi", "voluptatibus", "5fce6c55-6146-4c3e-a50f-b008c42e141a") {{
                 oAuthInputConfiguration = new java.util.HashMap<String, Object>() {{
-                    put("reprehenderit", "quidem");
-                    put("fugiat", "ut");
-                    put("eum", "suscipit");
+                    put("placeat", "velit");
+                    put("eum", "autem");
+                    put("nobis", "quas");
                 }};
             }};            
 
@@ -889,19 +881,18 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security("assumenda") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                    bearerAuth = "";
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 181151;
-                offset = 509342;
+                limit = 860552;
+                offset = 379034;
                 workspaceIds = new String[]{{
-                    add("10ab3cdc-a425-4190-8e52-3c7e0bc7178e"),
-                    add("4796f2a7-0c68-4828-aaa4-82562f222e98"),
-                    add("17ee17cb-e61e-46b7-b95b-c0ab3c20c4f3"),
-                    add("789fd871-f99d-4d2e-bd12-1aa6f1e674bd"),
+                    add("14429074-7477-48a7-bd46-6d28c10ab3cd"),
+                    add("ca425190-4e52-43c7-a0bc-7178e4796f2a"),
+                    add("70c68828-2aa4-4825-a2f2-22e9817ee17c"),
                 }};
             }};            
 
@@ -1622,30 +1613,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("soluta") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("nam") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("accusantium") {{
+            PatchSourceRequest req = new PatchSourceRequest("vero") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceGoogleSearchConsole(                new SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication(SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType.SERVICE, "voluptatum", "qui") {{
-                                        authType = SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType.SERVICE;
-                                        email = "Finn.Kihn@gmail.com";
-                                        serviceAccountInfo = "aut";
-                                    }},                 new String[]{{
-                                        add("ex"),
-                                        add("deleniti"),
-                                        add("itaque"),
-                                        add("dolorum"),
-                                    }}, SourceGoogleSearchConsoleGoogleSearchConsole.GOOGLE_SEARCH_CONSOLE, LocalDate.parse("2022-05-23")) {{
-                        customReports = "tenetur";
-                        dataState = SourceGoogleSearchConsoleDataState.FINAL_;
-                        endDate = LocalDate.parse("2022-09-22");
-                    }};;
+                    configuration = new SourceKlaviyo("quasi", SourceKlaviyoKlaviyo.KLAVIYO, OffsetDateTime.parse("2017-01-25T00:00:00Z"));;
                     name = "My source";
-                    secretId = "voluptate";
-                    workspaceId = "051339d0-8086-4a18-8039-4c26071f93f5";
+                    secretId = "saepe";
+                    workspaceId = "6b7b95bc-0ab3-4c20-84f3-789fd871f99d";
                 }};;
             }};            
 
@@ -2366,17 +2344,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("asperiores") {{
-                    bearerAuth = "YOUR_BEARER_TOKEN_HERE";
+                .setSecurity(new Security("possimus") {{
+                    bearerAuth = "";
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("aperiam") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceKustomerSinger("repellendus", SourceKustomerSingerKustomerSinger.KUSTOMER_SINGER, "officia") {{
-                                    apiToken = "quaerat";
-                                    sourceType = SourceKustomerSingerKustomerSinger.KUSTOMER_SINGER;
-                                    startDate = "consequuntur";
-                                }}, "maxime");;
+            PutSourceRequest req = new PutSourceRequest("quia") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceWebflow("a very long hex sequence", "a relatively long hex sequence", SourceWebflowWebflow.WEBFLOW) {{
+                                    apiKey = "a very long hex sequence";
+                                    siteId = "a relatively long hex sequence";
+                                    sourceType = SourceWebflowWebflow.WEBFLOW;
+                                }}, "asperiores");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);
