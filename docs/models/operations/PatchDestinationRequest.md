@@ -1,0 +1,9 @@
+# PatchDestinationRequest
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `destinationPatchRequest`                                                                               | [com.airbyte.api.models.shared.DestinationPatchRequest](../../models/shared/DestinationPatchRequest.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `destinationId`                                                                                         | *String*                                                                                                | :heavy_check_mark:                                                                                      | N/A                                                                                                     |

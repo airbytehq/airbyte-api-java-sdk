@@ -1,0 +1,13 @@
+# SourceShopifyCredentialsOAuth20
+
+OAuth2.0
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `accessToken`                                                                                                 | *String*                                                                                                      | :heavy_minus_sign:                                                                                            | The Access Token for making authenticated requests.                                                           |
+| `authMethod`                                                                                                  | [SourceShopifyCredentialsOAuth20AuthMethod](../../models/shared/SourceShopifyCredentialsOAuth20AuthMethod.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `clientId`                                                                                                    | *String*                                                                                                      | :heavy_minus_sign:                                                                                            | The Client ID of the Shopify developer application.                                                           |
+| `clientSecret`                                                                                                | *String*                                                                                                      | :heavy_minus_sign:                                                                                            | The Client Secret of the Shopify developer application.                                                       |

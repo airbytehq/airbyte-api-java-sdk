@@ -25,9 +25,9 @@ public class WorkspaceOAuthCredentialsRequest {
      * The configuration for this source/destination based on the OAuth section of the relevant specification.
      */
     @JsonProperty("configuration")
-    public java.util.Map<String, Object> configuration;
+    public OAuthCredentialsConfiguration configuration;
 
-    public WorkspaceOAuthCredentialsRequest withConfiguration(java.util.Map<String, Object> configuration) {
+    public WorkspaceOAuthCredentialsRequest withConfiguration(OAuthCredentialsConfiguration configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -43,7 +43,7 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
     
-    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") java.util.Map<String, Object> configuration, @JsonProperty("name") String name) {
+    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") OAuthCredentialsConfiguration configuration, @JsonProperty("name") String name) {
         this.actorType = actorType;
         this.configuration = configuration;
         this.name = name;

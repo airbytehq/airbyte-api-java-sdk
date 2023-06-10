@@ -1,0 +1,12 @@
+# SourcesResponse
+
+Successful operation
+
+
+## Fields
+
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `data`                                                        | List<[SourceResponse](../../models/shared/SourceResponse.md)> | :heavy_check_mark:                                            | N/A                                                           |
+| `next`                                                        | *String*                                                      | :heavy_minus_sign:                                            | N/A                                                           |
+| `previous`                                                    | *String*                                                      | :heavy_minus_sign:                                            | N/A                                                           |

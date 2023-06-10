@@ -1,0 +1,11 @@
+# SourceOracleConnectionDataSystemIDSID
+
+Use SID (Oracle System Identifier)
+
+
+## Fields
+
+| Field                                                                                                                             | Type                                                                                                                              | Required                                                                                                                          | Description                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `connectionType`                                                                                                                  | [SourceOracleConnectionDataSystemIDSIDConnectionType](../../models/shared/SourceOracleConnectionDataSystemIDSIDConnectionType.md) | :heavy_minus_sign:                                                                                                                | N/A                                                                                                                               |
+| `sid`                                                                                                                             | *String*                                                                                                                          | :heavy_check_mark:                                                                                                                | N/A                                                                                                                               |

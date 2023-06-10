@@ -28,9 +28,9 @@ public class InitiateOauthRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("oAuthInputConfiguration")
-    public java.util.Map<String, Object> oAuthInputConfiguration;
+    public OAuthInputConfiguration oAuthInputConfiguration;
 
-    public InitiateOauthRequest withOAuthInputConfiguration(java.util.Map<String, Object> oAuthInputConfiguration) {
+    public InitiateOauthRequest withOAuthInputConfiguration(OAuthInputConfiguration oAuthInputConfiguration) {
         this.oAuthInputConfiguration = oAuthInputConfiguration;
         return this;
     }
