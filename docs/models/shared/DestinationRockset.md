@@ -1,0 +1,13 @@
+# DestinationRockset
+
+The values required to configure the destination.
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `apiKey`                                                                      | *String*                                                                      | :heavy_check_mark:                                                            | Rockset api key                                                               |                                                                               |
+| `apiServer`                                                                   | *String*                                                                      | :heavy_minus_sign:                                                            | Rockset api URL                                                               |                                                                               |
+| `destinationType`                                                             | [DestinationRocksetRockset](../../models/shared/DestinationRocksetRockset.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
+| `workspace`                                                                   | *String*                                                                      | :heavy_check_mark:                                                            | The Rockset workspace in which collections will be created + written to.      | commons                                                                       |

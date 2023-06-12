@@ -1,0 +1,11 @@
+# SourceSftpCredentialsPasswordAuthentication
+
+The server authentication method
+
+
+## Fields
+
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `authMethod`                                                                                                                          | [SourceSftpCredentialsPasswordAuthenticationAuthMethod](../../models/shared/SourceSftpCredentialsPasswordAuthenticationAuthMethod.md) | :heavy_check_mark:                                                                                                                    | Connect through password authentication                                                                                               |
+| `authUserPassword`                                                                                                                    | *String*                                                                                                                              | :heavy_check_mark:                                                                                                                    | OS-level password for logging into the jump server host                                                                               |

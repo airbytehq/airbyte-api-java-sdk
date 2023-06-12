@@ -1,0 +1,12 @@
+# SourceDelighted
+
+The values required to configure the source.
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | A Delighted API key.                                                                      |                                                                                           |
+| `since`                                                                                   | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | The date from which you'd like to replicate the data                                      | 2022-05-30T04:50:23Z                                                                      |
+| `sourceType`                                                                              | [SourceDelightedDelighted](../../models/shared/SourceDelightedDelighted.md)               | :heavy_check_mark:                                                                        | N/A                                                                                       |                                                                                           |

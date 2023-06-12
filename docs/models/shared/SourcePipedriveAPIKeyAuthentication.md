@@ -1,0 +1,9 @@
+# SourcePipedriveAPIKeyAuthentication
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `apiToken`                                                                                                        | *String*                                                                                                          | :heavy_check_mark:                                                                                                | The Pipedrive API Token.                                                                                          |
+| `authType`                                                                                                        | [SourcePipedriveAPIKeyAuthenticationAuthType](../../models/shared/SourcePipedriveAPIKeyAuthenticationAuthType.md) | :heavy_check_mark:                                                                                                | N/A                                                                                                               |

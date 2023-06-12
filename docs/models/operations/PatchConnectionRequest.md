@@ -1,0 +1,9 @@
+# PatchConnectionRequest
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `connectionPatchRequest`                                                                              | [com.airbyte.api.models.shared.ConnectionPatchRequest](../../models/shared/ConnectionPatchRequest.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `connectionId`                                                                                        | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |

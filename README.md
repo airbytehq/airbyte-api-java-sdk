@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.16.2'
+implementation 'com.airbyte.api:public-api:0.17.1'
 ```
 <!-- End SDK Installation -->
 
@@ -148,52 +148,52 @@ public class Application {
 ## Available Resources and Operations
 
 
-### [connections](docs/connections/README.md)
+### [connections](docs/sdks/connections/README.md)
 
-* [createConnection](docs/connections/README.md#createconnection) - Create a connection
-* [deleteConnection](docs/connections/README.md#deleteconnection) - Delete a Connection
-* [getConnection](docs/connections/README.md#getconnection) - Get Connection details
-* [listConnections](docs/connections/README.md#listconnections) - List connections
-* [patchConnection](docs/connections/README.md#patchconnection) - Update Connection details
+* [createConnection](docs/sdks/connections/README.md#createconnection) - Create a connection
+* [deleteConnection](docs/sdks/connections/README.md#deleteconnection) - Delete a Connection
+* [getConnection](docs/sdks/connections/README.md#getconnection) - Get Connection details
+* [listConnections](docs/sdks/connections/README.md#listconnections) - List connections
+* [patchConnection](docs/sdks/connections/README.md#patchconnection) - Update Connection details
 
-### [destinations](docs/destinations/README.md)
+### [destinations](docs/sdks/destinations/README.md)
 
-* [createDestination](docs/destinations/README.md#createdestination) - Create a destination
-* [deleteDestination](docs/destinations/README.md#deletedestination) - Delete a Destination
-* [getDestination](docs/destinations/README.md#getdestination) - Get Destination details
-* [listDestinations](docs/destinations/README.md#listdestinations) - List destinations
-* [patchDestination](docs/destinations/README.md#patchdestination) - Update a Destination
-* [putDestination](docs/destinations/README.md#putdestination) - Update a Destination and fully overwrite it
+* [createDestination](docs/sdks/destinations/README.md#createdestination) - Create a destination
+* [deleteDestination](docs/sdks/destinations/README.md#deletedestination) - Delete a Destination
+* [getDestination](docs/sdks/destinations/README.md#getdestination) - Get Destination details
+* [listDestinations](docs/sdks/destinations/README.md#listdestinations) - List destinations
+* [patchDestination](docs/sdks/destinations/README.md#patchdestination) - Update a Destination
+* [putDestination](docs/sdks/destinations/README.md#putdestination) - Update a Destination and fully overwrite it
 
-### [jobs](docs/jobs/README.md)
+### [jobs](docs/sdks/jobs/README.md)
 
-* [cancelJob](docs/jobs/README.md#canceljob) - Cancel a running Job
-* [createJob](docs/jobs/README.md#createjob) - Trigger a sync or reset job of a connection
-* [getJob](docs/jobs/README.md#getjob) - Get Job status and details
-* [listJobs](docs/jobs/README.md#listjobs) - List Jobs by sync type
+* [cancelJob](docs/sdks/jobs/README.md#canceljob) - Cancel a running Job
+* [createJob](docs/sdks/jobs/README.md#createjob) - Trigger a sync or reset job of a connection
+* [getJob](docs/sdks/jobs/README.md#getjob) - Get Job status and details
+* [listJobs](docs/sdks/jobs/README.md#listjobs) - List Jobs by sync type
 
-### [sources](docs/sources/README.md)
+### [sources](docs/sdks/sources/README.md)
 
-* [createSource](docs/sources/README.md#createsource) - Create a source
-* [deleteSource](docs/sources/README.md#deletesource) - Delete a Source
-* [getSource](docs/sources/README.md#getsource) - Get Source details
-* [initiateOAuth](docs/sources/README.md#initiateoauth) - Initiate OAuth for a source
-* [listSources](docs/sources/README.md#listsources) - List sources
-* [patchSource](docs/sources/README.md#patchsource) - Update a Source
-* [putSource](docs/sources/README.md#putsource) - Update a Source and fully overwrite it
+* [createSource](docs/sdks/sources/README.md#createsource) - Create a source
+* [deleteSource](docs/sdks/sources/README.md#deletesource) - Delete a Source
+* [getSource](docs/sdks/sources/README.md#getsource) - Get Source details
+* [initiateOAuth](docs/sdks/sources/README.md#initiateoauth) - Initiate OAuth for a source
+* [listSources](docs/sdks/sources/README.md#listsources) - List sources
+* [patchSource](docs/sdks/sources/README.md#patchsource) - Update a Source
+* [putSource](docs/sdks/sources/README.md#putsource) - Update a Source and fully overwrite it
 
-### [streams](docs/streams/README.md)
+### [streams](docs/sdks/streams/README.md)
 
-* [getStreamProperties](docs/streams/README.md#getstreamproperties) - Get stream properties
+* [getStreamProperties](docs/sdks/streams/README.md#getstreamproperties) - Get stream properties
 
-### [workspaces](docs/workspaces/README.md)
+### [workspaces](docs/sdks/workspaces/README.md)
 
-* [createOrUpdateWorkspaceOAuthCredentials](docs/workspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
-* [createWorkspace](docs/workspaces/README.md#createworkspace) - Create a workspace
-* [deleteWorkspace](docs/workspaces/README.md#deleteworkspace) - Delete a Workspace
-* [getWorkspace](docs/workspaces/README.md#getworkspace) - Get Workspace details
-* [listWorkspaces](docs/workspaces/README.md#listworkspaces) - List workspaces
-* [updateWorkspace](docs/workspaces/README.md#updateworkspace) - Update a workspace
+* [createOrUpdateWorkspaceOAuthCredentials](docs/sdks/workspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
+* [createWorkspace](docs/sdks/workspaces/README.md#createworkspace) - Create a workspace
+* [deleteWorkspace](docs/sdks/workspaces/README.md#deleteworkspace) - Delete a Workspace
+* [getWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Get Workspace details
+* [listWorkspaces](docs/sdks/workspaces/README.md#listworkspaces) - List workspaces
+* [updateWorkspace](docs/sdks/workspaces/README.md#updateworkspace) - Update a workspace
 <!-- End SDK Available Operations -->
 
 ### Maturity

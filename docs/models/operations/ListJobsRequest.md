@@ -1,0 +1,11 @@
+# ListJobsRequest
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `connectionId`                                                                  | *String*                                                                        | :heavy_check_mark:                                                              | Filter the Jobs by connectionId.                                                |
+| `jobType`                                                                       | [com.airbyte.api.models.shared.JobTypeEnum](../../models/shared/JobTypeEnum.md) | :heavy_minus_sign:                                                              | Filter the Jobs by jobType.                                                     |
+| `limit`                                                                         | *Integer*                                                                       | :heavy_minus_sign:                                                              | Set the limit on the number of Jobs returned. The default is 20 Jobs.           |
+| `offset`                                                                        | *Integer*                                                                       | :heavy_minus_sign:                                                              | Set the offset to start at when returning Jobs. The default is 0.               |
