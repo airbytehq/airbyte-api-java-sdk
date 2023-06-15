@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAzureBlobStorage - The values required to configure the source.
  */
+
 public class SourceAzureBlobStorage {
     /**
      * The Azure blob storage account key.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePocket - The values required to configure the source.
  */
+
 public class SourcePocket {
     /**
      * The user's Pocket access token.

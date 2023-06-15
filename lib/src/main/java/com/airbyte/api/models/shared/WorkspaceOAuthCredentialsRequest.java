@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * WorkspaceOAuthCredentialsRequest - POST body for creating/updating workspace level OAuth credentials
  */
+
 public class WorkspaceOAuthCredentialsRequest {
     /**
      * Whether you're setting this override for a source or destination

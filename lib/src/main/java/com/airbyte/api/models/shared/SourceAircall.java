@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceAircall - The values required to configure the source.
  */
+
 public class SourceAircall {
     /**
      * App ID found at settings https://dashboard.aircall.io/integrations/api-keys

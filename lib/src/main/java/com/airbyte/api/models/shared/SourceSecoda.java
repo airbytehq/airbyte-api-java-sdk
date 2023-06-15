@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSecoda - The values required to configure the source.
  */
+
 public class SourceSecoda {
     /**
      * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.

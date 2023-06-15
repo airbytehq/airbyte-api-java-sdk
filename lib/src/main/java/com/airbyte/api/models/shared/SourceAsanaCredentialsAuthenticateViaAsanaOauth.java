@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAsanaCredentialsAuthenticateViaAsanaOauth - Choose how to authenticate to Github
  */
+
 public class SourceAsanaCredentialsAuthenticateViaAsanaOauth {
     @JsonProperty("client_id")
     public String clientId;

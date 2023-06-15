@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedisSslModeDisable - Disable SSL.
  */
+
 public class DestinationRedisSslModeDisable {
     @JsonProperty("mode")
     public DestinationRedisSslModeDisableMode mode;

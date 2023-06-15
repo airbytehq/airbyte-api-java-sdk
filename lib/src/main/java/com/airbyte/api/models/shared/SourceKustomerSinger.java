@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceKustomerSinger - The values required to configure the source.
  */
+
 public class SourceKustomerSinger {
     /**
      * Kustomer API Token. See the &lt;a href="https://developer.kustomer.com/kustomer-api-docs/reference/authentication"&gt;docs&lt;/a&gt; on how to obtain this

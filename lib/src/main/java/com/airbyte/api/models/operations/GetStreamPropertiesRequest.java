@@ -7,6 +7,7 @@ package com.airbyte.api.models.operations;
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class GetStreamPropertiesRequest {
     /**
      * ID of the destination

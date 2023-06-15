@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSftp - The values required to configure the source.
  */
+
 public class SourceSftp {
     /**
      * The server authentication method

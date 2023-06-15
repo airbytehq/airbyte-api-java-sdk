@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceLinkedinAdsCredentialsAccessToken {
     /**
      * The token value generated using the authentication code. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-ads#authentication"&gt;docs&lt;/a&gt; to obtain yours.

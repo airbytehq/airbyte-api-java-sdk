@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceHubplanner - The values required to configure the source.
  */
+
 public class SourceHubplanner {
     /**
      * Hubplanner API key. See https://github.com/hubplanner/API#authentication for more details.

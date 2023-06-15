@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * JobResponse - Provides details of a single job.
  */
+
 public class JobResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bytesSynced")

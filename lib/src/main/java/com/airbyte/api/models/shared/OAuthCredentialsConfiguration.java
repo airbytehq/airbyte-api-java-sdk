@@ -9,6 +9,7 @@ package com.airbyte.api.models.shared;
 /**
  * OAuthCredentialsConfiguration - The configuration for this source/destination based on the OAuth section of the relevant specification.
  */
+
 public class OAuthCredentialsConfiguration {
     public OAuthCredentialsConfiguration(){}
 }

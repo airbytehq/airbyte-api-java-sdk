@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceYoutubeAnalytics - The values required to configure the source.
  */
+
 public class SourceYoutubeAnalytics {
     @JsonProperty("credentials")
     public java.util.Map<String, Object> credentials;

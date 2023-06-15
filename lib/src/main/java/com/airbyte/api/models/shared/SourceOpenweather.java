@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOpenweather - The values required to configure the source.
  */
+
 public class SourceOpenweather {
     /**
      * Your OpenWeather API Key. See &lt;a href="https://openweathermap.org/api"&gt;here&lt;/a&gt;. The key is case sensitive.

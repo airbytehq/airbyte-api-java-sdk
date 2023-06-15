@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationVerticaTunnelMethodPasswordAuthentication - Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
  */
+
 public class DestinationVerticaTunnelMethodPasswordAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.

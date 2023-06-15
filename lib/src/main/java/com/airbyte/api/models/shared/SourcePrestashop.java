@@ -11,6 +11,7 @@ import java.time.LocalDate;
 /**
  * SourcePrestashop - The values required to configure the source.
  */
+
 public class SourcePrestashop {
     /**
      * Your PrestaShop access key. See &lt;a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.

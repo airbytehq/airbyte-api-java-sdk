@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceRkiCovid - The values required to configure the source.
  */
+
 public class SourceRkiCovid {
     @JsonProperty("sourceType")
     public SourceRkiCovidRkiCovid sourceType;

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceE2eTestCloud - The values required to configure the source.
  */
+
 public class SourceE2eTestCloud {
     /**
      * Number of records to emit per stream. Min 1. Max 100 billion.

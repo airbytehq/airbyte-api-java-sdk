@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption - Staging data will be stored in plaintext.
  */
+
 public class DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption {
     @JsonProperty("encryption_type")
     public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionType encryptionType;

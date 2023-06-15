@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationCassandra - The values required to configure the destination.
  */
+
 public class DestinationCassandra {
     /**
      * Address to connect to.

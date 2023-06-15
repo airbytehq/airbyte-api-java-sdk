@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceChartmogul - The values required to configure the source.
  */
+
 public class SourceChartmogul {
     /**
      * Your Chartmogul API key. See &lt;a href="https://help.chartmogul.com/hc/en-us/articles/4407796325906-Creating-and-Managing-API-keys#creating-an-api-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.

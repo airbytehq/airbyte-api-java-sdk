@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourcePolygonStockApi - The values required to configure the source.
  */
+
 public class SourcePolygonStockApi {
     /**
      * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.

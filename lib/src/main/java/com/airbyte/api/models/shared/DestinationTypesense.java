@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationTypesense - The values required to configure the destination.
  */
+
 public class DestinationTypesense {
     /**
      * Typesense API Key

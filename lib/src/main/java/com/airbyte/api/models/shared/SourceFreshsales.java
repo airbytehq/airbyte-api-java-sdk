@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFreshsales - The values required to configure the source.
  */
+
 public class SourceFreshsales {
     /**
      * Freshsales API Key. See &lt;a href="https://crmsupport.freshworks.com/support/solutions/articles/50000002503-how-to-find-my-api-key-"&gt;here&lt;/a&gt;. The key is case sensitive.

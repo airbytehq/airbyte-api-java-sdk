@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceTrello - The values required to configure the source.
  */
+
 public class SourceTrello {
     /**
      * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated.

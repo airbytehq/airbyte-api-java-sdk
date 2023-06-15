@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceTvmazeSchedule - The values required to configure the source.
  */
+
 public class SourceTvmazeSchedule {
     /**
      * Country code for domestic TV schedule retrieval.

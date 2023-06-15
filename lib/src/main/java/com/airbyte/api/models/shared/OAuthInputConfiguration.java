@@ -9,6 +9,7 @@ package com.airbyte.api.models.shared;
 /**
  * OAuthInputConfiguration - Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
  */
+
 public class OAuthInputConfiguration {
     public OAuthInputConfiguration(){}
 }

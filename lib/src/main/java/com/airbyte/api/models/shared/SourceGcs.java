@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGcs - The values required to configure the source.
  */
+
 public class SourceGcs {
     /**
      * GCS bucket name

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSapFieldglass - The values required to configure the source.
  */
+
 public class SourceSapFieldglass {
     /**
      * API Key

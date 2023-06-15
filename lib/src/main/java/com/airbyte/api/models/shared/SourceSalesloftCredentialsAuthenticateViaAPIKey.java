@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceSalesloftCredentialsAuthenticateViaAPIKey {
     /**
      * API Key for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/salesloft#setup-guide"&gt;docs&lt;/a&gt;

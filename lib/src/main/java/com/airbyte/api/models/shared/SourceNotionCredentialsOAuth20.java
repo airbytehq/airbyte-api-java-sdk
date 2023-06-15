@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceNotionCredentialsOAuth20 - Pick an authentication method.
  */
+
 public class SourceNotionCredentialsOAuth20 {
     /**
      * Access Token is a token you received by complete the OauthWebFlow of Notion.

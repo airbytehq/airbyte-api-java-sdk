@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationConvex - The values required to configure the destination.
  */
+
 public class DestinationConvex {
     /**
      * API access key used to send data to a Convex deployment.

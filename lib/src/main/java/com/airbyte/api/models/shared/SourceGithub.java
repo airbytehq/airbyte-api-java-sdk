@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceGithub - The values required to configure the source.
  */
+
 public class SourceGithub {
     /**
      * Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDatabricksDataSourceAzureBlobStorage - Storage on which the delta lake is built.
  */
+
 public class DestinationDatabricksDataSourceAzureBlobStorage {
     /**
      * The account's name of the Azure Blob Storage.

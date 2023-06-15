@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceS3S3AmazonWebServices - Use this to load files from S3 or S3-compatible services
  */
+
 public class SourceS3S3AmazonWebServices {
     /**
      * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.

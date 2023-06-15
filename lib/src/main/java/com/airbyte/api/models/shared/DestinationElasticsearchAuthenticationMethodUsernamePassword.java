@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationElasticsearchAuthenticationMethodUsernamePassword - Basic auth header with a username and password
  */
+
 public class DestinationElasticsearchAuthenticationMethodUsernamePassword {
     @JsonProperty("method")
     public DestinationElasticsearchAuthenticationMethodUsernamePasswordMethod method;

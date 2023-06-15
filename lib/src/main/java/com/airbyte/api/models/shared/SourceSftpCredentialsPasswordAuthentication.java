@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSftpCredentialsPasswordAuthentication - The server authentication method
  */
+
 public class SourceSftpCredentialsPasswordAuthentication {
     /**
      * Connect through password authentication

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationPostgres - The values required to configure the destination.
  */
+
 public class DestinationPostgres {
     /**
      * Name of the database.

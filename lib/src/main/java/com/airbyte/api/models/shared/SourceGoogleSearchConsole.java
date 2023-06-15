@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceGoogleSearchConsole - The values required to configure the source.
  */
+
 public class SourceGoogleSearchConsole {
     @JsonProperty("authorization")
     public Object authorization;

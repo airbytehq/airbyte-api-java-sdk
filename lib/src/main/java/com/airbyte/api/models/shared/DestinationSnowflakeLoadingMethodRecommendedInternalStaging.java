@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSnowflakeLoadingMethodRecommendedInternalStaging - Recommended for large production workloads for better speed and scalability.
  */
+
 public class DestinationSnowflakeLoadingMethodRecommendedInternalStaging {
     @JsonProperty("method")
     public DestinationSnowflakeLoadingMethodRecommendedInternalStagingMethod method;

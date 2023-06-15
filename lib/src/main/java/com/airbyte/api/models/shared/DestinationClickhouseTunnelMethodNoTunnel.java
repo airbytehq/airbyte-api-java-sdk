@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationClickhouseTunnelMethodNoTunnel - Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
  */
+
 public class DestinationClickhouseTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database

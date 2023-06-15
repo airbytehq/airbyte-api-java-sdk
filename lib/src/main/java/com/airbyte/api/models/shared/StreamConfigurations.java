@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * StreamConfigurations - A list of configured stream options for a connection.
  */
+
 public class StreamConfigurations {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streams")

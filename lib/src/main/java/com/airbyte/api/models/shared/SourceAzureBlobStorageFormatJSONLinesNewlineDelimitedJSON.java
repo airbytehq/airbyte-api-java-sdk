@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON - Input data format
  */
+
 public class SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSON {
     @JsonProperty("format_type")
     public SourceAzureBlobStorageFormatJSONLinesNewlineDelimitedJSONFormatType formatType;

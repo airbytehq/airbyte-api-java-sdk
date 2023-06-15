@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceQuickbooks - The values required to configure the source.
  */
+
 public class SourceQuickbooks {
     @JsonProperty("credentials")
     public Object credentials;

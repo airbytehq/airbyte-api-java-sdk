@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceChargebee - The values required to configure the source.
  */
+
 public class SourceChargebee {
     /**
      * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section.

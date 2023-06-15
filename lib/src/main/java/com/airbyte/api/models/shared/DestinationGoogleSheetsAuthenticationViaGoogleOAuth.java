@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationGoogleSheetsAuthenticationViaGoogleOAuth - Google API Credentials for connecting to Google Sheets and Google Drive APIs
  */
+
 public class DestinationGoogleSheetsAuthenticationViaGoogleOAuth {
     /**
      * The Client ID of your Google Sheets developer application.

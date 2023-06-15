@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMongodbAuthTypeNone - None.
  */
+
 public class DestinationMongodbAuthTypeNone {
     @JsonProperty("authorization")
     public DestinationMongodbAuthTypeNoneAuthorization authorization;

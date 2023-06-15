@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth - Credentials for the service
  */
+
 public class SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth {
     /**
      * Access Token for making authenticated requests.

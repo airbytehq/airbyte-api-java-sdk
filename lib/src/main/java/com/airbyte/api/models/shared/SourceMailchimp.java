@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMailchimp - The values required to configure the source.
  */
+
 public class SourceMailchimp {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaign_id")

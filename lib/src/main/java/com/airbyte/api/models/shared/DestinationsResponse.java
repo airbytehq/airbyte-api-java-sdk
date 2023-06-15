@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationsResponse - Successful operation
  */
+
 public class DestinationsResponse {
     @JsonProperty("data")
     public DestinationResponse[] data;

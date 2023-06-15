@@ -11,6 +11,7 @@ import java.time.LocalDate;
 /**
  * SourceAwsCloudtrail - The values required to configure the source.
  */
+
 public class SourceAwsCloudtrail {
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.

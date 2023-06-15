@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourcePosthog - The values required to configure the source.
  */
+
 public class SourcePosthog {
     /**
      * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.

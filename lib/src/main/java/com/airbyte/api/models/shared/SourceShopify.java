@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceShopify - The values required to configure the source.
  */
+
 public class SourceShopify {
     /**
      * The authorization method to use to retrieve data from Shopify

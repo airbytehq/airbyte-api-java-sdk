@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleWorkspaceAdminReports - The values required to configure the source.
  */
+
 public class SourceGoogleWorkspaceAdminReports {
     /**
      * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/reports/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.

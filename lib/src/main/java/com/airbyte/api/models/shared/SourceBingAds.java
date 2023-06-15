@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceBingAds - The values required to configure the source.
  */
+
 public class SourceBingAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")

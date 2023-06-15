@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceTodoist - The values required to configure the source.
  */
+
 public class SourceTodoist {
     @JsonProperty("sourceType")
     public SourceTodoistTodoist sourceType;

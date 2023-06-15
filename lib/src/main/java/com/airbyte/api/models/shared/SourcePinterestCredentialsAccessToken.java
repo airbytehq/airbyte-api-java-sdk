@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourcePinterestCredentialsAccessToken {
     /**
      * The Access Token to make authenticated requests.

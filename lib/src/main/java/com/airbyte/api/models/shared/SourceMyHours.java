@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMyHours - The values required to configure the source.
  */
+
 public class SourceMyHours {
     /**
      * Your My Hours username

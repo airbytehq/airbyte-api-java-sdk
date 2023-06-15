@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceS3FormatCSV - This connector utilises &lt;a href="https: // arrow.apache.org/docs/python/generated/pyarrow.csv.open_csv.html" target="_blank"&gt;PyArrow (Apache Arrow)&lt;/a&gt; for CSV parsing.
  */
+
 public class SourceS3FormatCSV {
     /**
      * Optionally add a valid JSON string here to provide additional options to the csv reader. Mappings must correspond to options &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ConvertOptions.html#pyarrow.csv.ConvertOptions" target="_blank"&gt;detailed here&lt;/a&gt;. 'column_types' is used internally to handle schema so overriding that would likely cause problems.

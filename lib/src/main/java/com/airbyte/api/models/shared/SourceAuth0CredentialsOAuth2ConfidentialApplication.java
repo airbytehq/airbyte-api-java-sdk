@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceAuth0CredentialsOAuth2ConfidentialApplication {
     /**
      * The audience for the token, which is your API. You can find this in the Identifier field on your  &lt;a href="https://manage.auth0.com/#/apis"&gt;API's settings tab&lt;/a&gt;

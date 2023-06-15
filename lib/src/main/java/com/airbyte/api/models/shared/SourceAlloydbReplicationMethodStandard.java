@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAlloydbReplicationMethodStandard - Standard replication requires no setup on the DB side but will not be able to represent deletions incrementally.
  */
+
 public class SourceAlloydbReplicationMethodStandard {
     @JsonProperty("method")
     public SourceAlloydbReplicationMethodStandardMethod method;

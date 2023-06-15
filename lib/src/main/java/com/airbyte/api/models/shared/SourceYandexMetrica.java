@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceYandexMetrica - The values required to configure the source.
  */
+
 public class SourceYandexMetrica {
     /**
      * Your Yandex Metrica API access token

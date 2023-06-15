@@ -7,7 +7,6 @@ lib/src/main/java/com/airbyte/api/Streams.java
 lib/src/main/java/com/airbyte/api/Workspaces.java
 lib/src/main/java/com/airbyte/api/Airbyte.java
 .gitattributes
-.gitignore
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew

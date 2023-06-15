@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFreshservice - The values required to configure the source.
  */
+
 public class SourceFreshservice {
     /**
      * Freshservice API Key. See &lt;a href="https://api.freshservice.com/#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.

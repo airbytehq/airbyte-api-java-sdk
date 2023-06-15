@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOracleConnectionDataSystemIDSID - Use SID (Oracle System Identifier)
  */
+
 public class SourceOracleConnectionDataSystemIDSID {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")

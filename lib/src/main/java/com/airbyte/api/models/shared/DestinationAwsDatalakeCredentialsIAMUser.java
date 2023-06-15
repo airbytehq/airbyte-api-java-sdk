@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAwsDatalakeCredentialsIAMUser - Choose How to Authenticate to AWS.
  */
+
 public class DestinationAwsDatalakeCredentialsIAMUser {
     /**
      * AWS User Access Key Id

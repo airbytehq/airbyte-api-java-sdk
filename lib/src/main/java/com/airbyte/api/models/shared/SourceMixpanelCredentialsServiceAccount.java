@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMixpanelCredentialsServiceAccount - Choose how to authenticate to Mixpanel
  */
+
 public class SourceMixpanelCredentialsServiceAccount {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")

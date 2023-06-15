@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON - Format of the data output.
  */
+
 public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
     /**
      * The compression algorithm used to compress data.

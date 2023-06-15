@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFaker - The values required to configure the source.
  */
+
 public class SourceFaker {
     /**
      * How many users should be generated in total.  This setting does not apply to the purchases or products stream.

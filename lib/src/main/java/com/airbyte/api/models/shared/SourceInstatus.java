@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceInstatus - The values required to configure the source.
  */
+
 public class SourceInstatus {
     /**
      * Instatus REST API key

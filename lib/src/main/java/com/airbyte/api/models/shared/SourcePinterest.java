@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourcePinterest - The values required to configure the source.
  */
+
 public class SourcePinterest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

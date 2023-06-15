@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMariadbColumnstore - The values required to configure the destination.
  */
+
 public class DestinationMariadbColumnstore {
     /**
      * Name of the database.

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGlassfrog - The values required to configure the source.
  */
+
 public class SourceGlassfrog {
     /**
      * API key provided by Glassfrog

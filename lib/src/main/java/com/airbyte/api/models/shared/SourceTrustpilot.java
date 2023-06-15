@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceTrustpilot - The values required to configure the source.
  */
+
 public class SourceTrustpilot {
     /**
      * The names of business units which shall be synchronized. Some streams e.g. configured_business_units or private_reviews use this configuration.

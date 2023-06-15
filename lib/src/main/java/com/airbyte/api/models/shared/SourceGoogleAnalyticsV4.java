@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleAnalyticsV4 - The values required to configure the source.
  */
+
 public class SourceGoogleAnalyticsV4 {
     /**
      * Credentials for the service

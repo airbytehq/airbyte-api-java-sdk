@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSentry - The values required to configure the source.
  */
+
 public class SourceSentry {
     /**
      * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"

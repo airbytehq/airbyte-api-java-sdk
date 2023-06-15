@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationPulsar - The values required to configure the destination.
  */
+
 public class DestinationPulsar {
     /**
      * Control whether automatic batching of messages is enabled for the producer.

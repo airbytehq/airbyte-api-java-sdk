@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMonday - The values required to configure the source.
  */
+
 public class SourceMonday {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

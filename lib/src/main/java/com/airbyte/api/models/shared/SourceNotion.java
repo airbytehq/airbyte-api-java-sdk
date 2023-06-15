@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceNotion - The values required to configure the source.
  */
+
 public class SourceNotion {
     /**
      * Pick an authentication method.

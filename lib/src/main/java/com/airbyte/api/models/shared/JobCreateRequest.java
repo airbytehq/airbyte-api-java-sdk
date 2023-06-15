@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * JobCreateRequest - Creates a new Job from the configuration provided in the request body.
  */
+
 public class JobCreateRequest {
     @JsonProperty("connectionId")
     public String connectionId;

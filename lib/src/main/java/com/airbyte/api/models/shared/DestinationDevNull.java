@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDevNull - The values required to configure the destination.
  */
+
 public class DestinationDevNull {
     @JsonProperty("destinationType")
     public DestinationDevNullDevNull destinationType;

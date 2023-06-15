@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationPostgresSslModeRequire - Require SSL mode.
  */
+
 public class DestinationPostgresSslModeRequire {
     @JsonProperty("mode")
     public DestinationPostgresSslModeRequireMode mode;

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * WorkspaceResponse - Provides details of a single workspace.
  */
+
 public class WorkspaceResponse {
     @JsonProperty("dataResidency")
     public GeographyEnum dataResidency;

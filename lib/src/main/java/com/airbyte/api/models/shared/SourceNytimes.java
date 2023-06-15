@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceNytimes - The values required to configure the source.
  */
+
 public class SourceNytimes {
     /**
      * API Key

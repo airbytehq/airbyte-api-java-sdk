@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGetlago - The values required to configure the source.
  */
+
 public class SourceGetlago {
     /**
      * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.

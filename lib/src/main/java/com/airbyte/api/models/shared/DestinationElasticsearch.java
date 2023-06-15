@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationElasticsearch - The values required to configure the destination.
  */
+
 public class DestinationElasticsearch {
     /**
      * The type of authentication to be used

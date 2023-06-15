@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDatabricksDataSourceRecommendedManagedTables - Storage on which the delta lake is built.
  */
+
 public class DestinationDatabricksDataSourceRecommendedManagedTables {
     @JsonProperty("data_source_type")
     public DestinationDatabricksDataSourceRecommendedManagedTablesDataSourceType dataSourceType;

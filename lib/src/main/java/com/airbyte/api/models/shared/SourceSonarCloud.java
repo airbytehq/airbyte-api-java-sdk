@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceSonarCloud - The values required to configure the source.
  */
+
 public class SourceSonarCloud {
     /**
      * Comma-separated list of component keys.

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceWebflow - The values required to configure the source.
  */
+
 public class SourceWebflow {
     /**
      * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api

@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSalesloft - The values required to configure the source.
  */
+
 public class SourceSalesloft {
     @JsonProperty("credentials")
     public Object credentials;

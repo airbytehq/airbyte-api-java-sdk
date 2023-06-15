@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceSquare - The values required to configure the source.
  */
+
 public class SourceSquare {
     /**
      * Choose how to authenticate to Square.

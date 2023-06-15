@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceTiktokMarketingCredentialsOAuth20 - Authentication method
  */
+
 public class SourceTiktokMarketingCredentialsOAuth20 {
     /**
      * Long-term Authorized Access Token.

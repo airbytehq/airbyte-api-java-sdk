@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceWikipediaPageviews - The values required to configure the source.
  */
+
 public class SourceWikipediaPageviews {
     /**
      * If you want to filter by access method, use one of desktop, mobile-app or mobile-web. If you are interested in pageviews regardless of access method, use all-access.

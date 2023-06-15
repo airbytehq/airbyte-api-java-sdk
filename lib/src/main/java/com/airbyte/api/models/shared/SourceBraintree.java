@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceBraintree - The values required to configure the source.
  */
+
 public class SourceBraintree {
     /**
      * Environment specifies where the data will come from.

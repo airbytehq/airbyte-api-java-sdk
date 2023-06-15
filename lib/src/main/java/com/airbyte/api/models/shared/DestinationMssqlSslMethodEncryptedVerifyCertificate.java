@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMssqlSslMethodEncryptedVerifyCertificate - Verify and use the certificate provided by the server.
  */
+
 public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
     /**
      * Specifies the host name of the server. The value of this property must match the subject property of the certificate.

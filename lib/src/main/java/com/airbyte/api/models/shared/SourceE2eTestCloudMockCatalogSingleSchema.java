@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceE2eTestCloudMockCatalogSingleSchema - A catalog with one or multiple streams that share the same schema.
  */
+
 public class SourceE2eTestCloudMockCatalogSingleSchema {
     /**
      * Duplicate the stream for easy load testing. Each stream name will have a number suffix. For example, if the stream name is "ds", the duplicated streams will be "ds_0", "ds_1", etc.

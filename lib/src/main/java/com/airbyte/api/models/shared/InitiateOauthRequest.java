@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * InitiateOauthRequest - POST body for initiating OAuth via the public API
  */
+
 public class InitiateOauthRequest {
     /**
      * The name of the source to authenticate to

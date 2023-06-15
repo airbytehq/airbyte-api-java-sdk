@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSquareCredentialsOauthAuthentication - Choose how to authenticate to Square.
  */
+
 public class SourceSquareCredentialsOauthAuthentication {
     @JsonProperty("auth_type")
     public SourceSquareCredentialsOauthAuthenticationAuthType authType;

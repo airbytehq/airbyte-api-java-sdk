@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFaunaCollection - Settings for the Fauna Collection.
  */
+
 public class SourceFaunaCollection {
     /**
      * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;

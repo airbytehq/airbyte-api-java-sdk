@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOracleConnectionDataServiceName - Use service name
  */
+
 public class SourceOracleConnectionDataServiceName {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")

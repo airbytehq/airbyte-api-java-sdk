@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDatabricksDataSourceAmazonS3 - Storage on which the delta lake is built.
  */
+
 public class DestinationDatabricksDataSourceAmazonS3 {
     @JsonProperty("data_source_type")
     public DestinationDatabricksDataSourceAmazonS3DataSourceType dataSourceType;

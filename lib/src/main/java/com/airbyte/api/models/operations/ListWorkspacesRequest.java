@@ -6,6 +6,7 @@ package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
 
+
 public class ListWorkspacesRequest {
     /**
      * Include deleted workspaces in the returned results.

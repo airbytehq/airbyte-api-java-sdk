@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMeilisearch - The values required to configure the destination.
  */
+
 public class DestinationMeilisearch {
     /**
      * MeiliSearch API Key. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/meilisearch"&gt;docs&lt;/a&gt; for more information on how to obtain this key.

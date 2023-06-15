@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceRetently - The values required to configure the source.
  */
+
 public class SourceRetently {
     /**
      * Choose how to authenticate to Retently

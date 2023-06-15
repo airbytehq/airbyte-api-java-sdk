@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGithubCredentialsPersonalAccessToken - Choose how to authenticate to GitHub
  */
+
 public class SourceGithubCredentialsPersonalAccessToken {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")

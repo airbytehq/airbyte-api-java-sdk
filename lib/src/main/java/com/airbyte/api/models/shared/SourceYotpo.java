@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceYotpo - The values required to configure the source.
  */
+
 public class SourceYotpo {
     /**
      * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref- https://apidocs.yotpo.com/reference/yotpo-authentication)

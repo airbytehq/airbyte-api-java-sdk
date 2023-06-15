@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * StreamPropertiesResponse - A list of stream properties.
  */
+
 public class StreamPropertiesResponse {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streams")

@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceOktaCredentialsOAuth20 {
     @JsonProperty("auth_type")
     public SourceOktaCredentialsOAuth20AuthType authType;

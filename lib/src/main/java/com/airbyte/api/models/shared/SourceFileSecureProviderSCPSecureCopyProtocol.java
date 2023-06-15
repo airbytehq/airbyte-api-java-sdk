@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFileSecureProviderSCPSecureCopyProtocol - The storage Provider or Location of the file(s) which should be replicated.
  */
+
 public class SourceFileSecureProviderSCPSecureCopyProtocol {
     @JsonProperty("host")
     public String host;

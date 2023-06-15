@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMysqlReplicationMethodStandard - Standard replication requires no setup on the DB side but will not be able to represent deletions incrementally.
  */
+
 public class SourceMysqlReplicationMethodStandard {
     @JsonProperty("method")
     public SourceMysqlReplicationMethodStandardMethod method;

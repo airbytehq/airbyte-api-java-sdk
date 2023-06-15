@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationVertica - The values required to configure the destination.
  */
+
 public class DestinationVertica {
     /**
      * Name of the database.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSnowflake - The values required to configure the source.
  */
+
 public class SourceSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

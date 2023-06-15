@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAsanaCredentialsAuthenticateWithPersonalAccessToken - Choose how to authenticate to Github
  */
+
 public class SourceAsanaCredentialsAuthenticateWithPersonalAccessToken {
     /**
      * PAT Credentials

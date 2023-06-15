@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAmazonSqs - The values required to configure the destination.
  */
+
 public class DestinationAmazonSqs {
     /**
      * The Access Key ID of the AWS IAM Role to use for sending  messages

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGridly - The values required to configure the source.
  */
+
 public class SourceGridly {
     @JsonProperty("api_key")
     public String apiKey;

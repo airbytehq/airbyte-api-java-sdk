@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceRecharge - The values required to configure the source.
  */
+
 public class SourceRecharge {
     /**
      * The value of the Access Token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/recharge"&gt;docs&lt;/a&gt; for more information.

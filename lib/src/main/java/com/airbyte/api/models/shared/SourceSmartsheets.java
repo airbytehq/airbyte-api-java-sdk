@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSmartsheets - The values required to configure the source.
  */
+
 public class SourceSmartsheets {
     @JsonProperty("credentials")
     public Object credentials;

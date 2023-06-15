@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceS3FormatParquet - This connector utilises &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.parquet.ParquetFile.html" target="_blank"&gt;PyArrow (Apache Arrow)&lt;/a&gt; for Parquet parsing.
  */
+
 public class SourceS3FormatParquet {
     /**
      * Maximum number of records per batch read from the input files. Batches may be smaller if there aren’t enough rows in the file. This option can help avoid out-of-memory errors if your data is particularly wide.

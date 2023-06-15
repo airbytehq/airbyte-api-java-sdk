@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceFreshcaller - The values required to configure the source.
  */
+
 public class SourceFreshcaller {
     /**
      * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.

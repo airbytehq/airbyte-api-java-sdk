@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceDixa - The values required to configure the source.
  */
+
 public class SourceDixa {
     /**
      * Dixa API token

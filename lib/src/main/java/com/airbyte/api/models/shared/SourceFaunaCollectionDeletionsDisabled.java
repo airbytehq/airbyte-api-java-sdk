@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
  * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
  */
+
 public class SourceFaunaCollectionDeletionsDisabled {
     @JsonProperty("deletion_mode")
     public SourceFaunaCollectionDeletionsDisabledDeletionMode deletionMode;

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAwsDatalakeFormatParquetColumnarStorage - Format of the data output.
  */
+
 public class DestinationAwsDatalakeFormatParquetColumnarStorage {
     /**
      * The compression algorithm used to compress data.

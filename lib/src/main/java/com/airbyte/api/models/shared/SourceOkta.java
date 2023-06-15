@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOkta - The values required to configure the source.
  */
+
 public class SourceOkta {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

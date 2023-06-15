@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceShopifyCredentialsOAuth20 - OAuth2.0
  */
+
 public class SourceShopifyCredentialsOAuth20 {
     /**
      * The Access Token for making authenticated requests.

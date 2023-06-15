@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.time.OffsetDateTime;
 
+
 public class SourceQuickbooksCredentialsOAuth20 {
     /**
      * Access token fot making authenticated requests.

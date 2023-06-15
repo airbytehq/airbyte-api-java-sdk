@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSnowflake - The values required to configure the destination.
  */
+
 public class DestinationSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

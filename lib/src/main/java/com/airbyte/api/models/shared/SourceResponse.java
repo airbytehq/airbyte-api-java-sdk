@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceResponse - Provides details of a single source.
  */
+
 public class SourceResponse {
     /**
      * The values required to configure the source.

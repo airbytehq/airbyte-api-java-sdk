@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSalesforce - The values required to configure the source.
  */
+
 public class SourceSalesforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")

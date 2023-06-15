@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRockset - The values required to configure the destination.
  */
+
 public class DestinationRockset {
     /**
      * Rockset api key

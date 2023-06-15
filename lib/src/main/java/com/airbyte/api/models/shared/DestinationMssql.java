@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMssql - The values required to configure the destination.
  */
+
 public class DestinationMssql {
     /**
      * The name of the MSSQL database.

@@ -11,6 +11,7 @@ import java.time.LocalDate;
 /**
  * SourceBraze - The values required to configure the source.
  */
+
 public class SourceBraze {
     /**
      * Braze REST API key

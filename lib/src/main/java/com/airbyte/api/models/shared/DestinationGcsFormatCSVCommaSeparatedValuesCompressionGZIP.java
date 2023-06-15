@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP - Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
  */
+
 public class DestinationGcsFormatCSVCommaSeparatedValuesCompressionGZIP {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")

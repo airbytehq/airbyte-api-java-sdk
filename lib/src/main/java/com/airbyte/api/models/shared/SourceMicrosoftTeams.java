@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMicrosoftTeams - The values required to configure the source.
  */
+
 public class SourceMicrosoftTeams {
     /**
      * Choose how to authenticate to Microsoft

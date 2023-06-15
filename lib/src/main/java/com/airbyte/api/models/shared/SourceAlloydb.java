@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAlloydb - The values required to configure the source.
  */
+
 public class SourceAlloydb {
     /**
      * Name of the database.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceCoinApi - The values required to configure the source.
  */
+
 public class SourceCoinApi {
     /**
      * API Key

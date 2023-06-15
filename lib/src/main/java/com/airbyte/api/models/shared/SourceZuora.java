@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceZuora - The values required to configure the source.
  */
+
 public class SourceZuora {
     /**
      * Your OAuth user Client ID

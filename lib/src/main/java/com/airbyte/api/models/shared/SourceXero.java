@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceXero - The values required to configure the source.
  */
+
 public class SourceXero {
     @JsonProperty("authentication")
     public SourceXeroAuthenticateViaXeroOAuth authentication;

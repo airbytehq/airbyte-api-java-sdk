@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationScylla - The values required to configure the destination.
  */
+
 public class DestinationScylla {
     /**
      * Address to connect to.

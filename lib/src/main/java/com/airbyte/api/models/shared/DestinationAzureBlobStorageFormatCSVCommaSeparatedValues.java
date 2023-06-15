@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAzureBlobStorageFormatCSVCommaSeparatedValues - Output data format
  */
+
 public class DestinationAzureBlobStorageFormatCSVCommaSeparatedValues {
     /**
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.

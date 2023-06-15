@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceZenloop - The values required to configure the source.
  */
+
 public class SourceZenloop {
     /**
      * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt; 

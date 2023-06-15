@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAzureBlobStorage - The values required to configure the destination.
  */
+
 public class DestinationAzureBlobStorage {
     /**
      * The Azure blob storage account key.

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication - Credentials for connecting to the Google Sheets API
  */
+
 public class SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication {
     @JsonProperty("auth_type")
     public SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType authType;

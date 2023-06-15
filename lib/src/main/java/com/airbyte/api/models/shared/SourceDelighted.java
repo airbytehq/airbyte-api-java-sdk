@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceDelighted - The values required to configure the source.
  */
+
 public class SourceDelighted {
     /**
      * A Delighted API key.

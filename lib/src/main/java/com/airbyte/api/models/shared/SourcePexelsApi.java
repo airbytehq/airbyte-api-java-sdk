@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePexelsApi - The values required to configure the source.
  */
+
 public class SourcePexelsApi {
     /**
      * API key is required to access pexels api, For getting your's goto https://www.pexels.com/api/documentation and create account for free.

@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceHarvest - The values required to configure the source.
  */
+
 public class SourceHarvest {
     /**
      * Harvest account ID. Required for all Harvest requests in pair with Personal Access Token

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMssqlSslMethodEncryptedTrustServerCertificate - Use the certificate provided by the server without verification. (For testing purposes only!)
  */
+
 public class SourceMssqlSslMethodEncryptedTrustServerCertificate {
     @JsonProperty("ssl_method")
     public SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod sslMethod;

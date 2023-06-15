@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGithubCredentialsOAuth - Choose how to authenticate to GitHub
  */
+
 public class SourceGithubCredentialsOAuth {
     /**
      * OAuth access token

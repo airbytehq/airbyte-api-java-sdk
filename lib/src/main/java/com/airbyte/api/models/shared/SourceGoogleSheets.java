@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleSheets - The values required to configure the source.
  */
+
 public class SourceGoogleSheets {
     /**
      * Credentials for connecting to the Google Sheets API

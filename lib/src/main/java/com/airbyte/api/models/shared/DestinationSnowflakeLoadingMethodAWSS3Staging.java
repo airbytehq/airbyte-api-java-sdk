@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSnowflakeLoadingMethodAWSS3Staging - Recommended for large production workloads for better speed and scalability.
  */
+
 public class DestinationSnowflakeLoadingMethodAWSS3Staging {
     /**
      * Enter your &lt;a href="https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html"&gt;AWS access key ID&lt;/a&gt;. Airbyte requires Read and Write permissions on your S3 bucket 

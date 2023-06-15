@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceInstagram - The values required to configure the source.
  */
+
 public class SourceInstagram {
     /**
      * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information

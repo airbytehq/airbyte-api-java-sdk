@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAlloydbTunnelMethodNoTunnel - Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
  */
+
 public class SourceAlloydbTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database

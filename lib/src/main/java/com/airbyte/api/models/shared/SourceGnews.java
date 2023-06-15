@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGnews - The values required to configure the source.
  */
+
 public class SourceGnews {
     /**
      * API Key

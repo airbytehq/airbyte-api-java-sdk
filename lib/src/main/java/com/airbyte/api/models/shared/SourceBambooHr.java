@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceBambooHr - The values required to configure the source.
  */
+
 public class SourceBambooHr {
     /**
      * Api key of bamboo hr

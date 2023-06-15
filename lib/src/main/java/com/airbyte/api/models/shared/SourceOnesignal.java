@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceOnesignal - The values required to configure the source.
  */
+
 public class SourceOnesignal {
     /**
      * Applications keys, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys"&gt;docs&lt;/a&gt; for more information on how to obtain this data

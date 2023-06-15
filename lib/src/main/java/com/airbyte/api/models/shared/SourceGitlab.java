@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceGitlab - The values required to configure the source.
  */
+
 public class SourceGitlab {
     /**
      * Please enter your basic URL from GitLab instance.

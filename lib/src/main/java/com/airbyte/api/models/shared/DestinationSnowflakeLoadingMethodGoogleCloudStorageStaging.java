@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging - Recommended for large production workloads for better speed and scalability.
  */
+
 public class DestinationSnowflakeLoadingMethodGoogleCloudStorageStaging {
     /**
      * Enter the &lt;a href="https://cloud.google.com/storage/docs/creating-buckets"&gt;Cloud Storage bucket name&lt;/a&gt;

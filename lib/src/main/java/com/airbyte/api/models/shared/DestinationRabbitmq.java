@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRabbitmq - The values required to configure the destination.
  */
+
 public class DestinationRabbitmq {
     @JsonProperty("destinationType")
     public DestinationRabbitmqRabbitmq destinationType;

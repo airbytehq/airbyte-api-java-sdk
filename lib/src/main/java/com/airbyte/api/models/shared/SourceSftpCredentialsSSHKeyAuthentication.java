@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSftpCredentialsSSHKeyAuthentication - The server authentication method
  */
+
 public class SourceSftpCredentialsSSHKeyAuthentication {
     /**
      * Connect through ssh key

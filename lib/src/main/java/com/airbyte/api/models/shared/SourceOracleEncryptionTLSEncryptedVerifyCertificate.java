@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOracleEncryptionTLSEncryptedVerifyCertificate - Verify and use the certificate provided by the server.
  */
+
 public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
     @JsonProperty("encryption_method")
     public SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethod encryptionMethod;

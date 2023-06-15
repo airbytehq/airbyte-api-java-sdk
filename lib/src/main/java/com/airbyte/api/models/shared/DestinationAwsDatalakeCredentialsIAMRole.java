@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAwsDatalakeCredentialsIAMRole - Choose How to Authenticate to AWS.
  */
+
 public class DestinationAwsDatalakeCredentialsIAMRole {
     /**
      * Name of the credentials

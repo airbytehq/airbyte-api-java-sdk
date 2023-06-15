@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationOracle - The values required to configure the destination.
  */
+
 public class DestinationOracle {
     @JsonProperty("destinationType")
     public DestinationOracleOracle destinationType;

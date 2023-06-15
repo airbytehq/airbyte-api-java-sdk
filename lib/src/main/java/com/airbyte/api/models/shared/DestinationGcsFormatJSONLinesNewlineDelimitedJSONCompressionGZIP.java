@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP - Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
  */
+
 public class DestinationGcsFormatJSONLinesNewlineDelimitedJSONCompressionGZIP {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_type")

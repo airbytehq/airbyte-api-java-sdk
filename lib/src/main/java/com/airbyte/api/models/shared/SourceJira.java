@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceJira - The values required to configure the source.
  */
+
 public class SourceJira {
     /**
      * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key. API Token is used for Authorization to your account by BasicAuth.
