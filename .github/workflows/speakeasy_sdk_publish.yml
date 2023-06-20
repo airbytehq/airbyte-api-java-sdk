@@ -14,3 +14,8 @@ jobs:
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      ossrh_username: ${{ secrets.MAVEN_USERNAME }}
+      ossrh_password: ${{ secrets.MAVEN_PASSWORD }}
+      java_gpg_secret_key: ${{ secrets.GPG_SECRET_KEY }}
+      java_passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      
