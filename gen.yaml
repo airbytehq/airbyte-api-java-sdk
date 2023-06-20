@@ -9,7 +9,7 @@ generation:
   singleTagPerOp: false
   telemetryEnabled: true
 java:
-  version: 0.18.2
+  version: 0.18.3
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
