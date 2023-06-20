@@ -1,0 +1,11 @@
+# Salesforce
+
+The values required to configure the source.
+
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `clientId`                                                                                                                               | *String*                                                                                                                                 | :heavy_minus_sign:                                                                                                                       | Enter your Salesforce developer application's <a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>     |
+| `clientSecret`                                                                                                                           | *String*                                                                                                                                 | :heavy_minus_sign:                                                                                                                       | Enter your Salesforce developer application's <a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a> |

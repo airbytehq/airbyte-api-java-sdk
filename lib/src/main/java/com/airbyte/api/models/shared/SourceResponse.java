@@ -22,6 +22,14 @@ public class SourceResponse {
         return this;
     }
     
+    @JsonProperty("hasOAuthCredentialOverride")
+    public Boolean hasOAuthCredentialOverride;
+
+    public SourceResponse withHasOAuthCredentialOverride(Boolean hasOAuthCredentialOverride) {
+        this.hasOAuthCredentialOverride = hasOAuthCredentialOverride;
+        return this;
+    }
+    
     @JsonProperty("name")
     public String name;
 
@@ -54,8 +62,9 @@ public class SourceResponse {
         return this;
     }
     
-    public SourceResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
+    public SourceResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("hasOAuthCredentialOverride") Boolean hasOAuthCredentialOverride, @JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
+        this.hasOAuthCredentialOverride = hasOAuthCredentialOverride;
         this.name = name;
         this.sourceId = sourceId;
         this.sourceType = sourceType;

@@ -20,9 +20,6 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateDestinationResponse;
-import com.airbyte.api.models.shared.DestinationAmazonSqs;
-import com.airbyte.api.models.shared.DestinationAmazonSqsAWSRegion;
-import com.airbyte.api.models.shared.DestinationAmazonSqsAmazonSqs;
 import com.airbyte.api.models.shared.DestinationAwsDatalake;
 import com.airbyte.api.models.shared.DestinationAwsDatalakeAwsDatalake;
 import com.airbyte.api.models.shared.DestinationAwsDatalakeChooseHowToPartitionData;
@@ -65,8 +62,6 @@ import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodGCSStagingM
 import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodStandardInserts;
 import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodStandardInsertsMethod;
 import com.airbyte.api.models.shared.DestinationBigqueryTransformationQueryRunType;
-import com.airbyte.api.models.shared.DestinationCassandra;
-import com.airbyte.api.models.shared.DestinationCassandraCassandra;
 import com.airbyte.api.models.shared.DestinationClickhouse;
 import com.airbyte.api.models.shared.DestinationClickhouseClickhouse;
 import com.airbyte.api.models.shared.DestinationClickhouseTunnelMethodNoTunnel;
@@ -154,16 +149,6 @@ import com.airbyte.api.models.shared.DestinationKeen;
 import com.airbyte.api.models.shared.DestinationKeenKeen;
 import com.airbyte.api.models.shared.DestinationKinesis;
 import com.airbyte.api.models.shared.DestinationKinesisKinesis;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstore;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreMariadbColumnstore;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodNoTunnel;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodPasswordAuthentication;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodPasswordAuthenticationTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMeilisearch;
-import com.airbyte.api.models.shared.DestinationMeilisearchMeilisearch;
 import com.airbyte.api.models.shared.DestinationMongodb;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPassword;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPasswordAuthorization;
@@ -232,12 +217,6 @@ import com.airbyte.api.models.shared.DestinationPostgresTunnelMethodSSHKeyAuthen
 import com.airbyte.api.models.shared.DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationPubsub;
 import com.airbyte.api.models.shared.DestinationPubsubPubsub;
-import com.airbyte.api.models.shared.DestinationPulsar;
-import com.airbyte.api.models.shared.DestinationPulsarCompressionType;
-import com.airbyte.api.models.shared.DestinationPulsarPulsar;
-import com.airbyte.api.models.shared.DestinationPulsarTopicType;
-import com.airbyte.api.models.shared.DestinationRabbitmq;
-import com.airbyte.api.models.shared.DestinationRabbitmqRabbitmq;
 import com.airbyte.api.models.shared.DestinationRedis;
 import com.airbyte.api.models.shared.DestinationRedisCacheType;
 import com.airbyte.api.models.shared.DestinationRedisRedis;
@@ -268,8 +247,6 @@ import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodS3Staging
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodS3StagingS3BucketRegion;
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodStandard;
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodStandardMethod;
-import com.airbyte.api.models.shared.DestinationRockset;
-import com.airbyte.api.models.shared.DestinationRocksetRockset;
 import com.airbyte.api.models.shared.DestinationS3;
 import com.airbyte.api.models.shared.DestinationS3FormatAvroApacheAvro;
 import com.airbyte.api.models.shared.DestinationS3FormatAvroApacheAvroCompressionCodecBzip2;
@@ -315,8 +292,6 @@ import com.airbyte.api.models.shared.DestinationS3GlueS3Glue;
 import com.airbyte.api.models.shared.DestinationS3GlueSerializationLibrary;
 import com.airbyte.api.models.shared.DestinationS3S3;
 import com.airbyte.api.models.shared.DestinationS3S3BucketRegion;
-import com.airbyte.api.models.shared.DestinationScylla;
-import com.airbyte.api.models.shared.DestinationScyllaScylla;
 import com.airbyte.api.models.shared.DestinationSftpJson;
 import com.airbyte.api.models.shared.DestinationSftpJsonSftpJson;
 import com.airbyte.api.models.shared.DestinationSnowflake;
@@ -361,17 +336,22 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub(false, "fugiat", DestinationPubsubPubsub.PUBSUB, false, "ab", "soluta") {{
-                                batchingDelayThreshold = 976405L;
-                                batchingElementCountThreshold = 377752L;
-                                batchingEnabled = false;
-                                batchingRequestBytesThreshold = 617658L;
-                                credentialsJson = "eos";
-                                destinationType = DestinationPubsubPubsub.PUBSUB;
-                                orderingEnabled = false;
-                                projectId = "atque";
-                                topicId = "sit";
-                            }}, "dolorum", "77a89ebf-737a-4e42-83ce-5e6a95d8a0d4");            
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPostgres("voluptate", DestinationPostgresPostgres.POSTGRES, "dolorum", 5432L, "public", "deleniti") {{
+                                database = "voluptatibus";
+                                destinationType = DestinationPostgresPostgres.POSTGRES;
+                                host = "voluptas";
+                                jdbcUrlParams = "natus";
+                                password = "eos";
+                                port = 5432L;
+                                schema = "public";
+                                sslMode = new DestinationPostgresSslModeRequire(DestinationPostgresSslModeRequireMode.REQUIRE) {{
+                                    mode = DestinationPostgresSslModeRequireMode.REQUIRE;
+                                }};
+                                tunnelMethod = new DestinationPostgresTunnelMethodNoTunnel(DestinationPostgresTunnelMethodNoTunnelTunnelMethod.NO_TUNNEL) {{
+                                    tunnelMethod = DestinationPostgresTunnelMethodNoTunnelTunnelMethod.NO_TUNNEL;
+                                }};
+                                username = "Rudolph_Bergstrom47";
+                            }}, "omnis", "ebf737ae-4203-4ce5-a6a9-5d8a0d446ce2");            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
@@ -415,12 +395,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("tempora") {{
+                .setSecurity(new Security("dolorum") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("vel");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("a");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -464,12 +444,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quod") {{
+                .setSecurity(new Security("esse") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("officiis");            
+            GetDestinationRequest req = new GetDestinationRequest("harum");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -513,18 +493,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("qui") {{
+                .setSecurity(new Security("iusto") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListDestinationsRequest req = new ListDestinationsRequest() {{
                 includeDeleted = false;
-                limit = 679880;
-                offset = 952792;
+                limit = 215507;
+                offset = 788740;
                 workspaceIds = new String[]{{
-                    add("a73cf3be-453f-4870-b326-b5a73429cdb1"),
-                    add("a8422bb6-79d2-4322-b15b-f0cbb1e31b8b"),
+                    add("3be453f8-70b3-426b-9a73-429cdb1a8422"),
+                    add("bb679d23-2271-45bf-8cbb-1e31b8b90f34"),
+                    add("43a1108e-0adc-4f4b-9218-79fce953f73e"),
+                    add("f7fbc7ab-d74d-4d39-80f5-d2cff7c70a45"),
                 }};
             }};            
 
@@ -564,9 +546,6 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PatchDestinationRequest;
 import com.airbyte.api.models.operations.PatchDestinationResponse;
-import com.airbyte.api.models.shared.DestinationAmazonSqs;
-import com.airbyte.api.models.shared.DestinationAmazonSqsAWSRegion;
-import com.airbyte.api.models.shared.DestinationAmazonSqsAmazonSqs;
 import com.airbyte.api.models.shared.DestinationAwsDatalake;
 import com.airbyte.api.models.shared.DestinationAwsDatalakeAwsDatalake;
 import com.airbyte.api.models.shared.DestinationAwsDatalakeChooseHowToPartitionData;
@@ -609,8 +588,6 @@ import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodGCSStagingM
 import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodStandardInserts;
 import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodStandardInsertsMethod;
 import com.airbyte.api.models.shared.DestinationBigqueryTransformationQueryRunType;
-import com.airbyte.api.models.shared.DestinationCassandra;
-import com.airbyte.api.models.shared.DestinationCassandraCassandra;
 import com.airbyte.api.models.shared.DestinationClickhouse;
 import com.airbyte.api.models.shared.DestinationClickhouseClickhouse;
 import com.airbyte.api.models.shared.DestinationClickhouseTunnelMethodNoTunnel;
@@ -697,16 +674,6 @@ import com.airbyte.api.models.shared.DestinationKeen;
 import com.airbyte.api.models.shared.DestinationKeenKeen;
 import com.airbyte.api.models.shared.DestinationKinesis;
 import com.airbyte.api.models.shared.DestinationKinesisKinesis;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstore;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreMariadbColumnstore;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodNoTunnel;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodPasswordAuthentication;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodPasswordAuthenticationTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMeilisearch;
-import com.airbyte.api.models.shared.DestinationMeilisearchMeilisearch;
 import com.airbyte.api.models.shared.DestinationMongodb;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPassword;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPasswordAuthorization;
@@ -776,12 +743,6 @@ import com.airbyte.api.models.shared.DestinationPostgresTunnelMethodSSHKeyAuthen
 import com.airbyte.api.models.shared.DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationPubsub;
 import com.airbyte.api.models.shared.DestinationPubsubPubsub;
-import com.airbyte.api.models.shared.DestinationPulsar;
-import com.airbyte.api.models.shared.DestinationPulsarCompressionType;
-import com.airbyte.api.models.shared.DestinationPulsarPulsar;
-import com.airbyte.api.models.shared.DestinationPulsarTopicType;
-import com.airbyte.api.models.shared.DestinationRabbitmq;
-import com.airbyte.api.models.shared.DestinationRabbitmqRabbitmq;
 import com.airbyte.api.models.shared.DestinationRedis;
 import com.airbyte.api.models.shared.DestinationRedisCacheType;
 import com.airbyte.api.models.shared.DestinationRedisRedis;
@@ -812,8 +773,6 @@ import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodS3Staging
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodS3StagingS3BucketRegion;
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodStandard;
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodStandardMethod;
-import com.airbyte.api.models.shared.DestinationRockset;
-import com.airbyte.api.models.shared.DestinationRocksetRockset;
 import com.airbyte.api.models.shared.DestinationS3;
 import com.airbyte.api.models.shared.DestinationS3FormatAvroApacheAvro;
 import com.airbyte.api.models.shared.DestinationS3FormatAvroApacheAvroCompressionCodecBzip2;
@@ -859,8 +818,6 @@ import com.airbyte.api.models.shared.DestinationS3GlueS3Glue;
 import com.airbyte.api.models.shared.DestinationS3GlueSerializationLibrary;
 import com.airbyte.api.models.shared.DestinationS3S3;
 import com.airbyte.api.models.shared.DestinationS3S3BucketRegion;
-import com.airbyte.api.models.shared.DestinationScylla;
-import com.airbyte.api.models.shared.DestinationScyllaScylla;
 import com.airbyte.api.models.shared.DestinationSftpJson;
 import com.airbyte.api.models.shared.DestinationSftpJsonSftpJson;
 import com.airbyte.api.models.shared.DestinationSnowflake;
@@ -900,19 +857,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("cupiditate") {{
+                .setSecurity(new Security("ea") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("aperiam") {{
+            PatchDestinationRequest req = new PatchDestinationRequest("aspernatur") {{
                 destinationPatchRequest = new DestinationPatchRequest() {{
-                    configuration = new DestinationTypesense("dolorem", DestinationTypesenseTypesense.TYPESENSE, "dolore") {{
-                        batchSize = "labore";
-                        port = "adipisci";
-                        protocol = "dolorum";
+                    configuration = new DestinationFirestore(DestinationFirestoreFirestore.FIRESTORE, "possimus") {{
+                        credentialsJson = "magnam";
                     }};;
-                    name = "Amy Armstrong";
+                    name = "Mrs. Vicki Langosh";
                 }};;
             }};            
 
@@ -952,9 +907,6 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PutDestinationRequest;
 import com.airbyte.api.models.operations.PutDestinationResponse;
-import com.airbyte.api.models.shared.DestinationAmazonSqs;
-import com.airbyte.api.models.shared.DestinationAmazonSqsAWSRegion;
-import com.airbyte.api.models.shared.DestinationAmazonSqsAmazonSqs;
 import com.airbyte.api.models.shared.DestinationAwsDatalake;
 import com.airbyte.api.models.shared.DestinationAwsDatalakeAwsDatalake;
 import com.airbyte.api.models.shared.DestinationAwsDatalakeChooseHowToPartitionData;
@@ -997,8 +949,6 @@ import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodGCSStagingM
 import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodStandardInserts;
 import com.airbyte.api.models.shared.DestinationBigqueryLoadingMethodStandardInsertsMethod;
 import com.airbyte.api.models.shared.DestinationBigqueryTransformationQueryRunType;
-import com.airbyte.api.models.shared.DestinationCassandra;
-import com.airbyte.api.models.shared.DestinationCassandraCassandra;
 import com.airbyte.api.models.shared.DestinationClickhouse;
 import com.airbyte.api.models.shared.DestinationClickhouseClickhouse;
 import com.airbyte.api.models.shared.DestinationClickhouseTunnelMethodNoTunnel;
@@ -1085,16 +1035,6 @@ import com.airbyte.api.models.shared.DestinationKeen;
 import com.airbyte.api.models.shared.DestinationKeenKeen;
 import com.airbyte.api.models.shared.DestinationKinesis;
 import com.airbyte.api.models.shared.DestinationKinesisKinesis;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstore;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreMariadbColumnstore;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodNoTunnel;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodNoTunnelTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodPasswordAuthentication;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodPasswordAuthenticationTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthentication;
-import com.airbyte.api.models.shared.DestinationMariadbColumnstoreTunnelMethodSSHKeyAuthenticationTunnelMethod;
-import com.airbyte.api.models.shared.DestinationMeilisearch;
-import com.airbyte.api.models.shared.DestinationMeilisearchMeilisearch;
 import com.airbyte.api.models.shared.DestinationMongodb;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPassword;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPasswordAuthorization;
@@ -1163,13 +1103,7 @@ import com.airbyte.api.models.shared.DestinationPostgresTunnelMethodSSHKeyAuthen
 import com.airbyte.api.models.shared.DestinationPostgresTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationPubsub;
 import com.airbyte.api.models.shared.DestinationPubsubPubsub;
-import com.airbyte.api.models.shared.DestinationPulsar;
-import com.airbyte.api.models.shared.DestinationPulsarCompressionType;
-import com.airbyte.api.models.shared.DestinationPulsarPulsar;
-import com.airbyte.api.models.shared.DestinationPulsarTopicType;
 import com.airbyte.api.models.shared.DestinationPutRequest;
-import com.airbyte.api.models.shared.DestinationRabbitmq;
-import com.airbyte.api.models.shared.DestinationRabbitmqRabbitmq;
 import com.airbyte.api.models.shared.DestinationRedis;
 import com.airbyte.api.models.shared.DestinationRedisCacheType;
 import com.airbyte.api.models.shared.DestinationRedisRedis;
@@ -1200,8 +1134,6 @@ import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodS3Staging
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodS3StagingS3BucketRegion;
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodStandard;
 import com.airbyte.api.models.shared.DestinationRedshiftUploadingMethodStandardMethod;
-import com.airbyte.api.models.shared.DestinationRockset;
-import com.airbyte.api.models.shared.DestinationRocksetRockset;
 import com.airbyte.api.models.shared.DestinationS3;
 import com.airbyte.api.models.shared.DestinationS3FormatAvroApacheAvro;
 import com.airbyte.api.models.shared.DestinationS3FormatAvroApacheAvroCompressionCodecBzip2;
@@ -1247,8 +1179,6 @@ import com.airbyte.api.models.shared.DestinationS3GlueS3Glue;
 import com.airbyte.api.models.shared.DestinationS3GlueSerializationLibrary;
 import com.airbyte.api.models.shared.DestinationS3S3;
 import com.airbyte.api.models.shared.DestinationS3S3BucketRegion;
-import com.airbyte.api.models.shared.DestinationScylla;
-import com.airbyte.api.models.shared.DestinationScyllaScylla;
 import com.airbyte.api.models.shared.DestinationSftpJson;
 import com.airbyte.api.models.shared.DestinationSftpJsonSftpJson;
 import com.airbyte.api.models.shared.DestinationSnowflake;
@@ -1288,38 +1218,38 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("consequatur") {{
+                .setSecurity(new Security("quasi") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("est") {{
-                destinationPutRequest = new DestinationPutRequest(                new DestinationS3(DestinationS3S3.S3,                 new DestinationS3FormatJSONLinesNewlineDelimitedJSON(DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatType.JSONL) {{
-                                                    compression = new DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionNoCompression() {{
-                                                        compressionType = DestinationS3FormatJSONLinesNewlineDelimitedJSONCompressionNoCompressionCompressionType.NO_COMPRESSION;
+            PutDestinationRequest req = new PutDestinationRequest("ex") {{
+                destinationPutRequest = new DestinationPutRequest(                new DestinationS3Glue(DestinationS3GlueS3Glue.S3_GLUE,                 new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL) {{
+                                                    compression = new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIP() {{
+                                                        compressionType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionType.GZIP;
                                                     }};
-                                                    flattening = DestinationS3FormatJSONLinesNewlineDelimitedJSONFlattening.NO_FLATTENING;
-                                                    formatType = DestinationS3FormatJSONLinesNewlineDelimitedJSONFormatType.JSONL;
-                                                }}, "airbyte_sync", "data_sync/test", DestinationS3S3BucketRegion.CA_CENTRAL1) {{
+                                                    flattening = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlattening.NO_FLATTENING;
+                                                    formatType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL;
+                                                }}, "airbyte_database", DestinationS3GlueSerializationLibrary.ORG_APACHE_HIVE_HCATALOG_DATA_JSON_SER_DE, "airbyte_sync", "data_sync/test", DestinationS3GlueS3BucketRegion.AP_NORTHEAST2) {{
                                     accessKeyId = "A012345678910EXAMPLE";
-                                    destinationType = DestinationS3S3.S3;
-                                    fileNamePattern = "{part_number}";
-                                    format = new DestinationS3FormatParquetColumnarStorage(DestinationS3FormatParquetColumnarStorageFormatType.PARQUET) {{
-                                        blockSizeMb = 128L;
-                                        compressionCodec = DestinationS3FormatParquetColumnarStorageCompressionCodec.SNAPPY;
-                                        dictionaryEncoding = false;
-                                        dictionaryPageSizeKb = 1024L;
-                                        formatType = DestinationS3FormatParquetColumnarStorageFormatType.PARQUET;
-                                        maxPaddingSizeMb = 8L;
-                                        pageSizeKb = 1024L;
+                                    destinationType = DestinationS3GlueS3Glue.S3_GLUE;
+                                    fileNamePattern = "{timestamp}";
+                                    format = new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL) {{
+                                        compression = new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIP() {{
+                                            compressionType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionType.GZIP;
+                                        }};
+                                        flattening = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlattening.NO_FLATTENING;
+                                        formatType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL;
                                     }};
+                                    glueDatabase = "airbyte_database";
+                                    glueSerializationLibrary = DestinationS3GlueSerializationLibrary.ORG_APACHE_HIVE_HCATALOG_DATA_JSON_SER_DE;
                                     s3BucketName = "airbyte_sync";
                                     s3BucketPath = "data_sync/test";
-                                    s3BucketRegion = DestinationS3S3BucketRegion.EU_SOUTH1;
+                                    s3BucketRegion = DestinationS3GlueS3BucketRegion.EU_WEST2;
                                     s3Endpoint = "http://localhost:9000";
                                     s3PathFormat = "${NAMESPACE}/${STREAM_NAME}/${YEAR}_${MONTH}_${DAY}_${EPOCH}_";
                                     secretAccessKey = "a012345678910ABCDEFGH/AbCdEfGhEXAMPLEKEY";
-                                }}, "odio");;
+                                }}, "veniam");;
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);

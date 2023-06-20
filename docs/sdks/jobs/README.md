@@ -25,12 +25,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("occaecati") {{
+                .setSecurity(new Security("aliquid") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(977496L);            
+            CancelJobRequest req = new CancelJobRequest(81101L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -75,12 +75,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quisquam") {{
+                .setSecurity(new Security("magnam") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("vero", JobTypeEnum.RESET);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("ea", JobTypeEnum.RESET);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -124,12 +124,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quis") {{
+                .setSecurity(new Security("consectetur") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(218403L);            
+            GetJobRequest req = new GetJobRequest(926213L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -174,15 +174,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("delectus") {{
+                .setSecurity(new Security("aspernatur") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            ListJobsRequest req = new ListJobsRequest("voluptate") {{
+            ListJobsRequest req = new ListJobsRequest("minima") {{
                 jobType = JobTypeEnum.SYNC;
-                limit = 878870;
-                offset = 949319;
+                limit = 952871;
+                offset = 725595;
             }};            
 
             ListJobsResponse res = sdk.jobs.listJobs(req);

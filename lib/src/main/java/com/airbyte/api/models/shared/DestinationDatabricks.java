@@ -101,6 +101,18 @@ public class DestinationDatabricks {
     }
     
     /**
+     * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("enable_schema_evolution")
+    public Boolean enableSchemaEvolution;
+
+    public DestinationDatabricks withEnableSchemaEvolution(Boolean enableSchemaEvolution) {
+        this.enableSchemaEvolution = enableSchemaEvolution;
+        return this;
+    }
+    
+    /**
      * Default to 'true'. Switch it to 'false' for debugging purpose.
      */
     @JsonInclude(Include.NON_ABSENT)

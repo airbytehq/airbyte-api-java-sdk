@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -23,30 +25,27 @@ public class WorkspaceOAuthCredentialsRequest {
     }
     
     /**
-     * The configuration for this source/destination based on the OAuth section of the relevant specification.
+     * The values required to configure the source.
      */
     @JsonProperty("configuration")
-    public OAuthCredentialsConfiguration configuration;
+    public Object configuration;
 
-    public WorkspaceOAuthCredentialsRequest withConfiguration(OAuthCredentialsConfiguration configuration) {
+    public WorkspaceOAuthCredentialsRequest withConfiguration(Object configuration) {
         this.configuration = configuration;
         return this;
     }
     
-    /**
-     * The name of the source i.e. google-ads
-     */
-    @JsonProperty("name")
-    public String name;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("sourceType")
+    public OAuthActorNames sourceType;
 
-    public WorkspaceOAuthCredentialsRequest withName(String name) {
-        this.name = name;
+    public WorkspaceOAuthCredentialsRequest withSourceType(OAuthActorNames sourceType) {
+        this.sourceType = sourceType;
         return this;
     }
     
-    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") OAuthCredentialsConfiguration configuration, @JsonProperty("name") String name) {
+    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") Object configuration) {
         this.actorType = actorType;
         this.configuration = configuration;
-        this.name = name;
   }
 }

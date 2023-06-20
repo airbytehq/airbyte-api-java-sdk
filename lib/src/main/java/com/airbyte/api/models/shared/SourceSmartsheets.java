@@ -26,6 +26,18 @@ public class SourceSmartsheets {
         return this;
     }
     
+    /**
+     * A List of available columns which metadata can be pulled from.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("metadata_fields")
+    public SourceSmartsheetsValidenums[] metadataFields;
+
+    public SourceSmartsheets withMetadataFields(SourceSmartsheetsValidenums[] metadataFields) {
+        this.metadataFields = metadataFields;
+        return this;
+    }
+    
     @JsonProperty("sourceType")
     public SourceSmartsheetsSmartsheets sourceType;
 
