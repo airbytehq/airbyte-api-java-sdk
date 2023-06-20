@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePostgres - The values required to configure the source.
  */
+
 public class SourcePostgres {
     /**
      * Name of the database.

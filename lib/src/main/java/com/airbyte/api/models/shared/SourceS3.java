@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceS3 - The values required to configure the source.
  */
+
 public class SourceS3 {
     /**
      * The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.

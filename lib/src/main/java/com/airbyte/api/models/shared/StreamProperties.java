@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * StreamProperties - The stream properties associated with a connection.
  */
+
 public class StreamProperties {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("defaultCursorField")

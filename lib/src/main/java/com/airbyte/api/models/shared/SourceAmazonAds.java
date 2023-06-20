@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAmazonAds - The values required to configure the source.
  */
+
 public class SourceAmazonAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")

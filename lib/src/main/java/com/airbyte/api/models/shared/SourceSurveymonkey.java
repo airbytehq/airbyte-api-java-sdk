@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSurveymonkey - The values required to configure the source.
  */
+
 public class SourceSurveymonkey {
     /**
      * The authorization method to use to retrieve data from SurveyMonkey

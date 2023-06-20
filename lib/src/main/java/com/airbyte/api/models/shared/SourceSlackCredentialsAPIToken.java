@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSlackCredentialsAPIToken - Choose how to authenticate into Slack
  */
+
 public class SourceSlackCredentialsAPIToken {
     /**
      * A Slack bot token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; for instructions on how to generate it.

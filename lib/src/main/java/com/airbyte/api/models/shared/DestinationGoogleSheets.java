@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationGoogleSheets - The values required to configure the destination.
  */
+
 public class DestinationGoogleSheets {
     /**
      * Google API Credentials for connecting to Google Sheets and Google Drive APIs

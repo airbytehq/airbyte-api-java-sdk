@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceBigcommerce - The values required to configure the source.
  */
+
 public class SourceBigcommerce {
     /**
      * Access Token for making authenticated requests.

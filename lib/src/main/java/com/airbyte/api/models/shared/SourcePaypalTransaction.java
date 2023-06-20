@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourcePaypalTransaction - The values required to configure the source.
  */
+
 public class SourcePaypalTransaction {
     /**
      * The Client ID of your Paypal developer application.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceNetsuite - The values required to configure the source.
  */
+
 public class SourceNetsuite {
     /**
      * Consumer key associated with your integration

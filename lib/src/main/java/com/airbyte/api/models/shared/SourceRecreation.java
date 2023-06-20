@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceRecreation - The values required to configure the source.
  */
+
 public class SourceRecreation {
     /**
      * API Key

@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceSenseforce - The values required to configure the source.
  */
+
 public class SourceSenseforce {
     /**
      * Your API access token. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt;. The toke is case sensitive.

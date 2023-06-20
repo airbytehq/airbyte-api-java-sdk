@@ -11,6 +11,7 @@ import java.time.LocalDate;
 /**
  * SourceWoocommerce - The values required to configure the source.
  */
+
 public class SourceWoocommerce {
     /**
      * Customer Key for API in WooCommerce shop

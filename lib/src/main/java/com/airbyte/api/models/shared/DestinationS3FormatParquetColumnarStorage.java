@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationS3FormatParquetColumnarStorage - Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
  */
+
 public class DestinationS3FormatParquetColumnarStorage {
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.

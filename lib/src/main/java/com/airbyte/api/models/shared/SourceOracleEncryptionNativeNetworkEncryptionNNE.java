@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOracleEncryptionNativeNetworkEncryptionNNE - The native network encryption gives you the ability to encrypt database connections, without the configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different ports.
  */
+
 public class SourceOracleEncryptionNativeNetworkEncryptionNNE {
     /**
      * This parameter defines what encryption algorithm is used.

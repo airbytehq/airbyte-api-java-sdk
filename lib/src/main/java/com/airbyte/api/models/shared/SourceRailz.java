@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceRailz - The values required to configure the source.
  */
+
 public class SourceRailz {
     /**
      * Client ID (client_id)

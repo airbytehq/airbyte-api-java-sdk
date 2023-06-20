@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationClickhouse - The values required to configure the destination.
  */
+
 public class DestinationClickhouse {
     /**
      * Name of the database.

@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceAuth0CredentialsOAuth2AccessToken {
     /**
      * Also called &lt;a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing"&gt;API Access Token &lt;/a&gt; The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePypi - The values required to configure the source.
  */
+
 public class SourcePypi {
     /**
      * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMetabase - The values required to configure the source.
  */
+
 public class SourceMetabase {
     /**
      * URL to your metabase instance API

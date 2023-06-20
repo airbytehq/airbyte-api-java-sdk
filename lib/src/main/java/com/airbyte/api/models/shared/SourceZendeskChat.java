@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceZendeskChat - The values required to configure the source.
  */
+
 public class SourceZendeskChat {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

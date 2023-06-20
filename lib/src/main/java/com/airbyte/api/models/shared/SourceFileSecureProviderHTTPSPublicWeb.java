@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFileSecureProviderHTTPSPublicWeb - The storage Provider or Location of the file(s) which should be replicated.
  */
+
 public class SourceFileSecureProviderHTTPSPublicWeb {
     @JsonProperty("storage")
     public SourceFileSecureProviderHTTPSPublicWebStorage storage;

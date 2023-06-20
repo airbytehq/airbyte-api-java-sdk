@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSnowflakeLoadingMethodSelectAnotherOption - Select another option
  */
+
 public class DestinationSnowflakeLoadingMethodSelectAnotherOption {
     @JsonProperty("method")
     public DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod method;

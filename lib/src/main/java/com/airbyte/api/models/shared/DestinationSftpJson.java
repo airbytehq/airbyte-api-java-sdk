@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSftpJson - The values required to configure the destination.
  */
+
 public class DestinationSftpJson {
     @JsonProperty("destinationType")
     public DestinationSftpJsonSftpJson destinationType;

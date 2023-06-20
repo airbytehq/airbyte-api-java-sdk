@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceShopifyCredentialsAPIPassword - API Password Auth
  */
+
 public class SourceShopifyCredentialsAPIPassword {
     /**
      * The API Password for your private application in the `Shopify` store.

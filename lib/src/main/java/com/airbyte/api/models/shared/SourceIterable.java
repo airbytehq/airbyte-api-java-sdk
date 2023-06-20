@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceIterable - The values required to configure the source.
  */
+
 public class SourceIterable {
     /**
      * Iterable API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/iterable"&gt;docs&lt;/a&gt; for more information on how to obtain this key.

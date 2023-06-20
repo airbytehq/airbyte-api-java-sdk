@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceLinkedinPagesCredentialsAccessToken {
     /**
      * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceApifyDataset - The values required to configure the source.
  */
+
 public class SourceApifyDataset {
     /**
      * If set to true, only clean items will be downloaded from the dataset. See description of what clean means in &lt;a href="https://docs.apify.com/api/v2#/reference/datasets/item-collection/get-items"&gt;Apify API docs&lt;/a&gt;. If not sure, set clean to false.

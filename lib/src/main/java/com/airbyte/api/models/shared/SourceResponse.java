@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceResponse - Provides details of a single source.
  */
+
 public class SourceResponse {
     /**
      * The values required to configure the source.
@@ -18,6 +19,14 @@ public class SourceResponse {
 
     public SourceResponse withConfiguration(Object configuration) {
         this.configuration = configuration;
+        return this;
+    }
+    
+    @JsonProperty("hasOAuthCredentialOverride")
+    public Boolean hasOAuthCredentialOverride;
+
+    public SourceResponse withHasOAuthCredentialOverride(Boolean hasOAuthCredentialOverride) {
+        this.hasOAuthCredentialOverride = hasOAuthCredentialOverride;
         return this;
     }
     
@@ -53,8 +62,9 @@ public class SourceResponse {
         return this;
     }
     
-    public SourceResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
+    public SourceResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("hasOAuthCredentialOverride") Boolean hasOAuthCredentialOverride, @JsonProperty("name") String name, @JsonProperty("sourceId") String sourceId, @JsonProperty("sourceType") String sourceType, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
+        this.hasOAuthCredentialOverride = hasOAuthCredentialOverride;
         this.name = name;
         this.sourceId = sourceId;
         this.sourceType = sourceType;

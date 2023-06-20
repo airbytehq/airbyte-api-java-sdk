@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceDremio - The values required to configure the source.
  */
+
 public class SourceDremio {
     /**
      * API Key that is generated when you authenticate to Dremio API

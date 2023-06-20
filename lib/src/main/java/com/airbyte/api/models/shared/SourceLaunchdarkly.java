@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceLaunchdarkly - The values required to configure the source.
  */
+
 public class SourceLaunchdarkly {
     /**
      * Your Access token. See &lt;a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication"&gt;here&lt;/a&gt;.

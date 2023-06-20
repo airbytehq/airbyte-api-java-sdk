@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceEmailoctopus - The values required to configure the source.
  */
+
 public class SourceEmailoctopus {
     /**
      * EmailOctopus API Key. See the &lt;a href="https://help.emailoctopus.com/article/165-how-to-create-and-delete-api-keys"&gt;docs&lt;/a&gt; for information on how to generate this key.

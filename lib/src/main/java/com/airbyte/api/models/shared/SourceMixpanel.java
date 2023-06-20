@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceMixpanel - The values required to configure the source.
  */
+
 public class SourceMixpanel {
     /**
      *  A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days.

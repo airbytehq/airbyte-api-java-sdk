@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceCloseCom - The values required to configure the source.
  */
+
 public class SourceCloseCom {
     /**
      * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).

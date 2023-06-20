@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceNotionCredentialsAccessToken - Pick an authentication method.
  */
+
 public class SourceNotionCredentialsAccessToken {
     @JsonProperty("auth_type")
     public SourceNotionCredentialsAccessTokenAuthType authType;

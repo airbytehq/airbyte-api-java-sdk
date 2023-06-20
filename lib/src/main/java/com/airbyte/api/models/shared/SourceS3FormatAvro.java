@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceS3FormatAvro - This connector utilises &lt;a href="https://fastavro.readthedocs.io/en/latest/" target="_blank"&gt;fastavro&lt;/a&gt; for Avro parsing.
  */
+
 public class SourceS3FormatAvro {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")

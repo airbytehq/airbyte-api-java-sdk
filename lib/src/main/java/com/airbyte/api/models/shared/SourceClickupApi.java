@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceClickupApi - The values required to configure the source.
  */
+
 public class SourceClickupApi {
     /**
      * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.

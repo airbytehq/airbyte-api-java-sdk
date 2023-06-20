@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceTwitter - The values required to configure the source.
  */
+
 public class SourceTwitter {
     /**
      * App only Bearer Token. See the &lt;a href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.

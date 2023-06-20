@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceZohoCrm - The values required to configure the source.
  */
+
 public class SourceZohoCrm {
     /**
      * OAuth2.0 Client ID

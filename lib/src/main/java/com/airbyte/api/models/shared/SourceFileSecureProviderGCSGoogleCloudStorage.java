@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFileSecureProviderGCSGoogleCloudStorage - The storage Provider or Location of the file(s) which should be replicated.
  */
+
 public class SourceFileSecureProviderGCSGoogleCloudStorage {
     /**
      * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedisSslModeVerifyFull - Verify-full SSL mode.
  */
+
 public class DestinationRedisSslModeVerifyFull {
     /**
      * CA certificate

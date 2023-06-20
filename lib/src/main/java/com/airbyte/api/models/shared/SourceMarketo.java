@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceMarketo - The values required to configure the source.
  */
+
 public class SourceMarketo {
     /**
      * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.

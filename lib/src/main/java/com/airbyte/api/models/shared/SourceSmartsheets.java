@@ -16,12 +16,25 @@ import java.time.OffsetDateTime;
 /**
  * SourceSmartsheets - The values required to configure the source.
  */
+
 public class SourceSmartsheets {
     @JsonProperty("credentials")
     public Object credentials;
 
     public SourceSmartsheets withCredentials(Object credentials) {
         this.credentials = credentials;
+        return this;
+    }
+    
+    /**
+     * A List of available columns which metadata can be pulled from.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("metadata_fields")
+    public SourceSmartsheetsValidenums[] metadataFields;
+
+    public SourceSmartsheets withMetadataFields(SourceSmartsheetsValidenums[] metadataFields) {
+        this.metadataFields = metadataFields;
         return this;
     }
     

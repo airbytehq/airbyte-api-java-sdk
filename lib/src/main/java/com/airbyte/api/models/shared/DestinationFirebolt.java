@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationFirebolt - The values required to configure the destination.
  */
+
 public class DestinationFirebolt {
     /**
      * Firebolt account to login.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * WorkspacesResponse - Successful operation
  */
+
 public class WorkspacesResponse {
     @JsonProperty("data")
     public WorkspaceResponse[] data;

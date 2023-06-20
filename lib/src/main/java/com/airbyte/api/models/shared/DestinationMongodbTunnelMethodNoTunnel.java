@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMongodbTunnelMethodNoTunnel - Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
  */
+
 public class DestinationMongodbTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database

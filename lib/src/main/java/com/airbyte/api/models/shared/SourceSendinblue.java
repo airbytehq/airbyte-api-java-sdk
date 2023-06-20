@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSendinblue - The values required to configure the source.
  */
+
 public class SourceSendinblue {
     /**
      * Your API Key. See &lt;a href="https://developers.sendinblue.com/docs/getting-started"&gt;here&lt;/a&gt;.

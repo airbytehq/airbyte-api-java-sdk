@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceCoinmarketcap - The values required to configure the source.
  */
+
 public class SourceCoinmarketcap {
     /**
      * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.

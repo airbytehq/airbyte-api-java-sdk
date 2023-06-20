@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceGoogleAds - The values required to configure the source.
  */
+
 public class SourceGoogleAds {
     /**
      * A conversion window is the period of time after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see Google's &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;documentation&lt;/a&gt;.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationKeen - The values required to configure the destination.
  */
+
 public class DestinationKeen {
     /**
      * To get Keen Master API Key, navigate to the Access tab from the left-hand, side panel and check the Project Details section.

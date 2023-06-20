@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSurveymonkeySurveyMonkeyAuthorizationMethod - The authorization method to use to retrieve data from SurveyMonkey
  */
+
 public class SourceSurveymonkeySurveyMonkeyAuthorizationMethod {
     /**
      * Access Token for making authenticated requests. See the &lt;a href="https://docs.airbyte.io/integrations/sources/surveymonkey"&gt;docs&lt;/a&gt; for information on how to generate this key.

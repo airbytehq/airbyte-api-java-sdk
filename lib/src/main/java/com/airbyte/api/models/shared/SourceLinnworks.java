@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceLinnworks - The values required to configure the source.
  */
+
 public class SourceLinnworks {
     /**
      * Linnworks Application ID

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOutreach - The values required to configure the source.
  */
+
 public class SourceOutreach {
     /**
      * The Client ID of your Outreach developer application.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceXkcd - The values required to configure the source.
  */
+
 public class SourceXkcd {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")

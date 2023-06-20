@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption - Staging data will be stored in plaintext.
  */
+
 public class DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryption {
     @JsonProperty("encryption_type")
     public DestinationSnowflakeLoadingMethodAWSS3StagingEncryptionNoEncryptionEncryptionType encryptionType;

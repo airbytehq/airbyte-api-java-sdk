@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 - Choose how to authenticate to Microsoft
  */
+
 public class SourceMicrosoftTeamsCredentialsAuthenticateViaMicrosoftOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")

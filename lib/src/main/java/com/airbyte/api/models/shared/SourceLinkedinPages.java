@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceLinkedinPages - The values required to configure the source.
  */
+
 public class SourceLinkedinPages {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

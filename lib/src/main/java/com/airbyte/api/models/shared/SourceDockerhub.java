@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceDockerhub - The values required to configure the source.
  */
+
 public class SourceDockerhub {
     /**
      * Username of DockerHub person or organization (for https://hub.docker.com/v2/repositories/USERNAME/ API call)

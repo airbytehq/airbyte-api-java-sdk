@@ -16,10 +16,12 @@ import java.time.OffsetDateTime;
 /**
  * SourceGitlab - The values required to configure the source.
  */
+
 public class SourceGitlab {
     /**
      * Please enter your basic URL from GitLab instance.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     public String apiUrl;
 
@@ -81,8 +83,7 @@ public class SourceGitlab {
         return this;
     }
     
-    public SourceGitlab(@JsonProperty("api_url") String apiUrl, @JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGitlabGitlab sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-        this.apiUrl = apiUrl;
+    public SourceGitlab(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceGitlabGitlab sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.credentials = credentials;
         this.sourceType = sourceType;
         this.startDate = startDate;

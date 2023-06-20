@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationResponse - Provides details of a single destination.
  */
+
 public class DestinationResponse {
     /**
      * The values required to configure the destination.

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceDatascope - The values required to configure the source.
  */
+
 public class SourceDatascope {
     /**
      * API Key

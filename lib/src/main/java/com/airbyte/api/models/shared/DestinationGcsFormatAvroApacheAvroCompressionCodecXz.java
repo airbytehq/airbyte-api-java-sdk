@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationGcsFormatAvroApacheAvroCompressionCodecXz - The compression algorithm used to compress data. Default to no compression.
  */
+
 public class DestinationGcsFormatAvroApacheAvroCompressionCodecXz {
     @JsonProperty("codec")
     public DestinationGcsFormatAvroApacheAvroCompressionCodecXzCodec codec;

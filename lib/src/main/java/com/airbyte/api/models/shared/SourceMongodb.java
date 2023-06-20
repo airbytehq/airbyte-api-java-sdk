@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMongodb - The values required to configure the source.
  */
+
 public class SourceMongodb {
     /**
      * The authentication source where the user information is stored.

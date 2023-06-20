@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSurveySparrowRegionEUBasedAccount - Is your account location is EU based? If yes, the base url to retrieve data will be different.
  */
+
 public class SourceSurveySparrowRegionEUBasedAccount {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url_base")

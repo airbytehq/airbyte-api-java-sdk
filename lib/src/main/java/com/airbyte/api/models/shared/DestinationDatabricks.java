@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDatabricks - The values required to configure the destination.
  */
+
 public class DestinationDatabricks {
     /**
      * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
@@ -96,6 +97,18 @@ public class DestinationDatabricks {
 
     public DestinationDatabricks withDestinationType(DestinationDatabricksDatabricks destinationType) {
         this.destinationType = destinationType;
+        return this;
+    }
+    
+    /**
+     * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("enable_schema_evolution")
+    public Boolean enableSchemaEvolution;
+
+    public DestinationDatabricks withEnableSchemaEvolution(Boolean enableSchemaEvolution) {
+        this.enableSchemaEvolution = enableSchemaEvolution;
         return this;
     }
     

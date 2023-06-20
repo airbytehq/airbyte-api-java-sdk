@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSlackCredentialsSignInViaSlackOAuth - Choose how to authenticate into Slack
  */
+
 public class SourceSlackCredentialsSignInViaSlackOAuth {
     /**
      * Slack access_token. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help generating the token.

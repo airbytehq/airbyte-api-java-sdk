@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceGoogleAnalyticsDataApi - The values required to configure the source.
  */
+
 public class SourceGoogleAnalyticsDataApi {
     /**
      * Credentials for the service

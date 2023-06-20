@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMysql - The values required to configure the destination.
  */
+
 public class DestinationMysql {
     /**
      * Name of the database.

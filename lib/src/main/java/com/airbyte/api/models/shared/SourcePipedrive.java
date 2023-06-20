@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourcePipedrive - The values required to configure the source.
  */
+
 public class SourcePipedrive {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorization")

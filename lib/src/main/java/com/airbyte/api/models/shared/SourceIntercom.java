@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceIntercom - The values required to configure the source.
  */
+
 public class SourceIntercom {
     /**
      * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.

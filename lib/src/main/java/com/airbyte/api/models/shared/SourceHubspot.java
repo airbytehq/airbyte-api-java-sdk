@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceHubspot - The values required to configure the source.
  */
+
 public class SourceHubspot {
     /**
      * Choose how to authenticate to HubSpot.

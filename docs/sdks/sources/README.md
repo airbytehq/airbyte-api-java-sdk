@@ -22,6 +22,8 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateSourceResponse;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.SourceAha;
+import com.airbyte.api.models.shared.SourceAhaAha;
 import com.airbyte.api.models.shared.SourceAircall;
 import com.airbyte.api.models.shared.SourceAircallAircall;
 import com.airbyte.api.models.shared.SourceAirtable;
@@ -46,6 +48,11 @@ import com.airbyte.api.models.shared.SourceAmazonAdsAuthType;
 import com.airbyte.api.models.shared.SourceAmazonAdsRegion;
 import com.airbyte.api.models.shared.SourceAmazonAdsReportRecordTypes;
 import com.airbyte.api.models.shared.SourceAmazonAdsStateFilter;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartner;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAWSEnvironment;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAWSRegion;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAmazonSellerPartner;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAuthType;
 import com.airbyte.api.models.shared.SourceAmazonSqs;
 import com.airbyte.api.models.shared.SourceAmazonSqsAWSRegion;
 import com.airbyte.api.models.shared.SourceAmazonSqsAmazonSqs;
@@ -118,6 +125,8 @@ import com.airbyte.api.models.shared.SourceConfigcat;
 import com.airbyte.api.models.shared.SourceConfigcatConfigcat;
 import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
+import com.airbyte.api.models.shared.SourceConvex;
+import com.airbyte.api.models.shared.SourceConvexConvex;
 import com.airbyte.api.models.shared.SourceCreateRequest;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
@@ -245,7 +254,6 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
-import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsGoogleSheets;
@@ -290,10 +298,19 @@ import com.airbyte.api.models.shared.SourceKlaviyo;
 import com.airbyte.api.models.shared.SourceKlaviyoKlaviyo;
 import com.airbyte.api.models.shared.SourceKustomerSinger;
 import com.airbyte.api.models.shared.SourceKustomerSingerKustomerSinger;
+import com.airbyte.api.models.shared.SourceKyve;
+import com.airbyte.api.models.shared.SourceKyveKyve;
 import com.airbyte.api.models.shared.SourceLaunchdarkly;
 import com.airbyte.api.models.shared.SourceLaunchdarklyLaunchdarkly;
 import com.airbyte.api.models.shared.SourceLemlist;
 import com.airbyte.api.models.shared.SourceLemlistLemlist;
+import com.airbyte.api.models.shared.SourceLeverHiring;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverApiKey;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverApiKeyAuthType;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverOAuth;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverOAuthAuthType;
+import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
+import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
@@ -533,9 +550,6 @@ import com.airbyte.api.models.shared.SourceS3S3AmazonWebServices;
 import com.airbyte.api.models.shared.SourceSalesforce;
 import com.airbyte.api.models.shared.SourceSalesforceAuthType;
 import com.airbyte.api.models.shared.SourceSalesforceSalesforce;
-import com.airbyte.api.models.shared.SourceSalesforceSinger;
-import com.airbyte.api.models.shared.SourceSalesforceSingerApiType;
-import com.airbyte.api.models.shared.SourceSalesforceSingerSalesforceSinger;
 import com.airbyte.api.models.shared.SourceSalesforceStreamsCriteria;
 import com.airbyte.api.models.shared.SourceSalesforceStreamsCriteriaSearchCriteria;
 import com.airbyte.api.models.shared.SourceSalesloft;
@@ -589,6 +603,7 @@ import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsAPIAccessTokenA
 import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsOAuth20AuthType;
 import com.airbyte.api.models.shared.SourceSmartsheetsSmartsheets;
+import com.airbyte.api.models.shared.SourceSmartsheetsValidenums;
 import com.airbyte.api.models.shared.SourceSnapchatMarketing;
 import com.airbyte.api.models.shared.SourceSnapchatMarketingSnapchatMarketing;
 import com.airbyte.api.models.shared.SourceSnowflake;
@@ -714,19 +729,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("dignissimos") {{
+                .setSecurity(new Security("aut") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceYandexMetrica("odio", "similique", SourceYandexMetricaYandexMetrica.YANDEX_METRICA, LocalDate.parse("2022-01-01")) {{
-                                authToken = "distinctio";
-                                counterId = "quod";
-                                endDate = LocalDate.parse("2022-01-01");
-                                sourceType = SourceYandexMetricaYandexMetrica.YANDEX_METRICA;
-                                startDate = LocalDate.parse("2022-01-01");
-                            }}, "facilis", "d74dd39c-0f5d-42cf-b7c7-0a45626d4368") {{
-                secretId = "dicta";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceAircall("aliquam", "fugit", SourceAircallAircall.AIRCALL, OffsetDateTime.parse("2022-03-01T00:00:00.000Z")) {{
+                                apiId = "deleniti";
+                                apiToken = "impedit";
+                                sourceType = SourceAircallAircall.AIRCALL;
+                                startDate = OffsetDateTime.parse("2022-03-01T00:00:00.000Z");
+                            }}, "accusamus", "141aac36-6c8d-4d6b-9442-907474778a7b") {{
+                secretId = "fugiat";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -771,12 +785,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("dolor") {{
+                .setSecurity(new Security("ut") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("maiores");            
+            DeleteSourceRequest req = new DeleteSourceRequest("eum");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -820,12 +834,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quasi") {{
+                .setSecurity(new Security("suscipit") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("ex");            
+            GetSourceRequest req = new GetSourceRequest("assumenda");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -867,6 +881,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.InitiateOAuthResponse;
 import com.airbyte.api.models.shared.InitiateOauthRequest;
+import com.airbyte.api.models.shared.OAuthActorNames;
 import com.airbyte.api.models.shared.OAuthInputConfiguration;
 import com.airbyte.api.models.shared.Security;
 
@@ -874,12 +889,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("nulla") {{
+                .setSecurity(new Security("eos") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("excepturi", "voluptatibus", "5fce6c55-6146-4c3e-a50f-b008c42e141a") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("praesentium", OAuthActorNames.STRAVA, "10ab3cdc-a425-4190-8e52-3c7e0bc7178e") {{
                 oAuthInputConfiguration = new OAuthInputConfiguration();;
             }};            
 
@@ -925,18 +940,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("laborum") {{
+                .setSecurity(new Security("aliquam") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 810424;
-                offset = 245367;
+                limit = 488410;
+                offset = 577543;
                 workspaceIds = new String[]{{
-                    add("6c8dd6b1-4429-4074-b477-8a7bd466d28c"),
-                    add("10ab3cdc-a425-4190-8e52-3c7e0bc7178e"),
+                    add("f2a70c68-8282-4aa4-8256-2f222e9817ee"),
+                    add("17cbe61e-6b7b-495b-80ab-3c20c4f3789f"),
                 }};
             }};            
 
@@ -977,6 +992,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PatchSourceRequest;
 import com.airbyte.api.models.operations.PatchSourceResponse;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.SourceAha;
+import com.airbyte.api.models.shared.SourceAhaAha;
 import com.airbyte.api.models.shared.SourceAircall;
 import com.airbyte.api.models.shared.SourceAircallAircall;
 import com.airbyte.api.models.shared.SourceAirtable;
@@ -1001,6 +1018,11 @@ import com.airbyte.api.models.shared.SourceAmazonAdsAuthType;
 import com.airbyte.api.models.shared.SourceAmazonAdsRegion;
 import com.airbyte.api.models.shared.SourceAmazonAdsReportRecordTypes;
 import com.airbyte.api.models.shared.SourceAmazonAdsStateFilter;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartner;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAWSEnvironment;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAWSRegion;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAmazonSellerPartner;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAuthType;
 import com.airbyte.api.models.shared.SourceAmazonSqs;
 import com.airbyte.api.models.shared.SourceAmazonSqsAWSRegion;
 import com.airbyte.api.models.shared.SourceAmazonSqsAmazonSqs;
@@ -1073,6 +1095,8 @@ import com.airbyte.api.models.shared.SourceConfigcat;
 import com.airbyte.api.models.shared.SourceConfigcatConfigcat;
 import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
+import com.airbyte.api.models.shared.SourceConvex;
+import com.airbyte.api.models.shared.SourceConvexConvex;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -1199,7 +1223,6 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
-import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsGoogleSheets;
@@ -1244,10 +1267,19 @@ import com.airbyte.api.models.shared.SourceKlaviyo;
 import com.airbyte.api.models.shared.SourceKlaviyoKlaviyo;
 import com.airbyte.api.models.shared.SourceKustomerSinger;
 import com.airbyte.api.models.shared.SourceKustomerSingerKustomerSinger;
+import com.airbyte.api.models.shared.SourceKyve;
+import com.airbyte.api.models.shared.SourceKyveKyve;
 import com.airbyte.api.models.shared.SourceLaunchdarkly;
 import com.airbyte.api.models.shared.SourceLaunchdarklyLaunchdarkly;
 import com.airbyte.api.models.shared.SourceLemlist;
 import com.airbyte.api.models.shared.SourceLemlistLemlist;
+import com.airbyte.api.models.shared.SourceLeverHiring;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverApiKey;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverApiKeyAuthType;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverOAuth;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverOAuthAuthType;
+import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
+import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
@@ -1488,9 +1520,6 @@ import com.airbyte.api.models.shared.SourceS3S3AmazonWebServices;
 import com.airbyte.api.models.shared.SourceSalesforce;
 import com.airbyte.api.models.shared.SourceSalesforceAuthType;
 import com.airbyte.api.models.shared.SourceSalesforceSalesforce;
-import com.airbyte.api.models.shared.SourceSalesforceSinger;
-import com.airbyte.api.models.shared.SourceSalesforceSingerApiType;
-import com.airbyte.api.models.shared.SourceSalesforceSingerSalesforceSinger;
 import com.airbyte.api.models.shared.SourceSalesforceStreamsCriteria;
 import com.airbyte.api.models.shared.SourceSalesforceStreamsCriteriaSearchCriteria;
 import com.airbyte.api.models.shared.SourceSalesloft;
@@ -1544,6 +1573,7 @@ import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsAPIAccessTokenA
 import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsOAuth20AuthType;
 import com.airbyte.api.models.shared.SourceSmartsheetsSmartsheets;
+import com.airbyte.api.models.shared.SourceSmartsheetsValidenums;
 import com.airbyte.api.models.shared.SourceSnapchatMarketing;
 import com.airbyte.api.models.shared.SourceSnapchatMarketingSnapchatMarketing;
 import com.airbyte.api.models.shared.SourceSnowflake;
@@ -1669,17 +1699,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aliquam") {{
+                .setSecurity(new Security("nulla") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("odio") {{
+            PatchSourceRequest req = new PatchSourceRequest("quas") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourcePersistiq("commodi", SourcePersistiqPersistiq.PERSISTIQ);;
+                    configuration = new SourceMailchimp(SourceMailchimpMailchimp.MAILCHIMP) {{
+                        campaignId = "quasi";
+                        credentials = new SourceMailchimpCredentialsAPIKey("error", SourceMailchimpCredentialsAPIKeyAuthType.APIKEY);;
+                    }};;
                     name = "My source";
-                    secretId = "sapiente";
-                    workspaceId = "2a70c688-282a-4a48-a562-f222e9817ee1";
+                    secretId = "sint";
+                    workspaceId = "dd2efd12-1aa6-4f1e-a74b-db04f1575608";
                 }};;
             }};            
 
@@ -1720,6 +1753,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PutSourceRequest;
 import com.airbyte.api.models.operations.PutSourceResponse;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.SourceAha;
+import com.airbyte.api.models.shared.SourceAhaAha;
 import com.airbyte.api.models.shared.SourceAircall;
 import com.airbyte.api.models.shared.SourceAircallAircall;
 import com.airbyte.api.models.shared.SourceAirtable;
@@ -1744,6 +1779,11 @@ import com.airbyte.api.models.shared.SourceAmazonAdsAuthType;
 import com.airbyte.api.models.shared.SourceAmazonAdsRegion;
 import com.airbyte.api.models.shared.SourceAmazonAdsReportRecordTypes;
 import com.airbyte.api.models.shared.SourceAmazonAdsStateFilter;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartner;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAWSEnvironment;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAWSRegion;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAmazonSellerPartner;
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAuthType;
 import com.airbyte.api.models.shared.SourceAmazonSqs;
 import com.airbyte.api.models.shared.SourceAmazonSqsAWSRegion;
 import com.airbyte.api.models.shared.SourceAmazonSqsAmazonSqs;
@@ -1816,6 +1856,8 @@ import com.airbyte.api.models.shared.SourceConfigcat;
 import com.airbyte.api.models.shared.SourceConfigcatConfigcat;
 import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
+import com.airbyte.api.models.shared.SourceConvex;
+import com.airbyte.api.models.shared.SourceConvexConvex;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -1942,7 +1984,6 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
-import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsGoogleSheets;
@@ -1987,10 +2028,19 @@ import com.airbyte.api.models.shared.SourceKlaviyo;
 import com.airbyte.api.models.shared.SourceKlaviyoKlaviyo;
 import com.airbyte.api.models.shared.SourceKustomerSinger;
 import com.airbyte.api.models.shared.SourceKustomerSingerKustomerSinger;
+import com.airbyte.api.models.shared.SourceKyve;
+import com.airbyte.api.models.shared.SourceKyveKyve;
 import com.airbyte.api.models.shared.SourceLaunchdarkly;
 import com.airbyte.api.models.shared.SourceLaunchdarklyLaunchdarkly;
 import com.airbyte.api.models.shared.SourceLemlist;
 import com.airbyte.api.models.shared.SourceLemlistLemlist;
+import com.airbyte.api.models.shared.SourceLeverHiring;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverApiKey;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverApiKeyAuthType;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverOAuth;
+import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateViaLeverOAuthAuthType;
+import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
+import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
@@ -2231,9 +2281,6 @@ import com.airbyte.api.models.shared.SourceS3S3AmazonWebServices;
 import com.airbyte.api.models.shared.SourceSalesforce;
 import com.airbyte.api.models.shared.SourceSalesforceAuthType;
 import com.airbyte.api.models.shared.SourceSalesforceSalesforce;
-import com.airbyte.api.models.shared.SourceSalesforceSinger;
-import com.airbyte.api.models.shared.SourceSalesforceSingerApiType;
-import com.airbyte.api.models.shared.SourceSalesforceSingerSalesforceSinger;
 import com.airbyte.api.models.shared.SourceSalesforceStreamsCriteria;
 import com.airbyte.api.models.shared.SourceSalesforceStreamsCriteriaSearchCriteria;
 import com.airbyte.api.models.shared.SourceSalesloft;
@@ -2287,6 +2334,7 @@ import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsAPIAccessTokenA
 import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceSmartsheetsCredentialsOAuth20AuthType;
 import com.airbyte.api.models.shared.SourceSmartsheetsSmartsheets;
+import com.airbyte.api.models.shared.SourceSmartsheetsValidenums;
 import com.airbyte.api.models.shared.SourceSnapchatMarketing;
 import com.airbyte.api.models.shared.SourceSnapchatMarketingSnapchatMarketing;
 import com.airbyte.api.models.shared.SourceSnowflake;
@@ -2412,16 +2460,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("esse") {{
+                .setSecurity(new Security("qui") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("quod") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceSapFieldglass("aliquid", SourceSapFieldglassSapFieldglass.SAP_FIELDGLASS) {{
-                                    apiKey = "vero";
-                                    sourceType = SourceSapFieldglassSapFieldglass.SAP_FIELDGLASS;
-                                }}, "quasi");;
+            PutSourceRequest req = new PutSourceRequest("quibusdam") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceKlarna("quasi", false, SourceKlarnaRegion.OC, SourceKlarnaKlarna.KLARNA, "et") {{
+                                    password = "deleniti";
+                                    playground = false;
+                                    region = SourceKlarnaRegion.OC;
+                                    sourceType = SourceKlarnaKlarna.KLARNA;
+                                    username = "Marilyne_Bradtke";
+                                }}, "voluptate");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);

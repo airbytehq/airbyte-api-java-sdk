@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMysqlReplicationMethodLogicalReplicationCDC - CDC uses the Binlog to detect inserts, updates, and deletes. This needs to be configured on the source database itself.
  */
+
 public class SourceMysqlReplicationMethodLogicalReplicationCDC {
     /**
      * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.

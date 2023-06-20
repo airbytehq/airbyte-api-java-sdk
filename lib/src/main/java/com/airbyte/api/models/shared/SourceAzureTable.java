@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAzureTable - The values required to configure the source.
  */
+
 public class SourceAzureTable {
     @JsonProperty("sourceType")
     public SourceAzureTableAzureTable sourceType;

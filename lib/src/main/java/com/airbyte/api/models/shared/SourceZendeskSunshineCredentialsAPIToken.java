@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceZendeskSunshineCredentialsAPIToken {
     /**
      * API Token. See the &lt;a href="https://docs.airbyte.io/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.

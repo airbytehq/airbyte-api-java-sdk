@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMongodbAuthTypeLoginPassword - Login/Password.
  */
+
 public class DestinationMongodbAuthTypeLoginPassword {
     @JsonProperty("authorization")
     public DestinationMongodbAuthTypeLoginPasswordAuthorization authorization;

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceGoogleAdsGoogleCredentials {
     /**
      * Access Token for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;

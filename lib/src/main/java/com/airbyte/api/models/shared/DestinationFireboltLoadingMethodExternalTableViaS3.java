@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationFireboltLoadingMethodExternalTableViaS3 - Loading method used to select the way data will be uploaded to Firebolt
  */
+
 public class DestinationFireboltLoadingMethodExternalTableViaS3 {
     /**
      * AWS access key granting read and write access to S3.

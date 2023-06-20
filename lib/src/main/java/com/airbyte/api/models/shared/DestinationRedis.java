@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedis - The values required to configure the destination.
  */
+
 public class DestinationRedis {
     /**
      * Redis cache type to store data in.

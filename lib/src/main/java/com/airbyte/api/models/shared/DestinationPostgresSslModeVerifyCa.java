@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationPostgresSslModeVerifyCa - Verify-ca SSL mode.
  */
+
 public class DestinationPostgresSslModeVerifyCa {
     /**
      * CA certificate

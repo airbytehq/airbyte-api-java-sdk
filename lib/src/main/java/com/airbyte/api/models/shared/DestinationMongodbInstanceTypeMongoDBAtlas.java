@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMongodbInstanceTypeMongoDBAtlas - MongoDb instance to connect to. For MongoDB Atlas and Replica Set TLS connection is used by default.
  */
+
 public class DestinationMongodbInstanceTypeMongoDBAtlas {
     /**
      * URL of a cluster to connect to.

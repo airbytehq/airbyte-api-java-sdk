@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMssql - The values required to configure the source.
  */
+
 public class SourceMssql {
     /**
      * The name of the database.

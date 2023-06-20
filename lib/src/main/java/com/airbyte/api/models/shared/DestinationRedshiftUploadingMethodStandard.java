@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedshiftUploadingMethodStandard - The method how the data will be uploaded to the database.
  */
+
 public class DestinationRedshiftUploadingMethodStandard {
     @JsonProperty("method")
     public DestinationRedshiftUploadingMethodStandardMethod method;

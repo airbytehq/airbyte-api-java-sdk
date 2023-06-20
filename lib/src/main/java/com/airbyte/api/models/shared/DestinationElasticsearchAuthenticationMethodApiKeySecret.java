@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationElasticsearchAuthenticationMethodApiKeySecret - Use a api key and secret combination to authenticate
  */
+
 public class DestinationElasticsearchAuthenticationMethodApiKeySecret {
     /**
      * The Key ID to used when accessing an enterprise Elasticsearch instance.

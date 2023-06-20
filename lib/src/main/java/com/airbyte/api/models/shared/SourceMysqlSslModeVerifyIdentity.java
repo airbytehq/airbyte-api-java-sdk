@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMysqlSslModeVerifyIdentity - Always connect with SSL. Verify both CA and Hostname.
  */
+
 public class SourceMysqlSslModeVerifyIdentity {
     /**
      * CA certificate

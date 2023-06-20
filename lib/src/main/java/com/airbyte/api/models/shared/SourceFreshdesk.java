@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceFreshdesk - The values required to configure the source.
  */
+
 public class SourceFreshdesk {
     /**
      * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.

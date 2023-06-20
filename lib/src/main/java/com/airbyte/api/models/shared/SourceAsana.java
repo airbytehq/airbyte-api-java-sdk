@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAsana - The values required to configure the source.
  */
+
 public class SourceAsana {
     /**
      * Choose how to authenticate to Github

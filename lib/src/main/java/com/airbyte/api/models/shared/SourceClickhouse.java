@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceClickhouse - The values required to configure the source.
  */
+
 public class SourceClickhouse {
     /**
      * The name of the database.

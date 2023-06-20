@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSftpBulk - The values required to configure the source.
  */
+
 public class SourceSftpBulk {
     /**
      * Sync only the most recent file for the configured folder path and file pattern

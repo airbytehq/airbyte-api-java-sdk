@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAirtable - The values required to configure the source.
  */
+
 public class SourceAirtable {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

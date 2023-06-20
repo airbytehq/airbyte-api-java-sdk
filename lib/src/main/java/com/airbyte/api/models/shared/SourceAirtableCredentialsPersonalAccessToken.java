@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceAirtableCredentialsPersonalAccessToken {
     /**
      * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.

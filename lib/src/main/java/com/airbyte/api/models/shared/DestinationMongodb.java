@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationMongodb - The values required to configure the destination.
  */
+
 public class DestinationMongodb {
     /**
      * Authorization type.

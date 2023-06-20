@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFileSecure - The values required to configure the source.
  */
+
 public class SourceFileSecure {
     /**
      * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).

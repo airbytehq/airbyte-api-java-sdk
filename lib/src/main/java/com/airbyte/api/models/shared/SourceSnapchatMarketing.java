@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceSnapchatMarketing - The values required to configure the source.
  */
+
 public class SourceSnapchatMarketing {
     /**
      * The Client ID of your Snapchat developer application.

@@ -6,6 +6,7 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceGoogleAdsCustomQueries {
     /**
      * A custom defined GAQL query for building the report. Should not contain segments.date expression because it is used by incremental streams. See Google's &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;query builder&lt;/a&gt; for more information.

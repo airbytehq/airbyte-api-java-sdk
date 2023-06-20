@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceS3FormatJsonl - This connector uses &lt;a href="https://arrow.apache.org/docs/python/json.html" target="_blank"&gt;PyArrow&lt;/a&gt; for JSON Lines (jsonl) file parsing.
  */
+
 public class SourceS3FormatJsonl {
     /**
      * The chunk size in bytes to process at a time in memory from each file. If your data is particularly wide and failing during schema detection, increasing this should solve it. Beware of raising this too high as you could hit OOM errors.

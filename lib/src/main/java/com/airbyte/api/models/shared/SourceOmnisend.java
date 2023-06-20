@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOmnisend - The values required to configure the source.
  */
+
 public class SourceOmnisend {
     /**
      * API Key

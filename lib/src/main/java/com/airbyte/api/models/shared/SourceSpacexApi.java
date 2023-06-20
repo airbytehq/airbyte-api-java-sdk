@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSpacexApi - The values required to configure the source.
  */
+
 public class SourceSpacexApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("id")

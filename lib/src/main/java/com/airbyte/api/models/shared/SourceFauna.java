@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFauna - The values required to configure the source.
  */
+
 public class SourceFauna {
     /**
      * Settings for the Fauna Collection.

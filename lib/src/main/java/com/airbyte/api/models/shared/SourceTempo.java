@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceTempo - The values required to configure the source.
  */
+
 public class SourceTempo {
     /**
      * Tempo API Token. Go to Tempo&gt;Settings, scroll down to Data Access and select API integration.

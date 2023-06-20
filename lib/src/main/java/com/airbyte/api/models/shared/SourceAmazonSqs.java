@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAmazonSqs - The values required to configure the source.
  */
+
 public class SourceAmazonSqs {
     /**
      * The Access Key ID of the AWS IAM Role to use for pulling messages

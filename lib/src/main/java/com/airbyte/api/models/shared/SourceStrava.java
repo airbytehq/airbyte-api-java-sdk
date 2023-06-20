@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceStrava - The values required to configure the source.
  */
+
 public class SourceStrava {
     /**
      * The Athlete ID of your Strava developer application.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceBigquery - The values required to configure the source.
  */
+
 public class SourceBigquery {
     /**
      * The contents of your Service Account Key JSON file. See the &lt;a href="https://docs.airbyte.com/integrations/sources/bigquery#setup-the-bigquery-source-in-airbyte"&gt;docs&lt;/a&gt; for more information on how to obtain this key.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleWebfonts - The values required to configure the source.
  */
+
 public class SourceGoogleWebfonts {
     /**
      * Optional, Available params- json, media, proto

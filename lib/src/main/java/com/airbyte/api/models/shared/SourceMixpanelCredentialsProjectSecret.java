@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMixpanelCredentialsProjectSecret - Choose how to authenticate to Mixpanel
  */
+
 public class SourceMixpanelCredentialsProjectSecret {
     /**
      * Mixpanel project secret. See the &lt;a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret"&gt;docs&lt;/a&gt; for more information on how to obtain this.

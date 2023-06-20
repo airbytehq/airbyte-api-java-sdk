@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceZendeskSupport - The values required to configure the source.
  */
+
 public class SourceZendeskSupport {
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.

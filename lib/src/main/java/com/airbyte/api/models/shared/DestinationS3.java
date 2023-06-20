@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationS3 - The values required to configure the destination.
  */
+
 public class DestinationS3 {
     /**
      * The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;.

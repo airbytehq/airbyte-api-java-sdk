@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceZendeskSunshine - The values required to configure the source.
  */
+
 public class SourceZendeskSunshine {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")

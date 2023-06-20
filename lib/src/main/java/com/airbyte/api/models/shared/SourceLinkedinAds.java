@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceLinkedinAds - The values required to configure the source.
  */
+
 public class SourceLinkedinAds {
     /**
      * Specify the account IDs separated by a space, to pull the data from. Leave empty, if you want to pull the data from all associated accounts. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn Ads docs&lt;/a&gt; for more info.

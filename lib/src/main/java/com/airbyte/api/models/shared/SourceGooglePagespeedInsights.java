@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGooglePagespeedInsights - The values required to configure the source.
  */
+
 public class SourceGooglePagespeedInsights {
     /**
      * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.

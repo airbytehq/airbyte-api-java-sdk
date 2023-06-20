@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePendo - The values required to configure the source.
  */
+
 public class SourcePendo {
     @JsonProperty("api_key")
     public String apiKey;

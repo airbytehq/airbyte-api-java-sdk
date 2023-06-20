@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceStripe - The values required to configure the source.
  */
+
 public class SourceStripe {
     /**
      * Your Stripe account ID (starts with 'acct_', find yours &lt;a href="https://dashboard.stripe.com/settings/account"&gt;here&lt;/a&gt;).

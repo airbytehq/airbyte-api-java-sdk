@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOracle - The values required to configure the source.
  */
+
 public class SourceOracle {
     /**
      * Connect data that will be used for DB connection

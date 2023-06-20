@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceOrb - The values required to configure the source.
  */
+
 public class SourceOrb {
     /**
      * Orb API Key, issued from the Orb admin console.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationPubsub - The values required to configure the destination.
  */
+
 public class DestinationPubsub {
     /**
      * Number of ms before the buffer is flushed

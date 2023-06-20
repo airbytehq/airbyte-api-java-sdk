@@ -11,18 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * InitiateOauthRequest - POST body for initiating OAuth via the public API
  */
-public class InitiateOauthRequest {
-    /**
-     * The name of the source to authenticate to
-     */
-    @JsonProperty("name")
-    public String name;
 
-    public InitiateOauthRequest withName(String name) {
-        this.name = name;
-        return this;
-    }
-    
+public class InitiateOauthRequest {
     /**
      * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
      */
@@ -46,6 +36,14 @@ public class InitiateOauthRequest {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public OAuthActorNames sourceType;
+
+    public InitiateOauthRequest withSourceType(OAuthActorNames sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The workspace to create the secret and eventually the full source.
      */
@@ -57,9 +55,9 @@ public class InitiateOauthRequest {
         return this;
     }
     
-    public InitiateOauthRequest(@JsonProperty("name") String name, @JsonProperty("redirectUrl") String redirectUrl, @JsonProperty("workspaceId") String workspaceId) {
-        this.name = name;
+    public InitiateOauthRequest(@JsonProperty("redirectUrl") String redirectUrl, @JsonProperty("sourceType") OAuthActorNames sourceType, @JsonProperty("workspaceId") String workspaceId) {
         this.redirectUrl = redirectUrl;
+        this.sourceType = sourceType;
         this.workspaceId = workspaceId;
   }
 }

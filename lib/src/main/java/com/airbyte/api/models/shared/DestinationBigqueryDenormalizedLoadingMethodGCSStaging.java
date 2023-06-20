@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationBigqueryDenormalizedLoadingMethodGCSStaging - Loading method used to send select the way data will be uploaded to BigQuery. &lt;br/&gt;&lt;b&gt;Standard Inserts&lt;/b&gt; - Direct uploading using SQL INSERT statements. This method is extremely inefficient and provided only for quick testing. In almost all cases, you should use staging. &lt;br/&gt;&lt;b&gt;GCS Staging&lt;/b&gt; - Writes large batches of records to a file, uploads the file to GCS, then uses &lt;b&gt;COPY INTO table&lt;/b&gt; to upload the file. Recommended for most workloads for better speed and scalability. Read more about GCS Staging &lt;a href="https://docs.airbyte.com/integrations/destinations/bigquery#gcs-staging"&gt;here&lt;/a&gt;.
  */
+
 public class DestinationBigqueryDenormalizedLoadingMethodGCSStaging {
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.

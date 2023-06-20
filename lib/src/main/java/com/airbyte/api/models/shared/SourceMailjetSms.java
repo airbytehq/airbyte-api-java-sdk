@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMailjetSms - The values required to configure the source.
  */
+
 public class SourceMailjetSms {
     /**
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.

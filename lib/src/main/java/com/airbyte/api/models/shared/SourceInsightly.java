@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceInsightly - The values required to configure the source.
  */
+
 public class SourceInsightly {
     @JsonProperty("sourceType")
     public SourceInsightlyInsightly sourceType;

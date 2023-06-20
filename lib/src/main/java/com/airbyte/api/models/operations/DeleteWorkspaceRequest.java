@@ -7,6 +7,7 @@ package com.airbyte.api.models.operations;
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class DeleteWorkspaceRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     public String workspaceId;

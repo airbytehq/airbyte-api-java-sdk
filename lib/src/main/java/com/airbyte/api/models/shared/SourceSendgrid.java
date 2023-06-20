@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSendgrid - The values required to configure the source.
  */
+
 public class SourceSendgrid {
     /**
      * API Key, use &lt;a href="https://app.sendgrid.com/settings/api_keys/"&gt;admin&lt;/a&gt; to generate this key.

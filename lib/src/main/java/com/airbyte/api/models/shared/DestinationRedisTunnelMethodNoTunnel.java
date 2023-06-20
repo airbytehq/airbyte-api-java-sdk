@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedisTunnelMethodNoTunnel - Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
  */
+
 public class DestinationRedisTunnelMethodNoTunnel {
     /**
      * No ssh tunnel needed to connect to database

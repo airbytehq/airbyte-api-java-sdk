@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * JobsResponse - List all the Jobs by connectionId.
  */
+
 public class JobsResponse {
     @JsonProperty("data")
     public JobResponse[] data;

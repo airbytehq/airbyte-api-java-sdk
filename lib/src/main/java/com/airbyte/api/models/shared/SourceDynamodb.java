@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceDynamodb - The values required to configure the source.
  */
+
 public class SourceDynamodb {
     /**
      * The access key id to access Dynamodb. Airbyte requires read permissions to the database

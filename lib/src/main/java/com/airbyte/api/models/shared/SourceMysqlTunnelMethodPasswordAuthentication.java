@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMysqlTunnelMethodPasswordAuthentication - Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
  */
+
 public class SourceMysqlTunnelMethodPasswordAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.

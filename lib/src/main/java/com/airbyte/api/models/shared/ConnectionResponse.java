@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * ConnectionResponse - Provides details of a single connection.
  */
+
 public class ConnectionResponse {
     /**
      * A list of configured stream options for a connection.

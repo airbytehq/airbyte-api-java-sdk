@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceHubspotCredentialsOAuth - Choose how to authenticate to HubSpot.
  */
+
 public class SourceHubspotCredentialsOAuth {
     /**
      * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.

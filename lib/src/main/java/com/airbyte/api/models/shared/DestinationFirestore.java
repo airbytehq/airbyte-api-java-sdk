@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationFirestore - The values required to configure the destination.
  */
+
 public class DestinationFirestore {
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.

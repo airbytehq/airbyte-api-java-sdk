@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class SourceGitlabCredentialsPrivateToken {
     /**
      * Log into your Gitlab account and then generate a personal Access Token.

@@ -23,20 +23,99 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest;
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse;
 import com.airbyte.api.models.shared.ActorTypeEnum;
-import com.airbyte.api.models.shared.OAuthCredentialsConfiguration;
+import com.airbyte.api.models.shared.Airtable;
+import com.airbyte.api.models.shared.AirtableCredentials;
+import com.airbyte.api.models.shared.AmazonAds;
+import com.airbyte.api.models.shared.AmazonSellerPartner;
+import com.airbyte.api.models.shared.Asana;
+import com.airbyte.api.models.shared.AsanaCredentials;
+import com.airbyte.api.models.shared.BingAds;
+import com.airbyte.api.models.shared.FacebookMarketing;
+import com.airbyte.api.models.shared.Github;
+import com.airbyte.api.models.shared.GithubCredentials;
+import com.airbyte.api.models.shared.Gitlab;
+import com.airbyte.api.models.shared.GitlabCredentials;
+import com.airbyte.api.models.shared.GoogleAds;
+import com.airbyte.api.models.shared.GoogleAdsCredentials;
+import com.airbyte.api.models.shared.GoogleAnalyticsDataApi;
+import com.airbyte.api.models.shared.GoogleAnalyticsDataApiCredentials;
+import com.airbyte.api.models.shared.GoogleAnalyticsV4;
+import com.airbyte.api.models.shared.GoogleAnalyticsV4Credentials;
+import com.airbyte.api.models.shared.GoogleSearchConsole;
+import com.airbyte.api.models.shared.GoogleSearchConsoleAuthorization;
+import com.airbyte.api.models.shared.GoogleSheets;
+import com.airbyte.api.models.shared.GoogleSheetsAuthenticateViaGoogleOAuth;
+import com.airbyte.api.models.shared.Harvest;
+import com.airbyte.api.models.shared.HarvestCredentials;
+import com.airbyte.api.models.shared.Hubspot;
+import com.airbyte.api.models.shared.HubspotCredentials;
+import com.airbyte.api.models.shared.Instagram;
+import com.airbyte.api.models.shared.Intercom;
+import com.airbyte.api.models.shared.LeverHiring;
+import com.airbyte.api.models.shared.LeverHiringCredentials;
+import com.airbyte.api.models.shared.LinkedinAds;
+import com.airbyte.api.models.shared.LinkedinAdsCredentials;
+import com.airbyte.api.models.shared.Mailchimp;
+import com.airbyte.api.models.shared.MailchimpCredentials;
+import com.airbyte.api.models.shared.MicrosoftTeams;
+import com.airbyte.api.models.shared.MicrosoftTeamsCredentials;
+import com.airbyte.api.models.shared.Monday;
+import com.airbyte.api.models.shared.MondayCredentials;
+import com.airbyte.api.models.shared.Notion;
+import com.airbyte.api.models.shared.NotionCredentials;
+import com.airbyte.api.models.shared.OAuthActorNames;
+import com.airbyte.api.models.shared.Pinterest;
+import com.airbyte.api.models.shared.PinterestCredentials;
+import com.airbyte.api.models.shared.Retently;
+import com.airbyte.api.models.shared.RetentlyCredentials;
+import com.airbyte.api.models.shared.Salesforce;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.Shopify;
+import com.airbyte.api.models.shared.ShopifyCredentials;
+import com.airbyte.api.models.shared.Slack;
+import com.airbyte.api.models.shared.SlackCredentials;
+import com.airbyte.api.models.shared.Smartsheets;
+import com.airbyte.api.models.shared.SmartsheetsCredentials;
+import com.airbyte.api.models.shared.SnapchatMarketing;
+import com.airbyte.api.models.shared.Snowflake;
+import com.airbyte.api.models.shared.SnowflakeCredentials;
+import com.airbyte.api.models.shared.Square;
+import com.airbyte.api.models.shared.SquareCredentials;
+import com.airbyte.api.models.shared.Strava;
+import com.airbyte.api.models.shared.Surveymonkey;
+import com.airbyte.api.models.shared.SurveymonkeyCredentials;
+import com.airbyte.api.models.shared.TiktokMarketing;
+import com.airbyte.api.models.shared.TiktokMarketingCredentials;
+import com.airbyte.api.models.shared.Trello;
 import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest;
+import com.airbyte.api.models.shared.Xero;
+import com.airbyte.api.models.shared.XeroAuthentication;
+import com.airbyte.api.models.shared.YoutubeAnalytics;
+import com.airbyte.api.models.shared.YoutubeAnalyticsCredentials;
+import com.airbyte.api.models.shared.ZendeskChat;
+import com.airbyte.api.models.shared.ZendeskChatCredentials;
+import com.airbyte.api.models.shared.ZendeskSunshine;
+import com.airbyte.api.models.shared.ZendeskSunshineCredentials;
+import com.airbyte.api.models.shared.ZendeskSupport;
+import com.airbyte.api.models.shared.ZendeskSupportCredentials;
+import com.airbyte.api.models.shared.ZendeskTalk;
+import com.airbyte.api.models.shared.ZendeskTalkCredentials;
 
 public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("molestiae") {{
+                .setSecurity(new Security("consectetur") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.DESTINATION,                 new OAuthCredentialsConfiguration();, "occaecati");, "minima");            
+            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.SOURCE,                 new Salesforce() {{
+                                                clientId = "temporibus";
+                                                clientSecret = "accusantium";
+                                            }}) {{
+                                sourceType = OAuthActorNames.MONDAY;
+                            }};, "aut");            
 
             CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
 
@@ -80,12 +159,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("distinctio") {{
+                .setSecurity(new Security("laudantium") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("eligendi");            
+            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("eum");            
 
             CreateWorkspaceResponse res = sdk.workspaces.createWorkspace(req);
 
@@ -129,12 +208,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("sit") {{
+                .setSecurity(new Security("mollitia") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("culpa");            
+            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("ab");            
 
             DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
 
@@ -178,12 +257,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("tempore") {{
+                .setSecurity(new Security("corrupti") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest("adipisci");            
+            GetWorkspaceRequest req = new GetWorkspaceRequest("non");            
 
             GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
 
@@ -227,20 +306,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("cumque") {{
+                .setSecurity(new Security("voluptatem") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListWorkspacesRequest req = new ListWorkspacesRequest() {{
                 includeDeleted = false;
-                limit = 160538;
-                offset = 9766;
+                limit = 221161;
+                offset = 580152;
                 workspaceIds = new String[]{{
-                    add("4f3789fd-871f-499d-92ef-d121aa6f1e67"),
-                    add("4bdb04f1-5756-4082-968e-a19f1d170513"),
-                    add("39d08086-a184-4039-8c26-071f93f5f064"),
-                    add("2dac7af5-15cc-4413-aa63-aae8d67864db"),
+                    add("c26071f9-3f5f-4064-adac-7af515cc413a"),
+                    add("a63aae8d-6786-44db-b675-fd5e60b375ed"),
                 }};
             }};            
 
@@ -287,12 +364,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("cum") {{
+                .setSecurity(new Security("numquam") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(                new WorkspaceUpdateRequest("commodi");, "in");            
+            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(                new WorkspaceUpdateRequest("doloribus");, "suscipit");            
 
             UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
 

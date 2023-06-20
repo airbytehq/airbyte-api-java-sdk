@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePostgresReplicationMethodStandard - Standard replication requires no setup on the DB side but will not be able to represent deletions incrementally.
  */
+
 public class SourcePostgresReplicationMethodStandard {
     @JsonProperty("method")
     public SourcePostgresReplicationMethodStandardMethod method;

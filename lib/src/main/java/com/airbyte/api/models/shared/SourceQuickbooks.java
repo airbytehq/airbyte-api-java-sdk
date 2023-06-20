@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceQuickbooks - The values required to configure the source.
  */
+
 public class SourceQuickbooks {
     @JsonProperty("credentials")
     public Object credentials;
@@ -43,7 +44,7 @@ public class SourceQuickbooks {
     }
     
     /**
-     * The default value to use if no bookmark exists for an endpoint (rfc3339 date string). E.g, 2021-03-20T00:00:00+00:00. Any data before this date will not be replicated.
+     * The default value to use if no bookmark exists for an endpoint (rfc3339 date string). E.g, 2021-03-20T00:00:00Z. Any data before this date will not be replicated.
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)

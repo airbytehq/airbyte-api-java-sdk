@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceK6Cloud - The values required to configure the source.
  */
+
 public class SourceK6Cloud {
     /**
      * Your API Token. See &lt;a href="https://k6.io/docs/cloud/integrations/token/"&gt;here&lt;/a&gt;. The key is case sensitive.

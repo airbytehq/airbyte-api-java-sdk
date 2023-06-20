@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSmartengage - The values required to configure the source.
  */
+
 public class SourceSmartengage {
     /**
      * API Key

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourcePublicApis - The values required to configure the source.
  */
+
 public class SourcePublicApis {
     @JsonProperty("sourceType")
     public SourcePublicApisPublicApis sourceType;

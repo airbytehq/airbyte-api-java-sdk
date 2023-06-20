@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceExchangeRates - The values required to configure the source.
  */
+
 public class SourceExchangeRates {
     /**
      * Your API Key. See &lt;a href="https://apilayer.com/marketplace/exchangerates_data-api"&gt;here&lt;/a&gt;. The key is case sensitive.

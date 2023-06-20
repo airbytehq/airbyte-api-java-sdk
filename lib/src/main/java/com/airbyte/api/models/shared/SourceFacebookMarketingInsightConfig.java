@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceFacebookMarketingInsightConfig - Config for custom insights
  */
+
 public class SourceFacebookMarketingInsightConfig {
     /**
      * A list of chosen action_breakdowns for action_breakdowns

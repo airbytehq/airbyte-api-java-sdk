@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationPostgresSslModeDisable - Disable SSL.
  */
+
 public class DestinationPostgresSslModeDisable {
     @JsonProperty("mode")
     public DestinationPostgresSslModeDisableMode mode;

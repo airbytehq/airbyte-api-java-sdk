@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceMailgun - The values required to configure the source.
  */
+
 public class SourceMailgun {
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.

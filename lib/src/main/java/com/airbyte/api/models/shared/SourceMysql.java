@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceMysql - The values required to configure the source.
  */
+
 public class SourceMysql {
     /**
      * The database name.

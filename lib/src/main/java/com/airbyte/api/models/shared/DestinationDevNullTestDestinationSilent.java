@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDevNullTestDestinationSilent - The type of destination to be used
  */
+
 public class DestinationDevNullTestDestinationSilent {
     @JsonProperty("test_destination_type")
     public DestinationDevNullTestDestinationSilentTestDestinationType testDestinationType;

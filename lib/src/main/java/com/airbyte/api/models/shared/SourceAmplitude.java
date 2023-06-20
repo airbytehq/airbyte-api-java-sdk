@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceAmplitude - The values required to configure the source.
  */
+
 public class SourceAmplitude {
     /**
      * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFileSecureProviderS3AmazonWebServices - The storage Provider or Location of the file(s) which should be replicated.
  */
+
 public class SourceFileSecureProviderS3AmazonWebServices {
     /**
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.

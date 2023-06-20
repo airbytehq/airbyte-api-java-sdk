@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSquareCredentialsAPIKey - Choose how to authenticate to Square.
  */
+
 public class SourceSquareCredentialsAPIKey {
     /**
      * The API key for a Square application

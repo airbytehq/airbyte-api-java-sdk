@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedshiftUploadingMethodS3Staging - The method how the data will be uploaded to the database.
  */
+
 public class DestinationRedshiftUploadingMethodS3Staging {
     /**
      * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.

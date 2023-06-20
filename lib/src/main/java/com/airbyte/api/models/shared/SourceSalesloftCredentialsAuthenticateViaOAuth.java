@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.time.OffsetDateTime;
 
+
 public class SourceSalesloftCredentialsAuthenticateViaOAuth {
     /**
      * Access Token for making authenticated requests.

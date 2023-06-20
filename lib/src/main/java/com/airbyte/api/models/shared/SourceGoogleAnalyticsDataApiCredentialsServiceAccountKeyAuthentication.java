@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication - Credentials for the service
  */
+
 public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthentication {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")

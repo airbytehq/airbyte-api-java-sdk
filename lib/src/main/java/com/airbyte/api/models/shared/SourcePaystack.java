@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourcePaystack - The values required to configure the source.
  */
+
 public class SourcePaystack {
     /**
      * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.

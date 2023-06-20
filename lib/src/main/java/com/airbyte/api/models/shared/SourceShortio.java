@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceShortio - The values required to configure the source.
  */
+
 public class SourceShortio {
     @JsonProperty("domain_id")
     public String domainId;

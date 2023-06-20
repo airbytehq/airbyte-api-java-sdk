@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationRedshift - The values required to configure the destination.
  */
+
 public class DestinationRedshift {
     /**
      * Name of the database.

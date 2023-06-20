@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSmaily - The values required to configure the source.
  */
+
 public class SourceSmaily {
     /**
      * API user password. See https://smaily.com/help/api/general/create-api-user/

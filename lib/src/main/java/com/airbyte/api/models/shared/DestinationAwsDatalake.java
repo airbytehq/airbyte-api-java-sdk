@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationAwsDatalake - The values required to configure the destination.
  */
+
 public class DestinationAwsDatalake {
     /**
      * target aws account id

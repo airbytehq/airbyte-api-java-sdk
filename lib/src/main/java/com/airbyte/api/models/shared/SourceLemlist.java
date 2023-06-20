@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceLemlist - The values required to configure the source.
  */
+
 public class SourceLemlist {
     /**
      * Lemlist API key.

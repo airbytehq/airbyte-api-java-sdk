@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceSurveySparrow - The values required to configure the source.
  */
+
 public class SourceSurveySparrow {
     /**
      * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.

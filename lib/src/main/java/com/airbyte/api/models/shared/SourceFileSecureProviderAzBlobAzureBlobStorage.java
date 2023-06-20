@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFileSecureProviderAzBlobAzureBlobStorage - The storage Provider or Location of the file(s) which should be replicated.
  */
+
 public class SourceFileSecureProviderAzBlobAzureBlobStorage {
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationDynamodb - The values required to configure the destination.
  */
+
 public class DestinationDynamodb {
     /**
      * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.

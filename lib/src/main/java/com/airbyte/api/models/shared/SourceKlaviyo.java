@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceKlaviyo - The values required to configure the source.
  */
+
 public class SourceKlaviyo {
     /**
      * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.

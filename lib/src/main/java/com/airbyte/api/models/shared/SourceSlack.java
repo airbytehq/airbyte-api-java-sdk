@@ -16,6 +16,7 @@ import java.time.OffsetDateTime;
 /**
  * SourceSlack - The values required to configure the source.
  */
+
 public class SourceSlack {
     /**
      * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.

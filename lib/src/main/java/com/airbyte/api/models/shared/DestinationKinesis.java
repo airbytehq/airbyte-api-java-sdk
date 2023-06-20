@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationKinesis - The values required to configure the destination.
  */
+
 public class DestinationKinesis {
     /**
      * Generate the AWS Access Key for current user.

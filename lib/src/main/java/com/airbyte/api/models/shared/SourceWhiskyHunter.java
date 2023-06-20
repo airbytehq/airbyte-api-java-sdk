@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceWhiskyHunter - The values required to configure the source.
  */
+
 public class SourceWhiskyHunter {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * ConnectionSchedule - schedule for when the the connection should run, per the schedule type
  */
+
 public class ConnectionSchedule {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cronExpression")

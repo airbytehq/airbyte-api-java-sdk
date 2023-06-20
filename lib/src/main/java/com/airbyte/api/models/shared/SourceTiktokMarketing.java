@@ -13,6 +13,7 @@ import java.time.LocalDate;
 /**
  * SourceTiktokMarketing - The values required to configure the source.
  */
+
 public class SourceTiktokMarketing {
     /**
      * The attribution window in days.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceIp2whois - The values required to configure the source.
  */
+
 public class SourceIp2whois {
     /**
      * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DestinationS3FormatAvroApacheAvro - Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
  */
+
 public class DestinationS3FormatAvroApacheAvro {
     /**
      * The compression algorithm used to compress data. Default to no compression.

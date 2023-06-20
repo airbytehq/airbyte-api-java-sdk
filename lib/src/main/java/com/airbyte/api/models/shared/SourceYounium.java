@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceYounium - The values required to configure the source.
  */
+
 public class SourceYounium {
     /**
      * Legal Entity that data should be pulled from

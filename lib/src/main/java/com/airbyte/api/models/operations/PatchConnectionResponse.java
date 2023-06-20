@@ -7,6 +7,7 @@ package com.airbyte.api.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.http.HttpResponse;
 
+
 public class PatchConnectionResponse {
     /**
      * Update a Connection by the id in the path.

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceConfigcat - The values required to configure the source.
  */
+
 public class SourceConfigcat {
     /**
      * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.

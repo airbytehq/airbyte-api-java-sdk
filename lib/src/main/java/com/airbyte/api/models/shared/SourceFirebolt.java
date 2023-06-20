@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SourceFirebolt - The values required to configure the source.
  */
+
 public class SourceFirebolt {
     /**
      * Firebolt account to login.
