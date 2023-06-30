@@ -37,5 +37,17 @@ public class AmazonSellerPartner {
         return this;
     }
     
+    /**
+     * The Refresh Token obtained via OAuth flow authorization.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public AmazonSellerPartner withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public AmazonSellerPartner(){}
 }

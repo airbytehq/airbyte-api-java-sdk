@@ -4,8 +4,6 @@
 
 package com.airbyte.api.models.shared;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -35,17 +33,17 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
     
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("sourceType")
-    public OAuthActorNames sourceType;
+    @JsonProperty("name")
+    public OAuthActorNames name;
 
-    public WorkspaceOAuthCredentialsRequest withSourceType(OAuthActorNames sourceType) {
-        this.sourceType = sourceType;
+    public WorkspaceOAuthCredentialsRequest withName(OAuthActorNames name) {
+        this.name = name;
         return this;
     }
     
-    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") Object configuration) {
+    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") Object configuration, @JsonProperty("name") OAuthActorNames name) {
         this.actorType = actorType;
         this.configuration = configuration;
+        this.name = name;
   }
 }

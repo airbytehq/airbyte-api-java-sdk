@@ -37,5 +37,17 @@ public class Salesforce {
         return this;
     }
     
+    /**
+     * Enter your application's &lt;a href="https://developer.salesforce.com/docs/atlas.en-us.mobile_sdk.meta/mobile_sdk/oauth_refresh_token_flow.htm"&gt;Salesforce Refresh Token&lt;/a&gt; used for Airbyte to access your Salesforce account.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public Salesforce withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public Salesforce(){}
 }

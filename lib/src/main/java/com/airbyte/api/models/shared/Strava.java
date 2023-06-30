@@ -37,5 +37,17 @@ public class Strava {
         return this;
     }
     
+    /**
+     * The Refresh Token with the activity: read_all permissions.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public Strava withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public Strava(){}
 }

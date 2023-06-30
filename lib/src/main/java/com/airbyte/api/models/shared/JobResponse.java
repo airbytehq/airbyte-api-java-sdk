@@ -22,6 +22,14 @@ public class JobResponse {
         return this;
     }
     
+    @JsonProperty("connectionId")
+    public String connectionId;
+
+    public JobResponse withConnectionId(String connectionId) {
+        this.connectionId = connectionId;
+        return this;
+    }
+    
     /**
      * Duration of a sync in ISO_8601 format
      */
@@ -87,7 +95,8 @@ public class JobResponse {
         return this;
     }
     
-    public JobResponse(@JsonProperty("jobId") Long jobId, @JsonProperty("jobType") JobTypeEnum jobType, @JsonProperty("startTime") String startTime, @JsonProperty("status") JobStatusEnum status) {
+    public JobResponse(@JsonProperty("connectionId") String connectionId, @JsonProperty("jobId") Long jobId, @JsonProperty("jobType") JobTypeEnum jobType, @JsonProperty("startTime") String startTime, @JsonProperty("status") JobStatusEnum status) {
+        this.connectionId = connectionId;
         this.jobId = jobId;
         this.jobType = jobType;
         this.startTime = startTime;

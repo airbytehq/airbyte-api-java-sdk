@@ -31,5 +31,29 @@ public class Trello {
         return this;
     }
     
+    /**
+     * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("key")
+    public String key;
+
+    public Trello withKey(String key) {
+        this.key = key;
+        return this;
+    }
+    
+    /**
+     * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("token")
+    public String token;
+
+    public Trello withToken(String token) {
+        this.token = token;
+        return this;
+    }
+    
     public Trello(){}
 }

@@ -34,5 +34,17 @@ public class MicrosoftTeamsCredentials {
         return this;
     }
     
+    /**
+     * A Refresh Token to renew the expired Access Token.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public MicrosoftTeamsCredentials withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public MicrosoftTeamsCredentials(){}
 }

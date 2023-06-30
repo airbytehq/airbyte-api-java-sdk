@@ -5,7 +5,6 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class ListJobsRequest {
@@ -53,7 +52,16 @@ public class ListJobsRequest {
         return this;
     }
     
-    public ListJobsRequest(@JsonProperty("connectionId") String connectionId) {
-        this.connectionId = connectionId;
-  }
+    /**
+     * The UUIDs of the workspaces you wish to list jobs for. Empty list will retrieve all allowed workspaces.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
+    public String[] workspaceIds;
+
+    public ListJobsRequest withWorkspaceIds(String[] workspaceIds) {
+        this.workspaceIds = workspaceIds;
+        return this;
+    }
+    
+    public ListJobsRequest(){}
 }

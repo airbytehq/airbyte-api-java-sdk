@@ -13,6 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class Instagram {
+    /**
+     * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public Instagram withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;

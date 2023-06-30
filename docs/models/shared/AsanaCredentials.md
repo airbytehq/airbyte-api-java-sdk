@@ -7,3 +7,4 @@
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `clientId`         | *String*           | :heavy_minus_sign: | N/A                |
 | `clientSecret`     | *String*           | :heavy_minus_sign: | N/A                |
+| `refreshToken`     | *String*           | :heavy_minus_sign: | N/A                |

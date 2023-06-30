@@ -11,6 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MailchimpCredentials {
     /**
+     * An access token generated using the above client ID and secret.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public MailchimpCredentials withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
+    /**
      * The Client ID of your OAuth application.
      */
     @JsonInclude(Include.NON_ABSENT)
