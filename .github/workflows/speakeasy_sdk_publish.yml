@@ -13,7 +13,9 @@ jobs:
       publish_java: true
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      java_gpg_passphrase: ${{ secrets.JAVA_GPG_PASSPHRASE }}
       java_gpg_secret_key: ${{ secrets.JAVA_GPG_SECRET_KEY }}
+      openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
       ossrh_password: ${{ secrets.OSSRH_PASSWORD }}
       ossrh_username: ${{ secrets.OSSRH_USERNAME }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
