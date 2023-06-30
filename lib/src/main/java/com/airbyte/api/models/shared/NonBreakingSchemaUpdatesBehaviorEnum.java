@@ -11,7 +11,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum NonBreakingSchemaUpdatesBehaviorEnum {
     IGNORE("ignore"),
-    DISABLE_CONNECTION("disable_connection");
+    DISABLE_CONNECTION("disable_connection"),
+    PROPAGATE_COLUMNS("propagate_columns"),
+    PROPAGATE_FULLY("propagate_fully");
 
     @JsonValue
     public final String value;

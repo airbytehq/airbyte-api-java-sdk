@@ -10,6 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class ZendeskSupportCredentials {
+    /**
+     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-support"&gt;docs&lt;/a&gt; for more information.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public ZendeskSupportCredentials withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;

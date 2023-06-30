@@ -18,6 +18,14 @@ import java.time.OffsetDateTime;
  */
 
 public class SourceTypeform {
+    @JsonProperty("credentials")
+    public Object credentials;
+
+    public SourceTypeform withCredentials(Object credentials) {
+        this.credentials = credentials;
+        return this;
+    }
+    
     /**
      * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
      */
@@ -39,8 +47,9 @@ public class SourceTypeform {
     }
     
     /**
-     * UTC date and time in the format: YYYY-MM-DDTHH:mm:ss[Z]. Any data before this date will not be replicated.
+     * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
@@ -51,20 +60,8 @@ public class SourceTypeform {
         return this;
     }
     
-    /**
-     * The API Token for a Typeform account.
-     */
-    @JsonProperty("token")
-    public String token;
-
-    public SourceTypeform withToken(String token) {
-        this.token = token;
-        return this;
-    }
-    
-    public SourceTypeform(@JsonProperty("sourceType") SourceTypeformTypeform sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("token") String token) {
+    public SourceTypeform(@JsonProperty("credentials") Object credentials, @JsonProperty("sourceType") SourceTypeformTypeform sourceType) {
+        this.credentials = credentials;
         this.sourceType = sourceType;
-        this.startDate = startDate;
-        this.token = token;
   }
 }

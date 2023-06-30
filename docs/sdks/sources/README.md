@@ -61,6 +61,8 @@ import com.airbyte.api.models.shared.SourceAmplitudeAmplitude;
 import com.airbyte.api.models.shared.SourceAmplitudeDataRegion;
 import com.airbyte.api.models.shared.SourceApifyDataset;
 import com.airbyte.api.models.shared.SourceApifyDatasetApifyDataset;
+import com.airbyte.api.models.shared.SourceAppfollow;
+import com.airbyte.api.models.shared.SourceAppfollowAppfollow;
 import com.airbyte.api.models.shared.SourceAsana;
 import com.airbyte.api.models.shared.SourceAsanaAsana;
 import com.airbyte.api.models.shared.SourceAsanaCredentialsAuthenticateViaAsanaOauth;
@@ -240,6 +242,10 @@ import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4CredentialsServiceAc
 import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4CredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4GoogleAnalyticsV4;
 import com.airbyte.api.models.shared.SourceGoogleDirectory;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsServiceAccountKey;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsServiceAccountKeyCredentialsTitle;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle;
 import com.airbyte.api.models.shared.SourceGoogleDirectoryGoogleDirectory;
 import com.airbyte.api.models.shared.SourceGooglePagespeedInsights;
 import com.airbyte.api.models.shared.SourceGooglePagespeedInsightsCategories;
@@ -667,6 +673,10 @@ import com.airbyte.api.models.shared.SourceTwilioTwilio;
 import com.airbyte.api.models.shared.SourceTwitter;
 import com.airbyte.api.models.shared.SourceTwitterTwitter;
 import com.airbyte.api.models.shared.SourceTypeform;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsOAuth20;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsOAuth20AuthType;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsPrivateToken;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsPrivateTokenAuthType;
 import com.airbyte.api.models.shared.SourceTypeformTypeform;
 import com.airbyte.api.models.shared.SourceUsCensus;
 import com.airbyte.api.models.shared.SourceUsCensusUsCensus;
@@ -729,18 +739,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aut") {{
+                .setSecurity(new Security("fuga") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceAircall("aliquam", "fugit", SourceAircallAircall.AIRCALL, OffsetDateTime.parse("2022-03-01T00:00:00.000Z")) {{
-                                apiId = "deleniti";
-                                apiToken = "impedit";
-                                sourceType = SourceAircallAircall.AIRCALL;
-                                startDate = OffsetDateTime.parse("2022-03-01T00:00:00.000Z");
-                            }}, "accusamus", "141aac36-6c8d-4d6b-9442-907474778a7b") {{
-                secretId = "fugiat";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceFreshservice("voluptas", "mydomain.freshservice.com", SourceFreshserviceFreshservice.FRESHSERVICE, "2020-10-01T00:00:00Z") {{
+                                apiKey = "eos";
+                                domainName = "mydomain.freshservice.com";
+                                sourceType = SourceFreshserviceFreshservice.FRESHSERVICE;
+                                startDate = "2020-10-01T00:00:00Z";
+                            }}, "ab", "904e523c-7e0b-4c71-b8e4-796f2a70c688") {{
+                secretId = "consequuntur";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -785,12 +795,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("ut") {{
+                .setSecurity(new Security("deleniti") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("eum");            
+            DeleteSourceRequest req = new DeleteSourceRequest("fugit");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -834,12 +844,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("suscipit") {{
+                .setSecurity(new Security("fuga") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("assumenda");            
+            GetSourceRequest req = new GetSourceRequest("mollitia");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -889,12 +899,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("eos") {{
+                .setSecurity(new Security("incidunt") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("praesentium", OAuthActorNames.STRAVA, "10ab3cdc-a425-4190-8e52-3c7e0bc7178e") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest(OAuthActorNames.NOTION, "explicabo", "562f222e-9817-4ee1-bcbe-61e6b7b95bc0") {{
                 oAuthInputConfiguration = new OAuthInputConfiguration();;
             }};            
 
@@ -940,18 +950,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aliquam") {{
+                .setSecurity(new Security("culpa") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 488410;
-                offset = 577543;
+                limit = 731398;
+                offset = 240020;
                 workspaceIds = new String[]{{
-                    add("f2a70c68-8282-4aa4-8256-2f222e9817ee"),
-                    add("17cbe61e-6b7b-495b-80ab-3c20c4f3789f"),
+                    add("20c4f378-9fd8-471f-99dd-2efd121aa6f1"),
+                    add("e674bdb0-4f15-4756-882d-68ea19f1d170"),
+                    add("51339d08-086a-4184-8394-c26071f93f5f"),
+                    add("0642dac7-af51-45cc-813a-a63aae8d6786"),
                 }};
             }};            
 
@@ -1031,6 +1043,8 @@ import com.airbyte.api.models.shared.SourceAmplitudeAmplitude;
 import com.airbyte.api.models.shared.SourceAmplitudeDataRegion;
 import com.airbyte.api.models.shared.SourceApifyDataset;
 import com.airbyte.api.models.shared.SourceApifyDatasetApifyDataset;
+import com.airbyte.api.models.shared.SourceAppfollow;
+import com.airbyte.api.models.shared.SourceAppfollowAppfollow;
 import com.airbyte.api.models.shared.SourceAsana;
 import com.airbyte.api.models.shared.SourceAsanaAsana;
 import com.airbyte.api.models.shared.SourceAsanaCredentialsAuthenticateViaAsanaOauth;
@@ -1209,6 +1223,10 @@ import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4CredentialsServiceAc
 import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4CredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4GoogleAnalyticsV4;
 import com.airbyte.api.models.shared.SourceGoogleDirectory;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsServiceAccountKey;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsServiceAccountKeyCredentialsTitle;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle;
 import com.airbyte.api.models.shared.SourceGoogleDirectoryGoogleDirectory;
 import com.airbyte.api.models.shared.SourceGooglePagespeedInsights;
 import com.airbyte.api.models.shared.SourceGooglePagespeedInsightsCategories;
@@ -1637,6 +1655,10 @@ import com.airbyte.api.models.shared.SourceTwilioTwilio;
 import com.airbyte.api.models.shared.SourceTwitter;
 import com.airbyte.api.models.shared.SourceTwitterTwitter;
 import com.airbyte.api.models.shared.SourceTypeform;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsOAuth20;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsOAuth20AuthType;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsPrivateToken;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsPrivateTokenAuthType;
 import com.airbyte.api.models.shared.SourceTypeformTypeform;
 import com.airbyte.api.models.shared.SourceUsCensus;
 import com.airbyte.api.models.shared.SourceUsCensusUsCensus;
@@ -1699,20 +1721,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("nulla") {{
+                .setSecurity(new Security("labore") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("quas") {{
+            PatchSourceRequest req = new PatchSourceRequest("possimus") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceMailchimp(SourceMailchimpMailchimp.MAILCHIMP) {{
-                        campaignId = "quasi";
-                        credentials = new SourceMailchimpCredentialsAPIKey("error", SourceMailchimpCredentialsAPIKeyAuthType.APIKEY);;
-                    }};;
+                    configuration = new SourceRkiCovid(SourceRkiCovidRkiCovid.RKI_COVID, "cum");;
                     name = "My source";
-                    secretId = "sint";
-                    workspaceId = "dd2efd12-1aa6-4f1e-a74b-db04f1575608";
+                    secretId = "commodi";
+                    workspaceId = "75fd5e60-b375-4ed4-b6fb-ee41f33317fe";
                 }};;
             }};            
 
@@ -1792,6 +1811,8 @@ import com.airbyte.api.models.shared.SourceAmplitudeAmplitude;
 import com.airbyte.api.models.shared.SourceAmplitudeDataRegion;
 import com.airbyte.api.models.shared.SourceApifyDataset;
 import com.airbyte.api.models.shared.SourceApifyDatasetApifyDataset;
+import com.airbyte.api.models.shared.SourceAppfollow;
+import com.airbyte.api.models.shared.SourceAppfollowAppfollow;
 import com.airbyte.api.models.shared.SourceAsana;
 import com.airbyte.api.models.shared.SourceAsanaAsana;
 import com.airbyte.api.models.shared.SourceAsanaCredentialsAuthenticateViaAsanaOauth;
@@ -1970,6 +1991,10 @@ import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4CredentialsServiceAc
 import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4CredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleAnalyticsV4GoogleAnalyticsV4;
 import com.airbyte.api.models.shared.SourceGoogleDirectory;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsServiceAccountKey;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsServiceAccountKeyCredentialsTitle;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth;
+import com.airbyte.api.models.shared.SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle;
 import com.airbyte.api.models.shared.SourceGoogleDirectoryGoogleDirectory;
 import com.airbyte.api.models.shared.SourceGooglePagespeedInsights;
 import com.airbyte.api.models.shared.SourceGooglePagespeedInsightsCategories;
@@ -2398,6 +2423,10 @@ import com.airbyte.api.models.shared.SourceTwilioTwilio;
 import com.airbyte.api.models.shared.SourceTwitter;
 import com.airbyte.api.models.shared.SourceTwitterTwitter;
 import com.airbyte.api.models.shared.SourceTypeform;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsOAuth20;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsOAuth20AuthType;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsPrivateToken;
+import com.airbyte.api.models.shared.SourceTypeformCredentialsPrivateTokenAuthType;
 import com.airbyte.api.models.shared.SourceTypeformTypeform;
 import com.airbyte.api.models.shared.SourceUsCensus;
 import com.airbyte.api.models.shared.SourceUsCensusUsCensus;
@@ -2460,19 +2489,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("qui") {{
+                .setSecurity(new Security("consectetur") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("quibusdam") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceKlarna("quasi", false, SourceKlarnaRegion.OC, SourceKlarnaKlarna.KLARNA, "et") {{
-                                    password = "deleniti";
-                                    playground = false;
-                                    region = SourceKlarnaRegion.OC;
-                                    sourceType = SourceKlarnaKlarna.KLARNA;
-                                    username = "Marilyne_Bradtke";
-                                }}, "voluptate");;
+            PutSourceRequest req = new PutSourceRequest("corporis") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceRecurly("ipsa", SourceRecurlyRecurly.RECURLY) {{
+                                    apiKey = "laboriosam";
+                                    beginTime = "2021-12-01T00:00:00";
+                                    endTime = "2021-12-01T00:00:00";
+                                    sourceType = SourceRecurlyRecurly.RECURLY;
+                                }}, "voluptates");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);

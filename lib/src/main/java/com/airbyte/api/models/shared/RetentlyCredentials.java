@@ -34,5 +34,17 @@ public class RetentlyCredentials {
         return this;
     }
     
+    /**
+     * Retently Refresh Token which can be used to fetch new Bearer Tokens when the current one expires.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public RetentlyCredentials withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public RetentlyCredentials(){}
 }

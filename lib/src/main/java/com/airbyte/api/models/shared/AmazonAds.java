@@ -37,5 +37,17 @@ public class AmazonAds {
         return this;
     }
     
+    /**
+     * Amazon Ads refresh token. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public AmazonAds withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public AmazonAds(){}
 }

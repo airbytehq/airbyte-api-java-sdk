@@ -147,7 +147,7 @@ public class Application {
                 name = "Alfredo Prosacco Sr.";
                 namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.DISABLE_CONNECTION;
                 prefix = "expedita";
                 schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
                     cronExpression = "repellat";

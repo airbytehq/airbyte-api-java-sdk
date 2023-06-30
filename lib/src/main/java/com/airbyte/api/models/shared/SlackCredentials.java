@@ -11,6 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SlackCredentials {
     /**
+     * Slack access_token. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help generating the token.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public SlackCredentials withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
+    /**
      * Slack client_id. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help finding this id.
      */
     @JsonInclude(Include.NON_ABSENT)

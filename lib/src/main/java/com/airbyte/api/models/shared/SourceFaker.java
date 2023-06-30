@@ -14,6 +14,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceFaker {
     /**
+     * Should the updated_at values for every record be new each sync?  Setting this to false will case the source to stop emitting records after COUNT records have been emitted.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("always_updated")
+    public Boolean alwaysUpdated;
+
+    public SourceFaker withAlwaysUpdated(Boolean alwaysUpdated) {
+        this.alwaysUpdated = alwaysUpdated;
+        return this;
+    }
+    
+    /**
      * How many users should be generated in total.  This setting does not apply to the purchases or products stream.
      */
     @JsonProperty("count")
@@ -45,18 +57,6 @@ public class SourceFaker {
 
     public SourceFaker withRecordsPerSlice(Long recordsPerSlice) {
         this.recordsPerSlice = recordsPerSlice;
-        return this;
-    }
-    
-    /**
-     * How many fake records will be returned for each sync, for each stream?  By default, it will take 2 syncs to create the requested 1000 records.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("records_per_sync")
-    public Long recordsPerSync;
-
-    public SourceFaker withRecordsPerSync(Long recordsPerSync) {
-        this.recordsPerSync = recordsPerSync;
         return this;
     }
     

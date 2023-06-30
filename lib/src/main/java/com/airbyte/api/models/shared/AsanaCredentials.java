@@ -28,5 +28,14 @@ public class AsanaCredentials {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public AsanaCredentials withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public AsanaCredentials(){}
 }

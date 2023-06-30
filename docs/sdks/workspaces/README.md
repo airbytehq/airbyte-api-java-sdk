@@ -31,6 +31,7 @@ import com.airbyte.api.models.shared.Asana;
 import com.airbyte.api.models.shared.AsanaCredentials;
 import com.airbyte.api.models.shared.BingAds;
 import com.airbyte.api.models.shared.FacebookMarketing;
+import com.airbyte.api.models.shared.FacebookPages;
 import com.airbyte.api.models.shared.Github;
 import com.airbyte.api.models.shared.GithubCredentials;
 import com.airbyte.api.models.shared.Gitlab;
@@ -87,6 +88,8 @@ import com.airbyte.api.models.shared.SurveymonkeyCredentials;
 import com.airbyte.api.models.shared.TiktokMarketing;
 import com.airbyte.api.models.shared.TiktokMarketingCredentials;
 import com.airbyte.api.models.shared.Trello;
+import com.airbyte.api.models.shared.Typeform;
+import com.airbyte.api.models.shared.TypeformCredentials;
 import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest;
 import com.airbyte.api.models.shared.Xero;
 import com.airbyte.api.models.shared.XeroAuthentication;
@@ -100,22 +103,22 @@ import com.airbyte.api.models.shared.ZendeskSupport;
 import com.airbyte.api.models.shared.ZendeskSupportCredentials;
 import com.airbyte.api.models.shared.ZendeskTalk;
 import com.airbyte.api.models.shared.ZendeskTalkCredentials;
+import java.time.OffsetDateTime;
 
 public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("consectetur") {{
+                .setSecurity(new Security("similique") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.SOURCE,                 new Salesforce() {{
-                                                clientId = "temporibus";
-                                                clientSecret = "accusantium";
-                                            }}) {{
-                                sourceType = OAuthActorNames.MONDAY;
-                            }};, "aut");            
+            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.SOURCE,                 new FacebookMarketing() {{
+                                                accessToken = "voluptas";
+                                                clientId = "voluptas";
+                                                clientSecret = "voluptas";
+                                            }}, OAuthActorNames.HARVEST);, "nobis");            
 
             CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
 
@@ -159,12 +162,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("laudantium") {{
+                .setSecurity(new Security("dolorum") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("eum");            
+            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("adipisci");            
 
             CreateWorkspaceResponse res = sdk.workspaces.createWorkspace(req);
 
@@ -208,12 +211,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("mollitia") {{
+                .setSecurity(new Security("minus") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("ab");            
+            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("dolores");            
 
             DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
 
@@ -257,12 +260,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("corrupti") {{
+                .setSecurity(new Security("blanditiis") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest("non");            
+            GetWorkspaceRequest req = new GetWorkspaceRequest("in");            
 
             GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
 
@@ -306,18 +309,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("voluptatem") {{
+                .setSecurity(new Security("dolore") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListWorkspacesRequest req = new ListWorkspacesRequest() {{
                 includeDeleted = false;
-                limit = 221161;
-                offset = 580152;
+                limit = 304468;
+                offset = 885963;
                 workspaceIds = new String[]{{
-                    add("c26071f9-3f5f-4064-adac-7af515cc413a"),
-                    add("a63aae8d-6786-44db-b675-fd5e60b375ed"),
+                    add("53b88f3a-8d8f-45c0-b2f2-fb7b194a276b"),
+                    add("26916fe1-f08f-4429-8e36-98f447f603e8"),
+                    add("b445e80c-a55e-4fd2-8e45-7e1858b6a89f"),
+                    add("be3a5aa8-e482-44d0-ab40-75088e518620"),
                 }};
             }};            
 
@@ -364,12 +369,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("numquam") {{
+                .setSecurity(new Security("vel") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(                new WorkspaceUpdateRequest("doloribus");, "suscipit");            
+            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(                new WorkspaceUpdateRequest("nostrum");, "saepe");            
 
             UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
 

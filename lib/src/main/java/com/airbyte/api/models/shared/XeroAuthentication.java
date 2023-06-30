@@ -11,6 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class XeroAuthentication {
     /**
+     * Enter your Xero application's access token
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public XeroAuthentication withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
+    /**
      * Enter your Xero application's Client ID
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -31,6 +43,30 @@ public class XeroAuthentication {
 
     public XeroAuthentication withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
+        return this;
+    }
+    
+    /**
+     * Enter your Xero application's refresh token
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public XeroAuthentication withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
+    /**
+     * The date-time when the access token should be refreshed
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("token_expiry_date")
+    public String tokenExpiryDate;
+
+    public XeroAuthentication withTokenExpiryDate(String tokenExpiryDate) {
+        this.tokenExpiryDate = tokenExpiryDate;
         return this;
     }
     

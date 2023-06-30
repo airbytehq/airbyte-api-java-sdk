@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -12,24 +14,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceGoogleDirectory {
     /**
-     * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
+     * Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
      */
-    @JsonProperty("credentials_json")
-    public String credentialsJson;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("credentials")
+    public Object credentials;
 
-    public SourceGoogleDirectory withCredentialsJson(String credentialsJson) {
-        this.credentialsJson = credentialsJson;
-        return this;
-    }
-    
-    /**
-     * The email of the user, which has permissions to access the Google Workspace Admin APIs.
-     */
-    @JsonProperty("email")
-    public String email;
-
-    public SourceGoogleDirectory withEmail(String email) {
-        this.email = email;
+    public SourceGoogleDirectory withCredentials(Object credentials) {
+        this.credentials = credentials;
         return this;
     }
     
@@ -41,9 +33,7 @@ public class SourceGoogleDirectory {
         return this;
     }
     
-    public SourceGoogleDirectory(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceGoogleDirectoryGoogleDirectory sourceType) {
-        this.credentialsJson = credentialsJson;
-        this.email = email;
+    public SourceGoogleDirectory(@JsonProperty("sourceType") SourceGoogleDirectoryGoogleDirectory sourceType) {
         this.sourceType = sourceType;
   }
 }

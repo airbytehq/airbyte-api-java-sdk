@@ -315,6 +315,8 @@ import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodRecommende
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodSelectAnotherOption;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod;
 import com.airbyte.api.models.shared.DestinationSnowflakeSnowflake;
+import com.airbyte.api.models.shared.DestinationTimeplus;
+import com.airbyte.api.models.shared.DestinationTimeplusTimeplus;
 import com.airbyte.api.models.shared.DestinationTypesense;
 import com.airbyte.api.models.shared.DestinationTypesenseTypesense;
 import com.airbyte.api.models.shared.DestinationVertica;
@@ -325,6 +327,8 @@ import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodPasswordAuthe
 import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodSSHKeyAuthentication;
 import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationVerticaVertica;
+import com.airbyte.api.models.shared.DestinationXata;
+import com.airbyte.api.models.shared.DestinationXataXata;
 import com.airbyte.api.models.shared.Security;
 
 public class Application {
@@ -336,22 +340,17 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPostgres("voluptate", DestinationPostgresPostgres.POSTGRES, "dolorum", 5432L, "public", "deleniti") {{
-                                database = "voluptatibus";
-                                destinationType = DestinationPostgresPostgres.POSTGRES;
-                                host = "voluptas";
-                                jdbcUrlParams = "natus";
-                                password = "eos";
-                                port = 5432L;
-                                schema = "public";
-                                sslMode = new DestinationPostgresSslModeRequire(DestinationPostgresSslModeRequireMode.REQUIRE) {{
-                                    mode = DestinationPostgresSslModeRequireMode.REQUIRE;
-                                }};
-                                tunnelMethod = new DestinationPostgresTunnelMethodNoTunnel(DestinationPostgresTunnelMethodNoTunnelTunnelMethod.NO_TUNNEL) {{
-                                    tunnelMethod = DestinationPostgresTunnelMethodNoTunnelTunnelMethod.NO_TUNNEL;
-                                }};
-                                username = "Rudolph_Bergstrom47";
-                            }}, "omnis", "ebf737ae-4203-4ce5-a6a9-5d8a0d446ce2");            
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub(false, "fugiat", DestinationPubsubPubsub.PUBSUB, false, "ab", "soluta") {{
+                                batchingDelayThreshold = 976405L;
+                                batchingElementCountThreshold = 377752L;
+                                batchingEnabled = false;
+                                batchingRequestBytesThreshold = 617658L;
+                                credentialsJson = "eos";
+                                destinationType = DestinationPubsubPubsub.PUBSUB;
+                                orderingEnabled = false;
+                                projectId = "atque";
+                                topicId = "sit";
+                            }}, "dolorum", "77a89ebf-737a-4e42-83ce-5e6a95d8a0d4");            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
@@ -395,12 +394,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("dolorum") {{
+                .setSecurity(new Security("tempora") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("a");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("vel");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -444,12 +443,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("esse") {{
+                .setSecurity(new Security("quod") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("harum");            
+            GetDestinationRequest req = new GetDestinationRequest("officiis");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -493,20 +492,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("iusto") {{
+                .setSecurity(new Security("qui") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListDestinationsRequest req = new ListDestinationsRequest() {{
                 includeDeleted = false;
-                limit = 215507;
-                offset = 788740;
+                limit = 679880;
+                offset = 952792;
                 workspaceIds = new String[]{{
-                    add("3be453f8-70b3-426b-9a73-429cdb1a8422"),
-                    add("bb679d23-2271-45bf-8cbb-1e31b8b90f34"),
-                    add("43a1108e-0adc-4f4b-9218-79fce953f73e"),
-                    add("f7fbc7ab-d74d-4d39-80f5-d2cff7c70a45"),
+                    add("a73cf3be-453f-4870-b326-b5a73429cdb1"),
+                    add("a8422bb6-79d2-4322-b15b-f0cbb1e31b8b"),
                 }};
             }};            
 
@@ -841,6 +838,8 @@ import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodRecommende
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodSelectAnotherOption;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod;
 import com.airbyte.api.models.shared.DestinationSnowflakeSnowflake;
+import com.airbyte.api.models.shared.DestinationTimeplus;
+import com.airbyte.api.models.shared.DestinationTimeplusTimeplus;
 import com.airbyte.api.models.shared.DestinationTypesense;
 import com.airbyte.api.models.shared.DestinationTypesenseTypesense;
 import com.airbyte.api.models.shared.DestinationVertica;
@@ -851,23 +850,27 @@ import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodPasswordAuthe
 import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodSSHKeyAuthentication;
 import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationVerticaVertica;
+import com.airbyte.api.models.shared.DestinationXata;
+import com.airbyte.api.models.shared.DestinationXataXata;
 import com.airbyte.api.models.shared.Security;
 
 public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("ea") {{
+                .setSecurity(new Security("cupiditate") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("aspernatur") {{
+            PatchDestinationRequest req = new PatchDestinationRequest("aperiam") {{
                 destinationPatchRequest = new DestinationPatchRequest() {{
-                    configuration = new DestinationFirestore(DestinationFirestoreFirestore.FIRESTORE, "possimus") {{
-                        credentialsJson = "magnam";
+                    configuration = new DestinationVertica("dolorem", DestinationVerticaVertica.VERTICA, "dolore", 5433L, "labore", "adipisci") {{
+                        jdbcUrlParams = "dolorum";
+                        password = "architecto";
+                        tunnelMethod = new DestinationVerticaTunnelMethodNoTunnel(DestinationVerticaTunnelMethodNoTunnelTunnelMethod.NO_TUNNEL);;
                     }};;
-                    name = "Mrs. Vicki Langosh";
+                    name = "Miss Billie Ward";
                 }};;
             }};            
 
@@ -1202,6 +1205,8 @@ import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodRecommende
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodSelectAnotherOption;
 import com.airbyte.api.models.shared.DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod;
 import com.airbyte.api.models.shared.DestinationSnowflakeSnowflake;
+import com.airbyte.api.models.shared.DestinationTimeplus;
+import com.airbyte.api.models.shared.DestinationTimeplusTimeplus;
 import com.airbyte.api.models.shared.DestinationTypesense;
 import com.airbyte.api.models.shared.DestinationTypesenseTypesense;
 import com.airbyte.api.models.shared.DestinationVertica;
@@ -1212,44 +1217,28 @@ import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodPasswordAuthe
 import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodSSHKeyAuthentication;
 import com.airbyte.api.models.shared.DestinationVerticaTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationVerticaVertica;
+import com.airbyte.api.models.shared.DestinationXata;
+import com.airbyte.api.models.shared.DestinationXataXata;
 import com.airbyte.api.models.shared.Security;
 
 public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quasi") {{
+                .setSecurity(new Security("porro") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("ex") {{
-                destinationPutRequest = new DestinationPutRequest(                new DestinationS3Glue(DestinationS3GlueS3Glue.S3_GLUE,                 new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL) {{
-                                                    compression = new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIP() {{
-                                                        compressionType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionType.GZIP;
-                                                    }};
-                                                    flattening = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlattening.NO_FLATTENING;
-                                                    formatType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL;
-                                                }}, "airbyte_database", DestinationS3GlueSerializationLibrary.ORG_APACHE_HIVE_HCATALOG_DATA_JSON_SER_DE, "airbyte_sync", "data_sync/test", DestinationS3GlueS3BucketRegion.AP_NORTHEAST2) {{
-                                    accessKeyId = "A012345678910EXAMPLE";
-                                    destinationType = DestinationS3GlueS3Glue.S3_GLUE;
-                                    fileNamePattern = "{timestamp}";
-                                    format = new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL) {{
-                                        compression = new DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIP() {{
-                                            compressionType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONCompressionGZIPCompressionType.GZIP;
-                                        }};
-                                        flattening = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFlattening.NO_FLATTENING;
-                                        formatType = DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType.JSONL;
+            PutDestinationRequest req = new PutDestinationRequest("doloribus") {{
+                destinationPutRequest = new DestinationPutRequest(                new DestinationDevNull(DestinationDevNullDevNull.DEV_NULL,                 new DestinationDevNullTestDestinationSilent(DestinationDevNullTestDestinationSilentTestDestinationType.SILENT) {{
+                                                    testDestinationType = DestinationDevNullTestDestinationSilentTestDestinationType.SILENT;
+                                                }}) {{
+                                    destinationType = DestinationDevNullDevNull.DEV_NULL;
+                                    testDestination = new DestinationDevNullTestDestinationSilent(DestinationDevNullTestDestinationSilentTestDestinationType.SILENT) {{
+                                        testDestinationType = DestinationDevNullTestDestinationSilentTestDestinationType.SILENT;
                                     }};
-                                    glueDatabase = "airbyte_database";
-                                    glueSerializationLibrary = DestinationS3GlueSerializationLibrary.ORG_APACHE_HIVE_HCATALOG_DATA_JSON_SER_DE;
-                                    s3BucketName = "airbyte_sync";
-                                    s3BucketPath = "data_sync/test";
-                                    s3BucketRegion = DestinationS3GlueS3BucketRegion.EU_WEST2;
-                                    s3Endpoint = "http://localhost:9000";
-                                    s3PathFormat = "${NAMESPACE}/${STREAM_NAME}/${YEAR}_${MONTH}_${DAY}_${EPOCH}_";
-                                    secretAccessKey = "a012345678910ABCDEFGH/AbCdEfGhEXAMPLEKEY";
-                                }}, "veniam");;
+                                }}, "facilis");;
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);

@@ -400,6 +400,8 @@ lib/src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeLoadingMetho
 lib/src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeLoadingMethodSelectAnotherOption.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationSnowflake.java
+lib/src/main/java/com/airbyte/api/models/shared/DestinationTimeplusTimeplus.java
+lib/src/main/java/com/airbyte/api/models/shared/DestinationTimeplus.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationTypesenseTypesense.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationTypesense.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationVerticaVertica.java
@@ -410,6 +412,8 @@ lib/src/main/java/com/airbyte/api/models/shared/DestinationVerticaTunnelMethodSS
 lib/src/main/java/com/airbyte/api/models/shared/DestinationVerticaTunnelMethodNoTunnelTunnelMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationVerticaTunnelMethodNoTunnel.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationVertica.java
+lib/src/main/java/com/airbyte/api/models/shared/DestinationXataXata.java
+lib/src/main/java/com/airbyte/api/models/shared/DestinationXata.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationCreateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationsResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/DestinationPatchRequest.java
@@ -461,6 +465,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceAmplitudeAmplitude.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAmplitude.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceApifyDatasetApifyDataset.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceApifyDataset.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceAppfollowAppfollow.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceAppfollow.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitle.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAsanaCredentialsAuthenticateWithPersonalAccessToken.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAsanaCredentialsAuthenticateViaAsanaOauthCredentialsTitle.java
@@ -638,6 +644,10 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4Credentia
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4GoogleAnalyticsV4.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectoryCredentialsServiceAccountKeyCredentialsTitle.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectoryCredentialsServiceAccountKey.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectoryGoogleDirectory.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectory.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGooglePagespeedInsightsCategories.java
@@ -1063,6 +1073,10 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceTwilioTaskrouterTwilioTask
 lib/src/main/java/com/airbyte/api/models/shared/SourceTwilioTaskrouter.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceTwitterTwitter.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceTwitter.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceTypeformCredentialsPrivateTokenAuthType.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceTypeformCredentialsPrivateToken.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceTypeformCredentialsOAuth20AuthType.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceTypeformCredentialsOAuth20.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceTypeformTypeform.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceTypeform.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceUsCensusUsCensus.java
@@ -1121,8 +1135,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceZuoraTenantEndpointLocatio
 lib/src/main/java/com/airbyte/api/models/shared/SourceZuora.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceCreateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/InitiateOauthRequest.java
-lib/src/main/java/com/airbyte/api/models/shared/OAuthActorNames.java
 lib/src/main/java/com/airbyte/api/models/shared/OAuthInputConfiguration.java
+lib/src/main/java/com/airbyte/api/models/shared/OAuthActorNames.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePatchRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePutRequest.java
@@ -1137,6 +1151,7 @@ lib/src/main/java/com/airbyte/api/models/shared/AsanaCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Asana.java
 lib/src/main/java/com/airbyte/api/models/shared/BingAds.java
 lib/src/main/java/com/airbyte/api/models/shared/FacebookMarketing.java
+lib/src/main/java/com/airbyte/api/models/shared/FacebookPages.java
 lib/src/main/java/com/airbyte/api/models/shared/GithubCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Github.java
 lib/src/main/java/com/airbyte/api/models/shared/GitlabCredentials.java
@@ -1191,6 +1206,8 @@ lib/src/main/java/com/airbyte/api/models/shared/Surveymonkey.java
 lib/src/main/java/com/airbyte/api/models/shared/TiktokMarketingCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/TiktokMarketing.java
 lib/src/main/java/com/airbyte/api/models/shared/Trello.java
+lib/src/main/java/com/airbyte/api/models/shared/TypeformCredentials.java
+lib/src/main/java/com/airbyte/api/models/shared/Typeform.java
 lib/src/main/java/com/airbyte/api/models/shared/XeroAuthentication.java
 lib/src/main/java/com/airbyte/api/models/shared/Xero.java
 lib/src/main/java/com/airbyte/api/models/shared/YoutubeAnalyticsCredentials.java
@@ -1582,6 +1599,8 @@ docs/models/shared/DestinationSnowflakeLoadingMethodRecommendedInternalStaging.m
 docs/models/shared/DestinationSnowflakeLoadingMethodSelectAnotherOptionMethod.md
 docs/models/shared/DestinationSnowflakeLoadingMethodSelectAnotherOption.md
 docs/models/shared/DestinationSnowflake.md
+docs/models/shared/DestinationTimeplusTimeplus.md
+docs/models/shared/DestinationTimeplus.md
 docs/models/shared/DestinationTypesenseTypesense.md
 docs/models/shared/DestinationTypesense.md
 docs/models/shared/DestinationVerticaVertica.md
@@ -1592,6 +1611,8 @@ docs/models/shared/DestinationVerticaTunnelMethodSSHKeyAuthentication.md
 docs/models/shared/DestinationVerticaTunnelMethodNoTunnelTunnelMethod.md
 docs/models/shared/DestinationVerticaTunnelMethodNoTunnel.md
 docs/models/shared/DestinationVertica.md
+docs/models/shared/DestinationXataXata.md
+docs/models/shared/DestinationXata.md
 docs/models/shared/DestinationCreateRequest.md
 docs/models/shared/DestinationsResponse.md
 docs/models/shared/DestinationPatchRequest.md
@@ -1643,6 +1664,8 @@ docs/models/shared/SourceAmplitudeAmplitude.md
 docs/models/shared/SourceAmplitude.md
 docs/models/shared/SourceApifyDatasetApifyDataset.md
 docs/models/shared/SourceApifyDataset.md
+docs/models/shared/SourceAppfollowAppfollow.md
+docs/models/shared/SourceAppfollow.md
 docs/models/shared/SourceAsanaCredentialsAuthenticateWithPersonalAccessTokenCredentialsTitle.md
 docs/models/shared/SourceAsanaCredentialsAuthenticateWithPersonalAccessToken.md
 docs/models/shared/SourceAsanaCredentialsAuthenticateViaAsanaOauthCredentialsTitle.md
@@ -1820,6 +1843,10 @@ docs/models/shared/SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauthA
 docs/models/shared/SourceGoogleAnalyticsV4CredentialsAuthenticateViaGoogleOauth.md
 docs/models/shared/SourceGoogleAnalyticsV4GoogleAnalyticsV4.md
 docs/models/shared/SourceGoogleAnalyticsV4.md
+docs/models/shared/SourceGoogleDirectoryCredentialsServiceAccountKeyCredentialsTitle.md
+docs/models/shared/SourceGoogleDirectoryCredentialsServiceAccountKey.md
+docs/models/shared/SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle.md
+docs/models/shared/SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth.md
 docs/models/shared/SourceGoogleDirectoryGoogleDirectory.md
 docs/models/shared/SourceGoogleDirectory.md
 docs/models/shared/SourceGooglePagespeedInsightsCategories.md
@@ -2245,6 +2272,10 @@ docs/models/shared/SourceTwilioTaskrouterTwilioTaskrouter.md
 docs/models/shared/SourceTwilioTaskrouter.md
 docs/models/shared/SourceTwitterTwitter.md
 docs/models/shared/SourceTwitter.md
+docs/models/shared/SourceTypeformCredentialsPrivateTokenAuthType.md
+docs/models/shared/SourceTypeformCredentialsPrivateToken.md
+docs/models/shared/SourceTypeformCredentialsOAuth20AuthType.md
+docs/models/shared/SourceTypeformCredentialsOAuth20.md
 docs/models/shared/SourceTypeformTypeform.md
 docs/models/shared/SourceTypeform.md
 docs/models/shared/SourceUsCensusUsCensus.md
@@ -2303,8 +2334,8 @@ docs/models/shared/SourceZuoraTenantEndpointLocation.md
 docs/models/shared/SourceZuora.md
 docs/models/shared/SourceCreateRequest.md
 docs/models/shared/InitiateOauthRequest.md
-docs/models/shared/OAuthActorNames.md
 docs/models/shared/OAuthInputConfiguration.md
+docs/models/shared/OAuthActorNames.md
 docs/models/shared/SourcesResponse.md
 docs/models/shared/SourcePatchRequest.md
 docs/models/shared/SourcePutRequest.md
@@ -2319,6 +2350,7 @@ docs/models/shared/AsanaCredentials.md
 docs/models/shared/Asana.md
 docs/models/shared/BingAds.md
 docs/models/shared/FacebookMarketing.md
+docs/models/shared/FacebookPages.md
 docs/models/shared/GithubCredentials.md
 docs/models/shared/Github.md
 docs/models/shared/GitlabCredentials.md
@@ -2373,6 +2405,8 @@ docs/models/shared/Surveymonkey.md
 docs/models/shared/TiktokMarketingCredentials.md
 docs/models/shared/TiktokMarketing.md
 docs/models/shared/Trello.md
+docs/models/shared/TypeformCredentials.md
+docs/models/shared/Typeform.md
 docs/models/shared/XeroAuthentication.md
 docs/models/shared/Xero.md
 docs/models/shared/YoutubeAnalyticsCredentials.md

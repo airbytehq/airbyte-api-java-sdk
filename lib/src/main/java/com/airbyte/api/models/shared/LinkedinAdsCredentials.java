@@ -34,5 +34,17 @@ public class LinkedinAdsCredentials {
         return this;
     }
     
+    /**
+     * The key to refresh the expired access token.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public LinkedinAdsCredentials withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
     public LinkedinAdsCredentials(){}
 }

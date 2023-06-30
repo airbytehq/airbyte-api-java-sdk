@@ -10,6 +10,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class GithubCredentials {
+    /**
+     * OAuth access token
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public GithubCredentials withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;

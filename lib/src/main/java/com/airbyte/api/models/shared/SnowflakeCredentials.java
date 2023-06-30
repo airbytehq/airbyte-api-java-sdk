@@ -11,6 +11,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SnowflakeCredentials {
     /**
+     * Access Token for making authenticated requests.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("access_token")
+    public String accessToken;
+
+    public SnowflakeCredentials withAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+        return this;
+    }
+    
+    /**
      * The Client ID of your Snowflake developer application.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -31,6 +43,18 @@ public class SnowflakeCredentials {
 
     public SnowflakeCredentials withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
+        return this;
+    }
+    
+    /**
+     * Refresh Token for making authenticated requests.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public SnowflakeCredentials withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
         return this;
     }
     
