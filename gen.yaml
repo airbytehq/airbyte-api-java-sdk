@@ -14,7 +14,7 @@ generation:
   tagNamespacingDisabled: false
   telemetryEnabled: true
 java:
-  version: 0.21.1
+  version: 0.21.2
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
