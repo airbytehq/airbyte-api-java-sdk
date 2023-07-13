@@ -536,3 +536,11 @@ Based on:
 - Speakeasy CLI 1.56.3 (2.61.4) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Maven Central v0.25.1] https://central.sonatype.com/artifact/com.airbyte/api/0.25.1 - .
+
+## 2023-07-13 00:14:54
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.57.0 (2.62.1) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Maven Central v0.26.0] https://central.sonatype.com/artifact/com.airbyte/api/0.26.0 - .
