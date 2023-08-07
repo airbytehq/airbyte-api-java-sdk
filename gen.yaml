@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: bb2011e16a0ec78eb8a13a803e08b4aa
   docVersion: 1.0.0
-  speakeasyVersion: 1.66.1
-  generationVersion: 2.75.2
+  speakeasyVersion: 1.68.3
+  generationVersion: 2.81.1
 generation:
   comments:
     disableComments: false
@@ -14,7 +14,7 @@ generation:
   tagNamespacingDisabled: false
   telemetryEnabled: true
 java:
-  version: 0.31.1
+  version: 0.33.0
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
