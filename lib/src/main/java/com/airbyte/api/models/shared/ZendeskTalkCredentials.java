@@ -11,17 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ZendeskTalkCredentials {
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-talk"&gt;docs&lt;/a&gt; for more information.
+     * Client ID
      */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public ZendeskTalkCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;
@@ -31,6 +22,9 @@ public class ZendeskTalkCredentials {
         return this;
     }
     
+    /**
+     * Client Secret
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     public String clientSecret;

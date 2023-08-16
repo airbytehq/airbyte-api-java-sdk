@@ -4,14 +4,11 @@
 
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.DateTimeDeserializer;
-import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 /**
  * SourceCloseCom - The values required to configure the source.
@@ -38,15 +35,14 @@ public class SourceCloseCom {
     }
     
     /**
-     * The start date to sync data. Leave blank for full sync. Format: YYYY-MM-DD.
+     * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonSerialize(using = DateTimeSerializer.class)
-    @JsonDeserialize(using = DateTimeDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public OffsetDateTime startDate;
+    public LocalDate startDate;
 
-    public SourceCloseCom withStartDate(OffsetDateTime startDate) {
+    public SourceCloseCom withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }

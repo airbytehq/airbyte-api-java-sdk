@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GoogleSheets {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
-    public GoogleSheetsAuthenticateViaGoogleOAuth credentials;
+    public GoogleSheetsCredentials credentials;
 
-    public GoogleSheets withCredentials(GoogleSheetsAuthenticateViaGoogleOAuth credentials) {
+    public GoogleSheets withCredentials(GoogleSheetsCredentials credentials) {
         this.credentials = credentials;
         return this;
     }

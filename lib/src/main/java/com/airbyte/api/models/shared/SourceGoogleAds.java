@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 public class SourceGoogleAds {
     /**
-     * A conversion window is the period of time after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see Google's &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;documentation&lt;/a&gt;.
+     * A conversion window is the number of days after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;Google's documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("conversion_window_days")
@@ -45,7 +45,7 @@ public class SourceGoogleAds {
     }
     
     /**
-     * Comma separated list of (client) customer IDs. Each customer ID must be specified as a 10-digit number without dashes. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;. Metrics streams like AdGroupAdReport cannot be requested for a manager account.
+     * Comma-separated list of (client) customer IDs. Each customer ID must be specified as a 10-digit number without dashes. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
     @JsonProperty("customer_id")
     public String customerId;
@@ -56,7 +56,7 @@ public class SourceGoogleAds {
     }
     
     /**
-     * UTC date and time in the format 2017-01-25. Any data after this date will not be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data after this date will not be replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -69,7 +69,7 @@ public class SourceGoogleAds {
     }
     
     /**
-     * If your access to the customer account is through a manager account, this field is required and must be set to the customer ID of the manager account (10-digit number without dashes). More information about this field you can see &lt;a href="https://developers.google.com/google-ads/api/docs/concepts/call-structure#cid"&gt;here&lt;/a&gt;
+     * If your access to the customer account is through a manager account, this field is required, and must be set to the 10-digit customer ID of the manager account. For more information about this field, refer to &lt;a href="https://developers.google.com/google-ads/api/docs/concepts/call-structure#cid"&gt;Google's documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("login_customer_id")
@@ -89,7 +89,7 @@ public class SourceGoogleAds {
     }
     
     /**
-     * UTC date and time in the format 2017-01-25. Any data before this date will not be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")

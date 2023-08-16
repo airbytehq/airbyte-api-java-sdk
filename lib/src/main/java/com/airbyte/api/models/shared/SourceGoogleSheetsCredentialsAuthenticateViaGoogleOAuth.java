@@ -11,6 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth {
+    @JsonProperty("auth_type")
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType authType;
+
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth withAuthType(SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType authType) {
+        this.authType = authType;
+        return this;
+    }
+    
     /**
      * Enter your Google application's Client ID
      */
@@ -33,8 +41,21 @@ public class SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth {
         return this;
     }
     
-    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret) {
+    /**
+     * Enter your Google application's refresh token
+     */
+    @JsonProperty("refresh_token")
+    public String refreshToken;
+
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth withRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+        return this;
+    }
+    
+    public SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth(@JsonProperty("auth_type") SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType authType, @JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("refresh_token") String refreshToken) {
+        this.authType = authType;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
+        this.refreshToken = refreshToken;
   }
 }

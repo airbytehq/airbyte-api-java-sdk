@@ -89,6 +89,18 @@ public class DestinationSnowflake {
     }
     
     /**
+     * (Beta) The schema to write raw tables into
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_data_schema")
+    public String rawDataSchema;
+
+    public DestinationSnowflake withRawDataSchema(String rawDataSchema) {
+        this.rawDataSchema = rawDataSchema;
+        return this;
+    }
+    
+    /**
      * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
      */
     @JsonProperty("role")
@@ -107,6 +119,18 @@ public class DestinationSnowflake {
 
     public DestinationSnowflake withSchema(String schema) {
         this.schema = schema;
+        return this;
+    }
+    
+    /**
+     * (Beta) Use &lt;a href="https://github.com/airbytehq/airbyte/issues/26028" target="_blank"&gt;Destinations V2&lt;/a&gt;. Contact Airbyte Support to participate in the beta program.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("use_1s1t_format")
+    public Boolean use1s1tFormat;
+
+    public DestinationSnowflake withUse1s1tFormat(Boolean use1s1tFormat) {
+        this.use1s1tFormat = use1s1tFormat;
         return this;
     }
     

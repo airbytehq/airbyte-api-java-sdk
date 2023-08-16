@@ -5,6 +5,7 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
+import java.time.OffsetDateTime;
 
 
 public class ListJobsRequest {
@@ -16,6 +17,28 @@ public class ListJobsRequest {
 
     public ListJobsRequest withConnectionId(String connectionId) {
         this.connectionId = connectionId;
+        return this;
+    }
+    
+    /**
+     * The end date to filter by
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=createdAtEnd")
+    public OffsetDateTime createdAtEnd;
+
+    public ListJobsRequest withCreatedAtEnd(OffsetDateTime createdAtEnd) {
+        this.createdAtEnd = createdAtEnd;
+        return this;
+    }
+    
+    /**
+     * The start date to filter by
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=createdAtStart")
+    public OffsetDateTime createdAtStart;
+
+    public ListJobsRequest withCreatedAtStart(OffsetDateTime createdAtStart) {
+        this.createdAtStart = createdAtStart;
         return this;
     }
     
@@ -49,6 +72,39 @@ public class ListJobsRequest {
 
     public ListJobsRequest withOffset(Integer offset) {
         this.offset = offset;
+        return this;
+    }
+    
+    /**
+     * The Job status you want to filter by
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")
+    public com.airbyte.api.models.shared.JobStatusEnum status;
+
+    public ListJobsRequest withStatus(com.airbyte.api.models.shared.JobStatusEnum status) {
+        this.status = status;
+        return this;
+    }
+    
+    /**
+     * The end date to filter by
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=updatedAtEnd")
+    public OffsetDateTime updatedAtEnd;
+
+    public ListJobsRequest withUpdatedAtEnd(OffsetDateTime updatedAtEnd) {
+        this.updatedAtEnd = updatedAtEnd;
+        return this;
+    }
+    
+    /**
+     * The start date to filter by
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=updatedAtStart")
+    public OffsetDateTime updatedAtStart;
+
+    public ListJobsRequest withUpdatedAtStart(OffsetDateTime updatedAtStart) {
+        this.updatedAtStart = updatedAtStart;
         return this;
     }
     

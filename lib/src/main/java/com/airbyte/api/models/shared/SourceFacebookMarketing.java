@@ -53,6 +53,30 @@ public class SourceFacebookMarketing {
     }
     
     /**
+     * The Client Id for your OAuth app
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_id")
+    public String clientId;
+
+    public SourceFacebookMarketing withClientId(String clientId) {
+        this.clientId = clientId;
+        return this;
+    }
+    
+    /**
+     * The Client Secret for your OAuth app
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_secret")
+    public String clientSecret;
+
+    public SourceFacebookMarketing withClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
+        return this;
+    }
+    
+    /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
      */
     @JsonInclude(Include.NON_ABSENT)

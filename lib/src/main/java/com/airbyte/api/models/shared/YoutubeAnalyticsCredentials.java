@@ -34,17 +34,5 @@ public class YoutubeAnalyticsCredentials {
         return this;
     }
     
-    /**
-     * A refresh token generated using the above client ID and secret
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public YoutubeAnalyticsCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
     public YoutubeAnalyticsCredentials(){}
 }

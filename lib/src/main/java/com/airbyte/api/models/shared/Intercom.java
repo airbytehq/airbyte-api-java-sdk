@@ -13,18 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class Intercom {
-    /**
-     * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public Intercom withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;

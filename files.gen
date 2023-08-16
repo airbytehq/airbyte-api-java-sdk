@@ -438,6 +438,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceAirtableAirtable.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAirtable.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbReplicationMethodStandardMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbReplicationMethodStandard.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbReplicationMethodStandardXminMethod.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbReplicationMethodStandardXmin.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbAlloydb.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceAlloydbTunnelMethodPasswordAuthentication.java
@@ -517,6 +519,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceClickhouseTunnelMethodNoTu
 lib/src/main/java/com/airbyte/api/models/shared/SourceClickhouse.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceClickupApiClickupApi.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceClickupApi.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceClockifyClockify.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceClockify.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceCloseComCloseCom.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceCloseCom.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceCodaCoda.java
@@ -533,6 +537,11 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceConfluenceConfluence.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceConfluence.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceConvexConvex.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceConvex.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceDatadogQueriesDataSource.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceDatadogQueries.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceDatadogSite.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceDatadogDatadog.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceDatadog.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceDatascopeDatascope.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceDatascope.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceDelightedDelighted.java
@@ -558,6 +567,7 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceEmailoctopus.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceExchangeRatesExchangeRates.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceExchangeRates.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigValidActionBreakdowns.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigActionReportTime.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigValidBreakdowns.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigValidEnums.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingInsightConfigLevel.java
@@ -602,6 +612,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceFreshsalesFreshsales.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFreshsales.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFreshserviceFreshservice.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceFreshservice.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGainsightPxGainsightPx.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGainsightPx.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGcsGcs.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGcs.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGetlagoGetlago.java
@@ -663,6 +675,7 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSearchConsoleGoogleS
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSearchConsole.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsGoogleSheets.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceGoogleSheets.java
@@ -769,14 +782,14 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceMondayCredentialsOAuth20Au
 lib/src/main/java/com/airbyte/api/models/shared/SourceMondayCredentialsOAuth20.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMondayMonday.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMonday.java
-lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInstanceTypeMongoDBAtlasInstance.java
-lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInstanceTypeMongoDBAtlas.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInstanceTypeReplicaSetInstance.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInstanceTypeReplicaSet.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInstanceTypeStandaloneMongoDbInstance.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbMongodb.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMongodb.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInternalPocMongodbInternalPoc.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceMongodbInternalPoc.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMssqlReplicationMethodLogicalReplicationCDCMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel.java
@@ -797,10 +810,10 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceMssqlTunnelMethodNoTunnel.
 lib/src/main/java/com/airbyte/api/models/shared/SourceMssql.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMyHoursMyHours.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMyHours.java
-lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodLogicalReplicationCDCMethod.java
-lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodLogicalReplicationCDC.java
-lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodStandardMethod.java
-lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodStandard.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodScanChangesWithUserDefinedCursorMethod.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodScanChangesWithUserDefinedCursor.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlMysql.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlSslModeVerifyIdentityMode.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceMysqlSslModeVerifyIdentity.java
@@ -898,6 +911,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourcePolygonStockApiPolygonStoc
 lib/src/main/java/com/airbyte/api/models/shared/SourcePolygonStockApi.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresReplicationMethodStandardMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresReplicationMethodStandard.java
+lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresReplicationMethodStandardXminMethod.java
+lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresReplicationMethodStandardXmin.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresPostgres.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresTunnelMethodPasswordAuthenticationTunnelMethod.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePostgresTunnelMethodPasswordAuthentication.java
@@ -992,6 +1007,12 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyCredentialsAPIPassw
 lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyCredentialsAPIPassword.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyShopify.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceShopify.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyOauthCredentialsOAuth20AuthMethod.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyOauthCredentialsOAuth20.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyOauthCredentialsAPIPasswordAuthMethod.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyOauthCredentialsAPIPassword.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyOauthShopifyOauth.java
+lib/src/main/java/com/airbyte/api/models/shared/SourceShopifyOauth.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceShortioShortio.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceShortio.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceSlackCredentialsAPITokenOptionTitle.java
@@ -1135,8 +1156,8 @@ lib/src/main/java/com/airbyte/api/models/shared/SourceZuoraTenantEndpointLocatio
 lib/src/main/java/com/airbyte/api/models/shared/SourceZuora.java
 lib/src/main/java/com/airbyte/api/models/shared/SourceCreateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/InitiateOauthRequest.java
-lib/src/main/java/com/airbyte/api/models/shared/OAuthInputConfiguration.java
 lib/src/main/java/com/airbyte/api/models/shared/OAuthActorNames.java
+lib/src/main/java/com/airbyte/api/models/shared/OAuthInputConfiguration.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePatchRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/SourcePutRequest.java
@@ -1151,7 +1172,6 @@ lib/src/main/java/com/airbyte/api/models/shared/AsanaCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Asana.java
 lib/src/main/java/com/airbyte/api/models/shared/BingAds.java
 lib/src/main/java/com/airbyte/api/models/shared/FacebookMarketing.java
-lib/src/main/java/com/airbyte/api/models/shared/FacebookPages.java
 lib/src/main/java/com/airbyte/api/models/shared/GithubCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Github.java
 lib/src/main/java/com/airbyte/api/models/shared/GitlabCredentials.java
@@ -1164,7 +1184,7 @@ lib/src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsV4Credentials.jav
 lib/src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsV4.java
 lib/src/main/java/com/airbyte/api/models/shared/GoogleSearchConsoleAuthorization.java
 lib/src/main/java/com/airbyte/api/models/shared/GoogleSearchConsole.java
-lib/src/main/java/com/airbyte/api/models/shared/GoogleSheetsAuthenticateViaGoogleOAuth.java
+lib/src/main/java/com/airbyte/api/models/shared/GoogleSheetsCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/GoogleSheets.java
 lib/src/main/java/com/airbyte/api/models/shared/HarvestCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Harvest.java
@@ -1191,6 +1211,8 @@ lib/src/main/java/com/airbyte/api/models/shared/Retently.java
 lib/src/main/java/com/airbyte/api/models/shared/Salesforce.java
 lib/src/main/java/com/airbyte/api/models/shared/ShopifyCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Shopify.java
+lib/src/main/java/com/airbyte/api/models/shared/ShopifyOauthCredentials.java
+lib/src/main/java/com/airbyte/api/models/shared/ShopifyOauth.java
 lib/src/main/java/com/airbyte/api/models/shared/SlackCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Slack.java
 lib/src/main/java/com/airbyte/api/models/shared/SmartsheetsCredentials.java
@@ -1205,7 +1227,6 @@ lib/src/main/java/com/airbyte/api/models/shared/SurveymonkeyCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Surveymonkey.java
 lib/src/main/java/com/airbyte/api/models/shared/TiktokMarketingCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/TiktokMarketing.java
-lib/src/main/java/com/airbyte/api/models/shared/Trello.java
 lib/src/main/java/com/airbyte/api/models/shared/TypeformCredentials.java
 lib/src/main/java/com/airbyte/api/models/shared/Typeform.java
 lib/src/main/java/com/airbyte/api/models/shared/XeroAuthentication.java
@@ -1637,6 +1658,8 @@ docs/models/shared/SourceAirtableAirtable.md
 docs/models/shared/SourceAirtable.md
 docs/models/shared/SourceAlloydbReplicationMethodStandardMethod.md
 docs/models/shared/SourceAlloydbReplicationMethodStandard.md
+docs/models/shared/SourceAlloydbReplicationMethodStandardXminMethod.md
+docs/models/shared/SourceAlloydbReplicationMethodStandardXmin.md
 docs/models/shared/SourceAlloydbAlloydb.md
 docs/models/shared/SourceAlloydbTunnelMethodPasswordAuthenticationTunnelMethod.md
 docs/models/shared/SourceAlloydbTunnelMethodPasswordAuthentication.md
@@ -1716,6 +1739,8 @@ docs/models/shared/SourceClickhouseTunnelMethodNoTunnel.md
 docs/models/shared/SourceClickhouse.md
 docs/models/shared/SourceClickupApiClickupApi.md
 docs/models/shared/SourceClickupApi.md
+docs/models/shared/SourceClockifyClockify.md
+docs/models/shared/SourceClockify.md
 docs/models/shared/SourceCloseComCloseCom.md
 docs/models/shared/SourceCloseCom.md
 docs/models/shared/SourceCodaCoda.md
@@ -1732,6 +1757,11 @@ docs/models/shared/SourceConfluenceConfluence.md
 docs/models/shared/SourceConfluence.md
 docs/models/shared/SourceConvexConvex.md
 docs/models/shared/SourceConvex.md
+docs/models/shared/SourceDatadogQueriesDataSource.md
+docs/models/shared/SourceDatadogQueries.md
+docs/models/shared/SourceDatadogSite.md
+docs/models/shared/SourceDatadogDatadog.md
+docs/models/shared/SourceDatadog.md
 docs/models/shared/SourceDatascopeDatascope.md
 docs/models/shared/SourceDatascope.md
 docs/models/shared/SourceDelightedDelighted.md
@@ -1757,6 +1787,7 @@ docs/models/shared/SourceEmailoctopus.md
 docs/models/shared/SourceExchangeRatesExchangeRates.md
 docs/models/shared/SourceExchangeRates.md
 docs/models/shared/SourceFacebookMarketingInsightConfigValidActionBreakdowns.md
+docs/models/shared/SourceFacebookMarketingInsightConfigActionReportTime.md
 docs/models/shared/SourceFacebookMarketingInsightConfigValidBreakdowns.md
 docs/models/shared/SourceFacebookMarketingInsightConfigValidEnums.md
 docs/models/shared/SourceFacebookMarketingInsightConfigLevel.md
@@ -1801,6 +1832,8 @@ docs/models/shared/SourceFreshsalesFreshsales.md
 docs/models/shared/SourceFreshsales.md
 docs/models/shared/SourceFreshserviceFreshservice.md
 docs/models/shared/SourceFreshservice.md
+docs/models/shared/SourceGainsightPxGainsightPx.md
+docs/models/shared/SourceGainsightPx.md
 docs/models/shared/SourceGcsGcs.md
 docs/models/shared/SourceGcs.md
 docs/models/shared/SourceGetlagoGetlago.md
@@ -1862,6 +1895,7 @@ docs/models/shared/SourceGoogleSearchConsoleGoogleSearchConsole.md
 docs/models/shared/SourceGoogleSearchConsole.md
 docs/models/shared/SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType.md
 docs/models/shared/SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication.md
+docs/models/shared/SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType.md
 docs/models/shared/SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth.md
 docs/models/shared/SourceGoogleSheetsGoogleSheets.md
 docs/models/shared/SourceGoogleSheets.md
@@ -1968,14 +2002,14 @@ docs/models/shared/SourceMondayCredentialsOAuth20AuthType.md
 docs/models/shared/SourceMondayCredentialsOAuth20.md
 docs/models/shared/SourceMondayMonday.md
 docs/models/shared/SourceMonday.md
-docs/models/shared/SourceMongodbInstanceTypeMongoDBAtlasInstance.md
-docs/models/shared/SourceMongodbInstanceTypeMongoDBAtlas.md
 docs/models/shared/SourceMongodbInstanceTypeReplicaSetInstance.md
 docs/models/shared/SourceMongodbInstanceTypeReplicaSet.md
 docs/models/shared/SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance.md
 docs/models/shared/SourceMongodbInstanceTypeStandaloneMongoDbInstance.md
 docs/models/shared/SourceMongodbMongodb.md
 docs/models/shared/SourceMongodb.md
+docs/models/shared/SourceMongodbInternalPocMongodbInternalPoc.md
+docs/models/shared/SourceMongodbInternalPoc.md
 docs/models/shared/SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync.md
 docs/models/shared/SourceMssqlReplicationMethodLogicalReplicationCDCMethod.md
 docs/models/shared/SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel.md
@@ -1996,10 +2030,10 @@ docs/models/shared/SourceMssqlTunnelMethodNoTunnel.md
 docs/models/shared/SourceMssql.md
 docs/models/shared/SourceMyHoursMyHours.md
 docs/models/shared/SourceMyHours.md
-docs/models/shared/SourceMysqlReplicationMethodLogicalReplicationCDCMethod.md
-docs/models/shared/SourceMysqlReplicationMethodLogicalReplicationCDC.md
-docs/models/shared/SourceMysqlReplicationMethodStandardMethod.md
-docs/models/shared/SourceMysqlReplicationMethodStandard.md
+docs/models/shared/SourceMysqlReplicationMethodScanChangesWithUserDefinedCursorMethod.md
+docs/models/shared/SourceMysqlReplicationMethodScanChangesWithUserDefinedCursor.md
+docs/models/shared/SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.md
+docs/models/shared/SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC.md
 docs/models/shared/SourceMysqlMysql.md
 docs/models/shared/SourceMysqlSslModeVerifyIdentityMode.md
 docs/models/shared/SourceMysqlSslModeVerifyIdentity.md
@@ -2097,6 +2131,8 @@ docs/models/shared/SourcePolygonStockApiPolygonStockApi.md
 docs/models/shared/SourcePolygonStockApi.md
 docs/models/shared/SourcePostgresReplicationMethodStandardMethod.md
 docs/models/shared/SourcePostgresReplicationMethodStandard.md
+docs/models/shared/SourcePostgresReplicationMethodStandardXminMethod.md
+docs/models/shared/SourcePostgresReplicationMethodStandardXmin.md
 docs/models/shared/SourcePostgresPostgres.md
 docs/models/shared/SourcePostgresTunnelMethodPasswordAuthenticationTunnelMethod.md
 docs/models/shared/SourcePostgresTunnelMethodPasswordAuthentication.md
@@ -2191,6 +2227,12 @@ docs/models/shared/SourceShopifyCredentialsAPIPasswordAuthMethod.md
 docs/models/shared/SourceShopifyCredentialsAPIPassword.md
 docs/models/shared/SourceShopifyShopify.md
 docs/models/shared/SourceShopify.md
+docs/models/shared/SourceShopifyOauthCredentialsOAuth20AuthMethod.md
+docs/models/shared/SourceShopifyOauthCredentialsOAuth20.md
+docs/models/shared/SourceShopifyOauthCredentialsAPIPasswordAuthMethod.md
+docs/models/shared/SourceShopifyOauthCredentialsAPIPassword.md
+docs/models/shared/SourceShopifyOauthShopifyOauth.md
+docs/models/shared/SourceShopifyOauth.md
 docs/models/shared/SourceShortioShortio.md
 docs/models/shared/SourceShortio.md
 docs/models/shared/SourceSlackCredentialsAPITokenOptionTitle.md
@@ -2334,8 +2376,8 @@ docs/models/shared/SourceZuoraTenantEndpointLocation.md
 docs/models/shared/SourceZuora.md
 docs/models/shared/SourceCreateRequest.md
 docs/models/shared/InitiateOauthRequest.md
-docs/models/shared/OAuthInputConfiguration.md
 docs/models/shared/OAuthActorNames.md
+docs/models/shared/OAuthInputConfiguration.md
 docs/models/shared/SourcesResponse.md
 docs/models/shared/SourcePatchRequest.md
 docs/models/shared/SourcePutRequest.md
@@ -2350,7 +2392,6 @@ docs/models/shared/AsanaCredentials.md
 docs/models/shared/Asana.md
 docs/models/shared/BingAds.md
 docs/models/shared/FacebookMarketing.md
-docs/models/shared/FacebookPages.md
 docs/models/shared/GithubCredentials.md
 docs/models/shared/Github.md
 docs/models/shared/GitlabCredentials.md
@@ -2363,7 +2404,7 @@ docs/models/shared/GoogleAnalyticsV4Credentials.md
 docs/models/shared/GoogleAnalyticsV4.md
 docs/models/shared/GoogleSearchConsoleAuthorization.md
 docs/models/shared/GoogleSearchConsole.md
-docs/models/shared/GoogleSheetsAuthenticateViaGoogleOAuth.md
+docs/models/shared/GoogleSheetsCredentials.md
 docs/models/shared/GoogleSheets.md
 docs/models/shared/HarvestCredentials.md
 docs/models/shared/Harvest.md
@@ -2390,6 +2431,8 @@ docs/models/shared/Retently.md
 docs/models/shared/Salesforce.md
 docs/models/shared/ShopifyCredentials.md
 docs/models/shared/Shopify.md
+docs/models/shared/ShopifyOauthCredentials.md
+docs/models/shared/ShopifyOauth.md
 docs/models/shared/SlackCredentials.md
 docs/models/shared/Slack.md
 docs/models/shared/SmartsheetsCredentials.md
@@ -2404,7 +2447,6 @@ docs/models/shared/SurveymonkeyCredentials.md
 docs/models/shared/Surveymonkey.md
 docs/models/shared/TiktokMarketingCredentials.md
 docs/models/shared/TiktokMarketing.md
-docs/models/shared/Trello.md
 docs/models/shared/TypeformCredentials.md
 docs/models/shared/Typeform.md
 docs/models/shared/XeroAuthentication.md

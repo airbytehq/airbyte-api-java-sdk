@@ -25,6 +25,18 @@ public class SourceGoogleSheets {
     }
     
     /**
+     * Columns name conversion using a set of rules, for example, 'My Name' -&gt; 'my-name'.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("names_conversion")
+    public Boolean namesConversion;
+
+    public SourceGoogleSheets withNamesConversion(Boolean namesConversion) {
+        this.namesConversion = namesConversion;
+        return this;
+    }
+    
+    /**
      * Number of rows fetched when making a Google Sheet API call. Defaults to 200.
      */
     @JsonInclude(Include.NON_ABSENT)

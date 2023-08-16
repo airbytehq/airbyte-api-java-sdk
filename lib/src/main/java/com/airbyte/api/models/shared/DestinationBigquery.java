@@ -91,6 +91,18 @@ public class DestinationBigquery {
     }
     
     /**
+     * (Early Access) The dataset to write raw tables into
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_data_dataset")
+    public String rawDataDataset;
+
+    public DestinationBigquery withRawDataDataset(String rawDataDataset) {
+        this.rawDataDataset = rawDataDataset;
+        return this;
+    }
+    
+    /**
      * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -99,6 +111,18 @@ public class DestinationBigquery {
 
     public DestinationBigquery withTransformationPriority(DestinationBigqueryTransformationQueryRunType transformationPriority) {
         this.transformationPriority = transformationPriority;
+        return this;
+    }
+    
+    /**
+     * (Early Access) Use &lt;a href="https://docs.airbyte.com/understanding-airbyte/typing-deduping" target="_blank"&gt;Destinations V2&lt;/a&gt;.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("use_1s1t_format")
+    public Boolean use1s1tFormat;
+
+    public DestinationBigquery withUse1s1tFormat(Boolean use1s1tFormat) {
+        this.use1s1tFormat = use1s1tFormat;
         return this;
     }
     

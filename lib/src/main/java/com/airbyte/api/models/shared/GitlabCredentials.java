@@ -4,29 +4,12 @@
 
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.DateTimeDeserializer;
-import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.time.OffsetDateTime;
 
 
 public class GitlabCredentials {
-    /**
-     * Access Token for making authenticated requests.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public GitlabCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
     /**
      * The API ID of the Gitlab developer application.
      */
@@ -48,32 +31,6 @@ public class GitlabCredentials {
 
     public GitlabCredentials withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
-        return this;
-    }
-    
-    /**
-     * The key to refresh the expired access_token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public GitlabCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
-    /**
-     * The date-time when the access token should be refreshed.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonSerialize(using = DateTimeSerializer.class)
-    @JsonDeserialize(using = DateTimeDeserializer.class)
-    @JsonProperty("token_expiry_date")
-    public OffsetDateTime tokenExpiryDate;
-
-    public GitlabCredentials withTokenExpiryDate(OffsetDateTime tokenExpiryDate) {
-        this.tokenExpiryDate = tokenExpiryDate;
         return this;
     }
     

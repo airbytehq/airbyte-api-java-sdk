@@ -28,7 +28,7 @@ public class SourceShopify {
     }
     
     /**
-     * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME'.
+     * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME' or 'NAME.myshopify.com'.
      */
     @JsonProperty("shop")
     public String shop;

@@ -11,18 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ZendeskChatCredentials {
     /**
-     * Access Token for making authenticated requests.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public ZendeskChatCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
      * The Client ID of your OAuth application
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -43,18 +31,6 @@ public class ZendeskChatCredentials {
 
     public ZendeskChatCredentials withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
-        return this;
-    }
-    
-    /**
-     * Refresh Token to obtain new Access Token, when it's expired.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public ZendeskChatCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
         return this;
     }
     

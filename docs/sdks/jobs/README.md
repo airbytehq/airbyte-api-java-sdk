@@ -167,8 +167,10 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.ListJobsRequest;
 import com.airbyte.api.models.operations.ListJobsResponse;
+import com.airbyte.api.models.shared.JobStatusEnum;
 import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
+import java.time.OffsetDateTime;
 
 public class Application {
     public static void main(String[] args) {
@@ -181,14 +183,17 @@ public class Application {
 
             ListJobsRequest req = new ListJobsRequest() {{
                 connectionId = "vero";
-                jobType = JobTypeEnum.RESET;
-                limit = 338159;
-                offset = 218403;
+                createdAtEnd = OffsetDateTime.parse("2022-04-29T03:27:17.664Z");
+                createdAtStart = OffsetDateTime.parse("2022-01-15T00:38:43.469Z");
+                jobType = JobTypeEnum.SYNC;
+                limit = 231701;
+                offset = 878870;
+                status = JobStatusEnum.CANCELLED;
+                updatedAtEnd = OffsetDateTime.parse("2022-01-22T09:31:52.637Z");
+                updatedAtStart = OffsetDateTime.parse("2021-05-27T13:58:14.379Z");
                 workspaceIds = new String[]{{
-                    add("73ef7fbc-7abd-474d-939c-0f5d2cff7c70"),
-                    add("a45626d4-3681-43f1-ad9f-5fce6c556146"),
-                    add("c3e250fb-008c-442e-941a-ac366c8dd6b1"),
-                    add("44290747-4778-4a7b-9466-d28c10ab3cdc"),
+                    add("abd74dd3-9c0f-45d2-8ff7-c70a45626d43"),
+                    add("6813f16d-9f5f-4ce6-8556-146c3e250fb0"),
                 }};
             }};            
 
