@@ -50,6 +50,18 @@ public class SourceSalesforce {
     }
     
     /**
+     * Toggle to use Bulk API (this might cause empty fields for some streams)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("force_use_bulk_api")
+    public Boolean forceUseBulkApi;
+
+    public SourceSalesforce withForceUseBulkApi(Boolean forceUseBulkApi) {
+        this.forceUseBulkApi = forceUseBulkApi;
+        return this;
+    }
+    
+    /**
      * Toggle if you're using a &lt;a href="https://help.salesforce.com/s/articleView?id=sf.deploy_sandboxes_parent.htm&amp;type=5"&gt;Salesforce Sandbox&lt;/a&gt;
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -81,7 +93,7 @@ public class SourceSalesforce {
     }
     
     /**
-     * Enter the date in the YYYY-MM-DD format. Airbyte will replicate the data added on and after this date. If this field is blank, Airbyte will replicate the data for last two years.
+     * Enter the date (or date-time) in the YYYY-MM-DD or YYYY-MM-DDTHH:mm:ssZ format. Airbyte will replicate the data updated on and after this date. If this field is blank, Airbyte will replicate the data for last two years.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
@@ -95,7 +107,7 @@ public class SourceSalesforce {
     }
     
     /**
-     * Filter streams relevant to you
+     * Add filters to select only required stream based on `SObject` name. Use this field to filter which tables are displayed by this connector. This is useful if your Salesforce account has a large number of tables (&gt;1000), in which case you may find it easier to navigate the UI and speed up the connector's performance if you restrict the tables displayed by this connector.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streams_criteria")

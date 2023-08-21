@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GoogleSheetsCredentials {
     /**
-     * Enter your Google application's Client ID
+     * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
@@ -23,7 +23,7 @@ public class GoogleSheetsCredentials {
     }
     
     /**
-     * Enter your Google application's Client Secret
+     * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")

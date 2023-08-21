@@ -76,6 +76,17 @@ public class ListJobsRequest {
     }
     
     /**
+     * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")
+    public String orderBy;
+
+    public ListJobsRequest withOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+        return this;
+    }
+    
+    /**
      * The Job status you want to filter by
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")

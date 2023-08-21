@@ -42,18 +42,6 @@ public class DestinationSnowflake {
     }
     
     /**
-     * Number of file buffers allocated for writing data. Increasing this number is beneficial for connections using Change Data Capture (CDC) and up to the number of streams within a connection. Increasing the number of file buffers past the maximum number of streams has deteriorating effects
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_buffer_count")
-    public Long fileBufferCount;
-
-    public DestinationSnowflake withFileBufferCount(Long fileBufferCount) {
-        this.fileBufferCount = fileBufferCount;
-        return this;
-    }
-    
-    /**
      * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
     @JsonProperty("host")
@@ -73,18 +61,6 @@ public class DestinationSnowflake {
 
     public DestinationSnowflake withJdbcUrlParams(String jdbcUrlParams) {
         this.jdbcUrlParams = jdbcUrlParams;
-        return this;
-    }
-    
-    /**
-     * Select a data staging method
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("loading_method")
-    public Object loadingMethod;
-
-    public DestinationSnowflake withLoadingMethod(Object loadingMethod) {
-        this.loadingMethod = loadingMethod;
         return this;
     }
     

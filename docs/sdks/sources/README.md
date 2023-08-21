@@ -207,8 +207,6 @@ import com.airbyte.api.models.shared.SourceFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshdeskFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshsales;
 import com.airbyte.api.models.shared.SourceFreshsalesFreshsales;
-import com.airbyte.api.models.shared.SourceFreshservice;
-import com.airbyte.api.models.shared.SourceFreshserviceFreshservice;
 import com.airbyte.api.models.shared.SourceGainsightPx;
 import com.airbyte.api.models.shared.SourceGainsightPxGainsightPx;
 import com.airbyte.api.models.shared.SourceGcs;
@@ -331,6 +329,9 @@ import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateVia
 import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsOAuth20;
@@ -475,6 +476,14 @@ import com.airbyte.api.models.shared.SourceOrb;
 import com.airbyte.api.models.shared.SourceOrbOrb;
 import com.airbyte.api.models.shared.SourceOrbit;
 import com.airbyte.api.models.shared.SourceOrbitOrbit;
+import com.airbyte.api.models.shared.SourceOutbrainAmplify;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessToken;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessTokenAccessTokenIsRequiredForAuthenticationRequests;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePassword;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePasswordBothUsernameAndPasswordIsRequiredForAuthenticationRequest;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForGeoLocationRegion;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForPeriodicReports;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyOutbrainAmplify;
 import com.airbyte.api.models.shared.SourceOutreach;
 import com.airbyte.api.models.shared.SourceOutreachOutreach;
 import com.airbyte.api.models.shared.SourcePaypalTransaction;
@@ -605,12 +614,6 @@ import com.airbyte.api.models.shared.SourceShopifyCredentialsAPIPassword;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsAPIPasswordAuthMethod;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsOAuth20AuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauth;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsAPIPassword;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsAPIPasswordAuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsOAuth20AuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauthShopifyOauth;
 import com.airbyte.api.models.shared.SourceShopifyShopify;
 import com.airbyte.api.models.shared.SourceShortio;
 import com.airbyte.api.models.shared.SourceShortioShortio;
@@ -731,10 +734,6 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -760,20 +759,44 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aut") {{
+                .setSecurity(new Security("esse") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceNotion(SourceNotionNotion.NOTION, OffsetDateTime.parse("2020-11-16T00:00:00.000Z")) {{
-                                credentials = new SourceNotionCredentialsAccessToken(SourceNotionCredentialsAccessTokenAuthType.TOKEN, "fugit") {{
-                                    authType = SourceNotionCredentialsAccessTokenAuthType.TOKEN;
-                                    token = "aliquam";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceMysql("cupiditate", "consequatur", 3306L,                 new SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC(SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC) {{
+                                                initialWaitingSeconds = 892050L;
+                                                method = SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC;
+                                                serverTimeZone = "ipsam";
+                                            }}, SourceMysqlMysql.MYSQL, "aspernatur") {{
+                                database = "fuga";
+                                host = "reprehenderit";
+                                jdbcUrlParams = "quidem";
+                                password = "fugiat";
+                                port = 3306L;
+                                replicationMethod = new SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC(SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC) {{
+                                    initialWaitingSeconds = 433439L;
+                                    method = SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC;
+                                    serverTimeZone = "suscipit";
                                 }};
-                                sourceType = SourceNotionNotion.NOTION;
-                                startDate = OffsetDateTime.parse("2020-11-16T00:00:00.000Z");
-                            }}, "accusamus", "141aac36-6c8d-4d6b-9442-907474778a7b") {{
-                secretId = "fugiat";
+                                sourceType = SourceMysqlMysql.MYSQL;
+                                sslMode = new SourceMysqlSslModeVerifyIdentity("ipsa", SourceMysqlSslModeVerifyIdentityMode.VERIFY_IDENTITY) {{
+                                    caCertificate = "eos";
+                                    clientCertificate = "praesentium";
+                                    clientKey = "quisquam";
+                                    clientKeyPassword = "veritatis";
+                                    mode = SourceMysqlSslModeVerifyIdentityMode.VERIFY_IDENTITY;
+                                }};
+                                tunnelMethod = new SourceMysqlTunnelMethodSSHKeyAuthentication("illum", "quo", SourceMysqlTunnelMethodSSHKeyAuthenticationTunnelMethod.SSH_KEY_AUTH, 22L, "fuga") {{
+                                    sshKey = "quidem";
+                                    tunnelHost = "neque";
+                                    tunnelMethod = SourceMysqlTunnelMethodSSHKeyAuthenticationTunnelMethod.SSH_KEY_AUTH;
+                                    tunnelPort = 22L;
+                                    tunnelUser = "quo";
+                                }};
+                                username = "Destini.Daugherty";
+                            }}, "sequi", "c7e0bc71-78e4-4796-b2a7-0c688282aa48") {{
+                secretId = "explicabo";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -818,12 +841,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("ut") {{
+                .setSecurity(new Security("minima") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("eum");            
+            DeleteSourceRequest req = new DeleteSourceRequest("nisi");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -867,12 +890,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("suscipit") {{
+                .setSecurity(new Security("fugit") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("assumenda");            
+            GetSourceRequest req = new GetSourceRequest("sapiente");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -922,12 +945,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("eos") {{
+                .setSecurity(new Security("consequuntur") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("praesentium", OAuthActorNames.SURVEYMONKEY, "10ab3cdc-a425-4190-8e52-3c7e0bc7178e") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("ratione", OAuthActorNames.FACEBOOK_MARKETING, "e9817ee1-7cbe-461e-ab7b-95bc0ab3c20c") {{
                 oAuthInputConfiguration = new OAuthInputConfiguration();;
             }};            
 
@@ -973,18 +996,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("aliquam") {{
+                .setSecurity(new Security("quaerat") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 488410;
-                offset = 577543;
+                limit = 959167;
+                offset = 232865;
                 workspaceIds = new String[]{{
-                    add("f2a70c68-8282-4aa4-8256-2f222e9817ee"),
-                    add("17cbe61e-6b7b-495b-80ab-3c20c4f3789f"),
+                    add("89fd871f-99dd-42ef-9121-aa6f1e674bdb"),
+                    add("04f15756-082d-468e-a19f-1d17051339d0"),
                 }};
             }};            
 
@@ -1209,8 +1232,6 @@ import com.airbyte.api.models.shared.SourceFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshdeskFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshsales;
 import com.airbyte.api.models.shared.SourceFreshsalesFreshsales;
-import com.airbyte.api.models.shared.SourceFreshservice;
-import com.airbyte.api.models.shared.SourceFreshserviceFreshservice;
 import com.airbyte.api.models.shared.SourceGainsightPx;
 import com.airbyte.api.models.shared.SourceGainsightPxGainsightPx;
 import com.airbyte.api.models.shared.SourceGcs;
@@ -1333,6 +1354,9 @@ import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateVia
 import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsOAuth20;
@@ -1477,6 +1501,14 @@ import com.airbyte.api.models.shared.SourceOrb;
 import com.airbyte.api.models.shared.SourceOrbOrb;
 import com.airbyte.api.models.shared.SourceOrbit;
 import com.airbyte.api.models.shared.SourceOrbitOrbit;
+import com.airbyte.api.models.shared.SourceOutbrainAmplify;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessToken;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessTokenAccessTokenIsRequiredForAuthenticationRequests;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePassword;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePasswordBothUsernameAndPasswordIsRequiredForAuthenticationRequest;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForGeoLocationRegion;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForPeriodicReports;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyOutbrainAmplify;
 import com.airbyte.api.models.shared.SourceOutreach;
 import com.airbyte.api.models.shared.SourceOutreachOutreach;
 import com.airbyte.api.models.shared.SourcePatchRequest;
@@ -1608,12 +1640,6 @@ import com.airbyte.api.models.shared.SourceShopifyCredentialsAPIPassword;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsAPIPasswordAuthMethod;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsOAuth20AuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauth;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsAPIPassword;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsAPIPasswordAuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsOAuth20AuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauthShopifyOauth;
 import com.airbyte.api.models.shared.SourceShopifyShopify;
 import com.airbyte.api.models.shared.SourceShortio;
 import com.airbyte.api.models.shared.SourceShortioShortio;
@@ -1734,10 +1760,6 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -1763,17 +1785,28 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("nulla") {{
+                .setSecurity(new Security("rem") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("quas") {{
+            PatchSourceRequest req = new PatchSourceRequest("aut") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceLinnworks("quasi", "a", SourceLinnworksLinnworks.LINNWORKS, OffsetDateTime.parse("2021-11-06T16:50:22.586Z"), "pariatur");;
+                    configuration = new SourceMssql("master", "eum", 1433L, SourceMssqlMssql.MSSQL, "mollitia") {{
+                        jdbcUrlParams = "ab";
+                        password = "corrupti";
+                        replicationMethod = new SourceMssqlReplicationMethodStandard(SourceMssqlReplicationMethodStandardMethod.STANDARD);;
+                        schemas = new String[]{{
+                            add("dolor"),
+                        }};
+                        sslMethod = new SourceMssqlSslMethodEncryptedVerifyCertificate(SourceMssqlSslMethodEncryptedVerifyCertificateSslMethod.ENCRYPTED_VERIFY_CERTIFICATE) {{
+                            hostNameInCertificate = "numquam";
+                        }};;
+                        tunnelMethod = new SourceMssqlTunnelMethodPasswordAuthentication("explicabo", SourceMssqlTunnelMethodPasswordAuthenticationTunnelMethod.SSH_PASSWORD_AUTH, 22L, "voluptas", "aut");;
+                    }};;
                     name = "My source";
-                    secretId = "possimus";
-                    workspaceId = "2efd121a-a6f1-4e67-8bdb-04f15756082d";
+                    secretId = "dignissimos";
+                    workspaceId = "1f93f5f0-642d-4ac7-af51-5cc413aa63aa";
                 }};;
             }};            
 
@@ -1998,8 +2031,6 @@ import com.airbyte.api.models.shared.SourceFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshdeskFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshsales;
 import com.airbyte.api.models.shared.SourceFreshsalesFreshsales;
-import com.airbyte.api.models.shared.SourceFreshservice;
-import com.airbyte.api.models.shared.SourceFreshserviceFreshservice;
 import com.airbyte.api.models.shared.SourceGainsightPx;
 import com.airbyte.api.models.shared.SourceGainsightPxGainsightPx;
 import com.airbyte.api.models.shared.SourceGcs;
@@ -2122,6 +2153,9 @@ import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateVia
 import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsOAuth20;
@@ -2266,6 +2300,14 @@ import com.airbyte.api.models.shared.SourceOrb;
 import com.airbyte.api.models.shared.SourceOrbOrb;
 import com.airbyte.api.models.shared.SourceOrbit;
 import com.airbyte.api.models.shared.SourceOrbitOrbit;
+import com.airbyte.api.models.shared.SourceOutbrainAmplify;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessToken;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessTokenAccessTokenIsRequiredForAuthenticationRequests;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePassword;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePasswordBothUsernameAndPasswordIsRequiredForAuthenticationRequest;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForGeoLocationRegion;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForPeriodicReports;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyOutbrainAmplify;
 import com.airbyte.api.models.shared.SourceOutreach;
 import com.airbyte.api.models.shared.SourceOutreachOutreach;
 import com.airbyte.api.models.shared.SourcePaypalTransaction;
@@ -2397,12 +2439,6 @@ import com.airbyte.api.models.shared.SourceShopifyCredentialsAPIPassword;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsAPIPasswordAuthMethod;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceShopifyCredentialsOAuth20AuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauth;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsAPIPassword;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsAPIPasswordAuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceShopifyOauthCredentialsOAuth20AuthMethod;
-import com.airbyte.api.models.shared.SourceShopifyOauthShopifyOauth;
 import com.airbyte.api.models.shared.SourceShopifyShopify;
 import com.airbyte.api.models.shared.SourceShortio;
 import com.airbyte.api.models.shared.SourceShortioShortio;
@@ -2523,10 +2559,6 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -2552,19 +2584,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("ex") {{
+                .setSecurity(new Security("recusandae") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("deleniti") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceWoocommerce("tenetur", "quasi", "at", SourceWoocommerceWoocommerce.WOOCOMMERCE, LocalDate.parse("2021-01-01")) {{
-                                    apiKey = "dolorum";
-                                    apiSecret = "architecto";
-                                    shop = "omnis";
-                                    sourceType = SourceWoocommerceWoocommerce.WOOCOMMERCE;
-                                    startDate = LocalDate.parse("2021-01-01");
-                                }}, "et");;
+            PutSourceRequest req = new PutSourceRequest("totam") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceTheGuardianApi("labore", SourceTheGuardianApiTheGuardianApi.THE_GUARDIAN_API, "YYYY-MM-DD") {{
+                                    apiKey = "vel";
+                                    endDate = "YYYY-MM-DD";
+                                    query = "environment AND political";
+                                    section = "technology";
+                                    sourceType = SourceTheGuardianApiTheGuardianApi.THE_GUARDIAN_API;
+                                    startDate = "YYYY-MM-DD";
+                                    tag = "environment/plasticbags";
+                                }}, "possimus");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);
