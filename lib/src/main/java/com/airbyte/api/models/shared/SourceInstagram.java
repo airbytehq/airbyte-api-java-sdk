@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.DateTimeDeserializer;
 import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -24,6 +26,30 @@ public class SourceInstagram {
 
     public SourceInstagram withAccessToken(String accessToken) {
         this.accessToken = accessToken;
+        return this;
+    }
+    
+    /**
+     * The Client ID for your Oauth application
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_id")
+    public String clientId;
+
+    public SourceInstagram withClientId(String clientId) {
+        this.clientId = clientId;
+        return this;
+    }
+    
+    /**
+     * The Client Secret for your Oauth application
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_secret")
+    public String clientSecret;
+
+    public SourceInstagram withClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
         return this;
     }
     

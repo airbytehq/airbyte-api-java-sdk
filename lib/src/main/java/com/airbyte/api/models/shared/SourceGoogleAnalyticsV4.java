@@ -4,9 +4,11 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDate;
 
 /**
  * SourceGoogleAnalyticsV4 - The values required to configure the source.
@@ -48,10 +50,11 @@ public class SourceGoogleAnalyticsV4 {
     /**
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public String startDate;
+    public LocalDate startDate;
 
-    public SourceGoogleAnalyticsV4 withStartDate(String startDate) {
+    public SourceGoogleAnalyticsV4 withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -79,7 +82,7 @@ public class SourceGoogleAnalyticsV4 {
         return this;
     }
     
-    public SourceGoogleAnalyticsV4(@JsonProperty("sourceType") SourceGoogleAnalyticsV4GoogleAnalyticsV4 sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("view_id") String viewId) {
+    public SourceGoogleAnalyticsV4(@JsonProperty("sourceType") SourceGoogleAnalyticsV4GoogleAnalyticsV4 sourceType, @JsonProperty("start_date") LocalDate startDate, @JsonProperty("view_id") String viewId) {
         this.sourceType = sourceType;
         this.startDate = startDate;
         this.viewId = viewId;

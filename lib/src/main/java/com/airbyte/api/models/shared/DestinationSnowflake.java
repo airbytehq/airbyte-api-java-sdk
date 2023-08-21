@@ -42,18 +42,6 @@ public class DestinationSnowflake {
     }
     
     /**
-     * Number of file buffers allocated for writing data. Increasing this number is beneficial for connections using Change Data Capture (CDC) and up to the number of streams within a connection. Increasing the number of file buffers past the maximum number of streams has deteriorating effects
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("file_buffer_count")
-    public Long fileBufferCount;
-
-    public DestinationSnowflake withFileBufferCount(Long fileBufferCount) {
-        this.fileBufferCount = fileBufferCount;
-        return this;
-    }
-    
-    /**
      * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
     @JsonProperty("host")
@@ -77,14 +65,14 @@ public class DestinationSnowflake {
     }
     
     /**
-     * Select a data staging method
+     * (Beta) The schema to write raw tables into
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("loading_method")
-    public Object loadingMethod;
+    @JsonProperty("raw_data_schema")
+    public String rawDataSchema;
 
-    public DestinationSnowflake withLoadingMethod(Object loadingMethod) {
-        this.loadingMethod = loadingMethod;
+    public DestinationSnowflake withRawDataSchema(String rawDataSchema) {
+        this.rawDataSchema = rawDataSchema;
         return this;
     }
     
@@ -107,6 +95,18 @@ public class DestinationSnowflake {
 
     public DestinationSnowflake withSchema(String schema) {
         this.schema = schema;
+        return this;
+    }
+    
+    /**
+     * (Beta) Use &lt;a href="https://github.com/airbytehq/airbyte/issues/26028" target="_blank"&gt;Destinations V2&lt;/a&gt;. Contact Airbyte Support to participate in the beta program.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("use_1s1t_format")
+    public Boolean use1s1tFormat;
+
+    public DestinationSnowflake withUse1s1tFormat(Boolean use1s1tFormat) {
+        this.use1s1tFormat = use1s1tFormat;
         return this;
     }
     

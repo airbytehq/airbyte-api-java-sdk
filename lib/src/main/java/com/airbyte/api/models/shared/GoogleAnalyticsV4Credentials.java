@@ -11,18 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GoogleAnalyticsV4Credentials {
     /**
-     * Access Token for making authenticated requests.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public GoogleAnalyticsV4Credentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
      * The Client ID of your Google Analytics developer application.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -43,18 +31,6 @@ public class GoogleAnalyticsV4Credentials {
 
     public GoogleAnalyticsV4Credentials withClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
-        return this;
-    }
-    
-    /**
-     * The token for obtaining a new access token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public GoogleAnalyticsV4Credentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
         return this;
     }
     

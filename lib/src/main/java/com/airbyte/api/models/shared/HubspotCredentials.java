@@ -34,17 +34,5 @@ public class HubspotCredentials {
         return this;
     }
     
-    /**
-     * Refresh token to renew an expired access token. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public HubspotCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
     public HubspotCredentials(){}
 }

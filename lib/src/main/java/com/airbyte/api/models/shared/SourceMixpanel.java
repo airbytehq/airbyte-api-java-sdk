@@ -4,14 +4,11 @@
 
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.DateTimeDeserializer;
-import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 /**
  * SourceMixpanel - The values required to configure the source.
@@ -58,12 +55,11 @@ public class SourceMixpanel {
      * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonSerialize(using = DateTimeSerializer.class)
-    @JsonDeserialize(using = DateTimeDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("end_date")
-    public OffsetDateTime endDate;
+    public LocalDate endDate;
 
-    public SourceMixpanel withEndDate(OffsetDateTime endDate) {
+    public SourceMixpanel withEndDate(LocalDate endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -129,12 +125,11 @@ public class SourceMixpanel {
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonSerialize(using = DateTimeSerializer.class)
-    @JsonDeserialize(using = DateTimeDeserializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
-    public OffsetDateTime startDate;
+    public LocalDate startDate;
 
-    public SourceMixpanel withStartDate(OffsetDateTime startDate) {
+    public SourceMixpanel withStartDate(LocalDate startDate) {
         this.startDate = startDate;
         return this;
     }

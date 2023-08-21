@@ -11,18 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ShopifyCredentials {
     /**
-     * The Access Token for making authenticated requests.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public ShopifyCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
      * The Client ID of the Shopify developer application.
      */
     @JsonInclude(Include.NON_ABSENT)

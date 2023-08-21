@@ -52,6 +52,18 @@ public class SourceTiktokMarketing {
         return this;
     }
     
+    /**
+     * Set to active if you want to include deleted data in reports.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("include_deleted")
+    public Boolean includeDeleted;
+
+    public SourceTiktokMarketing withIncludeDeleted(Boolean includeDeleted) {
+        this.includeDeleted = includeDeleted;
+        return this;
+    }
+    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     public SourceTiktokMarketingTiktokMarketing sourceType;

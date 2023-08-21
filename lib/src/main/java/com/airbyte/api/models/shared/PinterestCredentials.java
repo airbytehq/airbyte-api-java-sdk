@@ -34,17 +34,5 @@ public class PinterestCredentials {
         return this;
     }
     
-    /**
-     * Refresh Token to obtain new Access Token, when it's expired.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public PinterestCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
     public PinterestCredentials(){}
 }

@@ -7,9 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceFacebookMarketingInsightConfigValidActionBreakdowns - Generic enumeration.
- * 
- * Derive from this class to define new enumerations.
+ * SourceFacebookMarketingInsightConfigValidActionBreakdowns - An enumeration.
  */
 public enum SourceFacebookMarketingInsightConfigValidActionBreakdowns {
     ACTION_CANVAS_COMPONENT_NAME("action_canvas_component_name"),

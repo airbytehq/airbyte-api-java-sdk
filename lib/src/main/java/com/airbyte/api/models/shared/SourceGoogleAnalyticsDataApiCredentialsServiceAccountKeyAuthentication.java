@@ -23,7 +23,7 @@ public class SourceGoogleAnalyticsDataApiCredentialsServiceAccountKeyAuthenticat
     }
     
     /**
-     * The JSON key of the service account to use for authorization
+     * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
      */
     @JsonProperty("credentials_json")
     public String credentialsJson;

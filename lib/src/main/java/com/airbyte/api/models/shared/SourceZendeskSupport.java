@@ -19,7 +19,7 @@ import java.time.OffsetDateTime;
 
 public class SourceZendeskSupport {
     /**
-     * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
+     * Zendesk allows two authentication methods. We recommend using `OAuth2.0` for Airbyte Cloud users and `API token` for Airbyte Open Source users.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -51,7 +51,7 @@ public class SourceZendeskSupport {
     }
     
     /**
-     * The date from which you'd like to replicate data for Zendesk Support API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
+     * The UTC date and time from which you'd like to replicate data, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
@@ -64,7 +64,7 @@ public class SourceZendeskSupport {
     }
     
     /**
-     * This is your Zendesk subdomain that can be found in your account URL. For example, in https://{MY_SUBDOMAIN}.zendesk.com/, where MY_SUBDOMAIN is the value of your subdomain.
+     * This is your unique Zendesk subdomain that can be found in your account URL. For example, in https://MY_SUBDOMAIN.zendesk.com/, MY_SUBDOMAIN is the value of your subdomain.
      */
     @JsonProperty("subdomain")
     public String subdomain;

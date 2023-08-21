@@ -25,7 +25,19 @@ public class SourceGoogleSheets {
     }
     
     /**
-     * Number of rows fetched when making a Google Sheet API call. Defaults to 200.
+     * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("names_conversion")
+    public Boolean namesConversion;
+
+    public SourceGoogleSheets withNamesConversion(Boolean namesConversion) {
+        this.namesConversion = namesConversion;
+        return this;
+    }
+    
+    /**
+     * The number of rows fetched when making a Google Sheet API call. Defaults to 200.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("row_batch_size")
@@ -45,7 +57,7 @@ public class SourceGoogleSheets {
     }
     
     /**
-     * Enter the link to the Google spreadsheet you want to sync
+     * Enter the link to the Google spreadsheet you want to sync. To copy the link, click the 'Share' button in the top-right corner of the spreadsheet, then click 'Copy link'.
      */
     @JsonProperty("spreadsheet_id")
     public String spreadsheetId;

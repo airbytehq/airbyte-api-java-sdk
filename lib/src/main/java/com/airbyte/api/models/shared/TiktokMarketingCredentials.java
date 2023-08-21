@@ -11,18 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TiktokMarketingCredentials {
     /**
-     * Long-term Authorized Access Token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public TiktokMarketingCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
      * The Developer Application App ID.
      */
     @JsonInclude(Include.NON_ABSENT)

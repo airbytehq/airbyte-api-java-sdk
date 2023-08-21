@@ -71,7 +71,7 @@ public class SourceMysql {
     }
     
     /**
-     * Replication method to use for extracting data from the database.
+     * Configures how data is extracted from the database.
      */
     @JsonProperty("replication_method")
     public Object replicationMethod;

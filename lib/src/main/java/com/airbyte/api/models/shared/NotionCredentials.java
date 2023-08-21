@@ -11,18 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NotionCredentials {
     /**
-     * Access Token is a token you received by complete the OauthWebFlow of Notion.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public NotionCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
      * The ClientID of your Notion integration.
      */
     @JsonInclude(Include.NON_ABSENT)

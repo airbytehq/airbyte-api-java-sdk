@@ -11,19 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GoogleAdsCredentials {
     /**
-     * Access Token for making authenticated requests. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public GoogleAdsCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
-     * The Client ID of your Google Ads developer application. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;
+     * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
@@ -35,7 +23,7 @@ public class GoogleAdsCredentials {
     }
     
     /**
-     * The Client Secret of your Google Ads developer application. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;
+     * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -47,7 +35,7 @@ public class GoogleAdsCredentials {
     }
     
     /**
-     * Developer token granted by Google to use their APIs. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;
+     * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("developer_token")
@@ -55,18 +43,6 @@ public class GoogleAdsCredentials {
 
     public GoogleAdsCredentials withDeveloperToken(String developerToken) {
         this.developerToken = developerToken;
-        return this;
-    }
-    
-    /**
-     * The token for obtaining a new access token. More instruction on how to find this value in our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;docs&lt;/a&gt;
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public GoogleAdsCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
         return this;
     }
     

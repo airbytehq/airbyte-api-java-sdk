@@ -37,17 +37,5 @@ public class SnapchatMarketing {
         return this;
     }
     
-    /**
-     * Refresh Token to renew the expired Access Token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public SnapchatMarketing withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
     public SnapchatMarketing(){}
 }

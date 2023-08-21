@@ -11,18 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SurveymonkeyCredentials {
     /**
-     * Access Token for making authenticated requests. See the &lt;a href="https://docs.airbyte.io/integrations/sources/surveymonkey"&gt;docs&lt;/a&gt; for information on how to generate this key.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public SurveymonkeyCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
-    /**
      * The Client ID of the SurveyMonkey developer application.
      */
     @JsonInclude(Include.NON_ABSENT)

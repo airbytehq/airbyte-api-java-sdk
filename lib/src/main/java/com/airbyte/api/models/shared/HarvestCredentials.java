@@ -34,17 +34,5 @@ public class HarvestCredentials {
         return this;
     }
     
-    /**
-     * Refresh Token to renew the expired Access Token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public HarvestCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
     public HarvestCredentials(){}
 }

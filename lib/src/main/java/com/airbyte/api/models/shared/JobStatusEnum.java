@@ -6,6 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
+/**
+ * JobStatusEnum - The Job status you want to filter by
+ */
 public enum JobStatusEnum {
     PENDING("pending"),
     RUNNING("running"),

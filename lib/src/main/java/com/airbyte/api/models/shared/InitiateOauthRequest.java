@@ -13,14 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class InitiateOauthRequest {
-    @JsonProperty("name")
-    public OAuthActorNames name;
-
-    public InitiateOauthRequest withName(OAuthActorNames name) {
-        this.name = name;
-        return this;
-    }
-    
     /**
      * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
      */
@@ -44,6 +36,14 @@ public class InitiateOauthRequest {
         return this;
     }
     
+    @JsonProperty("sourceType")
+    public OAuthActorNames sourceType;
+
+    public InitiateOauthRequest withSourceType(OAuthActorNames sourceType) {
+        this.sourceType = sourceType;
+        return this;
+    }
+    
     /**
      * The workspace to create the secret and eventually the full source.
      */
@@ -55,9 +55,9 @@ public class InitiateOauthRequest {
         return this;
     }
     
-    public InitiateOauthRequest(@JsonProperty("name") OAuthActorNames name, @JsonProperty("redirectUrl") String redirectUrl, @JsonProperty("workspaceId") String workspaceId) {
-        this.name = name;
+    public InitiateOauthRequest(@JsonProperty("redirectUrl") String redirectUrl, @JsonProperty("sourceType") OAuthActorNames sourceType, @JsonProperty("workspaceId") String workspaceId) {
         this.redirectUrl = redirectUrl;
+        this.sourceType = sourceType;
         this.workspaceId = workspaceId;
   }
 }

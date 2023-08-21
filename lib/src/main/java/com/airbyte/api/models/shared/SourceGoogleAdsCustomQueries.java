@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceGoogleAdsCustomQueries {
     /**
-     * A custom defined GAQL query for building the report. Should not contain segments.date expression because it is used by incremental streams. See Google's &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;query builder&lt;/a&gt; for more information.
+     * A custom defined GAQL query for building the report. Avoid including the segments.date field; wherever possible, Airbyte will automatically include it for incremental syncs. For more information, refer to &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;Google's documentation&lt;/a&gt;.
      */
     @JsonProperty("query")
     public String query;
@@ -20,7 +20,7 @@ public class SourceGoogleAdsCustomQueries {
     }
     
     /**
-     * The table name in your destination database for choosen query.
+     * The table name in your destination database for the chosen query.
      */
     @JsonProperty("table_name")
     public String tableName;

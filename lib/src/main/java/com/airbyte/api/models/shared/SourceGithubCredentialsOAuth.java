@@ -24,6 +24,30 @@ public class SourceGithubCredentialsOAuth {
         return this;
     }
     
+    /**
+     * OAuth Client Id
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_id")
+    public String clientId;
+
+    public SourceGithubCredentialsOAuth withClientId(String clientId) {
+        this.clientId = clientId;
+        return this;
+    }
+    
+    /**
+     * OAuth Client secret
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_secret")
+    public String clientSecret;
+
+    public SourceGithubCredentialsOAuth withClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
+        return this;
+    }
+    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
     public SourceGithubCredentialsOAuthOptionTitle optionTitle;

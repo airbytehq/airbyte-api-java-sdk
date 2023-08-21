@@ -20,7 +20,7 @@ public class SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication {
     }
     
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("service_account_info")
     public String serviceAccountInfo;

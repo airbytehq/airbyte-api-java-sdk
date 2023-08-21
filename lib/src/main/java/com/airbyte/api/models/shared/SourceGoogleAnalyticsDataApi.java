@@ -28,7 +28,7 @@ public class SourceGoogleAnalyticsDataApi {
     }
     
     /**
-     * A JSON array describing the custom reports you want to sync from Google Analytics. See &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#custom-reports"&gt;the docs&lt;/a&gt; for more information about the exact format you can use to fill out this field.
+     * A JSON array describing the custom reports you want to sync from Google Analytics. See &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#custom-reports"&gt;the documentation&lt;/a&gt; for more information about the exact format you can use to fill out this field.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports")
@@ -52,7 +52,7 @@ public class SourceGoogleAnalyticsDataApi {
     }
     
     /**
-     * A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body such as "123...". See &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id"&gt;the docs&lt;/a&gt; for more details.
+     * The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
      */
     @JsonProperty("property_id")
     public String propertyId;
@@ -71,7 +71,7 @@ public class SourceGoogleAnalyticsDataApi {
     }
     
     /**
-     * The time increment used by the connector when requesting data from the Google Analytics API. More information is available in the &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-v4/#sampling-in-reports"&gt;the docs&lt;/a&gt;. The bigger this value is, the faster the sync will be, but the more likely that sampling will be applied to your data, potentially causing inaccuracies in the returned results. We recommend setting this to 1 unless you have a hard requirement to make the sync faster at the expense of accuracy. The minimum allowed value for this field is 1, and the maximum is 364. Not applied to custom Cohort reports.
+     * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")

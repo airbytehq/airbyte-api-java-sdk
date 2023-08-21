@@ -11,17 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ZendeskSupportCredentials {
     /**
-     * The value of the API token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-support"&gt;docs&lt;/a&gt; for more information.
+     * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
      */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("access_token")
-    public String accessToken;
-
-    public ZendeskSupportCredentials withAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-        return this;
-    }
-    
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;
@@ -31,6 +22,9 @@ public class ZendeskSupportCredentials {
         return this;
     }
     
+    /**
+     * The OAuth client secret. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     public String clientSecret;

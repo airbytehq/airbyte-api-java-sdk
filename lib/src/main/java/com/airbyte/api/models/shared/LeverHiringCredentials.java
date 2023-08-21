@@ -34,17 +34,5 @@ public class LeverHiringCredentials {
         return this;
     }
     
-    /**
-     * The token for obtaining new access token.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("refresh_token")
-    public String refreshToken;
-
-    public LeverHiringCredentials withRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-        return this;
-    }
-    
     public LeverHiringCredentials(){}
 }

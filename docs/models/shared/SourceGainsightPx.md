@@ -1,0 +1,11 @@
+# SourceGainsightPx
+
+The values required to configure the source.
+
+
+## Fields
+
+| Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                                                | *String*                                                                                                                | :heavy_check_mark:                                                                                                      | The Aptrinsic API Key which is recieved from the dashboard settings (ref - https://app.aptrinsic.com/settings/api-keys) |
+| `sourceType`                                                                                                            | [SourceGainsightPxGainsightPx](../../models/shared/SourceGainsightPxGainsightPx.md)                                     | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |

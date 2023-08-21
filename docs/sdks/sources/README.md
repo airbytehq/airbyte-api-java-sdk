@@ -36,6 +36,8 @@ import com.airbyte.api.models.shared.SourceAlloydb;
 import com.airbyte.api.models.shared.SourceAlloydbAlloydb;
 import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandard;
 import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardXmin;
+import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardXminMethod;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodPasswordAuthentication;
@@ -113,6 +115,8 @@ import com.airbyte.api.models.shared.SourceClickhouseTunnelMethodSSHKeyAuthentic
 import com.airbyte.api.models.shared.SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.SourceClickupApi;
 import com.airbyte.api.models.shared.SourceClickupApiClickupApi;
+import com.airbyte.api.models.shared.SourceClockify;
+import com.airbyte.api.models.shared.SourceClockifyClockify;
 import com.airbyte.api.models.shared.SourceCloseCom;
 import com.airbyte.api.models.shared.SourceCloseComCloseCom;
 import com.airbyte.api.models.shared.SourceCoda;
@@ -130,6 +134,11 @@ import com.airbyte.api.models.shared.SourceConfluenceConfluence;
 import com.airbyte.api.models.shared.SourceConvex;
 import com.airbyte.api.models.shared.SourceConvexConvex;
 import com.airbyte.api.models.shared.SourceCreateRequest;
+import com.airbyte.api.models.shared.SourceDatadog;
+import com.airbyte.api.models.shared.SourceDatadogDatadog;
+import com.airbyte.api.models.shared.SourceDatadogQueries;
+import com.airbyte.api.models.shared.SourceDatadogQueriesDataSource;
+import com.airbyte.api.models.shared.SourceDatadogSite;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -157,6 +166,7 @@ import com.airbyte.api.models.shared.SourceExchangeRatesExchangeRates;
 import com.airbyte.api.models.shared.SourceFacebookMarketing;
 import com.airbyte.api.models.shared.SourceFacebookMarketingFacebookMarketing;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfig;
+import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigActionReportTime;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigLevel;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigValidActionBreakdowns;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigValidBreakdowns;
@@ -197,8 +207,8 @@ import com.airbyte.api.models.shared.SourceFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshdeskFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshsales;
 import com.airbyte.api.models.shared.SourceFreshsalesFreshsales;
-import com.airbyte.api.models.shared.SourceFreshservice;
-import com.airbyte.api.models.shared.SourceFreshserviceFreshservice;
+import com.airbyte.api.models.shared.SourceGainsightPx;
+import com.airbyte.api.models.shared.SourceGainsightPxGainsightPx;
 import com.airbyte.api.models.shared.SourceGcs;
 import com.airbyte.api.models.shared.SourceGcsGcs;
 import com.airbyte.api.models.shared.SourceGetlago;
@@ -260,6 +270,7 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
+import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsGoogleSheets;
@@ -318,6 +329,9 @@ import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateVia
 import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsOAuth20;
@@ -367,12 +381,12 @@ import com.airbyte.api.models.shared.SourceMondayCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceMondayCredentialsOAuth20AuthType;
 import com.airbyte.api.models.shared.SourceMondayMonday;
 import com.airbyte.api.models.shared.SourceMongodb;
-import com.airbyte.api.models.shared.SourceMongodbInstanceTypeMongoDBAtlas;
-import com.airbyte.api.models.shared.SourceMongodbInstanceTypeMongoDBAtlasInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeReplicaSet;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeReplicaSetInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeStandaloneMongoDbInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance;
+import com.airbyte.api.models.shared.SourceMongodbInternalPoc;
+import com.airbyte.api.models.shared.SourceMongodbInternalPocMongodbInternalPoc;
 import com.airbyte.api.models.shared.SourceMongodbMongodb;
 import com.airbyte.api.models.shared.SourceMssql;
 import com.airbyte.api.models.shared.SourceMssqlMssql;
@@ -396,10 +410,10 @@ import com.airbyte.api.models.shared.SourceMyHours;
 import com.airbyte.api.models.shared.SourceMyHoursMyHours;
 import com.airbyte.api.models.shared.SourceMysql;
 import com.airbyte.api.models.shared.SourceMysqlMysql;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodLogicalReplicationCDC;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodLogicalReplicationCDCMethod;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourceMysqlSslModePreferred;
 import com.airbyte.api.models.shared.SourceMysqlSslModePreferredMode;
 import com.airbyte.api.models.shared.SourceMysqlSslModeRequired;
@@ -462,6 +476,14 @@ import com.airbyte.api.models.shared.SourceOrb;
 import com.airbyte.api.models.shared.SourceOrbOrb;
 import com.airbyte.api.models.shared.SourceOrbit;
 import com.airbyte.api.models.shared.SourceOrbitOrbit;
+import com.airbyte.api.models.shared.SourceOutbrainAmplify;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessToken;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessTokenAccessTokenIsRequiredForAuthenticationRequests;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePassword;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePasswordBothUsernameAndPasswordIsRequiredForAuthenticationRequest;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForGeoLocationRegion;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForPeriodicReports;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyOutbrainAmplify;
 import com.airbyte.api.models.shared.SourceOutreach;
 import com.airbyte.api.models.shared.SourceOutreachOutreach;
 import com.airbyte.api.models.shared.SourcePaypalTransaction;
@@ -499,6 +521,8 @@ import com.airbyte.api.models.shared.SourcePostgres;
 import com.airbyte.api.models.shared.SourcePostgresPostgres;
 import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandard;
 import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXmin;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXminMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodPasswordAuthentication;
@@ -710,10 +734,6 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -739,18 +759,44 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("fuga") {{
+                .setSecurity(new Security("esse") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceFreshservice("voluptas", "mydomain.freshservice.com", SourceFreshserviceFreshservice.FRESHSERVICE, "2020-10-01T00:00:00Z") {{
-                                apiKey = "eos";
-                                domainName = "mydomain.freshservice.com";
-                                sourceType = SourceFreshserviceFreshservice.FRESHSERVICE;
-                                startDate = "2020-10-01T00:00:00Z";
-                            }}, "ab", "904e523c-7e0b-4c71-b8e4-796f2a70c688") {{
-                secretId = "consequuntur";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceMysql("cupiditate", "consequatur", 3306L,                 new SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC(SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC) {{
+                                                initialWaitingSeconds = 892050L;
+                                                method = SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC;
+                                                serverTimeZone = "ipsam";
+                                            }}, SourceMysqlMysql.MYSQL, "aspernatur") {{
+                                database = "fuga";
+                                host = "reprehenderit";
+                                jdbcUrlParams = "quidem";
+                                password = "fugiat";
+                                port = 3306L;
+                                replicationMethod = new SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC(SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC) {{
+                                    initialWaitingSeconds = 433439L;
+                                    method = SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC;
+                                    serverTimeZone = "suscipit";
+                                }};
+                                sourceType = SourceMysqlMysql.MYSQL;
+                                sslMode = new SourceMysqlSslModeVerifyIdentity("ipsa", SourceMysqlSslModeVerifyIdentityMode.VERIFY_IDENTITY) {{
+                                    caCertificate = "eos";
+                                    clientCertificate = "praesentium";
+                                    clientKey = "quisquam";
+                                    clientKeyPassword = "veritatis";
+                                    mode = SourceMysqlSslModeVerifyIdentityMode.VERIFY_IDENTITY;
+                                }};
+                                tunnelMethod = new SourceMysqlTunnelMethodSSHKeyAuthentication("illum", "quo", SourceMysqlTunnelMethodSSHKeyAuthenticationTunnelMethod.SSH_KEY_AUTH, 22L, "fuga") {{
+                                    sshKey = "quidem";
+                                    tunnelHost = "neque";
+                                    tunnelMethod = SourceMysqlTunnelMethodSSHKeyAuthenticationTunnelMethod.SSH_KEY_AUTH;
+                                    tunnelPort = 22L;
+                                    tunnelUser = "quo";
+                                }};
+                                username = "Destini.Daugherty";
+                            }}, "sequi", "c7e0bc71-78e4-4796-b2a7-0c688282aa48") {{
+                secretId = "explicabo";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -795,12 +841,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("deleniti") {{
+                .setSecurity(new Security("minima") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("fugit");            
+            DeleteSourceRequest req = new DeleteSourceRequest("nisi");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -844,12 +890,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("fuga") {{
+                .setSecurity(new Security("fugit") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("mollitia");            
+            GetSourceRequest req = new GetSourceRequest("sapiente");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -899,12 +945,12 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("incidunt") {{
+                .setSecurity(new Security("consequuntur") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest(OAuthActorNames.NOTION, "explicabo", "562f222e-9817-4ee1-bcbe-61e6b7b95bc0") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("ratione", OAuthActorNames.FACEBOOK_MARKETING, "e9817ee1-7cbe-461e-ab7b-95bc0ab3c20c") {{
                 oAuthInputConfiguration = new OAuthInputConfiguration();;
             }};            
 
@@ -950,20 +996,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("culpa") {{
+                .setSecurity(new Security("quaerat") {{
                     bearerAuth = "";
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 731398;
-                offset = 240020;
+                limit = 959167;
+                offset = 232865;
                 workspaceIds = new String[]{{
-                    add("20c4f378-9fd8-471f-99dd-2efd121aa6f1"),
-                    add("e674bdb0-4f15-4756-882d-68ea19f1d170"),
-                    add("51339d08-086a-4184-8394-c26071f93f5f"),
-                    add("0642dac7-af51-45cc-813a-a63aae8d6786"),
+                    add("89fd871f-99dd-42ef-9121-aa6f1e674bdb"),
+                    add("04f15756-082d-468e-a19f-1d17051339d0"),
                 }};
             }};            
 
@@ -1018,6 +1062,8 @@ import com.airbyte.api.models.shared.SourceAlloydb;
 import com.airbyte.api.models.shared.SourceAlloydbAlloydb;
 import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandard;
 import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardXmin;
+import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardXminMethod;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodPasswordAuthentication;
@@ -1095,6 +1141,8 @@ import com.airbyte.api.models.shared.SourceClickhouseTunnelMethodSSHKeyAuthentic
 import com.airbyte.api.models.shared.SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.SourceClickupApi;
 import com.airbyte.api.models.shared.SourceClickupApiClickupApi;
+import com.airbyte.api.models.shared.SourceClockify;
+import com.airbyte.api.models.shared.SourceClockifyClockify;
 import com.airbyte.api.models.shared.SourceCloseCom;
 import com.airbyte.api.models.shared.SourceCloseComCloseCom;
 import com.airbyte.api.models.shared.SourceCoda;
@@ -1111,6 +1159,11 @@ import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
 import com.airbyte.api.models.shared.SourceConvex;
 import com.airbyte.api.models.shared.SourceConvexConvex;
+import com.airbyte.api.models.shared.SourceDatadog;
+import com.airbyte.api.models.shared.SourceDatadogDatadog;
+import com.airbyte.api.models.shared.SourceDatadogQueries;
+import com.airbyte.api.models.shared.SourceDatadogQueriesDataSource;
+import com.airbyte.api.models.shared.SourceDatadogSite;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -1138,6 +1191,7 @@ import com.airbyte.api.models.shared.SourceExchangeRatesExchangeRates;
 import com.airbyte.api.models.shared.SourceFacebookMarketing;
 import com.airbyte.api.models.shared.SourceFacebookMarketingFacebookMarketing;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfig;
+import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigActionReportTime;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigLevel;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigValidActionBreakdowns;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigValidBreakdowns;
@@ -1178,8 +1232,8 @@ import com.airbyte.api.models.shared.SourceFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshdeskFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshsales;
 import com.airbyte.api.models.shared.SourceFreshsalesFreshsales;
-import com.airbyte.api.models.shared.SourceFreshservice;
-import com.airbyte.api.models.shared.SourceFreshserviceFreshservice;
+import com.airbyte.api.models.shared.SourceGainsightPx;
+import com.airbyte.api.models.shared.SourceGainsightPxGainsightPx;
 import com.airbyte.api.models.shared.SourceGcs;
 import com.airbyte.api.models.shared.SourceGcsGcs;
 import com.airbyte.api.models.shared.SourceGetlago;
@@ -1241,6 +1295,7 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
+import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsGoogleSheets;
@@ -1299,6 +1354,9 @@ import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateVia
 import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsOAuth20;
@@ -1348,12 +1406,12 @@ import com.airbyte.api.models.shared.SourceMondayCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceMondayCredentialsOAuth20AuthType;
 import com.airbyte.api.models.shared.SourceMondayMonday;
 import com.airbyte.api.models.shared.SourceMongodb;
-import com.airbyte.api.models.shared.SourceMongodbInstanceTypeMongoDBAtlas;
-import com.airbyte.api.models.shared.SourceMongodbInstanceTypeMongoDBAtlasInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeReplicaSet;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeReplicaSetInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeStandaloneMongoDbInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance;
+import com.airbyte.api.models.shared.SourceMongodbInternalPoc;
+import com.airbyte.api.models.shared.SourceMongodbInternalPocMongodbInternalPoc;
 import com.airbyte.api.models.shared.SourceMongodbMongodb;
 import com.airbyte.api.models.shared.SourceMssql;
 import com.airbyte.api.models.shared.SourceMssqlMssql;
@@ -1377,10 +1435,10 @@ import com.airbyte.api.models.shared.SourceMyHours;
 import com.airbyte.api.models.shared.SourceMyHoursMyHours;
 import com.airbyte.api.models.shared.SourceMysql;
 import com.airbyte.api.models.shared.SourceMysqlMysql;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodLogicalReplicationCDC;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodLogicalReplicationCDCMethod;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourceMysqlSslModePreferred;
 import com.airbyte.api.models.shared.SourceMysqlSslModePreferredMode;
 import com.airbyte.api.models.shared.SourceMysqlSslModeRequired;
@@ -1443,6 +1501,14 @@ import com.airbyte.api.models.shared.SourceOrb;
 import com.airbyte.api.models.shared.SourceOrbOrb;
 import com.airbyte.api.models.shared.SourceOrbit;
 import com.airbyte.api.models.shared.SourceOrbitOrbit;
+import com.airbyte.api.models.shared.SourceOutbrainAmplify;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessToken;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessTokenAccessTokenIsRequiredForAuthenticationRequests;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePassword;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePasswordBothUsernameAndPasswordIsRequiredForAuthenticationRequest;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForGeoLocationRegion;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForPeriodicReports;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyOutbrainAmplify;
 import com.airbyte.api.models.shared.SourceOutreach;
 import com.airbyte.api.models.shared.SourceOutreachOutreach;
 import com.airbyte.api.models.shared.SourcePatchRequest;
@@ -1481,6 +1547,8 @@ import com.airbyte.api.models.shared.SourcePostgres;
 import com.airbyte.api.models.shared.SourcePostgresPostgres;
 import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandard;
 import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXmin;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXminMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodPasswordAuthentication;
@@ -1692,10 +1760,6 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -1721,17 +1785,28 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("labore") {{
+                .setSecurity(new Security("rem") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("possimus") {{
+            PatchSourceRequest req = new PatchSourceRequest("aut") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceRkiCovid(SourceRkiCovidRkiCovid.RKI_COVID, "cum");;
+                    configuration = new SourceMssql("master", "eum", 1433L, SourceMssqlMssql.MSSQL, "mollitia") {{
+                        jdbcUrlParams = "ab";
+                        password = "corrupti";
+                        replicationMethod = new SourceMssqlReplicationMethodStandard(SourceMssqlReplicationMethodStandardMethod.STANDARD);;
+                        schemas = new String[]{{
+                            add("dolor"),
+                        }};
+                        sslMethod = new SourceMssqlSslMethodEncryptedVerifyCertificate(SourceMssqlSslMethodEncryptedVerifyCertificateSslMethod.ENCRYPTED_VERIFY_CERTIFICATE) {{
+                            hostNameInCertificate = "numquam";
+                        }};;
+                        tunnelMethod = new SourceMssqlTunnelMethodPasswordAuthentication("explicabo", SourceMssqlTunnelMethodPasswordAuthenticationTunnelMethod.SSH_PASSWORD_AUTH, 22L, "voluptas", "aut");;
+                    }};;
                     name = "My source";
-                    secretId = "commodi";
-                    workspaceId = "75fd5e60-b375-4ed4-b6fb-ee41f33317fe";
+                    secretId = "dignissimos";
+                    workspaceId = "1f93f5f0-642d-4ac7-af51-5cc413aa63aa";
                 }};;
             }};            
 
@@ -1786,6 +1861,8 @@ import com.airbyte.api.models.shared.SourceAlloydb;
 import com.airbyte.api.models.shared.SourceAlloydbAlloydb;
 import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandard;
 import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardXmin;
+import com.airbyte.api.models.shared.SourceAlloydbReplicationMethodStandardXminMethod;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourceAlloydbTunnelMethodPasswordAuthentication;
@@ -1863,6 +1940,8 @@ import com.airbyte.api.models.shared.SourceClickhouseTunnelMethodSSHKeyAuthentic
 import com.airbyte.api.models.shared.SourceClickhouseTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.SourceClickupApi;
 import com.airbyte.api.models.shared.SourceClickupApiClickupApi;
+import com.airbyte.api.models.shared.SourceClockify;
+import com.airbyte.api.models.shared.SourceClockifyClockify;
 import com.airbyte.api.models.shared.SourceCloseCom;
 import com.airbyte.api.models.shared.SourceCloseComCloseCom;
 import com.airbyte.api.models.shared.SourceCoda;
@@ -1879,6 +1958,11 @@ import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
 import com.airbyte.api.models.shared.SourceConvex;
 import com.airbyte.api.models.shared.SourceConvexConvex;
+import com.airbyte.api.models.shared.SourceDatadog;
+import com.airbyte.api.models.shared.SourceDatadogDatadog;
+import com.airbyte.api.models.shared.SourceDatadogQueries;
+import com.airbyte.api.models.shared.SourceDatadogQueriesDataSource;
+import com.airbyte.api.models.shared.SourceDatadogSite;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -1906,6 +1990,7 @@ import com.airbyte.api.models.shared.SourceExchangeRatesExchangeRates;
 import com.airbyte.api.models.shared.SourceFacebookMarketing;
 import com.airbyte.api.models.shared.SourceFacebookMarketingFacebookMarketing;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfig;
+import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigActionReportTime;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigLevel;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigValidActionBreakdowns;
 import com.airbyte.api.models.shared.SourceFacebookMarketingInsightConfigValidBreakdowns;
@@ -1946,8 +2031,8 @@ import com.airbyte.api.models.shared.SourceFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshdeskFreshdesk;
 import com.airbyte.api.models.shared.SourceFreshsales;
 import com.airbyte.api.models.shared.SourceFreshsalesFreshsales;
-import com.airbyte.api.models.shared.SourceFreshservice;
-import com.airbyte.api.models.shared.SourceFreshserviceFreshservice;
+import com.airbyte.api.models.shared.SourceGainsightPx;
+import com.airbyte.api.models.shared.SourceGainsightPxGainsightPx;
 import com.airbyte.api.models.shared.SourceGcs;
 import com.airbyte.api.models.shared.SourceGcsGcs;
 import com.airbyte.api.models.shared.SourceGetlago;
@@ -2009,6 +2094,7 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
+import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsServiceAccountKeyAuthenticationAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSheetsGoogleSheets;
@@ -2067,6 +2153,9 @@ import com.airbyte.api.models.shared.SourceLeverHiringCredentialsAuthenticateVia
 import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsOAuth20;
@@ -2116,12 +2205,12 @@ import com.airbyte.api.models.shared.SourceMondayCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceMondayCredentialsOAuth20AuthType;
 import com.airbyte.api.models.shared.SourceMondayMonday;
 import com.airbyte.api.models.shared.SourceMongodb;
-import com.airbyte.api.models.shared.SourceMongodbInstanceTypeMongoDBAtlas;
-import com.airbyte.api.models.shared.SourceMongodbInstanceTypeMongoDBAtlasInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeReplicaSet;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeReplicaSetInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeStandaloneMongoDbInstance;
 import com.airbyte.api.models.shared.SourceMongodbInstanceTypeStandaloneMongoDbInstanceInstance;
+import com.airbyte.api.models.shared.SourceMongodbInternalPoc;
+import com.airbyte.api.models.shared.SourceMongodbInternalPocMongodbInternalPoc;
 import com.airbyte.api.models.shared.SourceMongodbMongodb;
 import com.airbyte.api.models.shared.SourceMssql;
 import com.airbyte.api.models.shared.SourceMssqlMssql;
@@ -2145,10 +2234,10 @@ import com.airbyte.api.models.shared.SourceMyHours;
 import com.airbyte.api.models.shared.SourceMyHoursMyHours;
 import com.airbyte.api.models.shared.SourceMysql;
 import com.airbyte.api.models.shared.SourceMysqlMysql;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodLogicalReplicationCDC;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodLogicalReplicationCDCMethod;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourceMysqlReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourceMysqlReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourceMysqlSslModePreferred;
 import com.airbyte.api.models.shared.SourceMysqlSslModePreferredMode;
 import com.airbyte.api.models.shared.SourceMysqlSslModeRequired;
@@ -2211,6 +2300,14 @@ import com.airbyte.api.models.shared.SourceOrb;
 import com.airbyte.api.models.shared.SourceOrbOrb;
 import com.airbyte.api.models.shared.SourceOrbit;
 import com.airbyte.api.models.shared.SourceOrbitOrbit;
+import com.airbyte.api.models.shared.SourceOutbrainAmplify;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessToken;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsAccessTokenAccessTokenIsRequiredForAuthenticationRequests;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePassword;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyCredentialsUsernamePasswordBothUsernameAndPasswordIsRequiredForAuthenticationRequest;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForGeoLocationRegion;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyGranularityForPeriodicReports;
+import com.airbyte.api.models.shared.SourceOutbrainAmplifyOutbrainAmplify;
 import com.airbyte.api.models.shared.SourceOutreach;
 import com.airbyte.api.models.shared.SourceOutreachOutreach;
 import com.airbyte.api.models.shared.SourcePaypalTransaction;
@@ -2248,6 +2345,8 @@ import com.airbyte.api.models.shared.SourcePostgres;
 import com.airbyte.api.models.shared.SourcePostgresPostgres;
 import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandard;
 import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXmin;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXminMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodPasswordAuthentication;
@@ -2460,10 +2559,6 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
-import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -2489,18 +2584,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("consectetur") {{
+                .setSecurity(new Security("recusandae") {{
                     bearerAuth = "";
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("corporis") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceRecurly("ipsa", SourceRecurlyRecurly.RECURLY) {{
-                                    apiKey = "laboriosam";
-                                    beginTime = "2021-12-01T00:00:00";
-                                    endTime = "2021-12-01T00:00:00";
-                                    sourceType = SourceRecurlyRecurly.RECURLY;
-                                }}, "voluptates");;
+            PutSourceRequest req = new PutSourceRequest("totam") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceTheGuardianApi("labore", SourceTheGuardianApiTheGuardianApi.THE_GUARDIAN_API, "YYYY-MM-DD") {{
+                                    apiKey = "vel";
+                                    endDate = "YYYY-MM-DD";
+                                    query = "environment AND political";
+                                    section = "technology";
+                                    sourceType = SourceTheGuardianApiTheGuardianApi.THE_GUARDIAN_API;
+                                    startDate = "YYYY-MM-DD";
+                                    tag = "environment/plasticbags";
+                                }}, "possimus");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);

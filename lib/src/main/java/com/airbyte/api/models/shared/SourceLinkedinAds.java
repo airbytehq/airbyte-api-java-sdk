@@ -28,6 +28,15 @@ public class SourceLinkedinAds {
     }
     
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ad_analytics_reports")
+    public SourceLinkedinAdsAdAnalyticsReportConfiguration[] adAnalyticsReports;
+
+    public SourceLinkedinAds withAdAnalyticsReports(SourceLinkedinAdsAdAnalyticsReportConfiguration[] adAnalyticsReports) {
+        this.adAnalyticsReports = adAnalyticsReports;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     public Object credentials;
 

@@ -21,7 +21,6 @@ public class SourcePaypalTransaction {
     /**
      * The Client ID of your Paypal developer application.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;
 
@@ -33,7 +32,6 @@ public class SourcePaypalTransaction {
     /**
      * The Client Secret of your Paypal developer application.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     public String clientSecret;
 
@@ -86,7 +84,9 @@ public class SourcePaypalTransaction {
         return this;
     }
     
-    public SourcePaypalTransaction(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransaction sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourcePaypalTransaction(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransaction sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
         this.isSandbox = isSandbox;
         this.sourceType = sourceType;
         this.startDate = startDate;
