@@ -702,3 +702,13 @@ Based on:
 - [java v0.38.0] .
 ### Releases
 - [Maven Central v0.38.0] https://central.sonatype.com/artifact/com.airbyte/api/0.38.0 - .
+
+## 2023-09-01 00:12:54
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.77.0 (2.91.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.39.0] .
+### Releases
+- [Maven Central v0.39.0] https://central.sonatype.com/artifact/com.airbyte/api/0.39.0 - .
