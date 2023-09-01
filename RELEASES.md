@@ -672,3 +672,43 @@ Based on:
 - [java v0.36.2] .
 ### Releases
 - [Maven Central v0.36.2] https://central.sonatype.com/artifact/com.airbyte/api/0.36.2 - .
+
+## 2023-08-25 00:11:46
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.74.11 (2.87.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.36.3] .
+### Releases
+- [Maven Central v0.36.3] https://central.sonatype.com/artifact/com.airbyte/api/0.36.3 - .
+
+## 2023-08-26 00:11:21
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.74.15 (2.88.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.37.0] .
+### Releases
+- [Maven Central v0.37.0] https://central.sonatype.com/artifact/com.airbyte/api/0.37.0 - .
+
+## 2023-08-31 00:12:06
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.75.0 (2.89.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.38.0] .
+### Releases
+- [Maven Central v0.38.0] https://central.sonatype.com/artifact/com.airbyte/api/0.38.0 - .
+
+## 2023-09-01 00:12:54
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.77.0 (2.91.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.39.0] .
+### Releases
+- [Maven Central v0.39.0] https://central.sonatype.com/artifact/com.airbyte/api/0.39.0 - .
