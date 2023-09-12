@@ -65,7 +65,7 @@ public class DestinationSnowflake {
     }
     
     /**
-     * (Beta) The schema to write raw tables into
+     * The schema to write raw tables into
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw_data_schema")
@@ -95,18 +95,6 @@ public class DestinationSnowflake {
 
     public DestinationSnowflake withSchema(String schema) {
         this.schema = schema;
-        return this;
-    }
-    
-    /**
-     * (Beta) Use &lt;a href="https://github.com/airbytehq/airbyte/issues/26028" target="_blank"&gt;Destinations V2&lt;/a&gt;. Contact Airbyte Support to participate in the beta program.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("use_1s1t_format")
-    public Boolean use1s1tFormat;
-
-    public DestinationSnowflake withUse1s1tFormat(Boolean use1s1tFormat) {
-        this.use1s1tFormat = use1s1tFormat;
         return this;
     }
     

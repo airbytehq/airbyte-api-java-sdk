@@ -56,7 +56,7 @@ public class SourceGoogleAds {
     }
     
     /**
-     * UTC date in the format YYYY-MM-DD. Any data after this date will not be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data after this date will not be replicated. (Default value of today is used if not set)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -89,8 +89,9 @@ public class SourceGoogleAds {
     }
     
     /**
-     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. (Default value of two years ago is used if not set)
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
@@ -100,10 +101,9 @@ public class SourceGoogleAds {
         return this;
     }
     
-    public SourceGoogleAds(@JsonProperty("credentials") SourceGoogleAdsGoogleCredentials credentials, @JsonProperty("customer_id") String customerId, @JsonProperty("sourceType") SourceGoogleAdsGoogleAds sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceGoogleAds(@JsonProperty("credentials") SourceGoogleAdsGoogleCredentials credentials, @JsonProperty("customer_id") String customerId, @JsonProperty("sourceType") SourceGoogleAdsGoogleAds sourceType) {
         this.credentials = credentials;
         this.customerId = customerId;
         this.sourceType = sourceType;
-        this.startDate = startDate;
   }
 }

@@ -71,7 +71,7 @@ public class SourceMssql {
     }
     
     /**
-     * The replication method used for extracting data from the database. STANDARD replication requires no setup on the DB side but will not be able to represent deletions incrementally. CDC uses {TBC} to detect inserts, updates, and deletes. This needs to be configured on the source database itself.
+     * Configures how data is extracted from the database.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication_method")

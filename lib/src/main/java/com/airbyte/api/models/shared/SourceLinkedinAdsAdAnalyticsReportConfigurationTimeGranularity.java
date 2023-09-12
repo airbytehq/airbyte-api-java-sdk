@@ -7,11 +7,7 @@ package com.airbyte.api.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity - Set time granularity for report: 
- * ALL - Results grouped into a single result across the entire time range of the report.
- * DAILY - Results grouped by day.
- * MONTHLY - Results grouped by month.
- * YEARLY - Results grouped by year.
+ * SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity - Choose how to group the data in your report by time. The options are:&lt;br&gt;- 'ALL': A single result summarizing the entire time range.&lt;br&gt;- 'DAILY': Group results by each day.&lt;br&gt;- 'MONTHLY': Group results by each month.&lt;br&gt;- 'YEARLY': Group results by each year.&lt;br&gt;Selecting a time grouping helps you analyze trends and patterns over different time periods.
  */
 public enum SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity {
     ALL("ALL"),

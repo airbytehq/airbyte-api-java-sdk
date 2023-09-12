@@ -36,18 +36,6 @@ public class SourceGoogleSheets {
         return this;
     }
     
-    /**
-     * The number of rows fetched when making a Google Sheet API call. Defaults to 200.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("row_batch_size")
-    public Long rowBatchSize;
-
-    public SourceGoogleSheets withRowBatchSize(Long rowBatchSize) {
-        this.rowBatchSize = rowBatchSize;
-        return this;
-    }
-    
     @JsonProperty("sourceType")
     public SourceGoogleSheetsGoogleSheets sourceType;
 

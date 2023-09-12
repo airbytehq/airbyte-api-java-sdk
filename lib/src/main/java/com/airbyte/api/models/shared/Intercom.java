@@ -13,6 +13,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class Intercom {
+    /**
+     * Client Id for your Intercom application.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     public String clientId;
@@ -22,6 +25,9 @@ public class Intercom {
         return this;
     }
     
+    /**
+     * Client Secret for your Intercom application.
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     public String clientSecret;

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LinkedinAdsCredentials {
     /**
-     * The client ID of the LinkedIn Ads developer application.
+     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
@@ -23,7 +23,7 @@ public class LinkedinAdsCredentials {
     }
     
     /**
-     * The client secret the LinkedIn Ads developer application.
+     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")

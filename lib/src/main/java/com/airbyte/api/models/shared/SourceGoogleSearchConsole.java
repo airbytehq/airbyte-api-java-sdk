@@ -24,7 +24,7 @@ public class SourceGoogleSearchConsole {
     }
     
     /**
-     * A JSON array describing the custom reports you want to sync from Google Search Console. See &lt;a href="https://docs.airbyte.com/integrations/sources/google-search-console#step-2-set-up-the-google-search-console-connector-in-airbyte"&gt;the docs&lt;/a&gt; for more information about the exact format you can use to fill out this field.
+     * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports")
@@ -36,19 +36,31 @@ public class SourceGoogleSearchConsole {
     }
     
     /**
-     * If "final" or if this parameter is omitted, the returned data will include only finalized data. Setting this parameter to "all" should not be used with Incremental Sync mode as it may cause data loss. If "all", data will include fresh data.
+     * You can add your Custom Analytics report by creating one.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("custom_reports_array")
+    public SourceGoogleSearchConsoleCustomReportConfig[] customReportsArray;
+
+    public SourceGoogleSearchConsole withCustomReportsArray(SourceGoogleSearchConsoleCustomReportConfig[] customReportsArray) {
+        this.customReportsArray = customReportsArray;
+        return this;
+    }
+    
+    /**
+     * If set to 'final', the returned data will include only finalized, stable data. If set to 'all', fresh data will be included. When using Incremental sync mode, we do not recommend setting this parameter to 'all' as it may cause data loss. More information can be found in our &lt;a href='https://docs.airbyte.com/integrations/source/google-search-console'&gt;full documentation&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_state")
-    public SourceGoogleSearchConsoleDataState dataState;
+    public SourceGoogleSearchConsoleDataFreshness dataState;
 
-    public SourceGoogleSearchConsole withDataState(SourceGoogleSearchConsoleDataState dataState) {
+    public SourceGoogleSearchConsole withDataState(SourceGoogleSearchConsoleDataFreshness dataState) {
         this.dataState = dataState;
         return this;
     }
     
     /**
-     * UTC date in the format 2017-01-25. Any data after this date will not be replicated. Must be greater or equal to the start date field.
+     * UTC date in the format YYYY-MM-DD. Any data created after this date will not be replicated. Must be greater or equal to the start date field. Leaving this field blank will replicate all data from the start date onward.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -61,7 +73,7 @@ public class SourceGoogleSearchConsole {
     }
     
     /**
-     * The URLs of the website property attached to your GSC account. Read more &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
+     * The URLs of the website property attached to your GSC account. Learn more about properties &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("site_urls")
     public String[] siteUrls;
@@ -80,8 +92,9 @@ public class SourceGoogleSearchConsole {
     }
     
     /**
-     * UTC date in the format 2017-01-25. Any data before this date will not be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
@@ -91,10 +104,9 @@ public class SourceGoogleSearchConsole {
         return this;
     }
     
-    public SourceGoogleSearchConsole(@JsonProperty("authorization") Object authorization, @JsonProperty("site_urls") String[] siteUrls, @JsonProperty("sourceType") SourceGoogleSearchConsoleGoogleSearchConsole sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceGoogleSearchConsole(@JsonProperty("authorization") Object authorization, @JsonProperty("site_urls") String[] siteUrls, @JsonProperty("sourceType") SourceGoogleSearchConsoleGoogleSearchConsole sourceType) {
         this.authorization = authorization;
         this.siteUrls = siteUrls;
         this.sourceType = sourceType;
-        this.startDate = startDate;
   }
 }

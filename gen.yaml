@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 677c33932664e2e3ad3b815e949e0aa9
+  docChecksum: 5b9a9a6f493e89e080a57e42997074be
   docVersion: 1.0.0
-  speakeasyVersion: 1.77.2
-  generationVersion: 2.93.0
+  speakeasyVersion: 1.82.5
+  generationVersion: 2.108.3
 generation:
   comments:
     disableComments: false
@@ -20,7 +20,7 @@ features:
     globalServerURLs: 2.82.0
     includes: 2.81.1
 java:
-  version: 0.39.1
+  version: 0.39.2
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte

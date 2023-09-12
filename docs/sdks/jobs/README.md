@@ -25,12 +25,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("cupiditate") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("qui", "ipsum") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(181631L);            
+            CancelJobRequest req = new CancelJobRequest(944373L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -75,12 +78,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quae") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("excepturi", "cum") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("laudantium", JobTypeEnum.SYNC);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("voluptate", JobTypeEnum.SYNC);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -124,12 +130,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("occaecati") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("reiciendis", "amet") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(977496L);            
+            GetJobRequest req = new GetJobRequest(680545L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -176,26 +185,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quisquam") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("numquam", "veritatis") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
             ListJobsRequest req = new ListJobsRequest() {{
-                connectionId = "vero";
-                createdAtEnd = OffsetDateTime.parse("2022-04-29T03:27:17.664Z");
-                createdAtStart = OffsetDateTime.parse("2022-01-15T00:38:43.469Z");
-                jobType = JobTypeEnum.SYNC;
-                limit = 231701;
-                offset = 878870;
-                orderBy = "tenetur";
-                status = JobStatusEnum.INCOMPLETE;
-                updatedAtEnd = OffsetDateTime.parse("2020-11-08T11:03:10.206Z");
-                updatedAtStart = OffsetDateTime.parse("2021-07-17T15:43:35.984Z");
+                connectionId = "ipsa";
+                createdAtEnd = OffsetDateTime.parse("2022-07-26T10:30:36.625Z");
+                createdAtStart = OffsetDateTime.parse("2022-09-09T04:40:04.540Z");
+                jobType = JobTypeEnum.RESET;
+                limit = 696344;
+                offset = 976405;
+                orderBy = "voluptas";
+                status = JobStatusEnum.FAILED;
+                updatedAtEnd = OffsetDateTime.parse("2022-06-16T23:42:38.113Z");
+                updatedAtStart = OffsetDateTime.parse("2022-02-23T01:35:05.899Z");
                 workspaceIds = new String[]{{
-                    add("bd74dd39-c0f5-4d2c-bf7c-70a45626d436"),
-                    add("813f16d9-f5fc-4e6c-9561-46c3e250fb00"),
-                    add("8c42e141-aac3-466c-8dd6-b14429074747"),
+                    add("1ba77a89-ebf7-437a-a420-3ce5e6a95d8a"),
                 }};
             }};            
 

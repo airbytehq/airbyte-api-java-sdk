@@ -41,7 +41,7 @@ public class SourceStripe {
     }
     
     /**
-     * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
+     * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. Applies only to streams that do not support event-based incremental syncs: CheckoutSessionLineItems,  Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window_days")
@@ -75,6 +75,7 @@ public class SourceStripe {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
@@ -85,10 +86,9 @@ public class SourceStripe {
         return this;
     }
     
-    public SourceStripe(@JsonProperty("account_id") String accountId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourceStripeStripe sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceStripe(@JsonProperty("account_id") String accountId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourceStripeStripe sourceType) {
         this.accountId = accountId;
         this.clientSecret = clientSecret;
         this.sourceType = sourceType;
-        this.startDate = startDate;
   }
 }

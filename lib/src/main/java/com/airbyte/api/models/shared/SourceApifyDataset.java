@@ -28,6 +28,7 @@ public class SourceApifyDataset {
     /**
      * ID of the dataset you would like to load to Airbyte.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("datasetId")
     public String datasetId;
 
@@ -44,8 +45,19 @@ public class SourceApifyDataset {
         return this;
     }
     
-    public SourceApifyDataset(@JsonProperty("datasetId") String datasetId, @JsonProperty("sourceType") SourceApifyDatasetApifyDataset sourceType) {
-        this.datasetId = datasetId;
+    /**
+     * Your application's Client Secret. You can find this value on the &lt;a href="https://console.apify.com/account/integrations"&gt;console integrations tab&lt;/a&gt; after you login.
+     */
+    @JsonProperty("token")
+    public String token;
+
+    public SourceApifyDataset withToken(String token) {
+        this.token = token;
+        return this;
+    }
+    
+    public SourceApifyDataset(@JsonProperty("sourceType") SourceApifyDatasetApifyDataset sourceType, @JsonProperty("token") String token) {
         this.sourceType = sourceType;
+        this.token = token;
   }
 }

@@ -1,0 +1,13 @@
+# DestinationMilvus
+
+The values required to configure the destination.
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `destinationType`                                                                                       | [DestinationMilvusMilvus](../../models/shared/DestinationMilvusMilvus.md)                               | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
+| `embedding`                                                                                             | *Object*                                                                                                | :heavy_check_mark:                                                                                      | Embedding configuration                                                                                 |
+| `indexing`                                                                                              | [DestinationMilvusIndexing](../../models/shared/DestinationMilvusIndexing.md)                           | :heavy_check_mark:                                                                                      | Indexing configuration                                                                                  |
+| `processing`                                                                                            | [DestinationMilvusProcessingConfigModel](../../models/shared/DestinationMilvusProcessingConfigModel.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
