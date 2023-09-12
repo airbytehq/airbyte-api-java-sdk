@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -12,46 +14,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceAppfollow {
     /**
-     * api secret provided by Appfollow
+     * API Key provided by Appfollow
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_secret")
     public String apiSecret;
 
     public SourceAppfollow withApiSecret(String apiSecret) {
         this.apiSecret = apiSecret;
-        return this;
-    }
-    
-    /**
-     * client id provided by Appfollow
-     */
-    @JsonProperty("cid")
-    public String cid;
-
-    public SourceAppfollow withCid(String cid) {
-        this.cid = cid;
-        return this;
-    }
-    
-    /**
-     * getting data by Country
-     */
-    @JsonProperty("country")
-    public String country;
-
-    public SourceAppfollow withCountry(String country) {
-        this.country = country;
-        return this;
-    }
-    
-    /**
-     * for App Store — this is 9-10 digits identification number; for Google Play — this is bundle name;
-     */
-    @JsonProperty("ext_id")
-    public String extId;
-
-    public SourceAppfollow withExtId(String extId) {
-        this.extId = extId;
         return this;
     }
     
@@ -63,11 +33,7 @@ public class SourceAppfollow {
         return this;
     }
     
-    public SourceAppfollow(@JsonProperty("api_secret") String apiSecret, @JsonProperty("cid") String cid, @JsonProperty("country") String country, @JsonProperty("ext_id") String extId, @JsonProperty("sourceType") SourceAppfollowAppfollow sourceType) {
-        this.apiSecret = apiSecret;
-        this.cid = cid;
-        this.country = country;
-        this.extId = extId;
+    public SourceAppfollow(@JsonProperty("sourceType") SourceAppfollowAppfollow sourceType) {
         this.sourceType = sourceType;
   }
 }

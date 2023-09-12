@@ -41,6 +41,18 @@ public class SourcePosthog {
         return this;
     }
     
+    /**
+     * Set lower value in case of failing long running sync of events stream.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("events_time_step")
+    public Long eventsTimeStep;
+
+    public SourcePosthog withEventsTimeStep(Long eventsTimeStep) {
+        this.eventsTimeStep = eventsTimeStep;
+        return this;
+    }
+    
     @JsonProperty("sourceType")
     public SourcePosthogPosthog sourceType;
 

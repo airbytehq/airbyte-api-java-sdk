@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceLinkedinAdsAdAnalyticsReportConfiguration {
     /**
-     * The name for the report
+     * The name for the custom report.
      */
     @JsonProperty("name")
     public String name;
@@ -23,22 +23,18 @@ public class SourceLinkedinAdsAdAnalyticsReportConfiguration {
     }
     
     /**
-     * Select value from list to pivot by
+     * Choose a category to pivot your analytics report around. This selection will organize your data based on the chosen attribute, allowing you to analyze trends and performance from different perspectives.
      */
     @JsonProperty("pivot_by")
-    public SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy pivotBy;
+    public SourceLinkedinAdsAdAnalyticsReportConfigurationPivotCategory pivotBy;
 
-    public SourceLinkedinAdsAdAnalyticsReportConfiguration withPivotBy(SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy pivotBy) {
+    public SourceLinkedinAdsAdAnalyticsReportConfiguration withPivotBy(SourceLinkedinAdsAdAnalyticsReportConfigurationPivotCategory pivotBy) {
         this.pivotBy = pivotBy;
         return this;
     }
     
     /**
-     * Set time granularity for report: 
-     * ALL - Results grouped into a single result across the entire time range of the report.
-     * DAILY - Results grouped by day.
-     * MONTHLY - Results grouped by month.
-     * YEARLY - Results grouped by year.
+     * Choose how to group the data in your report by time. The options are:&lt;br&gt;- 'ALL': A single result summarizing the entire time range.&lt;br&gt;- 'DAILY': Group results by each day.&lt;br&gt;- 'MONTHLY': Group results by each month.&lt;br&gt;- 'YEARLY': Group results by each year.&lt;br&gt;Selecting a time grouping helps you analyze trends and patterns over different time periods.
      */
     @JsonProperty("time_granularity")
     public SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity timeGranularity;
@@ -48,7 +44,7 @@ public class SourceLinkedinAdsAdAnalyticsReportConfiguration {
         return this;
     }
     
-    public SourceLinkedinAdsAdAnalyticsReportConfiguration(@JsonProperty("name") String name, @JsonProperty("pivot_by") SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy pivotBy, @JsonProperty("time_granularity") SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity timeGranularity) {
+    public SourceLinkedinAdsAdAnalyticsReportConfiguration(@JsonProperty("name") String name, @JsonProperty("pivot_by") SourceLinkedinAdsAdAnalyticsReportConfigurationPivotCategory pivotBy, @JsonProperty("time_granularity") SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity timeGranularity) {
         this.name = name;
         this.pivotBy = pivotBy;
         this.timeGranularity = timeGranularity;

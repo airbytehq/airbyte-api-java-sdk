@@ -134,11 +134,6 @@ import com.airbyte.api.models.shared.SourceConfluenceConfluence;
 import com.airbyte.api.models.shared.SourceConvex;
 import com.airbyte.api.models.shared.SourceConvexConvex;
 import com.airbyte.api.models.shared.SourceCreateRequest;
-import com.airbyte.api.models.shared.SourceDatadog;
-import com.airbyte.api.models.shared.SourceDatadogDatadog;
-import com.airbyte.api.models.shared.SourceDatadogQueries;
-import com.airbyte.api.models.shared.SourceDatadogQueriesDataSource;
-import com.airbyte.api.models.shared.SourceDatadogSite;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -266,7 +261,9 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationOAuth
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType;
-import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleCustomReportConfig;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleCustomReportConfigValidEnums;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataFreshness;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
@@ -330,7 +327,7 @@ import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
 import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
-import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotCategory;
 import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
@@ -390,12 +387,12 @@ import com.airbyte.api.models.shared.SourceMongodbInternalPocMongodbInternalPoc;
 import com.airbyte.api.models.shared.SourceMongodbMongodb;
 import com.airbyte.api.models.shared.SourceMssql;
 import com.airbyte.api.models.shared.SourceMssqlMssql;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDC;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCMethod;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDC;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCDataToSync;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCInitialSnapshotIsolationLevel;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCMethod;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedTrustServerCertificate;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedVerifyCertificate;
@@ -451,10 +448,6 @@ import com.airbyte.api.models.shared.SourceOmnisendOmnisend;
 import com.airbyte.api.models.shared.SourceOnesignal;
 import com.airbyte.api.models.shared.SourceOnesignalApplications;
 import com.airbyte.api.models.shared.SourceOnesignalOnesignal;
-import com.airbyte.api.models.shared.SourceOpenweather;
-import com.airbyte.api.models.shared.SourceOpenweatherLanguage;
-import com.airbyte.api.models.shared.SourceOpenweatherOpenweather;
-import com.airbyte.api.models.shared.SourceOpenweatherUnits;
 import com.airbyte.api.models.shared.SourceOracle;
 import com.airbyte.api.models.shared.SourceOracleConnectionDataServiceName;
 import com.airbyte.api.models.shared.SourceOracleConnectionDataServiceNameConnectionType;
@@ -519,10 +512,10 @@ import com.airbyte.api.models.shared.SourcePolygonStockApi;
 import com.airbyte.api.models.shared.SourcePolygonStockApiPolygonStockApi;
 import com.airbyte.api.models.shared.SourcePostgres;
 import com.airbyte.api.models.shared.SourcePostgresPostgres;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardMethod;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXmin;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXminMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodDetectChangesWithXminSystemColumn;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodDetectChangesWithXminSystemColumnMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodPasswordAuthentication;
@@ -535,8 +528,6 @@ import com.airbyte.api.models.shared.SourcePostmarkapp;
 import com.airbyte.api.models.shared.SourcePostmarkappPostmarkapp;
 import com.airbyte.api.models.shared.SourcePrestashop;
 import com.airbyte.api.models.shared.SourcePrestashopPrestashop;
-import com.airbyte.api.models.shared.SourcePublicApis;
-import com.airbyte.api.models.shared.SourcePublicApisPublicApis;
 import com.airbyte.api.models.shared.SourcePunkApi;
 import com.airbyte.api.models.shared.SourcePunkApiPunkApi;
 import com.airbyte.api.models.shared.SourcePypi;
@@ -566,6 +557,23 @@ import com.airbyte.api.models.shared.SourceRkiCovidRkiCovid;
 import com.airbyte.api.models.shared.SourceRss;
 import com.airbyte.api.models.shared.SourceRssRss;
 import com.airbyte.api.models.shared.SourceS3;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfig;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatAvroFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatAvroFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionAutogenerated;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionAutogeneratedHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionFromCSV;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionFromCSVHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionUserProvided;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionUserProvidedHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatInferenceType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatJsonlFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatJsonlFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatParquetFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatParquetFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigValidationPolicy;
 import com.airbyte.api.models.shared.SourceS3FormatAvro;
 import com.airbyte.api.models.shared.SourceS3FormatAvroFiletype;
 import com.airbyte.api.models.shared.SourceS3FormatCSV;
@@ -734,6 +742,10 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -759,44 +771,24 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("esse") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("alias", "at") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceMysql("cupiditate", "consequatur", 3306L,                 new SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC(SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC) {{
-                                                initialWaitingSeconds = 892050L;
-                                                method = SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC;
-                                                serverTimeZone = "ipsam";
-                                            }}, SourceMysqlMysql.MYSQL, "aspernatur") {{
-                                database = "fuga";
-                                host = "reprehenderit";
-                                jdbcUrlParams = "quidem";
-                                password = "fugiat";
-                                port = 3306L;
-                                replicationMethod = new SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDC(SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC) {{
-                                    initialWaitingSeconds = 433439L;
-                                    method = SourceMysqlReplicationMethodReadChangesUsingBinaryLogCDCMethod.CDC;
-                                    serverTimeZone = "suscipit";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceGoogleDirectory(SourceGoogleDirectoryGoogleDirectory.GOOGLE_DIRECTORY) {{
+                                credentials = new SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth("qui", "dolorum", "a") {{
+                                    clientId = "vel";
+                                    clientSecret = "quod";
+                                    credentialsTitle = SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle.WEB_SERVER_APP;
+                                    refreshToken = "officiis";
                                 }};
-                                sourceType = SourceMysqlMysql.MYSQL;
-                                sslMode = new SourceMysqlSslModeVerifyIdentity("ipsa", SourceMysqlSslModeVerifyIdentityMode.VERIFY_IDENTITY) {{
-                                    caCertificate = "eos";
-                                    clientCertificate = "praesentium";
-                                    clientKey = "quisquam";
-                                    clientKeyPassword = "veritatis";
-                                    mode = SourceMysqlSslModeVerifyIdentityMode.VERIFY_IDENTITY;
-                                }};
-                                tunnelMethod = new SourceMysqlTunnelMethodSSHKeyAuthentication("illum", "quo", SourceMysqlTunnelMethodSSHKeyAuthenticationTunnelMethod.SSH_KEY_AUTH, 22L, "fuga") {{
-                                    sshKey = "quidem";
-                                    tunnelHost = "neque";
-                                    tunnelMethod = SourceMysqlTunnelMethodSSHKeyAuthenticationTunnelMethod.SSH_KEY_AUTH;
-                                    tunnelPort = 22L;
-                                    tunnelUser = "quo";
-                                }};
-                                username = "Destini.Daugherty";
-                            }}, "sequi", "c7e0bc71-78e4-4796-b2a7-0c688282aa48") {{
-                secretId = "explicabo";
+                                sourceType = SourceGoogleDirectoryGoogleDirectory.GOOGLE_DIRECTORY;
+                            }}, "esse", "a73cf3be-453f-4870-b326-b5a73429cdb1") {{
+                secretId = "laborum";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -841,12 +833,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("minima") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("totam", "incidunt") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("nisi");            
+            DeleteSourceRequest req = new DeleteSourceRequest("aspernatur");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -890,12 +885,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("fugit") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("dolores", "distinctio") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("sapiente");            
+            GetSourceRequest req = new GetSourceRequest("facilis");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -945,12 +943,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("consequuntur") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("aliquid", "quam") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("ratione", OAuthActorNames.FACEBOOK_MARKETING, "e9817ee1-7cbe-461e-ab7b-95bc0ab3c20c") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("molestias", OAuthActorNames.TRELLO, "2322715b-f0cb-4b1e-b1b8-b90f3443a110") {{
                 oAuthInputConfiguration = new OAuthInputConfiguration();;
             }};            
 
@@ -996,18 +997,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quaerat") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("quas", "itaque") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 959167;
-                offset = 232865;
+                limit = 9240;
+                offset = 669917;
                 workspaceIds = new String[]{{
-                    add("89fd871f-99dd-42ef-9121-aa6f1e674bdb"),
-                    add("04f15756-082d-468e-a19f-1d17051339d0"),
+                    add("dcf4b921-879f-4ce9-93f7-3ef7fbc7abd7"),
                 }};
             }};            
 
@@ -1159,11 +1162,6 @@ import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
 import com.airbyte.api.models.shared.SourceConvex;
 import com.airbyte.api.models.shared.SourceConvexConvex;
-import com.airbyte.api.models.shared.SourceDatadog;
-import com.airbyte.api.models.shared.SourceDatadogDatadog;
-import com.airbyte.api.models.shared.SourceDatadogQueries;
-import com.airbyte.api.models.shared.SourceDatadogQueriesDataSource;
-import com.airbyte.api.models.shared.SourceDatadogSite;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -1291,7 +1289,9 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationOAuth
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType;
-import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleCustomReportConfig;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleCustomReportConfigValidEnums;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataFreshness;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
@@ -1355,7 +1355,7 @@ import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
 import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
-import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotCategory;
 import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
@@ -1415,12 +1415,12 @@ import com.airbyte.api.models.shared.SourceMongodbInternalPocMongodbInternalPoc;
 import com.airbyte.api.models.shared.SourceMongodbMongodb;
 import com.airbyte.api.models.shared.SourceMssql;
 import com.airbyte.api.models.shared.SourceMssqlMssql;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDC;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCMethod;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDC;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCDataToSync;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCInitialSnapshotIsolationLevel;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCMethod;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedTrustServerCertificate;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedVerifyCertificate;
@@ -1476,10 +1476,6 @@ import com.airbyte.api.models.shared.SourceOmnisendOmnisend;
 import com.airbyte.api.models.shared.SourceOnesignal;
 import com.airbyte.api.models.shared.SourceOnesignalApplications;
 import com.airbyte.api.models.shared.SourceOnesignalOnesignal;
-import com.airbyte.api.models.shared.SourceOpenweather;
-import com.airbyte.api.models.shared.SourceOpenweatherLanguage;
-import com.airbyte.api.models.shared.SourceOpenweatherOpenweather;
-import com.airbyte.api.models.shared.SourceOpenweatherUnits;
 import com.airbyte.api.models.shared.SourceOracle;
 import com.airbyte.api.models.shared.SourceOracleConnectionDataServiceName;
 import com.airbyte.api.models.shared.SourceOracleConnectionDataServiceNameConnectionType;
@@ -1545,10 +1541,10 @@ import com.airbyte.api.models.shared.SourcePolygonStockApi;
 import com.airbyte.api.models.shared.SourcePolygonStockApiPolygonStockApi;
 import com.airbyte.api.models.shared.SourcePostgres;
 import com.airbyte.api.models.shared.SourcePostgresPostgres;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardMethod;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXmin;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXminMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodDetectChangesWithXminSystemColumn;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodDetectChangesWithXminSystemColumnMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodPasswordAuthentication;
@@ -1561,8 +1557,6 @@ import com.airbyte.api.models.shared.SourcePostmarkapp;
 import com.airbyte.api.models.shared.SourcePostmarkappPostmarkapp;
 import com.airbyte.api.models.shared.SourcePrestashop;
 import com.airbyte.api.models.shared.SourcePrestashopPrestashop;
-import com.airbyte.api.models.shared.SourcePublicApis;
-import com.airbyte.api.models.shared.SourcePublicApisPublicApis;
 import com.airbyte.api.models.shared.SourcePunkApi;
 import com.airbyte.api.models.shared.SourcePunkApiPunkApi;
 import com.airbyte.api.models.shared.SourcePypi;
@@ -1592,6 +1586,23 @@ import com.airbyte.api.models.shared.SourceRkiCovidRkiCovid;
 import com.airbyte.api.models.shared.SourceRss;
 import com.airbyte.api.models.shared.SourceRssRss;
 import com.airbyte.api.models.shared.SourceS3;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfig;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatAvroFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatAvroFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionAutogenerated;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionAutogeneratedHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionFromCSV;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionFromCSVHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionUserProvided;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionUserProvidedHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatInferenceType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatJsonlFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatJsonlFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatParquetFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatParquetFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigValidationPolicy;
 import com.airbyte.api.models.shared.SourceS3FormatAvro;
 import com.airbyte.api.models.shared.SourceS3FormatAvroFiletype;
 import com.airbyte.api.models.shared.SourceS3FormatCSV;
@@ -1760,6 +1771,10 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -1785,28 +1800,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("rem") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("dolore", "quibusdam") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("aut") {{
+            PatchSourceRequest req = new PatchSourceRequest("illum") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceMssql("master", "eum", 1433L, SourceMssqlMssql.MSSQL, "mollitia") {{
-                        jdbcUrlParams = "ab";
-                        password = "corrupti";
-                        replicationMethod = new SourceMssqlReplicationMethodStandard(SourceMssqlReplicationMethodStandardMethod.STANDARD);;
-                        schemas = new String[]{{
-                            add("dolor"),
-                        }};
-                        sslMethod = new SourceMssqlSslMethodEncryptedVerifyCertificate(SourceMssqlSslMethodEncryptedVerifyCertificateSslMethod.ENCRYPTED_VERIFY_CERTIFICATE) {{
-                            hostNameInCertificate = "numquam";
-                        }};;
-                        tunnelMethod = new SourceMssqlTunnelMethodPasswordAuthentication("explicabo", SourceMssqlTunnelMethodPasswordAuthenticationTunnelMethod.SSH_PASSWORD_AUTH, 22L, "voluptas", "aut");;
-                    }};;
+                    configuration = new SourceDremio("natus", "impedit", SourceDremioDremio.DREMIO);;
                     name = "My source";
-                    secretId = "dignissimos";
-                    workspaceId = "1f93f5f0-642d-4ac7-af51-5cc413aa63aa";
+                    secretId = "aut";
+                    workspaceId = "f5d2cff7-c70a-4456-a6d4-36813f16d9f5";
                 }};;
             }};            
 
@@ -1958,11 +1965,6 @@ import com.airbyte.api.models.shared.SourceConfluence;
 import com.airbyte.api.models.shared.SourceConfluenceConfluence;
 import com.airbyte.api.models.shared.SourceConvex;
 import com.airbyte.api.models.shared.SourceConvexConvex;
-import com.airbyte.api.models.shared.SourceDatadog;
-import com.airbyte.api.models.shared.SourceDatadogDatadog;
-import com.airbyte.api.models.shared.SourceDatadogQueries;
-import com.airbyte.api.models.shared.SourceDatadogQueriesDataSource;
-import com.airbyte.api.models.shared.SourceDatadogSite;
 import com.airbyte.api.models.shared.SourceDatascope;
 import com.airbyte.api.models.shared.SourceDatascopeDatascope;
 import com.airbyte.api.models.shared.SourceDelighted;
@@ -2090,7 +2092,9 @@ import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationOAuth
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationOAuthAuthType;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthentication;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleAuthorizationServiceAccountKeyAuthenticationAuthType;
-import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataState;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleCustomReportConfig;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleCustomReportConfigValidEnums;
+import com.airbyte.api.models.shared.SourceGoogleSearchConsoleDataFreshness;
 import com.airbyte.api.models.shared.SourceGoogleSearchConsoleGoogleSearchConsole;
 import com.airbyte.api.models.shared.SourceGoogleSheets;
 import com.airbyte.api.models.shared.SourceGoogleSheetsCredentialsAuthenticateViaGoogleOAuth;
@@ -2154,7 +2158,7 @@ import com.airbyte.api.models.shared.SourceLeverHiringEnvironment;
 import com.airbyte.api.models.shared.SourceLeverHiringLeverHiring;
 import com.airbyte.api.models.shared.SourceLinkedinAds;
 import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfiguration;
-import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotBy;
+import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationPivotCategory;
 import com.airbyte.api.models.shared.SourceLinkedinAdsAdAnalyticsReportConfigurationTimeGranularity;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessToken;
 import com.airbyte.api.models.shared.SourceLinkedinAdsCredentialsAccessTokenAuthMethod;
@@ -2214,12 +2218,12 @@ import com.airbyte.api.models.shared.SourceMongodbInternalPocMongodbInternalPoc;
 import com.airbyte.api.models.shared.SourceMongodbMongodb;
 import com.airbyte.api.models.shared.SourceMssql;
 import com.airbyte.api.models.shared.SourceMssqlMssql;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDC;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCDataToSync;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCInitialSnapshotIsolationLevel;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodLogicalReplicationCDCMethod;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourceMssqlReplicationMethodStandardMethod;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDC;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCDataToSync;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCInitialSnapshotIsolationLevel;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodReadChangesUsingChangeDataCaptureCDCMethod;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourceMssqlReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedTrustServerCertificate;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedTrustServerCertificateSslMethod;
 import com.airbyte.api.models.shared.SourceMssqlSslMethodEncryptedVerifyCertificate;
@@ -2275,10 +2279,6 @@ import com.airbyte.api.models.shared.SourceOmnisendOmnisend;
 import com.airbyte.api.models.shared.SourceOnesignal;
 import com.airbyte.api.models.shared.SourceOnesignalApplications;
 import com.airbyte.api.models.shared.SourceOnesignalOnesignal;
-import com.airbyte.api.models.shared.SourceOpenweather;
-import com.airbyte.api.models.shared.SourceOpenweatherLanguage;
-import com.airbyte.api.models.shared.SourceOpenweatherOpenweather;
-import com.airbyte.api.models.shared.SourceOpenweatherUnits;
 import com.airbyte.api.models.shared.SourceOracle;
 import com.airbyte.api.models.shared.SourceOracleConnectionDataServiceName;
 import com.airbyte.api.models.shared.SourceOracleConnectionDataServiceNameConnectionType;
@@ -2343,10 +2343,10 @@ import com.airbyte.api.models.shared.SourcePolygonStockApi;
 import com.airbyte.api.models.shared.SourcePolygonStockApiPolygonStockApi;
 import com.airbyte.api.models.shared.SourcePostgres;
 import com.airbyte.api.models.shared.SourcePostgresPostgres;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandard;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardMethod;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXmin;
-import com.airbyte.api.models.shared.SourcePostgresReplicationMethodStandardXminMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodDetectChangesWithXminSystemColumn;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodDetectChangesWithXminSystemColumnMethod;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodScanChangesWithUserDefinedCursor;
+import com.airbyte.api.models.shared.SourcePostgresReplicationMethodScanChangesWithUserDefinedCursorMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnel;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodNoTunnelTunnelMethod;
 import com.airbyte.api.models.shared.SourcePostgresTunnelMethodPasswordAuthentication;
@@ -2359,8 +2359,6 @@ import com.airbyte.api.models.shared.SourcePostmarkapp;
 import com.airbyte.api.models.shared.SourcePostmarkappPostmarkapp;
 import com.airbyte.api.models.shared.SourcePrestashop;
 import com.airbyte.api.models.shared.SourcePrestashopPrestashop;
-import com.airbyte.api.models.shared.SourcePublicApis;
-import com.airbyte.api.models.shared.SourcePublicApisPublicApis;
 import com.airbyte.api.models.shared.SourcePunkApi;
 import com.airbyte.api.models.shared.SourcePunkApiPunkApi;
 import com.airbyte.api.models.shared.SourcePutRequest;
@@ -2391,6 +2389,23 @@ import com.airbyte.api.models.shared.SourceRkiCovidRkiCovid;
 import com.airbyte.api.models.shared.SourceRss;
 import com.airbyte.api.models.shared.SourceRssRss;
 import com.airbyte.api.models.shared.SourceS3;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfig;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatAvroFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatAvroFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionAutogenerated;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionAutogeneratedHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionFromCSV;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionFromCSVHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionUserProvided;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatHeaderDefinitionUserProvidedHeaderDefinitionType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatCSVFormatInferenceType;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatJsonlFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatJsonlFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatParquetFormat;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigFormatParquetFormatFiletype;
+import com.airbyte.api.models.shared.SourceS3FileBasedStreamConfigValidationPolicy;
 import com.airbyte.api.models.shared.SourceS3FormatAvro;
 import com.airbyte.api.models.shared.SourceS3FormatAvroFiletype;
 import com.airbyte.api.models.shared.SourceS3FormatCSV;
@@ -2559,6 +2574,10 @@ import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20;
 import com.airbyte.api.models.shared.SourceZendeskChatCredentialsOAuth20Credentials;
 import com.airbyte.api.models.shared.SourceZendeskChatZendeskChat;
 import com.airbyte.api.models.shared.SourceZendeskSunshine;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPIToken;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsAPITokenAuthMethod;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20;
+import com.airbyte.api.models.shared.SourceZendeskSunshineCredentialsOAuth20AuthMethod;
 import com.airbyte.api.models.shared.SourceZendeskSunshineZendeskSunshine;
 import com.airbyte.api.models.shared.SourceZendeskSupport;
 import com.airbyte.api.models.shared.SourceZendeskSupportZendeskSupport;
@@ -2584,21 +2603,22 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("recusandae") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("sapiente", "quisquam") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("totam") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceTheGuardianApi("labore", SourceTheGuardianApiTheGuardianApi.THE_GUARDIAN_API, "YYYY-MM-DD") {{
-                                    apiKey = "vel";
-                                    endDate = "YYYY-MM-DD";
-                                    query = "environment AND political";
-                                    section = "technology";
-                                    sourceType = SourceTheGuardianApiTheGuardianApi.THE_GUARDIAN_API;
-                                    startDate = "YYYY-MM-DD";
-                                    tag = "environment/plasticbags";
-                                }}, "possimus");;
+            PutSourceRequest req = new PutSourceRequest("saepe") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceKlarna("ea", false, SourceKlarnaRegion.OC, SourceKlarnaKlarna.KLARNA, "consectetur") {{
+                                    password = "impedit";
+                                    playground = false;
+                                    region = SourceKlarnaRegion.US;
+                                    sourceType = SourceKlarnaKlarna.KLARNA;
+                                    username = "Estel30";
+                                }}, "recusandae");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);

@@ -53,6 +53,7 @@ public class SourceZendeskSupport {
     /**
      * The UTC date and time from which you'd like to replicate data, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
@@ -74,9 +75,8 @@ public class SourceZendeskSupport {
         return this;
     }
     
-    public SourceZendeskSupport(@JsonProperty("sourceType") SourceZendeskSupportZendeskSupport sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("subdomain") String subdomain) {
+    public SourceZendeskSupport(@JsonProperty("sourceType") SourceZendeskSupportZendeskSupport sourceType, @JsonProperty("subdomain") String subdomain) {
         this.sourceType = sourceType;
-        this.startDate = startDate;
         this.subdomain = subdomain;
   }
 }

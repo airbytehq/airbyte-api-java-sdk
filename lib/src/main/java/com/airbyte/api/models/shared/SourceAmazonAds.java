@@ -57,7 +57,19 @@ public class SourceAmazonAds {
     }
     
     /**
-     * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details.
+     * Marketplace IDs you want to fetch data for. Note: If Profile IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("marketplace_ids")
+    public String[] marketplaceIds;
+
+    public SourceAmazonAds withMarketplaceIds(String[] marketplaceIds) {
+        this.marketplaceIds = marketplaceIds;
+        return this;
+    }
+    
+    /**
+     * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("profiles")

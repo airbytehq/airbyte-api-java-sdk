@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 public class SourceLinkedinAds {
     /**
-     * Specify the account IDs separated by a space, to pull the data from. Leave empty, if you want to pull the data from all associated accounts. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn Ads docs&lt;/a&gt; for more info.
+     * Specify the account IDs to pull data from, separated by a space. Leave this field empty if you want to pull the data from all accounts accessible by the authenticated user. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn docs&lt;/a&gt; to locate these IDs.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_ids")
@@ -54,7 +54,7 @@ public class SourceLinkedinAds {
     }
     
     /**
-     * UTC date in the format 2020-09-17. Any data before this date will not be replicated.
+     * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")

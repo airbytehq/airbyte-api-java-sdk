@@ -7,6 +7,9 @@ package com.airbyte.api;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.SpeakeasyHTTPClient;
 
+/**
+ * airbyte-api: Programatically control Airbyte Cloud, OSS &amp; Enterprise.
+ */
 public class Airbyte {
 	/**
 	 * SERVERS contains the list of server urls available to the SDK.

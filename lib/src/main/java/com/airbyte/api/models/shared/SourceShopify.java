@@ -49,6 +49,7 @@ public class SourceShopify {
     /**
      * The date you would like to replicate data from. Format: YYYY-MM-DD. Any data before this date will not be replicated.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
@@ -58,9 +59,8 @@ public class SourceShopify {
         return this;
     }
     
-    public SourceShopify(@JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceShopifyShopify sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceShopify(@JsonProperty("shop") String shop, @JsonProperty("sourceType") SourceShopifyShopify sourceType) {
         this.shop = shop;
         this.sourceType = sourceType;
-        this.startDate = startDate;
   }
 }

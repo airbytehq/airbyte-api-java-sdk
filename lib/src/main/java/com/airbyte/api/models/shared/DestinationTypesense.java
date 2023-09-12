@@ -29,9 +29,9 @@ public class DestinationTypesense {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batch_size")
-    public String batchSize;
+    public Long batchSize;
 
-    public DestinationTypesense withBatchSize(String batchSize) {
+    public DestinationTypesense withBatchSize(Long batchSize) {
         this.batchSize = batchSize;
         return this;
     }

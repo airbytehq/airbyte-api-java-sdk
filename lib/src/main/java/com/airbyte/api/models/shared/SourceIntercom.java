@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.DateTimeDeserializer;
 import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -24,6 +26,30 @@ public class SourceIntercom {
 
     public SourceIntercom withAccessToken(String accessToken) {
         this.accessToken = accessToken;
+        return this;
+    }
+    
+    /**
+     * Client Id for your Intercom application.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_id")
+    public String clientId;
+
+    public SourceIntercom withClientId(String clientId) {
+        this.clientId = clientId;
+        return this;
+    }
+    
+    /**
+     * Client Secret for your Intercom application.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("client_secret")
+    public String clientSecret;
+
+    public SourceIntercom withClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
         return this;
     }
     

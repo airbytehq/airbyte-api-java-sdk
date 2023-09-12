@@ -162,6 +162,24 @@ import com.airbyte.api.models.shared.DestinationLangchainIndexingPinecone;
 import com.airbyte.api.models.shared.DestinationLangchainIndexingPineconeMode;
 import com.airbyte.api.models.shared.DestinationLangchainLangchain;
 import com.airbyte.api.models.shared.DestinationLangchainProcessingConfigModel;
+import com.airbyte.api.models.shared.DestinationMilvus;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingCohere;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingCohereMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFake;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFakeMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFromField;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFromFieldMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingOpenAI;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingOpenAIMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexing;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthAPIToken;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthAPITokenMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthNoAuth;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthNoAuthMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthUsernamePassword;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthUsernamePasswordMode;
+import com.airbyte.api.models.shared.DestinationMilvusMilvus;
+import com.airbyte.api.models.shared.DestinationMilvusProcessingConfigModel;
 import com.airbyte.api.models.shared.DestinationMongodb;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPassword;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPasswordAuthorization;
@@ -208,6 +226,16 @@ import com.airbyte.api.models.shared.DestinationOracleTunnelMethodPasswordAuthen
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodSSHKeyAuthentication;
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethod;
+import com.airbyte.api.models.shared.DestinationPinecone;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingCohere;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingCohereMode;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingFake;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingFakeMode;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingOpenAI;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingOpenAIMode;
+import com.airbyte.api.models.shared.DestinationPineconeIndexing;
+import com.airbyte.api.models.shared.DestinationPineconePinecone;
+import com.airbyte.api.models.shared.DestinationPineconeProcessingConfigModel;
 import com.airbyte.api.models.shared.DestinationPostgres;
 import com.airbyte.api.models.shared.DestinationPostgresPostgres;
 import com.airbyte.api.models.shared.DestinationPostgresSslModeAllow;
@@ -335,22 +363,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("accusamus") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("quidem", "provident") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub(false, "fugiat", DestinationPubsubPubsub.PUBSUB, false, "ab", "soluta") {{
-                                batchingDelayThreshold = 976405L;
-                                batchingElementCountThreshold = 377752L;
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub(false, "nisi", DestinationPubsubPubsub.PUBSUB, false, "vel", "natus") {{
+                                batchingDelayThreshold = 659669L;
+                                batchingElementCountThreshold = 501324L;
                                 batchingEnabled = false;
-                                batchingRequestBytesThreshold = 617658L;
-                                credentialsJson = "eos";
+                                batchingRequestBytesThreshold = 533206L;
+                                credentialsJson = "sapiente";
                                 destinationType = DestinationPubsubPubsub.PUBSUB;
                                 orderingEnabled = false;
-                                projectId = "atque";
-                                topicId = "sit";
-                            }}, "dolorum", "77a89ebf-737a-4e42-83ce-5e6a95d8a0d4");            
+                                projectId = "amet";
+                                topicId = "deserunt";
+                            }}, "omnis", "7074ba44-69b6-4e21-8195-9890afa563e2");            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
@@ -394,12 +425,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("tempora") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("nemo", "quasi") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("vel");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("iure");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -443,12 +477,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("quod") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("doloribus", "debitis") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("officiis");            
+            GetDestinationRequest req = new GetDestinationRequest("eius");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -492,18 +529,20 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("qui") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("maxime", "deleniti") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
             ListDestinationsRequest req = new ListDestinationsRequest() {{
                 includeDeleted = false;
-                limit = 679880;
-                offset = 952792;
+                limit = 703889;
+                offset = 447926;
                 workspaceIds = new String[]{{
-                    add("a73cf3be-453f-4870-b326-b5a73429cdb1"),
-                    add("a8422bb6-79d2-4322-b15b-f0cbb1e31b8b"),
+                    add("11e5b7fd-2ed0-4289-a1cd-dc692601fb57"),
                 }};
             }};            
 
@@ -684,6 +723,24 @@ import com.airbyte.api.models.shared.DestinationLangchainIndexingPinecone;
 import com.airbyte.api.models.shared.DestinationLangchainIndexingPineconeMode;
 import com.airbyte.api.models.shared.DestinationLangchainLangchain;
 import com.airbyte.api.models.shared.DestinationLangchainProcessingConfigModel;
+import com.airbyte.api.models.shared.DestinationMilvus;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingCohere;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingCohereMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFake;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFakeMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFromField;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFromFieldMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingOpenAI;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingOpenAIMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexing;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthAPIToken;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthAPITokenMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthNoAuth;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthNoAuthMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthUsernamePassword;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthUsernamePasswordMode;
+import com.airbyte.api.models.shared.DestinationMilvusMilvus;
+import com.airbyte.api.models.shared.DestinationMilvusProcessingConfigModel;
 import com.airbyte.api.models.shared.DestinationMongodb;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPassword;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPasswordAuthorization;
@@ -731,6 +788,16 @@ import com.airbyte.api.models.shared.DestinationOracleTunnelMethodPasswordAuthen
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodSSHKeyAuthentication;
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationPatchRequest;
+import com.airbyte.api.models.shared.DestinationPinecone;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingCohere;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingCohereMode;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingFake;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingFakeMode;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingOpenAI;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingOpenAIMode;
+import com.airbyte.api.models.shared.DestinationPineconeIndexing;
+import com.airbyte.api.models.shared.DestinationPineconePinecone;
+import com.airbyte.api.models.shared.DestinationPineconeProcessingConfigModel;
 import com.airbyte.api.models.shared.DestinationPostgres;
 import com.airbyte.api.models.shared.DestinationPostgresPostgres;
 import com.airbyte.api.models.shared.DestinationPostgresSslModeAllow;
@@ -858,19 +925,24 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("cupiditate") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("autem", "nam") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("aperiam") {{
+            PatchDestinationRequest req = new PatchDestinationRequest("eaque") {{
                 destinationPatchRequest = new DestinationPatchRequest() {{
-                    configuration = new DestinationVertica("dolorem", DestinationVerticaVertica.VERTICA, "dolore", 5433L, "labore", "adipisci") {{
-                        jdbcUrlParams = "dolorum";
-                        password = "architecto";
-                        tunnelMethod = new DestinationVerticaTunnelMethodNoTunnel(DestinationVerticaTunnelMethodNoTunnelTunnelMethod.NO_TUNNEL);;
+                    configuration = new DestinationSnowflake("AIRBYTE_DATABASE", DestinationSnowflakeSnowflake.SNOWFLAKE, "accountname.us-east-2.aws.snowflakecomputing.com", "AIRBYTE_ROLE", "AIRBYTE_SCHEMA", "AIRBYTE_USER", "AIRBYTE_WAREHOUSE") {{
+                        credentials = new DestinationSnowflakeCredentialsUsernameAndPassword("perferendis") {{
+                            authType = DestinationSnowflakeCredentialsUsernameAndPasswordAuthType.USERNAME_AND_PASSWORD;
+                        }};;
+                        jdbcUrlParams = "fugiat";
+                        rawDataSchema = "amet";
                     }};;
-                    name = "Miss Billie Ward";
+                    name = "Erma Hessel";
                 }};;
             }};            
 
@@ -1051,6 +1123,24 @@ import com.airbyte.api.models.shared.DestinationLangchainIndexingPinecone;
 import com.airbyte.api.models.shared.DestinationLangchainIndexingPineconeMode;
 import com.airbyte.api.models.shared.DestinationLangchainLangchain;
 import com.airbyte.api.models.shared.DestinationLangchainProcessingConfigModel;
+import com.airbyte.api.models.shared.DestinationMilvus;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingCohere;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingCohereMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFake;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFakeMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFromField;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingFromFieldMode;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingOpenAI;
+import com.airbyte.api.models.shared.DestinationMilvusEmbeddingOpenAIMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexing;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthAPIToken;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthAPITokenMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthNoAuth;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthNoAuthMode;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthUsernamePassword;
+import com.airbyte.api.models.shared.DestinationMilvusIndexingAuthUsernamePasswordMode;
+import com.airbyte.api.models.shared.DestinationMilvusMilvus;
+import com.airbyte.api.models.shared.DestinationMilvusProcessingConfigModel;
 import com.airbyte.api.models.shared.DestinationMongodb;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPassword;
 import com.airbyte.api.models.shared.DestinationMongodbAuthTypeLoginPasswordAuthorization;
@@ -1097,6 +1187,16 @@ import com.airbyte.api.models.shared.DestinationOracleTunnelMethodPasswordAuthen
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodPasswordAuthenticationTunnelMethod;
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodSSHKeyAuthentication;
 import com.airbyte.api.models.shared.DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethod;
+import com.airbyte.api.models.shared.DestinationPinecone;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingCohere;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingCohereMode;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingFake;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingFakeMode;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingOpenAI;
+import com.airbyte.api.models.shared.DestinationPineconeEmbeddingOpenAIMode;
+import com.airbyte.api.models.shared.DestinationPineconeIndexing;
+import com.airbyte.api.models.shared.DestinationPineconePinecone;
+import com.airbyte.api.models.shared.DestinationPineconeProcessingConfigModel;
 import com.airbyte.api.models.shared.DestinationPostgres;
 import com.airbyte.api.models.shared.DestinationPostgresPostgres;
 import com.airbyte.api.models.shared.DestinationPostgresSslModeAllow;
@@ -1225,20 +1325,65 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("porro") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("nobis", "dolores") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("doloribus") {{
-                destinationPutRequest = new DestinationPutRequest(                new DestinationDevNull(DestinationDevNullDevNull.DEV_NULL,                 new DestinationDevNullTestDestinationSilent(DestinationDevNullTestDestinationSilentTestDestinationType.SILENT) {{
-                                                    testDestinationType = DestinationDevNullTestDestinationSilentTestDestinationType.SILENT;
-                                                }}) {{
-                                    destinationType = DestinationDevNullDevNull.DEV_NULL;
-                                    testDestination = new DestinationDevNullTestDestinationSilent(DestinationDevNullTestDestinationSilentTestDestinationType.SILENT) {{
-                                        testDestinationType = DestinationDevNullTestDestinationSilentTestDestinationType.SILENT;
+            PutDestinationRequest req = new PutDestinationRequest("quis") {{
+                destinationPutRequest = new DestinationPutRequest(                new DestinationMilvus(DestinationMilvusMilvus.MILVUS,                 new DestinationMilvusEmbeddingFromField(384L, "vector") {{
+                                                    dimensions = 1536L;
+                                                    fieldName = "vector";
+                                                    mode = DestinationMilvusEmbeddingFromFieldMode.FROM_FIELD;
+                                                }},                 new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthNoAuth() {{
+                                                                    mode = DestinationMilvusIndexingAuthNoAuthMode.NO_AUTH;
+                                                                }}, "provident", "tcp://my-local-milvus:19530") {{
+                                                    db = "libero";
+                                                    textField = "delectus";
+                                                    vectorField = "quaerat";
+                                                }};,                 new DestinationMilvusProcessingConfigModel(554242L) {{
+                                                    chunkOverlap = 398221L;
+                                                    metadataFields = new String[]{{
+                                                        add("dolorem"),
+                                                    }};
+                                                    textFields = new String[]{{
+                                                        add("dolorem"),
+                                                    }};
+                                                }};) {{
+                                    destinationType = DestinationMilvusMilvus.MILVUS;
+                                    embedding = new DestinationMilvusEmbeddingCohere("quis") {{
+                                        cohereKey = "eaque";
+                                        mode = DestinationMilvusEmbeddingCohereMode.COHERE;
                                     }};
-                                }}, "facilis");;
+                                    indexing = new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthUsernamePassword("porro", "consequuntur") {{
+                                                        mode = DestinationMilvusIndexingAuthUsernamePasswordMode.USERNAME_PASSWORD;
+                                                        password = "hic";
+                                                        username = "Timothy_Mohr3";
+                                                    }}, "blanditiis", "tcp://host.docker.internal:19530") {{
+                                        auth = new DestinationMilvusIndexingAuthAPIToken("perferendis") {{
+                                            mode = DestinationMilvusIndexingAuthAPITokenMode.TOKEN;
+                                            token = "eos";
+                                        }};
+                                        collection = "dolores";
+                                        db = "minus";
+                                        host = "tcp://host.docker.internal:19530";
+                                        textField = "dolor";
+                                        vectorField = "vero";
+                                    }};
+                                    processing = new DestinationMilvusProcessingConfigModel(992397L) {{
+                                        chunkOverlap = 50370L;
+                                        chunkSize = 577229L;
+                                        metadataFields = new String[]{{
+                                            add("rerum"),
+                                        }};
+                                        textFields = new String[]{{
+                                            add("adipisci"),
+                                        }};
+                                    }};
+                                }}, "dolor");;
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);

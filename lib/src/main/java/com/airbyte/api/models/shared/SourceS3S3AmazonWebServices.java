@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.time.OffsetDateTime;
 
 /**
- * SourceS3S3AmazonWebServices - Use this to load files from S3 or S3-compatible services
+ * SourceS3S3AmazonWebServices - Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
  */
 
 public class SourceS3S3AmazonWebServices {
@@ -45,6 +45,7 @@ public class SourceS3S3AmazonWebServices {
     /**
      * Name of the S3 bucket where the file(s) exist.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bucket")
     public String bucket;
 
@@ -91,7 +92,5 @@ public class SourceS3S3AmazonWebServices {
         return this;
     }
     
-    public SourceS3S3AmazonWebServices(@JsonProperty("bucket") String bucket) {
-        this.bucket = bucket;
-  }
+    public SourceS3S3AmazonWebServices(){}
 }

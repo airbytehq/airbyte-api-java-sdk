@@ -22,71 +22,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security("corrupti") {{
-                    bearerAuth = "";
+                .setSecurity(new Security() {{
+                    basicAuth = new SchemeBasicAuth("corrupti", "provident") {{
+                        password = "";
+                        username = "";
+                    }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("9bd9d8d6-9a67-44e0-b467-cc8796ed151a", "05dfc2dd-f7cc-478c-a1ba-928fc816742c") {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("bd9d8d69-a674-4e0f-867c-c8796ed151a0", "5dfc2ddf-7cc7-48ca-9ba9-28fc816742cb") {{
                 configurations = new StreamConfigurations() {{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("saepe") {{
+                        add(new StreamConfiguration("dolor") {{
                             cursorField = new String[]{{
-                                add("ipsum"),
-                                add("excepturi"),
+                                add("esse"),
                             }};
-                            name = "Dorothy Hane";
+                            name = "Mrs. Miriam Collier";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("natus"),
-                                }}),
-                                add(new String[]{{
-                                    add("hic"),
-                                    add("saepe"),
-                                }}),
-                                add(new String[]{{
-                                    add("in"),
-                                    add("corporis"),
-                                    add("iste"),
-                                }}),
-                            }};
-                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_APPEND;
-                        }}),
-                        add(new StreamConfiguration("excepturi") {{
-                            cursorField = new String[]{{
-                                add("architecto"),
-                                add("ipsa"),
-                                add("reiciendis"),
-                            }};
-                            name = "Shaun Osinski";
-                            primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("nobis"),
-                                }}),
-                                add(new String[]{{
-                                    add("omnis"),
-                                    add("nemo"),
-                                }}),
-                            }};
-                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_APPEND;
-                        }}),
-                        add(new StreamConfiguration("quia") {{
-                            cursorField = new String[]{{
-                                add("iure"),
-                            }};
-                            name = "Miss Aubrey Williamson";
-                            primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("repellat"),
-                                }}),
-                                add(new String[]{{
-                                    add("occaecati"),
-                                    add("numquam"),
-                                    add("commodi"),
-                                }}),
-                                add(new String[]{{
-                                    add("molestiae"),
-                                    add("velit"),
+                                    add("sed"),
                                 }}),
                             }};
                             syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
@@ -94,15 +48,15 @@ public class Application {
                     }};
                 }};;
                 dataResidency = GeographyEnum.US;
-                name = "Kayla O'Kon";
-                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
+                name = "May Turcotte";
+                namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "tenetur";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
-                    cronExpression = "id";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_COLUMNS;
+                prefix = "iure";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
+                    cronExpression = "quidem";
                 }};;
-                status = ConnectionStatusEnum.DEPRECATED;
+                status = ConnectionStatusEnum.ACTIVE;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);

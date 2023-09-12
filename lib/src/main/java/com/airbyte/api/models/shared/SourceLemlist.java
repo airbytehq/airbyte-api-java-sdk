@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SourceLemlist {
     /**
-     * Lemlist API key.
+     * Lemlist API key,
      */
     @JsonProperty("api_key")
     public String apiKey;

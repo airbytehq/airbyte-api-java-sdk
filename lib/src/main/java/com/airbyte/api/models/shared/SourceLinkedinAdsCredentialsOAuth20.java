@@ -20,7 +20,7 @@ public class SourceLinkedinAdsCredentialsOAuth20 {
     }
     
     /**
-     * The client ID of the LinkedIn Ads developer application.
+     * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
     @JsonProperty("client_id")
     public String clientId;
@@ -31,7 +31,7 @@ public class SourceLinkedinAdsCredentialsOAuth20 {
     }
     
     /**
-     * The client secret the LinkedIn Ads developer application.
+     * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
     @JsonProperty("client_secret")
     public String clientSecret;
@@ -42,7 +42,7 @@ public class SourceLinkedinAdsCredentialsOAuth20 {
     }
     
     /**
-     * The key to refresh the expired access token.
+     * The key to refresh the expired access token. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
     @JsonProperty("refresh_token")
     public String refreshToken;

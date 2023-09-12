@@ -91,7 +91,7 @@ public class DestinationBigquery {
     }
     
     /**
-     * (Early Access) The dataset to write raw tables into
+     * The dataset to write raw tables into
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw_data_dataset")
@@ -111,18 +111,6 @@ public class DestinationBigquery {
 
     public DestinationBigquery withTransformationPriority(DestinationBigqueryTransformationQueryRunType transformationPriority) {
         this.transformationPriority = transformationPriority;
-        return this;
-    }
-    
-    /**
-     * (Early Access) Use &lt;a href="https://docs.airbyte.com/understanding-airbyte/typing-deduping" target="_blank"&gt;Destinations V2&lt;/a&gt;.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("use_1s1t_format")
-    public Boolean use1s1tFormat;
-
-    public DestinationBigquery withUse1s1tFormat(Boolean use1s1tFormat) {
-        this.use1s1tFormat = use1s1tFormat;
         return this;
     }
     

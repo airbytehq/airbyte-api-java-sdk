@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -35,6 +37,18 @@ public class SourceAuth0 {
 
     public SourceAuth0 withSourceType(SourceAuth0Auth0 sourceType) {
         this.sourceType = sourceType;
+        return this;
+    }
+    
+    /**
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("start_date")
+    public String startDate;
+
+    public SourceAuth0 withStartDate(String startDate) {
+        this.startDate = startDate;
         return this;
     }
     

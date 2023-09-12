@@ -4,9 +4,14 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.DateTimeDeserializer;
+import com.airbyte.api.utils.DateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.time.OffsetDateTime;
 
 /**
  * SourceZendeskSunshine - The values required to configure the source.
@@ -33,10 +38,12 @@ public class SourceZendeskSunshine {
     /**
      * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
      */
+    @JsonSerialize(using = DateTimeSerializer.class)
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("start_date")
-    public String startDate;
+    public OffsetDateTime startDate;
 
-    public SourceZendeskSunshine withStartDate(String startDate) {
+    public SourceZendeskSunshine withStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
         return this;
     }
@@ -52,7 +59,7 @@ public class SourceZendeskSunshine {
         return this;
     }
     
-    public SourceZendeskSunshine(@JsonProperty("sourceType") SourceZendeskSunshineZendeskSunshine sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("subdomain") String subdomain) {
+    public SourceZendeskSunshine(@JsonProperty("sourceType") SourceZendeskSunshineZendeskSunshine sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("subdomain") String subdomain) {
         this.sourceType = sourceType;
         this.startDate = startDate;
         this.subdomain = subdomain;

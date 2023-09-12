@@ -71,7 +71,7 @@ public class SourcePostgres {
     }
     
     /**
-     * Replication method for extracting data from the database.
+     * Configures how data is extracted from the database.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication_method")
