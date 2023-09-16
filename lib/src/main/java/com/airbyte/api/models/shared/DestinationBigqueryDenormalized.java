@@ -73,9 +73,9 @@ public class DestinationBigqueryDenormalized {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("loading_method")
-    public Object loadingMethod;
+    public DestinationBigqueryDenormalizedGCSStaging loadingMethod;
 
-    public DestinationBigqueryDenormalized withLoadingMethod(Object loadingMethod) {
+    public DestinationBigqueryDenormalized withLoadingMethod(DestinationBigqueryDenormalizedGCSStaging loadingMethod) {
         this.loadingMethod = loadingMethod;
         return this;
     }

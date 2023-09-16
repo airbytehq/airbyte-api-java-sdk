@@ -1,4 +1,4 @@
-# streams
+# Streams
 
 ### Available Operations
 

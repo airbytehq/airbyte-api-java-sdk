@@ -17,9 +17,9 @@ import java.time.OffsetDateTime;
 
 public class SourceQuickbooks {
     @JsonProperty("credentials")
-    public Object credentials;
+    public SourceQuickbooksOAuth20 credentials;
 
-    public SourceQuickbooks withCredentials(Object credentials) {
+    public SourceQuickbooks withCredentials(SourceQuickbooksOAuth20 credentials) {
         this.credentials = credentials;
         return this;
     }
@@ -56,7 +56,7 @@ public class SourceQuickbooks {
         return this;
     }
     
-    public SourceQuickbooks(@JsonProperty("credentials") Object credentials, @JsonProperty("sandbox") Boolean sandbox, @JsonProperty("sourceType") SourceQuickbooksQuickbooks sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceQuickbooks(@JsonProperty("credentials") SourceQuickbooksOAuth20 credentials, @JsonProperty("sandbox") Boolean sandbox, @JsonProperty("sourceType") SourceQuickbooksQuickbooks sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.credentials = credentials;
         this.sandbox = sandbox;
         this.sourceType = sourceType;

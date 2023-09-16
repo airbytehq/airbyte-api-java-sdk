@@ -1,4 +1,4 @@
-# workspaces
+# Workspaces
 
 ### Available Operations
 
