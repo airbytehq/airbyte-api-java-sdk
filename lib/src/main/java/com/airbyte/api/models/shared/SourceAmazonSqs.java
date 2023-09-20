@@ -40,6 +40,7 @@ public class SourceAmazonSqs {
     /**
      * If Enabled, messages will be deleted from the SQS Queue after being read. If Disabled, messages are left in the queue and can be read more than once. WARNING: Enabling this option can result in data loss in cases of failure, use with caution, see documentation for more detail. 
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("delete_messages")
     public Boolean deleteMessages;
 
@@ -126,8 +127,7 @@ public class SourceAmazonSqs {
         return this;
     }
     
-    public SourceAmazonSqs(@JsonProperty("delete_messages") Boolean deleteMessages, @JsonProperty("queue_url") String queueUrl, @JsonProperty("region") SourceAmazonSqsAWSRegion region, @JsonProperty("sourceType") SourceAmazonSqsAmazonSqs sourceType) {
-        this.deleteMessages = deleteMessages;
+    public SourceAmazonSqs(@JsonProperty("queue_url") String queueUrl, @JsonProperty("region") SourceAmazonSqsAWSRegion region, @JsonProperty("sourceType") SourceAmazonSqsAmazonSqs sourceType) {
         this.queueUrl = queueUrl;
         this.region = region;
         this.sourceType = sourceType;

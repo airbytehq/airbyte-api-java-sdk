@@ -177,7 +177,7 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub(false, "nisi", DestinationPubsubPubsub.PUBSUB, false, "vel", "natus") {{
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub("nisi", DestinationPubsubPubsub.PUBSUB, "vel", "natus") {{
                                 batchingDelayThreshold = 659669L;
                                 batchingElementCountThreshold = 501324L;
                                 batchingEnabled = false;

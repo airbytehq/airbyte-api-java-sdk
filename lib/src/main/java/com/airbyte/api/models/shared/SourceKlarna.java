@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -25,6 +27,7 @@ public class SourceKlarna {
     /**
      * Propertie defining if connector is used against playground or production environment
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("playground")
     public Boolean playground;
 
@@ -63,10 +66,9 @@ public class SourceKlarna {
         return this;
     }
     
-    public SourceKlarna(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("playground") Boolean playground, @JsonProperty("region") SourceKlarnaRegion region, @JsonProperty("sourceType") SourceKlarnaKlarna sourceType) {
+    public SourceKlarna(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("region") SourceKlarnaRegion region, @JsonProperty("sourceType") SourceKlarnaKlarna sourceType) {
         this.username = username;
         this.password = password;
-        this.playground = playground;
         this.region = region;
         this.sourceType = sourceType;
   }

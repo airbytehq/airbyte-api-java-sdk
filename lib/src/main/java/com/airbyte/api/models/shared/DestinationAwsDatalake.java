@@ -153,6 +153,7 @@ public class DestinationAwsDatalake {
     /**
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     public DestinationAwsDatalakeS3BucketRegion region;
 
@@ -161,11 +162,10 @@ public class DestinationAwsDatalake {
         return this;
     }
     
-    public DestinationAwsDatalake(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials") Object credentials, @JsonProperty("destinationType") DestinationAwsDatalakeAwsDatalake destinationType, @JsonProperty("lakeformation_database_name") String lakeformationDatabaseName, @JsonProperty("region") DestinationAwsDatalakeS3BucketRegion region) {
+    public DestinationAwsDatalake(@JsonProperty("bucket_name") String bucketName, @JsonProperty("credentials") Object credentials, @JsonProperty("destinationType") DestinationAwsDatalakeAwsDatalake destinationType, @JsonProperty("lakeformation_database_name") String lakeformationDatabaseName) {
         this.bucketName = bucketName;
         this.credentials = credentials;
         this.destinationType = destinationType;
         this.lakeformationDatabaseName = lakeformationDatabaseName;
-        this.region = region;
   }
 }

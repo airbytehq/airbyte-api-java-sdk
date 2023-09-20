@@ -1604,7 +1604,9 @@ public class Application {
 
             PatchSourceRequest req = new PatchSourceRequest("illum") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceDremio("natus", "impedit", SourceDremioDremio.DREMIO);;
+                    configuration = new SourceDremio("natus", SourceDremioDremio.DREMIO) {{
+                        baseUrl = "impedit";
+                    }};;
                     name = "My source";
                     secretId = "aut";
                     workspaceId = "f5d2cff7-c70a-4456-a6d4-36813f16d9f5";
@@ -2303,7 +2305,7 @@ public class Application {
                 .build();
 
             PutSourceRequest req = new PutSourceRequest("saepe") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceKlarna("ea", false, SourceKlarnaRegion.OC, SourceKlarnaKlarna.KLARNA, "consectetur") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceKlarna("ea", SourceKlarnaRegion.OC, SourceKlarnaKlarna.KLARNA, "consectetur") {{
                                     password = "impedit";
                                     playground = false;
                                     region = SourceKlarnaRegion.US;

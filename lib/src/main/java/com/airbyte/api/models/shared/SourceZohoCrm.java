@@ -54,6 +54,7 @@ public class SourceZohoCrm {
     /**
      * Choose your Edition of Zoho CRM to determine API Concurrency Limits
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("edition")
     public SourceZohoCRMZohoCRMEdition edition;
 
@@ -106,11 +107,10 @@ public class SourceZohoCrm {
         return this;
     }
     
-    public SourceZohoCrm(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("dc_region") SourceZohoCrmDataCenterLocation dcRegion, @JsonProperty("edition") SourceZohoCRMZohoCRMEdition edition, @JsonProperty("environment") SourceZohoCrmEnvironment environment, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceZohoCrmZohoCrm sourceType) {
+    public SourceZohoCrm(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("dc_region") SourceZohoCrmDataCenterLocation dcRegion, @JsonProperty("environment") SourceZohoCrmEnvironment environment, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceZohoCrmZohoCrm sourceType) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.dcRegion = dcRegion;
-        this.edition = edition;
         this.environment = environment;
         this.refreshToken = refreshToken;
         this.sourceType = sourceType;

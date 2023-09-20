@@ -84,6 +84,7 @@ public class SourceBingAds {
     /**
      * The start date from which to begin replicating report data. Any data generated before this date will not be replicated in reports. This is a UTC date in YYYY-MM-DD format.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("reports_start_date")
     public LocalDate reportsStartDate;
@@ -113,11 +114,10 @@ public class SourceBingAds {
         return this;
     }
     
-    public SourceBingAds(@JsonProperty("client_id") String clientId, @JsonProperty("developer_token") String developerToken, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("reports_start_date") LocalDate reportsStartDate, @JsonProperty("sourceType") SourceBingAdsBingAds sourceType) {
+    public SourceBingAds(@JsonProperty("client_id") String clientId, @JsonProperty("developer_token") String developerToken, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("sourceType") SourceBingAdsBingAds sourceType) {
         this.clientId = clientId;
         this.developerToken = developerToken;
         this.refreshToken = refreshToken;
-        this.reportsStartDate = reportsStartDate;
         this.sourceType = sourceType;
   }
 }

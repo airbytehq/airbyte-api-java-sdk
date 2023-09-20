@@ -42,6 +42,7 @@ public class SourceSquare {
     /**
      * Determines whether to use the sandbox or production environment.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_sandbox")
     public Boolean isSandbox;
 
@@ -71,8 +72,7 @@ public class SourceSquare {
         return this;
     }
     
-    public SourceSquare(@JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourceSquareSquare sourceType) {
-        this.isSandbox = isSandbox;
+    public SourceSquare(@JsonProperty("sourceType") SourceSquareSquare sourceType) {
         this.sourceType = sourceType;
   }
 }

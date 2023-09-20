@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.DateTimeDeserializer;
 import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -27,6 +29,7 @@ public class SourceQuickbooks {
     /**
      * Determines whether to use the sandbox or production environment.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sandbox")
     public Boolean sandbox;
 
@@ -56,9 +59,8 @@ public class SourceQuickbooks {
         return this;
     }
     
-    public SourceQuickbooks(@JsonProperty("credentials") SourceQuickbooksOAuth20 credentials, @JsonProperty("sandbox") Boolean sandbox, @JsonProperty("sourceType") SourceQuickbooksQuickbooks sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceQuickbooks(@JsonProperty("credentials") SourceQuickbooksOAuth20 credentials, @JsonProperty("sourceType") SourceQuickbooksQuickbooks sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.credentials = credentials;
-        this.sandbox = sandbox;
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

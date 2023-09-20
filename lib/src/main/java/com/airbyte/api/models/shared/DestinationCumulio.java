@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -14,6 +16,7 @@ public class DestinationCumulio {
     /**
      * URL of the Cumul.io API (e.g. 'https://api.cumul.io', 'https://api.us.cumul.io', or VPC-specific API url). Defaults to 'https://api.cumul.io'.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_host")
     public String apiHost;
 
@@ -52,8 +55,7 @@ public class DestinationCumulio {
         return this;
     }
     
-    public DestinationCumulio(@JsonProperty("api_host") String apiHost, @JsonProperty("api_key") String apiKey, @JsonProperty("api_token") String apiToken, @JsonProperty("destinationType") DestinationCumulioCumulio destinationType) {
-        this.apiHost = apiHost;
+    public DestinationCumulio(@JsonProperty("api_key") String apiKey, @JsonProperty("api_token") String apiToken, @JsonProperty("destinationType") DestinationCumulioCumulio destinationType) {
         this.apiKey = apiKey;
         this.apiToken = apiToken;
         this.destinationType = destinationType;

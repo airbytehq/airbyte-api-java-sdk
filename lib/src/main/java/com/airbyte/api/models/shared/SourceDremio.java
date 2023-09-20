@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -25,6 +27,7 @@ public class SourceDremio {
     /**
      * URL of your Dremio instance
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("base_url")
     public String baseUrl;
 
@@ -41,9 +44,8 @@ public class SourceDremio {
         return this;
     }
     
-    public SourceDremio(@JsonProperty("api_key") String apiKey, @JsonProperty("base_url") String baseUrl, @JsonProperty("sourceType") SourceDremioDremio sourceType) {
+    public SourceDremio(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceDremioDremio sourceType) {
         this.apiKey = apiKey;
-        this.baseUrl = baseUrl;
         this.sourceType = sourceType;
   }
 }

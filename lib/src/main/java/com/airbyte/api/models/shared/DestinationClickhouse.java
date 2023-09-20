@@ -70,6 +70,7 @@ public class DestinationClickhouse {
     /**
      * HTTP port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -101,11 +102,10 @@ public class DestinationClickhouse {
         return this;
     }
     
-    public DestinationClickhouse(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationClickhouseClickhouse destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
+    public DestinationClickhouse(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationClickhouseClickhouse destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
         this.username = username;
   }
 }

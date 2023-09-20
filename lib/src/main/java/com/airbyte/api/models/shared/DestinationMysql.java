@@ -70,6 +70,7 @@ public class DestinationMysql {
     /**
      * Port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -101,11 +102,10 @@ public class DestinationMysql {
         return this;
     }
     
-    public DestinationMysql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMysqlMysql destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
+    public DestinationMysql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMysqlMysql destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
         this.username = username;
   }
 }

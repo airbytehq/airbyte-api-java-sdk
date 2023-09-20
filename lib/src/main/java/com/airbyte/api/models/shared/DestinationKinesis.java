@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -25,6 +27,7 @@ public class DestinationKinesis {
     /**
      * Buffer size for storing kinesis records before being batch streamed.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bufferSize")
     public Long bufferSize;
 
@@ -77,6 +80,7 @@ public class DestinationKinesis {
     /**
      * Number of shards to which the data should be streamed.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shardCount")
     public Long shardCount;
 
@@ -85,13 +89,11 @@ public class DestinationKinesis {
         return this;
     }
     
-    public DestinationKinesis(@JsonProperty("accessKey") String accessKey, @JsonProperty("bufferSize") Long bufferSize, @JsonProperty("destinationType") DestinationKinesisKinesis destinationType, @JsonProperty("endpoint") String endpoint, @JsonProperty("privateKey") String privateKey, @JsonProperty("region") String region, @JsonProperty("shardCount") Long shardCount) {
+    public DestinationKinesis(@JsonProperty("accessKey") String accessKey, @JsonProperty("destinationType") DestinationKinesisKinesis destinationType, @JsonProperty("endpoint") String endpoint, @JsonProperty("privateKey") String privateKey, @JsonProperty("region") String region) {
         this.accessKey = accessKey;
-        this.bufferSize = bufferSize;
         this.destinationType = destinationType;
         this.endpoint = endpoint;
         this.privateKey = privateKey;
         this.region = region;
-        this.shardCount = shardCount;
   }
 }

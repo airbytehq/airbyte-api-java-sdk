@@ -77,6 +77,7 @@ public class SourceOracle {
      * 1521 - Default listening port for client connections to the listener. 
      * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -128,10 +129,9 @@ public class SourceOracle {
         return this;
     }
     
-    public SourceOracle(@JsonProperty("encryption") Object encryption, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceOracleOracle sourceType, @JsonProperty("username") String username) {
+    public SourceOracle(@JsonProperty("encryption") Object encryption, @JsonProperty("host") String host, @JsonProperty("sourceType") SourceOracleOracle sourceType, @JsonProperty("username") String username) {
         this.encryption = encryption;
         this.host = host;
-        this.port = port;
         this.sourceType = sourceType;
         this.username = username;
   }

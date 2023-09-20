@@ -59,6 +59,7 @@ public class DestinationOracle {
     /**
      * The port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -113,10 +114,9 @@ public class DestinationOracle {
         return this;
     }
     
-    public DestinationOracle(@JsonProperty("destinationType") DestinationOracleOracle destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sid") String sid, @JsonProperty("username") String username) {
+    public DestinationOracle(@JsonProperty("destinationType") DestinationOracleOracle destinationType, @JsonProperty("host") String host, @JsonProperty("sid") String sid, @JsonProperty("username") String username) {
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
         this.sid = sid;
         this.username = username;
   }

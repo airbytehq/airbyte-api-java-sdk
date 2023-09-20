@@ -45,6 +45,7 @@ public class SourceSlack {
     /**
      * Whether to join all channels or to sync data only from channels the bot is already in.  If false, you'll need to manually add the bot to all the channels from which you'd like to sync messages. 
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("join_channels")
     public Boolean joinChannels;
 
@@ -56,6 +57,7 @@ public class SourceSlack {
     /**
      * How far into the past to look for messages in threads, default is 0 days
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window")
     public Long lookbackWindow;
 
@@ -85,9 +87,7 @@ public class SourceSlack {
         return this;
     }
     
-    public SourceSlack(@JsonProperty("join_channels") Boolean joinChannels, @JsonProperty("lookback_window") Long lookbackWindow, @JsonProperty("sourceType") SourceSlackSlack sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
-        this.joinChannels = joinChannels;
-        this.lookbackWindow = lookbackWindow;
+    public SourceSlack(@JsonProperty("sourceType") SourceSlackSlack sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

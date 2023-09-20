@@ -4,10 +4,13 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class SourceSalesforceStreamsCriteria {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("criteria")
     public SourceSalesforceStreamsCriteriaSearchCriteria criteria;
 
@@ -24,8 +27,7 @@ public class SourceSalesforceStreamsCriteria {
         return this;
     }
     
-    public SourceSalesforceStreamsCriteria(@JsonProperty("criteria") SourceSalesforceStreamsCriteriaSearchCriteria criteria, @JsonProperty("value") String value) {
-        this.criteria = criteria;
+    public SourceSalesforceStreamsCriteria(@JsonProperty("value") String value) {
         this.value = value;
   }
 }

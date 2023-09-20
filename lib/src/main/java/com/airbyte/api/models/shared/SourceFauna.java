@@ -28,6 +28,7 @@ public class SourceFauna {
     /**
      * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     public String domain;
 
@@ -39,6 +40,7 @@ public class SourceFauna {
     /**
      * Endpoint port.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -50,6 +52,7 @@ public class SourceFauna {
     /**
      * URL scheme.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("scheme")
     public String scheme;
 
@@ -77,10 +80,7 @@ public class SourceFauna {
         return this;
     }
     
-    public SourceFauna(@JsonProperty("domain") String domain, @JsonProperty("port") Long port, @JsonProperty("scheme") String scheme, @JsonProperty("secret") String secret, @JsonProperty("sourceType") SourceFaunaFauna sourceType) {
-        this.domain = domain;
-        this.port = port;
-        this.scheme = scheme;
+    public SourceFauna(@JsonProperty("secret") String secret, @JsonProperty("sourceType") SourceFaunaFauna sourceType) {
         this.secret = secret;
         this.sourceType = sourceType;
   }

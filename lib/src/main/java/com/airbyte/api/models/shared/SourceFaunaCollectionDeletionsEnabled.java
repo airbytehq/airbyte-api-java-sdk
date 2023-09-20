@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -17,6 +19,7 @@ public class SourceFaunaCollectionDeletionsEnabled {
     /**
      * Name of the "deleted at" column.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("column")
     public String column;
 
@@ -33,8 +36,7 @@ public class SourceFaunaCollectionDeletionsEnabled {
         return this;
     }
     
-    public SourceFaunaCollectionDeletionsEnabled(@JsonProperty("column") String column, @JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsEnabledDeletionMode deletionMode) {
-        this.column = column;
+    public SourceFaunaCollectionDeletionsEnabled(@JsonProperty("deletion_mode") SourceFaunaCollectionDeletionsEnabledDeletionMode deletionMode) {
         this.deletionMode = deletionMode;
   }
 }

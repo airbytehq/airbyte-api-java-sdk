@@ -49,6 +49,7 @@ public class SourceAmazonSellerPartner {
     /**
      * Select the AWS Environment.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_environment")
     public SourceAmazonSellerPartnerAWSEnvironment awsEnvironment;
 
@@ -129,6 +130,7 @@ public class SourceAmazonSellerPartner {
     /**
      * Select the AWS Region.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     public SourceAmazonSellerPartnerAWSRegion region;
 
@@ -192,12 +194,10 @@ public class SourceAmazonSellerPartner {
         return this;
     }
     
-    public SourceAmazonSellerPartner(@JsonProperty("aws_environment") SourceAmazonSellerPartnerAWSEnvironment awsEnvironment, @JsonProperty("lwa_app_id") String lwaAppId, @JsonProperty("lwa_client_secret") String lwaClientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("region") SourceAmazonSellerPartnerAWSRegion region, @JsonProperty("replication_start_date") String replicationStartDate, @JsonProperty("sourceType") SourceAmazonSellerPartnerAmazonSellerPartner sourceType) {
-        this.awsEnvironment = awsEnvironment;
+    public SourceAmazonSellerPartner(@JsonProperty("lwa_app_id") String lwaAppId, @JsonProperty("lwa_client_secret") String lwaClientSecret, @JsonProperty("refresh_token") String refreshToken, @JsonProperty("replication_start_date") String replicationStartDate, @JsonProperty("sourceType") SourceAmazonSellerPartnerAmazonSellerPartner sourceType) {
         this.lwaAppId = lwaAppId;
         this.lwaClientSecret = lwaClientSecret;
         this.refreshToken = refreshToken;
-        this.region = region;
         this.replicationStartDate = replicationStartDate;
         this.sourceType = sourceType;
   }

@@ -70,6 +70,7 @@ public class DestinationMssql {
     /**
      * The port of the MSSQL database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -81,6 +82,7 @@ public class DestinationMssql {
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
     public String schema;
 
@@ -124,12 +126,10 @@ public class DestinationMssql {
         return this;
     }
     
-    public DestinationMssql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMssqlMssql destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
+    public DestinationMssql(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationMssqlMssql destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
-        this.schema = schema;
         this.username = username;
   }
 }

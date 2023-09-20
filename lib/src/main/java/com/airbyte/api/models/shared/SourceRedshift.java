@@ -61,6 +61,7 @@ public class SourceRedshift {
     /**
      * Port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -100,12 +101,11 @@ public class SourceRedshift {
         return this;
     }
     
-    public SourceRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceRedshiftRedshift sourceType) {
+    public SourceRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("sourceType") SourceRedshiftRedshift sourceType) {
         this.username = username;
         this.password = password;
         this.database = database;
         this.host = host;
-        this.port = port;
         this.sourceType = sourceType;
   }
 }

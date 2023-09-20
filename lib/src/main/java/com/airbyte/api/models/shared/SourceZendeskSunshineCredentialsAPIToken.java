@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -19,6 +21,7 @@ public class SourceZendeskSunshineCredentialsAPIToken {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
     public SourceZendeskSunshineCredentialsAPITokenAuthMethod authMethod;
 
@@ -38,9 +41,8 @@ public class SourceZendeskSunshineCredentialsAPIToken {
         return this;
     }
     
-    public SourceZendeskSunshineCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("auth_method") SourceZendeskSunshineCredentialsAPITokenAuthMethod authMethod, @JsonProperty("email") String email) {
+    public SourceZendeskSunshineCredentialsAPIToken(@JsonProperty("api_token") String apiToken, @JsonProperty("email") String email) {
         this.apiToken = apiToken;
-        this.authMethod = authMethod;
         this.email = email;
   }
 }

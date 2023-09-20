@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -30,6 +32,7 @@ public class SourceFaunaCollection {
      * Choose your page size based on how large the documents are. &lt;br&gt;
      * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("page_size")
     public Long pageSize;
 
@@ -38,8 +41,7 @@ public class SourceFaunaCollection {
         return this;
     }
     
-    public SourceFaunaCollection(@JsonProperty("deletions") Object deletions, @JsonProperty("page_size") Long pageSize) {
+    public SourceFaunaCollection(@JsonProperty("deletions") Object deletions) {
         this.deletions = deletions;
-        this.pageSize = pageSize;
   }
 }

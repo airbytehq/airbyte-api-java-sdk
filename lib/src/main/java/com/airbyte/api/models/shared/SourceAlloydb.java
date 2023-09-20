@@ -62,6 +62,7 @@ public class SourceAlloydb {
     /**
      * Port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -138,10 +139,9 @@ public class SourceAlloydb {
         return this;
     }
     
-    public SourceAlloydb(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceAlloydbAlloydb sourceType, @JsonProperty("username") String username) {
+    public SourceAlloydb(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("sourceType") SourceAlloydbAlloydb sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
-        this.port = port;
         this.sourceType = sourceType;
         this.username = username;
   }

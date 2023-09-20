@@ -7,6 +7,6 @@ Provides details of a single workspace.
 
 | Field                                                 | Type                                                  | Required                                              | Description                                           |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `dataResidency`                                       | [GeographyEnum](../../models/shared/GeographyEnum.md) | :heavy_check_mark:                                    | N/A                                                   |
+| `dataResidency`                                       | [GeographyEnum](../../models/shared/GeographyEnum.md) | :heavy_minus_sign:                                    | N/A                                                   |
 | `name`                                                | *String*                                              | :heavy_check_mark:                                    | N/A                                                   |
 | `workspaceId`                                         | *String*                                              | :heavy_check_mark:                                    | N/A                                                   |

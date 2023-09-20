@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.DateTimeDeserializer;
 import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -41,6 +43,7 @@ public class SourceYotpo {
     /**
      * Email address registered with yotpo.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("email")
     public String email;
 
@@ -70,10 +73,9 @@ public class SourceYotpo {
         return this;
     }
     
-    public SourceYotpo(@JsonProperty("access_token") String accessToken, @JsonProperty("app_key") String appKey, @JsonProperty("email") String email, @JsonProperty("sourceType") SourceYotpoYotpo sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceYotpo(@JsonProperty("access_token") String accessToken, @JsonProperty("app_key") String appKey, @JsonProperty("sourceType") SourceYotpoYotpo sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.accessToken = accessToken;
         this.appKey = appKey;
-        this.email = email;
         this.sourceType = sourceType;
         this.startDate = startDate;
   }
