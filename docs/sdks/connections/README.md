@@ -36,40 +36,40 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("ipsa", "reiciendis") {{
+                    basicAuth = new SchemeBasicAuth("voluptates", "quasi") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("aaa2352c-5955-4907-aff1-a3a2fa946773", "9251aa52-c3f5-4ad0-99da-1ffe78f097b0") {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("e91e450a-d2ab-4d44-a698-02d502a94bb4", "f63c969e-9a3e-4fa7-bdfb-14cd66ae395e") {{
                 configurations = new StreamConfigurations() {{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("harum") {{
+                        add(new StreamConfiguration("amet") {{
                             cursorField = new String[]{{
-                                add("doloremque"),
+                                add("delectus"),
                             }};
-                            name = "Mrs. April Wuckert";
+                            name = "Rene Reinger";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("iusto"),
+                                    add("deleniti"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_OVERWRITE;
+                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_DEDUPED_HISTORY;
                         }}),
                     }};
                 }};;
-                dataResidency = GeographyEnum.AUTO;
-                name = "Mrs. Leslie VonRueden";
-                namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
+                dataResidency = GeographyEnum.US;
+                name = "Wilma Mosciski";
+                namespaceDefinition = NamespaceDefinitionEnum.SOURCE;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_COLUMNS;
-                prefix = "pariatur";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
-                    cronExpression = "praesentium";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.DISABLE_CONNECTION;
+                prefix = "magnam";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
+                    cronExpression = "id";
                 }};;
-                status = ConnectionStatusEnum.INACTIVE;
+                status = ConnectionStatusEnum.ACTIVE;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
@@ -115,14 +115,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("voluptates", "quasi") {{
+                    basicAuth = new SchemeBasicAuth("labore", "suscipit") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteConnectionRequest req = new DeleteConnectionRequest("repudiandae");            
+            DeleteConnectionRequest req = new DeleteConnectionRequest("natus");            
 
             DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
@@ -167,14 +167,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("sint", "veritatis") {{
+                    basicAuth = new SchemeBasicAuth("nobis", "eum") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetConnectionRequest req = new GetConnectionRequest("itaque");            
+            GetConnectionRequest req = new GetConnectionRequest("vero");            
 
             GetConnectionResponse res = sdk.connections.getConnection(req);
 
@@ -219,7 +219,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("incidunt", "enim") {{
+                    basicAuth = new SchemeBasicAuth("aspernatur", "architecto") {{
                         password = "";
                         username = "";
                     }};
@@ -228,10 +228,10 @@ public class Application {
 
             ListConnectionsRequest req = new ListConnectionsRequest() {{
                 includeDeleted = false;
-                limit = 9356;
-                offset = 667411;
+                limit = 298282;
+                offset = 92373;
                 workspaceIds = new String[]{{
-                    add("d2abd442-6980-42d5-82a9-4bb4f63c969e"),
+                    add("959890af-a563-4e25-96fe-4c8b711e5b7f"),
                 }};
             }};            
 
@@ -288,7 +288,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("sint", "officia") {{
+                    basicAuth = new SchemeBasicAuth("quibusdam", "sed") {{
                         password = "";
                         username = "";
                     }};
@@ -298,31 +298,31 @@ public class Application {
             PatchConnectionRequest req = new PatchConnectionRequest(                new ConnectionPatchRequest() {{
                                 configurations = new StreamConfigurations() {{
                                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                                        add(new StreamConfiguration("rerum") {{
+                                        add(new StreamConfiguration("quo") {{
                                             cursorField = new String[]{{
-                                                add("dolor"),
+                                                add("saepe"),
                                             }};
-                                            name = "Randal Parisian";
+                                            name = "Edward Crooks";
                                             primaryKey = new String[][]{{
                                                 add(new String[]{{
-                                                    add("illum"),
+                                                    add("magni"),
                                                 }}),
                                             }};
-                                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_DEDUPED_HISTORY;
+                                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_OVERWRITE;
                                         }}),
                                     }};
                                 }};;
-                                dataResidency = GeographyEnumNoDefault.AUTO;
-                                name = "Blanca Schulist";
-                                namespaceDefinition = NamespaceDefinitionEnumNoDefault.CUSTOM_FORMAT;
+                                dataResidency = GeographyEnumNoDefault.EU;
+                                name = "Simon Jenkins";
+                                namespaceDefinition = NamespaceDefinitionEnumNoDefault.DESTINATION;
                                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_FULLY;
-                                prefix = "non";
+                                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.IGNORE;
+                                prefix = "ab";
                                 schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
-                                    cronExpression = "enim";
+                                    cronExpression = "quidem";
                                 }};;
-                                status = ConnectionStatusEnum.DEPRECATED;
-                            }};, "delectus");            
+                                status = ConnectionStatusEnum.INACTIVE;
+                            }};, "voluptate");            
 
             PatchConnectionResponse res = sdk.connections.patchConnection(req);
 

@@ -988,13 +988,6 @@ lib/src/main/java/com/airbyte/api/models/shared/WorkspacesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceUpdateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/SchemeBasicAuth.java
 lib/src/main/java/com/airbyte/api/models/shared/Security.java
-docs/sdks/airbyte/README.md
-docs/sdks/connections/README.md
-docs/sdks/destinations/README.md
-docs/sdks/jobs/README.md
-docs/sdks/sources/README.md
-docs/sdks/streams/README.md
-docs/sdks/workspaces/README.md
 USAGE.md
 docs/models/operations/CreateConnectionResponse.md
 docs/models/operations/DeleteConnectionRequest.md
@@ -1949,3 +1942,10 @@ docs/models/shared/WorkspacesResponse.md
 docs/models/shared/WorkspaceUpdateRequest.md
 docs/models/shared/SchemeBasicAuth.md
 docs/models/shared/Security.md
+docs/sdks/airbyte/README.md
+docs/sdks/connections/README.md
+docs/sdks/destinations/README.md
+docs/sdks/jobs/README.md
+docs/sdks/sources/README.md
+docs/sdks/streams/README.md
+docs/sdks/workspaces/README.md

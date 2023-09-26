@@ -170,24 +170,23 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("quidem", "provident") {{
+                    basicAuth = new SchemeBasicAuth("autem", "nam") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationPubsub("nisi", DestinationPubsubPubsub.PUBSUB, "vel", "natus") {{
-                                batchingDelayThreshold = 659669L;
-                                batchingElementCountThreshold = 501324L;
-                                batchingEnabled = false;
-                                batchingRequestBytesThreshold = 533206L;
-                                credentialsJson = "sapiente";
-                                destinationType = DestinationPubsubPubsub.PUBSUB;
-                                orderingEnabled = false;
-                                projectId = "amet";
-                                topicId = "deserunt";
-                            }}, "omnis", "7074ba44-69b6-4e21-8195-9890afa563e2");            
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationAzureBlobStorage("Z8ZkZpteggFx394vm+PJHnGTvdRncaYS+JhLKdj789YNmD+iyGTnG+PV+POiuYNhBg/ACS+LKjd%4FG3FHGN12Nd==", "airbyte5storage", DestinationAzureBlobStorageAzureBlobStorage.AZURE_BLOB_STORAGE, "nemo") {{
+                                azureBlobStorageAccountKey = "Z8ZkZpteggFx394vm+PJHnGTvdRncaYS+JhLKdj789YNmD+iyGTnG+PV+POiuYNhBg/ACS+LKjd%4FG3FHGN12Nd==";
+                                azureBlobStorageAccountName = "airbyte5storage";
+                                azureBlobStorageContainerName = "airbytetescontainername";
+                                azureBlobStorageEndpointDomainName = "blob.core.windows.net";
+                                azureBlobStorageOutputBufferSize = 5L;
+                                azureBlobStorageSpillSize = 500L;
+                                destinationType = DestinationAzureBlobStorageAzureBlobStorage.AZURE_BLOB_STORAGE;
+                                format = "pariatur";
+                            }}, "voluptatibus", "0d30c5fb-b258-4705-b202-c73d5fe9b90c");            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
@@ -232,14 +231,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("nemo", "quasi") {{
+                    basicAuth = new SchemeBasicAuth("consequuntur", "blanditiis") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("iure");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("error");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -284,14 +283,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("doloribus", "debitis") {{
+                    basicAuth = new SchemeBasicAuth("eaque", "occaecati") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("eius");            
+            GetDestinationRequest req = new GetDestinationRequest("rerum");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -336,7 +335,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("maxime", "deleniti") {{
+                    basicAuth = new SchemeBasicAuth("adipisci", "asperiores") {{
                         password = "";
                         username = "";
                     }};
@@ -345,10 +344,10 @@ public class Application {
 
             ListDestinationsRequest req = new ListDestinationsRequest() {{
                 includeDeleted = false;
-                limit = 703889;
-                offset = 447926;
+                limit = 934214;
+                offset = 267262;
                 workspaceIds = new String[]{{
-                    add("11e5b7fd-2ed0-4289-a1cd-dc692601fb57"),
+                    add("9a8d9cbf-4863-4332-bf9b-77f3a4100674"),
                 }};
             }};            
 
@@ -538,23 +537,19 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("autem", "nam") {{
+                    basicAuth = new SchemeBasicAuth("accusamus", "quidem") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("eaque") {{
+            PatchDestinationRequest req = new PatchDestinationRequest("voluptatibus") {{
                 destinationPatchRequest = new DestinationPatchRequest() {{
-                    configuration = new DestinationSnowflake("AIRBYTE_DATABASE", DestinationSnowflakeSnowflake.SNOWFLAKE, "accountname.us-east-2.aws.snowflakecomputing.com", "AIRBYTE_ROLE", "AIRBYTE_SCHEMA", "AIRBYTE_USER", "AIRBYTE_WAREHOUSE") {{
-                        credentials = new DestinationSnowflakeCredentialsUsernameAndPassword("perferendis") {{
-                            authType = DestinationSnowflakeCredentialsUsernameAndPasswordAuthType.USERNAME_AND_PASSWORD;
-                        }};;
-                        jdbcUrlParams = "fugiat";
-                        rawDataSchema = "amet";
+                    configuration = new DestinationFirestore(DestinationFirestoreFirestore.FIRESTORE, "natus") {{
+                        credentialsJson = "eos";
                     }};;
-                    name = "Erma Hessel";
+                    name = "Miss Paul Steuber";
                 }};;
             }};            
 
@@ -744,64 +739,62 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("nobis", "dolores") {{
+                    basicAuth = new SchemeBasicAuth("iusto", "voluptate") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("quis") {{
-                destinationPutRequest = new DestinationPutRequest(                new DestinationMilvus(DestinationMilvusMilvus.MILVUS,                 new DestinationMilvusEmbeddingFromField(384L, "vector") {{
-                                                    dimensions = 1536L;
-                                                    fieldName = "vector";
-                                                    mode = DestinationMilvusEmbeddingFromFieldMode.FROM_FIELD;
-                                                }},                 new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthNoAuth() {{
-                                                                    mode = DestinationMilvusIndexingAuthNoAuthMode.NO_AUTH;
-                                                                }}, "provident", "tcp://my-local-milvus:19530") {{
-                                                    db = "libero";
-                                                    textField = "delectus";
-                                                    vectorField = "quaerat";
-                                                }};,                 new DestinationMilvusProcessingConfigModel(554242L) {{
-                                                    chunkOverlap = 398221L;
+            PutDestinationRequest req = new PutDestinationRequest("dolorum") {{
+                destinationPutRequest = new DestinationPutRequest(                new DestinationMilvus(DestinationMilvusMilvus.MILVUS,                 new DestinationMilvusEmbeddingFake() {{
+                                                    mode = DestinationMilvusEmbeddingFakeMode.FAKE;
+                                                }},                 new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthUsernamePassword("quod", "officiis") {{
+                                                                    mode = DestinationMilvusIndexingAuthUsernamePasswordMode.USERNAME_PASSWORD;
+                                                                    password = "alias";
+                                                                    username = "Savion42";
+                                                                }}, "qui", "tcp://my-local-milvus:19530") {{
+                                                    db = "a";
+                                                    textField = "esse";
+                                                    vectorField = "harum";
+                                                }};,                 new DestinationMilvusProcessingConfigModel(483409L) {{
+                                                    chunkOverlap = 215507L;
                                                     metadataFields = new String[]{{
-                                                        add("dolorem"),
+                                                        add("quisquam"),
                                                     }};
                                                     textFields = new String[]{{
-                                                        add("dolorem"),
+                                                        add("tenetur"),
                                                     }};
                                                 }};) {{
                                     destinationType = DestinationMilvusMilvus.MILVUS;
-                                    embedding = new DestinationMilvusEmbeddingCohere("quis") {{
-                                        cohereKey = "eaque";
-                                        mode = DestinationMilvusEmbeddingCohereMode.COHERE;
+                                    embedding = new DestinationMilvusEmbeddingFake() {{
+                                        mode = DestinationMilvusEmbeddingFakeMode.FAKE;
                                     }};
-                                    indexing = new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthUsernamePassword("porro", "consequuntur") {{
+                                    indexing = new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthUsernamePassword("optio", "accusamus") {{
                                                         mode = DestinationMilvusIndexingAuthUsernamePasswordMode.USERNAME_PASSWORD;
-                                                        password = "hic";
-                                                        username = "Timothy_Mohr3";
-                                                    }}, "blanditiis", "tcp://host.docker.internal:19530") {{
-                                        auth = new DestinationMilvusIndexingAuthAPIToken("perferendis") {{
-                                            mode = DestinationMilvusIndexingAuthAPITokenMode.TOKEN;
-                                            token = "eos";
+                                                        password = "saepe";
+                                                        username = "Diamond22";
+                                                    }}, "ad", "tcp://my-local-milvus:19530") {{
+                                        auth = new DestinationMilvusIndexingAuthNoAuth() {{
+                                            mode = DestinationMilvusIndexingAuthNoAuthMode.NO_AUTH;
                                         }};
-                                        collection = "dolores";
-                                        db = "minus";
+                                        collection = "distinctio";
+                                        db = "asperiores";
                                         host = "tcp://host.docker.internal:19530";
-                                        textField = "dolor";
-                                        vectorField = "vero";
+                                        textField = "ipsum";
+                                        vectorField = "voluptate";
                                     }};
-                                    processing = new DestinationMilvusProcessingConfigModel(992397L) {{
-                                        chunkOverlap = 50370L;
-                                        chunkSize = 577229L;
+                                    processing = new DestinationMilvusProcessingConfigModel(831049L) {{
+                                        chunkOverlap = 383464L;
+                                        chunkSize = 645785L;
                                         metadataFields = new String[]{{
-                                            add("rerum"),
+                                            add("provident"),
                                         }};
                                         textFields = new String[]{{
-                                            add("adipisci"),
+                                            add("minima"),
                                         }};
                                     }};
-                                }}, "dolor");;
+                                }}, "amet");;
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);

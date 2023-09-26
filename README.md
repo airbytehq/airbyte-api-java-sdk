@@ -21,14 +21,12 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.39.4'
+implementation 'com.airbyte.api:public-api:0.40.0'
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```java
 package hello.world;
 
@@ -51,40 +49,40 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("corrupti", "provident") {{
+                    basicAuth = new SchemeBasicAuth("ipsa", "reiciendis") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("bd9d8d69-a674-4e0f-867c-c8796ed151a0", "5dfc2ddf-7cc7-48ca-9ba9-28fc816742cb") {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("aaa2352c-5955-4907-aff1-a3a2fa946773", "9251aa52-c3f5-4ad0-99da-1ffe78f097b0") {{
                 configurations = new StreamConfigurations() {{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("dolor") {{
+                        add(new StreamConfiguration("harum") {{
                             cursorField = new String[]{{
-                                add("esse"),
+                                add("doloremque"),
                             }};
-                            name = "Mrs. Miriam Collier";
+                            name = "Mrs. April Wuckert";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("sed"),
+                                    add("iusto"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_APPEND;
+                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_OVERWRITE;
                         }}),
                     }};
                 }};;
-                dataResidency = GeographyEnum.US;
-                name = "May Turcotte";
+                dataResidency = GeographyEnum.AUTO;
+                name = "Mrs. Leslie VonRueden";
                 namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_COLUMNS;
-                prefix = "iure";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
-                    cronExpression = "quidem";
+                prefix = "pariatur";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
+                    cronExpression = "praesentium";
                 }};;
-                status = ConnectionStatusEnum.ACTIVE;
+                status = ConnectionStatusEnum.INACTIVE;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
@@ -151,6 +149,18 @@ public class Application {
 * [listWorkspaces](docs/sdks/workspaces/README.md#listworkspaces) - List workspaces
 * [updateWorkspace](docs/sdks/workspaces/README.md#updateworkspace) - Update a workspace
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

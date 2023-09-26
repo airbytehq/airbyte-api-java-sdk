@@ -669,23 +669,18 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("alias", "at") {{
+                    basicAuth = new SchemeBasicAuth("aperiam", "delectus") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceGoogleDirectory(SourceGoogleDirectoryGoogleDirectory.GOOGLE_DIRECTORY) {{
-                                credentials = new SourceGoogleDirectoryCredentialsSignInViaGoogleOAuth("qui", "dolorum", "a") {{
-                                    clientId = "vel";
-                                    clientSecret = "quod";
-                                    credentialsTitle = SourceGoogleDirectoryCredentialsSignInViaGoogleOAuthCredentialsTitle.WEB_SERVER_APP;
-                                    refreshToken = "officiis";
-                                }};
-                                sourceType = SourceGoogleDirectoryGoogleDirectory.GOOGLE_DIRECTORY;
-                            }}, "esse", "a73cf3be-453f-4870-b326-b5a73429cdb1") {{
-                secretId = "laborum";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(                new SourceEmailoctopus("labore", SourceEmailoctopusEmailoctopus.EMAILOCTOPUS) {{
+                                apiKey = "dolore";
+                                sourceType = SourceEmailoctopusEmailoctopus.EMAILOCTOPUS;
+                            }}, "adipisci", "a1108e0a-dcf4-4b92-9879-fce953f73ef7") {{
+                secretId = "hic";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -731,14 +726,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("totam", "incidunt") {{
+                    basicAuth = new SchemeBasicAuth("distinctio", "quod") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("aspernatur");            
+            DeleteSourceRequest req = new DeleteSourceRequest("odio");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -783,14 +778,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("dolores", "distinctio") {{
+                    basicAuth = new SchemeBasicAuth("similique", "facilis") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("facilis");            
+            GetSourceRequest req = new GetSourceRequest("vero");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -841,14 +836,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("aliquid", "quam") {{
+                    basicAuth = new SchemeBasicAuth("ducimus", "dolore") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("molestias", OAuthActorNames.TRELLO, "2322715b-f0cb-4b1e-b1b8-b90f3443a110") {{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("quibusdam", OAuthActorNames.TYPEFORM, "39c0f5d2-cff7-4c70-a456-26d436813f16") {{
                 oAuthInputConfiguration = new OAuthInputConfiguration();;
             }};            
 
@@ -895,7 +890,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("quas", "itaque") {{
+                    basicAuth = new SchemeBasicAuth("nulla", "excepturi") {{
                         password = "";
                         username = "";
                     }};
@@ -904,10 +899,10 @@ public class Application {
 
             ListSourcesRequest req = new ListSourcesRequest() {{
                 includeDeleted = false;
-                limit = 9240;
-                offset = 669917;
+                limit = 972920;
+                offset = 343605;
                 workspaceIds = new String[]{{
-                    add("dcf4b921-879f-4ce9-93f7-3ef7fbc7abd7"),
+                    add("fce6c556-146c-43e2-90fb-008c42e141aa"),
                 }};
             }};            
 
@@ -1595,21 +1590,19 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("dolore", "quibusdam") {{
+                    basicAuth = new SchemeBasicAuth("placeat", "velit") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("illum") {{
+            PatchSourceRequest req = new PatchSourceRequest("eum") {{
                 sourcePatchRequest = new SourcePatchRequest() {{
-                    configuration = new SourceDremio("natus", SourceDremioDremio.DREMIO) {{
-                        baseUrl = "impedit";
-                    }};;
+                    configuration = new SourceKustomerSinger("nobis", SourceKustomerSingerKustomerSinger.KUSTOMER_SINGER, "2019-01-01T00:00:00Z");;
                     name = "My source";
-                    secretId = "aut";
-                    workspaceId = "f5d2cff7-c70a-4456-a6d4-36813f16d9f5";
+                    secretId = "quas";
+                    workspaceId = "dd6b1442-9074-4747-b8a7-bd466d28c10a";
                 }};;
             }};            
 
@@ -2297,21 +2290,18 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("sapiente", "quisquam") {{
+                    basicAuth = new SchemeBasicAuth("quidem", "neque") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("saepe") {{
-                sourcePutRequest = new SourcePutRequest(                new SourceKlarna("ea", SourceKlarnaRegion.OC, SourceKlarnaKlarna.KLARNA, "consectetur") {{
-                                    password = "impedit";
-                                    playground = false;
-                                    region = SourceKlarnaRegion.US;
-                                    sourceType = SourceKlarnaKlarna.KLARNA;
-                                    username = "Estel30";
-                                }}, "recusandae");;
+            PutSourceRequest req = new PutSourceRequest("quo") {{
+                sourcePutRequest = new SourcePutRequest(                new SourceTempo("fuga", SourceTempoTempo.TEMPO) {{
+                                    apiToken = "quo";
+                                    sourceType = SourceTempoTempo.TEMPO;
+                                }}, "eius");;
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);

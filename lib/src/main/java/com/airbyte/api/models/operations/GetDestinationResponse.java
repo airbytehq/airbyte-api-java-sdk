@@ -9,6 +9,9 @@ import java.net.http.HttpResponse;
 
 
 public class GetDestinationResponse {
+    /**
+     * HTTP response content type for this operation
+     */
     
     public String contentType;
 
@@ -28,6 +31,9 @@ public class GetDestinationResponse {
         return this;
     }
     
+    /**
+     * HTTP response status code for this operation
+     */
     
     public Integer statusCode;
 
@@ -36,6 +42,9 @@ public class GetDestinationResponse {
         return this;
     }
     
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     
     public HttpResponse<byte[]> rawResponse;
 
