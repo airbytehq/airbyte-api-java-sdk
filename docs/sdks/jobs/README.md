@@ -27,14 +27,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("tempore", "accusamus") {{
+                    basicAuth = new SchemeBasicAuth("Electric", "Small") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(253941L);            
+            CancelJobRequest req = new CancelJobRequest(660535L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -80,14 +80,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("enim", "dolorem") {{
+                    basicAuth = new SchemeBasicAuth("deploy", "female") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("sapiente", JobTypeEnum.RESET);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("SSL eyeballs array", JobTypeEnum.SYNC);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -132,14 +132,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("nihil", "sit") {{
+                    basicAuth = new SchemeBasicAuth("Maine", "UTF8") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(711584L);            
+            GetJobRequest req = new GetJobRequest(974586L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -187,7 +187,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("neque", "sed") {{
+                    basicAuth = new SchemeBasicAuth("Electric", "West") {{
                         password = "";
                         username = "";
                     }};
@@ -195,18 +195,18 @@ public class Application {
                 .build();
 
             ListJobsRequest req = new ListJobsRequest() {{
-                connectionId = "vel";
-                createdAtEnd = OffsetDateTime.parse("2022-04-02T20:32:30.487Z");
-                createdAtStart = OffsetDateTime.parse("2022-01-27T14:09:30.399Z");
+                connectionId = "Borders UDP";
+                createdAtEnd = OffsetDateTime.parse("2023-09-12T08:02:55.258Z");
+                createdAtStart = OffsetDateTime.parse("2022-08-31T07:30:17.465Z");
                 jobType = JobTypeEnum.SYNC;
-                limit = 277628;
-                offset = 186458;
-                orderBy = "cupiditate";
-                status = JobStatusEnum.SUCCEEDED;
-                updatedAtEnd = OffsetDateTime.parse("2020-10-04T22:45:05.165Z");
-                updatedAtStart = OffsetDateTime.parse("2022-04-29T16:20:13.800Z");
+                limit = 82575;
+                offset = 977435;
+                orderBy = "by Chrysler";
+                status = JobStatusEnum.INCOMPLETE;
+                updatedAtEnd = OffsetDateTime.parse("2021-04-24T23:20:09.998Z");
+                updatedAtStart = OffsetDateTime.parse("2023-05-04T05:44:15.213Z");
                 workspaceIds = new String[]{{
-                    add("8422bb67-9d23-4227-95bf-0cbb1e31b8b9"),
+                    add("05bc4dea-632e-4540-b9f4-4191e8f146d6"),
                 }};
             }};            
 

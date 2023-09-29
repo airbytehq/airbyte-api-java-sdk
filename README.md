@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.40.1'
+implementation 'com.airbyte.api:public-api:0.41.0'
 ```
 <!-- End SDK Installation -->
 
@@ -49,38 +49,38 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("ipsa", "reiciendis") {{
+                    basicAuth = new SchemeBasicAuth("violet", "Account") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("aaa2352c-5955-4907-aff1-a3a2fa946773", "9251aa52-c3f5-4ad0-99da-1ffe78f097b0") {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd") {{
                 configurations = new StreamConfigurations() {{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("harum") {{
+                        add(new StreamConfiguration("though") {{
                             cursorField = new String[]{{
-                                add("doloremque"),
+                                add("Ergonomic"),
                             }};
-                            name = "Mrs. April Wuckert";
+                            name = "Hyundai West";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("iusto"),
+                                    add("tesla"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_OVERWRITE;
+                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_APPEND;
                         }}),
                     }};
                 }};;
-                dataResidency = GeographyEnum.AUTO;
-                name = "Mrs. Leslie VonRueden";
+                dataResidency = GeographyEnum.US;
+                name = "sans contingency models";
                 namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_COLUMNS;
-                prefix = "pariatur";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL) {{
-                    cronExpression = "praesentium";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
+                prefix = "olive Reggae Sweden";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
+                    cronExpression = "Rupee";
                 }};;
                 status = ConnectionStatusEnum.INACTIVE;
             }};            

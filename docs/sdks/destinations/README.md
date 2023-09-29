@@ -171,23 +171,22 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("autem", "nam") {{
+                    basicAuth = new SchemeBasicAuth("override", "Dollar") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationAzureBlobStorage("Z8ZkZpteggFx394vm+PJHnGTvdRncaYS+JhLKdj789YNmD+iyGTnG+PV+POiuYNhBg/ACS+LKjd%4FG3FHGN12Nd==", "airbyte5storage", DestinationAzureBlobStorageAzureBlobStorage.AZURE_BLOB_STORAGE, "nemo") {{
-                                azureBlobStorageAccountKey = "Z8ZkZpteggFx394vm+PJHnGTvdRncaYS+JhLKdj789YNmD+iyGTnG+PV+POiuYNhBg/ACS+LKjd%4FG3FHGN12Nd==";
-                                azureBlobStorageAccountName = "airbyte5storage";
-                                azureBlobStorageContainerName = "airbytetescontainername";
-                                azureBlobStorageEndpointDomainName = "blob.core.windows.net";
-                                azureBlobStorageOutputBufferSize = 5L;
-                                azureBlobStorageSpillSize = 500L;
-                                destinationType = DestinationAzureBlobStorageAzureBlobStorage.AZURE_BLOB_STORAGE;
-                                format = "pariatur";
-                            }}, "voluptatibus", "0d30c5fb-b258-4705-b202-c73d5fe9b90c");            
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(                new DestinationGoogleSheets(                new DestinationGoogleSheetsAuthenticationViaGoogleOAuth("Concrete", "Cisgender", "serial");, DestinationGoogleSheetsGoogleSheets.GOOGLE_SHEETS, "https://docs.google.com/spreadsheets/d/1hLd9Qqti3UyLXZB2aFfUWDT7BG/edit") {{
+                                credentials = new DestinationGoogleSheetsAuthenticationViaGoogleOAuth("Reactive", "Brand", "wearily") {{
+                                    clientId = "Assistant";
+                                    clientSecret = "Loan";
+                                    refreshToken = "Account Chilean capacitor";
+                                }};
+                                destinationType = DestinationGoogleSheetsGoogleSheets.GOOGLE_SHEETS;
+                                spreadsheetId = "https://docs.google.com/spreadsheets/d/1hLd9Qqti3UyLXZB2aFfUWDT7BG/edit";
+                            }}, "University", "ef565b03-0c73-4d4d-bc9a-ec3c930d228b");            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
@@ -232,14 +231,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("consequuntur", "blanditiis") {{
+                    basicAuth = new SchemeBasicAuth("virtual", "Plastic") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("error");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("male");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -284,14 +283,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("eaque", "occaecati") {{
+                    basicAuth = new SchemeBasicAuth("alarm", "Brakus") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("rerum");            
+            GetDestinationRequest req = new GetDestinationRequest("Bike ubiquitous");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -336,7 +335,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("adipisci", "asperiores") {{
+                    basicAuth = new SchemeBasicAuth("Bicycle", "up") {{
                         password = "";
                         username = "";
                     }};
@@ -345,10 +344,10 @@ public class Application {
 
             ListDestinationsRequest req = new ListDestinationsRequest() {{
                 includeDeleted = false;
-                limit = 934214;
-                offset = 267262;
+                limit = 566557;
+                offset = 673433;
                 workspaceIds = new String[]{{
-                    add("9a8d9cbf-4863-4332-bf9b-77f3a4100674"),
+                    add("83172024-45cd-426f-b445-5227f2f090ad"),
                 }};
             }};            
 
@@ -538,19 +537,19 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("accusamus", "quidem") {{
+                    basicAuth = new SchemeBasicAuth("Refined", "SUV") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("voluptatibus") {{
+            PatchDestinationRequest req = new PatchDestinationRequest("Verde pixel male") {{
                 destinationPatchRequest = new DestinationPatchRequest() {{
-                    configuration = new DestinationFirestore(DestinationFirestoreFirestore.FIRESTORE, "natus") {{
-                        credentialsJson = "eos";
+                    configuration = new DestinationTimeplus("Principal", DestinationTimeplusTimeplus.TIMEPLUS) {{
+                        endpoint = "https://us.timeplus.cloud/workspace_id";
                     }};;
-                    name = "Miss Paul Steuber";
+                    name = "morph quantifying Mouse";
                 }};;
             }};            
 
@@ -740,62 +739,29 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("iusto", "voluptate") {{
+                    basicAuth = new SchemeBasicAuth("Heights", "Wagon") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("dolorum") {{
-                destinationPutRequest = new DestinationPutRequest(                new DestinationMilvus(DestinationMilvusMilvus.MILVUS,                 new DestinationMilvusEmbeddingFake() {{
-                                                    mode = DestinationMilvusEmbeddingFakeMode.FAKE;
-                                                }},                 new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthUsernamePassword("quod", "officiis") {{
-                                                                    mode = DestinationMilvusIndexingAuthUsernamePasswordMode.USERNAME_PASSWORD;
-                                                                    password = "alias";
-                                                                    username = "Savion42";
-                                                                }}, "qui", "tcp://my-local-milvus:19530") {{
-                                                    db = "a";
-                                                    textField = "esse";
-                                                    vectorField = "harum";
-                                                }};,                 new DestinationMilvusProcessingConfigModel(483409L) {{
-                                                    chunkOverlap = 215507L;
-                                                    metadataFields = new String[]{{
-                                                        add("quisquam"),
-                                                    }};
-                                                    textFields = new String[]{{
-                                                        add("tenetur"),
-                                                    }};
-                                                }};) {{
-                                    destinationType = DestinationMilvusMilvus.MILVUS;
-                                    embedding = new DestinationMilvusEmbeddingFake() {{
-                                        mode = DestinationMilvusEmbeddingFakeMode.FAKE;
+            PutDestinationRequest req = new PutDestinationRequest("navigate female") {{
+                destinationPutRequest = new DestinationPutRequest(                new DestinationSnowflake("AIRBYTE_DATABASE", DestinationSnowflakeSnowflake.SNOWFLAKE, "accountname.snowflakecomputing.com", "AIRBYTE_ROLE", "AIRBYTE_SCHEMA", "AIRBYTE_USER", "AIRBYTE_WAREHOUSE") {{
+                                    credentials = new DestinationSnowflakeCredentialsUsernameAndPassword("Handcrafted") {{
+                                        authType = DestinationSnowflakeCredentialsUsernameAndPasswordAuthType.USERNAME_AND_PASSWORD;
+                                        password = "OHIzBYOaVH3d9Uv";
                                     }};
-                                    indexing = new DestinationMilvusIndexing(                new DestinationMilvusIndexingAuthUsernamePassword("optio", "accusamus") {{
-                                                        mode = DestinationMilvusIndexingAuthUsernamePasswordMode.USERNAME_PASSWORD;
-                                                        password = "saepe";
-                                                        username = "Diamond22";
-                                                    }}, "ad", "tcp://my-local-milvus:19530") {{
-                                        auth = new DestinationMilvusIndexingAuthNoAuth() {{
-                                            mode = DestinationMilvusIndexingAuthNoAuthMode.NO_AUTH;
-                                        }};
-                                        collection = "distinctio";
-                                        db = "asperiores";
-                                        host = "tcp://host.docker.internal:19530";
-                                        textField = "ipsum";
-                                        vectorField = "voluptate";
-                                    }};
-                                    processing = new DestinationMilvusProcessingConfigModel(831049L) {{
-                                        chunkOverlap = 383464L;
-                                        chunkSize = 645785L;
-                                        metadataFields = new String[]{{
-                                            add("provident"),
-                                        }};
-                                        textFields = new String[]{{
-                                            add("minima"),
-                                        }};
-                                    }};
-                                }}, "amet");;
+                                    database = "AIRBYTE_DATABASE";
+                                    destinationType = DestinationSnowflakeSnowflake.SNOWFLAKE;
+                                    host = "accountname.us-east-2.aws.snowflakecomputing.com";
+                                    jdbcUrlParams = "Buckinghamshire iterate";
+                                    rawDataSchema = "constant global";
+                                    role = "AIRBYTE_ROLE";
+                                    schema = "AIRBYTE_SCHEMA";
+                                    username = "AIRBYTE_USER";
+                                    warehouse = "AIRBYTE_WAREHOUSE";
+                                }}, "morph");;
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);
