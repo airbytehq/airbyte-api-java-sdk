@@ -1,0 +1,12 @@
+# DestinationPostgresSslModeVerifyCa
+
+Verify-ca SSL mode.
+
+
+## Fields
+
+| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `caCertificate`                                                                                                       | *String*                                                                                                              | :heavy_check_mark:                                                                                                    | CA certificate                                                                                                        |
+| `clientKeyPassword`                                                                                                   | *String*                                                                                                              | :heavy_minus_sign:                                                                                                    | Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically. |
+| `mode`                                                                                                                | [DestinationPostgresSslModeVerifyCaMode](../../models/shared/DestinationPostgresSslModeVerifyCaMode.md)               | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |

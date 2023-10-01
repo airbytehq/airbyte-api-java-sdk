@@ -1,0 +1,11 @@
+# DestinationS3FormatAvroApacheAvro
+
+Format of the data output. See <a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema">here</a> for more details
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `compressionCodec`                                                                                                | *Object*                                                                                                          | :heavy_check_mark:                                                                                                | The compression algorithm used to compress data. Default to no compression.                                       |
+| `formatType`                                                                                                      | [DestinationS3FormatAvroApacheAvroFormatType](../../models/shared/DestinationS3FormatAvroApacheAvroFormatType.md) | :heavy_minus_sign:                                                                                                | N/A                                                                                                               |

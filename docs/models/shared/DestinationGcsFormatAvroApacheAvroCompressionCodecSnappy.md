@@ -1,0 +1,10 @@
+# DestinationGcsFormatAvroApacheAvroCompressionCodecSnappy
+
+The compression algorithm used to compress data. Default to no compression.
+
+
+## Fields
+
+| Field                                                                                                                                                 | Type                                                                                                                                                  | Required                                                                                                                                              | Description                                                                                                                                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `codec`                                                                                                                                               | [DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodec](../../models/shared/DestinationGcsFormatAvroApacheAvroCompressionCodecSnappyCodec.md) | :heavy_minus_sign:                                                                                                                                    | N/A                                                                                                                                                   |
