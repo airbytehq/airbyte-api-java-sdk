@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class WorkspaceResponse {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
     public GeographyEnum dataResidency;
 
@@ -35,8 +38,7 @@ public class WorkspaceResponse {
         return this;
     }
     
-    public WorkspaceResponse(@JsonProperty("dataResidency") GeographyEnum dataResidency, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
-        this.dataResidency = dataResidency;
+    public WorkspaceResponse(@JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
         this.name = name;
         this.workspaceId = workspaceId;
   }

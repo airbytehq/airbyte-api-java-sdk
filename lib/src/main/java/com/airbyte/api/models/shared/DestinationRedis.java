@@ -16,6 +16,7 @@ public class DestinationRedis {
     /**
      * Redis cache type to store data in.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cache_type")
     public DestinationRedisCacheType cacheType;
 
@@ -58,6 +59,7 @@ public class DestinationRedis {
     /**
      * Port of Redis.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -114,11 +116,9 @@ public class DestinationRedis {
         return this;
     }
     
-    public DestinationRedis(@JsonProperty("cache_type") DestinationRedisCacheType cacheType, @JsonProperty("destinationType") DestinationRedisRedis destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("username") String username) {
-        this.cacheType = cacheType;
+    public DestinationRedis(@JsonProperty("destinationType") DestinationRedisRedis destinationType, @JsonProperty("host") String host, @JsonProperty("username") String username) {
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
         this.username = username;
   }
 }

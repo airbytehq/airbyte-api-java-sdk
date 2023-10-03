@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationS3FormatAvroApacheAvroCompressionCodecNoCompression {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
     public DestinationS3FormatAvroApacheAvroCompressionCodecNoCompressionCodec codec;
 
@@ -19,7 +22,5 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecNoCompression {
         return this;
     }
     
-    public DestinationS3FormatAvroApacheAvroCompressionCodecNoCompression(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecNoCompressionCodec codec) {
-        this.codec = codec;
-  }
+    public DestinationS3FormatAvroApacheAvroCompressionCodecNoCompression(){}
 }

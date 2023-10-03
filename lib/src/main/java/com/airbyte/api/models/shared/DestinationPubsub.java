@@ -40,6 +40,7 @@ public class DestinationPubsub {
     /**
      * If TRUE messages will be buffered instead of sending them one by one
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batching_enabled")
     public Boolean batchingEnabled;
 
@@ -82,6 +83,7 @@ public class DestinationPubsub {
     /**
      * If TRUE PubSub publisher will have &lt;a href="https://cloud.google.com/pubsub/docs/ordering"&gt;message ordering&lt;/a&gt; enabled. Every message will have an ordering key of stream
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ordering_enabled")
     public Boolean orderingEnabled;
 
@@ -112,11 +114,9 @@ public class DestinationPubsub {
         return this;
     }
     
-    public DestinationPubsub(@JsonProperty("batching_enabled") Boolean batchingEnabled, @JsonProperty("credentials_json") String credentialsJson, @JsonProperty("destinationType") DestinationPubsubPubsub destinationType, @JsonProperty("ordering_enabled") Boolean orderingEnabled, @JsonProperty("project_id") String projectId, @JsonProperty("topic_id") String topicId) {
-        this.batchingEnabled = batchingEnabled;
+    public DestinationPubsub(@JsonProperty("credentials_json") String credentialsJson, @JsonProperty("destinationType") DestinationPubsubPubsub destinationType, @JsonProperty("project_id") String projectId, @JsonProperty("topic_id") String topicId) {
         this.credentialsJson = credentialsJson;
         this.destinationType = destinationType;
-        this.orderingEnabled = orderingEnabled;
         this.projectId = projectId;
         this.topicId = topicId;
   }

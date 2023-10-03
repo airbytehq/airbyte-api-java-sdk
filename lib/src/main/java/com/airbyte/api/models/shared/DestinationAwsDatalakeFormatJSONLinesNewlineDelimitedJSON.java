@@ -25,6 +25,7 @@ public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcard formatType;
 
@@ -33,7 +34,5 @@ public class DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
-    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSONFormatTypeWildcard formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationAwsDatalakeFormatJSONLinesNewlineDelimitedJSON(){}
 }

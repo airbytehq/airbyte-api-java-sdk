@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -14,6 +16,7 @@ public class DestinationAzureBlobStorageFormatCSVCommaSeparatedValues {
     /**
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     public DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlattening flattening;
 
@@ -30,8 +33,7 @@ public class DestinationAzureBlobStorageFormatCSVCommaSeparatedValues {
         return this;
     }
     
-    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesNormalizationFlattening flattening, @JsonProperty("format_type") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatType formatType) {
-        this.flattening = flattening;
+    public DestinationAzureBlobStorageFormatCSVCommaSeparatedValues(@JsonProperty("format_type") DestinationAzureBlobStorageFormatCSVCommaSeparatedValuesFormatType formatType) {
         this.formatType = formatType;
   }
 }

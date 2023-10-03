@@ -36,6 +36,7 @@ public class DestinationPostgresSslModeVerifyCa {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     public DestinationPostgresSslModeVerifyCaMode mode;
 
@@ -44,8 +45,7 @@ public class DestinationPostgresSslModeVerifyCa {
         return this;
     }
     
-    public DestinationPostgresSslModeVerifyCa(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("mode") DestinationPostgresSslModeVerifyCaMode mode) {
+    public DestinationPostgresSslModeVerifyCa(@JsonProperty("ca_certificate") String caCertificate) {
         this.caCertificate = caCertificate;
-        this.mode = mode;
   }
 }

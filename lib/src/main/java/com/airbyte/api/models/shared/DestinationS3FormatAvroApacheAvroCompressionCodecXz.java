@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationS3FormatAvroApacheAvroCompressionCodecXz {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
     public DestinationS3FormatAvroApacheAvroCompressionCodecXzCodec codec;
 
@@ -22,6 +25,7 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecXz {
     /**
      * See &lt;a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-"&gt;here&lt;/a&gt; for details.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_level")
     public Long compressionLevel;
 
@@ -30,8 +34,5 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecXz {
         return this;
     }
     
-    public DestinationS3FormatAvroApacheAvroCompressionCodecXz(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecXzCodec codec, @JsonProperty("compression_level") Long compressionLevel) {
-        this.codec = codec;
-        this.compressionLevel = compressionLevel;
-  }
+    public DestinationS3FormatAvroApacheAvroCompressionCodecXz(){}
 }

@@ -62,6 +62,7 @@ public class SourceMysql {
     /**
      * The port to connect to.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -124,10 +125,9 @@ public class SourceMysql {
         return this;
     }
     
-    public SourceMysql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("replication_method") Object replicationMethod, @JsonProperty("sourceType") SourceMysqlMysql sourceType, @JsonProperty("username") String username) {
+    public SourceMysql(@JsonProperty("database") String database, @JsonProperty("host") String host, @JsonProperty("replication_method") Object replicationMethod, @JsonProperty("sourceType") SourceMysqlMysql sourceType, @JsonProperty("username") String username) {
         this.database = database;
         this.host = host;
-        this.port = port;
         this.replicationMethod = replicationMethod;
         this.sourceType = sourceType;
         this.username = username;

@@ -16,6 +16,7 @@ public class SourceE2eTestCloud {
     /**
      * Number of records to emit per stream. Min 1. Max 100 billion.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_messages")
     public Long maxMessages;
 
@@ -73,8 +74,7 @@ public class SourceE2eTestCloud {
         return this;
     }
     
-    public SourceE2eTestCloud(@JsonProperty("max_messages") Long maxMessages, @JsonProperty("mock_catalog") Object mockCatalog, @JsonProperty("sourceType") SourceE2eTestCloudE2eTestCloud sourceType) {
-        this.maxMessages = maxMessages;
+    public SourceE2eTestCloud(@JsonProperty("mock_catalog") Object mockCatalog, @JsonProperty("sourceType") SourceE2eTestCloudE2eTestCloud sourceType) {
         this.mockCatalog = mockCatalog;
         this.sourceType = sourceType;
   }

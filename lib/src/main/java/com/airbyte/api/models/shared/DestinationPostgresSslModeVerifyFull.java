@@ -58,6 +58,7 @@ public class DestinationPostgresSslModeVerifyFull {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     public DestinationPostgresSslModeVerifyFullMode mode;
 
@@ -66,10 +67,9 @@ public class DestinationPostgresSslModeVerifyFull {
         return this;
     }
     
-    public DestinationPostgresSslModeVerifyFull(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("client_certificate") String clientCertificate, @JsonProperty("client_key") String clientKey, @JsonProperty("mode") DestinationPostgresSslModeVerifyFullMode mode) {
+    public DestinationPostgresSslModeVerifyFull(@JsonProperty("ca_certificate") String caCertificate, @JsonProperty("client_certificate") String clientCertificate, @JsonProperty("client_key") String clientKey) {
         this.caCertificate = caCertificate;
         this.clientCertificate = clientCertificate;
         this.clientKey = clientKey;
-        this.mode = mode;
   }
 }

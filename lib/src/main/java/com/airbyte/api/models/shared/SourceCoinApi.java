@@ -43,6 +43,7 @@ public class SourceCoinApi {
      * The environment to use. Either sandbox or production.
      * 
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("environment")
     public SourceCoinApiEnvironment environment;
 
@@ -109,9 +110,8 @@ public class SourceCoinApi {
         return this;
     }
     
-    public SourceCoinApi(@JsonProperty("api_key") String apiKey, @JsonProperty("environment") SourceCoinApiEnvironment environment, @JsonProperty("period") String period, @JsonProperty("sourceType") SourceCoinApiCoinApi sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("symbol_id") String symbolId) {
+    public SourceCoinApi(@JsonProperty("api_key") String apiKey, @JsonProperty("period") String period, @JsonProperty("sourceType") SourceCoinApiCoinApi sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("symbol_id") String symbolId) {
         this.apiKey = apiKey;
-        this.environment = environment;
         this.period = period;
         this.sourceType = sourceType;
         this.startDate = startDate;

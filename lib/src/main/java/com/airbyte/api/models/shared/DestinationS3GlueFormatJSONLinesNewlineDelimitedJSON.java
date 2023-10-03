@@ -37,6 +37,7 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType formatType;
 
@@ -45,7 +46,5 @@ public class DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
-    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationS3GlueFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationS3GlueFormatJSONLinesNewlineDelimitedJSON(){}
 }

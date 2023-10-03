@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -22,6 +24,7 @@ public class DestinationGcsFormatAvroApacheAvro {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationGcsFormatAvroApacheAvroFormatType formatType;
 
@@ -30,8 +33,7 @@ public class DestinationGcsFormatAvroApacheAvro {
         return this;
     }
     
-    public DestinationGcsFormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec, @JsonProperty("format_type") DestinationGcsFormatAvroApacheAvroFormatType formatType) {
+    public DestinationGcsFormatAvroApacheAvro(@JsonProperty("compression_codec") Object compressionCodec) {
         this.compressionCodec = compressionCodec;
-        this.formatType = formatType;
   }
 }

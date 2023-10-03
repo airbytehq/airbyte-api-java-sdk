@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationMssqlSslMethodEncryptedTrustServerCertificate {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_method")
     public DestinationMssqlSslMethodEncryptedTrustServerCertificateSslMethod sslMethod;
 
@@ -19,7 +22,5 @@ public class DestinationMssqlSslMethodEncryptedTrustServerCertificate {
         return this;
     }
     
-    public DestinationMssqlSslMethodEncryptedTrustServerCertificate(@JsonProperty("ssl_method") DestinationMssqlSslMethodEncryptedTrustServerCertificateSslMethod sslMethod) {
-        this.sslMethod = sslMethod;
-  }
+    public DestinationMssqlSslMethodEncryptedTrustServerCertificate(){}
 }

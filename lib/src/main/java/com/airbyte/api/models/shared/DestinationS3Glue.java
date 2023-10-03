@@ -70,6 +70,7 @@ public class DestinationS3Glue {
     /**
      * The library that your query engine will use for reading and writing data in your lake.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("glue_serialization_library")
     public DestinationS3GlueSerializationLibrary glueSerializationLibrary;
 
@@ -103,6 +104,7 @@ public class DestinationS3Glue {
     /**
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("s3_bucket_region")
     public DestinationS3GlueS3BucketRegion s3BucketRegion;
 
@@ -147,13 +149,11 @@ public class DestinationS3Glue {
         return this;
     }
     
-    public DestinationS3Glue(@JsonProperty("destinationType") DestinationS3GlueS3Glue destinationType, @JsonProperty("format") Object format, @JsonProperty("glue_database") String glueDatabase, @JsonProperty("glue_serialization_library") DestinationS3GlueSerializationLibrary glueSerializationLibrary, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath, @JsonProperty("s3_bucket_region") DestinationS3GlueS3BucketRegion s3BucketRegion) {
+    public DestinationS3Glue(@JsonProperty("destinationType") DestinationS3GlueS3Glue destinationType, @JsonProperty("format") Object format, @JsonProperty("glue_database") String glueDatabase, @JsonProperty("s3_bucket_name") String s3BucketName, @JsonProperty("s3_bucket_path") String s3BucketPath) {
         this.destinationType = destinationType;
         this.format = format;
         this.glueDatabase = glueDatabase;
-        this.glueSerializationLibrary = glueSerializationLibrary;
         this.s3BucketName = s3BucketName;
         this.s3BucketPath = s3BucketPath;
-        this.s3BucketRegion = s3BucketRegion;
   }
 }

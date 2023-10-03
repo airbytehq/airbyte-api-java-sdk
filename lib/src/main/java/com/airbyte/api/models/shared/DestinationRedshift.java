@@ -69,6 +69,7 @@ public class DestinationRedshift {
     /**
      * Port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -80,6 +81,7 @@ public class DestinationRedshift {
     /**
      * The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is "public".
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
     public String schema;
 
@@ -123,13 +125,11 @@ public class DestinationRedshift {
         return this;
     }
     
-    public DestinationRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationRedshiftRedshift destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema) {
+    public DestinationRedshift(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("database") String database, @JsonProperty("destinationType") DestinationRedshiftRedshift destinationType, @JsonProperty("host") String host) {
         this.username = username;
         this.password = password;
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
-        this.schema = schema;
   }
 }

@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationPostgresSslModeAllow {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     public DestinationPostgresSslModeAllowMode mode;
 
@@ -19,7 +22,5 @@ public class DestinationPostgresSslModeAllow {
         return this;
     }
     
-    public DestinationPostgresSslModeAllow(@JsonProperty("mode") DestinationPostgresSslModeAllowMode mode) {
-        this.mode = mode;
-  }
+    public DestinationPostgresSslModeAllow(){}
 }

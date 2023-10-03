@@ -16,6 +16,7 @@ public class DestinationDatabricks {
     /**
      * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("accept_terms")
     public Boolean acceptTerms;
 
@@ -136,8 +137,7 @@ public class DestinationDatabricks {
         return this;
     }
     
-    public DestinationDatabricks(@JsonProperty("accept_terms") Boolean acceptTerms, @JsonProperty("data_source") Object dataSource, @JsonProperty("databricks_http_path") String databricksHttpPath, @JsonProperty("databricks_personal_access_token") String databricksPersonalAccessToken, @JsonProperty("databricks_server_hostname") String databricksServerHostname, @JsonProperty("destinationType") DestinationDatabricksDatabricks destinationType) {
-        this.acceptTerms = acceptTerms;
+    public DestinationDatabricks(@JsonProperty("data_source") Object dataSource, @JsonProperty("databricks_http_path") String databricksHttpPath, @JsonProperty("databricks_personal_access_token") String databricksPersonalAccessToken, @JsonProperty("databricks_server_hostname") String databricksServerHostname, @JsonProperty("destinationType") DestinationDatabricksDatabricks destinationType) {
         this.dataSource = dataSource;
         this.databricksHttpPath = databricksHttpPath;
         this.databricksPersonalAccessToken = databricksPersonalAccessToken;

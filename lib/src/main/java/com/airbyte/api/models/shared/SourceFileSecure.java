@@ -27,6 +27,7 @@ public class SourceFileSecure {
     /**
      * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format")
     public SourceFileSecureFileFormat format;
 
@@ -77,9 +78,8 @@ public class SourceFileSecure {
         return this;
     }
     
-    public SourceFileSecure(@JsonProperty("dataset_name") String datasetName, @JsonProperty("format") SourceFileSecureFileFormat format, @JsonProperty("provider") Object provider, @JsonProperty("sourceType") SourceFileSecureFileSecure sourceType, @JsonProperty("url") String url) {
+    public SourceFileSecure(@JsonProperty("dataset_name") String datasetName, @JsonProperty("provider") Object provider, @JsonProperty("sourceType") SourceFileSecureFileSecure sourceType, @JsonProperty("url") String url) {
         this.datasetName = datasetName;
-        this.format = format;
         this.provider = provider;
         this.sourceType = sourceType;
         this.url = url;

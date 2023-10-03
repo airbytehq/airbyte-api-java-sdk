@@ -43,6 +43,7 @@ public class SourcePaypalTransaction {
     /**
      * Determines whether to use the sandbox or production environment.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_sandbox")
     public Boolean isSandbox;
 
@@ -84,10 +85,9 @@ public class SourcePaypalTransaction {
         return this;
     }
     
-    public SourcePaypalTransaction(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("is_sandbox") Boolean isSandbox, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransaction sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourcePaypalTransaction(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourcePaypalTransactionPaypalTransaction sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.isSandbox = isSandbox;
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

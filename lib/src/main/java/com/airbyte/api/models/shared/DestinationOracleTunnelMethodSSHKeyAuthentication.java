@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -47,6 +49,7 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
 
@@ -66,11 +69,10 @@ public class DestinationOracleTunnelMethodSSHKeyAuthentication {
         return this;
     }
     
-    public DestinationOracleTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort, @JsonProperty("tunnel_user") String tunnelUser) {
+    public DestinationOracleTunnelMethodSSHKeyAuthentication(@JsonProperty("ssh_key") String sshKey, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") DestinationOracleTunnelMethodSSHKeyAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_user") String tunnelUser) {
         this.sshKey = sshKey;
         this.tunnelHost = tunnelHost;
         this.tunnelMethod = tunnelMethod;
-        this.tunnelPort = tunnelPort;
         this.tunnelUser = tunnelUser;
   }
 }

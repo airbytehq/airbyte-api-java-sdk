@@ -1,4 +1,5 @@
-# workspaces
+# Workspaces
+(*workspaces*)
 
 ### Available Operations
 
@@ -107,19 +108,19 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("libero", "aut") {{
+                    basicAuth = new SchemeBasicAuth("back", "seamless") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.SOURCE,                 new Notion() {{
-                                                credentials = new NotionCredentials() {{
-                                                    clientId = "impedit";
-                                                    clientSecret = "aliquam";
+            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(                new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.DESTINATION,                 new Github() {{
+                                                credentials = new GithubCredentials() {{
+                                                    clientId = "Baby Rupee till";
+                                                    clientSecret = "commercialize";
                                                 }};
-                                            }}, OAuthActorNames.FACEBOOK_PAGES);, "accusamus");            
+                                            }}, OAuthActorNames.GITLAB);, "Gasoline Home causal");            
 
             CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
 
@@ -164,14 +165,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("inventore", "non") {{
+                    basicAuth = new SchemeBasicAuth("Armstrong", "consectetur") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("et");            
+            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("payment");            
 
             CreateWorkspaceResponse res = sdk.workspaces.createWorkspace(req);
 
@@ -216,14 +217,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("dolorum", "laborum") {{
+                    basicAuth = new SchemeBasicAuth("3rd", "Automotive") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("placeat");            
+            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("protocol");            
 
             DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
 
@@ -268,14 +269,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("velit", "eum") {{
+                    basicAuth = new SchemeBasicAuth("Mercedes", "odio") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest("autem");            
+            GetWorkspaceRequest req = new GetWorkspaceRequest("Fresh Bedfordshire male");            
 
             GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
 
@@ -320,7 +321,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("nobis", "quas") {{
+                    basicAuth = new SchemeBasicAuth("efficient", "channels") {{
                         password = "";
                         username = "";
                     }};
@@ -329,10 +330,10 @@ public class Application {
 
             ListWorkspacesRequest req = new ListWorkspacesRequest() {{
                 includeDeleted = false;
-                limit = 829603;
-                offset = 860552;
+                limit = 971477;
+                offset = 563607;
                 workspaceIds = new String[]{{
-                    add("6b144290-7474-4778-a7bd-466d28c10ab3"),
+                    add("aa380387-f545-4d38-9888-ede3070833b0"),
                 }};
             }};            
 
@@ -380,14 +381,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("quo", "illum") {{
+                    basicAuth = new SchemeBasicAuth("Wagon", "female") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(                new WorkspaceUpdateRequest("quo");, "fuga");            
+            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(                new WorkspaceUpdateRequest("afterwards");, "male");            
 
             UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
 

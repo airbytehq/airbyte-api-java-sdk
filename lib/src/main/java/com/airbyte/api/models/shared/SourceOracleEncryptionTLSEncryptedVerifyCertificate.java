@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
     public SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethod encryptionMethod;
 
@@ -30,8 +33,7 @@ public class SourceOracleEncryptionTLSEncryptedVerifyCertificate {
         return this;
     }
     
-    public SourceOracleEncryptionTLSEncryptedVerifyCertificate(@JsonProperty("encryption_method") SourceOracleEncryptionTLSEncryptedVerifyCertificateEncryptionMethod encryptionMethod, @JsonProperty("ssl_certificate") String sslCertificate) {
-        this.encryptionMethod = encryptionMethod;
+    public SourceOracleEncryptionTLSEncryptedVerifyCertificate(@JsonProperty("ssl_certificate") String sslCertificate) {
         this.sslCertificate = sslCertificate;
   }
 }

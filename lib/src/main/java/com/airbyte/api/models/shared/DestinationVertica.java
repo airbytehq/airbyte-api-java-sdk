@@ -70,6 +70,7 @@ public class DestinationVertica {
     /**
      * Port of the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -112,11 +113,10 @@ public class DestinationVertica {
         return this;
     }
     
-    public DestinationVertica(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationVerticaVertica destinationType, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
+    public DestinationVertica(@JsonProperty("database") String database, @JsonProperty("destinationType") DestinationVerticaVertica destinationType, @JsonProperty("host") String host, @JsonProperty("schema") String schema, @JsonProperty("username") String username) {
         this.database = database;
         this.destinationType = destinationType;
         this.host = host;
-        this.port = port;
         this.schema = schema;
         this.username = username;
   }

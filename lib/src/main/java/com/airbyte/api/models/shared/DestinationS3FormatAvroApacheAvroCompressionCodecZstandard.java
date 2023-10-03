@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationS3FormatAvroApacheAvroCompressionCodecZstandard {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
     public DestinationS3FormatAvroApacheAvroCompressionCodecZstandardCodec codec;
 
@@ -24,6 +25,7 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecZstandard {
     /**
      * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_level")
     public Long compressionLevel;
 
@@ -44,8 +46,5 @@ public class DestinationS3FormatAvroApacheAvroCompressionCodecZstandard {
         return this;
     }
     
-    public DestinationS3FormatAvroApacheAvroCompressionCodecZstandard(@JsonProperty("codec") DestinationS3FormatAvroApacheAvroCompressionCodecZstandardCodec codec, @JsonProperty("compression_level") Long compressionLevel) {
-        this.codec = codec;
-        this.compressionLevel = compressionLevel;
-  }
+    public DestinationS3FormatAvroApacheAvroCompressionCodecZstandard(){}
 }

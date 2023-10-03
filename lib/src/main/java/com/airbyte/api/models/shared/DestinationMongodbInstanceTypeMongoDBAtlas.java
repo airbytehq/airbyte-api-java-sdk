@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -22,6 +24,7 @@ public class DestinationMongodbInstanceTypeMongoDBAtlas {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance")
     public DestinationMongodbInstanceTypeMongoDBAtlasInstance instance;
 
@@ -30,8 +33,7 @@ public class DestinationMongodbInstanceTypeMongoDBAtlas {
         return this;
     }
     
-    public DestinationMongodbInstanceTypeMongoDBAtlas(@JsonProperty("cluster_url") String clusterUrl, @JsonProperty("instance") DestinationMongodbInstanceTypeMongoDBAtlasInstance instance) {
+    public DestinationMongodbInstanceTypeMongoDBAtlas(@JsonProperty("cluster_url") String clusterUrl) {
         this.clusterUrl = clusterUrl;
-        this.instance = instance;
   }
 }

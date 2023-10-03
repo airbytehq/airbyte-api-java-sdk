@@ -25,6 +25,7 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_method")
     public DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethod sslMethod;
 
@@ -33,7 +34,5 @@ public class DestinationMssqlSslMethodEncryptedVerifyCertificate {
         return this;
     }
     
-    public DestinationMssqlSslMethodEncryptedVerifyCertificate(@JsonProperty("ssl_method") DestinationMssqlSslMethodEncryptedVerifyCertificateSslMethod sslMethod) {
-        this.sslMethod = sslMethod;
-  }
+    public DestinationMssqlSslMethodEncryptedVerifyCertificate(){}
 }

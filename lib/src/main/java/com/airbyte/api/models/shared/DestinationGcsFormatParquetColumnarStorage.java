@@ -61,6 +61,7 @@ public class DestinationGcsFormatParquetColumnarStorage {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationGcsFormatParquetColumnarStorageFormatType formatType;
 
@@ -93,7 +94,5 @@ public class DestinationGcsFormatParquetColumnarStorage {
         return this;
     }
     
-    public DestinationGcsFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationGcsFormatParquetColumnarStorageFormatType formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationGcsFormatParquetColumnarStorage(){}
 }

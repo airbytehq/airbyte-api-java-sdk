@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationGcsCredentialHMACKey {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credential_type")
     public DestinationGcsCredentialHMACKeyCredentialType credentialType;
 
@@ -41,8 +44,7 @@ public class DestinationGcsCredentialHMACKey {
         return this;
     }
     
-    public DestinationGcsCredentialHMACKey(@JsonProperty("credential_type") DestinationGcsCredentialHMACKeyCredentialType credentialType, @JsonProperty("hmac_key_access_id") String hmacKeyAccessId, @JsonProperty("hmac_key_secret") String hmacKeySecret) {
-        this.credentialType = credentialType;
+    public DestinationGcsCredentialHMACKey(@JsonProperty("hmac_key_access_id") String hmacKeyAccessId, @JsonProperty("hmac_key_secret") String hmacKeySecret) {
         this.hmacKeyAccessId = hmacKeyAccessId;
         this.hmacKeySecret = hmacKeySecret;
   }

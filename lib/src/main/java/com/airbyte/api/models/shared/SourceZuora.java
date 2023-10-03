@@ -38,6 +38,7 @@ public class SourceZuora {
     /**
      * Choose between `Live`, or `Unlimited` - the optimized, replicated database at 12 hours freshness for high volume extraction &lt;a href="https://knowledgecenter.zuora.com/Central_Platform/Query/Data_Query/A_Overview_of_Data_Query#Query_Processing_Limitations"&gt;Link&lt;/a&gt;
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("data_query")
     public SourceZuoraDataQueryType dataQuery;
 
@@ -88,10 +89,9 @@ public class SourceZuora {
         return this;
     }
     
-    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("data_query") SourceZuoraDataQueryType dataQuery, @JsonProperty("sourceType") SourceZuoraZuora sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("tenant_endpoint") SourceZuoraTenantEndpointLocation tenantEndpoint) {
+    public SourceZuora(@JsonProperty("client_id") String clientId, @JsonProperty("client_secret") String clientSecret, @JsonProperty("sourceType") SourceZuoraZuora sourceType, @JsonProperty("start_date") String startDate, @JsonProperty("tenant_endpoint") SourceZuoraTenantEndpointLocation tenantEndpoint) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.dataQuery = dataQuery;
         this.sourceType = sourceType;
         this.startDate = startDate;
         this.tenantEndpoint = tenantEndpoint;

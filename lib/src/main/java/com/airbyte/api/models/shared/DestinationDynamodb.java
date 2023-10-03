@@ -47,6 +47,7 @@ public class DestinationDynamodb {
     /**
      * The region of the DynamoDB.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dynamodb_region")
     public DestinationDynamodbDynamoDBRegion dynamodbRegion;
 
@@ -77,10 +78,9 @@ public class DestinationDynamodb {
         return this;
     }
     
-    public DestinationDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("destinationType") DestinationDynamodbDynamodb destinationType, @JsonProperty("dynamodb_region") DestinationDynamodbDynamoDBRegion dynamodbRegion, @JsonProperty("dynamodb_table_name_prefix") String dynamodbTableNamePrefix, @JsonProperty("secret_access_key") String secretAccessKey) {
+    public DestinationDynamodb(@JsonProperty("access_key_id") String accessKeyId, @JsonProperty("destinationType") DestinationDynamodbDynamodb destinationType, @JsonProperty("dynamodb_table_name_prefix") String dynamodbTableNamePrefix, @JsonProperty("secret_access_key") String secretAccessKey) {
         this.accessKeyId = accessKeyId;
         this.destinationType = destinationType;
-        this.dynamodbRegion = dynamodbRegion;
         this.dynamodbTableNamePrefix = dynamodbTableNamePrefix;
         this.secretAccessKey = secretAccessKey;
   }

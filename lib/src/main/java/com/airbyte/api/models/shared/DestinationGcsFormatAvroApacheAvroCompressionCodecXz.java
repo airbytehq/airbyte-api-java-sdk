@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationGcsFormatAvroApacheAvroCompressionCodecXz {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("codec")
     public DestinationGcsFormatAvroApacheAvroCompressionCodecXzCodec codec;
 
@@ -33,7 +34,5 @@ public class DestinationGcsFormatAvroApacheAvroCompressionCodecXz {
         return this;
     }
     
-    public DestinationGcsFormatAvroApacheAvroCompressionCodecXz(@JsonProperty("codec") DestinationGcsFormatAvroApacheAvroCompressionCodecXzCodec codec) {
-        this.codec = codec;
-  }
+    public DestinationGcsFormatAvroApacheAvroCompressionCodecXz(){}
 }

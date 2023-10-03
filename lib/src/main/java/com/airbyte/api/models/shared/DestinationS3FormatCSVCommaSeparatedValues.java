@@ -28,6 +28,7 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
     /**
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     public DestinationS3FormatCSVCommaSeparatedValuesFlattening flattening;
 
@@ -36,6 +37,7 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationS3FormatCSVCommaSeparatedValuesFormatType formatType;
 
@@ -44,8 +46,5 @@ public class DestinationS3FormatCSVCommaSeparatedValues {
         return this;
     }
     
-    public DestinationS3FormatCSVCommaSeparatedValues(@JsonProperty("flattening") DestinationS3FormatCSVCommaSeparatedValuesFlattening flattening, @JsonProperty("format_type") DestinationS3FormatCSVCommaSeparatedValuesFormatType formatType) {
-        this.flattening = flattening;
-        this.formatType = formatType;
-  }
+    public DestinationS3FormatCSVCommaSeparatedValues(){}
 }

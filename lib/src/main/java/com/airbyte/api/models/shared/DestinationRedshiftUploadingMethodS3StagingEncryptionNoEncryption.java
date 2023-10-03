@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_type")
     public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionType encryptionType;
 
@@ -19,7 +22,5 @@ public class DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption {
         return this;
     }
     
-    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption(@JsonProperty("encryption_type") DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryptionEncryptionType encryptionType) {
-        this.encryptionType = encryptionType;
-  }
+    public DestinationRedshiftUploadingMethodS3StagingEncryptionNoEncryption(){}
 }

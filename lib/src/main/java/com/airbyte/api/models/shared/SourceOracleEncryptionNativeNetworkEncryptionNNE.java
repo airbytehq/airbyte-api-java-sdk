@@ -25,6 +25,7 @@ public class SourceOracleEncryptionNativeNetworkEncryptionNNE {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
     public SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethod encryptionMethod;
 
@@ -33,7 +34,5 @@ public class SourceOracleEncryptionNativeNetworkEncryptionNNE {
         return this;
     }
     
-    public SourceOracleEncryptionNativeNetworkEncryptionNNE(@JsonProperty("encryption_method") SourceOracleEncryptionNativeNetworkEncryptionNNEEncryptionMethod encryptionMethod) {
-        this.encryptionMethod = encryptionMethod;
-  }
+    public SourceOracleEncryptionNativeNetworkEncryptionNNE(){}
 }

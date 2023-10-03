@@ -37,6 +37,7 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationGcsFormatCSVCommaSeparatedValuesFormatType formatType;
 
@@ -45,7 +46,5 @@ public class DestinationGcsFormatCSVCommaSeparatedValues {
         return this;
     }
     
-    public DestinationGcsFormatCSVCommaSeparatedValues(@JsonProperty("format_type") DestinationGcsFormatCSVCommaSeparatedValuesFormatType formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationGcsFormatCSVCommaSeparatedValues(){}
 }

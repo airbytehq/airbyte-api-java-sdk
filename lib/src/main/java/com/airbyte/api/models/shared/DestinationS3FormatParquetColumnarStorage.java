@@ -61,6 +61,7 @@ public class DestinationS3FormatParquetColumnarStorage {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationS3FormatParquetColumnarStorageFormatType formatType;
 
@@ -93,7 +94,5 @@ public class DestinationS3FormatParquetColumnarStorage {
         return this;
     }
     
-    public DestinationS3FormatParquetColumnarStorage(@JsonProperty("format_type") DestinationS3FormatParquetColumnarStorageFormatType formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationS3FormatParquetColumnarStorage(){}
 }

@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -14,6 +16,7 @@ public class DestinationAwsDatalakeCredentialsIAMRole {
     /**
      * Name of the credentials
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_title")
     public DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitle credentialsTitle;
 
@@ -33,8 +36,7 @@ public class DestinationAwsDatalakeCredentialsIAMRole {
         return this;
     }
     
-    public DestinationAwsDatalakeCredentialsIAMRole(@JsonProperty("credentials_title") DestinationAwsDatalakeCredentialsIAMRoleCredentialsTitle credentialsTitle, @JsonProperty("role_arn") String roleArn) {
-        this.credentialsTitle = credentialsTitle;
+    public DestinationAwsDatalakeCredentialsIAMRole(@JsonProperty("role_arn") String roleArn) {
         this.roleArn = roleArn;
   }
 }

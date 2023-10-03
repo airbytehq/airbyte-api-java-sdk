@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -36,6 +38,7 @@ public class SourcePostgresTunnelMethodPasswordAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_port")
     public Long tunnelPort;
 
@@ -66,11 +69,10 @@ public class SourcePostgresTunnelMethodPasswordAuthentication {
         return this;
     }
     
-    public SourcePostgresTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") SourcePostgresTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod, @JsonProperty("tunnel_port") Long tunnelPort) {
+    public SourcePostgresTunnelMethodPasswordAuthentication(@JsonProperty("tunnel_user") String tunnelUser, @JsonProperty("tunnel_user_password") String tunnelUserPassword, @JsonProperty("tunnel_host") String tunnelHost, @JsonProperty("tunnel_method") SourcePostgresTunnelMethodPasswordAuthenticationTunnelMethod tunnelMethod) {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
         this.tunnelHost = tunnelHost;
         this.tunnelMethod = tunnelMethod;
-        this.tunnelPort = tunnelPort;
   }
 }

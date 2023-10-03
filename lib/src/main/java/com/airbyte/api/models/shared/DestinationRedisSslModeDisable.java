@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationRedisSslModeDisable {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     public DestinationRedisSslModeDisableMode mode;
 
@@ -19,7 +22,5 @@ public class DestinationRedisSslModeDisable {
         return this;
     }
     
-    public DestinationRedisSslModeDisable(@JsonProperty("mode") DestinationRedisSslModeDisableMode mode) {
-        this.mode = mode;
-  }
+    public DestinationRedisSslModeDisable(){}
 }

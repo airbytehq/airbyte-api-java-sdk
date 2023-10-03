@@ -28,6 +28,7 @@ public class SourceFaker {
     /**
      * How many users should be generated in total.  This setting does not apply to the purchases or products stream.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("count")
     public Long count;
 
@@ -80,8 +81,7 @@ public class SourceFaker {
         return this;
     }
     
-    public SourceFaker(@JsonProperty("count") Long count, @JsonProperty("sourceType") SourceFakerFaker sourceType) {
-        this.count = count;
+    public SourceFaker(@JsonProperty("sourceType") SourceFakerFaker sourceType) {
         this.sourceType = sourceType;
   }
 }

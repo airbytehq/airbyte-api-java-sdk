@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -36,6 +38,7 @@ public class DestinationAwsDatalakeCredentialsIAMUser {
     /**
      * Name of the credentials
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_title")
     public DestinationAwsDatalakeCredentialsIAMUserCredentialsTitle credentialsTitle;
 
@@ -44,9 +47,8 @@ public class DestinationAwsDatalakeCredentialsIAMUser {
         return this;
     }
     
-    public DestinationAwsDatalakeCredentialsIAMUser(@JsonProperty("aws_access_key_id") String awsAccessKeyId, @JsonProperty("aws_secret_access_key") String awsSecretAccessKey, @JsonProperty("credentials_title") DestinationAwsDatalakeCredentialsIAMUserCredentialsTitle credentialsTitle) {
+    public DestinationAwsDatalakeCredentialsIAMUser(@JsonProperty("aws_access_key_id") String awsAccessKeyId, @JsonProperty("aws_secret_access_key") String awsSecretAccessKey) {
         this.awsAccessKeyId = awsAccessKeyId;
         this.awsSecretAccessKey = awsSecretAccessKey;
-        this.credentialsTitle = credentialsTitle;
   }
 }

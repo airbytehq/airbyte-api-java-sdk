@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.DateTimeDeserializer;
 import com.airbyte.api.utils.DateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -30,6 +32,7 @@ public class SourceChartmogul {
     /**
      * Some APIs such as &lt;a href="https://dev.chartmogul.com/reference/endpoint-overview-metrics-api"&gt;Metrics&lt;/a&gt; require intervals to cluster data.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interval")
     public SourceChartmogulInterval interval;
 
@@ -59,9 +62,8 @@ public class SourceChartmogul {
         return this;
     }
     
-    public SourceChartmogul(@JsonProperty("api_key") String apiKey, @JsonProperty("interval") SourceChartmogulInterval interval, @JsonProperty("sourceType") SourceChartmogulChartmogul sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
+    public SourceChartmogul(@JsonProperty("api_key") String apiKey, @JsonProperty("sourceType") SourceChartmogulChartmogul sourceType, @JsonProperty("start_date") OffsetDateTime startDate) {
         this.apiKey = apiKey;
-        this.interval = interval;
         this.sourceType = sourceType;
         this.startDate = startDate;
   }

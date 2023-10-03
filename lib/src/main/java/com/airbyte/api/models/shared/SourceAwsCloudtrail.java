@@ -5,6 +5,8 @@
 package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 
@@ -57,6 +59,7 @@ public class SourceAwsCloudtrail {
     /**
      * The date you would like to replicate data. Data in AWS CloudTrail is available for last 90 days only. Format: YYYY-MM-DD.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("start_date")
     public LocalDate startDate;
@@ -66,11 +69,10 @@ public class SourceAwsCloudtrail {
         return this;
     }
     
-    public SourceAwsCloudtrail(@JsonProperty("aws_key_id") String awsKeyId, @JsonProperty("aws_region_name") String awsRegionName, @JsonProperty("aws_secret_key") String awsSecretKey, @JsonProperty("sourceType") SourceAwsCloudtrailAwsCloudtrail sourceType, @JsonProperty("start_date") LocalDate startDate) {
+    public SourceAwsCloudtrail(@JsonProperty("aws_key_id") String awsKeyId, @JsonProperty("aws_region_name") String awsRegionName, @JsonProperty("aws_secret_key") String awsSecretKey, @JsonProperty("sourceType") SourceAwsCloudtrailAwsCloudtrail sourceType) {
         this.awsKeyId = awsKeyId;
         this.awsRegionName = awsRegionName;
         this.awsSecretKey = awsSecretKey;
         this.sourceType = sourceType;
-        this.startDate = startDate;
   }
 }

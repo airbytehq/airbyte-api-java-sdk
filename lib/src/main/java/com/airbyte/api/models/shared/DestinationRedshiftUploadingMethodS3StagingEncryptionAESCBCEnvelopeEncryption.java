@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_type")
     public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionType encryptionType;
 
@@ -33,7 +34,5 @@ public class DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelope
         return this;
     }
     
-    public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption(@JsonProperty("encryption_type") DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryptionEncryptionType encryptionType) {
-        this.encryptionType = encryptionType;
-  }
+    public DestinationRedshiftUploadingMethodS3StagingEncryptionAESCBCEnvelopeEncryption(){}
 }

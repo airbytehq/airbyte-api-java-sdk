@@ -1,4 +1,5 @@
-# jobs
+# Jobs
+(*jobs*)
 
 ### Available Operations
 
@@ -26,14 +27,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("qui", "ipsum") {{
+                    basicAuth = new SchemeBasicAuth("Electric", "Small") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(944373L);            
+            CancelJobRequest req = new CancelJobRequest(660535L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -79,14 +80,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("excepturi", "cum") {{
+                    basicAuth = new SchemeBasicAuth("deploy", "female") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("voluptate", JobTypeEnum.SYNC);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("SSL eyeballs array", JobTypeEnum.SYNC);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -131,14 +132,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("reiciendis", "amet") {{
+                    basicAuth = new SchemeBasicAuth("Maine", "UTF8") {{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(680545L);            
+            GetJobRequest req = new GetJobRequest(974586L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -186,7 +187,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("numquam", "veritatis") {{
+                    basicAuth = new SchemeBasicAuth("Electric", "West") {{
                         password = "";
                         username = "";
                     }};
@@ -194,18 +195,18 @@ public class Application {
                 .build();
 
             ListJobsRequest req = new ListJobsRequest() {{
-                connectionId = "ipsa";
-                createdAtEnd = OffsetDateTime.parse("2022-07-26T10:30:36.625Z");
-                createdAtStart = OffsetDateTime.parse("2022-09-09T04:40:04.540Z");
-                jobType = JobTypeEnum.RESET;
-                limit = 696344;
-                offset = 976405;
-                orderBy = "voluptas";
-                status = JobStatusEnum.FAILED;
-                updatedAtEnd = OffsetDateTime.parse("2022-06-16T23:42:38.113Z");
-                updatedAtStart = OffsetDateTime.parse("2022-02-23T01:35:05.899Z");
+                connectionId = "Borders UDP";
+                createdAtEnd = OffsetDateTime.parse("2023-09-12T08:02:55.258Z");
+                createdAtStart = OffsetDateTime.parse("2022-08-31T07:30:17.465Z");
+                jobType = JobTypeEnum.SYNC;
+                limit = 82575;
+                offset = 977435;
+                orderBy = "by Chrysler";
+                status = JobStatusEnum.INCOMPLETE;
+                updatedAtEnd = OffsetDateTime.parse("2021-04-24T23:20:09.998Z");
+                updatedAtStart = OffsetDateTime.parse("2023-05-04T05:44:15.213Z");
                 workspaceIds = new String[]{{
-                    add("1ba77a89-ebf7-437a-a420-3ce5e6a95d8a"),
+                    add("05bc4dea-632e-4540-b9f4-4191e8f146d6"),
                 }};
             }};            
 

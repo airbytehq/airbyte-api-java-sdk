@@ -25,6 +25,7 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatType formatType;
 
@@ -33,7 +34,5 @@ public class DestinationGcsFormatJSONLinesNewlineDelimitedJSON {
         return this;
     }
     
-    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON(@JsonProperty("format_type") DestinationGcsFormatJSONLinesNewlineDelimitedJSONFormatType formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationGcsFormatJSONLinesNewlineDelimitedJSON(){}
 }

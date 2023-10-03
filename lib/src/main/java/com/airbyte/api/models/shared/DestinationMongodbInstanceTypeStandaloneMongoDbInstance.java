@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -22,6 +24,7 @@ public class DestinationMongodbInstanceTypeStandaloneMongoDbInstance {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance")
     public DestinationMongodbInstanceTypeStandaloneMongoDbInstanceInstance instance;
 
@@ -33,6 +36,7 @@ public class DestinationMongodbInstanceTypeStandaloneMongoDbInstance {
     /**
      * The Port of a Mongo database to be replicated.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -41,9 +45,7 @@ public class DestinationMongodbInstanceTypeStandaloneMongoDbInstance {
         return this;
     }
     
-    public DestinationMongodbInstanceTypeStandaloneMongoDbInstance(@JsonProperty("host") String host, @JsonProperty("instance") DestinationMongodbInstanceTypeStandaloneMongoDbInstanceInstance instance, @JsonProperty("port") Long port) {
+    public DestinationMongodbInstanceTypeStandaloneMongoDbInstance(@JsonProperty("host") String host) {
         this.host = host;
-        this.instance = instance;
-        this.port = port;
   }
 }

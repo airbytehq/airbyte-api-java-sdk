@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class DestinationMongodbInstanceTypeReplicaSet {
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("instance")
     public DestinationMongodbInstanceTypeReplicaSetInstance instance;
 
@@ -44,8 +45,7 @@ public class DestinationMongodbInstanceTypeReplicaSet {
         return this;
     }
     
-    public DestinationMongodbInstanceTypeReplicaSet(@JsonProperty("instance") DestinationMongodbInstanceTypeReplicaSetInstance instance, @JsonProperty("server_addresses") String serverAddresses) {
-        this.instance = instance;
+    public DestinationMongodbInstanceTypeReplicaSet(@JsonProperty("server_addresses") String serverAddresses) {
         this.serverAddresses = serverAddresses;
   }
 }

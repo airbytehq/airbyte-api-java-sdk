@@ -732,3 +732,73 @@ Based on:
 - [java v0.39.2] .
 ### Releases
 - [Maven Central v0.39.2] https://central.sonatype.com/artifact/com.airbyte/api/0.39.2 - .
+
+## 2023-09-16 00:11:34
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.86.0 (2.115.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.39.3] .
+### Releases
+- [Maven Central v0.39.3] https://central.sonatype.com/artifact/com.airbyte/api/0.39.3 - .
+
+## 2023-09-20 00:11:50
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.88.0 (2.118.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.39.4] .
+### Releases
+- [Maven Central v0.39.4] https://central.sonatype.com/artifact/com.airbyte/api/0.39.4 - .
+
+## 2023-09-26 00:12:20
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.91.0 (2.129.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.40.0] .
+### Releases
+- [Maven Central v0.40.0] https://central.sonatype.com/artifact/com.airbyte/api/0.40.0 - .
+
+## 2023-09-27 00:12:23
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.91.2 (2.131.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.40.1] .
+### Releases
+- [Maven Central v0.40.1] https://central.sonatype.com/artifact/com.airbyte/api/0.40.1 - .
+
+## 2023-09-29 00:12:16
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.91.3 (2.139.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.41.0] .
+### Releases
+- [Maven Central v0.41.0] https://central.sonatype.com/artifact/com.airbyte/api/0.41.0 - .
+
+## 2023-10-01 00:14:05
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.92.2 (2.142.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.42.0] .
+### Releases
+- [Maven Central v0.42.0] https://central.sonatype.com/artifact/com.airbyte/api/0.42.0 - .
+
+## 2023-10-02 00:12:35
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.92.3 (2.143.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.42.1] .
+### Releases
+- [Maven Central v0.42.1] https://central.sonatype.com/artifact/com.airbyte/api/0.42.1 - .

@@ -25,6 +25,7 @@ public class DestinationAwsDatalakeFormatParquetColumnarStorage {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
     public DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcard formatType;
 
@@ -33,7 +34,5 @@ public class DestinationAwsDatalakeFormatParquetColumnarStorage {
         return this;
     }
     
-    public DestinationAwsDatalakeFormatParquetColumnarStorage(@JsonProperty("format_type") DestinationAwsDatalakeFormatParquetColumnarStorageFormatTypeWildcard formatType) {
-        this.formatType = formatType;
-  }
+    public DestinationAwsDatalakeFormatParquetColumnarStorage(){}
 }

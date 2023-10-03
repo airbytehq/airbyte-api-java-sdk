@@ -75,6 +75,7 @@ public class SourceSftp {
     /**
      * The server port
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -102,9 +103,8 @@ public class SourceSftp {
         return this;
     }
     
-    public SourceSftp(@JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpSftp sourceType, @JsonProperty("user") String user) {
+    public SourceSftp(@JsonProperty("host") String host, @JsonProperty("sourceType") SourceSftpSftp sourceType, @JsonProperty("user") String user) {
         this.host = host;
-        this.port = port;
         this.sourceType = sourceType;
         this.user = user;
   }

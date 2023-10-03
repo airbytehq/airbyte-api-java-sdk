@@ -57,6 +57,7 @@ public class SourceSftpBulk {
     /**
      * The directory to search files for sync
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("folder_path")
     public String folderPath;
 
@@ -91,6 +92,7 @@ public class SourceSftpBulk {
     /**
      * The server port
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
     public Long port;
 
@@ -166,10 +168,8 @@ public class SourceSftpBulk {
         return this;
     }
     
-    public SourceSftpBulk(@JsonProperty("folder_path") String folderPath, @JsonProperty("host") String host, @JsonProperty("port") Long port, @JsonProperty("sourceType") SourceSftpBulkSftpBulk sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("stream_name") String streamName, @JsonProperty("username") String username) {
-        this.folderPath = folderPath;
+    public SourceSftpBulk(@JsonProperty("host") String host, @JsonProperty("sourceType") SourceSftpBulkSftpBulk sourceType, @JsonProperty("start_date") OffsetDateTime startDate, @JsonProperty("stream_name") String streamName, @JsonProperty("username") String username) {
         this.host = host;
-        this.port = port;
         this.sourceType = sourceType;
         this.startDate = startDate;
         this.streamName = streamName;

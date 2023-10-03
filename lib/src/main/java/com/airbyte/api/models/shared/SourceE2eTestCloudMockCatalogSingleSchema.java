@@ -28,6 +28,7 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
     /**
      * Name of the data stream.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("stream_name")
     public String streamName;
 
@@ -39,6 +40,7 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
     /**
      * A Json schema for the stream. The schema should be compatible with &lt;a href="https://json-schema.org/draft-07/json-schema-release-notes.html"&gt;draft-07&lt;/a&gt;. See &lt;a href="https://cswr.github.io/JsonSchema/spec/introduction/"&gt;this doc&lt;/a&gt; for examples.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("stream_schema")
     public String streamSchema;
 
@@ -47,6 +49,7 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     public SourceE2eTestCloudMockCatalogSingleSchemaType type;
 
@@ -55,9 +58,5 @@ public class SourceE2eTestCloudMockCatalogSingleSchema {
         return this;
     }
     
-    public SourceE2eTestCloudMockCatalogSingleSchema(@JsonProperty("stream_name") String streamName, @JsonProperty("stream_schema") String streamSchema, @JsonProperty("type") SourceE2eTestCloudMockCatalogSingleSchemaType type) {
-        this.streamName = streamName;
-        this.streamSchema = streamSchema;
-        this.type = type;
-  }
+    public SourceE2eTestCloudMockCatalogSingleSchema(){}
 }
