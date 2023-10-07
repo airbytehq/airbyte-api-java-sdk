@@ -36,18 +36,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("violet", "Account") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("violet", "Account"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd") {{
-                configurations = new StreamConfigurations() {{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd"){{
+                configurations = new StreamConfigurations(){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("though") {{
+                        add(new StreamConfiguration("state"){{
                             cursorField = new String[]{{
                                 add("Ergonomic"),
                             }};
@@ -57,19 +57,18 @@ public class Application {
                                     add("tesla"),
                                 }}),
                             }};
-                            syncMode = ConnectionSyncModeEnum.FULL_REFRESH_APPEND;
                         }}),
                     }};
-                }};;
+                }};
                 dataResidency = GeographyEnum.US;
                 name = "sans contingency models";
                 namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "olive Reggae Sweden";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
                     cronExpression = "Rupee";
-                }};;
+                }};
                 status = ConnectionStatusEnum.INACTIVE;
             }};            
 
@@ -115,8 +114,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("gold", "sadly") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("gold", "sadly"){{
                         password = "";
                         username = "";
                     }};
@@ -167,8 +166,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("ack", "surcharge") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("ack", "surcharge"){{
                         password = "";
                         username = "";
                     }};
@@ -219,15 +218,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Hassium", "Hatchback") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("Hassium", "Hatchback"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            ListConnectionsRequest req = new ListConnectionsRequest() {{
+            ListConnectionsRequest req = new ListConnectionsRequest(){{
                 includeDeleted = false;
                 limit = 990687;
                 offset = 410691;
@@ -288,42 +287,41 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Northeast", "modulo") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("Northeast", "modulo"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchConnectionRequest req = new PatchConnectionRequest(                new ConnectionPatchRequest() {{
-                                configurations = new StreamConfigurations() {{
-                                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                                        add(new StreamConfiguration("Customizable") {{
-                                            cursorField = new String[]{{
-                                                add("Incredible"),
-                                            }};
-                                            name = "Automotive Clothing";
-                                            primaryKey = new String[][]{{
-                                                add(new String[]{{
-                                                    add("connect"),
-                                                }}),
-                                            }};
-                                            syncMode = ConnectionSyncModeEnum.INCREMENTAL_DEDUPED_HISTORY;
-                                        }}),
-                                    }};
-                                }};;
-                                dataResidency = GeographyEnumNoDefault.US;
-                                name = "Chevrolet Keyboard";
-                                namespaceDefinition = NamespaceDefinitionEnumNoDefault.DESTINATION;
-                                namespaceFormat = "${SOURCE_NAMESPACE}";
-                                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.IGNORE;
-                                prefix = "Shoes Serbia";
-                                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON) {{
-                                    cronExpression = "Indio microchip Intelligent";
-                                }};;
-                                status = ConnectionStatusEnum.DEPRECATED;
-                            }};, "Haute port");            
+            PatchConnectionRequest req = new PatchConnectionRequest(new ConnectionPatchRequest(){{
+configurations = new StreamConfigurations(){{
+    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
+        add(new StreamConfiguration("Electric"){{
+            cursorField = new String[]{{
+                add("Incredible"),
+            }};
+            name = "Automotive Clothing";
+            primaryKey = new String[][]{{
+                add(new String[]{{
+                    add("connect"),
+                }}),
+            }};
+        }}),
+    }};
+}};
+dataResidency = GeographyEnumNoDefault.AUTO;
+name = "Bike salmon";
+namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
+namespaceFormat = "${SOURCE_NAMESPACE}";
+nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_COLUMNS;
+prefix = "Carbon";
+schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+    cronExpression = "angrily Home Intelligent";
+}};
+status = ConnectionStatusEnum.DEPRECATED;
+}}, "Haute port");            
 
             PatchConnectionResponse res = sdk.connections.patchConnection(req);
 

@@ -26,8 +26,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Electric", "Small") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("Electric", "Small"){{
                         password = "";
                         username = "";
                     }};
@@ -79,8 +79,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("deploy", "female") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("deploy", "female"){{
                         password = "";
                         username = "";
                     }};
@@ -131,8 +131,8 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Maine", "UTF8") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("Maine", "UTF8"){{
                         password = "";
                         username = "";
                     }};
@@ -186,15 +186,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Electric", "West") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("Electric", "West"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            ListJobsRequest req = new ListJobsRequest() {{
+            ListJobsRequest req = new ListJobsRequest(){{
                 connectionId = "Borders UDP";
                 createdAtEnd = OffsetDateTime.parse("2023-09-12T08:02:55.258Z");
                 createdAtStart = OffsetDateTime.parse("2022-08-31T07:30:17.465Z");
