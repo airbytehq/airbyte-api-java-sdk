@@ -22,6 +22,8 @@ repositories {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11    
     withSourcesJar()
     withJavadocJar()
 }
@@ -41,7 +43,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '0.43.0'
+            version = '0.44.0'
 
             from components.java
 
@@ -101,3 +103,4 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:httpmime:4.5.13'
 }
+
