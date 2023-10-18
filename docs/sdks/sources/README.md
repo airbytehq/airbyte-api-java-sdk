@@ -38,7 +38,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("States", "Southwest", "3ddc9848-c34b-4dfb-9090-56aa6d6dedf2"){{
-                secretId = "SQL until";
+                secretId = "person";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -91,7 +91,7 @@ public class Application {
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("Hyundai supposing");            
+            DeleteSourceRequest req = new DeleteSourceRequest("Transexual");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -143,7 +143,7 @@ public class Application {
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("optical South");            
+            GetSourceRequest req = new GetSourceRequest("online");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -315,12 +315,12 @@ public class Application {
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("Configurable"){{
+            PatchSourceRequest req = new PatchSourceRequest("Garden"){{
                 sourcePatchRequest = new SourcePatchRequest(){{
-                    configuration = "Rhode";
+                    configuration = "Northeast";
                     name = "My source";
-                    secretId = "kitsch";
-                    workspaceId = "9ed2c30d-f4fd-446c-8e47-eb2c7a42669d";
+                    secretId = "collaborative";
+                    workspaceId = "79ed2c30-df4f-4d46-80e4-7eb2c7a42669";
                 }};
             }};            
 
@@ -375,8 +375,8 @@ public class Application {
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("Checking"){{
-                sourcePutRequest = new SourcePutRequest("ASCII", "pendulum");
+            PutSourceRequest req = new PutSourceRequest("Indio"){{
+                sourcePutRequest = new SourcePutRequest("Berkshire", "ASCII");
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);

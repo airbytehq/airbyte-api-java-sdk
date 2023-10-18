@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.44.0'
+implementation 'com.airbyte.api:public-api:0.45.0'
 ```
 <!-- End SDK Installation -->
 
@@ -59,29 +59,29 @@ public class Application {
             com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd"){{
                 configurations = new StreamConfigurations(){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("state"){{
+                        add(new StreamConfiguration("tesla"){{
                             cursorField = new String[]{{
                                 add("Ergonomic"),
                             }};
-                            name = "Hyundai West";
+                            name = "TLS";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("tesla"),
+                                    add("Account"),
                                 }}),
                             }};
                         }}),
                     }};
                 }};
                 dataResidency = GeographyEnum.US;
-                name = "sans contingency models";
+                name = "though";
                 namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "olive Reggae Sweden";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
-                    cronExpression = "Rupee";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_FULLY;
+                prefix = "sans";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL){{
+                    cronExpression = "Elegant";
                 }};
-                status = ConnectionStatusEnum.INACTIVE;
+                status = ConnectionStatusEnum.DEPRECATED;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);

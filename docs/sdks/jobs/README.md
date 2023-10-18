@@ -87,7 +87,7 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("SSL eyeballs array", JobTypeEnum.SYNC);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("key", JobTypeEnum.RESET);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -195,18 +195,18 @@ public class Application {
                 .build();
 
             ListJobsRequest req = new ListJobsRequest(){{
-                connectionId = "Borders UDP";
-                createdAtEnd = OffsetDateTime.parse("2023-09-12T08:02:55.258Z");
-                createdAtStart = OffsetDateTime.parse("2022-08-31T07:30:17.465Z");
-                jobType = JobTypeEnum.SYNC;
-                limit = 82575;
-                offset = 977435;
-                orderBy = "by Chrysler";
-                status = JobStatusEnum.INCOMPLETE;
-                updatedAtEnd = OffsetDateTime.parse("2021-04-24T23:20:09.998Z");
-                updatedAtStart = OffsetDateTime.parse("2023-05-04T05:44:15.213Z");
+                connectionId = "Brand";
+                createdAtEnd = OffsetDateTime.parse("2022-12-07T03:03:13.807Z");
+                createdAtStart = OffsetDateTime.parse("2022-06-02T10:55:14.850Z");
+                jobType = JobTypeEnum.RESET;
+                limit = 898937;
+                offset = 554624;
+                orderBy = "North";
+                status = JobStatusEnum.CANCELLED;
+                updatedAtEnd = OffsetDateTime.parse("2022-04-20T01:41:50.916Z");
+                updatedAtStart = OffsetDateTime.parse("2023-11-19T12:53:49.317Z");
                 workspaceIds = new String[]{{
-                    add("05bc4dea-632e-4540-b9f4-4191e8f146d6"),
+                    add("5d371c05-bc4d-4ea6-b2e5-40b9f44191e8"),
                 }};
             }};            
 

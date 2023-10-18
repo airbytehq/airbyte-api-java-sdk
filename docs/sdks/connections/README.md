@@ -47,29 +47,29 @@ public class Application {
             com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd"){{
                 configurations = new StreamConfigurations(){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("state"){{
+                        add(new StreamConfiguration("tesla"){{
                             cursorField = new String[]{{
                                 add("Ergonomic"),
                             }};
-                            name = "Hyundai West";
+                            name = "TLS";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("tesla"),
+                                    add("Account"),
                                 }}),
                             }};
                         }}),
                     }};
                 }};
                 dataResidency = GeographyEnum.US;
-                name = "sans contingency models";
+                name = "though";
                 namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "olive Reggae Sweden";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
-                    cronExpression = "Rupee";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_FULLY;
+                prefix = "sans";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL){{
+                    cronExpression = "Elegant";
                 }};
-                status = ConnectionStatusEnum.INACTIVE;
+                status = ConnectionStatusEnum.DEPRECATED;
             }};            
 
             CreateConnectionResponse res = sdk.connections.createConnection(req);
@@ -122,7 +122,7 @@ public class Application {
                 }})
                 .build();
 
-            DeleteConnectionRequest req = new DeleteConnectionRequest("Southeast Engineer");            
+            DeleteConnectionRequest req = new DeleteConnectionRequest("Dollar");            
 
             DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
@@ -174,7 +174,7 @@ public class Application {
                 }})
                 .build();
 
-            GetConnectionRequest req = new GetConnectionRequest("Southeast bluetooth Card");            
+            GetConnectionRequest req = new GetConnectionRequest("Executive");            
 
             GetConnectionResponse res = sdk.connections.getConnection(req);
 
@@ -298,30 +298,30 @@ public class Application {
             PatchConnectionRequest req = new PatchConnectionRequest(new ConnectionPatchRequest(){{
 configurations = new StreamConfigurations(){{
     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-        add(new StreamConfiguration("Electric"){{
+        add(new StreamConfiguration("male"){{
             cursorField = new String[]{{
                 add("Incredible"),
             }};
-            name = "Automotive Clothing";
+            name = "microchip";
             primaryKey = new String[][]{{
                 add(new String[]{{
-                    add("connect"),
+                    add("boohoo"),
                 }}),
             }};
         }}),
     }};
 }};
-dataResidency = GeographyEnumNoDefault.AUTO;
-name = "Bike salmon";
+dataResidency = GeographyEnumNoDefault.US;
+name = "Electric";
 namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
 namespaceFormat = "${SOURCE_NAMESPACE}";
-nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_COLUMNS;
-prefix = "Carbon";
-schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
-    cronExpression = "angrily Home Intelligent";
+nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.DISABLE_CONNECTION;
+prefix = "Bike";
+schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL){{
+    cronExpression = "quia";
 }};
-status = ConnectionStatusEnum.DEPRECATED;
-}}, "Haute port");            
+status = ConnectionStatusEnum.INACTIVE;
+}}, "Shoes");            
 
             PatchConnectionResponse res = sdk.connections.patchConnection(req);
 

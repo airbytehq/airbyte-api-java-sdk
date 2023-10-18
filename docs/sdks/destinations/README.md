@@ -88,7 +88,7 @@ public class Application {
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("male");            
+            DeleteDestinationRequest req = new DeleteDestinationRequest("Developer");            
 
             DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -140,7 +140,7 @@ public class Application {
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("Bike ubiquitous");            
+            GetDestinationRequest req = new GetDestinationRequest("overriding");            
 
             GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -252,10 +252,10 @@ public class Application {
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("Verde pixel male"){{
+            PatchDestinationRequest req = new PatchDestinationRequest("hoodwink"){{
                 destinationPatchRequest = new DestinationPatchRequest(){{
-                    configuration = "till";
-                    name = "firewall West morph";
+                    configuration = "Toys";
+                    name = "pixel";
                 }};
             }};            
 
@@ -310,8 +310,8 @@ public class Application {
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("navigate female"){{
-                destinationPutRequest = new DestinationPutRequest("unusual", "amidst");
+            PutDestinationRequest req = new PutDestinationRequest("Loan"){{
+                destinationPutRequest = new DestinationPutRequest("female", "unusual");
             }};            
 
             PutDestinationResponse res = sdk.destinations.putDestination(req);

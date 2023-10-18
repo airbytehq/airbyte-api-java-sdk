@@ -28,6 +28,19 @@ java {
     withJavadocJar()
 }
 
+model {
+    tasks.generatePomFileForMavenPublication {
+        destination = file("$buildDir/pom.xml")
+    }
+}
+
+jar {
+    dependsOn(":$project.name:generatePomFileForMavenPublication")
+    into("META-INF/maven/com.airbyte/api") {
+        from("$buildDir/pom.xml") 
+    }
+}
+
 publishing {
     repositories {
         maven {
@@ -43,7 +56,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '0.44.0'
+            version = '0.45.0'
 
             from components.java
 
@@ -77,11 +90,13 @@ publishing {
     }
 }
 
-signing {
-    def signingKey = findProperty("signingKey")
-    def signingPassphrase = findProperty("signingPassphrase")
-    useInMemoryPgpKeys(signingKey, signingPassphrase)
-    sign publishing.publications.maven
+if (!project.hasProperty('skip.signing')) {
+    signing {
+        def signingKey = findProperty("signingKey")
+        def signingPassphrase = findProperty("signingPassphrase")
+        useInMemoryPgpKeys(signingKey, signingPassphrase)
+        sign publishing.publications.maven
+    }
 }
 
 javadoc {

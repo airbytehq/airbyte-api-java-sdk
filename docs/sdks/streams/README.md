@@ -31,7 +31,7 @@ public class Application {
                 }})
                 .build();
 
-            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("brand", "salmon"){{
+            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("South", "withdrawal"){{
                 ignoreCache = false;
             }};            
 

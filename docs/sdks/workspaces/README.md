@@ -40,7 +40,7 @@ public class Application {
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.DESTINATION, "Industrial", OAuthActorNames.GITLAB), "Rupee till");            
+            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.DESTINATION, "Industrial", OAuthActorNames.GITLAB), "Regional");            
 
             CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
 
@@ -144,7 +144,7 @@ public class Application {
                 }})
                 .build();
 
-            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("protocol");            
+            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("Plastic");            
 
             DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
 
@@ -196,7 +196,7 @@ public class Application {
                 }})
                 .build();
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest("Fresh Bedfordshire male");            
+            GetWorkspaceRequest req = new GetWorkspaceRequest("Diesel");            
 
             GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
 
@@ -308,7 +308,7 @@ public class Application {
                 }})
                 .build();
 
-            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(new WorkspaceUpdateRequest("afterwards"), "male");            
+            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(new WorkspaceUpdateRequest("afterwards"), "synergistic");            
 
             UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
 
