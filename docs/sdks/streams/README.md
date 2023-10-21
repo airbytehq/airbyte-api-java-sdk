@@ -24,14 +24,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("East", "seldom"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("South", "withdrawal"){{
+            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("string", "string"){{
                 ignoreCache = false;
             }};            
 

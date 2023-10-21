@@ -37,37 +37,37 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("violet", "Account"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd"){{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("c669dd1e-3620-483e-afc8-55914e0a570f", "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
                 configurations = new StreamConfigurations(){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("tesla"){{
+                        add(new StreamConfiguration("string"){{
                             cursorField = new String[]{{
-                                add("Ergonomic"),
+                                add("string"),
                             }};
-                            name = "TLS";
+                            name = "string";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("Account"),
+                                    add("string"),
                                 }}),
                             }};
                         }}),
                     }};
                 }};
-                dataResidency = GeographyEnum.US;
-                name = "though";
-                namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
+                dataResidency = GeographyEnum.EU;
+                name = "string";
+                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_FULLY;
-                prefix = "sans";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL){{
-                    cronExpression = "Elegant";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
+                prefix = "string";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+                    cronExpression = "string";
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
             }};            
@@ -115,14 +115,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("gold", "sadly"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteConnectionRequest req = new DeleteConnectionRequest("Dollar");            
+            DeleteConnectionRequest req = new DeleteConnectionRequest("string");            
 
             DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
@@ -167,14 +167,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("ack", "surcharge"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetConnectionRequest req = new GetConnectionRequest("Executive");            
+            GetConnectionRequest req = new GetConnectionRequest("string");            
 
             GetConnectionResponse res = sdk.connections.getConnection(req);
 
@@ -219,7 +219,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Hassium", "Hatchback"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
@@ -228,10 +228,10 @@ public class Application {
 
             ListConnectionsRequest req = new ListConnectionsRequest(){{
                 includeDeleted = false;
-                limit = 990687;
-                offset = 410691;
+                limit = 726733;
+                offset = 907316;
                 workspaceIds = new String[]{{
-                    add("e532a55f-79c2-4b30-a82e-dc879612b791"),
+                    add("d8f6e532-a55f-479c-ab30-682edc879612"),
                 }};
             }};            
 
@@ -288,7 +288,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Northeast", "modulo"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
@@ -298,30 +298,30 @@ public class Application {
             PatchConnectionRequest req = new PatchConnectionRequest(new ConnectionPatchRequest(){{
 configurations = new StreamConfigurations(){{
     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-        add(new StreamConfiguration("male"){{
+        add(new StreamConfiguration("string"){{
             cursorField = new String[]{{
-                add("Incredible"),
+                add("string"),
             }};
-            name = "microchip";
+            name = "string";
             primaryKey = new String[][]{{
                 add(new String[]{{
-                    add("boohoo"),
+                    add("string"),
                 }}),
             }};
         }}),
     }};
 }};
-dataResidency = GeographyEnumNoDefault.US;
-name = "Electric";
+dataResidency = GeographyEnumNoDefault.AUTO;
+name = "string";
 namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
 namespaceFormat = "${SOURCE_NAMESPACE}";
-nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.DISABLE_CONNECTION;
-prefix = "Bike";
-schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL){{
-    cronExpression = "quia";
+nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_FULLY;
+prefix = "string";
+schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+    cronExpression = "string";
 }};
-status = ConnectionStatusEnum.INACTIVE;
-}}, "Shoes");            
+status = ConnectionStatusEnum.ACTIVE;
+}}, "string");            
 
             PatchConnectionResponse res = sdk.connections.patchConnection(req);
 

@@ -23,37 +23,37 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("violet", "Account"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("d1e36208-3eaf-4c85-9914-e0a570f6dd42", "7d83a555-8478-4358-8232-5b6c7b3fd2fd"){{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("c669dd1e-3620-483e-afc8-55914e0a570f", "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
                 configurations = new StreamConfigurations(){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("tesla"){{
+                        add(new StreamConfiguration("string"){{
                             cursorField = new String[]{{
-                                add("Ergonomic"),
+                                add("string"),
                             }};
-                            name = "TLS";
+                            name = "string";
                             primaryKey = new String[][]{{
                                 add(new String[]{{
-                                    add("Account"),
+                                    add("string"),
                                 }}),
                             }};
                         }}),
                     }};
                 }};
-                dataResidency = GeographyEnum.US;
-                name = "though";
-                namespaceDefinition = NamespaceDefinitionEnum.DESTINATION;
+                dataResidency = GeographyEnum.EU;
+                name = "string";
+                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.PROPAGATE_FULLY;
-                prefix = "sans";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.MANUAL){{
-                    cronExpression = "Elegant";
+                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
+                prefix = "string";
+                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+                    cronExpression = "string";
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
             }};            

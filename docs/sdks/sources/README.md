@@ -30,15 +30,15 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Direct", "lavender"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("States", "Southwest", "3ddc9848-c34b-4dfb-9090-56aa6d6dedf2"){{
-                secretId = "person";
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("string", "string", "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
+                secretId = "string";
             }};            
 
             CreateSourceResponse res = sdk.sources.createSource(req);
@@ -84,14 +84,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("South", "digital"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("Transexual");            
+            DeleteSourceRequest req = new DeleteSourceRequest("string");            
 
             DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -136,14 +136,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Dynamic", "Refined"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("online");            
+            GetSourceRequest req = new GetSourceRequest("string");            
 
             GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -194,14 +194,14 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Chips", "Cadillac"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("bandwidth", OAuthActorNames.GITLAB, "0d9919ff-ae67-4d4e-92eb-0994476c595c"){{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("string", OAuthActorNames.GOOGLE_ADS, "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
                 oAuthInputConfiguration = new OAuthInputConfiguration();
             }};            
 
@@ -248,7 +248,7 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("withdrawal", "SUV"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
@@ -257,10 +257,10 @@ public class Application {
 
             ListSourcesRequest req = new ListSourcesRequest(){{
                 includeDeleted = false;
-                limit = 736973;
-                offset = 706496;
+                limit = 442892;
+                offset = 284564;
                 workspaceIds = new String[]{{
-                    add("77f80b57-c454-400c-9d47-a64428ce2bab"),
+                    add("dbbb77f8-0b57-4c45-800c-5d47a64428ce"),
                 }};
             }};            
 
@@ -308,19 +308,19 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Small", "septicaemia"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("Garden"){{
+            PatchSourceRequest req = new PatchSourceRequest("string"){{
                 sourcePatchRequest = new SourcePatchRequest(){{
-                    configuration = "Northeast";
+                    configuration = "string";
                     name = "My source";
-                    secretId = "collaborative";
-                    workspaceId = "79ed2c30-df4f-4d46-80e4-7eb2c7a42669";
+                    secretId = "string";
+                    workspaceId = "30fc2511-c44f-479e-92c3-0df4fd46c0e4";
                 }};
             }};            
 
@@ -368,15 +368,15 @@ public class Application {
         try {
             Airbyte sdk = Airbyte.builder()
                 .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("Ameliorated", "bah"){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("Indio"){{
-                sourcePutRequest = new SourcePutRequest("Berkshire", "ASCII");
+            PutSourceRequest req = new PutSourceRequest("string"){{
+                sourcePutRequest = new SourcePutRequest("string", "string");
             }};            
 
             PutSourceResponse res = sdk.sources.putSource(req);
