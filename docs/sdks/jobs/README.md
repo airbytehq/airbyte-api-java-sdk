@@ -26,15 +26,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Electric", "Small") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            CancelJobRequest req = new CancelJobRequest(660535L);            
+            CancelJobRequest req = new CancelJobRequest(801771L);            
 
             CancelJobResponse res = sdk.jobs.cancelJob(req);
 
@@ -79,15 +79,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("deploy", "female") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("SSL eyeballs array", JobTypeEnum.SYNC);            
+            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest("string", JobTypeEnum.SYNC);            
 
             CreateJobResponse res = sdk.jobs.createJob(req);
 
@@ -131,15 +131,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Maine", "UTF8") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetJobRequest req = new GetJobRequest(974586L);            
+            GetJobRequest req = new GetJobRequest(131101L);            
 
             GetJobResponse res = sdk.jobs.getJob(req);
 
@@ -186,27 +186,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security() {{
-                    basicAuth = new SchemeBasicAuth("Electric", "West") {{
+                .setSecurity(new Security(){{
+                    basicAuth = new SchemeBasicAuth("string", "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            ListJobsRequest req = new ListJobsRequest() {{
-                connectionId = "Borders UDP";
-                createdAtEnd = OffsetDateTime.parse("2023-09-12T08:02:55.258Z");
-                createdAtStart = OffsetDateTime.parse("2022-08-31T07:30:17.465Z");
+            ListJobsRequest req = new ListJobsRequest(){{
+                connectionId = "string";
+                createdAtEnd = OffsetDateTime.parse("2023-06-04T20:58:05.747Z");
+                createdAtStart = OffsetDateTime.parse("2022-04-02T18:38:46.428Z");
                 jobType = JobTypeEnum.SYNC;
-                limit = 82575;
-                offset = 977435;
-                orderBy = "by Chrysler";
-                status = JobStatusEnum.INCOMPLETE;
-                updatedAtEnd = OffsetDateTime.parse("2021-04-24T23:20:09.998Z");
-                updatedAtStart = OffsetDateTime.parse("2023-05-04T05:44:15.213Z");
+                limit = 955698;
+                offset = 624731;
+                orderBy = "string";
+                status = JobStatusEnum.PENDING;
+                updatedAtEnd = OffsetDateTime.parse("2022-12-07T03:03:13.807Z");
+                updatedAtStart = OffsetDateTime.parse("2022-06-02T10:55:14.850Z");
                 workspaceIds = new String[]{{
-                    add("05bc4dea-632e-4540-b9f4-4191e8f146d6"),
+                    add("de801f6f-5d37-41c0-9bc4-dea632e540b9"),
                 }};
             }};            
 
