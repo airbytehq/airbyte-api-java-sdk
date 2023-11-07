@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.43.0'
+implementation 'com.airbyte.api:public-api:0.44.0'
 ```
 <!-- End SDK Installation -->
 
@@ -101,7 +101,7 @@ public class Application {
 ## Available Resources and Operations
 
 
-### [connections](docs/sdks/connections/README.md)
+### [.connections](docs/sdks/connections/README.md)
 
 * [createConnection](docs/sdks/connections/README.md#createconnection) - Create a connection
 * [deleteConnection](docs/sdks/connections/README.md#deleteconnection) - Delete a Connection
@@ -109,7 +109,7 @@ public class Application {
 * [listConnections](docs/sdks/connections/README.md#listconnections) - List connections
 * [patchConnection](docs/sdks/connections/README.md#patchconnection) - Update Connection details
 
-### [destinations](docs/sdks/destinations/README.md)
+### [.destinations](docs/sdks/destinations/README.md)
 
 * [createDestination](docs/sdks/destinations/README.md#createdestination) - Create a destination
 * [deleteDestination](docs/sdks/destinations/README.md#deletedestination) - Delete a Destination
@@ -118,14 +118,14 @@ public class Application {
 * [patchDestination](docs/sdks/destinations/README.md#patchdestination) - Update a Destination
 * [putDestination](docs/sdks/destinations/README.md#putdestination) - Update a Destination and fully overwrite it
 
-### [jobs](docs/sdks/jobs/README.md)
+### [.jobs](docs/sdks/jobs/README.md)
 
 * [cancelJob](docs/sdks/jobs/README.md#canceljob) - Cancel a running Job
 * [createJob](docs/sdks/jobs/README.md#createjob) - Trigger a sync or reset job of a connection
 * [getJob](docs/sdks/jobs/README.md#getjob) - Get Job status and details
 * [listJobs](docs/sdks/jobs/README.md#listjobs) - List Jobs by sync type
 
-### [sources](docs/sdks/sources/README.md)
+### [.sources](docs/sdks/sources/README.md)
 
 * [createSource](docs/sdks/sources/README.md#createsource) - Create a source
 * [deleteSource](docs/sdks/sources/README.md#deletesource) - Delete a Source
@@ -135,11 +135,11 @@ public class Application {
 * [patchSource](docs/sdks/sources/README.md#patchsource) - Update a Source
 * [putSource](docs/sdks/sources/README.md#putsource) - Update a Source and fully overwrite it
 
-### [streams](docs/sdks/streams/README.md)
+### [.streams](docs/sdks/streams/README.md)
 
 * [getStreamProperties](docs/sdks/streams/README.md#getstreamproperties) - Get stream properties
 
-### [workspaces](docs/sdks/workspaces/README.md)
+### [.workspaces](docs/sdks/workspaces/README.md)
 
 * [createOrUpdateWorkspaceOAuthCredentials](docs/sdks/workspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
 * [createWorkspace](docs/sdks/workspaces/README.md#createworkspace) - Create a workspace
