@@ -1,5 +1,5 @@
 # Destinations
-(*.destinations*)
+(*destinations*)
 
 ### Available Operations
 

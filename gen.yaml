@@ -2,19 +2,19 @@ configVersion: 1.0.0
 management:
   docChecksum: 5b9a9a6f493e89e080a57e42997074be
   docVersion: 1.0.0
-  speakeasyVersion: 1.114.1
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: airbyte
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
 features:
   java:
-    core: 3.0.1
+    core: 3.0.2
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
 java:
-  version: 0.44.0
+  version: 0.44.1
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
@@ -29,8 +29,10 @@ java:
       operations: models/operations
       shared: models/shared
       webhooks: models/webhooks
+  inputModelSuffix: input
   maxMethodParams: 0
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+  outputModelSuffix: output
   projectName: public-api
   published: true
   repoSubDirectory: .

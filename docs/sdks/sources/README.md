@@ -1,5 +1,5 @@
 # Sources
-(*.sources*)
+(*sources*)
 
 ### Available Operations
 
