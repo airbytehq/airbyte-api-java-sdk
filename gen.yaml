@@ -16,7 +16,7 @@ features:
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
 java:
-  version: 0.44.3
+  version: 0.45.0
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
