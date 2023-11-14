@@ -22,8 +22,23 @@ repositories {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11    
     withSourcesJar()
     withJavadocJar()
+}
+
+model {
+    tasks.generatePomFileForMavenPublication {
+        destination = file("$buildDir/pom.xml")
+    }
+}
+
+jar {
+    dependsOn(":$project.name:generatePomFileForMavenPublication")
+    into("META-INF/maven/com.airbyte/api") {
+        from("$buildDir/pom.xml") 
+    }
 }
 
 publishing {
@@ -41,7 +56,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '0.42.1'
+            version = '0.44.3'
 
             from components.java
 
@@ -75,11 +90,13 @@ publishing {
     }
 }
 
-signing {
-    def signingKey = findProperty("signingKey")
-    def signingPassphrase = findProperty("signingPassphrase")
-    useInMemoryPgpKeys(signingKey, signingPassphrase)
-    sign publishing.publications.maven
+if (!project.hasProperty('skip.signing')) {
+    signing {
+        def signingKey = findProperty("signingKey")
+        def signingPassphrase = findProperty("signingPassphrase")
+        useInMemoryPgpKeys(signingKey, signingPassphrase)
+        sign publishing.publications.maven
+    }
 }
 
 javadoc {
@@ -88,6 +105,7 @@ javadoc {
     if(JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
     }
+    options.addStringOption('Xdoclint:none', '-quiet')   
 }
 
 dependencies {
@@ -100,3 +118,4 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:httpmime:4.5.13'
 }
+
