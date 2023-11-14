@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```java
 package hello.world;
 
