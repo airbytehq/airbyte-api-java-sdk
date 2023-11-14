@@ -37,7 +37,9 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("string", "string", "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("string", "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
+                definitionId = "a6d6dedf-297b-4eb8-860e-3afe15240dda";
+                name = "string";
                 secretId = "string";
             }};            
 
@@ -201,7 +203,7 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("string", OAuthActorNames.GOOGLE_ADS, "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("string", OAuthActorNames.GITLAB, "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
                 oAuthInputConfiguration = new OAuthInputConfiguration();
             }};            
 

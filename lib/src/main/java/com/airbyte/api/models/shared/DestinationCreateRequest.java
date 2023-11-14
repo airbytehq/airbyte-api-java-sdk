@@ -4,6 +4,8 @@
 
 package com.airbyte.api.models.shared;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -19,6 +21,22 @@ public class DestinationCreateRequest {
         return this;
     }
     
+    /**
+     * The UUID of the connector definition. One of name or definitionId must be provided.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("definitionId")
+    public String definitionId;
+
+    public DestinationCreateRequest withDefinitionId(String definitionId) {
+        this.definitionId = definitionId;
+        return this;
+    }
+    
+    /**
+     * Name of the destination type e.g. mysql. One of name or definitionId must be provided.
+     */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     public String name;
 
@@ -35,9 +53,8 @@ public class DestinationCreateRequest {
         return this;
     }
     
-    public DestinationCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    public DestinationCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
-        this.name = name;
         this.workspaceId = workspaceId;
   }
 }
