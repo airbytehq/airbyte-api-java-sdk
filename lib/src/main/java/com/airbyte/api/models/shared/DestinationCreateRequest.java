@@ -22,7 +22,7 @@ public class DestinationCreateRequest {
     }
     
     /**
-     * The UUID of the connector definition. One of name or definitionId must be provided.
+     * The UUID of the connector definition. One of configuration.destinationType or definitionId must be provided.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("definitionId")
@@ -34,9 +34,8 @@ public class DestinationCreateRequest {
     }
     
     /**
-     * Name of the destination type e.g. mysql. One of name or definitionId must be provided.
+     * Name of the destination e.g. dev-mysql-instance.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     public String name;
 
@@ -53,8 +52,9 @@ public class DestinationCreateRequest {
         return this;
     }
     
-    public DestinationCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("workspaceId") String workspaceId) {
+    public DestinationCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
+        this.name = name;
         this.workspaceId = workspaceId;
   }
 }
