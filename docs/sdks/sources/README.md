@@ -37,9 +37,8 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("string", "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("string", "string", "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
                 definitionId = "a6d6dedf-297b-4eb8-860e-3afe15240dda";
-                name = "string";
                 secretId = "string";
             }};            
 

@@ -22,7 +22,7 @@ public class SourceCreateRequest {
     }
     
     /**
-     * The UUID of the connector definition. One of name or definitionId must be provided.
+     * The UUID of the connector definition. One of configuration.sourceType or definitionId must be provided.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("definitionId")
@@ -34,9 +34,8 @@ public class SourceCreateRequest {
     }
     
     /**
-     * Name of the source type e.g. mysql. One of name or definitionId must be provided.
+     * Name of the source e.g. dev-mysql-instance.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     public String name;
 
@@ -65,8 +64,9 @@ public class SourceCreateRequest {
         return this;
     }
     
-    public SourceCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("workspaceId") String workspaceId) {
+    public SourceCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
+        this.name = name;
         this.workspaceId = workspaceId;
   }
 }

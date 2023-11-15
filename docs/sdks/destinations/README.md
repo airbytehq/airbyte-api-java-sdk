@@ -36,9 +36,8 @@ public class Application {
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest("string", "8360860a-d46e-48e6-af62-08e5ba5019ef"){{
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest("string", "string", "8360860a-d46e-48e6-af62-08e5ba5019ef"){{
                 definitionId = "3492fc0e-ef56-45b0-b0c7-3d4dfc9aec3c";
-                name = "string";
             }};            
 
             CreateDestinationResponse res = sdk.destinations.createDestination(req);
