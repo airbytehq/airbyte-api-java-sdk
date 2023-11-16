@@ -43,11 +43,10 @@ public class Jobs {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.CancelJobResponse res = new com.airbyte.api.models.operations.CancelJobResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.CancelJobResponse res = new com.airbyte.api.models.operations.CancelJobResponse(contentType, httpRes.statusCode(), httpRes) {{
             jobResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -89,11 +88,10 @@ public class Jobs {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.CreateJobResponse res = new com.airbyte.api.models.operations.CreateJobResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.CreateJobResponse res = new com.airbyte.api.models.operations.CreateJobResponse(contentType, httpRes.statusCode(), httpRes) {{
             jobResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -130,11 +128,10 @@ public class Jobs {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.GetJobResponse res = new com.airbyte.api.models.operations.GetJobResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.GetJobResponse res = new com.airbyte.api.models.operations.GetJobResponse(contentType, httpRes.statusCode(), httpRes) {{
             jobResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -177,11 +174,10 @@ public class Jobs {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.ListJobsResponse res = new com.airbyte.api.models.operations.ListJobsResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.ListJobsResponse res = new com.airbyte.api.models.operations.ListJobsResponse(contentType, httpRes.statusCode(), httpRes) {{
             jobsResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {

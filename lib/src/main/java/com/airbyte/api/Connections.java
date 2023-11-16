@@ -48,11 +48,10 @@ public class Connections {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.CreateConnectionResponse res = new com.airbyte.api.models.operations.CreateConnectionResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.CreateConnectionResponse res = new com.airbyte.api.models.operations.CreateConnectionResponse(contentType, httpRes.statusCode(), httpRes) {{
             connectionResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -89,10 +88,9 @@ public class Connections {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.DeleteConnectionResponse res = new com.airbyte.api.models.operations.DeleteConnectionResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.DeleteConnectionResponse res = new com.airbyte.api.models.operations.DeleteConnectionResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 204 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
@@ -122,11 +120,10 @@ public class Connections {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.GetConnectionResponse res = new com.airbyte.api.models.operations.GetConnectionResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.GetConnectionResponse res = new com.airbyte.api.models.operations.GetConnectionResponse(contentType, httpRes.statusCode(), httpRes) {{
             connectionResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -169,11 +166,10 @@ public class Connections {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.ListConnectionsResponse res = new com.airbyte.api.models.operations.ListConnectionsResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.ListConnectionsResponse res = new com.airbyte.api.models.operations.ListConnectionsResponse(contentType, httpRes.statusCode(), httpRes) {{
             connectionsResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -215,11 +211,10 @@ public class Connections {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.PatchConnectionResponse res = new com.airbyte.api.models.operations.PatchConnectionResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.PatchConnectionResponse res = new com.airbyte.api.models.operations.PatchConnectionResponse(contentType, httpRes.statusCode(), httpRes) {{
             connectionResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {

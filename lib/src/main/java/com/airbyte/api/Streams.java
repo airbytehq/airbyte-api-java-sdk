@@ -48,11 +48,10 @@ public class Streams {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.GetStreamPropertiesResponse res = new com.airbyte.api.models.operations.GetStreamPropertiesResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.GetStreamPropertiesResponse res = new com.airbyte.api.models.operations.GetStreamPropertiesResponse(contentType, httpRes.statusCode(), httpRes) {{
             streamPropertiesResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
