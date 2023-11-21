@@ -50,10 +50,9 @@ public class Workspaces {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse res = new com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse res = new com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
@@ -88,11 +87,10 @@ public class Workspaces {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.CreateWorkspaceResponse res = new com.airbyte.api.models.operations.CreateWorkspaceResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.CreateWorkspaceResponse res = new com.airbyte.api.models.operations.CreateWorkspaceResponse(contentType, httpRes.statusCode(), httpRes) {{
             workspaceResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -129,10 +127,9 @@ public class Workspaces {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.DeleteWorkspaceResponse res = new com.airbyte.api.models.operations.DeleteWorkspaceResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.DeleteWorkspaceResponse res = new com.airbyte.api.models.operations.DeleteWorkspaceResponse(contentType, httpRes.statusCode(), httpRes) {{
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 204 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
@@ -162,11 +159,10 @@ public class Workspaces {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.GetWorkspaceResponse res = new com.airbyte.api.models.operations.GetWorkspaceResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.GetWorkspaceResponse res = new com.airbyte.api.models.operations.GetWorkspaceResponse(contentType, httpRes.statusCode(), httpRes) {{
             workspaceResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -209,11 +205,10 @@ public class Workspaces {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.ListWorkspacesResponse res = new com.airbyte.api.models.operations.ListWorkspacesResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.ListWorkspacesResponse res = new com.airbyte.api.models.operations.ListWorkspacesResponse(contentType, httpRes.statusCode(), httpRes) {{
             workspacesResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -255,11 +250,10 @@ public class Workspaces {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        com.airbyte.api.models.operations.UpdateWorkspaceResponse res = new com.airbyte.api.models.operations.UpdateWorkspaceResponse(contentType, httpRes.statusCode()) {{
+        
+        com.airbyte.api.models.operations.UpdateWorkspaceResponse res = new com.airbyte.api.models.operations.UpdateWorkspaceResponse(contentType, httpRes.statusCode(), httpRes) {{
             workspaceResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {

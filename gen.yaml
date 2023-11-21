@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 8f62e207fcdebe72da7eb9c7525220b5
   docVersion: 1.0.0
-  speakeasyVersion: 1.120.0
-  generationVersion: 2.188.3
+  speakeasyVersion: 1.121.3
+  generationVersion: 2.195.2
 generation:
   comments: {}
   sdkClassName: airbyte
@@ -12,11 +12,11 @@ generation:
     optionalPropertyRendering: withExample
 features:
   java:
-    core: 3.0.3
+    core: 3.0.4
     globalSecurity: 2.81.1
-    globalServerURLs: 2.82.0
+    globalServerURLs: 2.82.1
 java:
-  version: 0.45.1
+  version: 0.46.0
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
