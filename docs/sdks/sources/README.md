@@ -29,20 +29,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest("string", "string", "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
+            com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(
+                "string",
+                "string",
+                "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
                 definitionId = "a6d6dedf-297b-4eb8-860e-3afe15240dda";
                 secretId = "string";
-            }};            
 
-            CreateSourceResponse res = sdk.sources.createSource(req);
+            }};
+
+            com.airbyte.api.models.operations.CreateSourceResponse res = sdk.sources.createSource(req);
 
             if (res.sourceResponse != null) {
                 // handle response
@@ -84,17 +91,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteSourceRequest req = new DeleteSourceRequest("string");            
+            com.airbyte.api.models.operations.DeleteSourceRequest req = new DeleteSourceRequest(
+                "string");
 
-            DeleteSourceResponse res = sdk.sources.deleteSource(req);
+            com.airbyte.api.models.operations.DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -136,17 +147,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetSourceRequest req = new GetSourceRequest("string");            
+            com.airbyte.api.models.operations.GetSourceRequest req = new GetSourceRequest(
+                "string");
 
-            GetSourceResponse res = sdk.sources.getSource(req);
+            com.airbyte.api.models.operations.GetSourceResponse res = sdk.sources.getSource(req);
 
             if (res.sourceResponse != null) {
                 // handle response
@@ -194,19 +209,27 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest("string", OAuthActorNames.GITLAB, "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
-                oAuthInputConfiguration = new OAuthInputConfiguration();
-            }};            
+            com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest(
+                "string",
+                OAuthActorNames.GITLAB,
+                "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
+                oAuthInputConfiguration = new OAuthInputConfiguration(
+);
 
-            InitiateOAuthResponse res = sdk.sources.initiateOAuth(req);
+            }};
+
+            com.airbyte.api.models.operations.InitiateOAuthResponse res = sdk.sources.initiateOAuth(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -248,24 +271,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            ListSourcesRequest req = new ListSourcesRequest(){{
+            com.airbyte.api.models.operations.ListSourcesRequest req = new ListSourcesRequest(
+){{
                 includeDeleted = false;
                 limit = 442892;
                 offset = 284564;
                 workspaceIds = new String[]{{
                     add("dbbb77f8-0b57-4c45-800c-5d47a64428ce"),
                 }};
-            }};            
 
-            ListSourcesResponse res = sdk.sources.listSources(req);
+            }};
+
+            com.airbyte.api.models.operations.ListSourcesResponse res = sdk.sources.listSources(req);
 
             if (res.sourcesResponse != null) {
                 // handle response
@@ -308,24 +336,31 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchSourceRequest req = new PatchSourceRequest("string"){{
-                sourcePatchRequest = new SourcePatchRequest(){{
+            com.airbyte.api.models.operations.PatchSourceRequest req = new PatchSourceRequest(
+                "string"){{
+                sourcePatchRequest = new SourcePatchRequest(
+){{
                     configuration = "string";
                     name = "My source";
                     secretId = "string";
                     workspaceId = "30fc2511-c44f-479e-92c3-0df4fd46c0e4";
-                }};
-            }};            
 
-            PatchSourceResponse res = sdk.sources.patchSource(req);
+                }};
+
+            }};
+
+            com.airbyte.api.models.operations.PatchSourceResponse res = sdk.sources.patchSource(req);
 
             if (res.sourceResponse != null) {
                 // handle response
@@ -368,19 +403,26 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PutSourceRequest req = new PutSourceRequest("string"){{
-                sourcePutRequest = new SourcePutRequest("string", "string");
-            }};            
+            com.airbyte.api.models.operations.PutSourceRequest req = new PutSourceRequest(
+                "string"){{
+                sourcePutRequest = new SourcePutRequest(
+                    "string",
+                    "string");
 
-            PutSourceResponse res = sdk.sources.putSource(req);
+            }};
+
+            com.airbyte.api.models.operations.PutSourceResponse res = sdk.sources.putSource(req);
 
             if (res.sourceResponse != null) {
                 // handle response

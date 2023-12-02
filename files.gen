@@ -133,7 +133,6 @@ lib/src/main/java/com/airbyte/api/models/shared/WorkspacesResponse.java
 lib/src/main/java/com/airbyte/api/models/shared/WorkspaceUpdateRequest.java
 lib/src/main/java/com/airbyte/api/models/shared/Security.java
 lib/src/main/java/com/airbyte/api/models/shared/SchemeBasicAuth.java
-USAGE.md
 docs/models/operations/CreateConnectionResponse.md
 docs/models/operations/DeleteConnectionRequest.md
 docs/models/operations/DeleteConnectionResponse.md
@@ -239,3 +238,4 @@ docs/sdks/jobs/README.md
 docs/sdks/sources/README.md
 docs/sdks/streams/README.md
 docs/sdks/workspaces/README.md
+USAGE.md

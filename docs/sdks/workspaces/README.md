@@ -32,17 +32,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(new WorkspaceOAuthCredentialsRequest(ActorTypeEnum.DESTINATION, "string", OAuthActorNames.AMAZON_ADS), "string");            
+            com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(
+                new WorkspaceOAuthCredentialsRequest(
+                    ActorTypeEnum.DESTINATION,
+                    "string",
+                    OAuthActorNames.AMAZON_ADS),
+                "string");
 
-            CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
+            com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -84,17 +92,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest("string");            
+            com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest(
+                "string");
 
-            CreateWorkspaceResponse res = sdk.workspaces.createWorkspace(req);
+            com.airbyte.api.models.operations.CreateWorkspaceResponse res = sdk.workspaces.createWorkspace(req);
 
             if (res.workspaceResponse != null) {
                 // handle response
@@ -136,17 +148,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteWorkspaceRequest req = new DeleteWorkspaceRequest("string");            
+            com.airbyte.api.models.operations.DeleteWorkspaceRequest req = new DeleteWorkspaceRequest(
+                "string");
 
-            DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
+            com.airbyte.api.models.operations.DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -188,17 +204,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest("string");            
+            com.airbyte.api.models.operations.GetWorkspaceRequest req = new GetWorkspaceRequest(
+                "string");
 
-            GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
+            com.airbyte.api.models.operations.GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
 
             if (res.workspaceResponse != null) {
                 // handle response
@@ -240,24 +260,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            ListWorkspacesRequest req = new ListWorkspacesRequest(){{
+            com.airbyte.api.models.operations.ListWorkspacesRequest req = new ListWorkspacesRequest(
+){{
                 includeDeleted = false;
                 limit = 283250;
                 offset = 568374;
                 workspaceIds = new String[]{{
                     add("53f9aa38-0387-4f54-9d38-9888ede30708"),
                 }};
-            }};            
 
-            ListWorkspacesResponse res = sdk.workspaces.listWorkspaces(req);
+            }};
+
+            com.airbyte.api.models.operations.ListWorkspacesResponse res = sdk.workspaces.listWorkspaces(req);
 
             if (res.workspacesResponse != null) {
                 // handle response
@@ -300,17 +325,23 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(new WorkspaceUpdateRequest("string"), "string");            
+            com.airbyte.api.models.operations.UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(
+                new WorkspaceUpdateRequest(
+                    "string"),
+                "string");
 
-            UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
+            com.airbyte.api.models.operations.UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
 
             if (res.workspaceResponse != null) {
                 // handle response

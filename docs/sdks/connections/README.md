@@ -36,18 +36,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("c669dd1e-3620-483e-afc8-55914e0a570f", "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
-                configurations = new StreamConfigurations(){{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest(
+                "c669dd1e-3620-483e-afc8-55914e0a570f",
+                "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
+                configurations = new StreamConfigurations(
+){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("string"){{
+                        add(new StreamConfiguration(
+                        "string"){{
                             cursorField = new String[]{{
                                 add("string"),
                             }};
@@ -59,6 +66,7 @@ public class Application {
                             }};
                         }}),
                     }};
+
                 }};
                 dataResidency = GeographyEnum.EU;
                 name = "string";
@@ -66,13 +74,16 @@ public class Application {
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "string";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+                schedule = new ConnectionSchedule(
+                    ScheduleTypeEnum.CRON){{
                     cronExpression = "string";
+
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
-            }};            
 
-            CreateConnectionResponse res = sdk.connections.createConnection(req);
+            }};
+
+            com.airbyte.api.models.operations.CreateConnectionResponse res = sdk.connections.createConnection(req);
 
             if (res.connectionResponse != null) {
                 // handle response
@@ -114,17 +125,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            DeleteConnectionRequest req = new DeleteConnectionRequest("string");            
+            com.airbyte.api.models.operations.DeleteConnectionRequest req = new DeleteConnectionRequest(
+                "string");
 
-            DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
+            com.airbyte.api.models.operations.DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -166,17 +181,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            GetConnectionRequest req = new GetConnectionRequest("string");            
+            com.airbyte.api.models.operations.GetConnectionRequest req = new GetConnectionRequest(
+                "string");
 
-            GetConnectionResponse res = sdk.connections.getConnection(req);
+            com.airbyte.api.models.operations.GetConnectionResponse res = sdk.connections.getConnection(req);
 
             if (res.connectionResponse != null) {
                 // handle response
@@ -218,24 +237,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            ListConnectionsRequest req = new ListConnectionsRequest(){{
+            com.airbyte.api.models.operations.ListConnectionsRequest req = new ListConnectionsRequest(
+){{
                 includeDeleted = false;
                 limit = 726733;
                 offset = 907316;
                 workspaceIds = new String[]{{
                     add("d8f6e532-a55f-479c-ab30-682edc879612"),
                 }};
-            }};            
 
-            ListConnectionsResponse res = sdk.connections.listConnections(req);
+            }};
+
+            com.airbyte.api.models.operations.ListConnectionsResponse res = sdk.connections.listConnections(req);
 
             if (res.connectionsResponse != null) {
                 // handle response
@@ -287,43 +311,55 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            PatchConnectionRequest req = new PatchConnectionRequest(new ConnectionPatchRequest(){{
-configurations = new StreamConfigurations(){{
-    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-        add(new StreamConfiguration("string"){{
-            cursorField = new String[]{{
-                add("string"),
-            }};
-            name = "string";
-            primaryKey = new String[][]{{
-                add(new String[]{{
-                    add("string"),
-                }}),
-            }};
-        }}),
-    }};
-}};
-dataResidency = GeographyEnumNoDefault.AUTO;
-name = "string";
-namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
-namespaceFormat = "${SOURCE_NAMESPACE}";
-nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_FULLY;
-prefix = "string";
-schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
-    cronExpression = "string";
-}};
-status = ConnectionStatusEnum.ACTIVE;
-}}, "string");            
+            com.airbyte.api.models.operations.PatchConnectionRequest req = new PatchConnectionRequest(
+                new ConnectionPatchRequest(
+){{
+                    configurations = new StreamConfigurations(
+){{
+                        streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
+                            add(new StreamConfiguration(
+                            "string"){{
+                                cursorField = new String[]{{
+                                    add("string"),
+                                }};
+                                name = "string";
+                                primaryKey = new String[][]{{
+                                    add(new String[]{{
+                                        add("string"),
+                                    }}),
+                                }};
+                            }}),
+                        }};
 
-            PatchConnectionResponse res = sdk.connections.patchConnection(req);
+                    }};
+                    dataResidency = GeographyEnumNoDefault.AUTO;
+                    name = "string";
+                    namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
+                    namespaceFormat = "${SOURCE_NAMESPACE}";
+                    nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_FULLY;
+                    prefix = "string";
+                    schedule = new ConnectionSchedule(
+                        ScheduleTypeEnum.CRON){{
+                        cronExpression = "string";
+
+                    }};
+                    status = ConnectionStatusEnum.ACTIVE;
+
+                }},
+                "string");
+
+            com.airbyte.api.models.operations.PatchConnectionResponse res = sdk.connections.patchConnection(req);
 
             if (res.connectionResponse != null) {
                 // handle response

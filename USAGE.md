@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```java
 package hello.world;
 
@@ -20,18 +20,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
                         password = "";
                         username = "";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("c669dd1e-3620-483e-afc8-55914e0a570f", "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
-                configurations = new StreamConfigurations(){{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest(
+                "c669dd1e-3620-483e-afc8-55914e0a570f",
+                "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
+                configurations = new StreamConfigurations(
+){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("string"){{
+                        add(new StreamConfiguration(
+                        "string"){{
                             cursorField = new String[]{{
                                 add("string"),
                             }};
@@ -43,6 +50,7 @@ public class Application {
                             }};
                         }}),
                     }};
+
                 }};
                 dataResidency = GeographyEnum.EU;
                 name = "string";
@@ -50,13 +58,16 @@ public class Application {
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "string";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+                schedule = new ConnectionSchedule(
+                    ScheduleTypeEnum.CRON){{
                     cronExpression = "string";
+
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
-            }};            
 
-            CreateConnectionResponse res = sdk.connections.createConnection(req);
+            }};
+
+            com.airbyte.api.models.operations.CreateConnectionResponse res = sdk.connections.createConnection(req);
 
             if (res.connectionResponse != null) {
                 // handle response
@@ -67,4 +78,4 @@ public class Application {
     }
 }
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
