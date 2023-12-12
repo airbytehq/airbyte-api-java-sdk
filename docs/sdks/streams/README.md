@@ -28,8 +28,8 @@ public class Application {
                     basicAuth = new SchemeBasicAuth(
                     "string",
                     "string"){{
-                        password = "";
-                        username = "";
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
