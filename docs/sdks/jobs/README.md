@@ -213,15 +213,15 @@ public class Application {
             com.airbyte.api.models.operations.ListJobsRequest req = new ListJobsRequest(
 ){{
                 connectionId = "string";
-                createdAtEnd = OffsetDateTime.parse("2023-06-04T20:58:05.747Z");
-                createdAtStart = OffsetDateTime.parse("2022-04-02T18:38:46.428Z");
+                createdAtEnd = OffsetDateTime.parse("2024-06-04T16:21:45.917Z");
+                createdAtStart = OffsetDateTime.parse("2023-04-03T04:39:28.005Z");
                 jobType = JobTypeEnum.SYNC;
                 limit = 955698;
                 offset = 624731;
                 orderBy = "string";
                 status = JobStatusEnum.PENDING;
-                updatedAtEnd = OffsetDateTime.parse("2022-12-07T03:03:13.807Z");
-                updatedAtStart = OffsetDateTime.parse("2022-06-02T10:55:14.850Z");
+                updatedAtEnd = OffsetDateTime.parse("2023-12-07T18:30:31.244Z");
+                updatedAtStart = OffsetDateTime.parse("2023-06-02T22:15:44.179Z");
                 workspaceIds = new String[]{{
                     add("de801f6f-5d37-41c0-9bc4-dea632e540b9"),
                 }};
