@@ -23,19 +23,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            GetStreamPropertiesRequest req = new GetStreamPropertiesRequest("string", "string"){{
+            com.airbyte.api.models.operations.GetStreamPropertiesRequest req = new GetStreamPropertiesRequest(
+                "string",
+                "string"){{
                 ignoreCache = false;
-            }};            
 
-            GetStreamPropertiesResponse res = sdk.streams.getStreamProperties(req);
+            }};
+
+            com.airbyte.api.models.operations.GetStreamPropertiesResponse res = sdk.streams.getStreamProperties(req);
 
             if (res.streamPropertiesResponse != null) {
                 // handle response

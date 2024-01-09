@@ -28,19 +28,26 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest("string", "string", "8360860a-d46e-48e6-af62-08e5ba5019ef"){{
+            com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(
+                "string",
+                "string",
+                "8360860a-d46e-48e6-af62-08e5ba5019ef"){{
                 definitionId = "3492fc0e-ef56-45b0-b0c7-3d4dfc9aec3c";
-            }};            
 
-            CreateDestinationResponse res = sdk.destinations.createDestination(req);
+            }};
+
+            com.airbyte.api.models.operations.CreateDestinationResponse res = sdk.destinations.createDestination(req);
 
             if (res.destinationResponse != null) {
                 // handle response
@@ -82,17 +89,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            DeleteDestinationRequest req = new DeleteDestinationRequest("string");            
+            com.airbyte.api.models.operations.DeleteDestinationRequest req = new DeleteDestinationRequest(
+                "string");
 
-            DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
+            com.airbyte.api.models.operations.DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -134,17 +145,21 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            GetDestinationRequest req = new GetDestinationRequest("string");            
+            com.airbyte.api.models.operations.GetDestinationRequest req = new GetDestinationRequest(
+                "string");
 
-            GetDestinationResponse res = sdk.destinations.getDestination(req);
+            com.airbyte.api.models.operations.GetDestinationResponse res = sdk.destinations.getDestination(req);
 
             if (res.destinationResponse != null) {
                 // handle response
@@ -186,24 +201,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            ListDestinationsRequest req = new ListDestinationsRequest(){{
+            com.airbyte.api.models.operations.ListDestinationsRequest req = new ListDestinationsRequest(
+){{
                 includeDeleted = false;
                 limit = 772794;
                 offset = 125999;
                 workspaceIds = new String[]{{
                     add("980b9a83-1720-4244-9cd2-6fb4455227f2"),
                 }};
-            }};            
 
-            ListDestinationsResponse res = sdk.destinations.listDestinations(req);
+            }};
+
+            com.airbyte.api.models.operations.ListDestinationsResponse res = sdk.destinations.listDestinations(req);
 
             if (res.destinationsResponse != null) {
                 // handle response
@@ -246,22 +266,29 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            PatchDestinationRequest req = new PatchDestinationRequest("string"){{
-                destinationPatchRequest = new DestinationPatchRequest(){{
+            com.airbyte.api.models.operations.PatchDestinationRequest req = new PatchDestinationRequest(
+                "string"){{
+                destinationPatchRequest = new DestinationPatchRequest(
+){{
                     configuration = "string";
                     name = "string";
-                }};
-            }};            
 
-            PatchDestinationResponse res = sdk.destinations.patchDestination(req);
+                }};
+
+            }};
+
+            com.airbyte.api.models.operations.PatchDestinationResponse res = sdk.destinations.patchDestination(req);
 
             if (res.destinationResponse != null) {
                 // handle response
@@ -304,19 +331,26 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            PutDestinationRequest req = new PutDestinationRequest("string"){{
-                destinationPutRequest = new DestinationPutRequest("string", "string");
-            }};            
+            com.airbyte.api.models.operations.PutDestinationRequest req = new PutDestinationRequest(
+                "string"){{
+                destinationPutRequest = new DestinationPutRequest(
+                    "string",
+                    "string");
 
-            PutDestinationResponse res = sdk.destinations.putDestination(req);
+            }};
+
+            com.airbyte.api.models.operations.PutDestinationResponse res = sdk.destinations.putDestination(req);
 
             if (res.destinationResponse != null) {
                 // handle response

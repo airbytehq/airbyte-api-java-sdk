@@ -15,18 +15,19 @@ Developers will need to create an API Key within your [Developer Portal](https:/
 
 The Developer Portal UI can also be used to help build your integration by showing information about network requests in the Requests tab. API usage information is also available to you in the Usage tab.
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.46.0'
+implementation 'com.airbyte.api:public-api:0.47.2'
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
+<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-<!-- Start SDK Example Usage -->
+
 ### Example
 
 ```java
@@ -50,18 +51,25 @@ public class Application {
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(){{
-                    basicAuth = new SchemeBasicAuth("string", "string"){{
-                        password = "";
-                        username = "";
+                .setSecurity(new Security(
+                ){{
+                    basicAuth = new SchemeBasicAuth(
+                    "string",
+                    "string"){{
+                        password = "<YOUR_PASSWORD_HERE>";
+                        username = "<YOUR_USERNAME_HERE>";
                     }};
                 }})
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest("c669dd1e-3620-483e-afc8-55914e0a570f", "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
-                configurations = new StreamConfigurations(){{
+            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest(
+                "c669dd1e-3620-483e-afc8-55914e0a570f",
+                "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
+                configurations = new StreamConfigurations(
+){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration("string"){{
+                        add(new StreamConfiguration(
+                        "string"){{
                             cursorField = new String[]{{
                                 add("string"),
                             }};
@@ -73,6 +81,7 @@ public class Application {
                             }};
                         }}),
                     }};
+
                 }};
                 dataResidency = GeographyEnum.EU;
                 name = "string";
@@ -80,13 +89,16 @@ public class Application {
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
                 prefix = "string";
-                schedule = new ConnectionSchedule(ScheduleTypeEnum.CRON){{
+                schedule = new ConnectionSchedule(
+                    ScheduleTypeEnum.CRON){{
                     cronExpression = "string";
+
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
-            }};            
 
-            CreateConnectionResponse res = sdk.connections.createConnection(req);
+            }};
+
+            com.airbyte.api.models.operations.CreateConnectionResponse res = sdk.connections.createConnection(req);
 
             if (res.connectionResponse != null) {
                 // handle response
@@ -97,11 +109,10 @@ public class Application {
     }
 }
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [connections](docs/sdks/connections/README.md)
 
@@ -149,13 +160,30 @@ public class Application {
 * [getWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Get Workspace details
 * [listWorkspaces](docs/sdks/workspaces/README.md#listworkspaces) - List workspaces
 * [updateWorkspace](docs/sdks/workspaces/README.md#updateworkspace) - Update a workspace
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
 
 
-<!-- Start Dev Containers -->
+<!-- Start Server Selection [server] -->
+## Server Selection
 
-<!-- End Dev Containers -->
+## Server Selection
+
+### Select Server by Index
+
+You can override the default server globally using the `setServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.airbyte.com/v1` | None |
+
+
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally using the `setServerURL` option when initializing the SDK client instance. For example:
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

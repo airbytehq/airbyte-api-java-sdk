@@ -1,3 +1,6 @@
+# Ignore IDE-specific configs
+.project
+.settings/
 .DS_Store
 # Ignore Gradle project-specific cache directory
 .gradle
