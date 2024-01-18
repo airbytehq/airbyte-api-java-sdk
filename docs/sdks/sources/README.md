@@ -222,7 +222,7 @@ public class Application {
 
             com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest(
                 "string",
-                OAuthActorNames.GITLAB,
+                OAuthActorNames.GOOGLE_ADS,
                 "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
                 oAuthInputConfiguration = new OAuthInputConfiguration(
 );
