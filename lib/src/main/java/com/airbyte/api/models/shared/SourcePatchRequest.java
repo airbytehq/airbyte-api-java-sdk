@@ -15,9 +15,9 @@ public class SourcePatchRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public SourcePatchRequest withConfiguration(Object configuration) {
+    public SourcePatchRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }

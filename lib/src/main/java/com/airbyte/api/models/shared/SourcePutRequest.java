@@ -12,9 +12,9 @@ public class SourcePutRequest {
      * The values required to configure the source.
      */
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public SourcePutRequest withConfiguration(Object configuration) {
+    public SourcePutRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -27,7 +27,7 @@ public class SourcePutRequest {
         return this;
     }
     
-    public SourcePutRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name) {
+    public SourcePutRequest(@JsonProperty("configuration") java.lang.Object configuration, @JsonProperty("name") String name) {
         this.configuration = configuration;
         this.name = name;
   }
