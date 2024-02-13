@@ -15,9 +15,9 @@ public class DestinationResponse {
      * The values required to configure the destination.
      */
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public DestinationResponse withConfiguration(Object configuration) {
+    public DestinationResponse withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -54,7 +54,7 @@ public class DestinationResponse {
         return this;
     }
     
-    public DestinationResponse(@JsonProperty("configuration") Object configuration, @JsonProperty("destinationId") String destinationId, @JsonProperty("destinationType") String destinationType, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    public DestinationResponse(@JsonProperty("configuration") java.lang.Object configuration, @JsonProperty("destinationId") String destinationId, @JsonProperty("destinationType") String destinationType, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
         this.destinationId = destinationId;
         this.destinationType = destinationType;

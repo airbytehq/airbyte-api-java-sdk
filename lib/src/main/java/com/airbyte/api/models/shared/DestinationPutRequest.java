@@ -12,9 +12,9 @@ public class DestinationPutRequest {
      * The values required to configure the destination.
      */
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public DestinationPutRequest withConfiguration(Object configuration) {
+    public DestinationPutRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -27,7 +27,7 @@ public class DestinationPutRequest {
         return this;
     }
     
-    public DestinationPutRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name) {
+    public DestinationPutRequest(@JsonProperty("configuration") java.lang.Object configuration, @JsonProperty("name") String name) {
         this.configuration = configuration;
         this.name = name;
   }

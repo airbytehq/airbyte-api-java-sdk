@@ -26,9 +26,9 @@ public class WorkspaceOAuthCredentialsRequest {
      * The values required to configure the source.
      */
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public WorkspaceOAuthCredentialsRequest withConfiguration(Object configuration) {
+    public WorkspaceOAuthCredentialsRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -41,7 +41,7 @@ public class WorkspaceOAuthCredentialsRequest {
         return this;
     }
     
-    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") Object configuration, @JsonProperty("name") OAuthActorNames name) {
+    public WorkspaceOAuthCredentialsRequest(@JsonProperty("actorType") ActorTypeEnum actorType, @JsonProperty("configuration") java.lang.Object configuration, @JsonProperty("name") OAuthActorNames name) {
         this.actorType = actorType;
         this.configuration = configuration;
         this.name = name;

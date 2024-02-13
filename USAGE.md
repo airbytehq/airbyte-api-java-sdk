@@ -23,8 +23,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};
@@ -39,15 +39,7 @@ public class Application {
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
                         add(new StreamConfiguration(
                         "string"){{
-                            cursorField = new String[]{{
-                                add("string"),
-                            }};
                             name = "string";
-                            primaryKey = new String[][]{{
-                                add(new String[]{{
-                                    add("string"),
-                                }}),
-                            }};
                         }}),
                     }};
 

@@ -14,9 +14,9 @@ public class SourceCreateRequest {
      * The values required to configure the source.
      */
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public SourceCreateRequest withConfiguration(Object configuration) {
+    public SourceCreateRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -64,7 +64,7 @@ public class SourceCreateRequest {
         return this;
     }
     
-    public SourceCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    public SourceCreateRequest(@JsonProperty("configuration") java.lang.Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
         this.name = name;
         this.workspaceId = workspaceId;

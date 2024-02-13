@@ -15,9 +15,9 @@ public class DestinationPatchRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public DestinationPatchRequest withConfiguration(Object configuration) {
+    public DestinationPatchRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }

@@ -14,9 +14,9 @@ public class DestinationCreateRequest {
      * The values required to configure the destination.
      */
     @JsonProperty("configuration")
-    public Object configuration;
+    public java.lang.Object configuration;
 
-    public DestinationCreateRequest withConfiguration(Object configuration) {
+    public DestinationCreateRequest withConfiguration(java.lang.Object configuration) {
         this.configuration = configuration;
         return this;
     }
@@ -52,7 +52,7 @@ public class DestinationCreateRequest {
         return this;
     }
     
-    public DestinationCreateRequest(@JsonProperty("configuration") Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
+    public DestinationCreateRequest(@JsonProperty("configuration") java.lang.Object configuration, @JsonProperty("name") String name, @JsonProperty("workspaceId") String workspaceId) {
         this.configuration = configuration;
         this.name = name;
         this.workspaceId = workspaceId;
