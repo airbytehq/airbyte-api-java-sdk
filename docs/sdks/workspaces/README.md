@@ -35,8 +35,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};
@@ -95,8 +95,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};
@@ -151,8 +151,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};
@@ -207,8 +207,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};
@@ -263,8 +263,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};
@@ -328,8 +328,8 @@ public class Application {
                 .setSecurity(new Security(
                 ){{
                     basicAuth = new SchemeBasicAuth(
-                    "string",
-                    "string"){{
+                    "",
+                    ""){{
                         password = "<YOUR_PASSWORD_HERE>";
                         username = "<YOUR_USERNAME_HERE>";
                     }};

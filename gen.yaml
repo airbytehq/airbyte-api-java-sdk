@@ -6,8 +6,10 @@ generation:
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
 java:
-  version: 0.48.0
+  version: 0.48.1
   artifactID: api
   companyEmail: info@airbyte.com
   companyName: Airbyte
