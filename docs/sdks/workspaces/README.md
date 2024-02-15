@@ -46,9 +46,9 @@ public class Application {
             com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest req = new CreateOrUpdateWorkspaceOAuthCredentialsRequest(
                 new WorkspaceOAuthCredentialsRequest(
                     ActorTypeEnum.DESTINATION,
-                    "string",
+                    "<value>",
                     OAuthActorNames.AMAZON_ADS),
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces.createOrUpdateWorkspaceOAuthCredentials(req);
 
@@ -104,7 +104,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.WorkspaceCreateRequest req = new WorkspaceCreateRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.CreateWorkspaceResponse res = sdk.workspaces.createWorkspace(req);
 
@@ -160,7 +160,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.DeleteWorkspaceRequest req = new DeleteWorkspaceRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.DeleteWorkspaceResponse res = sdk.workspaces.deleteWorkspace(req);
 
@@ -216,7 +216,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.GetWorkspaceRequest req = new GetWorkspaceRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.GetWorkspaceResponse res = sdk.workspaces.getWorkspace(req);
 
@@ -338,8 +338,8 @@ public class Application {
 
             com.airbyte.api.models.operations.UpdateWorkspaceRequest req = new UpdateWorkspaceRequest(
                 new WorkspaceUpdateRequest(
-                    "string"),
-                "string");
+                    "<value>"),
+                "<value>");
 
             com.airbyte.api.models.operations.UpdateWorkspaceResponse res = sdk.workspaces.updateWorkspace(req);
 

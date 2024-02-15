@@ -20,7 +20,6 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
-
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11    
@@ -36,11 +35,26 @@ model {
 
 jar {
     dependsOn(":$project.name:generatePomFileForMavenPublication")
+
     into("META-INF/maven/com.airbyte/api") {
-        from("$buildDir/pom.xml") 
+        from("$buildDir/pom.xml")
     }
 }
 
+javadoc {
+    options.encoding = "UTF-8"
+
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+
+tasks.withType(Javadoc) {
+  failOnError false
+  options.addStringOption('Xdoclint:none', '-quiet')
+}
 publishing {
     repositories {
         maven {
@@ -52,11 +66,12 @@ publishing {
           }
         }
     }
+
     publications {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '0.48.1'
+            version = '0.49.0'
 
             from components.java
 
@@ -97,15 +112,6 @@ if (!project.hasProperty('skip.signing')) {
         useInMemoryPgpKeys(signingKey, signingPassphrase)
         sign publishing.publications.maven
     }
-}
-
-javadoc {
-    options.encoding = "UTF-8"
-
-    if(JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption('html5', true)
-    }
-    options.addStringOption('Xdoclint:none', '-quiet')   
 }
 
 dependencies {
