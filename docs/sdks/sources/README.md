@@ -41,11 +41,11 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.SourceCreateRequest req = new SourceCreateRequest(
-                "string",
-                "string",
+                "<value>",
+                "<value>",
                 "a2cf0f31-f3dd-4c98-88c3-4bdfb109056a"){{
                 definitionId = "a6d6dedf-297b-4eb8-860e-3afe15240dda";
-                secretId = "string";
+                secretId = "<value>";
 
             }};
 
@@ -103,7 +103,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.DeleteSourceRequest req = new DeleteSourceRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.DeleteSourceResponse res = sdk.sources.deleteSource(req);
 
@@ -159,7 +159,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.GetSourceRequest req = new GetSourceRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.GetSourceResponse res = sdk.sources.getSource(req);
 
@@ -221,7 +221,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.InitiateOauthRequest req = new InitiateOauthRequest(
-                "string",
+                "<value>",
                 OAuthActorNames.GOOGLE_ADS,
                 "fd28130d-9919-4ffa-a67d-4e12eb099447"){{
                 oAuthInputConfiguration = new OAuthInputConfiguration(
@@ -348,12 +348,12 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.PatchSourceRequest req = new PatchSourceRequest(
-                "string"){{
+                "<value>"){{
                 sourcePatchRequest = new SourcePatchRequest(
 ){{
-                    configuration = "string";
+                    configuration = "<value>";
                     name = "My source";
-                    secretId = "string";
+                    secretId = "<value>";
                     workspaceId = "30fc2511-c44f-479e-92c3-0df4fd46c0e4";
 
                 }};
@@ -415,10 +415,10 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.PutSourceRequest req = new PutSourceRequest(
-                "string"){{
+                "<value>"){{
                 sourcePutRequest = new SourcePutRequest(
-                    "string",
-                    "string");
+                    "<value>",
+                    "<value>");
 
             }};
 

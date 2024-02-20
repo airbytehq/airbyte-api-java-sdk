@@ -40,8 +40,8 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.DestinationCreateRequest req = new DestinationCreateRequest(
-                "string",
-                "string",
+                "<value>",
+                "<value>",
                 "8360860a-d46e-48e6-af62-08e5ba5019ef"){{
                 definitionId = "3492fc0e-ef56-45b0-b0c7-3d4dfc9aec3c";
 
@@ -101,7 +101,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.DeleteDestinationRequest req = new DeleteDestinationRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.DeleteDestinationResponse res = sdk.destinations.deleteDestination(req);
 
@@ -157,7 +157,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.GetDestinationRequest req = new GetDestinationRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.GetDestinationResponse res = sdk.destinations.getDestination(req);
 
@@ -278,11 +278,11 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.PatchDestinationRequest req = new PatchDestinationRequest(
-                "string"){{
+                "<value>"){{
                 destinationPatchRequest = new DestinationPatchRequest(
 ){{
-                    configuration = "string";
-                    name = "string";
+                    configuration = "<value>";
+                    name = "<value>";
 
                 }};
 
@@ -343,10 +343,10 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.PutDestinationRequest req = new PutDestinationRequest(
-                "string"){{
+                "<value>"){{
                 destinationPutRequest = new DestinationPutRequest(
-                    "string",
-                    "string");
+                    "<value>",
+                    "<value>");
 
             }};
 

@@ -95,7 +95,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest(
-                "string",
+                "<value>",
                 JobTypeEnum.SYNC);
 
             com.airbyte.api.models.operations.CreateJobResponse res = sdk.jobs.createJob(req);
@@ -212,13 +212,13 @@ public class Application {
 
             com.airbyte.api.models.operations.ListJobsRequest req = new ListJobsRequest(
 ){{
-                connectionId = "string";
+                connectionId = "<value>";
                 createdAtEnd = OffsetDateTime.parse("2024-06-04T16:21:45.917Z");
                 createdAtStart = OffsetDateTime.parse("2023-04-03T04:39:28.005Z");
                 jobType = JobTypeEnum.SYNC;
                 limit = 955698;
                 offset = 624731;
-                orderBy = "string";
+                orderBy = "<value>";
                 status = JobStatusEnum.PENDING;
                 updatedAtEnd = OffsetDateTime.parse("2023-12-07T18:30:31.244Z");
                 updatedAtStart = OffsetDateTime.parse("2023-06-02T22:15:44.179Z");

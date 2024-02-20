@@ -4,15 +4,15 @@ management:
   docChecksum: c101e6356aa26bcdee80457c4dc64471
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.253.0
-  releaseVersion: 0.48.1
-  configChecksum: 8694447405c5904c147dfb937af22c20
+  generationVersion: 2.259.1
+  releaseVersion: 0.49.1
+  configChecksum: e3e7c21a61e9ffebaa16be28635d6db0
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
 features:
   java:
-    core: 3.2.2
+    core: 3.5.1
     globalSecurity: 2.81.2
     globalServerURLs: 2.82.1
 generatedFiles:
@@ -29,6 +29,7 @@ generatedFiles:
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
   - gradlew.bat
+  - settings.gradle
   - lib/build.gradle
   - lib/src/main/java/com/airbyte/api/utils/DateTimeDeserializer.java
   - lib/src/main/java/com/airbyte/api/utils/DateTimeSerializer.java
@@ -52,7 +53,6 @@ generatedFiles:
   - lib/src/main/java/com/airbyte/api/utils/SpeakeasyMetadata.java
   - lib/src/main/java/com/airbyte/api/utils/Types.java
   - lib/src/main/java/com/airbyte/api/utils/Utils.java
-  - settings.gradle
   - lib/src/main/java/com/airbyte/api/models/operations/CreateConnectionResponse.java
   - lib/src/main/java/com/airbyte/api/models/operations/DeleteConnectionRequest.java
   - lib/src/main/java/com/airbyte/api/models/operations/DeleteConnectionResponse.java

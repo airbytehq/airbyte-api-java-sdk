@@ -35,8 +35,8 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.GetStreamPropertiesRequest req = new GetStreamPropertiesRequest(
-                "string",
-                "string"){{
+                "<value>",
+                "<value>"){{
                 ignoreCache = false;
 
             }};

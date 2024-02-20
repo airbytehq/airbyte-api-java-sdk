@@ -21,7 +21,7 @@ The Developer Portal UI can also be used to help build your integration by showi
 ### Gradle
 
 ```groovy
-implementation 'com.airbyte.api:public-api:0.48.1'
+implementation 'com.airbyte.api:public-api:0.49.1'
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -69,21 +69,21 @@ public class Application {
 ){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
                         add(new StreamConfiguration(
-                        "string"){{
-                            name = "string";
+                        "<value>"){{
+                            name = "<value>";
                         }}),
                     }};
 
                 }};
                 dataResidency = GeographyEnum.EU;
-                name = "string";
+                name = "<value>";
                 namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "string";
+                prefix = "<value>";
                 schedule = new ConnectionSchedule(
                     ScheduleTypeEnum.CRON){{
-                    cronExpression = "string";
+                    cronExpression = "<value>";
 
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;

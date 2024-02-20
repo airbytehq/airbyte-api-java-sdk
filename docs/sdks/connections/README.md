@@ -54,21 +54,21 @@ public class Application {
 ){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
                         add(new StreamConfiguration(
-                        "string"){{
-                            name = "string";
+                        "<value>"){{
+                            name = "<value>";
                         }}),
                     }};
 
                 }};
                 dataResidency = GeographyEnum.EU;
-                name = "string";
+                name = "<value>";
                 namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "string";
+                prefix = "<value>";
                 schedule = new ConnectionSchedule(
                     ScheduleTypeEnum.CRON){{
-                    cronExpression = "string";
+                    cronExpression = "<value>";
 
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
@@ -129,7 +129,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.DeleteConnectionRequest req = new DeleteConnectionRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.DeleteConnectionResponse res = sdk.connections.deleteConnection(req);
 
@@ -185,7 +185,7 @@ public class Application {
                 .build();
 
             com.airbyte.api.models.operations.GetConnectionRequest req = new GetConnectionRequest(
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.GetConnectionResponse res = sdk.connections.getConnection(req);
 
@@ -321,27 +321,27 @@ public class Application {
 ){{
                         streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
                             add(new StreamConfiguration(
-                            "string"){{
-                                name = "string";
+                            "<value>"){{
+                                name = "<value>";
                             }}),
                         }};
 
                     }};
                     dataResidency = GeographyEnumNoDefault.AUTO;
-                    name = "string";
+                    name = "<value>";
                     namespaceDefinition = NamespaceDefinitionEnumNoDefault.SOURCE;
                     namespaceFormat = "${SOURCE_NAMESPACE}";
                     nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_FULLY;
-                    prefix = "string";
+                    prefix = "<value>";
                     schedule = new ConnectionSchedule(
                         ScheduleTypeEnum.CRON){{
-                        cronExpression = "string";
+                        cronExpression = "<value>";
 
                     }};
                     status = ConnectionStatusEnum.ACTIVE;
 
                 }},
-                "string");
+                "<value>");
 
             com.airbyte.api.models.operations.PatchConnectionResponse res = sdk.connections.patchConnection(req);
 

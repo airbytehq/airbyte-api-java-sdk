@@ -38,21 +38,21 @@ public class Application {
 ){{
                     streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
                         add(new StreamConfiguration(
-                        "string"){{
-                            name = "string";
+                        "<value>"){{
+                            name = "<value>";
                         }}),
                     }};
 
                 }};
                 dataResidency = GeographyEnum.EU;
-                name = "string";
+                name = "<value>";
                 namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
                 namespaceFormat = "${SOURCE_NAMESPACE}";
                 nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "string";
+                prefix = "<value>";
                 schedule = new ConnectionSchedule(
                     ScheduleTypeEnum.CRON){{
-                    cronExpression = "string";
+                    cronExpression = "<value>";
 
                 }};
                 status = ConnectionStatusEnum.DEPRECATED;
