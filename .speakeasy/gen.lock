@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: c101e6356aa26bcdee80457c4dc64471
+  docChecksum: f32864912d3a716aa1b28aee6ebab024
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.259.1
-  releaseVersion: 0.49.1
-  configChecksum: e3e7c21a61e9ffebaa16be28635d6db0
+  generationVersion: 2.263.3
+  releaseVersion: 0.49.2
+  configChecksum: ac99cc2f7096cb5666efe965394acd4f
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
