@@ -4,16 +4,16 @@ management:
   docChecksum: f32864912d3a716aa1b28aee6ebab024
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.263.3
-  releaseVersion: 0.49.2
-  configChecksum: ac99cc2f7096cb5666efe965394acd4f
+  generationVersion: 2.272.4
+  releaseVersion: 0.49.3
+  configChecksum: 7c8efa79420174b8a11ee9539f5dd493
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
 features:
   java:
-    core: 3.5.1
-    globalSecurity: 2.81.2
+    core: 3.5.2
+    globalSecurity: 2.81.3
     globalServerURLs: 2.82.1
 generatedFiles:
   - lib/src/main/java/com/airbyte/api/SDKConfiguration.java
