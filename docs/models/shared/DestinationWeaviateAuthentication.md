@@ -1,0 +1,4 @@
+# DestinationWeaviateAuthentication
+
+Authentication method
+

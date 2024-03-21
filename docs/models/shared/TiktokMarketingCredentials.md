@@ -1,0 +1,9 @@
+# TiktokMarketingCredentials
+
+
+## Fields
+
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `appId`                           | *Optional<? extends String>*      | :heavy_minus_sign:                | The Developer Application App ID. |
+| `secret`                          | *Optional<? extends String>*      | :heavy_minus_sign:                | The Developer Application Secret. |

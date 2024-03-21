@@ -1,0 +1,9 @@
+# SourcePokeapi
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `pokemonName`                                                                   | [com.airbyte.api.models.shared.PokemonName](../../models/shared/PokemonName.md) | :heavy_check_mark:                                                              | Pokemon requested from the API.                                                 | ditto                                                                           |
+| `sourceType`                                                                    | [com.airbyte.api.models.shared.Pokeapi](../../models/shared/Pokeapi.md)         | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |

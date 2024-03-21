@@ -1,0 +1,2 @@
+# SourceSnowflakeAuthorizationMethod
+

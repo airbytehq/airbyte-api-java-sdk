@@ -1,0 +1,11 @@
+# SourceBraze
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `apiKey`                                                                        | *String*                                                                        | :heavy_check_mark:                                                              | Braze REST API key                                                              |
+| `sourceType`                                                                    | [com.airbyte.api.models.shared.Braze](../../models/shared/Braze.md)             | :heavy_check_mark:                                                              | N/A                                                                             |
+| `startDate`                                                                     | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html) | :heavy_check_mark:                                                              | Rows after this date will be synced                                             |
+| `url`                                                                           | *String*                                                                        | :heavy_check_mark:                                                              | Braze REST API endpoint                                                         |

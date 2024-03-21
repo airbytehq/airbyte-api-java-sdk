@@ -1,0 +1,10 @@
+# DestinationXata
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `apiKey`                                                             | *String*                                                             | :heavy_check_mark:                                                   | API Key to connect.                                                  |                                                                      |
+| `dbUrl`                                                              | *String*                                                             | :heavy_check_mark:                                                   | URL pointing to your workspace.                                      | https://my-workspace-abc123.us-east-1.xata.sh/db/nyc-taxi-fares:main |
+| `destinationType`                                                    | [com.airbyte.api.models.shared.Xata](../../models/shared/Xata.md)    | :heavy_check_mark:                                                   | N/A                                                                  |                                                                      |
