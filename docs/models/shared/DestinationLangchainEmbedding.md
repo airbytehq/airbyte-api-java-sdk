@@ -1,0 +1,4 @@
+# DestinationLangchainEmbedding
+
+Embedding configuration
+
