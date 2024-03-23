@@ -1,0 +1,11 @@
+# TLSEncryptedVerifyCertificate
+
+Verify and use the certificate provided by the server.
+
+
+## Fields
+
+| Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `encryptionMethod`                                                                                                      | [com.airbyte.api.models.shared.SourceOracleEncryptionMethod](../../models/shared/SourceOracleEncryptionMethod.md)       | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
+| `sslCertificate`                                                                                                        | *String*                                                                                                                | :heavy_check_mark:                                                                                                      | Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations. |
