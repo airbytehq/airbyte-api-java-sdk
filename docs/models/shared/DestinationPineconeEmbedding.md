@@ -1,0 +1,4 @@
+# DestinationPineconeEmbedding
+
+Embedding configuration
+
