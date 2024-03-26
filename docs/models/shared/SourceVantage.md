@@ -1,0 +1,9 @@
+# SourceVantage
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `accessToken`                                                                                     | *String*                                                                                          | :heavy_check_mark:                                                                                | Your API Access token. See <a href="https://vantage.readme.io/reference/authentication">here</a>. |
+| `sourceType`                                                                                      | [com.airbyte.api.models.shared.Vantage](../../models/shared/Vantage.md)                           | :heavy_check_mark:                                                                                | N/A                                                                                               |

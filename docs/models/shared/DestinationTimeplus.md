@@ -1,0 +1,10 @@
+# DestinationTimeplus
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `apikey`                                                                  | *String*                                                                  | :heavy_check_mark:                                                        | Personal API key                                                          |                                                                           |
+| `destinationType`                                                         | [com.airbyte.api.models.shared.Timeplus](../../models/shared/Timeplus.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `endpoint`                                                                | *Optional<? extends String>*                                              | :heavy_minus_sign:                                                        | Timeplus workspace endpoint                                               | https://us.timeplus.cloud/workspace_id                                    |

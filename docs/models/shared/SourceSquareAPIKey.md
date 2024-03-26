@@ -1,0 +1,9 @@
+# SourceSquareAPIKey
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                                        | *String*                                                                                                        | :heavy_check_mark:                                                                                              | The API key for a Square application                                                                            |
+| `authType`                                                                                                      | [com.airbyte.api.models.shared.SourceSquareSchemasAuthType](../../models/shared/SourceSquareSchemasAuthType.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |

@@ -1,0 +1,4 @@
+# DestinationMilvusAuthentication
+
+Authentication method
+
