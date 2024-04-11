@@ -1,0 +1,4 @@
+# DestinationWeaviateEmbedding
+
+Embedding configuration
+

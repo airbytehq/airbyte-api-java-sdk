@@ -1,0 +1,11 @@
+# SourceOrbit
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `apiToken`                                                                                  | *String*                                                                                    | :heavy_check_mark:                                                                          | Authorizes you to work with Orbit workspaces associated with the token.                     |
+| `sourceType`                                                                                | [com.airbyte.api.models.shared.Orbit](../../models/shared/Orbit.md)                         | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `startDate`                                                                                 | *Optional<? extends String>*                                                                | :heavy_minus_sign:                                                                          | Date in the format 2022-06-26. Only load members whose last activities are after this date. |
+| `workspace`                                                                                 | *String*                                                                                    | :heavy_check_mark:                                                                          | The unique name of the workspace that your API token is associated with.                    |

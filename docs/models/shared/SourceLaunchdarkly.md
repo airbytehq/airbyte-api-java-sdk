@@ -1,0 +1,9 @@
+# SourceLaunchdarkly
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `accessToken`                                                                                                | *String*                                                                                                     | :heavy_check_mark:                                                                                           | Your Access token. See <a href="https://apidocs.launchdarkly.com/#section/Overview/Authentication">here</a>. |
+| `sourceType`                                                                                                 | [com.airbyte.api.models.shared.Launchdarkly](../../models/shared/Launchdarkly.md)                            | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

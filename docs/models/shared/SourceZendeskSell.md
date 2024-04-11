@@ -1,0 +1,9 @@
+# SourceZendeskSell
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `apiToken`                                                                      | *String*                                                                        | :heavy_check_mark:                                                              | The API token for authenticating to Zendesk Sell                                | f23yhd630otl94y85a8bf384958473pto95847fd006da49382716or937ruw059                |
+| `sourceType`                                                                    | [com.airbyte.api.models.shared.ZendeskSell](../../models/shared/ZendeskSell.md) | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |

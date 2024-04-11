@@ -1,5 +1,5 @@
 # Streams
-(*streams*)
+(*streams()*)
 
 ### Available Operations
 
@@ -15,37 +15,46 @@ Get stream properties
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.GetStreamPropertiesRequest;
 import com.airbyte.api.models.operations.GetStreamPropertiesResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.operations.GetStreamPropertiesRequest req = new GetStreamPropertiesRequest(
-                "<value>",
-                "<value>"){{
-                ignoreCache = false;
+            GetStreamPropertiesRequest req = GetStreamPropertiesRequest.builder()
+                .destinationId("<value>")
+                .sourceId("<value>")
+                .ignoreCache(false)
+                .build();
 
-            }};
+            GetStreamPropertiesResponse res = sdk.streams().getStreamProperties()
+                .request(req)
+                .call();
 
-            com.airbyte.api.models.operations.GetStreamPropertiesResponse res = sdk.streams.getStreamProperties(req);
-
-            if (res.streamPropertiesResponse != null) {
+            if (res.streamPropertiesResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -62,5 +71,9 @@ public class Application {
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetStreamPropertiesResponse](../../models/operations/GetStreamPropertiesResponse.md)**
+**[Optional<? extends com.airbyte.api.models.operations.GetStreamPropertiesResponse>](../../models/operations/GetStreamPropertiesResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
