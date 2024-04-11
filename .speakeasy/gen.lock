@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.250.0
   generationVersion: 2.304.1
-  releaseVersion: 0.50.0
-  configChecksum: 60f8a54ec74a4894cc46b53352622c01
+  releaseVersion: 1.0.0
+  configChecksum: de6af6f9006afd07363242e14863a916
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true

@@ -16,9 +16,9 @@ class SDKConfiguration {
     public int serverIdx = 0;
   	public String language = "java";
   	public String openapiDocVersion = "1.0.0";
-  	public String sdkVersion = "0.50.0";
+  	public String sdkVersion = "1.0.0";
   	public String genVersion = "2.304.1";
-  	public String userAgent = "speakeasy-sdk/java 0.50.0 2.304.1 1.0.0 com.airbyte.api";
+  	public String userAgent = "speakeasy-sdk/java 1.0.0 2.304.1 1.0.0 com.airbyte.api";
   	
   	
     public Optional<RetryConfig> retryConfig = Optional.empty();
