@@ -1,5 +1,5 @@
 # Jobs
-(*jobs*)
+(*jobs()*)
 
 ### Available Operations
 
@@ -18,33 +18,44 @@ Cancel a running Job
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.CancelJobRequest;
 import com.airbyte.api.models.operations.CancelJobResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.operations.CancelJobRequest req = new CancelJobRequest(
-                801771L);
+            CancelJobRequest req = CancelJobRequest.builder()
+                .jobId(801771L)
+                .build();
 
-            com.airbyte.api.models.operations.CancelJobResponse res = sdk.jobs.cancelJob(req);
+            CancelJobResponse res = sdk.jobs().cancelJob()
+                .request(req)
+                .call();
 
-            if (res.jobResponse != null) {
+            if (res.jobResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -61,8 +72,12 @@ public class Application {
 
 ### Response
 
-**[com.airbyte.api.models.operations.CancelJobResponse](../../models/operations/CancelJobResponse.md)**
+**[Optional<? extends com.airbyte.api.models.operations.CancelJobResponse>](../../models/operations/CancelJobResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## createJob
 
@@ -74,35 +89,46 @@ Trigger a sync or reset job of a connection
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.CreateJobResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.JobCreateRequest;
 import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.shared.JobCreateRequest req = new JobCreateRequest(
-                "<value>",
-                JobTypeEnum.SYNC);
+            JobCreateRequest req = JobCreateRequest.builder()
+                .connectionId("<value>")
+                .jobType(JobTypeEnum.SYNC)
+                .build();
 
-            com.airbyte.api.models.operations.CreateJobResponse res = sdk.jobs.createJob(req);
+            CreateJobResponse res = sdk.jobs().createJob()
+                .request(req)
+                .call();
 
-            if (res.jobResponse != null) {
+            if (res.jobResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -119,8 +145,12 @@ public class Application {
 
 ### Response
 
-**[com.airbyte.api.models.operations.CreateJobResponse](../../models/operations/CreateJobResponse.md)**
+**[Optional<? extends com.airbyte.api.models.operations.CreateJobResponse>](../../models/operations/CreateJobResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## getJob
 
@@ -132,33 +162,44 @@ Get Job status and details
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.GetJobRequest;
 import com.airbyte.api.models.operations.GetJobResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.operations.GetJobRequest req = new GetJobRequest(
-                131101L);
+            GetJobRequest req = GetJobRequest.builder()
+                .jobId(131101L)
+                .build();
 
-            com.airbyte.api.models.operations.GetJobResponse res = sdk.jobs.getJob(req);
+            GetJobResponse res = sdk.jobs().getJob()
+                .request(req)
+                .call();
 
-            if (res.jobResponse != null) {
+            if (res.jobResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -175,8 +216,12 @@ public class Application {
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetJobResponse](../../models/operations/GetJobResponse.md)**
+**[Optional<? extends com.airbyte.api.models.operations.GetJobResponse>](../../models/operations/GetJobResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
 
 ## listJobs
 
@@ -188,51 +233,57 @@ List Jobs by sync type
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.ListJobsRequest;
 import com.airbyte.api.models.operations.ListJobsResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.JobStatusEnum;
 import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.operations.ListJobsRequest req = new ListJobsRequest(
-){{
-                connectionId = "<value>";
-                createdAtEnd = OffsetDateTime.parse("2024-06-04T16:21:45.917Z");
-                createdAtStart = OffsetDateTime.parse("2023-04-03T04:39:28.005Z");
-                jobType = JobTypeEnum.SYNC;
-                limit = 955698;
-                offset = 624731;
-                orderBy = "<value>";
-                status = JobStatusEnum.PENDING;
-                updatedAtEnd = OffsetDateTime.parse("2023-12-07T18:30:31.244Z");
-                updatedAtStart = OffsetDateTime.parse("2023-06-02T22:15:44.179Z");
-                workspaceIds = new String[]{{
-                    add("de801f6f-5d37-41c0-9bc4-dea632e540b9"),
-                }};
+            ListJobsRequest req = ListJobsRequest.builder()
+                .connectionId("<value>")
+                .createdAtEnd(OffsetDateTime.parse("2024-06-04T16:21:45.917Z"))
+                .createdAtStart(OffsetDateTime.parse("2023-04-03T04:39:28.005Z"))
+                .jobType(JobTypeEnum.SYNC)
+                .limit(955698)
+                .offset(624731)
+                .orderBy("<value>")
+                .status(JobStatusEnum.PENDING)
+                .updatedAtEnd(OffsetDateTime.parse("2023-12-07T18:30:31.244Z"))
+                .updatedAtStart(OffsetDateTime.parse("2023-06-02T22:15:44.179Z"))
+                .workspaceIds(java.util.List.of(
+                    "de801f6f-5d37-41c0-9bc4-dea632e540b9"))
+                .build();
 
-            }};
+            ListJobsResponse res = sdk.jobs().listJobs()
+                .request(req)
+                .call();
 
-            com.airbyte.api.models.operations.ListJobsResponse res = sdk.jobs.listJobs(req);
-
-            if (res.jobsResponse != null) {
+            if (res.jobsResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -249,5 +300,9 @@ public class Application {
 
 ### Response
 
-**[com.airbyte.api.models.operations.ListJobsResponse](../../models/operations/ListJobsResponse.md)**
+**[Optional<? extends com.airbyte.api.models.operations.ListJobsResponse>](../../models/operations/ListJobsResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |

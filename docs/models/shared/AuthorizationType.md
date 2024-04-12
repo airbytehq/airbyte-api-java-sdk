@@ -1,0 +1,4 @@
+# AuthorizationType
+
+Authorization type.
+

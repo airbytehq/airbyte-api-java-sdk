@@ -3,7 +3,9 @@
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
 import com.airbyte.api.models.shared.ConnectionSchedule;
 import com.airbyte.api.models.shared.ConnectionStatusEnum;
@@ -15,55 +17,57 @@ import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
 import com.airbyte.api.models.shared.StreamConfigurations;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest(
-                "c669dd1e-3620-483e-afc8-55914e0a570f",
-                "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
-                configurations = new StreamConfigurations(
-){{
-                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration(
-                        "<value>"){{
-                            name = "<value>";
-                        }}),
-                    }};
+            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
+                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
+                .configurations(StreamConfigurations.builder()
+                    .streams(java.util.List.of(
+                        StreamConfiguration.builder()
+                            .name("<value>")
+                            .build()))
+                    .build())
+                .dataResidency(GeographyEnum.EU)
+                .name("<value>")
+                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
+                .prefix("<value>")
+                .schedule(ConnectionSchedule.builder()
+                    .scheduleType(ScheduleTypeEnum.CRON)
+                    .cronExpression("<value>")
+                    .build())
+                .status(ConnectionStatusEnum.DEPRECATED)
+                .build();
 
-                }};
-                dataResidency = GeographyEnum.EU;
-                name = "<value>";
-                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
-                namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "<value>";
-                schedule = new ConnectionSchedule(
-                    ScheduleTypeEnum.CRON){{
-                    cronExpression = "<value>";
+            CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
 
-                }};
-                status = ConnectionStatusEnum.DEPRECATED;
-
-            }};
-
-            com.airbyte.api.models.operations.CreateConnectionResponse res = sdk.connections.createConnection(req);
-
-            if (res.connectionResponse != null) {
+            if (res.connectionResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }

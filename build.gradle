@@ -1,0 +1,121 @@
+
+plugins {
+    // Apply the java-library plugin for API and implementation separation.
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+}
+
+model {
+    tasks.generatePomFileForMavenPublication {
+        destination = file("$buildDir/pom.xml")
+    }
+}
+
+jar {
+    dependsOn(":generatePomFileForMavenPublication")
+
+    into("META-INF/maven/com.airbyte/api") {
+        from("$buildDir/pom.xml")
+    }
+}
+
+javadoc {
+    options.encoding = "UTF-8"
+
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+
+tasks.withType(Javadoc) {
+  failOnError false
+  options.addStringOption('Xdoclint:none', '-quiet')
+}
+publishing {
+    repositories {
+        maven {
+            name = "OSSRH"
+            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+          }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.airbyte'
+            artifactId = 'api'
+            version = '1.0.0'
+
+            from components.java
+
+            pom {
+                name = 'Airbyte Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the Airbyte API.'
+                url = 'https://github.com/airbytehq/airbyte-api-java-sdk'
+                scm {
+                    url = 'github.com/airbytehq/airbyte-api-java-sdk'
+                    connection = 'scm:git:ssh://git@github.com/airbytehq/airbyte-api-java-sdk.git'
+                }
+                licenses {
+                    license {
+                        name = 'The MIT License (MIT)'
+                        url = 'https://mit-license.org/'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Airbyte'
+                        organization = 'Airbyte'
+                        email = 'info@airbyte.com'
+                    }
+                }
+                organization {
+                    name = 'Airbyte'
+                    url = 'www.airbyte.com'
+                }
+            }
+        }
+    }
+}
+
+if (!project.hasProperty('skip.signing')) {
+    signing {
+        def signingKey = findProperty("signingKey")
+        def signingPassphrase = findProperty("signingPassphrase")
+        useInMemoryPgpKeys(signingKey, signingPassphrase)
+        sign publishing.publications.maven
+    }
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.16.2'
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+    implementation 'org.apache.httpcomponents:httpmime:4.5.14'
+    implementation 'com.jayway.jsonpath:json-path:2.9.0'
+    implementation 'commons-io:commons-io:2.15.1'
+}
+
+

@@ -25,6 +25,7 @@
 | `LEVER_HIRING`              | lever-hiring                |
 | `LINKEDIN_ADS`              | linkedin-ads                |
 | `MAILCHIMP`                 | mailchimp                   |
+| `MICROSOFT_ONEDRIVE`        | microsoft-onedrive          |
 | `MICROSOFT_SHAREPOINT`      | microsoft-sharepoint        |
 | `MICROSOFT_TEAMS`           | microsoft-teams             |
 | `MONDAY`                    | monday                      |

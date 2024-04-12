@@ -1,0 +1,14 @@
+# DestinationTypesense
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `apiKey`                                                                    | *String*                                                                    | :heavy_check_mark:                                                          | Typesense API Key                                                           |
+| `batchSize`                                                                 | *Optional<? extends Long>*                                                  | :heavy_minus_sign:                                                          | How many documents should be imported together. Default 1000                |
+| `destinationType`                                                           | [com.airbyte.api.models.shared.Typesense](../../models/shared/Typesense.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `host`                                                                      | *String*                                                                    | :heavy_check_mark:                                                          | Hostname of the Typesense instance without protocol.                        |
+| `path`                                                                      | *Optional<? extends String>*                                                | :heavy_minus_sign:                                                          | Path of the Typesense instance. Default is none                             |
+| `port`                                                                      | *Optional<? extends String>*                                                | :heavy_minus_sign:                                                          | Port of the Typesense instance. Ex: 8108, 80, 443. Default is 443           |
+| `protocol`                                                                  | *Optional<? extends String>*                                                | :heavy_minus_sign:                                                          | Protocol of the Typesense instance. Ex: http or https. Default is https     |

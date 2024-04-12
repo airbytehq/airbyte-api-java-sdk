@@ -18,10 +18,36 @@ The Developer Portal UI can also be used to help build your integration by showi
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-### Gradle
+### Getting started
 
+The samples below show how a published SDK artifact is used:
+
+Gradle:
 ```groovy
-implementation 'com.airbyte.api:public-api:0.49.3'
+implementation 'com.airbyte.api:public-api:1.0.0'
+```
+
+Maven:
+```xml
+<dependency>
+    <groupId>com.airbyte.api</groupId>
+    <artifactId>public-api</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+### How to build
+After cloning the git repository to your file system you can build the SDK artifact from source to the `build` directory by running `./gradlew build` on *nix systems or `gradlew.bat` on Windows systems.
+
+If you wish to build from source and publish the SDK artifact to your local Maven repository (on your filesystem) then use the following command (after cloning the git repo locally):
+
+On *nix:
+```bash
+./gradlew publishToMavenLocal -Pskip.signing
+```
+On Windows:
+```bash
+gradlew.bat publishToMavenLocal -Pskip.signing
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -34,7 +60,9 @@ implementation 'com.airbyte.api:public-api:0.49.3'
 package hello.world;
 
 import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
 import com.airbyte.api.models.shared.ConnectionSchedule;
 import com.airbyte.api.models.shared.ConnectionStatusEnum;
@@ -46,55 +74,57 @@ import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.StreamConfiguration;
 import com.airbyte.api.models.shared.StreamConfigurations;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
 
 public class Application {
+
     public static void main(String[] args) {
         try {
             Airbyte sdk = Airbyte.builder()
-                .setSecurity(new Security(
-                ){{
-                    basicAuth = new SchemeBasicAuth(
-                    "",
-                    ""){{
-                        password = "<YOUR_PASSWORD_HERE>";
-                        username = "<YOUR_USERNAME_HERE>";
-                    }};
-                }})
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
                 .build();
 
-            com.airbyte.api.models.shared.ConnectionCreateRequest req = new ConnectionCreateRequest(
-                "c669dd1e-3620-483e-afc8-55914e0a570f",
-                "6dd427d8-3a55-4584-b835-842325b6c7b3"){{
-                configurations = new StreamConfigurations(
-){{
-                    streams = new com.airbyte.api.models.shared.StreamConfiguration[]{{
-                        add(new StreamConfiguration(
-                        "<value>"){{
-                            name = "<value>";
-                        }}),
-                    }};
+            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
+                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
+                .configurations(StreamConfigurations.builder()
+                    .streams(java.util.List.of(
+                        StreamConfiguration.builder()
+                            .name("<value>")
+                            .build()))
+                    .build())
+                .dataResidency(GeographyEnum.EU)
+                .name("<value>")
+                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
+                .prefix("<value>")
+                .schedule(ConnectionSchedule.builder()
+                    .scheduleType(ScheduleTypeEnum.CRON)
+                    .cronExpression("<value>")
+                    .build())
+                .status(ConnectionStatusEnum.DEPRECATED)
+                .build();
 
-                }};
-                dataResidency = GeographyEnum.EU;
-                name = "<value>";
-                namespaceDefinition = NamespaceDefinitionEnum.CUSTOM_FORMAT;
-                namespaceFormat = "${SOURCE_NAMESPACE}";
-                nonBreakingSchemaUpdatesBehavior = NonBreakingSchemaUpdatesBehaviorEnum.IGNORE;
-                prefix = "<value>";
-                schedule = new ConnectionSchedule(
-                    ScheduleTypeEnum.CRON){{
-                    cronExpression = "<value>";
+            CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
 
-                }};
-                status = ConnectionStatusEnum.DEPRECATED;
-
-            }};
-
-            com.airbyte.api.models.operations.CreateConnectionResponse res = sdk.connections.createConnection(req);
-
-            if (res.connectionResponse != null) {
+            if (res.connectionResponse().isPresent()) {
                 // handle response
             }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
         } catch (Exception e) {
             // handle exception
         }
@@ -106,7 +136,7 @@ public class Application {
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [connections](docs/sdks/connections/README.md)
+### [connections()](docs/sdks/connections/README.md)
 
 * [createConnection](docs/sdks/connections/README.md#createconnection) - Create a connection
 * [deleteConnection](docs/sdks/connections/README.md#deleteconnection) - Delete a Connection
@@ -114,7 +144,7 @@ public class Application {
 * [listConnections](docs/sdks/connections/README.md#listconnections) - List connections
 * [patchConnection](docs/sdks/connections/README.md#patchconnection) - Update Connection details
 
-### [destinations](docs/sdks/destinations/README.md)
+### [destinations()](docs/sdks/destinations/README.md)
 
 * [createDestination](docs/sdks/destinations/README.md#createdestination) - Create a destination
 * [deleteDestination](docs/sdks/destinations/README.md#deletedestination) - Delete a Destination
@@ -123,14 +153,14 @@ public class Application {
 * [patchDestination](docs/sdks/destinations/README.md#patchdestination) - Update a Destination
 * [putDestination](docs/sdks/destinations/README.md#putdestination) - Update a Destination and fully overwrite it
 
-### [jobs](docs/sdks/jobs/README.md)
+### [jobs()](docs/sdks/jobs/README.md)
 
 * [cancelJob](docs/sdks/jobs/README.md#canceljob) - Cancel a running Job
 * [createJob](docs/sdks/jobs/README.md#createjob) - Trigger a sync or reset job of a connection
 * [getJob](docs/sdks/jobs/README.md#getjob) - Get Job status and details
 * [listJobs](docs/sdks/jobs/README.md#listjobs) - List Jobs by sync type
 
-### [sources](docs/sdks/sources/README.md)
+### [sources()](docs/sdks/sources/README.md)
 
 * [createSource](docs/sdks/sources/README.md#createsource) - Create a source
 * [deleteSource](docs/sdks/sources/README.md#deletesource) - Delete a Source
@@ -140,11 +170,11 @@ public class Application {
 * [patchSource](docs/sdks/sources/README.md#patchsource) - Update a Source
 * [putSource](docs/sdks/sources/README.md#putsource) - Update a Source and fully overwrite it
 
-### [streams](docs/sdks/streams/README.md)
+### [streams()](docs/sdks/streams/README.md)
 
 * [getStreamProperties](docs/sdks/streams/README.md#getstreamproperties) - Get stream properties
 
-### [workspaces](docs/sdks/workspaces/README.md)
+### [workspaces()](docs/sdks/workspaces/README.md)
 
 * [createOrUpdateWorkspaceOAuthCredentials](docs/sdks/workspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
 * [createWorkspace](docs/sdks/workspaces/README.md#createworkspace) - Create a workspace
@@ -159,23 +189,352 @@ public class Application {
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-## Server Selection
-
 ### Select Server by Index
 
-You can override the default server globally using the `setServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally by passing a server index to the `serverIndex` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
 | # | Server | Variables |
 | - | ------ | --------- |
 | 0 | `https://api.airbyte.com/v1` | None |
 
+#### Example
 
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.StreamConfigurations;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            Airbyte sdk = Airbyte.builder()
+                .serverIndex(0)
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+                .build();
+
+            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
+                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
+                .configurations(StreamConfigurations.builder()
+                    .streams(java.util.List.of(
+                        StreamConfiguration.builder()
+                            .name("<value>")
+                            .build()))
+                    .build())
+                .dataResidency(GeographyEnum.EU)
+                .name("<value>")
+                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
+                .prefix("<value>")
+                .schedule(ConnectionSchedule.builder()
+                    .scheduleType(ScheduleTypeEnum.CRON)
+                    .cronExpression("<value>")
+                    .build())
+                .status(ConnectionStatusEnum.DEPRECATED)
+                .build();
+
+            CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
+
+            if (res.connectionResponse().isPresent()) {
+                // handle response
+            }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
 
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `setServerURL` option when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverURL` builder method when initializing the SDK client instance. For example:
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.StreamConfigurations;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            Airbyte sdk = Airbyte.builder()
+                .serverURL("https://api.airbyte.com/v1")
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+                .build();
+
+            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
+                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
+                .configurations(StreamConfigurations.builder()
+                    .streams(java.util.List.of(
+                        StreamConfiguration.builder()
+                            .name("<value>")
+                            .build()))
+                    .build())
+                .dataResidency(GeographyEnum.EU)
+                .name("<value>")
+                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
+                .prefix("<value>")
+                .schedule(ConnectionSchedule.builder()
+                    .scheduleType(ScheduleTypeEnum.CRON)
+                    .cronExpression("<value>")
+                    .build())
+                .status(ConnectionStatusEnum.DEPRECATED)
+                .build();
+
+            CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
+
+            if (res.connectionResponse().isPresent()) {
+                // handle response
+            }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
 <!-- End Server Selection [server] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Exception type.
+
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | */*                    |
+
+### Example
+
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.StreamConfigurations;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+                .build();
+
+            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
+                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
+                .configurations(StreamConfigurations.builder()
+                    .streams(java.util.List.of(
+                        StreamConfiguration.builder()
+                            .name("<value>")
+                            .build()))
+                    .build())
+                .dataResidency(GeographyEnum.EU)
+                .name("<value>")
+                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
+                .prefix("<value>")
+                .schedule(ConnectionSchedule.builder()
+                    .scheduleType(ScheduleTypeEnum.CRON)
+                    .cronExpression("<value>")
+                    .build())
+                .status(ConnectionStatusEnum.DEPRECATED)
+                .build();
+
+            CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
+
+            if (res.connectionResponse().isPresent()) {
+                // handle response
+            }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security schemes globally:
+
+| Name         | Type         | Scheme       |
+| ------------ | ------------ | ------------ |
+| `basicAuth`  | http         | HTTP Basic   |
+| `bearerAuth` | http         | HTTP Bearer  |
+
+You can set the security parameters through the `security` builder method when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```java
+package hello.world;
+
+import com.airbyte.api.Airbyte;
+import com.airbyte.api.models.operations.*;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.ConnectionSchedule;
+import com.airbyte.api.models.shared.ConnectionStatusEnum;
+import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
+import com.airbyte.api.models.shared.GeographyEnum;
+import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
+import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
+import com.airbyte.api.models.shared.ScheduleTypeEnum;
+import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.StreamConfiguration;
+import com.airbyte.api.models.shared.StreamConfigurations;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.Optional;
+import static java.util.Map.entry;
+
+public class Application {
+
+    public static void main(String[] args) {
+        try {
+            Airbyte sdk = Airbyte.builder()
+                .security(Security.builder()
+                    .basicAuth(SchemeBasicAuth.builder()
+                        .password("")
+                        .username("")
+                        .build())
+                    .build())
+                .build();
+
+            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
+                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
+                .configurations(StreamConfigurations.builder()
+                    .streams(java.util.List.of(
+                        StreamConfiguration.builder()
+                            .name("<value>")
+                            .build()))
+                    .build())
+                .dataResidency(GeographyEnum.EU)
+                .name("<value>")
+                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
+                .namespaceFormat("${SOURCE_NAMESPACE}")
+                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
+                .prefix("<value>")
+                .schedule(ConnectionSchedule.builder()
+                    .scheduleType(ScheduleTypeEnum.CRON)
+                    .cronExpression("<value>")
+                    .build())
+                .status(ConnectionStatusEnum.DEPRECATED)
+                .build();
+
+            CreateConnectionResponse res = sdk.connections().createConnection()
+                .request(req)
+                .call();
+
+            if (res.connectionResponse().isPresent()) {
+                // handle response
+            }
+        } catch (com.airbyte.api.models.errors.SDKError e) {
+            // handle exception
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

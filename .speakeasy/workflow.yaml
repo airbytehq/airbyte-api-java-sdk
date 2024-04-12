@@ -1,0 +1,16 @@
+workflowVersion: 1.0.0
+sources:
+    my-source:
+        inputs:
+            - location: https://raw.githubusercontent.com/airbytehq/airbyte-api-python-sdk/main/airbyte-api.openapi.yaml
+targets:
+    airbyte-api:
+        target: java
+        source: my-source
+        publish:
+            java:
+                ossrhUsername: $OSSRH_USERNAME
+                ossrhPassword: $OSSRH_PASSWORD
+                gpgSecretKey: $JAVA_GPG_SECRET_KEY
+                gpgPassPhrase: $JAVA_GPG_PASSPHRASE
+                useSonatypeLegacy: true
