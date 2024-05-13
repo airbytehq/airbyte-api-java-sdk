@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -35,6 +37,7 @@ public class SourceChartmogul {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceChartmogul(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("start_date") OffsetDateTime startDate) {
@@ -48,10 +51,12 @@ public class SourceChartmogul {
     /**
      * Your Chartmogul API key. See &lt;a href="https://help.chartmogul.com/hc/en-us/articles/4407796325906-Creating-and-Managing-API-keys#creating-an-api-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Chartmogul sourceType() {
         return sourceType;
     }
@@ -59,6 +64,7 @@ public class SourceChartmogul {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. When feasible, any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

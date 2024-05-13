@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,6 +59,7 @@ public class SourceGitlabOAuth20 {
     @JsonProperty("token_expiry_date")
     private OffsetDateTime tokenExpiryDate;
 
+    @JsonCreator
     public SourceGitlabOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") String clientId,
@@ -79,17 +82,21 @@ public class SourceGitlabOAuth20 {
     /**
      * Access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
-    public Optional<? extends SourceGitlabAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGitlabAuthType> authType() {
+        return (Optional<SourceGitlabAuthType>) authType;
     }
 
     /**
      * The API ID of the Gitlab developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -97,6 +104,7 @@ public class SourceGitlabOAuth20 {
     /**
      * The API Secret the Gitlab developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -104,6 +112,7 @@ public class SourceGitlabOAuth20 {
     /**
      * The key to refresh the expired access_token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -111,6 +120,7 @@ public class SourceGitlabOAuth20 {
     /**
      * The date-time when the access token should be refreshed.
      */
+    @JsonIgnore
     public OffsetDateTime tokenExpiryDate() {
         return tokenExpiryDate;
     }

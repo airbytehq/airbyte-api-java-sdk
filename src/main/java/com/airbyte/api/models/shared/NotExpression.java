@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,19 +33,28 @@ public class NotExpression {
     @JsonProperty("filter_type")
     private Optional<? extends SourceGoogleAnalyticsDataApiSchemasFilterType> filterType;
 
+    @JsonCreator
     public NotExpression(
             @JsonProperty("expression") Optional<? extends SourceGoogleAnalyticsDataApiSchemasExpression> expression) {
         Utils.checkNotNull(expression, "expression");
         this.expression = expression;
         this.filterType = Builder._SINGLETON_VALUE_FilterType.value();
     }
-
-    public Optional<? extends SourceGoogleAnalyticsDataApiSchemasExpression> expression() {
-        return expression;
+    
+    public NotExpression() {
+        this(Optional.empty());
     }
 
-    public Optional<? extends SourceGoogleAnalyticsDataApiSchemasFilterType> filterType() {
-        return filterType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasExpression> expression() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasExpression>) expression;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasFilterType> filterType() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasFilterType>) filterType;
     }
 
     public final static Builder builder() {

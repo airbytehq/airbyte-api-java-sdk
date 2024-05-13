@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -35,6 +37,7 @@ public class DestinationLangchain {
     @JsonProperty("processing")
     private DestinationLangchainProcessingConfigModel processing;
 
+    @JsonCreator
     public DestinationLangchain(
             @JsonProperty("embedding") DestinationLangchainEmbedding embedding,
             @JsonProperty("indexing") DestinationLangchainIndexing indexing,
@@ -48,6 +51,7 @@ public class DestinationLangchain {
         this.processing = processing;
     }
 
+    @JsonIgnore
     public Langchain destinationType() {
         return destinationType;
     }
@@ -55,6 +59,7 @@ public class DestinationLangchain {
     /**
      * Embedding configuration
      */
+    @JsonIgnore
     public DestinationLangchainEmbedding embedding() {
         return embedding;
     }
@@ -62,10 +67,12 @@ public class DestinationLangchain {
     /**
      * Indexing configuration
      */
+    @JsonIgnore
     public DestinationLangchainIndexing indexing() {
         return indexing;
     }
 
+    @JsonIgnore
     public DestinationLangchainProcessingConfigModel processing() {
         return processing;
     }

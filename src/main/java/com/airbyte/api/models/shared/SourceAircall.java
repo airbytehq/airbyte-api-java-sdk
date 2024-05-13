@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -41,6 +43,7 @@ public class SourceAircall {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceAircall(
             @JsonProperty("api_id") String apiId,
             @JsonProperty("api_token") String apiToken,
@@ -57,6 +60,7 @@ public class SourceAircall {
     /**
      * App ID found at settings https://dashboard.aircall.io/integrations/api-keys
      */
+    @JsonIgnore
     public String apiId() {
         return apiId;
     }
@@ -64,10 +68,12 @@ public class SourceAircall {
     /**
      * App token found at settings (Ref- https://dashboard.aircall.io/integrations/api-keys)
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
+    @JsonIgnore
     public Aircall sourceType() {
         return sourceType;
     }
@@ -75,6 +81,7 @@ public class SourceAircall {
     /**
      * Date time filter for incremental filter, Specify which date to extract from.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

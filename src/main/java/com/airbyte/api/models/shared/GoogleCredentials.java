@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class GoogleCredentials {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public GoogleCredentials(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") String clientId,
@@ -67,17 +70,28 @@ public class GoogleCredentials {
         this.developerToken = developerToken;
         this.refreshToken = refreshToken;
     }
+    
+    public GoogleCredentials(
+            String clientId,
+            String clientSecret,
+            String developerToken,
+            String refreshToken) {
+        this(Optional.empty(), clientId, clientSecret, developerToken, refreshToken);
+    }
 
     /**
      * The Access Token for making authenticated requests. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
     /**
      * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -85,6 +99,7 @@ public class GoogleCredentials {
     /**
      * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -92,6 +107,7 @@ public class GoogleCredentials {
     /**
      * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
+    @JsonIgnore
     public String developerToken() {
         return developerToken;
     }
@@ -99,6 +115,7 @@ public class GoogleCredentials {
     /**
      * The token used to obtain a new Access Token. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

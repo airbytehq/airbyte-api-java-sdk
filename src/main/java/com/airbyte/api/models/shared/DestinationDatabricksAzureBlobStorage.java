@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class DestinationDatabricksAzureBlobStorage {
     @JsonProperty("data_source_type")
     private DestinationDatabricksSchemasDataSourceType dataSourceType;
 
+    @JsonCreator
     public DestinationDatabricksAzureBlobStorage(
             @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName,
             @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName,
@@ -63,10 +66,18 @@ public class DestinationDatabricksAzureBlobStorage {
         this.azureBlobStorageSasToken = azureBlobStorageSasToken;
         this.dataSourceType = Builder._SINGLETON_VALUE_DataSourceType.value();
     }
+    
+    public DestinationDatabricksAzureBlobStorage(
+            String azureBlobStorageAccountName,
+            String azureBlobStorageContainerName,
+            String azureBlobStorageSasToken) {
+        this(azureBlobStorageAccountName, azureBlobStorageContainerName, Optional.empty(), azureBlobStorageSasToken);
+    }
 
     /**
      * The account's name of the Azure Blob Storage.
      */
+    @JsonIgnore
     public String azureBlobStorageAccountName() {
         return azureBlobStorageAccountName;
     }
@@ -74,6 +85,7 @@ public class DestinationDatabricksAzureBlobStorage {
     /**
      * The name of the Azure blob storage container.
      */
+    @JsonIgnore
     public String azureBlobStorageContainerName() {
         return azureBlobStorageContainerName;
     }
@@ -81,17 +93,21 @@ public class DestinationDatabricksAzureBlobStorage {
     /**
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
-    public Optional<? extends String> azureBlobStorageEndpointDomainName() {
-        return azureBlobStorageEndpointDomainName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> azureBlobStorageEndpointDomainName() {
+        return (Optional<String>) azureBlobStorageEndpointDomainName;
     }
 
     /**
      * Shared access signature (SAS) token to grant limited access to objects in your storage account.
      */
+    @JsonIgnore
     public String azureBlobStorageSasToken() {
         return azureBlobStorageSasToken;
     }
 
+    @JsonIgnore
     public DestinationDatabricksSchemasDataSourceType dataSourceType() {
         return dataSourceType;
     }

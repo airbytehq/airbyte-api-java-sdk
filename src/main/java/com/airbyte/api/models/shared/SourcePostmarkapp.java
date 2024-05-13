@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourcePostmarkapp {
     @JsonProperty("sourceType")
     private Postmarkapp sourceType;
 
+    @JsonCreator
     public SourcePostmarkapp(
             @JsonProperty("X-Postmark-Account-Token") String xPostmarkAccountToken,
             @JsonProperty("X-Postmark-Server-Token") String xPostmarkServerToken) {
@@ -45,6 +48,7 @@ public class SourcePostmarkapp {
     /**
      * API Key for account
      */
+    @JsonIgnore
     public String xPostmarkAccountToken() {
         return xPostmarkAccountToken;
     }
@@ -52,10 +56,12 @@ public class SourcePostmarkapp {
     /**
      * API Key for server
      */
+    @JsonIgnore
     public String xPostmarkServerToken() {
         return xPostmarkServerToken;
     }
 
+    @JsonIgnore
     public Postmarkapp sourceType() {
         return sourceType;
     }

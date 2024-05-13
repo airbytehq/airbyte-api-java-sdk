@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class SourceFileS3AmazonWebServices {
     @JsonProperty("storage")
     private SourceFileSchemasStorage storage;
 
+    @JsonCreator
     public SourceFileS3AmazonWebServices(
             @JsonProperty("aws_access_key_id") Optional<? extends String> awsAccessKeyId,
             @JsonProperty("aws_secret_access_key") Optional<? extends String> awsSecretAccessKey) {
@@ -46,21 +49,30 @@ public class SourceFileS3AmazonWebServices {
         this.awsSecretAccessKey = awsSecretAccessKey;
         this.storage = Builder._SINGLETON_VALUE_Storage.value();
     }
-
-    /**
-     * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
-     */
-    public Optional<? extends String> awsAccessKeyId() {
-        return awsAccessKeyId;
+    
+    public SourceFileS3AmazonWebServices() {
+        this(Optional.empty(), Optional.empty());
     }
 
     /**
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
-    public Optional<? extends String> awsSecretAccessKey() {
-        return awsSecretAccessKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsAccessKeyId() {
+        return (Optional<String>) awsAccessKeyId;
     }
 
+    /**
+     * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsSecretAccessKey() {
+        return (Optional<String>) awsSecretAccessKey;
+    }
+
+    @JsonIgnore
     public SourceFileSchemasStorage storage() {
         return storage;
     }

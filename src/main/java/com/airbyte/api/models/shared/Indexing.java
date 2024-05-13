@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -43,6 +45,7 @@ public class Indexing {
     @JsonProperty("collection")
     private String collection;
 
+    @JsonCreator
     public Indexing(
             @JsonProperty("astra_db_app_token") String astraDbAppToken,
             @JsonProperty("astra_db_endpoint") String astraDbEndpoint,
@@ -61,6 +64,7 @@ public class Indexing {
     /**
      * The application token authorizes a user to connect to a specific Astra DB database. It is created when the user clicks the Generate Token button on the Overview tab of the Database page in the Astra UI.
      */
+    @JsonIgnore
     public String astraDbAppToken() {
         return astraDbAppToken;
     }
@@ -68,6 +72,7 @@ public class Indexing {
     /**
      * The endpoint specifies which Astra DB database queries are sent to. It can be copied from the Database Details section of the Overview tab of the Database page in the Astra UI.
      */
+    @JsonIgnore
     public String astraDbEndpoint() {
         return astraDbEndpoint;
     }
@@ -75,6 +80,7 @@ public class Indexing {
     /**
      * Keyspaces (or Namespaces) serve as containers for organizing data within a database. You can create a new keyspace uisng the Data Explorer tab in the Astra UI. The keyspace default_keyspace is created for you when you create a Vector Database in Astra DB.
      */
+    @JsonIgnore
     public String astraDbKeyspace() {
         return astraDbKeyspace;
     }
@@ -82,6 +88,7 @@ public class Indexing {
     /**
      * Collections hold data. They are analagous to tables in traditional Cassandra terminology. This tool will create the collection with the provided name automatically if it does not already exist. Alternatively, you can create one thorugh the Data Explorer tab in the Astra UI.
      */
+    @JsonIgnore
     public String collection() {
         return collection;
     }

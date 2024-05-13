@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class ConnectionScheduleResponse {
     @JsonProperty("scheduleType")
     private ScheduleTypeWithBasicEnum scheduleType;
 
+    @JsonCreator
     public ConnectionScheduleResponse(
             @JsonProperty("basicTiming") Optional<? extends String> basicTiming,
             @JsonProperty("cronExpression") Optional<? extends String> cronExpression,
@@ -44,15 +47,25 @@ public class ConnectionScheduleResponse {
         this.cronExpression = cronExpression;
         this.scheduleType = scheduleType;
     }
-
-    public Optional<? extends String> basicTiming() {
-        return basicTiming;
+    
+    public ConnectionScheduleResponse(
+            ScheduleTypeWithBasicEnum scheduleType) {
+        this(Optional.empty(), Optional.empty(), scheduleType);
     }
 
-    public Optional<? extends String> cronExpression() {
-        return cronExpression;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> basicTiming() {
+        return (Optional<String>) basicTiming;
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> cronExpression() {
+        return (Optional<String>) cronExpression;
+    }
+
+    @JsonIgnore
     public ScheduleTypeWithBasicEnum scheduleType() {
         return scheduleType;
     }

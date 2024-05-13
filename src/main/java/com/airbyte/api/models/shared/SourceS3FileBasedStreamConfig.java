@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -81,6 +83,7 @@ public class SourceS3FileBasedStreamConfig {
     @JsonProperty("validation_policy")
     private Optional<? extends SourceS3ValidationPolicy> validationPolicy;
 
+    @JsonCreator
     public SourceS3FileBasedStreamConfig(
             @JsonProperty("days_to_sync_if_history_is_full") Optional<? extends Long> daysToSyncIfHistoryIsFull,
             @JsonProperty("format") SourceS3Format format,
@@ -110,17 +113,26 @@ public class SourceS3FileBasedStreamConfig {
         this.schemaless = schemaless;
         this.validationPolicy = validationPolicy;
     }
+    
+    public SourceS3FileBasedStreamConfig(
+            SourceS3Format format,
+            String name) {
+        this(Optional.empty(), format, Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
      */
-    public Optional<? extends Long> daysToSyncIfHistoryIsFull() {
-        return daysToSyncIfHistoryIsFull;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> daysToSyncIfHistoryIsFull() {
+        return (Optional<Long>) daysToSyncIfHistoryIsFull;
     }
 
     /**
      * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
      */
+    @JsonIgnore
     public SourceS3Format format() {
         return format;
     }
@@ -128,27 +140,34 @@ public class SourceS3FileBasedStreamConfig {
     /**
      * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends java.util.List<String>> globs() {
-        return globs;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> globs() {
+        return (Optional<java.util.List<String>>) globs;
     }
 
     /**
      * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
      */
-    public Optional<? extends String> inputSchema() {
-        return inputSchema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> inputSchema() {
+        return (Optional<String>) inputSchema;
     }
 
     /**
      * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
      */
-    public Optional<? extends String> legacyPrefix() {
-        return legacyPrefix;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> legacyPrefix() {
+        return (Optional<String>) legacyPrefix;
     }
 
     /**
      * The name of the stream.
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -156,22 +175,28 @@ public class SourceS3FileBasedStreamConfig {
     /**
      * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
      */
-    public Optional<? extends String> primaryKey() {
-        return primaryKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> primaryKey() {
+        return (Optional<String>) primaryKey;
     }
 
     /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
-    public Optional<? extends Boolean> schemaless() {
-        return schemaless;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> schemaless() {
+        return (Optional<Boolean>) schemaless;
     }
 
     /**
      * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
      */
-    public Optional<? extends SourceS3ValidationPolicy> validationPolicy() {
-        return validationPolicy;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3ValidationPolicy> validationPolicy() {
+        return (Optional<SourceS3ValidationPolicy>) validationPolicy;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class SourceTwitter {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceTwitter(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
@@ -67,10 +70,17 @@ public class SourceTwitter {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceTwitter(
+            String apiKey,
+            String query) {
+        this(apiKey, Optional.empty(), query, Optional.empty());
+    }
 
     /**
      * App only Bearer Token. See the &lt;a href="https://developer.twitter.com/en/docs/authentication/oauth-2-0/bearer-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -78,17 +88,21 @@ public class SourceTwitter {
     /**
      * The end date for retrieving tweets must be a minimum of 10 seconds prior to the request time.
      */
-    public Optional<? extends OffsetDateTime> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> endDate() {
+        return (Optional<OffsetDateTime>) endDate;
     }
 
     /**
      * Query for matching Tweets. You can learn how to build this query by reading &lt;a href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query"&gt; build a query guide &lt;/a&gt;.
      */
+    @JsonIgnore
     public String query() {
         return query;
     }
 
+    @JsonIgnore
     public Twitter sourceType() {
         return sourceType;
     }
@@ -96,8 +110,10 @@ public class SourceTwitter {
     /**
      * The start date for retrieving tweets cannot be more than 7 days in the past.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

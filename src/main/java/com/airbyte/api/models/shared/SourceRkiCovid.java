@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceRkiCovid {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceRkiCovid(
             @JsonProperty("start_date") String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -33,6 +36,7 @@ public class SourceRkiCovid {
         this.startDate = startDate;
     }
 
+    @JsonIgnore
     public RkiCovid sourceType() {
         return sourceType;
     }
@@ -40,6 +44,7 @@ public class SourceRkiCovid {
     /**
      * UTC date in the format 2017-01-25. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,22 +36,31 @@ public class ByMarkdownHeader {
     @JsonProperty("split_level")
     private Optional<? extends Long> splitLevel;
 
+    @JsonCreator
     public ByMarkdownHeader(
             @JsonProperty("split_level") Optional<? extends Long> splitLevel) {
         Utils.checkNotNull(splitLevel, "splitLevel");
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
         this.splitLevel = splitLevel;
     }
+    
+    public ByMarkdownHeader() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationAstraSchemasProcessingTextSplitterMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationAstraSchemasProcessingTextSplitterMode> mode() {
+        return (Optional<DestinationAstraSchemasProcessingTextSplitterMode>) mode;
     }
 
     /**
      * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
      */
-    public Optional<? extends Long> splitLevel() {
-        return splitLevel;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> splitLevel() {
+        return (Optional<Long>) splitLevel;
     }
 
     public final static Builder builder() {

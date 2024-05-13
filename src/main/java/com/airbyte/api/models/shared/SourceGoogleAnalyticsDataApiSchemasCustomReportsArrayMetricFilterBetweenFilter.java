@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBe
     @JsonProperty("toValue")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterToValue toValue;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBetweenFilter(
             @JsonProperty("fromValue") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFromValue fromValue,
             @JsonProperty("toValue") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterToValue toValue) {
@@ -36,14 +39,17 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBe
         this.toValue = toValue;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsFilterName filterName() {
         return filterName;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFromValue fromValue() {
         return fromValue;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterToValue toValue() {
         return toValue;
     }

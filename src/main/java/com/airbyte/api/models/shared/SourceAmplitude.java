@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -58,6 +60,7 @@ public class SourceAmplitude {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceAmplitude(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("data_region") Optional<? extends DataRegion> dataRegion,
@@ -76,10 +79,18 @@ public class SourceAmplitude {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceAmplitude(
+            String apiKey,
+            String secretKey,
+            OffsetDateTime startDate) {
+        this(apiKey, Optional.empty(), Optional.empty(), secretKey, startDate);
+    }
 
     /**
      * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -87,24 +98,30 @@ public class SourceAmplitude {
     /**
      * Amplitude data region server
      */
-    public Optional<? extends DataRegion> dataRegion() {
-        return dataRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DataRegion> dataRegion() {
+        return (Optional<DataRegion>) dataRegion;
     }
 
     /**
      * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too big time range in request can cause a timeout error. In this case, set shorter time interval in hours.
      */
-    public Optional<? extends Long> requestTimeRange() {
-        return requestTimeRange;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> requestTimeRange() {
+        return (Optional<Long>) requestTimeRange;
     }
 
     /**
      * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String secretKey() {
         return secretKey;
     }
 
+    @JsonIgnore
     public Amplitude sourceType() {
         return sourceType;
     }
@@ -112,6 +129,7 @@ public class SourceAmplitude {
     /**
      * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -104,6 +106,7 @@ public class DestinationAwsDatalake {
     @JsonProperty("region")
     private Optional<? extends S3BucketRegion> region;
 
+    @JsonCreator
     public DestinationAwsDatalake(
             @JsonProperty("aws_account_id") Optional<? extends String> awsAccountId,
             @JsonProperty("bucket_name") String bucketName,
@@ -143,17 +146,27 @@ public class DestinationAwsDatalake {
         this.partitioning = partitioning;
         this.region = region;
     }
+    
+    public DestinationAwsDatalake(
+            String bucketName,
+            AuthenticationMode credentials,
+            String lakeformationDatabaseName) {
+        this(Optional.empty(), bucketName, Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), lakeformationDatabaseName, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * target aws account id
      */
-    public Optional<? extends String> awsAccountId() {
-        return awsAccountId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsAccountId() {
+        return (Optional<String>) awsAccountId;
     }
 
     /**
      * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String bucketName() {
         return bucketName;
     }
@@ -161,17 +174,21 @@ public class DestinationAwsDatalake {
     /**
      * S3 prefix
      */
-    public Optional<? extends String> bucketPrefix() {
-        return bucketPrefix;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> bucketPrefix() {
+        return (Optional<String>) bucketPrefix;
     }
 
     /**
      * Choose How to Authenticate to AWS.
      */
+    @JsonIgnore
     public AuthenticationMode credentials() {
         return credentials;
     }
 
+    @JsonIgnore
     public AwsDatalake destinationType() {
         return destinationType;
     }
@@ -179,34 +196,43 @@ public class DestinationAwsDatalake {
     /**
      * Format of the data output.
      */
-    public Optional<? extends OutputFormatWildcard> format() {
-        return format;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OutputFormatWildcard> format() {
+        return (Optional<OutputFormatWildcard>) format;
     }
 
     /**
      * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
      */
-    public Optional<? extends Boolean> glueCatalogFloatAsDecimal() {
-        return glueCatalogFloatAsDecimal;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> glueCatalogFloatAsDecimal() {
+        return (Optional<Boolean>) glueCatalogFloatAsDecimal;
     }
 
     /**
      * Add a default tag key to databases created by this destination
      */
-    public Optional<? extends String> lakeformationDatabaseDefaultTagKey() {
-        return lakeformationDatabaseDefaultTagKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> lakeformationDatabaseDefaultTagKey() {
+        return (Optional<String>) lakeformationDatabaseDefaultTagKey;
     }
 
     /**
      * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
      */
-    public Optional<? extends String> lakeformationDatabaseDefaultTagValues() {
-        return lakeformationDatabaseDefaultTagValues;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> lakeformationDatabaseDefaultTagValues() {
+        return (Optional<String>) lakeformationDatabaseDefaultTagValues;
     }
 
     /**
      * The default database this destination will use to create tables in per stream. Can be changed per connection by customizing the namespace.
      */
+    @JsonIgnore
     public String lakeformationDatabaseName() {
         return lakeformationDatabaseName;
     }
@@ -214,22 +240,28 @@ public class DestinationAwsDatalake {
     /**
      * Whether to create tables as LF governed tables.
      */
-    public Optional<? extends Boolean> lakeformationGovernedTables() {
-        return lakeformationGovernedTables;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> lakeformationGovernedTables() {
+        return (Optional<Boolean>) lakeformationGovernedTables;
     }
 
     /**
      * Partition data by cursor fields when a cursor field is a date
      */
-    public Optional<? extends ChooseHowToPartitionData> partitioning() {
-        return partitioning;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ChooseHowToPartitionData> partitioning() {
+        return (Optional<ChooseHowToPartitionData>) partitioning;
     }
 
     /**
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
-    public Optional<? extends S3BucketRegion> region() {
-        return region;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<S3BucketRegion> region() {
+        return (Optional<S3BucketRegion>) region;
     }
 
     public final static Builder builder() {

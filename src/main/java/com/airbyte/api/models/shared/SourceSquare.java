@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class SourceSquare {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceSquare(
             @JsonProperty("credentials") Optional<? extends SourceSquareAuthentication> credentials,
             @JsonProperty("include_deleted_objects") Optional<? extends Boolean> includeDeletedObjects,
@@ -67,28 +70,39 @@ public class SourceSquare {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceSquare() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Choose how to authenticate to Square.
      */
-    public Optional<? extends SourceSquareAuthentication> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceSquareAuthentication> credentials() {
+        return (Optional<SourceSquareAuthentication>) credentials;
     }
 
     /**
      * In some streams there is an option to include deleted objects (Items, Categories, Discounts, Taxes)
      */
-    public Optional<? extends Boolean> includeDeletedObjects() {
-        return includeDeletedObjects;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> includeDeletedObjects() {
+        return (Optional<Boolean>) includeDeletedObjects;
     }
 
     /**
      * Determines whether to use the sandbox or production environment.
      */
-    public Optional<? extends Boolean> isSandbox() {
-        return isSandbox;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> isSandbox() {
+        return (Optional<Boolean>) isSandbox;
     }
 
+    @JsonIgnore
     public SourceSquareSquare sourceType() {
         return sourceType;
     }
@@ -96,8 +110,10 @@ public class SourceSquare {
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {

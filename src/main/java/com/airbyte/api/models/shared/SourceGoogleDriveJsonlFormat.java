@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class SourceGoogleDriveJsonlFormat {
     @JsonProperty("filetype")
     private Optional<? extends SourceGoogleDriveSchemasStreamsFiletype> filetype;
 
+    @JsonCreator
     public SourceGoogleDriveJsonlFormat() {
         
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
-    public Optional<? extends SourceGoogleDriveSchemasStreamsFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDriveSchemasStreamsFiletype> filetype() {
+        return (Optional<SourceGoogleDriveSchemasStreamsFiletype>) filetype;
     }
 
     public final static Builder builder() {

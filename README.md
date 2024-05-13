@@ -24,7 +24,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte.api:public-api:1.0.0'
+implementation 'com.airbyte.api:public-api:1.1.0'
 ```
 
 Maven:
@@ -32,7 +32,7 @@ Maven:
 <dependency>
     <groupId>com.airbyte.api</groupId>
     <artifactId>public-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -61,29 +61,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -97,26 +87,10 @@ public class Application {
             ConnectionCreateRequest req = ConnectionCreateRequest.builder()
                 .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
                 .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .configurations(StreamConfigurations.builder()
-                    .streams(java.util.List.of(
-                        StreamConfiguration.builder()
-                            .name("<value>")
-                            .build()))
-                    .build())
-                .dataResidency(GeographyEnum.EU)
-                .name("<value>")
-                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
                 .namespaceFormat("${SOURCE_NAMESPACE}")
-                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
-                .prefix("<value>")
-                .schedule(ConnectionSchedule.builder()
-                    .scheduleType(ScheduleTypeEnum.CRON)
-                    .cronExpression("<value>")
-                    .build())
-                .status(ConnectionStatusEnum.DEPRECATED)
                 .build();
 
-            CreateConnectionResponse res = sdk.connections().createConnection()
+            CreateConnectionResponse res = sdk.publicConnections().createConnection()
                 .request(req)
                 .call();
 
@@ -125,8 +99,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -136,6 +112,46 @@ public class Application {
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+### [publicConnections()](docs/sdks/publicconnections/README.md)
+
+* [createConnection](docs/sdks/publicconnections/README.md#createconnection) - Create a connection
+* [deleteConnection](docs/sdks/publicconnections/README.md#deleteconnection) - Delete a Connection
+* [getConnection](docs/sdks/publicconnections/README.md#getconnection) - Get Connection details
+* [listConnections](docs/sdks/publicconnections/README.md#listconnections) - List connections
+* [patchConnection](docs/sdks/publicconnections/README.md#patchconnection) - Update Connection details
+
+### [public_()](docs/sdks/public/README.md)
+
+* [cancelJob](docs/sdks/public/README.md#canceljob) - Cancel a running Job
+* [createConnection](docs/sdks/public/README.md#createconnection) - Create a connection
+* [createDestination](docs/sdks/public/README.md#createdestination) - Create a destination
+* [createJob](docs/sdks/public/README.md#createjob) - Trigger a sync or reset job of a connection
+* [createOrUpdateWorkspaceOAuthCredentials](docs/sdks/public/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
+* [createSource](docs/sdks/public/README.md#createsource) - Create a source
+* [createWorkspace](docs/sdks/public/README.md#createworkspace) - Create a workspace
+* [deleteConnection](docs/sdks/public/README.md#deleteconnection) - Delete a Connection
+* [deleteDestination](docs/sdks/public/README.md#deletedestination) - Delete a Destination
+* [deleteSource](docs/sdks/public/README.md#deletesource) - Delete a Source
+* [deleteWorkspace](docs/sdks/public/README.md#deleteworkspace) - Delete a Workspace
+* [getConnection](docs/sdks/public/README.md#getconnection) - Get Connection details
+* [getDestination](docs/sdks/public/README.md#getdestination) - Get Destination details
+* [getJob](docs/sdks/public/README.md#getjob) - Get Job status and details
+* [getSource](docs/sdks/public/README.md#getsource) - Get Source details
+* [getStreamProperties](docs/sdks/public/README.md#getstreamproperties) - Get stream properties
+* [getWorkspace](docs/sdks/public/README.md#getworkspace) - Get Workspace details
+* [initiateOAuth](docs/sdks/public/README.md#initiateoauth) - Initiate OAuth for a source
+* [listConnections](docs/sdks/public/README.md#listconnections) - List connections
+* [listDestinations](docs/sdks/public/README.md#listdestinations) - List destinations
+* [listJobs](docs/sdks/public/README.md#listjobs) - List Jobs by sync type
+* [listSources](docs/sdks/public/README.md#listsources) - List sources
+* [listWorkspaces](docs/sdks/public/README.md#listworkspaces) - List workspaces
+* [patchConnection](docs/sdks/public/README.md#patchconnection) - Update Connection details
+* [patchDestination](docs/sdks/public/README.md#patchdestination) - Update a Destination
+* [patchSource](docs/sdks/public/README.md#patchsource) - Update a Source
+* [putDestination](docs/sdks/public/README.md#putdestination) - Update a Destination and fully overwrite it
+* [putSource](docs/sdks/public/README.md#putsource) - Update a Source and fully overwrite it
+* [updateWorkspace](docs/sdks/public/README.md#updateworkspace) - Update a workspace
+
 ### [connections()](docs/sdks/connections/README.md)
 
 * [createConnection](docs/sdks/connections/README.md#createconnection) - Create a connection
@@ -143,6 +159,15 @@ public class Application {
 * [getConnection](docs/sdks/connections/README.md#getconnection) - Get Connection details
 * [listConnections](docs/sdks/connections/README.md#listconnections) - List connections
 * [patchConnection](docs/sdks/connections/README.md#patchconnection) - Update Connection details
+
+### [publicDestinations()](docs/sdks/publicdestinations/README.md)
+
+* [createDestination](docs/sdks/publicdestinations/README.md#createdestination) - Create a destination
+* [deleteDestination](docs/sdks/publicdestinations/README.md#deletedestination) - Delete a Destination
+* [getDestination](docs/sdks/publicdestinations/README.md#getdestination) - Get Destination details
+* [listDestinations](docs/sdks/publicdestinations/README.md#listdestinations) - List destinations
+* [patchDestination](docs/sdks/publicdestinations/README.md#patchdestination) - Update a Destination
+* [putDestination](docs/sdks/publicdestinations/README.md#putdestination) - Update a Destination and fully overwrite it
 
 ### [destinations()](docs/sdks/destinations/README.md)
 
@@ -153,12 +178,29 @@ public class Application {
 * [patchDestination](docs/sdks/destinations/README.md#patchdestination) - Update a Destination
 * [putDestination](docs/sdks/destinations/README.md#putdestination) - Update a Destination and fully overwrite it
 
+### [publicJobs()](docs/sdks/publicjobs/README.md)
+
+* [cancelJob](docs/sdks/publicjobs/README.md#canceljob) - Cancel a running Job
+* [createJob](docs/sdks/publicjobs/README.md#createjob) - Trigger a sync or reset job of a connection
+* [getJob](docs/sdks/publicjobs/README.md#getjob) - Get Job status and details
+* [listJobs](docs/sdks/publicjobs/README.md#listjobs) - List Jobs by sync type
+
 ### [jobs()](docs/sdks/jobs/README.md)
 
 * [cancelJob](docs/sdks/jobs/README.md#canceljob) - Cancel a running Job
 * [createJob](docs/sdks/jobs/README.md#createjob) - Trigger a sync or reset job of a connection
 * [getJob](docs/sdks/jobs/README.md#getjob) - Get Job status and details
 * [listJobs](docs/sdks/jobs/README.md#listjobs) - List Jobs by sync type
+
+### [publicSources()](docs/sdks/publicsources/README.md)
+
+* [createSource](docs/sdks/publicsources/README.md#createsource) - Create a source
+* [deleteSource](docs/sdks/publicsources/README.md#deletesource) - Delete a Source
+* [getSource](docs/sdks/publicsources/README.md#getsource) - Get Source details
+* [initiateOAuth](docs/sdks/publicsources/README.md#initiateoauth) - Initiate OAuth for a source
+* [listSources](docs/sdks/publicsources/README.md#listsources) - List sources
+* [patchSource](docs/sdks/publicsources/README.md#patchsource) - Update a Source
+* [putSource](docs/sdks/publicsources/README.md#putsource) - Update a Source and fully overwrite it
 
 ### [sources()](docs/sdks/sources/README.md)
 
@@ -170,9 +212,22 @@ public class Application {
 * [patchSource](docs/sdks/sources/README.md#patchsource) - Update a Source
 * [putSource](docs/sdks/sources/README.md#putsource) - Update a Source and fully overwrite it
 
+### [publicStreams()](docs/sdks/publicstreams/README.md)
+
+* [getStreamProperties](docs/sdks/publicstreams/README.md#getstreamproperties) - Get stream properties
+
 ### [streams()](docs/sdks/streams/README.md)
 
 * [getStreamProperties](docs/sdks/streams/README.md#getstreamproperties) - Get stream properties
+
+### [publicWorkspaces()](docs/sdks/publicworkspaces/README.md)
+
+* [createOrUpdateWorkspaceOAuthCredentials](docs/sdks/publicworkspaces/README.md#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
+* [createWorkspace](docs/sdks/publicworkspaces/README.md#createworkspace) - Create a workspace
+* [deleteWorkspace](docs/sdks/publicworkspaces/README.md#deleteworkspace) - Delete a Workspace
+* [getWorkspace](docs/sdks/publicworkspaces/README.md#getworkspace) - Get Workspace details
+* [listWorkspaces](docs/sdks/publicworkspaces/README.md#listworkspaces) - List workspaces
+* [updateWorkspace](docs/sdks/publicworkspaces/README.md#updateworkspace) - Update a workspace
 
 ### [workspaces()](docs/sdks/workspaces/README.md)
 
@@ -204,29 +259,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .serverIndex(0)
@@ -241,26 +286,10 @@ public class Application {
             ConnectionCreateRequest req = ConnectionCreateRequest.builder()
                 .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
                 .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .configurations(StreamConfigurations.builder()
-                    .streams(java.util.List.of(
-                        StreamConfiguration.builder()
-                            .name("<value>")
-                            .build()))
-                    .build())
-                .dataResidency(GeographyEnum.EU)
-                .name("<value>")
-                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
                 .namespaceFormat("${SOURCE_NAMESPACE}")
-                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
-                .prefix("<value>")
-                .schedule(ConnectionSchedule.builder()
-                    .scheduleType(ScheduleTypeEnum.CRON)
-                    .cronExpression("<value>")
-                    .build())
-                .status(ConnectionStatusEnum.DEPRECATED)
                 .build();
 
-            CreateConnectionResponse res = sdk.connections().createConnection()
+            CreateConnectionResponse res = sdk.publicConnections().createConnection()
                 .request(req)
                 .call();
 
@@ -269,8 +298,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -285,29 +316,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .serverURL("https://api.airbyte.com/v1")
@@ -322,26 +343,10 @@ public class Application {
             ConnectionCreateRequest req = ConnectionCreateRequest.builder()
                 .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
                 .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .configurations(StreamConfigurations.builder()
-                    .streams(java.util.List.of(
-                        StreamConfiguration.builder()
-                            .name("<value>")
-                            .build()))
-                    .build())
-                .dataResidency(GeographyEnum.EU)
-                .name("<value>")
-                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
                 .namespaceFormat("${SOURCE_NAMESPACE}")
-                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
-                .prefix("<value>")
-                .schedule(ConnectionSchedule.builder()
-                    .scheduleType(ScheduleTypeEnum.CRON)
-                    .cronExpression("<value>")
-                    .build())
-                .status(ConnectionStatusEnum.DEPRECATED)
                 .build();
 
-            CreateConnectionResponse res = sdk.connections().createConnection()
+            CreateConnectionResponse res = sdk.publicConnections().createConnection()
                 .request(req)
                 .call();
 
@@ -350,8 +355,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -374,29 +381,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -410,26 +407,10 @@ public class Application {
             ConnectionCreateRequest req = ConnectionCreateRequest.builder()
                 .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
                 .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .configurations(StreamConfigurations.builder()
-                    .streams(java.util.List.of(
-                        StreamConfiguration.builder()
-                            .name("<value>")
-                            .build()))
-                    .build())
-                .dataResidency(GeographyEnum.EU)
-                .name("<value>")
-                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
                 .namespaceFormat("${SOURCE_NAMESPACE}")
-                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
-                .prefix("<value>")
-                .schedule(ConnectionSchedule.builder()
-                    .scheduleType(ScheduleTypeEnum.CRON)
-                    .cronExpression("<value>")
-                    .build())
-                .status(ConnectionStatusEnum.DEPRECATED)
                 .build();
 
-            CreateConnectionResponse res = sdk.connections().createConnection()
+            CreateConnectionResponse res = sdk.publicConnections().createConnection()
                 .request(req)
                 .call();
 
@@ -438,8 +419,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -453,10 +436,11 @@ public class Application {
 
 This SDK supports the following security schemes globally:
 
-| Name         | Type         | Scheme       |
-| ------------ | ------------ | ------------ |
-| `basicAuth`  | http         | HTTP Basic   |
-| `bearerAuth` | http         | HTTP Bearer  |
+| Name                | Type                | Scheme              |
+| ------------------- | ------------------- | ------------------- |
+| `basicAuth`         | http                | HTTP Basic          |
+| `bearerAuth`        | http                | HTTP Bearer         |
+| `clientCredentials` | oauth2              | OAuth2 token        |
 
 You can set the security parameters through the `security` builder method when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```java
@@ -464,29 +448,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -500,26 +474,10 @@ public class Application {
             ConnectionCreateRequest req = ConnectionCreateRequest.builder()
                 .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
                 .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .configurations(StreamConfigurations.builder()
-                    .streams(java.util.List.of(
-                        StreamConfiguration.builder()
-                            .name("<value>")
-                            .build()))
-                    .build())
-                .dataResidency(GeographyEnum.EU)
-                .name("<value>")
-                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
                 .namespaceFormat("${SOURCE_NAMESPACE}")
-                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
-                .prefix("<value>")
-                .schedule(ConnectionSchedule.builder()
-                    .scheduleType(ScheduleTypeEnum.CRON)
-                    .cronExpression("<value>")
-                    .build())
-                .status(ConnectionStatusEnum.DEPRECATED)
                 .build();
 
-            CreateConnectionResponse res = sdk.connections().createConnection()
+            CreateConnectionResponse res = sdk.publicConnections().createConnection()
                 .request(req)
                 .call();
 
@@ -528,8 +486,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }

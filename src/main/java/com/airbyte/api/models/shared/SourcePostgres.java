@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -91,6 +93,7 @@ public class SourcePostgres {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourcePostgres(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
@@ -124,10 +127,18 @@ public class SourcePostgres {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public SourcePostgres(
+            String database,
+            String host,
+            String username) {
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -135,6 +146,7 @@ public class SourcePostgres {
     /**
      * Hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -142,38 +154,49 @@ public class SourcePostgres {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * Password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * Port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * Configures how data is extracted from the database.
      */
-    public Optional<? extends SourcePostgresUpdateMethod> replicationMethod() {
-        return replicationMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourcePostgresUpdateMethod> replicationMethod() {
+        return (Optional<SourcePostgresUpdateMethod>) replicationMethod;
     }
 
     /**
      * The list of schemas (case sensitive) to sync from. Defaults to public.
      */
-    public Optional<? extends java.util.List<String>> schemas() {
-        return schemas;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> schemas() {
+        return (Optional<java.util.List<String>>) schemas;
     }
 
+    @JsonIgnore
     public SourcePostgresPostgres sourceType() {
         return sourceType;
     }
@@ -182,20 +205,25 @@ public class SourcePostgres {
      * SSL connection modes. 
      *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
      */
-    public Optional<? extends java.lang.Object> sslMode() {
-        return sslMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.lang.Object> sslMode() {
+        return (Optional<java.lang.Object>) sslMode;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends SourcePostgresSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourcePostgresSSHTunnelMethod> tunnelMethod() {
+        return (Optional<SourcePostgresSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * Username to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

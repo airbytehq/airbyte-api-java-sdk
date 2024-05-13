@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -79,6 +81,7 @@ public class SourceMixpanel {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceMixpanel(
             @JsonProperty("attribution_window") Optional<? extends Long> attributionWindow,
             @JsonProperty("credentials") AuthenticationWildcard credentials,
@@ -106,17 +109,25 @@ public class SourceMixpanel {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceMixpanel(
+            AuthenticationWildcard credentials) {
+        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days. (This value should be non-negative integer)
      */
-    public Optional<? extends Long> attributionWindow() {
-        return attributionWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> attributionWindow() {
+        return (Optional<Long>) attributionWindow;
     }
 
     /**
      * Choose how to authenticate to Mixpanel
      */
+    @JsonIgnore
     public AuthenticationWildcard credentials() {
         return credentials;
     }
@@ -124,38 +135,49 @@ public class SourceMixpanel {
     /**
      * Defines window size in days, that used to slice through data. You can reduce it, if amount of data in each window is too big for your environment. (This value should be positive integer)
      */
-    public Optional<? extends Long> dateWindowSize() {
-        return dateWindowSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> dateWindowSize() {
+        return (Optional<Long>) dateWindowSize;
     }
 
     /**
      * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
     /**
      * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
      */
-    public Optional<? extends String> projectTimezone() {
-        return projectTimezone;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> projectTimezone() {
+        return (Optional<String>) projectTimezone;
     }
 
     /**
      * The region of mixpanel domain instance either US or EU.
      */
-    public Optional<? extends SourceMixpanelRegion> region() {
-        return region;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMixpanelRegion> region() {
+        return (Optional<SourceMixpanelRegion>) region;
     }
 
     /**
      * Setting this config parameter to TRUE ensures that new properties on events and engage records are captured. Otherwise new properties will be ignored.
      */
-    public Optional<? extends Boolean> selectPropertiesByDefault() {
-        return selectPropertiesByDefault;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> selectPropertiesByDefault() {
+        return (Optional<Boolean>) selectPropertiesByDefault;
     }
 
+    @JsonIgnore
     public Mixpanel sourceType() {
         return sourceType;
     }
@@ -163,8 +185,10 @@ public class SourceMixpanel {
     /**
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {

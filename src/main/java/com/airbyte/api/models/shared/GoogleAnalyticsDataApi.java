@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class GoogleAnalyticsDataApi {
     @JsonProperty("credentials")
     private Optional<? extends GoogleAnalyticsDataApiCredentials> credentials;
 
+    @JsonCreator
     public GoogleAnalyticsDataApi(
             @JsonProperty("credentials") Optional<? extends GoogleAnalyticsDataApiCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public GoogleAnalyticsDataApi() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends GoogleAnalyticsDataApiCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GoogleAnalyticsDataApiCredentials> credentials() {
+        return (Optional<GoogleAnalyticsDataApiCredentials>) credentials;
     }
 
     public final static Builder builder() {

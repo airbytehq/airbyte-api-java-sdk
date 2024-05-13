@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,6 +37,13 @@ public class DestinationPostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_type_dedupe")
     private Optional<? extends Boolean> disableTypeDedupe;
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("drop_cascade")
+    private Optional<? extends Boolean> dropCascade;
 
     /**
      * Hostname of the database.
@@ -104,9 +113,11 @@ public class DestinationPostgres {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationPostgres(
             @JsonProperty("database") String database,
             @JsonProperty("disable_type_dedupe") Optional<? extends Boolean> disableTypeDedupe,
+            @JsonProperty("drop_cascade") Optional<? extends Boolean> dropCascade,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") Optional<? extends String> password,
@@ -118,6 +129,7 @@ public class DestinationPostgres {
             @JsonProperty("username") String username) {
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        Utils.checkNotNull(dropCascade, "dropCascade");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
@@ -130,6 +142,7 @@ public class DestinationPostgres {
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.disableTypeDedupe = disableTypeDedupe;
+        this.dropCascade = dropCascade;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
@@ -140,14 +153,23 @@ public class DestinationPostgres {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public DestinationPostgres(
+            String database,
+            String host,
+            String username) {
+        this(database, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
+    @JsonIgnore
     public Postgres destinationType() {
         return destinationType;
     }
@@ -155,13 +177,25 @@ public class DestinationPostgres {
     /**
      * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
      */
-    public Optional<? extends Boolean> disableTypeDedupe() {
-        return disableTypeDedupe;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> disableTypeDedupe() {
+        return (Optional<Boolean>) disableTypeDedupe;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> dropCascade() {
+        return (Optional<Boolean>) dropCascade;
     }
 
     /**
      * Hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -169,36 +203,46 @@ public class DestinationPostgres {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * Password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * Port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * The schema to write raw tables into
      */
-    public Optional<? extends String> rawDataSchema() {
-        return rawDataSchema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return (Optional<String>) rawDataSchema;
     }
 
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     /**
@@ -211,20 +255,25 @@ public class DestinationPostgres {
      *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the source database server
      *  See more information - &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
      */
-    public Optional<? extends SSLModes> sslMode() {
-        return sslMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SSLModes> sslMode() {
+        return (Optional<SSLModes>) sslMode;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends DestinationPostgresSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationPostgresSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationPostgresSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * Username to use to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }
@@ -257,6 +306,24 @@ public class DestinationPostgres {
     public DestinationPostgres withDisableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
         this.disableTypeDedupe = disableTypeDedupe;
+        return this;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    public DestinationPostgres withDropCascade(boolean dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = Optional.ofNullable(dropCascade);
+        return this;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    public DestinationPostgres withDropCascade(Optional<? extends Boolean> dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = dropCascade;
         return this;
     }
 
@@ -431,6 +498,7 @@ public class DestinationPostgres {
             java.util.Objects.deepEquals(this.database, other.database) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            java.util.Objects.deepEquals(this.dropCascade, other.dropCascade) &&
             java.util.Objects.deepEquals(this.host, other.host) &&
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.password, other.password) &&
@@ -448,6 +516,7 @@ public class DestinationPostgres {
             database,
             destinationType,
             disableTypeDedupe,
+            dropCascade,
             host,
             jdbcUrlParams,
             password,
@@ -465,6 +534,7 @@ public class DestinationPostgres {
                 "database", database,
                 "destinationType", destinationType,
                 "disableTypeDedupe", disableTypeDedupe,
+                "dropCascade", dropCascade,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
@@ -481,6 +551,8 @@ public class DestinationPostgres {
         private String database;
  
         private Optional<? extends Boolean> disableTypeDedupe;
+ 
+        private Optional<? extends Boolean> dropCascade;
  
         private String host;
  
@@ -528,6 +600,24 @@ public class DestinationPostgres {
         public Builder disableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
             this.disableTypeDedupe = disableTypeDedupe;
+            return this;
+        }
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         */
+        public Builder dropCascade(boolean dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = Optional.ofNullable(dropCascade);
+            return this;
+        }
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         */
+        public Builder dropCascade(Optional<? extends Boolean> dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = dropCascade;
             return this;
         }
 
@@ -693,6 +783,9 @@ public class DestinationPostgres {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
             }
+            if (dropCascade == null) {
+                dropCascade = _SINGLETON_VALUE_DropCascade.value();
+            }
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
@@ -702,6 +795,7 @@ public class DestinationPostgres {
             return new DestinationPostgres(
                 database,
                 disableTypeDedupe,
+                dropCascade,
                 host,
                 jdbcUrlParams,
                 password,
@@ -722,6 +816,12 @@ public class DestinationPostgres {
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
                 new LazySingletonValue<>(
                         "disable_type_dedupe",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_DropCascade =
+                new LazySingletonValue<>(
+                        "drop_cascade",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 

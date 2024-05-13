@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,20 +35,28 @@ public class NativeNetworkEncryptionNNE {
     @JsonProperty("encryption_method")
     private EncryptionMethod encryptionMethod;
 
+    @JsonCreator
     public NativeNetworkEncryptionNNE(
             @JsonProperty("encryption_algorithm") Optional<? extends EncryptionAlgorithm> encryptionAlgorithm) {
         Utils.checkNotNull(encryptionAlgorithm, "encryptionAlgorithm");
         this.encryptionAlgorithm = encryptionAlgorithm;
         this.encryptionMethod = Builder._SINGLETON_VALUE_EncryptionMethod.value();
     }
+    
+    public NativeNetworkEncryptionNNE() {
+        this(Optional.empty());
+    }
 
     /**
      * This parameter defines what encryption algorithm is used.
      */
-    public Optional<? extends EncryptionAlgorithm> encryptionAlgorithm() {
-        return encryptionAlgorithm;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<EncryptionAlgorithm> encryptionAlgorithm() {
+        return (Optional<EncryptionAlgorithm>) encryptionAlgorithm;
     }
 
+    @JsonIgnore
     public EncryptionMethod encryptionMethod() {
         return encryptionMethod;
     }

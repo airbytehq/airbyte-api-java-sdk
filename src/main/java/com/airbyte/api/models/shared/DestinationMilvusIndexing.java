@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -62,6 +64,7 @@ public class DestinationMilvusIndexing {
     @JsonProperty("vector_field")
     private Optional<? extends String> vectorField;
 
+    @JsonCreator
     public DestinationMilvusIndexing(
             @JsonProperty("auth") DestinationMilvusAuthentication auth,
             @JsonProperty("collection") String collection,
@@ -82,10 +85,18 @@ public class DestinationMilvusIndexing {
         this.textField = textField;
         this.vectorField = vectorField;
     }
+    
+    public DestinationMilvusIndexing(
+            DestinationMilvusAuthentication auth,
+            String collection,
+            String host) {
+        this(auth, collection, Optional.empty(), host, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Authentication method
      */
+    @JsonIgnore
     public DestinationMilvusAuthentication auth() {
         return auth;
     }
@@ -93,6 +104,7 @@ public class DestinationMilvusIndexing {
     /**
      * The collection to load data into
      */
+    @JsonIgnore
     public String collection() {
         return collection;
     }
@@ -100,13 +112,16 @@ public class DestinationMilvusIndexing {
     /**
      * The database to connect to
      */
-    public Optional<? extends String> db() {
-        return db;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> db() {
+        return (Optional<String>) db;
     }
 
     /**
      * The public endpoint of the Milvus instance. 
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -114,15 +129,19 @@ public class DestinationMilvusIndexing {
     /**
      * The field in the entity that contains the embedded text
      */
-    public Optional<? extends String> textField() {
-        return textField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> textField() {
+        return (Optional<String>) textField;
     }
 
     /**
      * The field in the entity that contains the vector
      */
-    public Optional<? extends String> vectorField() {
-        return vectorField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> vectorField() {
+        return (Optional<String>) vectorField;
     }
 
     public final static Builder builder() {

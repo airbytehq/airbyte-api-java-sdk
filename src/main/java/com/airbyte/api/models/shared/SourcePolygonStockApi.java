@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -81,6 +83,7 @@ public class SourcePolygonStockApi {
     @JsonProperty("timespan")
     private String timespan;
 
+    @JsonCreator
     public SourcePolygonStockApi(
             @JsonProperty("adjusted") Optional<? extends String> adjusted,
             @JsonProperty("apiKey") String apiKey,
@@ -111,17 +114,30 @@ public class SourcePolygonStockApi {
         this.stocksTicker = stocksTicker;
         this.timespan = timespan;
     }
+    
+    public SourcePolygonStockApi(
+            String apiKey,
+            LocalDate endDate,
+            long multiplier,
+            LocalDate startDate,
+            String stocksTicker,
+            String timespan) {
+        this(Optional.empty(), apiKey, endDate, Optional.empty(), multiplier, Optional.empty(), startDate, stocksTicker, timespan);
+    }
 
     /**
      * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.
      */
-    public Optional<? extends String> adjusted() {
-        return adjusted;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> adjusted() {
+        return (Optional<String>) adjusted;
     }
 
     /**
      * Your API ACCESS Key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -129,6 +145,7 @@ public class SourcePolygonStockApi {
     /**
      * The target date for the aggregate window.
      */
+    @JsonIgnore
     public LocalDate endDate() {
         return endDate;
     }
@@ -136,13 +153,16 @@ public class SourcePolygonStockApi {
     /**
      * The target date for the aggregate window.
      */
-    public Optional<? extends Long> limit() {
-        return limit;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> limit() {
+        return (Optional<Long>) limit;
     }
 
     /**
      * The size of the timespan multiplier.
      */
+    @JsonIgnore
     public long multiplier() {
         return multiplier;
     }
@@ -150,10 +170,13 @@ public class SourcePolygonStockApi {
     /**
      * Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).
      */
-    public Optional<? extends String> sort() {
-        return sort;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> sort() {
+        return (Optional<String>) sort;
     }
 
+    @JsonIgnore
     public PolygonStockApi sourceType() {
         return sourceType;
     }
@@ -161,6 +184,7 @@ public class SourcePolygonStockApi {
     /**
      * The beginning date for the aggregate window.
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }
@@ -168,6 +192,7 @@ public class SourcePolygonStockApi {
     /**
      * The exchange symbol that this item is traded under.
      */
+    @JsonIgnore
     public String stocksTicker() {
         return stocksTicker;
     }
@@ -175,6 +200,7 @@ public class SourcePolygonStockApi {
     /**
      * The size of the time window.
      */
+    @JsonIgnore
     public String timespan() {
         return timespan;
     }

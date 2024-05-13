@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -74,7 +76,7 @@ public class Csv {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceS3SchemasFormatFileFormatFiletype> filetype;
+    private Optional<? extends Filetype> filetype;
 
     /**
      * Configures whether a schema for the source should be inferred from the current data or not. If set to false and a custom schema is set, then the manually enforced schema is used. If a schema is not manually set, and this is set to false, then all fields will be read as strings
@@ -97,6 +99,7 @@ public class Csv {
     @JsonProperty("quote_char")
     private Optional<? extends String> quoteChar;
 
+    @JsonCreator
     public Csv(
             @JsonProperty("additional_reader_options") Optional<? extends String> additionalReaderOptions,
             @JsonProperty("advanced_options") Optional<? extends String> advancedOptions,
@@ -130,79 +133,105 @@ public class Csv {
         this.newlinesInValues = newlinesInValues;
         this.quoteChar = quoteChar;
     }
+    
+    public Csv() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Optionally add a valid JSON string here to provide additional options to the csv reader. Mappings must correspond to options &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ConvertOptions.html#pyarrow.csv.ConvertOptions" target="_blank"&gt;detailed here&lt;/a&gt;. 'column_types' is used internally to handle schema so overriding that would likely cause problems.
      */
-    public Optional<? extends String> additionalReaderOptions() {
-        return additionalReaderOptions;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> additionalReaderOptions() {
+        return (Optional<String>) additionalReaderOptions;
     }
 
     /**
      * Optionally add a valid JSON string here to provide additional &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.csv.ReadOptions.html#pyarrow.csv.ReadOptions" target="_blank"&gt;Pyarrow ReadOptions&lt;/a&gt;. Specify 'column_names' here if your CSV doesn't have header, or if you want to use custom column names. 'block_size' and 'encoding' are already used above, specify them again here will override the values above.
      */
-    public Optional<? extends String> advancedOptions() {
-        return advancedOptions;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> advancedOptions() {
+        return (Optional<String>) advancedOptions;
     }
 
     /**
      * The chunk size in bytes to process at a time in memory from each file. If your data is particularly wide and failing during schema detection, increasing this should solve it. Beware of raising this too high as you could hit OOM errors.
      */
-    public Optional<? extends Long> blockSize() {
-        return blockSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> blockSize() {
+        return (Optional<Long>) blockSize;
     }
 
     /**
      * The character delimiting individual cells in the CSV data. This may only be a 1-character string. For tab-delimited data enter '\t'.
      */
-    public Optional<? extends String> delimiter() {
-        return delimiter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> delimiter() {
+        return (Optional<String>) delimiter;
     }
 
     /**
      * Whether two quotes in a quoted CSV value denote a single quote in the data.
      */
-    public Optional<? extends Boolean> doubleQuote() {
-        return doubleQuote;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> doubleQuote() {
+        return (Optional<Boolean>) doubleQuote;
     }
 
     /**
      * The character encoding of the CSV data. Leave blank to default to &lt;strong&gt;UTF8&lt;/strong&gt;. See &lt;a href="https://docs.python.org/3/library/codecs.html#standard-encodings" target="_blank"&gt;list of python encodings&lt;/a&gt; for allowable options.
      */
-    public Optional<? extends String> encoding() {
-        return encoding;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> encoding() {
+        return (Optional<String>) encoding;
     }
 
     /**
      * The character used for escaping special characters. To disallow escaping, leave this field blank.
      */
-    public Optional<? extends String> escapeChar() {
-        return escapeChar;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> escapeChar() {
+        return (Optional<String>) escapeChar;
     }
 
-    public Optional<? extends SourceS3SchemasFormatFileFormatFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Filetype> filetype() {
+        return (Optional<Filetype>) filetype;
     }
 
     /**
      * Configures whether a schema for the source should be inferred from the current data or not. If set to false and a custom schema is set, then the manually enforced schema is used. If a schema is not manually set, and this is set to false, then all fields will be read as strings
      */
-    public Optional<? extends Boolean> inferDatatypes() {
-        return inferDatatypes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> inferDatatypes() {
+        return (Optional<Boolean>) inferDatatypes;
     }
 
     /**
      * Whether newline characters are allowed in CSV values. Turning this on may affect performance. Leave blank to default to False.
      */
-    public Optional<? extends Boolean> newlinesInValues() {
-        return newlinesInValues;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> newlinesInValues() {
+        return (Optional<Boolean>) newlinesInValues;
     }
 
     /**
      * The character used for quoting CSV values. To disallow quoting, make this field blank.
      */
-    public Optional<? extends String> quoteChar() {
-        return quoteChar;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> quoteChar() {
+        return (Optional<String>) quoteChar;
     }
 
     public final static Builder builder() {
@@ -709,11 +738,11 @@ public class Csv {
                         "\"utf8\"",
                         new TypeReference<Optional<? extends String>>() {});
 
-        private static final LazySingletonValue<Optional<? extends SourceS3SchemasFormatFileFormatFiletype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends Filetype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"csv\"",
-                        new TypeReference<Optional<? extends SourceS3SchemasFormatFileFormatFiletype>>() {});
+                        new TypeReference<Optional<? extends Filetype>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_InferDatatypes =
                 new LazySingletonValue<>(

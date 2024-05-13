@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class SourceGoogleAnalyticsV4ServiceAccountOnlyServiceAccountKeyAuthentic
     @JsonProperty("credentials_json")
     private String credentialsJson;
 
+    @JsonCreator
     public SourceGoogleAnalyticsV4ServiceAccountOnlyServiceAccountKeyAuthentication(
             @JsonProperty("credentials_json") String credentialsJson) {
         Utils.checkNotNull(credentialsJson, "credentialsJson");
@@ -37,13 +40,16 @@ public class SourceGoogleAnalyticsV4ServiceAccountOnlyServiceAccountKeyAuthentic
         this.credentialsJson = credentialsJson;
     }
 
-    public Optional<? extends SourceGoogleAnalyticsV4ServiceAccountOnlyAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsV4ServiceAccountOnlyAuthType> authType() {
+        return (Optional<SourceGoogleAnalyticsV4ServiceAccountOnlyAuthType>) authType;
     }
 
     /**
      * The JSON key of the service account to use for authorization
      */
+    @JsonIgnore
     public String credentialsJson() {
         return credentialsJson;
     }

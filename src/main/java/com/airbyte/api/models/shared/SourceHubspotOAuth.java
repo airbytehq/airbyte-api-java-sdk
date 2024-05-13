@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -41,6 +43,7 @@ public class SourceHubspotOAuth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SourceHubspotOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -57,6 +60,7 @@ public class SourceHubspotOAuth {
     /**
      * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -64,6 +68,7 @@ public class SourceHubspotOAuth {
     /**
      * The client secret for your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this secret.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -71,6 +76,7 @@ public class SourceHubspotOAuth {
     /**
      * Name of the credentials
      */
+    @JsonIgnore
     public SourceHubspotAuthType credentialsTitle() {
         return credentialsTitle;
     }
@@ -78,6 +84,7 @@ public class SourceHubspotOAuth {
     /**
      * Refresh token to renew an expired access token. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

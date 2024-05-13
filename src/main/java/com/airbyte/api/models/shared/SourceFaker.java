@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -58,6 +60,7 @@ public class SourceFaker {
     @JsonProperty("sourceType")
     private Faker sourceType;
 
+    @JsonCreator
     public SourceFaker(
             @JsonProperty("always_updated") Optional<? extends Boolean> alwaysUpdated,
             @JsonProperty("count") Optional<? extends Long> count,
@@ -76,42 +79,57 @@ public class SourceFaker {
         this.seed = seed;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceFaker() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Should the updated_at values for every record be new each sync?  Setting this to false will case the source to stop emitting records after COUNT records have been emitted.
      */
-    public Optional<? extends Boolean> alwaysUpdated() {
-        return alwaysUpdated;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> alwaysUpdated() {
+        return (Optional<Boolean>) alwaysUpdated;
     }
 
     /**
      * How many users should be generated in total. The purchases table will be scaled to match, with 10 purchases created per 10 users. This setting does not apply to the products stream.
      */
-    public Optional<? extends Long> count() {
-        return count;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> count() {
+        return (Optional<Long>) count;
     }
 
     /**
      * How many parallel workers should we use to generate fake data?  Choose a value equal to the number of CPUs you will allocate to this source.
      */
-    public Optional<? extends Long> parallelism() {
-        return parallelism;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> parallelism() {
+        return (Optional<Long>) parallelism;
     }
 
     /**
      * How many fake records will be in each page (stream slice), before a state message is emitted?
      */
-    public Optional<? extends Long> recordsPerSlice() {
-        return recordsPerSlice;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> recordsPerSlice() {
+        return (Optional<Long>) recordsPerSlice;
     }
 
     /**
      * Manually control the faker random seed to return the same values on subsequent runs (leave -1 for random)
      */
-    public Optional<? extends Long> seed() {
-        return seed;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> seed() {
+        return (Optional<Long>) seed;
     }
 
+    @JsonIgnore
     public Faker sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class DestinationMongodbPasswordAuthentication {
     @JsonProperty("tunnel_user_password")
     private String tunnelUserPassword;
 
+    @JsonCreator
     public DestinationMongodbPasswordAuthentication(
             @JsonProperty("tunnel_host") String tunnelHost,
             @JsonProperty("tunnel_port") Optional<? extends Long> tunnelPort,
@@ -66,10 +69,18 @@ public class DestinationMongodbPasswordAuthentication {
         this.tunnelUser = tunnelUser;
         this.tunnelUserPassword = tunnelUserPassword;
     }
+    
+    public DestinationMongodbPasswordAuthentication(
+            String tunnelHost,
+            String tunnelUser,
+            String tunnelUserPassword) {
+        this(tunnelHost, Optional.empty(), tunnelUser, tunnelUserPassword);
+    }
 
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
      */
+    @JsonIgnore
     public String tunnelHost() {
         return tunnelHost;
     }
@@ -77,6 +88,7 @@ public class DestinationMongodbPasswordAuthentication {
     /**
      * Connect through a jump server tunnel host using username and password authentication
      */
+    @JsonIgnore
     public DestinationMongodbSchemasTunnelMethodTunnelMethod tunnelMethod() {
         return tunnelMethod;
     }
@@ -84,13 +96,16 @@ public class DestinationMongodbPasswordAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
-    public Optional<? extends Long> tunnelPort() {
-        return tunnelPort;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> tunnelPort() {
+        return (Optional<Long>) tunnelPort;
     }
 
     /**
      * OS-level username for logging into the jump server host
      */
+    @JsonIgnore
     public String tunnelUser() {
         return tunnelUser;
     }
@@ -98,6 +113,7 @@ public class DestinationMongodbPasswordAuthentication {
     /**
      * OS-level password for logging into the jump server host
      */
+    @JsonIgnore
     public String tunnelUserPassword() {
         return tunnelUserPassword;
     }

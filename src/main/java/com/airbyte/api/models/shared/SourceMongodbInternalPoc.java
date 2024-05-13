@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -58,6 +60,7 @@ public class SourceMongodbInternalPoc {
     @JsonProperty("user")
     private Optional<? extends String> user;
 
+    @JsonCreator
     public SourceMongodbInternalPoc(
             @JsonProperty("auth_source") Optional<? extends String> authSource,
             @JsonProperty("connection_string") Optional<? extends String> connectionString,
@@ -76,35 +79,48 @@ public class SourceMongodbInternalPoc {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.user = user;
     }
+    
+    public SourceMongodbInternalPoc() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The authentication source where the user information is stored.
      */
-    public Optional<? extends String> authSource() {
-        return authSource;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> authSource() {
+        return (Optional<String>) authSource;
     }
 
     /**
      * The connection string of the database that you want to replicate..
      */
-    public Optional<? extends String> connectionString() {
-        return connectionString;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> connectionString() {
+        return (Optional<String>) connectionString;
     }
 
     /**
      * The password associated with this username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * The name of the replica set to be replicated.
      */
-    public Optional<? extends String> replicaSet() {
-        return replicaSet;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> replicaSet() {
+        return (Optional<String>) replicaSet;
     }
 
+    @JsonIgnore
     public MongodbInternalPoc sourceType() {
         return sourceType;
     }
@@ -112,8 +128,10 @@ public class SourceMongodbInternalPoc {
     /**
      * The username which is used to access the database.
      */
-    public Optional<? extends String> user() {
-        return user;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> user() {
+        return (Optional<String>) user;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,6 +58,7 @@ public class SourceOutbrainAmplify {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceOutbrainAmplify(
             @JsonProperty("credentials") SourceOutbrainAmplifyAuthenticationMethod credentials,
             @JsonProperty("end_date") Optional<? extends String> endDate,
@@ -74,10 +77,17 @@ public class SourceOutbrainAmplify {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceOutbrainAmplify(
+            SourceOutbrainAmplifyAuthenticationMethod credentials,
+            String startDate) {
+        this(credentials, Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * Credentials for making authenticated requests requires either username/password or access_token.
      */
+    @JsonIgnore
     public SourceOutbrainAmplifyAuthenticationMethod credentials() {
         return credentials;
     }
@@ -85,24 +95,31 @@ public class SourceOutbrainAmplify {
     /**
      * Date in the format YYYY-MM-DD.
      */
-    public Optional<? extends String> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
     /**
      * The granularity used for geo location data in reports.
      */
-    public Optional<? extends GranularityForGeoLocationRegion> geoLocationBreakdown() {
-        return geoLocationBreakdown;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GranularityForGeoLocationRegion> geoLocationBreakdown() {
+        return (Optional<GranularityForGeoLocationRegion>) geoLocationBreakdown;
     }
 
     /**
      * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
      */
-    public Optional<? extends GranularityForPeriodicReports> reportGranularity() {
-        return reportGranularity;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GranularityForPeriodicReports> reportGranularity() {
+        return (Optional<GranularityForPeriodicReports>) reportGranularity;
     }
 
+    @JsonIgnore
     public OutbrainAmplify sourceType() {
         return sourceType;
     }
@@ -110,6 +127,7 @@ public class SourceOutbrainAmplify {
     /**
      * Date in the format YYYY-MM-DD eg. 2017-01-25. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

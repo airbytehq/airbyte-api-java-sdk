@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,22 +33,31 @@ public class SourceGoogleDriveParquetFormat {
     @JsonProperty("filetype")
     private Optional<? extends SourceGoogleDriveSchemasStreamsFormatFiletype> filetype;
 
+    @JsonCreator
     public SourceGoogleDriveParquetFormat(
             @JsonProperty("decimal_as_float") Optional<? extends Boolean> decimalAsFloat) {
         Utils.checkNotNull(decimalAsFloat, "decimalAsFloat");
         this.decimalAsFloat = decimalAsFloat;
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
+    
+    public SourceGoogleDriveParquetFormat() {
+        this(Optional.empty());
+    }
 
     /**
      * Whether to convert decimal fields to floats. There is a loss of precision when converting decimals to floats, so this is not recommended.
      */
-    public Optional<? extends Boolean> decimalAsFloat() {
-        return decimalAsFloat;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> decimalAsFloat() {
+        return (Optional<Boolean>) decimalAsFloat;
     }
 
-    public Optional<? extends SourceGoogleDriveSchemasStreamsFormatFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDriveSchemasStreamsFormatFiletype> filetype() {
+        return (Optional<SourceGoogleDriveSchemasStreamsFormatFiletype>) filetype;
     }
 
     public final static Builder builder() {

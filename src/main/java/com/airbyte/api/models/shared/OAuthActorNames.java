@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -18,6 +20,7 @@ public enum OAuthActorNames {
     AMAZON_ADS("amazon-ads"),
     AMAZON_SELLER_PARTNER("amazon-seller-partner"),
     ASANA("asana"),
+    AZURE_BLOB_STORAGE("azure-blob-storage"),
     BING_ADS("bing-ads"),
     FACEBOOK_MARKETING("facebook-marketing"),
     GITHUB("github"),
@@ -27,7 +30,6 @@ public enum OAuthActorNames {
     GOOGLE_DRIVE("google-drive"),
     GOOGLE_SEARCH_CONSOLE("google-search-console"),
     GOOGLE_SHEETS("google-sheets"),
-    HARVEST("harvest"),
     HUBSPOT("hubspot"),
     INSTAGRAM("instagram"),
     INTERCOM("intercom"),

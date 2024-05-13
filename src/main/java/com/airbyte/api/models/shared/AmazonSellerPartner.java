@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class AmazonSellerPartner {
     @JsonProperty("lwa_client_secret")
     private Optional<? extends String> lwaClientSecret;
 
+    @JsonCreator
     public AmazonSellerPartner(
             @JsonProperty("lwa_app_id") Optional<? extends String> lwaAppId,
             @JsonProperty("lwa_client_secret") Optional<? extends String> lwaClientSecret) {
@@ -41,19 +44,27 @@ public class AmazonSellerPartner {
         this.lwaAppId = lwaAppId;
         this.lwaClientSecret = lwaClientSecret;
     }
+    
+    public AmazonSellerPartner() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * Your Login with Amazon Client ID.
      */
-    public Optional<? extends String> lwaAppId() {
-        return lwaAppId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> lwaAppId() {
+        return (Optional<String>) lwaAppId;
     }
 
     /**
      * Your Login with Amazon Client Secret.
      */
-    public Optional<? extends String> lwaClientSecret() {
-        return lwaClientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> lwaClientSecret() {
+        return (Optional<String>) lwaClientSecret;
     }
 
     public final static Builder builder() {

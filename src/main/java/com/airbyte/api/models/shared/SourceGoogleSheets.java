@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,6 +21,13 @@ import java.util.Optional;
 
 
 public class SourceGoogleSheets {
+
+    /**
+     * Default value is 200. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 200 would process rows 1-201, then 201-401 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value. Default value should cover most of the cases, but if a google sheet has over 100,000 records or more, consider increasing batch_size value.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("batch_size")
+    private Optional<? extends Long> batchSize;
 
     /**
      * Credentials for connecting to the Google Sheets API
@@ -42,22 +51,42 @@ public class SourceGoogleSheets {
     @JsonProperty("spreadsheet_id")
     private String spreadsheetId;
 
+    @JsonCreator
     public SourceGoogleSheets(
+            @JsonProperty("batch_size") Optional<? extends Long> batchSize,
             @JsonProperty("credentials") SourceGoogleSheetsAuthentication credentials,
             @JsonProperty("names_conversion") Optional<? extends Boolean> namesConversion,
             @JsonProperty("spreadsheet_id") String spreadsheetId) {
+        Utils.checkNotNull(batchSize, "batchSize");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(namesConversion, "namesConversion");
         Utils.checkNotNull(spreadsheetId, "spreadsheetId");
+        this.batchSize = batchSize;
         this.credentials = credentials;
         this.namesConversion = namesConversion;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.spreadsheetId = spreadsheetId;
     }
+    
+    public SourceGoogleSheets(
+            SourceGoogleSheetsAuthentication credentials,
+            String spreadsheetId) {
+        this(Optional.empty(), credentials, Optional.empty(), spreadsheetId);
+    }
+
+    /**
+     * Default value is 200. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 200 would process rows 1-201, then 201-401 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value. Default value should cover most of the cases, but if a google sheet has over 100,000 records or more, consider increasing batch_size value.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchSize() {
+        return (Optional<Long>) batchSize;
+    }
 
     /**
      * Credentials for connecting to the Google Sheets API
      */
+    @JsonIgnore
     public SourceGoogleSheetsAuthentication credentials() {
         return credentials;
     }
@@ -65,10 +94,13 @@ public class SourceGoogleSheets {
     /**
      * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
      */
-    public Optional<? extends Boolean> namesConversion() {
-        return namesConversion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> namesConversion() {
+        return (Optional<Boolean>) namesConversion;
     }
 
+    @JsonIgnore
     public SourceGoogleSheetsGoogleSheets sourceType() {
         return sourceType;
     }
@@ -76,12 +108,31 @@ public class SourceGoogleSheets {
     /**
      * Enter the link to the Google spreadsheet you want to sync. To copy the link, click the 'Share' button in the top-right corner of the spreadsheet, then click 'Copy link'.
      */
+    @JsonIgnore
     public String spreadsheetId() {
         return spreadsheetId;
     }
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * Default value is 200. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 200 would process rows 1-201, then 201-401 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value. Default value should cover most of the cases, but if a google sheet has over 100,000 records or more, consider increasing batch_size value.
+     */
+    public SourceGoogleSheets withBatchSize(long batchSize) {
+        Utils.checkNotNull(batchSize, "batchSize");
+        this.batchSize = Optional.ofNullable(batchSize);
+        return this;
+    }
+
+    /**
+     * Default value is 200. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 200 would process rows 1-201, then 201-401 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value. Default value should cover most of the cases, but if a google sheet has over 100,000 records or more, consider increasing batch_size value.
+     */
+    public SourceGoogleSheets withBatchSize(Optional<? extends Long> batchSize) {
+        Utils.checkNotNull(batchSize, "batchSize");
+        this.batchSize = batchSize;
+        return this;
     }
 
     /**
@@ -130,6 +181,7 @@ public class SourceGoogleSheets {
         }
         SourceGoogleSheets other = (SourceGoogleSheets) o;
         return 
+            java.util.Objects.deepEquals(this.batchSize, other.batchSize) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.namesConversion, other.namesConversion) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
@@ -139,6 +191,7 @@ public class SourceGoogleSheets {
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
+            batchSize,
             credentials,
             namesConversion,
             sourceType,
@@ -148,6 +201,7 @@ public class SourceGoogleSheets {
     @Override
     public String toString() {
         return Utils.toString(SourceGoogleSheets.class,
+                "batchSize", batchSize,
                 "credentials", credentials,
                 "namesConversion", namesConversion,
                 "sourceType", sourceType,
@@ -155,6 +209,8 @@ public class SourceGoogleSheets {
     }
     
     public final static class Builder {
+ 
+        private Optional<? extends Long> batchSize;
  
         private SourceGoogleSheetsAuthentication credentials;
  
@@ -164,6 +220,24 @@ public class SourceGoogleSheets {
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * Default value is 200. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 200 would process rows 1-201, then 201-401 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value. Default value should cover most of the cases, but if a google sheet has over 100,000 records or more, consider increasing batch_size value.
+         */
+        public Builder batchSize(long batchSize) {
+            Utils.checkNotNull(batchSize, "batchSize");
+            this.batchSize = Optional.ofNullable(batchSize);
+            return this;
+        }
+
+        /**
+         * Default value is 200. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 200 would process rows 1-201, then 201-401 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value. Default value should cover most of the cases, but if a google sheet has over 100,000 records or more, consider increasing batch_size value.
+         */
+        public Builder batchSize(Optional<? extends Long> batchSize) {
+            Utils.checkNotNull(batchSize, "batchSize");
+            this.batchSize = batchSize;
+            return this;
         }
 
         /**
@@ -203,14 +277,24 @@ public class SourceGoogleSheets {
         }
         
         public SourceGoogleSheets build() {
+            if (batchSize == null) {
+                batchSize = _SINGLETON_VALUE_BatchSize.value();
+            }
             if (namesConversion == null) {
                 namesConversion = _SINGLETON_VALUE_NamesConversion.value();
             }
             return new SourceGoogleSheets(
+                batchSize,
                 credentials,
                 namesConversion,
                 spreadsheetId);
         }
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_BatchSize =
+                new LazySingletonValue<>(
+                        "batch_size",
+                        "200",
+                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_NamesConversion =
                 new LazySingletonValue<>(

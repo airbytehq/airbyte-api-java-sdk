@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourceZendeskChatOAuth20 {
     @JsonProperty("refresh_token")
     private Optional<? extends String> refreshToken;
 
+    @JsonCreator
     public SourceZendeskChatOAuth20(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -66,28 +69,39 @@ public class SourceZendeskChatOAuth20 {
         this.credentials = Builder._SINGLETON_VALUE_Credentials.value();
         this.refreshToken = refreshToken;
     }
+    
+    public SourceZendeskChatOAuth20() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Access Token for making authenticated requests.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
     /**
      * The Client ID of your OAuth application
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret of your OAuth application.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
+    @JsonIgnore
     public SourceZendeskChatCredentials credentials() {
         return credentials;
     }
@@ -95,8 +109,10 @@ public class SourceZendeskChatOAuth20 {
     /**
      * Refresh Token to obtain new Access Token, when it's expired.
      */
-    public Optional<? extends String> refreshToken() {
-        return refreshToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> refreshToken() {
+        return (Optional<String>) refreshToken;
     }
 
     public final static Builder builder() {

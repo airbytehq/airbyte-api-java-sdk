@@ -5,7 +5,9 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -37,6 +39,7 @@ public class CreateConnectionResponse implements com.airbyte.api.utils.Response 
      */
     private HttpResponse<InputStream> rawResponse;
 
+    @JsonCreator
     public CreateConnectionResponse(
             Optional<? extends com.airbyte.api.models.shared.ConnectionResponse> connectionResponse,
             String contentType,
@@ -51,17 +54,27 @@ public class CreateConnectionResponse implements com.airbyte.api.utils.Response 
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
     }
+    
+    public CreateConnectionResponse(
+            String contentType,
+            int statusCode,
+            HttpResponse<InputStream> rawResponse) {
+        this(Optional.empty(), contentType, statusCode, rawResponse);
+    }
 
     /**
      * Successful operation
      */
-    public Optional<? extends com.airbyte.api.models.shared.ConnectionResponse> connectionResponse() {
-        return connectionResponse;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<com.airbyte.api.models.shared.ConnectionResponse> connectionResponse() {
+        return (Optional<com.airbyte.api.models.shared.ConnectionResponse>) connectionResponse;
     }
 
     /**
      * HTTP response content type for this operation
      */
+    @JsonIgnore
     public String contentType() {
         return contentType;
     }
@@ -69,6 +82,7 @@ public class CreateConnectionResponse implements com.airbyte.api.utils.Response 
     /**
      * HTTP response status code for this operation
      */
+    @JsonIgnore
     public int statusCode() {
         return statusCode;
     }
@@ -76,6 +90,7 @@ public class CreateConnectionResponse implements com.airbyte.api.utils.Response 
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    @JsonIgnore
     public HttpResponse<InputStream> rawResponse() {
         return rawResponse;
     }

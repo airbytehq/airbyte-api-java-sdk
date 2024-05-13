@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -63,6 +65,7 @@ public class DestinationTypesense {
     @JsonProperty("protocol")
     private Optional<? extends String> protocol;
 
+    @JsonCreator
     public DestinationTypesense(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("batch_size") Optional<? extends Long> batchSize,
@@ -84,10 +87,17 @@ public class DestinationTypesense {
         this.port = port;
         this.protocol = protocol;
     }
+    
+    public DestinationTypesense(
+            String apiKey,
+            String host) {
+        this(apiKey, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Typesense API Key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -95,10 +105,13 @@ public class DestinationTypesense {
     /**
      * How many documents should be imported together. Default 1000
      */
-    public Optional<? extends Long> batchSize() {
-        return batchSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchSize() {
+        return (Optional<Long>) batchSize;
     }
 
+    @JsonIgnore
     public Typesense destinationType() {
         return destinationType;
     }
@@ -106,6 +119,7 @@ public class DestinationTypesense {
     /**
      * Hostname of the Typesense instance without protocol.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -113,22 +127,28 @@ public class DestinationTypesense {
     /**
      * Path of the Typesense instance. Default is none
      */
-    public Optional<? extends String> path() {
-        return path;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> path() {
+        return (Optional<String>) path;
     }
 
     /**
      * Port of the Typesense instance. Ex: 8108, 80, 443. Default is 443
      */
-    public Optional<? extends String> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> port() {
+        return (Optional<String>) port;
     }
 
     /**
      * Protocol of the Typesense instance. Ex: http or https. Default is https
      */
-    public Optional<? extends String> protocol() {
-        return protocol;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> protocol() {
+        return (Optional<String>) protocol;
     }
 
     public final static Builder builder() {

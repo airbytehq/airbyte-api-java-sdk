@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,6 +58,7 @@ public class SourceKyve {
     @JsonProperty("url_base")
     private Optional<? extends String> urlBase;
 
+    @JsonCreator
     public SourceKyve(
             @JsonProperty("max_pages") Optional<? extends Long> maxPages,
             @JsonProperty("page_size") Optional<? extends Long> pageSize,
@@ -74,28 +77,40 @@ public class SourceKyve {
         this.startIds = startIds;
         this.urlBase = urlBase;
     }
+    
+    public SourceKyve(
+            String poolIds,
+            String startIds) {
+        this(Optional.empty(), Optional.empty(), poolIds, startIds, Optional.empty());
+    }
 
     /**
      * The maximum amount of pages to go trough. Set to 'null' for all pages.
      */
-    public Optional<? extends Long> maxPages() {
-        return maxPages;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> maxPages() {
+        return (Optional<Long>) maxPages;
     }
 
     /**
      * The pagesize for pagination, smaller numbers are used in integration tests.
      */
-    public Optional<? extends Long> pageSize() {
-        return pageSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> pageSize() {
+        return (Optional<Long>) pageSize;
     }
 
     /**
      * The IDs of the KYVE storage pool you want to archive. (Comma separated)
      */
+    @JsonIgnore
     public String poolIds() {
         return poolIds;
     }
 
+    @JsonIgnore
     public Kyve sourceType() {
         return sourceType;
     }
@@ -103,6 +118,7 @@ public class SourceKyve {
     /**
      * The start-id defines, from which bundle id the pipeline should start to extract the data. (Comma separated)
      */
+    @JsonIgnore
     public String startIds() {
         return startIds;
     }
@@ -110,8 +126,10 @@ public class SourceKyve {
     /**
      * URL to the KYVE Chain API.
      */
-    public Optional<? extends String> urlBase() {
-        return urlBase;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> urlBase() {
+        return (Optional<String>) urlBase;
     }
 
     public final static Builder builder() {

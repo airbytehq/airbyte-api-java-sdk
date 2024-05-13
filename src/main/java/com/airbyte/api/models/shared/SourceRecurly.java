@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceRecurly {
     @JsonProperty("sourceType")
     private Recurly sourceType;
 
+    @JsonCreator
     public SourceRecurly(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("begin_time") Optional<? extends String> beginTime,
@@ -55,10 +58,16 @@ public class SourceRecurly {
         this.endTime = endTime;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceRecurly(
+            String apiKey) {
+        this(apiKey, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Recurly API Key. See the  &lt;a href="https://docs.airbyte.com/integrations/sources/recurly"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -66,17 +75,22 @@ public class SourceRecurly {
     /**
      * ISO8601 timestamp from which the replication from Recurly API will start from.
      */
-    public Optional<? extends String> beginTime() {
-        return beginTime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> beginTime() {
+        return (Optional<String>) beginTime;
     }
 
     /**
      * ISO8601 timestamp to which the replication from Recurly API will stop. Records after that date won't be imported.
      */
-    public Optional<? extends String> endTime() {
-        return endTime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endTime() {
+        return (Optional<String>) endTime;
     }
 
+    @JsonIgnore
     public Recurly sourceType() {
         return sourceType;
     }

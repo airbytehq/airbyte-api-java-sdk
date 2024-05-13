@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class SourceGithubPersonalAccessToken {
     @JsonProperty("personal_access_token")
     private String personalAccessToken;
 
+    @JsonCreator
     public SourceGithubPersonalAccessToken(
             @JsonProperty("personal_access_token") String personalAccessToken) {
         Utils.checkNotNull(personalAccessToken, "personalAccessToken");
@@ -37,13 +40,16 @@ public class SourceGithubPersonalAccessToken {
         this.personalAccessToken = personalAccessToken;
     }
 
-    public Optional<? extends SourceGithubOptionTitle> optionTitle() {
-        return optionTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGithubOptionTitle> optionTitle() {
+        return (Optional<SourceGithubOptionTitle>) optionTitle;
     }
 
     /**
      * Log into GitHub and then generate a &lt;a href="https://github.com/settings/tokens"&gt;personal access token&lt;/a&gt;. To load balance your API quota consumption across multiple API tokens, input multiple tokens separated with ","
      */
+    @JsonIgnore
     public String personalAccessToken() {
         return personalAccessToken;
     }

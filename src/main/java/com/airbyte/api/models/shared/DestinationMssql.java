@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,6 +59,13 @@ public class DestinationMssql {
     private Optional<? extends Long> port;
 
     /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_data_schema")
+    private Optional<? extends String> rawDataSchema;
+
+    /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -83,12 +92,14 @@ public class DestinationMssql {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationMssql(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") Optional<? extends String> password,
             @JsonProperty("port") Optional<? extends Long> port,
+            @JsonProperty("raw_data_schema") Optional<? extends String> rawDataSchema,
             @JsonProperty("schema") Optional<? extends String> schema,
             @JsonProperty("ssl_method") Optional<? extends SSLMethod> sslMethod,
             @JsonProperty("tunnel_method") Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod,
@@ -98,6 +109,7 @@ public class DestinationMssql {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
         Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(sslMethod, "sslMethod");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -108,19 +120,29 @@ public class DestinationMssql {
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
         this.port = port;
+        this.rawDataSchema = rawDataSchema;
         this.schema = schema;
         this.sslMethod = sslMethod;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public DestinationMssql(
+            String database,
+            String host,
+            String username) {
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * The name of the MSSQL database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
+    @JsonIgnore
     public Mssql destinationType() {
         return destinationType;
     }
@@ -128,6 +150,7 @@ public class DestinationMssql {
     /**
      * The host name of the MSSQL database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -135,48 +158,70 @@ public class DestinationMssql {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The password associated with this username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * The port of the MSSQL database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return (Optional<String>) rawDataSchema;
     }
 
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     /**
      * The encryption method which is used to communicate with the database.
      */
-    public Optional<? extends SSLMethod> sslMethod() {
-        return sslMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SSLMethod> sslMethod() {
+        return (Optional<SSLMethod>) sslMethod;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends DestinationMssqlSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMssqlSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationMssqlSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The username which is used to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }
@@ -254,6 +299,24 @@ public class DestinationMssql {
     public DestinationMssql withPort(Optional<? extends Long> port) {
         Utils.checkNotNull(port, "port");
         this.port = port;
+        return this;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    public DestinationMssql withRawDataSchema(String rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+        return this;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    public DestinationMssql withRawDataSchema(Optional<? extends String> rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = rawDataSchema;
         return this;
     }
 
@@ -336,6 +399,7 @@ public class DestinationMssql {
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.password, other.password) &&
             java.util.Objects.deepEquals(this.port, other.port) &&
+            java.util.Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
             java.util.Objects.deepEquals(this.schema, other.schema) &&
             java.util.Objects.deepEquals(this.sslMethod, other.sslMethod) &&
             java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
@@ -351,6 +415,7 @@ public class DestinationMssql {
             jdbcUrlParams,
             password,
             port,
+            rawDataSchema,
             schema,
             sslMethod,
             tunnelMethod,
@@ -366,6 +431,7 @@ public class DestinationMssql {
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
                 "port", port,
+                "rawDataSchema", rawDataSchema,
                 "schema", schema,
                 "sslMethod", sslMethod,
                 "tunnelMethod", tunnelMethod,
@@ -383,6 +449,8 @@ public class DestinationMssql {
         private Optional<? extends String> password = Optional.empty();
  
         private Optional<? extends Long> port;
+ 
+        private Optional<? extends String> rawDataSchema = Optional.empty();
  
         private Optional<? extends String> schema;
  
@@ -469,6 +537,24 @@ public class DestinationMssql {
         }
 
         /**
+         * The schema to write raw tables into (default: airbyte_internal)
+         */
+        public Builder rawDataSchema(String rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+            return this;
+        }
+
+        /**
+         * The schema to write raw tables into (default: airbyte_internal)
+         */
+        public Builder rawDataSchema(Optional<? extends String> rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = rawDataSchema;
+            return this;
+        }
+
+        /**
          * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
          */
         public Builder schema(String schema) {
@@ -544,6 +630,7 @@ public class DestinationMssql {
                 jdbcUrlParams,
                 password,
                 port,
+                rawDataSchema,
                 schema,
                 sslMethod,
                 tunnelMethod,

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -92,6 +94,7 @@ public class ReportConfig {
     @JsonProperty("view_window_days")
     private Optional<? extends ViewWindowDays> viewWindowDays;
 
+    @JsonCreator
     public ReportConfig(
             @JsonProperty("attribution_types") Optional<? extends java.util.List<SourcePinterestValidEnums>> attributionTypes,
             @JsonProperty("click_window_days") Optional<? extends ClickWindowDays> clickWindowDays,
@@ -124,24 +127,35 @@ public class ReportConfig {
         this.startDate = startDate;
         this.viewWindowDays = viewWindowDays;
     }
+    
+    public ReportConfig(
+            java.util.List<SourcePinterestSchemasValidEnums> columns,
+            String name) {
+        this(Optional.empty(), Optional.empty(), columns, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
+    }
 
     /**
      * List of types of attribution for the conversion report
      */
-    public Optional<? extends java.util.List<SourcePinterestValidEnums>> attributionTypes() {
-        return attributionTypes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<SourcePinterestValidEnums>> attributionTypes() {
+        return (Optional<java.util.List<SourcePinterestValidEnums>>) attributionTypes;
     }
 
     /**
      * Number of days to use as the conversion attribution window for a pin click action.
      */
-    public Optional<? extends ClickWindowDays> clickWindowDays() {
-        return clickWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ClickWindowDays> clickWindowDays() {
+        return (Optional<ClickWindowDays>) clickWindowDays;
     }
 
     /**
      * A list of chosen columns
      */
+    @JsonIgnore
     public java.util.List<SourcePinterestSchemasValidEnums> columns() {
         return columns;
     }
@@ -149,34 +163,43 @@ public class ReportConfig {
     /**
      * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event..
      */
-    public Optional<? extends ConversionReportTime> conversionReportTime() {
-        return conversionReportTime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ConversionReportTime> conversionReportTime() {
+        return (Optional<ConversionReportTime>) conversionReportTime;
     }
 
     /**
      * Number of days to use as the conversion attribution window for an engagement action.
      */
-    public Optional<? extends EngagementWindowDays> engagementWindowDays() {
-        return engagementWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<EngagementWindowDays> engagementWindowDays() {
+        return (Optional<EngagementWindowDays>) engagementWindowDays;
     }
 
     /**
      * Chosen granularity for API
      */
-    public Optional<? extends Granularity> granularity() {
-        return granularity;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Granularity> granularity() {
+        return (Optional<Granularity>) granularity;
     }
 
     /**
      * Chosen level for API
      */
-    public Optional<? extends SourcePinterestLevel> level() {
-        return level;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourcePinterestLevel> level() {
+        return (Optional<SourcePinterestLevel>) level;
     }
 
     /**
      * The name value of report
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -184,15 +207,19 @@ public class ReportConfig {
     /**
      * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by report api (913 days from today).
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     /**
      * Number of days to use as the conversion attribution window for a view action.
      */
-    public Optional<? extends ViewWindowDays> viewWindowDays() {
-        return viewWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ViewWindowDays> viewWindowDays() {
+        return (Optional<ViewWindowDays>) viewWindowDays;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,6 +49,7 @@ public class ReadChangesUsingBinaryLogCDC {
     @JsonProperty("server_time_zone")
     private Optional<? extends String> serverTimeZone;
 
+    @JsonCreator
     public ReadChangesUsingBinaryLogCDC(
             @JsonProperty("initial_waiting_seconds") Optional<? extends Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends SourceMysqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
@@ -59,21 +62,30 @@ public class ReadChangesUsingBinaryLogCDC {
         this.method = Builder._SINGLETON_VALUE_Method.value();
         this.serverTimeZone = serverTimeZone;
     }
+    
+    public ReadChangesUsingBinaryLogCDC() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
      */
-    public Optional<? extends Long> initialWaitingSeconds() {
-        return initialWaitingSeconds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> initialWaitingSeconds() {
+        return (Optional<Long>) initialWaitingSeconds;
     }
 
     /**
      * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
      */
-    public Optional<? extends SourceMysqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior() {
-        return invalidCdcCursorPositionBehavior;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMysqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior() {
+        return (Optional<SourceMysqlInvalidCDCPositionBehaviorAdvanced>) invalidCdcCursorPositionBehavior;
     }
 
+    @JsonIgnore
     public SourceMysqlMethod method() {
         return method;
     }
@@ -81,8 +93,10 @@ public class ReadChangesUsingBinaryLogCDC {
     /**
      * Enter the configured MySQL server timezone. This should only be done if the configured timezone in your MySQL instance does not conform to IANNA standard.
      */
-    public Optional<? extends String> serverTimeZone() {
-        return serverTimeZone;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> serverTimeZone() {
+        return (Optional<String>) serverTimeZone;
     }
 
     public final static Builder builder() {

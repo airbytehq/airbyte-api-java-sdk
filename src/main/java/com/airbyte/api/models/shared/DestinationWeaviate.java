@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,6 +59,7 @@ public class DestinationWeaviate {
     @JsonProperty("processing")
     private DestinationWeaviateProcessingConfigModel processing;
 
+    @JsonCreator
     public DestinationWeaviate(
             @JsonProperty("embedding") DestinationWeaviateEmbedding embedding,
             @JsonProperty("indexing") DestinationWeaviateIndexing indexing,
@@ -72,7 +75,15 @@ public class DestinationWeaviate {
         this.omitRawText = omitRawText;
         this.processing = processing;
     }
+    
+    public DestinationWeaviate(
+            DestinationWeaviateEmbedding embedding,
+            DestinationWeaviateIndexing indexing,
+            DestinationWeaviateProcessingConfigModel processing) {
+        this(embedding, indexing, Optional.empty(), processing);
+    }
 
+    @JsonIgnore
     public Weaviate destinationType() {
         return destinationType;
     }
@@ -80,6 +91,7 @@ public class DestinationWeaviate {
     /**
      * Embedding configuration
      */
+    @JsonIgnore
     public DestinationWeaviateEmbedding embedding() {
         return embedding;
     }
@@ -87,6 +99,7 @@ public class DestinationWeaviate {
     /**
      * Indexing configuration
      */
+    @JsonIgnore
     public DestinationWeaviateIndexing indexing() {
         return indexing;
     }
@@ -94,10 +107,13 @@ public class DestinationWeaviate {
     /**
      * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
      */
-    public Optional<? extends Boolean> omitRawText() {
-        return omitRawText;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> omitRawText() {
+        return (Optional<Boolean>) omitRawText;
     }
 
+    @JsonIgnore
     public DestinationWeaviateProcessingConfigModel processing() {
         return processing;
     }

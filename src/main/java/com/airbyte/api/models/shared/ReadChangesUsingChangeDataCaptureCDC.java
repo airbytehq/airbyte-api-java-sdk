@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,7 +26,7 @@ import java.util.Optional;
 public class ReadChangesUsingChangeDataCaptureCDC {
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("initial_waiting_seconds")
@@ -47,6 +49,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     @JsonProperty("queue_size")
     private Optional<? extends Long> queueSize;
 
+    @JsonCreator
     public ReadChangesUsingChangeDataCaptureCDC(
             @JsonProperty("initial_waiting_seconds") Optional<? extends Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends SourceMssqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
@@ -59,21 +62,30 @@ public class ReadChangesUsingChangeDataCaptureCDC {
         this.method = Builder._SINGLETON_VALUE_Method.value();
         this.queueSize = queueSize;
     }
+    
+    public ReadChangesUsingChangeDataCaptureCDC() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
      */
-    public Optional<? extends Long> initialWaitingSeconds() {
-        return initialWaitingSeconds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> initialWaitingSeconds() {
+        return (Optional<Long>) initialWaitingSeconds;
     }
 
     /**
      * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
      */
-    public Optional<? extends SourceMssqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior() {
-        return invalidCdcCursorPositionBehavior;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMssqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior() {
+        return (Optional<SourceMssqlInvalidCDCPositionBehaviorAdvanced>) invalidCdcCursorPositionBehavior;
     }
 
+    @JsonIgnore
     public SourceMssqlMethod method() {
         return method;
     }
@@ -81,8 +93,10 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     /**
      * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
      */
-    public Optional<? extends Long> queueSize() {
-        return queueSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> queueSize() {
+        return (Optional<Long>) queueSize;
     }
 
     public final static Builder builder() {
@@ -90,7 +104,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
      */
     public ReadChangesUsingChangeDataCaptureCDC withInitialWaitingSeconds(long initialWaitingSeconds) {
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -99,7 +113,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     }
 
     /**
-     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
+     * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
      */
     public ReadChangesUsingChangeDataCaptureCDC withInitialWaitingSeconds(Optional<? extends Long> initialWaitingSeconds) {
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -190,7 +204,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
         }
 
         /**
-         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
+         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
          */
         public Builder initialWaitingSeconds(long initialWaitingSeconds) {
             Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
@@ -199,7 +213,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
         }
 
         /**
-         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
+         * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
          */
         public Builder initialWaitingSeconds(Optional<? extends Long> initialWaitingSeconds) {
             Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");

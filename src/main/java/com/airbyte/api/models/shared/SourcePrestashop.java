@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -39,6 +41,7 @@ public class SourcePrestashop {
     @JsonProperty("url")
     private String url;
 
+    @JsonCreator
     public SourcePrestashop(
             @JsonProperty("access_key") String accessKey,
             @JsonProperty("start_date") LocalDate startDate,
@@ -55,10 +58,12 @@ public class SourcePrestashop {
     /**
      * Your PrestaShop access key. See &lt;a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
+    @JsonIgnore
     public String accessKey() {
         return accessKey;
     }
 
+    @JsonIgnore
     public Prestashop sourceType() {
         return sourceType;
     }
@@ -66,6 +71,7 @@ public class SourcePrestashop {
     /**
      * The Start date in the format YYYY-MM-DD.
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }
@@ -73,6 +79,7 @@ public class SourcePrestashop {
     /**
      * Shop URL without trailing slash.
      */
+    @JsonIgnore
     public String url() {
         return url;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,6 +55,7 @@ public class SourceInstagram {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceInstagram(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -68,10 +71,16 @@ public class SourceInstagram {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceInstagram(
+            String accessToken) {
+        this(accessToken, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The value of the access token generated with &lt;b&gt;instagram_basic, instagram_manage_insights, pages_show_list, pages_read_engagement, Instagram Public Content Access&lt;/b&gt; permissions. See the &lt;a href="https://docs.airbyte.com/integrations/sources/instagram/#step-1-set-up-instagram"&gt;docs&lt;/a&gt; for more information
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -79,17 +88,22 @@ public class SourceInstagram {
     /**
      * The Client ID for your Oauth application
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret for your Oauth application
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
+    @JsonIgnore
     public SourceInstagramInstagram sourceType() {
         return sourceType;
     }
@@ -97,8 +111,10 @@ public class SourceInstagram {
     /**
      * The date from which you'd like to replicate data for User Insights, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If left blank, the start date will be set to 2 years before the present date.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

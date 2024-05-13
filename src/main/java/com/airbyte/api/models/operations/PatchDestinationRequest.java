@@ -6,7 +6,9 @@ package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -23,6 +25,7 @@ public class PatchDestinationRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=destinationId")
     private String destinationId;
 
+    @JsonCreator
     public PatchDestinationRequest(
             Optional<? extends com.airbyte.api.models.shared.DestinationPatchRequest> destinationPatchRequest,
             String destinationId) {
@@ -31,11 +34,19 @@ public class PatchDestinationRequest {
         this.destinationPatchRequest = destinationPatchRequest;
         this.destinationId = destinationId;
     }
-
-    public Optional<? extends com.airbyte.api.models.shared.DestinationPatchRequest> destinationPatchRequest() {
-        return destinationPatchRequest;
+    
+    public PatchDestinationRequest(
+            String destinationId) {
+        this(Optional.empty(), destinationId);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<com.airbyte.api.models.shared.DestinationPatchRequest> destinationPatchRequest() {
+        return (Optional<com.airbyte.api.models.shared.DestinationPatchRequest>) destinationPatchRequest;
+    }
+
+    @JsonIgnore
     public String destinationId() {
         return destinationId;
     }

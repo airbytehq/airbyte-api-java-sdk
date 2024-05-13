@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,20 +32,28 @@ public class GCSGoogleCloudStorage {
     @JsonProperty("storage")
     private SourceFileStorage storage;
 
+    @JsonCreator
     public GCSGoogleCloudStorage(
             @JsonProperty("service_account_json") Optional<? extends String> serviceAccountJson) {
         Utils.checkNotNull(serviceAccountJson, "serviceAccountJson");
         this.serviceAccountJson = serviceAccountJson;
         this.storage = Builder._SINGLETON_VALUE_Storage.value();
     }
+    
+    public GCSGoogleCloudStorage() {
+        this(Optional.empty());
+    }
 
     /**
      * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
      */
-    public Optional<? extends String> serviceAccountJson() {
-        return serviceAccountJson;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> serviceAccountJson() {
+        return (Optional<String>) serviceAccountJson;
     }
 
+    @JsonIgnore
     public SourceFileStorage storage() {
         return storage;
     }

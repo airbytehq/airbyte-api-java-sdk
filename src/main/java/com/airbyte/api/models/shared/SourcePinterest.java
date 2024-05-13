@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourcePinterest {
     @JsonProperty("status")
     private JsonNullable<? extends java.util.List<Status>> status;
 
+    @JsonCreator
     public SourcePinterest(
             @JsonProperty("credentials") Optional<? extends OAuth20> credentials,
             @JsonProperty("custom_reports") Optional<? extends java.util.List<ReportConfig>> customReports,
@@ -66,34 +69,48 @@ public class SourcePinterest {
         this.startDate = startDate;
         this.status = status;
     }
+    
+    public SourcePinterest() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
+    }
 
-    public Optional<? extends OAuth20> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OAuth20> credentials() {
+        return (Optional<OAuth20>) credentials;
     }
 
     /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
      */
-    public Optional<? extends java.util.List<ReportConfig>> customReports() {
-        return customReports;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ReportConfig>> customReports() {
+        return (Optional<java.util.List<ReportConfig>>) customReports;
     }
 
-    public Optional<? extends SourcePinterestPinterest> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourcePinterestPinterest> sourceType() {
+        return (Optional<SourcePinterestPinterest>) sourceType;
     }
 
     /**
      * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by api (89 days from today).
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     /**
      * For the ads, ad_groups, and campaigns streams, specifying a status will filter out records that do not match the specified ones. If a status is not specified, the source will default to records with a status of either ACTIVE or PAUSED.
      */
-    public JsonNullable<? extends java.util.List<Status>> status() {
-        return status;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<java.util.List<Status>> status() {
+        return (JsonNullable<java.util.List<Status>>) status;
     }
 
     public final static Builder builder() {

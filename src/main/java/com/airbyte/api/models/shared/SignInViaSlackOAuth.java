@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SignInViaSlackOAuth {
     @JsonProperty("option_title")
     private SourceSlackOptionTitle optionTitle;
 
+    @JsonCreator
     public SignInViaSlackOAuth(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") String clientId,
@@ -54,6 +57,7 @@ public class SignInViaSlackOAuth {
     /**
      * Slack access_token. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help generating the token.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -61,6 +65,7 @@ public class SignInViaSlackOAuth {
     /**
      * Slack client_id. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help finding this id.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -68,10 +73,12 @@ public class SignInViaSlackOAuth {
     /**
      * Slack client_secret. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help finding this secret.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
 
+    @JsonIgnore
     public SourceSlackOptionTitle optionTitle() {
         return optionTitle;
     }

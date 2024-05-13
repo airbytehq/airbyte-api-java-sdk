@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -37,6 +39,7 @@ public class AuthenticationViaGoogleOAuth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public AuthenticationViaGoogleOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -52,6 +55,7 @@ public class AuthenticationViaGoogleOAuth {
     /**
      * The Client ID of your Google Sheets developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -59,6 +63,7 @@ public class AuthenticationViaGoogleOAuth {
     /**
      * The Client Secret of your Google Sheets developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -66,6 +71,7 @@ public class AuthenticationViaGoogleOAuth {
     /**
      * The token for obtaining new access token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

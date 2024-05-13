@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -55,6 +57,7 @@ public class SourceSentry {
     @JsonProperty("sourceType")
     private Sentry sourceType;
 
+    @JsonCreator
     public SourceSentry(
             @JsonProperty("auth_token") String authToken,
             @JsonProperty("discover_fields") Optional<? extends java.util.List<java.lang.Object>> discoverFields,
@@ -73,10 +76,18 @@ public class SourceSentry {
         this.project = project;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceSentry(
+            String authToken,
+            String organization,
+            String project) {
+        this(authToken, Optional.empty(), Optional.empty(), organization, project);
+    }
 
     /**
      * Log into Sentry and then &lt;a href="https://sentry.io/settings/account/api/auth-tokens/"&gt;create authentication tokens&lt;/a&gt;.For self-hosted, you can find or create authentication tokens by visiting "{instance_url_prefix}/settings/account/api/auth-tokens/"
      */
+    @JsonIgnore
     public String authToken() {
         return authToken;
     }
@@ -84,20 +95,25 @@ public class SourceSentry {
     /**
      * Fields to retrieve when fetching discover events
      */
-    public Optional<? extends java.util.List<java.lang.Object>> discoverFields() {
-        return discoverFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<java.lang.Object>> discoverFields() {
+        return (Optional<java.util.List<java.lang.Object>>) discoverFields;
     }
 
     /**
      * Host name of Sentry API server.For self-hosted, specify your host name here. Otherwise, leave it empty.
      */
-    public Optional<? extends String> hostname() {
-        return hostname;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> hostname() {
+        return (Optional<String>) hostname;
     }
 
     /**
      * The slug of the organization the groups belong to.
      */
+    @JsonIgnore
     public String organization() {
         return organization;
     }
@@ -105,10 +121,12 @@ public class SourceSentry {
     /**
      * The name (slug) of the Project you want to sync.
      */
+    @JsonIgnore
     public String project() {
         return project;
     }
 
+    @JsonIgnore
     public Sentry sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +40,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
     @JsonProperty("format_type")
     private Optional<? extends DestinationS3SchemasFormatType> formatType;
 
+    @JsonCreator
     public DestinationS3JSONLinesNewlineDelimitedJSON(
             @JsonProperty("compression") Optional<? extends DestinationS3SchemasCompression> compression,
             @JsonProperty("flattening") Optional<? extends DestinationS3SchemasFlattening> flattening,
@@ -49,23 +52,33 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         this.flattening = flattening;
         this.formatType = formatType;
     }
+    
+    public DestinationS3JSONLinesNewlineDelimitedJSON() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
      */
-    public Optional<? extends DestinationS3SchemasCompression> compression() {
-        return compression;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasCompression> compression() {
+        return (Optional<DestinationS3SchemasCompression>) compression;
     }
 
     /**
      * Whether the input json data should be normalized (flattened) in the output JSON Lines. Please refer to docs for details.
      */
-    public Optional<? extends DestinationS3SchemasFlattening> flattening() {
-        return flattening;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasFlattening> flattening() {
+        return (Optional<DestinationS3SchemasFlattening>) flattening;
     }
 
-    public Optional<? extends DestinationS3SchemasFormatType> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasFormatType> formatType() {
+        return (Optional<DestinationS3SchemasFormatType>) formatType;
     }
 
     public final static Builder builder() {

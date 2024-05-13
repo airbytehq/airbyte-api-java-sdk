@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class SourceKlaviyo {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceKlaviyo(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
@@ -48,14 +51,21 @@ public class SourceKlaviyo {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceKlaviyo(
+            String apiKey) {
+        this(apiKey, Optional.empty());
+    }
 
     /**
      * Klaviyo API Key. See our &lt;a href="https://docs.airbyte.com/integrations/sources/klaviyo"&gt;docs&lt;/a&gt; if you need help finding this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Klaviyo sourceType() {
         return sourceType;
     }
@@ -63,8 +73,10 @@ public class SourceKlaviyo {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This field is optional - if not provided, all data will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

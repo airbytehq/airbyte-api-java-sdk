@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class TiktokMarketingCredentials {
     @JsonProperty("secret")
     private Optional<? extends String> secret;
 
+    @JsonCreator
     public TiktokMarketingCredentials(
             @JsonProperty("app_id") Optional<? extends String> appId,
             @JsonProperty("secret") Optional<? extends String> secret) {
@@ -41,19 +44,27 @@ public class TiktokMarketingCredentials {
         this.appId = appId;
         this.secret = secret;
     }
+    
+    public TiktokMarketingCredentials() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Developer Application App ID.
      */
-    public Optional<? extends String> appId() {
-        return appId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> appId() {
+        return (Optional<String>) appId;
     }
 
     /**
      * The Developer Application Secret.
      */
-    public Optional<? extends String> secret() {
-        return secret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> secret() {
+        return (Optional<String>) secret;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class AuthenticateViaMicrosoftOAuth {
     @JsonProperty("tenant_id")
     private String tenantId;
 
+    @JsonCreator
     public AuthenticateViaMicrosoftOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -68,13 +71,16 @@ public class AuthenticateViaMicrosoftOAuth {
         this.tenantId = tenantId;
     }
 
-    public Optional<? extends SourceMicrosoftOnedriveAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftOnedriveAuthType> authType() {
+        return (Optional<SourceMicrosoftOnedriveAuthType>) authType;
     }
 
     /**
      * Client ID of your Microsoft developer application
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -82,6 +88,7 @@ public class AuthenticateViaMicrosoftOAuth {
     /**
      * Client Secret of your Microsoft developer application
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -89,6 +96,7 @@ public class AuthenticateViaMicrosoftOAuth {
     /**
      * Refresh Token of your Microsoft developer application
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -96,6 +104,7 @@ public class AuthenticateViaMicrosoftOAuth {
     /**
      * Tenant ID of the Microsoft OneDrive user
      */
+    @JsonIgnore
     public String tenantId() {
         return tenantId;
     }

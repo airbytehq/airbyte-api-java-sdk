@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class SourceSftpSSHKeyAuthentication {
     @JsonProperty("auth_ssh_key")
     private String authSshKey;
 
+    @JsonCreator
     public SourceSftpSSHKeyAuthentication(
             @JsonProperty("auth_ssh_key") String authSshKey) {
         Utils.checkNotNull(authSshKey, "authSshKey");
@@ -39,6 +42,7 @@ public class SourceSftpSSHKeyAuthentication {
     /**
      * Connect through ssh key
      */
+    @JsonIgnore
     public SourceSftpSchemasAuthMethod authMethod() {
         return authMethod;
     }
@@ -46,6 +50,7 @@ public class SourceSftpSSHKeyAuthentication {
     /**
      * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
      */
+    @JsonIgnore
     public String authSshKey() {
         return authSshKey;
     }

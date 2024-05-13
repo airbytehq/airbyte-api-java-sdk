@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SingleStoreAccessToken {
     @JsonProperty("store_name")
     private String storeName;
 
+    @JsonCreator
     public SingleStoreAccessToken(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("store_name") String storeName) {
@@ -45,10 +48,12 @@ public class SingleStoreAccessToken {
     /**
      * Access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public SourceCartSchemasAuthType authType() {
         return authType;
     }
@@ -56,6 +61,7 @@ public class SingleStoreAccessToken {
     /**
      * The name of Cart.com Online Store. All API URLs start with https://[mystorename.com]/api/v1/, where [mystorename.com] is the domain name of your store.
      */
+    @JsonIgnore
     public String storeName() {
         return storeName;
     }

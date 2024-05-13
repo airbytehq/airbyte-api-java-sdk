@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,6 +43,7 @@ public class DestinationCreateRequest {
     @JsonProperty("workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public DestinationCreateRequest(
             @JsonProperty("configuration") DestinationConfiguration configuration,
             @JsonProperty("definitionId") Optional<? extends String> definitionId,
@@ -55,10 +58,18 @@ public class DestinationCreateRequest {
         this.name = name;
         this.workspaceId = workspaceId;
     }
+    
+    public DestinationCreateRequest(
+            DestinationConfiguration configuration,
+            String name,
+            String workspaceId) {
+        this(configuration, Optional.empty(), name, workspaceId);
+    }
 
     /**
      * The values required to configure the destination.
      */
+    @JsonIgnore
     public DestinationConfiguration configuration() {
         return configuration;
     }
@@ -66,17 +77,21 @@ public class DestinationCreateRequest {
     /**
      * The UUID of the connector definition. One of configuration.destinationType or definitionId must be provided.
      */
-    public Optional<? extends String> definitionId() {
-        return definitionId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> definitionId() {
+        return (Optional<String>) definitionId;
     }
 
     /**
      * Name of the destination e.g. dev-mysql-instance.
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
 
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }

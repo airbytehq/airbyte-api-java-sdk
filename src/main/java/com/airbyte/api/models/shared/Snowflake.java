@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class Snowflake {
     @JsonProperty("credentials")
     private Optional<? extends SnowflakeCredentials> credentials;
 
+    @JsonCreator
     public Snowflake(
             @JsonProperty("credentials") Optional<? extends SnowflakeCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public Snowflake() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends SnowflakeCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SnowflakeCredentials> credentials() {
+        return (Optional<SnowflakeCredentials>) credentials;
     }
 
     public final static Builder builder() {

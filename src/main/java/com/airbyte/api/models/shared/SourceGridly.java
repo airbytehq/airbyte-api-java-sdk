@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class SourceGridly {
     @JsonProperty("sourceType")
     private Gridly sourceType;
 
+    @JsonCreator
     public SourceGridly(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("grid_id") String gridId) {
@@ -39,6 +42,7 @@ public class SourceGridly {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
 
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -46,10 +50,12 @@ public class SourceGridly {
     /**
      * ID of a grid, or can be ID of a branch
      */
+    @JsonIgnore
     public String gridId() {
         return gridId;
     }
 
+    @JsonIgnore
     public Gridly sourceType() {
         return sourceType;
     }

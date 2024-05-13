@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,6 +55,7 @@ public class SourceZendeskSupport {
     @JsonProperty("subdomain")
     private String subdomain;
 
+    @JsonCreator
     public SourceZendeskSupport(
             @JsonProperty("credentials") Optional<? extends java.lang.Object> credentials,
             @JsonProperty("ignore_pagination") Optional<? extends Boolean> ignorePagination,
@@ -68,21 +71,31 @@ public class SourceZendeskSupport {
         this.startDate = startDate;
         this.subdomain = subdomain;
     }
+    
+    public SourceZendeskSupport(
+            String subdomain) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), subdomain);
+    }
 
     /**
      * Zendesk allows two authentication methods. We recommend using `OAuth2.0` for Airbyte Cloud users and `API token` for Airbyte Open Source users.
      */
-    public Optional<? extends java.lang.Object> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.lang.Object> credentials() {
+        return (Optional<java.lang.Object>) credentials;
     }
 
     /**
      * Makes each stream read a single page of data.
      */
-    public Optional<? extends Boolean> ignorePagination() {
-        return ignorePagination;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ignorePagination() {
+        return (Optional<Boolean>) ignorePagination;
     }
 
+    @JsonIgnore
     public SourceZendeskSupportZendeskSupport sourceType() {
         return sourceType;
     }
@@ -90,13 +103,16 @@ public class SourceZendeskSupport {
     /**
      * The UTC date and time from which you'd like to replicate data, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * This is your unique Zendesk subdomain that can be found in your account URL. For example, in https://MY_SUBDOMAIN.zendesk.com/, MY_SUBDOMAIN is the value of your subdomain.
      */
+    @JsonIgnore
     public String subdomain() {
         return subdomain;
     }

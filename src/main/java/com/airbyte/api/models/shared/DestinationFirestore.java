@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class DestinationFirestore {
     @JsonProperty("project_id")
     private String projectId;
 
+    @JsonCreator
     public DestinationFirestore(
             @JsonProperty("credentials_json") Optional<? extends String> credentialsJson,
             @JsonProperty("project_id") String projectId) {
@@ -45,14 +48,22 @@ public class DestinationFirestore {
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.projectId = projectId;
     }
+    
+    public DestinationFirestore(
+            String projectId) {
+        this(Optional.empty(), projectId);
+    }
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
-    public Optional<? extends String> credentialsJson() {
-        return credentialsJson;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> credentialsJson() {
+        return (Optional<String>) credentialsJson;
     }
 
+    @JsonIgnore
     public Firestore destinationType() {
         return destinationType;
     }
@@ -60,6 +71,7 @@ public class DestinationFirestore {
     /**
      * The GCP project ID for the project containing the target BigQuery dataset.
      */
+    @JsonIgnore
     public String projectId() {
         return projectId;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,8 +45,9 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
     /**
      * Refresh Token of your Microsoft developer application
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("refresh_token")
-    private String refreshToken;
+    private Optional<? extends String> refreshToken;
 
     /**
      * Tenant ID of the Microsoft SharePoint user
@@ -52,10 +55,11 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
     @JsonProperty("tenant_id")
     private String tenantId;
 
+    @JsonCreator
     public SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
-            @JsonProperty("refresh_token") String refreshToken,
+            @JsonProperty("refresh_token") Optional<? extends String> refreshToken,
             @JsonProperty("tenant_id") String tenantId) {
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -67,14 +71,24 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
         this.refreshToken = refreshToken;
         this.tenantId = tenantId;
     }
+    
+    public SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth(
+            String clientId,
+            String clientSecret,
+            String tenantId) {
+        this(clientId, clientSecret, Optional.empty(), tenantId);
+    }
 
-    public Optional<? extends SourceMicrosoftSharepointAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftSharepointAuthType> authType() {
+        return (Optional<SourceMicrosoftSharepointAuthType>) authType;
     }
 
     /**
      * Client ID of your Microsoft developer application
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -82,6 +96,7 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
     /**
      * Client Secret of your Microsoft developer application
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -89,13 +104,16 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
     /**
      * Refresh Token of your Microsoft developer application
      */
-    public String refreshToken() {
-        return refreshToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> refreshToken() {
+        return (Optional<String>) refreshToken;
     }
 
     /**
      * Tenant ID of the Microsoft SharePoint user
      */
+    @JsonIgnore
     public String tenantId() {
         return tenantId;
     }
@@ -126,6 +144,15 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
      * Refresh Token of your Microsoft developer application
      */
     public SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth withRefreshToken(String refreshToken) {
+        Utils.checkNotNull(refreshToken, "refreshToken");
+        this.refreshToken = Optional.ofNullable(refreshToken);
+        return this;
+    }
+
+    /**
+     * Refresh Token of your Microsoft developer application
+     */
+    public SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth withRefreshToken(Optional<? extends String> refreshToken) {
         Utils.checkNotNull(refreshToken, "refreshToken");
         this.refreshToken = refreshToken;
         return this;
@@ -183,7 +210,7 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
  
         private String clientSecret;
  
-        private String refreshToken;
+        private Optional<? extends String> refreshToken = Optional.empty();
  
         private String tenantId;  
         
@@ -213,6 +240,15 @@ public class SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth {
          * Refresh Token of your Microsoft developer application
          */
         public Builder refreshToken(String refreshToken) {
+            Utils.checkNotNull(refreshToken, "refreshToken");
+            this.refreshToken = Optional.ofNullable(refreshToken);
+            return this;
+        }
+
+        /**
+         * Refresh Token of your Microsoft developer application
+         */
+        public Builder refreshToken(Optional<? extends String> refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;

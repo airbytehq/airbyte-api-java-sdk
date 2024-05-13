@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -79,6 +81,7 @@ public class ConnectionResponse {
     @JsonProperty("workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public ConnectionResponse(
             @JsonProperty("configurations") StreamConfigurations configurations,
             @JsonProperty("connectionId") String connectionId,
@@ -120,26 +123,44 @@ public class ConnectionResponse {
         this.status = status;
         this.workspaceId = workspaceId;
     }
+    
+    public ConnectionResponse(
+            StreamConfigurations configurations,
+            String connectionId,
+            String destinationId,
+            String name,
+            ConnectionScheduleResponse schedule,
+            String sourceId,
+            ConnectionStatusEnum status,
+            String workspaceId) {
+        this(configurations, connectionId, Optional.empty(), destinationId, name, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), schedule, sourceId, status, workspaceId);
+    }
 
     /**
      * A list of configured stream options for a connection.
      */
+    @JsonIgnore
     public StreamConfigurations configurations() {
         return configurations;
     }
 
+    @JsonIgnore
     public String connectionId() {
         return connectionId;
     }
 
-    public Optional<? extends GeographyEnum> dataResidency() {
-        return dataResidency;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GeographyEnum> dataResidency() {
+        return (Optional<GeographyEnum>) dataResidency;
     }
 
+    @JsonIgnore
     public String destinationId() {
         return destinationId;
     }
 
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -147,40 +168,52 @@ public class ConnectionResponse {
     /**
      * Define the location where the data will be stored in the destination
      */
-    public Optional<? extends NamespaceDefinitionEnum> namespaceDefinition() {
-        return namespaceDefinition;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<NamespaceDefinitionEnum> namespaceDefinition() {
+        return (Optional<NamespaceDefinitionEnum>) namespaceDefinition;
     }
 
-    public Optional<? extends String> namespaceFormat() {
-        return namespaceFormat;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> namespaceFormat() {
+        return (Optional<String>) namespaceFormat;
     }
 
     /**
      * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
      */
-    public Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior() {
-        return nonBreakingSchemaUpdatesBehavior;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior() {
+        return (Optional<NonBreakingSchemaUpdatesBehaviorEnum>) nonBreakingSchemaUpdatesBehavior;
     }
 
-    public Optional<? extends String> prefix() {
-        return prefix;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> prefix() {
+        return (Optional<String>) prefix;
     }
 
     /**
      * schedule for when the the connection should run, per the schedule type
      */
+    @JsonIgnore
     public ConnectionScheduleResponse schedule() {
         return schedule;
     }
 
+    @JsonIgnore
     public String sourceId() {
         return sourceId;
     }
 
+    @JsonIgnore
     public ConnectionStatusEnum status() {
         return status;
     }
 
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }

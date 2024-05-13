@@ -7,7 +7,9 @@ package com.airbyte.api.models.operations;
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -56,7 +58,7 @@ public class ListJobsRequest {
     private Optional<? extends Integer> offset;
 
     /**
-     * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+     * The field and method to use for ordering
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=orderBy")
     private Optional<? extends String> orderBy;
@@ -85,6 +87,7 @@ public class ListJobsRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
     private Optional<? extends java.util.List<String>> workspaceIds;
 
+    @JsonCreator
     public ListJobsRequest(
             Optional<? extends String> connectionId,
             Optional<? extends OffsetDateTime> createdAtEnd,
@@ -120,82 +123,108 @@ public class ListJobsRequest {
         this.updatedAtStart = updatedAtStart;
         this.workspaceIds = workspaceIds;
     }
+    
+    public ListJobsRequest() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Filter the Jobs by connectionId.
      */
-    public Optional<? extends String> connectionId() {
-        return connectionId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> connectionId() {
+        return (Optional<String>) connectionId;
     }
 
     /**
      * The end date to filter by
      */
-    public Optional<? extends OffsetDateTime> createdAtEnd() {
-        return createdAtEnd;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> createdAtEnd() {
+        return (Optional<OffsetDateTime>) createdAtEnd;
     }
 
     /**
      * The start date to filter by
      */
-    public Optional<? extends OffsetDateTime> createdAtStart() {
-        return createdAtStart;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> createdAtStart() {
+        return (Optional<OffsetDateTime>) createdAtStart;
     }
 
     /**
      * Filter the Jobs by jobType.
      */
-    public Optional<? extends com.airbyte.api.models.shared.JobTypeEnum> jobType() {
-        return jobType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<com.airbyte.api.models.shared.JobTypeEnum> jobType() {
+        return (Optional<com.airbyte.api.models.shared.JobTypeEnum>) jobType;
     }
 
     /**
      * Set the limit on the number of Jobs returned. The default is 20 Jobs.
      */
-    public Optional<? extends Integer> limit() {
-        return limit;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Integer> limit() {
+        return (Optional<Integer>) limit;
     }
 
     /**
      * Set the offset to start at when returning Jobs. The default is 0.
      */
-    public Optional<? extends Integer> offset() {
-        return offset;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Integer> offset() {
+        return (Optional<Integer>) offset;
     }
 
     /**
-     * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+     * The field and method to use for ordering
      */
-    public Optional<? extends String> orderBy() {
-        return orderBy;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> orderBy() {
+        return (Optional<String>) orderBy;
     }
 
     /**
      * The Job status you want to filter by
      */
-    public Optional<? extends com.airbyte.api.models.shared.JobStatusEnum> status() {
-        return status;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<com.airbyte.api.models.shared.JobStatusEnum> status() {
+        return (Optional<com.airbyte.api.models.shared.JobStatusEnum>) status;
     }
 
     /**
      * The end date to filter by
      */
-    public Optional<? extends OffsetDateTime> updatedAtEnd() {
-        return updatedAtEnd;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> updatedAtEnd() {
+        return (Optional<OffsetDateTime>) updatedAtEnd;
     }
 
     /**
      * The start date to filter by
      */
-    public Optional<? extends OffsetDateTime> updatedAtStart() {
-        return updatedAtStart;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> updatedAtStart() {
+        return (Optional<OffsetDateTime>) updatedAtStart;
     }
 
     /**
      * The UUIDs of the workspaces you wish to list jobs for. Empty list will retrieve all allowed workspaces.
      */
-    public Optional<? extends java.util.List<String>> workspaceIds() {
-        return workspaceIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> workspaceIds() {
+        return (Optional<java.util.List<String>>) workspaceIds;
     }
 
     public final static Builder builder() {
@@ -311,7 +340,7 @@ public class ListJobsRequest {
     }
 
     /**
-     * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+     * The field and method to use for ordering
      */
     public ListJobsRequest withOrderBy(String orderBy) {
         Utils.checkNotNull(orderBy, "orderBy");
@@ -320,7 +349,7 @@ public class ListJobsRequest {
     }
 
     /**
-     * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+     * The field and method to use for ordering
      */
     public ListJobsRequest withOrderBy(Optional<? extends String> orderBy) {
         Utils.checkNotNull(orderBy, "orderBy");
@@ -592,7 +621,7 @@ public class ListJobsRequest {
         }
 
         /**
-         * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+         * The field and method to use for ordering
          */
         public Builder orderBy(String orderBy) {
             Utils.checkNotNull(orderBy, "orderBy");
@@ -601,7 +630,7 @@ public class ListJobsRequest {
         }
 
         /**
-         * The field and method to use for ordering. Currently allowed are createdAt and updatedAt.
+         * The field and method to use for ordering
          */
         public Builder orderBy(Optional<? extends String> orderBy) {
             Utils.checkNotNull(orderBy, "orderBy");

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,19 +33,28 @@ public class SourceGoogleAnalyticsDataApiNotExpression {
     @JsonProperty("filter_type")
     private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterType> filterType;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiNotExpression(
             @JsonProperty("expression") Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression> expression) {
         Utils.checkNotNull(expression, "expression");
         this.expression = expression;
         this.filterType = Builder._SINGLETON_VALUE_FilterType.value();
     }
-
-    public Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression> expression() {
-        return expression;
+    
+    public SourceGoogleAnalyticsDataApiNotExpression() {
+        this(Optional.empty());
     }
 
-    public Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterType> filterType() {
-        return filterType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression> expression() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterExpression>) expression;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterType> filterType() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3FilterType>) filterType;
     }
 
     public final static Builder builder() {

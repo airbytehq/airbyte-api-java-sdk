@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class ServiceKeyAuthentication {
     @JsonProperty("user_principal_name")
     private String userPrincipalName;
 
+    @JsonCreator
     public ServiceKeyAuthentication(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -68,13 +71,16 @@ public class ServiceKeyAuthentication {
         this.userPrincipalName = userPrincipalName;
     }
 
-    public Optional<? extends SourceMicrosoftOnedriveSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftOnedriveSchemasAuthType> authType() {
+        return (Optional<SourceMicrosoftOnedriveSchemasAuthType>) authType;
     }
 
     /**
      * Client ID of your Microsoft developer application
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -82,6 +88,7 @@ public class ServiceKeyAuthentication {
     /**
      * Client Secret of your Microsoft developer application
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -89,6 +96,7 @@ public class ServiceKeyAuthentication {
     /**
      * Tenant ID of the Microsoft OneDrive user
      */
+    @JsonIgnore
     public String tenantId() {
         return tenantId;
     }
@@ -96,6 +104,7 @@ public class ServiceKeyAuthentication {
     /**
      * Special characters such as a period, comma, space, and the at sign (@) are converted to underscores (_). More details: https://learn.microsoft.com/en-us/sharepoint/list-onedrive-urls
      */
+    @JsonIgnore
     public String userPrincipalName() {
         return userPrincipalName;
     }

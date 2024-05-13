@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -58,6 +60,7 @@ public class SourceShopify {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceShopify(
             @JsonProperty("bulk_window_in_days") Optional<? extends Long> bulkWindowInDays,
             @JsonProperty("credentials") Optional<? extends ShopifyAuthorizationMethod> credentials,
@@ -76,35 +79,48 @@ public class SourceShopify {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceShopify(
+            String shop) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), shop, Optional.empty());
+    }
 
     /**
      * Defines what would be a date range per single BULK Job
      */
-    public Optional<? extends Long> bulkWindowInDays() {
-        return bulkWindowInDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> bulkWindowInDays() {
+        return (Optional<Long>) bulkWindowInDays;
     }
 
     /**
      * The authorization method to use to retrieve data from Shopify
      */
-    public Optional<? extends ShopifyAuthorizationMethod> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ShopifyAuthorizationMethod> credentials() {
+        return (Optional<ShopifyAuthorizationMethod>) credentials;
     }
 
     /**
      * Defines which API type (REST/BULK) to use to fetch `Transactions` data. If you are a `Shopify Plus` user, leave the default value to speed up the fetch.
      */
-    public Optional<? extends Boolean> fetchTransactionsUserId() {
-        return fetchTransactionsUserId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> fetchTransactionsUserId() {
+        return (Optional<Boolean>) fetchTransactionsUserId;
     }
 
     /**
      * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME' or 'NAME.myshopify.com'.
      */
+    @JsonIgnore
     public String shop() {
         return shop;
     }
 
+    @JsonIgnore
     public SourceShopifyShopify sourceType() {
         return sourceType;
     }
@@ -112,8 +128,10 @@ public class SourceShopify {
     /**
      * The date you would like to replicate data from. Format: YYYY-MM-DD. Any data before this date will not be replicated.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {

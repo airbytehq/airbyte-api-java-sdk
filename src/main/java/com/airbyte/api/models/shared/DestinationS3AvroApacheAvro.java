@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class DestinationS3AvroApacheAvro {
     @JsonProperty("format_type")
     private Optional<? extends DestinationS3SchemasFormatFormatType> formatType;
 
+    @JsonCreator
     public DestinationS3AvroApacheAvro(
             @JsonProperty("compression_codec") DestinationS3CompressionCodec compressionCodec,
             @JsonProperty("format_type") Optional<? extends DestinationS3SchemasFormatFormatType> formatType) {
@@ -38,16 +41,24 @@ public class DestinationS3AvroApacheAvro {
         this.compressionCodec = compressionCodec;
         this.formatType = formatType;
     }
+    
+    public DestinationS3AvroApacheAvro(
+            DestinationS3CompressionCodec compressionCodec) {
+        this(compressionCodec, Optional.empty());
+    }
 
     /**
      * The compression algorithm used to compress data. Default to no compression.
      */
+    @JsonIgnore
     public DestinationS3CompressionCodec compressionCodec() {
         return compressionCodec;
     }
 
-    public Optional<? extends DestinationS3SchemasFormatFormatType> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasFormatFormatType> formatType() {
+        return (Optional<DestinationS3SchemasFormatFormatType>) formatType;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class DestinationQdrantByProgrammingLanguage {
     @JsonProperty("mode")
     private Optional<? extends DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode> mode;
 
+    @JsonCreator
     public DestinationQdrantByProgrammingLanguage(
             @JsonProperty("language") DestinationQdrantLanguage language) {
         Utils.checkNotNull(language, "language");
@@ -43,12 +46,15 @@ public class DestinationQdrantByProgrammingLanguage {
     /**
      * Split code in suitable places based on the programming language
      */
+    @JsonIgnore
     public DestinationQdrantLanguage language() {
         return language;
     }
 
-    public Optional<? extends DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode> mode() {
+        return (Optional<DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode>) mode;
     }
 
     public final static Builder builder() {

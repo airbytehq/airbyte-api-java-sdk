@@ -8,7 +8,11 @@ import com.airbyte.api.models.errors.SDKError;
 import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.HTTPRequest;
+import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
+import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
+import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
 import com.airbyte.api.utils.JSON;
+import com.airbyte.api.utils.Retries.NonRetryableException;
 import com.airbyte.api.utils.SerializedBody;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -16,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -36,6 +41,11 @@ public class Destinations implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+    /**
+     * Create a destination
+     * Creates a destination given a name, workspace id, and a json blob containing the configuration for the source.
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.CreateDestinationRequestBuilder createDestination() {
         return new com.airbyte.api.models.operations.CreateDestinationRequestBuilder(this);
     }
@@ -43,68 +53,115 @@ public class Destinations implements
     /**
      * Create a destination
      * Creates a destination given a name, workspace id, and a json blob containing the configuration for the source.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public com.airbyte.api.models.operations.CreateDestinationResponse createDestinationDirect() throws Exception {
+        return createDestination(Optional.empty());
+    }
+    /**
+     * Create a destination
+     * Creates a destination given a name, workspace id, and a json blob containing the configuration for the source.
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.CreateDestinationResponse createDestination(
             Optional<? extends com.airbyte.api.models.shared.DestinationCreateRequest> request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/destinations");
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("POST");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<Optional<? extends com.airbyte.api.models.shared.DestinationCreateRequest>>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "request", "json", false);
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("createDestination", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("createDestination", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("createDestination", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("createDestination", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.CreateDestinationResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.CreateDestinationResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.CreateDestinationResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.CreateDestinationResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.CreateDestinationResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
-                res.withDestinationResponse(java.util.Optional.ofNullable(out));
+                _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Delete a Destination
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.DeleteDestinationRequestBuilder deleteDestination() {
         return new com.airbyte.api.models.operations.DeleteDestinationRequestBuilder(this);
     }
@@ -112,53 +169,90 @@ public class Destinations implements
     /**
      * Delete a Destination
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.DeleteDestinationResponse deleteDestination(
             com.airbyte.api.models.operations.DeleteDestinationRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.DeleteDestinationRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/destinations/{destinationId}",
                 request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "DELETE");
+        _req.addHeader("Accept", "*/*")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("DELETE");
-        req.setURL(url);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("deleteDestination", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("deleteDestination", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("deleteDestination", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("deleteDestination", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.DeleteDestinationResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.DeleteDestinationResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.DeleteDestinationResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.DeleteDestinationResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
+        com.airbyte.api.models.operations.DeleteDestinationResponse _res = _resBuilder.build();
         
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "204")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Get Destination details
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.GetDestinationRequestBuilder getDestination() {
         return new com.airbyte.api.models.operations.GetDestinationRequestBuilder(this);
     }
@@ -166,64 +260,102 @@ public class Destinations implements
     /**
      * Get Destination details
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.GetDestinationResponse getDestination(
             com.airbyte.api.models.operations.GetDestinationRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.GetDestinationRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/destinations/{destinationId}",
                 request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("getDestination", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("getDestination", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("getDestination", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("getDestination", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.GetDestinationResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.GetDestinationResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.GetDestinationResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.GetDestinationResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.GetDestinationResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
-                res.withDestinationResponse(java.util.Optional.ofNullable(out));
+                _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * List destinations
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.ListDestinationsRequestBuilder listDestinations() {
         return new com.airbyte.api.models.operations.ListDestinationsRequestBuilder(this);
     }
@@ -231,70 +363,105 @@ public class Destinations implements
     /**
      * List destinations
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.ListDestinationsResponse listDestinations(
             com.airbyte.api.models.operations.ListDestinationsRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/destinations");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        _req.addQueryParams(Utils.getQueryParams(
+                com.airbyte.api.models.operations.ListDestinationsRequest.class,
+                request, 
+                null));
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        java.util.List<NameValuePair> queryParams = com.airbyte.api.utils.Utils.getQueryParams(
-                com.airbyte.api.models.operations.ListDestinationsRequest.class, request, null);
-        if (queryParams != null) {
-            for (NameValuePair queryParam : queryParams) {
-                req.addQueryParam(queryParam);
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("listDestinations", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("listDestinations", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("listDestinations", sdkConfiguration.securitySource()),
+                         _httpRes);
             }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("listDestinations", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
         }
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.ListDestinationsResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.ListDestinationsResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.ListDestinationsResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.ListDestinationsResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationsResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.ListDestinationsResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.DestinationsResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationsResponse>() {});
-                res.withDestinationsResponse(java.util.Optional.ofNullable(out));
+                _res.withDestinationsResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Update a Destination
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.PatchDestinationRequestBuilder patchDestination() {
         return new com.airbyte.api.models.operations.PatchDestinationRequestBuilder(this);
     }
@@ -302,69 +469,107 @@ public class Destinations implements
     /**
      * Update a Destination
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.PatchDestinationResponse patchDestination(
             com.airbyte.api.models.operations.PatchDestinationRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.PatchDestinationRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/destinations/{destinationId}",
                 request, null);
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("PATCH");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.operations.PatchDestinationRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "destinationPatchRequest", "json", false);
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("patchDestination", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("patchDestination", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("patchDestination", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("patchDestination", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.PatchDestinationResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.PatchDestinationResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.PatchDestinationResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.PatchDestinationResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.PatchDestinationResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
-                res.withDestinationResponse(java.util.Optional.ofNullable(out));
+                _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Update a Destination and fully overwrite it
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.PutDestinationRequestBuilder putDestination() {
         return new com.airbyte.api.models.operations.PutDestinationRequestBuilder(this);
     }
@@ -372,66 +577,100 @@ public class Destinations implements
     /**
      * Update a Destination and fully overwrite it
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.PutDestinationResponse putDestination(
             com.airbyte.api.models.operations.PutDestinationRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.PutDestinationRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/destinations/{destinationId}",
                 request, null);
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("PUT");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PUT");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.operations.PutDestinationRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "destinationPutRequest", "json", false);
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("putDestination", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("putDestination", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("putDestination", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("putDestination", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.PutDestinationResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.PutDestinationResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.PutDestinationResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.PutDestinationResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.PutDestinationResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
-                res.withDestinationResponse(java.util.Optional.ofNullable(out));
+                _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 }

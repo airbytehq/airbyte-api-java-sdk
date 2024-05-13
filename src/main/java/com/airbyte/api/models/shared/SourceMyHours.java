@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceMyHours {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceMyHours(
             @JsonProperty("email") String email,
             @JsonProperty("logs_batch_size") Optional<? extends Long> logsBatchSize,
@@ -63,10 +66,18 @@ public class SourceMyHours {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceMyHours(
+            String email,
+            String password,
+            String startDate) {
+        this(email, Optional.empty(), password, startDate);
+    }
 
     /**
      * Your My Hours username
      */
+    @JsonIgnore
     public String email() {
         return email;
     }
@@ -74,17 +85,21 @@ public class SourceMyHours {
     /**
      * Pagination size used for retrieving logs in days
      */
-    public Optional<? extends Long> logsBatchSize() {
-        return logsBatchSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> logsBatchSize() {
+        return (Optional<Long>) logsBatchSize;
     }
 
     /**
      * The password associated to the username
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
 
+    @JsonIgnore
     public MyHours sourceType() {
         return sourceType;
     }
@@ -92,6 +107,7 @@ public class SourceMyHours {
     /**
      * Start date for collecting time logs
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

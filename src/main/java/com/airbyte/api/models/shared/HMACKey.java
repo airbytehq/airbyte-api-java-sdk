@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class HMACKey {
     @JsonProperty("hmac_key_secret")
     private String hmacKeySecret;
 
+    @JsonCreator
     public HMACKey(
             @JsonProperty("credential_type") Optional<? extends CredentialType> credentialType,
             @JsonProperty("hmac_key_access_id") String hmacKeyAccessId,
@@ -47,14 +50,23 @@ public class HMACKey {
         this.hmacKeyAccessId = hmacKeyAccessId;
         this.hmacKeySecret = hmacKeySecret;
     }
+    
+    public HMACKey(
+            String hmacKeyAccessId,
+            String hmacKeySecret) {
+        this(Optional.empty(), hmacKeyAccessId, hmacKeySecret);
+    }
 
-    public Optional<? extends CredentialType> credentialType() {
-        return credentialType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CredentialType> credentialType() {
+        return (Optional<CredentialType>) credentialType;
     }
 
     /**
      * When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys#overview"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String hmacKeyAccessId() {
         return hmacKeyAccessId;
     }
@@ -62,6 +74,7 @@ public class HMACKey {
     /**
      * The corresponding secret for the access ID. It is a 40-character base-64 encoded string.  Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys#secrets"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String hmacKeySecret() {
         return hmacKeySecret;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -123,6 +125,7 @@ public class SourceGnews {
     @JsonProperty("top_headlines_topic")
     private Optional<? extends TopHeadlinesTopic> topHeadlinesTopic;
 
+    @JsonCreator
     public SourceGnews(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("country") Optional<? extends Country> country,
@@ -159,10 +162,17 @@ public class SourceGnews {
         this.topHeadlinesQuery = topHeadlinesQuery;
         this.topHeadlinesTopic = topHeadlinesTopic;
     }
+    
+    public SourceGnews(
+            String apiKey,
+            String query) {
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), query, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * API Key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -170,33 +180,43 @@ public class SourceGnews {
     /**
      * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
      */
-    public Optional<? extends Country> country() {
-        return country;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Country> country() {
+        return (Optional<Country>) country;
     }
 
     /**
      * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
-    public Optional<? extends String> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
     /**
      * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
      */
-    public Optional<? extends java.util.List<In>> in() {
-        return in;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<In>> in() {
+        return (Optional<java.util.List<In>>) in;
     }
 
-    public Optional<? extends Language> language() {
-        return language;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Language> language() {
+        return (Optional<Language>) language;
     }
 
     /**
      * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
      */
-    public Optional<? extends java.util.List<Nullable>> nullable() {
-        return nullable;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<Nullable>> nullable() {
+        return (Optional<java.util.List<Nullable>>) nullable;
     }
 
     /**
@@ -215,6 +235,7 @@ public class SourceGnews {
      *   For example the query: Apple NOT iPhone will return all articles matching the keyword Apple but not the keyword
      *   iPhone
      */
+    @JsonIgnore
     public String query() {
         return query;
     }
@@ -224,10 +245,13 @@ public class SourceGnews {
      *   - publishedAt = sort by publication date, the articles with the most recent publication date are returned first
      *   - relevance = sort by best match to keywords, the articles with the best match are returned first
      */
-    public Optional<? extends SortBy> sortby() {
-        return sortby;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SortBy> sortby() {
+        return (Optional<SortBy>) sortby;
     }
 
+    @JsonIgnore
     public Gnews sourceType() {
         return sourceType;
     }
@@ -235,8 +259,10 @@ public class SourceGnews {
     /**
      * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
-    public Optional<? extends String> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> startDate() {
+        return (Optional<String>) startDate;
     }
 
     /**
@@ -255,15 +281,19 @@ public class SourceGnews {
      *   For example the query: Apple NOT iPhone will return all articles matching the keyword Apple but not the keyword
      *   iPhone
      */
-    public Optional<? extends String> topHeadlinesQuery() {
-        return topHeadlinesQuery;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> topHeadlinesQuery() {
+        return (Optional<String>) topHeadlinesQuery;
     }
 
     /**
      * This parameter allows you to change the category for the request.
      */
-    public Optional<? extends TopHeadlinesTopic> topHeadlinesTopic() {
-        return topHeadlinesTopic;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<TopHeadlinesTopic> topHeadlinesTopic() {
+        return (Optional<TopHeadlinesTopic>) topHeadlinesTopic;
     }
 
     public final static Builder builder() {

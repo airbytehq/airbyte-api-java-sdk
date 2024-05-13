@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
     @JsonProperty("value")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValue value;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterNumericFilter(
             @JsonProperty("operation") java.util.List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValidEnums> operation,
             @JsonProperty("value") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValue value) {
@@ -36,14 +39,17 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         this.value = value;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2FilterName filterName() {
         return filterName;
     }
 
+    @JsonIgnore
     public java.util.List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValidEnums> operation() {
         return operation;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValue value() {
         return value;
     }

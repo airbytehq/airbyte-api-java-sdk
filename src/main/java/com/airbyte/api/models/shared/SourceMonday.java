@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,17 +29,25 @@ public class SourceMonday {
     @JsonProperty("sourceType")
     private SourceMondayMonday sourceType;
 
+    @JsonCreator
     public SourceMonday(
             @JsonProperty("credentials") Optional<? extends SourceMondayAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
-
-    public Optional<? extends SourceMondayAuthorizationMethod> credentials() {
-        return credentials;
+    
+    public SourceMonday() {
+        this(Optional.empty());
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMondayAuthorizationMethod> credentials() {
+        return (Optional<SourceMondayAuthorizationMethod>) credentials;
+    }
+
+    @JsonIgnore
     public SourceMondayMonday sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
     @JsonProperty("values")
     private java.util.List<String> values;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInListFilter(
             @JsonProperty("caseSensitive") Optional<? extends Boolean> caseSensitive,
             @JsonProperty("values") java.util.List<String> values) {
@@ -39,15 +42,24 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         this.filterName = Builder._SINGLETON_VALUE_FilterName.value();
         this.values = values;
     }
-
-    public Optional<? extends Boolean> caseSensitive() {
-        return caseSensitive;
+    
+    public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInListFilter(
+            java.util.List<String> values) {
+        this(Optional.empty(), values);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> caseSensitive() {
+        return (Optional<Boolean>) caseSensitive;
+    }
+
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilterName filterName() {
         return filterName;
     }
 
+    @JsonIgnore
     public java.util.List<String> values() {
         return values;
     }

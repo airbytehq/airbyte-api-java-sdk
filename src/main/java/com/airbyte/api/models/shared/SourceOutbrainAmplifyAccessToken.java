@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceOutbrainAmplifyAccessToken {
     @JsonProperty("type")
     private AccessTokenIsRequiredForAuthenticationRequests type;
 
+    @JsonCreator
     public SourceOutbrainAmplifyAccessToken(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -36,10 +39,12 @@ public class SourceOutbrainAmplifyAccessToken {
     /**
      * Access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public AccessTokenIsRequiredForAuthenticationRequests type() {
         return type;
     }

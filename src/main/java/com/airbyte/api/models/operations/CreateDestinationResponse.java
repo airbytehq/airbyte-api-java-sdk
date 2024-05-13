@@ -5,7 +5,9 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -37,6 +39,7 @@ public class CreateDestinationResponse implements com.airbyte.api.utils.Response
      */
     private HttpResponse<InputStream> rawResponse;
 
+    @JsonCreator
     public CreateDestinationResponse(
             String contentType,
             Optional<? extends com.airbyte.api.models.shared.DestinationResponse> destinationResponse,
@@ -51,10 +54,18 @@ public class CreateDestinationResponse implements com.airbyte.api.utils.Response
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
     }
+    
+    public CreateDestinationResponse(
+            String contentType,
+            int statusCode,
+            HttpResponse<InputStream> rawResponse) {
+        this(contentType, Optional.empty(), statusCode, rawResponse);
+    }
 
     /**
      * HTTP response content type for this operation
      */
+    @JsonIgnore
     public String contentType() {
         return contentType;
     }
@@ -62,13 +73,16 @@ public class CreateDestinationResponse implements com.airbyte.api.utils.Response
     /**
      * Successful operation
      */
-    public Optional<? extends com.airbyte.api.models.shared.DestinationResponse> destinationResponse() {
-        return destinationResponse;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<com.airbyte.api.models.shared.DestinationResponse> destinationResponse() {
+        return (Optional<com.airbyte.api.models.shared.DestinationResponse>) destinationResponse;
     }
 
     /**
      * HTTP response status code for this operation
      */
+    @JsonIgnore
     public int statusCode() {
         return statusCode;
     }
@@ -76,6 +90,7 @@ public class CreateDestinationResponse implements com.airbyte.api.utils.Response
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    @JsonIgnore
     public HttpResponse<InputStream> rawResponse() {
         return rawResponse;
     }

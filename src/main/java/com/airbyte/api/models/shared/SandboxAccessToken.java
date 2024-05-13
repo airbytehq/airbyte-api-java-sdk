@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class SandboxAccessToken {
     @JsonProperty("auth_type")
     private Optional<? extends SourceTiktokMarketingSchemasAuthType> authType;
 
+    @JsonCreator
     public SandboxAccessToken(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("advertiser_id") String advertiserId) {
@@ -49,6 +52,7 @@ public class SandboxAccessToken {
     /**
      * The long-term authorized access token.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -56,12 +60,15 @@ public class SandboxAccessToken {
     /**
      * The Advertiser ID which generated for the developer's Sandbox application.
      */
+    @JsonIgnore
     public String advertiserId() {
         return advertiserId;
     }
 
-    public Optional<? extends SourceTiktokMarketingSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceTiktokMarketingSchemasAuthType> authType() {
+        return (Optional<SourceTiktokMarketingSchemasAuthType>) authType;
     }
 
     public final static Builder builder() {

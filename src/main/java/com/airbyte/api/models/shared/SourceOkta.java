@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,6 +43,7 @@ public class SourceOkta {
     @JsonProperty("start_date")
     private Optional<? extends String> startDate;
 
+    @JsonCreator
     public SourceOkta(
             @JsonProperty("credentials") Optional<? extends SourceOktaAuthorizationMethod> credentials,
             @JsonProperty("domain") Optional<? extends String> domain,
@@ -53,18 +56,27 @@ public class SourceOkta {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceOkta() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends SourceOktaAuthorizationMethod> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceOktaAuthorizationMethod> credentials() {
+        return (Optional<SourceOktaAuthorizationMethod>) credentials;
     }
 
     /**
      * The Okta domain. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to find it.
      */
-    public Optional<? extends String> domain() {
-        return domain;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> domain() {
+        return (Optional<String>) domain;
     }
 
+    @JsonIgnore
     public Okta sourceType() {
         return sourceType;
     }
@@ -72,8 +84,10 @@ public class SourceOkta {
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
      */
-    public Optional<? extends String> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> startDate() {
+        return (Optional<String>) startDate;
     }
 
     public final static Builder builder() {

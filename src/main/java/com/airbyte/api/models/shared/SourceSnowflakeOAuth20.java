@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceSnowflakeOAuth20 {
     @JsonProperty("refresh_token")
     private Optional<? extends String> refreshToken;
 
+    @JsonCreator
     public SourceSnowflakeOAuth20(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") String clientId,
@@ -64,14 +67,23 @@ public class SourceSnowflakeOAuth20 {
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
     }
+    
+    public SourceSnowflakeOAuth20(
+            String clientId,
+            String clientSecret) {
+        this(Optional.empty(), clientId, clientSecret, Optional.empty());
+    }
 
     /**
      * Access Token for making authenticated requests.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
+    @JsonIgnore
     public SourceSnowflakeAuthType authType() {
         return authType;
     }
@@ -79,6 +91,7 @@ public class SourceSnowflakeOAuth20 {
     /**
      * The Client ID of your Snowflake developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -86,6 +99,7 @@ public class SourceSnowflakeOAuth20 {
     /**
      * The Client Secret of your Snowflake developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -93,8 +107,10 @@ public class SourceSnowflakeOAuth20 {
     /**
      * Refresh Token for making authenticated requests.
      */
-    public Optional<? extends String> refreshToken() {
-        return refreshToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> refreshToken() {
+        return (Optional<String>) refreshToken;
     }
 
     public final static Builder builder() {

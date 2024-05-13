@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class ConnectionsResponse {
     @JsonProperty("previous")
     private Optional<? extends String> previous;
 
+    @JsonCreator
     public ConnectionsResponse(
             @JsonProperty("data") java.util.List<ConnectionResponse> data,
             @JsonProperty("next") Optional<? extends String> next,
@@ -41,17 +44,27 @@ public class ConnectionsResponse {
         this.next = next;
         this.previous = previous;
     }
+    
+    public ConnectionsResponse(
+            java.util.List<ConnectionResponse> data) {
+        this(data, Optional.empty(), Optional.empty());
+    }
 
+    @JsonIgnore
     public java.util.List<ConnectionResponse> data() {
         return data;
     }
 
-    public Optional<? extends String> next() {
-        return next;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> next() {
+        return (Optional<String>) next;
     }
 
-    public Optional<? extends String> previous() {
-        return previous;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> previous() {
+        return (Optional<String>) previous;
     }
 
     public final static Builder builder() {

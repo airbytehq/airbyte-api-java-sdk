@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class UsernameAndPassword {
     @JsonProperty("password")
     private String password;
 
+    @JsonCreator
     public UsernameAndPassword(
             @JsonProperty("password") String password) {
         Utils.checkNotNull(password, "password");
@@ -37,13 +40,16 @@ public class UsernameAndPassword {
         this.password = password;
     }
 
-    public Optional<? extends DestinationSnowflakeAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationSnowflakeAuthType> authType() {
+        return (Optional<DestinationSnowflakeAuthType>) authType;
     }
 
     /**
      * Enter the password associated with the username.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }

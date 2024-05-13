@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceMailchimpOAuth20 {
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
 
+    @JsonCreator
     public SourceMailchimpOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -55,14 +58,21 @@ public class SourceMailchimpOAuth20 {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
+    
+    public SourceMailchimpOAuth20(
+            String accessToken) {
+        this(accessToken, Optional.empty(), Optional.empty());
+    }
 
     /**
      * An access token generated using the above client ID and secret.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public SourceMailchimpAuthType authType() {
         return authType;
     }
@@ -70,15 +80,19 @@ public class SourceMailchimpOAuth20 {
     /**
      * The Client ID of your OAuth application.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret of your OAuth application.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     public final static Builder builder() {

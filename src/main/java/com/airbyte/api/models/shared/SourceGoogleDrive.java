@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -55,6 +57,7 @@ public class SourceGoogleDrive {
     @JsonProperty("streams")
     private java.util.List<SourceGoogleDriveFileBasedStreamConfig> streams;
 
+    @JsonCreator
     public SourceGoogleDrive(
             @JsonProperty("credentials") SourceGoogleDriveAuthentication credentials,
             @JsonProperty("folder_url") String folderUrl,
@@ -70,10 +73,18 @@ public class SourceGoogleDrive {
         this.startDate = startDate;
         this.streams = streams;
     }
+    
+    public SourceGoogleDrive(
+            SourceGoogleDriveAuthentication credentials,
+            String folderUrl,
+            java.util.List<SourceGoogleDriveFileBasedStreamConfig> streams) {
+        this(credentials, folderUrl, Optional.empty(), streams);
+    }
 
     /**
      * Credentials for connecting to the Google Drive API
      */
+    @JsonIgnore
     public SourceGoogleDriveAuthentication credentials() {
         return credentials;
     }
@@ -81,10 +92,12 @@ public class SourceGoogleDrive {
     /**
      * URL for the folder you want to sync. Using individual streams and glob patterns, it's possible to only sync a subset of all files located in the folder.
      */
+    @JsonIgnore
     public String folderUrl() {
         return folderUrl;
     }
 
+    @JsonIgnore
     public SourceGoogleDriveGoogleDrive sourceType() {
         return sourceType;
     }
@@ -92,13 +105,16 @@ public class SourceGoogleDrive {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
+    @JsonIgnore
     public java.util.List<SourceGoogleDriveFileBasedStreamConfig> streams() {
         return streams;
     }

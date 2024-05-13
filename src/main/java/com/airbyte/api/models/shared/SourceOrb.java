@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -77,6 +79,7 @@ public class SourceOrb {
     @JsonProperty("subscription_usage_grouping_key")
     private Optional<? extends String> subscriptionUsageGroupingKey;
 
+    @JsonCreator
     public SourceOrb(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("end_date") Optional<? extends String> endDate,
@@ -104,10 +107,17 @@ public class SourceOrb {
         this.stringEventPropertiesKeys = stringEventPropertiesKeys;
         this.subscriptionUsageGroupingKey = subscriptionUsageGroupingKey;
     }
+    
+    public SourceOrb(
+            String apiKey,
+            String startDate) {
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Orb API Key, issued from the Orb admin console.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -115,31 +125,40 @@ public class SourceOrb {
     /**
      * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at after this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
      */
-    public Optional<? extends String> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
     /**
      * When set to N, the connector will always refresh resources created within the past N days. By default, updated objects that are not newly created are not incrementally synced.
      */
-    public Optional<? extends Long> lookbackWindowDays() {
-        return lookbackWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindowDays() {
+        return (Optional<Long>) lookbackWindowDays;
     }
 
     /**
      * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
      */
-    public Optional<? extends java.util.List<String>> numericEventPropertiesKeys() {
-        return numericEventPropertiesKeys;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> numericEventPropertiesKeys() {
+        return (Optional<java.util.List<String>>) numericEventPropertiesKeys;
     }
 
     /**
      * Orb Plan ID to filter subscriptions that should have usage fetched.
      */
-    public Optional<? extends String> planId() {
-        return planId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> planId() {
+        return (Optional<String>) planId;
     }
 
+    @JsonIgnore
     public Orb sourceType() {
         return sourceType;
     }
@@ -147,6 +166,7 @@ public class SourceOrb {
     /**
      * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at before this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }
@@ -154,15 +174,19 @@ public class SourceOrb {
     /**
      * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
      */
-    public Optional<? extends java.util.List<String>> stringEventPropertiesKeys() {
-        return stringEventPropertiesKeys;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> stringEventPropertiesKeys() {
+        return (Optional<java.util.List<String>>) stringEventPropertiesKeys;
     }
 
     /**
      * Property key name to group subscription usage by.
      */
-    public Optional<? extends String> subscriptionUsageGroupingKey() {
-        return subscriptionUsageGroupingKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> subscriptionUsageGroupingKey() {
+        return (Optional<String>) subscriptionUsageGroupingKey;
     }
 
     public final static Builder builder() {

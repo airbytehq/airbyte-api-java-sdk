@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceQualaroo {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public SourceQualaroo(
             @JsonProperty("key") String key,
             @JsonProperty("start_date") String startDate,
@@ -63,14 +66,23 @@ public class SourceQualaroo {
         this.surveyIds = surveyIds;
         this.token = token;
     }
+    
+    public SourceQualaroo(
+            String key,
+            String startDate,
+            String token) {
+        this(key, startDate, Optional.empty(), token);
+    }
 
     /**
      * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
+    @JsonIgnore
     public String key() {
         return key;
     }
 
+    @JsonIgnore
     public Qualaroo sourceType() {
         return sourceType;
     }
@@ -78,6 +90,7 @@ public class SourceQualaroo {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }
@@ -85,13 +98,16 @@ public class SourceQualaroo {
     /**
      * IDs of the surveys from which you'd like to replicate data. If left empty, data from all surveys to which you have access will be replicated.
      */
-    public Optional<? extends java.util.List<String>> surveyIds() {
-        return surveyIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> surveyIds() {
+        return (Optional<java.util.List<String>>) surveyIds;
     }
 
     /**
      * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
+    @JsonIgnore
     public String token() {
         return token;
     }

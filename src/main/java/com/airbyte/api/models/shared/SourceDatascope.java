@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceDatascope {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceDatascope(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("start_date") String startDate) {
@@ -45,10 +48,12 @@ public class SourceDatascope {
     /**
      * API Key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Datascope sourceType() {
         return sourceType;
     }
@@ -56,6 +61,7 @@ public class SourceDatascope {
     /**
      * Start date for the data to be replicated
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

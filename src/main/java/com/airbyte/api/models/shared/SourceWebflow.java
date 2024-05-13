@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceWebflow {
     @JsonProperty("sourceType")
     private Webflow sourceType;
 
+    @JsonCreator
     public SourceWebflow(
             @JsonProperty("accept_version") Optional<? extends String> acceptVersion,
             @JsonProperty("api_key") String apiKey,
@@ -54,17 +57,26 @@ public class SourceWebflow {
         this.siteId = siteId;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceWebflow(
+            String apiKey,
+            String siteId) {
+        this(Optional.empty(), apiKey, siteId);
+    }
 
     /**
      * The version of the Webflow API to use. See https://developers.webflow.com/#versioning
      */
-    public Optional<? extends String> acceptVersion() {
-        return acceptVersion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> acceptVersion() {
+        return (Optional<String>) acceptVersion;
     }
 
     /**
      * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -72,10 +84,12 @@ public class SourceWebflow {
     /**
      * The id of the Webflow site you are requesting data from. See https://developers.webflow.com/#sites
      */
+    @JsonIgnore
     public String siteId() {
         return siteId;
     }
 
+    @JsonIgnore
     public Webflow sourceType() {
         return sourceType;
     }

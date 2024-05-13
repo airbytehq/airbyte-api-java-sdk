@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,6 +43,7 @@ public class Collection {
     @JsonProperty("page_size")
     private Optional<? extends Long> pageSize;
 
+    @JsonCreator
     public Collection(
             @JsonProperty("deletions") DeletionMode deletions,
             @JsonProperty("page_size") Optional<? extends Long> pageSize) {
@@ -49,6 +52,11 @@ public class Collection {
         this.deletions = deletions;
         this.pageSize = pageSize;
     }
+    
+    public Collection(
+            DeletionMode deletions) {
+        this(deletions, Optional.empty());
+    }
 
     /**
      * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
@@ -56,6 +64,7 @@ public class Collection {
      * Disabled - Leave this feature disabled, and ignore deleted documents.&lt;br&gt;
      * Enabled - Enables this feature. When a document is deleted, the connector exports a record with a "deleted at" column containing the time that the document was deleted.
      */
+    @JsonIgnore
     public DeletionMode deletions() {
         return deletions;
     }
@@ -65,8 +74,10 @@ public class Collection {
      * Choose your page size based on how large the documents are. &lt;br&gt;
      * See &lt;a href="https://docs.fauna.com/fauna/current/learn/understanding/types#page"&gt;the docs&lt;/a&gt;.
      */
-    public Optional<? extends Long> pageSize() {
-        return pageSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> pageSize() {
+        return (Optional<Long>) pageSize;
     }
 
     public final static Builder builder() {

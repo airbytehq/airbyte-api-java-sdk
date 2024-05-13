@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class FromField {
     @JsonProperty("mode")
     private Optional<? extends DestinationWeaviateSchemasEmbeddingEmbedding5Mode> mode;
 
+    @JsonCreator
     public FromField(
             @JsonProperty("dimensions") long dimensions,
             @JsonProperty("field_name") String fieldName) {
@@ -52,6 +55,7 @@ public class FromField {
     /**
      * The number of dimensions the embedding model is generating
      */
+    @JsonIgnore
     public long dimensions() {
         return dimensions;
     }
@@ -59,12 +63,15 @@ public class FromField {
     /**
      * Name of the field in the record that contains the embedding
      */
+    @JsonIgnore
     public String fieldName() {
         return fieldName;
     }
 
-    public Optional<? extends DestinationWeaviateSchemasEmbeddingEmbedding5Mode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationWeaviateSchemasEmbeddingEmbedding5Mode> mode() {
+        return (Optional<DestinationWeaviateSchemasEmbeddingEmbedding5Mode>) mode;
     }
 
     public final static Builder builder() {

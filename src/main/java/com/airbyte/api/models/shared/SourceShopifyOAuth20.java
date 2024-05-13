@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -47,6 +49,7 @@ public class SourceShopifyOAuth20 {
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
 
+    @JsonCreator
     public SourceShopifyOAuth20(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -59,14 +62,21 @@ public class SourceShopifyOAuth20 {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
+    
+    public SourceShopifyOAuth20() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Access Token for making authenticated requests.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
+    @JsonIgnore
     public SourceShopifyAuthMethod authMethod() {
         return authMethod;
     }
@@ -74,15 +84,19 @@ public class SourceShopifyOAuth20 {
     /**
      * The Client ID of the Shopify developer application.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret of the Shopify developer application.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     public final static Builder builder() {

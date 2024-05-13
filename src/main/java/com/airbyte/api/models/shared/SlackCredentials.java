@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class SlackCredentials {
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
 
+    @JsonCreator
     public SlackCredentials(
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret) {
@@ -41,19 +44,27 @@ public class SlackCredentials {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
+    
+    public SlackCredentials() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * Slack client_id. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help finding this id.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * Slack client_secret. See our &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; if you need help finding this secret.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     public final static Builder builder() {

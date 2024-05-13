@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class Silent {
     @JsonProperty("test_destination_type")
     private Optional<? extends TestDestinationType> testDestinationType;
 
+    @JsonCreator
     public Silent() {
         
         this.testDestinationType = Builder._SINGLETON_VALUE_TestDestinationType.value();
     }
 
-    public Optional<? extends TestDestinationType> testDestinationType() {
-        return testDestinationType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<TestDestinationType> testDestinationType() {
+        return (Optional<TestDestinationType>) testDestinationType;
     }
 
     public final static Builder builder() {

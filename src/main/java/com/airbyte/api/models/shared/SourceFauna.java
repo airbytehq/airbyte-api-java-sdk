@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,6 +59,7 @@ public class SourceFauna {
     @JsonProperty("sourceType")
     private Fauna sourceType;
 
+    @JsonCreator
     public SourceFauna(
             @JsonProperty("collection") Optional<? extends Collection> collection,
             @JsonProperty("domain") Optional<? extends String> domain,
@@ -75,42 +78,57 @@ public class SourceFauna {
         this.secret = secret;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceFauna(
+            String secret) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), secret);
+    }
 
     /**
      * Settings for the Fauna Collection.
      */
-    public Optional<? extends Collection> collection() {
-        return collection;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Collection> collection() {
+        return (Optional<Collection>) collection;
     }
 
     /**
      * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
      */
-    public Optional<? extends String> domain() {
-        return domain;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> domain() {
+        return (Optional<String>) domain;
     }
 
     /**
      * Endpoint port.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * URL scheme.
      */
-    public Optional<? extends String> scheme() {
-        return scheme;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> scheme() {
+        return (Optional<String>) scheme;
     }
 
     /**
      * Fauna secret, used when authenticating with the database.
      */
+    @JsonIgnore
     public String secret() {
         return secret;
     }
 
+    @JsonIgnore
     public Fauna sourceType() {
         return sourceType;
     }

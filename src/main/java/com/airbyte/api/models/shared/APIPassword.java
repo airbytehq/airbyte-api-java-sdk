@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class APIPassword {
     @JsonProperty("auth_method")
     private SourceShopifySchemasAuthMethod authMethod;
 
+    @JsonCreator
     public APIPassword(
             @JsonProperty("api_password") String apiPassword) {
         Utils.checkNotNull(apiPassword, "apiPassword");
@@ -39,10 +42,12 @@ public class APIPassword {
     /**
      * The API Password for your private application in the `Shopify` store.
      */
+    @JsonIgnore
     public String apiPassword() {
         return apiPassword;
     }
 
+    @JsonIgnore
     public SourceShopifySchemasAuthMethod authMethod() {
         return authMethod;
     }

@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class DestinationPatchRequest {
     @JsonProperty("name")
     private Optional<? extends String> name;
 
+    @JsonCreator
     public DestinationPatchRequest(
             @JsonProperty("configuration") Optional<? extends DestinationConfiguration> configuration,
             @JsonProperty("name") Optional<? extends String> name) {
@@ -38,16 +41,24 @@ public class DestinationPatchRequest {
         this.configuration = configuration;
         this.name = name;
     }
+    
+    public DestinationPatchRequest() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * The values required to configure the destination.
      */
-    public Optional<? extends DestinationConfiguration> configuration() {
-        return configuration;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationConfiguration> configuration() {
+        return (Optional<DestinationConfiguration>) configuration;
     }
 
-    public Optional<? extends String> name() {
-        return name;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> name() {
+        return (Optional<String>) name;
     }
 
     public final static Builder builder() {

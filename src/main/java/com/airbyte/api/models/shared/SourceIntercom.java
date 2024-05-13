@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class SourceIntercom {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceIntercom(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -67,10 +70,17 @@ public class SourceIntercom {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceIntercom(
+            String accessToken,
+            OffsetDateTime startDate) {
+        this(accessToken, Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * Access token for making authenticated requests. See the &lt;a href="https://developers.intercom.com/building-apps/docs/authentication-types#how-to-get-your-access-token"&gt;Intercom docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -78,17 +88,22 @@ public class SourceIntercom {
     /**
      * Client Id for your Intercom application.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * Client Secret for your Intercom application.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
+    @JsonIgnore
     public SourceIntercomIntercom sourceType() {
         return sourceType;
     }
@@ -96,6 +111,7 @@ public class SourceIntercom {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

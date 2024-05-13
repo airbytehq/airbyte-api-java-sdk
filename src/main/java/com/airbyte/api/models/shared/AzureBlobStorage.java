@@ -5,25 +5,108 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 
-public enum AzureBlobStorage {
-    AZURE_BLOB_STORAGE("azure-blob-storage");
 
-    @JsonValue
-    private final String value;
+public class AzureBlobStorage {
 
-    private AzureBlobStorage(String value) {
-        this.value = value;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("credentials")
+    private Optional<? extends AzureBlobStorageCredentials> credentials;
+
+    @JsonCreator
+    public AzureBlobStorage(
+            @JsonProperty("credentials") Optional<? extends AzureBlobStorageCredentials> credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
     }
     
-    public String value() {
-        return value;
+    public AzureBlobStorage() {
+        this(Optional.empty());
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AzureBlobStorageCredentials> credentials() {
+        return (Optional<AzureBlobStorageCredentials>) credentials;
+    }
+
+    public final static Builder builder() {
+        return new Builder();
+    }
+
+    public AzureBlobStorage withCredentials(AzureBlobStorageCredentials credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = Optional.ofNullable(credentials);
+        return this;
+    }
+
+    public AzureBlobStorage withCredentials(Optional<? extends AzureBlobStorageCredentials> credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
+        return this;
+    }
+    
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AzureBlobStorage other = (AzureBlobStorage) o;
+        return 
+            java.util.Objects.deepEquals(this.credentials, other.credentials);
+    }
+    
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(
+            credentials);
+    }
+    
+    @Override
+    public String toString() {
+        return Utils.toString(AzureBlobStorage.class,
+                "credentials", credentials);
+    }
+    
+    public final static class Builder {
+ 
+        private Optional<? extends AzureBlobStorageCredentials> credentials = Optional.empty();  
+        
+        private Builder() {
+          // force use of static builder() method
+        }
+
+        public Builder credentials(AzureBlobStorageCredentials credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = Optional.ofNullable(credentials);
+            return this;
+        }
+
+        public Builder credentials(Optional<? extends AzureBlobStorageCredentials> credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
+            return this;
+        }
+        
+        public AzureBlobStorage build() {
+            return new AzureBlobStorage(
+                credentials);
+        }
     }
 }
+

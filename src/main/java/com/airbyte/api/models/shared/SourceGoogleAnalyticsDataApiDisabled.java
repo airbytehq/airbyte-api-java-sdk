@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class SourceGoogleAnalyticsDataApiDisabled {
     @JsonProperty("enabled")
     private Optional<? extends SourceGoogleAnalyticsDataApiEnabled> enabled;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiDisabled() {
         
         this.enabled = Builder._SINGLETON_VALUE_Enabled.value();
     }
 
-    public Optional<? extends SourceGoogleAnalyticsDataApiEnabled> enabled() {
-        return enabled;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiEnabled> enabled() {
+        return (Optional<SourceGoogleAnalyticsDataApiEnabled>) enabled;
     }
 
     public final static Builder builder() {

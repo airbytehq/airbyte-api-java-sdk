@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceTiktokMarketingOAuth20 {
     @JsonProperty("secret")
     private String secret;
 
+    @JsonCreator
     public SourceTiktokMarketingOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("advertiser_id") Optional<? extends String> advertiserId,
@@ -64,10 +67,18 @@ public class SourceTiktokMarketingOAuth20 {
         this.authType = Builder._SINGLETON_VALUE_AuthType.value();
         this.secret = secret;
     }
+    
+    public SourceTiktokMarketingOAuth20(
+            String accessToken,
+            String appId,
+            String secret) {
+        this(accessToken, Optional.empty(), appId, secret);
+    }
 
     /**
      * Long-term Authorized Access Token.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -75,24 +86,30 @@ public class SourceTiktokMarketingOAuth20 {
     /**
      * The Advertiser ID to filter reports and streams. Let this empty to retrieve all.
      */
-    public Optional<? extends String> advertiserId() {
-        return advertiserId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> advertiserId() {
+        return (Optional<String>) advertiserId;
     }
 
     /**
      * The Developer Application App ID.
      */
+    @JsonIgnore
     public String appId() {
         return appId;
     }
 
-    public Optional<? extends SourceTiktokMarketingAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceTiktokMarketingAuthType> authType() {
+        return (Optional<SourceTiktokMarketingAuthType>) authType;
     }
 
     /**
      * The Developer Application Secret.
      */
+    @JsonIgnore
     public String secret() {
         return secret;
     }

@@ -8,7 +8,11 @@ import com.airbyte.api.models.errors.SDKError;
 import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.HTTPRequest;
+import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
+import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
+import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
 import com.airbyte.api.utils.JSON;
+import com.airbyte.api.utils.Retries.NonRetryableException;
 import com.airbyte.api.utils.SerializedBody;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -16,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -36,6 +41,12 @@ public class Workspaces implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+    /**
+     * Create OAuth override credentials for a workspace and source type.
+     * Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder createOrUpdateWorkspaceOAuthCredentials() {
         return new com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder(this);
     }
@@ -45,61 +56,98 @@ public class Workspaces implements
      * Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
      * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(
             com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/workspaces/{workspaceId}/oauthCredentials",
                 request, null);
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("PUT");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PUT");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "workspaceOAuthCredentialsRequest", "json", false);
-        if (serializedRequestBody == null) {
+        if (_serializedRequestBody == null) {
             throw new Exception("Request body is required");
         }
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "*/*")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
+        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse _res = _resBuilder.build();
         
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Create a workspace
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.CreateWorkspaceRequestBuilder createWorkspace() {
         return new com.airbyte.api.models.operations.CreateWorkspaceRequestBuilder(this);
     }
@@ -107,70 +155,108 @@ public class Workspaces implements
     /**
      * Create a workspace
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.CreateWorkspaceResponse createWorkspace(
             com.airbyte.api.models.shared.WorkspaceCreateRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/workspaces");
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("POST");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.shared.WorkspaceCreateRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "request", "json", false);
-        if (serializedRequestBody == null) {
+        if (_serializedRequestBody == null) {
             throw new Exception("Request body is required");
         }
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("createWorkspace", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("createWorkspace", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("createWorkspace", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("createWorkspace", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.CreateWorkspaceResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.CreateWorkspaceResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.CreateWorkspaceResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.CreateWorkspaceResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.WorkspaceResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.CreateWorkspaceResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.WorkspaceResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.WorkspaceResponse>() {});
-                res.withWorkspaceResponse(java.util.Optional.ofNullable(out));
+                _res.withWorkspaceResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Delete a Workspace
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.DeleteWorkspaceRequestBuilder deleteWorkspace() {
         return new com.airbyte.api.models.operations.DeleteWorkspaceRequestBuilder(this);
     }
@@ -178,53 +264,90 @@ public class Workspaces implements
     /**
      * Delete a Workspace
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.DeleteWorkspaceResponse deleteWorkspace(
             com.airbyte.api.models.operations.DeleteWorkspaceRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.DeleteWorkspaceRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/workspaces/{workspaceId}",
                 request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "DELETE");
+        _req.addHeader("Accept", "*/*")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("DELETE");
-        req.setURL(url);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("deleteWorkspace", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("deleteWorkspace", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("deleteWorkspace", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("deleteWorkspace", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.DeleteWorkspaceResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.DeleteWorkspaceResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.DeleteWorkspaceResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.DeleteWorkspaceResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
+        com.airbyte.api.models.operations.DeleteWorkspaceResponse _res = _resBuilder.build();
         
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "204")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Get Workspace details
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.GetWorkspaceRequestBuilder getWorkspace() {
         return new com.airbyte.api.models.operations.GetWorkspaceRequestBuilder(this);
     }
@@ -232,64 +355,102 @@ public class Workspaces implements
     /**
      * Get Workspace details
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.GetWorkspaceResponse getWorkspace(
             com.airbyte.api.models.operations.GetWorkspaceRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.GetWorkspaceRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/workspaces/{workspaceId}",
                 request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("getWorkspace", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("getWorkspace", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("getWorkspace", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("getWorkspace", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.GetWorkspaceResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.GetWorkspaceResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.GetWorkspaceResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.GetWorkspaceResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.WorkspaceResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.GetWorkspaceResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.WorkspaceResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.WorkspaceResponse>() {});
-                res.withWorkspaceResponse(java.util.Optional.ofNullable(out));
+                _res.withWorkspaceResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * List workspaces
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.ListWorkspacesRequestBuilder listWorkspaces() {
         return new com.airbyte.api.models.operations.ListWorkspacesRequestBuilder(this);
     }
@@ -297,70 +458,105 @@ public class Workspaces implements
     /**
      * List workspaces
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.ListWorkspacesResponse listWorkspaces(
             com.airbyte.api.models.operations.ListWorkspacesRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/workspaces");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        _req.addQueryParams(Utils.getQueryParams(
+                com.airbyte.api.models.operations.ListWorkspacesRequest.class,
+                request, 
+                null));
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        java.util.List<NameValuePair> queryParams = com.airbyte.api.utils.Utils.getQueryParams(
-                com.airbyte.api.models.operations.ListWorkspacesRequest.class, request, null);
-        if (queryParams != null) {
-            for (NameValuePair queryParam : queryParams) {
-                req.addQueryParam(queryParam);
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("listWorkspaces", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("listWorkspaces", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("listWorkspaces", sdkConfiguration.securitySource()),
+                         _httpRes);
             }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("listWorkspaces", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
         }
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.ListWorkspacesResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.ListWorkspacesResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.ListWorkspacesResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.ListWorkspacesResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.WorkspacesResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.ListWorkspacesResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.WorkspacesResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.WorkspacesResponse>() {});
-                res.withWorkspacesResponse(java.util.Optional.ofNullable(out));
+                _res.withWorkspacesResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Update a workspace
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.UpdateWorkspaceRequestBuilder updateWorkspace() {
         return new com.airbyte.api.models.operations.UpdateWorkspaceRequestBuilder(this);
     }
@@ -368,69 +564,103 @@ public class Workspaces implements
     /**
      * Update a workspace
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.UpdateWorkspaceResponse updateWorkspace(
             com.airbyte.api.models.operations.UpdateWorkspaceRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.UpdateWorkspaceRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/workspaces/{workspaceId}",
                 request, null);
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("PATCH");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.operations.UpdateWorkspaceRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "workspaceUpdateRequest", "json", false);
-        if (serializedRequestBody == null) {
+        if (_serializedRequestBody == null) {
             throw new Exception("Request body is required");
         }
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("updateWorkspace", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("updateWorkspace", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("updateWorkspace", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("updateWorkspace", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.UpdateWorkspaceResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.UpdateWorkspaceResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.UpdateWorkspaceResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.UpdateWorkspaceResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.WorkspaceResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.UpdateWorkspaceResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.WorkspaceResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.WorkspaceResponse>() {});
-                res.withWorkspaceResponse(java.util.Optional.ofNullable(out));
+                _res.withWorkspaceResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -23,6 +25,7 @@ public class SourceMysqlNoTunnel {
     @JsonProperty("tunnel_method")
     private SourceMysqlTunnelMethod tunnelMethod;
 
+    @JsonCreator
     public SourceMysqlNoTunnel() {
         
         this.tunnelMethod = Builder._SINGLETON_VALUE_TunnelMethod.value();
@@ -31,6 +34,7 @@ public class SourceMysqlNoTunnel {
     /**
      * No ssh tunnel needed to connect to database
      */
+    @JsonIgnore
     public SourceMysqlTunnelMethod tunnelMethod() {
         return tunnelMethod;
     }

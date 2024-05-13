@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,14 +26,21 @@ public class Snappy {
     @JsonProperty("codec")
     private Optional<? extends DestinationGcsSchemasFormatOutputFormat1Codec> codec;
 
+    @JsonCreator
     public Snappy(
             @JsonProperty("codec") Optional<? extends DestinationGcsSchemasFormatOutputFormat1Codec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
     }
+    
+    public Snappy() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsSchemasFormatOutputFormat1Codec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasFormatOutputFormat1Codec> codec() {
+        return (Optional<DestinationGcsSchemasFormatOutputFormat1Codec>) codec;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -23,6 +25,7 @@ public class SchemeBasicAuth {
     @SpeakeasyMetadata("security:name=username")
     private String username;
 
+    @JsonCreator
     public SchemeBasicAuth(
             String password,
             String username) {
@@ -32,10 +35,12 @@ public class SchemeBasicAuth {
         this.username = username;
     }
 
+    @JsonIgnore
     public String password() {
         return password;
     }
 
+    @JsonIgnore
     public String username() {
         return username;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class SourceGoogleWebfonts {
     @JsonProperty("sourceType")
     private GoogleWebfonts sourceType;
 
+    @JsonCreator
     public SourceGoogleWebfonts(
             @JsonProperty("alt") Optional<? extends String> alt,
             @JsonProperty("api_key") String apiKey,
@@ -65,17 +68,25 @@ public class SourceGoogleWebfonts {
         this.sort = sort;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceGoogleWebfonts(
+            String apiKey) {
+        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Optional, Available params- json, media, proto
      */
-    public Optional<? extends String> alt() {
-        return alt;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> alt() {
+        return (Optional<String>) alt;
     }
 
     /**
      * API key is required to access google apis, For getting your's goto google console and generate api key for Webfonts
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -83,17 +94,22 @@ public class SourceGoogleWebfonts {
     /**
      * Optional, boolean type
      */
-    public Optional<? extends String> prettyPrint() {
-        return prettyPrint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> prettyPrint() {
+        return (Optional<String>) prettyPrint;
     }
 
     /**
      * Optional, to find how to sort
      */
-    public Optional<? extends String> sort() {
-        return sort;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> sort() {
+        return (Optional<String>) sort;
     }
 
+    @JsonIgnore
     public GoogleWebfonts sourceType() {
         return sourceType;
     }

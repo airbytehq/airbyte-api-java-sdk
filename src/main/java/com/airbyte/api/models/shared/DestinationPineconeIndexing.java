@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -37,6 +39,7 @@ public class DestinationPineconeIndexing {
     @JsonProperty("pinecone_key")
     private String pineconeKey;
 
+    @JsonCreator
     public DestinationPineconeIndexing(
             @JsonProperty("index") String index,
             @JsonProperty("pinecone_environment") String pineconeEnvironment,
@@ -52,6 +55,7 @@ public class DestinationPineconeIndexing {
     /**
      * Pinecone index in your project to load data into
      */
+    @JsonIgnore
     public String index() {
         return index;
     }
@@ -59,6 +63,7 @@ public class DestinationPineconeIndexing {
     /**
      * Pinecone Cloud environment to use
      */
+    @JsonIgnore
     public String pineconeEnvironment() {
         return pineconeEnvironment;
     }
@@ -66,6 +71,7 @@ public class DestinationPineconeIndexing {
     /**
      * The Pinecone API key to use matching the environment (copy from Pinecone console)
      */
+    @JsonIgnore
     public String pineconeKey() {
         return pineconeKey;
     }

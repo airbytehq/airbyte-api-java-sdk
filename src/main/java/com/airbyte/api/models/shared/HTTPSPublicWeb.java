@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,13 +32,19 @@ public class HTTPSPublicWeb {
     @JsonProperty("user_agent")
     private Optional<? extends Boolean> userAgent;
 
+    @JsonCreator
     public HTTPSPublicWeb(
             @JsonProperty("user_agent") Optional<? extends Boolean> userAgent) {
         Utils.checkNotNull(userAgent, "userAgent");
         this.storage = Builder._SINGLETON_VALUE_Storage.value();
         this.userAgent = userAgent;
     }
+    
+    public HTTPSPublicWeb() {
+        this(Optional.empty());
+    }
 
+    @JsonIgnore
     public Storage storage() {
         return storage;
     }
@@ -44,8 +52,10 @@ public class HTTPSPublicWeb {
     /**
      * Add User-Agent to request
      */
-    public Optional<? extends Boolean> userAgent() {
-        return userAgent;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> userAgent() {
+        return (Optional<Boolean>) userAgent;
     }
 
     public final static Builder builder() {

@@ -44,45 +44,15 @@ public class SDKMethodInterfaces {
     }
 
 
-    public interface MethodCallCreateDestination {
-        com.airbyte.api.models.operations.CreateDestinationResponse createDestination(
-            Optional<? extends com.airbyte.api.models.shared.DestinationCreateRequest> request) throws Exception;
-    }
-
-
-    public interface MethodCallDeleteDestination {
-        com.airbyte.api.models.operations.DeleteDestinationResponse deleteDestination(
-            com.airbyte.api.models.operations.DeleteDestinationRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallGetDestination {
-        com.airbyte.api.models.operations.GetDestinationResponse getDestination(
-            com.airbyte.api.models.operations.GetDestinationRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallListDestinations {
-        com.airbyte.api.models.operations.ListDestinationsResponse listDestinations(
-            com.airbyte.api.models.operations.ListDestinationsRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallPatchDestination {
-        com.airbyte.api.models.operations.PatchDestinationResponse patchDestination(
-            com.airbyte.api.models.operations.PatchDestinationRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallPutDestination {
-        com.airbyte.api.models.operations.PutDestinationResponse putDestination(
-            com.airbyte.api.models.operations.PutDestinationRequest request) throws Exception;
-    }
-
-
     public interface MethodCallCancelJob {
         com.airbyte.api.models.operations.CancelJobResponse cancelJob(
             com.airbyte.api.models.operations.CancelJobRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallCreateDestination {
+        com.airbyte.api.models.operations.CreateDestinationResponse createDestination(
+            Optional<? extends com.airbyte.api.models.shared.DestinationCreateRequest> request) throws Exception;
     }
 
 
@@ -92,15 +62,9 @@ public class SDKMethodInterfaces {
     }
 
 
-    public interface MethodCallGetJob {
-        com.airbyte.api.models.operations.GetJobResponse getJob(
-            com.airbyte.api.models.operations.GetJobRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallListJobs {
-        com.airbyte.api.models.operations.ListJobsResponse listJobs(
-            com.airbyte.api.models.operations.ListJobsRequest request) throws Exception;
+    public interface MethodCallCreateOrUpdateWorkspaceOAuthCredentials {
+        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(
+            com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception;
     }
 
 
@@ -110,57 +74,21 @@ public class SDKMethodInterfaces {
     }
 
 
-    public interface MethodCallDeleteSource {
-        com.airbyte.api.models.operations.DeleteSourceResponse deleteSource(
-            com.airbyte.api.models.operations.DeleteSourceRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallGetSource {
-        com.airbyte.api.models.operations.GetSourceResponse getSource(
-            com.airbyte.api.models.operations.GetSourceRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallInitiateOAuth {
-        com.airbyte.api.models.operations.InitiateOAuthResponse initiateOAuth(
-            com.airbyte.api.models.shared.InitiateOauthRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallListSources {
-        com.airbyte.api.models.operations.ListSourcesResponse listSources(
-            com.airbyte.api.models.operations.ListSourcesRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallPatchSource {
-        com.airbyte.api.models.operations.PatchSourceResponse patchSource(
-            com.airbyte.api.models.operations.PatchSourceRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallPutSource {
-        com.airbyte.api.models.operations.PutSourceResponse putSource(
-            com.airbyte.api.models.operations.PutSourceRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallGetStreamProperties {
-        com.airbyte.api.models.operations.GetStreamPropertiesResponse getStreamProperties(
-            com.airbyte.api.models.operations.GetStreamPropertiesRequest request) throws Exception;
-    }
-
-
-    public interface MethodCallCreateOrUpdateWorkspaceOAuthCredentials {
-        com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(
-            com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception;
-    }
-
-
     public interface MethodCallCreateWorkspace {
         com.airbyte.api.models.operations.CreateWorkspaceResponse createWorkspace(
             com.airbyte.api.models.shared.WorkspaceCreateRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallDeleteDestination {
+        com.airbyte.api.models.operations.DeleteDestinationResponse deleteDestination(
+            com.airbyte.api.models.operations.DeleteDestinationRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallDeleteSource {
+        com.airbyte.api.models.operations.DeleteSourceResponse deleteSource(
+            com.airbyte.api.models.operations.DeleteSourceRequest request) throws Exception;
     }
 
 
@@ -170,15 +98,87 @@ public class SDKMethodInterfaces {
     }
 
 
+    public interface MethodCallGetDestination {
+        com.airbyte.api.models.operations.GetDestinationResponse getDestination(
+            com.airbyte.api.models.operations.GetDestinationRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallGetJob {
+        com.airbyte.api.models.operations.GetJobResponse getJob(
+            com.airbyte.api.models.operations.GetJobRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallGetSource {
+        com.airbyte.api.models.operations.GetSourceResponse getSource(
+            com.airbyte.api.models.operations.GetSourceRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallGetStreamProperties {
+        com.airbyte.api.models.operations.GetStreamPropertiesResponse getStreamProperties(
+            com.airbyte.api.models.operations.GetStreamPropertiesRequest request) throws Exception;
+    }
+
+
     public interface MethodCallGetWorkspace {
         com.airbyte.api.models.operations.GetWorkspaceResponse getWorkspace(
             com.airbyte.api.models.operations.GetWorkspaceRequest request) throws Exception;
     }
 
 
+    public interface MethodCallInitiateOAuth {
+        com.airbyte.api.models.operations.InitiateOAuthResponse initiateOAuth(
+            com.airbyte.api.models.shared.InitiateOauthRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallListDestinations {
+        com.airbyte.api.models.operations.ListDestinationsResponse listDestinations(
+            com.airbyte.api.models.operations.ListDestinationsRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallListJobs {
+        com.airbyte.api.models.operations.ListJobsResponse listJobs(
+            com.airbyte.api.models.operations.ListJobsRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallListSources {
+        com.airbyte.api.models.operations.ListSourcesResponse listSources(
+            com.airbyte.api.models.operations.ListSourcesRequest request) throws Exception;
+    }
+
+
     public interface MethodCallListWorkspaces {
         com.airbyte.api.models.operations.ListWorkspacesResponse listWorkspaces(
             com.airbyte.api.models.operations.ListWorkspacesRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallPatchDestination {
+        com.airbyte.api.models.operations.PatchDestinationResponse patchDestination(
+            com.airbyte.api.models.operations.PatchDestinationRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallPatchSource {
+        com.airbyte.api.models.operations.PatchSourceResponse patchSource(
+            com.airbyte.api.models.operations.PatchSourceRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallPutDestination {
+        com.airbyte.api.models.operations.PutDestinationResponse putDestination(
+            com.airbyte.api.models.operations.PutDestinationRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallPutSource {
+        com.airbyte.api.models.operations.PutSourceResponse putSource(
+            com.airbyte.api.models.operations.PutSourceRequest request) throws Exception;
     }
 
 

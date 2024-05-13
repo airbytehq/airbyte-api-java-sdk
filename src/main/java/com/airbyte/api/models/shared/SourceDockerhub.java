@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceDockerhub {
     @JsonProperty("sourceType")
     private Dockerhub sourceType;
 
+    @JsonCreator
     public SourceDockerhub(
             @JsonProperty("docker_username") String dockerUsername) {
         Utils.checkNotNull(dockerUsername, "dockerUsername");
@@ -36,10 +39,12 @@ public class SourceDockerhub {
     /**
      * Username of DockerHub person or organization (for https://hub.docker.com/v2/repositories/USERNAME/ API call)
      */
+    @JsonIgnore
     public String dockerUsername() {
         return dockerUsername;
     }
 
+    @JsonIgnore
     public Dockerhub sourceType() {
         return sourceType;
     }

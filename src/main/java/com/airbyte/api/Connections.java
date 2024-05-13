@@ -8,7 +8,11 @@ import com.airbyte.api.models.errors.SDKError;
 import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.HTTPRequest;
+import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
+import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
+import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
 import com.airbyte.api.utils.JSON;
+import com.airbyte.api.utils.Retries.NonRetryableException;
 import com.airbyte.api.utils.SerializedBody;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -16,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -35,6 +40,10 @@ public class Connections implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+    /**
+     * Create a connection
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.CreateConnectionRequestBuilder createConnection() {
         return new com.airbyte.api.models.operations.CreateConnectionRequestBuilder(this);
     }
@@ -42,70 +51,108 @@ public class Connections implements
     /**
      * Create a connection
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.CreateConnectionResponse createConnection(
             com.airbyte.api.models.shared.ConnectionCreateRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/connections");
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("POST");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "POST");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.shared.ConnectionCreateRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "request", "json", false);
-        if (serializedRequestBody == null) {
+        if (_serializedRequestBody == null) {
             throw new Exception("Request body is required");
         }
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("createConnection", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("createConnection", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("createConnection", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("createConnection", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.CreateConnectionResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.CreateConnectionResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.CreateConnectionResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.CreateConnectionResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.CreateConnectionResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.ConnectionResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionResponse>() {});
-                res.withConnectionResponse(java.util.Optional.ofNullable(out));
+                _res.withConnectionResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Delete a Connection
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.DeleteConnectionRequestBuilder deleteConnection() {
         return new com.airbyte.api.models.operations.DeleteConnectionRequestBuilder(this);
     }
@@ -113,53 +160,90 @@ public class Connections implements
     /**
      * Delete a Connection
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.DeleteConnectionResponse deleteConnection(
             com.airbyte.api.models.operations.DeleteConnectionRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.DeleteConnectionRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/connections/{connectionId}",
                 request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "DELETE");
+        _req.addHeader("Accept", "*/*")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("DELETE");
-        req.setURL(url);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("deleteConnection", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("deleteConnection", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("deleteConnection", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("deleteConnection", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.DeleteConnectionResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.DeleteConnectionResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.DeleteConnectionResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.DeleteConnectionResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
+        com.airbyte.api.models.operations.DeleteConnectionResponse _res = _resBuilder.build();
         
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "204")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Get Connection details
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.GetConnectionRequestBuilder getConnection() {
         return new com.airbyte.api.models.operations.GetConnectionRequestBuilder(this);
     }
@@ -167,64 +251,102 @@ public class Connections implements
     /**
      * Get Connection details
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.GetConnectionResponse getConnection(
             com.airbyte.api.models.operations.GetConnectionRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.GetConnectionRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/connections/{connectionId}",
                 request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("getConnection", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("getConnection", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("getConnection", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("getConnection", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.GetConnectionResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.GetConnectionResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.GetConnectionResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.GetConnectionResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.GetConnectionResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.ConnectionResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionResponse>() {});
-                res.withConnectionResponse(java.util.Optional.ofNullable(out));
+                _res.withConnectionResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * List connections
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.ListConnectionsRequestBuilder listConnections() {
         return new com.airbyte.api.models.operations.ListConnectionsRequestBuilder(this);
     }
@@ -232,70 +354,105 @@ public class Connections implements
     /**
      * List connections
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.ListConnectionsResponse listConnections(
             com.airbyte.api.models.operations.ListConnectionsRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/connections");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        _req.addQueryParams(Utils.getQueryParams(
+                com.airbyte.api.models.operations.ListConnectionsRequest.class,
+                request, 
+                null));
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        java.util.List<NameValuePair> queryParams = com.airbyte.api.utils.Utils.getQueryParams(
-                com.airbyte.api.models.operations.ListConnectionsRequest.class, request, null);
-        if (queryParams != null) {
-            for (NameValuePair queryParam : queryParams) {
-                req.addQueryParam(queryParam);
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("listConnections", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("listConnections", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("listConnections", sdkConfiguration.securitySource()),
+                         _httpRes);
             }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("listConnections", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
         }
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.ListConnectionsResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.ListConnectionsResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.ListConnectionsResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.ListConnectionsResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionsResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.ListConnectionsResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.ConnectionsResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionsResponse>() {});
-                res.withConnectionsResponse(java.util.Optional.ofNullable(out));
+                _res.withConnectionsResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 
+    /**
+     * Update Connection details
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.PatchConnectionRequestBuilder patchConnection() {
         return new com.airbyte.api.models.operations.PatchConnectionRequestBuilder(this);
     }
@@ -303,69 +460,103 @@ public class Connections implements
     /**
      * Update Connection details
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.PatchConnectionResponse patchConnection(
             com.airbyte.api.models.operations.PatchConnectionRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
                 com.airbyte.api.models.operations.PatchConnectionRequest.class,
-                baseUrl,
+                _baseUrl,
                 "/connections/{connectionId}",
                 request, null);
-
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("PATCH");
-        req.setURL(url);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
         Object _convertedRequest = Utils.convertToShape(request, Utils.JsonShape.DEFAULT,
             new TypeReference<com.airbyte.api.models.operations.PatchConnectionRequest>() {});
-        SerializedBody serializedRequestBody = com.airbyte.api.utils.Utils.serializeRequestBody(
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
                 _convertedRequest, "connectionPatchRequest", "json", false);
-        if (serializedRequestBody == null) {
+        if (_serializedRequestBody == null) {
             throw new Exception("Request body is required");
         }
-        req.setBody(serializedRequestBody);
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("patchConnection", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("patchConnection", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("patchConnection", sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("patchConnection", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.PatchConnectionResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.PatchConnectionResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.PatchConnectionResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.PatchConnectionResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
+        com.airbyte.api.models.operations.PatchConnectionResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                com.airbyte.api.models.shared.ConnectionResponse _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionResponse>() {});
-                res.withConnectionResponse(java.util.Optional.ofNullable(out));
+                _res.withConnectionResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 }

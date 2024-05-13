@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class ByProgrammingLanguage {
     @JsonProperty("mode")
     private Optional<? extends DestinationAstraSchemasProcessingTextSplitterTextSplitterMode> mode;
 
+    @JsonCreator
     public ByProgrammingLanguage(
             @JsonProperty("language") DestinationAstraLanguage language) {
         Utils.checkNotNull(language, "language");
@@ -43,12 +46,15 @@ public class ByProgrammingLanguage {
     /**
      * Split code in suitable places based on the programming language
      */
+    @JsonIgnore
     public DestinationAstraLanguage language() {
         return language;
     }
 
-    public Optional<? extends DestinationAstraSchemasProcessingTextSplitterTextSplitterMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationAstraSchemasProcessingTextSplitterTextSplitterMode> mode() {
+        return (Optional<DestinationAstraSchemasProcessingTextSplitterTextSplitterMode>) mode;
     }
 
     public final static Builder builder() {

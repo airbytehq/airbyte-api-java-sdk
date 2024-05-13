@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -23,6 +25,7 @@ public class DateRange {
     @JsonProperty("startDate")
     private LocalDate startDate;
 
+    @JsonCreator
     public DateRange(
             @JsonProperty("endDate") LocalDate endDate,
             @JsonProperty("startDate") LocalDate startDate) {
@@ -32,10 +35,12 @@ public class DateRange {
         this.startDate = startDate;
     }
 
+    @JsonIgnore
     public LocalDate endDate() {
         return endDate;
     }
 
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }

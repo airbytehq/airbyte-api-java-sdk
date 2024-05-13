@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,14 +26,21 @@ public class Bzip2 {
     @JsonProperty("codec")
     private Optional<? extends DestinationGcsSchemasCodec> codec;
 
+    @JsonCreator
     public Bzip2(
             @JsonProperty("codec") Optional<? extends DestinationGcsSchemasCodec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
     }
+    
+    public Bzip2() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsSchemasCodec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasCodec> codec() {
+        return (Optional<DestinationGcsSchemasCodec>) codec;
     }
 
     public final static Builder builder() {

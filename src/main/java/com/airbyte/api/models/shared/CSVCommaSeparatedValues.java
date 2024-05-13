@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,20 +32,28 @@ public class CSVCommaSeparatedValues {
     @JsonProperty("format_type")
     private FormatType formatType;
 
+    @JsonCreator
     public CSVCommaSeparatedValues(
             @JsonProperty("flattening") Optional<? extends NormalizationFlattening> flattening) {
         Utils.checkNotNull(flattening, "flattening");
         this.flattening = flattening;
         this.formatType = Builder._SINGLETON_VALUE_FormatType.value();
     }
+    
+    public CSVCommaSeparatedValues() {
+        this(Optional.empty());
+    }
 
     /**
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
-    public Optional<? extends NormalizationFlattening> flattening() {
-        return flattening;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<NormalizationFlattening> flattening() {
+        return (Optional<NormalizationFlattening>) flattening;
     }
 
+    @JsonIgnore
     public FormatType formatType() {
         return formatType;
     }

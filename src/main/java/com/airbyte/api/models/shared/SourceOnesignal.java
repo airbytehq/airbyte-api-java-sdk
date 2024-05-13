@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -47,6 +49,7 @@ public class SourceOnesignal {
     @JsonProperty("user_auth_key")
     private String userAuthKey;
 
+    @JsonCreator
     public SourceOnesignal(
             @JsonProperty("applications") java.util.List<Applications> applications,
             @JsonProperty("outcome_names") String outcomeNames,
@@ -66,6 +69,7 @@ public class SourceOnesignal {
     /**
      * Applications keys, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys"&gt;docs&lt;/a&gt; for more information on how to obtain this data
      */
+    @JsonIgnore
     public java.util.List<Applications> applications() {
         return applications;
     }
@@ -73,10 +77,12 @@ public class SourceOnesignal {
     /**
      * Comma-separated list of names and the value (sum/count) for the returned outcome data. See the &lt;a href="https://documentation.onesignal.com/reference/view-outcomes"&gt;docs&lt;/a&gt; for more details
      */
+    @JsonIgnore
     public String outcomeNames() {
         return outcomeNames;
     }
 
+    @JsonIgnore
     public Onesignal sourceType() {
         return sourceType;
     }
@@ -84,6 +90,7 @@ public class SourceOnesignal {
     /**
      * The date from which you'd like to replicate data for OneSignal API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -91,6 +98,7 @@ public class SourceOnesignal {
     /**
      * OneSignal User Auth Key, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys#user-auth-key"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String userAuthKey() {
         return userAuthKey;
     }

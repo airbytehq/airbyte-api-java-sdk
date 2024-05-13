@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourceRecharge {
     @JsonProperty("use_orders_deprecated_api")
     private Optional<? extends Boolean> useOrdersDeprecatedApi;
 
+    @JsonCreator
     public SourceRecharge(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("start_date") OffsetDateTime startDate,
@@ -57,14 +60,22 @@ public class SourceRecharge {
         this.startDate = startDate;
         this.useOrdersDeprecatedApi = useOrdersDeprecatedApi;
     }
+    
+    public SourceRecharge(
+            String accessToken,
+            OffsetDateTime startDate) {
+        this(accessToken, startDate, Optional.empty());
+    }
 
     /**
      * The value of the Access Token generated. See the &lt;a href="https://docs.airbyte.com/integrations/sources/recharge"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public Recharge sourceType() {
         return sourceType;
     }
@@ -72,6 +83,7 @@ public class SourceRecharge {
     /**
      * The date from which you'd like to replicate data for Recharge API, in the format YYYY-MM-DDT00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -79,8 +91,10 @@ public class SourceRecharge {
     /**
      * Define whether or not the `Orders` stream should use the deprecated `2021-01` API version, or use `2021-11`, otherwise.
      */
-    public Optional<? extends Boolean> useOrdersDeprecatedApi() {
-        return useOrdersDeprecatedApi;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> useOrdersDeprecatedApi() {
+        return (Optional<Boolean>) useOrdersDeprecatedApi;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourceChargebee {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceChargebee(
             @JsonProperty("product_catalog") Optional<? extends ProductCatalog> productCatalog,
             @JsonProperty("site") String site,
@@ -66,17 +69,27 @@ public class SourceChargebee {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceChargebee(
+            String site,
+            String siteApiKey,
+            OffsetDateTime startDate) {
+        this(Optional.empty(), site, siteApiKey, startDate);
+    }
 
     /**
      * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
      */
-    public Optional<? extends ProductCatalog> productCatalog() {
-        return productCatalog;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ProductCatalog> productCatalog() {
+        return (Optional<ProductCatalog>) productCatalog;
     }
 
     /**
      * The site prefix for your Chargebee instance.
      */
+    @JsonIgnore
     public String site() {
         return site;
     }
@@ -84,10 +97,12 @@ public class SourceChargebee {
     /**
      * Chargebee API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/chargebee"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String siteApiKey() {
         return siteApiKey;
     }
 
+    @JsonIgnore
     public Chargebee sourceType() {
         return sourceType;
     }
@@ -95,6 +110,7 @@ public class SourceChargebee {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

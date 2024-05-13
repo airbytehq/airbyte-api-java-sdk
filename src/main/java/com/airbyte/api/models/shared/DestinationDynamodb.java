@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -55,6 +57,7 @@ public class DestinationDynamodb {
     @JsonProperty("secret_access_key")
     private String secretAccessKey;
 
+    @JsonCreator
     public DestinationDynamodb(
             @JsonProperty("access_key_id") String accessKeyId,
             @JsonProperty("dynamodb_endpoint") Optional<? extends String> dynamodbEndpoint,
@@ -73,14 +76,23 @@ public class DestinationDynamodb {
         this.dynamodbTableNamePrefix = dynamodbTableNamePrefix;
         this.secretAccessKey = secretAccessKey;
     }
+    
+    public DestinationDynamodb(
+            String accessKeyId,
+            String dynamodbTableNamePrefix,
+            String secretAccessKey) {
+        this(accessKeyId, Optional.empty(), Optional.empty(), dynamodbTableNamePrefix, secretAccessKey);
+    }
 
     /**
      * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.
      */
+    @JsonIgnore
     public String accessKeyId() {
         return accessKeyId;
     }
 
+    @JsonIgnore
     public Dynamodb destinationType() {
         return destinationType;
     }
@@ -88,20 +100,25 @@ public class DestinationDynamodb {
     /**
      * This is your DynamoDB endpoint url.(if you are working with AWS DynamoDB, just leave empty).
      */
-    public Optional<? extends String> dynamodbEndpoint() {
-        return dynamodbEndpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> dynamodbEndpoint() {
+        return (Optional<String>) dynamodbEndpoint;
     }
 
     /**
      * The region of the DynamoDB.
      */
-    public Optional<? extends DynamoDBRegion> dynamodbRegion() {
-        return dynamodbRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DynamoDBRegion> dynamodbRegion() {
+        return (Optional<DynamoDBRegion>) dynamodbRegion;
     }
 
     /**
      * The prefix to use when naming DynamoDB tables.
      */
+    @JsonIgnore
     public String dynamodbTableNamePrefix() {
         return dynamodbTableNamePrefix;
     }
@@ -109,6 +126,7 @@ public class DestinationDynamodb {
     /**
      * The corresponding secret to the access key id.
      */
+    @JsonIgnore
     public String secretAccessKey() {
         return secretAccessKey;
     }

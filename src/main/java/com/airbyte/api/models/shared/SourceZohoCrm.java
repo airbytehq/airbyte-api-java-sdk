@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -71,6 +73,7 @@ public class SourceZohoCrm {
     @JsonProperty("start_datetime")
     private JsonNullable<? extends OffsetDateTime> startDatetime;
 
+    @JsonCreator
     public SourceZohoCrm(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -95,10 +98,20 @@ public class SourceZohoCrm {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDatetime = startDatetime;
     }
+    
+    public SourceZohoCrm(
+            String clientId,
+            String clientSecret,
+            DataCenterLocation dcRegion,
+            SourceZohoCrmEnvironment environment,
+            String refreshToken) {
+        this(clientId, clientSecret, dcRegion, Optional.empty(), environment, refreshToken, JsonNullable.undefined());
+    }
 
     /**
      * OAuth2.0 Client ID
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -106,6 +119,7 @@ public class SourceZohoCrm {
     /**
      * OAuth2.0 Client Secret
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -113,6 +127,7 @@ public class SourceZohoCrm {
     /**
      * Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
      */
+    @JsonIgnore
     public DataCenterLocation dcRegion() {
         return dcRegion;
     }
@@ -120,13 +135,16 @@ public class SourceZohoCrm {
     /**
      * Choose your Edition of Zoho CRM to determine API Concurrency Limits
      */
-    public Optional<? extends ZohoCRMEdition> edition() {
-        return edition;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ZohoCRMEdition> edition() {
+        return (Optional<ZohoCRMEdition>) edition;
     }
 
     /**
      * Please choose the environment
      */
+    @JsonIgnore
     public SourceZohoCrmEnvironment environment() {
         return environment;
     }
@@ -134,10 +152,12 @@ public class SourceZohoCrm {
     /**
      * OAuth2.0 Refresh Token
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
+    @JsonIgnore
     public ZohoCrm sourceType() {
         return sourceType;
     }
@@ -145,8 +165,10 @@ public class SourceZohoCrm {
     /**
      * ISO 8601, for instance: `YYYY-MM-DD`, `YYYY-MM-DD HH:MM:SS+HH:MM`
      */
-    public JsonNullable<? extends OffsetDateTime> startDatetime() {
-        return startDatetime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<OffsetDateTime> startDatetime() {
+        return (JsonNullable<OffsetDateTime>) startDatetime;
     }
 
     public final static Builder builder() {

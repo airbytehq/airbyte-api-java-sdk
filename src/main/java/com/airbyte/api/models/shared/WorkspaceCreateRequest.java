@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -22,6 +24,7 @@ public class WorkspaceCreateRequest {
     @JsonProperty("name")
     private String name;
 
+    @JsonCreator
     public WorkspaceCreateRequest(
             @JsonProperty("name") String name) {
         Utils.checkNotNull(name, "name");
@@ -31,6 +34,7 @@ public class WorkspaceCreateRequest {
     /**
      * Name of the workspace
      */
+    @JsonIgnore
     public String name() {
         return name;
     }

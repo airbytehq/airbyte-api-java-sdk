@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class KeyPairAuthentication {
     @JsonProperty("private_key_password")
     private Optional<? extends String> privateKeyPassword;
 
+    @JsonCreator
     public KeyPairAuthentication(
             @JsonProperty("private_key") String privateKey,
             @JsonProperty("private_key_password") Optional<? extends String> privateKeyPassword) {
@@ -46,14 +49,22 @@ public class KeyPairAuthentication {
         this.privateKey = privateKey;
         this.privateKeyPassword = privateKeyPassword;
     }
+    
+    public KeyPairAuthentication(
+            String privateKey) {
+        this(privateKey, Optional.empty());
+    }
 
-    public Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationSnowflakeSchemasCredentialsAuthType> authType() {
+        return (Optional<DestinationSnowflakeSchemasCredentialsAuthType>) authType;
     }
 
     /**
      * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/snowflake"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String privateKey() {
         return privateKey;
     }
@@ -61,8 +72,10 @@ public class KeyPairAuthentication {
     /**
      * Passphrase for private key
      */
-    public Optional<? extends String> privateKeyPassword() {
-        return privateKeyPassword;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> privateKeyPassword() {
+        return (Optional<String>) privateKeyPassword;
     }
 
     public final static Builder builder() {

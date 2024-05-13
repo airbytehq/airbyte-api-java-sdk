@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
     @JsonProperty("service_account_info")
     private String serviceAccountInfo;
 
+    @JsonCreator
     public SourceGoogleSearchConsoleServiceAccountKeyAuthentication(
             @JsonProperty("email") String email,
             @JsonProperty("service_account_info") String serviceAccountInfo) {
@@ -42,6 +45,7 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
         this.serviceAccountInfo = serviceAccountInfo;
     }
 
+    @JsonIgnore
     public SourceGoogleSearchConsoleSchemasAuthType authType() {
         return authType;
     }
@@ -49,6 +53,7 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
     /**
      * The email of the user which has permissions to access the Google Workspace Admin APIs.
      */
+    @JsonIgnore
     public String email() {
         return email;
     }
@@ -56,6 +61,7 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
     /**
      * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String serviceAccountInfo() {
         return serviceAccountInfo;
     }

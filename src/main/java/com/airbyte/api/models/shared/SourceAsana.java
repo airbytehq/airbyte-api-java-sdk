@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourceAsana {
     @JsonProperty("test_mode")
     private Optional<? extends Boolean> testMode;
 
+    @JsonCreator
     public SourceAsana(
             @JsonProperty("credentials") Optional<? extends AuthenticationMechanism> credentials,
             @JsonProperty("organization_export_ids") Optional<? extends java.util.List<java.lang.Object>> organizationExportIds,
@@ -57,30 +60,42 @@ public class SourceAsana {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.testMode = testMode;
     }
+    
+    public SourceAsana() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Choose how to authenticate to Github
      */
-    public Optional<? extends AuthenticationMechanism> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AuthenticationMechanism> credentials() {
+        return (Optional<AuthenticationMechanism>) credentials;
     }
 
     /**
      * Globally unique identifiers for the organization exports
      */
-    public Optional<? extends java.util.List<java.lang.Object>> organizationExportIds() {
-        return organizationExportIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<java.lang.Object>> organizationExportIds() {
+        return (Optional<java.util.List<java.lang.Object>>) organizationExportIds;
     }
 
-    public Optional<? extends SourceAsanaAsana> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAsanaAsana> sourceType() {
+        return (Optional<SourceAsanaAsana>) sourceType;
     }
 
     /**
      * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
      */
-    public Optional<? extends Boolean> testMode() {
-        return testMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> testMode() {
+        return (Optional<Boolean>) testMode;
     }
 
     public final static Builder builder() {

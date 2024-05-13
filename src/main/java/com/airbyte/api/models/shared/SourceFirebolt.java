@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -62,6 +64,7 @@ public class SourceFirebolt {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceFirebolt(
             @JsonProperty("account") Optional<? extends String> account,
             @JsonProperty("database") String database,
@@ -83,17 +86,27 @@ public class SourceFirebolt {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.username = username;
     }
+    
+    public SourceFirebolt(
+            String database,
+            String password,
+            String username) {
+        this(Optional.empty(), database, Optional.empty(), Optional.empty(), password, username);
+    }
 
     /**
      * Firebolt account to login.
      */
-    public Optional<? extends String> account() {
-        return account;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> account() {
+        return (Optional<String>) account;
     }
 
     /**
      * The database to connect to.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -101,24 +114,30 @@ public class SourceFirebolt {
     /**
      * Engine name or url to connect to.
      */
-    public Optional<? extends String> engine() {
-        return engine;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> engine() {
+        return (Optional<String>) engine;
     }
 
     /**
      * The host name of your Firebolt database.
      */
-    public Optional<? extends String> host() {
-        return host;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> host() {
+        return (Optional<String>) host;
     }
 
     /**
      * Firebolt password.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
 
+    @JsonIgnore
     public Firebolt sourceType() {
         return sourceType;
     }
@@ -126,6 +145,7 @@ public class SourceFirebolt {
     /**
      * Firebolt email address you use to login.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

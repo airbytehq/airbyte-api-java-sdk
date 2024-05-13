@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -77,6 +79,7 @@ public class DestinationTeradata {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationTeradata(
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
@@ -101,7 +104,14 @@ public class DestinationTeradata {
         this.sslMode = sslMode;
         this.username = username;
     }
+    
+    public DestinationTeradata(
+            String host,
+            String username) {
+        this(host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
+    @JsonIgnore
     public Teradata destinationType() {
         return destinationType;
     }
@@ -109,6 +119,7 @@ public class DestinationTeradata {
     /**
      * Hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -116,29 +127,37 @@ public class DestinationTeradata {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * Password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     /**
      * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
      */
-    public Optional<? extends Boolean> ssl() {
-        return ssl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ssl() {
+        return (Optional<Boolean>) ssl;
     }
 
     /**
@@ -151,13 +170,16 @@ public class DestinationTeradata {
      *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
      *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
      */
-    public Optional<? extends DestinationTeradataSSLModes> sslMode() {
-        return sslMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationTeradataSSLModes> sslMode() {
+        return (Optional<DestinationTeradataSSLModes>) sslMode;
     }
 
     /**
      * Username to use to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +40,7 @@ public class Zstandard {
     @JsonProperty("include_checksum")
     private Optional<? extends Boolean> includeChecksum;
 
+    @JsonCreator
     public Zstandard(
             @JsonProperty("codec") Optional<? extends DestinationGcsSchemasFormatOutputFormatCodec> codec,
             @JsonProperty("compression_level") Optional<? extends Long> compressionLevel,
@@ -49,23 +52,33 @@ public class Zstandard {
         this.compressionLevel = compressionLevel;
         this.includeChecksum = includeChecksum;
     }
+    
+    public Zstandard() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsSchemasFormatOutputFormatCodec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasFormatOutputFormatCodec> codec() {
+        return (Optional<DestinationGcsSchemasFormatOutputFormatCodec>) codec;
     }
 
     /**
      * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
      */
-    public Optional<? extends Long> compressionLevel() {
-        return compressionLevel;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> compressionLevel() {
+        return (Optional<Long>) compressionLevel;
     }
 
     /**
      * If true, include a checksum with each data block.
      */
-    public Optional<? extends Boolean> includeChecksum() {
-        return includeChecksum;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> includeChecksum() {
+        return (Optional<Boolean>) includeChecksum;
     }
 
     public final static Builder builder() {

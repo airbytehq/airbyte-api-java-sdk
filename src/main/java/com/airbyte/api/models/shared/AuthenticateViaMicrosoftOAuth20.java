@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class AuthenticateViaMicrosoftOAuth20 {
     @JsonProperty("tenant_id")
     private String tenantId;
 
+    @JsonCreator
     public AuthenticateViaMicrosoftOAuth20(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -64,13 +67,16 @@ public class AuthenticateViaMicrosoftOAuth20 {
         this.tenantId = tenantId;
     }
 
-    public Optional<? extends SourceMicrosoftTeamsAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftTeamsAuthType> authType() {
+        return (Optional<SourceMicrosoftTeamsAuthType>) authType;
     }
 
     /**
      * The Client ID of your Microsoft Teams developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -78,6 +84,7 @@ public class AuthenticateViaMicrosoftOAuth20 {
     /**
      * The Client Secret of your Microsoft Teams developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -85,6 +92,7 @@ public class AuthenticateViaMicrosoftOAuth20 {
     /**
      * A Refresh Token to renew the expired Access Token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -92,6 +100,7 @@ public class AuthenticateViaMicrosoftOAuth20 {
     /**
      * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
      */
+    @JsonIgnore
     public String tenantId() {
         return tenantId;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -79,6 +81,7 @@ public class SourcePaypalTransaction {
     @JsonProperty("time_window")
     private Optional<? extends Long> timeWindow;
 
+    @JsonCreator
     public SourcePaypalTransaction(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -106,10 +109,18 @@ public class SourcePaypalTransaction {
         this.startDate = startDate;
         this.timeWindow = timeWindow;
     }
+    
+    public SourcePaypalTransaction(
+            String clientId,
+            String clientSecret,
+            OffsetDateTime startDate) {
+        this(clientId, clientSecret, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty());
+    }
 
     /**
      * The Client ID of your Paypal developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -117,6 +128,7 @@ public class SourcePaypalTransaction {
     /**
      * The Client Secret of your Paypal developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -124,31 +136,40 @@ public class SourcePaypalTransaction {
     /**
      * Start Date parameter for the list dispute endpoint in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. This Start Date must be in range within 180 days before present time, and requires ONLY 3 miliseconds(mandatory). If you don't use this option, it defaults to a start date set 180 days in the past.
      */
-    public Optional<? extends OffsetDateTime> disputeStartDate() {
-        return disputeStartDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> disputeStartDate() {
+        return (Optional<OffsetDateTime>) disputeStartDate;
     }
 
     /**
      * End Date for data extraction in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. This can be help you select specific range of time, mainly for test purposes  or data integrity tests. When this is not used, now_utc() is used by the streams. This does not apply to Disputes and Product streams.
      */
-    public Optional<? extends OffsetDateTime> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> endDate() {
+        return (Optional<OffsetDateTime>) endDate;
     }
 
     /**
      * Determines whether to use the sandbox or production environment.
      */
-    public Optional<? extends Boolean> isSandbox() {
-        return isSandbox;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> isSandbox() {
+        return (Optional<Boolean>) isSandbox;
     }
 
     /**
      * The key to refresh the expired access token.
      */
-    public Optional<? extends String> refreshToken() {
-        return refreshToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> refreshToken() {
+        return (Optional<String>) refreshToken;
     }
 
+    @JsonIgnore
     public PaypalTransaction sourceType() {
         return sourceType;
     }
@@ -156,6 +177,7 @@ public class SourcePaypalTransaction {
     /**
      * Start Date for data extraction in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. Date must be in range from 3 years till 12 hrs before present time.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -163,8 +185,10 @@ public class SourcePaypalTransaction {
     /**
      * The number of days per request. Must be a number between 1 and 31.
      */
-    public Optional<? extends Long> timeWindow() {
-        return timeWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> timeWindow() {
+        return (Optional<Long>) timeWindow;
     }
 
     public final static Builder builder() {

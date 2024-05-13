@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class WorkspaceResponse {
     @JsonProperty("workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public WorkspaceResponse(
             @JsonProperty("dataResidency") Optional<? extends GeographyEnum> dataResidency,
             @JsonProperty("name") String name,
@@ -44,15 +47,25 @@ public class WorkspaceResponse {
         this.name = name;
         this.workspaceId = workspaceId;
     }
-
-    public Optional<? extends GeographyEnum> dataResidency() {
-        return dataResidency;
+    
+    public WorkspaceResponse(
+            String name,
+            String workspaceId) {
+        this(Optional.empty(), name, workspaceId);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GeographyEnum> dataResidency() {
+        return (Optional<GeographyEnum>) dataResidency;
+    }
+
+    @JsonIgnore
     public String name() {
         return name;
     }
 
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }

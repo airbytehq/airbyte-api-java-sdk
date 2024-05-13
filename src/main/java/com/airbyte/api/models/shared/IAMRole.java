@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class IAMRole {
     @JsonProperty("role_arn")
     private String roleArn;
 
+    @JsonCreator
     public IAMRole(
             @JsonProperty("role_arn") String roleArn) {
         Utils.checkNotNull(roleArn, "roleArn");
@@ -43,13 +46,16 @@ public class IAMRole {
     /**
      * Name of the credentials
      */
-    public Optional<? extends CredentialsTitle> credentialsTitle() {
-        return credentialsTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CredentialsTitle> credentialsTitle() {
+        return (Optional<CredentialsTitle>) credentialsTitle;
     }
 
     /**
      * Will assume this role to write data to s3
      */
+    @JsonIgnore
     public String roleArn() {
         return roleArn;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class AuthenticateViaAsanaOauth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public AuthenticateViaAsanaOauth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -49,10 +52,12 @@ public class AuthenticateViaAsanaOauth {
         this.refreshToken = refreshToken;
     }
 
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
 
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -60,10 +65,13 @@ public class AuthenticateViaAsanaOauth {
     /**
      * OAuth Credentials
      */
-    public Optional<? extends SourceAsanaCredentialsTitle> optionTitle() {
-        return optionTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAsanaCredentialsTitle> optionTitle() {
+        return (Optional<SourceAsanaCredentialsTitle>) optionTitle;
     }
 
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

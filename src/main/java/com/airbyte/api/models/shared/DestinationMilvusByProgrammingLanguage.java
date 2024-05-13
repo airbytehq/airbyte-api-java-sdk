@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class DestinationMilvusByProgrammingLanguage {
     @JsonProperty("mode")
     private Optional<? extends DestinationMilvusSchemasProcessingTextSplitterTextSplitterMode> mode;
 
+    @JsonCreator
     public DestinationMilvusByProgrammingLanguage(
             @JsonProperty("language") DestinationMilvusLanguage language) {
         Utils.checkNotNull(language, "language");
@@ -43,12 +46,15 @@ public class DestinationMilvusByProgrammingLanguage {
     /**
      * Split code in suitable places based on the programming language
      */
+    @JsonIgnore
     public DestinationMilvusLanguage language() {
         return language;
     }
 
-    public Optional<? extends DestinationMilvusSchemasProcessingTextSplitterTextSplitterMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMilvusSchemasProcessingTextSplitterTextSplitterMode> mode() {
+        return (Optional<DestinationMilvusSchemasProcessingTextSplitterTextSplitterMode>) mode;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceTypeform {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceTypeform(
             @JsonProperty("credentials") SourceTypeformAuthorizationMethod credentials,
             @JsonProperty("form_ids") Optional<? extends java.util.List<String>> formIds,
@@ -55,7 +58,13 @@ public class SourceTypeform {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceTypeform(
+            SourceTypeformAuthorizationMethod credentials) {
+        this(credentials, Optional.empty(), Optional.empty());
+    }
 
+    @JsonIgnore
     public SourceTypeformAuthorizationMethod credentials() {
         return credentials;
     }
@@ -63,10 +72,13 @@ public class SourceTypeform {
     /**
      * When this parameter is set, the connector will replicate data only from the input forms. Otherwise, all forms in your Typeform account will be replicated. You can find form IDs in your form URLs. For example, in the URL "https://mysite.typeform.com/to/u6nXL7" the form_id is u6nXL7. You can find form URLs on Share panel
      */
-    public Optional<? extends java.util.List<String>> formIds() {
-        return formIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> formIds() {
+        return (Optional<java.util.List<String>>) formIds;
     }
 
+    @JsonIgnore
     public SourceTypeformTypeform sourceType() {
         return sourceType;
     }
@@ -74,8 +86,10 @@ public class SourceTypeform {
     /**
      * The date from which you'd like to replicate data for Typeform API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

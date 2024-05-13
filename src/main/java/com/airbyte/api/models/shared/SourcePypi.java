@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class SourcePypi {
     @JsonProperty("version")
     private Optional<? extends String> version;
 
+    @JsonCreator
     public SourcePypi(
             @JsonProperty("project_name") String projectName,
             @JsonProperty("version") Optional<? extends String> version) {
@@ -45,14 +48,21 @@ public class SourcePypi {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.version = version;
     }
+    
+    public SourcePypi(
+            String projectName) {
+        this(projectName, Optional.empty());
+    }
 
     /**
      * Name of the project/package. Can only be in lowercase with hyphen. This is the name used using pip command for installing the package.
      */
+    @JsonIgnore
     public String projectName() {
         return projectName;
     }
 
+    @JsonIgnore
     public Pypi sourceType() {
         return sourceType;
     }
@@ -60,8 +70,10 @@ public class SourcePypi {
     /**
      * Version of the project/package.  Use it to find a particular release instead of all releases.
      */
-    public Optional<? extends String> version() {
-        return version;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> version() {
+        return (Optional<String>) version;
     }
 
     public final static Builder builder() {

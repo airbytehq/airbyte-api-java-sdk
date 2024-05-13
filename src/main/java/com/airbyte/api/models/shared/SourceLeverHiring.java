@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceLeverHiring {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceLeverHiring(
             @JsonProperty("credentials") Optional<? extends SourceLeverHiringAuthenticationMechanism> credentials,
             @JsonProperty("environment") Optional<? extends SourceLeverHiringEnvironment> environment,
@@ -55,21 +58,31 @@ public class SourceLeverHiring {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceLeverHiring(
+            String startDate) {
+        this(Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * Choose how to authenticate to Lever Hiring.
      */
-    public Optional<? extends SourceLeverHiringAuthenticationMechanism> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLeverHiringAuthenticationMechanism> credentials() {
+        return (Optional<SourceLeverHiringAuthenticationMechanism>) credentials;
     }
 
     /**
      * The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
      */
-    public Optional<? extends SourceLeverHiringEnvironment> environment() {
-        return environment;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLeverHiringEnvironment> environment() {
+        return (Optional<SourceLeverHiringEnvironment>) environment;
     }
 
+    @JsonIgnore
     public SourceLeverHiringLeverHiring sourceType() {
         return sourceType;
     }
@@ -77,6 +90,7 @@ public class SourceLeverHiring {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. Note that it will be used only in the following incremental streams: comments, commits, and issues.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

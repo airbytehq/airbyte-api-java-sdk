@@ -8,13 +8,18 @@ import com.airbyte.api.models.errors.SDKError;
 import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.HTTPRequest;
+import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
+import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
+import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
 import com.airbyte.api.utils.JSON;
+import com.airbyte.api.utils.Retries.NonRetryableException;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
@@ -30,6 +35,10 @@ public class Streams implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+    /**
+     * Get stream properties
+     * @return The call builder
+     */
     public com.airbyte.api.models.operations.GetStreamPropertiesRequestBuilder getStreamProperties() {
         return new com.airbyte.api.models.operations.GetStreamPropertiesRequestBuilder(this);
     }
@@ -37,67 +46,98 @@ public class Streams implements
     /**
      * Get stream properties
      * @param request The request object containing all of the parameters for the API call.
-     * @return The response from the API call.
-     * @throws Exception if the API call fails.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
      */
     public com.airbyte.api.models.operations.GetStreamPropertiesResponse getStreamProperties(
             com.airbyte.api.models.operations.GetStreamPropertiesRequest request) throws Exception {
-
-        String baseUrl = this.sdkConfiguration.serverUrl;
-
-        String url = com.airbyte.api.utils.Utils.generateURL(
-                baseUrl,
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                _baseUrl,
                 "/streams");
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                this.sdkConfiguration.userAgent);
 
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("GET");
-        req.setURL(url);
+        _req.addQueryParams(Utils.getQueryParams(
+                com.airbyte.api.models.operations.GetStreamPropertiesRequest.class,
+                request, 
+                null));
 
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
 
-        java.util.List<NameValuePair> queryParams = com.airbyte.api.utils.Utils.getQueryParams(
-                com.airbyte.api.models.operations.GetStreamPropertiesRequest.class, request, null);
-        if (queryParams != null) {
-            for (NameValuePair queryParam : queryParams) {
-                req.addQueryParam(queryParam);
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl("getStreamProperties", sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl("getStreamProperties", sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl("getStreamProperties", sdkConfiguration.securitySource()),
+                         _httpRes);
             }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(new AfterErrorContextImpl("getStreamProperties", sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
         }
-
-        HTTPClient client = com.airbyte.api.utils.Utils.configureSecurityClient(
-                this.sdkConfiguration.defaultClient, this.sdkConfiguration.securitySource.getSecurity());
-
-        HttpResponse<InputStream> httpRes = client.send(req);
-
-        String contentType = httpRes
+        String _contentType = _httpRes
             .headers()
             .firstValue("Content-Type")
             .orElse("application/octet-stream");
-        com.airbyte.api.models.operations.GetStreamPropertiesResponse.Builder resBuilder = 
+        com.airbyte.api.models.operations.GetStreamPropertiesResponse.Builder _resBuilder = 
             com.airbyte.api.models.operations.GetStreamPropertiesResponse
                 .builder()
-                .contentType(contentType)
-                .statusCode(httpRes.statusCode())
-                .rawResponse(httpRes);
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
 
-        com.airbyte.api.models.operations.GetStreamPropertiesResponse res = resBuilder.build();
-
-        res.withRawResponse(httpRes);
-
-        if (httpRes.statusCode() == 200) {
-            if (com.airbyte.api.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.StreamPropertiesResponse out = mapper.readValue(
-                    Utils.toUtf8AndClose(httpRes.body()),
-                    new TypeReference<com.airbyte.api.models.shared.StreamPropertiesResponse>() {});
-                res.withStreamPropertiesResponse(java.util.Optional.ofNullable(out));
+        com.airbyte.api.models.operations.GetStreamPropertiesResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                ObjectMapper _mapper = JSON.getMapper();
+                java.util.List<com.airbyte.api.models.shared.StreamProperties> _out = _mapper.readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<java.util.List<com.airbyte.api.models.shared.StreamProperties>>() {});
+                _res.withStreamPropertiesResponse(java.util.Optional.ofNullable(_out));
+                return _res;
             } else {
-                throw new SDKError(httpRes, httpRes.statusCode(), "Unknown content-type received: " + contentType, Utils.toByteArrayAndClose(httpRes.body()));
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
             }
-        } else if (httpRes.statusCode() == 400 || httpRes.statusCode() == 403 || httpRes.statusCode() == 404) {
         }
-
-        return res;
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.toByteArrayAndClose(_httpRes.body()));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.toByteArrayAndClose(_httpRes.body()));
     }
 
 }

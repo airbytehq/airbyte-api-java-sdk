@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -54,6 +56,7 @@ public class DestinationGcs {
     @JsonProperty("gcs_bucket_region")
     private Optional<? extends GCSBucketRegion> gcsBucketRegion;
 
+    @JsonCreator
     public DestinationGcs(
             @JsonProperty("credential") Authentication credential,
             @JsonProperty("format") DestinationGcsOutputFormat format,
@@ -72,14 +75,24 @@ public class DestinationGcs {
         this.gcsBucketPath = gcsBucketPath;
         this.gcsBucketRegion = gcsBucketRegion;
     }
+    
+    public DestinationGcs(
+            Authentication credential,
+            DestinationGcsOutputFormat format,
+            String gcsBucketName,
+            String gcsBucketPath) {
+        this(credential, format, gcsBucketName, gcsBucketPath, Optional.empty());
+    }
 
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public Authentication credential() {
         return credential;
     }
 
+    @JsonIgnore
     public Gcs destinationType() {
         return destinationType;
     }
@@ -87,6 +100,7 @@ public class DestinationGcs {
     /**
      * Output data format. One of the following formats must be selected - &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro"&gt;AVRO&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas"&gt;PARQUET&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table"&gt;CSV&lt;/a&gt; format, or &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table"&gt;JSONL&lt;/a&gt; format.
      */
+    @JsonIgnore
     public DestinationGcsOutputFormat format() {
         return format;
     }
@@ -94,6 +108,7 @@ public class DestinationGcs {
     /**
      * You can find the bucket name in the App Engine Admin console Application Settings page, under the label Google Cloud Storage Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String gcsBucketName() {
         return gcsBucketName;
     }
@@ -101,6 +116,7 @@ public class DestinationGcs {
     /**
      * GCS Bucket Path string Subdirectory under the above bucket to sync the data into.
      */
+    @JsonIgnore
     public String gcsBucketPath() {
         return gcsBucketPath;
     }
@@ -108,8 +124,10 @@ public class DestinationGcs {
     /**
      * Select a Region of the GCS Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/locations"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends GCSBucketRegion> gcsBucketRegion() {
-        return gcsBucketRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GCSBucketRegion> gcsBucketRegion() {
+        return (Optional<GCSBucketRegion>) gcsBucketRegion;
     }
 
     public final static Builder builder() {

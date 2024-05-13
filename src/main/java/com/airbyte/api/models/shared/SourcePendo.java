@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -23,6 +25,7 @@ public class SourcePendo {
     @JsonProperty("sourceType")
     private Pendo sourceType;
 
+    @JsonCreator
     public SourcePendo(
             @JsonProperty("api_key") String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -30,10 +33,12 @@ public class SourcePendo {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
 
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Pendo sourceType() {
         return sourceType;
     }

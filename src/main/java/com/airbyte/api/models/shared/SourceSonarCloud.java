@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,6 +58,7 @@ public class SourceSonarCloud {
     @JsonProperty("user_token")
     private String userToken;
 
+    @JsonCreator
     public SourceSonarCloud(
             @JsonProperty("component_keys") java.util.List<java.lang.Object> componentKeys,
             @JsonProperty("end_date") Optional<? extends LocalDate> endDate,
@@ -74,10 +77,18 @@ public class SourceSonarCloud {
         this.startDate = startDate;
         this.userToken = userToken;
     }
+    
+    public SourceSonarCloud(
+            java.util.List<java.lang.Object> componentKeys,
+            String organization,
+            String userToken) {
+        this(componentKeys, Optional.empty(), organization, Optional.empty(), userToken);
+    }
 
     /**
      * Comma-separated list of component keys.
      */
+    @JsonIgnore
     public java.util.List<java.lang.Object> componentKeys() {
         return componentKeys;
     }
@@ -85,17 +96,21 @@ public class SourceSonarCloud {
     /**
      * To retrieve issues created before the given date (inclusive).
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
     /**
      * Organization key. See &lt;a href="https://docs.sonarcloud.io/appendices/project-information/#project-and-organization-keys"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String organization() {
         return organization;
     }
 
+    @JsonIgnore
     public SonarCloud sourceType() {
         return sourceType;
     }
@@ -103,13 +118,16 @@ public class SourceSonarCloud {
     /**
      * To retrieve issues created after the given date (inclusive).
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     /**
      * Your User Token. See &lt;a href="https://docs.sonarcloud.io/advanced-setup/user-accounts/"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
+    @JsonIgnore
     public String userToken() {
         return userToken;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceGreenhouse {
     @JsonProperty("sourceType")
     private Greenhouse sourceType;
 
+    @JsonCreator
     public SourceGreenhouse(
             @JsonProperty("api_key") String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -36,10 +39,12 @@ public class SourceGreenhouse {
     /**
      * Greenhouse API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/greenhouse"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Greenhouse sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class DestinationMilvusAPIToken {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public DestinationMilvusAPIToken(
             @JsonProperty("token") String token) {
         Utils.checkNotNull(token, "token");
@@ -40,13 +43,16 @@ public class DestinationMilvusAPIToken {
         this.token = token;
     }
 
-    public Optional<? extends DestinationMilvusSchemasIndexingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMilvusSchemasIndexingMode> mode() {
+        return (Optional<DestinationMilvusSchemasIndexingMode>) mode;
     }
 
     /**
      * API Token for the Milvus instance
      */
+    @JsonIgnore
     public String token() {
         return token;
     }

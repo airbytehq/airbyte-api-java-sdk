@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -23,21 +25,42 @@ public class Security {
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=bearer,name=Authorization")
     private Optional<? extends String> bearerAuth;
 
+    @SpeakeasyMetadata("security:scheme=true,type=oauth2,name=Authorization")
+    private Optional<? extends String> clientCredentials;
+
+    @JsonCreator
     public Security(
             Optional<? extends SchemeBasicAuth> basicAuth,
-            Optional<? extends String> bearerAuth) {
+            Optional<? extends String> bearerAuth,
+            Optional<? extends String> clientCredentials) {
         Utils.checkNotNull(basicAuth, "basicAuth");
         Utils.checkNotNull(bearerAuth, "bearerAuth");
+        Utils.checkNotNull(clientCredentials, "clientCredentials");
         this.basicAuth = basicAuth;
         this.bearerAuth = bearerAuth;
+        this.clientCredentials = clientCredentials;
+    }
+    
+    public Security() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
     }
 
-    public Optional<? extends SchemeBasicAuth> basicAuth() {
-        return basicAuth;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SchemeBasicAuth> basicAuth() {
+        return (Optional<SchemeBasicAuth>) basicAuth;
     }
 
-    public Optional<? extends String> bearerAuth() {
-        return bearerAuth;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> bearerAuth() {
+        return (Optional<String>) bearerAuth;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientCredentials() {
+        return (Optional<String>) clientCredentials;
     }
 
     public final static Builder builder() {
@@ -67,6 +90,18 @@ public class Security {
         this.bearerAuth = bearerAuth;
         return this;
     }
+
+    public Security withClientCredentials(String clientCredentials) {
+        Utils.checkNotNull(clientCredentials, "clientCredentials");
+        this.clientCredentials = Optional.ofNullable(clientCredentials);
+        return this;
+    }
+
+    public Security withClientCredentials(Optional<? extends String> clientCredentials) {
+        Utils.checkNotNull(clientCredentials, "clientCredentials");
+        this.clientCredentials = clientCredentials;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -79,28 +114,33 @@ public class Security {
         Security other = (Security) o;
         return 
             java.util.Objects.deepEquals(this.basicAuth, other.basicAuth) &&
-            java.util.Objects.deepEquals(this.bearerAuth, other.bearerAuth);
+            java.util.Objects.deepEquals(this.bearerAuth, other.bearerAuth) &&
+            java.util.Objects.deepEquals(this.clientCredentials, other.clientCredentials);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
             basicAuth,
-            bearerAuth);
+            bearerAuth,
+            clientCredentials);
     }
     
     @Override
     public String toString() {
         return Utils.toString(Security.class,
                 "basicAuth", basicAuth,
-                "bearerAuth", bearerAuth);
+                "bearerAuth", bearerAuth,
+                "clientCredentials", clientCredentials);
     }
     
     public final static class Builder {
  
         private Optional<? extends SchemeBasicAuth> basicAuth = Optional.empty();
  
-        private Optional<? extends String> bearerAuth = Optional.empty();  
+        private Optional<? extends String> bearerAuth = Optional.empty();
+ 
+        private Optional<? extends String> clientCredentials = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -129,11 +169,24 @@ public class Security {
             this.bearerAuth = bearerAuth;
             return this;
         }
+
+        public Builder clientCredentials(String clientCredentials) {
+            Utils.checkNotNull(clientCredentials, "clientCredentials");
+            this.clientCredentials = Optional.ofNullable(clientCredentials);
+            return this;
+        }
+
+        public Builder clientCredentials(Optional<? extends String> clientCredentials) {
+            Utils.checkNotNull(clientCredentials, "clientCredentials");
+            this.clientCredentials = clientCredentials;
+            return this;
+        }
         
         public Security build() {
             return new Security(
                 basicAuth,
-                bearerAuth);
+                bearerAuth,
+                clientCredentials);
         }
     }
 }

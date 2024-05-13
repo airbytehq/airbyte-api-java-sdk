@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -102,6 +104,7 @@ public class InsightConfig {
     @JsonProperty("time_increment")
     private Optional<? extends Long> timeIncrement;
 
+    @JsonCreator
     public InsightConfig(
             @JsonProperty("action_breakdowns") Optional<? extends java.util.List<ValidActionBreakdowns>> actionBreakdowns,
             @JsonProperty("action_report_time") Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime,
@@ -137,66 +140,88 @@ public class InsightConfig {
         this.startDate = startDate;
         this.timeIncrement = timeIncrement;
     }
+    
+    public InsightConfig(
+            String name) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
+    }
 
     /**
      * A list of chosen action_breakdowns for action_breakdowns
      */
-    public Optional<? extends java.util.List<ValidActionBreakdowns>> actionBreakdowns() {
-        return actionBreakdowns;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ValidActionBreakdowns>> actionBreakdowns() {
+        return (Optional<java.util.List<ValidActionBreakdowns>>) actionBreakdowns;
     }
 
     /**
      * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
      */
-    public Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime() {
-        return actionReportTime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceFacebookMarketingActionReportTime> actionReportTime() {
+        return (Optional<SourceFacebookMarketingActionReportTime>) actionReportTime;
     }
 
     /**
      * A list of chosen breakdowns for breakdowns
      */
-    public Optional<? extends java.util.List<ValidBreakdowns>> breakdowns() {
-        return breakdowns;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ValidBreakdowns>> breakdowns() {
+        return (Optional<java.util.List<ValidBreakdowns>>) breakdowns;
     }
 
     /**
      * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
      */
-    public Optional<? extends OffsetDateTime> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> endDate() {
+        return (Optional<OffsetDateTime>) endDate;
     }
 
     /**
      * A list of chosen fields for fields parameter
      */
-    public Optional<? extends java.util.List<SourceFacebookMarketingValidEnums>> fields() {
-        return fields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<SourceFacebookMarketingValidEnums>> fields() {
+        return (Optional<java.util.List<SourceFacebookMarketingValidEnums>>) fields;
     }
 
     /**
      * The insights job timeout
      */
-    public Optional<? extends Long> insightsJobTimeout() {
-        return insightsJobTimeout;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> insightsJobTimeout() {
+        return (Optional<Long>) insightsJobTimeout;
     }
 
     /**
      * The attribution window
      */
-    public Optional<? extends Long> insightsLookbackWindow() {
-        return insightsLookbackWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> insightsLookbackWindow() {
+        return (Optional<Long>) insightsLookbackWindow;
     }
 
     /**
      * Chosen level for API
      */
-    public Optional<? extends Level> level() {
-        return level;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Level> level() {
+        return (Optional<Level>) level;
     }
 
     /**
      * The name value of insight
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -204,15 +229,19 @@ public class InsightConfig {
     /**
      * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only).
      */
-    public Optional<? extends Long> timeIncrement() {
-        return timeIncrement;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> timeIncrement() {
+        return (Optional<Long>) timeIncrement;
     }
 
     public final static Builder builder() {

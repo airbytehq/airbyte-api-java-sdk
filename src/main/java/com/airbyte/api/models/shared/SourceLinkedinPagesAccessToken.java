@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class SourceLinkedinPagesAccessToken {
     @JsonProperty("auth_method")
     private Optional<? extends SourceLinkedinPagesSchemasAuthMethod> authMethod;
 
+    @JsonCreator
     public SourceLinkedinPagesAccessToken(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -40,12 +43,15 @@ public class SourceLinkedinPagesAccessToken {
     /**
      * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
-    public Optional<? extends SourceLinkedinPagesSchemasAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLinkedinPagesSchemasAuthMethod> authMethod() {
+        return (Optional<SourceLinkedinPagesSchemasAuthMethod>) authMethod;
     }
 
     public final static Builder builder() {

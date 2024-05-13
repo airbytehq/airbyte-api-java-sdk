@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -25,6 +27,7 @@ public class ReportOptions {
     @JsonProperty("stream_name")
     private StreamName streamName;
 
+    @JsonCreator
     public ReportOptions(
             @JsonProperty("options_list") java.util.List<OptionsList> optionsList,
             @JsonProperty("stream_name") StreamName streamName) {
@@ -37,10 +40,12 @@ public class ReportOptions {
     /**
      * List of options
      */
+    @JsonIgnore
     public java.util.List<OptionsList> optionsList() {
         return optionsList;
     }
 
+    @JsonIgnore
     public StreamName streamName() {
         return streamName;
     }

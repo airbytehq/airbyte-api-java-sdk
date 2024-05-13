@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -83,6 +85,7 @@ public class DestinationBigquery {
     @JsonProperty("transformation_priority")
     private Optional<? extends TransformationQueryRunType> transformationPriority;
 
+    @JsonCreator
     public DestinationBigquery(
             @JsonProperty("big_query_client_buffer_size_mb") Optional<? extends Long> bigQueryClientBufferSizeMb,
             @JsonProperty("credentials_json") Optional<? extends String> credentialsJson,
@@ -113,24 +116,36 @@ public class DestinationBigquery {
         this.rawDataDataset = rawDataDataset;
         this.transformationPriority = transformationPriority;
     }
+    
+    public DestinationBigquery(
+            String datasetId,
+            DatasetLocation datasetLocation,
+            String projectId) {
+        this(Optional.empty(), Optional.empty(), datasetId, datasetLocation, Optional.empty(), Optional.empty(), projectId, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends Long> bigQueryClientBufferSizeMb() {
-        return bigQueryClientBufferSizeMb;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> bigQueryClientBufferSizeMb() {
+        return (Optional<Long>) bigQueryClientBufferSizeMb;
     }
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/bigquery#service-account-key"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
-    public Optional<? extends String> credentialsJson() {
-        return credentialsJson;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> credentialsJson() {
+        return (Optional<String>) credentialsJson;
     }
 
     /**
      * The default BigQuery Dataset ID that tables are replicated to if the source does not specify a namespace. Read more &lt;a href="https://cloud.google.com/bigquery/docs/datasets#create-dataset"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String datasetId() {
         return datasetId;
     }
@@ -138,10 +153,12 @@ public class DestinationBigquery {
     /**
      * The location of the dataset. Warning: Changes made after creation will not be applied. Read more &lt;a href="https://cloud.google.com/bigquery/docs/locations"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public DatasetLocation datasetLocation() {
         return datasetLocation;
     }
 
+    @JsonIgnore
     public Bigquery destinationType() {
         return destinationType;
     }
@@ -149,20 +166,25 @@ public class DestinationBigquery {
     /**
      * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
      */
-    public Optional<? extends Boolean> disableTypeDedupe() {
-        return disableTypeDedupe;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> disableTypeDedupe() {
+        return (Optional<Boolean>) disableTypeDedupe;
     }
 
     /**
      * The way data will be uploaded to BigQuery.
      */
-    public Optional<? extends LoadingMethod> loadingMethod() {
-        return loadingMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LoadingMethod> loadingMethod() {
+        return (Optional<LoadingMethod>) loadingMethod;
     }
 
     /**
      * The GCP project ID for the project containing the target BigQuery dataset. Read more &lt;a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String projectId() {
         return projectId;
     }
@@ -170,15 +192,19 @@ public class DestinationBigquery {
     /**
      * The dataset to write raw tables into (default: airbyte_internal)
      */
-    public Optional<? extends String> rawDataDataset() {
-        return rawDataDataset;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataDataset() {
+        return (Optional<String>) rawDataDataset;
     }
 
     /**
      * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
      */
-    public Optional<? extends TransformationQueryRunType> transformationPriority() {
-        return transformationPriority;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<TransformationQueryRunType> transformationPriority() {
+        return (Optional<TransformationQueryRunType>) transformationPriority;
     }
 
     public final static Builder builder() {

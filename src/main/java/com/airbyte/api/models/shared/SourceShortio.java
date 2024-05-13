@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -35,6 +37,7 @@ public class SourceShortio {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceShortio(
             @JsonProperty("domain_id") String domainId,
             @JsonProperty("secret_key") String secretKey,
@@ -48,6 +51,7 @@ public class SourceShortio {
         this.startDate = startDate;
     }
 
+    @JsonIgnore
     public String domainId() {
         return domainId;
     }
@@ -55,10 +59,12 @@ public class SourceShortio {
     /**
      * Short.io Secret Key
      */
+    @JsonIgnore
     public String secretKey() {
         return secretKey;
     }
 
+    @JsonIgnore
     public Shortio sourceType() {
         return sourceType;
     }
@@ -66,6 +72,7 @@ public class SourceShortio {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

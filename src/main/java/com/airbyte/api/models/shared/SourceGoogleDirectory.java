@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,20 +32,28 @@ public class SourceGoogleDirectory {
     @JsonProperty("sourceType")
     private GoogleDirectory sourceType;
 
+    @JsonCreator
     public SourceGoogleDirectory(
             @JsonProperty("credentials") Optional<? extends SourceGoogleDirectoryGoogleCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceGoogleDirectory() {
+        this(Optional.empty());
+    }
 
     /**
      * Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
      */
-    public Optional<? extends SourceGoogleDirectoryGoogleCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDirectoryGoogleCredentials> credentials() {
+        return (Optional<SourceGoogleDirectoryGoogleCredentials>) credentials;
     }
 
+    @JsonIgnore
     public GoogleDirectory sourceType() {
         return sourceType;
     }

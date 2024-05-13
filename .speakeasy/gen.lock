@@ -1,59 +1,70 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: c7cb5a18199f070c4946089791aa6bfc
+  docChecksum: 7cdaac2367e7b50dfb925372c2676292
   docVersion: 1.0.0
-  speakeasyVersion: 1.250.0
-  generationVersion: 2.304.1
-  releaseVersion: 1.0.0
-  configChecksum: de6af6f9006afd07363242e14863a916
+  speakeasyVersion: 1.286.0
+  generationVersion: 2.326.3
+  releaseVersion: 1.1.0
+  configChecksum: 23fb99a81bdff98cc99acd3191b7eff8
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
 features:
   java:
+    additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.16.4
+    core: 3.19.5
     globalSecurity: 2.82.5
+    globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
+    nullables: 0.1.0
+    sdkHooks: 0.1.0
     unions: 0.0.3
 generatedFiles:
   - src/main/java/com/airbyte/api/SecuritySource.java
   - src/main/java/com/airbyte/api/SDKConfiguration.java
+  - src/main/java/com/airbyte/api/PublicConnections.java
+  - src/main/java/com/airbyte/api/Public.java
   - src/main/java/com/airbyte/api/Connections.java
+  - src/main/java/com/airbyte/api/PublicDestinations.java
   - src/main/java/com/airbyte/api/Destinations.java
+  - src/main/java/com/airbyte/api/PublicJobs.java
   - src/main/java/com/airbyte/api/Jobs.java
+  - src/main/java/com/airbyte/api/PublicSources.java
   - src/main/java/com/airbyte/api/Sources.java
+  - src/main/java/com/airbyte/api/PublicStreams.java
   - src/main/java/com/airbyte/api/Streams.java
+  - src/main/java/com/airbyte/api/PublicWorkspaces.java
   - src/main/java/com/airbyte/api/Workspaces.java
   - src/main/java/com/airbyte/api/models/operations/CreateConnectionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeleteConnectionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetConnectionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/ListConnectionsRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/PatchConnectionRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/CreateDestinationRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/DeleteDestinationRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/GetDestinationRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/ListDestinationsRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/PatchDestinationRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/PutDestinationRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CancelJobRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/CreateDestinationRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateJobRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/GetJobRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/ListJobsRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/CreateSourceRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/DeleteSourceRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/GetSourceRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/InitiateOAuthRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/ListSourcesRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/PatchSourceRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/PutSourceRequestBuilder.java
-  - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/CreateSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateWorkspaceRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteDestinationRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/GetDestinationRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/GetJobRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/GetSourceRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetWorkspaceRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/InitiateOAuthRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/ListDestinationsRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/ListJobsRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/ListSourcesRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/ListWorkspacesRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/PatchDestinationRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/PatchSourceRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/PutDestinationRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/PutSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/UpdateWorkspaceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/SDKMethodInterfaces.java
   - src/main/java/com/airbyte/api/Airbyte.java
@@ -72,6 +83,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/HTTPClient.java
   - src/main/java/com/airbyte/api/utils/HTTPRequest.java
   - src/main/java/com/airbyte/api/utils/HeaderMetadata.java
+  - src/main/java/com/airbyte/api/utils/Hook.java
+  - src/main/java/com/airbyte/api/utils/Hooks.java
   - src/main/java/com/airbyte/api/utils/JSON.java
   - src/main/java/com/airbyte/api/utils/LazySingletonValue.java
   - src/main/java/com/airbyte/api/utils/Metadata.java
@@ -90,7 +103,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/SecurityMetadata.java
   - src/main/java/com/airbyte/api/utils/SerializedBody.java
   - src/main/java/com/airbyte/api/utils/SpeakeasyHTTPClient.java
-  - src/main/java/com/airbyte/api/utils/SpeakeasyHTTPSecurityClient.java
   - src/main/java/com/airbyte/api/utils/SpeakeasyMetadata.java
   - src/main/java/com/airbyte/api/utils/TypedObject.java
   - src/main/java/com/airbyte/api/utils/Types.java
@@ -105,47 +117,47 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/ListConnectionsResponse.java
   - src/main/java/com/airbyte/api/models/operations/PatchConnectionRequest.java
   - src/main/java/com/airbyte/api/models/operations/PatchConnectionResponse.java
-  - src/main/java/com/airbyte/api/models/operations/CreateDestinationResponse.java
-  - src/main/java/com/airbyte/api/models/operations/DeleteDestinationRequest.java
-  - src/main/java/com/airbyte/api/models/operations/DeleteDestinationResponse.java
-  - src/main/java/com/airbyte/api/models/operations/GetDestinationRequest.java
-  - src/main/java/com/airbyte/api/models/operations/GetDestinationResponse.java
-  - src/main/java/com/airbyte/api/models/operations/ListDestinationsRequest.java
-  - src/main/java/com/airbyte/api/models/operations/ListDestinationsResponse.java
-  - src/main/java/com/airbyte/api/models/operations/PatchDestinationRequest.java
-  - src/main/java/com/airbyte/api/models/operations/PatchDestinationResponse.java
-  - src/main/java/com/airbyte/api/models/operations/PutDestinationRequest.java
-  - src/main/java/com/airbyte/api/models/operations/PutDestinationResponse.java
   - src/main/java/com/airbyte/api/models/operations/CancelJobRequest.java
   - src/main/java/com/airbyte/api/models/operations/CancelJobResponse.java
+  - src/main/java/com/airbyte/api/models/operations/CreateDestinationResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateJobResponse.java
-  - src/main/java/com/airbyte/api/models/operations/GetJobRequest.java
-  - src/main/java/com/airbyte/api/models/operations/GetJobResponse.java
-  - src/main/java/com/airbyte/api/models/operations/ListJobsRequest.java
-  - src/main/java/com/airbyte/api/models/operations/ListJobsResponse.java
-  - src/main/java/com/airbyte/api/models/operations/CreateSourceResponse.java
-  - src/main/java/com/airbyte/api/models/operations/DeleteSourceRequest.java
-  - src/main/java/com/airbyte/api/models/operations/DeleteSourceResponse.java
-  - src/main/java/com/airbyte/api/models/operations/GetSourceRequest.java
-  - src/main/java/com/airbyte/api/models/operations/GetSourceResponse.java
-  - src/main/java/com/airbyte/api/models/operations/InitiateOAuthResponse.java
-  - src/main/java/com/airbyte/api/models/operations/ListSourcesRequest.java
-  - src/main/java/com/airbyte/api/models/operations/ListSourcesResponse.java
-  - src/main/java/com/airbyte/api/models/operations/PatchSourceRequest.java
-  - src/main/java/com/airbyte/api/models/operations/PatchSourceResponse.java
-  - src/main/java/com/airbyte/api/models/operations/PutSourceRequest.java
-  - src/main/java/com/airbyte/api/models/operations/PutSourceResponse.java
-  - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequest.java
-  - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.java
   - src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.java
+  - src/main/java/com/airbyte/api/models/operations/CreateSourceResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateWorkspaceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteDestinationRequest.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteDestinationResponse.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteSourceRequest.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteSourceResponse.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceRequest.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/GetDestinationRequest.java
+  - src/main/java/com/airbyte/api/models/operations/GetDestinationResponse.java
+  - src/main/java/com/airbyte/api/models/operations/GetJobRequest.java
+  - src/main/java/com/airbyte/api/models/operations/GetJobResponse.java
+  - src/main/java/com/airbyte/api/models/operations/GetSourceRequest.java
+  - src/main/java/com/airbyte/api/models/operations/GetSourceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequest.java
+  - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesResponse.java
   - src/main/java/com/airbyte/api/models/operations/GetWorkspaceRequest.java
   - src/main/java/com/airbyte/api/models/operations/GetWorkspaceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/InitiateOAuthResponse.java
+  - src/main/java/com/airbyte/api/models/operations/ListDestinationsRequest.java
+  - src/main/java/com/airbyte/api/models/operations/ListDestinationsResponse.java
+  - src/main/java/com/airbyte/api/models/operations/ListJobsRequest.java
+  - src/main/java/com/airbyte/api/models/operations/ListJobsResponse.java
+  - src/main/java/com/airbyte/api/models/operations/ListSourcesRequest.java
+  - src/main/java/com/airbyte/api/models/operations/ListSourcesResponse.java
   - src/main/java/com/airbyte/api/models/operations/ListWorkspacesRequest.java
   - src/main/java/com/airbyte/api/models/operations/ListWorkspacesResponse.java
+  - src/main/java/com/airbyte/api/models/operations/PatchDestinationRequest.java
+  - src/main/java/com/airbyte/api/models/operations/PatchDestinationResponse.java
+  - src/main/java/com/airbyte/api/models/operations/PatchSourceRequest.java
+  - src/main/java/com/airbyte/api/models/operations/PatchSourceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/PutDestinationRequest.java
+  - src/main/java/com/airbyte/api/models/operations/PutDestinationResponse.java
+  - src/main/java/com/airbyte/api/models/operations/PutSourceRequest.java
+  - src/main/java/com/airbyte/api/models/operations/PutSourceResponse.java
   - src/main/java/com/airbyte/api/models/operations/UpdateWorkspaceRequest.java
   - src/main/java/com/airbyte/api/models/operations/UpdateWorkspaceResponse.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionResponse.java
@@ -159,13 +171,16 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/StreamConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionSyncModeEnum.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionCreateRequest.java
-  - src/main/java/com/airbyte/api/models/shared/ConnectionSchedule.java
+  - src/main/java/com/airbyte/api/models/shared/AirbyteApiConnectionSchedule.java
   - src/main/java/com/airbyte/api/models/shared/ScheduleTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionsResponse.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionPatchRequest.java
   - src/main/java/com/airbyte/api/models/shared/NonBreakingSchemaUpdatesBehaviorEnumNoDefault.java
   - src/main/java/com/airbyte/api/models/shared/NamespaceDefinitionEnumNoDefault.java
   - src/main/java/com/airbyte/api/models/shared/GeographyEnumNoDefault.java
+  - src/main/java/com/airbyte/api/models/shared/JobResponse.java
+  - src/main/java/com/airbyte/api/models/shared/JobStatusEnum.java
+  - src/main/java/com/airbyte/api/models/shared/JobTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/DestinationResponse.java
   - src/main/java/com/airbyte/api/models/shared/DestinationConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticationViaGoogleOAuth.java
@@ -211,7 +226,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ChooseHowToPartitionData.java
   - src/main/java/com/airbyte/api/models/shared/S3BucketRegion.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAwsDatalake.java
-  - src/main/java/com/airbyte/api/models/shared/AzureBlobStorage.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationAzureBlobStorageAzureBlobStorage.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAzureBlobStorageFormatType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON.java
   - src/main/java/com/airbyte/api/models/shared/NormalizationFlattening.java
@@ -643,15 +658,111 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationWeaviateTextSplitter.java
   - src/main/java/com/airbyte/api/models/shared/DestinationWeaviateProcessingConfigModel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationWeaviate.java
+  - src/main/java/com/airbyte/api/models/shared/Yellowbrick.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasSSLModeSSLModes6Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickVerifyFull.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasSSLModeSSLModes5Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickVerifyCa.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasSSLModeSSLModesMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickRequire.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasSslModeMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickPrefer.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickAllow.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickDisable.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSSLModes.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasTunnelMethodTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickPasswordAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSchemasTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSSHKeyAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickNoTunnel.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrickSSHTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationYellowbrick.java
   - src/main/java/com/airbyte/api/models/shared/DestinationCreateRequest.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationsResponse.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationPatchRequest.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationPutRequest.java
-  - src/main/java/com/airbyte/api/models/shared/JobResponse.java
-  - src/main/java/com/airbyte/api/models/shared/JobStatusEnum.java
-  - src/main/java/com/airbyte/api/models/shared/JobTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/JobCreateRequest.java
-  - src/main/java/com/airbyte/api/models/shared/JobsResponse.java
+  - src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequest.java
+  - src/main/java/com/airbyte/api/models/shared/OAuthActorNames.java
+  - src/main/java/com/airbyte/api/models/shared/OAuthCredentialsConfiguration.java
+  - src/main/java/com/airbyte/api/models/shared/Credentials.java
+  - src/main/java/com/airbyte/api/models/shared/Airtable.java
+  - src/main/java/com/airbyte/api/models/shared/AmazonAds.java
+  - src/main/java/com/airbyte/api/models/shared/AmazonSellerPartner.java
+  - src/main/java/com/airbyte/api/models/shared/AsanaCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Asana.java
+  - src/main/java/com/airbyte/api/models/shared/AzureBlobStorageCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/AzureBlobStorage.java
+  - src/main/java/com/airbyte/api/models/shared/BingAds.java
+  - src/main/java/com/airbyte/api/models/shared/FacebookMarketing.java
+  - src/main/java/com/airbyte/api/models/shared/GithubCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Github.java
+  - src/main/java/com/airbyte/api/models/shared/GitlabCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Gitlab.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleAdsCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleAds.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsDataApiCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsDataApi.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleDriveCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleDrive.java
+  - src/main/java/com/airbyte/api/models/shared/Authorization.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleSearchConsole.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleSheetsCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleSheets.java
+  - src/main/java/com/airbyte/api/models/shared/HubspotCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Hubspot.java
+  - src/main/java/com/airbyte/api/models/shared/Instagram.java
+  - src/main/java/com/airbyte/api/models/shared/Intercom.java
+  - src/main/java/com/airbyte/api/models/shared/LeverHiringCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/LeverHiring.java
+  - src/main/java/com/airbyte/api/models/shared/LinkedinAdsCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/LinkedinAds.java
+  - src/main/java/com/airbyte/api/models/shared/MailchimpCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Mailchimp.java
+  - src/main/java/com/airbyte/api/models/shared/MicrosoftOnedriveCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/MicrosoftOnedrive.java
+  - src/main/java/com/airbyte/api/models/shared/MicrosoftSharepointCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/MicrosoftSharepoint.java
+  - src/main/java/com/airbyte/api/models/shared/MicrosoftTeamsCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/MicrosoftTeams.java
+  - src/main/java/com/airbyte/api/models/shared/MondayCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Monday.java
+  - src/main/java/com/airbyte/api/models/shared/NotionCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Notion.java
+  - src/main/java/com/airbyte/api/models/shared/PinterestCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Pinterest.java
+  - src/main/java/com/airbyte/api/models/shared/RetentlyCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Retently.java
+  - src/main/java/com/airbyte/api/models/shared/Salesforce.java
+  - src/main/java/com/airbyte/api/models/shared/ShopifyCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Shopify.java
+  - src/main/java/com/airbyte/api/models/shared/SlackCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Slack.java
+  - src/main/java/com/airbyte/api/models/shared/SmartsheetsCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Smartsheets.java
+  - src/main/java/com/airbyte/api/models/shared/SnapchatMarketing.java
+  - src/main/java/com/airbyte/api/models/shared/SnowflakeCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Snowflake.java
+  - src/main/java/com/airbyte/api/models/shared/SquareCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Square.java
+  - src/main/java/com/airbyte/api/models/shared/Strava.java
+  - src/main/java/com/airbyte/api/models/shared/SurveymonkeyCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Surveymonkey.java
+  - src/main/java/com/airbyte/api/models/shared/TiktokMarketingCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/TiktokMarketing.java
+  - src/main/java/com/airbyte/api/models/shared/TypeformCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/Typeform.java
+  - src/main/java/com/airbyte/api/models/shared/YoutubeAnalyticsCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/YoutubeAnalytics.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskChatCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskChat.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskSunshineCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskSunshine.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskSupportCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskSupport.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskTalkCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/ZendeskTalk.java
+  - src/main/java/com/airbyte/api/models/shared/ActorTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/SourceResponse.java
   - src/main/java/com/airbyte/api/models/shared/SourceConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/Aha.java
@@ -706,6 +817,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceAuth0.java
   - src/main/java/com/airbyte/api/models/shared/AwsCloudtrail.java
   - src/main/java/com/airbyte/api/models/shared/SourceAwsCloudtrail.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/AuthenticateViaStorageAccountKey.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/AuthenticateViaOauth2.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageAzureBlobStorage.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasStreamsFormatFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageMode.java
@@ -1226,7 +1342,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGreenhouse.java
   - src/main/java/com/airbyte/api/models/shared/Gridly.java
   - src/main/java/com/airbyte/api/models/shared/SourceGridly.java
-  - src/main/java/com/airbyte/api/models/shared/SourceHarvestHarvest.java
+  - src/main/java/com/airbyte/api/models/shared/Harvest.java
   - src/main/java/com/airbyte/api/models/shared/SourceHarvest.java
   - src/main/java/com/airbyte/api/models/shared/Hubplanner.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubplanner.java
@@ -1399,6 +1515,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMongodbInternalPoc.java
   - src/main/java/com/airbyte/api/models/shared/InvalidCDCPositionBehaviorAdvanced.java
   - src/main/java/com/airbyte/api/models/shared/MongodbV2.java
+  - src/main/java/com/airbyte/api/models/shared/CaptureModeAdvanced.java
   - src/main/java/com/airbyte/api/models/shared/SourceMongodbV2.java
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlSchemasMethod.java
   - src/main/java/com/airbyte/api/models/shared/ScanChangesWithUserDefinedCursor.java
@@ -1571,11 +1688,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePypi.java
   - src/main/java/com/airbyte/api/models/shared/Qualaroo.java
   - src/main/java/com/airbyte/api/models/shared/SourceQualaroo.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooksAuthType.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooksOAuth20.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooksAuthorizationMethod.java
-  - src/main/java/com/airbyte/api/models/shared/Quickbooks.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooks.java
   - src/main/java/com/airbyte/api/models/shared/Railz.java
   - src/main/java/com/airbyte/api/models/shared/SourceRailz.java
   - src/main/java/com/airbyte/api/models/shared/Recharge.java
@@ -1601,7 +1713,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Avro.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Filetype.java
   - src/main/java/com/airbyte/api/models/shared/Parquet.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasFormatFileFormatFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/Filetype.java
   - src/main/java/com/airbyte/api/models/shared/Csv.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3FileFormat.java
   - src/main/java/com/airbyte/api/models/shared/S3AmazonWebServices.java
@@ -1663,8 +1775,40 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceSftpAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/Sftp.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftp.java
-  - src/main/java/com/airbyte/api/models/shared/FileType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/AuthenticateViaPrivateKey.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/AuthenticateViaPassword.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SftpBulk.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasStreamsFormatFormatFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasMode.java
+  - src/main/java/com/airbyte/api/models/shared/APIParameterConfigModel.java
+  - src/main/java/com/airbyte/api/models/shared/ViaAPI.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkMode.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkLocal.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkProcessing.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkParsingStrategy.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkDocumentFileTypeFormatExperimental.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasStreamsFormatFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkParquetFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasStreamsFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkJsonlFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasStreamsHeaderDefinitionType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkUserProvided.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkSchemasHeaderDefinitionType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkAutogenerated.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkHeaderDefinitionType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkFromCSV.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkCSVHeaderDefinition.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkInferenceType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkCSVFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkAvroFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkValidationPolicy.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkFileBasedStreamConfig.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulk.java
   - src/main/java/com/airbyte/api/models/shared/SourceShopifySchemasAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/APIPassword.java
@@ -1819,97 +1963,18 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Zoom.java
   - src/main/java/com/airbyte/api/models/shared/SourceZoom.java
   - src/main/java/com/airbyte/api/models/shared/SourceCreateRequest.java
-  - src/main/java/com/airbyte/api/models/shared/InitiateOauthRequest.java
-  - src/main/java/com/airbyte/api/models/shared/OAuthActorNames.java
-  - src/main/java/com/airbyte/api/models/shared/OAuthInputConfiguration.java
-  - src/main/java/com/airbyte/api/models/shared/SourcesResponse.java
-  - src/main/java/com/airbyte/api/models/shared/SourcePatchRequest.java
-  - src/main/java/com/airbyte/api/models/shared/SourcePutRequest.java
-  - src/main/java/com/airbyte/api/models/shared/StreamPropertiesResponse.java
-  - src/main/java/com/airbyte/api/models/shared/StreamProperties.java
-  - src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequest.java
-  - src/main/java/com/airbyte/api/models/shared/OAuthCredentialsConfiguration.java
-  - src/main/java/com/airbyte/api/models/shared/Credentials.java
-  - src/main/java/com/airbyte/api/models/shared/Airtable.java
-  - src/main/java/com/airbyte/api/models/shared/AmazonAds.java
-  - src/main/java/com/airbyte/api/models/shared/AmazonSellerPartner.java
-  - src/main/java/com/airbyte/api/models/shared/AsanaCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Asana.java
-  - src/main/java/com/airbyte/api/models/shared/BingAds.java
-  - src/main/java/com/airbyte/api/models/shared/FacebookMarketing.java
-  - src/main/java/com/airbyte/api/models/shared/GithubCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Github.java
-  - src/main/java/com/airbyte/api/models/shared/GitlabCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Gitlab.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleAdsCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleAds.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsDataApiCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsDataApi.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleDriveCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleDrive.java
-  - src/main/java/com/airbyte/api/models/shared/Authorization.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleSearchConsole.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleSheetsCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleSheets.java
-  - src/main/java/com/airbyte/api/models/shared/HarvestCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Harvest.java
-  - src/main/java/com/airbyte/api/models/shared/HubspotCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Hubspot.java
-  - src/main/java/com/airbyte/api/models/shared/Instagram.java
-  - src/main/java/com/airbyte/api/models/shared/Intercom.java
-  - src/main/java/com/airbyte/api/models/shared/LeverHiringCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/LeverHiring.java
-  - src/main/java/com/airbyte/api/models/shared/LinkedinAdsCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/LinkedinAds.java
-  - src/main/java/com/airbyte/api/models/shared/MailchimpCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Mailchimp.java
-  - src/main/java/com/airbyte/api/models/shared/MicrosoftOnedriveCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/MicrosoftOnedrive.java
-  - src/main/java/com/airbyte/api/models/shared/MicrosoftSharepointCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/MicrosoftSharepoint.java
-  - src/main/java/com/airbyte/api/models/shared/MicrosoftTeamsCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/MicrosoftTeams.java
-  - src/main/java/com/airbyte/api/models/shared/MondayCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Monday.java
-  - src/main/java/com/airbyte/api/models/shared/NotionCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Notion.java
-  - src/main/java/com/airbyte/api/models/shared/PinterestCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Pinterest.java
-  - src/main/java/com/airbyte/api/models/shared/RetentlyCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Retently.java
-  - src/main/java/com/airbyte/api/models/shared/Salesforce.java
-  - src/main/java/com/airbyte/api/models/shared/ShopifyCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Shopify.java
-  - src/main/java/com/airbyte/api/models/shared/SlackCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Slack.java
-  - src/main/java/com/airbyte/api/models/shared/SmartsheetsCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Smartsheets.java
-  - src/main/java/com/airbyte/api/models/shared/SnapchatMarketing.java
-  - src/main/java/com/airbyte/api/models/shared/SnowflakeCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Snowflake.java
-  - src/main/java/com/airbyte/api/models/shared/SquareCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Square.java
-  - src/main/java/com/airbyte/api/models/shared/Strava.java
-  - src/main/java/com/airbyte/api/models/shared/SurveymonkeyCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Surveymonkey.java
-  - src/main/java/com/airbyte/api/models/shared/TiktokMarketingCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/TiktokMarketing.java
-  - src/main/java/com/airbyte/api/models/shared/TypeformCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/Typeform.java
-  - src/main/java/com/airbyte/api/models/shared/YoutubeAnalyticsCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/YoutubeAnalytics.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskChatCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskChat.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskSunshineCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskSunshine.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskSupportCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskSupport.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskTalkCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskTalk.java
-  - src/main/java/com/airbyte/api/models/shared/ActorTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/WorkspaceResponse.java
   - src/main/java/com/airbyte/api/models/shared/WorkspaceCreateRequest.java
+  - src/main/java/com/airbyte/api/models/shared/StreamProperties.java
+  - src/main/java/com/airbyte/api/models/shared/InitiateOauthRequest.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationsResponse.java
+  - src/main/java/com/airbyte/api/models/shared/JobsResponse.java
+  - src/main/java/com/airbyte/api/models/shared/SourcesResponse.java
   - src/main/java/com/airbyte/api/models/shared/WorkspacesResponse.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPatchRequest.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePatchRequest.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPutRequest.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePutRequest.java
   - src/main/java/com/airbyte/api/models/shared/WorkspaceUpdateRequest.java
   - src/main/java/com/airbyte/api/models/shared/Security.java
   - src/main/java/com/airbyte/api/models/shared/SchemeBasicAuth.java
@@ -1922,47 +1987,47 @@ generatedFiles:
   - docs/models/operations/ListConnectionsResponse.md
   - docs/models/operations/PatchConnectionRequest.md
   - docs/models/operations/PatchConnectionResponse.md
-  - docs/models/operations/CreateDestinationResponse.md
-  - docs/models/operations/DeleteDestinationRequest.md
-  - docs/models/operations/DeleteDestinationResponse.md
-  - docs/models/operations/GetDestinationRequest.md
-  - docs/models/operations/GetDestinationResponse.md
-  - docs/models/operations/ListDestinationsRequest.md
-  - docs/models/operations/ListDestinationsResponse.md
-  - docs/models/operations/PatchDestinationRequest.md
-  - docs/models/operations/PatchDestinationResponse.md
-  - docs/models/operations/PutDestinationRequest.md
-  - docs/models/operations/PutDestinationResponse.md
   - docs/models/operations/CancelJobRequest.md
   - docs/models/operations/CancelJobResponse.md
+  - docs/models/operations/CreateDestinationResponse.md
   - docs/models/operations/CreateJobResponse.md
-  - docs/models/operations/GetJobRequest.md
-  - docs/models/operations/GetJobResponse.md
-  - docs/models/operations/ListJobsRequest.md
-  - docs/models/operations/ListJobsResponse.md
-  - docs/models/operations/CreateSourceResponse.md
-  - docs/models/operations/DeleteSourceRequest.md
-  - docs/models/operations/DeleteSourceResponse.md
-  - docs/models/operations/GetSourceRequest.md
-  - docs/models/operations/GetSourceResponse.md
-  - docs/models/operations/InitiateOAuthResponse.md
-  - docs/models/operations/ListSourcesRequest.md
-  - docs/models/operations/ListSourcesResponse.md
-  - docs/models/operations/PatchSourceRequest.md
-  - docs/models/operations/PatchSourceResponse.md
-  - docs/models/operations/PutSourceRequest.md
-  - docs/models/operations/PutSourceResponse.md
-  - docs/models/operations/GetStreamPropertiesRequest.md
-  - docs/models/operations/GetStreamPropertiesResponse.md
   - docs/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.md
   - docs/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md
+  - docs/models/operations/CreateSourceResponse.md
   - docs/models/operations/CreateWorkspaceResponse.md
+  - docs/models/operations/DeleteDestinationRequest.md
+  - docs/models/operations/DeleteDestinationResponse.md
+  - docs/models/operations/DeleteSourceRequest.md
+  - docs/models/operations/DeleteSourceResponse.md
   - docs/models/operations/DeleteWorkspaceRequest.md
   - docs/models/operations/DeleteWorkspaceResponse.md
+  - docs/models/operations/GetDestinationRequest.md
+  - docs/models/operations/GetDestinationResponse.md
+  - docs/models/operations/GetJobRequest.md
+  - docs/models/operations/GetJobResponse.md
+  - docs/models/operations/GetSourceRequest.md
+  - docs/models/operations/GetSourceResponse.md
+  - docs/models/operations/GetStreamPropertiesRequest.md
+  - docs/models/operations/GetStreamPropertiesResponse.md
   - docs/models/operations/GetWorkspaceRequest.md
   - docs/models/operations/GetWorkspaceResponse.md
+  - docs/models/operations/InitiateOAuthResponse.md
+  - docs/models/operations/ListDestinationsRequest.md
+  - docs/models/operations/ListDestinationsResponse.md
+  - docs/models/operations/ListJobsRequest.md
+  - docs/models/operations/ListJobsResponse.md
+  - docs/models/operations/ListSourcesRequest.md
+  - docs/models/operations/ListSourcesResponse.md
   - docs/models/operations/ListWorkspacesRequest.md
   - docs/models/operations/ListWorkspacesResponse.md
+  - docs/models/operations/PatchDestinationRequest.md
+  - docs/models/operations/PatchDestinationResponse.md
+  - docs/models/operations/PatchSourceRequest.md
+  - docs/models/operations/PatchSourceResponse.md
+  - docs/models/operations/PutDestinationRequest.md
+  - docs/models/operations/PutDestinationResponse.md
+  - docs/models/operations/PutSourceRequest.md
+  - docs/models/operations/PutSourceResponse.md
   - docs/models/operations/UpdateWorkspaceRequest.md
   - docs/models/operations/UpdateWorkspaceResponse.md
   - docs/models/shared/ConnectionResponse.md
@@ -1976,13 +2041,16 @@ generatedFiles:
   - docs/models/shared/StreamConfiguration.md
   - docs/models/shared/ConnectionSyncModeEnum.md
   - docs/models/shared/ConnectionCreateRequest.md
-  - docs/models/shared/ConnectionSchedule.md
+  - docs/models/shared/AirbyteApiConnectionSchedule.md
   - docs/models/shared/ScheduleTypeEnum.md
   - docs/models/shared/ConnectionsResponse.md
   - docs/models/shared/ConnectionPatchRequest.md
   - docs/models/shared/NonBreakingSchemaUpdatesBehaviorEnumNoDefault.md
   - docs/models/shared/NamespaceDefinitionEnumNoDefault.md
   - docs/models/shared/GeographyEnumNoDefault.md
+  - docs/models/shared/JobResponse.md
+  - docs/models/shared/JobStatusEnum.md
+  - docs/models/shared/JobTypeEnum.md
   - docs/models/shared/DestinationResponse.md
   - docs/models/shared/DestinationConfiguration.md
   - docs/models/shared/AuthenticationViaGoogleOAuth.md
@@ -2028,7 +2096,7 @@ generatedFiles:
   - docs/models/shared/ChooseHowToPartitionData.md
   - docs/models/shared/S3BucketRegion.md
   - docs/models/shared/DestinationAwsDatalake.md
-  - docs/models/shared/AzureBlobStorage.md
+  - docs/models/shared/DestinationAzureBlobStorageAzureBlobStorage.md
   - docs/models/shared/DestinationAzureBlobStorageFormatType.md
   - docs/models/shared/DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON.md
   - docs/models/shared/NormalizationFlattening.md
@@ -2460,15 +2528,111 @@ generatedFiles:
   - docs/models/shared/DestinationWeaviateTextSplitter.md
   - docs/models/shared/DestinationWeaviateProcessingConfigModel.md
   - docs/models/shared/DestinationWeaviate.md
+  - docs/models/shared/Yellowbrick.md
+  - docs/models/shared/DestinationYellowbrickSchemasSSLModeSSLModes6Mode.md
+  - docs/models/shared/DestinationYellowbrickVerifyFull.md
+  - docs/models/shared/DestinationYellowbrickSchemasSSLModeSSLModes5Mode.md
+  - docs/models/shared/DestinationYellowbrickVerifyCa.md
+  - docs/models/shared/DestinationYellowbrickSchemasSSLModeSSLModesMode.md
+  - docs/models/shared/DestinationYellowbrickRequire.md
+  - docs/models/shared/DestinationYellowbrickSchemasSslModeMode.md
+  - docs/models/shared/DestinationYellowbrickPrefer.md
+  - docs/models/shared/DestinationYellowbrickSchemasMode.md
+  - docs/models/shared/DestinationYellowbrickAllow.md
+  - docs/models/shared/DestinationYellowbrickMode.md
+  - docs/models/shared/DestinationYellowbrickDisable.md
+  - docs/models/shared/DestinationYellowbrickSSLModes.md
+  - docs/models/shared/DestinationYellowbrickSchemasTunnelMethodTunnelMethod.md
+  - docs/models/shared/DestinationYellowbrickPasswordAuthentication.md
+  - docs/models/shared/DestinationYellowbrickSchemasTunnelMethod.md
+  - docs/models/shared/DestinationYellowbrickSSHKeyAuthentication.md
+  - docs/models/shared/DestinationYellowbrickTunnelMethod.md
+  - docs/models/shared/DestinationYellowbrickNoTunnel.md
+  - docs/models/shared/DestinationYellowbrickSSHTunnelMethod.md
+  - docs/models/shared/DestinationYellowbrick.md
   - docs/models/shared/DestinationCreateRequest.md
-  - docs/models/shared/DestinationsResponse.md
-  - docs/models/shared/DestinationPatchRequest.md
-  - docs/models/shared/DestinationPutRequest.md
-  - docs/models/shared/JobResponse.md
-  - docs/models/shared/JobStatusEnum.md
-  - docs/models/shared/JobTypeEnum.md
   - docs/models/shared/JobCreateRequest.md
-  - docs/models/shared/JobsResponse.md
+  - docs/models/shared/WorkspaceOAuthCredentialsRequest.md
+  - docs/models/shared/OAuthActorNames.md
+  - docs/models/shared/OAuthCredentialsConfiguration.md
+  - docs/models/shared/Credentials.md
+  - docs/models/shared/Airtable.md
+  - docs/models/shared/AmazonAds.md
+  - docs/models/shared/AmazonSellerPartner.md
+  - docs/models/shared/AsanaCredentials.md
+  - docs/models/shared/Asana.md
+  - docs/models/shared/AzureBlobStorageCredentials.md
+  - docs/models/shared/AzureBlobStorage.md
+  - docs/models/shared/BingAds.md
+  - docs/models/shared/FacebookMarketing.md
+  - docs/models/shared/GithubCredentials.md
+  - docs/models/shared/Github.md
+  - docs/models/shared/GitlabCredentials.md
+  - docs/models/shared/Gitlab.md
+  - docs/models/shared/GoogleAdsCredentials.md
+  - docs/models/shared/GoogleAds.md
+  - docs/models/shared/GoogleAnalyticsDataApiCredentials.md
+  - docs/models/shared/GoogleAnalyticsDataApi.md
+  - docs/models/shared/GoogleDriveCredentials.md
+  - docs/models/shared/GoogleDrive.md
+  - docs/models/shared/Authorization.md
+  - docs/models/shared/GoogleSearchConsole.md
+  - docs/models/shared/GoogleSheetsCredentials.md
+  - docs/models/shared/GoogleSheets.md
+  - docs/models/shared/HubspotCredentials.md
+  - docs/models/shared/Hubspot.md
+  - docs/models/shared/Instagram.md
+  - docs/models/shared/Intercom.md
+  - docs/models/shared/LeverHiringCredentials.md
+  - docs/models/shared/LeverHiring.md
+  - docs/models/shared/LinkedinAdsCredentials.md
+  - docs/models/shared/LinkedinAds.md
+  - docs/models/shared/MailchimpCredentials.md
+  - docs/models/shared/Mailchimp.md
+  - docs/models/shared/MicrosoftOnedriveCredentials.md
+  - docs/models/shared/MicrosoftOnedrive.md
+  - docs/models/shared/MicrosoftSharepointCredentials.md
+  - docs/models/shared/MicrosoftSharepoint.md
+  - docs/models/shared/MicrosoftTeamsCredentials.md
+  - docs/models/shared/MicrosoftTeams.md
+  - docs/models/shared/MondayCredentials.md
+  - docs/models/shared/Monday.md
+  - docs/models/shared/NotionCredentials.md
+  - docs/models/shared/Notion.md
+  - docs/models/shared/PinterestCredentials.md
+  - docs/models/shared/Pinterest.md
+  - docs/models/shared/RetentlyCredentials.md
+  - docs/models/shared/Retently.md
+  - docs/models/shared/Salesforce.md
+  - docs/models/shared/ShopifyCredentials.md
+  - docs/models/shared/Shopify.md
+  - docs/models/shared/SlackCredentials.md
+  - docs/models/shared/Slack.md
+  - docs/models/shared/SmartsheetsCredentials.md
+  - docs/models/shared/Smartsheets.md
+  - docs/models/shared/SnapchatMarketing.md
+  - docs/models/shared/SnowflakeCredentials.md
+  - docs/models/shared/Snowflake.md
+  - docs/models/shared/SquareCredentials.md
+  - docs/models/shared/Square.md
+  - docs/models/shared/Strava.md
+  - docs/models/shared/SurveymonkeyCredentials.md
+  - docs/models/shared/Surveymonkey.md
+  - docs/models/shared/TiktokMarketingCredentials.md
+  - docs/models/shared/TiktokMarketing.md
+  - docs/models/shared/TypeformCredentials.md
+  - docs/models/shared/Typeform.md
+  - docs/models/shared/YoutubeAnalyticsCredentials.md
+  - docs/models/shared/YoutubeAnalytics.md
+  - docs/models/shared/ZendeskChatCredentials.md
+  - docs/models/shared/ZendeskChat.md
+  - docs/models/shared/ZendeskSunshineCredentials.md
+  - docs/models/shared/ZendeskSunshine.md
+  - docs/models/shared/ZendeskSupportCredentials.md
+  - docs/models/shared/ZendeskSupport.md
+  - docs/models/shared/ZendeskTalkCredentials.md
+  - docs/models/shared/ZendeskTalk.md
+  - docs/models/shared/ActorTypeEnum.md
   - docs/models/shared/SourceResponse.md
   - docs/models/shared/SourceConfiguration.md
   - docs/models/shared/Aha.md
@@ -2523,6 +2687,11 @@ generatedFiles:
   - docs/models/shared/SourceAuth0.md
   - docs/models/shared/AwsCloudtrail.md
   - docs/models/shared/SourceAwsCloudtrail.md
+  - docs/models/shared/SourceAzureBlobStorageSchemasAuthType.md
+  - docs/models/shared/AuthenticateViaStorageAccountKey.md
+  - docs/models/shared/SourceAzureBlobStorageAuthType.md
+  - docs/models/shared/AuthenticateViaOauth2.md
+  - docs/models/shared/SourceAzureBlobStorageAuthentication.md
   - docs/models/shared/SourceAzureBlobStorageAzureBlobStorage.md
   - docs/models/shared/SourceAzureBlobStorageSchemasStreamsFormatFiletype.md
   - docs/models/shared/SourceAzureBlobStorageMode.md
@@ -3043,7 +3212,7 @@ generatedFiles:
   - docs/models/shared/SourceGreenhouse.md
   - docs/models/shared/Gridly.md
   - docs/models/shared/SourceGridly.md
-  - docs/models/shared/SourceHarvestHarvest.md
+  - docs/models/shared/Harvest.md
   - docs/models/shared/SourceHarvest.md
   - docs/models/shared/Hubplanner.md
   - docs/models/shared/SourceHubplanner.md
@@ -3216,6 +3385,7 @@ generatedFiles:
   - docs/models/shared/SourceMongodbInternalPoc.md
   - docs/models/shared/InvalidCDCPositionBehaviorAdvanced.md
   - docs/models/shared/MongodbV2.md
+  - docs/models/shared/CaptureModeAdvanced.md
   - docs/models/shared/SourceMongodbV2.md
   - docs/models/shared/SourceMssqlSchemasMethod.md
   - docs/models/shared/ScanChangesWithUserDefinedCursor.md
@@ -3388,11 +3558,6 @@ generatedFiles:
   - docs/models/shared/SourcePypi.md
   - docs/models/shared/Qualaroo.md
   - docs/models/shared/SourceQualaroo.md
-  - docs/models/shared/SourceQuickbooksAuthType.md
-  - docs/models/shared/SourceQuickbooksOAuth20.md
-  - docs/models/shared/SourceQuickbooksAuthorizationMethod.md
-  - docs/models/shared/Quickbooks.md
-  - docs/models/shared/SourceQuickbooks.md
   - docs/models/shared/Railz.md
   - docs/models/shared/SourceRailz.md
   - docs/models/shared/Recharge.md
@@ -3418,7 +3583,7 @@ generatedFiles:
   - docs/models/shared/Avro.md
   - docs/models/shared/SourceS3Filetype.md
   - docs/models/shared/Parquet.md
-  - docs/models/shared/SourceS3SchemasFormatFileFormatFiletype.md
+  - docs/models/shared/Filetype.md
   - docs/models/shared/Csv.md
   - docs/models/shared/SourceS3FileFormat.md
   - docs/models/shared/S3AmazonWebServices.md
@@ -3480,8 +3645,40 @@ generatedFiles:
   - docs/models/shared/SourceSftpAuthentication.md
   - docs/models/shared/Sftp.md
   - docs/models/shared/SourceSftp.md
-  - docs/models/shared/FileType.md
+  - docs/models/shared/SourceSftpBulkSchemasAuthType.md
+  - docs/models/shared/AuthenticateViaPrivateKey.md
+  - docs/models/shared/SourceSftpBulkAuthType.md
+  - docs/models/shared/AuthenticateViaPassword.md
+  - docs/models/shared/SourceSftpBulkAuthentication.md
   - docs/models/shared/SftpBulk.md
+  - docs/models/shared/SourceSftpBulkSchemasStreamsFormatFormatFiletype.md
+  - docs/models/shared/SourceSftpBulkSchemasMode.md
+  - docs/models/shared/APIParameterConfigModel.md
+  - docs/models/shared/ViaAPI.md
+  - docs/models/shared/SourceSftpBulkMode.md
+  - docs/models/shared/SourceSftpBulkLocal.md
+  - docs/models/shared/SourceSftpBulkProcessing.md
+  - docs/models/shared/SourceSftpBulkParsingStrategy.md
+  - docs/models/shared/SourceSftpBulkDocumentFileTypeFormatExperimental.md
+  - docs/models/shared/SourceSftpBulkSchemasStreamsFormatFiletype.md
+  - docs/models/shared/SourceSftpBulkParquetFormat.md
+  - docs/models/shared/SourceSftpBulkSchemasStreamsFiletype.md
+  - docs/models/shared/SourceSftpBulkJsonlFormat.md
+  - docs/models/shared/SourceSftpBulkSchemasFiletype.md
+  - docs/models/shared/SourceSftpBulkSchemasStreamsHeaderDefinitionType.md
+  - docs/models/shared/SourceSftpBulkUserProvided.md
+  - docs/models/shared/SourceSftpBulkSchemasHeaderDefinitionType.md
+  - docs/models/shared/SourceSftpBulkAutogenerated.md
+  - docs/models/shared/SourceSftpBulkHeaderDefinitionType.md
+  - docs/models/shared/SourceSftpBulkFromCSV.md
+  - docs/models/shared/SourceSftpBulkCSVHeaderDefinition.md
+  - docs/models/shared/SourceSftpBulkInferenceType.md
+  - docs/models/shared/SourceSftpBulkCSVFormat.md
+  - docs/models/shared/SourceSftpBulkFiletype.md
+  - docs/models/shared/SourceSftpBulkAvroFormat.md
+  - docs/models/shared/SourceSftpBulkFormat.md
+  - docs/models/shared/SourceSftpBulkValidationPolicy.md
+  - docs/models/shared/SourceSftpBulkFileBasedStreamConfig.md
   - docs/models/shared/SourceSftpBulk.md
   - docs/models/shared/SourceShopifySchemasAuthMethod.md
   - docs/models/shared/APIPassword.md
@@ -3636,105 +3833,33 @@ generatedFiles:
   - docs/models/shared/Zoom.md
   - docs/models/shared/SourceZoom.md
   - docs/models/shared/SourceCreateRequest.md
-  - docs/models/shared/InitiateOauthRequest.md
-  - docs/models/shared/OAuthActorNames.md
-  - docs/models/shared/OAuthInputConfiguration.md
-  - docs/models/shared/SourcesResponse.md
-  - docs/models/shared/SourcePatchRequest.md
-  - docs/models/shared/SourcePutRequest.md
-  - docs/models/shared/StreamPropertiesResponse.md
-  - docs/models/shared/StreamProperties.md
-  - docs/models/shared/WorkspaceOAuthCredentialsRequest.md
-  - docs/models/shared/OAuthCredentialsConfiguration.md
-  - docs/models/shared/Credentials.md
-  - docs/models/shared/Airtable.md
-  - docs/models/shared/AmazonAds.md
-  - docs/models/shared/AmazonSellerPartner.md
-  - docs/models/shared/AsanaCredentials.md
-  - docs/models/shared/Asana.md
-  - docs/models/shared/BingAds.md
-  - docs/models/shared/FacebookMarketing.md
-  - docs/models/shared/GithubCredentials.md
-  - docs/models/shared/Github.md
-  - docs/models/shared/GitlabCredentials.md
-  - docs/models/shared/Gitlab.md
-  - docs/models/shared/GoogleAdsCredentials.md
-  - docs/models/shared/GoogleAds.md
-  - docs/models/shared/GoogleAnalyticsDataApiCredentials.md
-  - docs/models/shared/GoogleAnalyticsDataApi.md
-  - docs/models/shared/GoogleDriveCredentials.md
-  - docs/models/shared/GoogleDrive.md
-  - docs/models/shared/Authorization.md
-  - docs/models/shared/GoogleSearchConsole.md
-  - docs/models/shared/GoogleSheetsCredentials.md
-  - docs/models/shared/GoogleSheets.md
-  - docs/models/shared/HarvestCredentials.md
-  - docs/models/shared/Harvest.md
-  - docs/models/shared/HubspotCredentials.md
-  - docs/models/shared/Hubspot.md
-  - docs/models/shared/Instagram.md
-  - docs/models/shared/Intercom.md
-  - docs/models/shared/LeverHiringCredentials.md
-  - docs/models/shared/LeverHiring.md
-  - docs/models/shared/LinkedinAdsCredentials.md
-  - docs/models/shared/LinkedinAds.md
-  - docs/models/shared/MailchimpCredentials.md
-  - docs/models/shared/Mailchimp.md
-  - docs/models/shared/MicrosoftOnedriveCredentials.md
-  - docs/models/shared/MicrosoftOnedrive.md
-  - docs/models/shared/MicrosoftSharepointCredentials.md
-  - docs/models/shared/MicrosoftSharepoint.md
-  - docs/models/shared/MicrosoftTeamsCredentials.md
-  - docs/models/shared/MicrosoftTeams.md
-  - docs/models/shared/MondayCredentials.md
-  - docs/models/shared/Monday.md
-  - docs/models/shared/NotionCredentials.md
-  - docs/models/shared/Notion.md
-  - docs/models/shared/PinterestCredentials.md
-  - docs/models/shared/Pinterest.md
-  - docs/models/shared/RetentlyCredentials.md
-  - docs/models/shared/Retently.md
-  - docs/models/shared/Salesforce.md
-  - docs/models/shared/ShopifyCredentials.md
-  - docs/models/shared/Shopify.md
-  - docs/models/shared/SlackCredentials.md
-  - docs/models/shared/Slack.md
-  - docs/models/shared/SmartsheetsCredentials.md
-  - docs/models/shared/Smartsheets.md
-  - docs/models/shared/SnapchatMarketing.md
-  - docs/models/shared/SnowflakeCredentials.md
-  - docs/models/shared/Snowflake.md
-  - docs/models/shared/SquareCredentials.md
-  - docs/models/shared/Square.md
-  - docs/models/shared/Strava.md
-  - docs/models/shared/SurveymonkeyCredentials.md
-  - docs/models/shared/Surveymonkey.md
-  - docs/models/shared/TiktokMarketingCredentials.md
-  - docs/models/shared/TiktokMarketing.md
-  - docs/models/shared/TypeformCredentials.md
-  - docs/models/shared/Typeform.md
-  - docs/models/shared/YoutubeAnalyticsCredentials.md
-  - docs/models/shared/YoutubeAnalytics.md
-  - docs/models/shared/ZendeskChatCredentials.md
-  - docs/models/shared/ZendeskChat.md
-  - docs/models/shared/ZendeskSunshineCredentials.md
-  - docs/models/shared/ZendeskSunshine.md
-  - docs/models/shared/ZendeskSupportCredentials.md
-  - docs/models/shared/ZendeskSupport.md
-  - docs/models/shared/ZendeskTalkCredentials.md
-  - docs/models/shared/ZendeskTalk.md
-  - docs/models/shared/ActorTypeEnum.md
   - docs/models/shared/WorkspaceResponse.md
   - docs/models/shared/WorkspaceCreateRequest.md
+  - docs/models/shared/StreamProperties.md
+  - docs/models/shared/InitiateOauthRequest.md
+  - docs/models/shared/DestinationsResponse.md
+  - docs/models/shared/JobsResponse.md
+  - docs/models/shared/SourcesResponse.md
   - docs/models/shared/WorkspacesResponse.md
+  - docs/models/shared/DestinationPatchRequest.md
+  - docs/models/shared/SourcePatchRequest.md
+  - docs/models/shared/DestinationPutRequest.md
+  - docs/models/shared/SourcePutRequest.md
   - docs/models/shared/WorkspaceUpdateRequest.md
   - docs/models/shared/Security.md
   - docs/models/shared/SchemeBasicAuth.md
   - docs/sdks/airbyte/README.md
+  - docs/sdks/publicconnections/README.md
+  - docs/sdks/public/README.md
   - docs/sdks/connections/README.md
+  - docs/sdks/publicdestinations/README.md
   - docs/sdks/destinations/README.md
+  - docs/sdks/publicjobs/README.md
   - docs/sdks/jobs/README.md
+  - docs/sdks/publicsources/README.md
   - docs/sdks/sources/README.md
+  - docs/sdks/publicstreams/README.md
   - docs/sdks/streams/README.md
+  - docs/sdks/publicworkspaces/README.md
   - docs/sdks/workspaces/README.md
   - USAGE.md

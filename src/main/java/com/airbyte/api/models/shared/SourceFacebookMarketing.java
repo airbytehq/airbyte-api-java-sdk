@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -129,6 +131,7 @@ public class SourceFacebookMarketing {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceFacebookMarketing(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("account_ids") java.util.List<String> accountIds,
@@ -177,10 +180,17 @@ public class SourceFacebookMarketing {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceFacebookMarketing(
+            String accessToken,
+            java.util.List<String> accountIds) {
+        this(accessToken, accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -188,6 +198,7 @@ public class SourceFacebookMarketing {
     /**
      * The Facebook Ad account ID(s) to pull data from. The Ad account ID number is in the account dropdown menu or in your browser's address bar of your &lt;a href="https://adsmanager.facebook.com/adsmanager/"&gt;Meta Ads Manager&lt;/a&gt;. See the &lt;a href="https://www.facebook.com/business/help/1492627900875762"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public java.util.List<String> accountIds() {
         return accountIds;
     }
@@ -195,87 +206,112 @@ public class SourceFacebookMarketing {
     /**
      * Allows action_breakdowns to be an empty list
      */
-    public Optional<? extends Boolean> actionBreakdownsAllowEmpty() {
-        return actionBreakdownsAllowEmpty;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> actionBreakdownsAllowEmpty() {
+        return (Optional<Boolean>) actionBreakdownsAllowEmpty;
     }
 
     /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
-    public Optional<? extends java.util.List<ValidAdStatuses>> adStatuses() {
-        return adStatuses;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ValidAdStatuses>> adStatuses() {
+        return (Optional<java.util.List<ValidAdStatuses>>) adStatuses;
     }
 
     /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
-    public Optional<? extends java.util.List<ValidAdSetStatuses>> adsetStatuses() {
-        return adsetStatuses;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ValidAdSetStatuses>> adsetStatuses() {
+        return (Optional<java.util.List<ValidAdSetStatuses>>) adsetStatuses;
     }
 
     /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
-    public Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses() {
-        return campaignStatuses;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ValidCampaignStatuses>> campaignStatuses() {
+        return (Optional<java.util.List<ValidCampaignStatuses>>) campaignStatuses;
     }
 
     /**
      * The Client Id for your OAuth app
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret for your OAuth app
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
      */
-    public Optional<? extends java.util.List<InsightConfig>> customInsights() {
-        return customInsights;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<InsightConfig>> customInsights() {
+        return (Optional<java.util.List<InsightConfig>>) customInsights;
     }
 
     /**
      * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
      */
-    public Optional<? extends OffsetDateTime> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> endDate() {
+        return (Optional<OffsetDateTime>) endDate;
     }
 
     /**
      * Set to active if you want to fetch the thumbnail_url and store the result in thumbnail_data_url for each Ad Creative.
      */
-    public Optional<? extends Boolean> fetchThumbnailImages() {
-        return fetchThumbnailImages;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> fetchThumbnailImages() {
+        return (Optional<Boolean>) fetchThumbnailImages;
     }
 
     /**
      * Insights Job Timeout establishes the maximum amount of time (in minutes) of waiting for the report job to complete. When timeout is reached the job is considered failed and we are trying to request smaller amount of data by breaking the job to few smaller ones. If you definitely know that 60 minutes is not enough for your report to be processed then you can decrease the timeout value, so we start breaking job to smaller parts faster.
      */
-    public Optional<? extends Long> insightsJobTimeout() {
-        return insightsJobTimeout;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> insightsJobTimeout() {
+        return (Optional<Long>) insightsJobTimeout;
     }
 
     /**
      * The attribution window. Facebook freezes insight data 28 days after it was generated, which means that all data from the past 28 days may have changed since we last emitted it, so you can retrieve refreshed insights from the past by setting this parameter. If you set a custom lookback window value in Facebook account, please provide the same value here.
      */
-    public Optional<? extends Long> insightsLookbackWindow() {
-        return insightsLookbackWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> insightsLookbackWindow() {
+        return (Optional<Long>) insightsLookbackWindow;
     }
 
     /**
      * Page size used when sending requests to Facebook API to specify number of records per page when response has pagination. Most users do not need to set this field unless they specifically need to tune the connector to address specific issues or use cases.
      */
-    public Optional<? extends Long> pageSize() {
-        return pageSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> pageSize() {
+        return (Optional<Long>) pageSize;
     }
 
+    @JsonIgnore
     public SourceFacebookMarketingFacebookMarketing sourceType() {
         return sourceType;
     }
@@ -283,8 +319,10 @@ public class SourceFacebookMarketing {
     /**
      * The date from which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. If not set then all data will be replicated for usual streams and only last 2 years for insight streams.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

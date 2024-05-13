@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class DestinationDevNull {
     @JsonProperty("test_destination")
     private TestDestination testDestination;
 
+    @JsonCreator
     public DestinationDevNull(
             @JsonProperty("test_destination") TestDestination testDestination) {
         Utils.checkNotNull(testDestination, "testDestination");
@@ -33,6 +36,7 @@ public class DestinationDevNull {
         this.testDestination = testDestination;
     }
 
+    @JsonIgnore
     public DevNull destinationType() {
         return destinationType;
     }
@@ -40,6 +44,7 @@ public class DestinationDevNull {
     /**
      * The type of destination to be used
      */
+    @JsonIgnore
     public TestDestination testDestination() {
         return testDestination;
     }

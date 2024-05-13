@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -32,6 +34,7 @@ public class SourceSalesloft {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceSalesloft(
             @JsonProperty("credentials") SourceSalesloftCredentials credentials,
             @JsonProperty("start_date") OffsetDateTime startDate) {
@@ -42,10 +45,12 @@ public class SourceSalesloft {
         this.startDate = startDate;
     }
 
+    @JsonIgnore
     public SourceSalesloftCredentials credentials() {
         return credentials;
     }
 
+    @JsonIgnore
     public Salesloft sourceType() {
         return sourceType;
     }
@@ -53,6 +58,7 @@ public class SourceSalesloft {
     /**
      * The date from which you'd like to replicate data for Salesloft API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

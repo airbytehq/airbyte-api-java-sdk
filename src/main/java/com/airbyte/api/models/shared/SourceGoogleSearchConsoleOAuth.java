@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceGoogleSearchConsoleOAuth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SourceGoogleSearchConsoleOAuth(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") String clientId,
@@ -63,14 +66,24 @@ public class SourceGoogleSearchConsoleOAuth {
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
     }
+    
+    public SourceGoogleSearchConsoleOAuth(
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(Optional.empty(), clientId, clientSecret, refreshToken);
+    }
 
     /**
      * Access token for making authenticated requests. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
+    @JsonIgnore
     public SourceGoogleSearchConsoleAuthType authType() {
         return authType;
     }
@@ -78,6 +91,7 @@ public class SourceGoogleSearchConsoleOAuth {
     /**
      * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -85,6 +99,7 @@ public class SourceGoogleSearchConsoleOAuth {
     /**
      * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -92,6 +107,7 @@ public class SourceGoogleSearchConsoleOAuth {
     /**
      * The token for obtaining a new access token. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

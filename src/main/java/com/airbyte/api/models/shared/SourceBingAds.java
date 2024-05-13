@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -88,6 +90,7 @@ public class SourceBingAds {
     @JsonProperty("tenant_id")
     private Optional<? extends String> tenantId;
 
+    @JsonCreator
     public SourceBingAds(
             @JsonProperty("account_names") Optional<? extends java.util.List<AccountNames>> accountNames,
             @JsonProperty("client_id") String clientId,
@@ -119,21 +122,33 @@ public class SourceBingAds {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.tenantId = tenantId;
     }
+    
+    public SourceBingAds(
+            String clientId,
+            String developerToken,
+            String refreshToken) {
+        this(Optional.empty(), clientId, Optional.empty(), Optional.empty(), developerToken, Optional.empty(), refreshToken, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Predicates that will be used to sync data by specific accounts.
      */
-    public Optional<? extends java.util.List<AccountNames>> accountNames() {
-        return accountNames;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<AccountNames>> accountNames() {
+        return (Optional<java.util.List<AccountNames>>) accountNames;
     }
 
-    public Optional<? extends AuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AuthMethod> authMethod() {
+        return (Optional<AuthMethod>) authMethod;
     }
 
     /**
      * The Client ID of your Microsoft Advertising developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -141,20 +156,25 @@ public class SourceBingAds {
     /**
      * The Client Secret of your Microsoft Advertising developer application.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     /**
      * You can add your Custom Bing Ads report by creating one.
      */
-    public Optional<? extends java.util.List<CustomReportConfig>> customReports() {
-        return customReports;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<CustomReportConfig>> customReports() {
+        return (Optional<java.util.List<CustomReportConfig>>) customReports;
     }
 
     /**
      * Developer token associated with user. See more info &lt;a href="https://docs.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token"&gt; in the docs&lt;/a&gt;.
      */
+    @JsonIgnore
     public String developerToken() {
         return developerToken;
     }
@@ -162,13 +182,16 @@ public class SourceBingAds {
     /**
      * Also known as attribution or conversion window. How far into the past to look for records (in days). If your conversion window has an hours/minutes granularity, round it up to the number of days exceeding. Used only for performance report streams in incremental mode without specified Reports Start Date.
      */
-    public Optional<? extends Long> lookbackWindow() {
-        return lookbackWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindow() {
+        return (Optional<Long>) lookbackWindow;
     }
 
     /**
      * Refresh Token to renew the expired Access Token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -176,10 +199,13 @@ public class SourceBingAds {
     /**
      * The start date from which to begin replicating report data. Any data generated before this date will not be replicated in reports. This is a UTC date in YYYY-MM-DD format. If not set, data from previous and current calendar year will be replicated.
      */
-    public Optional<? extends LocalDate> reportsStartDate() {
-        return reportsStartDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> reportsStartDate() {
+        return (Optional<LocalDate>) reportsStartDate;
     }
 
+    @JsonIgnore
     public SourceBingAdsBingAds sourceType() {
         return sourceType;
     }
@@ -187,8 +213,10 @@ public class SourceBingAds {
     /**
      * The Tenant ID of your Microsoft Advertising developer application. Set this to "common" unless you know you need a different value.
      */
-    public Optional<? extends String> tenantId() {
-        return tenantId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> tenantId() {
+        return (Optional<String>) tenantId;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -68,6 +70,7 @@ public class SourceGoogleSearchConsole {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceGoogleSearchConsole(
             @JsonProperty("authorization") AuthenticationType authorization,
             @JsonProperty("custom_reports") Optional<? extends String> customReports,
@@ -92,7 +95,14 @@ public class SourceGoogleSearchConsole {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceGoogleSearchConsole(
+            AuthenticationType authorization,
+            java.util.List<String> siteUrls) {
+        this(authorization, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), siteUrls, Optional.empty());
+    }
 
+    @JsonIgnore
     public AuthenticationType authorization() {
         return authorization;
     }
@@ -100,38 +110,48 @@ public class SourceGoogleSearchConsole {
     /**
      * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
      */
-    public Optional<? extends String> customReports() {
-        return customReports;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> customReports() {
+        return (Optional<String>) customReports;
     }
 
     /**
      * You can add your Custom Analytics report by creating one.
      */
-    public Optional<? extends java.util.List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray() {
-        return customReportsArray;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray() {
+        return (Optional<java.util.List<SourceGoogleSearchConsoleCustomReportConfig>>) customReportsArray;
     }
 
     /**
      * If set to 'final', the returned data will include only finalized, stable data. If set to 'all', fresh data will be included. When using Incremental sync mode, we do not recommend setting this parameter to 'all' as it may cause data loss. More information can be found in our &lt;a href='https://docs.airbyte.com/integrations/source/google-search-console'&gt;full documentation&lt;/a&gt;.
      */
-    public Optional<? extends DataFreshness> dataState() {
-        return dataState;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DataFreshness> dataState() {
+        return (Optional<DataFreshness>) dataState;
     }
 
     /**
      * UTC date in the format YYYY-MM-DD. Any data created after this date will not be replicated. Must be greater or equal to the start date field. Leaving this field blank will replicate all data from the start date onward.
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
     /**
      * The URLs of the website property attached to your GSC account. Learn more about properties &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public java.util.List<String> siteUrls() {
         return siteUrls;
     }
 
+    @JsonIgnore
     public SourceGoogleSearchConsoleGoogleSearchConsole sourceType() {
         return sourceType;
     }
@@ -139,8 +159,10 @@ public class SourceGoogleSearchConsole {
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {
