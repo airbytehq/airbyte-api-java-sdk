@@ -39,6 +39,13 @@ public class DestinationRedshift {
     private Optional<? extends Boolean> disableTypeDedupe;
 
     /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("drop_cascade")
+    private Optional<? extends Boolean> dropCascade;
+
+    /**
      * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com)
      */
     @JsonProperty("host")
@@ -102,6 +109,7 @@ public class DestinationRedshift {
     public DestinationRedshift(
             @JsonProperty("database") String database,
             @JsonProperty("disable_type_dedupe") Optional<? extends Boolean> disableTypeDedupe,
+            @JsonProperty("drop_cascade") Optional<? extends Boolean> dropCascade,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") String password,
@@ -113,6 +121,7 @@ public class DestinationRedshift {
             @JsonProperty("username") String username) {
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        Utils.checkNotNull(dropCascade, "dropCascade");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
@@ -125,6 +134,7 @@ public class DestinationRedshift {
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.disableTypeDedupe = disableTypeDedupe;
+        this.dropCascade = dropCascade;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
@@ -141,7 +151,7 @@ public class DestinationRedshift {
             String host,
             String password,
             String username) {
-        this(database, Optional.empty(), host, Optional.empty(), password, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), Optional.empty(), host, Optional.empty(), password, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -164,6 +174,15 @@ public class DestinationRedshift {
     @JsonIgnore
     public Optional<Boolean> disableTypeDedupe() {
         return (Optional<Boolean>) disableTypeDedupe;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> dropCascade() {
+        return (Optional<Boolean>) dropCascade;
     }
 
     /**
@@ -272,6 +291,24 @@ public class DestinationRedshift {
     public DestinationRedshift withDisableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
         this.disableTypeDedupe = disableTypeDedupe;
+        return this;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    public DestinationRedshift withDropCascade(boolean dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = Optional.ofNullable(dropCascade);
+        return this;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    public DestinationRedshift withDropCascade(Optional<? extends Boolean> dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = dropCascade;
         return this;
     }
 
@@ -423,6 +460,7 @@ public class DestinationRedshift {
             java.util.Objects.deepEquals(this.database, other.database) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            java.util.Objects.deepEquals(this.dropCascade, other.dropCascade) &&
             java.util.Objects.deepEquals(this.host, other.host) &&
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.password, other.password) &&
@@ -440,6 +478,7 @@ public class DestinationRedshift {
             database,
             destinationType,
             disableTypeDedupe,
+            dropCascade,
             host,
             jdbcUrlParams,
             password,
@@ -457,6 +496,7 @@ public class DestinationRedshift {
                 "database", database,
                 "destinationType", destinationType,
                 "disableTypeDedupe", disableTypeDedupe,
+                "dropCascade", dropCascade,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
@@ -473,6 +513,8 @@ public class DestinationRedshift {
         private String database;
  
         private Optional<? extends Boolean> disableTypeDedupe;
+ 
+        private Optional<? extends Boolean> dropCascade;
  
         private String host;
  
@@ -520,6 +562,24 @@ public class DestinationRedshift {
         public Builder disableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
             this.disableTypeDedupe = disableTypeDedupe;
+            return this;
+        }
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         */
+        public Builder dropCascade(boolean dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = Optional.ofNullable(dropCascade);
+            return this;
+        }
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         */
+        public Builder dropCascade(Optional<? extends Boolean> dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = dropCascade;
             return this;
         }
 
@@ -662,6 +722,9 @@ public class DestinationRedshift {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
             }
+            if (dropCascade == null) {
+                dropCascade = _SINGLETON_VALUE_DropCascade.value();
+            }
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
@@ -671,6 +734,7 @@ public class DestinationRedshift {
             return new DestinationRedshift(
                 database,
                 disableTypeDedupe,
+                dropCascade,
                 host,
                 jdbcUrlParams,
                 password,
@@ -691,6 +755,12 @@ public class DestinationRedshift {
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
                 new LazySingletonValue<>(
                         "disable_type_dedupe",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_DropCascade =
+                new LazySingletonValue<>(
+                        "drop_cascade",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
