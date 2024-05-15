@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -79,6 +81,7 @@ public class AWSS3Staging {
     @JsonProperty("secret_access_key")
     private String secretAccessKey;
 
+    @JsonCreator
     public AWSS3Staging(
             @JsonProperty("access_key_id") String accessKeyId,
             @JsonProperty("encryption") Optional<? extends DestinationRedshiftEncryption> encryption,
@@ -106,10 +109,18 @@ public class AWSS3Staging {
         this.s3BucketRegion = s3BucketRegion;
         this.secretAccessKey = secretAccessKey;
     }
+    
+    public AWSS3Staging(
+            String accessKeyId,
+            String s3BucketName,
+            String secretAccessKey) {
+        this(accessKeyId, Optional.empty(), Optional.empty(), Optional.empty(), s3BucketName, Optional.empty(), Optional.empty(), secretAccessKey);
+    }
 
     /**
      * This ID grants access to the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
      */
+    @JsonIgnore
     public String accessKeyId() {
         return accessKeyId;
     }
@@ -117,17 +128,22 @@ public class AWSS3Staging {
     /**
      * How to encrypt the staging data
      */
-    public Optional<? extends DestinationRedshiftEncryption> encryption() {
-        return encryption;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedshiftEncryption> encryption() {
+        return (Optional<DestinationRedshiftEncryption>) encryption;
     }
 
     /**
      * The pattern allows you to set the file-name format for the S3 staging file(s)
      */
-    public Optional<? extends String> fileNamePattern() {
-        return fileNamePattern;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> fileNamePattern() {
+        return (Optional<String>) fileNamePattern;
     }
 
+    @JsonIgnore
     public DestinationRedshiftMethod method() {
         return method;
     }
@@ -135,13 +151,16 @@ public class AWSS3Staging {
     /**
      * Whether to delete the staging files from S3 after completing the sync. See &lt;a href="https://docs.airbyte.com/integrations/destinations/redshift/#:~:text=the%20root%20directory.-,Purge%20Staging%20Data,-Whether%20to%20delete"&gt; docs&lt;/a&gt; for details.
      */
-    public Optional<? extends Boolean> purgeStagingData() {
-        return purgeStagingData;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> purgeStagingData() {
+        return (Optional<Boolean>) purgeStagingData;
     }
 
     /**
      * The name of the staging S3 bucket.
      */
+    @JsonIgnore
     public String s3BucketName() {
         return s3BucketName;
     }
@@ -149,20 +168,25 @@ public class AWSS3Staging {
     /**
      * The directory under the S3 bucket where data will be written. If not provided, then defaults to the root directory. See &lt;a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/defining-bucket-names-data-lakes/faq.html#:~:text=be%20globally%20unique.-,For%20S3%20bucket%20paths,-%2C%20you%20can%20use"&gt;path's name recommendations&lt;/a&gt; for more details.
      */
-    public Optional<? extends String> s3BucketPath() {
-        return s3BucketPath;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> s3BucketPath() {
+        return (Optional<String>) s3BucketPath;
     }
 
     /**
      * The region of the S3 staging bucket.
      */
-    public Optional<? extends DestinationRedshiftS3BucketRegion> s3BucketRegion() {
-        return s3BucketRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedshiftS3BucketRegion> s3BucketRegion() {
+        return (Optional<DestinationRedshiftS3BucketRegion>) s3BucketRegion;
     }
 
     /**
      * The corresponding secret to the above access key id. See &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;AWS docs&lt;/a&gt; on how to generate an access key ID and secret access key.
      */
+    @JsonIgnore
     public String secretAccessKey() {
         return secretAccessKey;
     }

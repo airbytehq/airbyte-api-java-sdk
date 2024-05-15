@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class SourceGetlago {
     @JsonProperty("sourceType")
     private Getlago sourceType;
 
+    @JsonCreator
     public SourceGetlago(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("api_url") Optional<? extends String> apiUrl) {
@@ -45,10 +48,16 @@ public class SourceGetlago {
         this.apiUrl = apiUrl;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceGetlago(
+            String apiKey) {
+        this(apiKey, Optional.empty());
+    }
 
     /**
      * Your API Key. See &lt;a href="https://doc.getlago.com/docs/api/intro"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -56,10 +65,13 @@ public class SourceGetlago {
     /**
      * Your Lago API URL
      */
-    public Optional<? extends String> apiUrl() {
-        return apiUrl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiUrl() {
+        return (Optional<String>) apiUrl;
     }
 
+    @JsonIgnore
     public Getlago sourceType() {
         return sourceType;
     }

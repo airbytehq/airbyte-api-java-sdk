@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -78,6 +80,7 @@ public class DestinationRedis {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationRedis(
             @JsonProperty("cache_type") Optional<? extends CacheType> cacheType,
             @JsonProperty("host") String host,
@@ -105,14 +108,23 @@ public class DestinationRedis {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public DestinationRedis(
+            String host,
+            String username) {
+        this(Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Redis cache type to store data in.
      */
-    public Optional<? extends CacheType> cacheType() {
-        return cacheType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CacheType> cacheType() {
+        return (Optional<CacheType>) cacheType;
     }
 
+    @JsonIgnore
     public Redis destinationType() {
         return destinationType;
     }
@@ -120,6 +132,7 @@ public class DestinationRedis {
     /**
      * Redis host to connect to.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -127,42 +140,53 @@ public class DestinationRedis {
     /**
      * Password associated with Redis.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * Port of Redis.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * Indicates whether SSL encryption protocol will be used to connect to Redis. It is recommended to use SSL connection if possible.
      */
-    public Optional<? extends Boolean> ssl() {
-        return ssl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ssl() {
+        return (Optional<Boolean>) ssl;
     }
 
     /**
      * SSL connection modes. 
      *   &lt;li&gt;&lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Always require encryption and verifies the identity of the source database server
      */
-    public Optional<? extends DestinationRedisSSLModes> sslMode() {
-        return sslMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedisSSLModes> sslMode() {
+        return (Optional<DestinationRedisSSLModes>) sslMode;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends DestinationRedisSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedisSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationRedisSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * Username associated with Redis.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

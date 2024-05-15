@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceZendeskSunshine {
     @JsonProperty("subdomain")
     private String subdomain;
 
+    @JsonCreator
     public SourceZendeskSunshine(
             @JsonProperty("credentials") Optional<? extends SourceZendeskSunshineAuthorizationMethod> credentials,
             @JsonProperty("start_date") OffsetDateTime startDate,
@@ -54,11 +57,20 @@ public class SourceZendeskSunshine {
         this.startDate = startDate;
         this.subdomain = subdomain;
     }
-
-    public Optional<? extends SourceZendeskSunshineAuthorizationMethod> credentials() {
-        return credentials;
+    
+    public SourceZendeskSunshine(
+            OffsetDateTime startDate,
+            String subdomain) {
+        this(Optional.empty(), startDate, subdomain);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceZendeskSunshineAuthorizationMethod> credentials() {
+        return (Optional<SourceZendeskSunshineAuthorizationMethod>) credentials;
+    }
+
+    @JsonIgnore
     public SourceZendeskSunshineZendeskSunshine sourceType() {
         return sourceType;
     }
@@ -66,6 +78,7 @@ public class SourceZendeskSunshine {
     /**
      * The date from which you'd like to replicate data for Zendesk Sunshine API, in the format YYYY-MM-DDT00:00:00Z.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -73,6 +86,7 @@ public class SourceZendeskSunshine {
     /**
      * The subdomain for your Zendesk Account.
      */
+    @JsonIgnore
     public String subdomain() {
         return subdomain;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class SourceSurveymonkey {
     @JsonProperty("survey_ids")
     private Optional<? extends java.util.List<String>> surveyIds;
 
+    @JsonCreator
     public SourceSurveymonkey(
             @JsonProperty("credentials") SurveyMonkeyAuthorizationMethod credentials,
             @JsonProperty("origin") Optional<? extends OriginDatacenterOfTheSurveyMonkeyAccount> origin,
@@ -67,10 +70,17 @@ public class SourceSurveymonkey {
         this.startDate = startDate;
         this.surveyIds = surveyIds;
     }
+    
+    public SourceSurveymonkey(
+            SurveyMonkeyAuthorizationMethod credentials,
+            OffsetDateTime startDate) {
+        this(credentials, Optional.empty(), startDate, Optional.empty());
+    }
 
     /**
      * The authorization method to use to retrieve data from SurveyMonkey
      */
+    @JsonIgnore
     public SurveyMonkeyAuthorizationMethod credentials() {
         return credentials;
     }
@@ -78,10 +88,13 @@ public class SourceSurveymonkey {
     /**
      * Depending on the originating datacenter of the SurveyMonkey account, the API access URL may be different.
      */
-    public Optional<? extends OriginDatacenterOfTheSurveyMonkeyAccount> origin() {
-        return origin;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OriginDatacenterOfTheSurveyMonkeyAccount> origin() {
+        return (Optional<OriginDatacenterOfTheSurveyMonkeyAccount>) origin;
     }
 
+    @JsonIgnore
     public SourceSurveymonkeySurveymonkey sourceType() {
         return sourceType;
     }
@@ -89,6 +102,7 @@ public class SourceSurveymonkey {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -96,8 +110,10 @@ public class SourceSurveymonkey {
     /**
      * IDs of the surveys from which you'd like to replicate data. If left empty, data from all boards to which you have access will be replicated.
      */
-    public Optional<? extends java.util.List<String>> surveyIds() {
-        return surveyIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> surveyIds() {
+        return (Optional<java.util.List<String>>) surveyIds;
     }
 
     public final static Builder builder() {

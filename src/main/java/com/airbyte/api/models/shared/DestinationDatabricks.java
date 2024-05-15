@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -89,6 +91,7 @@ public class DestinationDatabricks {
     @JsonProperty("schema")
     private Optional<? extends String> schema;
 
+    @JsonCreator
     public DestinationDatabricks(
             @JsonProperty("accept_terms") Optional<? extends Boolean> acceptTerms,
             @JsonProperty("data_source") DataSource dataSource,
@@ -122,17 +125,28 @@ public class DestinationDatabricks {
         this.purgeStagingData = purgeStagingData;
         this.schema = schema;
     }
+    
+    public DestinationDatabricks(
+            DataSource dataSource,
+            String databricksHttpPath,
+            String databricksPersonalAccessToken,
+            String databricksServerHostname) {
+        this(Optional.empty(), dataSource, Optional.empty(), databricksHttpPath, databricksPersonalAccessToken, Optional.empty(), databricksServerHostname, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
      */
-    public Optional<? extends Boolean> acceptTerms() {
-        return acceptTerms;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> acceptTerms() {
+        return (Optional<Boolean>) acceptTerms;
     }
 
     /**
      * Storage on which the delta lake is built.
      */
+    @JsonIgnore
     public DataSource dataSource() {
         return dataSource;
     }
@@ -140,13 +154,16 @@ public class DestinationDatabricks {
     /**
      * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
      */
-    public Optional<? extends String> database() {
-        return database;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> database() {
+        return (Optional<String>) database;
     }
 
     /**
      * Databricks Cluster HTTP Path.
      */
+    @JsonIgnore
     public String databricksHttpPath() {
         return databricksHttpPath;
     }
@@ -154,6 +171,7 @@ public class DestinationDatabricks {
     /**
      * Databricks Personal Access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String databricksPersonalAccessToken() {
         return databricksPersonalAccessToken;
     }
@@ -161,17 +179,21 @@ public class DestinationDatabricks {
     /**
      * Databricks Cluster Port.
      */
-    public Optional<? extends String> databricksPort() {
-        return databricksPort;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> databricksPort() {
+        return (Optional<String>) databricksPort;
     }
 
     /**
      * Databricks Cluster Server Hostname.
      */
+    @JsonIgnore
     public String databricksServerHostname() {
         return databricksServerHostname;
     }
 
+    @JsonIgnore
     public Databricks destinationType() {
         return destinationType;
     }
@@ -179,22 +201,28 @@ public class DestinationDatabricks {
     /**
      * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
      */
-    public Optional<? extends Boolean> enableSchemaEvolution() {
-        return enableSchemaEvolution;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> enableSchemaEvolution() {
+        return (Optional<Boolean>) enableSchemaEvolution;
     }
 
     /**
      * Default to 'true'. Switch it to 'false' for debugging purpose.
      */
-    public Optional<? extends Boolean> purgeStagingData() {
-        return purgeStagingData;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> purgeStagingData() {
+        return (Optional<Boolean>) purgeStagingData;
     }
 
     /**
      * The default schema tables are written. If not specified otherwise, the "default" will be used.
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     public final static Builder builder() {

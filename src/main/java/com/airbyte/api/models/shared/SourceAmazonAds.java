@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,7 +54,7 @@ public class SourceAmazonAds {
     private Optional<? extends java.util.List<String>> marketplaceIds;
 
     /**
-     * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+     * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("profiles")
@@ -95,6 +97,7 @@ public class SourceAmazonAds {
     @JsonProperty("state_filter")
     private Optional<? extends java.util.List<StateFilter>> stateFilter;
 
+    @JsonCreator
     public SourceAmazonAds(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -129,14 +132,24 @@ public class SourceAmazonAds {
         this.startDate = startDate;
         this.stateFilter = stateFilter;
     }
+    
+    public SourceAmazonAds(
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(clientId, clientSecret, Optional.empty(), Optional.empty(), Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends SourceAmazonAdsAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAmazonAdsAuthType> authType() {
+        return (Optional<SourceAmazonAdsAuthType>) authType;
     }
 
     /**
      * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -144,6 +157,7 @@ public class SourceAmazonAds {
     /**
      * The client secret of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -151,27 +165,34 @@ public class SourceAmazonAds {
     /**
      * The amount of days to go back in time to get the updated data from Amazon Ads
      */
-    public Optional<? extends Long> lookBackWindow() {
-        return lookBackWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookBackWindow() {
+        return (Optional<Long>) lookBackWindow;
     }
 
     /**
      * Marketplace IDs you want to fetch data for. Note: If Profile IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
-    public Optional<? extends java.util.List<String>> marketplaceIds() {
-        return marketplaceIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> marketplaceIds() {
+        return (Optional<java.util.List<String>>) marketplaceIds;
     }
 
     /**
-     * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+     * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
-    public Optional<? extends java.util.List<Long>> profiles() {
-        return profiles;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<Long>> profiles() {
+        return (Optional<java.util.List<Long>>) profiles;
     }
 
     /**
      * Amazon Ads refresh token. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -179,17 +200,22 @@ public class SourceAmazonAds {
     /**
      * Region to pull data from (EU/NA/FE). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints"&gt;docs&lt;/a&gt; for more details.
      */
-    public Optional<? extends Region> region() {
-        return region;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Region> region() {
+        return (Optional<Region>) region;
     }
 
     /**
      * Optional configuration which accepts an array of string of record types. Leave blank for default behaviour to pull all report types. Use this config option only if you want to pull specific report type(s). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/reporting/v2/report-types"&gt;docs&lt;/a&gt; for more details
      */
-    public Optional<? extends java.util.List<ReportRecordTypes>> reportRecordTypes() {
-        return reportRecordTypes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ReportRecordTypes>> reportRecordTypes() {
+        return (Optional<java.util.List<ReportRecordTypes>>) reportRecordTypes;
     }
 
+    @JsonIgnore
     public SourceAmazonAdsAmazonAds sourceType() {
         return sourceType;
     }
@@ -197,15 +223,19 @@ public class SourceAmazonAds {
     /**
      * The Start date for collecting reports, should not be more than 60 days in the past. In YYYY-MM-DD format
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     /**
      * Reflects the state of the Display, Product, and Brand Campaign streams as enabled, paused, or archived. If you do not populate this field, it will be ignored completely.
      */
-    public Optional<? extends java.util.List<StateFilter>> stateFilter() {
-        return stateFilter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<StateFilter>> stateFilter() {
+        return (Optional<java.util.List<StateFilter>>) stateFilter;
     }
 
     public final static Builder builder() {
@@ -267,7 +297,7 @@ public class SourceAmazonAds {
     }
 
     /**
-     * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+     * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     public SourceAmazonAds withProfiles(java.util.List<Long> profiles) {
         Utils.checkNotNull(profiles, "profiles");
@@ -276,7 +306,7 @@ public class SourceAmazonAds {
     }
 
     /**
-     * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+     * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     public SourceAmazonAds withProfiles(Optional<? extends java.util.List<Long>> profiles) {
         Utils.checkNotNull(profiles, "profiles");
@@ -504,7 +534,7 @@ public class SourceAmazonAds {
         }
 
         /**
-         * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+         * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
          */
         public Builder profiles(java.util.List<Long> profiles) {
             Utils.checkNotNull(profiles, "profiles");
@@ -513,7 +543,7 @@ public class SourceAmazonAds {
         }
 
         /**
-         * Profile IDs you want to fetch data for. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
+         * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
          */
         public Builder profiles(Optional<? extends java.util.List<Long>> profiles) {
             Utils.checkNotNull(profiles, "profiles");

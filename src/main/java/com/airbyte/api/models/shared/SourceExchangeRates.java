@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class SourceExchangeRates {
     @JsonProperty("start_date")
     private LocalDate startDate;
 
+    @JsonCreator
     public SourceExchangeRates(
             @JsonProperty("access_key") String accessKey,
             @JsonProperty("base") Optional<? extends String> base,
@@ -65,10 +68,17 @@ public class SourceExchangeRates {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceExchangeRates(
+            String accessKey,
+            LocalDate startDate) {
+        this(accessKey, Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * Your API Key. See &lt;a href="https://apilayer.com/marketplace/exchangerates_data-api"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
+    @JsonIgnore
     public String accessKey() {
         return accessKey;
     }
@@ -76,17 +86,22 @@ public class SourceExchangeRates {
     /**
      * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
      */
-    public Optional<? extends String> base() {
-        return base;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> base() {
+        return (Optional<String>) base;
     }
 
     /**
      * Ignore weekends? (Exchanges don't run on weekends)
      */
-    public Optional<? extends Boolean> ignoreWeekends() {
-        return ignoreWeekends;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ignoreWeekends() {
+        return (Optional<Boolean>) ignoreWeekends;
     }
 
+    @JsonIgnore
     public ExchangeRates sourceType() {
         return sourceType;
     }
@@ -94,6 +109,7 @@ public class SourceExchangeRates {
     /**
      * Start getting data from that date.
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class ReplicaSet {
     @JsonProperty("server_addresses")
     private String serverAddresses;
 
+    @JsonCreator
     public ReplicaSet(
             @JsonProperty("instance") Optional<? extends DestinationMongodbInstance> instance,
             @JsonProperty("replica_set") Optional<? extends String> replicaSet,
@@ -48,21 +51,31 @@ public class ReplicaSet {
         this.replicaSet = replicaSet;
         this.serverAddresses = serverAddresses;
     }
+    
+    public ReplicaSet(
+            String serverAddresses) {
+        this(Optional.empty(), Optional.empty(), serverAddresses);
+    }
 
-    public Optional<? extends DestinationMongodbInstance> instance() {
-        return instance;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMongodbInstance> instance() {
+        return (Optional<DestinationMongodbInstance>) instance;
     }
 
     /**
      * A replica set name.
      */
-    public Optional<? extends String> replicaSet() {
-        return replicaSet;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> replicaSet() {
+        return (Optional<String>) replicaSet;
     }
 
     /**
      * The members of a replica set. Please specify `host`:`port` of each member seperated by comma.
      */
+    @JsonIgnore
     public String serverAddresses() {
         return serverAddresses;
     }

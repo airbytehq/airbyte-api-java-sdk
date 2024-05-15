@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,8 +52,9 @@ public class SourceHarvest {
     private OffsetDateTime replicationStartDate;
 
     @JsonProperty("sourceType")
-    private SourceHarvestHarvest sourceType;
+    private Harvest sourceType;
 
+    @JsonCreator
     public SourceHarvest(
             @JsonProperty("account_id") String accountId,
             @JsonProperty("credentials") Optional<? extends java.lang.Object> credentials,
@@ -67,10 +70,17 @@ public class SourceHarvest {
         this.replicationStartDate = replicationStartDate;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceHarvest(
+            String accountId,
+            OffsetDateTime replicationStartDate) {
+        this(accountId, Optional.empty(), Optional.empty(), replicationStartDate);
+    }
 
     /**
      * Harvest account ID. Required for all Harvest requests in pair with Personal Access Token
      */
+    @JsonIgnore
     public String accountId() {
         return accountId;
     }
@@ -78,25 +88,31 @@ public class SourceHarvest {
     /**
      * Choose how to authenticate to Harvest.
      */
-    public Optional<? extends java.lang.Object> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.lang.Object> credentials() {
+        return (Optional<java.lang.Object>) credentials;
     }
 
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> replicationEndDate() {
-        return replicationEndDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> replicationEndDate() {
+        return (Optional<OffsetDateTime>) replicationEndDate;
     }
 
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime replicationStartDate() {
         return replicationStartDate;
     }
 
-    public SourceHarvestHarvest sourceType() {
+    @JsonIgnore
+    public Harvest sourceType() {
         return sourceType;
     }
 
@@ -271,11 +287,11 @@ public class SourceHarvest {
                 replicationStartDate);
         }
 
-        private static final LazySingletonValue<SourceHarvestHarvest> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<Harvest> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"harvest\"",
-                        new TypeReference<SourceHarvestHarvest>() {});
+                        new TypeReference<Harvest>() {});
     }
 }
 

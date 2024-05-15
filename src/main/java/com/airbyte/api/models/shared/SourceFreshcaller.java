@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -59,6 +61,7 @@ public class SourceFreshcaller {
     @JsonProperty("sync_lag_minutes")
     private Optional<? extends Long> syncLagMinutes;
 
+    @JsonCreator
     public SourceFreshcaller(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("domain") String domain,
@@ -77,10 +80,17 @@ public class SourceFreshcaller {
         this.startDate = startDate;
         this.syncLagMinutes = syncLagMinutes;
     }
+    
+    public SourceFreshcaller(
+            String apiKey,
+            String domain) {
+        this(apiKey, domain, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -88,6 +98,7 @@ public class SourceFreshcaller {
     /**
      * Used to construct Base URL for the Freshcaller APIs
      */
+    @JsonIgnore
     public String domain() {
         return domain;
     }
@@ -95,10 +106,13 @@ public class SourceFreshcaller {
     /**
      * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
      */
-    public Optional<? extends Long> requestsPerMinute() {
-        return requestsPerMinute;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> requestsPerMinute() {
+        return (Optional<Long>) requestsPerMinute;
     }
 
+    @JsonIgnore
     public Freshcaller sourceType() {
         return sourceType;
     }
@@ -106,15 +120,19 @@ public class SourceFreshcaller {
     /**
      * UTC date and time. Any data created after this date will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Lag in minutes for each sync, i.e., at time T, data for the time range [prev_sync_time, T-30] will be fetched
      */
-    public Optional<? extends Long> syncLagMinutes() {
-        return syncLagMinutes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> syncLagMinutes() {
+        return (Optional<Long>) syncLagMinutes;
     }
 
     public final static Builder builder() {

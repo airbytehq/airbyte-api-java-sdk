@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class ServiceAccountKey {
     @JsonProperty("email")
     private String email;
 
+    @JsonCreator
     public ServiceAccountKey(
             @JsonProperty("credentials_json") String credentialsJson,
             @JsonProperty("email") String email) {
@@ -55,6 +58,7 @@ public class ServiceAccountKey {
     /**
      * The contents of the JSON service account key. See the &lt;a href="https://developers.google.com/admin-sdk/directory/v1/guides/delegation"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
+    @JsonIgnore
     public String credentialsJson() {
         return credentialsJson;
     }
@@ -62,13 +66,16 @@ public class ServiceAccountKey {
     /**
      * Authentication Scenario
      */
-    public Optional<? extends SourceGoogleDirectorySchemasCredentialsTitle> credentialsTitle() {
-        return credentialsTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDirectorySchemasCredentialsTitle> credentialsTitle() {
+        return (Optional<SourceGoogleDirectorySchemasCredentialsTitle>) credentialsTitle;
     }
 
     /**
      * The email of the user, which has permissions to access the Google Workspace Admin APIs.
      */
+    @JsonIgnore
     public String email() {
         return email;
     }

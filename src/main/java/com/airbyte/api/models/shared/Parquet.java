@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class Parquet {
     @JsonProperty("filetype")
     private Optional<? extends SourceS3Filetype> filetype;
 
+    @JsonCreator
     public Parquet(
             @JsonProperty("batch_size") Optional<? extends Long> batchSize,
             @JsonProperty("buffer_size") Optional<? extends Long> bufferSize,
@@ -60,30 +63,42 @@ public class Parquet {
         this.columns = columns;
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
+    
+    public Parquet() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Maximum number of records per batch read from the input files. Batches may be smaller if there aren’t enough rows in the file. This option can help avoid out-of-memory errors if your data is particularly wide.
      */
-    public Optional<? extends Long> batchSize() {
-        return batchSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchSize() {
+        return (Optional<Long>) batchSize;
     }
 
     /**
      * Perform read buffering when deserializing individual column chunks. By default every group column will be loaded fully to memory. This option can help avoid out-of-memory errors if your data is particularly wide.
      */
-    public Optional<? extends Long> bufferSize() {
-        return bufferSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> bufferSize() {
+        return (Optional<Long>) bufferSize;
     }
 
     /**
      * If you only want to sync a subset of the columns from the file(s), add the columns you want here as a comma-delimited list. Leave it empty to sync all columns.
      */
-    public Optional<? extends java.util.List<String>> columns() {
-        return columns;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> columns() {
+        return (Optional<java.util.List<String>>) columns;
     }
 
-    public Optional<? extends SourceS3Filetype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3Filetype> filetype() {
+        return (Optional<SourceS3Filetype>) filetype;
     }
 
     public final static Builder builder() {

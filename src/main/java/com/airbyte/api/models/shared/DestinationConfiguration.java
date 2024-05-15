@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -202,6 +204,11 @@ public class DestinationConfiguration {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviate>(){}));
     }
+
+    public static DestinationConfiguration of(DestinationYellowbrick value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationYellowbrick>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
@@ -240,6 +247,7 @@ public class DestinationConfiguration {
      * <li>{@code DestinationTypesense}</li>
      * <li>{@code DestinationVectara}</li>
      * <li>{@code DestinationWeaviate}</li>
+     * <li>{@code DestinationYellowbrick}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -312,7 +320,8 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationTeradata>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationTypesense>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationVectara>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationWeaviate>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationWeaviate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrick>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

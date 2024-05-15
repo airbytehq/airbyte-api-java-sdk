@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,6 +36,7 @@ public class DestinationTeradataVerifyFull {
     @JsonProperty("ssl_ca_certificate")
     private String sslCaCertificate;
 
+    @JsonCreator
     public DestinationTeradataVerifyFull(
             @JsonProperty("ssl_ca_certificate") String sslCaCertificate) {
         Utils.checkNotNull(sslCaCertificate, "sslCaCertificate");
@@ -41,14 +44,17 @@ public class DestinationTeradataVerifyFull {
         this.sslCaCertificate = sslCaCertificate;
     }
 
-    public Optional<? extends DestinationTeradataSchemasSSLModeSSLModes6Mode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationTeradataSchemasSSLModeSSLModes6Mode> mode() {
+        return (Optional<DestinationTeradataSchemasSSLModeSSLModes6Mode>) mode;
     }
 
     /**
      * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-full.
      *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLCA"&gt; in the docs&lt;/a&gt;.
      */
+    @JsonIgnore
     public String sslCaCertificate() {
         return sslCaCertificate;
     }

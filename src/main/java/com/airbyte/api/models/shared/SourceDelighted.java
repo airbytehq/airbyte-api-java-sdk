@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -35,6 +37,7 @@ public class SourceDelighted {
     @JsonProperty("sourceType")
     private Delighted sourceType;
 
+    @JsonCreator
     public SourceDelighted(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("since") OffsetDateTime since) {
@@ -48,6 +51,7 @@ public class SourceDelighted {
     /**
      * A Delighted API key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -55,10 +59,12 @@ public class SourceDelighted {
     /**
      * The date from which you'd like to replicate the data
      */
+    @JsonIgnore
     public OffsetDateTime since() {
         return since;
     }
 
+    @JsonIgnore
     public Delighted sourceType() {
         return sourceType;
     }

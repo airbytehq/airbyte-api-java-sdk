@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -31,6 +33,7 @@ public class OAuth20Credentials {
     @JsonProperty("client_secret")
     private String clientSecret;
 
+    @JsonCreator
     public OAuth20Credentials(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret) {
@@ -43,6 +46,7 @@ public class OAuth20Credentials {
     /**
      * OAuth2.0 client id
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -50,6 +54,7 @@ public class OAuth20Credentials {
     /**
      * OAuth2.0 client secret
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }

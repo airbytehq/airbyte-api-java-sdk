@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourceTwilio {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceTwilio(
             @JsonProperty("account_sid") String accountSid,
             @JsonProperty("auth_token") String authToken,
@@ -66,10 +69,18 @@ public class SourceTwilio {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceTwilio(
+            String accountSid,
+            String authToken,
+            OffsetDateTime startDate) {
+        this(accountSid, authToken, Optional.empty(), startDate);
+    }
 
     /**
      * Twilio account SID
      */
+    @JsonIgnore
     public String accountSid() {
         return accountSid;
     }
@@ -77,6 +88,7 @@ public class SourceTwilio {
     /**
      * Twilio Auth Token.
      */
+    @JsonIgnore
     public String authToken() {
         return authToken;
     }
@@ -84,10 +96,13 @@ public class SourceTwilio {
     /**
      * How far into the past to look for records. (in minutes)
      */
-    public Optional<? extends Long> lookbackWindow() {
-        return lookbackWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindow() {
+        return (Optional<Long>) lookbackWindow;
     }
 
+    @JsonIgnore
     public Twilio sourceType() {
         return sourceType;
     }
@@ -95,6 +110,7 @@ public class SourceTwilio {
     /**
      * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

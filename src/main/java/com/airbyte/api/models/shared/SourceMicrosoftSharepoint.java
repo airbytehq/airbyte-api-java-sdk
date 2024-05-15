@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -63,6 +65,7 @@ public class SourceMicrosoftSharepoint {
     @JsonProperty("streams")
     private java.util.List<SourceMicrosoftSharepointFileBasedStreamConfig> streams;
 
+    @JsonCreator
     public SourceMicrosoftSharepoint(
             @JsonProperty("credentials") SourceMicrosoftSharepointAuthentication credentials,
             @JsonProperty("folder_path") Optional<? extends String> folderPath,
@@ -81,10 +84,17 @@ public class SourceMicrosoftSharepoint {
         this.startDate = startDate;
         this.streams = streams;
     }
+    
+    public SourceMicrosoftSharepoint(
+            SourceMicrosoftSharepointAuthentication credentials,
+            java.util.List<SourceMicrosoftSharepointFileBasedStreamConfig> streams) {
+        this(credentials, Optional.empty(), Optional.empty(), Optional.empty(), streams);
+    }
 
     /**
      * Credentials for connecting to the One Drive API
      */
+    @JsonIgnore
     public SourceMicrosoftSharepointAuthentication credentials() {
         return credentials;
     }
@@ -92,17 +102,22 @@ public class SourceMicrosoftSharepoint {
     /**
      * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
      */
-    public Optional<? extends String> folderPath() {
-        return folderPath;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> folderPath() {
+        return (Optional<String>) folderPath;
     }
 
     /**
      * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' for all SharePoint drives the user can access, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
      */
-    public Optional<? extends SourceMicrosoftSharepointSearchScope> searchScope() {
-        return searchScope;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftSharepointSearchScope> searchScope() {
+        return (Optional<SourceMicrosoftSharepointSearchScope>) searchScope;
     }
 
+    @JsonIgnore
     public SourceMicrosoftSharepointMicrosoftSharepoint sourceType() {
         return sourceType;
     }
@@ -110,13 +125,16 @@ public class SourceMicrosoftSharepoint {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
+    @JsonIgnore
     public java.util.List<SourceMicrosoftSharepointFileBasedStreamConfig> streams() {
         return streams;
     }

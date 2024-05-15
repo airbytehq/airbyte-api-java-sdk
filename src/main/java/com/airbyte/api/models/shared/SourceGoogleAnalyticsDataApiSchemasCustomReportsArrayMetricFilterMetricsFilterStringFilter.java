@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,6 +36,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
     @JsonProperty("value")
     private String value;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterStringFilter(
             @JsonProperty("caseSensitive") Optional<? extends Boolean> caseSensitive,
             @JsonProperty("matchType") Optional<? extends java.util.List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter2ValidEnums>> matchType,
@@ -46,19 +49,30 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMe
         this.matchType = matchType;
         this.value = value;
     }
-
-    public Optional<? extends Boolean> caseSensitive() {
-        return caseSensitive;
+    
+    public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterStringFilter(
+            String value) {
+        this(Optional.empty(), Optional.empty(), value);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> caseSensitive() {
+        return (Optional<Boolean>) caseSensitive;
+    }
+
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter2FilterName filterName() {
         return filterName;
     }
 
-    public Optional<? extends java.util.List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter2ValidEnums>> matchType() {
-        return matchType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter2ValidEnums>> matchType() {
+        return (Optional<java.util.List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter2ValidEnums>>) matchType;
     }
 
+    @JsonIgnore
     public String value() {
         return value;
     }

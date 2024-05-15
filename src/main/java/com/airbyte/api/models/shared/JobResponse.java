@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -59,6 +61,7 @@ public class JobResponse {
     @JsonProperty("status")
     private JobStatusEnum status;
 
+    @JsonCreator
     public JobResponse(
             @JsonProperty("bytesSynced") Optional<? extends Long> bytesSynced,
             @JsonProperty("connectionId") String connectionId,
@@ -88,11 +91,23 @@ public class JobResponse {
         this.startTime = startTime;
         this.status = status;
     }
-
-    public Optional<? extends Long> bytesSynced() {
-        return bytesSynced;
+    
+    public JobResponse(
+            String connectionId,
+            long jobId,
+            JobTypeEnum jobType,
+            String startTime,
+            JobStatusEnum status) {
+        this(Optional.empty(), connectionId, Optional.empty(), jobId, jobType, Optional.empty(), Optional.empty(), startTime, status);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> bytesSynced() {
+        return (Optional<Long>) bytesSynced;
+    }
+
+    @JsonIgnore
     public String connectionId() {
         return connectionId;
     }
@@ -100,10 +115,13 @@ public class JobResponse {
     /**
      * Duration of a sync in ISO_8601 format
      */
-    public Optional<? extends String> duration() {
-        return duration;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> duration() {
+        return (Optional<String>) duration;
     }
 
+    @JsonIgnore
     public long jobId() {
         return jobId;
     }
@@ -111,22 +129,29 @@ public class JobResponse {
     /**
      * Enum that describes the different types of jobs that the platform runs.
      */
+    @JsonIgnore
     public JobTypeEnum jobType() {
         return jobType;
     }
 
-    public Optional<? extends String> lastUpdatedAt() {
-        return lastUpdatedAt;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> lastUpdatedAt() {
+        return (Optional<String>) lastUpdatedAt;
     }
 
-    public Optional<? extends Long> rowsSynced() {
-        return rowsSynced;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> rowsSynced() {
+        return (Optional<Long>) rowsSynced;
     }
 
+    @JsonIgnore
     public String startTime() {
         return startTime;
     }
 
+    @JsonIgnore
     public JobStatusEnum status() {
         return status;
     }

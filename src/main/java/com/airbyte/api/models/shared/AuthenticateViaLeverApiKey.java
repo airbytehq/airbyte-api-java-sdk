@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class AuthenticateViaLeverApiKey {
     @JsonProperty("auth_type")
     private Optional<? extends SourceLeverHiringSchemasAuthType> authType;
 
+    @JsonCreator
     public AuthenticateViaLeverApiKey(
             @JsonProperty("api_key") String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -40,12 +43,15 @@ public class AuthenticateViaLeverApiKey {
     /**
      * The Api Key of your Lever Hiring account.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
-    public Optional<? extends SourceLeverHiringSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLeverHiringSchemasAuthType> authType() {
+        return (Optional<SourceLeverHiringSchemasAuthType>) authType;
     }
 
     public final static Builder builder() {

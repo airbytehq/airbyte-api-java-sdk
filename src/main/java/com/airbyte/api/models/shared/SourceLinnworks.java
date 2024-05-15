@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -44,6 +46,7 @@ public class SourceLinnworks {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public SourceLinnworks(
             @JsonProperty("application_id") String applicationId,
             @JsonProperty("application_secret") String applicationSecret,
@@ -63,6 +66,7 @@ public class SourceLinnworks {
     /**
      * Linnworks Application ID
      */
+    @JsonIgnore
     public String applicationId() {
         return applicationId;
     }
@@ -70,10 +74,12 @@ public class SourceLinnworks {
     /**
      * Linnworks Application Secret
      */
+    @JsonIgnore
     public String applicationSecret() {
         return applicationSecret;
     }
 
+    @JsonIgnore
     public Linnworks sourceType() {
         return sourceType;
     }
@@ -81,10 +87,12 @@ public class SourceLinnworks {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
+    @JsonIgnore
     public String token() {
         return token;
     }

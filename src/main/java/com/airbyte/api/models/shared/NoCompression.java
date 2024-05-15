@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,14 +26,21 @@ public class NoCompression {
     @JsonProperty("codec")
     private Optional<? extends Codec> codec;
 
+    @JsonCreator
     public NoCompression(
             @JsonProperty("codec") Optional<? extends Codec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
     }
+    
+    public NoCompression() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends Codec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Codec> codec() {
+        return (Optional<Codec>) codec;
     }
 
     public final static Builder builder() {

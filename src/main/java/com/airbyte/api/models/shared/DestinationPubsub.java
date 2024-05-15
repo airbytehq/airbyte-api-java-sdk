@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -76,6 +78,7 @@ public class DestinationPubsub {
     @JsonProperty("topic_id")
     private String topicId;
 
+    @JsonCreator
     public DestinationPubsub(
             @JsonProperty("batching_delay_threshold") Optional<? extends Long> batchingDelayThreshold,
             @JsonProperty("batching_element_count_threshold") Optional<? extends Long> batchingElementCountThreshold,
@@ -103,42 +106,59 @@ public class DestinationPubsub {
         this.projectId = projectId;
         this.topicId = topicId;
     }
+    
+    public DestinationPubsub(
+            String credentialsJson,
+            String projectId,
+            String topicId) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), credentialsJson, Optional.empty(), projectId, topicId);
+    }
 
     /**
      * Number of ms before the buffer is flushed
      */
-    public Optional<? extends Long> batchingDelayThreshold() {
-        return batchingDelayThreshold;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchingDelayThreshold() {
+        return (Optional<Long>) batchingDelayThreshold;
     }
 
     /**
      * Number of messages before the buffer is flushed
      */
-    public Optional<? extends Long> batchingElementCountThreshold() {
-        return batchingElementCountThreshold;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchingElementCountThreshold() {
+        return (Optional<Long>) batchingElementCountThreshold;
     }
 
     /**
      * If TRUE messages will be buffered instead of sending them one by one
      */
-    public Optional<? extends Boolean> batchingEnabled() {
-        return batchingEnabled;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> batchingEnabled() {
+        return (Optional<Boolean>) batchingEnabled;
     }
 
     /**
      * Number of bytes before the buffer is flushed
      */
-    public Optional<? extends Long> batchingRequestBytesThreshold() {
-        return batchingRequestBytesThreshold;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchingRequestBytesThreshold() {
+        return (Optional<Long>) batchingRequestBytesThreshold;
     }
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/pubsub"&gt;docs&lt;/a&gt; if you need help generating this key.
      */
+    @JsonIgnore
     public String credentialsJson() {
         return credentialsJson;
     }
 
+    @JsonIgnore
     public Pubsub destinationType() {
         return destinationType;
     }
@@ -146,13 +166,16 @@ public class DestinationPubsub {
     /**
      * If TRUE PubSub publisher will have &lt;a href="https://cloud.google.com/pubsub/docs/ordering"&gt;message ordering&lt;/a&gt; enabled. Every message will have an ordering key of stream
      */
-    public Optional<? extends Boolean> orderingEnabled() {
-        return orderingEnabled;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> orderingEnabled() {
+        return (Optional<Boolean>) orderingEnabled;
     }
 
     /**
      * The GCP project ID for the project containing the target PubSub.
      */
+    @JsonIgnore
     public String projectId() {
         return projectId;
     }
@@ -160,6 +183,7 @@ public class DestinationPubsub {
     /**
      * The PubSub topic ID in the given GCP project ID.
      */
+    @JsonIgnore
     public String topicId() {
         return topicId;
     }

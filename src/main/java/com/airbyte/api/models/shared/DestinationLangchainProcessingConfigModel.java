@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class DestinationLangchainProcessingConfigModel {
     @JsonProperty("text_fields")
     private java.util.List<String> textFields;
 
+    @JsonCreator
     public DestinationLangchainProcessingConfigModel(
             @JsonProperty("chunk_overlap") Optional<? extends Long> chunkOverlap,
             @JsonProperty("chunk_size") long chunkSize,
@@ -50,17 +53,26 @@ public class DestinationLangchainProcessingConfigModel {
         this.chunkSize = chunkSize;
         this.textFields = textFields;
     }
+    
+    public DestinationLangchainProcessingConfigModel(
+            long chunkSize,
+            java.util.List<String> textFields) {
+        this(Optional.empty(), chunkSize, textFields);
+    }
 
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
      */
-    public Optional<? extends Long> chunkOverlap() {
-        return chunkOverlap;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> chunkOverlap() {
+        return (Optional<Long>) chunkOverlap;
     }
 
     /**
      * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
      */
+    @JsonIgnore
     public long chunkSize() {
         return chunkSize;
     }
@@ -68,6 +80,7 @@ public class DestinationLangchainProcessingConfigModel {
     /**
      * List of fields in the record that should be used to calculate the embedding. All other fields are passed along as meta fields. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
      */
+    @JsonIgnore
     public java.util.List<String> textFields() {
         return textFields;
     }

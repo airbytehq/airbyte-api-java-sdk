@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class SourceZendeskSunshineAPIToken {
     @JsonProperty("email")
     private String email;
 
+    @JsonCreator
     public SourceZendeskSunshineAPIToken(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("email") String email) {
@@ -49,17 +52,21 @@ public class SourceZendeskSunshineAPIToken {
     /**
      * API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk_sunshine"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
-    public Optional<? extends SourceZendeskSunshineSchemasAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceZendeskSunshineSchemasAuthMethod> authMethod() {
+        return (Optional<SourceZendeskSunshineSchemasAuthMethod>) authMethod;
     }
 
     /**
      * The user email for your Zendesk account
      */
+    @JsonIgnore
     public String email() {
         return email;
     }

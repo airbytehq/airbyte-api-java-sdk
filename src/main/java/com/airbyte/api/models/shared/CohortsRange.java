@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +40,7 @@ public class CohortsRange {
     @JsonProperty("startOffset")
     private Optional<? extends Long> startOffset;
 
+    @JsonCreator
     public CohortsRange(
             @JsonProperty("endOffset") long endOffset,
             @JsonProperty("granularity") SourceGoogleAnalyticsDataApiGranularity granularity,
@@ -49,10 +52,17 @@ public class CohortsRange {
         this.granularity = granularity;
         this.startOffset = startOffset;
     }
+    
+    public CohortsRange(
+            long endOffset,
+            SourceGoogleAnalyticsDataApiGranularity granularity) {
+        this(endOffset, granularity, Optional.empty());
+    }
 
     /**
      * Specifies the end date of the extended reporting date range for a cohort report.
      */
+    @JsonIgnore
     public long endOffset() {
         return endOffset;
     }
@@ -60,6 +70,7 @@ public class CohortsRange {
     /**
      * The granularity used to interpret the startOffset and endOffset for the extended reporting date range for a cohort report.
      */
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiGranularity granularity() {
         return granularity;
     }
@@ -67,8 +78,10 @@ public class CohortsRange {
     /**
      * Specifies the start date of the extended reporting date range for a cohort report.
      */
-    public Optional<? extends Long> startOffset() {
-        return startOffset;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> startOffset() {
+        return (Optional<Long>) startOffset;
     }
 
     public final static Builder builder() {

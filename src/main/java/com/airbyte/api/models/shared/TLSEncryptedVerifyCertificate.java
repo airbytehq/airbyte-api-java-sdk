@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class TLSEncryptedVerifyCertificate {
     @JsonProperty("ssl_certificate")
     private String sslCertificate;
 
+    @JsonCreator
     public TLSEncryptedVerifyCertificate(
             @JsonProperty("ssl_certificate") String sslCertificate) {
         Utils.checkNotNull(sslCertificate, "sslCertificate");
@@ -36,6 +39,7 @@ public class TLSEncryptedVerifyCertificate {
         this.sslCertificate = sslCertificate;
     }
 
+    @JsonIgnore
     public SourceOracleEncryptionMethod encryptionMethod() {
         return encryptionMethod;
     }
@@ -43,6 +47,7 @@ public class TLSEncryptedVerifyCertificate {
     /**
      * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
      */
+    @JsonIgnore
     public String sslCertificate() {
         return sslCertificate;
     }

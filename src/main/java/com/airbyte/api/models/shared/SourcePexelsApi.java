@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -63,6 +65,7 @@ public class SourcePexelsApi {
     @JsonProperty("sourceType")
     private PexelsApi sourceType;
 
+    @JsonCreator
     public SourcePexelsApi(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("color") Optional<? extends String> color,
@@ -84,10 +87,17 @@ public class SourcePexelsApi {
         this.size = size;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourcePexelsApi(
+            String apiKey,
+            String query) {
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), query, Optional.empty());
+    }
 
     /**
      * API key is required to access pexels api, For getting your's goto https://www.pexels.com/api/documentation and create account for free.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -95,27 +105,34 @@ public class SourcePexelsApi {
     /**
      * Optional, Desired photo color. Supported colors red, orange, yellow, green, turquoise, blue, violet, pink, brown, black, gray, white or any hexidecimal color code.
      */
-    public Optional<? extends String> color() {
-        return color;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> color() {
+        return (Optional<String>) color;
     }
 
     /**
      * Optional, The locale of the search you are performing. The current supported locales are 'en-US' 'pt-BR' 'es-ES' 'ca-ES' 'de-DE' 'it-IT' 'fr-FR' 'sv-SE' 'id-ID' 'pl-PL' 'ja-JP' 'zh-TW' 'zh-CN' 'ko-KR' 'th-TH' 'nl-NL' 'hu-HU' 'vi-VN' 'cs-CZ' 'da-DK' 'fi-FI' 'uk-UA' 'el-GR' 'ro-RO' 'nb-NO' 'sk-SK' 'tr-TR' 'ru-RU'.
      */
-    public Optional<? extends String> locale() {
-        return locale;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> locale() {
+        return (Optional<String>) locale;
     }
 
     /**
      * Optional, Desired photo orientation. The current supported orientations are landscape, portrait or square
      */
-    public Optional<? extends String> orientation() {
-        return orientation;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> orientation() {
+        return (Optional<String>) orientation;
     }
 
     /**
      * Optional, the search query, Example Ocean, Tigers, Pears, etc.
      */
+    @JsonIgnore
     public String query() {
         return query;
     }
@@ -123,10 +140,13 @@ public class SourcePexelsApi {
     /**
      * Optional, Minimum photo size. The current supported sizes are large(24MP), medium(12MP) or small(4MP).
      */
-    public Optional<? extends String> size() {
-        return size;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> size() {
+        return (Optional<String>) size;
     }
 
+    @JsonIgnore
     public PexelsApi sourceType() {
         return sourceType;
     }

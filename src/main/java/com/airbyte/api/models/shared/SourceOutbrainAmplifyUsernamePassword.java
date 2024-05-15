@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceOutbrainAmplifyUsernamePassword {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceOutbrainAmplifyUsernamePassword(
             @JsonProperty("password") String password,
             @JsonProperty("username") String username) {
@@ -45,10 +48,12 @@ public class SourceOutbrainAmplifyUsernamePassword {
     /**
      * Add Password for authentication.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
 
+    @JsonIgnore
     public BothUsernameAndPasswordIsRequiredForAuthenticationRequest type() {
         return type;
     }
@@ -56,6 +61,7 @@ public class SourceOutbrainAmplifyUsernamePassword {
     /**
      * Add Username for authentication.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

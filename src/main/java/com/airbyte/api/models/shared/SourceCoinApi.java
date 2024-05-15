@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -77,6 +79,7 @@ public class SourceCoinApi {
     @JsonProperty("symbol_id")
     private String symbolId;
 
+    @JsonCreator
     public SourceCoinApi(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("end_date") Optional<? extends String> endDate,
@@ -101,10 +104,19 @@ public class SourceCoinApi {
         this.startDate = startDate;
         this.symbolId = symbolId;
     }
+    
+    public SourceCoinApi(
+            String apiKey,
+            String period,
+            String startDate,
+            String symbolId) {
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), period, startDate, symbolId);
+    }
 
     /**
      * API Key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -115,16 +127,20 @@ public class SourceCoinApi {
      * elements reaches its limit.
      * 
      */
-    public Optional<? extends String> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
     /**
      * The environment to use. Either sandbox or production.
      * 
      */
-    public Optional<? extends Environment> environment() {
-        return environment;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Environment> environment() {
+        return (Optional<Environment>) environment;
     }
 
     /**
@@ -133,17 +149,21 @@ public class SourceCoinApi {
      * request for pricing purposes. Maximum value is 100000.
      * 
      */
-    public Optional<? extends Long> limit() {
-        return limit;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> limit() {
+        return (Optional<Long>) limit;
     }
 
     /**
      * The period to use. See the documentation for a list. https://docs.coinapi.io/#list-all-periods-get
      */
+    @JsonIgnore
     public String period() {
         return period;
     }
 
+    @JsonIgnore
     public CoinApi sourceType() {
         return sourceType;
     }
@@ -151,6 +171,7 @@ public class SourceCoinApi {
     /**
      * The start date in ISO 8601 format.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }
@@ -160,6 +181,7 @@ public class SourceCoinApi {
      * https://docs.coinapi.io/#list-all-symbols-get
      * 
      */
+    @JsonIgnore
     public String symbolId() {
         return symbolId;
     }

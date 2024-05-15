@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +40,7 @@ public class SourceIp2whois {
     @JsonProperty("sourceType")
     private Optional<? extends Ip2whois> sourceType;
 
+    @JsonCreator
     public SourceIp2whois(
             @JsonProperty("api_key") Optional<? extends String> apiKey,
             @JsonProperty("domain") Optional<? extends String> domain) {
@@ -47,23 +50,33 @@ public class SourceIp2whois {
         this.domain = domain;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceIp2whois() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> apiKey() {
-        return apiKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiKey() {
+        return (Optional<String>) apiKey;
     }
 
     /**
      * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> domain() {
-        return domain;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> domain() {
+        return (Optional<String>) domain;
     }
 
-    public Optional<? extends Ip2whois> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Ip2whois> sourceType() {
+        return (Optional<Ip2whois>) sourceType;
     }
 
     public final static Builder builder() {

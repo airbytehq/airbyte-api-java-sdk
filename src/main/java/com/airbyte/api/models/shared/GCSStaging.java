@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class GCSStaging {
     @JsonProperty("method")
     private Method method;
 
+    @JsonCreator
     public GCSStaging(
             @JsonProperty("credential") Credential credential,
             @JsonProperty("gcs_bucket_name") String gcsBucketName,
@@ -66,10 +69,18 @@ public class GCSStaging {
         this.keepFilesInGcsBucket = keepFilesInGcsBucket;
         this.method = Builder._SINGLETON_VALUE_Method.value();
     }
+    
+    public GCSStaging(
+            Credential credential,
+            String gcsBucketName,
+            String gcsBucketPath) {
+        this(credential, gcsBucketName, gcsBucketPath, Optional.empty());
+    }
 
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public Credential credential() {
         return credential;
     }
@@ -77,6 +88,7 @@ public class GCSStaging {
     /**
      * The name of the GCS bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String gcsBucketName() {
         return gcsBucketName;
     }
@@ -84,6 +96,7 @@ public class GCSStaging {
     /**
      * Directory under the GCS bucket where data will be written.
      */
+    @JsonIgnore
     public String gcsBucketPath() {
         return gcsBucketPath;
     }
@@ -91,10 +104,13 @@ public class GCSStaging {
     /**
      * This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
      */
-    public Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket() {
-        return keepFilesInGcsBucket;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket() {
+        return (Optional<GCSTmpFilesAfterwardProcessing>) keepFilesInGcsBucket;
     }
 
+    @JsonIgnore
     public Method method() {
         return method;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class PrivateApp {
     @JsonProperty("credentials_title")
     private SourceHubspotSchemasAuthType credentialsTitle;
 
+    @JsonCreator
     public PrivateApp(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -39,6 +42,7 @@ public class PrivateApp {
     /**
      * HubSpot Access token. See the &lt;a href="https://developers.hubspot.com/docs/api/private-apps"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -46,6 +50,7 @@ public class PrivateApp {
     /**
      * Name of the credentials set
      */
+    @JsonIgnore
     public SourceHubspotSchemasAuthType credentialsTitle() {
         return credentialsTitle;
     }

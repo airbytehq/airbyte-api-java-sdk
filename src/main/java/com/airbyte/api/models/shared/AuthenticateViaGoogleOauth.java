@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class AuthenticateViaGoogleOauth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public AuthenticateViaGoogleOauth(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") String clientId,
@@ -64,21 +67,33 @@ public class AuthenticateViaGoogleOauth {
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
     }
+    
+    public AuthenticateViaGoogleOauth(
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(Optional.empty(), clientId, clientSecret, refreshToken);
+    }
 
     /**
      * Access Token for making authenticated requests.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
-    public Optional<? extends SourceGoogleAnalyticsDataApiAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiAuthType> authType() {
+        return (Optional<SourceGoogleAnalyticsDataApiAuthType>) authType;
     }
 
     /**
      * The Client ID of your Google Analytics developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -86,6 +101,7 @@ public class AuthenticateViaGoogleOauth {
     /**
      * The Client Secret of your Google Analytics developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -93,6 +109,7 @@ public class AuthenticateViaGoogleOauth {
     /**
      * The token for obtaining a new access token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

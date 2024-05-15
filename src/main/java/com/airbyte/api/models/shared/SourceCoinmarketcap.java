@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceCoinmarketcap {
     @JsonProperty("symbols")
     private Optional<? extends java.util.List<String>> symbols;
 
+    @JsonCreator
     public SourceCoinmarketcap(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("data_type") DataType dataType,
@@ -54,10 +57,17 @@ public class SourceCoinmarketcap {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.symbols = symbols;
     }
+    
+    public SourceCoinmarketcap(
+            String apiKey,
+            DataType dataType) {
+        this(apiKey, dataType, Optional.empty());
+    }
 
     /**
      * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -65,10 +75,12 @@ public class SourceCoinmarketcap {
     /**
      * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public DataType dataType() {
         return dataType;
     }
 
+    @JsonIgnore
     public Coinmarketcap sourceType() {
         return sourceType;
     }
@@ -76,8 +88,10 @@ public class SourceCoinmarketcap {
     /**
      * Cryptocurrency symbols. (only used for quotes stream)
      */
-    public Optional<? extends java.util.List<String>> symbols() {
-        return symbols;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> symbols() {
+        return (Optional<java.util.List<String>>) symbols;
     }
 
     public final static Builder builder() {

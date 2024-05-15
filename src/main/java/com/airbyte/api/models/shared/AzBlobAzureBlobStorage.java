@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class AzBlobAzureBlobStorage {
     @JsonProperty("storage_account")
     private String storageAccount;
 
+    @JsonCreator
     public AzBlobAzureBlobStorage(
             @JsonProperty("sas_token") Optional<? extends String> sasToken,
             @JsonProperty("shared_key") Optional<? extends String> sharedKey,
@@ -55,21 +58,31 @@ public class AzBlobAzureBlobStorage {
         this.storage = Builder._SINGLETON_VALUE_Storage.value();
         this.storageAccount = storageAccount;
     }
+    
+    public AzBlobAzureBlobStorage(
+            String storageAccount) {
+        this(Optional.empty(), Optional.empty(), storageAccount);
+    }
 
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.
      */
-    public Optional<? extends String> sasToken() {
-        return sasToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> sasToken() {
+        return (Optional<String>) sasToken;
     }
 
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a storage account shared key (aka account key or access key). If accessing publicly available data, this field is not necessary.
      */
-    public Optional<? extends String> sharedKey() {
-        return sharedKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> sharedKey() {
+        return (Optional<String>) sharedKey;
     }
 
+    @JsonIgnore
     public SourceFileSchemasProviderStorage storage() {
         return storage;
     }
@@ -77,6 +90,7 @@ public class AzBlobAzureBlobStorage {
     /**
      * The globally unique name of the storage account that the desired blob sits within. See &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank"&gt;here&lt;/a&gt; for more details.
      */
+    @JsonIgnore
     public String storageAccount() {
         return storageAccount;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class DestinationWeaviateCohere {
     @JsonProperty("mode")
     private Optional<? extends DestinationWeaviateSchemasEmbeddingEmbeddingMode> mode;
 
+    @JsonCreator
     public DestinationWeaviateCohere(
             @JsonProperty("cohere_key") String cohereKey) {
         Utils.checkNotNull(cohereKey, "cohereKey");
@@ -37,12 +40,15 @@ public class DestinationWeaviateCohere {
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
+    @JsonIgnore
     public String cohereKey() {
         return cohereKey;
     }
 
-    public Optional<? extends DestinationWeaviateSchemasEmbeddingEmbeddingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationWeaviateSchemasEmbeddingEmbeddingMode> mode() {
+        return (Optional<DestinationWeaviateSchemasEmbeddingEmbeddingMode>) mode;
     }
 
     public final static Builder builder() {

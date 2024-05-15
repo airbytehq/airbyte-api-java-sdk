@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -46,6 +48,7 @@ public class StreamProperties {
     @JsonProperty("syncModes")
     private Optional<? extends java.util.List<ConnectionSyncModeEnum>> syncModes;
 
+    @JsonCreator
     public StreamProperties(
             @JsonProperty("defaultCursorField") Optional<? extends java.util.List<String>> defaultCursorField,
             @JsonProperty("propertyFields") Optional<? extends java.util.List<java.util.List<String>>> propertyFields,
@@ -66,29 +69,45 @@ public class StreamProperties {
         this.streamName = streamName;
         this.syncModes = syncModes;
     }
-
-    public Optional<? extends java.util.List<String>> defaultCursorField() {
-        return defaultCursorField;
+    
+    public StreamProperties() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
-    public Optional<? extends java.util.List<java.util.List<String>>> propertyFields() {
-        return propertyFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> defaultCursorField() {
+        return (Optional<java.util.List<String>>) defaultCursorField;
     }
 
-    public Optional<? extends Boolean> sourceDefinedCursorField() {
-        return sourceDefinedCursorField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<java.util.List<String>>> propertyFields() {
+        return (Optional<java.util.List<java.util.List<String>>>) propertyFields;
     }
 
-    public Optional<? extends java.util.List<java.util.List<String>>> sourceDefinedPrimaryKey() {
-        return sourceDefinedPrimaryKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> sourceDefinedCursorField() {
+        return (Optional<Boolean>) sourceDefinedCursorField;
     }
 
-    public Optional<? extends String> streamName() {
-        return streamName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<java.util.List<String>>> sourceDefinedPrimaryKey() {
+        return (Optional<java.util.List<java.util.List<String>>>) sourceDefinedPrimaryKey;
     }
 
-    public Optional<? extends java.util.List<ConnectionSyncModeEnum>> syncModes() {
-        return syncModes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> streamName() {
+        return (Optional<String>) streamName;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ConnectionSyncModeEnum>> syncModes() {
+        return (Optional<java.util.List<ConnectionSyncModeEnum>>) syncModes;
     }
 
     public final static Builder builder() {

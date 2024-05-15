@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,6 +55,7 @@ public class SourceTvmazeSchedule {
     @JsonProperty("web_schedule_country_code")
     private Optional<? extends String> webScheduleCountryCode;
 
+    @JsonCreator
     public SourceTvmazeSchedule(
             @JsonProperty("domestic_schedule_country_code") String domesticScheduleCountryCode,
             @JsonProperty("end_date") Optional<? extends String> endDate,
@@ -68,10 +71,17 @@ public class SourceTvmazeSchedule {
         this.startDate = startDate;
         this.webScheduleCountryCode = webScheduleCountryCode;
     }
+    
+    public SourceTvmazeSchedule(
+            String domesticScheduleCountryCode,
+            String startDate) {
+        this(domesticScheduleCountryCode, Optional.empty(), startDate, Optional.empty());
+    }
 
     /**
      * Country code for domestic TV schedule retrieval.
      */
+    @JsonIgnore
     public String domesticScheduleCountryCode() {
         return domesticScheduleCountryCode;
     }
@@ -80,10 +90,13 @@ public class SourceTvmazeSchedule {
      * End date for TV schedule retrieval. May be in the future. Optional.
      * 
      */
-    public Optional<? extends String> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
+    @JsonIgnore
     public TvmazeSchedule sourceType() {
         return sourceType;
     }
@@ -91,6 +104,7 @@ public class SourceTvmazeSchedule {
     /**
      * Start date for TV schedule retrieval. May be in the future.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }
@@ -101,8 +115,10 @@ public class SourceTvmazeSchedule {
      * set to 'global' for just global web channels.
      * 
      */
-    public Optional<? extends String> webScheduleCountryCode() {
-        return webScheduleCountryCode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> webScheduleCountryCode() {
+        return (Optional<String>) webScheduleCountryCode;
     }
 
     public final static Builder builder() {

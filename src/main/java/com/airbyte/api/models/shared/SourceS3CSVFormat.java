@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -67,6 +69,13 @@ public class SourceS3CSVFormat {
     private Optional<? extends SourceS3CSVHeaderDefinition> headerDefinition;
 
     /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ignore_errors_on_fields_mismatch")
+    private Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch;
+
+    /**
      * How to infer the types of the columns. If none, inference default to strings.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -115,6 +124,7 @@ public class SourceS3CSVFormat {
     @JsonProperty("true_values")
     private Optional<? extends java.util.List<String>> trueValues;
 
+    @JsonCreator
     public SourceS3CSVFormat(
             @JsonProperty("delimiter") Optional<? extends String> delimiter,
             @JsonProperty("double_quote") Optional<? extends Boolean> doubleQuote,
@@ -122,6 +132,7 @@ public class SourceS3CSVFormat {
             @JsonProperty("escape_char") Optional<? extends String> escapeChar,
             @JsonProperty("false_values") Optional<? extends java.util.List<String>> falseValues,
             @JsonProperty("header_definition") Optional<? extends SourceS3CSVHeaderDefinition> headerDefinition,
+            @JsonProperty("ignore_errors_on_fields_mismatch") Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch,
             @JsonProperty("inference_type") Optional<? extends SourceS3InferenceType> inferenceType,
             @JsonProperty("null_values") Optional<? extends java.util.List<String>> nullValues,
             @JsonProperty("quote_char") Optional<? extends String> quoteChar,
@@ -135,6 +146,7 @@ public class SourceS3CSVFormat {
         Utils.checkNotNull(escapeChar, "escapeChar");
         Utils.checkNotNull(falseValues, "falseValues");
         Utils.checkNotNull(headerDefinition, "headerDefinition");
+        Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
         Utils.checkNotNull(inferenceType, "inferenceType");
         Utils.checkNotNull(nullValues, "nullValues");
         Utils.checkNotNull(quoteChar, "quoteChar");
@@ -149,6 +161,7 @@ public class SourceS3CSVFormat {
         this.falseValues = falseValues;
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
         this.headerDefinition = headerDefinition;
+        this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
         this.inferenceType = inferenceType;
         this.nullValues = nullValues;
         this.quoteChar = quoteChar;
@@ -157,100 +170,141 @@ public class SourceS3CSVFormat {
         this.stringsCanBeNull = stringsCanBeNull;
         this.trueValues = trueValues;
     }
+    
+    public SourceS3CSVFormat() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The character delimiting individual cells in the CSV data. This may only be a 1-character string. For tab-delimited data enter '\t'.
      */
-    public Optional<? extends String> delimiter() {
-        return delimiter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> delimiter() {
+        return (Optional<String>) delimiter;
     }
 
     /**
      * Whether two quotes in a quoted CSV value denote a single quote in the data.
      */
-    public Optional<? extends Boolean> doubleQuote() {
-        return doubleQuote;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> doubleQuote() {
+        return (Optional<Boolean>) doubleQuote;
     }
 
     /**
      * The character encoding of the CSV data. Leave blank to default to &lt;strong&gt;UTF8&lt;/strong&gt;. See &lt;a href="https://docs.python.org/3/library/codecs.html#standard-encodings" target="_blank"&gt;list of python encodings&lt;/a&gt; for allowable options.
      */
-    public Optional<? extends String> encoding() {
-        return encoding;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> encoding() {
+        return (Optional<String>) encoding;
     }
 
     /**
      * The character used for escaping special characters. To disallow escaping, leave this field blank.
      */
-    public Optional<? extends String> escapeChar() {
-        return escapeChar;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> escapeChar() {
+        return (Optional<String>) escapeChar;
     }
 
     /**
      * A set of case-sensitive strings that should be interpreted as false values.
      */
-    public Optional<? extends java.util.List<String>> falseValues() {
-        return falseValues;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> falseValues() {
+        return (Optional<java.util.List<String>>) falseValues;
     }
 
-    public Optional<? extends SourceS3SchemasStreamsFormatFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3SchemasStreamsFormatFiletype> filetype() {
+        return (Optional<SourceS3SchemasStreamsFormatFiletype>) filetype;
     }
 
     /**
      * How headers will be defined. `User Provided` assumes the CSV does not have a header row and uses the headers provided and `Autogenerated` assumes the CSV does not have a header row and the CDK will generate headers using for `f{i}` where `i` is the index starting from 0. Else, the default behavior is to use the header from the CSV file. If a user wants to autogenerate or provide column names for a CSV having headers, they can skip rows.
      */
-    public Optional<? extends SourceS3CSVHeaderDefinition> headerDefinition() {
-        return headerDefinition;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3CSVHeaderDefinition> headerDefinition() {
+        return (Optional<SourceS3CSVHeaderDefinition>) headerDefinition;
+    }
+
+    /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ignoreErrorsOnFieldsMismatch() {
+        return (Optional<Boolean>) ignoreErrorsOnFieldsMismatch;
     }
 
     /**
      * How to infer the types of the columns. If none, inference default to strings.
      */
-    public Optional<? extends SourceS3InferenceType> inferenceType() {
-        return inferenceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3InferenceType> inferenceType() {
+        return (Optional<SourceS3InferenceType>) inferenceType;
     }
 
     /**
      * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
      */
-    public Optional<? extends java.util.List<String>> nullValues() {
-        return nullValues;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> nullValues() {
+        return (Optional<java.util.List<String>>) nullValues;
     }
 
     /**
      * The character used for quoting CSV values. To disallow quoting, make this field blank.
      */
-    public Optional<? extends String> quoteChar() {
-        return quoteChar;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> quoteChar() {
+        return (Optional<String>) quoteChar;
     }
 
     /**
      * The number of rows to skip after the header row.
      */
-    public Optional<? extends Long> skipRowsAfterHeader() {
-        return skipRowsAfterHeader;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> skipRowsAfterHeader() {
+        return (Optional<Long>) skipRowsAfterHeader;
     }
 
     /**
      * The number of rows to skip before the header row. For example, if the header row is on the 3rd row, enter 2 in this field.
      */
-    public Optional<? extends Long> skipRowsBeforeHeader() {
-        return skipRowsBeforeHeader;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> skipRowsBeforeHeader() {
+        return (Optional<Long>) skipRowsBeforeHeader;
     }
 
     /**
      * Whether strings can be interpreted as null values. If true, strings that match the null_values set will be interpreted as null. If false, strings that match the null_values set will be interpreted as the string itself.
      */
-    public Optional<? extends Boolean> stringsCanBeNull() {
-        return stringsCanBeNull;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> stringsCanBeNull() {
+        return (Optional<Boolean>) stringsCanBeNull;
     }
 
     /**
      * A set of case-sensitive strings that should be interpreted as true values.
      */
-    public Optional<? extends java.util.List<String>> trueValues() {
-        return trueValues;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> trueValues() {
+        return (Optional<java.util.List<String>>) trueValues;
     }
 
     public final static Builder builder() {
@@ -362,6 +416,24 @@ public class SourceS3CSVFormat {
     public SourceS3CSVFormat withHeaderDefinition(Optional<? extends SourceS3CSVHeaderDefinition> headerDefinition) {
         Utils.checkNotNull(headerDefinition, "headerDefinition");
         this.headerDefinition = headerDefinition;
+        return this;
+    }
+
+    /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    public SourceS3CSVFormat withIgnoreErrorsOnFieldsMismatch(boolean ignoreErrorsOnFieldsMismatch) {
+        Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+        this.ignoreErrorsOnFieldsMismatch = Optional.ofNullable(ignoreErrorsOnFieldsMismatch);
+        return this;
+    }
+
+    /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    public SourceS3CSVFormat withIgnoreErrorsOnFieldsMismatch(Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch) {
+        Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+        this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
         return this;
     }
 
@@ -508,6 +580,7 @@ public class SourceS3CSVFormat {
             java.util.Objects.deepEquals(this.falseValues, other.falseValues) &&
             java.util.Objects.deepEquals(this.filetype, other.filetype) &&
             java.util.Objects.deepEquals(this.headerDefinition, other.headerDefinition) &&
+            java.util.Objects.deepEquals(this.ignoreErrorsOnFieldsMismatch, other.ignoreErrorsOnFieldsMismatch) &&
             java.util.Objects.deepEquals(this.inferenceType, other.inferenceType) &&
             java.util.Objects.deepEquals(this.nullValues, other.nullValues) &&
             java.util.Objects.deepEquals(this.quoteChar, other.quoteChar) &&
@@ -527,6 +600,7 @@ public class SourceS3CSVFormat {
             falseValues,
             filetype,
             headerDefinition,
+            ignoreErrorsOnFieldsMismatch,
             inferenceType,
             nullValues,
             quoteChar,
@@ -546,6 +620,7 @@ public class SourceS3CSVFormat {
                 "falseValues", falseValues,
                 "filetype", filetype,
                 "headerDefinition", headerDefinition,
+                "ignoreErrorsOnFieldsMismatch", ignoreErrorsOnFieldsMismatch,
                 "inferenceType", inferenceType,
                 "nullValues", nullValues,
                 "quoteChar", quoteChar,
@@ -568,6 +643,8 @@ public class SourceS3CSVFormat {
         private Optional<? extends java.util.List<String>> falseValues = Optional.empty();
  
         private Optional<? extends SourceS3CSVHeaderDefinition> headerDefinition = Optional.empty();
+ 
+        private Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch;
  
         private Optional<? extends SourceS3InferenceType> inferenceType;
  
@@ -692,6 +769,24 @@ public class SourceS3CSVFormat {
         public Builder headerDefinition(Optional<? extends SourceS3CSVHeaderDefinition> headerDefinition) {
             Utils.checkNotNull(headerDefinition, "headerDefinition");
             this.headerDefinition = headerDefinition;
+            return this;
+        }
+
+        /**
+         * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+         */
+        public Builder ignoreErrorsOnFieldsMismatch(boolean ignoreErrorsOnFieldsMismatch) {
+            Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+            this.ignoreErrorsOnFieldsMismatch = Optional.ofNullable(ignoreErrorsOnFieldsMismatch);
+            return this;
+        }
+
+        /**
+         * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+         */
+        public Builder ignoreErrorsOnFieldsMismatch(Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch) {
+            Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+            this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
             return this;
         }
 
@@ -831,6 +926,9 @@ public class SourceS3CSVFormat {
             if (encoding == null) {
                 encoding = _SINGLETON_VALUE_Encoding.value();
             }
+            if (ignoreErrorsOnFieldsMismatch == null) {
+                ignoreErrorsOnFieldsMismatch = _SINGLETON_VALUE_IgnoreErrorsOnFieldsMismatch.value();
+            }
             if (inferenceType == null) {
                 inferenceType = _SINGLETON_VALUE_InferenceType.value();
             }
@@ -853,6 +951,7 @@ public class SourceS3CSVFormat {
                 escapeChar,
                 falseValues,
                 headerDefinition,
+                ignoreErrorsOnFieldsMismatch,
                 inferenceType,
                 nullValues,
                 quoteChar,
@@ -885,6 +984,12 @@ public class SourceS3CSVFormat {
                         "filetype",
                         "\"csv\"",
                         new TypeReference<Optional<? extends SourceS3SchemasStreamsFormatFiletype>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_IgnoreErrorsOnFieldsMismatch =
+                new LazySingletonValue<>(
+                        "ignore_errors_on_fields_mismatch",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends SourceS3InferenceType>> _SINGLETON_VALUE_InferenceType =
                 new LazySingletonValue<>(

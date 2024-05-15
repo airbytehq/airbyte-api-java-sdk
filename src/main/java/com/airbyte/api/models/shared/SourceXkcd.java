@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class SourceXkcd {
     @JsonProperty("sourceType")
     private Optional<? extends Xkcd> sourceType;
 
+    @JsonCreator
     public SourceXkcd() {
         
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
 
-    public Optional<? extends Xkcd> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Xkcd> sourceType() {
+        return (Optional<Xkcd>) sourceType;
     }
 
     public final static Builder builder() {

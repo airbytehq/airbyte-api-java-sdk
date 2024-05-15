@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,13 +29,16 @@ public class DestinationWeaviateFake {
     @JsonProperty("mode")
     private Optional<? extends DestinationWeaviateSchemasEmbeddingEmbedding6Mode> mode;
 
+    @JsonCreator
     public DestinationWeaviateFake() {
         
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
-    public Optional<? extends DestinationWeaviateSchemasEmbeddingEmbedding6Mode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationWeaviateSchemasEmbeddingEmbedding6Mode> mode() {
+        return (Optional<DestinationWeaviateSchemasEmbeddingEmbedding6Mode>) mode;
     }
 
     public final static Builder builder() {

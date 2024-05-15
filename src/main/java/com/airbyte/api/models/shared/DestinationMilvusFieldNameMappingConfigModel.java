@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -28,6 +30,7 @@ public class DestinationMilvusFieldNameMappingConfigModel {
     @JsonProperty("to_field")
     private String toField;
 
+    @JsonCreator
     public DestinationMilvusFieldNameMappingConfigModel(
             @JsonProperty("from_field") String fromField,
             @JsonProperty("to_field") String toField) {
@@ -40,6 +43,7 @@ public class DestinationMilvusFieldNameMappingConfigModel {
     /**
      * The field name in the source
      */
+    @JsonIgnore
     public String fromField() {
         return fromField;
     }
@@ -47,6 +51,7 @@ public class DestinationMilvusFieldNameMappingConfigModel {
     /**
      * The field name to use in the destination
      */
+    @JsonIgnore
     public String toField() {
         return toField;
     }

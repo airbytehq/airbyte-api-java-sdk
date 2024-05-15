@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceMondayOAuth20 {
     @JsonProperty("subdomain")
     private Optional<? extends String> subdomain;
 
+    @JsonCreator
     public SourceMondayOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") String clientId,
@@ -63,14 +66,23 @@ public class SourceMondayOAuth20 {
         this.clientSecret = clientSecret;
         this.subdomain = subdomain;
     }
+    
+    public SourceMondayOAuth20(
+            String accessToken,
+            String clientId,
+            String clientSecret) {
+        this(accessToken, clientId, clientSecret, Optional.empty());
+    }
 
     /**
      * Access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public SourceMondayAuthType authType() {
         return authType;
     }
@@ -78,6 +90,7 @@ public class SourceMondayOAuth20 {
     /**
      * The Client ID of your OAuth application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -85,6 +98,7 @@ public class SourceMondayOAuth20 {
     /**
      * The Client Secret of your OAuth application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -92,8 +106,10 @@ public class SourceMondayOAuth20 {
     /**
      * Slug/subdomain of the account, or the first part of the URL that comes before .monday.com
      */
-    public Optional<? extends String> subdomain() {
-        return subdomain;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> subdomain() {
+        return (Optional<String>) subdomain;
     }
 
     public final static Builder builder() {

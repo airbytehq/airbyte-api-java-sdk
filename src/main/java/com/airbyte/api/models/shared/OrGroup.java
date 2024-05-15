@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class OrGroup {
     @JsonProperty("filter_type")
     private SourceGoogleAnalyticsDataApiFilterType filterType;
 
+    @JsonCreator
     public OrGroup(
             @JsonProperty("expressions") java.util.List<SourceGoogleAnalyticsDataApiExpression> expressions) {
         Utils.checkNotNull(expressions, "expressions");
@@ -33,10 +36,12 @@ public class OrGroup {
         this.filterType = Builder._SINGLETON_VALUE_FilterType.value();
     }
 
+    @JsonIgnore
     public java.util.List<SourceGoogleAnalyticsDataApiExpression> expressions() {
         return expressions;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiFilterType filterType() {
         return filterType;
     }

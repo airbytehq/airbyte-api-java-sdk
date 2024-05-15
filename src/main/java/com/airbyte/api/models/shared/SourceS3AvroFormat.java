@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,22 +33,31 @@ public class SourceS3AvroFormat {
     @JsonProperty("filetype")
     private Optional<? extends SourceS3SchemasStreamsFiletype> filetype;
 
+    @JsonCreator
     public SourceS3AvroFormat(
             @JsonProperty("double_as_string") Optional<? extends Boolean> doubleAsString) {
         Utils.checkNotNull(doubleAsString, "doubleAsString");
         this.doubleAsString = doubleAsString;
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
+    
+    public SourceS3AvroFormat() {
+        this(Optional.empty());
+    }
 
     /**
      * Whether to convert double fields to strings. This is recommended if you have decimal numbers with a high degree of precision because there can be a loss precision when handling floating point numbers.
      */
-    public Optional<? extends Boolean> doubleAsString() {
-        return doubleAsString;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> doubleAsString() {
+        return (Optional<Boolean>) doubleAsString;
     }
 
-    public Optional<? extends SourceS3SchemasStreamsFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3SchemasStreamsFiletype> filetype() {
+        return (Optional<SourceS3SchemasStreamsFiletype>) filetype;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -28,19 +30,28 @@ public class SourceAirtable {
     @JsonProperty("sourceType")
     private Optional<? extends SourceAirtableAirtable> sourceType;
 
+    @JsonCreator
     public SourceAirtable(
             @JsonProperty("credentials") Optional<? extends SourceAirtableAuthentication> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
-
-    public Optional<? extends SourceAirtableAuthentication> credentials() {
-        return credentials;
+    
+    public SourceAirtable() {
+        this(Optional.empty());
     }
 
-    public Optional<? extends SourceAirtableAirtable> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAirtableAuthentication> credentials() {
+        return (Optional<SourceAirtableAuthentication>) credentials;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAirtableAirtable> sourceType() {
+        return (Optional<SourceAirtableAirtable>) sourceType;
     }
 
     public final static Builder builder() {

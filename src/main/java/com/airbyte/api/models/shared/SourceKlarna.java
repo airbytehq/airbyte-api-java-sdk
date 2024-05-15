@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceKlarna {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceKlarna(
             @JsonProperty("password") String password,
             @JsonProperty("playground") Optional<? extends Boolean> playground,
@@ -63,10 +66,18 @@ public class SourceKlarna {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.username = username;
     }
+    
+    public SourceKlarna(
+            String password,
+            SourceKlarnaRegion region,
+            String username) {
+        this(password, Optional.empty(), region, username);
+    }
 
     /**
      * A string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs (https://developers.klarna.com/api/#authentication)
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -74,17 +85,21 @@ public class SourceKlarna {
     /**
      * Propertie defining if connector is used against playground or production environment
      */
-    public Optional<? extends Boolean> playground() {
-        return playground;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> playground() {
+        return (Optional<Boolean>) playground;
     }
 
     /**
      * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
      */
+    @JsonIgnore
     public SourceKlarnaRegion region() {
         return region;
     }
 
+    @JsonIgnore
     public Klarna sourceType() {
         return sourceType;
     }
@@ -92,6 +107,7 @@ public class SourceKlarna {
     /**
      * Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string (https://developers.klarna.com/api/#authentication)
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

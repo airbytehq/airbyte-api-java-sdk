@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -53,6 +55,7 @@ public class AuthenticateViaOAuth {
     @JsonProperty("token_expiry_date")
     private OffsetDateTime tokenExpiryDate;
 
+    @JsonCreator
     public AuthenticateViaOAuth(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") String clientId,
@@ -75,10 +78,12 @@ public class AuthenticateViaOAuth {
     /**
      * Access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public SourceSalesloftAuthType authType() {
         return authType;
     }
@@ -86,6 +91,7 @@ public class AuthenticateViaOAuth {
     /**
      * The Client ID of your Salesloft developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -93,6 +99,7 @@ public class AuthenticateViaOAuth {
     /**
      * The Client Secret of your Salesloft developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -100,6 +107,7 @@ public class AuthenticateViaOAuth {
     /**
      * The token for obtaining a new access token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -107,6 +115,7 @@ public class AuthenticateViaOAuth {
     /**
      * The date-time when the access token should be refreshed.
      */
+    @JsonIgnore
     public OffsetDateTime tokenExpiryDate() {
         return tokenExpiryDate;
     }

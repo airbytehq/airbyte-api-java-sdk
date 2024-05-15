@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -22,6 +24,7 @@ public class Header {
     @JsonProperty("value")
     private String value;
 
+    @JsonCreator
     public Header(
             @JsonProperty("header_key") String headerKey,
             @JsonProperty("value") String value) {
@@ -31,10 +34,12 @@ public class Header {
         this.value = value;
     }
 
+    @JsonIgnore
     public String headerKey() {
         return headerKey;
     }
 
+    @JsonIgnore
     public String value() {
         return value;
     }

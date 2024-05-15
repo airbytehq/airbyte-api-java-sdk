@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -70,6 +72,7 @@ public class SourceSftp {
     @JsonProperty("user")
     private String user;
 
+    @JsonCreator
     public SourceSftp(
             @JsonProperty("credentials") Optional<? extends SourceSftpAuthentication> credentials,
             @JsonProperty("file_pattern") Optional<? extends String> filePattern,
@@ -94,38 +97,53 @@ public class SourceSftp {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.user = user;
     }
+    
+    public SourceSftp(
+            String host,
+            String user) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), host, Optional.empty(), user);
+    }
 
     /**
      * The server authentication method
      */
-    public Optional<? extends SourceSftpAuthentication> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceSftpAuthentication> credentials() {
+        return (Optional<SourceSftpAuthentication>) credentials;
     }
 
     /**
      * The regular expression to specify files for sync in a chosen Folder Path
      */
-    public Optional<? extends String> filePattern() {
-        return filePattern;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> filePattern() {
+        return (Optional<String>) filePattern;
     }
 
     /**
      * Coma separated file types. Currently only 'csv' and 'json' types are supported.
      */
-    public Optional<? extends String> fileTypes() {
-        return fileTypes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> fileTypes() {
+        return (Optional<String>) fileTypes;
     }
 
     /**
      * The directory to search files for sync
      */
-    public Optional<? extends String> folderPath() {
-        return folderPath;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> folderPath() {
+        return (Optional<String>) folderPath;
     }
 
     /**
      * The server host address
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -133,10 +151,13 @@ public class SourceSftp {
     /**
      * The server port
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
+    @JsonIgnore
     public Sftp sourceType() {
         return sourceType;
     }
@@ -144,6 +165,7 @@ public class SourceSftp {
     /**
      * The server user
      */
+    @JsonIgnore
     public String user() {
         return user;
     }

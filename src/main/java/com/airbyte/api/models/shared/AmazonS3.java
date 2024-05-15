@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -61,6 +63,7 @@ public class AmazonS3 {
     @JsonProperty("s3_secret_access_key")
     private String s3SecretAccessKey;
 
+    @JsonCreator
     public AmazonS3(
             @JsonProperty("file_name_pattern") Optional<? extends String> fileNamePattern,
             @JsonProperty("s3_access_key_id") String s3AccessKeyId,
@@ -82,7 +85,16 @@ public class AmazonS3 {
         this.s3BucketRegion = s3BucketRegion;
         this.s3SecretAccessKey = s3SecretAccessKey;
     }
+    
+    public AmazonS3(
+            String s3AccessKeyId,
+            String s3BucketName,
+            String s3BucketPath,
+            String s3SecretAccessKey) {
+        this(Optional.empty(), s3AccessKeyId, s3BucketName, s3BucketPath, Optional.empty(), s3SecretAccessKey);
+    }
 
+    @JsonIgnore
     public DestinationDatabricksDataSourceType dataSourceType() {
         return dataSourceType;
     }
@@ -90,13 +102,16 @@ public class AmazonS3 {
     /**
      * The pattern allows you to set the file-name format for the S3 staging file(s)
      */
-    public Optional<? extends String> fileNamePattern() {
-        return fileNamePattern;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> fileNamePattern() {
+        return (Optional<String>) fileNamePattern;
     }
 
     /**
      * The Access Key Id granting allow one to access the above S3 staging bucket. Airbyte requires Read and Write permissions to the given bucket.
      */
+    @JsonIgnore
     public String s3AccessKeyId() {
         return s3AccessKeyId;
     }
@@ -104,6 +119,7 @@ public class AmazonS3 {
     /**
      * The name of the S3 bucket to use for intermittent staging of the data.
      */
+    @JsonIgnore
     public String s3BucketName() {
         return s3BucketName;
     }
@@ -111,6 +127,7 @@ public class AmazonS3 {
     /**
      * The directory under the S3 bucket where data will be written.
      */
+    @JsonIgnore
     public String s3BucketPath() {
         return s3BucketPath;
     }
@@ -118,13 +135,16 @@ public class AmazonS3 {
     /**
      * The region of the S3 staging bucket to use if utilising a copy strategy.
      */
-    public Optional<? extends DestinationDatabricksS3BucketRegion> s3BucketRegion() {
-        return s3BucketRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationDatabricksS3BucketRegion> s3BucketRegion() {
+        return (Optional<DestinationDatabricksS3BucketRegion>) s3BucketRegion;
     }
 
     /**
      * The corresponding secret to the above access key id.
      */
+    @JsonIgnore
     public String s3SecretAccessKey() {
         return s3SecretAccessKey;
     }

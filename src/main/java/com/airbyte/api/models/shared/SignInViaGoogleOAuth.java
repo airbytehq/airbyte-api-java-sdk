@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SignInViaGoogleOAuth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SignInViaGoogleOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -64,6 +67,7 @@ public class SignInViaGoogleOAuth {
     /**
      * The Client ID of the developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -71,6 +75,7 @@ public class SignInViaGoogleOAuth {
     /**
      * The Client Secret of the developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -78,13 +83,16 @@ public class SignInViaGoogleOAuth {
     /**
      * Authentication Scenario
      */
-    public Optional<? extends SourceGoogleDirectoryCredentialsTitle> credentialsTitle() {
-        return credentialsTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDirectoryCredentialsTitle> credentialsTitle() {
+        return (Optional<SourceGoogleDirectoryCredentialsTitle>) credentialsTitle;
     }
 
     /**
      * The Token for obtaining a new access token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

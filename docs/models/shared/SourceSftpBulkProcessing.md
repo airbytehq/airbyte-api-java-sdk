@@ -1,0 +1,4 @@
+# SourceSftpBulkProcessing
+
+Processing configuration
+

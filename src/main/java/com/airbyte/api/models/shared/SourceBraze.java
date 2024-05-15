@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -39,6 +41,7 @@ public class SourceBraze {
     @JsonProperty("url")
     private String url;
 
+    @JsonCreator
     public SourceBraze(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("start_date") LocalDate startDate,
@@ -55,10 +58,12 @@ public class SourceBraze {
     /**
      * Braze REST API key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Braze sourceType() {
         return sourceType;
     }
@@ -66,6 +71,7 @@ public class SourceBraze {
     /**
      * Rows after this date will be synced
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }
@@ -73,6 +79,7 @@ public class SourceBraze {
     /**
      * Braze REST API endpoint
      */
+    @JsonIgnore
     public String url() {
         return url;
     }

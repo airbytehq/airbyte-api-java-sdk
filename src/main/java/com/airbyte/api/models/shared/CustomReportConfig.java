@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class CustomReportConfig {
     @JsonProperty("reporting_object")
     private ReportingDataObject reportingObject;
 
+    @JsonCreator
     public CustomReportConfig(
             @JsonProperty("name") String name,
             @JsonProperty("report_aggregation") Optional<? extends String> reportAggregation,
@@ -59,10 +62,18 @@ public class CustomReportConfig {
         this.reportColumns = reportColumns;
         this.reportingObject = reportingObject;
     }
+    
+    public CustomReportConfig(
+            String name,
+            java.util.List<String> reportColumns,
+            ReportingDataObject reportingObject) {
+        this(name, Optional.empty(), reportColumns, reportingObject);
+    }
 
     /**
      * The name of the custom report, this name would be used as stream name
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -70,13 +81,16 @@ public class CustomReportConfig {
     /**
      * A list of available aggregations.
      */
-    public Optional<? extends String> reportAggregation() {
-        return reportAggregation;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> reportAggregation() {
+        return (Optional<String>) reportAggregation;
     }
 
     /**
      * A list of available report object columns. You can find it in description of reporting object that you want to add to custom report.
      */
+    @JsonIgnore
     public java.util.List<String> reportColumns() {
         return reportColumns;
     }
@@ -84,6 +98,7 @@ public class CustomReportConfig {
     /**
      * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
      */
+    @JsonIgnore
     public ReportingDataObject reportingObject() {
         return reportingObject;
     }

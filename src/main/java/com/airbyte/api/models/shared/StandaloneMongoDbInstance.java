@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class StandaloneMongoDbInstance {
     @JsonProperty("port")
     private Optional<? extends Long> port;
 
+    @JsonCreator
     public StandaloneMongoDbInstance(
             @JsonProperty("host") String host,
             @JsonProperty("instance") Optional<? extends Instance> instance,
@@ -48,23 +51,33 @@ public class StandaloneMongoDbInstance {
         this.instance = instance;
         this.port = port;
     }
+    
+    public StandaloneMongoDbInstance(
+            String host) {
+        this(host, Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Host of a Mongo database to be replicated.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
 
-    public Optional<? extends Instance> instance() {
-        return instance;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Instance> instance() {
+        return (Optional<Instance>) instance;
     }
 
     /**
      * The Port of a Mongo database to be replicated.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     public final static Builder builder() {

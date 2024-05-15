@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class JSONLinesNewlineDelimitedJSON {
     @JsonProperty("format_type")
     private Optional<? extends FormatTypeWildcard> formatType;
 
+    @JsonCreator
     public JSONLinesNewlineDelimitedJSON(
             @JsonProperty("compression_codec") Optional<? extends CompressionCodecOptional> compressionCodec,
             @JsonProperty("format_type") Optional<? extends FormatTypeWildcard> formatType) {
@@ -39,16 +42,24 @@ public class JSONLinesNewlineDelimitedJSON {
         this.compressionCodec = compressionCodec;
         this.formatType = formatType;
     }
+    
+    public JSONLinesNewlineDelimitedJSON() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * The compression algorithm used to compress data.
      */
-    public Optional<? extends CompressionCodecOptional> compressionCodec() {
-        return compressionCodec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CompressionCodecOptional> compressionCodec() {
+        return (Optional<CompressionCodecOptional>) compressionCodec;
     }
 
-    public Optional<? extends FormatTypeWildcard> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<FormatTypeWildcard> formatType() {
+        return (Optional<FormatTypeWildcard>) formatType;
     }
 
     public final static Builder builder() {

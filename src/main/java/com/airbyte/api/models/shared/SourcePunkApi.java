@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourcePunkApi {
     @JsonProperty("sourceType")
     private PunkApi sourceType;
 
+    @JsonCreator
     public SourcePunkApi(
             @JsonProperty("brewed_after") String brewedAfter,
             @JsonProperty("brewed_before") String brewedBefore,
@@ -54,10 +57,17 @@ public class SourcePunkApi {
         this.id = id;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourcePunkApi(
+            String brewedAfter,
+            String brewedBefore) {
+        this(brewedAfter, brewedBefore, Optional.empty());
+    }
 
     /**
      * To extract specific data with Unique ID
      */
+    @JsonIgnore
     public String brewedAfter() {
         return brewedAfter;
     }
@@ -65,6 +75,7 @@ public class SourcePunkApi {
     /**
      * To extract specific data with Unique ID
      */
+    @JsonIgnore
     public String brewedBefore() {
         return brewedBefore;
     }
@@ -72,10 +83,13 @@ public class SourcePunkApi {
     /**
      * To extract specific data with Unique ID
      */
-    public Optional<? extends String> id() {
-        return id;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> id() {
+        return (Optional<String>) id;
     }
 
+    @JsonIgnore
     public PunkApi sourceType() {
         return sourceType;
     }

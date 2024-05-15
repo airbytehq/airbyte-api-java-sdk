@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class DestinationWeaviateUsernamePassword {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationWeaviateUsernamePassword(
             @JsonProperty("password") String password,
             @JsonProperty("username") String username) {
@@ -49,13 +52,16 @@ public class DestinationWeaviateUsernamePassword {
         this.username = username;
     }
 
-    public Optional<? extends DestinationWeaviateSchemasIndexingAuthMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationWeaviateSchemasIndexingAuthMode> mode() {
+        return (Optional<DestinationWeaviateSchemasIndexingAuthMode>) mode;
     }
 
     /**
      * Password for the Weaviate cluster
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -63,6 +69,7 @@ public class DestinationWeaviateUsernamePassword {
     /**
      * Username for the Weaviate cluster
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

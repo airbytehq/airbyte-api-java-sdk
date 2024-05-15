@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
     @JsonProperty("format_type")
     private Optional<? extends DestinationGcsSchemasFormatFormatType> formatType;
 
+    @JsonCreator
     public DestinationGcsJSONLinesNewlineDelimitedJSON(
             @JsonProperty("compression") Optional<? extends DestinationGcsCompression> compression,
             @JsonProperty("format_type") Optional<? extends DestinationGcsSchemasFormatFormatType> formatType) {
@@ -39,16 +42,24 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
         this.compression = compression;
         this.formatType = formatType;
     }
+    
+    public DestinationGcsJSONLinesNewlineDelimitedJSON() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
      */
-    public Optional<? extends DestinationGcsCompression> compression() {
-        return compression;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsCompression> compression() {
+        return (Optional<DestinationGcsCompression>) compression;
     }
 
-    public Optional<? extends DestinationGcsSchemasFormatFormatType> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasFormatFormatType> formatType() {
+        return (Optional<DestinationGcsSchemasFormatFormatType>) formatType;
     }
 
     public final static Builder builder() {

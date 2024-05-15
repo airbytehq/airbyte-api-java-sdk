@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class StreamConfiguration {
     @JsonProperty("syncMode")
     private Optional<? extends ConnectionSyncModeEnum> syncMode;
 
+    @JsonCreator
     public StreamConfiguration(
             @JsonProperty("cursorField") Optional<? extends java.util.List<String>> cursorField,
             @JsonProperty("name") String name,
@@ -57,14 +60,22 @@ public class StreamConfiguration {
         this.primaryKey = primaryKey;
         this.syncMode = syncMode;
     }
+    
+    public StreamConfiguration(
+            String name) {
+        this(Optional.empty(), name, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Path to the field that will be used to determine if a record is new or modified since the last sync. This field is REQUIRED if `sync_mode` is `incremental` unless there is a default.
      */
-    public Optional<? extends java.util.List<String>> cursorField() {
-        return cursorField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> cursorField() {
+        return (Optional<java.util.List<String>>) cursorField;
     }
 
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -72,12 +83,16 @@ public class StreamConfiguration {
     /**
      * Paths to the fields that will be used as primary key. This field is REQUIRED if `destination_sync_mode` is `*_dedup` unless it is already supplied by the source schema.
      */
-    public Optional<? extends java.util.List<java.util.List<String>>> primaryKey() {
-        return primaryKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<java.util.List<String>>> primaryKey() {
+        return (Optional<java.util.List<java.util.List<String>>>) primaryKey;
     }
 
-    public Optional<? extends ConnectionSyncModeEnum> syncMode() {
-        return syncMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ConnectionSyncModeEnum> syncMode() {
+        return (Optional<ConnectionSyncModeEnum>) syncMode;
     }
 
     public final static Builder builder() {

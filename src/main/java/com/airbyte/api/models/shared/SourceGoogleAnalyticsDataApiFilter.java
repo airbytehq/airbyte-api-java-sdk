@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class SourceGoogleAnalyticsDataApiFilter {
     @JsonProperty("filter_type")
     private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiFilter(
             @JsonProperty("field_name") String fieldName,
             @JsonProperty("filter") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilter filter) {
@@ -43,16 +46,20 @@ public class SourceGoogleAnalyticsDataApiFilter {
         this.filterType = Builder._SINGLETON_VALUE_FilterType.value();
     }
 
+    @JsonIgnore
     public String fieldName() {
         return fieldName;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilter filter() {
         return filter;
     }
 
-    public Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType() {
-        return filterType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>) filterType;
     }
 
     public final static Builder builder() {

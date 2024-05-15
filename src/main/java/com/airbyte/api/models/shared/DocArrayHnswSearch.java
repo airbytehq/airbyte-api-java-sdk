@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class DocArrayHnswSearch {
     @JsonProperty("mode")
     private Optional<? extends DestinationLangchainSchemasIndexingIndexingMode> mode;
 
+    @JsonCreator
     public DocArrayHnswSearch(
             @JsonProperty("destination_path") String destinationPath) {
         Utils.checkNotNull(destinationPath, "destinationPath");
@@ -43,12 +46,15 @@ public class DocArrayHnswSearch {
     /**
      * Path to the directory where hnswlib and meta data files will be written. The files will be placed inside that local mount. All files in the specified destination directory will be deleted on each run.
      */
+    @JsonIgnore
     public String destinationPath() {
         return destinationPath;
     }
 
-    public Optional<? extends DestinationLangchainSchemasIndexingIndexingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationLangchainSchemasIndexingIndexingMode> mode() {
+        return (Optional<DestinationLangchainSchemasIndexingIndexingMode>) mode;
     }
 
     public final static Builder builder() {

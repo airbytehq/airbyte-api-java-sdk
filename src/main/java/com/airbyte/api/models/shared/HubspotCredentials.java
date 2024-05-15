@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class HubspotCredentials {
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
 
+    @JsonCreator
     public HubspotCredentials(
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret) {
@@ -41,19 +44,27 @@ public class HubspotCredentials {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
+    
+    public HubspotCredentials() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Client ID of your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this ID.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The client secret for your HubSpot developer application. See the &lt;a href="https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart"&gt;Hubspot docs&lt;/a&gt; if you need help finding this secret.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     public final static Builder builder() {

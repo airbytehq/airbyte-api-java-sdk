@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class SourceConvex {
     @JsonProperty("sourceType")
     private SourceConvexConvex sourceType;
 
+    @JsonCreator
     public SourceConvex(
             @JsonProperty("access_key") String accessKey,
             @JsonProperty("deployment_url") String deploymentUrl) {
@@ -42,14 +45,17 @@ public class SourceConvex {
     /**
      * API access key used to retrieve data from Convex.
      */
+    @JsonIgnore
     public String accessKey() {
         return accessKey;
     }
 
+    @JsonIgnore
     public String deploymentUrl() {
         return deploymentUrl;
     }
 
+    @JsonIgnore
     public SourceConvexConvex sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class ParquetColumnarStorage {
     @JsonProperty("format_type")
     private Optional<? extends DestinationAwsDatalakeFormatTypeWildcard> formatType;
 
+    @JsonCreator
     public ParquetColumnarStorage(
             @JsonProperty("compression_codec") Optional<? extends DestinationAwsDatalakeCompressionCodecOptional> compressionCodec,
             @JsonProperty("format_type") Optional<? extends DestinationAwsDatalakeFormatTypeWildcard> formatType) {
@@ -39,16 +42,24 @@ public class ParquetColumnarStorage {
         this.compressionCodec = compressionCodec;
         this.formatType = formatType;
     }
+    
+    public ParquetColumnarStorage() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * The compression algorithm used to compress data.
      */
-    public Optional<? extends DestinationAwsDatalakeCompressionCodecOptional> compressionCodec() {
-        return compressionCodec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationAwsDatalakeCompressionCodecOptional> compressionCodec() {
+        return (Optional<DestinationAwsDatalakeCompressionCodecOptional>) compressionCodec;
     }
 
-    public Optional<? extends DestinationAwsDatalakeFormatTypeWildcard> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationAwsDatalakeFormatTypeWildcard> formatType() {
+        return (Optional<DestinationAwsDatalakeFormatTypeWildcard>) formatType;
     }
 
     public final static Builder builder() {

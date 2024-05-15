@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -53,6 +55,11 @@ public class OAuthCredentialsConfiguration {
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Asana>(){}));
     }
 
+    public static OAuthCredentialsConfiguration of(AzureBlobStorage value) {
+        Utils.checkNotNull(value, "value");
+        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AzureBlobStorage>(){}));
+    }
+
     public static OAuthCredentialsConfiguration of(BingAds value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BingAds>(){}));
@@ -96,11 +103,6 @@ public class OAuthCredentialsConfiguration {
     public static OAuthCredentialsConfiguration of(GoogleSheets value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GoogleSheets>(){}));
-    }
-
-    public static OAuthCredentialsConfiguration of(Harvest value) {
-        Utils.checkNotNull(value, "value");
-        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Harvest>(){}));
     }
 
     public static OAuthCredentialsConfiguration of(Hubspot value) {
@@ -260,6 +262,7 @@ public class OAuthCredentialsConfiguration {
      * <li>{@code AmazonAds}</li>
      * <li>{@code AmazonSellerPartner}</li>
      * <li>{@code Asana}</li>
+     * <li>{@code AzureBlobStorage}</li>
      * <li>{@code BingAds}</li>
      * <li>{@code FacebookMarketing}</li>
      * <li>{@code Github}</li>
@@ -269,7 +272,6 @@ public class OAuthCredentialsConfiguration {
      * <li>{@code GoogleDrive}</li>
      * <li>{@code GoogleSearchConsole}</li>
      * <li>{@code GoogleSheets}</li>
-     * <li>{@code Harvest}</li>
      * <li>{@code Hubspot}</li>
      * <li>{@code Instagram}</li>
      * <li>{@code Intercom}</li>
@@ -343,6 +345,7 @@ public class OAuthCredentialsConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<AmazonAds>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<AmazonSellerPartner>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Asana>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<AzureBlobStorage>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<BingAds>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<FacebookMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Github>() {}, Utils.JsonShape.DEFAULT),
@@ -352,7 +355,6 @@ public class OAuthCredentialsConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<GoogleDrive>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<GoogleSearchConsole>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<GoogleSheets>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<Harvest>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Hubspot>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Instagram>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Intercom>() {}, Utils.JsonShape.DEFAULT),

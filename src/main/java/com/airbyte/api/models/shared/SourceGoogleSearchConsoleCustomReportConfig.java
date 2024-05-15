@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -28,6 +30,7 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
     @JsonProperty("name")
     private String name;
 
+    @JsonCreator
     public SourceGoogleSearchConsoleCustomReportConfig(
             @JsonProperty("dimensions") java.util.List<SourceGoogleSearchConsoleValidEnums> dimensions,
             @JsonProperty("name") String name) {
@@ -40,6 +43,7 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
     /**
      * A list of available dimensions. Please note, that for technical reasons `date` is the default dimension which will be included in your query whether you specify it or not. Primary key will consist of your custom dimensions and the default dimension along with `site_url` and `search_type`.
      */
+    @JsonIgnore
     public java.util.List<SourceGoogleSearchConsoleValidEnums> dimensions() {
         return dimensions;
     }
@@ -47,6 +51,7 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
     /**
      * The name of the custom report, this name would be used as stream name
      */
+    @JsonIgnore
     public String name() {
         return name;
     }

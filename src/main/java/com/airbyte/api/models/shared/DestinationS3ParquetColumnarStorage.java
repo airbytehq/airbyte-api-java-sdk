@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -66,6 +68,7 @@ public class DestinationS3ParquetColumnarStorage {
     @JsonProperty("page_size_kb")
     private Optional<? extends Long> pageSizeKb;
 
+    @JsonCreator
     public DestinationS3ParquetColumnarStorage(
             @JsonProperty("block_size_mb") Optional<? extends Long> blockSizeMb,
             @JsonProperty("compression_codec") Optional<? extends DestinationS3SchemasCompressionCodec> compressionCodec,
@@ -89,51 +92,69 @@ public class DestinationS3ParquetColumnarStorage {
         this.maxPaddingSizeMb = maxPaddingSizeMb;
         this.pageSizeKb = pageSizeKb;
     }
+    
+    public DestinationS3ParquetColumnarStorage() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
      */
-    public Optional<? extends Long> blockSizeMb() {
-        return blockSizeMb;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> blockSizeMb() {
+        return (Optional<Long>) blockSizeMb;
     }
 
     /**
      * The compression algorithm used to compress data pages.
      */
-    public Optional<? extends DestinationS3SchemasCompressionCodec> compressionCodec() {
-        return compressionCodec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasCompressionCodec> compressionCodec() {
+        return (Optional<DestinationS3SchemasCompressionCodec>) compressionCodec;
     }
 
     /**
      * Default: true.
      */
-    public Optional<? extends Boolean> dictionaryEncoding() {
-        return dictionaryEncoding;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> dictionaryEncoding() {
+        return (Optional<Boolean>) dictionaryEncoding;
     }
 
     /**
      * There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.
      */
-    public Optional<? extends Long> dictionaryPageSizeKb() {
-        return dictionaryPageSizeKb;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> dictionaryPageSizeKb() {
+        return (Optional<Long>) dictionaryPageSizeKb;
     }
 
-    public Optional<? extends DestinationS3SchemasFormatOutputFormatFormatType> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasFormatOutputFormatFormatType> formatType() {
+        return (Optional<DestinationS3SchemasFormatOutputFormatFormatType>) formatType;
     }
 
     /**
      * Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.
      */
-    public Optional<? extends Long> maxPaddingSizeMb() {
-        return maxPaddingSizeMb;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> maxPaddingSizeMb() {
+        return (Optional<Long>) maxPaddingSizeMb;
     }
 
     /**
      * The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.
      */
-    public Optional<? extends Long> pageSizeKb() {
-        return pageSizeKb;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> pageSizeKb() {
+        return (Optional<Long>) pageSizeKb;
     }
 
     public final static Builder builder() {

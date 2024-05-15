@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceClockify {
     @JsonProperty("workspace_id")
     private String workspaceId;
 
+    @JsonCreator
     public SourceClockify(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("api_url") Optional<? extends String> apiUrl,
@@ -54,10 +57,17 @@ public class SourceClockify {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.workspaceId = workspaceId;
     }
+    
+    public SourceClockify(
+            String apiKey,
+            String workspaceId) {
+        this(apiKey, Optional.empty(), workspaceId);
+    }
 
     /**
      * You can get your api access_key &lt;a href="https://app.clockify.me/user/settings"&gt;here&lt;/a&gt; This API is Case Sensitive.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -65,10 +75,13 @@ public class SourceClockify {
     /**
      * The URL for the Clockify API. This should only need to be modified if connecting to an enterprise version of Clockify.
      */
-    public Optional<? extends String> apiUrl() {
-        return apiUrl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiUrl() {
+        return (Optional<String>) apiUrl;
     }
 
+    @JsonIgnore
     public Clockify sourceType() {
         return sourceType;
     }
@@ -76,6 +89,7 @@ public class SourceClockify {
     /**
      * WorkSpace Id
      */
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }

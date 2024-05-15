@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
     @JsonProperty("enabled")
     private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayEnabled> enabled;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasEnabled(
             @JsonProperty("cohortReportSettings") Optional<? extends CohortReportSettings> cohortReportSettings,
             @JsonProperty("cohorts") Optional<? extends java.util.List<Cohorts>> cohorts,
@@ -51,24 +54,36 @@ public class SourceGoogleAnalyticsDataApiSchemasEnabled {
         this.cohortsRange = cohortsRange;
         this.enabled = Builder._SINGLETON_VALUE_Enabled.value();
     }
+    
+    public SourceGoogleAnalyticsDataApiSchemasEnabled() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Optional settings for a cohort report.
      */
-    public Optional<? extends CohortReportSettings> cohortReportSettings() {
-        return cohortReportSettings;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CohortReportSettings> cohortReportSettings() {
+        return (Optional<CohortReportSettings>) cohortReportSettings;
     }
 
-    public Optional<? extends java.util.List<Cohorts>> cohorts() {
-        return cohorts;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<Cohorts>> cohorts() {
+        return (Optional<java.util.List<Cohorts>>) cohorts;
     }
 
-    public Optional<? extends CohortsRange> cohortsRange() {
-        return cohortsRange;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CohortsRange> cohortsRange() {
+        return (Optional<CohortsRange>) cohortsRange;
     }
 
-    public Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayEnabled> enabled() {
-        return enabled;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayEnabled> enabled() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayEnabled>) enabled;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -59,6 +61,7 @@ public class SourceAirtableOAuth20 {
     @JsonProperty("token_expiry_date")
     private Optional<? extends OffsetDateTime> tokenExpiryDate;
 
+    @JsonCreator
     public SourceAirtableOAuth20(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("client_id") String clientId,
@@ -77,21 +80,33 @@ public class SourceAirtableOAuth20 {
         this.refreshToken = refreshToken;
         this.tokenExpiryDate = tokenExpiryDate;
     }
+    
+    public SourceAirtableOAuth20(
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(Optional.empty(), clientId, clientSecret, refreshToken, Optional.empty());
+    }
 
     /**
      * Access Token for making authenticated requests.
      */
-    public Optional<? extends String> accessToken() {
-        return accessToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
-    public Optional<? extends SourceAirtableSchemasAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAirtableSchemasAuthMethod> authMethod() {
+        return (Optional<SourceAirtableSchemasAuthMethod>) authMethod;
     }
 
     /**
      * The client ID of the Airtable developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -99,6 +114,7 @@ public class SourceAirtableOAuth20 {
     /**
      * The client secret the Airtable developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -106,6 +122,7 @@ public class SourceAirtableOAuth20 {
     /**
      * The key to refresh the expired access token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -113,8 +130,10 @@ public class SourceAirtableOAuth20 {
     /**
      * The date-time when the access token should be refreshed.
      */
-    public Optional<? extends OffsetDateTime> tokenExpiryDate() {
-        return tokenExpiryDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> tokenExpiryDate() {
+        return (Optional<OffsetDateTime>) tokenExpiryDate;
     }
 
     public final static Builder builder() {

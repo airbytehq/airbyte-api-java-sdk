@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceRecruitee {
     @JsonProperty("sourceType")
     private Recruitee sourceType;
 
+    @JsonCreator
     public SourceRecruitee(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("company_id") long companyId) {
@@ -45,6 +48,7 @@ public class SourceRecruitee {
     /**
      * Recruitee API Key. See &lt;a href="https://docs.recruitee.com/reference/getting-started#generate-api-token"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -52,10 +56,12 @@ public class SourceRecruitee {
     /**
      * Recruitee Company ID. You can also find this ID on the &lt;a href="https://app.recruitee.com/#/settings/api_tokens"&gt;Recruitee API tokens page&lt;/a&gt;.
      */
+    @JsonIgnore
     public long companyId() {
         return companyId;
     }
 
+    @JsonIgnore
     public Recruitee sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class ServiceName {
     @JsonProperty("service_name")
     private String serviceName;
 
+    @JsonCreator
     public ServiceName(
             @JsonProperty("service_name") String serviceName) {
         Utils.checkNotNull(serviceName, "serviceName");
@@ -37,10 +40,13 @@ public class ServiceName {
         this.serviceName = serviceName;
     }
 
-    public Optional<? extends ConnectionType> connectionType() {
-        return connectionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ConnectionType> connectionType() {
+        return (Optional<ConnectionType>) connectionType;
     }
 
+    @JsonIgnore
     public String serviceName() {
         return serviceName;
     }

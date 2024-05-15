@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,11 +28,13 @@ public class SourceNotion {
     /**
      * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
-    private SourceNotionAuthenticationMethod credentials;
+    private Optional<? extends SourceNotionAuthenticationMethod> credentials;
 
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
-    private SourceNotionNotion sourceType;
+    private Optional<? extends SourceNotionNotion> sourceType;
 
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
@@ -39,8 +43,9 @@ public class SourceNotion {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceNotion(
-            @JsonProperty("credentials") SourceNotionAuthenticationMethod credentials,
+            @JsonProperty("credentials") Optional<? extends SourceNotionAuthenticationMethod> credentials,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(startDate, "startDate");
@@ -48,23 +53,33 @@ public class SourceNotion {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceNotion() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
      */
-    public SourceNotionAuthenticationMethod credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceNotionAuthenticationMethod> credentials() {
+        return (Optional<SourceNotionAuthenticationMethod>) credentials;
     }
 
-    public SourceNotionNotion sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceNotionNotion> sourceType() {
+        return (Optional<SourceNotionNotion>) sourceType;
     }
 
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {
@@ -75,6 +90,15 @@ public class SourceNotion {
      * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
      */
     public SourceNotion withCredentials(SourceNotionAuthenticationMethod credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = Optional.ofNullable(credentials);
+        return this;
+    }
+
+    /**
+     * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+     */
+    public SourceNotion withCredentials(Optional<? extends SourceNotionAuthenticationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         return this;
@@ -131,7 +155,7 @@ public class SourceNotion {
     
     public final static class Builder {
  
-        private SourceNotionAuthenticationMethod credentials;
+        private Optional<? extends SourceNotionAuthenticationMethod> credentials = Optional.empty();
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
@@ -143,6 +167,15 @@ public class SourceNotion {
          * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
          */
         public Builder credentials(SourceNotionAuthenticationMethod credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = Optional.ofNullable(credentials);
+            return this;
+        }
+
+        /**
+         * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+         */
+        public Builder credentials(Optional<? extends SourceNotionAuthenticationMethod> credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
@@ -172,11 +205,11 @@ public class SourceNotion {
                 startDate);
         }
 
-        private static final LazySingletonValue<SourceNotionNotion> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<Optional<? extends SourceNotionNotion>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"notion\"",
-                        new TypeReference<SourceNotionNotion>() {});
+                        new TypeReference<Optional<? extends SourceNotionNotion>>() {});
     }
 }
 

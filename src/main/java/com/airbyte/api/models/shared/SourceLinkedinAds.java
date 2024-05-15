@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourceLinkedinAds {
     @JsonProperty("start_date")
     private LocalDate startDate;
 
+    @JsonCreator
     public SourceLinkedinAds(
             @JsonProperty("account_ids") Optional<? extends java.util.List<Long>> accountIds,
             @JsonProperty("ad_analytics_reports") Optional<? extends java.util.List<AdAnalyticsReportConfiguration>> adAnalyticsReports,
@@ -60,22 +63,34 @@ public class SourceLinkedinAds {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceLinkedinAds(
+            LocalDate startDate) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * Specify the account IDs to pull data from, separated by a space. Leave this field empty if you want to pull the data from all accounts accessible by the authenticated user. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn docs&lt;/a&gt; to locate these IDs.
      */
-    public Optional<? extends java.util.List<Long>> accountIds() {
-        return accountIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<Long>> accountIds() {
+        return (Optional<java.util.List<Long>>) accountIds;
     }
 
-    public Optional<? extends java.util.List<AdAnalyticsReportConfiguration>> adAnalyticsReports() {
-        return adAnalyticsReports;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<AdAnalyticsReportConfiguration>> adAnalyticsReports() {
+        return (Optional<java.util.List<AdAnalyticsReportConfiguration>>) adAnalyticsReports;
     }
 
-    public Optional<? extends SourceLinkedinAdsAuthentication> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLinkedinAdsAuthentication> credentials() {
+        return (Optional<SourceLinkedinAdsAuthentication>) credentials;
     }
 
+    @JsonIgnore
     public SourceLinkedinAdsLinkedinAds sourceType() {
         return sourceType;
     }
@@ -83,6 +98,7 @@ public class SourceLinkedinAds {
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }

@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class Monday {
     @JsonProperty("credentials")
     private Optional<? extends MondayCredentials> credentials;
 
+    @JsonCreator
     public Monday(
             @JsonProperty("credentials") Optional<? extends MondayCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public Monday() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends MondayCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<MondayCredentials> credentials() {
+        return (Optional<MondayCredentials>) credentials;
     }
 
     public final static Builder builder() {

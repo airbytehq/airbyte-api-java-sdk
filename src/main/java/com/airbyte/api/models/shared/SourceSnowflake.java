@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -65,6 +67,7 @@ public class SourceSnowflake {
     @JsonProperty("warehouse")
     private String warehouse;
 
+    @JsonCreator
     public SourceSnowflake(
             @JsonProperty("credentials") Optional<? extends SourceSnowflakeAuthorizationMethod> credentials,
             @JsonProperty("database") String database,
@@ -89,14 +92,25 @@ public class SourceSnowflake {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.warehouse = warehouse;
     }
+    
+    public SourceSnowflake(
+            String database,
+            String host,
+            String role,
+            String warehouse) {
+        this(Optional.empty(), database, host, Optional.empty(), role, Optional.empty(), warehouse);
+    }
 
-    public Optional<? extends SourceSnowflakeAuthorizationMethod> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceSnowflakeAuthorizationMethod> credentials() {
+        return (Optional<SourceSnowflakeAuthorizationMethod>) credentials;
     }
 
     /**
      * The database you created for Airbyte to access data.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -104,6 +118,7 @@ public class SourceSnowflake {
     /**
      * The host domain of the snowflake instance (must include the account, region, cloud environment, and end with snowflakecomputing.com).
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -111,13 +126,16 @@ public class SourceSnowflake {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The role you created for Airbyte to access Snowflake.
      */
+    @JsonIgnore
     public String role() {
         return role;
     }
@@ -125,10 +143,13 @@ public class SourceSnowflake {
     /**
      * The source Snowflake schema tables. Leave empty to access tables from multiple schemas.
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
+    @JsonIgnore
     public SourceSnowflakeSnowflake sourceType() {
         return sourceType;
     }
@@ -136,6 +157,7 @@ public class SourceSnowflake {
     /**
      * The warehouse you created for Airbyte to access data.
      */
+    @JsonIgnore
     public String warehouse() {
         return warehouse;
     }

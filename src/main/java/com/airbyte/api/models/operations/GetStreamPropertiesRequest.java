@@ -7,7 +7,9 @@ package com.airbyte.api.models.operations;
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -22,7 +24,7 @@ public class GetStreamPropertiesRequest {
      * ID of the destination
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=destinationId")
-    private String destinationId;
+    private Optional<? extends String> destinationId;
 
     /**
      * If true pull the latest schema from the source, else pull from cache (default false)
@@ -36,8 +38,9 @@ public class GetStreamPropertiesRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=sourceId")
     private String sourceId;
 
+    @JsonCreator
     public GetStreamPropertiesRequest(
-            String destinationId,
+            Optional<? extends String> destinationId,
             Optional<? extends Boolean> ignoreCache,
             String sourceId) {
         Utils.checkNotNull(destinationId, "destinationId");
@@ -47,24 +50,34 @@ public class GetStreamPropertiesRequest {
         this.ignoreCache = ignoreCache;
         this.sourceId = sourceId;
     }
+    
+    public GetStreamPropertiesRequest(
+            String sourceId) {
+        this(Optional.empty(), Optional.empty(), sourceId);
+    }
 
     /**
      * ID of the destination
      */
-    public String destinationId() {
-        return destinationId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> destinationId() {
+        return (Optional<String>) destinationId;
     }
 
     /**
      * If true pull the latest schema from the source, else pull from cache (default false)
      */
-    public Optional<? extends Boolean> ignoreCache() {
-        return ignoreCache;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ignoreCache() {
+        return (Optional<Boolean>) ignoreCache;
     }
 
     /**
      * ID of the source
      */
+    @JsonIgnore
     public String sourceId() {
         return sourceId;
     }
@@ -77,6 +90,15 @@ public class GetStreamPropertiesRequest {
      * ID of the destination
      */
     public GetStreamPropertiesRequest withDestinationId(String destinationId) {
+        Utils.checkNotNull(destinationId, "destinationId");
+        this.destinationId = Optional.ofNullable(destinationId);
+        return this;
+    }
+
+    /**
+     * ID of the destination
+     */
+    public GetStreamPropertiesRequest withDestinationId(Optional<? extends String> destinationId) {
         Utils.checkNotNull(destinationId, "destinationId");
         this.destinationId = destinationId;
         return this;
@@ -142,7 +164,7 @@ public class GetStreamPropertiesRequest {
     
     public final static class Builder {
  
-        private String destinationId;
+        private Optional<? extends String> destinationId = Optional.empty();
  
         private Optional<? extends Boolean> ignoreCache;
  
@@ -156,6 +178,15 @@ public class GetStreamPropertiesRequest {
          * ID of the destination
          */
         public Builder destinationId(String destinationId) {
+            Utils.checkNotNull(destinationId, "destinationId");
+            this.destinationId = Optional.ofNullable(destinationId);
+            return this;
+        }
+
+        /**
+         * ID of the destination
+         */
+        public Builder destinationId(Optional<? extends String> destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
             this.destinationId = destinationId;
             return this;

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -61,7 +63,7 @@ public class DestinationAzureBlobStorage {
     private Optional<? extends Long> azureBlobStorageSpillSize;
 
     @JsonProperty("destinationType")
-    private AzureBlobStorage destinationType;
+    private DestinationAzureBlobStorageAzureBlobStorage destinationType;
 
     /**
      * Output data format
@@ -69,6 +71,7 @@ public class DestinationAzureBlobStorage {
     @JsonProperty("format")
     private OutputFormat format;
 
+    @JsonCreator
     public DestinationAzureBlobStorage(
             @JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey,
             @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName,
@@ -93,10 +96,18 @@ public class DestinationAzureBlobStorage {
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.format = format;
     }
+    
+    public DestinationAzureBlobStorage(
+            String azureBlobStorageAccountKey,
+            String azureBlobStorageAccountName,
+            OutputFormat format) {
+        this(azureBlobStorageAccountKey, azureBlobStorageAccountName, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), format);
+    }
 
     /**
      * The Azure blob storage account key.
      */
+    @JsonIgnore
     public String azureBlobStorageAccountKey() {
         return azureBlobStorageAccountKey;
     }
@@ -104,6 +115,7 @@ public class DestinationAzureBlobStorage {
     /**
      * The account's name of the Azure Blob Storage.
      */
+    @JsonIgnore
     public String azureBlobStorageAccountName() {
         return azureBlobStorageAccountName;
     }
@@ -111,38 +123,48 @@ public class DestinationAzureBlobStorage {
     /**
      * The name of the Azure blob storage container. If not exists - will be created automatically. May be empty, then will be created automatically airbytecontainer+timestamp
      */
-    public Optional<? extends String> azureBlobStorageContainerName() {
-        return azureBlobStorageContainerName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> azureBlobStorageContainerName() {
+        return (Optional<String>) azureBlobStorageContainerName;
     }
 
     /**
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
-    public Optional<? extends String> azureBlobStorageEndpointDomainName() {
-        return azureBlobStorageEndpointDomainName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> azureBlobStorageEndpointDomainName() {
+        return (Optional<String>) azureBlobStorageEndpointDomainName;
     }
 
     /**
      * The amount of megabytes to buffer for the output stream to Azure. This will impact memory footprint on workers, but may need adjustment for performance and appropriate block size in Azure.
      */
-    public Optional<? extends Long> azureBlobStorageOutputBufferSize() {
-        return azureBlobStorageOutputBufferSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> azureBlobStorageOutputBufferSize() {
+        return (Optional<Long>) azureBlobStorageOutputBufferSize;
     }
 
     /**
      * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable
      */
-    public Optional<? extends Long> azureBlobStorageSpillSize() {
-        return azureBlobStorageSpillSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> azureBlobStorageSpillSize() {
+        return (Optional<Long>) azureBlobStorageSpillSize;
     }
 
-    public AzureBlobStorage destinationType() {
+    @JsonIgnore
+    public DestinationAzureBlobStorageAzureBlobStorage destinationType() {
         return destinationType;
     }
 
     /**
      * Output data format
      */
+    @JsonIgnore
     public OutputFormat format() {
         return format;
     }
@@ -453,11 +475,11 @@ public class DestinationAzureBlobStorage {
                         "500",
                         new TypeReference<Optional<? extends Long>>() {});
 
-        private static final LazySingletonValue<AzureBlobStorage> _SINGLETON_VALUE_DestinationType =
+        private static final LazySingletonValue<DestinationAzureBlobStorageAzureBlobStorage> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
                         "destinationType",
                         "\"azure-blob-storage\"",
-                        new TypeReference<AzureBlobStorage>() {});
+                        new TypeReference<DestinationAzureBlobStorageAzureBlobStorage>() {});
     }
 }
 

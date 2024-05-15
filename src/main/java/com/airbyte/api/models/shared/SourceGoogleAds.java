@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -66,6 +68,7 @@ public class SourceGoogleAds {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceGoogleAds(
             @JsonProperty("conversion_window_days") Optional<? extends Long> conversionWindowDays,
             @JsonProperty("credentials") GoogleCredentials credentials,
@@ -90,43 +93,60 @@ public class SourceGoogleAds {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceGoogleAds(
+            GoogleCredentials credentials) {
+        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * A conversion window is the number of days after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;Google's documentation&lt;/a&gt;.
      */
-    public Optional<? extends Long> conversionWindowDays() {
-        return conversionWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> conversionWindowDays() {
+        return (Optional<Long>) conversionWindowDays;
     }
 
+    @JsonIgnore
     public GoogleCredentials credentials() {
         return credentials;
     }
 
-    public Optional<? extends java.util.List<CustomQueriesArray>> customQueriesArray() {
-        return customQueriesArray;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<CustomQueriesArray>> customQueriesArray() {
+        return (Optional<java.util.List<CustomQueriesArray>>) customQueriesArray;
     }
 
     /**
      * Comma-separated list of (client) customer IDs. Each customer ID must be specified as a 10-digit number without dashes. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends String> customerId() {
-        return customerId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> customerId() {
+        return (Optional<String>) customerId;
     }
 
     /**
      * A list of customer statuses to filter on. For detailed info about what each status mean refer to Google Ads &lt;a href="https://developers.google.com/google-ads/api/reference/rpc/v15/CustomerStatusEnum.CustomerStatus"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends java.util.List<CustomerStatus>> customerStatusFilter() {
-        return customerStatusFilter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<CustomerStatus>> customerStatusFilter() {
+        return (Optional<java.util.List<CustomerStatus>>) customerStatusFilter;
     }
 
     /**
      * UTC date in the format YYYY-MM-DD. Any data after this date will not be replicated. (Default value of today is used if not set)
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
+    @JsonIgnore
     public SourceGoogleAdsGoogleAds sourceType() {
         return sourceType;
     }
@@ -134,8 +154,10 @@ public class SourceGoogleAds {
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. (Default value of two years ago is used if not set)
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {

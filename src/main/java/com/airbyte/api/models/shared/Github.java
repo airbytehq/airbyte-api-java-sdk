@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class Github {
     @JsonProperty("credentials")
     private Optional<? extends GithubCredentials> credentials;
 
+    @JsonCreator
     public Github(
             @JsonProperty("credentials") Optional<? extends GithubCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public Github() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends GithubCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GithubCredentials> credentials() {
+        return (Optional<GithubCredentials>) credentials;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -45,6 +47,7 @@ public class SourceWoocommerce {
     @JsonProperty("start_date")
     private LocalDate startDate;
 
+    @JsonCreator
     public SourceWoocommerce(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("api_secret") String apiSecret,
@@ -64,6 +67,7 @@ public class SourceWoocommerce {
     /**
      * Customer Key for API in WooCommerce shop
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -71,6 +75,7 @@ public class SourceWoocommerce {
     /**
      * Customer Secret for API in WooCommerce shop
      */
+    @JsonIgnore
     public String apiSecret() {
         return apiSecret;
     }
@@ -78,10 +83,12 @@ public class SourceWoocommerce {
     /**
      * The name of the store. For https://EXAMPLE.com, the shop name is 'EXAMPLE.com'.
      */
+    @JsonIgnore
     public String shop() {
         return shop;
     }
 
+    @JsonIgnore
     public Woocommerce sourceType() {
         return sourceType;
     }
@@ -89,6 +96,7 @@ public class SourceWoocommerce {
     /**
      * The date you would like to replicate data from. Format: YYYY-MM-DD
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SourceConfluence {
     @JsonProperty("sourceType")
     private Confluence sourceType;
 
+    @JsonCreator
     public SourceConfluence(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("domain_name") String domainName,
@@ -54,6 +57,7 @@ public class SourceConfluence {
     /**
      * Please follow the Jira confluence for generating an API token: &lt;a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/"&gt;generating an API token&lt;/a&gt;.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
@@ -61,6 +65,7 @@ public class SourceConfluence {
     /**
      * Your Confluence domain name
      */
+    @JsonIgnore
     public String domainName() {
         return domainName;
     }
@@ -68,10 +73,12 @@ public class SourceConfluence {
     /**
      * Your Confluence login email
      */
+    @JsonIgnore
     public String email() {
         return email;
     }
 
+    @JsonIgnore
     public Confluence sourceType() {
         return sourceType;
     }

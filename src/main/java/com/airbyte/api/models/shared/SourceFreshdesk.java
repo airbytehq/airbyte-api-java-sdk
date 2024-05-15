@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -59,6 +61,7 @@ public class SourceFreshdesk {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceFreshdesk(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("domain") String domain,
@@ -77,10 +80,17 @@ public class SourceFreshdesk {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceFreshdesk(
+            String apiKey,
+            String domain) {
+        this(apiKey, domain, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Freshdesk API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshdesk"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -88,6 +98,7 @@ public class SourceFreshdesk {
     /**
      * Freshdesk domain
      */
+    @JsonIgnore
     public String domain() {
         return domain;
     }
@@ -95,17 +106,22 @@ public class SourceFreshdesk {
     /**
      * Number of days for lookback window for the stream Satisfaction Ratings
      */
-    public Optional<? extends Long> lookbackWindowInDays() {
-        return lookbackWindowInDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindowInDays() {
+        return (Optional<Long>) lookbackWindowInDays;
     }
 
     /**
      * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
      */
-    public Optional<? extends Long> requestsPerMinute() {
-        return requestsPerMinute;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> requestsPerMinute() {
+        return (Optional<Long>) requestsPerMinute;
     }
 
+    @JsonIgnore
     public Freshdesk sourceType() {
         return sourceType;
     }
@@ -113,8 +129,10 @@ public class SourceFreshdesk {
     /**
      * UTC date and time. Any data created after this date will be replicated. If this parameter is not set, all data will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,15 +18,17 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 
 public class SourceDynamodb {
 
     /**
-     * The access key id to access Dynamodb. Airbyte requires read permissions to the database
+     * Credentials for the service
      */
-    @JsonProperty("access_key_id")
-    private String accessKeyId;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("credentials")
+    private JsonNullable<? extends java.lang.Object> credentials;
 
     /**
      * the URL of the Dynamodb database
@@ -32,6 +36,13 @@ public class SourceDynamodb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endpoint")
     private Optional<? extends String> endpoint;
+
+    /**
+     * Ignore tables with missing scan/read permissions
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ignore_missing_read_permissions_tables")
+    private Optional<? extends Boolean> ignoreMissingReadPermissionsTables;
 
     /**
      * The region of the Dynamodb database
@@ -47,71 +58,83 @@ public class SourceDynamodb {
     @JsonProperty("reserved_attribute_names")
     private Optional<? extends String> reservedAttributeNames;
 
-    /**
-     * The corresponding secret to the access key id.
-     */
-    @JsonProperty("secret_access_key")
-    private String secretAccessKey;
-
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
-    private SourceDynamodbDynamodb sourceType;
+    private Optional<? extends SourceDynamodbDynamodb> sourceType;
 
+    @JsonCreator
     public SourceDynamodb(
-            @JsonProperty("access_key_id") String accessKeyId,
+            @JsonProperty("credentials") JsonNullable<? extends java.lang.Object> credentials,
             @JsonProperty("endpoint") Optional<? extends String> endpoint,
+            @JsonProperty("ignore_missing_read_permissions_tables") Optional<? extends Boolean> ignoreMissingReadPermissionsTables,
             @JsonProperty("region") Optional<? extends SourceDynamodbDynamodbRegion> region,
-            @JsonProperty("reserved_attribute_names") Optional<? extends String> reservedAttributeNames,
-            @JsonProperty("secret_access_key") String secretAccessKey) {
-        Utils.checkNotNull(accessKeyId, "accessKeyId");
+            @JsonProperty("reserved_attribute_names") Optional<? extends String> reservedAttributeNames) {
+        Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(endpoint, "endpoint");
+        Utils.checkNotNull(ignoreMissingReadPermissionsTables, "ignoreMissingReadPermissionsTables");
         Utils.checkNotNull(region, "region");
         Utils.checkNotNull(reservedAttributeNames, "reservedAttributeNames");
-        Utils.checkNotNull(secretAccessKey, "secretAccessKey");
-        this.accessKeyId = accessKeyId;
+        this.credentials = credentials;
         this.endpoint = endpoint;
+        this.ignoreMissingReadPermissionsTables = ignoreMissingReadPermissionsTables;
         this.region = region;
         this.reservedAttributeNames = reservedAttributeNames;
-        this.secretAccessKey = secretAccessKey;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+    }
+    
+    public SourceDynamodb() {
+        this(JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
-     * The access key id to access Dynamodb. Airbyte requires read permissions to the database
+     * Credentials for the service
      */
-    public String accessKeyId() {
-        return accessKeyId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public JsonNullable<java.lang.Object> credentials() {
+        return (JsonNullable<java.lang.Object>) credentials;
     }
 
     /**
      * the URL of the Dynamodb database
      */
-    public Optional<? extends String> endpoint() {
-        return endpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endpoint() {
+        return (Optional<String>) endpoint;
+    }
+
+    /**
+     * Ignore tables with missing scan/read permissions
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ignoreMissingReadPermissionsTables() {
+        return (Optional<Boolean>) ignoreMissingReadPermissionsTables;
     }
 
     /**
      * The region of the Dynamodb database
      */
-    public Optional<? extends SourceDynamodbDynamodbRegion> region() {
-        return region;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceDynamodbDynamodbRegion> region() {
+        return (Optional<SourceDynamodbDynamodbRegion>) region;
     }
 
     /**
      * Comma separated reserved attribute names present in your tables
      */
-    public Optional<? extends String> reservedAttributeNames() {
-        return reservedAttributeNames;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> reservedAttributeNames() {
+        return (Optional<String>) reservedAttributeNames;
     }
 
-    /**
-     * The corresponding secret to the access key id.
-     */
-    public String secretAccessKey() {
-        return secretAccessKey;
-    }
-
-    public SourceDynamodbDynamodb sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceDynamodbDynamodb> sourceType() {
+        return (Optional<SourceDynamodbDynamodb>) sourceType;
     }
 
     public final static Builder builder() {
@@ -119,11 +142,20 @@ public class SourceDynamodb {
     }
 
     /**
-     * The access key id to access Dynamodb. Airbyte requires read permissions to the database
+     * Credentials for the service
      */
-    public SourceDynamodb withAccessKeyId(String accessKeyId) {
-        Utils.checkNotNull(accessKeyId, "accessKeyId");
-        this.accessKeyId = accessKeyId;
+    public SourceDynamodb withCredentials(java.lang.Object credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = JsonNullable.of(credentials);
+        return this;
+    }
+
+    /**
+     * Credentials for the service
+     */
+    public SourceDynamodb withCredentials(JsonNullable<? extends java.lang.Object> credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
         return this;
     }
 
@@ -142,6 +174,24 @@ public class SourceDynamodb {
     public SourceDynamodb withEndpoint(Optional<? extends String> endpoint) {
         Utils.checkNotNull(endpoint, "endpoint");
         this.endpoint = endpoint;
+        return this;
+    }
+
+    /**
+     * Ignore tables with missing scan/read permissions
+     */
+    public SourceDynamodb withIgnoreMissingReadPermissionsTables(boolean ignoreMissingReadPermissionsTables) {
+        Utils.checkNotNull(ignoreMissingReadPermissionsTables, "ignoreMissingReadPermissionsTables");
+        this.ignoreMissingReadPermissionsTables = Optional.ofNullable(ignoreMissingReadPermissionsTables);
+        return this;
+    }
+
+    /**
+     * Ignore tables with missing scan/read permissions
+     */
+    public SourceDynamodb withIgnoreMissingReadPermissionsTables(Optional<? extends Boolean> ignoreMissingReadPermissionsTables) {
+        Utils.checkNotNull(ignoreMissingReadPermissionsTables, "ignoreMissingReadPermissionsTables");
+        this.ignoreMissingReadPermissionsTables = ignoreMissingReadPermissionsTables;
         return this;
     }
 
@@ -180,15 +230,6 @@ public class SourceDynamodb {
         this.reservedAttributeNames = reservedAttributeNames;
         return this;
     }
-
-    /**
-     * The corresponding secret to the access key id.
-     */
-    public SourceDynamodb withSecretAccessKey(String secretAccessKey) {
-        Utils.checkNotNull(secretAccessKey, "secretAccessKey");
-        this.secretAccessKey = secretAccessKey;
-        return this;
-    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -200,58 +241,67 @@ public class SourceDynamodb {
         }
         SourceDynamodb other = (SourceDynamodb) o;
         return 
-            java.util.Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
+            java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.endpoint, other.endpoint) &&
+            java.util.Objects.deepEquals(this.ignoreMissingReadPermissionsTables, other.ignoreMissingReadPermissionsTables) &&
             java.util.Objects.deepEquals(this.region, other.region) &&
             java.util.Objects.deepEquals(this.reservedAttributeNames, other.reservedAttributeNames) &&
-            java.util.Objects.deepEquals(this.secretAccessKey, other.secretAccessKey) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            accessKeyId,
+            credentials,
             endpoint,
+            ignoreMissingReadPermissionsTables,
             region,
             reservedAttributeNames,
-            secretAccessKey,
             sourceType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceDynamodb.class,
-                "accessKeyId", accessKeyId,
+                "credentials", credentials,
                 "endpoint", endpoint,
+                "ignoreMissingReadPermissionsTables", ignoreMissingReadPermissionsTables,
                 "region", region,
                 "reservedAttributeNames", reservedAttributeNames,
-                "secretAccessKey", secretAccessKey,
                 "sourceType", sourceType);
     }
     
     public final static class Builder {
  
-        private String accessKeyId;
+        private JsonNullable<? extends java.lang.Object> credentials = JsonNullable.undefined();
  
         private Optional<? extends String> endpoint;
  
+        private Optional<? extends Boolean> ignoreMissingReadPermissionsTables;
+ 
         private Optional<? extends SourceDynamodbDynamodbRegion> region;
  
-        private Optional<? extends String> reservedAttributeNames = Optional.empty();
- 
-        private String secretAccessKey;  
+        private Optional<? extends String> reservedAttributeNames = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
         }
 
         /**
-         * The access key id to access Dynamodb. Airbyte requires read permissions to the database
+         * Credentials for the service
          */
-        public Builder accessKeyId(String accessKeyId) {
-            Utils.checkNotNull(accessKeyId, "accessKeyId");
-            this.accessKeyId = accessKeyId;
+        public Builder credentials(java.lang.Object credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = JsonNullable.of(credentials);
+            return this;
+        }
+
+        /**
+         * Credentials for the service
+         */
+        public Builder credentials(JsonNullable<? extends java.lang.Object> credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
             return this;
         }
 
@@ -270,6 +320,24 @@ public class SourceDynamodb {
         public Builder endpoint(Optional<? extends String> endpoint) {
             Utils.checkNotNull(endpoint, "endpoint");
             this.endpoint = endpoint;
+            return this;
+        }
+
+        /**
+         * Ignore tables with missing scan/read permissions
+         */
+        public Builder ignoreMissingReadPermissionsTables(boolean ignoreMissingReadPermissionsTables) {
+            Utils.checkNotNull(ignoreMissingReadPermissionsTables, "ignoreMissingReadPermissionsTables");
+            this.ignoreMissingReadPermissionsTables = Optional.ofNullable(ignoreMissingReadPermissionsTables);
+            return this;
+        }
+
+        /**
+         * Ignore tables with missing scan/read permissions
+         */
+        public Builder ignoreMissingReadPermissionsTables(Optional<? extends Boolean> ignoreMissingReadPermissionsTables) {
+            Utils.checkNotNull(ignoreMissingReadPermissionsTables, "ignoreMissingReadPermissionsTables");
+            this.ignoreMissingReadPermissionsTables = ignoreMissingReadPermissionsTables;
             return this;
         }
 
@@ -308,29 +376,23 @@ public class SourceDynamodb {
             this.reservedAttributeNames = reservedAttributeNames;
             return this;
         }
-
-        /**
-         * The corresponding secret to the access key id.
-         */
-        public Builder secretAccessKey(String secretAccessKey) {
-            Utils.checkNotNull(secretAccessKey, "secretAccessKey");
-            this.secretAccessKey = secretAccessKey;
-            return this;
-        }
         
         public SourceDynamodb build() {
             if (endpoint == null) {
                 endpoint = _SINGLETON_VALUE_Endpoint.value();
             }
+            if (ignoreMissingReadPermissionsTables == null) {
+                ignoreMissingReadPermissionsTables = _SINGLETON_VALUE_IgnoreMissingReadPermissionsTables.value();
+            }
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
             return new SourceDynamodb(
-                accessKeyId,
+                credentials,
                 endpoint,
+                ignoreMissingReadPermissionsTables,
                 region,
-                reservedAttributeNames,
-                secretAccessKey);
+                reservedAttributeNames);
         }
 
         private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_Endpoint =
@@ -339,17 +401,23 @@ public class SourceDynamodb {
                         "\"\"",
                         new TypeReference<Optional<? extends String>>() {});
 
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_IgnoreMissingReadPermissionsTables =
+                new LazySingletonValue<>(
+                        "ignore_missing_read_permissions_tables",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
+
         private static final LazySingletonValue<Optional<? extends SourceDynamodbDynamodbRegion>> _SINGLETON_VALUE_Region =
                 new LazySingletonValue<>(
                         "region",
                         "\"\"",
                         new TypeReference<Optional<? extends SourceDynamodbDynamodbRegion>>() {});
 
-        private static final LazySingletonValue<SourceDynamodbDynamodb> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<Optional<? extends SourceDynamodbDynamodb>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"dynamodb\"",
-                        new TypeReference<SourceDynamodbDynamodb>() {});
+                        new TypeReference<Optional<? extends SourceDynamodbDynamodb>>() {});
     }
 }
 

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,13 @@ public class DestinationOracle {
     private Optional<? extends Long> port;
 
     /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_data_schema")
+    private Optional<? extends String> rawDataSchema;
+
+    /**
      * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -76,11 +85,13 @@ public class DestinationOracle {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationOracle(
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") Optional<? extends String> password,
             @JsonProperty("port") Optional<? extends Long> port,
+            @JsonProperty("raw_data_schema") Optional<? extends String> rawDataSchema,
             @JsonProperty("schema") Optional<? extends String> schema,
             @JsonProperty("sid") String sid,
             @JsonProperty("tunnel_method") Optional<? extends DestinationOracleSSHTunnelMethod> tunnelMethod,
@@ -89,6 +100,7 @@ public class DestinationOracle {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
         Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(sid, "sid");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -98,12 +110,21 @@ public class DestinationOracle {
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
         this.port = port;
+        this.rawDataSchema = rawDataSchema;
         this.schema = schema;
         this.sid = sid;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public DestinationOracle(
+            String host,
+            String sid,
+            String username) {
+        this(host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), sid, Optional.empty(), username);
+    }
 
+    @JsonIgnore
     public Oracle destinationType() {
         return destinationType;
     }
@@ -111,6 +132,7 @@ public class DestinationOracle {
     /**
      * The hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -118,34 +140,52 @@ public class DestinationOracle {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * The port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return (Optional<String>) rawDataSchema;
     }
 
     /**
      * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     /**
      * The System Identifier uniquely distinguishes the instance from any other instance on the same computer.
      */
+    @JsonIgnore
     public String sid() {
         return sid;
     }
@@ -153,13 +193,16 @@ public class DestinationOracle {
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends DestinationOracleSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationOracleSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationOracleSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The username to access the database. This user must have CREATE USER privileges in the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }
@@ -232,6 +275,24 @@ public class DestinationOracle {
     }
 
     /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    public DestinationOracle withRawDataSchema(String rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+        return this;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    public DestinationOracle withRawDataSchema(Optional<? extends String> rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = rawDataSchema;
+        return this;
+    }
+
+    /**
      * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
      */
     public DestinationOracle withSchema(String schema) {
@@ -300,6 +361,7 @@ public class DestinationOracle {
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.password, other.password) &&
             java.util.Objects.deepEquals(this.port, other.port) &&
+            java.util.Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
             java.util.Objects.deepEquals(this.schema, other.schema) &&
             java.util.Objects.deepEquals(this.sid, other.sid) &&
             java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
@@ -314,6 +376,7 @@ public class DestinationOracle {
             jdbcUrlParams,
             password,
             port,
+            rawDataSchema,
             schema,
             sid,
             tunnelMethod,
@@ -328,6 +391,7 @@ public class DestinationOracle {
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
                 "port", port,
+                "rawDataSchema", rawDataSchema,
                 "schema", schema,
                 "sid", sid,
                 "tunnelMethod", tunnelMethod,
@@ -343,6 +407,8 @@ public class DestinationOracle {
         private Optional<? extends String> password = Optional.empty();
  
         private Optional<? extends Long> port;
+ 
+        private Optional<? extends String> rawDataSchema = Optional.empty();
  
         private Optional<? extends String> schema;
  
@@ -420,6 +486,24 @@ public class DestinationOracle {
         }
 
         /**
+         * The schema to write raw tables into (default: airbyte_internal)
+         */
+        public Builder rawDataSchema(String rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+            return this;
+        }
+
+        /**
+         * The schema to write raw tables into (default: airbyte_internal)
+         */
+        public Builder rawDataSchema(Optional<? extends String> rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = rawDataSchema;
+            return this;
+        }
+
+        /**
          * The default schema is used as the target schema for all statements issued from the connection that do not explicitly specify a schema name. The usual value for this field is "airbyte".  In Oracle, schemas and users are the same thing, so the "user" parameter is used as the login credentials and this is used for the default Airbyte message schema.
          */
         public Builder schema(String schema) {
@@ -485,6 +569,7 @@ public class DestinationOracle {
                 jdbcUrlParams,
                 password,
                 port,
+                rawDataSchema,
                 schema,
                 sid,
                 tunnelMethod,

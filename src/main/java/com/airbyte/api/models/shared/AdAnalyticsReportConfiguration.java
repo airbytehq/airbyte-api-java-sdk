@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -37,6 +39,7 @@ public class AdAnalyticsReportConfiguration {
     @JsonProperty("time_granularity")
     private TimeGranularity timeGranularity;
 
+    @JsonCreator
     public AdAnalyticsReportConfiguration(
             @JsonProperty("name") String name,
             @JsonProperty("pivot_by") PivotCategory pivotBy,
@@ -52,6 +55,7 @@ public class AdAnalyticsReportConfiguration {
     /**
      * The name for the custom report.
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -59,6 +63,7 @@ public class AdAnalyticsReportConfiguration {
     /**
      * Choose a category to pivot your analytics report around. This selection will organize your data based on the chosen attribute, allowing you to analyze trends and performance from different perspectives.
      */
+    @JsonIgnore
     public PivotCategory pivotBy() {
         return pivotBy;
     }
@@ -66,6 +71,7 @@ public class AdAnalyticsReportConfiguration {
     /**
      * Choose how to group the data in your report by time. The options are:&lt;br&gt;- 'ALL': A single result summarizing the entire time range.&lt;br&gt;- 'DAILY': Group results by each day.&lt;br&gt;- 'MONTHLY': Group results by each month.&lt;br&gt;- 'YEARLY': Group results by each year.&lt;br&gt;Selecting a time grouping helps you analyze trends and patterns over different time periods.
      */
+    @JsonIgnore
     public TimeGranularity timeGranularity() {
         return timeGranularity;
     }

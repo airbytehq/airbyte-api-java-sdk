@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -23,6 +25,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value {
     @JsonProperty("value_type")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValueType valueType;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value(
             @JsonProperty("value") String value) {
         Utils.checkNotNull(value, "value");
@@ -30,10 +33,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayInt64Value {
         this.valueType = Builder._SINGLETON_VALUE_ValueType.value();
     }
 
+    @JsonIgnore
     public String value() {
         return value;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValueType valueType() {
         return valueType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +40,13 @@ public class SourceSlack {
     private Optional<? extends SourceSlackAuthenticationMechanism> credentials;
 
     /**
+     * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels. 
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("include_private_channels")
+    private Optional<? extends Boolean> includePrivateChannels;
+
+    /**
      * Whether to join all channels or to sync data only from channels the bot is already in.  If false, you'll need to manually add the bot to all the channels from which you'd like to sync messages. 
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -60,53 +69,80 @@ public class SourceSlack {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceSlack(
             @JsonProperty("channel_filter") Optional<? extends java.util.List<String>> channelFilter,
             @JsonProperty("credentials") Optional<? extends SourceSlackAuthenticationMechanism> credentials,
+            @JsonProperty("include_private_channels") Optional<? extends Boolean> includePrivateChannels,
             @JsonProperty("join_channels") Optional<? extends Boolean> joinChannels,
             @JsonProperty("lookback_window") Optional<? extends Long> lookbackWindow,
             @JsonProperty("start_date") OffsetDateTime startDate) {
         Utils.checkNotNull(channelFilter, "channelFilter");
         Utils.checkNotNull(credentials, "credentials");
+        Utils.checkNotNull(includePrivateChannels, "includePrivateChannels");
         Utils.checkNotNull(joinChannels, "joinChannels");
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
         Utils.checkNotNull(startDate, "startDate");
         this.channelFilter = channelFilter;
         this.credentials = credentials;
+        this.includePrivateChannels = includePrivateChannels;
         this.joinChannels = joinChannels;
         this.lookbackWindow = lookbackWindow;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceSlack(
+            OffsetDateTime startDate) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.
      */
-    public Optional<? extends java.util.List<String>> channelFilter() {
-        return channelFilter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> channelFilter() {
+        return (Optional<java.util.List<String>>) channelFilter;
     }
 
     /**
      * Choose how to authenticate into Slack
      */
-    public Optional<? extends SourceSlackAuthenticationMechanism> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceSlackAuthenticationMechanism> credentials() {
+        return (Optional<SourceSlackAuthenticationMechanism>) credentials;
+    }
+
+    /**
+     * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels. 
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> includePrivateChannels() {
+        return (Optional<Boolean>) includePrivateChannels;
     }
 
     /**
      * Whether to join all channels or to sync data only from channels the bot is already in.  If false, you'll need to manually add the bot to all the channels from which you'd like to sync messages. 
      */
-    public Optional<? extends Boolean> joinChannels() {
-        return joinChannels;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> joinChannels() {
+        return (Optional<Boolean>) joinChannels;
     }
 
     /**
      * How far into the past to look for messages in threads, default is 0 days
      */
-    public Optional<? extends Long> lookbackWindow() {
-        return lookbackWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindow() {
+        return (Optional<Long>) lookbackWindow;
     }
 
+    @JsonIgnore
     public SourceSlackSlack sourceType() {
         return sourceType;
     }
@@ -114,6 +150,7 @@ public class SourceSlack {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -155,6 +192,24 @@ public class SourceSlack {
     public SourceSlack withCredentials(Optional<? extends SourceSlackAuthenticationMechanism> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
+        return this;
+    }
+
+    /**
+     * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels. 
+     */
+    public SourceSlack withIncludePrivateChannels(boolean includePrivateChannels) {
+        Utils.checkNotNull(includePrivateChannels, "includePrivateChannels");
+        this.includePrivateChannels = Optional.ofNullable(includePrivateChannels);
+        return this;
+    }
+
+    /**
+     * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels. 
+     */
+    public SourceSlack withIncludePrivateChannels(Optional<? extends Boolean> includePrivateChannels) {
+        Utils.checkNotNull(includePrivateChannels, "includePrivateChannels");
+        this.includePrivateChannels = includePrivateChannels;
         return this;
     }
 
@@ -215,6 +270,7 @@ public class SourceSlack {
         return 
             java.util.Objects.deepEquals(this.channelFilter, other.channelFilter) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
+            java.util.Objects.deepEquals(this.includePrivateChannels, other.includePrivateChannels) &&
             java.util.Objects.deepEquals(this.joinChannels, other.joinChannels) &&
             java.util.Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
@@ -226,6 +282,7 @@ public class SourceSlack {
         return java.util.Objects.hash(
             channelFilter,
             credentials,
+            includePrivateChannels,
             joinChannels,
             lookbackWindow,
             sourceType,
@@ -237,6 +294,7 @@ public class SourceSlack {
         return Utils.toString(SourceSlack.class,
                 "channelFilter", channelFilter,
                 "credentials", credentials,
+                "includePrivateChannels", includePrivateChannels,
                 "joinChannels", joinChannels,
                 "lookbackWindow", lookbackWindow,
                 "sourceType", sourceType,
@@ -248,6 +306,8 @@ public class SourceSlack {
         private Optional<? extends java.util.List<String>> channelFilter = Optional.empty();
  
         private Optional<? extends SourceSlackAuthenticationMechanism> credentials = Optional.empty();
+ 
+        private Optional<? extends Boolean> includePrivateChannels;
  
         private Optional<? extends Boolean> joinChannels;
  
@@ -292,6 +352,24 @@ public class SourceSlack {
         public Builder credentials(Optional<? extends SourceSlackAuthenticationMechanism> credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
+            return this;
+        }
+
+        /**
+         * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels. 
+         */
+        public Builder includePrivateChannels(boolean includePrivateChannels) {
+            Utils.checkNotNull(includePrivateChannels, "includePrivateChannels");
+            this.includePrivateChannels = Optional.ofNullable(includePrivateChannels);
+            return this;
+        }
+
+        /**
+         * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels. 
+         */
+        public Builder includePrivateChannels(Optional<? extends Boolean> includePrivateChannels) {
+            Utils.checkNotNull(includePrivateChannels, "includePrivateChannels");
+            this.includePrivateChannels = includePrivateChannels;
             return this;
         }
 
@@ -341,6 +419,9 @@ public class SourceSlack {
         }
         
         public SourceSlack build() {
+            if (includePrivateChannels == null) {
+                includePrivateChannels = _SINGLETON_VALUE_IncludePrivateChannels.value();
+            }
             if (joinChannels == null) {
                 joinChannels = _SINGLETON_VALUE_JoinChannels.value();
             }
@@ -350,10 +431,17 @@ public class SourceSlack {
             return new SourceSlack(
                 channelFilter,
                 credentials,
+                includePrivateChannels,
                 joinChannels,
                 lookbackWindow,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_IncludePrivateChannels =
+                new LazySingletonValue<>(
+                        "include_private_channels",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_JoinChannels =
                 new LazySingletonValue<>(

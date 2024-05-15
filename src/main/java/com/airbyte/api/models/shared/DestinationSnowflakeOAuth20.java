@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class DestinationSnowflakeOAuth20 {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public DestinationSnowflakeOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -65,35 +68,49 @@ public class DestinationSnowflakeOAuth20 {
         this.clientSecret = clientSecret;
         this.refreshToken = refreshToken;
     }
+    
+    public DestinationSnowflakeOAuth20(
+            String accessToken,
+            String refreshToken) {
+        this(accessToken, Optional.empty(), Optional.empty(), refreshToken);
+    }
 
     /**
      * Enter you application's Access Token
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
-    public Optional<? extends DestinationSnowflakeSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationSnowflakeSchemasAuthType> authType() {
+        return (Optional<DestinationSnowflakeSchemasAuthType>) authType;
     }
 
     /**
      * Enter your application's Client ID
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * Enter your application's Client secret
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     /**
      * Enter your application's Refresh Token
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceTwilioTaskrouter {
     @JsonProperty("sourceType")
     private TwilioTaskrouter sourceType;
 
+    @JsonCreator
     public SourceTwilioTaskrouter(
             @JsonProperty("account_sid") String accountSid,
             @JsonProperty("auth_token") String authToken) {
@@ -45,6 +48,7 @@ public class SourceTwilioTaskrouter {
     /**
      * Twilio Account ID
      */
+    @JsonIgnore
     public String accountSid() {
         return accountSid;
     }
@@ -52,10 +56,12 @@ public class SourceTwilioTaskrouter {
     /**
      * Twilio Auth Token
      */
+    @JsonIgnore
     public String authToken() {
         return authToken;
     }
 
+    @JsonIgnore
     public TwilioTaskrouter sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -40,6 +42,7 @@ public class VerifyCa {
     @JsonProperty("mode")
     private Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode> mode;
 
+    @JsonCreator
     public VerifyCa(
             @JsonProperty("ca_certificate") String caCertificate,
             @JsonProperty("client_key_password") Optional<? extends String> clientKeyPassword) {
@@ -49,10 +52,16 @@ public class VerifyCa {
         this.clientKeyPassword = clientKeyPassword;
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
+    
+    public VerifyCa(
+            String caCertificate) {
+        this(caCertificate, Optional.empty());
+    }
 
     /**
      * CA certificate
      */
+    @JsonIgnore
     public String caCertificate() {
         return caCertificate;
     }
@@ -60,12 +69,16 @@ public class VerifyCa {
     /**
      * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
      */
-    public Optional<? extends String> clientKeyPassword() {
-        return clientKeyPassword;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientKeyPassword() {
+        return (Optional<String>) clientKeyPassword;
     }
 
-    public Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationPostgresSchemasSSLModeSSLModesMode> mode() {
+        return (Optional<DestinationPostgresSchemasSSLModeSSLModesMode>) mode;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SourceSmaily {
     @JsonProperty("sourceType")
     private Smaily sourceType;
 
+    @JsonCreator
     public SourceSmaily(
             @JsonProperty("api_password") String apiPassword,
             @JsonProperty("api_subdomain") String apiSubdomain,
@@ -54,6 +57,7 @@ public class SourceSmaily {
     /**
      * API user password. See https://smaily.com/help/api/general/create-api-user/
      */
+    @JsonIgnore
     public String apiPassword() {
         return apiPassword;
     }
@@ -61,6 +65,7 @@ public class SourceSmaily {
     /**
      * API Subdomain. See https://smaily.com/help/api/general/create-api-user/
      */
+    @JsonIgnore
     public String apiSubdomain() {
         return apiSubdomain;
     }
@@ -68,10 +73,12 @@ public class SourceSmaily {
     /**
      * API user username. See https://smaily.com/help/api/general/create-api-user/
      */
+    @JsonIgnore
     public String apiUsername() {
         return apiUsername;
     }
 
+    @JsonIgnore
     public Smaily sourceType() {
         return sourceType;
     }

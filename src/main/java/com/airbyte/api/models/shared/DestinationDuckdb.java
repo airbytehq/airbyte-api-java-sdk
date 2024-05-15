@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class DestinationDuckdb {
     @JsonProperty("schema")
     private Optional<? extends String> schema;
 
+    @JsonCreator
     public DestinationDuckdb(
             @JsonProperty("destination_path") String destinationPath,
             @JsonProperty("motherduck_api_key") Optional<? extends String> motherduckApiKey,
@@ -55,7 +58,13 @@ public class DestinationDuckdb {
         this.motherduckApiKey = motherduckApiKey;
         this.schema = schema;
     }
+    
+    public DestinationDuckdb(
+            String destinationPath) {
+        this(destinationPath, Optional.empty(), Optional.empty());
+    }
 
+    @JsonIgnore
     public Duckdb destinationType() {
         return destinationType;
     }
@@ -63,6 +72,7 @@ public class DestinationDuckdb {
     /**
      * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside that local mount. For more information check out our &lt;a href="https://docs.airbyte.io/integrations/destinations/duckdb"&gt;docs&lt;/a&gt;
      */
+    @JsonIgnore
     public String destinationPath() {
         return destinationPath;
     }
@@ -70,15 +80,19 @@ public class DestinationDuckdb {
     /**
      * API key to use for authentication to a MotherDuck database.
      */
-    public Optional<? extends String> motherduckApiKey() {
-        return motherduckApiKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> motherduckApiKey() {
+        return (Optional<String>) motherduckApiKey;
     }
 
     /**
      * Database schema name, default for duckdb is 'main'.
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     public final static Builder builder() {

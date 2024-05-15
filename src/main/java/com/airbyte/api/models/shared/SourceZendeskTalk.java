@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourceZendeskTalk {
     @JsonProperty("subdomain")
     private String subdomain;
 
+    @JsonCreator
     public SourceZendeskTalk(
             @JsonProperty("credentials") Optional<? extends java.lang.Object> credentials,
             @JsonProperty("start_date") OffsetDateTime startDate,
@@ -57,14 +60,23 @@ public class SourceZendeskTalk {
         this.startDate = startDate;
         this.subdomain = subdomain;
     }
+    
+    public SourceZendeskTalk(
+            OffsetDateTime startDate,
+            String subdomain) {
+        this(Optional.empty(), startDate, subdomain);
+    }
 
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
      */
-    public Optional<? extends java.lang.Object> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.lang.Object> credentials() {
+        return (Optional<java.lang.Object>) credentials;
     }
 
+    @JsonIgnore
     public SourceZendeskTalkZendeskTalk sourceType() {
         return sourceType;
     }
@@ -72,6 +84,7 @@ public class SourceZendeskTalk {
     /**
      * The date from which you'd like to replicate data for Zendesk Talk API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -79,6 +92,7 @@ public class SourceZendeskTalk {
     /**
      * This is your Zendesk subdomain that can be found in your account URL. For example, in https://{MY_SUBDOMAIN}.zendesk.com/, where MY_SUBDOMAIN is the value of your subdomain.
      */
+    @JsonIgnore
     public String subdomain() {
         return subdomain;
     }

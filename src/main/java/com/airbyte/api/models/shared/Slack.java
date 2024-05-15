@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class Slack {
     @JsonProperty("credentials")
     private Optional<? extends SlackCredentials> credentials;
 
+    @JsonCreator
     public Slack(
             @JsonProperty("credentials") Optional<? extends SlackCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public Slack() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends SlackCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SlackCredentials> credentials() {
+        return (Optional<SlackCredentials>) credentials;
     }
 
     public final static Builder builder() {

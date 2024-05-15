@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class APIKey {
     @JsonProperty("auth_type")
     private SourceMailchimpSchemasAuthType authType;
 
+    @JsonCreator
     public APIKey(
             @JsonProperty("apikey") String apikey) {
         Utils.checkNotNull(apikey, "apikey");
@@ -36,10 +39,12 @@ public class APIKey {
     /**
      * Mailchimp API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/mailchimp"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
+    @JsonIgnore
     public String apikey() {
         return apikey;
     }
 
+    @JsonIgnore
     public SourceMailchimpSchemasAuthType authType() {
         return authType;
     }

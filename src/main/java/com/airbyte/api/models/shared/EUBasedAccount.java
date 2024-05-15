@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class EUBasedAccount {
     @JsonProperty("url_base")
     private Optional<? extends UrlBase> urlBase;
 
+    @JsonCreator
     public EUBasedAccount() {
         
         this.urlBase = Builder._SINGLETON_VALUE_UrlBase.value();
     }
 
-    public Optional<? extends UrlBase> urlBase() {
-        return urlBase;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<UrlBase> urlBase() {
+        return (Optional<UrlBase>) urlBase;
     }
 
     public final static Builder builder() {

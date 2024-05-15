@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class SystemIDSID {
     @JsonProperty("sid")
     private String sid;
 
+    @JsonCreator
     public SystemIDSID(
             @JsonProperty("sid") String sid) {
         Utils.checkNotNull(sid, "sid");
@@ -37,10 +40,13 @@ public class SystemIDSID {
         this.sid = sid;
     }
 
-    public Optional<? extends SourceOracleConnectionType> connectionType() {
-        return connectionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceOracleConnectionType> connectionType() {
+        return (Optional<SourceOracleConnectionType>) connectionType;
     }
 
+    @JsonIgnore
     public String sid() {
         return sid;
     }

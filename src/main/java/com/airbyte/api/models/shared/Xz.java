@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class Xz {
     @JsonProperty("compression_level")
     private Optional<? extends Long> compressionLevel;
 
+    @JsonCreator
     public Xz(
             @JsonProperty("codec") Optional<? extends DestinationGcsSchemasFormatCodec> codec,
             @JsonProperty("compression_level") Optional<? extends Long> compressionLevel) {
@@ -39,16 +42,24 @@ public class Xz {
         this.codec = codec;
         this.compressionLevel = compressionLevel;
     }
+    
+    public Xz() {
+        this(Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsSchemasFormatCodec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasFormatCodec> codec() {
+        return (Optional<DestinationGcsSchemasFormatCodec>) codec;
     }
 
     /**
      * The presets 0-3 are fast presets with medium compression. The presets 4-6 are fairly slow presets with high compression. The default preset is 6. The presets 7-9 are like the preset 6 but use bigger dictionaries and have higher compressor and decompressor memory requirements. Unless the uncompressed size of the file exceeds 8 MiB, 16 MiB, or 32 MiB, it is waste of memory to use the presets 7, 8, or 9, respectively. Read more &lt;a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-"&gt;here&lt;/a&gt; for details.
      */
-    public Optional<? extends Long> compressionLevel() {
-        return compressionLevel;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> compressionLevel() {
+        return (Optional<Long>) compressionLevel;
     }
 
     public final static Builder builder() {

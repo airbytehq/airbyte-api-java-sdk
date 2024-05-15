@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,14 +26,21 @@ public class DestinationGcsSchemasNoCompression {
     @JsonProperty("compression_type")
     private Optional<? extends DestinationGcsSchemasCompressionType> compressionType;
 
+    @JsonCreator
     public DestinationGcsSchemasNoCompression(
             @JsonProperty("compression_type") Optional<? extends DestinationGcsSchemasCompressionType> compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
         this.compressionType = compressionType;
     }
+    
+    public DestinationGcsSchemasNoCompression() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsSchemasCompressionType> compressionType() {
-        return compressionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasCompressionType> compressionType() {
+        return (Optional<DestinationGcsSchemasCompressionType>) compressionType;
     }
 
     public final static Builder builder() {

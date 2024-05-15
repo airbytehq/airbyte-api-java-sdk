@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class SourceSpacexApi {
     @JsonProperty("sourceType")
     private SpacexApi sourceType;
 
+    @JsonCreator
     public SourceSpacexApi(
             @JsonProperty("id") Optional<? extends String> id,
             @JsonProperty("options") Optional<? extends String> options) {
@@ -40,15 +43,24 @@ public class SourceSpacexApi {
         this.options = options;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
-
-    public Optional<? extends String> id() {
-        return id;
+    
+    public SourceSpacexApi() {
+        this(Optional.empty(), Optional.empty());
     }
 
-    public Optional<? extends String> options() {
-        return options;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> id() {
+        return (Optional<String>) id;
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> options() {
+        return (Optional<String>) options;
+    }
+
+    @JsonIgnore
     public SpacexApi sourceType() {
         return sourceType;
     }

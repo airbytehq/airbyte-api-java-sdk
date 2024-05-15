@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class SSHSecureShell {
     @JsonProperty("user")
     private String user;
 
+    @JsonCreator
     public SSHSecureShell(
             @JsonProperty("host") String host,
             @JsonProperty("password") Optional<? extends String> password,
@@ -52,23 +55,36 @@ public class SSHSecureShell {
         this.storage = Builder._SINGLETON_VALUE_Storage.value();
         this.user = user;
     }
+    
+    public SSHSecureShell(
+            String host,
+            String user) {
+        this(host, Optional.empty(), Optional.empty(), user);
+    }
 
+    @JsonIgnore
     public String host() {
         return host;
     }
 
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
-    public Optional<? extends String> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> port() {
+        return (Optional<String>) port;
     }
 
+    @JsonIgnore
     public SourceFileSchemasProviderStorageProviderStorage storage() {
         return storage;
     }
 
+    @JsonIgnore
     public String user() {
         return user;
     }

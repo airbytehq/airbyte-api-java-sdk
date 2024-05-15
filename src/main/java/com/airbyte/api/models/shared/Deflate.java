@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class Deflate {
     @JsonProperty("compression_level")
     private Optional<? extends Long> compressionLevel;
 
+    @JsonCreator
     public Deflate(
             @JsonProperty("codec") Optional<? extends DestinationGcsCodec> codec,
             @JsonProperty("compression_level") Optional<? extends Long> compressionLevel) {
@@ -39,16 +42,24 @@ public class Deflate {
         this.codec = codec;
         this.compressionLevel = compressionLevel;
     }
+    
+    public Deflate() {
+        this(Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsCodec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsCodec> codec() {
+        return (Optional<DestinationGcsCodec>) codec;
     }
 
     /**
      * 0: no compression &amp; fastest, 9: best compression &amp; slowest.
      */
-    public Optional<? extends Long> compressionLevel() {
-        return compressionLevel;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> compressionLevel() {
+        return (Optional<Long>) compressionLevel;
     }
 
     public final static Builder builder() {

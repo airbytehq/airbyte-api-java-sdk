@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,6 +33,7 @@ public class DestinationS3Xz {
     @JsonProperty("compression_level")
     private Optional<? extends Long> compressionLevel;
 
+    @JsonCreator
     public DestinationS3Xz(
             @JsonProperty("codec") Optional<? extends DestinationS3SchemasFormatOutputFormatCodec> codec,
             @JsonProperty("compression_level") Optional<? extends Long> compressionLevel) {
@@ -39,16 +42,24 @@ public class DestinationS3Xz {
         this.codec = codec;
         this.compressionLevel = compressionLevel;
     }
+    
+    public DestinationS3Xz() {
+        this(Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends DestinationS3SchemasFormatOutputFormatCodec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasFormatOutputFormatCodec> codec() {
+        return (Optional<DestinationS3SchemasFormatOutputFormatCodec>) codec;
     }
 
     /**
      * See &lt;a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-"&gt;here&lt;/a&gt; for details.
      */
-    public Optional<? extends Long> compressionLevel() {
-        return compressionLevel;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> compressionLevel() {
+        return (Optional<Long>) compressionLevel;
     }
 
     public final static Builder builder() {

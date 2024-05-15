@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class IAMUser {
     @JsonProperty("credentials_title")
     private Optional<? extends DestinationAwsDatalakeCredentialsTitle> credentialsTitle;
 
+    @JsonCreator
     public IAMUser(
             @JsonProperty("aws_access_key_id") String awsAccessKeyId,
             @JsonProperty("aws_secret_access_key") String awsSecretAccessKey) {
@@ -52,6 +55,7 @@ public class IAMUser {
     /**
      * AWS User Access Key Id
      */
+    @JsonIgnore
     public String awsAccessKeyId() {
         return awsAccessKeyId;
     }
@@ -59,6 +63,7 @@ public class IAMUser {
     /**
      * Secret Access Key
      */
+    @JsonIgnore
     public String awsSecretAccessKey() {
         return awsSecretAccessKey;
     }
@@ -66,8 +71,10 @@ public class IAMUser {
     /**
      * Name of the credentials
      */
-    public Optional<? extends DestinationAwsDatalakeCredentialsTitle> credentialsTitle() {
-        return credentialsTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationAwsDatalakeCredentialsTitle> credentialsTitle() {
+        return (Optional<DestinationAwsDatalakeCredentialsTitle>) credentialsTitle;
     }
 
     public final static Builder builder() {

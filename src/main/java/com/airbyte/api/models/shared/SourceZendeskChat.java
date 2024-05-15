@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceZendeskChat {
     @JsonProperty("subdomain")
     private Optional<? extends String> subdomain;
 
+    @JsonCreator
     public SourceZendeskChat(
             @JsonProperty("credentials") Optional<? extends SourceZendeskChatAuthorizationMethod> credentials,
             @JsonProperty("start_date") OffsetDateTime startDate,
@@ -55,11 +58,19 @@ public class SourceZendeskChat {
         this.startDate = startDate;
         this.subdomain = subdomain;
     }
-
-    public Optional<? extends SourceZendeskChatAuthorizationMethod> credentials() {
-        return credentials;
+    
+    public SourceZendeskChat(
+            OffsetDateTime startDate) {
+        this(Optional.empty(), startDate, Optional.empty());
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceZendeskChatAuthorizationMethod> credentials() {
+        return (Optional<SourceZendeskChatAuthorizationMethod>) credentials;
+    }
+
+    @JsonIgnore
     public SourceZendeskChatZendeskChat sourceType() {
         return sourceType;
     }
@@ -67,6 +78,7 @@ public class SourceZendeskChat {
     /**
      * The date from which you'd like to replicate data for Zendesk Chat API, in the format YYYY-MM-DDT00:00:00Z.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -74,8 +86,10 @@ public class SourceZendeskChat {
     /**
      * Required if you access Zendesk Chat from a Zendesk Support subdomain.
      */
-    public Optional<? extends String> subdomain() {
-        return subdomain;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> subdomain() {
+        return (Optional<String>) subdomain;
     }
 
     public final static Builder builder() {

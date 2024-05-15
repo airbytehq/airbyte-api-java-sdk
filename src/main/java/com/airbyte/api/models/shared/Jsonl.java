@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class Jsonl {
     @JsonProperty("unexpected_field_behavior")
     private Optional<? extends UnexpectedFieldBehavior> unexpectedFieldBehavior;
 
+    @JsonCreator
     public Jsonl(
             @JsonProperty("block_size") Optional<? extends Long> blockSize,
             @JsonProperty("newlines_in_values") Optional<? extends Boolean> newlinesInValues,
@@ -60,30 +63,42 @@ public class Jsonl {
         this.newlinesInValues = newlinesInValues;
         this.unexpectedFieldBehavior = unexpectedFieldBehavior;
     }
+    
+    public Jsonl() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The chunk size in bytes to process at a time in memory from each file. If your data is particularly wide and failing during schema detection, increasing this should solve it. Beware of raising this too high as you could hit OOM errors.
      */
-    public Optional<? extends Long> blockSize() {
-        return blockSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> blockSize() {
+        return (Optional<Long>) blockSize;
     }
 
-    public Optional<? extends SourceS3SchemasFormatFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3SchemasFormatFiletype> filetype() {
+        return (Optional<SourceS3SchemasFormatFiletype>) filetype;
     }
 
     /**
      * Whether newline characters are allowed in JSON values. Turning this on may affect performance. Leave blank to default to False.
      */
-    public Optional<? extends Boolean> newlinesInValues() {
-        return newlinesInValues;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> newlinesInValues() {
+        return (Optional<Boolean>) newlinesInValues;
     }
 
     /**
      * How JSON fields outside of explicit_schema (if given) are treated. Check &lt;a href="https://arrow.apache.org/docs/python/generated/pyarrow.json.ParseOptions.html" target="_blank"&gt;PyArrow documentation&lt;/a&gt; for details
      */
-    public Optional<? extends UnexpectedFieldBehavior> unexpectedFieldBehavior() {
-        return unexpectedFieldBehavior;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<UnexpectedFieldBehavior> unexpectedFieldBehavior() {
+        return (Optional<UnexpectedFieldBehavior>) unexpectedFieldBehavior;
     }
 
     public final static Builder builder() {

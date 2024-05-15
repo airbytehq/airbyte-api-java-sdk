@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class SourceInsightly {
     @JsonProperty("token")
     private Optional<? extends String> token;
 
+    @JsonCreator
     public SourceInsightly(
             @JsonProperty("start_date") Optional<? extends String> startDate,
             @JsonProperty("token") Optional<? extends String> token) {
@@ -46,7 +49,12 @@ public class SourceInsightly {
         this.startDate = startDate;
         this.token = token;
     }
+    
+    public SourceInsightly() {
+        this(Optional.empty(), Optional.empty());
+    }
 
+    @JsonIgnore
     public Insightly sourceType() {
         return sourceType;
     }
@@ -54,15 +62,19 @@ public class SourceInsightly {
     /**
      * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
      */
-    public Optional<? extends String> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> startDate() {
+        return (Optional<String>) startDate;
     }
 
     /**
      * Your Insightly API token.
      */
-    public Optional<? extends String> token() {
-        return token;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> token() {
+        return (Optional<String>) token;
     }
 
     public final static Builder builder() {

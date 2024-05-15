@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceZendeskSell {
     @JsonProperty("sourceType")
     private ZendeskSell sourceType;
 
+    @JsonCreator
     public SourceZendeskSell(
             @JsonProperty("api_token") String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -36,10 +39,12 @@ public class SourceZendeskSell {
     /**
      * The API token for authenticating to Zendesk Sell
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
+    @JsonIgnore
     public ZendeskSell sourceType() {
         return sourceType;
     }

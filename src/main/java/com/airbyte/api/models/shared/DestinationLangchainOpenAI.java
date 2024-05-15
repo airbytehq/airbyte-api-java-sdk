@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class DestinationLangchainOpenAI {
     @JsonProperty("openai_key")
     private String openaiKey;
 
+    @JsonCreator
     public DestinationLangchainOpenAI(
             @JsonProperty("openai_key") String openaiKey) {
         Utils.checkNotNull(openaiKey, "openaiKey");
@@ -37,10 +40,13 @@ public class DestinationLangchainOpenAI {
         this.openaiKey = openaiKey;
     }
 
-    public Optional<? extends DestinationLangchainMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationLangchainMode> mode() {
+        return (Optional<DestinationLangchainMode>) mode;
     }
 
+    @JsonIgnore
     public String openaiKey() {
         return openaiKey;
     }

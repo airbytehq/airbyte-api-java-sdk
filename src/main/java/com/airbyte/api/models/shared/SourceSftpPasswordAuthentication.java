@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -29,6 +31,7 @@ public class SourceSftpPasswordAuthentication {
     @JsonProperty("auth_user_password")
     private String authUserPassword;
 
+    @JsonCreator
     public SourceSftpPasswordAuthentication(
             @JsonProperty("auth_user_password") String authUserPassword) {
         Utils.checkNotNull(authUserPassword, "authUserPassword");
@@ -39,6 +42,7 @@ public class SourceSftpPasswordAuthentication {
     /**
      * Connect through password authentication
      */
+    @JsonIgnore
     public SourceSftpAuthMethod authMethod() {
         return authMethod;
     }
@@ -46,6 +50,7 @@ public class SourceSftpPasswordAuthentication {
     /**
      * OS-level password for logging into the jump server host
      */
+    @JsonIgnore
     public String authUserPassword() {
         return authUserPassword;
     }

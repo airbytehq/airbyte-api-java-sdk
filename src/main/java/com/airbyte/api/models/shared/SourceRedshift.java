@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -68,6 +70,7 @@ public class SourceRedshift {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceRedshift(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
@@ -92,10 +95,19 @@ public class SourceRedshift {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.username = username;
     }
+    
+    public SourceRedshift(
+            String database,
+            String host,
+            String password,
+            String username) {
+        this(database, host, Optional.empty(), password, Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -103,6 +115,7 @@ public class SourceRedshift {
     /**
      * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com).
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -110,13 +123,16 @@ public class SourceRedshift {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * Password associated with the username.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -124,17 +140,22 @@ public class SourceRedshift {
     /**
      * Port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * The list of schemas to sync from. Specify one or more explicitly or keep empty to process all schemas. Schema names are case sensitive.
      */
-    public Optional<? extends java.util.List<String>> schemas() {
-        return schemas;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> schemas() {
+        return (Optional<java.util.List<String>>) schemas;
     }
 
+    @JsonIgnore
     public SourceRedshiftRedshift sourceType() {
         return sourceType;
     }
@@ -142,6 +163,7 @@ public class SourceRedshift {
     /**
      * Username to use to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

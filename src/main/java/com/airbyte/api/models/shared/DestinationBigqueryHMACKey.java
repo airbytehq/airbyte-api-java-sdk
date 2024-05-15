@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class DestinationBigqueryHMACKey {
     @JsonProperty("hmac_key_secret")
     private String hmacKeySecret;
 
+    @JsonCreator
     public DestinationBigqueryHMACKey(
             @JsonProperty("hmac_key_access_id") String hmacKeyAccessId,
             @JsonProperty("hmac_key_secret") String hmacKeySecret) {
@@ -42,6 +45,7 @@ public class DestinationBigqueryHMACKey {
         this.hmacKeySecret = hmacKeySecret;
     }
 
+    @JsonIgnore
     public DestinationBigqueryCredentialType credentialType() {
         return credentialType;
     }
@@ -49,6 +53,7 @@ public class DestinationBigqueryHMACKey {
     /**
      * HMAC key access ID. When linked to a service account, this ID is 61 characters long; when linked to a user account, it is 24 characters long.
      */
+    @JsonIgnore
     public String hmacKeyAccessId() {
         return hmacKeyAccessId;
     }
@@ -56,6 +61,7 @@ public class DestinationBigqueryHMACKey {
     /**
      * The corresponding secret for the access ID. It is a 40-character base-64 encoded string.
      */
+    @JsonIgnore
     public String hmacKeySecret() {
         return hmacKeySecret;
     }

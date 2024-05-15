@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceGoogleAnalyticsDataApiSchemasBetweenFilter {
     @JsonProperty("toValue")
     private SourceGoogleAnalyticsDataApiSchemasToValue toValue;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasBetweenFilter(
             @JsonProperty("fromValue") SourceGoogleAnalyticsDataApiSchemasFromValue fromValue,
             @JsonProperty("toValue") SourceGoogleAnalyticsDataApiSchemasToValue toValue) {
@@ -36,14 +39,17 @@ public class SourceGoogleAnalyticsDataApiSchemasBetweenFilter {
         this.toValue = toValue;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionFilterFilterFilterName filterName() {
         return filterName;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasFromValue fromValue() {
         return fromValue;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasToValue toValue() {
         return toValue;
     }

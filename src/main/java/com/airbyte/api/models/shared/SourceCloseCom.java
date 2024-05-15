@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,6 +39,7 @@ public class SourceCloseCom {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceCloseCom(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("start_date") Optional<? extends LocalDate> startDate) {
@@ -46,14 +49,21 @@ public class SourceCloseCom {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceCloseCom(
+            String apiKey) {
+        this(apiKey, Optional.empty());
+    }
 
     /**
      * Close.com API key (usually starts with 'api_'; find yours &lt;a href="https://app.close.com/settings/api/"&gt;here&lt;/a&gt;).
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public CloseCom sourceType() {
         return sourceType;
     }
@@ -61,8 +71,10 @@ public class SourceCloseCom {
     /**
      * The start date to sync data; all data after this date will be replicated. Leave blank to retrieve all the data available in the account. Format: YYYY-MM-DD.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {

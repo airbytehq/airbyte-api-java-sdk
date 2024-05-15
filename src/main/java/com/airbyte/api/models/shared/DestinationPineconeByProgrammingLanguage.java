@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class DestinationPineconeByProgrammingLanguage {
     @JsonProperty("mode")
     private Optional<? extends DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode> mode;
 
+    @JsonCreator
     public DestinationPineconeByProgrammingLanguage(
             @JsonProperty("language") DestinationPineconeLanguage language) {
         Utils.checkNotNull(language, "language");
@@ -43,12 +46,15 @@ public class DestinationPineconeByProgrammingLanguage {
     /**
      * Split code in suitable places based on the programming language
      */
+    @JsonIgnore
     public DestinationPineconeLanguage language() {
         return language;
     }
 
-    public Optional<? extends DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode> mode() {
+        return (Optional<DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode>) mode;
     }
 
     public final static Builder builder() {

@@ -6,9 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -18,53 +18,55 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
-import java.util.Optional;
 
 
 public class SourceSendgrid {
 
     /**
-     * API Key, use &lt;a href="https://app.sendgrid.com/settings/api_keys/"&gt;admin&lt;/a&gt; to generate this key.
+     * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
      */
-    @JsonProperty("apikey")
-    private String apikey;
+    @JsonProperty("api_key")
+    private String apiKey;
 
     @JsonProperty("sourceType")
     private Sendgrid sourceType;
 
     /**
-     * Start time in ISO8601 format. Any data before this time point will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_time")
-    private Optional<? extends OffsetDateTime> startTime;
+    @JsonProperty("start_date")
+    private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceSendgrid(
-            @JsonProperty("apikey") String apikey,
-            @JsonProperty("start_time") Optional<? extends OffsetDateTime> startTime) {
-        Utils.checkNotNull(apikey, "apikey");
-        Utils.checkNotNull(startTime, "startTime");
-        this.apikey = apikey;
+            @JsonProperty("api_key") String apiKey,
+            @JsonProperty("start_date") OffsetDateTime startDate) {
+        Utils.checkNotNull(apiKey, "apiKey");
+        Utils.checkNotNull(startDate, "startDate");
+        this.apiKey = apiKey;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
-        this.startTime = startTime;
+        this.startDate = startDate;
     }
 
     /**
-     * API Key, use &lt;a href="https://app.sendgrid.com/settings/api_keys/"&gt;admin&lt;/a&gt; to generate this key.
+     * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
      */
-    public String apikey() {
-        return apikey;
+    @JsonIgnore
+    public String apiKey() {
+        return apiKey;
     }
 
+    @JsonIgnore
     public Sendgrid sourceType() {
         return sourceType;
     }
 
     /**
-     * Start time in ISO8601 format. Any data before this time point will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startTime() {
-        return startTime;
+    @JsonIgnore
+    public OffsetDateTime startDate() {
+        return startDate;
     }
 
     public final static Builder builder() {
@@ -72,29 +74,20 @@ public class SourceSendgrid {
     }
 
     /**
-     * API Key, use &lt;a href="https://app.sendgrid.com/settings/api_keys/"&gt;admin&lt;/a&gt; to generate this key.
+     * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
      */
-    public SourceSendgrid withApikey(String apikey) {
-        Utils.checkNotNull(apikey, "apikey");
-        this.apikey = apikey;
+    public SourceSendgrid withApiKey(String apiKey) {
+        Utils.checkNotNull(apiKey, "apiKey");
+        this.apiKey = apiKey;
         return this;
     }
 
     /**
-     * Start time in ISO8601 format. Any data before this time point will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    public SourceSendgrid withStartTime(OffsetDateTime startTime) {
-        Utils.checkNotNull(startTime, "startTime");
-        this.startTime = Optional.ofNullable(startTime);
-        return this;
-    }
-
-    /**
-     * Start time in ISO8601 format. Any data before this time point will not be replicated.
-     */
-    public SourceSendgrid withStartTime(Optional<? extends OffsetDateTime> startTime) {
-        Utils.checkNotNull(startTime, "startTime");
-        this.startTime = startTime;
+    public SourceSendgrid withStartDate(OffsetDateTime startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = startDate;
         return this;
     }
     
@@ -108,68 +101,59 @@ public class SourceSendgrid {
         }
         SourceSendgrid other = (SourceSendgrid) o;
         return 
-            java.util.Objects.deepEquals(this.apikey, other.apikey) &&
+            java.util.Objects.deepEquals(this.apiKey, other.apiKey) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
-            java.util.Objects.deepEquals(this.startTime, other.startTime);
+            java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            apikey,
+            apiKey,
             sourceType,
-            startTime);
+            startDate);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceSendgrid.class,
-                "apikey", apikey,
+                "apiKey", apiKey,
                 "sourceType", sourceType,
-                "startTime", startTime);
+                "startDate", startDate);
     }
     
     public final static class Builder {
  
-        private String apikey;
+        private String apiKey;
  
-        private Optional<? extends OffsetDateTime> startTime = Optional.empty();  
+        private OffsetDateTime startDate;  
         
         private Builder() {
           // force use of static builder() method
         }
 
         /**
-         * API Key, use &lt;a href="https://app.sendgrid.com/settings/api_keys/"&gt;admin&lt;/a&gt; to generate this key.
+         * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
          */
-        public Builder apikey(String apikey) {
-            Utils.checkNotNull(apikey, "apikey");
-            this.apikey = apikey;
+        public Builder apiKey(String apiKey) {
+            Utils.checkNotNull(apiKey, "apiKey");
+            this.apiKey = apiKey;
             return this;
         }
 
         /**
-         * Start time in ISO8601 format. Any data before this time point will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
-        public Builder startTime(OffsetDateTime startTime) {
-            Utils.checkNotNull(startTime, "startTime");
-            this.startTime = Optional.ofNullable(startTime);
-            return this;
-        }
-
-        /**
-         * Start time in ISO8601 format. Any data before this time point will not be replicated.
-         */
-        public Builder startTime(Optional<? extends OffsetDateTime> startTime) {
-            Utils.checkNotNull(startTime, "startTime");
-            this.startTime = startTime;
+        public Builder startDate(OffsetDateTime startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = startDate;
             return this;
         }
         
         public SourceSendgrid build() {
             return new SourceSendgrid(
-                apikey,
-                startTime);
+                apiKey,
+                startDate);
         }
 
         private static final LazySingletonValue<Sendgrid> _SINGLETON_VALUE_SourceType =

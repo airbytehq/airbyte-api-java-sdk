@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,6 +41,7 @@ public class SourceAuth0 {
     @JsonProperty("start_date")
     private Optional<? extends String> startDate;
 
+    @JsonCreator
     public SourceAuth0(
             @JsonProperty("base_url") String baseUrl,
             @JsonProperty("credentials") SourceAuth0AuthenticationMethod credentials,
@@ -51,18 +54,27 @@ public class SourceAuth0 {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceAuth0(
+            String baseUrl,
+            SourceAuth0AuthenticationMethod credentials) {
+        this(baseUrl, credentials, Optional.empty());
+    }
 
     /**
      * The Authentication API is served over HTTPS. All URLs referenced in the documentation have the following base `https://YOUR_DOMAIN`
      */
+    @JsonIgnore
     public String baseUrl() {
         return baseUrl;
     }
 
+    @JsonIgnore
     public SourceAuth0AuthenticationMethod credentials() {
         return credentials;
     }
 
+    @JsonIgnore
     public Auth0 sourceType() {
         return sourceType;
     }
@@ -70,8 +82,10 @@ public class SourceAuth0 {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    public Optional<? extends String> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> startDate() {
+        return (Optional<String>) startDate;
     }
 
     public final static Builder builder() {

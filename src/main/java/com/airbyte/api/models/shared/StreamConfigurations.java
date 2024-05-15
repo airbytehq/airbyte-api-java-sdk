@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -26,14 +28,21 @@ public class StreamConfigurations {
     @JsonProperty("streams")
     private Optional<? extends java.util.List<StreamConfiguration>> streams;
 
+    @JsonCreator
     public StreamConfigurations(
             @JsonProperty("streams") Optional<? extends java.util.List<StreamConfiguration>> streams) {
         Utils.checkNotNull(streams, "streams");
         this.streams = streams;
     }
+    
+    public StreamConfigurations() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends java.util.List<StreamConfiguration>> streams() {
-        return streams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<StreamConfiguration>> streams() {
+        return (Optional<java.util.List<StreamConfiguration>>) streams;
     }
 
     public final static Builder builder() {

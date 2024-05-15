@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -83,6 +85,7 @@ public class SourceSalesforce {
     @JsonProperty("streams_criteria")
     private Optional<? extends java.util.List<StreamsCriteria>> streamsCriteria;
 
+    @JsonCreator
     public SourceSalesforce(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -111,14 +114,24 @@ public class SourceSalesforce {
         this.streamSliceStep = streamSliceStep;
         this.streamsCriteria = streamsCriteria;
     }
+    
+    public SourceSalesforce(
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(clientId, clientSecret, Optional.empty(), Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends AuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AuthType> authType() {
+        return (Optional<AuthType>) authType;
     }
 
     /**
      * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -126,6 +139,7 @@ public class SourceSalesforce {
     /**
      * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -133,24 +147,30 @@ public class SourceSalesforce {
     /**
      * Toggle to use Bulk API (this might cause empty fields for some streams)
      */
-    public Optional<? extends Boolean> forceUseBulkApi() {
-        return forceUseBulkApi;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> forceUseBulkApi() {
+        return (Optional<Boolean>) forceUseBulkApi;
     }
 
     /**
      * Toggle if you're using a &lt;a href="https://help.salesforce.com/s/articleView?id=sf.deploy_sandboxes_parent.htm&amp;type=5"&gt;Salesforce Sandbox&lt;/a&gt;
      */
-    public Optional<? extends Boolean> isSandbox() {
-        return isSandbox;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> isSandbox() {
+        return (Optional<Boolean>) isSandbox;
     }
 
     /**
      * Enter your application's &lt;a href="https://developer.salesforce.com/docs/atlas.en-us.mobile_sdk.meta/mobile_sdk/oauth_refresh_token_flow.htm"&gt;Salesforce Refresh Token&lt;/a&gt; used for Airbyte to access your Salesforce account.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
+    @JsonIgnore
     public SourceSalesforceSalesforce sourceType() {
         return sourceType;
     }
@@ -158,22 +178,28 @@ public class SourceSalesforce {
     /**
      * Enter the date (or date-time) in the YYYY-MM-DD or YYYY-MM-DDTHH:mm:ssZ format. Airbyte will replicate the data updated on and after this date. If this field is blank, Airbyte will replicate the data for last two years.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * The size of the time window (ISO8601 duration) to slice requests.
      */
-    public Optional<? extends String> streamSliceStep() {
-        return streamSliceStep;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> streamSliceStep() {
+        return (Optional<String>) streamSliceStep;
     }
 
     /**
      * Add filters to select only required stream based on `SObject` name. Use this field to filter which tables are displayed by this connector. This is useful if your Salesforce account has a large number of tables (&gt;1000), in which case you may find it easier to navigate the UI and speed up the connector's performance if you restrict the tables displayed by this connector.
      */
-    public Optional<? extends java.util.List<StreamsCriteria>> streamsCriteria() {
-        return streamsCriteria;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<StreamsCriteria>> streamsCriteria() {
+        return (Optional<java.util.List<StreamsCriteria>>) streamsCriteria;
     }
 
     public final static Builder builder() {

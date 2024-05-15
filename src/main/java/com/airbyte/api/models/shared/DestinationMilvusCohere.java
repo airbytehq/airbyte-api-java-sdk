@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class DestinationMilvusCohere {
     @JsonProperty("mode")
     private Optional<? extends DestinationMilvusSchemasMode> mode;
 
+    @JsonCreator
     public DestinationMilvusCohere(
             @JsonProperty("cohere_key") String cohereKey) {
         Utils.checkNotNull(cohereKey, "cohereKey");
@@ -37,12 +40,15 @@ public class DestinationMilvusCohere {
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
+    @JsonIgnore
     public String cohereKey() {
         return cohereKey;
     }
 
-    public Optional<? extends DestinationMilvusSchemasMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMilvusSchemasMode> mode() {
+        return (Optional<DestinationMilvusSchemasMode>) mode;
     }
 
     public final static Builder builder() {

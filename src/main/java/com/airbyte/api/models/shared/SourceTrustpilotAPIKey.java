@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class SourceTrustpilotAPIKey {
     @JsonProperty("client_id")
     private String clientId;
 
+    @JsonCreator
     public SourceTrustpilotAPIKey(
             @JsonProperty("client_id") String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -40,13 +43,16 @@ public class SourceTrustpilotAPIKey {
         this.clientId = clientId;
     }
 
-    public Optional<? extends SourceTrustpilotSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceTrustpilotSchemasAuthType> authType() {
+        return (Optional<SourceTrustpilotSchemasAuthType>) authType;
     }
 
     /**
      * The API key of the Trustpilot API application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }

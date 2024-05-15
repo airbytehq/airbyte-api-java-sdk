@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -58,6 +60,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
     @JsonProperty("name")
     private String name;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiCustomReportConfig(
             @JsonProperty("cohortSpec") Optional<? extends CohortReports> cohortSpec,
             @JsonProperty("dimensionFilter") Optional<? extends DimensionsFilter> dimensionFilter,
@@ -78,24 +81,36 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         this.metrics = metrics;
         this.name = name;
     }
+    
+    public SourceGoogleAnalyticsDataApiCustomReportConfig(
+            java.util.List<String> dimensions,
+            java.util.List<String> metrics,
+            String name) {
+        this(Optional.empty(), Optional.empty(), dimensions, Optional.empty(), metrics, name);
+    }
 
     /**
      * Cohort reports creates a time series of user retention for the cohort.
      */
-    public Optional<? extends CohortReports> cohortSpec() {
-        return cohortSpec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CohortReports> cohortSpec() {
+        return (Optional<CohortReports>) cohortSpec;
     }
 
     /**
      * Dimensions filter
      */
-    public Optional<? extends DimensionsFilter> dimensionFilter() {
-        return dimensionFilter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DimensionsFilter> dimensionFilter() {
+        return (Optional<DimensionsFilter>) dimensionFilter;
     }
 
     /**
      * A list of dimensions.
      */
+    @JsonIgnore
     public java.util.List<String> dimensions() {
         return dimensions;
     }
@@ -103,13 +118,16 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
     /**
      * Metrics filter
      */
-    public Optional<? extends MetricsFilter> metricFilter() {
-        return metricFilter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<MetricsFilter> metricFilter() {
+        return (Optional<MetricsFilter>) metricFilter;
     }
 
     /**
      * A list of metrics.
      */
+    @JsonIgnore
     public java.util.List<String> metrics() {
         return metrics;
     }
@@ -117,6 +135,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
     /**
      * The name of the custom report, this name would be used as stream name.
      */
+    @JsonIgnore
     public String name() {
         return name;
     }

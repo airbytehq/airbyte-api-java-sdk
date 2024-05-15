@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -40,6 +42,7 @@ public class ChromaLocalPersistance {
     @JsonProperty("mode")
     private Optional<? extends DestinationLangchainSchemasIndexingIndexing3Mode> mode;
 
+    @JsonCreator
     public ChromaLocalPersistance(
             @JsonProperty("collection_name") Optional<? extends String> collectionName,
             @JsonProperty("destination_path") String destinationPath) {
@@ -49,23 +52,33 @@ public class ChromaLocalPersistance {
         this.destinationPath = destinationPath;
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
+    
+    public ChromaLocalPersistance(
+            String destinationPath) {
+        this(Optional.empty(), destinationPath);
+    }
 
     /**
      * Name of the collection to use.
      */
-    public Optional<? extends String> collectionName() {
-        return collectionName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> collectionName() {
+        return (Optional<String>) collectionName;
     }
 
     /**
      * Path to the directory where chroma files will be written. The files will be placed inside that local mount.
      */
+    @JsonIgnore
     public String destinationPath() {
         return destinationPath;
     }
 
-    public Optional<? extends DestinationLangchainSchemasIndexingIndexing3Mode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationLangchainSchemasIndexingIndexing3Mode> mode() {
+        return (Optional<DestinationLangchainSchemasIndexingIndexing3Mode>) mode;
     }
 
     public final static Builder builder() {

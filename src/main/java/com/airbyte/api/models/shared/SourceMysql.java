@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -82,6 +84,7 @@ public class SourceMysql {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceMysql(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
@@ -112,10 +115,19 @@ public class SourceMysql {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public SourceMysql(
+            String database,
+            String host,
+            SourceMysqlUpdateMethod replicationMethod,
+            String username) {
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), replicationMethod, Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * The database name.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -123,6 +135,7 @@ public class SourceMysql {
     /**
      * The host name of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -130,31 +143,39 @@ public class SourceMysql {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html"&gt;JDBC URL parameters&lt;/a&gt;.
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * The port to connect to.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * Configures how data is extracted from the database.
      */
+    @JsonIgnore
     public SourceMysqlUpdateMethod replicationMethod() {
         return replicationMethod;
     }
 
+    @JsonIgnore
     public SourceMysqlMysql sourceType() {
         return sourceType;
     }
@@ -162,20 +183,25 @@ public class SourceMysql {
     /**
      * SSL connection modes. Read more &lt;a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html"&gt; in the docs&lt;/a&gt;.
      */
-    public Optional<? extends SourceMysqlSSLModes> sslMode() {
-        return sslMode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMysqlSSLModes> sslMode() {
+        return (Optional<SourceMysqlSSLModes>) sslMode;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends SourceMysqlSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMysqlSSHTunnelMethod> tunnelMethod() {
+        return (Optional<SourceMysqlSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The username which is used to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

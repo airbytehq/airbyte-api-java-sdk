@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,9 +25,20 @@ public class SourceFirebolt {
     /**
      * Firebolt account to login.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account")
-    private Optional<? extends String> account;
+    private String account;
+
+    /**
+     * Firebolt service account ID.
+     */
+    @JsonProperty("client_id")
+    private String clientId;
+
+    /**
+     * Firebolt secret, corresponding to the service account ID.
+     */
+    @JsonProperty("client_secret")
+    private String clientSecret;
 
     /**
      * The database to connect to.
@@ -34,11 +47,10 @@ public class SourceFirebolt {
     private String database;
 
     /**
-     * Engine name or url to connect to.
+     * Engine name to connect to.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("engine")
-    private Optional<? extends String> engine;
+    private String engine;
 
     /**
      * The host name of your Firebolt database.
@@ -47,87 +59,93 @@ public class SourceFirebolt {
     @JsonProperty("host")
     private Optional<? extends String> host;
 
-    /**
-     * Firebolt password.
-     */
-    @JsonProperty("password")
-    private String password;
-
     @JsonProperty("sourceType")
     private Firebolt sourceType;
 
-    /**
-     * Firebolt email address you use to login.
-     */
-    @JsonProperty("username")
-    private String username;
-
+    @JsonCreator
     public SourceFirebolt(
-            @JsonProperty("account") Optional<? extends String> account,
+            @JsonProperty("account") String account,
+            @JsonProperty("client_id") String clientId,
+            @JsonProperty("client_secret") String clientSecret,
             @JsonProperty("database") String database,
-            @JsonProperty("engine") Optional<? extends String> engine,
-            @JsonProperty("host") Optional<? extends String> host,
-            @JsonProperty("password") String password,
-            @JsonProperty("username") String username) {
+            @JsonProperty("engine") String engine,
+            @JsonProperty("host") Optional<? extends String> host) {
         Utils.checkNotNull(account, "account");
+        Utils.checkNotNull(clientId, "clientId");
+        Utils.checkNotNull(clientSecret, "clientSecret");
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(engine, "engine");
         Utils.checkNotNull(host, "host");
-        Utils.checkNotNull(password, "password");
-        Utils.checkNotNull(username, "username");
         this.account = account;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
         this.database = database;
         this.engine = engine;
         this.host = host;
-        this.password = password;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
-        this.username = username;
+    }
+    
+    public SourceFirebolt(
+            String account,
+            String clientId,
+            String clientSecret,
+            String database,
+            String engine) {
+        this(account, clientId, clientSecret, database, engine, Optional.empty());
     }
 
     /**
      * Firebolt account to login.
      */
-    public Optional<? extends String> account() {
+    @JsonIgnore
+    public String account() {
         return account;
+    }
+
+    /**
+     * Firebolt service account ID.
+     */
+    @JsonIgnore
+    public String clientId() {
+        return clientId;
+    }
+
+    /**
+     * Firebolt secret, corresponding to the service account ID.
+     */
+    @JsonIgnore
+    public String clientSecret() {
+        return clientSecret;
     }
 
     /**
      * The database to connect to.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
     /**
-     * Engine name or url to connect to.
+     * Engine name to connect to.
      */
-    public Optional<? extends String> engine() {
+    @JsonIgnore
+    public String engine() {
         return engine;
     }
 
     /**
      * The host name of your Firebolt database.
      */
-    public Optional<? extends String> host() {
-        return host;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> host() {
+        return (Optional<String>) host;
     }
 
-    /**
-     * Firebolt password.
-     */
-    public String password() {
-        return password;
-    }
-
+    @JsonIgnore
     public Firebolt sourceType() {
         return sourceType;
-    }
-
-    /**
-     * Firebolt email address you use to login.
-     */
-    public String username() {
-        return username;
     }
 
     public final static Builder builder() {
@@ -139,16 +157,25 @@ public class SourceFirebolt {
      */
     public SourceFirebolt withAccount(String account) {
         Utils.checkNotNull(account, "account");
-        this.account = Optional.ofNullable(account);
+        this.account = account;
         return this;
     }
 
     /**
-     * Firebolt account to login.
+     * Firebolt service account ID.
      */
-    public SourceFirebolt withAccount(Optional<? extends String> account) {
-        Utils.checkNotNull(account, "account");
-        this.account = account;
+    public SourceFirebolt withClientId(String clientId) {
+        Utils.checkNotNull(clientId, "clientId");
+        this.clientId = clientId;
+        return this;
+    }
+
+    /**
+     * Firebolt secret, corresponding to the service account ID.
+     */
+    public SourceFirebolt withClientSecret(String clientSecret) {
+        Utils.checkNotNull(clientSecret, "clientSecret");
+        this.clientSecret = clientSecret;
         return this;
     }
 
@@ -162,18 +189,9 @@ public class SourceFirebolt {
     }
 
     /**
-     * Engine name or url to connect to.
+     * Engine name to connect to.
      */
     public SourceFirebolt withEngine(String engine) {
-        Utils.checkNotNull(engine, "engine");
-        this.engine = Optional.ofNullable(engine);
-        return this;
-    }
-
-    /**
-     * Engine name or url to connect to.
-     */
-    public SourceFirebolt withEngine(Optional<? extends String> engine) {
         Utils.checkNotNull(engine, "engine");
         this.engine = engine;
         return this;
@@ -196,24 +214,6 @@ public class SourceFirebolt {
         this.host = host;
         return this;
     }
-
-    /**
-     * Firebolt password.
-     */
-    public SourceFirebolt withPassword(String password) {
-        Utils.checkNotNull(password, "password");
-        this.password = password;
-        return this;
-    }
-
-    /**
-     * Firebolt email address you use to login.
-     */
-    public SourceFirebolt withUsername(String username) {
-        Utils.checkNotNull(username, "username");
-        this.username = username;
-        return this;
-    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -226,51 +226,51 @@ public class SourceFirebolt {
         SourceFirebolt other = (SourceFirebolt) o;
         return 
             java.util.Objects.deepEquals(this.account, other.account) &&
+            java.util.Objects.deepEquals(this.clientId, other.clientId) &&
+            java.util.Objects.deepEquals(this.clientSecret, other.clientSecret) &&
             java.util.Objects.deepEquals(this.database, other.database) &&
             java.util.Objects.deepEquals(this.engine, other.engine) &&
             java.util.Objects.deepEquals(this.host, other.host) &&
-            java.util.Objects.deepEquals(this.password, other.password) &&
-            java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
-            java.util.Objects.deepEquals(this.username, other.username);
+            java.util.Objects.deepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
             account,
+            clientId,
+            clientSecret,
             database,
             engine,
             host,
-            password,
-            sourceType,
-            username);
+            sourceType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceFirebolt.class,
                 "account", account,
+                "clientId", clientId,
+                "clientSecret", clientSecret,
                 "database", database,
                 "engine", engine,
                 "host", host,
-                "password", password,
-                "sourceType", sourceType,
-                "username", username);
+                "sourceType", sourceType);
     }
     
     public final static class Builder {
  
-        private Optional<? extends String> account = Optional.empty();
+        private String account;
+ 
+        private String clientId;
+ 
+        private String clientSecret;
  
         private String database;
  
-        private Optional<? extends String> engine = Optional.empty();
+        private String engine;
  
-        private Optional<? extends String> host = Optional.empty();
- 
-        private String password;
- 
-        private String username;  
+        private Optional<? extends String> host = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -281,16 +281,25 @@ public class SourceFirebolt {
          */
         public Builder account(String account) {
             Utils.checkNotNull(account, "account");
-            this.account = Optional.ofNullable(account);
+            this.account = account;
             return this;
         }
 
         /**
-         * Firebolt account to login.
+         * Firebolt service account ID.
          */
-        public Builder account(Optional<? extends String> account) {
-            Utils.checkNotNull(account, "account");
-            this.account = account;
+        public Builder clientId(String clientId) {
+            Utils.checkNotNull(clientId, "clientId");
+            this.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * Firebolt secret, corresponding to the service account ID.
+         */
+        public Builder clientSecret(String clientSecret) {
+            Utils.checkNotNull(clientSecret, "clientSecret");
+            this.clientSecret = clientSecret;
             return this;
         }
 
@@ -304,18 +313,9 @@ public class SourceFirebolt {
         }
 
         /**
-         * Engine name or url to connect to.
+         * Engine name to connect to.
          */
         public Builder engine(String engine) {
-            Utils.checkNotNull(engine, "engine");
-            this.engine = Optional.ofNullable(engine);
-            return this;
-        }
-
-        /**
-         * Engine name or url to connect to.
-         */
-        public Builder engine(Optional<? extends String> engine) {
             Utils.checkNotNull(engine, "engine");
             this.engine = engine;
             return this;
@@ -338,33 +338,15 @@ public class SourceFirebolt {
             this.host = host;
             return this;
         }
-
-        /**
-         * Firebolt password.
-         */
-        public Builder password(String password) {
-            Utils.checkNotNull(password, "password");
-            this.password = password;
-            return this;
-        }
-
-        /**
-         * Firebolt email address you use to login.
-         */
-        public Builder username(String username) {
-            Utils.checkNotNull(username, "username");
-            this.username = username;
-            return this;
-        }
         
         public SourceFirebolt build() {
             return new SourceFirebolt(
                 account,
+                clientId,
+                clientSecret,
                 database,
                 engine,
-                host,
-                password,
-                username);
+                host);
         }
 
         private static final LazySingletonValue<Firebolt> _SINGLETON_VALUE_SourceType =

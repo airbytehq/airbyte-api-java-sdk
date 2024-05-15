@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class SourceRecreation {
     @JsonProperty("sourceType")
     private Recreation sourceType;
 
+    @JsonCreator
     public SourceRecreation(
             @JsonProperty("apikey") String apikey,
             @JsonProperty("query_campsites") Optional<? extends String> queryCampsites) {
@@ -42,18 +45,27 @@ public class SourceRecreation {
         this.queryCampsites = queryCampsites;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceRecreation(
+            String apikey) {
+        this(apikey, Optional.empty());
+    }
 
     /**
      * API Key
      */
+    @JsonIgnore
     public String apikey() {
         return apikey;
     }
 
-    public Optional<? extends String> queryCampsites() {
-        return queryCampsites;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> queryCampsites() {
+        return (Optional<String>) queryCampsites;
     }
 
+    @JsonIgnore
     public Recreation sourceType() {
         return sourceType;
     }

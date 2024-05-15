@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,6 +58,7 @@ public class SourceNytimes {
     @JsonProperty("start_date")
     private LocalDate startDate;
 
+    @JsonCreator
     public SourceNytimes(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("end_date") Optional<? extends LocalDate> endDate,
@@ -74,10 +77,18 @@ public class SourceNytimes {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceNytimes(
+            String apiKey,
+            PeriodUsedForMostPopularStreams period,
+            LocalDate startDate) {
+        this(apiKey, Optional.empty(), period, Optional.empty(), startDate);
+    }
 
     /**
      * API Key
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -85,13 +96,16 @@ public class SourceNytimes {
     /**
      * End date to stop the article retrieval (format YYYY-MM)
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
     /**
      * Period of time (in days)
      */
+    @JsonIgnore
     public PeriodUsedForMostPopularStreams period() {
         return period;
     }
@@ -99,10 +113,13 @@ public class SourceNytimes {
     /**
      * Share Type
      */
-    public Optional<? extends ShareTypeUsedForMostPopularSharedStream> shareType() {
-        return shareType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ShareTypeUsedForMostPopularSharedStream> shareType() {
+        return (Optional<ShareTypeUsedForMostPopularSharedStream>) shareType;
     }
 
+    @JsonIgnore
     public Nytimes sourceType() {
         return sourceType;
     }
@@ -110,6 +127,7 @@ public class SourceNytimes {
     /**
      * Start date to begin the article retrieval (format YYYY-MM)
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -46,6 +48,7 @@ public class SourceMailgun {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceMailgun(
             @JsonProperty("domain_region") Optional<? extends String> domainRegion,
             @JsonProperty("private_key") String privateKey,
@@ -58,21 +61,30 @@ public class SourceMailgun {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceMailgun(
+            String privateKey) {
+        this(Optional.empty(), privateKey, Optional.empty());
+    }
 
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
      */
-    public Optional<? extends String> domainRegion() {
-        return domainRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> domainRegion() {
+        return (Optional<String>) domainRegion;
     }
 
     /**
      * Primary account API key to access your Mailgun data.
      */
+    @JsonIgnore
     public String privateKey() {
         return privateKey;
     }
 
+    @JsonIgnore
     public Mailgun sourceType() {
         return sourceType;
     }
@@ -80,8 +92,10 @@ public class SourceMailgun {
     /**
      * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

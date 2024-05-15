@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -50,6 +52,7 @@ public class SourceOutreach {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceOutreach(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -72,6 +75,7 @@ public class SourceOutreach {
     /**
      * The Client ID of your Outreach developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -79,6 +83,7 @@ public class SourceOutreach {
     /**
      * The Client Secret of your Outreach developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -86,6 +91,7 @@ public class SourceOutreach {
     /**
      * A Redirect URI is the location where the authorization server sends the user once the app has been successfully authorized and granted an authorization code or access token.
      */
+    @JsonIgnore
     public String redirectUri() {
         return redirectUri;
     }
@@ -93,10 +99,12 @@ public class SourceOutreach {
     /**
      * The token for obtaining the new access token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
+    @JsonIgnore
     public Outreach sourceType() {
         return sourceType;
     }
@@ -104,6 +112,7 @@ public class SourceOutreach {
     /**
      * The date from which you'd like to replicate data for Outreach API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -72,6 +74,7 @@ public class DestinationVectara {
     @JsonProperty("title_field")
     private Optional<? extends String> titleField;
 
+    @JsonCreator
     public DestinationVectara(
             @JsonProperty("corpus_name") String corpusName,
             @JsonProperty("customer_id") String customerId,
@@ -96,10 +99,18 @@ public class DestinationVectara {
         this.textFields = textFields;
         this.titleField = titleField;
     }
+    
+    public DestinationVectara(
+            String corpusName,
+            String customerId,
+            OAuth20Credentials oauth2) {
+        this(corpusName, customerId, Optional.empty(), oauth2, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Name of Corpus to load data into
      */
+    @JsonIgnore
     public String corpusName() {
         return corpusName;
     }
@@ -107,10 +118,12 @@ public class DestinationVectara {
     /**
      * Your customer id as it is in the authenticaion url
      */
+    @JsonIgnore
     public String customerId() {
         return customerId;
     }
 
+    @JsonIgnore
     public Vectara destinationType() {
         return destinationType;
     }
@@ -118,13 +131,16 @@ public class DestinationVectara {
     /**
      * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
      */
-    public Optional<? extends java.util.List<String>> metadataFields() {
-        return metadataFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> metadataFields() {
+        return (Optional<java.util.List<String>>) metadataFields;
     }
 
     /**
      * OAuth2.0 credentials used to authenticate admin actions (creating/deleting corpora)
      */
+    @JsonIgnore
     public OAuth20Credentials oauth2() {
         return oauth2;
     }
@@ -132,22 +148,28 @@ public class DestinationVectara {
     /**
      * Parallelize indexing into Vectara with multiple threads
      */
-    public Optional<? extends Boolean> parallelize() {
-        return parallelize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> parallelize() {
+        return (Optional<Boolean>) parallelize;
     }
 
     /**
      * List of fields in the record that should be in the section of the document. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
      */
-    public Optional<? extends java.util.List<String>> textFields() {
-        return textFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> textFields() {
+        return (Optional<java.util.List<String>>) textFields;
     }
 
     /**
      * A field that will be used to populate the `title` of each document. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
      */
-    public Optional<? extends String> titleField() {
-        return titleField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> titleField() {
+        return (Optional<String>) titleField;
     }
 
     public final static Builder builder() {

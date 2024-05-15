@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SourceRailz {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceRailz(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("secret_key") String secretKey,
@@ -54,6 +57,7 @@ public class SourceRailz {
     /**
      * Client ID (client_id)
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -61,10 +65,12 @@ public class SourceRailz {
     /**
      * Secret key (secret_key)
      */
+    @JsonIgnore
     public String secretKey() {
         return secretKey;
     }
 
+    @JsonIgnore
     public Railz sourceType() {
         return sourceType;
     }
@@ -72,6 +78,7 @@ public class SourceRailz {
     /**
      * Start date
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

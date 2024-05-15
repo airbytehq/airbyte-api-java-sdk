@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,11 +25,11 @@ import java.util.Optional;
 public class InitiateOauthRequest {
 
     /**
-     * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
+     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("oAuthInputConfiguration")
-    private Optional<? extends OAuthInputConfiguration> oAuthInputConfiguration;
+    private Optional<? extends java.lang.Object> oAuthInputConfiguration;
 
     /**
      * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
@@ -44,8 +46,9 @@ public class InitiateOauthRequest {
     @JsonProperty("workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public InitiateOauthRequest(
-            @JsonProperty("oAuthInputConfiguration") Optional<? extends OAuthInputConfiguration> oAuthInputConfiguration,
+            @JsonProperty("oAuthInputConfiguration") Optional<? extends java.lang.Object> oAuthInputConfiguration,
             @JsonProperty("redirectUrl") String redirectUrl,
             @JsonProperty("sourceType") OAuthActorNames sourceType,
             @JsonProperty("workspaceId") String workspaceId) {
@@ -58,21 +61,32 @@ public class InitiateOauthRequest {
         this.sourceType = sourceType;
         this.workspaceId = workspaceId;
     }
+    
+    public InitiateOauthRequest(
+            String redirectUrl,
+            OAuthActorNames sourceType,
+            String workspaceId) {
+        this(Optional.empty(), redirectUrl, sourceType, workspaceId);
+    }
 
     /**
-     * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
+     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
-    public Optional<? extends OAuthInputConfiguration> oAuthInputConfiguration() {
-        return oAuthInputConfiguration;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.lang.Object> oAuthInputConfiguration() {
+        return (Optional<java.lang.Object>) oAuthInputConfiguration;
     }
 
     /**
      * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
      */
+    @JsonIgnore
     public String redirectUrl() {
         return redirectUrl;
     }
 
+    @JsonIgnore
     public OAuthActorNames sourceType() {
         return sourceType;
     }
@@ -80,6 +94,7 @@ public class InitiateOauthRequest {
     /**
      * The workspace to create the secret and eventually the full source.
      */
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }
@@ -89,18 +104,18 @@ public class InitiateOauthRequest {
     }
 
     /**
-     * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
+     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
-    public InitiateOauthRequest withOAuthInputConfiguration(OAuthInputConfiguration oAuthInputConfiguration) {
+    public InitiateOauthRequest withOAuthInputConfiguration(java.lang.Object oAuthInputConfiguration) {
         Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
         this.oAuthInputConfiguration = Optional.ofNullable(oAuthInputConfiguration);
         return this;
     }
 
     /**
-     * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
+     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
-    public InitiateOauthRequest withOAuthInputConfiguration(Optional<? extends OAuthInputConfiguration> oAuthInputConfiguration) {
+    public InitiateOauthRequest withOAuthInputConfiguration(Optional<? extends java.lang.Object> oAuthInputConfiguration) {
         Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
         this.oAuthInputConfiguration = oAuthInputConfiguration;
         return this;
@@ -166,7 +181,7 @@ public class InitiateOauthRequest {
     
     public final static class Builder {
  
-        private Optional<? extends OAuthInputConfiguration> oAuthInputConfiguration = Optional.empty();
+        private Optional<? extends java.lang.Object> oAuthInputConfiguration = Optional.empty();
  
         private String redirectUrl;
  
@@ -179,18 +194,18 @@ public class InitiateOauthRequest {
         }
 
         /**
-         * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
+         * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
          */
-        public Builder oAuthInputConfiguration(OAuthInputConfiguration oAuthInputConfiguration) {
+        public Builder oAuthInputConfiguration(java.lang.Object oAuthInputConfiguration) {
             Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
             this.oAuthInputConfiguration = Optional.ofNullable(oAuthInputConfiguration);
             return this;
         }
 
         /**
-         * Arbitrary vars to pass for OAuth depending on what the source/destination spec requires.
+         * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
          */
-        public Builder oAuthInputConfiguration(Optional<? extends OAuthInputConfiguration> oAuthInputConfiguration) {
+        public Builder oAuthInputConfiguration(Optional<? extends java.lang.Object> oAuthInputConfiguration) {
             Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
             this.oAuthInputConfiguration = oAuthInputConfiguration;
             return this;

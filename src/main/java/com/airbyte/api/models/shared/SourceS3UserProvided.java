@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class SourceS3UserProvided {
     @JsonProperty("header_definition_type")
     private Optional<? extends SourceS3SchemasStreamsHeaderDefinitionType> headerDefinitionType;
 
+    @JsonCreator
     public SourceS3UserProvided(
             @JsonProperty("column_names") java.util.List<String> columnNames) {
         Utils.checkNotNull(columnNames, "columnNames");
@@ -40,12 +43,15 @@ public class SourceS3UserProvided {
     /**
      * The column names that will be used while emitting the CSV records
      */
+    @JsonIgnore
     public java.util.List<String> columnNames() {
         return columnNames;
     }
 
-    public Optional<? extends SourceS3SchemasStreamsHeaderDefinitionType> headerDefinitionType() {
-        return headerDefinitionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3SchemasStreamsHeaderDefinitionType> headerDefinitionType() {
+        return (Optional<SourceS3SchemasStreamsHeaderDefinitionType>) headerDefinitionType;
     }
 
     public final static Builder builder() {

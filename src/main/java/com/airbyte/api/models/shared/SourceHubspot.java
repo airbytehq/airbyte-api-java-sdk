@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -46,6 +48,7 @@ public class SourceHubspot {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceHubspot(
             @JsonProperty("credentials") SourceHubspotAuthentication credentials,
             @JsonProperty("enable_experimental_streams") Optional<? extends Boolean> enableExperimentalStreams,
@@ -58,10 +61,16 @@ public class SourceHubspot {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceHubspot(
+            SourceHubspotAuthentication credentials) {
+        this(credentials, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Choose how to authenticate to HubSpot.
      */
+    @JsonIgnore
     public SourceHubspotAuthentication credentials() {
         return credentials;
     }
@@ -69,10 +78,13 @@ public class SourceHubspot {
     /**
      * If enabled then experimental streams become available for sync.
      */
-    public Optional<? extends Boolean> enableExperimentalStreams() {
-        return enableExperimentalStreams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> enableExperimentalStreams() {
+        return (Optional<Boolean>) enableExperimentalStreams;
     }
 
+    @JsonIgnore
     public SourceHubspotHubspot sourceType() {
         return sourceType;
     }
@@ -80,8 +92,10 @@ public class SourceHubspot {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If not set, "2006-06-01T00:00:00Z" (Hubspot creation date) will be used as start date. It's recommended to provide relevant to your data start date value to optimize synchronization.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

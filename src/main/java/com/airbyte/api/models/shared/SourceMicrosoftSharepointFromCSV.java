@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class SourceMicrosoftSharepointFromCSV {
     @JsonProperty("header_definition_type")
     private Optional<? extends SourceMicrosoftSharepointHeaderDefinitionType> headerDefinitionType;
 
+    @JsonCreator
     public SourceMicrosoftSharepointFromCSV() {
         
         this.headerDefinitionType = Builder._SINGLETON_VALUE_HeaderDefinitionType.value();
     }
 
-    public Optional<? extends SourceMicrosoftSharepointHeaderDefinitionType> headerDefinitionType() {
-        return headerDefinitionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftSharepointHeaderDefinitionType> headerDefinitionType() {
+        return (Optional<SourceMicrosoftSharepointHeaderDefinitionType>) headerDefinitionType;
     }
 
     public final static Builder builder() {

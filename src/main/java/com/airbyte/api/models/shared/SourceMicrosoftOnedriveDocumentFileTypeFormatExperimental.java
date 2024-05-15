@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental {
     @JsonProperty("strategy")
     private Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy;
 
+    @JsonCreator
     public SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental(
             @JsonProperty("processing") Optional<? extends SourceMicrosoftOnedriveProcessing> processing,
             @JsonProperty("skip_unprocessable_files") Optional<? extends Boolean> skipUnprocessableFiles,
@@ -60,30 +63,42 @@ public class SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental {
         this.skipUnprocessableFiles = skipUnprocessableFiles;
         this.strategy = strategy;
     }
+    
+    public SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype> filetype() {
+        return (Optional<SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype>) filetype;
     }
 
     /**
      * Processing configuration
      */
-    public Optional<? extends SourceMicrosoftOnedriveProcessing> processing() {
-        return processing;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftOnedriveProcessing> processing() {
+        return (Optional<SourceMicrosoftOnedriveProcessing>) processing;
     }
 
     /**
      * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
      */
-    public Optional<? extends Boolean> skipUnprocessableFiles() {
-        return skipUnprocessableFiles;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> skipUnprocessableFiles() {
+        return (Optional<Boolean>) skipUnprocessableFiles;
     }
 
     /**
      * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
-    public Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy() {
-        return strategy;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftOnedriveParsingStrategy> strategy() {
+        return (Optional<SourceMicrosoftOnedriveParsingStrategy>) strategy;
     }
 
     public final static Builder builder() {

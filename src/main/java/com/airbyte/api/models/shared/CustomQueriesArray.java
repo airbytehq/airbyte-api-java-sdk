@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -28,6 +30,7 @@ public class CustomQueriesArray {
     @JsonProperty("table_name")
     private String tableName;
 
+    @JsonCreator
     public CustomQueriesArray(
             @JsonProperty("query") String query,
             @JsonProperty("table_name") String tableName) {
@@ -40,6 +43,7 @@ public class CustomQueriesArray {
     /**
      * A custom defined GAQL query for building the report. Avoid including the segments.date field; wherever possible, Airbyte will automatically include it for incremental syncs. For more information, refer to &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;Google's documentation&lt;/a&gt;.
      */
+    @JsonIgnore
     public String query() {
         return query;
     }
@@ -47,6 +51,7 @@ public class CustomQueriesArray {
     /**
      * The table name in your destination database for the chosen query.
      */
+    @JsonIgnore
     public String tableName() {
         return tableName;
     }

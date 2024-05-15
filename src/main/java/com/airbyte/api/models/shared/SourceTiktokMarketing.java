@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -60,6 +62,7 @@ public class SourceTiktokMarketing {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceTiktokMarketing(
             @JsonProperty("attribution_window") Optional<? extends Long> attributionWindow,
             @JsonProperty("credentials") Optional<? extends SourceTiktokMarketingAuthenticationMethod> credentials,
@@ -78,44 +81,60 @@ public class SourceTiktokMarketing {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceTiktokMarketing() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The attribution window in days.
      */
-    public Optional<? extends Long> attributionWindow() {
-        return attributionWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> attributionWindow() {
+        return (Optional<Long>) attributionWindow;
     }
 
     /**
      * Authentication method
      */
-    public Optional<? extends SourceTiktokMarketingAuthenticationMethod> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceTiktokMarketingAuthenticationMethod> credentials() {
+        return (Optional<SourceTiktokMarketingAuthenticationMethod>) credentials;
     }
 
     /**
      * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DD. All data generated between start_date and this date will be replicated. Not setting this option will result in always syncing the data till the current date.
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
     /**
      * Set to active if you want to include deleted data in reports.
      */
-    public Optional<? extends Boolean> includeDeleted() {
-        return includeDeleted;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> includeDeleted() {
+        return (Optional<Boolean>) includeDeleted;
     }
 
-    public Optional<? extends SourceTiktokMarketingTiktokMarketing> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceTiktokMarketingTiktokMarketing> sourceType() {
+        return (Optional<SourceTiktokMarketingTiktokMarketing>) sourceType;
     }
 
     /**
      * The Start Date in format: YYYY-MM-DD. Any data before this date will not be replicated. If this parameter is not set, all data will be replicated.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {
