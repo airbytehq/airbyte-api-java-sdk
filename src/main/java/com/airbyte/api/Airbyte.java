@@ -39,90 +39,48 @@ public class Airbyte {
         "https://api.airbyte.com/v1",
     };
 
-    private final PublicConnections publicConnections;
-
-    private final Public public_;
-
     private final Connections connections;
-
-    private final PublicDestinations publicDestinations;
 
     private final Destinations destinations;
 
-    private final PublicJobs publicJobs;
+    private final Health health;
 
     private final Jobs jobs;
 
-    private final PublicPermissions publicPermissions;
-
     private final Permissions permissions;
-
-    private final PublicSources publicSources;
 
     private final Sources sources;
 
-    private final PublicStreams publicStreams;
-
     private final Streams streams;
-
-    private final PublicWorkspaces publicWorkspaces;
 
     private final Workspaces workspaces;
 
-    public PublicConnections publicConnections() {
-        return publicConnections;
-    }
-
-    public Public public_() {
-        return public_;
-    }
-
     public Connections connections() {
         return connections;
-    }
-
-    public PublicDestinations publicDestinations() {
-        return publicDestinations;
     }
 
     public Destinations destinations() {
         return destinations;
     }
 
-    public PublicJobs publicJobs() {
-        return publicJobs;
+    public Health health() {
+        return health;
     }
 
     public Jobs jobs() {
         return jobs;
     }
 
-    public PublicPermissions publicPermissions() {
-        return publicPermissions;
-    }
-
     public Permissions permissions() {
         return permissions;
-    }
-
-    public PublicSources publicSources() {
-        return publicSources;
     }
 
     public Sources sources() {
         return sources;
     }
 
-    public PublicStreams publicStreams() {
-        return publicStreams;
-    }
-
     public Streams streams() {
         return streams;
-    }
-
-    public PublicWorkspaces publicWorkspaces() {
-        return publicWorkspaces;
     }
 
     public Workspaces workspaces() {
@@ -255,20 +213,13 @@ public class Airbyte {
 
     private Airbyte(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
-        this.publicConnections = new PublicConnections(sdkConfiguration);
-        this.public_ = new Public(sdkConfiguration);
         this.connections = new Connections(sdkConfiguration);
-        this.publicDestinations = new PublicDestinations(sdkConfiguration);
         this.destinations = new Destinations(sdkConfiguration);
-        this.publicJobs = new PublicJobs(sdkConfiguration);
+        this.health = new Health(sdkConfiguration);
         this.jobs = new Jobs(sdkConfiguration);
-        this.publicPermissions = new PublicPermissions(sdkConfiguration);
         this.permissions = new Permissions(sdkConfiguration);
-        this.publicSources = new PublicSources(sdkConfiguration);
         this.sources = new Sources(sdkConfiguration);
-        this.publicStreams = new PublicStreams(sdkConfiguration);
         this.streams = new Streams(sdkConfiguration);
-        this.publicWorkspaces = new PublicWorkspaces(sdkConfiguration);
         this.workspaces = new Workspaces(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }}

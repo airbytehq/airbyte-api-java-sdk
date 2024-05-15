@@ -33,7 +33,7 @@ public class Application {
                 .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
-            CreateConnectionResponse res = sdk.publicConnections().createConnection()
+            CreateConnectionResponse res = sdk.connections().createConnection()
                 .request(req)
                 .call();
 

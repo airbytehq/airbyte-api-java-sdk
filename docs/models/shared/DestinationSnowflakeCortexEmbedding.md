@@ -1,0 +1,4 @@
+# DestinationSnowflakeCortexEmbedding
+
+Embedding configuration
+

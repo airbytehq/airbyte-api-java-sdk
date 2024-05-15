@@ -13,10 +13,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 
@@ -30,7 +33,7 @@ public class SourceInsightly {
      */
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("start_date")
-    private Optional<? extends String> startDate;
+    private Optional<? extends OffsetDateTime> startDate;
 
     /**
      * Your Insightly API token.
@@ -41,7 +44,7 @@ public class SourceInsightly {
 
     @JsonCreator
     public SourceInsightly(
-            @JsonProperty("start_date") Optional<? extends String> startDate,
+            @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
             @JsonProperty("token") Optional<? extends String> token) {
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(token, "token");
@@ -64,8 +67,8 @@ public class SourceInsightly {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> startDate() {
-        return (Optional<String>) startDate;
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
@@ -84,7 +87,7 @@ public class SourceInsightly {
     /**
      * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
      */
-    public SourceInsightly withStartDate(String startDate) {
+    public SourceInsightly withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = Optional.ofNullable(startDate);
         return this;
@@ -93,7 +96,7 @@ public class SourceInsightly {
     /**
      * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
      */
-    public SourceInsightly withStartDate(Optional<? extends String> startDate) {
+    public SourceInsightly withStartDate(Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
@@ -150,7 +153,7 @@ public class SourceInsightly {
     
     public final static class Builder {
  
-        private Optional<? extends String> startDate = Optional.empty();
+        private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
         private Optional<? extends String> token = Optional.empty();  
         
@@ -161,7 +164,7 @@ public class SourceInsightly {
         /**
          * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
          */
-        public Builder startDate(String startDate) {
+        public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = Optional.ofNullable(startDate);
             return this;
@@ -170,7 +173,7 @@ public class SourceInsightly {
         /**
          * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
          */
-        public Builder startDate(Optional<? extends String> startDate) {
+        public Builder startDate(Optional<? extends OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
