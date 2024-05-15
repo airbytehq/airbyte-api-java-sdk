@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -70,6 +72,7 @@ public class DestinationWeaviateIndexing {
     @JsonProperty("text_field")
     private Optional<? extends String> textField;
 
+    @JsonCreator
     public DestinationWeaviateIndexing(
             @JsonProperty("additional_headers") Optional<? extends java.util.List<Header>> additionalHeaders,
             @JsonProperty("auth") DestinationWeaviateAuthentication auth,
@@ -93,17 +96,26 @@ public class DestinationWeaviateIndexing {
         this.tenantId = tenantId;
         this.textField = textField;
     }
+    
+    public DestinationWeaviateIndexing(
+            DestinationWeaviateAuthentication auth,
+            String host) {
+        this(Optional.empty(), auth, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Additional HTTP headers to send with every request.
      */
-    public Optional<? extends java.util.List<Header>> additionalHeaders() {
-        return additionalHeaders;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<Header>> additionalHeaders() {
+        return (Optional<java.util.List<Header>>) additionalHeaders;
     }
 
     /**
      * Authentication method
      */
+    @JsonIgnore
     public DestinationWeaviateAuthentication auth() {
         return auth;
     }
@@ -111,20 +123,25 @@ public class DestinationWeaviateIndexing {
     /**
      * The number of records to send to Weaviate in each batch
      */
-    public Optional<? extends Long> batchSize() {
-        return batchSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchSize() {
+        return (Optional<Long>) batchSize;
     }
 
     /**
      * The vectorizer to use if new classes need to be created
      */
-    public Optional<? extends DefaultVectorizer> defaultVectorizer() {
-        return defaultVectorizer;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DefaultVectorizer> defaultVectorizer() {
+        return (Optional<DefaultVectorizer>) defaultVectorizer;
     }
 
     /**
      * The public endpoint of the Weaviate cluster.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -132,15 +149,19 @@ public class DestinationWeaviateIndexing {
     /**
      * The tenant ID to use for multi tenancy
      */
-    public Optional<? extends String> tenantId() {
-        return tenantId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> tenantId() {
+        return (Optional<String>) tenantId;
     }
 
     /**
      * The field in the object that contains the embedded text
      */
-    public Optional<? extends String> textField() {
-        return textField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> textField() {
+        return (Optional<String>) textField;
     }
 
     public final static Builder builder() {

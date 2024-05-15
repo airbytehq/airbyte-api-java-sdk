@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -96,6 +98,7 @@ public class DestinationS3Glue {
     @JsonProperty("secret_access_key")
     private Optional<? extends String> secretAccessKey;
 
+    @JsonCreator
     public DestinationS3Glue(
             @JsonProperty("access_key_id") Optional<? extends String> accessKeyId,
             @JsonProperty("file_name_pattern") Optional<? extends String> fileNamePattern,
@@ -132,14 +135,25 @@ public class DestinationS3Glue {
         this.s3PathFormat = s3PathFormat;
         this.secretAccessKey = secretAccessKey;
     }
+    
+    public DestinationS3Glue(
+            DestinationS3GlueOutputFormat format,
+            String glueDatabase,
+            String s3BucketName,
+            String s3BucketPath) {
+        this(Optional.empty(), Optional.empty(), format, glueDatabase, Optional.empty(), s3BucketName, s3BucketPath, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> accessKeyId() {
-        return accessKeyId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessKeyId() {
+        return (Optional<String>) accessKeyId;
     }
 
+    @JsonIgnore
     public S3Glue destinationType() {
         return destinationType;
     }
@@ -147,13 +161,16 @@ public class DestinationS3Glue {
     /**
      * The pattern allows you to set the file-name format for the S3 staging file(s)
      */
-    public Optional<? extends String> fileNamePattern() {
-        return fileNamePattern;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> fileNamePattern() {
+        return (Optional<String>) fileNamePattern;
     }
 
     /**
      * Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
      */
+    @JsonIgnore
     public DestinationS3GlueOutputFormat format() {
         return format;
     }
@@ -161,6 +178,7 @@ public class DestinationS3Glue {
     /**
      * Name of the glue database for creating the tables, leave blank if no integration
      */
+    @JsonIgnore
     public String glueDatabase() {
         return glueDatabase;
     }
@@ -168,13 +186,16 @@ public class DestinationS3Glue {
     /**
      * The library that your query engine will use for reading and writing data in your lake.
      */
-    public Optional<? extends SerializationLibrary> glueSerializationLibrary() {
-        return glueSerializationLibrary;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SerializationLibrary> glueSerializationLibrary() {
+        return (Optional<SerializationLibrary>) glueSerializationLibrary;
     }
 
     /**
      * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String s3BucketName() {
         return s3BucketName;
     }
@@ -182,6 +203,7 @@ public class DestinationS3Glue {
     /**
      * Directory under the S3 bucket where data will be written. Read more &lt;a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=to%20format%20the-,bucket%20path,-%3A"&gt;here&lt;/a&gt;
      */
+    @JsonIgnore
     public String s3BucketPath() {
         return s3BucketPath;
     }
@@ -189,29 +211,37 @@ public class DestinationS3Glue {
     /**
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
-    public Optional<? extends DestinationS3GlueS3BucketRegion> s3BucketRegion() {
-        return s3BucketRegion;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3GlueS3BucketRegion> s3BucketRegion() {
+        return (Optional<DestinationS3GlueS3BucketRegion>) s3BucketRegion;
     }
 
     /**
      * Your S3 endpoint url. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/s3.html#:~:text=Service%20endpoints-,Amazon%20S3%20endpoints,-When%20you%20use"&gt;here&lt;/a&gt;
      */
-    public Optional<? extends String> s3Endpoint() {
-        return s3Endpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> s3Endpoint() {
+        return (Optional<String>) s3Endpoint;
     }
 
     /**
      * Format string on how data will be organized inside the S3 bucket directory. Read more &lt;a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=The%20full%20path%20of%20the%20output%20data%20with%20the%20default%20S3%20path%20format"&gt;here&lt;/a&gt;
      */
-    public Optional<? extends String> s3PathFormat() {
-        return s3PathFormat;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> s3PathFormat() {
+        return (Optional<String>) s3PathFormat;
     }
 
     /**
      * The corresponding secret to the access key ID. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;
      */
-    public Optional<? extends String> secretAccessKey() {
-        return secretAccessKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> secretAccessKey() {
+        return (Optional<String>) secretAccessKey;
     }
 
     public final static Builder builder() {

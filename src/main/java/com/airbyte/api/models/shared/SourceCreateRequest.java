@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,7 +41,7 @@ public class SourceCreateRequest {
     private String name;
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secretId")
@@ -48,6 +50,7 @@ public class SourceCreateRequest {
     @JsonProperty("workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public SourceCreateRequest(
             @JsonProperty("configuration") SourceConfiguration configuration,
             @JsonProperty("definitionId") Optional<? extends String> definitionId,
@@ -65,10 +68,18 @@ public class SourceCreateRequest {
         this.secretId = secretId;
         this.workspaceId = workspaceId;
     }
+    
+    public SourceCreateRequest(
+            SourceConfiguration configuration,
+            String name,
+            String workspaceId) {
+        this(configuration, Optional.empty(), name, Optional.empty(), workspaceId);
+    }
 
     /**
      * The values required to configure the source.
      */
+    @JsonIgnore
     public SourceConfiguration configuration() {
         return configuration;
     }
@@ -76,24 +87,30 @@ public class SourceCreateRequest {
     /**
      * The UUID of the connector definition. One of configuration.sourceType or definitionId must be provided.
      */
-    public Optional<? extends String> definitionId() {
-        return definitionId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> definitionId() {
+        return (Optional<String>) definitionId;
     }
 
     /**
      * Name of the source e.g. dev-mysql-instance.
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
-    public Optional<? extends String> secretId() {
-        return secretId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> secretId() {
+        return (Optional<String>) secretId;
     }
 
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }
@@ -139,7 +156,7 @@ public class SourceCreateRequest {
     }
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
     public SourceCreateRequest withSecretId(String secretId) {
         Utils.checkNotNull(secretId, "secretId");
@@ -148,7 +165,7 @@ public class SourceCreateRequest {
     }
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
     public SourceCreateRequest withSecretId(Optional<? extends String> secretId) {
         Utils.checkNotNull(secretId, "secretId");
@@ -252,7 +269,7 @@ public class SourceCreateRequest {
         }
 
         /**
-         * Optional secretID obtained through the public API OAuth redirect flow.
+         * Optional secretID obtained through the  OAuth redirect flow.
          */
         public Builder secretId(String secretId) {
             Utils.checkNotNull(secretId, "secretId");
@@ -261,7 +278,7 @@ public class SourceCreateRequest {
         }
 
         /**
-         * Optional secretID obtained through the public API OAuth redirect flow.
+         * Optional secretID obtained through the  OAuth redirect flow.
          */
         public Builder secretId(Optional<? extends String> secretId) {
             Utils.checkNotNull(secretId, "secretId");

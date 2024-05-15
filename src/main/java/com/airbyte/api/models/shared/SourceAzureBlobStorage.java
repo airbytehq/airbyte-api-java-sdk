@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -28,12 +30,6 @@ import java.util.Optional;
 public class SourceAzureBlobStorage {
 
     /**
-     * The Azure blob storage account key.
-     */
-    @JsonProperty("azure_blob_storage_account_key")
-    private String azureBlobStorageAccountKey;
-
-    /**
      * The account's name of the Azure Blob Storage.
      */
     @JsonProperty("azure_blob_storage_account_name")
@@ -52,6 +48,12 @@ public class SourceAzureBlobStorage {
     @JsonProperty("azure_blob_storage_endpoint")
     private Optional<? extends String> azureBlobStorageEndpoint;
 
+    /**
+     * Credentials for connecting to the Azure Blob Storage
+     */
+    @JsonProperty("credentials")
+    private SourceAzureBlobStorageAuthentication credentials;
+
     @JsonProperty("sourceType")
     private SourceAzureBlobStorageAzureBlobStorage sourceType;
 
@@ -68,38 +70,41 @@ public class SourceAzureBlobStorage {
     @JsonProperty("streams")
     private java.util.List<FileBasedStreamConfig> streams;
 
+    @JsonCreator
     public SourceAzureBlobStorage(
-            @JsonProperty("azure_blob_storage_account_key") String azureBlobStorageAccountKey,
             @JsonProperty("azure_blob_storage_account_name") String azureBlobStorageAccountName,
             @JsonProperty("azure_blob_storage_container_name") String azureBlobStorageContainerName,
             @JsonProperty("azure_blob_storage_endpoint") Optional<? extends String> azureBlobStorageEndpoint,
+            @JsonProperty("credentials") SourceAzureBlobStorageAuthentication credentials,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
             @JsonProperty("streams") java.util.List<FileBasedStreamConfig> streams) {
-        Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
         Utils.checkNotNull(azureBlobStorageAccountName, "azureBlobStorageAccountName");
         Utils.checkNotNull(azureBlobStorageContainerName, "azureBlobStorageContainerName");
         Utils.checkNotNull(azureBlobStorageEndpoint, "azureBlobStorageEndpoint");
+        Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(streams, "streams");
-        this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
         this.azureBlobStorageAccountName = azureBlobStorageAccountName;
         this.azureBlobStorageContainerName = azureBlobStorageContainerName;
         this.azureBlobStorageEndpoint = azureBlobStorageEndpoint;
+        this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.streams = streams;
     }
-
-    /**
-     * The Azure blob storage account key.
-     */
-    public String azureBlobStorageAccountKey() {
-        return azureBlobStorageAccountKey;
+    
+    public SourceAzureBlobStorage(
+            String azureBlobStorageAccountName,
+            String azureBlobStorageContainerName,
+            SourceAzureBlobStorageAuthentication credentials,
+            java.util.List<FileBasedStreamConfig> streams) {
+        this(azureBlobStorageAccountName, azureBlobStorageContainerName, Optional.empty(), credentials, Optional.empty(), streams);
     }
 
     /**
      * The account's name of the Azure Blob Storage.
      */
+    @JsonIgnore
     public String azureBlobStorageAccountName() {
         return azureBlobStorageAccountName;
     }
@@ -107,6 +112,7 @@ public class SourceAzureBlobStorage {
     /**
      * The name of the Azure blob storage container.
      */
+    @JsonIgnore
     public String azureBlobStorageContainerName() {
         return azureBlobStorageContainerName;
     }
@@ -114,10 +120,21 @@ public class SourceAzureBlobStorage {
     /**
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
-    public Optional<? extends String> azureBlobStorageEndpoint() {
-        return azureBlobStorageEndpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> azureBlobStorageEndpoint() {
+        return (Optional<String>) azureBlobStorageEndpoint;
     }
 
+    /**
+     * Credentials for connecting to the Azure Blob Storage
+     */
+    @JsonIgnore
+    public SourceAzureBlobStorageAuthentication credentials() {
+        return credentials;
+    }
+
+    @JsonIgnore
     public SourceAzureBlobStorageAzureBlobStorage sourceType() {
         return sourceType;
     }
@@ -125,28 +142,22 @@ public class SourceAzureBlobStorage {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
+    @JsonIgnore
     public java.util.List<FileBasedStreamConfig> streams() {
         return streams;
     }
 
     public final static Builder builder() {
         return new Builder();
-    }
-
-    /**
-     * The Azure blob storage account key.
-     */
-    public SourceAzureBlobStorage withAzureBlobStorageAccountKey(String azureBlobStorageAccountKey) {
-        Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
-        this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
-        return this;
     }
 
     /**
@@ -182,6 +193,15 @@ public class SourceAzureBlobStorage {
     public SourceAzureBlobStorage withAzureBlobStorageEndpoint(Optional<? extends String> azureBlobStorageEndpoint) {
         Utils.checkNotNull(azureBlobStorageEndpoint, "azureBlobStorageEndpoint");
         this.azureBlobStorageEndpoint = azureBlobStorageEndpoint;
+        return this;
+    }
+
+    /**
+     * Credentials for connecting to the Azure Blob Storage
+     */
+    public SourceAzureBlobStorage withCredentials(SourceAzureBlobStorageAuthentication credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
         return this;
     }
 
@@ -222,10 +242,10 @@ public class SourceAzureBlobStorage {
         }
         SourceAzureBlobStorage other = (SourceAzureBlobStorage) o;
         return 
-            java.util.Objects.deepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
             java.util.Objects.deepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
             java.util.Objects.deepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
             java.util.Objects.deepEquals(this.azureBlobStorageEndpoint, other.azureBlobStorageEndpoint) &&
+            java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate) &&
             java.util.Objects.deepEquals(this.streams, other.streams);
@@ -234,10 +254,10 @@ public class SourceAzureBlobStorage {
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            azureBlobStorageAccountKey,
             azureBlobStorageAccountName,
             azureBlobStorageContainerName,
             azureBlobStorageEndpoint,
+            credentials,
             sourceType,
             startDate,
             streams);
@@ -246,10 +266,10 @@ public class SourceAzureBlobStorage {
     @Override
     public String toString() {
         return Utils.toString(SourceAzureBlobStorage.class,
-                "azureBlobStorageAccountKey", azureBlobStorageAccountKey,
                 "azureBlobStorageAccountName", azureBlobStorageAccountName,
                 "azureBlobStorageContainerName", azureBlobStorageContainerName,
                 "azureBlobStorageEndpoint", azureBlobStorageEndpoint,
+                "credentials", credentials,
                 "sourceType", sourceType,
                 "startDate", startDate,
                 "streams", streams);
@@ -257,13 +277,13 @@ public class SourceAzureBlobStorage {
     
     public final static class Builder {
  
-        private String azureBlobStorageAccountKey;
- 
         private String azureBlobStorageAccountName;
  
         private String azureBlobStorageContainerName;
  
         private Optional<? extends String> azureBlobStorageEndpoint = Optional.empty();
+ 
+        private SourceAzureBlobStorageAuthentication credentials;
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
@@ -271,15 +291,6 @@ public class SourceAzureBlobStorage {
         
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * The Azure blob storage account key.
-         */
-        public Builder azureBlobStorageAccountKey(String azureBlobStorageAccountKey) {
-            Utils.checkNotNull(azureBlobStorageAccountKey, "azureBlobStorageAccountKey");
-            this.azureBlobStorageAccountKey = azureBlobStorageAccountKey;
-            return this;
         }
 
         /**
@@ -319,6 +330,15 @@ public class SourceAzureBlobStorage {
         }
 
         /**
+         * Credentials for connecting to the Azure Blob Storage
+         */
+        public Builder credentials(SourceAzureBlobStorageAuthentication credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
+            return this;
+        }
+
+        /**
          * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
@@ -347,10 +367,10 @@ public class SourceAzureBlobStorage {
         
         public SourceAzureBlobStorage build() {
             return new SourceAzureBlobStorage(
-                azureBlobStorageAccountKey,
                 azureBlobStorageAccountName,
                 azureBlobStorageContainerName,
                 azureBlobStorageEndpoint,
+                credentials,
                 startDate,
                 streams);
         }

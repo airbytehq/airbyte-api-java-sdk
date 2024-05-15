@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,13 +26,16 @@ public class SourceMicrosoftOnedriveJsonlFormat {
     @JsonProperty("filetype")
     private Optional<? extends SourceMicrosoftOnedriveSchemasStreamsFiletype> filetype;
 
+    @JsonCreator
     public SourceMicrosoftOnedriveJsonlFormat() {
         
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
-    public Optional<? extends SourceMicrosoftOnedriveSchemasStreamsFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftOnedriveSchemasStreamsFiletype> filetype() {
+        return (Optional<SourceMicrosoftOnedriveSchemasStreamsFiletype>) filetype;
     }
 
     public final static Builder builder() {

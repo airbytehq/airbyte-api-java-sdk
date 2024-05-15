@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourceZoom {
     @JsonProperty("sourceType")
     private Zoom sourceType;
 
+    @JsonCreator
     public SourceZoom(
             @JsonProperty("account_id") String accountId,
             @JsonProperty("authorization_endpoint") Optional<? extends String> authorizationEndpoint,
@@ -60,21 +63,32 @@ public class SourceZoom {
         this.clientSecret = clientSecret;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceZoom(
+            String accountId,
+            String clientId,
+            String clientSecret) {
+        this(accountId, Optional.empty(), clientId, clientSecret);
+    }
 
     /**
      * The account ID for your Zoom account. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
      */
+    @JsonIgnore
     public String accountId() {
         return accountId;
     }
 
-    public Optional<? extends String> authorizationEndpoint() {
-        return authorizationEndpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> authorizationEndpoint() {
+        return (Optional<String>) authorizationEndpoint;
     }
 
     /**
      * The client ID for your Zoom app. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -82,10 +96,12 @@ public class SourceZoom {
     /**
      * The client secret for your Zoom app. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
 
+    @JsonIgnore
     public Zoom sourceType() {
         return sourceType;
     }

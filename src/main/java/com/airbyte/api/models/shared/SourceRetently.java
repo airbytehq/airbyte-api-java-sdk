@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,22 +33,31 @@ public class SourceRetently {
     @JsonProperty("sourceType")
     private Optional<? extends SourceRetentlyRetently> sourceType;
 
+    @JsonCreator
     public SourceRetently(
             @JsonProperty("credentials") Optional<? extends java.lang.Object> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceRetently() {
+        this(Optional.empty());
+    }
 
     /**
      * Choose how to authenticate to Retently
      */
-    public Optional<? extends java.lang.Object> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.lang.Object> credentials() {
+        return (Optional<java.lang.Object>) credentials;
     }
 
-    public Optional<? extends SourceRetentlyRetently> sourceType() {
-        return sourceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceRetentlyRetently> sourceType() {
+        return (Optional<SourceRetentlyRetently>) sourceType;
     }
 
     public final static Builder builder() {

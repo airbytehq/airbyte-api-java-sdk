@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -97,6 +99,7 @@ public class SourceAmazonSellerPartner {
     @JsonProperty("sourceType")
     private SourceAmazonSellerPartnerAmazonSellerPartner sourceType;
 
+    @JsonCreator
     public SourceAmazonSellerPartner(
             @JsonProperty("account_type") Optional<? extends AWSSellerPartnerAccountType> accountType,
             @JsonProperty("aws_environment") Optional<? extends AWSEnvironment> awsEnvironment,
@@ -131,28 +134,42 @@ public class SourceAmazonSellerPartner {
         this.reportOptionsList = reportOptionsList;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceAmazonSellerPartner(
+            String lwaAppId,
+            String lwaClientSecret,
+            String refreshToken) {
+        this(Optional.empty(), Optional.empty(), lwaAppId, lwaClientSecret, Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Type of the Account you're going to authorize the Airbyte application by
      */
-    public Optional<? extends AWSSellerPartnerAccountType> accountType() {
-        return accountType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AWSSellerPartnerAccountType> accountType() {
+        return (Optional<AWSSellerPartnerAccountType>) accountType;
     }
 
-    public Optional<? extends SourceAmazonSellerPartnerAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAmazonSellerPartnerAuthType> authType() {
+        return (Optional<SourceAmazonSellerPartnerAuthType>) authType;
     }
 
     /**
      * Select the AWS Environment.
      */
-    public Optional<? extends AWSEnvironment> awsEnvironment() {
-        return awsEnvironment;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AWSEnvironment> awsEnvironment() {
+        return (Optional<AWSEnvironment>) awsEnvironment;
     }
 
     /**
      * Your Login with Amazon Client ID.
      */
+    @JsonIgnore
     public String lwaAppId() {
         return lwaAppId;
     }
@@ -160,6 +177,7 @@ public class SourceAmazonSellerPartner {
     /**
      * Your Login with Amazon Client Secret.
      */
+    @JsonIgnore
     public String lwaClientSecret() {
         return lwaClientSecret;
     }
@@ -167,13 +185,16 @@ public class SourceAmazonSellerPartner {
     /**
      * For syncs spanning a large date range, this option is used to request data in a smaller fixed window to improve sync reliability. This time window can be configured granularly by day.
      */
-    public Optional<? extends Long> periodInDays() {
-        return periodInDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> periodInDays() {
+        return (Optional<Long>) periodInDays;
     }
 
     /**
      * The Refresh Token obtained via OAuth flow authorization.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
@@ -181,31 +202,40 @@ public class SourceAmazonSellerPartner {
     /**
      * Select the AWS Region.
      */
-    public Optional<? extends AWSRegion> region() {
-        return region;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AWSRegion> region() {
+        return (Optional<AWSRegion>) region;
     }
 
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> replicationEndDate() {
-        return replicationEndDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> replicationEndDate() {
+        return (Optional<OffsetDateTime>) replicationEndDate;
     }
 
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
      */
-    public Optional<? extends OffsetDateTime> replicationStartDate() {
-        return replicationStartDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> replicationStartDate() {
+        return (Optional<OffsetDateTime>) replicationStartDate;
     }
 
     /**
      * Additional information passed to reports. This varies by report type.
      */
-    public Optional<? extends java.util.List<ReportOptions>> reportOptionsList() {
-        return reportOptionsList;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ReportOptions>> reportOptionsList() {
+        return (Optional<java.util.List<ReportOptions>>) reportOptionsList;
     }
 
+    @JsonIgnore
     public SourceAmazonSellerPartnerAmazonSellerPartner sourceType() {
         return sourceType;
     }

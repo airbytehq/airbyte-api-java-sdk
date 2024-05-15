@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class DestinationPineconeAzureOpenAI {
     @JsonProperty("openai_key")
     private String openaiKey;
 
+    @JsonCreator
     public DestinationPineconeAzureOpenAI(
             @JsonProperty("api_base") String apiBase,
             @JsonProperty("deployment") String deployment,
@@ -61,6 +64,7 @@ public class DestinationPineconeAzureOpenAI {
     /**
      * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
      */
+    @JsonIgnore
     public String apiBase() {
         return apiBase;
     }
@@ -68,17 +72,21 @@ public class DestinationPineconeAzureOpenAI {
     /**
      * The deployment for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
      */
+    @JsonIgnore
     public String deployment() {
         return deployment;
     }
 
-    public Optional<? extends DestinationPineconeSchemasEmbeddingEmbeddingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationPineconeSchemasEmbeddingEmbeddingMode> mode() {
+        return (Optional<DestinationPineconeSchemasEmbeddingEmbeddingMode>) mode;
     }
 
     /**
      * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
      */
+    @JsonIgnore
     public String openaiKey() {
         return openaiKey;
     }

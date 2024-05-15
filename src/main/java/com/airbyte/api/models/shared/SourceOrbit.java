@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceOrbit {
     @JsonProperty("workspace")
     private String workspace;
 
+    @JsonCreator
     public SourceOrbit(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("start_date") Optional<? extends String> startDate,
@@ -54,14 +57,22 @@ public class SourceOrbit {
         this.startDate = startDate;
         this.workspace = workspace;
     }
+    
+    public SourceOrbit(
+            String apiToken,
+            String workspace) {
+        this(apiToken, Optional.empty(), workspace);
+    }
 
     /**
      * Authorizes you to work with Orbit workspaces associated with the token.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
+    @JsonIgnore
     public Orbit sourceType() {
         return sourceType;
     }
@@ -69,13 +80,16 @@ public class SourceOrbit {
     /**
      * Date in the format 2022-06-26. Only load members whose last activities are after this date.
      */
-    public Optional<? extends String> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> startDate() {
+        return (Optional<String>) startDate;
     }
 
     /**
      * The unique name of the workspace that your API token is associated with.
      */
+    @JsonIgnore
     public String workspace() {
         return workspace;
     }

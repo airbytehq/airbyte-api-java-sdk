@@ -6,7 +6,9 @@ package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -19,12 +21,14 @@ public class GetConnectionRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=connectionId")
     private String connectionId;
 
+    @JsonCreator
     public GetConnectionRequest(
             String connectionId) {
         Utils.checkNotNull(connectionId, "connectionId");
         this.connectionId = connectionId;
     }
 
+    @JsonIgnore
     public String connectionId() {
         return connectionId;
     }

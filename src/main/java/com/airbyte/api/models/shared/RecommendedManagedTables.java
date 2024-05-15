@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -20,11 +22,13 @@ public class RecommendedManagedTables {
     @JsonProperty("data_source_type")
     private DataSourceType dataSourceType;
 
+    @JsonCreator
     public RecommendedManagedTables() {
         
         this.dataSourceType = Builder._SINGLETON_VALUE_DataSourceType.value();
     }
 
+    @JsonIgnore
     public DataSourceType dataSourceType() {
         return dataSourceType;
     }

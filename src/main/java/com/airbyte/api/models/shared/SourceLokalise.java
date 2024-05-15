@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceLokalise {
     @JsonProperty("sourceType")
     private Lokalise sourceType;
 
+    @JsonCreator
     public SourceLokalise(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("project_id") String projectId) {
@@ -45,6 +48,7 @@ public class SourceLokalise {
     /**
      * Lokalise API Key with read-access. Available at Profile settings &gt; API tokens. See &lt;a href="https://docs.lokalise.com/en/articles/1929556-api-tokens"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -52,10 +56,12 @@ public class SourceLokalise {
     /**
      * Lokalise project ID. Available at Project Settings &gt; General.
      */
+    @JsonIgnore
     public String projectId() {
         return projectId;
     }
 
+    @JsonIgnore
     public Lokalise sourceType() {
         return sourceType;
     }

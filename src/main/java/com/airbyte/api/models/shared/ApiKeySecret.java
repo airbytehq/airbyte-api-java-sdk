@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -35,6 +37,7 @@ public class ApiKeySecret {
     @JsonProperty("method")
     private DestinationElasticsearchMethod method;
 
+    @JsonCreator
     public ApiKeySecret(
             @JsonProperty("apiKeyId") String apiKeyId,
             @JsonProperty("apiKeySecret") String apiKeySecret) {
@@ -48,6 +51,7 @@ public class ApiKeySecret {
     /**
      * The Key ID to used when accessing an enterprise Elasticsearch instance.
      */
+    @JsonIgnore
     public String apiKeyId() {
         return apiKeyId;
     }
@@ -55,10 +59,12 @@ public class ApiKeySecret {
     /**
      * The secret associated with the API Key ID.
      */
+    @JsonIgnore
     public String apiKeySecret() {
         return apiKeySecret;
     }
 
+    @JsonIgnore
     public DestinationElasticsearchMethod method() {
         return method;
     }

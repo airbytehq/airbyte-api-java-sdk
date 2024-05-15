@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class SourceLinkedinPages {
     @JsonProperty("sourceType")
     private LinkedinPages sourceType;
 
+    @JsonCreator
     public SourceLinkedinPages(
             @JsonProperty("credentials") Optional<? extends SourceLinkedinPagesAuthentication> credentials,
             @JsonProperty("org_id") String orgId) {
@@ -42,18 +45,27 @@ public class SourceLinkedinPages {
         this.orgId = orgId;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceLinkedinPages(
+            String orgId) {
+        this(Optional.empty(), orgId);
+    }
 
-    public Optional<? extends SourceLinkedinPagesAuthentication> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLinkedinPagesAuthentication> credentials() {
+        return (Optional<SourceLinkedinPagesAuthentication>) credentials;
     }
 
     /**
      * Specify the Organization ID
      */
+    @JsonIgnore
     public String orgId() {
         return orgId;
     }
 
+    @JsonIgnore
     public LinkedinPages sourceType() {
         return sourceType;
     }

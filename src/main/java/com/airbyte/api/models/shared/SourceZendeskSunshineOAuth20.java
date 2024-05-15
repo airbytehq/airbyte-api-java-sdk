@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceZendeskSunshineOAuth20 {
     @JsonProperty("client_secret")
     private String clientSecret;
 
+    @JsonCreator
     public SourceZendeskSunshineOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") String clientId,
@@ -58,17 +61,21 @@ public class SourceZendeskSunshineOAuth20 {
     /**
      * Long-term access Token for making authenticated requests.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
-    public Optional<? extends SourceZendeskSunshineAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceZendeskSunshineAuthMethod> authMethod() {
+        return (Optional<SourceZendeskSunshineAuthMethod>) authMethod;
     }
 
     /**
      * The Client ID of your OAuth application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -76,6 +83,7 @@ public class SourceZendeskSunshineOAuth20 {
     /**
      * The Client Secret of your OAuth application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }

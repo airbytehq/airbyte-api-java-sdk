@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -61,6 +63,7 @@ public class DestinationPineconeProcessingConfigModel {
     @JsonProperty("text_splitter")
     private Optional<? extends DestinationPineconeTextSplitter> textSplitter;
 
+    @JsonCreator
     public DestinationPineconeProcessingConfigModel(
             @JsonProperty("chunk_overlap") Optional<? extends Long> chunkOverlap,
             @JsonProperty("chunk_size") long chunkSize,
@@ -81,17 +84,25 @@ public class DestinationPineconeProcessingConfigModel {
         this.textFields = textFields;
         this.textSplitter = textSplitter;
     }
+    
+    public DestinationPineconeProcessingConfigModel(
+            long chunkSize) {
+        this(Optional.empty(), chunkSize, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
      */
-    public Optional<? extends Long> chunkOverlap() {
-        return chunkOverlap;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> chunkOverlap() {
+        return (Optional<Long>) chunkOverlap;
     }
 
     /**
      * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
      */
+    @JsonIgnore
     public long chunkSize() {
         return chunkSize;
     }
@@ -99,29 +110,37 @@ public class DestinationPineconeProcessingConfigModel {
     /**
      * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
      */
-    public Optional<? extends java.util.List<DestinationPineconeFieldNameMappingConfigModel>> fieldNameMappings() {
-        return fieldNameMappings;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<DestinationPineconeFieldNameMappingConfigModel>> fieldNameMappings() {
+        return (Optional<java.util.List<DestinationPineconeFieldNameMappingConfigModel>>) fieldNameMappings;
     }
 
     /**
      * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
      */
-    public Optional<? extends java.util.List<String>> metadataFields() {
-        return metadataFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> metadataFields() {
+        return (Optional<java.util.List<String>>) metadataFields;
     }
 
     /**
      * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
      */
-    public Optional<? extends java.util.List<String>> textFields() {
-        return textFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> textFields() {
+        return (Optional<java.util.List<String>>) textFields;
     }
 
     /**
      * Split text fields into chunks based on the specified method.
      */
-    public Optional<? extends DestinationPineconeTextSplitter> textSplitter() {
-        return textSplitter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationPineconeTextSplitter> textSplitter() {
+        return (Optional<DestinationPineconeTextSplitter>) textSplitter;
     }
 
     public final static Builder builder() {

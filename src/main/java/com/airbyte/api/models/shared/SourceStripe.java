@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -73,6 +75,7 @@ public class SourceStripe {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceStripe(
             @JsonProperty("account_id") String accountId,
             @JsonProperty("call_rate_limit") Optional<? extends Long> callRateLimit,
@@ -97,10 +100,17 @@ public class SourceStripe {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceStripe(
+            String accountId,
+            String clientSecret) {
+        this(accountId, Optional.empty(), clientSecret, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Your Stripe account ID (starts with 'acct_', find yours &lt;a href="https://dashboard.stripe.com/settings/account"&gt;here&lt;/a&gt;).
      */
+    @JsonIgnore
     public String accountId() {
         return accountId;
     }
@@ -108,13 +118,16 @@ public class SourceStripe {
     /**
      * The number of API calls per second that you allow connector to make. This value can not be bigger than real API call rate limit (https://stripe.com/docs/rate-limits). If not specified the default maximum is 25 and 100 calls per second for test and production tokens respectively.
      */
-    public Optional<? extends Long> callRateLimit() {
-        return callRateLimit;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> callRateLimit() {
+        return (Optional<Long>) callRateLimit;
     }
 
     /**
      * Stripe API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.stripe.com/apikeys"&gt;here&lt;/a&gt;).
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -122,24 +135,31 @@ public class SourceStripe {
     /**
      * When set, the connector will always re-export data from the past N days, where N is the value set here. This is useful if your data is frequently updated after creation. The Lookback Window only applies to streams that do not support event-based incremental syncs: Events, SetupAttempts, ShippingRates, BalanceTransactions, Files, FileLinks, Refunds. More info &lt;a href="https://docs.airbyte.com/integrations/sources/stripe#requirements"&gt;here&lt;/a&gt;
      */
-    public Optional<? extends Long> lookbackWindowDays() {
-        return lookbackWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindowDays() {
+        return (Optional<Long>) lookbackWindowDays;
     }
 
     /**
      * The number of worker thread to use for the sync. The performance upper boundary depends on call_rate_limit setting and type of account.
      */
-    public Optional<? extends Long> numWorkers() {
-        return numWorkers;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return (Optional<Long>) numWorkers;
     }
 
     /**
      * The time increment used by the connector when requesting data from the Stripe API. The bigger the value is, the less requests will be made and faster the sync will be. On the other hand, the more seldom the state is persisted.
      */
-    public Optional<? extends Long> sliceRange() {
-        return sliceRange;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> sliceRange() {
+        return (Optional<Long>) sliceRange;
     }
 
+    @JsonIgnore
     public Stripe sourceType() {
         return sourceType;
     }
@@ -147,8 +167,10 @@ public class SourceStripe {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Only data generated after this date will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

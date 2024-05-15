@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class CentralAPIRouter {
     @JsonProperty("user_secret")
     private String userSecret;
 
+    @JsonCreator
     public CentralAPIRouter(
             @JsonProperty("site_id") String siteId,
             @JsonProperty("user_name") String userName,
@@ -51,6 +54,7 @@ public class CentralAPIRouter {
         this.userSecret = userSecret;
     }
 
+    @JsonIgnore
     public SourceCartAuthType authType() {
         return authType;
     }
@@ -58,6 +62,7 @@ public class CentralAPIRouter {
     /**
      * You can determine a site provisioning site Id by hitting https://site.com/store/sitemonitor.aspx and reading the response param PSID
      */
+    @JsonIgnore
     public String siteId() {
         return siteId;
     }
@@ -65,6 +70,7 @@ public class CentralAPIRouter {
     /**
      * Enter your application's User Name
      */
+    @JsonIgnore
     public String userName() {
         return userName;
     }
@@ -72,6 +78,7 @@ public class CentralAPIRouter {
     /**
      * Enter your application's User Secret
      */
+    @JsonIgnore
     public String userSecret() {
         return userSecret;
     }

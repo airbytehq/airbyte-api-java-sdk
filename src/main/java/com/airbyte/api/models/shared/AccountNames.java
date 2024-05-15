@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -31,6 +33,7 @@ public class AccountNames {
     @JsonProperty("operator")
     private Operator operator;
 
+    @JsonCreator
     public AccountNames(
             @JsonProperty("name") String name,
             @JsonProperty("operator") Operator operator) {
@@ -43,6 +46,7 @@ public class AccountNames {
     /**
      * Account Name is a string value for comparing with the specified predicate.
      */
+    @JsonIgnore
     public String name() {
         return name;
     }
@@ -50,6 +54,7 @@ public class AccountNames {
     /**
      * An Operator that will be used to filter accounts. The Contains predicate has features for matching words, matching inflectional forms of words, searching using wildcard characters, and searching using proximity. The Equals is used to return all rows where account name is equal(=) to the string that you provided
      */
+    @JsonIgnore
     public Operator operator() {
         return operator;
     }

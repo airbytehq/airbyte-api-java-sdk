@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,13 +29,16 @@ public class NoEncryption {
     @JsonProperty("encryption_type")
     private Optional<? extends EncryptionType> encryptionType;
 
+    @JsonCreator
     public NoEncryption() {
         
         this.encryptionType = Builder._SINGLETON_VALUE_EncryptionType.value();
     }
 
-    public Optional<? extends EncryptionType> encryptionType() {
-        return encryptionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<EncryptionType> encryptionType() {
+        return (Optional<EncryptionType>) encryptionType;
     }
 
     public final static Builder builder() {

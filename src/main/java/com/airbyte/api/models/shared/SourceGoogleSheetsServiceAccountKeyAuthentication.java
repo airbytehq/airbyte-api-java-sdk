@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
     @JsonProperty("service_account_info")
     private String serviceAccountInfo;
 
+    @JsonCreator
     public SourceGoogleSheetsServiceAccountKeyAuthentication(
             @JsonProperty("service_account_info") String serviceAccountInfo) {
         Utils.checkNotNull(serviceAccountInfo, "serviceAccountInfo");
@@ -33,6 +36,7 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
         this.serviceAccountInfo = serviceAccountInfo;
     }
 
+    @JsonIgnore
     public SourceGoogleSheetsSchemasAuthType authType() {
         return authType;
     }
@@ -40,6 +44,7 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
     /**
      * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String serviceAccountInfo() {
         return serviceAccountInfo;
     }

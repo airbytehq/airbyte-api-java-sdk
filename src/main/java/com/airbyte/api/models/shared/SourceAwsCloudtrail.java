@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceAwsCloudtrail {
     @JsonProperty("start_date")
     private Optional<? extends LocalDate> startDate;
 
+    @JsonCreator
     public SourceAwsCloudtrail(
             @JsonProperty("aws_key_id") String awsKeyId,
             @JsonProperty("aws_region_name") String awsRegionName,
@@ -64,10 +67,18 @@ public class SourceAwsCloudtrail {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceAwsCloudtrail(
+            String awsKeyId,
+            String awsRegionName,
+            String awsSecretKey) {
+        this(awsKeyId, awsRegionName, awsSecretKey, Optional.empty());
+    }
 
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String awsKeyId() {
         return awsKeyId;
     }
@@ -75,6 +86,7 @@ public class SourceAwsCloudtrail {
     /**
      * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
      */
+    @JsonIgnore
     public String awsRegionName() {
         return awsRegionName;
     }
@@ -82,10 +94,12 @@ public class SourceAwsCloudtrail {
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String awsSecretKey() {
         return awsSecretKey;
     }
 
+    @JsonIgnore
     public AwsCloudtrail sourceType() {
         return sourceType;
     }
@@ -93,8 +107,10 @@ public class SourceAwsCloudtrail {
     /**
      * The date you would like to replicate data. Data in AWS CloudTrail is available for last 90 days only. Format: YYYY-MM-DD.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     public final static Builder builder() {

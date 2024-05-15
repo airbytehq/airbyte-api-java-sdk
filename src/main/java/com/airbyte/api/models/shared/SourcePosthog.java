@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class SourcePosthog {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourcePosthog(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("base_url") Optional<? extends String> baseUrl,
@@ -67,10 +70,17 @@ public class SourcePosthog {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourcePosthog(
+            String apiKey,
+            OffsetDateTime startDate) {
+        this(apiKey, Optional.empty(), Optional.empty(), startDate);
+    }
 
     /**
      * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -78,17 +88,22 @@ public class SourcePosthog {
     /**
      * Base PostHog url. Defaults to PostHog Cloud (https://app.posthog.com).
      */
-    public Optional<? extends String> baseUrl() {
-        return baseUrl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> baseUrl() {
+        return (Optional<String>) baseUrl;
     }
 
     /**
      * Set lower value in case of failing long running sync of events stream.
      */
-    public Optional<? extends Long> eventsTimeStep() {
-        return eventsTimeStep;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> eventsTimeStep() {
+        return (Optional<Long>) eventsTimeStep;
     }
 
+    @JsonIgnore
     public Posthog sourceType() {
         return sourceType;
     }
@@ -96,6 +111,7 @@ public class SourcePosthog {
     /**
      * The date from which you'd like to replicate the data. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

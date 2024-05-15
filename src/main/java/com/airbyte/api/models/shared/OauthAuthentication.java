@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class OauthAuthentication {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public OauthAuthentication(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -51,6 +54,7 @@ public class OauthAuthentication {
         this.refreshToken = refreshToken;
     }
 
+    @JsonIgnore
     public SourceSquareAuthType authType() {
         return authType;
     }
@@ -58,6 +62,7 @@ public class OauthAuthentication {
     /**
      * The Square-issued ID of your application
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -65,6 +70,7 @@ public class OauthAuthentication {
     /**
      * The Square-issued application secret for your application
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -72,6 +78,7 @@ public class OauthAuthentication {
     /**
      * A refresh token generated using the above client ID and secret
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

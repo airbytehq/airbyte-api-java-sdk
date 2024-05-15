@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,6 +29,7 @@ public class StreamsCriteria {
     @JsonProperty("value")
     private String value;
 
+    @JsonCreator
     public StreamsCriteria(
             @JsonProperty("criteria") Optional<? extends SearchCriteria> criteria,
             @JsonProperty("value") String value) {
@@ -35,11 +38,19 @@ public class StreamsCriteria {
         this.criteria = criteria;
         this.value = value;
     }
-
-    public Optional<? extends SearchCriteria> criteria() {
-        return criteria;
+    
+    public StreamsCriteria(
+            String value) {
+        this(Optional.empty(), value);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SearchCriteria> criteria() {
+        return (Optional<SearchCriteria>) criteria;
+    }
+
+    @JsonIgnore
     public String value() {
         return value;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceAzureTable {
     @JsonProperty("storage_endpoint_suffix")
     private Optional<? extends String> storageEndpointSuffix;
 
+    @JsonCreator
     public SourceAzureTable(
             @JsonProperty("storage_access_key") String storageAccessKey,
             @JsonProperty("storage_account_name") String storageAccountName,
@@ -54,7 +57,14 @@ public class SourceAzureTable {
         this.storageAccountName = storageAccountName;
         this.storageEndpointSuffix = storageEndpointSuffix;
     }
+    
+    public SourceAzureTable(
+            String storageAccessKey,
+            String storageAccountName) {
+        this(storageAccessKey, storageAccountName, Optional.empty());
+    }
 
+    @JsonIgnore
     public AzureTable sourceType() {
         return sourceType;
     }
@@ -62,6 +72,7 @@ public class SourceAzureTable {
     /**
      * Azure Table Storage Access Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String storageAccessKey() {
         return storageAccessKey;
     }
@@ -69,6 +80,7 @@ public class SourceAzureTable {
     /**
      * The name of your storage account.
      */
+    @JsonIgnore
     public String storageAccountName() {
         return storageAccountName;
     }
@@ -76,8 +88,10 @@ public class SourceAzureTable {
     /**
      * Azure Table Storage service account URL suffix. See the &lt;a href="https://docs.airbyte.com/integrations/sources/azure-table"&gt;docs&lt;/a&gt; for more information on how to obtain endpoint suffix
      */
-    public Optional<? extends String> storageEndpointSuffix() {
-        return storageEndpointSuffix;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> storageEndpointSuffix() {
+        return (Optional<String>) storageEndpointSuffix;
     }
 
     public final static Builder builder() {

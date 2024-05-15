@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class OAuth2AccessToken {
     @JsonProperty("auth_type")
     private SourceAuth0SchemasCredentialsAuthenticationMethod authType;
 
+    @JsonCreator
     public OAuth2AccessToken(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -36,10 +39,12 @@ public class OAuth2AccessToken {
     /**
      * Also called &lt;a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing"&gt;API Access Token &lt;/a&gt; The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public SourceAuth0SchemasCredentialsAuthenticationMethod authType() {
         return authType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceSecoda {
     @JsonProperty("sourceType")
     private Secoda sourceType;
 
+    @JsonCreator
     public SourceSecoda(
             @JsonProperty("api_key") String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -36,10 +39,12 @@ public class SourceSecoda {
     /**
      * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
+    @JsonIgnore
     public Secoda sourceType() {
         return sourceType;
     }

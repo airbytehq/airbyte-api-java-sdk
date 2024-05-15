@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -25,6 +27,7 @@ public class SourcePutRequest {
     @JsonProperty("name")
     private String name;
 
+    @JsonCreator
     public SourcePutRequest(
             @JsonProperty("configuration") SourceConfiguration configuration,
             @JsonProperty("name") String name) {
@@ -37,10 +40,12 @@ public class SourcePutRequest {
     /**
      * The values required to configure the source.
      */
+    @JsonIgnore
     public SourceConfiguration configuration() {
         return configuration;
     }
 
+    @JsonIgnore
     public String name() {
         return name;
     }

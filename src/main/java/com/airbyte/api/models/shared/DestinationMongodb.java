@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class DestinationMongodb {
     @JsonProperty("tunnel_method")
     private Optional<? extends DestinationMongodbSSHTunnelMethod> tunnelMethod;
 
+    @JsonCreator
     public DestinationMongodb(
             @JsonProperty("auth_type") AuthorizationType authType,
             @JsonProperty("database") String database,
@@ -64,10 +67,17 @@ public class DestinationMongodb {
         this.instanceType = instanceType;
         this.tunnelMethod = tunnelMethod;
     }
+    
+    public DestinationMongodb(
+            AuthorizationType authType,
+            String database) {
+        this(authType, database, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Authorization type.
      */
+    @JsonIgnore
     public AuthorizationType authType() {
         return authType;
     }
@@ -75,10 +85,12 @@ public class DestinationMongodb {
     /**
      * Name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
+    @JsonIgnore
     public Mongodb destinationType() {
         return destinationType;
     }
@@ -86,15 +98,19 @@ public class DestinationMongodb {
     /**
      * MongoDb instance to connect to. For MongoDB Atlas and Replica Set TLS connection is used by default.
      */
-    public Optional<? extends MongoDbInstanceType> instanceType() {
-        return instanceType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<MongoDbInstanceType> instanceType() {
+        return (Optional<MongoDbInstanceType>) instanceType;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends DestinationMongodbSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMongodbSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationMongodbSSHTunnelMethod>) tunnelMethod;
     }
 
     public final static Builder builder() {

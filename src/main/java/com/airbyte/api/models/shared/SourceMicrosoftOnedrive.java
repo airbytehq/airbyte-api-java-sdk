@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -70,6 +72,7 @@ public class SourceMicrosoftOnedrive {
     @JsonProperty("streams")
     private java.util.List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams;
 
+    @JsonCreator
     public SourceMicrosoftOnedrive(
             @JsonProperty("credentials") SourceMicrosoftOnedriveAuthentication credentials,
             @JsonProperty("drive_name") Optional<? extends String> driveName,
@@ -91,10 +94,17 @@ public class SourceMicrosoftOnedrive {
         this.startDate = startDate;
         this.streams = streams;
     }
+    
+    public SourceMicrosoftOnedrive(
+            SourceMicrosoftOnedriveAuthentication credentials,
+            java.util.List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams) {
+        this(credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), streams);
+    }
 
     /**
      * Credentials for connecting to the One Drive API
      */
+    @JsonIgnore
     public SourceMicrosoftOnedriveAuthentication credentials() {
         return credentials;
     }
@@ -102,24 +112,31 @@ public class SourceMicrosoftOnedrive {
     /**
      * Name of the Microsoft OneDrive drive where the file(s) exist.
      */
-    public Optional<? extends String> driveName() {
-        return driveName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> driveName() {
+        return (Optional<String>) driveName;
     }
 
     /**
      * Path to a specific folder within the drives to search for files. Leave empty to search all folders of the drives. This does not apply to shared items.
      */
-    public Optional<? extends String> folderPath() {
-        return folderPath;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> folderPath() {
+        return (Optional<String>) folderPath;
     }
 
     /**
      * Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
      */
-    public Optional<? extends SearchScope> searchScope() {
-        return searchScope;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SearchScope> searchScope() {
+        return (Optional<SearchScope>) searchScope;
     }
 
+    @JsonIgnore
     public SourceMicrosoftOnedriveMicrosoftOnedrive sourceType() {
         return sourceType;
     }
@@ -127,13 +144,16 @@ public class SourceMicrosoftOnedrive {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
+    @JsonIgnore
     public java.util.List<SourceMicrosoftOnedriveFileBasedStreamConfig> streams() {
         return streams;
     }

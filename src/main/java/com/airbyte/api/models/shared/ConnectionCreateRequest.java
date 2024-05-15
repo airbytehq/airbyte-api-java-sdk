@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -74,7 +76,7 @@ public class ConnectionCreateRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schedule")
-    private Optional<? extends ConnectionSchedule> schedule;
+    private Optional<? extends AirbyteApiConnectionSchedule> schedule;
 
     @JsonProperty("sourceId")
     private String sourceId;
@@ -83,6 +85,7 @@ public class ConnectionCreateRequest {
     @JsonProperty("status")
     private Optional<? extends ConnectionStatusEnum> status;
 
+    @JsonCreator
     public ConnectionCreateRequest(
             @JsonProperty("configurations") Optional<? extends StreamConfigurations> configurations,
             @JsonProperty("dataResidency") Optional<? extends GeographyEnum> dataResidency,
@@ -92,7 +95,7 @@ public class ConnectionCreateRequest {
             @JsonProperty("namespaceFormat") Optional<? extends String> namespaceFormat,
             @JsonProperty("nonBreakingSchemaUpdatesBehavior") Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior,
             @JsonProperty("prefix") Optional<? extends String> prefix,
-            @JsonProperty("schedule") Optional<? extends ConnectionSchedule> schedule,
+            @JsonProperty("schedule") Optional<? extends AirbyteApiConnectionSchedule> schedule,
             @JsonProperty("sourceId") String sourceId,
             @JsonProperty("status") Optional<? extends ConnectionStatusEnum> status) {
         Utils.checkNotNull(configurations, "configurations");
@@ -118,18 +121,29 @@ public class ConnectionCreateRequest {
         this.sourceId = sourceId;
         this.status = status;
     }
+    
+    public ConnectionCreateRequest(
+            String destinationId,
+            String sourceId) {
+        this(Optional.empty(), Optional.empty(), destinationId, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), sourceId, Optional.empty());
+    }
 
     /**
      * A list of configured stream options for a connection.
      */
-    public Optional<? extends StreamConfigurations> configurations() {
-        return configurations;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<StreamConfigurations> configurations() {
+        return (Optional<StreamConfigurations>) configurations;
     }
 
-    public Optional<? extends GeographyEnum> dataResidency() {
-        return dataResidency;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GeographyEnum> dataResidency() {
+        return (Optional<GeographyEnum>) dataResidency;
     }
 
+    @JsonIgnore
     public String destinationId() {
         return destinationId;
     }
@@ -137,51 +151,66 @@ public class ConnectionCreateRequest {
     /**
      * Optional name of the connection
      */
-    public Optional<? extends String> name() {
-        return name;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> name() {
+        return (Optional<String>) name;
     }
 
     /**
      * Define the location where the data will be stored in the destination
      */
-    public Optional<? extends NamespaceDefinitionEnum> namespaceDefinition() {
-        return namespaceDefinition;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<NamespaceDefinitionEnum> namespaceDefinition() {
+        return (Optional<NamespaceDefinitionEnum>) namespaceDefinition;
     }
 
     /**
      * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
      */
-    public Optional<? extends String> namespaceFormat() {
-        return namespaceFormat;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> namespaceFormat() {
+        return (Optional<String>) namespaceFormat;
     }
 
     /**
      * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
      */
-    public Optional<? extends NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior() {
-        return nonBreakingSchemaUpdatesBehavior;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<NonBreakingSchemaUpdatesBehaviorEnum> nonBreakingSchemaUpdatesBehavior() {
+        return (Optional<NonBreakingSchemaUpdatesBehaviorEnum>) nonBreakingSchemaUpdatesBehavior;
     }
 
     /**
      * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
      */
-    public Optional<? extends String> prefix() {
-        return prefix;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> prefix() {
+        return (Optional<String>) prefix;
     }
 
     /**
      * schedule for when the the connection should run, per the schedule type
      */
-    public Optional<? extends ConnectionSchedule> schedule() {
-        return schedule;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AirbyteApiConnectionSchedule> schedule() {
+        return (Optional<AirbyteApiConnectionSchedule>) schedule;
     }
 
+    @JsonIgnore
     public String sourceId() {
         return sourceId;
     }
 
-    public Optional<? extends ConnectionStatusEnum> status() {
-        return status;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ConnectionStatusEnum> status() {
+        return (Optional<ConnectionStatusEnum>) status;
     }
 
     public final static Builder builder() {
@@ -317,7 +346,7 @@ public class ConnectionCreateRequest {
     /**
      * schedule for when the the connection should run, per the schedule type
      */
-    public ConnectionCreateRequest withSchedule(ConnectionSchedule schedule) {
+    public ConnectionCreateRequest withSchedule(AirbyteApiConnectionSchedule schedule) {
         Utils.checkNotNull(schedule, "schedule");
         this.schedule = Optional.ofNullable(schedule);
         return this;
@@ -326,7 +355,7 @@ public class ConnectionCreateRequest {
     /**
      * schedule for when the the connection should run, per the schedule type
      */
-    public ConnectionCreateRequest withSchedule(Optional<? extends ConnectionSchedule> schedule) {
+    public ConnectionCreateRequest withSchedule(Optional<? extends AirbyteApiConnectionSchedule> schedule) {
         Utils.checkNotNull(schedule, "schedule");
         this.schedule = schedule;
         return this;
@@ -423,7 +452,7 @@ public class ConnectionCreateRequest {
  
         private Optional<? extends String> prefix = Optional.empty();
  
-        private Optional<? extends ConnectionSchedule> schedule = Optional.empty();
+        private Optional<? extends AirbyteApiConnectionSchedule> schedule = Optional.empty();
  
         private String sourceId;
  
@@ -562,7 +591,7 @@ public class ConnectionCreateRequest {
         /**
          * schedule for when the the connection should run, per the schedule type
          */
-        public Builder schedule(ConnectionSchedule schedule) {
+        public Builder schedule(AirbyteApiConnectionSchedule schedule) {
             Utils.checkNotNull(schedule, "schedule");
             this.schedule = Optional.ofNullable(schedule);
             return this;
@@ -571,7 +600,7 @@ public class ConnectionCreateRequest {
         /**
          * schedule for when the the connection should run, per the schedule type
          */
-        public Builder schedule(Optional<? extends ConnectionSchedule> schedule) {
+        public Builder schedule(Optional<? extends AirbyteApiConnectionSchedule> schedule) {
             Utils.checkNotNull(schedule, "schedule");
             this.schedule = schedule;
             return this;

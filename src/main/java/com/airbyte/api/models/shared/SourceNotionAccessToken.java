@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceNotionAccessToken {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public SourceNotionAccessToken(
             @JsonProperty("token") String token) {
         Utils.checkNotNull(token, "token");
@@ -33,6 +36,7 @@ public class SourceNotionAccessToken {
         this.token = token;
     }
 
+    @JsonIgnore
     public SourceNotionSchemasAuthType authType() {
         return authType;
     }
@@ -40,6 +44,7 @@ public class SourceNotionAccessToken {
     /**
      * The Access Token for your private Notion integration. See the &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-1-create-an-integration-in-notion'&gt;docs&lt;/a&gt; for more information on how to obtain this token.
      */
+    @JsonIgnore
     public String token() {
         return token;
     }

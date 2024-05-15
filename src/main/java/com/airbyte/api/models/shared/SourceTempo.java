@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceTempo {
     @JsonProperty("sourceType")
     private Tempo sourceType;
 
+    @JsonCreator
     public SourceTempo(
             @JsonProperty("api_token") String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -36,10 +39,12 @@ public class SourceTempo {
     /**
      * Tempo API Token. Go to Tempo&gt;Settings, scroll down to Data Access and select API integration.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
+    @JsonIgnore
     public Tempo sourceType() {
         return sourceType;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -76,6 +78,7 @@ public class DestinationClickhouse {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationClickhouse(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
@@ -103,14 +106,23 @@ public class DestinationClickhouse {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public DestinationClickhouse(
+            String database,
+            String host,
+            String username) {
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
+    @JsonIgnore
     public Clickhouse destinationType() {
         return destinationType;
     }
@@ -118,6 +130,7 @@ public class DestinationClickhouse {
     /**
      * Hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -125,41 +138,52 @@ public class DestinationClickhouse {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * Password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * HTTP port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * The schema to write raw tables into (default: airbyte_internal)
      */
-    public Optional<? extends String> rawDataSchema() {
-        return rawDataSchema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return (Optional<String>) rawDataSchema;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends SSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SSHTunnelMethod> tunnelMethod() {
+        return (Optional<SSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * Username to use to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

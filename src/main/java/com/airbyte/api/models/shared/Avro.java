@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,13 +29,16 @@ public class Avro {
     @JsonProperty("filetype")
     private Optional<? extends SourceS3SchemasFiletype> filetype;
 
+    @JsonCreator
     public Avro() {
         
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
-    public Optional<? extends SourceS3SchemasFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3SchemasFiletype> filetype() {
+        return (Optional<SourceS3SchemasFiletype>) filetype;
     }
 
     public final static Builder builder() {

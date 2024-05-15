@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourceMysqlSSHKeyAuthentication {
     @JsonProperty("tunnel_user")
     private String tunnelUser;
 
+    @JsonCreator
     public SourceMysqlSSHKeyAuthentication(
             @JsonProperty("ssh_key") String sshKey,
             @JsonProperty("tunnel_host") String tunnelHost,
@@ -66,10 +69,18 @@ public class SourceMysqlSSHKeyAuthentication {
         this.tunnelPort = tunnelPort;
         this.tunnelUser = tunnelUser;
     }
+    
+    public SourceMysqlSSHKeyAuthentication(
+            String sshKey,
+            String tunnelHost,
+            String tunnelUser) {
+        this(sshKey, tunnelHost, Optional.empty(), tunnelUser);
+    }
 
     /**
      * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
      */
+    @JsonIgnore
     public String sshKey() {
         return sshKey;
     }
@@ -77,6 +88,7 @@ public class SourceMysqlSSHKeyAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
      */
+    @JsonIgnore
     public String tunnelHost() {
         return tunnelHost;
     }
@@ -84,6 +96,7 @@ public class SourceMysqlSSHKeyAuthentication {
     /**
      * Connect through a jump server tunnel host using username and ssh key
      */
+    @JsonIgnore
     public SourceMysqlSchemasTunnelMethod tunnelMethod() {
         return tunnelMethod;
     }
@@ -91,13 +104,16 @@ public class SourceMysqlSSHKeyAuthentication {
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
      */
-    public Optional<? extends Long> tunnelPort() {
-        return tunnelPort;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> tunnelPort() {
+        return (Optional<Long>) tunnelPort;
     }
 
     /**
      * OS-level username for logging into the jump server host.
      */
+    @JsonIgnore
     public String tunnelUser() {
         return tunnelUser;
     }

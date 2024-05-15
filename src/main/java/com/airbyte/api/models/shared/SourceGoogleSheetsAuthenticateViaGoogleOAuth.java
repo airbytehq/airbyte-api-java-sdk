@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SourceGoogleSheetsAuthenticateViaGoogleOAuth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SourceGoogleSheetsAuthenticateViaGoogleOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -51,6 +54,7 @@ public class SourceGoogleSheetsAuthenticateViaGoogleOAuth {
         this.refreshToken = refreshToken;
     }
 
+    @JsonIgnore
     public SourceGoogleSheetsAuthType authType() {
         return authType;
     }
@@ -58,6 +62,7 @@ public class SourceGoogleSheetsAuthenticateViaGoogleOAuth {
     /**
      * Enter your Google application's Client ID. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -65,6 +70,7 @@ public class SourceGoogleSheetsAuthenticateViaGoogleOAuth {
     /**
      * Enter your Google application's Client Secret. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -72,6 +78,7 @@ public class SourceGoogleSheetsAuthenticateViaGoogleOAuth {
     /**
      * Enter your Google application's refresh token. See &lt;a href='https://developers.google.com/identity/protocols/oauth2'&gt;Google's documentation&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

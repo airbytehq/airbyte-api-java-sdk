@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,14 +26,21 @@ public class Gzip {
     @JsonProperty("compression_type")
     private Optional<? extends DestinationGcsCompressionType> compressionType;
 
+    @JsonCreator
     public Gzip(
             @JsonProperty("compression_type") Optional<? extends DestinationGcsCompressionType> compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
         this.compressionType = compressionType;
     }
+    
+    public Gzip() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationGcsCompressionType> compressionType() {
-        return compressionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsCompressionType> compressionType() {
+        return (Optional<DestinationGcsCompressionType>) compressionType;
     }
 
     public final static Builder builder() {

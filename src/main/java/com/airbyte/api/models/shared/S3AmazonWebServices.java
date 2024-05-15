@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -82,6 +84,7 @@ public class S3AmazonWebServices {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public S3AmazonWebServices(
             @JsonProperty("aws_access_key_id") Optional<? extends String> awsAccessKeyId,
             @JsonProperty("aws_secret_access_key") Optional<? extends String> awsSecretAccessKey,
@@ -108,61 +111,81 @@ public class S3AmazonWebServices {
         this.roleArn = roleArn;
         this.startDate = startDate;
     }
-
-    /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
-     */
-    public Optional<? extends String> awsAccessKeyId() {
-        return awsAccessKeyId;
+    
+    public S3AmazonWebServices() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
      * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
-    public Optional<? extends String> awsSecretAccessKey() {
-        return awsSecretAccessKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsAccessKeyId() {
+        return (Optional<String>) awsAccessKeyId;
+    }
+
+    /**
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsSecretAccessKey() {
+        return (Optional<String>) awsSecretAccessKey;
     }
 
     /**
      * Name of the S3 bucket where the file(s) exist.
      */
-    public Optional<? extends String> bucket() {
-        return bucket;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> bucket() {
+        return (Optional<String>) bucket;
     }
 
     /**
      * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
-    public Optional<? extends String> endpoint() {
-        return endpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endpoint() {
+        return (Optional<String>) endpoint;
     }
 
     /**
      * By providing a path-like prefix (e.g. myFolder/thisTable/) under which all the relevant files sit, we can optimize finding these in S3. This is optional but recommended if your bucket contains many folders/files which you don't need to replicate.
      */
-    public Optional<? extends String> pathPrefix() {
-        return pathPrefix;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> pathPrefix() {
+        return (Optional<String>) pathPrefix;
     }
 
     /**
      * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
      */
-    public Optional<? extends String> regionName() {
-        return regionName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> regionName() {
+        return (Optional<String>) regionName;
     }
 
     /**
      * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
      */
-    public Optional<? extends String> roleArn() {
-        return roleArn;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> roleArn() {
+        return (Optional<String>) roleArn;
     }
 
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

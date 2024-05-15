@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -40,6 +42,7 @@ public class GoogleAdsCredentials {
     @JsonProperty("developer_token")
     private Optional<? extends String> developerToken;
 
+    @JsonCreator
     public GoogleAdsCredentials(
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret,
@@ -51,26 +54,36 @@ public class GoogleAdsCredentials {
         this.clientSecret = clientSecret;
         this.developerToken = developerToken;
     }
+    
+    public GoogleAdsCredentials() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     /**
      * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends String> developerToken() {
-        return developerToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> developerToken() {
+        return (Optional<String>) developerToken;
     }
 
     public final static Builder builder() {

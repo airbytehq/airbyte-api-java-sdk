@@ -19,8 +19,6 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CancelJobRequest;
-import com.airbyte.api.models.operations.CancelJobResponse;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
@@ -28,11 +26,12 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -56,8 +55,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -90,21 +91,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateJobResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.JobCreateRequest;
-import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -129,8 +128,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -163,8 +164,6 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.GetJobRequest;
-import com.airbyte.api.models.operations.GetJobResponse;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
@@ -172,11 +171,12 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -200,8 +200,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -234,22 +236,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.ListJobsRequest;
-import com.airbyte.api.models.operations.ListJobsResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.JobStatusEnum;
-import com.airbyte.api.models.shared.JobTypeEnum;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -261,18 +260,11 @@ public class Application {
                 .build();
 
             ListJobsRequest req = ListJobsRequest.builder()
-                .connectionId("<value>")
-                .createdAtEnd(OffsetDateTime.parse("2024-06-04T16:21:45.917Z"))
-                .createdAtStart(OffsetDateTime.parse("2023-04-03T04:39:28.005Z"))
-                .jobType(JobTypeEnum.SYNC)
-                .limit(955698)
-                .offset(624731)
-                .orderBy("<value>")
-                .status(JobStatusEnum.PENDING)
-                .updatedAtEnd(OffsetDateTime.parse("2023-12-07T18:30:31.244Z"))
-                .updatedAtStart(OffsetDateTime.parse("2023-06-02T22:15:44.179Z"))
-                .workspaceIds(java.util.List.of(
-                    "de801f6f-5d37-41c0-9bc4-dea632e540b9"))
+                .createdAtEnd(OffsetDateTime.parse("1687450500000"))
+                .createdAtStart(OffsetDateTime.parse("1687450500000"))
+                .orderBy("updatedAt|DESC")
+                .updatedAtEnd(OffsetDateTime.parse("1687450500000"))
+                .updatedAtStart(OffsetDateTime.parse("1687450500000"))
                 .build();
 
             ListJobsResponse res = sdk.jobs().listJobs()
@@ -284,8 +276,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }

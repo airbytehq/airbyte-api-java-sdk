@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,20 +32,28 @@ public class Enabled {
     @JsonProperty("deletion_mode")
     private SourceFaunaSchemasDeletionMode deletionMode;
 
+    @JsonCreator
     public Enabled(
             @JsonProperty("column") Optional<? extends String> column) {
         Utils.checkNotNull(column, "column");
         this.column = column;
         this.deletionMode = Builder._SINGLETON_VALUE_DeletionMode.value();
     }
+    
+    public Enabled() {
+        this(Optional.empty());
+    }
 
     /**
      * Name of the "deleted at" column.
      */
-    public Optional<? extends String> column() {
-        return column;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> column() {
+        return (Optional<String>) column;
     }
 
+    @JsonIgnore
     public SourceFaunaSchemasDeletionMode deletionMode() {
         return deletionMode;
     }

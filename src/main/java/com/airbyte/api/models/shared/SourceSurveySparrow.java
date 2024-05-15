@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceSurveySparrow {
     @JsonProperty("survey_id")
     private Optional<? extends java.util.List<java.lang.Object>> surveyId;
 
+    @JsonCreator
     public SourceSurveySparrow(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("region") Optional<? extends BaseURL> region,
@@ -55,10 +58,16 @@ public class SourceSurveySparrow {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.surveyId = surveyId;
     }
+    
+    public SourceSurveySparrow(
+            String accessToken) {
+        this(accessToken, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Your access token. See &lt;a href="https://developers.surveysparrow.com/rest-apis#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -66,10 +75,13 @@ public class SourceSurveySparrow {
     /**
      * Is your account location is EU based? If yes, the base url to retrieve data will be different.
      */
-    public Optional<? extends BaseURL> region() {
-        return region;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<BaseURL> region() {
+        return (Optional<BaseURL>) region;
     }
 
+    @JsonIgnore
     public SurveySparrow sourceType() {
         return sourceType;
     }
@@ -77,8 +89,10 @@ public class SourceSurveySparrow {
     /**
      * A List of your survey ids for survey-specific stream
      */
-    public Optional<? extends java.util.List<java.lang.Object>> surveyId() {
-        return surveyId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<java.lang.Object>> surveyId() {
+        return (Optional<java.util.List<java.lang.Object>>) surveyId;
     }
 
     public final static Builder builder() {

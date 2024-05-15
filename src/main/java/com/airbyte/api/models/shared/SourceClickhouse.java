@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -69,6 +71,7 @@ public class SourceClickhouse {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceClickhouse(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
@@ -93,10 +96,18 @@ public class SourceClickhouse {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public SourceClickhouse(
+            String database,
+            String host,
+            String username) {
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * The name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -104,6 +115,7 @@ public class SourceClickhouse {
     /**
      * The host endpoint of the Clickhouse cluster.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -111,24 +123,31 @@ public class SourceClickhouse {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The password associated with this username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
      * The port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
+    @JsonIgnore
     public SourceClickhouseClickhouse sourceType() {
         return sourceType;
     }
@@ -136,13 +155,16 @@ public class SourceClickhouse {
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends SourceClickhouseSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceClickhouseSSHTunnelMethod> tunnelMethod() {
+        return (Optional<SourceClickhouseSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The username which is used to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

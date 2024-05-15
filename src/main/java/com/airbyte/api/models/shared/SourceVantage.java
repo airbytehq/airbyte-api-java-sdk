@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceVantage {
     @JsonProperty("sourceType")
     private Vantage sourceType;
 
+    @JsonCreator
     public SourceVantage(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -36,10 +39,12 @@ public class SourceVantage {
     /**
      * Your API Access token. See &lt;a href="https://vantage.readme.io/reference/authentication"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public Vantage sourceType() {
         return sourceType;
     }

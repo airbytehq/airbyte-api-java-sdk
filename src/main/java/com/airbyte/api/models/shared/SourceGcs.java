@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,6 +58,7 @@ public class SourceGcs {
     @JsonProperty("streams")
     private java.util.List<SourceGCSStreamConfig> streams;
 
+    @JsonCreator
     public SourceGcs(
             @JsonProperty("bucket") String bucket,
             @JsonProperty("service_account") String serviceAccount,
@@ -71,10 +74,18 @@ public class SourceGcs {
         this.startDate = startDate;
         this.streams = streams;
     }
+    
+    public SourceGcs(
+            String bucket,
+            String serviceAccount,
+            java.util.List<SourceGCSStreamConfig> streams) {
+        this(bucket, serviceAccount, Optional.empty(), streams);
+    }
 
     /**
      * Name of the GCS bucket where the file(s) exist.
      */
+    @JsonIgnore
     public String bucket() {
         return bucket;
     }
@@ -82,10 +93,12 @@ public class SourceGcs {
     /**
      * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
      */
+    @JsonIgnore
     public String serviceAccount() {
         return serviceAccount;
     }
 
+    @JsonIgnore
     public SourceGcsGcs sourceType() {
         return sourceType;
     }
@@ -93,13 +106,16 @@ public class SourceGcs {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Each instance of this configuration defines a &lt;a href=https://docs.airbyte.com/cloud/core-concepts#stream&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
+    @JsonIgnore
     public java.util.List<SourceGCSStreamConfig> streams() {
         return streams;
     }

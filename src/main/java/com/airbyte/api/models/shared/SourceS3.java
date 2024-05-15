@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -119,6 +121,7 @@ public class SourceS3 {
     @JsonProperty("streams")
     private java.util.List<SourceS3FileBasedStreamConfig> streams;
 
+    @JsonCreator
     public SourceS3(
             @JsonProperty("aws_access_key_id") Optional<? extends String> awsAccessKeyId,
             @JsonProperty("aws_secret_access_key") Optional<? extends String> awsSecretAccessKey,
@@ -161,24 +164,35 @@ public class SourceS3 {
         this.startDate = startDate;
         this.streams = streams;
     }
-
-    /**
-     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
-     */
-    public Optional<? extends String> awsAccessKeyId() {
-        return awsAccessKeyId;
+    
+    public SourceS3(
+            String bucket,
+            java.util.List<SourceS3FileBasedStreamConfig> streams) {
+        this(Optional.empty(), Optional.empty(), bucket, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), streams);
     }
 
     /**
      * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
-    public Optional<? extends String> awsSecretAccessKey() {
-        return awsSecretAccessKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsAccessKeyId() {
+        return (Optional<String>) awsAccessKeyId;
+    }
+
+    /**
+     * In order to access private Buckets stored on AWS S3, this connector requires credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> awsSecretAccessKey() {
+        return (Optional<String>) awsSecretAccessKey;
     }
 
     /**
      * Name of the S3 bucket where the file(s) exist.
      */
+    @JsonIgnore
     public String bucket() {
         return bucket;
     }
@@ -186,59 +200,76 @@ public class SourceS3 {
     /**
      * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
      */
-    public Optional<? extends String> dataset() {
-        return dataset;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> dataset() {
+        return (Optional<String>) dataset;
     }
 
     /**
      * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
      */
-    public Optional<? extends String> endpoint() {
-        return endpoint;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endpoint() {
+        return (Optional<String>) endpoint;
     }
 
     /**
      * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
      */
-    public Optional<? extends SourceS3FileFormat> format() {
-        return format;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3FileFormat> format() {
+        return (Optional<SourceS3FileFormat>) format;
     }
 
     /**
      * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
      */
-    public Optional<? extends String> pathPattern() {
-        return pathPattern;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> pathPattern() {
+        return (Optional<String>) pathPattern;
     }
 
     /**
      * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
      */
-    public Optional<? extends S3AmazonWebServices> provider() {
-        return provider;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<S3AmazonWebServices> provider() {
+        return (Optional<S3AmazonWebServices>) provider;
     }
 
     /**
      * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
      */
-    public Optional<? extends String> regionName() {
-        return regionName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> regionName() {
+        return (Optional<String>) regionName;
     }
 
     /**
      * Specifies the Amazon Resource Name (ARN) of an IAM role that you want to use to perform operations requested using this profile. Set the External ID to the Airbyte workspace ID, which can be found in the URL of this page.
      */
-    public Optional<? extends String> roleArn() {
-        return roleArn;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> roleArn() {
+        return (Optional<String>) roleArn;
     }
 
     /**
      * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
+    @JsonIgnore
     public SourceS3S3 sourceType() {
         return sourceType;
     }
@@ -246,13 +277,16 @@ public class SourceS3 {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
      * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
+    @JsonIgnore
     public java.util.List<SourceS3FileBasedStreamConfig> streams() {
         return streams;
     }

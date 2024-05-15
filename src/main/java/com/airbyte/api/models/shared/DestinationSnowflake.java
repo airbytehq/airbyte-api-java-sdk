@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -39,13 +41,6 @@ public class DestinationSnowflake {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_type_dedupe")
     private Optional<? extends Boolean> disableTypeDedupe;
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("enable_incremental_final_table_updates")
-    private Optional<? extends Boolean> enableIncrementalFinalTableUpdates;
 
     /**
      * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
@@ -98,11 +93,11 @@ public class DestinationSnowflake {
     @JsonProperty("warehouse")
     private String warehouse;
 
+    @JsonCreator
     public DestinationSnowflake(
             @JsonProperty("credentials") Optional<? extends AuthorizationMethod> credentials,
             @JsonProperty("database") String database,
             @JsonProperty("disable_type_dedupe") Optional<? extends Boolean> disableTypeDedupe,
-            @JsonProperty("enable_incremental_final_table_updates") Optional<? extends Boolean> enableIncrementalFinalTableUpdates,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("raw_data_schema") Optional<? extends String> rawDataSchema,
@@ -114,7 +109,6 @@ public class DestinationSnowflake {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
-        Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -127,7 +121,6 @@ public class DestinationSnowflake {
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.disableTypeDedupe = disableTypeDedupe;
-        this.enableIncrementalFinalTableUpdates = enableIncrementalFinalTableUpdates;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.rawDataSchema = rawDataSchema;
@@ -137,18 +130,32 @@ public class DestinationSnowflake {
         this.username = username;
         this.warehouse = warehouse;
     }
+    
+    public DestinationSnowflake(
+            String database,
+            String host,
+            String role,
+            String schema,
+            String username,
+            String warehouse) {
+        this(Optional.empty(), database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), role, schema, username, warehouse);
+    }
 
-    public Optional<? extends AuthorizationMethod> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AuthorizationMethod> credentials() {
+        return (Optional<AuthorizationMethod>) credentials;
     }
 
     /**
      * Enter the name of the &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;database&lt;/a&gt; you want to sync data into
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
+    @JsonIgnore
     public DestinationSnowflakeSnowflake destinationType() {
         return destinationType;
     }
@@ -156,20 +163,16 @@ public class DestinationSnowflake {
     /**
      * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
      */
-    public Optional<? extends Boolean> disableTypeDedupe() {
-        return disableTypeDedupe;
-    }
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    public Optional<? extends Boolean> enableIncrementalFinalTableUpdates() {
-        return enableIncrementalFinalTableUpdates;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> disableTypeDedupe() {
+        return (Optional<Boolean>) disableTypeDedupe;
     }
 
     /**
      * Enter your Snowflake account's &lt;a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#using-an-account-locator-as-an-identifier"&gt;locator&lt;/a&gt; (in the format &lt;account_locator&gt;.&lt;region&gt;.&lt;cloud&gt;.snowflakecomputing.com)
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -177,27 +180,34 @@ public class DestinationSnowflake {
     /**
      * Enter the additional properties to pass to the JDBC URL string when connecting to the database (formatted as key=value pairs separated by the symbol &amp;). Example: key1=value1&amp;key2=value2&amp;key3=value3
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The schema to write raw tables into (default: airbyte_internal)
      */
-    public Optional<? extends String> rawDataSchema() {
-        return rawDataSchema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return (Optional<String>) rawDataSchema;
     }
 
     /**
      * The number of days of Snowflake Time Travel to enable on the tables. See &lt;a href="https://docs.snowflake.com/en/user-guide/data-time-travel#data-retention-period"&gt;Snowflake's documentation&lt;/a&gt; for more information. Setting a nonzero value will incur increased storage costs in your Snowflake instance.
      */
-    public Optional<? extends Long> retentionPeriodDays() {
-        return retentionPeriodDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> retentionPeriodDays() {
+        return (Optional<Long>) retentionPeriodDays;
     }
 
     /**
      * Enter the &lt;a href="https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#roles"&gt;role&lt;/a&gt; that you want to use to access Snowflake
      */
+    @JsonIgnore
     public String role() {
         return role;
     }
@@ -205,6 +215,7 @@ public class DestinationSnowflake {
     /**
      * Enter the name of the default &lt;a href="https://docs.snowflake.com/en/sql-reference/ddl-database.html#database-schema-share-ddl"&gt;schema&lt;/a&gt;
      */
+    @JsonIgnore
     public String schema() {
         return schema;
     }
@@ -212,6 +223,7 @@ public class DestinationSnowflake {
     /**
      * Enter the name of the user you want to use to access the database
      */
+    @JsonIgnore
     public String username() {
         return username;
     }
@@ -219,6 +231,7 @@ public class DestinationSnowflake {
     /**
      * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to sync data into
      */
+    @JsonIgnore
     public String warehouse() {
         return warehouse;
     }
@@ -263,24 +276,6 @@ public class DestinationSnowflake {
     public DestinationSnowflake withDisableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
         this.disableTypeDedupe = disableTypeDedupe;
-        return this;
-    }
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    public DestinationSnowflake withEnableIncrementalFinalTableUpdates(boolean enableIncrementalFinalTableUpdates) {
-        Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-        this.enableIncrementalFinalTableUpdates = Optional.ofNullable(enableIncrementalFinalTableUpdates);
-        return this;
-    }
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    public DestinationSnowflake withEnableIncrementalFinalTableUpdates(Optional<? extends Boolean> enableIncrementalFinalTableUpdates) {
-        Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-        this.enableIncrementalFinalTableUpdates = enableIncrementalFinalTableUpdates;
         return this;
     }
 
@@ -397,7 +392,6 @@ public class DestinationSnowflake {
             java.util.Objects.deepEquals(this.database, other.database) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            java.util.Objects.deepEquals(this.enableIncrementalFinalTableUpdates, other.enableIncrementalFinalTableUpdates) &&
             java.util.Objects.deepEquals(this.host, other.host) &&
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
@@ -415,7 +409,6 @@ public class DestinationSnowflake {
             database,
             destinationType,
             disableTypeDedupe,
-            enableIncrementalFinalTableUpdates,
             host,
             jdbcUrlParams,
             rawDataSchema,
@@ -433,7 +426,6 @@ public class DestinationSnowflake {
                 "database", database,
                 "destinationType", destinationType,
                 "disableTypeDedupe", disableTypeDedupe,
-                "enableIncrementalFinalTableUpdates", enableIncrementalFinalTableUpdates,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "rawDataSchema", rawDataSchema,
@@ -451,8 +443,6 @@ public class DestinationSnowflake {
         private String database;
  
         private Optional<? extends Boolean> disableTypeDedupe;
- 
-        private Optional<? extends Boolean> enableIncrementalFinalTableUpdates;
  
         private String host;
  
@@ -510,24 +500,6 @@ public class DestinationSnowflake {
         public Builder disableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
             this.disableTypeDedupe = disableTypeDedupe;
-            return this;
-        }
-
-        /**
-         * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-         */
-        public Builder enableIncrementalFinalTableUpdates(boolean enableIncrementalFinalTableUpdates) {
-            Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-            this.enableIncrementalFinalTableUpdates = Optional.ofNullable(enableIncrementalFinalTableUpdates);
-            return this;
-        }
-
-        /**
-         * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-         */
-        public Builder enableIncrementalFinalTableUpdates(Optional<? extends Boolean> enableIncrementalFinalTableUpdates) {
-            Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-            this.enableIncrementalFinalTableUpdates = enableIncrementalFinalTableUpdates;
             return this;
         }
 
@@ -634,9 +606,6 @@ public class DestinationSnowflake {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
             }
-            if (enableIncrementalFinalTableUpdates == null) {
-                enableIncrementalFinalTableUpdates = _SINGLETON_VALUE_EnableIncrementalFinalTableUpdates.value();
-            }
             if (retentionPeriodDays == null) {
                 retentionPeriodDays = _SINGLETON_VALUE_RetentionPeriodDays.value();
             }
@@ -644,7 +613,6 @@ public class DestinationSnowflake {
                 credentials,
                 database,
                 disableTypeDedupe,
-                enableIncrementalFinalTableUpdates,
                 host,
                 jdbcUrlParams,
                 rawDataSchema,
@@ -664,12 +632,6 @@ public class DestinationSnowflake {
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
                 new LazySingletonValue<>(
                         "disable_type_dedupe",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_EnableIncrementalFinalTableUpdates =
-                new LazySingletonValue<>(
-                        "enable_incremental_final_table_updates",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 

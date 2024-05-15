@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceK6Cloud {
     @JsonProperty("sourceType")
     private K6Cloud sourceType;
 
+    @JsonCreator
     public SourceK6Cloud(
             @JsonProperty("api_token") String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -36,10 +39,12 @@ public class SourceK6Cloud {
     /**
      * Your API Token. See &lt;a href="https://k6.io/docs/cloud/integrations/token/"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
+    @JsonIgnore
     public K6Cloud sourceType() {
         return sourceType;
     }

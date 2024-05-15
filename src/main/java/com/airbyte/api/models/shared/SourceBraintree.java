@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,6 +59,7 @@ public class SourceBraintree {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceBraintree(
             @JsonProperty("environment") SourceBraintreeEnvironment environment,
             @JsonProperty("merchant_id") String merchantId,
@@ -75,10 +78,19 @@ public class SourceBraintree {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceBraintree(
+            SourceBraintreeEnvironment environment,
+            String merchantId,
+            String privateKey,
+            String publicKey) {
+        this(environment, merchantId, privateKey, publicKey, Optional.empty());
+    }
 
     /**
      * Environment specifies where the data will come from.
      */
+    @JsonIgnore
     public SourceBraintreeEnvironment environment() {
         return environment;
     }
@@ -86,6 +98,7 @@ public class SourceBraintree {
     /**
      * The unique identifier for your entire gateway account. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this ID.
      */
+    @JsonIgnore
     public String merchantId() {
         return merchantId;
     }
@@ -93,6 +106,7 @@ public class SourceBraintree {
     /**
      * Braintree Private Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String privateKey() {
         return privateKey;
     }
@@ -100,10 +114,12 @@ public class SourceBraintree {
     /**
      * Braintree Public Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/braintree"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String publicKey() {
         return publicKey;
     }
 
+    @JsonIgnore
     public Braintree sourceType() {
         return sourceType;
     }
@@ -111,8 +127,10 @@ public class SourceBraintree {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

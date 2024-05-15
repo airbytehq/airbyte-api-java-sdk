@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class ServiceAccount {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public ServiceAccount(
             @JsonProperty("project_id") long projectId,
             @JsonProperty("secret") String secret,
@@ -55,13 +58,16 @@ public class ServiceAccount {
         this.username = username;
     }
 
-    public Optional<? extends SourceMixpanelOptionTitle> optionTitle() {
-        return optionTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMixpanelOptionTitle> optionTitle() {
+        return (Optional<SourceMixpanelOptionTitle>) optionTitle;
     }
 
     /**
      * Your project ID number. See the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
+    @JsonIgnore
     public long projectId() {
         return projectId;
     }
@@ -69,6 +75,7 @@ public class ServiceAccount {
     /**
      * Mixpanel Service Account Secret. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
+    @JsonIgnore
     public String secret() {
         return secret;
     }
@@ -76,6 +83,7 @@ public class ServiceAccount {
     /**
      * Mixpanel Service Account Username. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class DestinationLangchainPinecone {
     @JsonProperty("pinecone_key")
     private String pineconeKey;
 
+    @JsonCreator
     public DestinationLangchainPinecone(
             @JsonProperty("index") String index,
             @JsonProperty("pinecone_environment") String pineconeEnvironment,
@@ -58,21 +61,26 @@ public class DestinationLangchainPinecone {
     /**
      * Pinecone index to use
      */
+    @JsonIgnore
     public String index() {
         return index;
     }
 
-    public Optional<? extends DestinationLangchainSchemasIndexingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationLangchainSchemasIndexingMode> mode() {
+        return (Optional<DestinationLangchainSchemasIndexingMode>) mode;
     }
 
     /**
      * Pinecone environment to use
      */
+    @JsonIgnore
     public String pineconeEnvironment() {
         return pineconeEnvironment;
     }
 
+    @JsonIgnore
     public String pineconeKey() {
         return pineconeKey;
     }

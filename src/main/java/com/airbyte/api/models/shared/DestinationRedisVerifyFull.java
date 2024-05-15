@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,6 +54,7 @@ public class DestinationRedisVerifyFull {
     @JsonProperty("mode")
     private Optional<? extends DestinationRedisSchemasMode> mode;
 
+    @JsonCreator
     public DestinationRedisVerifyFull(
             @JsonProperty("ca_certificate") String caCertificate,
             @JsonProperty("client_certificate") String clientCertificate,
@@ -67,10 +70,18 @@ public class DestinationRedisVerifyFull {
         this.clientKeyPassword = clientKeyPassword;
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
+    
+    public DestinationRedisVerifyFull(
+            String caCertificate,
+            String clientCertificate,
+            String clientKey) {
+        this(caCertificate, clientCertificate, clientKey, Optional.empty());
+    }
 
     /**
      * CA certificate
      */
+    @JsonIgnore
     public String caCertificate() {
         return caCertificate;
     }
@@ -78,6 +89,7 @@ public class DestinationRedisVerifyFull {
     /**
      * Client certificate
      */
+    @JsonIgnore
     public String clientCertificate() {
         return clientCertificate;
     }
@@ -85,6 +97,7 @@ public class DestinationRedisVerifyFull {
     /**
      * Client key
      */
+    @JsonIgnore
     public String clientKey() {
         return clientKey;
     }
@@ -92,12 +105,16 @@ public class DestinationRedisVerifyFull {
     /**
      * Password for keystorage. If you do not add it - the password will be generated automatically.
      */
-    public Optional<? extends String> clientKeyPassword() {
-        return clientKeyPassword;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientKeyPassword() {
+        return (Optional<String>) clientKeyPassword;
     }
 
-    public Optional<? extends DestinationRedisSchemasMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedisSchemasMode> mode() {
+        return (Optional<DestinationRedisSchemasMode>) mode;
     }
 
     public final static Builder builder() {

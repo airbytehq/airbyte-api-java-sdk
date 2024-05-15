@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,6 +55,7 @@ public class SourceMysqlVerifyCA {
     @JsonProperty("mode")
     private SourceMysqlSchemasSslModeMode mode;
 
+    @JsonCreator
     public SourceMysqlVerifyCA(
             @JsonProperty("ca_certificate") String caCertificate,
             @JsonProperty("client_certificate") Optional<? extends String> clientCertificate,
@@ -68,10 +71,16 @@ public class SourceMysqlVerifyCA {
         this.clientKeyPassword = clientKeyPassword;
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
+    
+    public SourceMysqlVerifyCA(
+            String caCertificate) {
+        this(caCertificate, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * CA certificate
      */
+    @JsonIgnore
     public String caCertificate() {
         return caCertificate;
     }
@@ -79,24 +88,31 @@ public class SourceMysqlVerifyCA {
     /**
      * Client certificate (this is not a required field, but if you want to use it, you will need to add the &lt;b&gt;Client key&lt;/b&gt; as well)
      */
-    public Optional<? extends String> clientCertificate() {
-        return clientCertificate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientCertificate() {
+        return (Optional<String>) clientCertificate;
     }
 
     /**
      * Client key (this is not a required field, but if you want to use it, you will need to add the &lt;b&gt;Client certificate&lt;/b&gt; as well)
      */
-    public Optional<? extends String> clientKey() {
-        return clientKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientKey() {
+        return (Optional<String>) clientKey;
     }
 
     /**
      * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
      */
-    public Optional<? extends String> clientKeyPassword() {
-        return clientKeyPassword;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientKeyPassword() {
+        return (Optional<String>) clientKeyPassword;
     }
 
+    @JsonIgnore
     public SourceMysqlSchemasSslModeMode mode() {
         return mode;
     }

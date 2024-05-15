@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -64,6 +66,7 @@ public class SourceClickupApi {
     @JsonProperty("team_id")
     private Optional<? extends String> teamId;
 
+    @JsonCreator
     public SourceClickupApi(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("folder_id") Optional<? extends String> folderId,
@@ -85,10 +88,16 @@ public class SourceClickupApi {
         this.spaceId = spaceId;
         this.teamId = teamId;
     }
+    
+    public SourceClickupApi(
+            String apiToken) {
+        this(apiToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
@@ -96,24 +105,31 @@ public class SourceClickupApi {
     /**
      * The ID of your folder in your space. Retrieve it from the `/space/{space_id}/folder` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetFolders/"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> folderId() {
-        return folderId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> folderId() {
+        return (Optional<String>) folderId;
     }
 
     /**
      * Include or exclude closed tasks. By default, they are excluded. See &lt;a https://clickup.com/api/clickupreference/operation/GetTasks/#!in=query&amp;path=include_closed&amp;t=request"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends Boolean> includeClosedTasks() {
-        return includeClosedTasks;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> includeClosedTasks() {
+        return (Optional<Boolean>) includeClosedTasks;
     }
 
     /**
      * The ID of your list in your folder. Retrieve it from the `/folder/{folder_id}/list` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetLists/"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> listId() {
-        return listId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> listId() {
+        return (Optional<String>) listId;
     }
 
+    @JsonIgnore
     public ClickupApi sourceType() {
         return sourceType;
     }
@@ -121,15 +137,19 @@ public class SourceClickupApi {
     /**
      * The ID of your space in your workspace. Retrieve it from the `/team/{team_id}/space` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetSpaces/"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> spaceId() {
-        return spaceId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> spaceId() {
+        return (Optional<String>) spaceId;
     }
 
     /**
      * The ID of your team in ClickUp. Retrieve it from the `/team` of the ClickUp API. See &lt;a href="https://clickup.com/api/clickupreference/operation/GetAuthorizedTeams/"&gt;here&lt;/a&gt;.
      */
-    public Optional<? extends String> teamId() {
-        return teamId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> teamId() {
+        return (Optional<String>) teamId;
     }
 
     public final static Builder builder() {

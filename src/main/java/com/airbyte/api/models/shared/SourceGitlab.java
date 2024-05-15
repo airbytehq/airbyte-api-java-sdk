@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -71,6 +73,7 @@ public class SourceGitlab {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceGitlab(
             @JsonProperty("api_url") Optional<? extends String> apiUrl,
             @JsonProperty("credentials") SourceGitlabAuthorizationMethod credentials,
@@ -95,14 +98,22 @@ public class SourceGitlab {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceGitlab(
+            SourceGitlabAuthorizationMethod credentials) {
+        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Please enter your basic URL from GitLab instance.
      */
-    public Optional<? extends String> apiUrl() {
-        return apiUrl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiUrl() {
+        return (Optional<String>) apiUrl;
     }
 
+    @JsonIgnore
     public SourceGitlabAuthorizationMethod credentials() {
         return credentials;
     }
@@ -110,31 +121,40 @@ public class SourceGitlab {
     /**
      * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
      */
-    public Optional<? extends String> groups() {
-        return groups;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> groups() {
+        return (Optional<String>) groups;
     }
 
     /**
      * List of groups. e.g. airbyte.io.
      */
-    public Optional<? extends java.util.List<String>> groupsList() {
-        return groupsList;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> groupsList() {
+        return (Optional<java.util.List<String>>) groupsList;
     }
 
     /**
      * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
      */
-    public Optional<? extends String> projects() {
-        return projects;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> projects() {
+        return (Optional<String>) projects;
     }
 
     /**
      * Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
      */
-    public Optional<? extends java.util.List<String>> projectsList() {
-        return projectsList;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> projectsList() {
+        return (Optional<java.util.List<String>>) projectsList;
     }
 
+    @JsonIgnore
     public SourceGitlabGitlab sourceType() {
         return sourceType;
     }
@@ -142,8 +162,10 @@ public class SourceGitlab {
     /**
      * The date from which you'd like to replicate data for GitLab API, in the format YYYY-MM-DDT00:00:00Z. Optional. If not set, all data will be replicated. All data generated after this date will be replicated.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

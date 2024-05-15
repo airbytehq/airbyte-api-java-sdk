@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -37,6 +39,7 @@ public class DestinationResponse {
     @JsonProperty("workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public DestinationResponse(
             @JsonProperty("configuration") DestinationConfiguration configuration,
             @JsonProperty("destinationId") String destinationId,
@@ -58,22 +61,27 @@ public class DestinationResponse {
     /**
      * The values required to configure the destination.
      */
+    @JsonIgnore
     public DestinationConfiguration configuration() {
         return configuration;
     }
 
+    @JsonIgnore
     public String destinationId() {
         return destinationId;
     }
 
+    @JsonIgnore
     public String destinationType() {
         return destinationType;
     }
 
+    @JsonIgnore
     public String name() {
         return name;
     }
 
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }

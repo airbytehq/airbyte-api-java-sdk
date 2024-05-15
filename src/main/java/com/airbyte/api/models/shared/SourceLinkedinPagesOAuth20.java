@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceLinkedinPagesOAuth20 {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SourceLinkedinPagesOAuth20(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -55,13 +58,16 @@ public class SourceLinkedinPagesOAuth20 {
         this.refreshToken = refreshToken;
     }
 
-    public Optional<? extends SourceLinkedinPagesAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLinkedinPagesAuthMethod> authMethod() {
+        return (Optional<SourceLinkedinPagesAuthMethod>) authMethod;
     }
 
     /**
      * The client ID of the LinkedIn developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -69,6 +75,7 @@ public class SourceLinkedinPagesOAuth20 {
     /**
      * The client secret of the LinkedIn developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -76,6 +83,7 @@ public class SourceLinkedinPagesOAuth20 {
     /**
      * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

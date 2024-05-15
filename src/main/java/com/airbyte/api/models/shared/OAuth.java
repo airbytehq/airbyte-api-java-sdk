@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -44,6 +46,7 @@ public class OAuth {
     @JsonProperty("option_title")
     private Optional<? extends OptionTitle> optionTitle;
 
+    @JsonCreator
     public OAuth(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") Optional<? extends String> clientId,
@@ -56,10 +59,16 @@ public class OAuth {
         this.clientSecret = clientSecret;
         this.optionTitle = Builder._SINGLETON_VALUE_OptionTitle.value();
     }
+    
+    public OAuth(
+            String accessToken) {
+        this(accessToken, Optional.empty(), Optional.empty());
+    }
 
     /**
      * OAuth access token
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -67,19 +76,25 @@ public class OAuth {
     /**
      * OAuth Client Id
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * OAuth Client secret
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
-    public Optional<? extends OptionTitle> optionTitle() {
-        return optionTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OptionTitle> optionTitle() {
+        return (Optional<OptionTitle>) optionTitle;
     }
 
     public final static Builder builder() {

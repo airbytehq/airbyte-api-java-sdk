@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourcePaystack {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourcePaystack(
             @JsonProperty("lookback_window_days") Optional<? extends Long> lookbackWindowDays,
             @JsonProperty("secret_key") String secretKey,
@@ -57,21 +60,31 @@ public class SourcePaystack {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourcePaystack(
+            String secretKey,
+            OffsetDateTime startDate) {
+        this(Optional.empty(), secretKey, startDate);
+    }
 
     /**
      * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
      */
-    public Optional<? extends Long> lookbackWindowDays() {
-        return lookbackWindowDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindowDays() {
+        return (Optional<Long>) lookbackWindowDays;
     }
 
     /**
      * The Paystack API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.paystack.com/#/settings/developer"&gt;here&lt;/a&gt;).
      */
+    @JsonIgnore
     public String secretKey() {
         return secretKey;
     }
 
+    @JsonIgnore
     public Paystack sourceType() {
         return sourceType;
     }
@@ -79,6 +92,7 @@ public class SourcePaystack {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

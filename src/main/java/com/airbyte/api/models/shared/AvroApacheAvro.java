@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class AvroApacheAvro {
     @JsonProperty("format_type")
     private Optional<? extends DestinationGcsFormatType> formatType;
 
+    @JsonCreator
     public AvroApacheAvro(
             @JsonProperty("compression_codec") CompressionCodec compressionCodec,
             @JsonProperty("format_type") Optional<? extends DestinationGcsFormatType> formatType) {
@@ -38,16 +41,24 @@ public class AvroApacheAvro {
         this.compressionCodec = compressionCodec;
         this.formatType = formatType;
     }
+    
+    public AvroApacheAvro(
+            CompressionCodec compressionCodec) {
+        this(compressionCodec, Optional.empty());
+    }
 
     /**
      * The compression algorithm used to compress data. Default to no compression.
      */
+    @JsonIgnore
     public CompressionCodec compressionCodec() {
         return compressionCodec;
     }
 
-    public Optional<? extends DestinationGcsFormatType> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsFormatType> formatType() {
+        return (Optional<DestinationGcsFormatType>) formatType;
     }
 
     public final static Builder builder() {

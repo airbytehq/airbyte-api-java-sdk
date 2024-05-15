@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,13 +29,16 @@ public class SourceS3Local {
     @JsonProperty("mode")
     private Optional<? extends SourceS3Mode> mode;
 
+    @JsonCreator
     public SourceS3Local() {
         
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
-    public Optional<? extends SourceS3Mode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceS3Mode> mode() {
+        return (Optional<SourceS3Mode>) mode;
     }
 
     public final static Builder builder() {

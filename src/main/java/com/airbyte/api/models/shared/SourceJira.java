@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -100,6 +102,7 @@ public class SourceJira {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceJira(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("domain") String domain,
@@ -136,10 +139,18 @@ public class SourceJira {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceJira(
+            String apiToken,
+            String domain,
+            String email) {
+        this(apiToken, domain, email, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key. API Token is used for Authorization to your account by BasicAuth.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
@@ -147,6 +158,7 @@ public class SourceJira {
     /**
      * The Domain for your Jira account, e.g. airbyteio.atlassian.net, airbyteio.jira.com, jira.your-domain.com
      */
+    @JsonIgnore
     public String domain() {
         return domain;
     }
@@ -154,6 +166,7 @@ public class SourceJira {
     /**
      * The user email for your Jira account which you used to generate the API token. This field is used for Authorization to your account by BasicAuth.
      */
+    @JsonIgnore
     public String email() {
         return email;
     }
@@ -161,52 +174,67 @@ public class SourceJira {
     /**
      * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
      */
-    public Optional<? extends Boolean> enableExperimentalStreams() {
-        return enableExperimentalStreams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> enableExperimentalStreams() {
+        return (Optional<Boolean>) enableExperimentalStreams;
     }
 
     /**
      * (DEPRECATED) Expand the changelog when replicating issues.
      */
-    public Optional<? extends Boolean> expandIssueChangelog() {
-        return expandIssueChangelog;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> expandIssueChangelog() {
+        return (Optional<Boolean>) expandIssueChangelog;
     }
 
     /**
      * (DEPRECATED) Expand the transitions when replicating issues.
      */
-    public Optional<? extends Boolean> expandIssueTransition() {
-        return expandIssueTransition;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> expandIssueTransition() {
+        return (Optional<Boolean>) expandIssueTransition;
     }
 
     /**
      * Select fields to Expand the `Issues` stream when replicating with: 
      */
-    public Optional<? extends java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith() {
-        return issuesStreamExpandWith;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith() {
+        return (Optional<java.util.List<IssuesStreamExpandWith>>) issuesStreamExpandWith;
     }
 
     /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
      */
-    public Optional<? extends Long> lookbackWindowMinutes() {
-        return lookbackWindowMinutes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindowMinutes() {
+        return (Optional<Long>) lookbackWindowMinutes;
     }
 
     /**
      * List of Jira project keys to replicate data for, or leave it empty if you want to replicate data for all projects.
      */
-    public Optional<? extends java.util.List<String>> projects() {
-        return projects;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> projects() {
+        return (Optional<java.util.List<String>>) projects;
     }
 
     /**
      * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
      */
-    public Optional<? extends Boolean> renderFields() {
-        return renderFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> renderFields() {
+        return (Optional<Boolean>) renderFields;
     }
 
+    @JsonIgnore
     public Jira sourceType() {
         return sourceType;
     }
@@ -214,8 +242,10 @@ public class SourceJira {
     /**
      * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. Or leave it empty if you want to replicate all data. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,6 +59,7 @@ public class DestinationMilvus {
     @JsonProperty("processing")
     private DestinationMilvusProcessingConfigModel processing;
 
+    @JsonCreator
     public DestinationMilvus(
             @JsonProperty("embedding") DestinationMilvusEmbedding embedding,
             @JsonProperty("indexing") DestinationMilvusIndexing indexing,
@@ -72,7 +75,15 @@ public class DestinationMilvus {
         this.omitRawText = omitRawText;
         this.processing = processing;
     }
+    
+    public DestinationMilvus(
+            DestinationMilvusEmbedding embedding,
+            DestinationMilvusIndexing indexing,
+            DestinationMilvusProcessingConfigModel processing) {
+        this(embedding, indexing, Optional.empty(), processing);
+    }
 
+    @JsonIgnore
     public Milvus destinationType() {
         return destinationType;
     }
@@ -80,6 +91,7 @@ public class DestinationMilvus {
     /**
      * Embedding configuration
      */
+    @JsonIgnore
     public DestinationMilvusEmbedding embedding() {
         return embedding;
     }
@@ -87,6 +99,7 @@ public class DestinationMilvus {
     /**
      * Indexing configuration
      */
+    @JsonIgnore
     public DestinationMilvusIndexing indexing() {
         return indexing;
     }
@@ -94,10 +107,13 @@ public class DestinationMilvus {
     /**
      * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
      */
-    public Optional<? extends Boolean> omitRawText() {
-        return omitRawText;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> omitRawText() {
+        return (Optional<Boolean>) omitRawText;
     }
 
+    @JsonIgnore
     public DestinationMilvusProcessingConfigModel processing() {
         return processing;
     }

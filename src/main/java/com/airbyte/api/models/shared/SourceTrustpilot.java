@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -35,6 +37,7 @@ public class SourceTrustpilot {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceTrustpilot(
             @JsonProperty("business_units") java.util.List<String> businessUnits,
             @JsonProperty("credentials") SourceTrustpilotAuthorizationMethod credentials,
@@ -51,14 +54,17 @@ public class SourceTrustpilot {
     /**
      * The names of business units which shall be synchronized. Some streams e.g. configured_business_units or private_reviews use this configuration.
      */
+    @JsonIgnore
     public java.util.List<String> businessUnits() {
         return businessUnits;
     }
 
+    @JsonIgnore
     public SourceTrustpilotAuthorizationMethod credentials() {
         return credentials;
     }
 
+    @JsonIgnore
     public Trustpilot sourceType() {
         return sourceType;
     }
@@ -66,6 +72,7 @@ public class SourceTrustpilot {
     /**
      * For streams with sync. method incremental the start date time to be used
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

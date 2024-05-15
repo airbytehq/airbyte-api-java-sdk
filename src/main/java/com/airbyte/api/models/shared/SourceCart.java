@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class SourceCart {
     @JsonProperty("start_date")
     private String startDate;
 
+    @JsonCreator
     public SourceCart(
             @JsonProperty("credentials") Optional<? extends SourceCartAuthorizationMethod> credentials,
             @JsonProperty("start_date") String startDate) {
@@ -42,11 +45,19 @@ public class SourceCart {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
-
-    public Optional<? extends SourceCartAuthorizationMethod> credentials() {
-        return credentials;
+    
+    public SourceCart(
+            String startDate) {
+        this(Optional.empty(), startDate);
     }
 
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceCartAuthorizationMethod> credentials() {
+        return (Optional<SourceCartAuthorizationMethod>) credentials;
+    }
+
+    @JsonIgnore
     public Cart sourceType() {
         return sourceType;
     }
@@ -54,6 +65,7 @@ public class SourceCart {
     /**
      * The date from which you'd like to replicate the data
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }

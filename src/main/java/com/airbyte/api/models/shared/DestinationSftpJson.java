@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -54,6 +56,7 @@ public class DestinationSftpJson {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationSftpJson(
             @JsonProperty("destination_path") String destinationPath,
             @JsonProperty("host") String host,
@@ -72,7 +75,16 @@ public class DestinationSftpJson {
         this.port = port;
         this.username = username;
     }
+    
+    public DestinationSftpJson(
+            String destinationPath,
+            String host,
+            String password,
+            String username) {
+        this(destinationPath, host, password, Optional.empty(), username);
+    }
 
+    @JsonIgnore
     public SftpJson destinationType() {
         return destinationType;
     }
@@ -80,6 +92,7 @@ public class DestinationSftpJson {
     /**
      * Path to the directory where json files will be written.
      */
+    @JsonIgnore
     public String destinationPath() {
         return destinationPath;
     }
@@ -87,6 +100,7 @@ public class DestinationSftpJson {
     /**
      * Hostname of the SFTP server.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -94,6 +108,7 @@ public class DestinationSftpJson {
     /**
      * Password associated with the username.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -101,13 +116,16 @@ public class DestinationSftpJson {
     /**
      * Port of the SFTP server.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * Username to use to access the SFTP server.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

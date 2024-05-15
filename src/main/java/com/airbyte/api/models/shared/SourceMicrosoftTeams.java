@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class SourceMicrosoftTeams {
     @JsonProperty("sourceType")
     private SourceMicrosoftTeamsMicrosoftTeams sourceType;
 
+    @JsonCreator
     public SourceMicrosoftTeams(
             @JsonProperty("credentials") Optional<? extends SourceMicrosoftTeamsAuthenticationMechanism> credentials,
             @JsonProperty("period") String period) {
@@ -45,21 +48,30 @@ public class SourceMicrosoftTeams {
         this.period = period;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceMicrosoftTeams(
+            String period) {
+        this(Optional.empty(), period);
+    }
 
     /**
      * Choose how to authenticate to Microsoft
      */
-    public Optional<? extends SourceMicrosoftTeamsAuthenticationMechanism> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftTeamsAuthenticationMechanism> credentials() {
+        return (Optional<SourceMicrosoftTeamsAuthenticationMechanism>) credentials;
     }
 
     /**
      * Specifies the length of time over which the Team Device Report stream is aggregated. The supported values are: D7, D30, D90, and D180.
      */
+    @JsonIgnore
     public String period() {
         return period;
     }
 
+    @JsonIgnore
     public SourceMicrosoftTeamsMicrosoftTeams sourceType() {
         return sourceType;
     }

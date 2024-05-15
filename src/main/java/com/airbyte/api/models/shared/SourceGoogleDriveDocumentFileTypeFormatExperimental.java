@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceGoogleDriveDocumentFileTypeFormatExperimental {
     @JsonProperty("strategy")
     private Optional<? extends SourceGoogleDriveParsingStrategy> strategy;
 
+    @JsonCreator
     public SourceGoogleDriveDocumentFileTypeFormatExperimental(
             @JsonProperty("processing") Optional<? extends SourceGoogleDriveProcessing> processing,
             @JsonProperty("skip_unprocessable_files") Optional<? extends Boolean> skipUnprocessableFiles,
@@ -60,30 +63,42 @@ public class SourceGoogleDriveDocumentFileTypeFormatExperimental {
         this.skipUnprocessableFiles = skipUnprocessableFiles;
         this.strategy = strategy;
     }
+    
+    public SourceGoogleDriveDocumentFileTypeFormatExperimental() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends SourceGoogleDriveSchemasStreamsFormatFormatFiletype> filetype() {
-        return filetype;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDriveSchemasStreamsFormatFormatFiletype> filetype() {
+        return (Optional<SourceGoogleDriveSchemasStreamsFormatFormatFiletype>) filetype;
     }
 
     /**
      * Processing configuration
      */
-    public Optional<? extends SourceGoogleDriveProcessing> processing() {
-        return processing;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDriveProcessing> processing() {
+        return (Optional<SourceGoogleDriveProcessing>) processing;
     }
 
     /**
      * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
      */
-    public Optional<? extends Boolean> skipUnprocessableFiles() {
-        return skipUnprocessableFiles;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> skipUnprocessableFiles() {
+        return (Optional<Boolean>) skipUnprocessableFiles;
     }
 
     /**
      * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
-    public Optional<? extends SourceGoogleDriveParsingStrategy> strategy() {
-        return strategy;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDriveParsingStrategy> strategy() {
+        return (Optional<SourceGoogleDriveParsingStrategy>) strategy;
     }
 
     public final static Builder builder() {

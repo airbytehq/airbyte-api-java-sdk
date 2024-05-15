@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceUsCensus {
     @JsonProperty("sourceType")
     private UsCensus sourceType;
 
+    @JsonCreator
     public SourceUsCensus(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("query_params") Optional<? extends String> queryParams,
@@ -54,10 +57,17 @@ public class SourceUsCensus {
         this.queryPath = queryPath;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceUsCensus(
+            String apiKey,
+            String queryPath) {
+        this(apiKey, Optional.empty(), queryPath);
+    }
 
     /**
      * Your API Key. Get your key &lt;a href="https://api.census.gov/data/key_signup.html"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -65,17 +75,21 @@ public class SourceUsCensus {
     /**
      * The query parameters portion of the GET request, without the api key
      */
-    public Optional<? extends String> queryParams() {
-        return queryParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> queryParams() {
+        return (Optional<String>) queryParams;
     }
 
     /**
      * The path portion of the GET request
      */
+    @JsonIgnore
     public String queryPath() {
         return queryPath;
     }
 
+    @JsonIgnore
     public UsCensus sourceType() {
         return sourceType;
     }

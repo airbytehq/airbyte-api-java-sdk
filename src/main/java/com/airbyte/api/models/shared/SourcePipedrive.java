@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourcePipedrive {
     @JsonProperty("sourceType")
     private Pipedrive sourceType;
 
+    @JsonCreator
     public SourcePipedrive(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("replication_start_date") String replicationStartDate) {
@@ -45,6 +48,7 @@ public class SourcePipedrive {
     /**
      * The Pipedrive API Token.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
@@ -52,10 +56,12 @@ public class SourcePipedrive {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. When specified and not None, then stream will behave as incremental
      */
+    @JsonIgnore
     public String replicationStartDate() {
         return replicationStartDate;
     }
 
+    @JsonIgnore
     public Pipedrive sourceType() {
         return sourceType;
     }

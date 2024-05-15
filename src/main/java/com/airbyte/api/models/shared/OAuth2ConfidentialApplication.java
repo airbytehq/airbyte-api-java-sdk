@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class OAuth2ConfidentialApplication {
     @JsonProperty("client_secret")
     private String clientSecret;
 
+    @JsonCreator
     public OAuth2ConfidentialApplication(
             @JsonProperty("audience") String audience,
             @JsonProperty("client_id") String clientId,
@@ -54,10 +57,12 @@ public class OAuth2ConfidentialApplication {
     /**
      * The audience for the token, which is your API. You can find this in the Identifier field on your  &lt;a href="https://manage.auth0.com/#/apis"&gt;API's settings tab&lt;/a&gt;
      */
+    @JsonIgnore
     public String audience() {
         return audience;
     }
 
+    @JsonIgnore
     public SourceAuth0SchemasAuthenticationMethod authType() {
         return authType;
     }
@@ -65,6 +70,7 @@ public class OAuth2ConfidentialApplication {
     /**
      * Your application's Client ID. You can find this value on the &lt;a href="https://manage.auth0.com/#/applications"&gt;application's settings tab&lt;/a&gt; after you login the admin portal.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -72,6 +78,7 @@ public class OAuth2ConfidentialApplication {
     /**
      * Your application's Client Secret. You can find this value on the &lt;a href="https://manage.auth0.com/#/applications"&gt;application's settings tab&lt;/a&gt; after you login the admin portal.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }

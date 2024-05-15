@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,22 +36,31 @@ public class EncryptedVerifyCertificate {
     @JsonProperty("ssl_method")
     private Optional<? extends DestinationMssqlSchemasSslMethod> sslMethod;
 
+    @JsonCreator
     public EncryptedVerifyCertificate(
             @JsonProperty("hostNameInCertificate") Optional<? extends String> hostNameInCertificate) {
         Utils.checkNotNull(hostNameInCertificate, "hostNameInCertificate");
         this.hostNameInCertificate = hostNameInCertificate;
         this.sslMethod = Builder._SINGLETON_VALUE_SslMethod.value();
     }
+    
+    public EncryptedVerifyCertificate() {
+        this(Optional.empty());
+    }
 
     /**
      * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
      */
-    public Optional<? extends String> hostNameInCertificate() {
-        return hostNameInCertificate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> hostNameInCertificate() {
+        return (Optional<String>) hostNameInCertificate;
     }
 
-    public Optional<? extends DestinationMssqlSchemasSslMethod> sslMethod() {
-        return sslMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMssqlSchemasSslMethod> sslMethod() {
+        return (Optional<DestinationMssqlSchemasSslMethod>) sslMethod;
     }
 
     public final static Builder builder() {

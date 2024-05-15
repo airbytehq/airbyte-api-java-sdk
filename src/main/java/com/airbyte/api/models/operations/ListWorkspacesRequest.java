@@ -7,7 +7,9 @@ package com.airbyte.api.models.operations;
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -42,6 +44,7 @@ public class ListWorkspacesRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
     private Optional<? extends java.util.List<String>> workspaceIds;
 
+    @JsonCreator
     public ListWorkspacesRequest(
             Optional<? extends Boolean> includeDeleted,
             Optional<? extends Integer> limit,
@@ -56,33 +59,45 @@ public class ListWorkspacesRequest {
         this.offset = offset;
         this.workspaceIds = workspaceIds;
     }
+    
+    public ListWorkspacesRequest() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Include deleted workspaces in the returned results.
      */
-    public Optional<? extends Boolean> includeDeleted() {
-        return includeDeleted;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> includeDeleted() {
+        return (Optional<Boolean>) includeDeleted;
     }
 
     /**
      * Set the limit on the number of workspaces returned. The default is 20.
      */
-    public Optional<? extends Integer> limit() {
-        return limit;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Integer> limit() {
+        return (Optional<Integer>) limit;
     }
 
     /**
      * Set the offset to start at when returning workspaces. The default is 0
      */
-    public Optional<? extends Integer> offset() {
-        return offset;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Integer> offset() {
+        return (Optional<Integer>) offset;
     }
 
     /**
      * The UUIDs of the workspaces you wish to fetch. Empty list will retrieve all allowed workspaces.
      */
-    public Optional<? extends java.util.List<String>> workspaceIds() {
-        return workspaceIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> workspaceIds() {
+        return (Optional<java.util.List<String>>) workspaceIds;
     }
 
     public final static Builder builder() {

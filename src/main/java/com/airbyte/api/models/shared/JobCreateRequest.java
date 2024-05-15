@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -28,6 +30,7 @@ public class JobCreateRequest {
     @JsonProperty("jobType")
     private JobTypeEnum jobType;
 
+    @JsonCreator
     public JobCreateRequest(
             @JsonProperty("connectionId") String connectionId,
             @JsonProperty("jobType") JobTypeEnum jobType) {
@@ -37,6 +40,7 @@ public class JobCreateRequest {
         this.jobType = jobType;
     }
 
+    @JsonIgnore
     public String connectionId() {
         return connectionId;
     }
@@ -44,6 +48,7 @@ public class JobCreateRequest {
     /**
      * Enum that describes the different types of jobs that the platform runs.
      */
+    @JsonIgnore
     public JobTypeEnum jobType() {
         return jobType;
     }

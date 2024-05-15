@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class ApiKeyAuth {
     @JsonProperty("mode")
     private Optional<? extends DestinationQdrantSchemasIndexingMode> mode;
 
+    @JsonCreator
     public ApiKeyAuth(
             @JsonProperty("api_key") String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -40,12 +43,15 @@ public class ApiKeyAuth {
     /**
      * API Key for the Qdrant instance
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
-    public Optional<? extends DestinationQdrantSchemasIndexingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationQdrantSchemasIndexingMode> mode() {
+        return (Optional<DestinationQdrantSchemasIndexingMode>) mode;
     }
 
     public final static Builder builder() {

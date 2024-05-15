@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -34,6 +36,7 @@ public class WorkspaceOAuthCredentialsRequest {
     @JsonProperty("name")
     private OAuthActorNames name;
 
+    @JsonCreator
     public WorkspaceOAuthCredentialsRequest(
             @JsonProperty("actorType") ActorTypeEnum actorType,
             @JsonProperty("configuration") OAuthCredentialsConfiguration configuration,
@@ -49,6 +52,7 @@ public class WorkspaceOAuthCredentialsRequest {
     /**
      * Whether you're setting this override for a source or destination
      */
+    @JsonIgnore
     public ActorTypeEnum actorType() {
         return actorType;
     }
@@ -56,10 +60,12 @@ public class WorkspaceOAuthCredentialsRequest {
     /**
      * The values required to configure the source.
      */
+    @JsonIgnore
     public OAuthCredentialsConfiguration configuration() {
         return configuration;
     }
 
+    @JsonIgnore
     public OAuthActorNames name() {
         return name;
     }

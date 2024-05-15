@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceFreshsales {
     @JsonProperty("sourceType")
     private Freshsales sourceType;
 
+    @JsonCreator
     public SourceFreshsales(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("domain_name") String domainName) {
@@ -45,6 +48,7 @@ public class SourceFreshsales {
     /**
      * Freshsales API Key. See &lt;a href="https://crmsupport.freshworks.com/support/solutions/articles/50000002503-how-to-find-my-api-key-"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -52,10 +56,12 @@ public class SourceFreshsales {
     /**
      * The Name of your Freshsales domain
      */
+    @JsonIgnore
     public String domainName() {
         return domainName;
     }
 
+    @JsonIgnore
     public Freshsales sourceType() {
         return sourceType;
     }

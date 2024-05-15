@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceSmartsheets {
     @JsonProperty("start_datetime")
     private Optional<? extends OffsetDateTime> startDatetime;
 
+    @JsonCreator
     public SourceSmartsheets(
             @JsonProperty("credentials") SourceSmartsheetsAuthorizationMethod credentials,
             @JsonProperty("metadata_fields") Optional<? extends java.util.List<Validenums>> metadataFields,
@@ -64,7 +67,14 @@ public class SourceSmartsheets {
         this.spreadsheetId = spreadsheetId;
         this.startDatetime = startDatetime;
     }
+    
+    public SourceSmartsheets(
+            SourceSmartsheetsAuthorizationMethod credentials,
+            String spreadsheetId) {
+        this(credentials, Optional.empty(), spreadsheetId, Optional.empty());
+    }
 
+    @JsonIgnore
     public SourceSmartsheetsAuthorizationMethod credentials() {
         return credentials;
     }
@@ -72,10 +82,13 @@ public class SourceSmartsheets {
     /**
      * A List of available columns which metadata can be pulled from.
      */
-    public Optional<? extends java.util.List<Validenums>> metadataFields() {
-        return metadataFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<Validenums>> metadataFields() {
+        return (Optional<java.util.List<Validenums>>) metadataFields;
     }
 
+    @JsonIgnore
     public SourceSmartsheetsSmartsheets sourceType() {
         return sourceType;
     }
@@ -83,6 +96,7 @@ public class SourceSmartsheets {
     /**
      * The spreadsheet ID. Find it by opening the spreadsheet then navigating to File &gt; Properties
      */
+    @JsonIgnore
     public String spreadsheetId() {
         return spreadsheetId;
     }
@@ -90,8 +104,10 @@ public class SourceSmartsheets {
     /**
      * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
      */
-    public Optional<? extends OffsetDateTime> startDatetime() {
-        return startDatetime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDatetime() {
+        return (Optional<OffsetDateTime>) startDatetime;
     }
 
     public final static Builder builder() {

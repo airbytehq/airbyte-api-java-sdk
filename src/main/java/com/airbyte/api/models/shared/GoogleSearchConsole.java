@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class GoogleSearchConsole {
     @JsonProperty("authorization")
     private Optional<? extends Authorization> authorization;
 
+    @JsonCreator
     public GoogleSearchConsole(
             @JsonProperty("authorization") Optional<? extends Authorization> authorization) {
         Utils.checkNotNull(authorization, "authorization");
         this.authorization = authorization;
     }
+    
+    public GoogleSearchConsole() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends Authorization> authorization() {
-        return authorization;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Authorization> authorization() {
+        return (Optional<Authorization>) authorization;
     }
 
     public final static Builder builder() {

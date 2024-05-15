@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceMetabase {
     @JsonProperty("username")
     private Optional<? extends String> username;
 
+    @JsonCreator
     public SourceMetabase(
             @JsonProperty("instance_api_url") String instanceApiUrl,
             @JsonProperty("password") Optional<? extends String> password,
@@ -64,16 +67,24 @@ public class SourceMetabase {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.username = username;
     }
+    
+    public SourceMetabase(
+            String instanceApiUrl) {
+        this(instanceApiUrl, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * URL to your metabase instance API
      */
+    @JsonIgnore
     public String instanceApiUrl() {
         return instanceApiUrl;
     }
 
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
@@ -84,16 +95,21 @@ public class SourceMetabase {
      * ``` Then copy the value of the `id` field returned by a successful call to that API.
      * Note that by default, sessions are good for 14 days and needs to be regenerated.
      */
-    public Optional<? extends String> sessionToken() {
-        return sessionToken;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> sessionToken() {
+        return (Optional<String>) sessionToken;
     }
 
+    @JsonIgnore
     public Metabase sourceType() {
         return sourceType;
     }
 
-    public Optional<? extends String> username() {
-        return username;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> username() {
+        return (Optional<String>) username;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -47,6 +49,7 @@ public class SourceMarketo {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceMarketo(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -66,6 +69,7 @@ public class SourceMarketo {
     /**
      * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -73,6 +77,7 @@ public class SourceMarketo {
     /**
      * The Client Secret of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -80,10 +85,12 @@ public class SourceMarketo {
     /**
      * Your Marketo Base URL. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
+    @JsonIgnore
     public String domainUrl() {
         return domainUrl;
     }
 
+    @JsonIgnore
     public Marketo sourceType() {
         return sourceType;
     }
@@ -91,6 +98,7 @@ public class SourceMarketo {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

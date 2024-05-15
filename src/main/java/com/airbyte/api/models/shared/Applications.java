@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,6 +31,7 @@ public class Applications {
     @JsonProperty("app_name")
     private Optional<? extends String> appName;
 
+    @JsonCreator
     public Applications(
             @JsonProperty("app_api_key") String appApiKey,
             @JsonProperty("app_id") String appId,
@@ -40,17 +43,27 @@ public class Applications {
         this.appId = appId;
         this.appName = appName;
     }
+    
+    public Applications(
+            String appApiKey,
+            String appId) {
+        this(appApiKey, appId, Optional.empty());
+    }
 
+    @JsonIgnore
     public String appApiKey() {
         return appApiKey;
     }
 
+    @JsonIgnore
     public String appId() {
         return appId;
     }
 
-    public Optional<? extends String> appName() {
-        return appName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> appName() {
+        return (Optional<String>) appName;
     }
 
     public final static Builder builder() {

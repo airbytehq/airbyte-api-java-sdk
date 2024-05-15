@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class SourceZenloop {
     @JsonProperty("survey_id")
     private Optional<? extends String> surveyId;
 
+    @JsonCreator
     public SourceZenloop(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("date_from") Optional<? extends String> dateFrom,
@@ -65,10 +68,16 @@ public class SourceZenloop {
         this.surveyGroupId = surveyGroupId;
         this.surveyId = surveyId;
     }
+    
+    public SourceZenloop(
+            String apiToken) {
+        this(apiToken, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt; 
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
@@ -76,10 +85,13 @@ public class SourceZenloop {
     /**
      * Zenloop date_from. Format: 2021-10-24T03:30:30Z or 2021-10-24. Leave empty if only data from current data should be synced
      */
-    public Optional<? extends String> dateFrom() {
-        return dateFrom;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> dateFrom() {
+        return (Optional<String>) dateFrom;
     }
 
+    @JsonIgnore
     public Zenloop sourceType() {
         return sourceType;
     }
@@ -87,15 +99,19 @@ public class SourceZenloop {
     /**
      * Zenloop Survey Group ID. Can be found by pulling All Survey Groups via SurveyGroups stream. Leave empty to pull answers from all survey groups
      */
-    public Optional<? extends String> surveyGroupId() {
-        return surveyGroupId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> surveyGroupId() {
+        return (Optional<String>) surveyGroupId;
     }
 
     /**
      * Zenloop Survey ID. Can be found &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;. Leave empty to pull answers from all surveys
      */
-    public Optional<? extends String> surveyId() {
-        return surveyId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> surveyId() {
+        return (Optional<String>) surveyId;
     }
 
     public final static Builder builder() {

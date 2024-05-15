@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,14 +26,21 @@ public class DestinationS3Bzip2 {
     @JsonProperty("codec")
     private Optional<? extends DestinationS3SchemasFormatCodec> codec;
 
+    @JsonCreator
     public DestinationS3Bzip2(
             @JsonProperty("codec") Optional<? extends DestinationS3SchemasFormatCodec> codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = codec;
     }
+    
+    public DestinationS3Bzip2() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationS3SchemasFormatCodec> codec() {
-        return codec;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationS3SchemasFormatCodec> codec() {
+        return (Optional<DestinationS3SchemasFormatCodec>) codec;
     }
 
     public final static Builder builder() {

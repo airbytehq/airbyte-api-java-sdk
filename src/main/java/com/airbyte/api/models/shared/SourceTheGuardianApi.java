@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -63,6 +65,7 @@ public class SourceTheGuardianApi {
     @JsonProperty("tag")
     private Optional<? extends String> tag;
 
+    @JsonCreator
     public SourceTheGuardianApi(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("end_date") Optional<? extends String> endDate,
@@ -84,10 +87,17 @@ public class SourceTheGuardianApi {
         this.startDate = startDate;
         this.tag = tag;
     }
+    
+    public SourceTheGuardianApi(
+            String apiKey,
+            String startDate) {
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty());
+    }
 
     /**
      * Your API Key. See &lt;a href="https://open-platform.theguardian.com/access/"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -95,24 +105,31 @@ public class SourceTheGuardianApi {
     /**
      * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
      */
-    public Optional<? extends String> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
     /**
      * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
      */
-    public Optional<? extends String> query() {
-        return query;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> query() {
+        return (Optional<String>) query;
     }
 
     /**
      * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
      */
-    public Optional<? extends String> section() {
-        return section;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> section() {
+        return (Optional<String>) section;
     }
 
+    @JsonIgnore
     public TheGuardianApi sourceType() {
         return sourceType;
     }
@@ -120,6 +137,7 @@ public class SourceTheGuardianApi {
     /**
      * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will not be shown.
      */
+    @JsonIgnore
     public String startDate() {
         return startDate;
     }
@@ -127,8 +145,10 @@ public class SourceTheGuardianApi {
     /**
      * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
      */
-    public Optional<? extends String> tag() {
-        return tag;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> tag() {
+        return (Optional<String>) tag;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceYandexMetrica {
     @JsonProperty("start_date")
     private LocalDate startDate;
 
+    @JsonCreator
     public SourceYandexMetrica(
             @JsonProperty("auth_token") String authToken,
             @JsonProperty("counter_id") String counterId,
@@ -64,10 +67,18 @@ public class SourceYandexMetrica {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceYandexMetrica(
+            String authToken,
+            String counterId,
+            LocalDate startDate) {
+        this(authToken, counterId, Optional.empty(), startDate);
+    }
 
     /**
      * Your Yandex Metrica API access token
      */
+    @JsonIgnore
     public String authToken() {
         return authToken;
     }
@@ -75,6 +86,7 @@ public class SourceYandexMetrica {
     /**
      * Counter ID
      */
+    @JsonIgnore
     public String counterId() {
         return counterId;
     }
@@ -82,10 +94,13 @@ public class SourceYandexMetrica {
     /**
      * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
+    @JsonIgnore
     public YandexMetrica sourceType() {
         return sourceType;
     }
@@ -93,6 +108,7 @@ public class SourceYandexMetrica {
     /**
      * Starting point for your data replication, in format of "YYYY-MM-DD".
      */
+    @JsonIgnore
     public LocalDate startDate() {
         return startDate;
     }

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -26,6 +28,7 @@ public class SourceOktaAPIToken {
     @JsonProperty("auth_type")
     private SourceOktaSchemasAuthType authType;
 
+    @JsonCreator
     public SourceOktaAPIToken(
             @JsonProperty("api_token") String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -36,10 +39,12 @@ public class SourceOktaAPIToken {
     /**
      * An Okta token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
 
+    @JsonIgnore
     public SourceOktaSchemasAuthType authType() {
         return authType;
     }

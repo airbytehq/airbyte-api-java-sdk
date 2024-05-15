@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,17 +31,24 @@ public class CohortReportSettings {
     @JsonProperty("accumulate")
     private Optional<? extends Boolean> accumulate;
 
+    @JsonCreator
     public CohortReportSettings(
             @JsonProperty("accumulate") Optional<? extends Boolean> accumulate) {
         Utils.checkNotNull(accumulate, "accumulate");
         this.accumulate = accumulate;
     }
+    
+    public CohortReportSettings() {
+        this(Optional.empty());
+    }
 
     /**
      * If true, accumulates the result from first touch day to the end day
      */
-    public Optional<? extends Boolean> accumulate() {
-        return accumulate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> accumulate() {
+        return (Optional<Boolean>) accumulate;
     }
 
     public final static Builder builder() {

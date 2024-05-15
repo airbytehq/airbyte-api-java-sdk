@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class ProjectSecret {
     @JsonProperty("option_title")
     private Optional<? extends SourceMixpanelSchemasOptionTitle> optionTitle;
 
+    @JsonCreator
     public ProjectSecret(
             @JsonProperty("api_secret") String apiSecret) {
         Utils.checkNotNull(apiSecret, "apiSecret");
@@ -40,12 +43,15 @@ public class ProjectSecret {
     /**
      * Mixpanel project secret. See the &lt;a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
+    @JsonIgnore
     public String apiSecret() {
         return apiSecret;
     }
 
-    public Optional<? extends SourceMixpanelSchemasOptionTitle> optionTitle() {
-        return optionTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMixpanelSchemasOptionTitle> optionTitle() {
+        return (Optional<SourceMixpanelSchemasOptionTitle>) optionTitle;
     }
 
     public final static Builder builder() {

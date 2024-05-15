@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourceTrello {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public SourceTrello(
             @JsonProperty("board_ids") Optional<? extends java.util.List<String>> boardIds,
             @JsonProperty("key") String key,
@@ -66,21 +69,32 @@ public class SourceTrello {
         this.startDate = startDate;
         this.token = token;
     }
+    
+    public SourceTrello(
+            String key,
+            OffsetDateTime startDate,
+            String token) {
+        this(Optional.empty(), key, startDate, token);
+    }
 
     /**
      * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
      */
-    public Optional<? extends java.util.List<String>> boardIds() {
-        return boardIds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> boardIds() {
+        return (Optional<java.util.List<String>>) boardIds;
     }
 
     /**
      * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
+    @JsonIgnore
     public String key() {
         return key;
     }
 
+    @JsonIgnore
     public Trello sourceType() {
         return sourceType;
     }
@@ -88,6 +102,7 @@ public class SourceTrello {
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
@@ -95,6 +110,7 @@ public class SourceTrello {
     /**
      * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
+    @JsonIgnore
     public String token() {
         return token;
     }

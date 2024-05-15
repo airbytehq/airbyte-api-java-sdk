@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SourceGoogleDriveAuthenticateViaGoogleOAuth(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -55,13 +58,16 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
         this.refreshToken = refreshToken;
     }
 
-    public Optional<? extends SourceGoogleDriveAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleDriveAuthType> authType() {
+        return (Optional<SourceGoogleDriveAuthType>) authType;
     }
 
     /**
      * Client ID for the Google Drive API
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -69,6 +75,7 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
     /**
      * Client Secret for the Google Drive API
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -76,6 +83,7 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
     /**
      * Refresh Token for the Google Drive API
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

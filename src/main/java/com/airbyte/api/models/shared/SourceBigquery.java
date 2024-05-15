@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceBigquery {
     @JsonProperty("sourceType")
     private SourceBigqueryBigquery sourceType;
 
+    @JsonCreator
     public SourceBigquery(
             @JsonProperty("credentials_json") String credentialsJson,
             @JsonProperty("dataset_id") Optional<? extends String> datasetId,
@@ -54,10 +57,17 @@ public class SourceBigquery {
         this.projectId = projectId;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceBigquery(
+            String credentialsJson,
+            String projectId) {
+        this(credentialsJson, Optional.empty(), projectId);
+    }
 
     /**
      * The contents of your Service Account Key JSON file. See the &lt;a href="https://docs.airbyte.com/integrations/sources/bigquery#setup-the-bigquery-source-in-airbyte"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
+    @JsonIgnore
     public String credentialsJson() {
         return credentialsJson;
     }
@@ -65,17 +75,21 @@ public class SourceBigquery {
     /**
      * The dataset ID to search for tables and views. If you are only loading data from one dataset, setting this option could result in much faster schema discovery.
      */
-    public Optional<? extends String> datasetId() {
-        return datasetId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> datasetId() {
+        return (Optional<String>) datasetId;
     }
 
     /**
      * The GCP project ID for the project containing the target BigQuery dataset.
      */
+    @JsonIgnore
     public String projectId() {
         return projectId;
     }
 
+    @JsonIgnore
     public SourceBigqueryBigquery sourceType() {
         return sourceType;
     }

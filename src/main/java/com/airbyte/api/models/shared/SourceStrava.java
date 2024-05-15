@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -60,6 +62,7 @@ public class SourceStrava {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceStrava(
             @JsonProperty("athlete_id") long athleteId,
             @JsonProperty("client_id") String clientId,
@@ -83,17 +86,21 @@ public class SourceStrava {
     /**
      * The Athlete ID of your Strava developer application.
      */
+    @JsonIgnore
     public long athleteId() {
         return athleteId;
     }
 
-    public Optional<? extends SourceStravaAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceStravaAuthType> authType() {
+        return (Optional<SourceStravaAuthType>) authType;
     }
 
     /**
      * The Client ID of your Strava developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -101,6 +108,7 @@ public class SourceStrava {
     /**
      * The Client Secret of your Strava developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -108,10 +116,12 @@ public class SourceStrava {
     /**
      * The Refresh Token with the activity: read_all permissions.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
+    @JsonIgnore
     public SourceStravaStrava sourceType() {
         return sourceType;
     }
@@ -119,6 +129,7 @@ public class SourceStrava {
     /**
      * UTC date and time. Any data before this date will not be replicated.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

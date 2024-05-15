@@ -20,29 +20,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.CreateConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnum;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnum;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnum;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -56,23 +46,7 @@ public class Application {
             ConnectionCreateRequest req = ConnectionCreateRequest.builder()
                 .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
                 .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .configurations(StreamConfigurations.builder()
-                    .streams(java.util.List.of(
-                        StreamConfiguration.builder()
-                            .name("<value>")
-                            .build()))
-                    .build())
-                .dataResidency(GeographyEnum.EU)
-                .name("<value>")
-                .namespaceDefinition(NamespaceDefinitionEnum.CUSTOM_FORMAT)
                 .namespaceFormat("${SOURCE_NAMESPACE}")
-                .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnum.IGNORE)
-                .prefix("<value>")
-                .schedule(ConnectionSchedule.builder()
-                    .scheduleType(ScheduleTypeEnum.CRON)
-                    .cronExpression("<value>")
-                    .build())
-                .status(ConnectionStatusEnum.DEPRECATED)
                 .build();
 
             CreateConnectionResponse res = sdk.connections().createConnection()
@@ -84,8 +58,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -118,8 +94,6 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.DeleteConnectionRequest;
-import com.airbyte.api.models.operations.DeleteConnectionResponse;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
@@ -127,11 +101,12 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -153,8 +128,10 @@ public class Application {
             // handle response
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -187,8 +164,6 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.GetConnectionRequest;
-import com.airbyte.api.models.operations.GetConnectionResponse;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
@@ -196,11 +171,12 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -224,8 +200,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -258,8 +236,6 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.ListConnectionsRequest;
-import com.airbyte.api.models.operations.ListConnectionsResponse;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
 import java.math.BigDecimal;
@@ -267,11 +243,12 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -283,11 +260,6 @@ public class Application {
                 .build();
 
             ListConnectionsRequest req = ListConnectionsRequest.builder()
-                .includeDeleted(false)
-                .limit(726733)
-                .offset(907316)
-                .workspaceIds(java.util.List.of(
-                    "d8f6e532-a55f-479c-ab30-682edc879612"))
                 .build();
 
             ListConnectionsResponse res = sdk.connections().listConnections()
@@ -299,8 +271,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }
@@ -333,30 +307,19 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.operations.PatchConnectionRequest;
-import com.airbyte.api.models.operations.PatchConnectionResponse;
 import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.ConnectionPatchRequest;
-import com.airbyte.api.models.shared.ConnectionSchedule;
-import com.airbyte.api.models.shared.ConnectionStatusEnum;
-import com.airbyte.api.models.shared.ConnectionSyncModeEnum;
-import com.airbyte.api.models.shared.GeographyEnumNoDefault;
-import com.airbyte.api.models.shared.NamespaceDefinitionEnumNoDefault;
-import com.airbyte.api.models.shared.NonBreakingSchemaUpdatesBehaviorEnumNoDefault;
-import com.airbyte.api.models.shared.ScheduleTypeEnum;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.StreamConfiguration;
-import com.airbyte.api.models.shared.StreamConfigurations;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import static java.util.Map.entry;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
@@ -369,23 +332,7 @@ public class Application {
 
             PatchConnectionRequest req = PatchConnectionRequest.builder()
                 .connectionPatchRequest(ConnectionPatchRequest.builder()
-                        .configurations(StreamConfigurations.builder()
-                            .streams(java.util.List.of(
-                                StreamConfiguration.builder()
-                                    .name("<value>")
-                                    .build()))
-                            .build())
-                        .dataResidency(GeographyEnumNoDefault.AUTO)
-                        .name("<value>")
-                        .namespaceDefinition(NamespaceDefinitionEnumNoDefault.SOURCE)
                         .namespaceFormat("${SOURCE_NAMESPACE}")
-                        .nonBreakingSchemaUpdatesBehavior(NonBreakingSchemaUpdatesBehaviorEnumNoDefault.PROPAGATE_FULLY)
-                        .prefix("<value>")
-                        .schedule(ConnectionSchedule.builder()
-                            .scheduleType(ScheduleTypeEnum.CRON)
-                            .cronExpression("<value>")
-                            .build())
-                        .status(ConnectionStatusEnum.ACTIVE)
                         .build())
                 .connectionId("<value>")
                 .build();
@@ -399,8 +346,10 @@ public class Application {
             }
         } catch (com.airbyte.api.models.errors.SDKError e) {
             // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
     }
 }

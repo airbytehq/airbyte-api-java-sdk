@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,6 +51,7 @@ public class SourceBambooHr {
     @JsonProperty("subdomain")
     private String subdomain;
 
+    @JsonCreator
     public SourceBambooHr(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("custom_reports_fields") Optional<? extends String> customReportsFields,
@@ -64,10 +67,17 @@ public class SourceBambooHr {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.subdomain = subdomain;
     }
+    
+    public SourceBambooHr(
+            String apiKey,
+            String subdomain) {
+        this(apiKey, Optional.empty(), Optional.empty(), subdomain);
+    }
 
     /**
      * Api key of bamboo hr
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -75,17 +85,22 @@ public class SourceBambooHr {
     /**
      * Comma-separated list of fields to include in custom reports.
      */
-    public Optional<? extends String> customReportsFields() {
-        return customReportsFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> customReportsFields() {
+        return (Optional<String>) customReportsFields;
     }
 
     /**
      * If true, the custom reports endpoint will include the default fields defined here: https://documentation.bamboohr.com/docs/list-of-field-names.
      */
-    public Optional<? extends Boolean> customReportsIncludeDefaultFields() {
-        return customReportsIncludeDefaultFields;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> customReportsIncludeDefaultFields() {
+        return (Optional<Boolean>) customReportsIncludeDefaultFields;
     }
 
+    @JsonIgnore
     public BambooHr sourceType() {
         return sourceType;
     }
@@ -93,6 +108,7 @@ public class SourceBambooHr {
     /**
      * Sub Domain of bamboo hr
      */
+    @JsonIgnore
     public String subdomain() {
         return subdomain;
     }

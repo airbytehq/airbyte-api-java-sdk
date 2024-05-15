@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -88,6 +90,7 @@ public class SourceMssql {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceMssql(
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
@@ -121,10 +124,20 @@ public class SourceMssql {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public SourceMssql(
+            String database,
+            String host,
+            String password,
+            long port,
+            String username) {
+        this(database, host, Optional.empty(), password, port, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * The name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
@@ -132,6 +145,7 @@ public class SourceMssql {
     /**
      * The hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -139,13 +153,16 @@ public class SourceMssql {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The password associated with the username.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -153,6 +170,7 @@ public class SourceMssql {
     /**
      * The port of the database.
      */
+    @JsonIgnore
     public long port() {
         return port;
     }
@@ -160,17 +178,22 @@ public class SourceMssql {
     /**
      * Configures how data is extracted from the database.
      */
-    public Optional<? extends UpdateMethod> replicationMethod() {
-        return replicationMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<UpdateMethod> replicationMethod() {
+        return (Optional<UpdateMethod>) replicationMethod;
     }
 
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
      */
-    public Optional<? extends java.util.List<String>> schemas() {
-        return schemas;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> schemas() {
+        return (Optional<java.util.List<String>>) schemas;
     }
 
+    @JsonIgnore
     public SourceMssqlMssql sourceType() {
         return sourceType;
     }
@@ -178,20 +201,25 @@ public class SourceMssql {
     /**
      * The encryption method which is used when communicating with the database.
      */
-    public Optional<? extends SourceMssqlSSLMethod> sslMethod() {
-        return sslMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMssqlSSLMethod> sslMethod() {
+        return (Optional<SourceMssqlSSLMethod>) sslMethod;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends SourceMssqlSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMssqlSSHTunnelMethod> tunnelMethod() {
+        return (Optional<SourceMssqlSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The username which is used to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

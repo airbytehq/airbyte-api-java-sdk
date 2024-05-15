@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class PersonalAccessToken {
     @JsonProperty("auth_method")
     private Optional<? extends SourceAirtableAuthMethod> authMethod;
 
+    @JsonCreator
     public PersonalAccessToken(
             @JsonProperty("api_key") String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -40,12 +43,15 @@ public class PersonalAccessToken {
     /**
      * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
 
-    public Optional<? extends SourceAirtableAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAirtableAuthMethod> authMethod() {
+        return (Optional<SourceAirtableAuthMethod>) authMethod;
     }
 
     public final static Builder builder() {

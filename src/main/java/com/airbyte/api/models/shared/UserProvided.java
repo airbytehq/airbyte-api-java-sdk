@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class UserProvided {
     @JsonProperty("header_definition_type")
     private Optional<? extends SourceAzureBlobStorageSchemasHeaderDefinitionType> headerDefinitionType;
 
+    @JsonCreator
     public UserProvided(
             @JsonProperty("column_names") java.util.List<String> columnNames) {
         Utils.checkNotNull(columnNames, "columnNames");
@@ -40,12 +43,15 @@ public class UserProvided {
     /**
      * The column names that will be used while emitting the CSV records
      */
+    @JsonIgnore
     public java.util.List<String> columnNames() {
         return columnNames;
     }
 
-    public Optional<? extends SourceAzureBlobStorageSchemasHeaderDefinitionType> headerDefinitionType() {
-        return headerDefinitionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAzureBlobStorageSchemasHeaderDefinitionType> headerDefinitionType() {
+        return (Optional<SourceAzureBlobStorageSchemasHeaderDefinitionType>) headerDefinitionType;
     }
 
     public final static Builder builder() {

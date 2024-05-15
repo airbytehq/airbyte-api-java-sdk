@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -688,11 +690,6 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceQualaroo>(){}));
     }
 
-    public static SourceConfiguration of(SourceQuickbooks value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceQuickbooks>(){}));
-    }
-
     public static SourceConfiguration of(SourceRailz value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceRailz>(){}));
@@ -1142,7 +1139,6 @@ public class SourceConfiguration {
      * <li>{@code SourcePunkApi}</li>
      * <li>{@code SourcePypi}</li>
      * <li>{@code SourceQualaroo}</li>
-     * <li>{@code SourceQuickbooks}</li>
      * <li>{@code SourceRailz}</li>
      * <li>{@code SourceRecharge}</li>
      * <li>{@code SourceRecreation}</li>
@@ -1376,7 +1372,6 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePunkApi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePypi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceQualaroo>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceQuickbooks>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceRailz>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceRecharge>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceRecreation>() {}, Utils.JsonShape.DEFAULT),

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -57,28 +59,45 @@ public class SourceMongodbV2 {
     @JsonProperty("sourceType")
     private MongodbV2 sourceType;
 
+    /**
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("update_capture_mode")
+    private Optional<? extends CaptureModeAdvanced> updateCaptureMode;
+
+    @JsonCreator
     public SourceMongodbV2(
             @JsonProperty("database_config") java.lang.Object databaseConfig,
             @JsonProperty("discover_sample_size") Optional<? extends Long> discoverSampleSize,
             @JsonProperty("initial_waiting_seconds") Optional<? extends Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
-            @JsonProperty("queue_size") Optional<? extends Long> queueSize) {
+            @JsonProperty("queue_size") Optional<? extends Long> queueSize,
+            @JsonProperty("update_capture_mode") Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
         Utils.checkNotNull(databaseConfig, "databaseConfig");
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
         Utils.checkNotNull(queueSize, "queueSize");
+        Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
         this.databaseConfig = databaseConfig;
         this.discoverSampleSize = discoverSampleSize;
         this.initialWaitingSeconds = initialWaitingSeconds;
         this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
         this.queueSize = queueSize;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+        this.updateCaptureMode = updateCaptureMode;
+    }
+    
+    public SourceMongodbV2(
+            java.lang.Object databaseConfig) {
+        this(databaseConfig, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
      * Configures the MongoDB cluster type.
      */
+    @JsonIgnore
     public java.lang.Object databaseConfig() {
         return databaseConfig;
     }
@@ -86,33 +105,51 @@ public class SourceMongodbV2 {
     /**
      * The maximum number of documents to sample when attempting to discover the unique fields for a collection.
      */
-    public Optional<? extends Long> discoverSampleSize() {
-        return discoverSampleSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> discoverSampleSize() {
+        return (Optional<Long>) discoverSampleSize;
     }
 
     /**
      * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
      */
-    public Optional<? extends Long> initialWaitingSeconds() {
-        return initialWaitingSeconds;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> initialWaitingSeconds() {
+        return (Optional<Long>) initialWaitingSeconds;
     }
 
     /**
      * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
      */
-    public Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior() {
-        return invalidCdcCursorPositionBehavior;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior() {
+        return (Optional<InvalidCDCPositionBehaviorAdvanced>) invalidCdcCursorPositionBehavior;
     }
 
     /**
      * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
      */
-    public Optional<? extends Long> queueSize() {
-        return queueSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> queueSize() {
+        return (Optional<Long>) queueSize;
     }
 
+    @JsonIgnore
     public MongodbV2 sourceType() {
         return sourceType;
+    }
+
+    /**
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<CaptureModeAdvanced> updateCaptureMode() {
+        return (Optional<CaptureModeAdvanced>) updateCaptureMode;
     }
 
     public final static Builder builder() {
@@ -199,6 +236,24 @@ public class SourceMongodbV2 {
         this.queueSize = queueSize;
         return this;
     }
+
+    /**
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     */
+    public SourceMongodbV2 withUpdateCaptureMode(CaptureModeAdvanced updateCaptureMode) {
+        Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
+        this.updateCaptureMode = Optional.ofNullable(updateCaptureMode);
+        return this;
+    }
+
+    /**
+     * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+     */
+    public SourceMongodbV2 withUpdateCaptureMode(Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
+        Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
+        this.updateCaptureMode = updateCaptureMode;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -215,7 +270,8 @@ public class SourceMongodbV2 {
             java.util.Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
             java.util.Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
             java.util.Objects.deepEquals(this.queueSize, other.queueSize) &&
-            java.util.Objects.deepEquals(this.sourceType, other.sourceType);
+            java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
+            java.util.Objects.deepEquals(this.updateCaptureMode, other.updateCaptureMode);
     }
     
     @Override
@@ -226,7 +282,8 @@ public class SourceMongodbV2 {
             initialWaitingSeconds,
             invalidCdcCursorPositionBehavior,
             queueSize,
-            sourceType);
+            sourceType,
+            updateCaptureMode);
     }
     
     @Override
@@ -237,7 +294,8 @@ public class SourceMongodbV2 {
                 "initialWaitingSeconds", initialWaitingSeconds,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior,
                 "queueSize", queueSize,
-                "sourceType", sourceType);
+                "sourceType", sourceType,
+                "updateCaptureMode", updateCaptureMode);
     }
     
     public final static class Builder {
@@ -250,7 +308,9 @@ public class SourceMongodbV2 {
  
         private Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
  
-        private Optional<? extends Long> queueSize;  
+        private Optional<? extends Long> queueSize;
+ 
+        private Optional<? extends CaptureModeAdvanced> updateCaptureMode;  
         
         private Builder() {
           // force use of static builder() method
@@ -336,6 +396,24 @@ public class SourceMongodbV2 {
             this.queueSize = queueSize;
             return this;
         }
+
+        /**
+         * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+         */
+        public Builder updateCaptureMode(CaptureModeAdvanced updateCaptureMode) {
+            Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
+            this.updateCaptureMode = Optional.ofNullable(updateCaptureMode);
+            return this;
+        }
+
+        /**
+         * Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+         */
+        public Builder updateCaptureMode(Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
+            Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
+            this.updateCaptureMode = updateCaptureMode;
+            return this;
+        }
         
         public SourceMongodbV2 build() {
             if (discoverSampleSize == null) {
@@ -350,12 +428,16 @@ public class SourceMongodbV2 {
             if (queueSize == null) {
                 queueSize = _SINGLETON_VALUE_QueueSize.value();
             }
+            if (updateCaptureMode == null) {
+                updateCaptureMode = _SINGLETON_VALUE_UpdateCaptureMode.value();
+            }
             return new SourceMongodbV2(
                 databaseConfig,
                 discoverSampleSize,
                 initialWaitingSeconds,
                 invalidCdcCursorPositionBehavior,
-                queueSize);
+                queueSize,
+                updateCaptureMode);
         }
 
         private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_DiscoverSampleSize =
@@ -387,6 +469,12 @@ public class SourceMongodbV2 {
                         "sourceType",
                         "\"mongodb-v2\"",
                         new TypeReference<MongodbV2>() {});
+
+        private static final LazySingletonValue<Optional<? extends CaptureModeAdvanced>> _SINGLETON_VALUE_UpdateCaptureMode =
+                new LazySingletonValue<>(
+                        "update_capture_mode",
+                        "\"Lookup\"",
+                        new TypeReference<Optional<? extends CaptureModeAdvanced>>() {});
     }
 }
 

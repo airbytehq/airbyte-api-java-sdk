@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -36,6 +38,7 @@ public class SourceDremio {
     @JsonProperty("sourceType")
     private Dremio sourceType;
 
+    @JsonCreator
     public SourceDremio(
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("base_url") Optional<? extends String> baseUrl) {
@@ -45,10 +48,16 @@ public class SourceDremio {
         this.baseUrl = baseUrl;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceDremio(
+            String apiKey) {
+        this(apiKey, Optional.empty());
+    }
 
     /**
      * API Key that is generated when you authenticate to Dremio API
      */
+    @JsonIgnore
     public String apiKey() {
         return apiKey;
     }
@@ -56,10 +65,13 @@ public class SourceDremio {
     /**
      * URL of your Dremio instance
      */
-    public Optional<? extends String> baseUrl() {
-        return baseUrl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> baseUrl() {
+        return (Optional<String>) baseUrl;
     }
 
+    @JsonIgnore
     public Dremio sourceType() {
         return sourceType;
     }

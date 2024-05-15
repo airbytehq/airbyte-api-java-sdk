@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -98,6 +100,7 @@ public class SourcePocket {
     @JsonProperty("tag")
     private Optional<? extends String> tag;
 
+    @JsonCreator
     public SourcePocket(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("consumer_key") String consumerKey,
@@ -134,10 +137,17 @@ public class SourcePocket {
         this.state = state;
         this.tag = tag;
     }
+    
+    public SourcePocket(
+            String accessToken,
+            String consumerKey) {
+        this(accessToken, consumerKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The user's Pocket access token.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -145,6 +155,7 @@ public class SourcePocket {
     /**
      * Your application's Consumer Key.
      */
+    @JsonIgnore
     public String consumerKey() {
         return consumerKey;
     }
@@ -152,52 +163,67 @@ public class SourcePocket {
     /**
      * Select the content type of the items to retrieve.
      */
-    public Optional<? extends ContentType> contentType() {
-        return contentType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ContentType> contentType() {
+        return (Optional<ContentType>) contentType;
     }
 
     /**
      * Select the granularity of the information about each item.
      */
-    public Optional<? extends DetailType> detailType() {
-        return detailType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DetailType> detailType() {
+        return (Optional<DetailType>) detailType;
     }
 
     /**
      * Only return items from a particular `domain`.
      */
-    public Optional<? extends String> domain() {
-        return domain;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> domain() {
+        return (Optional<String>) domain;
     }
 
     /**
      * Retrieve only favorited items.
      */
-    public Optional<? extends Boolean> favorite() {
-        return favorite;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> favorite() {
+        return (Optional<Boolean>) favorite;
     }
 
     /**
      * Only return items whose title or url contain the `search` string.
      */
-    public Optional<? extends String> search() {
-        return search;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> search() {
+        return (Optional<String>) search;
     }
 
     /**
      * Only return items modified since the given timestamp.
      */
-    public Optional<? extends String> since() {
-        return since;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> since() {
+        return (Optional<String>) since;
     }
 
     /**
      * Sort retrieved items by the given criteria.
      */
-    public Optional<? extends SourcePocketSortBy> sort() {
-        return sort;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourcePocketSortBy> sort() {
+        return (Optional<SourcePocketSortBy>) sort;
     }
 
+    @JsonIgnore
     public Pocket sourceType() {
         return sourceType;
     }
@@ -205,15 +231,19 @@ public class SourcePocket {
     /**
      * Select the state of the items to retrieve.
      */
-    public Optional<? extends State> state() {
-        return state;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<State> state() {
+        return (Optional<State>) state;
     }
 
     /**
      * Return only items tagged with this tag name. Use _untagged_ for retrieving only untagged items.
      */
-    public Optional<? extends String> tag() {
-        return tag;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> tag() {
+        return (Optional<String>) tag;
     }
 
     public final static Builder builder() {

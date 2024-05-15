@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -51,6 +53,7 @@ public class SourceYotpo {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceYotpo(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("app_key") String appKey,
@@ -66,10 +69,18 @@ public class SourceYotpo {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceYotpo(
+            String accessToken,
+            String appKey,
+            OffsetDateTime startDate) {
+        this(accessToken, appKey, Optional.empty(), startDate);
+    }
 
     /**
      * Access token recieved as a result of API call to https://api.yotpo.com/oauth/token (Ref- https://apidocs.yotpo.com/reference/yotpo-authentication)
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
@@ -77,6 +88,7 @@ public class SourceYotpo {
     /**
      * App key found at settings (Ref- https://settings.yotpo.com/#/general_settings)
      */
+    @JsonIgnore
     public String appKey() {
         return appKey;
     }
@@ -84,10 +96,13 @@ public class SourceYotpo {
     /**
      * Email address registered with yotpo.
      */
-    public Optional<? extends String> email() {
-        return email;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> email() {
+        return (Optional<String>) email;
     }
 
+    @JsonIgnore
     public Yotpo sourceType() {
         return sourceType;
     }
@@ -95,6 +110,7 @@ public class SourceYotpo {
     /**
      * Date time filter for incremental filter, Specify which date to extract from.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

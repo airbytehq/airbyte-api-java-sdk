@@ -6,7 +6,9 @@ package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.SpeakeasyMetadata;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -22,6 +24,7 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
 
+    @JsonCreator
     public CreateOrUpdateWorkspaceOAuthCredentialsRequest(
             com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest,
             String workspaceId) {
@@ -31,10 +34,12 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
         this.workspaceId = workspaceId;
     }
 
+    @JsonIgnore
     public com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest() {
         return workspaceOAuthCredentialsRequest;
     }
 
+    @JsonIgnore
     public String workspaceId() {
         return workspaceId;
     }

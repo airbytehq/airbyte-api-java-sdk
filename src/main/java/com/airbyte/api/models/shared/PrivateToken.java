@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class PrivateToken {
     @JsonProperty("auth_type")
     private Optional<? extends SourceGitlabSchemasAuthType> authType;
 
+    @JsonCreator
     public PrivateToken(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -40,12 +43,15 @@ public class PrivateToken {
     /**
      * Log into your Gitlab account and then generate a personal Access Token.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
-    public Optional<? extends SourceGitlabSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGitlabSchemasAuthType> authType() {
+        return (Optional<SourceGitlabSchemasAuthType>) authType;
     }
 
     public final static Builder builder() {

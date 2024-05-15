@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class NotionCredentials {
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
 
+    @JsonCreator
     public NotionCredentials(
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret) {
@@ -41,19 +44,27 @@ public class NotionCredentials {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
     }
+    
+    public NotionCredentials() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
      */
-    public Optional<? extends String> clientId() {
-        return clientId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientId() {
+        return (Optional<String>) clientId;
     }
 
     /**
      * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
      */
-    public Optional<? extends String> clientSecret() {
-        return clientSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> clientSecret() {
+        return (Optional<String>) clientSecret;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -40,6 +42,7 @@ public class SourceMssqlEncryptedVerifyCertificate {
     @JsonProperty("ssl_method")
     private SourceMssqlSchemasSSLMethodSSLMethodSSLMethod sslMethod;
 
+    @JsonCreator
     public SourceMssqlEncryptedVerifyCertificate(
             @JsonProperty("certificate") Optional<? extends String> certificate,
             @JsonProperty("hostNameInCertificate") Optional<? extends String> hostNameInCertificate) {
@@ -49,21 +52,30 @@ public class SourceMssqlEncryptedVerifyCertificate {
         this.hostNameInCertificate = hostNameInCertificate;
         this.sslMethod = Builder._SINGLETON_VALUE_SslMethod.value();
     }
+    
+    public SourceMssqlEncryptedVerifyCertificate() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * certificate of the server, or of the CA that signed the server certificate
      */
-    public Optional<? extends String> certificate() {
-        return certificate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> certificate() {
+        return (Optional<String>) certificate;
     }
 
     /**
      * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
      */
-    public Optional<? extends String> hostNameInCertificate() {
-        return hostNameInCertificate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> hostNameInCertificate() {
+        return (Optional<String>) hostNameInCertificate;
     }
 
+    @JsonIgnore
     public SourceMssqlSchemasSSLMethodSSLMethodSSLMethod sslMethod() {
         return sslMethod;
     }

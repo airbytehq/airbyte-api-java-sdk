@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -35,6 +37,7 @@ public class Cohorts {
     @JsonProperty("name")
     private Optional<? extends String> name;
 
+    @JsonCreator
     public Cohorts(
             @JsonProperty("dateRange") DateRange dateRange,
             @JsonProperty("dimension") Dimension dimension,
@@ -46,7 +49,14 @@ public class Cohorts {
         this.dimension = dimension;
         this.name = name;
     }
+    
+    public Cohorts(
+            DateRange dateRange,
+            Dimension dimension) {
+        this(dateRange, dimension, Optional.empty());
+    }
 
+    @JsonIgnore
     public DateRange dateRange() {
         return dateRange;
     }
@@ -54,6 +64,7 @@ public class Cohorts {
     /**
      * Dimension used by the cohort. Required and only supports `firstSessionDate`
      */
+    @JsonIgnore
     public Dimension dimension() {
         return dimension;
     }
@@ -61,8 +72,10 @@ public class Cohorts {
     /**
      * Assigns a name to this cohort. If not set, cohorts are named by their zero based index cohort_0, cohort_1, etc.
      */
-    public Optional<? extends String> name() {
-        return name;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> name() {
+        return (Optional<String>) name;
     }
 
     public final static Builder builder() {

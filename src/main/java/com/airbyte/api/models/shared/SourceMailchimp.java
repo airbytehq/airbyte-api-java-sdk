@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -44,6 +46,7 @@ public class SourceMailchimp {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceMailchimp(
             @JsonProperty("credentials") Optional<? extends SourceMailchimpAuthentication> credentials,
             @JsonProperty("data_center") Optional<? extends String> dataCenter,
@@ -56,18 +59,27 @@ public class SourceMailchimp {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceMailchimp() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
-    public Optional<? extends SourceMailchimpAuthentication> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMailchimpAuthentication> credentials() {
+        return (Optional<SourceMailchimpAuthentication>) credentials;
     }
 
     /**
      * Technical fields used to identify datacenter to send request to
      */
-    public Optional<? extends String> dataCenter() {
-        return dataCenter;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> dataCenter() {
+        return (Optional<String>) dataCenter;
     }
 
+    @JsonIgnore
     public SourceMailchimpMailchimp sourceType() {
         return sourceType;
     }
@@ -75,8 +87,10 @@ public class SourceMailchimp {
     /**
      * The date from which you want to start syncing data for Incremental streams. Only records that have been created or modified since this date will be synced. If left blank, all data will by synced.
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

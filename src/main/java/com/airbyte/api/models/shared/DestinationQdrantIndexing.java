@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -63,6 +65,7 @@ public class DestinationQdrantIndexing {
     @JsonProperty("url")
     private String url;
 
+    @JsonCreator
     public DestinationQdrantIndexing(
             @JsonProperty("auth_method") Optional<? extends DestinationQdrantAuthenticationMethod> authMethod,
             @JsonProperty("collection") String collection,
@@ -83,17 +86,26 @@ public class DestinationQdrantIndexing {
         this.textField = textField;
         this.url = url;
     }
+    
+    public DestinationQdrantIndexing(
+            String collection,
+            String url) {
+        this(Optional.empty(), collection, Optional.empty(), Optional.empty(), Optional.empty(), url);
+    }
 
     /**
      * Method to authenticate with the Qdrant Instance
      */
-    public Optional<? extends DestinationQdrantAuthenticationMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationQdrantAuthenticationMethod> authMethod() {
+        return (Optional<DestinationQdrantAuthenticationMethod>) authMethod;
     }
 
     /**
      * The collection to load data into
      */
+    @JsonIgnore
     public String collection() {
         return collection;
     }
@@ -101,27 +113,34 @@ public class DestinationQdrantIndexing {
     /**
      * The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
      */
-    public Optional<? extends DistanceMetric> distanceMetric() {
-        return distanceMetric;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DistanceMetric> distanceMetric() {
+        return (Optional<DistanceMetric>) distanceMetric;
     }
 
     /**
      * Whether to prefer gRPC over HTTP. Set to true for Qdrant cloud clusters
      */
-    public Optional<? extends Boolean> preferGrpc() {
-        return preferGrpc;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> preferGrpc() {
+        return (Optional<Boolean>) preferGrpc;
     }
 
     /**
      * The field in the payload that contains the embedded text
      */
-    public Optional<? extends String> textField() {
-        return textField;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> textField() {
+        return (Optional<String>) textField;
     }
 
     /**
      * Public Endpoint of the Qdrant cluser
      */
+    @JsonIgnore
     public String url() {
         return url;
     }

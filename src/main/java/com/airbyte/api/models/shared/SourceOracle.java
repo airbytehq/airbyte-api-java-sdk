@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -86,6 +88,7 @@ public class SourceOracle {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public SourceOracle(
             @JsonProperty("connection_data") Optional<? extends ConnectBy> connectionData,
             @JsonProperty("encryption") Encryption encryption,
@@ -116,17 +119,27 @@ public class SourceOracle {
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
+    
+    public SourceOracle(
+            Encryption encryption,
+            String host,
+            String username) {
+        this(Optional.empty(), encryption, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Connect data that will be used for DB connection
      */
-    public Optional<? extends ConnectBy> connectionData() {
-        return connectionData;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ConnectBy> connectionData() {
+        return (Optional<ConnectBy>) connectionData;
     }
 
     /**
      * The encryption method with is used when communicating with the database.
      */
+    @JsonIgnore
     public Encryption encryption() {
         return encryption;
     }
@@ -134,6 +147,7 @@ public class SourceOracle {
     /**
      * Hostname of the database.
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -141,15 +155,19 @@ public class SourceOracle {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * The password associated with the username.
      */
-    public Optional<? extends String> password() {
-        return password;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> password() {
+        return (Optional<String>) password;
     }
 
     /**
@@ -158,17 +176,22 @@ public class SourceOracle {
      * 1521 - Default listening port for client connections to the listener. 
      * 2484 - Recommended and officially registered listening port for client connections to the listener using TCP/IP with SSL
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
      */
-    public Optional<? extends java.util.List<String>> schemas() {
-        return schemas;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> schemas() {
+        return (Optional<java.util.List<String>>) schemas;
     }
 
+    @JsonIgnore
     public SourceOracleOracle sourceType() {
         return sourceType;
     }
@@ -176,13 +199,16 @@ public class SourceOracle {
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends SourceOracleSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceOracleSSHTunnelMethod> tunnelMethod() {
+        return (Optional<SourceOracleSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The username which is used to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

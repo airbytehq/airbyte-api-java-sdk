@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class OpenAICompatible {
     @JsonProperty("model_name")
     private Optional<? extends String> modelName;
 
+    @JsonCreator
     public OpenAICompatible(
             @JsonProperty("api_key") Optional<? extends String> apiKey,
             @JsonProperty("base_url") String baseUrl,
@@ -65,14 +68,23 @@ public class OpenAICompatible {
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
         this.modelName = modelName;
     }
+    
+    public OpenAICompatible(
+            String baseUrl,
+            long dimensions) {
+        this(Optional.empty(), baseUrl, dimensions, Optional.empty());
+    }
 
-    public Optional<? extends String> apiKey() {
-        return apiKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiKey() {
+        return (Optional<String>) apiKey;
     }
 
     /**
      * The base URL for your OpenAI-compatible service
      */
+    @JsonIgnore
     public String baseUrl() {
         return baseUrl;
     }
@@ -80,19 +92,24 @@ public class OpenAICompatible {
     /**
      * The number of dimensions the embedding model is generating
      */
+    @JsonIgnore
     public long dimensions() {
         return dimensions;
     }
 
-    public Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationAstraSchemasEmbeddingEmbeddingMode> mode() {
+        return (Optional<DestinationAstraSchemasEmbeddingEmbeddingMode>) mode;
     }
 
     /**
      * The name of the model to use for embedding
      */
-    public Optional<? extends String> modelName() {
-        return modelName;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> modelName() {
+        return (Optional<String>) modelName;
     }
 
     public final static Builder builder() {

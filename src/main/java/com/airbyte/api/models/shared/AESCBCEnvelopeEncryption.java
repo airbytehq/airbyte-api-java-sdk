@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -34,22 +36,31 @@ public class AESCBCEnvelopeEncryption {
     @JsonProperty("key_encrypting_key")
     private Optional<? extends String> keyEncryptingKey;
 
+    @JsonCreator
     public AESCBCEnvelopeEncryption(
             @JsonProperty("key_encrypting_key") Optional<? extends String> keyEncryptingKey) {
         Utils.checkNotNull(keyEncryptingKey, "keyEncryptingKey");
         this.encryptionType = Builder._SINGLETON_VALUE_EncryptionType.value();
         this.keyEncryptingKey = keyEncryptingKey;
     }
+    
+    public AESCBCEnvelopeEncryption() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends DestinationRedshiftEncryptionType> encryptionType() {
-        return encryptionType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedshiftEncryptionType> encryptionType() {
+        return (Optional<DestinationRedshiftEncryptionType>) encryptionType;
     }
 
     /**
      * The key, base64-encoded. Must be either 128, 192, or 256 bits. Leave blank to have Airbyte generate an ephemeral key for each sync.
      */
-    public Optional<? extends String> keyEncryptingKey() {
-        return keyEncryptingKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> keyEncryptingKey() {
+        return (Optional<String>) keyEncryptingKey;
     }
 
     public final static Builder builder() {

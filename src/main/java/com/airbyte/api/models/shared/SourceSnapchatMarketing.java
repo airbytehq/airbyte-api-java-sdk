@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -77,6 +79,7 @@ public class SourceSnapchatMarketing {
     @JsonProperty("view_attribution_window")
     private Optional<? extends ViewAttributionWindow> viewAttributionWindow;
 
+    @JsonCreator
     public SourceSnapchatMarketing(
             @JsonProperty("action_report_time") Optional<? extends ActionReportTime> actionReportTime,
             @JsonProperty("client_id") String clientId,
@@ -104,17 +107,27 @@ public class SourceSnapchatMarketing {
         this.swipeUpAttributionWindow = swipeUpAttributionWindow;
         this.viewAttributionWindow = viewAttributionWindow;
     }
+    
+    public SourceSnapchatMarketing(
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(Optional.empty(), clientId, clientSecret, Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Specifies the principle for conversion reporting.
      */
-    public Optional<? extends ActionReportTime> actionReportTime() {
-        return actionReportTime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ActionReportTime> actionReportTime() {
+        return (Optional<ActionReportTime>) actionReportTime;
     }
 
     /**
      * The Client ID of your Snapchat developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -122,6 +135,7 @@ public class SourceSnapchatMarketing {
     /**
      * The Client Secret of your Snapchat developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -129,17 +143,21 @@ public class SourceSnapchatMarketing {
     /**
      * Date in the format 2017-01-25. Any data after this date will not be replicated.
      */
-    public Optional<? extends LocalDate> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> endDate() {
+        return (Optional<LocalDate>) endDate;
     }
 
     /**
      * Refresh Token to renew the expired Access Token.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }
 
+    @JsonIgnore
     public SourceSnapchatMarketingSnapchatMarketing sourceType() {
         return sourceType;
     }
@@ -147,22 +165,28 @@ public class SourceSnapchatMarketing {
     /**
      * Date in the format 2022-01-01. Any data before this date will not be replicated.
      */
-    public Optional<? extends LocalDate> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> startDate() {
+        return (Optional<LocalDate>) startDate;
     }
 
     /**
      * Attribution window for swipe ups.
      */
-    public Optional<? extends SwipeUpAttributionWindow> swipeUpAttributionWindow() {
-        return swipeUpAttributionWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SwipeUpAttributionWindow> swipeUpAttributionWindow() {
+        return (Optional<SwipeUpAttributionWindow>) swipeUpAttributionWindow;
     }
 
     /**
      * Attribution window for views.
      */
-    public Optional<? extends ViewAttributionWindow> viewAttributionWindow() {
-        return viewAttributionWindow;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<ViewAttributionWindow> viewAttributionWindow() {
+        return (Optional<ViewAttributionWindow>) viewAttributionWindow;
     }
 
     public final static Builder builder() {

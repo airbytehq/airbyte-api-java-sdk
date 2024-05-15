@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -22,6 +24,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterEx
     @JsonProperty("filter")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilter filter;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterExpression(
             @JsonProperty("field_name") String fieldName,
             @JsonProperty("filter") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilter filter) {
@@ -31,10 +34,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterEx
         this.filter = filter;
     }
 
+    @JsonIgnore
     public String fieldName() {
         return fieldName;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilter filter() {
         return filter;
     }

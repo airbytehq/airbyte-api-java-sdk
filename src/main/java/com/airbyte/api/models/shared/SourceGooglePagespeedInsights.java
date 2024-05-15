@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -48,6 +50,7 @@ public class SourceGooglePagespeedInsights {
     @JsonProperty("urls")
     private java.util.List<String> urls;
 
+    @JsonCreator
     public SourceGooglePagespeedInsights(
             @JsonProperty("api_key") Optional<? extends String> apiKey,
             @JsonProperty("categories") java.util.List<Categories> categories,
@@ -63,21 +66,32 @@ public class SourceGooglePagespeedInsights {
         this.strategies = strategies;
         this.urls = urls;
     }
+    
+    public SourceGooglePagespeedInsights(
+            java.util.List<Categories> categories,
+            java.util.List<Strategies> strategies,
+            java.util.List<String> urls) {
+        this(Optional.empty(), categories, strategies, urls);
+    }
 
     /**
      * Google PageSpeed API Key. See &lt;a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey"&gt;here&lt;/a&gt;. The key is optional - however the API is heavily rate limited when using without API Key. Creating and using the API key therefore is recommended. The key is case sensitive.
      */
-    public Optional<? extends String> apiKey() {
-        return apiKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiKey() {
+        return (Optional<String>) apiKey;
     }
 
     /**
      * Defines which Lighthouse category to run. One or many of: "accessibility", "best-practices", "performance", "pwa", "seo".
      */
+    @JsonIgnore
     public java.util.List<Categories> categories() {
         return categories;
     }
 
+    @JsonIgnore
     public GooglePagespeedInsights sourceType() {
         return sourceType;
     }
@@ -85,6 +99,7 @@ public class SourceGooglePagespeedInsights {
     /**
      * The analyses strategy to use. Either "desktop" or "mobile".
      */
+    @JsonIgnore
     public java.util.List<Strategies> strategies() {
         return strategies;
     }
@@ -92,6 +107,7 @@ public class SourceGooglePagespeedInsights {
     /**
      * The URLs to retrieve pagespeed information from. The connector will attempt to sync PageSpeed reports for all the defined URLs. Format: https://(www.)url.domain
      */
+    @JsonIgnore
     public java.util.List<String> urls() {
         return urls;
     }

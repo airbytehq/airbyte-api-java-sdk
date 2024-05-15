@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class SourceLinkedinAdsOAuth20 {
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+    @JsonCreator
     public SourceLinkedinAdsOAuth20(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -55,13 +58,16 @@ public class SourceLinkedinAdsOAuth20 {
         this.refreshToken = refreshToken;
     }
 
-    public Optional<? extends SourceLinkedinAdsAuthMethod> authMethod() {
-        return authMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceLinkedinAdsAuthMethod> authMethod() {
+        return (Optional<SourceLinkedinAdsAuthMethod>) authMethod;
     }
 
     /**
      * The client ID of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -69,6 +75,7 @@ public class SourceLinkedinAdsOAuth20 {
     /**
      * The client secret of your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -76,6 +83,7 @@ public class SourceLinkedinAdsOAuth20 {
     /**
      * The key to refresh the expired access token. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String refreshToken() {
         return refreshToken;
     }

@@ -5,13 +5,18 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 
 
 public class WorkspaceCreateRequest {
@@ -22,17 +27,43 @@ public class WorkspaceCreateRequest {
     @JsonProperty("name")
     private String name;
 
+    /**
+     * ID of organization to add workspace to.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("organizationId")
+    private Optional<? extends String> organizationId;
+
+    @JsonCreator
     public WorkspaceCreateRequest(
-            @JsonProperty("name") String name) {
+            @JsonProperty("name") String name,
+            @JsonProperty("organizationId") Optional<? extends String> organizationId) {
         Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(organizationId, "organizationId");
         this.name = name;
+        this.organizationId = organizationId;
+    }
+    
+    public WorkspaceCreateRequest(
+            String name) {
+        this(name, Optional.empty());
     }
 
     /**
      * Name of the workspace
      */
+    @JsonIgnore
     public String name() {
         return name;
+    }
+
+    /**
+     * ID of organization to add workspace to.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> organizationId() {
+        return (Optional<String>) organizationId;
     }
 
     public final static Builder builder() {
@@ -47,6 +78,24 @@ public class WorkspaceCreateRequest {
         this.name = name;
         return this;
     }
+
+    /**
+     * ID of organization to add workspace to.
+     */
+    public WorkspaceCreateRequest withOrganizationId(String organizationId) {
+        Utils.checkNotNull(organizationId, "organizationId");
+        this.organizationId = Optional.ofNullable(organizationId);
+        return this;
+    }
+
+    /**
+     * ID of organization to add workspace to.
+     */
+    public WorkspaceCreateRequest withOrganizationId(Optional<? extends String> organizationId) {
+        Utils.checkNotNull(organizationId, "organizationId");
+        this.organizationId = organizationId;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -58,24 +107,29 @@ public class WorkspaceCreateRequest {
         }
         WorkspaceCreateRequest other = (WorkspaceCreateRequest) o;
         return 
-            java.util.Objects.deepEquals(this.name, other.name);
+            java.util.Objects.deepEquals(this.name, other.name) &&
+            java.util.Objects.deepEquals(this.organizationId, other.organizationId);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            name);
+            name,
+            organizationId);
     }
     
     @Override
     public String toString() {
         return Utils.toString(WorkspaceCreateRequest.class,
-                "name", name);
+                "name", name,
+                "organizationId", organizationId);
     }
     
     public final static class Builder {
  
-        private String name;  
+        private String name;
+ 
+        private Optional<? extends String> organizationId = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -89,10 +143,29 @@ public class WorkspaceCreateRequest {
             this.name = name;
             return this;
         }
+
+        /**
+         * ID of organization to add workspace to.
+         */
+        public Builder organizationId(String organizationId) {
+            Utils.checkNotNull(organizationId, "organizationId");
+            this.organizationId = Optional.ofNullable(organizationId);
+            return this;
+        }
+
+        /**
+         * ID of organization to add workspace to.
+         */
+        public Builder organizationId(Optional<? extends String> organizationId) {
+            Utils.checkNotNull(organizationId, "organizationId");
+            this.organizationId = organizationId;
+            return this;
+        }
         
         public WorkspaceCreateRequest build() {
             return new WorkspaceCreateRequest(
-                name);
+                name,
+                organizationId);
         }
     }
 }

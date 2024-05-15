@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class Pinterest {
     @JsonProperty("credentials")
     private Optional<? extends PinterestCredentials> credentials;
 
+    @JsonCreator
     public Pinterest(
             @JsonProperty("credentials") Optional<? extends PinterestCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public Pinterest() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends PinterestCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<PinterestCredentials> credentials() {
+        return (Optional<PinterestCredentials>) credentials;
     }
 
     public final static Builder builder() {

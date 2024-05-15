@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -73,6 +75,7 @@ public class SourceNetsuite {
     @JsonProperty("window_in_days")
     private Optional<? extends Long> windowInDays;
 
+    @JsonCreator
     public SourceNetsuite(
             @JsonProperty("consumer_key") String consumerKey,
             @JsonProperty("consumer_secret") String consumerSecret,
@@ -100,10 +103,21 @@ public class SourceNetsuite {
         this.tokenSecret = tokenSecret;
         this.windowInDays = windowInDays;
     }
+    
+    public SourceNetsuite(
+            String consumerKey,
+            String consumerSecret,
+            String realm,
+            String startDatetime,
+            String tokenKey,
+            String tokenSecret) {
+        this(consumerKey, consumerSecret, Optional.empty(), realm, startDatetime, tokenKey, tokenSecret, Optional.empty());
+    }
 
     /**
      * Consumer key associated with your integration
      */
+    @JsonIgnore
     public String consumerKey() {
         return consumerKey;
     }
@@ -111,6 +125,7 @@ public class SourceNetsuite {
     /**
      * Consumer secret associated with your integration
      */
+    @JsonIgnore
     public String consumerSecret() {
         return consumerSecret;
     }
@@ -118,17 +133,21 @@ public class SourceNetsuite {
     /**
      * The API names of the Netsuite objects you want to sync. Setting this speeds up the connection setup process by limiting the number of schemas that need to be retrieved from Netsuite.
      */
-    public Optional<? extends java.util.List<String>> objectTypes() {
-        return objectTypes;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> objectTypes() {
+        return (Optional<java.util.List<String>>) objectTypes;
     }
 
     /**
      * Netsuite realm e.g. 2344535, as for `production` or 2344535_SB1, as for the `sandbox`
      */
+    @JsonIgnore
     public String realm() {
         return realm;
     }
 
+    @JsonIgnore
     public Netsuite sourceType() {
         return sourceType;
     }
@@ -136,6 +155,7 @@ public class SourceNetsuite {
     /**
      * Starting point for your data replication, in format of "YYYY-MM-DDTHH:mm:ssZ"
      */
+    @JsonIgnore
     public String startDatetime() {
         return startDatetime;
     }
@@ -143,6 +163,7 @@ public class SourceNetsuite {
     /**
      * Access token key
      */
+    @JsonIgnore
     public String tokenKey() {
         return tokenKey;
     }
@@ -150,6 +171,7 @@ public class SourceNetsuite {
     /**
      * Access token secret
      */
+    @JsonIgnore
     public String tokenSecret() {
         return tokenSecret;
     }
@@ -157,8 +179,10 @@ public class SourceNetsuite {
     /**
      * The amount of days used to query the data with date chunks. Set smaller value, if you have lots of data.
      */
-    public Optional<? extends Long> windowInDays() {
-        return windowInDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> windowInDays() {
+        return (Optional<Long>) windowInDays;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -45,6 +47,7 @@ public class SourceDixa {
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+    @JsonCreator
     public SourceDixa(
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("batch_size") Optional<? extends Long> batchSize,
@@ -57,10 +60,17 @@ public class SourceDixa {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceDixa(
+            String apiToken,
+            OffsetDateTime startDate) {
+        this(apiToken, Optional.empty(), startDate);
+    }
 
     /**
      * Dixa API token
      */
+    @JsonIgnore
     public String apiToken() {
         return apiToken;
     }
@@ -68,10 +78,13 @@ public class SourceDixa {
     /**
      * Number of days to batch into one request. Max 31.
      */
-    public Optional<? extends Long> batchSize() {
-        return batchSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> batchSize() {
+        return (Optional<Long>) batchSize;
     }
 
+    @JsonIgnore
     public Dixa sourceType() {
         return sourceType;
     }
@@ -79,6 +92,7 @@ public class SourceDixa {
     /**
      * The connector pulls records updated from this date onwards.
      */
+    @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }

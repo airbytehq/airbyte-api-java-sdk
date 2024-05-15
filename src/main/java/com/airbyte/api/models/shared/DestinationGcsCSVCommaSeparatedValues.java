@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -38,6 +40,7 @@ public class DestinationGcsCSVCommaSeparatedValues {
     @JsonProperty("format_type")
     private Optional<? extends DestinationGcsSchemasFormatType> formatType;
 
+    @JsonCreator
     public DestinationGcsCSVCommaSeparatedValues(
             @JsonProperty("compression") Optional<? extends Compression> compression,
             @JsonProperty("flattening") Optional<? extends Normalization> flattening,
@@ -49,23 +52,33 @@ public class DestinationGcsCSVCommaSeparatedValues {
         this.flattening = flattening;
         this.formatType = formatType;
     }
+    
+    public DestinationGcsCSVCommaSeparatedValues() {
+        this(Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
      */
-    public Optional<? extends Compression> compression() {
-        return compression;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Compression> compression() {
+        return (Optional<Compression>) compression;
     }
 
     /**
      * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
-    public Optional<? extends Normalization> flattening() {
-        return flattening;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Normalization> flattening() {
+        return (Optional<Normalization>) flattening;
     }
 
-    public Optional<? extends DestinationGcsSchemasFormatType> formatType() {
-        return formatType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationGcsSchemasFormatType> formatType() {
+        return (Optional<DestinationGcsSchemasFormatType>) formatType;
     }
 
     public final static Builder builder() {

@@ -5,7 +5,9 @@
 package com.airbyte.api.models.operations;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
@@ -35,13 +37,14 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
     /**
      * Get the available streams properties for a source/destination pair.
      */
-    private Optional<? extends com.airbyte.api.models.shared.StreamPropertiesResponse> streamPropertiesResponse;
+    private Optional<? extends java.util.List<com.airbyte.api.models.shared.StreamProperties>> streamPropertiesResponse;
 
+    @JsonCreator
     public GetStreamPropertiesResponse(
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse,
-            Optional<? extends com.airbyte.api.models.shared.StreamPropertiesResponse> streamPropertiesResponse) {
+            Optional<? extends java.util.List<com.airbyte.api.models.shared.StreamProperties>> streamPropertiesResponse) {
         Utils.checkNotNull(contentType, "contentType");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
@@ -51,10 +54,18 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
         this.rawResponse = rawResponse;
         this.streamPropertiesResponse = streamPropertiesResponse;
     }
+    
+    public GetStreamPropertiesResponse(
+            String contentType,
+            int statusCode,
+            HttpResponse<InputStream> rawResponse) {
+        this(contentType, statusCode, rawResponse, Optional.empty());
+    }
 
     /**
      * HTTP response content type for this operation
      */
+    @JsonIgnore
     public String contentType() {
         return contentType;
     }
@@ -62,6 +73,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
     /**
      * HTTP response status code for this operation
      */
+    @JsonIgnore
     public int statusCode() {
         return statusCode;
     }
@@ -69,6 +81,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
     /**
      * Raw HTTP response; suitable for custom response parsing
      */
+    @JsonIgnore
     public HttpResponse<InputStream> rawResponse() {
         return rawResponse;
     }
@@ -76,8 +89,10 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
     /**
      * Get the available streams properties for a source/destination pair.
      */
-    public Optional<? extends com.airbyte.api.models.shared.StreamPropertiesResponse> streamPropertiesResponse() {
-        return streamPropertiesResponse;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<com.airbyte.api.models.shared.StreamProperties>> streamPropertiesResponse() {
+        return (Optional<java.util.List<com.airbyte.api.models.shared.StreamProperties>>) streamPropertiesResponse;
     }
 
     public final static Builder builder() {
@@ -114,7 +129,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
     /**
      * Get the available streams properties for a source/destination pair.
      */
-    public GetStreamPropertiesResponse withStreamPropertiesResponse(com.airbyte.api.models.shared.StreamPropertiesResponse streamPropertiesResponse) {
+    public GetStreamPropertiesResponse withStreamPropertiesResponse(java.util.List<com.airbyte.api.models.shared.StreamProperties> streamPropertiesResponse) {
         Utils.checkNotNull(streamPropertiesResponse, "streamPropertiesResponse");
         this.streamPropertiesResponse = Optional.ofNullable(streamPropertiesResponse);
         return this;
@@ -123,7 +138,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
     /**
      * Get the available streams properties for a source/destination pair.
      */
-    public GetStreamPropertiesResponse withStreamPropertiesResponse(Optional<? extends com.airbyte.api.models.shared.StreamPropertiesResponse> streamPropertiesResponse) {
+    public GetStreamPropertiesResponse withStreamPropertiesResponse(Optional<? extends java.util.List<com.airbyte.api.models.shared.StreamProperties>> streamPropertiesResponse) {
         Utils.checkNotNull(streamPropertiesResponse, "streamPropertiesResponse");
         this.streamPropertiesResponse = streamPropertiesResponse;
         return this;
@@ -171,7 +186,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
  
         private HttpResponse<InputStream> rawResponse;
  
-        private Optional<? extends com.airbyte.api.models.shared.StreamPropertiesResponse> streamPropertiesResponse = Optional.empty();  
+        private Optional<? extends java.util.List<com.airbyte.api.models.shared.StreamProperties>> streamPropertiesResponse = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -207,7 +222,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
         /**
          * Get the available streams properties for a source/destination pair.
          */
-        public Builder streamPropertiesResponse(com.airbyte.api.models.shared.StreamPropertiesResponse streamPropertiesResponse) {
+        public Builder streamPropertiesResponse(java.util.List<com.airbyte.api.models.shared.StreamProperties> streamPropertiesResponse) {
             Utils.checkNotNull(streamPropertiesResponse, "streamPropertiesResponse");
             this.streamPropertiesResponse = Optional.ofNullable(streamPropertiesResponse);
             return this;
@@ -216,7 +231,7 @@ public class GetStreamPropertiesResponse implements com.airbyte.api.utils.Respon
         /**
          * Get the available streams properties for a source/destination pair.
          */
-        public Builder streamPropertiesResponse(Optional<? extends com.airbyte.api.models.shared.StreamPropertiesResponse> streamPropertiesResponse) {
+        public Builder streamPropertiesResponse(Optional<? extends java.util.List<com.airbyte.api.models.shared.StreamProperties>> streamPropertiesResponse) {
             Utils.checkNotNull(streamPropertiesResponse, "streamPropertiesResponse");
             this.streamPropertiesResponse = streamPropertiesResponse;
             return this;

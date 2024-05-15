@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ public class SourceNotionOAuth20 {
     @JsonProperty("client_secret")
     private String clientSecret;
 
+    @JsonCreator
     public SourceNotionOAuth20(
             @JsonProperty("access_token") String accessToken,
             @JsonProperty("client_id") String clientId,
@@ -54,10 +57,12 @@ public class SourceNotionOAuth20 {
     /**
      * The Access Token received by completing the OAuth flow for your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String accessToken() {
         return accessToken;
     }
 
+    @JsonIgnore
     public SourceNotionAuthType authType() {
         return authType;
     }
@@ -65,6 +70,7 @@ public class SourceNotionOAuth20 {
     /**
      * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -72,6 +78,7 @@ public class SourceNotionOAuth20 {
     /**
      * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }

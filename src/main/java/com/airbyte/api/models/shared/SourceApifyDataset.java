@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -32,6 +34,7 @@ public class SourceApifyDataset {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public SourceApifyDataset(
             @JsonProperty("dataset_id") String datasetId,
             @JsonProperty("token") String token) {
@@ -45,10 +48,12 @@ public class SourceApifyDataset {
     /**
      * ID of the dataset you would like to load to Airbyte. In Apify Console, you can view your datasets in the &lt;a href="https://console.apify.com/storage/datasets"&gt;Storage section under the Datasets tab&lt;/a&gt; after you login. See the &lt;a href="https://docs.apify.com/platform/storage/dataset"&gt;Apify Docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String datasetId() {
         return datasetId;
     }
 
+    @JsonIgnore
     public ApifyDataset sourceType() {
         return sourceType;
     }
@@ -56,6 +61,7 @@ public class SourceApifyDataset {
     /**
      * Personal API token of your Apify account. In Apify Console, you can find your API token in the &lt;a href="https://console.apify.com/account/integrations"&gt;Settings section under the Integrations tab&lt;/a&gt; after you login. See the &lt;a href="https://docs.apify.com/platform/integrations/api#api-token"&gt;Apify Docs&lt;/a&gt; for more information.
      */
+    @JsonIgnore
     public String token() {
         return token;
     }

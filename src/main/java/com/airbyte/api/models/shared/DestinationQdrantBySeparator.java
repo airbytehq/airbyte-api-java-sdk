@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,6 +43,7 @@ public class DestinationQdrantBySeparator {
     @JsonProperty("separators")
     private Optional<? extends java.util.List<String>> separators;
 
+    @JsonCreator
     public DestinationQdrantBySeparator(
             @JsonProperty("keep_separator") Optional<? extends Boolean> keepSeparator,
             @JsonProperty("separators") Optional<? extends java.util.List<String>> separators) {
@@ -50,23 +53,33 @@ public class DestinationQdrantBySeparator {
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
         this.separators = separators;
     }
+    
+    public DestinationQdrantBySeparator() {
+        this(Optional.empty(), Optional.empty());
+    }
 
     /**
      * Whether to keep the separator in the resulting chunks
      */
-    public Optional<? extends Boolean> keepSeparator() {
-        return keepSeparator;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> keepSeparator() {
+        return (Optional<Boolean>) keepSeparator;
     }
 
-    public Optional<? extends DestinationQdrantSchemasProcessingMode> mode() {
-        return mode;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationQdrantSchemasProcessingMode> mode() {
+        return (Optional<DestinationQdrantSchemasProcessingMode>) mode;
     }
 
     /**
      * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
      */
-    public Optional<? extends java.util.List<String>> separators() {
-        return separators;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> separators() {
+        return (Optional<java.util.List<String>>) separators;
     }
 
     public final static Builder builder() {

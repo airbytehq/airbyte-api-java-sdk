@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,20 +32,28 @@ public class SourceAppfollow {
     @JsonProperty("sourceType")
     private Appfollow sourceType;
 
+    @JsonCreator
     public SourceAppfollow(
             @JsonProperty("api_secret") Optional<? extends String> apiSecret) {
         Utils.checkNotNull(apiSecret, "apiSecret");
         this.apiSecret = apiSecret;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
+    
+    public SourceAppfollow() {
+        this(Optional.empty());
+    }
 
     /**
      * API Key provided by Appfollow
      */
-    public Optional<? extends String> apiSecret() {
-        return apiSecret;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiSecret() {
+        return (Optional<String>) apiSecret;
     }
 
+    @JsonIgnore
     public Appfollow sourceType() {
         return sourceType;
     }

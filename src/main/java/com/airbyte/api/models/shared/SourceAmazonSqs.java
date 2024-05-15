@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -84,6 +86,7 @@ public class SourceAmazonSqs {
     @JsonProperty("visibility_timeout")
     private Optional<? extends Long> visibilityTimeout;
 
+    @JsonCreator
     public SourceAmazonSqs(
             @JsonProperty("access_key") Optional<? extends String> accessKey,
             @JsonProperty("attributes_to_return") Optional<? extends String> attributesToReturn,
@@ -114,45 +117,62 @@ public class SourceAmazonSqs {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.visibilityTimeout = visibilityTimeout;
     }
+    
+    public SourceAmazonSqs(
+            String queueUrl,
+            SourceAmazonSqsAWSRegion region) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), queueUrl, region, Optional.empty(), Optional.empty());
+    }
 
     /**
      * The Access Key ID of the AWS IAM Role to use for pulling messages
      */
-    public Optional<? extends String> accessKey() {
-        return accessKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> accessKey() {
+        return (Optional<String>) accessKey;
     }
 
     /**
      * Comma separated list of Mesage Attribute names to return
      */
-    public Optional<? extends String> attributesToReturn() {
-        return attributesToReturn;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> attributesToReturn() {
+        return (Optional<String>) attributesToReturn;
     }
 
     /**
      * If Enabled, messages will be deleted from the SQS Queue after being read. If Disabled, messages are left in the queue and can be read more than once. WARNING: Enabling this option can result in data loss in cases of failure, use with caution, see documentation for more detail. 
      */
-    public Optional<? extends Boolean> deleteMessages() {
-        return deleteMessages;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> deleteMessages() {
+        return (Optional<Boolean>) deleteMessages;
     }
 
     /**
      * Max amount of messages to get in one batch (10 max)
      */
-    public Optional<? extends Long> maxBatchSize() {
-        return maxBatchSize;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> maxBatchSize() {
+        return (Optional<Long>) maxBatchSize;
     }
 
     /**
      * Max amount of time in seconds to wait for messages in a single poll (20 max)
      */
-    public Optional<? extends Long> maxWaitTime() {
-        return maxWaitTime;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> maxWaitTime() {
+        return (Optional<Long>) maxWaitTime;
     }
 
     /**
      * URL of the SQS Queue
      */
+    @JsonIgnore
     public String queueUrl() {
         return queueUrl;
     }
@@ -160,6 +180,7 @@ public class SourceAmazonSqs {
     /**
      * AWS Region of the SQS Queue
      */
+    @JsonIgnore
     public SourceAmazonSqsAWSRegion region() {
         return region;
     }
@@ -167,10 +188,13 @@ public class SourceAmazonSqs {
     /**
      * The Secret Key of the AWS IAM Role to use for pulling messages
      */
-    public Optional<? extends String> secretKey() {
-        return secretKey;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> secretKey() {
+        return (Optional<String>) secretKey;
     }
 
+    @JsonIgnore
     public AmazonSqs sourceType() {
         return sourceType;
     }
@@ -178,8 +202,10 @@ public class SourceAmazonSqs {
     /**
      * Modify the Visibility Timeout of the individual message from the Queue's default (seconds).
      */
-    public Optional<? extends Long> visibilityTimeout() {
-        return visibilityTimeout;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> visibilityTimeout() {
+        return (Optional<Long>) visibilityTimeout;
     }
 
     public final static Builder builder() {

@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,6 +52,7 @@ public class DestinationElasticsearch {
     @JsonProperty("upsert")
     private Optional<? extends Boolean> upsert;
 
+    @JsonCreator
     public DestinationElasticsearch(
             @JsonProperty("authenticationMethod") Optional<? extends AuthenticationMethod> authenticationMethod,
             @JsonProperty("ca_certificate") Optional<? extends String> caCertificate,
@@ -65,21 +68,31 @@ public class DestinationElasticsearch {
         this.endpoint = endpoint;
         this.upsert = upsert;
     }
+    
+    public DestinationElasticsearch(
+            String endpoint) {
+        this(Optional.empty(), Optional.empty(), endpoint, Optional.empty());
+    }
 
     /**
      * The type of authentication to be used
      */
-    public Optional<? extends AuthenticationMethod> authenticationMethod() {
-        return authenticationMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<AuthenticationMethod> authenticationMethod() {
+        return (Optional<AuthenticationMethod>) authenticationMethod;
     }
 
     /**
      * CA certificate
      */
-    public Optional<? extends String> caCertificate() {
-        return caCertificate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> caCertificate() {
+        return (Optional<String>) caCertificate;
     }
 
+    @JsonIgnore
     public Elasticsearch destinationType() {
         return destinationType;
     }
@@ -87,6 +100,7 @@ public class DestinationElasticsearch {
     /**
      * The full url of the Elasticsearch server
      */
+    @JsonIgnore
     public String endpoint() {
         return endpoint;
     }
@@ -94,8 +108,10 @@ public class DestinationElasticsearch {
     /**
      * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
      */
-    public Optional<? extends Boolean> upsert() {
-        return upsert;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> upsert() {
+        return (Optional<Boolean>) upsert;
     }
 
     public final static Builder builder() {

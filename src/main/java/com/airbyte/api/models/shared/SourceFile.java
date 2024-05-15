@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -55,6 +57,7 @@ public class SourceFile {
     @JsonProperty("url")
     private String url;
 
+    @JsonCreator
     public SourceFile(
             @JsonProperty("dataset_name") String datasetName,
             @JsonProperty("format") Optional<? extends FileFormat> format,
@@ -73,10 +76,18 @@ public class SourceFile {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.url = url;
     }
+    
+    public SourceFile(
+            String datasetName,
+            StorageProvider provider,
+            String url) {
+        this(datasetName, Optional.empty(), provider, Optional.empty(), url);
+    }
 
     /**
      * The Name of the final table to replicate this file into (should include letters, numbers dash and underscores only).
      */
+    @JsonIgnore
     public String datasetName() {
         return datasetName;
     }
@@ -84,13 +95,16 @@ public class SourceFile {
     /**
      * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
      */
-    public Optional<? extends FileFormat> format() {
-        return format;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<FileFormat> format() {
+        return (Optional<FileFormat>) format;
     }
 
     /**
      * The storage Provider or Location of the file(s) which should be replicated.
      */
+    @JsonIgnore
     public StorageProvider provider() {
         return provider;
     }
@@ -98,10 +112,13 @@ public class SourceFile {
     /**
      * This should be a string in JSON format. It depends on the chosen file format to provide additional options and tune its behavior.
      */
-    public Optional<? extends String> readerOptions() {
-        return readerOptions;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> readerOptions() {
+        return (Optional<String>) readerOptions;
     }
 
+    @JsonIgnore
     public File sourceType() {
         return sourceType;
     }
@@ -109,6 +126,7 @@ public class SourceFile {
     /**
      * The URL path to access the file which should be replicated.
      */
+    @JsonIgnore
     public String url() {
         return url;
     }

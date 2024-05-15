@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +32,7 @@ public class MongoDBAtlas {
     @JsonProperty("instance")
     private Optional<? extends DestinationMongodbSchemasInstance> instance;
 
+    @JsonCreator
     public MongoDBAtlas(
             @JsonProperty("cluster_url") String clusterUrl,
             @JsonProperty("instance") Optional<? extends DestinationMongodbSchemasInstance> instance) {
@@ -38,16 +41,24 @@ public class MongoDBAtlas {
         this.clusterUrl = clusterUrl;
         this.instance = instance;
     }
+    
+    public MongoDBAtlas(
+            String clusterUrl) {
+        this(clusterUrl, Optional.empty());
+    }
 
     /**
      * URL of a cluster to connect to.
      */
+    @JsonIgnore
     public String clusterUrl() {
         return clusterUrl;
     }
 
-    public Optional<? extends DestinationMongodbSchemasInstance> instance() {
-        return instance;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationMongodbSchemasInstance> instance() {
+        return (Optional<DestinationMongodbSchemasInstance>) instance;
     }
 
     public final static Builder builder() {

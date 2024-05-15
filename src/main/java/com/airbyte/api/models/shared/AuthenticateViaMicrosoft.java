@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +44,7 @@ public class AuthenticateViaMicrosoft {
     @JsonProperty("tenant_id")
     private String tenantId;
 
+    @JsonCreator
     public AuthenticateViaMicrosoft(
             @JsonProperty("client_id") String clientId,
             @JsonProperty("client_secret") String clientSecret,
@@ -55,13 +58,16 @@ public class AuthenticateViaMicrosoft {
         this.tenantId = tenantId;
     }
 
-    public Optional<? extends SourceMicrosoftTeamsSchemasAuthType> authType() {
-        return authType;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceMicrosoftTeamsSchemasAuthType> authType() {
+        return (Optional<SourceMicrosoftTeamsSchemasAuthType>) authType;
     }
 
     /**
      * The Client ID of your Microsoft Teams developer application.
      */
+    @JsonIgnore
     public String clientId() {
         return clientId;
     }
@@ -69,6 +75,7 @@ public class AuthenticateViaMicrosoft {
     /**
      * The Client Secret of your Microsoft Teams developer application.
      */
+    @JsonIgnore
     public String clientSecret() {
         return clientSecret;
     }
@@ -76,6 +83,7 @@ public class AuthenticateViaMicrosoft {
     /**
      * A globally unique identifier (GUID) that is different than your organization name or domain. Follow these steps to obtain: open one of the Teams where you belong inside the Teams Application -&gt; Click on the … next to the Team title -&gt; Click on Get link to team -&gt; Copy the link to the team and grab the tenant ID form the URL
      */
+    @JsonIgnore
     public String tenantId() {
         return tenantId;
     }

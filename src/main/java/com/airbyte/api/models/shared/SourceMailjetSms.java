@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -43,6 +45,7 @@ public class SourceMailjetSms {
     @JsonProperty("token")
     private String token;
 
+    @JsonCreator
     public SourceMailjetSms(
             @JsonProperty("end_date") Optional<? extends Long> endDate,
             @JsonProperty("start_date") Optional<? extends Long> startDate,
@@ -55,14 +58,22 @@ public class SourceMailjetSms {
         this.startDate = startDate;
         this.token = token;
     }
+    
+    public SourceMailjetSms(
+            String token) {
+        this(Optional.empty(), Optional.empty(), token);
+    }
 
     /**
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
      */
-    public Optional<? extends Long> endDate() {
-        return endDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> endDate() {
+        return (Optional<Long>) endDate;
     }
 
+    @JsonIgnore
     public MailjetSms sourceType() {
         return sourceType;
     }
@@ -70,13 +81,16 @@ public class SourceMailjetSms {
     /**
      * Retrieve SMS messages created after the specified timestamp. Required format - Unix timestamp.
      */
-    public Optional<? extends Long> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> startDate() {
+        return (Optional<Long>) startDate;
     }
 
     /**
      * Your access token. See &lt;a href="https://dev.mailjet.com/sms/reference/overview/authentication"&gt;here&lt;/a&gt;.
      */
+    @JsonIgnore
     public String token() {
         return token;
     }

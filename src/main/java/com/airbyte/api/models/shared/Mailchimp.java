@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -23,14 +25,21 @@ public class Mailchimp {
     @JsonProperty("credentials")
     private Optional<? extends MailchimpCredentials> credentials;
 
+    @JsonCreator
     public Mailchimp(
             @JsonProperty("credentials") Optional<? extends MailchimpCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
     }
+    
+    public Mailchimp() {
+        this(Optional.empty());
+    }
 
-    public Optional<? extends MailchimpCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<MailchimpCredentials> credentials() {
+        return (Optional<MailchimpCredentials>) credentials;
     }
 
     public final static Builder builder() {

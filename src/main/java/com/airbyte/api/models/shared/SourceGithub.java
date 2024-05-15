@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -73,6 +75,7 @@ public class SourceGithub {
     @JsonProperty("start_date")
     private Optional<? extends OffsetDateTime> startDate;
 
+    @JsonCreator
     public SourceGithub(
             @JsonProperty("api_url") Optional<? extends String> apiUrl,
             @JsonProperty("branch") Optional<? extends String> branch,
@@ -97,31 +100,44 @@ public class SourceGithub {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
+    
+    public SourceGithub(
+            SourceGithubAuthentication credentials,
+            java.util.List<String> repositories) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), credentials, repositories, Optional.empty(), Optional.empty());
+    }
 
     /**
      * Please enter your basic URL from self-hosted GitHub instance or leave it empty to use GitHub.
      */
-    public Optional<? extends String> apiUrl() {
-        return apiUrl;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> apiUrl() {
+        return (Optional<String>) apiUrl;
     }
 
     /**
      * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
      */
-    public Optional<? extends String> branch() {
-        return branch;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> branch() {
+        return (Optional<String>) branch;
     }
 
     /**
      * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
      */
-    public Optional<? extends java.util.List<String>> branches() {
-        return branches;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<String>> branches() {
+        return (Optional<java.util.List<String>>) branches;
     }
 
     /**
      * Choose how to authenticate to GitHub
      */
+    @JsonIgnore
     public SourceGithubAuthentication credentials() {
         return credentials;
     }
@@ -129,6 +145,7 @@ public class SourceGithub {
     /**
      * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
      */
+    @JsonIgnore
     public java.util.List<String> repositories() {
         return repositories;
     }
@@ -136,10 +153,13 @@ public class SourceGithub {
     /**
      * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
      */
-    public Optional<? extends String> repository() {
-        return repository;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> repository() {
+        return (Optional<String>) repository;
     }
 
+    @JsonIgnore
     public SourceGithubGithub sourceType() {
         return sourceType;
     }
@@ -147,8 +167,10 @@ public class SourceGithub {
     /**
      * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
      */
-    public Optional<? extends OffsetDateTime> startDate() {
-        return startDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {

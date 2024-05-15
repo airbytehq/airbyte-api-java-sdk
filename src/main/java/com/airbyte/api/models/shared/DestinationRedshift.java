@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,13 +39,6 @@ public class DestinationRedshift {
     private Optional<? extends Boolean> disableTypeDedupe;
 
     /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("enable_incremental_final_table_updates")
-    private Optional<? extends Boolean> enableIncrementalFinalTableUpdates;
-
-    /**
      * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com)
      */
     @JsonProperty("host")
@@ -70,7 +65,7 @@ public class DestinationRedshift {
     private Optional<? extends Long> port;
 
     /**
-     * The schema to write raw tables into
+     * The schema to write raw tables into (default: airbyte_internal).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw_data_schema")
@@ -103,10 +98,10 @@ public class DestinationRedshift {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public DestinationRedshift(
             @JsonProperty("database") String database,
             @JsonProperty("disable_type_dedupe") Optional<? extends Boolean> disableTypeDedupe,
-            @JsonProperty("enable_incremental_final_table_updates") Optional<? extends Boolean> enableIncrementalFinalTableUpdates,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") String password,
@@ -118,7 +113,6 @@ public class DestinationRedshift {
             @JsonProperty("username") String username) {
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
-        Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
@@ -131,7 +125,6 @@ public class DestinationRedshift {
         this.database = database;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.disableTypeDedupe = disableTypeDedupe;
-        this.enableIncrementalFinalTableUpdates = enableIncrementalFinalTableUpdates;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
@@ -142,14 +135,24 @@ public class DestinationRedshift {
         this.uploadingMethod = uploadingMethod;
         this.username = username;
     }
+    
+    public DestinationRedshift(
+            String database,
+            String host,
+            String password,
+            String username) {
+        this(database, Optional.empty(), host, Optional.empty(), password, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+    }
 
     /**
      * Name of the database.
      */
+    @JsonIgnore
     public String database() {
         return database;
     }
 
+    @JsonIgnore
     public Redshift destinationType() {
         return destinationType;
     }
@@ -157,20 +160,16 @@ public class DestinationRedshift {
     /**
      * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
      */
-    public Optional<? extends Boolean> disableTypeDedupe() {
-        return disableTypeDedupe;
-    }
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    public Optional<? extends Boolean> enableIncrementalFinalTableUpdates() {
-        return enableIncrementalFinalTableUpdates;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> disableTypeDedupe() {
+        return (Optional<Boolean>) disableTypeDedupe;
     }
 
     /**
      * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com)
      */
+    @JsonIgnore
     public String host() {
         return host;
     }
@@ -178,13 +177,16 @@ public class DestinationRedshift {
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
-    public Optional<? extends String> jdbcUrlParams() {
-        return jdbcUrlParams;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> jdbcUrlParams() {
+        return (Optional<String>) jdbcUrlParams;
     }
 
     /**
      * Password associated with the username.
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -192,41 +194,52 @@ public class DestinationRedshift {
     /**
      * Port of the database.
      */
-    public Optional<? extends Long> port() {
-        return port;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
-     * The schema to write raw tables into
+     * The schema to write raw tables into (default: airbyte_internal).
      */
-    public Optional<? extends String> rawDataSchema() {
-        return rawDataSchema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return (Optional<String>) rawDataSchema;
     }
 
     /**
      * The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is "public".
      */
-    public Optional<? extends String> schema() {
-        return schema;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> schema() {
+        return (Optional<String>) schema;
     }
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
-    public Optional<? extends DestinationRedshiftSSHTunnelMethod> tunnelMethod() {
-        return tunnelMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationRedshiftSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationRedshiftSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
      * The way data will be uploaded to Redshift.
      */
-    public Optional<? extends UploadingMethod> uploadingMethod() {
-        return uploadingMethod;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<UploadingMethod> uploadingMethod() {
+        return (Optional<UploadingMethod>) uploadingMethod;
     }
 
     /**
      * Username to use to access the database.
      */
+    @JsonIgnore
     public String username() {
         return username;
     }
@@ -259,24 +272,6 @@ public class DestinationRedshift {
     public DestinationRedshift withDisableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
         this.disableTypeDedupe = disableTypeDedupe;
-        return this;
-    }
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    public DestinationRedshift withEnableIncrementalFinalTableUpdates(boolean enableIncrementalFinalTableUpdates) {
-        Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-        this.enableIncrementalFinalTableUpdates = Optional.ofNullable(enableIncrementalFinalTableUpdates);
-        return this;
-    }
-
-    /**
-     * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-     */
-    public DestinationRedshift withEnableIncrementalFinalTableUpdates(Optional<? extends Boolean> enableIncrementalFinalTableUpdates) {
-        Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-        this.enableIncrementalFinalTableUpdates = enableIncrementalFinalTableUpdates;
         return this;
     }
 
@@ -335,7 +330,7 @@ public class DestinationRedshift {
     }
 
     /**
-     * The schema to write raw tables into
+     * The schema to write raw tables into (default: airbyte_internal).
      */
     public DestinationRedshift withRawDataSchema(String rawDataSchema) {
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -344,7 +339,7 @@ public class DestinationRedshift {
     }
 
     /**
-     * The schema to write raw tables into
+     * The schema to write raw tables into (default: airbyte_internal).
      */
     public DestinationRedshift withRawDataSchema(Optional<? extends String> rawDataSchema) {
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -428,7 +423,6 @@ public class DestinationRedshift {
             java.util.Objects.deepEquals(this.database, other.database) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            java.util.Objects.deepEquals(this.enableIncrementalFinalTableUpdates, other.enableIncrementalFinalTableUpdates) &&
             java.util.Objects.deepEquals(this.host, other.host) &&
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.password, other.password) &&
@@ -446,7 +440,6 @@ public class DestinationRedshift {
             database,
             destinationType,
             disableTypeDedupe,
-            enableIncrementalFinalTableUpdates,
             host,
             jdbcUrlParams,
             password,
@@ -464,7 +457,6 @@ public class DestinationRedshift {
                 "database", database,
                 "destinationType", destinationType,
                 "disableTypeDedupe", disableTypeDedupe,
-                "enableIncrementalFinalTableUpdates", enableIncrementalFinalTableUpdates,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
@@ -481,8 +473,6 @@ public class DestinationRedshift {
         private String database;
  
         private Optional<? extends Boolean> disableTypeDedupe;
- 
-        private Optional<? extends Boolean> enableIncrementalFinalTableUpdates;
  
         private String host;
  
@@ -530,24 +520,6 @@ public class DestinationRedshift {
         public Builder disableTypeDedupe(Optional<? extends Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
             this.disableTypeDedupe = disableTypeDedupe;
-            return this;
-        }
-
-        /**
-         * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-         */
-        public Builder enableIncrementalFinalTableUpdates(boolean enableIncrementalFinalTableUpdates) {
-            Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-            this.enableIncrementalFinalTableUpdates = Optional.ofNullable(enableIncrementalFinalTableUpdates);
-            return this;
-        }
-
-        /**
-         * When enabled your data will load into your final tables incrementally while your data is still being synced. When Disabled (the default), your data loads into your final tables once at the end of a sync. Note that this option only applies if you elect to create Final tables
-         */
-        public Builder enableIncrementalFinalTableUpdates(Optional<? extends Boolean> enableIncrementalFinalTableUpdates) {
-            Utils.checkNotNull(enableIncrementalFinalTableUpdates, "enableIncrementalFinalTableUpdates");
-            this.enableIncrementalFinalTableUpdates = enableIncrementalFinalTableUpdates;
             return this;
         }
 
@@ -606,7 +578,7 @@ public class DestinationRedshift {
         }
 
         /**
-         * The schema to write raw tables into
+         * The schema to write raw tables into (default: airbyte_internal).
          */
         public Builder rawDataSchema(String rawDataSchema) {
             Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -615,7 +587,7 @@ public class DestinationRedshift {
         }
 
         /**
-         * The schema to write raw tables into
+         * The schema to write raw tables into (default: airbyte_internal).
          */
         public Builder rawDataSchema(Optional<? extends String> rawDataSchema) {
             Utils.checkNotNull(rawDataSchema, "rawDataSchema");
@@ -690,9 +662,6 @@ public class DestinationRedshift {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
             }
-            if (enableIncrementalFinalTableUpdates == null) {
-                enableIncrementalFinalTableUpdates = _SINGLETON_VALUE_EnableIncrementalFinalTableUpdates.value();
-            }
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
@@ -702,7 +671,6 @@ public class DestinationRedshift {
             return new DestinationRedshift(
                 database,
                 disableTypeDedupe,
-                enableIncrementalFinalTableUpdates,
                 host,
                 jdbcUrlParams,
                 password,
@@ -723,12 +691,6 @@ public class DestinationRedshift {
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
                 new LazySingletonValue<>(
                         "disable_type_dedupe",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_EnableIncrementalFinalTableUpdates =
-                new LazySingletonValue<>(
-                        "enable_incremental_final_table_updates",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 

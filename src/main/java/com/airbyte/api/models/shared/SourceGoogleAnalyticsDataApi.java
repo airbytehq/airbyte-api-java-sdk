@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -72,6 +74,7 @@ public class SourceGoogleAnalyticsDataApi {
     @JsonProperty("window_in_days")
     private Optional<? extends Long> windowInDays;
 
+    @JsonCreator
     public SourceGoogleAnalyticsDataApi(
             @JsonProperty("convert_conversions_event") Optional<? extends Boolean> convertConversionsEvent,
             @JsonProperty("credentials") Optional<? extends SourceGoogleAnalyticsDataApiCredentials> credentials,
@@ -96,49 +99,66 @@ public class SourceGoogleAnalyticsDataApi {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.windowInDays = windowInDays;
     }
+    
+    public SourceGoogleAnalyticsDataApi(
+            java.util.List<String> propertyIds) {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), propertyIds, Optional.empty());
+    }
 
     /**
      * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
      */
-    public Optional<? extends Boolean> convertConversionsEvent() {
-        return convertConversionsEvent;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> convertConversionsEvent() {
+        return (Optional<Boolean>) convertConversionsEvent;
     }
 
     /**
      * Credentials for the service
      */
-    public Optional<? extends SourceGoogleAnalyticsDataApiCredentials> credentials() {
-        return credentials;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiCredentials> credentials() {
+        return (Optional<SourceGoogleAnalyticsDataApiCredentials>) credentials;
     }
 
     /**
      * You can add your Custom Analytics report by creating one.
      */
-    public Optional<? extends java.util.List<SourceGoogleAnalyticsDataApiCustomReportConfig>> customReportsArray() {
-        return customReportsArray;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<SourceGoogleAnalyticsDataApiCustomReportConfig>> customReportsArray() {
+        return (Optional<java.util.List<SourceGoogleAnalyticsDataApiCustomReportConfig>>) customReportsArray;
     }
 
     /**
      * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
      */
-    public Optional<? extends LocalDate> dateRangesStartDate() {
-        return dateRangesStartDate;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<LocalDate> dateRangesStartDate() {
+        return (Optional<LocalDate>) dateRangesStartDate;
     }
 
     /**
      * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
      */
-    public Optional<? extends Boolean> keepEmptyRows() {
-        return keepEmptyRows;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> keepEmptyRows() {
+        return (Optional<Boolean>) keepEmptyRows;
     }
 
     /**
      * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
      */
+    @JsonIgnore
     public java.util.List<String> propertyIds() {
         return propertyIds;
     }
 
+    @JsonIgnore
     public SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi sourceType() {
         return sourceType;
     }
@@ -146,8 +166,10 @@ public class SourceGoogleAnalyticsDataApi {
     /**
      * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
      */
-    public Optional<? extends Long> windowInDays() {
-        return windowInDays;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> windowInDays() {
+        return (Optional<Long>) windowInDays;
     }
 
     public final static Builder builder() {

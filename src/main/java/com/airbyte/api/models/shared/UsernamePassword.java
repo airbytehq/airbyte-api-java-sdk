@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
@@ -35,6 +37,7 @@ public class UsernamePassword {
     @JsonProperty("username")
     private String username;
 
+    @JsonCreator
     public UsernamePassword(
             @JsonProperty("password") String password,
             @JsonProperty("username") String username) {
@@ -45,6 +48,7 @@ public class UsernamePassword {
         this.username = username;
     }
 
+    @JsonIgnore
     public DestinationElasticsearchSchemasMethod method() {
         return method;
     }
@@ -52,6 +56,7 @@ public class UsernamePassword {
     /**
      * Basic auth password to access a secure Elasticsearch server
      */
+    @JsonIgnore
     public String password() {
         return password;
     }
@@ -59,6 +64,7 @@ public class UsernamePassword {
     /**
      * Basic auth username to access a secure Elasticsearch server
      */
+    @JsonIgnore
     public String username() {
         return username;
     }

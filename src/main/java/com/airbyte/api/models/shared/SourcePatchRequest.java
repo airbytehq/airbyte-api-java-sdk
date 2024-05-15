@@ -5,7 +5,9 @@
 package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,7 +33,7 @@ public class SourcePatchRequest {
     private Optional<? extends String> name;
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secretId")
@@ -41,6 +43,7 @@ public class SourcePatchRequest {
     @JsonProperty("workspaceId")
     private Optional<? extends String> workspaceId;
 
+    @JsonCreator
     public SourcePatchRequest(
             @JsonProperty("configuration") Optional<? extends SourceConfiguration> configuration,
             @JsonProperty("name") Optional<? extends String> name,
@@ -55,27 +58,39 @@ public class SourcePatchRequest {
         this.secretId = secretId;
         this.workspaceId = workspaceId;
     }
+    
+    public SourcePatchRequest() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
 
     /**
      * The values required to configure the source.
      */
-    public Optional<? extends SourceConfiguration> configuration() {
-        return configuration;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceConfiguration> configuration() {
+        return (Optional<SourceConfiguration>) configuration;
     }
 
-    public Optional<? extends String> name() {
-        return name;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> name() {
+        return (Optional<String>) name;
     }
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
-    public Optional<? extends String> secretId() {
-        return secretId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> secretId() {
+        return (Optional<String>) secretId;
     }
 
-    public Optional<? extends String> workspaceId() {
-        return workspaceId;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> workspaceId() {
+        return (Optional<String>) workspaceId;
     }
 
     public final static Builder builder() {
@@ -113,7 +128,7 @@ public class SourcePatchRequest {
     }
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
     public SourcePatchRequest withSecretId(String secretId) {
         Utils.checkNotNull(secretId, "secretId");
@@ -122,7 +137,7 @@ public class SourcePatchRequest {
     }
 
     /**
-     * Optional secretID obtained through the public API OAuth redirect flow.
+     * Optional secretID obtained through the  OAuth redirect flow.
      */
     public SourcePatchRequest withSecretId(Optional<? extends String> secretId) {
         Utils.checkNotNull(secretId, "secretId");
@@ -221,7 +236,7 @@ public class SourcePatchRequest {
         }
 
         /**
-         * Optional secretID obtained through the public API OAuth redirect flow.
+         * Optional secretID obtained through the  OAuth redirect flow.
          */
         public Builder secretId(String secretId) {
             Utils.checkNotNull(secretId, "secretId");
@@ -230,7 +245,7 @@ public class SourcePatchRequest {
         }
 
         /**
-         * Optional secretID obtained through the public API OAuth redirect flow.
+         * Optional secretID obtained through the  OAuth redirect flow.
          */
         public Builder secretId(Optional<? extends String> secretId) {
             Utils.checkNotNull(secretId, "secretId");

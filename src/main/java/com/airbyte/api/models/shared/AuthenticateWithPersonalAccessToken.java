@@ -6,7 +6,9 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,6 +35,7 @@ public class AuthenticateWithPersonalAccessToken {
     @JsonProperty("personal_access_token")
     private String personalAccessToken;
 
+    @JsonCreator
     public AuthenticateWithPersonalAccessToken(
             @JsonProperty("personal_access_token") String personalAccessToken) {
         Utils.checkNotNull(personalAccessToken, "personalAccessToken");
@@ -43,13 +46,16 @@ public class AuthenticateWithPersonalAccessToken {
     /**
      * PAT Credentials
      */
-    public Optional<? extends SourceAsanaSchemasCredentialsTitle> optionTitle() {
-        return optionTitle;
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceAsanaSchemasCredentialsTitle> optionTitle() {
+        return (Optional<SourceAsanaSchemasCredentialsTitle>) optionTitle;
     }
 
     /**
      * Asana Personal Access Token (generate yours &lt;a href="https://app.asana.com/0/developer-console"&gt;here&lt;/a&gt;).
      */
+    @JsonIgnore
     public String personalAccessToken() {
         return personalAccessToken;
     }
