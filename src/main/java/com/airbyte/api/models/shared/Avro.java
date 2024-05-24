@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * Avro - This connector utilises &lt;a href="https://fastavro.readthedocs.io/en/latest/" target="_blank"&gt;fastavro&lt;/a&gt; for Avro parsing.
  */

@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * DestinationPineconeIndexing - Pinecone is a popular vector store that can be used to store and retrieve embeddings.
  */

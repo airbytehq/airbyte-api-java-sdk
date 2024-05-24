@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * ReadChangesUsingChangeDataCaptureCDC - &lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts, updates, and deletes using the SQL Server's &lt;a href="https://docs.airbyte.com/integrations/sources/mssql/#change-data-capture-cdc"&gt;change data capture feature&lt;/a&gt;. This must be enabled on your database.
  */

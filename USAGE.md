@@ -6,6 +6,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;

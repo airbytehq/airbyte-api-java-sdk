@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * SurveyMonkeyAuthorizationMethod - The authorization method to use to retrieve data from SurveyMonkey
  */

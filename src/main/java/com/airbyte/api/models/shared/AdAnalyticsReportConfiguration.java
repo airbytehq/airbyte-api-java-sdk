@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * AdAnalyticsReportConfiguration - Config for custom ad Analytics Report
  */

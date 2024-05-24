@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * Csv - This connector utilises &lt;a href="https: // arrow.apache.org/docs/python/generated/pyarrow.csv.open_csv.html" target="_blank"&gt;PyArrow (Apache Arrow)&lt;/a&gt; for CSV parsing.
  */

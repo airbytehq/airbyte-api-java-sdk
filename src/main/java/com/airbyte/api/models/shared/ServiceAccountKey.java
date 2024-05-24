@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * ServiceAccountKey - For these scenario user should obtain service account's credentials from the Google API Console and provide delegated email.
  */

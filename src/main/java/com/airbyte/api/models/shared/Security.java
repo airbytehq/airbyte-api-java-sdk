@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 
-
 public class Security {
 
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic")

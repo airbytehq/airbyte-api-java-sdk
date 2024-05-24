@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * FromField - Use a field in the record as the embedding. This is useful if you already have an embedding for your data and want to store it in the vector store.
  */

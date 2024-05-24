@@ -23,7 +23,6 @@ import java.time.OffsetDateTime;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
 public class SourceZohoCrm {
 
     /**

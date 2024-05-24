@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.Optional;
-
 /**
  * SourceGoogleDrive - Used during spec; allows the developer to configure the cloud provider specific options
  * that are needed when users configure a file-based source.

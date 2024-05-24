@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * DestinationMilvusAPIToken - Authenticate using an API token (suitable for Zilliz Cloud)
  */

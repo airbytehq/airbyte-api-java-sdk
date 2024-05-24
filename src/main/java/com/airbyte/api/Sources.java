@@ -129,8 +129,7 @@ public class Sources implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.SourceResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.SourceResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.SourceResponse>() {});
                 _res.withSourceResponse(java.util.Optional.ofNullable(_out));
@@ -323,8 +322,7 @@ public class Sources implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.SourceResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.SourceResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.SourceResponse>() {});
                 _res.withSourceResponse(java.util.Optional.ofNullable(_out));
@@ -536,8 +534,7 @@ public class Sources implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.SourcesResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.SourcesResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.SourcesResponse>() {});
                 _res.withSourcesResponse(java.util.Optional.ofNullable(_out));
@@ -644,8 +641,7 @@ public class Sources implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.SourceResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.SourceResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.SourceResponse>() {});
                 _res.withSourceResponse(java.util.Optional.ofNullable(_out));
@@ -752,8 +748,7 @@ public class Sources implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.SourceResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.SourceResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.SourceResponse>() {});
                 _res.withSourceResponse(java.util.Optional.ofNullable(_out));

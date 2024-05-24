@@ -22,7 +22,6 @@ import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
-
 public class SourceSalesforce {
 
     @JsonInclude(Include.NON_ABSENT)

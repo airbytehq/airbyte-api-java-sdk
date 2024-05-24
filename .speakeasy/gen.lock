@@ -3,10 +3,10 @@ id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
   docChecksum: 241d5a786e59837e86f30500836a2a90
   docVersion: 1.0.0
-  speakeasyVersion: 1.291.0
-  generationVersion: 2.332.4
-  releaseVersion: 1.2.0
-  configChecksum: b53aff002349322b6b6b122cd37a265e
+  speakeasyVersion: 1.295.2
+  generationVersion: 2.335.5
+  releaseVersion: 1.3.0
+  configChecksum: 6f0bcdfe257254a093d3df3f7b972ffa
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -14,14 +14,14 @@ features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.19.7
+    core: 3.20.0
     globalSecurity: 2.82.5
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
     groups: 2.81.2
     nullables: 0.1.0
     sdkHooks: 0.1.0
-    unions: 0.0.3
+    unions: 0.0.4
 generatedFiles:
   - src/main/java/com/airbyte/api/SecuritySource.java
   - src/main/java/com/airbyte/api/SDKConfiguration.java
@@ -81,6 +81,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/BigDecimalString.java
   - src/main/java/com/airbyte/api/utils/BigIntegerString.java
   - src/main/java/com/airbyte/api/utils/Deserializers.java
+  - src/main/java/com/airbyte/api/utils/EventStream.java
+  - src/main/java/com/airbyte/api/utils/EventStreamLineReader.java
+  - src/main/java/com/airbyte/api/utils/EventStreamMessage.java
+  - src/main/java/com/airbyte/api/utils/EventStreamReader.java
   - src/main/java/com/airbyte/api/utils/FormMetadata.java
   - src/main/java/com/airbyte/api/utils/HTTPClient.java
   - src/main/java/com/airbyte/api/utils/HTTPRequest.java

@@ -111,8 +111,7 @@ public class Streams implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                java.util.List<com.airbyte.api.models.shared.StreamProperties> _out = _mapper.readValue(
+                java.util.List<com.airbyte.api.models.shared.StreamProperties> _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<java.util.List<com.airbyte.api.models.shared.StreamProperties>>() {});
                 _res.withStreamPropertiesResponse(java.util.Optional.ofNullable(_out));

@@ -16,7 +16,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayNumericFilter {
 
     @JsonProperty("filter_name")

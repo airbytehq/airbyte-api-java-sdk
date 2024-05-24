@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * Unencrypted - Data transfer will not be encrypted.
  */

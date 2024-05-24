@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * TLSEncryptedVerifyCertificate - Verify and use the certificate provided by the server.
  */

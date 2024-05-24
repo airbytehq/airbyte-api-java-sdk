@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * Jsonl - This connector uses &lt;a href="https://arrow.apache.org/docs/python/json.html" target="_blank"&gt;PyArrow&lt;/a&gt; for JSON Lines (jsonl) file parsing.
  */

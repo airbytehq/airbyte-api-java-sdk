@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * Filter - A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions.
  */

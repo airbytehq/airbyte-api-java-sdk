@@ -119,8 +119,7 @@ public class Connections implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.ConnectionResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionResponse>() {});
                 _res.withConnectionResponse(java.util.Optional.ofNullable(_out));
@@ -313,8 +312,7 @@ public class Connections implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.ConnectionResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionResponse>() {});
                 _res.withConnectionResponse(java.util.Optional.ofNullable(_out));
@@ -419,8 +417,7 @@ public class Connections implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionsResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.ConnectionsResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionsResponse>() {});
                 _res.withConnectionsResponse(java.util.Optional.ofNullable(_out));
@@ -530,8 +527,7 @@ public class Connections implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.ConnectionResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.ConnectionResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.ConnectionResponse>() {});
                 _res.withConnectionResponse(java.util.Optional.ofNullable(_out));

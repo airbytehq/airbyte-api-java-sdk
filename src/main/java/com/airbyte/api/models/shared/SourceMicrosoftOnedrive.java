@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.Optional;
-
 /**
  * SourceMicrosoftOnedrive - SourceMicrosoftOneDriveSpec class for Microsoft OneDrive Source Specification.
  * This class combines the authentication details with additional configuration for the OneDrive API.

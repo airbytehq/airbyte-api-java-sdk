@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * SourceSftpBulkLocal - Process files locally, supporting `fast` and `ocr` modes. This is the default option.
  */

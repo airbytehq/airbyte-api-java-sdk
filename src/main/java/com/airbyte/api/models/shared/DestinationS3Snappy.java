@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 
-
 public class DestinationS3Snappy {
 
     @JsonInclude(Include.NON_ABSENT)

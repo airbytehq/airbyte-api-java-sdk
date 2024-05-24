@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.Optional;
-
 /**
  * SourceS3 - NOTE: When this Spec is changed, legacy_config_transformer.py must also be modified to uptake the changes
  * because it is responsible for converting legacy S3 v3 configs into v4 configs using the File-Based CDK.

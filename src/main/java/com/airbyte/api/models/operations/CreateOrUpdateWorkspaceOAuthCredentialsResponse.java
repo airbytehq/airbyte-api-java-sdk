@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.http.HttpResponse;
 
-
 public class CreateOrUpdateWorkspaceOAuthCredentialsResponse implements com.airbyte.api.utils.Response {
 
     /**

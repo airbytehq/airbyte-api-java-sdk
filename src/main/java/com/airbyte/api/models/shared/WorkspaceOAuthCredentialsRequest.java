@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * WorkspaceOAuthCredentialsRequest - POST body for creating/updating workspace level OAuth credentials
  */
