@@ -8,7 +8,6 @@ name: Publish
 jobs:
     publish:
         uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
-        use_sonatype_legacy: true
         secrets:
             github_access_token: ${{ secrets.GITHUB_TOKEN }}
             java_gpg_passphrase: ${{ secrets.JAVA_GPG_PASSPHRASE }}
