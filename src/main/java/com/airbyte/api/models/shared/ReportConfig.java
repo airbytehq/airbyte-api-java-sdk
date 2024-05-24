@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Optional;
-
 /**
  * ReportConfig - Config for custom report
  */

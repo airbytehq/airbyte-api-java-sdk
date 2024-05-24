@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * SourceMssqlEncryptedTrustServerCertificate - Use the certificate provided by the server without verification. (For testing purposes only!)
  */

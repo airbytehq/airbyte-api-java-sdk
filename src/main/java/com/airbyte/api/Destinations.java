@@ -128,8 +128,7 @@ public class Destinations implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.DestinationResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
                 _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
@@ -322,8 +321,7 @@ public class Destinations implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.DestinationResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
                 _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
@@ -428,8 +426,7 @@ public class Destinations implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationsResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.DestinationsResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationsResponse>() {});
                 _res.withDestinationsResponse(java.util.Optional.ofNullable(_out));
@@ -536,8 +533,7 @@ public class Destinations implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.DestinationResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
                 _res.withDestinationResponse(java.util.Optional.ofNullable(_out));
@@ -644,8 +640,7 @@ public class Destinations implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.DestinationResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.DestinationResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.DestinationResponse>() {});
                 _res.withDestinationResponse(java.util.Optional.ofNullable(_out));

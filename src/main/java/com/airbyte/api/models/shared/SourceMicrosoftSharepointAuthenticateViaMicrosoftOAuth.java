@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * SourceMicrosoftSharepointAuthenticateViaMicrosoftOAuth - OAuthCredentials class to hold authentication details for Microsoft OAuth authentication.
  * This class uses pydantic for data validation and settings management.

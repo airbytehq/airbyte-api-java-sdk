@@ -119,8 +119,7 @@ public class Permissions implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.PermissionResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.PermissionResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.PermissionResponse>() {});
                 _res.withPermissionResponse(java.util.Optional.ofNullable(_out));
@@ -313,8 +312,7 @@ public class Permissions implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.PermissionResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.PermissionResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.PermissionResponse>() {});
                 _res.withPermissionResponse(java.util.Optional.ofNullable(_out));
@@ -419,8 +417,7 @@ public class Permissions implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.PermissionsResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.PermissionsResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.PermissionsResponse>() {});
                 _res.withPermissionsResponse(java.util.Optional.ofNullable(_out));
@@ -530,8 +527,7 @@ public class Permissions implements
         
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ObjectMapper _mapper = JSON.getMapper();
-                com.airbyte.api.models.shared.PermissionResponse _out = _mapper.readValue(
+                com.airbyte.api.models.shared.PermissionResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<com.airbyte.api.models.shared.PermissionResponse>() {});
                 _res.withPermissionResponse(java.util.Optional.ofNullable(_out));

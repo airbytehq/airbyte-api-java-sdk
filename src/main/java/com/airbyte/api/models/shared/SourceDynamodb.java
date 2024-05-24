@@ -20,7 +20,6 @@ import java.math.BigInteger;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
 public class SourceDynamodb {
 
     /**

@@ -16,7 +16,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInt64Value {
 
     @JsonProperty("value")

@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * ReadChangesUsingBinaryLogCDC - &lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts, updates, and deletes using the MySQL &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;binary log&lt;/a&gt;. This must be enabled on your database.
  */

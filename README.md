@@ -24,7 +24,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte.api:public-api:1.2.0'
+implementation 'com.airbyte.api:public-api:1.3.0'
 ```
 
 Maven:
@@ -32,7 +32,7 @@ Maven:
 <dependency>
     <groupId>com.airbyte.api</groupId>
     <artifactId>public-api</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 </dependency>
 ```
 
@@ -63,6 +63,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -194,6 +196,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -251,6 +255,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -316,6 +322,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -383,6 +391,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.utils.EventStream;
+import java.math.BigDecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;

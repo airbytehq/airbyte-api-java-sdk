@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * SourceMysqlVerifyCA - Always connect with SSL. Verifies CA, but allows connection even if Hostname does not match.
  */

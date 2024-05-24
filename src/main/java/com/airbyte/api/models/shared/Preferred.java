@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * Preferred - Automatically attempt SSL connection. If the MySQL server does not support SSL, continue with a regular connection.
  */

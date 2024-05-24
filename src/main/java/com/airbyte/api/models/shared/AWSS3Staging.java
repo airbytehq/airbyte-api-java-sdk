@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * AWSS3Staging - &lt;i&gt;(recommended)&lt;/i&gt; Uploads data to S3 and then uses a COPY to insert the data into Redshift. COPY is recommended for production workloads for better speed and scalability. See &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html"&gt;AWS docs&lt;/a&gt; for more details.
  */

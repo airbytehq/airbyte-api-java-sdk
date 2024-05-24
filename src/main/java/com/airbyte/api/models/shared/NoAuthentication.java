@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * NoAuthentication - Do not authenticate (suitable for locally running test clusters, do not use for clusters with public IP addresses)
  */

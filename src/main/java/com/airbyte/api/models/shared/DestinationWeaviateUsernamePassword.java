@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * DestinationWeaviateUsernamePassword - Authenticate using username and password (suitable for self-managed Weaviate clusters)
  */

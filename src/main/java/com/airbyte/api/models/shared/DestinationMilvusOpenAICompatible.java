@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * DestinationMilvusOpenAICompatible - Use a service that's compatible with the OpenAI API to embed text.
  */

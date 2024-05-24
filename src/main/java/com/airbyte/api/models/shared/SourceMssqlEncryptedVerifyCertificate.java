@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * SourceMssqlEncryptedVerifyCertificate - Verify and use the certificate provided by the server.
  */

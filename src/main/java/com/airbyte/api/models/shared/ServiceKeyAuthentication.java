@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * ServiceKeyAuthentication - ServiceCredentials class for service key authentication.
  * This class is structured similarly to OAuthCredentials but for a different authentication method.

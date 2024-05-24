@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * SignInViaGoogleOAuth - For these scenario user only needs to give permission to read Google Directory data.
  */

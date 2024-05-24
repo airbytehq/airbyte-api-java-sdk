@@ -16,7 +16,6 @@ import java.math.BigInteger;
 import java.net.http.HttpResponse;
 import java.util.Optional;
 
-
 public class GetConnectionResponse implements com.airbyte.api.utils.Response {
 
     /**

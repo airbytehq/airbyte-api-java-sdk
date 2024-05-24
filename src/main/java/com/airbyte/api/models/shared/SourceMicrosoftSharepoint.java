@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
 import java.util.Optional;
-
 /**
  * SourceMicrosoftSharepoint - SourceMicrosoftSharePointSpec class for Microsoft SharePoint Source Specification.
  * This class combines the authentication details with additional configuration for the SharePoint API.

@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 /**
  * OAuth20Credentials - OAuth2.0 credentials used to authenticate admin actions (creating/deleting corpora)
  */

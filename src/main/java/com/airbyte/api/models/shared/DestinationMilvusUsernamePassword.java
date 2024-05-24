@@ -18,7 +18,6 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
-
 /**
  * DestinationMilvusUsernamePassword - Authenticate using username and password (suitable for self-managed Milvus clusters)
  */

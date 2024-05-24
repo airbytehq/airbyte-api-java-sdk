@@ -21,7 +21,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-
 public class SourcePinterest {
 
     @JsonInclude(Include.NON_ABSENT)

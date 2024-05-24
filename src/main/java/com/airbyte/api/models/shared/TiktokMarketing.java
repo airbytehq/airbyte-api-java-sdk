@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 
-
 public class TiktokMarketing {
 
     @JsonInclude(Include.NON_ABSENT)
