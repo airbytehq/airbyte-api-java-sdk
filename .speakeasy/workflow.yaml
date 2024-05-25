@@ -16,4 +16,4 @@ targets:
                 ossrhPassword: $OSSRH_PASSWORD
                 gpgSecretKey: $JAVA_GPG_SECRET_KEY
                 gpgPassPhrase: $JAVA_GPG_PASSPHRASE
-                use_sonatype_legacy: true
+                useSonatypeLegacy: true
