@@ -1,9 +1,9 @@
-speakeasyVersion: 1.295.2
+speakeasyVersion: 1.296.1
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:e5f43f3e80a19569448d16678f2346190b886bc5ede6eeeeca6ecca17a2b8f46
-        sourceBlobDigest: sha256:5002526e52b4b8b3e125dca26bb7012cc13506af3b785c705086d6f27f24b3f8
+        sourceRevisionDigest: sha256:9ed7623b652ec818569cb47fce0127fe6783e16704ab9adf9e46b71af8aae9ec
+        sourceBlobDigest: sha256:8875c40e813888ed64de348464aa44c0e6e46fe0b90982cbfbe08c9801a87c99
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     airbyte-api:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:e5f43f3e80a19569448d16678f2346190b886bc5ede6eeeeca6ecca17a2b8f46
-        sourceBlobDigest: sha256:5002526e52b4b8b3e125dca26bb7012cc13506af3b785c705086d6f27f24b3f8
+        sourceRevisionDigest: sha256:9ed7623b652ec818569cb47fce0127fe6783e16704ab9adf9e46b71af8aae9ec
+        sourceBlobDigest: sha256:8875c40e813888ed64de348464aa44c0e6e46fe0b90982cbfbe08c9801a87c99
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
