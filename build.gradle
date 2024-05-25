@@ -65,7 +65,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '1.4.0'
+            version = '1.4.1'
 
             from components.java
 

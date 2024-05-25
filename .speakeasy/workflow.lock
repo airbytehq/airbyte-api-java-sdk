@@ -2,8 +2,8 @@ speakeasyVersion: 1.296.1
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:9ed7623b652ec818569cb47fce0127fe6783e16704ab9adf9e46b71af8aae9ec
-        sourceBlobDigest: sha256:8875c40e813888ed64de348464aa44c0e6e46fe0b90982cbfbe08c9801a87c99
+        sourceRevisionDigest: sha256:cbe1ea7fa525a68f8250c64f057920dfb5ed187159ed0f287f2e34fa958815dd
+        sourceBlobDigest: sha256:9e76a245dfc56887dcadaf1e1f0ffe6c0abbe10e9e25b6ad3093ad778055c1a2
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     airbyte-api:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:9ed7623b652ec818569cb47fce0127fe6783e16704ab9adf9e46b71af8aae9ec
-        sourceBlobDigest: sha256:8875c40e813888ed64de348464aa44c0e6e46fe0b90982cbfbe08c9801a87c99
+        sourceRevisionDigest: sha256:cbe1ea7fa525a68f8250c64f057920dfb5ed187159ed0f287f2e34fa958815dd
+        sourceBlobDigest: sha256:9e76a245dfc56887dcadaf1e1f0ffe6c0abbe10e9e25b6ad3093ad778055c1a2
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -33,4 +33,3 @@ workflow:
                     ossrhPassword: $OSSRH_PASSWORD
                     gpgSecretKey: $JAVA_GPG_SECRET_KEY
                     gpgPassPhrase: $JAVA_GPG_PASSPHRASE
-                    useSonatypeLegacy: true
