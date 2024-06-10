@@ -24,7 +24,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte.api:public-api:1.4.1'
+implementation 'com.airbyte.api:public-api:1.5.0'
 ```
 
 Maven:
@@ -32,7 +32,7 @@ Maven:
 <dependency>
     <groupId>com.airbyte.api</groupId>
     <artifactId>public-api</artifactId>
-    <version>1.4.1</version>
+    <version>1.5.0</version>
 </dependency>
 ```
 
@@ -163,6 +163,10 @@ public class Application {
 ### [streams()](docs/sdks/streams/README.md)
 
 * [getStreamProperties](docs/sdks/streams/README.md#getstreamproperties) - Get stream properties
+
+### [users()](docs/sdks/users/README.md)
+
+* [listUsers](docs/sdks/users/README.md#listusers) - List users
 
 ### [workspaces()](docs/sdks/workspaces/README.md)
 

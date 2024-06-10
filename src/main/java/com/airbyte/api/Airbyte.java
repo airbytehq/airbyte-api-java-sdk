@@ -53,6 +53,8 @@ public class Airbyte {
 
     private final Streams streams;
 
+    private final Users users;
+
     private final Workspaces workspaces;
 
     public Connections connections() {
@@ -81,6 +83,10 @@ public class Airbyte {
 
     public Streams streams() {
         return streams;
+    }
+
+    public Users users() {
+        return users;
     }
 
     public Workspaces workspaces() {
@@ -220,6 +226,7 @@ public class Airbyte {
         this.permissions = new Permissions(sdkConfiguration);
         this.sources = new Sources(sdkConfiguration);
         this.streams = new Streams(sdkConfiguration);
+        this.users = new Users(sdkConfiguration);
         this.workspaces = new Workspaces(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }}

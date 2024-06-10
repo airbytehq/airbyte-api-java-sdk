@@ -187,6 +187,12 @@ public class SDKMethodInterfaces {
     }
 
 
+    public interface MethodCallListUsers {
+        com.airbyte.api.models.operations.ListUsersResponse listUsers(
+            com.airbyte.api.models.operations.ListUsersRequest request) throws Exception;
+    }
+
+
     public interface MethodCallCreateOrUpdateWorkspaceOAuthCredentials {
         com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(
             com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception;

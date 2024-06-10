@@ -46,7 +46,7 @@ public class Application {
                 .build();
 
             PermissionCreateRequest req = PermissionCreateRequest.builder()
-                .permissionType(PermissionType.ORGANIZATION_ADMIN)
+                .permissionType(PublicPermissionType.ORGANIZATION_EDITOR)
                 .userId("297cb6ba-4669-43f1-b750-c800e1a1986b")
                 .build();
 
