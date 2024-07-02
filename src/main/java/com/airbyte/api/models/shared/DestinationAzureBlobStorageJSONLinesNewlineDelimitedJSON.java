@@ -9,22 +9,47 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 
 public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
+
+    /**
+     * Add file extensions to the output file.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("file_extension")
+    private Optional<? extends Boolean> fileExtension;
 
     @JsonProperty("format_type")
     private DestinationAzureBlobStorageFormatType formatType;
 
     @JsonCreator
-    public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON() {
-        
+    public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON(
+            @JsonProperty("file_extension") Optional<? extends Boolean> fileExtension) {
+        Utils.checkNotNull(fileExtension, "fileExtension");
+        this.fileExtension = fileExtension;
         this.formatType = Builder._SINGLETON_VALUE_FormatType.value();
+    }
+    
+    public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON() {
+        this(Optional.empty());
+    }
+
+    /**
+     * Add file extensions to the output file.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> fileExtension() {
+        return (Optional<Boolean>) fileExtension;
     }
 
     @JsonIgnore
@@ -34,6 +59,24 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * Add file extensions to the output file.
+     */
+    public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON withFileExtension(boolean fileExtension) {
+        Utils.checkNotNull(fileExtension, "fileExtension");
+        this.fileExtension = Optional.ofNullable(fileExtension);
+        return this;
+    }
+
+    /**
+     * Add file extensions to the output file.
+     */
+    public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON withFileExtension(Optional<? extends Boolean> fileExtension) {
+        Utils.checkNotNull(fileExtension, "fileExtension");
+        this.fileExtension = fileExtension;
+        return this;
     }
     
     @Override
@@ -46,31 +89,63 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
         }
         DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON other = (DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON) o;
         return 
+            java.util.Objects.deepEquals(this.fileExtension, other.fileExtension) &&
             java.util.Objects.deepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
+            fileExtension,
             formatType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON.class,
+                "fileExtension", fileExtension,
                 "formatType", formatType);
     }
     
-    public final static class Builder {  
+    public final static class Builder {
+ 
+        private Optional<? extends Boolean> fileExtension;  
         
         private Builder() {
           // force use of static builder() method
         }
+
+        /**
+         * Add file extensions to the output file.
+         */
+        public Builder fileExtension(boolean fileExtension) {
+            Utils.checkNotNull(fileExtension, "fileExtension");
+            this.fileExtension = Optional.ofNullable(fileExtension);
+            return this;
+        }
+
+        /**
+         * Add file extensions to the output file.
+         */
+        public Builder fileExtension(Optional<? extends Boolean> fileExtension) {
+            Utils.checkNotNull(fileExtension, "fileExtension");
+            this.fileExtension = fileExtension;
+            return this;
+        }
         
         public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON build() {
+            if (fileExtension == null) {
+                fileExtension = _SINGLETON_VALUE_FileExtension.value();
+            }
             return new DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON(
-                );
+                fileExtension);
         }
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_FileExtension =
+                new LazySingletonValue<>(
+                        "file_extension",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<DestinationAzureBlobStorageFormatType> _SINGLETON_VALUE_FormatType =
                 new LazySingletonValue<>(

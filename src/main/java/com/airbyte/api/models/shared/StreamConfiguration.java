@@ -40,6 +40,13 @@ public class StreamConfiguration {
     @JsonProperty("primaryKey")
     private Optional<? extends java.util.List<java.util.List<String>>> primaryKey;
 
+    /**
+     * Paths to the fields that will be included in the configured catalog.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("selectedFields")
+    private Optional<? extends java.util.List<SelectedFieldInfo>> selectedFields;
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncMode")
     private Optional<? extends ConnectionSyncModeEnum> syncMode;
@@ -49,20 +56,23 @@ public class StreamConfiguration {
             @JsonProperty("cursorField") Optional<? extends java.util.List<String>> cursorField,
             @JsonProperty("name") String name,
             @JsonProperty("primaryKey") Optional<? extends java.util.List<java.util.List<String>>> primaryKey,
+            @JsonProperty("selectedFields") Optional<? extends java.util.List<SelectedFieldInfo>> selectedFields,
             @JsonProperty("syncMode") Optional<? extends ConnectionSyncModeEnum> syncMode) {
         Utils.checkNotNull(cursorField, "cursorField");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(primaryKey, "primaryKey");
+        Utils.checkNotNull(selectedFields, "selectedFields");
         Utils.checkNotNull(syncMode, "syncMode");
         this.cursorField = cursorField;
         this.name = name;
         this.primaryKey = primaryKey;
+        this.selectedFields = selectedFields;
         this.syncMode = syncMode;
     }
     
     public StreamConfiguration(
             String name) {
-        this(Optional.empty(), name, Optional.empty(), Optional.empty());
+        this(Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -86,6 +96,15 @@ public class StreamConfiguration {
     @JsonIgnore
     public Optional<java.util.List<java.util.List<String>>> primaryKey() {
         return (Optional<java.util.List<java.util.List<String>>>) primaryKey;
+    }
+
+    /**
+     * Paths to the fields that will be included in the configured catalog.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<SelectedFieldInfo>> selectedFields() {
+        return (Optional<java.util.List<SelectedFieldInfo>>) selectedFields;
     }
 
     @SuppressWarnings("unchecked")
@@ -140,6 +159,24 @@ public class StreamConfiguration {
         return this;
     }
 
+    /**
+     * Paths to the fields that will be included in the configured catalog.
+     */
+    public StreamConfiguration withSelectedFields(java.util.List<SelectedFieldInfo> selectedFields) {
+        Utils.checkNotNull(selectedFields, "selectedFields");
+        this.selectedFields = Optional.ofNullable(selectedFields);
+        return this;
+    }
+
+    /**
+     * Paths to the fields that will be included in the configured catalog.
+     */
+    public StreamConfiguration withSelectedFields(Optional<? extends java.util.List<SelectedFieldInfo>> selectedFields) {
+        Utils.checkNotNull(selectedFields, "selectedFields");
+        this.selectedFields = selectedFields;
+        return this;
+    }
+
     public StreamConfiguration withSyncMode(ConnectionSyncModeEnum syncMode) {
         Utils.checkNotNull(syncMode, "syncMode");
         this.syncMode = Optional.ofNullable(syncMode);
@@ -165,6 +202,7 @@ public class StreamConfiguration {
             java.util.Objects.deepEquals(this.cursorField, other.cursorField) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
             java.util.Objects.deepEquals(this.primaryKey, other.primaryKey) &&
+            java.util.Objects.deepEquals(this.selectedFields, other.selectedFields) &&
             java.util.Objects.deepEquals(this.syncMode, other.syncMode);
     }
     
@@ -174,6 +212,7 @@ public class StreamConfiguration {
             cursorField,
             name,
             primaryKey,
+            selectedFields,
             syncMode);
     }
     
@@ -183,6 +222,7 @@ public class StreamConfiguration {
                 "cursorField", cursorField,
                 "name", name,
                 "primaryKey", primaryKey,
+                "selectedFields", selectedFields,
                 "syncMode", syncMode);
     }
     
@@ -193,6 +233,8 @@ public class StreamConfiguration {
         private String name;
  
         private Optional<? extends java.util.List<java.util.List<String>>> primaryKey = Optional.empty();
+ 
+        private Optional<? extends java.util.List<SelectedFieldInfo>> selectedFields = Optional.empty();
  
         private Optional<? extends ConnectionSyncModeEnum> syncMode = Optional.empty();  
         
@@ -242,6 +284,24 @@ public class StreamConfiguration {
             return this;
         }
 
+        /**
+         * Paths to the fields that will be included in the configured catalog.
+         */
+        public Builder selectedFields(java.util.List<SelectedFieldInfo> selectedFields) {
+            Utils.checkNotNull(selectedFields, "selectedFields");
+            this.selectedFields = Optional.ofNullable(selectedFields);
+            return this;
+        }
+
+        /**
+         * Paths to the fields that will be included in the configured catalog.
+         */
+        public Builder selectedFields(Optional<? extends java.util.List<SelectedFieldInfo>> selectedFields) {
+            Utils.checkNotNull(selectedFields, "selectedFields");
+            this.selectedFields = selectedFields;
+            return this;
+        }
+
         public Builder syncMode(ConnectionSyncModeEnum syncMode) {
             Utils.checkNotNull(syncMode, "syncMode");
             this.syncMode = Optional.ofNullable(syncMode);
@@ -259,6 +319,7 @@ public class StreamConfiguration {
                 cursorField,
                 name,
                 primaryKey,
+                selectedFields,
                 syncMode);
         }
     }

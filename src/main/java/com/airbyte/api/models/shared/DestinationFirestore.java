@@ -22,7 +22,7 @@ import java.util.Optional;
 public class DestinationFirestore {
 
     /**
-     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
+     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_json")
@@ -54,7 +54,7 @@ public class DestinationFirestore {
     }
 
     /**
-     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
+     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -80,7 +80,7 @@ public class DestinationFirestore {
     }
 
     /**
-     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
+     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
     public DestinationFirestore withCredentialsJson(String credentialsJson) {
         Utils.checkNotNull(credentialsJson, "credentialsJson");
@@ -89,7 +89,7 @@ public class DestinationFirestore {
     }
 
     /**
-     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
+     * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
     public DestinationFirestore withCredentialsJson(Optional<? extends String> credentialsJson) {
         Utils.checkNotNull(credentialsJson, "credentialsJson");
@@ -148,7 +148,7 @@ public class DestinationFirestore {
         }
 
         /**
-         * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
+         * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
          */
         public Builder credentialsJson(String credentialsJson) {
             Utils.checkNotNull(credentialsJson, "credentialsJson");
@@ -157,7 +157,7 @@ public class DestinationFirestore {
         }
 
         /**
-         * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.io/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
+         * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
          */
         public Builder credentialsJson(Optional<? extends String> credentialsJson) {
             Utils.checkNotNull(credentialsJson, "credentialsJson");

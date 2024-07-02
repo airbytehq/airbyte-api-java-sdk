@@ -211,7 +211,7 @@ public class SourceBambooHr {
  
         private String apiKey;
  
-        private Optional<? extends String> customReportsFields;
+        private Optional<? extends String> customReportsFields = Optional.empty();
  
         private Optional<? extends Boolean> customReportsIncludeDefaultFields;
  
@@ -276,9 +276,6 @@ public class SourceBambooHr {
         }
         
         public SourceBambooHr build() {
-            if (customReportsFields == null) {
-                customReportsFields = _SINGLETON_VALUE_CustomReportsFields.value();
-            }
             if (customReportsIncludeDefaultFields == null) {
                 customReportsIncludeDefaultFields = _SINGLETON_VALUE_CustomReportsIncludeDefaultFields.value();
             }
@@ -288,12 +285,6 @@ public class SourceBambooHr {
                 customReportsIncludeDefaultFields,
                 subdomain);
         }
-
-        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_CustomReportsFields =
-                new LazySingletonValue<>(
-                        "custom_reports_fields",
-                        "\"\"",
-                        new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_CustomReportsIncludeDefaultFields =
                 new LazySingletonValue<>(

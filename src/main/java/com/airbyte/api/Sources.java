@@ -42,6 +42,7 @@ public class Sources implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a source
      * Creates a source given a name, workspace id, and a json blob containing the configuration for the source.
@@ -91,7 +92,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createSource", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -99,18 +100,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createSource", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createSource", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createSource", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -158,6 +159,7 @@ public class Sources implements
     }
 
 
+
     /**
      * Delete a Source
      * @return The call builder
@@ -193,7 +195,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("deleteSource", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("deleteSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -201,18 +203,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("deleteSource", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("deleteSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("deleteSource", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("deleteSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("deleteSource", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("deleteSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -247,6 +249,7 @@ public class Sources implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -284,7 +287,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getSource", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -292,18 +295,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getSource", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getSource", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getSource", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -349,6 +352,7 @@ public class Sources implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -402,7 +406,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("initiateOAuth", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("initiateOAuth", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -410,18 +414,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("initiateOAuth", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("initiateOAuth", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("initiateOAuth", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("initiateOAuth", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("initiateOAuth", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("initiateOAuth", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -456,6 +460,7 @@ public class Sources implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -496,7 +501,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("listSources", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("listSources", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -504,18 +509,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("listSources", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("listSources", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("listSources", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("listSources", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("listSources", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("listSources", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -563,6 +568,7 @@ public class Sources implements
     }
 
 
+
     /**
      * Update a Source
      * @return The call builder
@@ -603,7 +609,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("patchSource", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("patchSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -611,18 +617,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("patchSource", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("patchSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("patchSource", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("patchSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("patchSource", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("patchSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -670,6 +676,7 @@ public class Sources implements
     }
 
 
+
     /**
      * Update a Source and fully overwrite it
      * @return The call builder
@@ -710,7 +717,7 @@ public class Sources implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("putSource", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("putSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -718,18 +725,18 @@ public class Sources implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("putSource", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("putSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("putSource", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("putSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("putSource", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("putSource", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

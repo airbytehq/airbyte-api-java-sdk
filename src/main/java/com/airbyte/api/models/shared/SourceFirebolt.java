@@ -59,7 +59,7 @@ public class SourceFirebolt {
     private Optional<? extends String> host;
 
     @JsonProperty("sourceType")
-    private Firebolt sourceType;
+    private SourceFireboltFirebolt sourceType;
 
     @JsonCreator
     public SourceFirebolt(
@@ -143,7 +143,7 @@ public class SourceFirebolt {
     }
 
     @JsonIgnore
-    public Firebolt sourceType() {
+    public SourceFireboltFirebolt sourceType() {
         return sourceType;
     }
 
@@ -348,11 +348,11 @@ public class SourceFirebolt {
                 host);
         }
 
-        private static final LazySingletonValue<Firebolt> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<SourceFireboltFirebolt> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"firebolt\"",
-                        new TypeReference<Firebolt>() {});
+                        new TypeReference<SourceFireboltFirebolt>() {});
     }
 }
 

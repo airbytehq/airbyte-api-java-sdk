@@ -20,19 +20,21 @@ The Developer Portal UI can also be used to help build your integration by showi
 
 ### Getting started
 
+JDK 11 or later is required.
+
 The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte.api:public-api:1.4.1'
+implementation 'com.airbyte:api:1.5.0'
 ```
 
 Maven:
 ```xml
 <dependency>
-    <groupId>com.airbyte.api</groupId>
-    <artifactId>public-api</artifactId>
-    <version>1.4.1</version>
+    <groupId>com.airbyte</groupId>
+    <artifactId>api</artifactId>
+    <version>1.5.0</version>
 </dependency>
 ```
 
@@ -106,6 +108,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -142,6 +145,10 @@ public class Application {
 * [getJob](docs/sdks/jobs/README.md#getjob) - Get Job status and details
 * [listJobs](docs/sdks/jobs/README.md#listjobs) - List Jobs by sync type
 
+### [organizations()](docs/sdks/organizations/README.md)
+
+* [listOrganizationsForUser](docs/sdks/organizations/README.md#listorganizationsforuser) - List all organizations for a user
+
 ### [permissions()](docs/sdks/permissions/README.md)
 
 * [createPermission](docs/sdks/permissions/README.md#createpermission) - Create a permission
@@ -163,6 +170,10 @@ public class Application {
 ### [streams()](docs/sdks/streams/README.md)
 
 * [getStreamProperties](docs/sdks/streams/README.md#getstreamproperties) - Get stream properties
+
+### [users()](docs/sdks/users/README.md)
+
+* [listUsersWithinAnOrganization](docs/sdks/users/README.md#listuserswithinanorganization) - List all users within an organization
 
 ### [workspaces()](docs/sdks/workspaces/README.md)
 
@@ -240,6 +251,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -299,6 +311,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -311,7 +324,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ### Example
 
@@ -365,6 +378,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -434,6 +448,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```

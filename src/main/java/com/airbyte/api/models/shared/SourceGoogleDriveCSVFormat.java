@@ -68,6 +68,13 @@ public class SourceGoogleDriveCSVFormat {
     private Optional<? extends SourceGoogleDriveCSVHeaderDefinition> headerDefinition;
 
     /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ignore_errors_on_fields_mismatch")
+    private Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch;
+
+    /**
      * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -117,6 +124,7 @@ public class SourceGoogleDriveCSVFormat {
             @JsonProperty("escape_char") Optional<? extends String> escapeChar,
             @JsonProperty("false_values") Optional<? extends java.util.List<String>> falseValues,
             @JsonProperty("header_definition") Optional<? extends SourceGoogleDriveCSVHeaderDefinition> headerDefinition,
+            @JsonProperty("ignore_errors_on_fields_mismatch") Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch,
             @JsonProperty("null_values") Optional<? extends java.util.List<String>> nullValues,
             @JsonProperty("quote_char") Optional<? extends String> quoteChar,
             @JsonProperty("skip_rows_after_header") Optional<? extends Long> skipRowsAfterHeader,
@@ -129,6 +137,7 @@ public class SourceGoogleDriveCSVFormat {
         Utils.checkNotNull(escapeChar, "escapeChar");
         Utils.checkNotNull(falseValues, "falseValues");
         Utils.checkNotNull(headerDefinition, "headerDefinition");
+        Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
         Utils.checkNotNull(nullValues, "nullValues");
         Utils.checkNotNull(quoteChar, "quoteChar");
         Utils.checkNotNull(skipRowsAfterHeader, "skipRowsAfterHeader");
@@ -142,6 +151,7 @@ public class SourceGoogleDriveCSVFormat {
         this.falseValues = falseValues;
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
         this.headerDefinition = headerDefinition;
+        this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
         this.nullValues = nullValues;
         this.quoteChar = quoteChar;
         this.skipRowsAfterHeader = skipRowsAfterHeader;
@@ -151,7 +161,7 @@ public class SourceGoogleDriveCSVFormat {
     }
     
     public SourceGoogleDriveCSVFormat() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -212,6 +222,15 @@ public class SourceGoogleDriveCSVFormat {
     @JsonIgnore
     public Optional<SourceGoogleDriveCSVHeaderDefinition> headerDefinition() {
         return (Optional<SourceGoogleDriveCSVHeaderDefinition>) headerDefinition;
+    }
+
+    /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ignoreErrorsOnFieldsMismatch() {
+        return (Optional<Boolean>) ignoreErrorsOnFieldsMismatch;
     }
 
     /**
@@ -381,6 +400,24 @@ public class SourceGoogleDriveCSVFormat {
     }
 
     /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    public SourceGoogleDriveCSVFormat withIgnoreErrorsOnFieldsMismatch(boolean ignoreErrorsOnFieldsMismatch) {
+        Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+        this.ignoreErrorsOnFieldsMismatch = Optional.ofNullable(ignoreErrorsOnFieldsMismatch);
+        return this;
+    }
+
+    /**
+     * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+     */
+    public SourceGoogleDriveCSVFormat withIgnoreErrorsOnFieldsMismatch(Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch) {
+        Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+        this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
+        return this;
+    }
+
+    /**
      * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
      */
     public SourceGoogleDriveCSVFormat withNullValues(java.util.List<String> nullValues) {
@@ -505,6 +542,7 @@ public class SourceGoogleDriveCSVFormat {
             java.util.Objects.deepEquals(this.falseValues, other.falseValues) &&
             java.util.Objects.deepEquals(this.filetype, other.filetype) &&
             java.util.Objects.deepEquals(this.headerDefinition, other.headerDefinition) &&
+            java.util.Objects.deepEquals(this.ignoreErrorsOnFieldsMismatch, other.ignoreErrorsOnFieldsMismatch) &&
             java.util.Objects.deepEquals(this.nullValues, other.nullValues) &&
             java.util.Objects.deepEquals(this.quoteChar, other.quoteChar) &&
             java.util.Objects.deepEquals(this.skipRowsAfterHeader, other.skipRowsAfterHeader) &&
@@ -523,6 +561,7 @@ public class SourceGoogleDriveCSVFormat {
             falseValues,
             filetype,
             headerDefinition,
+            ignoreErrorsOnFieldsMismatch,
             nullValues,
             quoteChar,
             skipRowsAfterHeader,
@@ -541,6 +580,7 @@ public class SourceGoogleDriveCSVFormat {
                 "falseValues", falseValues,
                 "filetype", filetype,
                 "headerDefinition", headerDefinition,
+                "ignoreErrorsOnFieldsMismatch", ignoreErrorsOnFieldsMismatch,
                 "nullValues", nullValues,
                 "quoteChar", quoteChar,
                 "skipRowsAfterHeader", skipRowsAfterHeader,
@@ -562,6 +602,8 @@ public class SourceGoogleDriveCSVFormat {
         private Optional<? extends java.util.List<String>> falseValues = Optional.empty();
  
         private Optional<? extends SourceGoogleDriveCSVHeaderDefinition> headerDefinition = Optional.empty();
+ 
+        private Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch;
  
         private Optional<? extends java.util.List<String>> nullValues = Optional.empty();
  
@@ -688,6 +730,24 @@ public class SourceGoogleDriveCSVFormat {
         }
 
         /**
+         * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+         */
+        public Builder ignoreErrorsOnFieldsMismatch(boolean ignoreErrorsOnFieldsMismatch) {
+            Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+            this.ignoreErrorsOnFieldsMismatch = Optional.ofNullable(ignoreErrorsOnFieldsMismatch);
+            return this;
+        }
+
+        /**
+         * Whether to ignore errors that occur when the number of fields in the CSV does not match the number of columns in the schema.
+         */
+        public Builder ignoreErrorsOnFieldsMismatch(Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch) {
+            Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
+            this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
+            return this;
+        }
+
+        /**
          * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
          */
         public Builder nullValues(java.util.List<String> nullValues) {
@@ -805,6 +865,9 @@ public class SourceGoogleDriveCSVFormat {
             if (encoding == null) {
                 encoding = _SINGLETON_VALUE_Encoding.value();
             }
+            if (ignoreErrorsOnFieldsMismatch == null) {
+                ignoreErrorsOnFieldsMismatch = _SINGLETON_VALUE_IgnoreErrorsOnFieldsMismatch.value();
+            }
             if (quoteChar == null) {
                 quoteChar = _SINGLETON_VALUE_QuoteChar.value();
             }
@@ -824,6 +887,7 @@ public class SourceGoogleDriveCSVFormat {
                 escapeChar,
                 falseValues,
                 headerDefinition,
+                ignoreErrorsOnFieldsMismatch,
                 nullValues,
                 quoteChar,
                 skipRowsAfterHeader,
@@ -855,6 +919,12 @@ public class SourceGoogleDriveCSVFormat {
                         "filetype",
                         "\"csv\"",
                         new TypeReference<Optional<? extends SourceGoogleDriveSchemasFiletype>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_IgnoreErrorsOnFieldsMismatch =
+                new LazySingletonValue<>(
+                        "ignore_errors_on_fields_mismatch",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_QuoteChar =
                 new LazySingletonValue<>(

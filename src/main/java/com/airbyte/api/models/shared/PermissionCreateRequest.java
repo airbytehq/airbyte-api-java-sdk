@@ -25,10 +25,10 @@ public class PermissionCreateRequest {
     private Optional<? extends String> organizationId;
 
     /**
-     * Describes what actions/endpoints the permission entitles to
+     * Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
      */
     @JsonProperty("permissionType")
-    private PermissionType permissionType;
+    private PublicPermissionType permissionType;
 
     /**
      * Internal Airbyte user ID
@@ -43,7 +43,7 @@ public class PermissionCreateRequest {
     @JsonCreator
     public PermissionCreateRequest(
             @JsonProperty("organizationId") Optional<? extends String> organizationId,
-            @JsonProperty("permissionType") PermissionType permissionType,
+            @JsonProperty("permissionType") PublicPermissionType permissionType,
             @JsonProperty("userId") String userId,
             @JsonProperty("workspaceId") Optional<? extends String> workspaceId) {
         Utils.checkNotNull(organizationId, "organizationId");
@@ -57,7 +57,7 @@ public class PermissionCreateRequest {
     }
     
     public PermissionCreateRequest(
-            PermissionType permissionType,
+            PublicPermissionType permissionType,
             String userId) {
         this(Optional.empty(), permissionType, userId, Optional.empty());
     }
@@ -69,10 +69,10 @@ public class PermissionCreateRequest {
     }
 
     /**
-     * Describes what actions/endpoints the permission entitles to
+     * Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
      */
     @JsonIgnore
-    public PermissionType permissionType() {
+    public PublicPermissionType permissionType() {
         return permissionType;
     }
 
@@ -107,9 +107,9 @@ public class PermissionCreateRequest {
     }
 
     /**
-     * Describes what actions/endpoints the permission entitles to
+     * Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
      */
-    public PermissionCreateRequest withPermissionType(PermissionType permissionType) {
+    public PermissionCreateRequest withPermissionType(PublicPermissionType permissionType) {
         Utils.checkNotNull(permissionType, "permissionType");
         this.permissionType = permissionType;
         return this;
@@ -174,7 +174,7 @@ public class PermissionCreateRequest {
  
         private Optional<? extends String> organizationId = Optional.empty();
  
-        private PermissionType permissionType;
+        private PublicPermissionType permissionType;
  
         private String userId;
  
@@ -197,9 +197,9 @@ public class PermissionCreateRequest {
         }
 
         /**
-         * Describes what actions/endpoints the permission entitles to
+         * Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
          */
-        public Builder permissionType(PermissionType permissionType) {
+        public Builder permissionType(PublicPermissionType permissionType) {
             Utils.checkNotNull(permissionType, "permissionType");
             this.permissionType = permissionType;
             return this;

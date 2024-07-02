@@ -15,13 +15,13 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public enum DestinationRedshiftSchemasMethod {
-    STANDARD("Standard");
+public enum DestinationFireboltSchemasMethod {
+    S3("S3");
 
     @JsonValue
     private final String value;
 
-    private DestinationRedshiftSchemasMethod(String value) {
+    private DestinationFireboltSchemasMethod(String value) {
         this.value = value;
     }
     

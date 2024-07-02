@@ -35,6 +35,7 @@ public class Streams implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Get stream properties
      * @return The call builder
@@ -73,7 +74,7 @@ public class Streams implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getStreamProperties", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getStreamProperties", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -81,18 +82,18 @@ public class Streams implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getStreamProperties", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getStreamProperties", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getStreamProperties", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getStreamProperties", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getStreamProperties", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getStreamProperties", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
