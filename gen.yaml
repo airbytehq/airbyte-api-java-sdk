@@ -11,8 +11,9 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
 java:
-  version: 1.4.1
+  version: 1.5.0
   additionalDependencies: []
+  additionalPlugins: []
   artifactID: api
   clientServerStatusCodesAsErrors: true
   companyEmail: info@airbyte.com
@@ -30,6 +31,10 @@ java:
       shared: models/shared
       webhooks: models/webhooks
   inputModelSuffix: input
+  license:
+    name: The MIT License (MIT)
+    shortName: MIT
+    url: https://mit-license.org/
   maxMethodParams: 0
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   outputModelSuffix: output

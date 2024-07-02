@@ -45,6 +45,13 @@ public class DestinationS3 {
     private DestinationS3OutputFormat format;
 
     /**
+     * The Role ARN
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("role_arn")
+    private Optional<? extends String> roleArn;
+
+    /**
      * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("s3_bucket_name")
@@ -89,6 +96,7 @@ public class DestinationS3 {
             @JsonProperty("access_key_id") Optional<? extends String> accessKeyId,
             @JsonProperty("file_name_pattern") Optional<? extends String> fileNamePattern,
             @JsonProperty("format") DestinationS3OutputFormat format,
+            @JsonProperty("role_arn") Optional<? extends String> roleArn,
             @JsonProperty("s3_bucket_name") String s3BucketName,
             @JsonProperty("s3_bucket_path") String s3BucketPath,
             @JsonProperty("s3_bucket_region") Optional<? extends DestinationS3S3BucketRegion> s3BucketRegion,
@@ -98,6 +106,7 @@ public class DestinationS3 {
         Utils.checkNotNull(accessKeyId, "accessKeyId");
         Utils.checkNotNull(fileNamePattern, "fileNamePattern");
         Utils.checkNotNull(format, "format");
+        Utils.checkNotNull(roleArn, "roleArn");
         Utils.checkNotNull(s3BucketName, "s3BucketName");
         Utils.checkNotNull(s3BucketPath, "s3BucketPath");
         Utils.checkNotNull(s3BucketRegion, "s3BucketRegion");
@@ -108,6 +117,7 @@ public class DestinationS3 {
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.fileNamePattern = fileNamePattern;
         this.format = format;
+        this.roleArn = roleArn;
         this.s3BucketName = s3BucketName;
         this.s3BucketPath = s3BucketPath;
         this.s3BucketRegion = s3BucketRegion;
@@ -120,7 +130,7 @@ public class DestinationS3 {
             DestinationS3OutputFormat format,
             String s3BucketName,
             String s3BucketPath) {
-        this(Optional.empty(), Optional.empty(), format, s3BucketName, s3BucketPath, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), format, Optional.empty(), s3BucketName, s3BucketPath, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -152,6 +162,15 @@ public class DestinationS3 {
     @JsonIgnore
     public DestinationS3OutputFormat format() {
         return format;
+    }
+
+    /**
+     * The Role ARN
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> roleArn() {
+        return (Optional<String>) roleArn;
     }
 
     /**
@@ -252,6 +271,24 @@ public class DestinationS3 {
     public DestinationS3 withFormat(DestinationS3OutputFormat format) {
         Utils.checkNotNull(format, "format");
         this.format = format;
+        return this;
+    }
+
+    /**
+     * The Role ARN
+     */
+    public DestinationS3 withRoleArn(String roleArn) {
+        Utils.checkNotNull(roleArn, "roleArn");
+        this.roleArn = Optional.ofNullable(roleArn);
+        return this;
+    }
+
+    /**
+     * The Role ARN
+     */
+    public DestinationS3 withRoleArn(Optional<? extends String> roleArn) {
+        Utils.checkNotNull(roleArn, "roleArn");
+        this.roleArn = roleArn;
         return this;
     }
 
@@ -359,6 +396,7 @@ public class DestinationS3 {
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.fileNamePattern, other.fileNamePattern) &&
             java.util.Objects.deepEquals(this.format, other.format) &&
+            java.util.Objects.deepEquals(this.roleArn, other.roleArn) &&
             java.util.Objects.deepEquals(this.s3BucketName, other.s3BucketName) &&
             java.util.Objects.deepEquals(this.s3BucketPath, other.s3BucketPath) &&
             java.util.Objects.deepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
@@ -374,6 +412,7 @@ public class DestinationS3 {
             destinationType,
             fileNamePattern,
             format,
+            roleArn,
             s3BucketName,
             s3BucketPath,
             s3BucketRegion,
@@ -389,6 +428,7 @@ public class DestinationS3 {
                 "destinationType", destinationType,
                 "fileNamePattern", fileNamePattern,
                 "format", format,
+                "roleArn", roleArn,
                 "s3BucketName", s3BucketName,
                 "s3BucketPath", s3BucketPath,
                 "s3BucketRegion", s3BucketRegion,
@@ -404,6 +444,8 @@ public class DestinationS3 {
         private Optional<? extends String> fileNamePattern = Optional.empty();
  
         private DestinationS3OutputFormat format;
+ 
+        private Optional<? extends String> roleArn = Optional.empty();
  
         private String s3BucketName;
  
@@ -463,6 +505,24 @@ public class DestinationS3 {
         public Builder format(DestinationS3OutputFormat format) {
             Utils.checkNotNull(format, "format");
             this.format = format;
+            return this;
+        }
+
+        /**
+         * The Role ARN
+         */
+        public Builder roleArn(String roleArn) {
+            Utils.checkNotNull(roleArn, "roleArn");
+            this.roleArn = Optional.ofNullable(roleArn);
+            return this;
+        }
+
+        /**
+         * The Role ARN
+         */
+        public Builder roleArn(Optional<? extends String> roleArn) {
+            Utils.checkNotNull(roleArn, "roleArn");
+            this.roleArn = roleArn;
             return this;
         }
 
@@ -567,6 +627,7 @@ public class DestinationS3 {
                 accessKeyId,
                 fileNamePattern,
                 format,
+                roleArn,
                 s3BucketName,
                 s3BucketPath,
                 s3BucketRegion,

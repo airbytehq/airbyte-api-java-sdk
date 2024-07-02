@@ -39,6 +39,7 @@ public class Jobs implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Cancel a running Job
      * @return The call builder
@@ -74,7 +75,7 @@ public class Jobs implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("cancelJob", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("cancelJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -82,18 +83,18 @@ public class Jobs implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("cancelJob", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("cancelJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("cancelJob", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("cancelJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("cancelJob", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("cancelJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -141,6 +142,7 @@ public class Jobs implements
     }
 
 
+
     /**
      * Trigger a sync or reset job of a connection
      * @return The call builder
@@ -182,7 +184,7 @@ public class Jobs implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createJob", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -190,18 +192,18 @@ public class Jobs implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createJob", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createJob", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createJob", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -249,6 +251,7 @@ public class Jobs implements
     }
 
 
+
     /**
      * Get Job status and details
      * @return The call builder
@@ -284,7 +287,7 @@ public class Jobs implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getJob", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -292,18 +295,18 @@ public class Jobs implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getJob", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getJob", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getJob", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getJob", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -351,6 +354,7 @@ public class Jobs implements
     }
 
 
+
     /**
      * List Jobs by sync type
      * @return The call builder
@@ -389,7 +393,7 @@ public class Jobs implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("listJobs", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("listJobs", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -397,18 +401,18 @@ public class Jobs implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("listJobs", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("listJobs", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("listJobs", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("listJobs", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("listJobs", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("listJobs", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

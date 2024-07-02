@@ -24,14 +24,14 @@ public class Security {
     @SpeakeasyMetadata("security:scheme=true,type=http,subtype=bearer,name=Authorization")
     private Optional<? extends String> bearerAuth;
 
-    @SpeakeasyMetadata("security:scheme=true,type=oauth2,name=Authorization")
-    private Optional<? extends String> clientCredentials;
+    @SpeakeasyMetadata("security:scheme=true,type=oauth2,subtype=client_credentials")
+    private Optional<? extends SchemeClientCredentials> clientCredentials;
 
     @JsonCreator
     public Security(
             Optional<? extends SchemeBasicAuth> basicAuth,
             Optional<? extends String> bearerAuth,
-            Optional<? extends String> clientCredentials) {
+            Optional<? extends SchemeClientCredentials> clientCredentials) {
         Utils.checkNotNull(basicAuth, "basicAuth");
         Utils.checkNotNull(bearerAuth, "bearerAuth");
         Utils.checkNotNull(clientCredentials, "clientCredentials");
@@ -58,8 +58,8 @@ public class Security {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> clientCredentials() {
-        return (Optional<String>) clientCredentials;
+    public Optional<SchemeClientCredentials> clientCredentials() {
+        return (Optional<SchemeClientCredentials>) clientCredentials;
     }
 
     public final static Builder builder() {
@@ -90,13 +90,13 @@ public class Security {
         return this;
     }
 
-    public Security withClientCredentials(String clientCredentials) {
+    public Security withClientCredentials(SchemeClientCredentials clientCredentials) {
         Utils.checkNotNull(clientCredentials, "clientCredentials");
         this.clientCredentials = Optional.ofNullable(clientCredentials);
         return this;
     }
 
-    public Security withClientCredentials(Optional<? extends String> clientCredentials) {
+    public Security withClientCredentials(Optional<? extends SchemeClientCredentials> clientCredentials) {
         Utils.checkNotNull(clientCredentials, "clientCredentials");
         this.clientCredentials = clientCredentials;
         return this;
@@ -139,7 +139,7 @@ public class Security {
  
         private Optional<? extends String> bearerAuth = Optional.empty();
  
-        private Optional<? extends String> clientCredentials = Optional.empty();  
+        private Optional<? extends SchemeClientCredentials> clientCredentials = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -169,13 +169,13 @@ public class Security {
             return this;
         }
 
-        public Builder clientCredentials(String clientCredentials) {
+        public Builder clientCredentials(SchemeClientCredentials clientCredentials) {
             Utils.checkNotNull(clientCredentials, "clientCredentials");
             this.clientCredentials = Optional.ofNullable(clientCredentials);
             return this;
         }
 
-        public Builder clientCredentials(Optional<? extends String> clientCredentials) {
+        public Builder clientCredentials(Optional<? extends SchemeClientCredentials> clientCredentials) {
             Utils.checkNotNull(clientCredentials, "clientCredentials");
             this.clientCredentials = clientCredentials;
             return this;

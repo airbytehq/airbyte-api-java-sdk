@@ -35,9 +35,8 @@ public class SourceIp2whois {
     @JsonProperty("domain")
     private Optional<? extends String> domain;
 
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
-    private Optional<? extends Ip2whois> sourceType;
+    private Ip2whois sourceType;
 
     @JsonCreator
     public SourceIp2whois(
@@ -72,10 +71,9 @@ public class SourceIp2whois {
         return (Optional<String>) domain;
     }
 
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Ip2whois> sourceType() {
-        return (Optional<Ip2whois>) sourceType;
+    public Ip2whois sourceType() {
+        return sourceType;
     }
 
     public final static Builder builder() {
@@ -201,11 +199,11 @@ public class SourceIp2whois {
                 domain);
         }
 
-        private static final LazySingletonValue<Optional<? extends Ip2whois>> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<Ip2whois> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"ip2whois\"",
-                        new TypeReference<Optional<? extends Ip2whois>>() {});
+                        new TypeReference<Ip2whois>() {});
     }
 }
 

@@ -109,6 +109,11 @@ public class SDKMethodInterfaces {
     }
 
 
+    public interface MethodCallListOrganizationsForUser {
+        com.airbyte.api.models.operations.ListOrganizationsForUserResponse listOrganizationsForUserDirect() throws Exception;
+    }
+
+
     public interface MethodCallCreatePermission {
         com.airbyte.api.models.operations.CreatePermissionResponse createPermission(
             com.airbyte.api.models.shared.PermissionCreateRequest request) throws Exception;
@@ -184,6 +189,12 @@ public class SDKMethodInterfaces {
     public interface MethodCallGetStreamProperties {
         com.airbyte.api.models.operations.GetStreamPropertiesResponse getStreamProperties(
             com.airbyte.api.models.operations.GetStreamPropertiesRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallListUsersWithinAnOrganization {
+        com.airbyte.api.models.operations.ListUsersWithinAnOrganizationResponse listUsersWithinAnOrganization(
+            com.airbyte.api.models.operations.ListUsersWithinAnOrganizationRequest request) throws Exception;
     }
 
 

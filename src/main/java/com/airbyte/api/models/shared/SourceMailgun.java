@@ -29,7 +29,7 @@ public class SourceMailgun {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain_region")
-    private Optional<? extends String> domainRegion;
+    private Optional<? extends DomainRegionCode> domainRegion;
 
     /**
      * Primary account API key to access your Mailgun data.
@@ -49,7 +49,7 @@ public class SourceMailgun {
 
     @JsonCreator
     public SourceMailgun(
-            @JsonProperty("domain_region") Optional<? extends String> domainRegion,
+            @JsonProperty("domain_region") Optional<? extends DomainRegionCode> domainRegion,
             @JsonProperty("private_key") String privateKey,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(domainRegion, "domainRegion");
@@ -71,8 +71,8 @@ public class SourceMailgun {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> domainRegion() {
-        return (Optional<String>) domainRegion;
+    public Optional<DomainRegionCode> domainRegion() {
+        return (Optional<DomainRegionCode>) domainRegion;
     }
 
     /**
@@ -104,7 +104,7 @@ public class SourceMailgun {
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
      */
-    public SourceMailgun withDomainRegion(String domainRegion) {
+    public SourceMailgun withDomainRegion(DomainRegionCode domainRegion) {
         Utils.checkNotNull(domainRegion, "domainRegion");
         this.domainRegion = Optional.ofNullable(domainRegion);
         return this;
@@ -113,7 +113,7 @@ public class SourceMailgun {
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
      */
-    public SourceMailgun withDomainRegion(Optional<? extends String> domainRegion) {
+    public SourceMailgun withDomainRegion(Optional<? extends DomainRegionCode> domainRegion) {
         Utils.checkNotNull(domainRegion, "domainRegion");
         this.domainRegion = domainRegion;
         return this;
@@ -182,7 +182,7 @@ public class SourceMailgun {
     
     public final static class Builder {
  
-        private Optional<? extends String> domainRegion;
+        private Optional<? extends DomainRegionCode> domainRegion;
  
         private String privateKey;
  
@@ -195,7 +195,7 @@ public class SourceMailgun {
         /**
          * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
          */
-        public Builder domainRegion(String domainRegion) {
+        public Builder domainRegion(DomainRegionCode domainRegion) {
             Utils.checkNotNull(domainRegion, "domainRegion");
             this.domainRegion = Optional.ofNullable(domainRegion);
             return this;
@@ -204,7 +204,7 @@ public class SourceMailgun {
         /**
          * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
          */
-        public Builder domainRegion(Optional<? extends String> domainRegion) {
+        public Builder domainRegion(Optional<? extends DomainRegionCode> domainRegion) {
             Utils.checkNotNull(domainRegion, "domainRegion");
             this.domainRegion = domainRegion;
             return this;
@@ -247,11 +247,11 @@ public class SourceMailgun {
                 startDate);
         }
 
-        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_DomainRegion =
+        private static final LazySingletonValue<Optional<? extends DomainRegionCode>> _SINGLETON_VALUE_DomainRegion =
                 new LazySingletonValue<>(
                         "domain_region",
                         "\"US\"",
-                        new TypeReference<Optional<? extends String>>() {});
+                        new TypeReference<Optional<? extends DomainRegionCode>>() {});
 
         private static final LazySingletonValue<Mailgun> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

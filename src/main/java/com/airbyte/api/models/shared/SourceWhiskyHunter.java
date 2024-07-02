@@ -9,21 +9,17 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Optional;
 
 public class SourceWhiskyHunter {
 
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
-    private Optional<? extends WhiskyHunter> sourceType;
+    private WhiskyHunter sourceType;
 
     @JsonCreator
     public SourceWhiskyHunter() {
@@ -31,10 +27,9 @@ public class SourceWhiskyHunter {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
 
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<WhiskyHunter> sourceType() {
-        return (Optional<WhiskyHunter>) sourceType;
+    public WhiskyHunter sourceType() {
+        return sourceType;
     }
 
     public final static Builder builder() {
@@ -77,11 +72,11 @@ public class SourceWhiskyHunter {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends WhiskyHunter>> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<WhiskyHunter> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"whisky-hunter\"",
-                        new TypeReference<Optional<? extends WhiskyHunter>>() {});
+                        new TypeReference<WhiskyHunter>() {});
     }
 }
 

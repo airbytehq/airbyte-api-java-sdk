@@ -27,8 +27,9 @@ public class SourceFacebookMarketing {
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
-    private String accessToken;
+    private Optional<? extends String> accessToken;
 
     /**
      * The Facebook Ad account ID(s) to pull data from. The Ad account ID number is in the account dropdown menu or in your browser's address bar of your &lt;a href="https://adsmanager.facebook.com/adsmanager/"&gt;Meta Ads Manager&lt;/a&gt;. See the &lt;a href="https://www.facebook.com/business/help/1492627900875762"&gt;docs&lt;/a&gt; for more information.
@@ -132,7 +133,7 @@ public class SourceFacebookMarketing {
 
     @JsonCreator
     public SourceFacebookMarketing(
-            @JsonProperty("access_token") String accessToken,
+            @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("account_ids") java.util.List<String> accountIds,
             @JsonProperty("action_breakdowns_allow_empty") Optional<? extends Boolean> actionBreakdownsAllowEmpty,
             @JsonProperty("ad_statuses") Optional<? extends java.util.List<ValidAdStatuses>> adStatuses,
@@ -181,17 +182,17 @@ public class SourceFacebookMarketing {
     }
     
     public SourceFacebookMarketing(
-            String accessToken,
             java.util.List<String> accountIds) {
-        this(accessToken, accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public String accessToken() {
-        return accessToken;
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
     /**
@@ -332,6 +333,15 @@ public class SourceFacebookMarketing {
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
     public SourceFacebookMarketing withAccessToken(String accessToken) {
+        Utils.checkNotNull(accessToken, "accessToken");
+        this.accessToken = Optional.ofNullable(accessToken);
+        return this;
+    }
+
+    /**
+     * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
+     */
+    public SourceFacebookMarketing withAccessToken(Optional<? extends String> accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
         this.accessToken = accessToken;
         return this;
@@ -652,7 +662,7 @@ public class SourceFacebookMarketing {
     
     public final static class Builder {
  
-        private String accessToken;
+        private Optional<? extends String> accessToken = Optional.empty();
  
         private java.util.List<String> accountIds;
  
@@ -690,6 +700,15 @@ public class SourceFacebookMarketing {
          * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
          */
         public Builder accessToken(String accessToken) {
+            Utils.checkNotNull(accessToken, "accessToken");
+            this.accessToken = Optional.ofNullable(accessToken);
+            return this;
+        }
+
+        /**
+         * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
+         */
+        public Builder accessToken(Optional<? extends String> accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;

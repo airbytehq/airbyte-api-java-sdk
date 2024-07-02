@@ -41,10 +41,11 @@ public class Workspaces implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create OAuth override credentials for a workspace and source type.
      * Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
-     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
      * @return The call builder
      */
     public com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder createOrUpdateWorkspaceOAuthCredentials() {
@@ -54,7 +55,7 @@ public class Workspaces implements
     /**
      * Create OAuth override credentials for a workspace and source type.
      * Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
-     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
      * @param request The request object containing all of the parameters for the API call.
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -88,7 +89,7 @@ public class Workspaces implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createOrUpdateWorkspaceOAuthCredentials", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -96,18 +97,18 @@ public class Workspaces implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createOrUpdateWorkspaceOAuthCredentials", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createOrUpdateWorkspaceOAuthCredentials", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createOrUpdateWorkspaceOAuthCredentials", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createOrUpdateWorkspaceOAuthCredentials", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -142,6 +143,7 @@ public class Workspaces implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -185,7 +187,7 @@ public class Workspaces implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createWorkspace", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -193,18 +195,18 @@ public class Workspaces implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createWorkspace", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createWorkspace", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createWorkspace", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -252,6 +254,7 @@ public class Workspaces implements
     }
 
 
+
     /**
      * Delete a Workspace
      * @return The call builder
@@ -287,7 +290,7 @@ public class Workspaces implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("deleteWorkspace", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("deleteWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -295,18 +298,18 @@ public class Workspaces implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("deleteWorkspace", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("deleteWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("deleteWorkspace", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("deleteWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("deleteWorkspace", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("deleteWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -341,6 +344,7 @@ public class Workspaces implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -378,7 +382,7 @@ public class Workspaces implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getWorkspace", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -386,18 +390,18 @@ public class Workspaces implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getWorkspace", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getWorkspace", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getWorkspace", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -445,6 +449,7 @@ public class Workspaces implements
     }
 
 
+
     /**
      * List workspaces
      * @return The call builder
@@ -483,7 +488,7 @@ public class Workspaces implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("listWorkspaces", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("listWorkspaces", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -491,18 +496,18 @@ public class Workspaces implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("listWorkspaces", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("listWorkspaces", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("listWorkspaces", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("listWorkspaces", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("listWorkspaces", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("listWorkspaces", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -550,6 +555,7 @@ public class Workspaces implements
     }
 
 
+
     /**
      * Update a workspace
      * @return The call builder
@@ -593,7 +599,7 @@ public class Workspaces implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("updateWorkspace", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("updateWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -601,18 +607,18 @@ public class Workspaces implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("updateWorkspace", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("updateWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("updateWorkspace", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("updateWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("updateWorkspace", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("updateWorkspace", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

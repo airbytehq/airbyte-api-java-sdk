@@ -39,17 +39,11 @@ public class UploadingMethod {
         Utils.checkNotNull(value, "value");
         return new UploadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AWSS3Staging>(){}));
     }
-
-    public static UploadingMethod of(Standard value) {
-        Utils.checkNotNull(value, "value");
-        return new UploadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Standard>(){}));
-    }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code AWSS3Staging}</li>
-     * <li>{@code Standard}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -89,8 +83,7 @@ public class UploadingMethod {
 
         public _Deserializer() {
             super(UploadingMethod.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<AWSS3Staging>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<Standard>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<AWSS3Staging>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

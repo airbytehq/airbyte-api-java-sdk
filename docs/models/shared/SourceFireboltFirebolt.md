@@ -1,8 +1,8 @@
-# DestinationRedshiftSchemasMethod
+# SourceFireboltFirebolt
 
 
 ## Values
 
 | Name       | Value      |
 | ---------- | ---------- |
-| `STANDARD` | Standard   |
+| `FIREBOLT` | firebolt   |

@@ -46,7 +46,7 @@ public class Application {
                 .build();
 
             PermissionCreateRequest req = PermissionCreateRequest.builder()
-                .permissionType(PermissionType.ORGANIZATION_ADMIN)
+                .permissionType(PublicPermissionType.ORGANIZATION_EDITOR)
                 .userId("297cb6ba-4669-43f1-b750-c800e1a1986b")
                 .build();
 
@@ -64,6 +64,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -77,12 +78,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreatePermissionResponse>](../../models/operations/CreatePermissionResponse.md)**
+**[com.airbyte.api.models.operations.CreatePermissionResponse](../../models/operations/CreatePermissionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deletePermission
 
@@ -136,6 +137,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -149,12 +151,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.DeletePermissionResponse>](../../models/operations/DeletePermissionResponse.md)**
+**[com.airbyte.api.models.operations.DeletePermissionResponse](../../models/operations/DeletePermissionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getPermission
 
@@ -210,6 +212,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -223,12 +226,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetPermissionResponse>](../../models/operations/GetPermissionResponse.md)**
+**[com.airbyte.api.models.operations.GetPermissionResponse](../../models/operations/GetPermissionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listPermissions
 
@@ -283,6 +286,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -296,12 +300,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.ListPermissionsResponse>](../../models/operations/ListPermissionsResponse.md)**
+**[com.airbyte.api.models.operations.ListPermissionsResponse](../../models/operations/ListPermissionsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## updatePermission
 
@@ -360,6 +364,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -373,9 +378,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.UpdatePermissionResponse>](../../models/operations/UpdatePermissionResponse.md)**
+**[com.airbyte.api.models.operations.UpdatePermissionResponse](../../models/operations/UpdatePermissionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

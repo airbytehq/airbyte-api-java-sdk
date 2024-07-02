@@ -71,6 +71,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -84,12 +85,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreateSourceResponse>](../../models/operations/CreateSourceResponse.md)**
+**[com.airbyte.api.models.operations.CreateSourceResponse](../../models/operations/CreateSourceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deleteSource
 
@@ -143,6 +144,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -156,12 +158,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.DeleteSourceResponse>](../../models/operations/DeleteSourceResponse.md)**
+**[com.airbyte.api.models.operations.DeleteSourceResponse](../../models/operations/DeleteSourceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getSource
 
@@ -217,6 +219,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -230,12 +233,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetSourceResponse>](../../models/operations/GetSourceResponse.md)**
+**[com.airbyte.api.models.operations.GetSourceResponse](../../models/operations/GetSourceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## initiateOAuth
 
@@ -295,6 +298,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -308,12 +312,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.InitiateOAuthResponse>](../../models/operations/InitiateOAuthResponse.md)**
+**[com.airbyte.api.models.operations.InitiateOAuthResponse](../../models/operations/InitiateOAuthResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listSources
 
@@ -442,6 +446,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -455,12 +460,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.ListSourcesResponse>](../../models/operations/ListSourcesResponse.md)**
+**[com.airbyte.api.models.operations.ListSourcesResponse](../../models/operations/ListSourcesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## patchSource
 
@@ -524,6 +529,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -537,12 +543,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.PatchSourceResponse>](../../models/operations/PatchSourceResponse.md)**
+**[com.airbyte.api.models.operations.PatchSourceResponse](../../models/operations/PatchSourceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## putSource
 
@@ -606,6 +612,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -619,9 +626,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.PutSourceResponse>](../../models/operations/PutSourceResponse.md)**
+**[com.airbyte.api.models.operations.PutSourceResponse](../../models/operations/PutSourceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

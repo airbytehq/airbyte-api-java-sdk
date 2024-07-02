@@ -13,11 +13,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 public class SourceMixpanel {
@@ -47,7 +49,7 @@ public class SourceMixpanel {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
-    private Optional<? extends LocalDate> endDate;
+    private Optional<? extends OffsetDateTime> endDate;
 
     /**
      * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
@@ -78,18 +80,18 @@ public class SourceMixpanel {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
-    private Optional<? extends LocalDate> startDate;
+    private Optional<? extends OffsetDateTime> startDate;
 
     @JsonCreator
     public SourceMixpanel(
             @JsonProperty("attribution_window") Optional<? extends Long> attributionWindow,
             @JsonProperty("credentials") AuthenticationWildcard credentials,
             @JsonProperty("date_window_size") Optional<? extends Long> dateWindowSize,
-            @JsonProperty("end_date") Optional<? extends LocalDate> endDate,
+            @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
             @JsonProperty("project_timezone") Optional<? extends String> projectTimezone,
             @JsonProperty("region") Optional<? extends SourceMixpanelRegion> region,
             @JsonProperty("select_properties_by_default") Optional<? extends Boolean> selectPropertiesByDefault,
-            @JsonProperty("start_date") Optional<? extends LocalDate> startDate) {
+            @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(attributionWindow, "attributionWindow");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(dateWindowSize, "dateWindowSize");
@@ -145,8 +147,8 @@ public class SourceMixpanel {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<LocalDate> endDate() {
-        return (Optional<LocalDate>) endDate;
+    public Optional<OffsetDateTime> endDate() {
+        return (Optional<OffsetDateTime>) endDate;
     }
 
     /**
@@ -186,8 +188,8 @@ public class SourceMixpanel {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<LocalDate> startDate() {
-        return (Optional<LocalDate>) startDate;
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {
@@ -242,7 +244,7 @@ public class SourceMixpanel {
     /**
      * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
      */
-    public SourceMixpanel withEndDate(LocalDate endDate) {
+    public SourceMixpanel withEndDate(OffsetDateTime endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = Optional.ofNullable(endDate);
         return this;
@@ -251,7 +253,7 @@ public class SourceMixpanel {
     /**
      * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
      */
-    public SourceMixpanel withEndDate(Optional<? extends LocalDate> endDate) {
+    public SourceMixpanel withEndDate(Optional<? extends OffsetDateTime> endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = endDate;
         return this;
@@ -314,7 +316,7 @@ public class SourceMixpanel {
     /**
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
      */
-    public SourceMixpanel withStartDate(LocalDate startDate) {
+    public SourceMixpanel withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = Optional.ofNullable(startDate);
         return this;
@@ -323,7 +325,7 @@ public class SourceMixpanel {
     /**
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
      */
-    public SourceMixpanel withStartDate(Optional<? extends LocalDate> startDate) {
+    public SourceMixpanel withStartDate(Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
@@ -386,7 +388,7 @@ public class SourceMixpanel {
  
         private Optional<? extends Long> dateWindowSize;
  
-        private Optional<? extends LocalDate> endDate = Optional.empty();
+        private Optional<? extends OffsetDateTime> endDate = Optional.empty();
  
         private Optional<? extends String> projectTimezone;
  
@@ -394,7 +396,7 @@ public class SourceMixpanel {
  
         private Optional<? extends Boolean> selectPropertiesByDefault;
  
-        private Optional<? extends LocalDate> startDate = Optional.empty();  
+        private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -448,7 +450,7 @@ public class SourceMixpanel {
         /**
          * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
          */
-        public Builder endDate(LocalDate endDate) {
+        public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = Optional.ofNullable(endDate);
             return this;
@@ -457,7 +459,7 @@ public class SourceMixpanel {
         /**
          * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
          */
-        public Builder endDate(Optional<? extends LocalDate> endDate) {
+        public Builder endDate(Optional<? extends OffsetDateTime> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
@@ -520,7 +522,7 @@ public class SourceMixpanel {
         /**
          * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
          */
-        public Builder startDate(LocalDate startDate) {
+        public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = Optional.ofNullable(startDate);
             return this;
@@ -529,7 +531,7 @@ public class SourceMixpanel {
         /**
          * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
          */
-        public Builder startDate(Optional<? extends LocalDate> startDate) {
+        public Builder startDate(Optional<? extends OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;

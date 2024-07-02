@@ -65,6 +65,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -78,12 +79,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreateConnectionResponse>](../../models/operations/CreateConnectionResponse.md)**
+**[com.airbyte.api.models.operations.CreateConnectionResponse](../../models/operations/CreateConnectionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deleteConnection
 
@@ -137,6 +138,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -150,12 +152,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.DeleteConnectionResponse>](../../models/operations/DeleteConnectionResponse.md)**
+**[com.airbyte.api.models.operations.DeleteConnectionResponse](../../models/operations/DeleteConnectionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getConnection
 
@@ -211,6 +213,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -224,12 +227,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetConnectionResponse>](../../models/operations/GetConnectionResponse.md)**
+**[com.airbyte.api.models.operations.GetConnectionResponse](../../models/operations/GetConnectionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listConnections
 
@@ -284,6 +287,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -297,12 +301,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.ListConnectionsResponse>](../../models/operations/ListConnectionsResponse.md)**
+**[com.airbyte.api.models.operations.ListConnectionsResponse](../../models/operations/ListConnectionsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## patchConnection
 
@@ -361,6 +365,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -374,9 +379,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.PatchConnectionResponse>](../../models/operations/PatchConnectionResponse.md)**
+**[com.airbyte.api.models.operations.PatchConnectionResponse](../../models/operations/PatchConnectionResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

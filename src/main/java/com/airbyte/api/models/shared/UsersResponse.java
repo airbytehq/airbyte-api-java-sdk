@@ -4,7 +4,6 @@
 
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -16,27 +15,34 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 /**
- * Standard - &lt;i&gt;(not recommended)&lt;/i&gt; Direct loading using SQL INSERT statements. This method is extremely inefficient and provided only for quick testing. In all other cases, you should use S3 uploading.
+ * UsersResponse - List/Array of multiple users in an organization
  */
 
-public class Standard {
+public class UsersResponse {
 
-    @JsonProperty("method")
-    private DestinationRedshiftSchemasMethod method;
+    @JsonProperty("data")
+    private java.util.List<UserResponse> data;
 
     @JsonCreator
-    public Standard() {
-        
-        this.method = Builder._SINGLETON_VALUE_Method.value();
+    public UsersResponse(
+            @JsonProperty("data") java.util.List<UserResponse> data) {
+        Utils.checkNotNull(data, "data");
+        this.data = data;
     }
 
     @JsonIgnore
-    public DestinationRedshiftSchemasMethod method() {
-        return method;
+    public java.util.List<UserResponse> data() {
+        return data;
     }
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    public UsersResponse withData(java.util.List<UserResponse> data) {
+        Utils.checkNotNull(data, "data");
+        this.data = data;
+        return this;
     }
     
     @Override
@@ -47,39 +53,41 @@ public class Standard {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Standard other = (Standard) o;
+        UsersResponse other = (UsersResponse) o;
         return 
-            java.util.Objects.deepEquals(this.method, other.method);
+            java.util.Objects.deepEquals(this.data, other.data);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            method);
+            data);
     }
     
     @Override
     public String toString() {
-        return Utils.toString(Standard.class,
-                "method", method);
+        return Utils.toString(UsersResponse.class,
+                "data", data);
     }
     
-    public final static class Builder {  
+    public final static class Builder {
+ 
+        private java.util.List<UserResponse> data;  
         
         private Builder() {
           // force use of static builder() method
         }
-        
-        public Standard build() {
-            return new Standard(
-                );
-        }
 
-        private static final LazySingletonValue<DestinationRedshiftSchemasMethod> _SINGLETON_VALUE_Method =
-                new LazySingletonValue<>(
-                        "method",
-                        "\"Standard\"",
-                        new TypeReference<DestinationRedshiftSchemasMethod>() {});
+        public Builder data(java.util.List<UserResponse> data) {
+            Utils.checkNotNull(data, "data");
+            this.data = data;
+            return this;
+        }
+        
+        public UsersResponse build() {
+            return new UsersResponse(
+                data);
+        }
     }
 }
 

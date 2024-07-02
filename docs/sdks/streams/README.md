@@ -59,6 +59,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -72,9 +73,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetStreamPropertiesResponse>](../../models/operations/GetStreamPropertiesResponse.md)**
+**[com.airbyte.api.models.operations.GetStreamPropertiesResponse](../../models/operations/GetStreamPropertiesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
