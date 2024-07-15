@@ -95,6 +95,11 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationElasticsearch>(){}));
     }
 
+    public static DestinationConfiguration of(DestinationFirebolt value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationFirebolt>(){}));
+    }
+
     public static DestinationConfiguration of(DestinationFirestore value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationFirestore>(){}));
@@ -103,11 +108,6 @@ public class DestinationConfiguration {
     public static DestinationConfiguration of(DestinationGcs value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcs>(){}));
-    }
-
-    public static DestinationConfiguration of(DestinationLangchain value) {
-        Utils.checkNotNull(value, "value");
-        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationLangchain>(){}));
     }
 
     public static DestinationConfiguration of(DestinationMilvus value) {
@@ -230,9 +230,9 @@ public class DestinationConfiguration {
      * <li>{@code DestinationDuckdb}</li>
      * <li>{@code DestinationDynamodb}</li>
      * <li>{@code DestinationElasticsearch}</li>
+     * <li>{@code DestinationFirebolt}</li>
      * <li>{@code DestinationFirestore}</li>
      * <li>{@code DestinationGcs}</li>
-     * <li>{@code DestinationLangchain}</li>
      * <li>{@code DestinationMilvus}</li>
      * <li>{@code DestinationMongodb}</li>
      * <li>{@code DestinationMssql}</li>
@@ -305,9 +305,9 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDuckdb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDynamodb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearch>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationFirebolt>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationFirestore>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationGcs>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationLangchain>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMilvus>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMongodb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMssql>() {}, Utils.JsonShape.DEFAULT),

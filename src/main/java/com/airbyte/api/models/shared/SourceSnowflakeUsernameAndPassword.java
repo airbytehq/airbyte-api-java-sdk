@@ -19,7 +19,7 @@ import java.math.BigInteger;
 public class SourceSnowflakeUsernameAndPassword {
 
     @JsonProperty("auth_type")
-    private SourceSnowflakeSchemasAuthType authType;
+    private SourceSnowflakeSchemasCredentialsAuthType authType;
 
     /**
      * The password associated with the username.
@@ -45,7 +45,7 @@ public class SourceSnowflakeUsernameAndPassword {
     }
 
     @JsonIgnore
-    public SourceSnowflakeSchemasAuthType authType() {
+    public SourceSnowflakeSchemasCredentialsAuthType authType() {
         return authType;
     }
 
@@ -152,11 +152,11 @@ public class SourceSnowflakeUsernameAndPassword {
                 username);
         }
 
-        private static final LazySingletonValue<SourceSnowflakeSchemasAuthType> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<SourceSnowflakeSchemasCredentialsAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"username/password\"",
-                        new TypeReference<SourceSnowflakeSchemasAuthType>() {});
+                        new TypeReference<SourceSnowflakeSchemasCredentialsAuthType>() {});
     }
 }
 

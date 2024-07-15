@@ -4,6 +4,7 @@
 
 package com.airbyte.api;
 
+import com.airbyte.api.hooks.ClientCredentialsHook;
 import com.airbyte.api.utils.Hook.SdkInitData;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.RetryConfig;
@@ -21,12 +22,22 @@ class SDKConfiguration {
     public int serverIdx = 0;
     public String language = "java";
     public String openapiDocVersion = "1.0.0";
-    public String sdkVersion = "1.4.1";
-    public String genVersion = "2.338.1";
-    public String userAgent = "speakeasy-sdk/java 1.4.1 2.338.1 1.0.0 com.airbyte.api";
+    public String sdkVersion = "1.5.0";
+    public String genVersion = "2.372.3";
+    public String userAgent = "speakeasy-sdk/java 1.5.0 2.372.3 1.0.0 com.airbyte.api";
 
-    private com.airbyte.api.utils.Hooks _hooks = new com.airbyte.api.utils.Hooks();
+    private com.airbyte.api.utils.Hooks _hooks = createHooks();
 
+    private static com.airbyte.api.utils.Hooks createHooks() {
+        com.airbyte.api.utils.Hooks hooks = new com.airbyte.api.utils.Hooks();
+        // register client credentials hooks
+        ClientCredentialsHook h = new ClientCredentialsHook();
+        hooks.registerSdkInit(h);
+        hooks.registerBeforeRequest(h);
+        hooks.registerAfterError(h);
+        return hooks;
+    }
+    
     public com.airbyte.api.utils.Hooks hooks() {
         return _hooks;
     }

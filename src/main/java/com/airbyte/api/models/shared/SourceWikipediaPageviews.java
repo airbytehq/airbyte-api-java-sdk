@@ -58,7 +58,7 @@ public class SourceWikipediaPageviews {
     private WikipediaPageviews sourceType;
 
     /**
-     * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format.
+     * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format. Also serves as the date to retrieve data for the top articles.
      */
     @JsonProperty("start")
     private String start;
@@ -143,7 +143,7 @@ public class SourceWikipediaPageviews {
     }
 
     /**
-     * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format.
+     * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format. Also serves as the date to retrieve data for the top articles.
      */
     @JsonIgnore
     public String start() {
@@ -209,7 +209,7 @@ public class SourceWikipediaPageviews {
     }
 
     /**
-     * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format.
+     * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format. Also serves as the date to retrieve data for the top articles.
      */
     public SourceWikipediaPageviews withStart(String start) {
         Utils.checkNotNull(start, "start");
@@ -338,7 +338,7 @@ public class SourceWikipediaPageviews {
         }
 
         /**
-         * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format.
+         * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format. Also serves as the date to retrieve data for the top articles.
          */
         public Builder start(String start) {
             Utils.checkNotNull(start, "start");

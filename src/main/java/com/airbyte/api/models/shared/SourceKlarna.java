@@ -35,7 +35,7 @@ public class SourceKlarna {
     private Optional<? extends Boolean> playground;
 
     /**
-     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
+     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
      */
     @JsonProperty("region")
     private SourceKlarnaRegion region;
@@ -91,7 +91,7 @@ public class SourceKlarna {
     }
 
     /**
-     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
+     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
      */
     @JsonIgnore
     public SourceKlarnaRegion region() {
@@ -143,7 +143,7 @@ public class SourceKlarna {
     }
 
     /**
-     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
+     * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
      */
     public SourceKlarna withRegion(SourceKlarnaRegion region) {
         Utils.checkNotNull(region, "region");
@@ -239,7 +239,7 @@ public class SourceKlarna {
         }
 
         /**
-         * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
+         * Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
          */
         public Builder region(SourceKlarnaRegion region) {
             Utils.checkNotNull(region, "region");

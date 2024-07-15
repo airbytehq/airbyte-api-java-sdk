@@ -73,6 +73,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -86,12 +87,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreateDestinationResponse>](../../models/operations/CreateDestinationResponse.md)**
+**[com.airbyte.api.models.operations.CreateDestinationResponse](../../models/operations/CreateDestinationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deleteDestination
 
@@ -145,6 +146,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -158,12 +160,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.DeleteDestinationResponse>](../../models/operations/DeleteDestinationResponse.md)**
+**[com.airbyte.api.models.operations.DeleteDestinationResponse](../../models/operations/DeleteDestinationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getDestination
 
@@ -219,6 +221,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -232,12 +235,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetDestinationResponse>](../../models/operations/GetDestinationResponse.md)**
+**[com.airbyte.api.models.operations.GetDestinationResponse](../../models/operations/GetDestinationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listDestinations
 
@@ -292,6 +295,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -305,12 +309,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.ListDestinationsResponse>](../../models/operations/ListDestinationsResponse.md)**
+**[com.airbyte.api.models.operations.ListDestinationsResponse](../../models/operations/ListDestinationsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## patchDestination
 
@@ -376,6 +380,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -389,12 +394,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.PatchDestinationResponse>](../../models/operations/PatchDestinationResponse.md)**
+**[com.airbyte.api.models.operations.PatchDestinationResponse](../../models/operations/PatchDestinationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## putDestination
 
@@ -461,6 +466,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -474,9 +480,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.PutDestinationResponse>](../../models/operations/PutDestinationResponse.md)**
+**[com.airbyte.api.models.operations.PutDestinationResponse](../../models/operations/PutDestinationResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

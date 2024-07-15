@@ -16,7 +16,7 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 /**
- * DetectChangesWithXminSystemColumn - &lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts and updates via Postgres &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/#xmin"&gt;Xmin system column&lt;/a&gt;. Only recommended for tables up to 500GB.
+ * DetectChangesWithXminSystemColumn - &lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts and updates via Postgres &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/#xmin"&gt;Xmin system column&lt;/a&gt;. Suitable for databases that have low transaction pressure.
  */
 
 public class DetectChangesWithXminSystemColumn {

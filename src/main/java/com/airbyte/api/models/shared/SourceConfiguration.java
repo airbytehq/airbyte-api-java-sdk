@@ -145,6 +145,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChartmogul>(){}));
     }
 
+    public static SourceConfiguration of(SourceClazar value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClazar>(){}));
+    }
+
     public static SourceConfiguration of(SourceClickhouse value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceClickhouse>(){}));
@@ -193,6 +198,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceConvex value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConvex>(){}));
+    }
+
+    public static SourceConfiguration of(SourceDatadog value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDatadog>(){}));
     }
 
     public static SourceConfiguration of(SourceDatascope value) {
@@ -265,6 +275,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFirebolt>(){}));
     }
 
+    public static SourceConfiguration of(SourceFleetio value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFleetio>(){}));
+    }
+
     public static SourceConfiguration of(SourceFreshcaller value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshcaller>(){}));
@@ -315,6 +330,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGnews>(){}));
     }
 
+    public static SourceConfiguration of(SourceGoldcast value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoldcast>(){}));
+    }
+
     public static SourceConfiguration of(SourceGoogleAds value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAds>(){}));
@@ -323,11 +343,6 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceGoogleAnalyticsDataApi value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApi>(){}));
-    }
-
-    public static SourceConfiguration of(SourceGoogleAnalyticsV4ServiceAccountOnly value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsV4ServiceAccountOnly>(){}));
     }
 
     public static SourceConfiguration of(SourceGoogleDirectory value) {
@@ -673,11 +688,6 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourcePrestashop value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePrestashop>(){}));
-    }
-
-    public static SourceConfiguration of(SourcePunkApi value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePunkApi>(){}));
     }
 
     public static SourceConfiguration of(SourcePypi value) {
@@ -1030,6 +1040,7 @@ public class SourceConfiguration {
      * <li>{@code SourceCart}</li>
      * <li>{@code SourceChargebee}</li>
      * <li>{@code SourceChartmogul}</li>
+     * <li>{@code SourceClazar}</li>
      * <li>{@code SourceClickhouse}</li>
      * <li>{@code SourceClickupApi}</li>
      * <li>{@code SourceClockify}</li>
@@ -1040,6 +1051,7 @@ public class SourceConfiguration {
      * <li>{@code SourceConfigcat}</li>
      * <li>{@code SourceConfluence}</li>
      * <li>{@code SourceConvex}</li>
+     * <li>{@code SourceDatadog}</li>
      * <li>{@code SourceDatascope}</li>
      * <li>{@code SourceDelighted}</li>
      * <li>{@code SourceDixa}</li>
@@ -1054,6 +1066,7 @@ public class SourceConfiguration {
      * <li>{@code SourceFauna}</li>
      * <li>{@code SourceFile}</li>
      * <li>{@code SourceFirebolt}</li>
+     * <li>{@code SourceFleetio}</li>
      * <li>{@code SourceFreshcaller}</li>
      * <li>{@code SourceFreshdesk}</li>
      * <li>{@code SourceFreshsales}</li>
@@ -1064,9 +1077,9 @@ public class SourceConfiguration {
      * <li>{@code SourceGitlab}</li>
      * <li>{@code SourceGlassfrog}</li>
      * <li>{@code SourceGnews}</li>
+     * <li>{@code SourceGoldcast}</li>
      * <li>{@code SourceGoogleAds}</li>
      * <li>{@code SourceGoogleAnalyticsDataApi}</li>
-     * <li>{@code SourceGoogleAnalyticsV4ServiceAccountOnly}</li>
      * <li>{@code SourceGoogleDirectory}</li>
      * <li>{@code SourceGoogleDrive}</li>
      * <li>{@code SourceGooglePagespeedInsights}</li>
@@ -1136,7 +1149,6 @@ public class SourceConfiguration {
      * <li>{@code SourcePosthog}</li>
      * <li>{@code SourcePostmarkapp}</li>
      * <li>{@code SourcePrestashop}</li>
-     * <li>{@code SourcePunkApi}</li>
      * <li>{@code SourcePypi}</li>
      * <li>{@code SourceQualaroo}</li>
      * <li>{@code SourceRailz}</li>
@@ -1263,6 +1275,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceCart>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceChargebee>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceChartmogul>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceClazar>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceClickhouse>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceClickupApi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceClockify>() {}, Utils.JsonShape.DEFAULT),
@@ -1273,6 +1286,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceConfigcat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceConfluence>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceConvex>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceDatadog>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceDatascope>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceDelighted>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceDixa>() {}, Utils.JsonShape.DEFAULT),
@@ -1287,6 +1301,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFauna>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFile>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFirebolt>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceFleetio>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshcaller>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshdesk>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshsales>() {}, Utils.JsonShape.DEFAULT),
@@ -1297,9 +1312,9 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGitlab>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGlassfrog>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGnews>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoldcast>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAds>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApi>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsV4ServiceAccountOnly>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleDirectory>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleDrive>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGooglePagespeedInsights>() {}, Utils.JsonShape.DEFAULT),
@@ -1369,7 +1384,6 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePosthog>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePostmarkapp>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePrestashop>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourcePunkApi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePypi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceQualaroo>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceRailz>() {}, Utils.JsonShape.DEFAULT),

@@ -55,9 +55,9 @@ public class SourceMicrosoftOnedriveFormat {
         return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveParquetFormat>(){}));
     }
 
-    public static SourceMicrosoftOnedriveFormat of(SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental value) {
+    public static SourceMicrosoftOnedriveFormat of(UnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental>(){}));
+        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<UnstructuredDocumentFormat>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourceMicrosoftOnedriveFormat {
      * <li>{@code SourceMicrosoftOnedriveCSVFormat}</li>
      * <li>{@code SourceMicrosoftOnedriveJsonlFormat}</li>
      * <li>{@code SourceMicrosoftOnedriveParquetFormat}</li>
-     * <li>{@code SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental}</li>
+     * <li>{@code UnstructuredDocumentFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -111,7 +111,7 @@ public class SourceMicrosoftOnedriveFormat {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveCSVFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveJsonlFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveParquetFormat>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<UnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

@@ -1,4 +1,0 @@
-# DestinationLangchainIndexing
-
-Indexing configuration
-

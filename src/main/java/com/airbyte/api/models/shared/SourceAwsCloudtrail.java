@@ -31,14 +31,19 @@ public class SourceAwsCloudtrail {
     /**
      * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_region_name")
-    private String awsRegionName;
+    private Optional<? extends String> awsRegionName;
 
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonProperty("aws_secret_key")
     private String awsSecretKey;
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookup_attributes_filter")
+    private Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter;
 
     @JsonProperty("sourceType")
     private AwsCloudtrail sourceType;
@@ -53,25 +58,27 @@ public class SourceAwsCloudtrail {
     @JsonCreator
     public SourceAwsCloudtrail(
             @JsonProperty("aws_key_id") String awsKeyId,
-            @JsonProperty("aws_region_name") String awsRegionName,
+            @JsonProperty("aws_region_name") Optional<? extends String> awsRegionName,
             @JsonProperty("aws_secret_key") String awsSecretKey,
+            @JsonProperty("lookup_attributes_filter") Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter,
             @JsonProperty("start_date") Optional<? extends LocalDate> startDate) {
         Utils.checkNotNull(awsKeyId, "awsKeyId");
         Utils.checkNotNull(awsRegionName, "awsRegionName");
         Utils.checkNotNull(awsSecretKey, "awsSecretKey");
+        Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
         Utils.checkNotNull(startDate, "startDate");
         this.awsKeyId = awsKeyId;
         this.awsRegionName = awsRegionName;
         this.awsSecretKey = awsSecretKey;
+        this.lookupAttributesFilter = lookupAttributesFilter;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceAwsCloudtrail(
             String awsKeyId,
-            String awsRegionName,
             String awsSecretKey) {
-        this(awsKeyId, awsRegionName, awsSecretKey, Optional.empty());
+        this(awsKeyId, Optional.empty(), awsSecretKey, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -85,9 +92,10 @@ public class SourceAwsCloudtrail {
     /**
      * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public String awsRegionName() {
-        return awsRegionName;
+    public Optional<String> awsRegionName() {
+        return (Optional<String>) awsRegionName;
     }
 
     /**
@@ -96,6 +104,12 @@ public class SourceAwsCloudtrail {
     @JsonIgnore
     public String awsSecretKey() {
         return awsSecretKey;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter() {
+        return (Optional<FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody>) lookupAttributesFilter;
     }
 
     @JsonIgnore
@@ -130,6 +144,15 @@ public class SourceAwsCloudtrail {
      */
     public SourceAwsCloudtrail withAwsRegionName(String awsRegionName) {
         Utils.checkNotNull(awsRegionName, "awsRegionName");
+        this.awsRegionName = Optional.ofNullable(awsRegionName);
+        return this;
+    }
+
+    /**
+     * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
+     */
+    public SourceAwsCloudtrail withAwsRegionName(Optional<? extends String> awsRegionName) {
+        Utils.checkNotNull(awsRegionName, "awsRegionName");
         this.awsRegionName = awsRegionName;
         return this;
     }
@@ -140,6 +163,18 @@ public class SourceAwsCloudtrail {
     public SourceAwsCloudtrail withAwsSecretKey(String awsSecretKey) {
         Utils.checkNotNull(awsSecretKey, "awsSecretKey");
         this.awsSecretKey = awsSecretKey;
+        return this;
+    }
+
+    public SourceAwsCloudtrail withLookupAttributesFilter(FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody lookupAttributesFilter) {
+        Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
+        this.lookupAttributesFilter = Optional.ofNullable(lookupAttributesFilter);
+        return this;
+    }
+
+    public SourceAwsCloudtrail withLookupAttributesFilter(Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter) {
+        Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
+        this.lookupAttributesFilter = lookupAttributesFilter;
         return this;
     }
 
@@ -174,6 +209,7 @@ public class SourceAwsCloudtrail {
             java.util.Objects.deepEquals(this.awsKeyId, other.awsKeyId) &&
             java.util.Objects.deepEquals(this.awsRegionName, other.awsRegionName) &&
             java.util.Objects.deepEquals(this.awsSecretKey, other.awsSecretKey) &&
+            java.util.Objects.deepEquals(this.lookupAttributesFilter, other.lookupAttributesFilter) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -184,6 +220,7 @@ public class SourceAwsCloudtrail {
             awsKeyId,
             awsRegionName,
             awsSecretKey,
+            lookupAttributesFilter,
             sourceType,
             startDate);
     }
@@ -194,6 +231,7 @@ public class SourceAwsCloudtrail {
                 "awsKeyId", awsKeyId,
                 "awsRegionName", awsRegionName,
                 "awsSecretKey", awsSecretKey,
+                "lookupAttributesFilter", lookupAttributesFilter,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -202,11 +240,13 @@ public class SourceAwsCloudtrail {
  
         private String awsKeyId;
  
-        private String awsRegionName;
+        private Optional<? extends String> awsRegionName;
  
         private String awsSecretKey;
  
-        private Optional<? extends LocalDate> startDate;  
+        private Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter = Optional.empty();
+ 
+        private Optional<? extends LocalDate> startDate = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -226,6 +266,15 @@ public class SourceAwsCloudtrail {
          */
         public Builder awsRegionName(String awsRegionName) {
             Utils.checkNotNull(awsRegionName, "awsRegionName");
+            this.awsRegionName = Optional.ofNullable(awsRegionName);
+            return this;
+        }
+
+        /**
+         * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
+         */
+        public Builder awsRegionName(Optional<? extends String> awsRegionName) {
+            Utils.checkNotNull(awsRegionName, "awsRegionName");
             this.awsRegionName = awsRegionName;
             return this;
         }
@@ -236,6 +285,18 @@ public class SourceAwsCloudtrail {
         public Builder awsSecretKey(String awsSecretKey) {
             Utils.checkNotNull(awsSecretKey, "awsSecretKey");
             this.awsSecretKey = awsSecretKey;
+            return this;
+        }
+
+        public Builder lookupAttributesFilter(FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody lookupAttributesFilter) {
+            Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
+            this.lookupAttributesFilter = Optional.ofNullable(lookupAttributesFilter);
+            return this;
+        }
+
+        public Builder lookupAttributesFilter(Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter) {
+            Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
+            this.lookupAttributesFilter = lookupAttributesFilter;
             return this;
         }
 
@@ -258,27 +319,28 @@ public class SourceAwsCloudtrail {
         }
         
         public SourceAwsCloudtrail build() {
-            if (startDate == null) {
-                startDate = _SINGLETON_VALUE_StartDate.value();
+            if (awsRegionName == null) {
+                awsRegionName = _SINGLETON_VALUE_AwsRegionName.value();
             }
             return new SourceAwsCloudtrail(
                 awsKeyId,
                 awsRegionName,
                 awsSecretKey,
+                lookupAttributesFilter,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_AwsRegionName =
+                new LazySingletonValue<>(
+                        "aws_region_name",
+                        "\"us-east-1\"",
+                        new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<AwsCloudtrail> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"aws-cloudtrail\"",
                         new TypeReference<AwsCloudtrail>() {});
-
-        private static final LazySingletonValue<Optional<? extends LocalDate>> _SINGLETON_VALUE_StartDate =
-                new LazySingletonValue<>(
-                        "start_date",
-                        "\"1970-01-01\"",
-                        new TypeReference<Optional<? extends LocalDate>>() {});
     }
 }
 

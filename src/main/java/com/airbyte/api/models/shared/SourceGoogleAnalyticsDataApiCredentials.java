@@ -40,16 +40,16 @@ public class SourceGoogleAnalyticsDataApiCredentials {
         return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaGoogleOauth>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiCredentials of(ServiceAccountKeyAuthentication value) {
+    public static SourceGoogleAnalyticsDataApiCredentials of(SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceAccountKeyAuthentication>(){}));
+        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code AuthenticateViaGoogleOauth}</li>
-     * <li>{@code ServiceAccountKeyAuthentication}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -90,7 +90,7 @@ public class SourceGoogleAnalyticsDataApiCredentials {
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiCredentials.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<AuthenticateViaGoogleOauth>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ServiceAccountKeyAuthentication>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

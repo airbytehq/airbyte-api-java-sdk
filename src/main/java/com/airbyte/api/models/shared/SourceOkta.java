@@ -13,10 +13,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 public class SourceOkta {
@@ -40,13 +43,13 @@ public class SourceOkta {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
-    private Optional<? extends String> startDate;
+    private Optional<? extends OffsetDateTime> startDate;
 
     @JsonCreator
     public SourceOkta(
             @JsonProperty("credentials") Optional<? extends SourceOktaAuthorizationMethod> credentials,
             @JsonProperty("domain") Optional<? extends String> domain,
-            @JsonProperty("start_date") Optional<? extends String> startDate) {
+            @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(domain, "domain");
         Utils.checkNotNull(startDate, "startDate");
@@ -85,8 +88,8 @@ public class SourceOkta {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> startDate() {
-        return (Optional<String>) startDate;
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     public final static Builder builder() {
@@ -126,7 +129,7 @@ public class SourceOkta {
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
      */
-    public SourceOkta withStartDate(String startDate) {
+    public SourceOkta withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = Optional.ofNullable(startDate);
         return this;
@@ -135,7 +138,7 @@ public class SourceOkta {
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
      */
-    public SourceOkta withStartDate(Optional<? extends String> startDate) {
+    public SourceOkta withStartDate(Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
@@ -181,7 +184,7 @@ public class SourceOkta {
  
         private Optional<? extends String> domain = Optional.empty();
  
-        private Optional<? extends String> startDate = Optional.empty();  
+        private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -220,7 +223,7 @@ public class SourceOkta {
         /**
          * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
          */
-        public Builder startDate(String startDate) {
+        public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = Optional.ofNullable(startDate);
             return this;
@@ -229,7 +232,7 @@ public class SourceOkta {
         /**
          * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
          */
-        public Builder startDate(Optional<? extends String> startDate) {
+        public Builder startDate(Optional<? extends OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;

@@ -44,7 +44,7 @@ public class SourceTiktokMarketing {
     private Optional<? extends LocalDate> endDate;
 
     /**
-     * Set to active if you want to include deleted data in reports.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_deleted")
@@ -113,7 +113,7 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * Set to active if you want to include deleted data in reports.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -195,7 +195,7 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * Set to active if you want to include deleted data in reports.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
      */
     public SourceTiktokMarketing withIncludeDeleted(boolean includeDeleted) {
         Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -204,7 +204,7 @@ public class SourceTiktokMarketing {
     }
 
     /**
-     * Set to active if you want to include deleted data in reports.
+     * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
      */
     public SourceTiktokMarketing withIncludeDeleted(Optional<? extends Boolean> includeDeleted) {
         Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -341,7 +341,7 @@ public class SourceTiktokMarketing {
         }
 
         /**
-         * Set to active if you want to include deleted data in reports.
+         * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
          */
         public Builder includeDeleted(boolean includeDeleted) {
             Utils.checkNotNull(includeDeleted, "includeDeleted");
@@ -350,7 +350,7 @@ public class SourceTiktokMarketing {
         }
 
         /**
-         * Set to active if you want to include deleted data in reports.
+         * Set to active if you want to include deleted data in report based streams and Ads, Ad Groups and Campaign streams.
          */
         public Builder includeDeleted(Optional<? extends Boolean> includeDeleted) {
             Utils.checkNotNull(includeDeleted, "includeDeleted");
