@@ -27,8 +27,9 @@ public class SourceFacebookMarketing {
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
-    private String accessToken;
+    private Optional<? extends String> accessToken;
 
     /**
      * The Facebook Ad account ID(s) to pull data from. The Ad account ID number is in the account dropdown menu or in your browser's address bar of your &lt;a href="https://adsmanager.facebook.com/adsmanager/"&gt;Meta Ads Manager&lt;/a&gt;. See the &lt;a href="https://www.facebook.com/business/help/1492627900875762"&gt;docs&lt;/a&gt; for more information.
@@ -77,6 +78,13 @@ public class SourceFacebookMarketing {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
+
+    /**
+     * Credentials for connecting to the Facebook Marketing API
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("credentials")
+    private Optional<? extends SourceFacebookMarketingAuthentication> credentials;
 
     /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
@@ -132,7 +140,7 @@ public class SourceFacebookMarketing {
 
     @JsonCreator
     public SourceFacebookMarketing(
-            @JsonProperty("access_token") String accessToken,
+            @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("account_ids") java.util.List<String> accountIds,
             @JsonProperty("action_breakdowns_allow_empty") Optional<? extends Boolean> actionBreakdownsAllowEmpty,
             @JsonProperty("ad_statuses") Optional<? extends java.util.List<ValidAdStatuses>> adStatuses,
@@ -140,6 +148,7 @@ public class SourceFacebookMarketing {
             @JsonProperty("campaign_statuses") Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses,
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret,
+            @JsonProperty("credentials") Optional<? extends SourceFacebookMarketingAuthentication> credentials,
             @JsonProperty("custom_insights") Optional<? extends java.util.List<InsightConfig>> customInsights,
             @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
             @JsonProperty("fetch_thumbnail_images") Optional<? extends Boolean> fetchThumbnailImages,
@@ -155,6 +164,7 @@ public class SourceFacebookMarketing {
         Utils.checkNotNull(campaignStatuses, "campaignStatuses");
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
+        Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(customInsights, "customInsights");
         Utils.checkNotNull(endDate, "endDate");
         Utils.checkNotNull(fetchThumbnailImages, "fetchThumbnailImages");
@@ -170,6 +180,7 @@ public class SourceFacebookMarketing {
         this.campaignStatuses = campaignStatuses;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
+        this.credentials = credentials;
         this.customInsights = customInsights;
         this.endDate = endDate;
         this.fetchThumbnailImages = fetchThumbnailImages;
@@ -181,17 +192,17 @@ public class SourceFacebookMarketing {
     }
     
     public SourceFacebookMarketing(
-            String accessToken,
             java.util.List<String> accountIds) {
-        this(accessToken, accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public String accessToken() {
-        return accessToken;
+    public Optional<String> accessToken() {
+        return (Optional<String>) accessToken;
     }
 
     /**
@@ -254,6 +265,15 @@ public class SourceFacebookMarketing {
     @JsonIgnore
     public Optional<String> clientSecret() {
         return (Optional<String>) clientSecret;
+    }
+
+    /**
+     * Credentials for connecting to the Facebook Marketing API
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceFacebookMarketingAuthentication> credentials() {
+        return (Optional<SourceFacebookMarketingAuthentication>) credentials;
     }
 
     /**
@@ -332,6 +352,15 @@ public class SourceFacebookMarketing {
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
     public SourceFacebookMarketing withAccessToken(String accessToken) {
+        Utils.checkNotNull(accessToken, "accessToken");
+        this.accessToken = Optional.ofNullable(accessToken);
+        return this;
+    }
+
+    /**
+     * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
+     */
+    public SourceFacebookMarketing withAccessToken(Optional<? extends String> accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
         this.accessToken = accessToken;
         return this;
@@ -451,6 +480,24 @@ public class SourceFacebookMarketing {
     public SourceFacebookMarketing withClientSecret(Optional<? extends String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
         this.clientSecret = clientSecret;
+        return this;
+    }
+
+    /**
+     * Credentials for connecting to the Facebook Marketing API
+     */
+    public SourceFacebookMarketing withCredentials(SourceFacebookMarketingAuthentication credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = Optional.ofNullable(credentials);
+        return this;
+    }
+
+    /**
+     * Credentials for connecting to the Facebook Marketing API
+     */
+    public SourceFacebookMarketing withCredentials(Optional<? extends SourceFacebookMarketingAuthentication> credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
         return this;
     }
 
@@ -598,6 +645,7 @@ public class SourceFacebookMarketing {
             java.util.Objects.deepEquals(this.campaignStatuses, other.campaignStatuses) &&
             java.util.Objects.deepEquals(this.clientId, other.clientId) &&
             java.util.Objects.deepEquals(this.clientSecret, other.clientSecret) &&
+            java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.customInsights, other.customInsights) &&
             java.util.Objects.deepEquals(this.endDate, other.endDate) &&
             java.util.Objects.deepEquals(this.fetchThumbnailImages, other.fetchThumbnailImages) &&
@@ -619,6 +667,7 @@ public class SourceFacebookMarketing {
             campaignStatuses,
             clientId,
             clientSecret,
+            credentials,
             customInsights,
             endDate,
             fetchThumbnailImages,
@@ -640,6 +689,7 @@ public class SourceFacebookMarketing {
                 "campaignStatuses", campaignStatuses,
                 "clientId", clientId,
                 "clientSecret", clientSecret,
+                "credentials", credentials,
                 "customInsights", customInsights,
                 "endDate", endDate,
                 "fetchThumbnailImages", fetchThumbnailImages,
@@ -652,7 +702,7 @@ public class SourceFacebookMarketing {
     
     public final static class Builder {
  
-        private String accessToken;
+        private Optional<? extends String> accessToken = Optional.empty();
  
         private java.util.List<String> accountIds;
  
@@ -667,6 +717,8 @@ public class SourceFacebookMarketing {
         private Optional<? extends String> clientId = Optional.empty();
  
         private Optional<? extends String> clientSecret = Optional.empty();
+ 
+        private Optional<? extends SourceFacebookMarketingAuthentication> credentials = Optional.empty();
  
         private Optional<? extends java.util.List<InsightConfig>> customInsights = Optional.empty();
  
@@ -690,6 +742,15 @@ public class SourceFacebookMarketing {
          * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
          */
         public Builder accessToken(String accessToken) {
+            Utils.checkNotNull(accessToken, "accessToken");
+            this.accessToken = Optional.ofNullable(accessToken);
+            return this;
+        }
+
+        /**
+         * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
+         */
+        public Builder accessToken(Optional<? extends String> accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
             return this;
@@ -809,6 +870,24 @@ public class SourceFacebookMarketing {
         public Builder clientSecret(Optional<? extends String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * Credentials for connecting to the Facebook Marketing API
+         */
+        public Builder credentials(SourceFacebookMarketingAuthentication credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = Optional.ofNullable(credentials);
+            return this;
+        }
+
+        /**
+         * Credentials for connecting to the Facebook Marketing API
+         */
+        public Builder credentials(Optional<? extends SourceFacebookMarketingAuthentication> credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
             return this;
         }
 
@@ -963,6 +1042,7 @@ public class SourceFacebookMarketing {
                 campaignStatuses,
                 clientId,
                 clientSecret,
+                credentials,
                 customInsights,
                 endDate,
                 fetchThumbnailImages,

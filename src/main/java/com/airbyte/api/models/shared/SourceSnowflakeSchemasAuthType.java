@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceSnowflakeSchemasAuthType {
-    USERNAME_PASSWORD("username/password");
+    KEY_PAIR_AUTHENTICATION("Key Pair Authentication");
 
     @JsonValue
     private final String value;

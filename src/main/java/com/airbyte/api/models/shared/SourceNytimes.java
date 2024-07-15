@@ -17,7 +17,6 @@ import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.LocalDate;
 import java.util.Optional;
 
 public class SourceNytimes {
@@ -33,7 +32,7 @@ public class SourceNytimes {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
-    private Optional<? extends LocalDate> endDate;
+    private Optional<? extends String> endDate;
 
     /**
      * Period of time (in days)
@@ -55,15 +54,15 @@ public class SourceNytimes {
      * Start date to begin the article retrieval (format YYYY-MM)
      */
     @JsonProperty("start_date")
-    private LocalDate startDate;
+    private String startDate;
 
     @JsonCreator
     public SourceNytimes(
             @JsonProperty("api_key") String apiKey,
-            @JsonProperty("end_date") Optional<? extends LocalDate> endDate,
+            @JsonProperty("end_date") Optional<? extends String> endDate,
             @JsonProperty("period") PeriodUsedForMostPopularStreams period,
             @JsonProperty("share_type") Optional<? extends ShareTypeUsedForMostPopularSharedStream> shareType,
-            @JsonProperty("start_date") LocalDate startDate) {
+            @JsonProperty("start_date") String startDate) {
         Utils.checkNotNull(apiKey, "apiKey");
         Utils.checkNotNull(endDate, "endDate");
         Utils.checkNotNull(period, "period");
@@ -80,7 +79,7 @@ public class SourceNytimes {
     public SourceNytimes(
             String apiKey,
             PeriodUsedForMostPopularStreams period,
-            LocalDate startDate) {
+            String startDate) {
         this(apiKey, Optional.empty(), period, Optional.empty(), startDate);
     }
 
@@ -97,8 +96,8 @@ public class SourceNytimes {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<LocalDate> endDate() {
-        return (Optional<LocalDate>) endDate;
+    public Optional<String> endDate() {
+        return (Optional<String>) endDate;
     }
 
     /**
@@ -127,7 +126,7 @@ public class SourceNytimes {
      * Start date to begin the article retrieval (format YYYY-MM)
      */
     @JsonIgnore
-    public LocalDate startDate() {
+    public String startDate() {
         return startDate;
     }
 
@@ -147,7 +146,7 @@ public class SourceNytimes {
     /**
      * End date to stop the article retrieval (format YYYY-MM)
      */
-    public SourceNytimes withEndDate(LocalDate endDate) {
+    public SourceNytimes withEndDate(String endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = Optional.ofNullable(endDate);
         return this;
@@ -156,7 +155,7 @@ public class SourceNytimes {
     /**
      * End date to stop the article retrieval (format YYYY-MM)
      */
-    public SourceNytimes withEndDate(Optional<? extends LocalDate> endDate) {
+    public SourceNytimes withEndDate(Optional<? extends String> endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = endDate;
         return this;
@@ -192,7 +191,7 @@ public class SourceNytimes {
     /**
      * Start date to begin the article retrieval (format YYYY-MM)
      */
-    public SourceNytimes withStartDate(LocalDate startDate) {
+    public SourceNytimes withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
@@ -242,13 +241,13 @@ public class SourceNytimes {
  
         private String apiKey;
  
-        private Optional<? extends LocalDate> endDate = Optional.empty();
+        private Optional<? extends String> endDate = Optional.empty();
  
         private PeriodUsedForMostPopularStreams period;
  
         private Optional<? extends ShareTypeUsedForMostPopularSharedStream> shareType = Optional.empty();
  
-        private LocalDate startDate;  
+        private String startDate;  
         
         private Builder() {
           // force use of static builder() method
@@ -266,7 +265,7 @@ public class SourceNytimes {
         /**
          * End date to stop the article retrieval (format YYYY-MM)
          */
-        public Builder endDate(LocalDate endDate) {
+        public Builder endDate(String endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = Optional.ofNullable(endDate);
             return this;
@@ -275,7 +274,7 @@ public class SourceNytimes {
         /**
          * End date to stop the article retrieval (format YYYY-MM)
          */
-        public Builder endDate(Optional<? extends LocalDate> endDate) {
+        public Builder endDate(Optional<? extends String> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
@@ -311,7 +310,7 @@ public class SourceNytimes {
         /**
          * Start date to begin the article retrieval (format YYYY-MM)
          */
-        public Builder startDate(LocalDate startDate) {
+        public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;

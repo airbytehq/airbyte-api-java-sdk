@@ -62,6 +62,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -75,12 +76,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CancelJobResponse>](../../models/operations/CancelJobResponse.md)**
+**[com.airbyte.api.models.operations.CancelJobResponse](../../models/operations/CancelJobResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## createJob
 
@@ -120,7 +121,7 @@ public class Application {
 
             JobCreateRequest req = JobCreateRequest.builder()
                 .connectionId("<value>")
-                .jobType(JobTypeEnum.SYNC)
+                .jobType(JobTypeEnum.RESET)
                 .build();
 
             CreateJobResponse res = sdk.jobs().createJob()
@@ -137,6 +138,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -150,12 +152,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreateJobResponse>](../../models/operations/CreateJobResponse.md)**
+**[com.airbyte.api.models.operations.CreateJobResponse](../../models/operations/CreateJobResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getJob
 
@@ -211,6 +213,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -224,12 +227,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetJobResponse>](../../models/operations/GetJobResponse.md)**
+**[com.airbyte.api.models.operations.GetJobResponse](../../models/operations/GetJobResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listJobs
 
@@ -289,6 +292,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -302,9 +306,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.ListJobsResponse>](../../models/operations/ListJobsResponse.md)**
+**[com.airbyte.api.models.operations.ListJobsResponse](../../models/operations/ListJobsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

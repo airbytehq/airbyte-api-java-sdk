@@ -40,6 +40,7 @@ public class Permissions implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a permission
      * @return The call builder
@@ -81,7 +82,7 @@ public class Permissions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createPermission", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -89,18 +90,18 @@ public class Permissions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createPermission", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createPermission", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createPermission", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -148,6 +149,7 @@ public class Permissions implements
     }
 
 
+
     /**
      * Delete a Permission
      * @return The call builder
@@ -183,7 +185,7 @@ public class Permissions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("deletePermission", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("deletePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -191,18 +193,18 @@ public class Permissions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "422", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("deletePermission", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("deletePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("deletePermission", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("deletePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("deletePermission", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("deletePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -237,6 +239,7 @@ public class Permissions implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -274,7 +277,7 @@ public class Permissions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getPermission", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -282,18 +285,18 @@ public class Permissions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "422", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getPermission", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getPermission", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getPermission", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getPermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -341,6 +344,7 @@ public class Permissions implements
     }
 
 
+
     /**
      * List Permissions by user id
      * @return The call builder
@@ -379,7 +383,7 @@ public class Permissions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("listPermissions", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("listPermissions", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -387,18 +391,18 @@ public class Permissions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("listPermissions", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("listPermissions", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("listPermissions", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("listPermissions", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("listPermissions", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("listPermissions", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -446,6 +450,7 @@ public class Permissions implements
     }
 
 
+
     /**
      * Update a permission
      * @return The call builder
@@ -489,7 +494,7 @@ public class Permissions implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("updatePermission", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("updatePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -497,18 +502,18 @@ public class Permissions implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "422", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("updatePermission", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("updatePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("updatePermission", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("updatePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("updatePermission", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("updatePermission", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

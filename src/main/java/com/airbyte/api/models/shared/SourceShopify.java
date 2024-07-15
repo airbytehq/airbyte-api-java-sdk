@@ -44,6 +44,13 @@ public class SourceShopify {
     private Optional<? extends Boolean> fetchTransactionsUserId;
 
     /**
+     * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("job_termination_threshold")
+    private Optional<? extends Long> jobTerminationThreshold;
+
+    /**
      * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME' or 'NAME.myshopify.com'.
      */
     @JsonProperty("shop")
@@ -64,16 +71,19 @@ public class SourceShopify {
             @JsonProperty("bulk_window_in_days") Optional<? extends Long> bulkWindowInDays,
             @JsonProperty("credentials") Optional<? extends ShopifyAuthorizationMethod> credentials,
             @JsonProperty("fetch_transactions_user_id") Optional<? extends Boolean> fetchTransactionsUserId,
+            @JsonProperty("job_termination_threshold") Optional<? extends Long> jobTerminationThreshold,
             @JsonProperty("shop") String shop,
             @JsonProperty("start_date") Optional<? extends LocalDate> startDate) {
         Utils.checkNotNull(bulkWindowInDays, "bulkWindowInDays");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(fetchTransactionsUserId, "fetchTransactionsUserId");
+        Utils.checkNotNull(jobTerminationThreshold, "jobTerminationThreshold");
         Utils.checkNotNull(shop, "shop");
         Utils.checkNotNull(startDate, "startDate");
         this.bulkWindowInDays = bulkWindowInDays;
         this.credentials = credentials;
         this.fetchTransactionsUserId = fetchTransactionsUserId;
+        this.jobTerminationThreshold = jobTerminationThreshold;
         this.shop = shop;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
@@ -81,7 +91,7 @@ public class SourceShopify {
     
     public SourceShopify(
             String shop) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), shop, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), shop, Optional.empty());
     }
 
     /**
@@ -109,6 +119,15 @@ public class SourceShopify {
     @JsonIgnore
     public Optional<Boolean> fetchTransactionsUserId() {
         return (Optional<Boolean>) fetchTransactionsUserId;
+    }
+
+    /**
+     * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> jobTerminationThreshold() {
+        return (Optional<Long>) jobTerminationThreshold;
     }
 
     /**
@@ -192,6 +211,24 @@ public class SourceShopify {
     }
 
     /**
+     * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
+     */
+    public SourceShopify withJobTerminationThreshold(long jobTerminationThreshold) {
+        Utils.checkNotNull(jobTerminationThreshold, "jobTerminationThreshold");
+        this.jobTerminationThreshold = Optional.ofNullable(jobTerminationThreshold);
+        return this;
+    }
+
+    /**
+     * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
+     */
+    public SourceShopify withJobTerminationThreshold(Optional<? extends Long> jobTerminationThreshold) {
+        Utils.checkNotNull(jobTerminationThreshold, "jobTerminationThreshold");
+        this.jobTerminationThreshold = jobTerminationThreshold;
+        return this;
+    }
+
+    /**
      * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME' or 'NAME.myshopify.com'.
      */
     public SourceShopify withShop(String shop) {
@@ -231,6 +268,7 @@ public class SourceShopify {
             java.util.Objects.deepEquals(this.bulkWindowInDays, other.bulkWindowInDays) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.fetchTransactionsUserId, other.fetchTransactionsUserId) &&
+            java.util.Objects.deepEquals(this.jobTerminationThreshold, other.jobTerminationThreshold) &&
             java.util.Objects.deepEquals(this.shop, other.shop) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
@@ -242,6 +280,7 @@ public class SourceShopify {
             bulkWindowInDays,
             credentials,
             fetchTransactionsUserId,
+            jobTerminationThreshold,
             shop,
             sourceType,
             startDate);
@@ -253,6 +292,7 @@ public class SourceShopify {
                 "bulkWindowInDays", bulkWindowInDays,
                 "credentials", credentials,
                 "fetchTransactionsUserId", fetchTransactionsUserId,
+                "jobTerminationThreshold", jobTerminationThreshold,
                 "shop", shop,
                 "sourceType", sourceType,
                 "startDate", startDate);
@@ -265,6 +305,8 @@ public class SourceShopify {
         private Optional<? extends ShopifyAuthorizationMethod> credentials = Optional.empty();
  
         private Optional<? extends Boolean> fetchTransactionsUserId;
+ 
+        private Optional<? extends Long> jobTerminationThreshold;
  
         private String shop;
  
@@ -329,6 +371,24 @@ public class SourceShopify {
         }
 
         /**
+         * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
+         */
+        public Builder jobTerminationThreshold(long jobTerminationThreshold) {
+            Utils.checkNotNull(jobTerminationThreshold, "jobTerminationThreshold");
+            this.jobTerminationThreshold = Optional.ofNullable(jobTerminationThreshold);
+            return this;
+        }
+
+        /**
+         * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
+         */
+        public Builder jobTerminationThreshold(Optional<? extends Long> jobTerminationThreshold) {
+            Utils.checkNotNull(jobTerminationThreshold, "jobTerminationThreshold");
+            this.jobTerminationThreshold = jobTerminationThreshold;
+            return this;
+        }
+
+        /**
          * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME' or 'NAME.myshopify.com'.
          */
         public Builder shop(String shop) {
@@ -362,6 +422,9 @@ public class SourceShopify {
             if (fetchTransactionsUserId == null) {
                 fetchTransactionsUserId = _SINGLETON_VALUE_FetchTransactionsUserId.value();
             }
+            if (jobTerminationThreshold == null) {
+                jobTerminationThreshold = _SINGLETON_VALUE_JobTerminationThreshold.value();
+            }
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
@@ -369,6 +432,7 @@ public class SourceShopify {
                 bulkWindowInDays,
                 credentials,
                 fetchTransactionsUserId,
+                jobTerminationThreshold,
                 shop,
                 startDate);
         }
@@ -384,6 +448,12 @@ public class SourceShopify {
                         "fetch_transactions_user_id",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_JobTerminationThreshold =
+                new LazySingletonValue<>(
+                        "job_termination_threshold",
+                        "3600",
+                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<SourceShopifyShopify> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

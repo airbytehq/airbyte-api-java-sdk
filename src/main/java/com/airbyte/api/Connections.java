@@ -40,6 +40,7 @@ public class Connections implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a connection
      * @return The call builder
@@ -81,7 +82,7 @@ public class Connections implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createConnection", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -89,18 +90,18 @@ public class Connections implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createConnection", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createConnection", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createConnection", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -148,6 +149,7 @@ public class Connections implements
     }
 
 
+
     /**
      * Delete a Connection
      * @return The call builder
@@ -183,7 +185,7 @@ public class Connections implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("deleteConnection", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("deleteConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -191,18 +193,18 @@ public class Connections implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("deleteConnection", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("deleteConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("deleteConnection", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("deleteConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("deleteConnection", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("deleteConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -237,6 +239,7 @@ public class Connections implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -274,7 +277,7 @@ public class Connections implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getConnection", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -282,18 +285,18 @@ public class Connections implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getConnection", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getConnection", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getConnection", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -341,6 +344,7 @@ public class Connections implements
     }
 
 
+
     /**
      * List connections
      * @return The call builder
@@ -379,7 +383,7 @@ public class Connections implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("listConnections", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("listConnections", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -387,18 +391,18 @@ public class Connections implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("listConnections", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("listConnections", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("listConnections", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("listConnections", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("listConnections", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("listConnections", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -446,6 +450,7 @@ public class Connections implements
     }
 
 
+
     /**
      * Update Connection details
      * @return The call builder
@@ -489,7 +494,7 @@ public class Connections implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("patchConnection", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("patchConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -497,18 +502,18 @@ public class Connections implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("patchConnection", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("patchConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("patchConnection", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("patchConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("patchConnection", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("patchConnection", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

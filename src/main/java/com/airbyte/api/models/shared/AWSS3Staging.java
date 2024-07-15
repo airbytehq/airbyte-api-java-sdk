@@ -31,13 +31,6 @@ public class AWSS3Staging {
     private String accessKeyId;
 
     /**
-     * How to encrypt the staging data
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("encryption")
-    private Optional<? extends DestinationRedshiftEncryption> encryption;
-
-    /**
      * The pattern allows you to set the file-name format for the S3 staging file(s)
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -83,7 +76,6 @@ public class AWSS3Staging {
     @JsonCreator
     public AWSS3Staging(
             @JsonProperty("access_key_id") String accessKeyId,
-            @JsonProperty("encryption") Optional<? extends DestinationRedshiftEncryption> encryption,
             @JsonProperty("file_name_pattern") Optional<? extends String> fileNamePattern,
             @JsonProperty("purge_staging_data") Optional<? extends Boolean> purgeStagingData,
             @JsonProperty("s3_bucket_name") String s3BucketName,
@@ -91,7 +83,6 @@ public class AWSS3Staging {
             @JsonProperty("s3_bucket_region") Optional<? extends DestinationRedshiftS3BucketRegion> s3BucketRegion,
             @JsonProperty("secret_access_key") String secretAccessKey) {
         Utils.checkNotNull(accessKeyId, "accessKeyId");
-        Utils.checkNotNull(encryption, "encryption");
         Utils.checkNotNull(fileNamePattern, "fileNamePattern");
         Utils.checkNotNull(purgeStagingData, "purgeStagingData");
         Utils.checkNotNull(s3BucketName, "s3BucketName");
@@ -99,7 +90,6 @@ public class AWSS3Staging {
         Utils.checkNotNull(s3BucketRegion, "s3BucketRegion");
         Utils.checkNotNull(secretAccessKey, "secretAccessKey");
         this.accessKeyId = accessKeyId;
-        this.encryption = encryption;
         this.fileNamePattern = fileNamePattern;
         this.method = Builder._SINGLETON_VALUE_Method.value();
         this.purgeStagingData = purgeStagingData;
@@ -113,7 +103,7 @@ public class AWSS3Staging {
             String accessKeyId,
             String s3BucketName,
             String secretAccessKey) {
-        this(accessKeyId, Optional.empty(), Optional.empty(), Optional.empty(), s3BucketName, Optional.empty(), Optional.empty(), secretAccessKey);
+        this(accessKeyId, Optional.empty(), Optional.empty(), s3BucketName, Optional.empty(), Optional.empty(), secretAccessKey);
     }
 
     /**
@@ -122,15 +112,6 @@ public class AWSS3Staging {
     @JsonIgnore
     public String accessKeyId() {
         return accessKeyId;
-    }
-
-    /**
-     * How to encrypt the staging data
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<DestinationRedshiftEncryption> encryption() {
-        return (Optional<DestinationRedshiftEncryption>) encryption;
     }
 
     /**
@@ -200,24 +181,6 @@ public class AWSS3Staging {
     public AWSS3Staging withAccessKeyId(String accessKeyId) {
         Utils.checkNotNull(accessKeyId, "accessKeyId");
         this.accessKeyId = accessKeyId;
-        return this;
-    }
-
-    /**
-     * How to encrypt the staging data
-     */
-    public AWSS3Staging withEncryption(DestinationRedshiftEncryption encryption) {
-        Utils.checkNotNull(encryption, "encryption");
-        this.encryption = Optional.ofNullable(encryption);
-        return this;
-    }
-
-    /**
-     * How to encrypt the staging data
-     */
-    public AWSS3Staging withEncryption(Optional<? extends DestinationRedshiftEncryption> encryption) {
-        Utils.checkNotNull(encryption, "encryption");
-        this.encryption = encryption;
         return this;
     }
 
@@ -322,7 +285,6 @@ public class AWSS3Staging {
         AWSS3Staging other = (AWSS3Staging) o;
         return 
             java.util.Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            java.util.Objects.deepEquals(this.encryption, other.encryption) &&
             java.util.Objects.deepEquals(this.fileNamePattern, other.fileNamePattern) &&
             java.util.Objects.deepEquals(this.method, other.method) &&
             java.util.Objects.deepEquals(this.purgeStagingData, other.purgeStagingData) &&
@@ -336,7 +298,6 @@ public class AWSS3Staging {
     public int hashCode() {
         return java.util.Objects.hash(
             accessKeyId,
-            encryption,
             fileNamePattern,
             method,
             purgeStagingData,
@@ -350,7 +311,6 @@ public class AWSS3Staging {
     public String toString() {
         return Utils.toString(AWSS3Staging.class,
                 "accessKeyId", accessKeyId,
-                "encryption", encryption,
                 "fileNamePattern", fileNamePattern,
                 "method", method,
                 "purgeStagingData", purgeStagingData,
@@ -363,8 +323,6 @@ public class AWSS3Staging {
     public final static class Builder {
  
         private String accessKeyId;
- 
-        private Optional<? extends DestinationRedshiftEncryption> encryption = Optional.empty();
  
         private Optional<? extends String> fileNamePattern = Optional.empty();
  
@@ -388,24 +346,6 @@ public class AWSS3Staging {
         public Builder accessKeyId(String accessKeyId) {
             Utils.checkNotNull(accessKeyId, "accessKeyId");
             this.accessKeyId = accessKeyId;
-            return this;
-        }
-
-        /**
-         * How to encrypt the staging data
-         */
-        public Builder encryption(DestinationRedshiftEncryption encryption) {
-            Utils.checkNotNull(encryption, "encryption");
-            this.encryption = Optional.ofNullable(encryption);
-            return this;
-        }
-
-        /**
-         * How to encrypt the staging data
-         */
-        public Builder encryption(Optional<? extends DestinationRedshiftEncryption> encryption) {
-            Utils.checkNotNull(encryption, "encryption");
-            this.encryption = encryption;
             return this;
         }
 
@@ -508,7 +448,6 @@ public class AWSS3Staging {
             }
             return new AWSS3Staging(
                 accessKeyId,
-                encryption,
                 fileNamePattern,
                 purgeStagingData,
                 s3BucketName,

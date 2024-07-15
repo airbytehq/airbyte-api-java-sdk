@@ -22,6 +22,13 @@ import java.util.Optional;
 public class CSVCommaSeparatedValues {
 
     /**
+     * Add file extensions to the output file.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("file_extension")
+    private Optional<? extends Boolean> fileExtension;
+
+    /**
      * Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -33,14 +40,26 @@ public class CSVCommaSeparatedValues {
 
     @JsonCreator
     public CSVCommaSeparatedValues(
+            @JsonProperty("file_extension") Optional<? extends Boolean> fileExtension,
             @JsonProperty("flattening") Optional<? extends NormalizationFlattening> flattening) {
+        Utils.checkNotNull(fileExtension, "fileExtension");
         Utils.checkNotNull(flattening, "flattening");
+        this.fileExtension = fileExtension;
         this.flattening = flattening;
         this.formatType = Builder._SINGLETON_VALUE_FormatType.value();
     }
     
     public CSVCommaSeparatedValues() {
-        this(Optional.empty());
+        this(Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Add file extensions to the output file.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> fileExtension() {
+        return (Optional<Boolean>) fileExtension;
     }
 
     /**
@@ -59,6 +78,24 @@ public class CSVCommaSeparatedValues {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * Add file extensions to the output file.
+     */
+    public CSVCommaSeparatedValues withFileExtension(boolean fileExtension) {
+        Utils.checkNotNull(fileExtension, "fileExtension");
+        this.fileExtension = Optional.ofNullable(fileExtension);
+        return this;
+    }
+
+    /**
+     * Add file extensions to the output file.
+     */
+    public CSVCommaSeparatedValues withFileExtension(Optional<? extends Boolean> fileExtension) {
+        Utils.checkNotNull(fileExtension, "fileExtension");
+        this.fileExtension = fileExtension;
+        return this;
     }
 
     /**
@@ -89,6 +126,7 @@ public class CSVCommaSeparatedValues {
         }
         CSVCommaSeparatedValues other = (CSVCommaSeparatedValues) o;
         return 
+            java.util.Objects.deepEquals(this.fileExtension, other.fileExtension) &&
             java.util.Objects.deepEquals(this.flattening, other.flattening) &&
             java.util.Objects.deepEquals(this.formatType, other.formatType);
     }
@@ -96,6 +134,7 @@ public class CSVCommaSeparatedValues {
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
+            fileExtension,
             flattening,
             formatType);
     }
@@ -103,16 +142,37 @@ public class CSVCommaSeparatedValues {
     @Override
     public String toString() {
         return Utils.toString(CSVCommaSeparatedValues.class,
+                "fileExtension", fileExtension,
                 "flattening", flattening,
                 "formatType", formatType);
     }
     
     public final static class Builder {
  
+        private Optional<? extends Boolean> fileExtension;
+ 
         private Optional<? extends NormalizationFlattening> flattening;  
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * Add file extensions to the output file.
+         */
+        public Builder fileExtension(boolean fileExtension) {
+            Utils.checkNotNull(fileExtension, "fileExtension");
+            this.fileExtension = Optional.ofNullable(fileExtension);
+            return this;
+        }
+
+        /**
+         * Add file extensions to the output file.
+         */
+        public Builder fileExtension(Optional<? extends Boolean> fileExtension) {
+            Utils.checkNotNull(fileExtension, "fileExtension");
+            this.fileExtension = fileExtension;
+            return this;
         }
 
         /**
@@ -134,12 +194,22 @@ public class CSVCommaSeparatedValues {
         }
         
         public CSVCommaSeparatedValues build() {
+            if (fileExtension == null) {
+                fileExtension = _SINGLETON_VALUE_FileExtension.value();
+            }
             if (flattening == null) {
                 flattening = _SINGLETON_VALUE_Flattening.value();
             }
             return new CSVCommaSeparatedValues(
+                fileExtension,
                 flattening);
         }
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_FileExtension =
+                new LazySingletonValue<>(
+                        "file_extension",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends NormalizationFlattening>> _SINGLETON_VALUE_Flattening =
                 new LazySingletonValue<>(

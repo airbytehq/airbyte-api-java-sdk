@@ -13,10 +13,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 public class SourceOrb {
@@ -62,7 +65,7 @@ public class SourceOrb {
      * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at before this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
      */
     @JsonProperty("start_date")
-    private String startDate;
+    private OffsetDateTime startDate;
 
     /**
      * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
@@ -85,7 +88,7 @@ public class SourceOrb {
             @JsonProperty("lookback_window_days") Optional<? extends Long> lookbackWindowDays,
             @JsonProperty("numeric_event_properties_keys") Optional<? extends java.util.List<String>> numericEventPropertiesKeys,
             @JsonProperty("plan_id") Optional<? extends String> planId,
-            @JsonProperty("start_date") String startDate,
+            @JsonProperty("start_date") OffsetDateTime startDate,
             @JsonProperty("string_event_properties_keys") Optional<? extends java.util.List<String>> stringEventPropertiesKeys,
             @JsonProperty("subscription_usage_grouping_key") Optional<? extends String> subscriptionUsageGroupingKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -109,7 +112,7 @@ public class SourceOrb {
     
     public SourceOrb(
             String apiKey,
-            String startDate) {
+            OffsetDateTime startDate) {
         this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty(), Optional.empty());
     }
 
@@ -166,7 +169,7 @@ public class SourceOrb {
      * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at before this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
      */
     @JsonIgnore
-    public String startDate() {
+    public OffsetDateTime startDate() {
         return startDate;
     }
 
@@ -276,7 +279,7 @@ public class SourceOrb {
     /**
      * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at before this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
      */
-    public SourceOrb withStartDate(String startDate) {
+    public SourceOrb withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
@@ -379,7 +382,7 @@ public class SourceOrb {
  
         private Optional<? extends String> planId = Optional.empty();
  
-        private String startDate;
+        private OffsetDateTime startDate;
  
         private Optional<? extends java.util.List<String>> stringEventPropertiesKeys = Optional.empty();
  
@@ -473,7 +476,7 @@ public class SourceOrb {
         /**
          * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at before this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
          */
-        public Builder startDate(String startDate) {
+        public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;

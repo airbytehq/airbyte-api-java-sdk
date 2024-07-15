@@ -37,6 +37,11 @@ public class SourceSnowflakeAuthorizationMethod {
         return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflakeOAuth20>(){}));
     }
 
+    public static SourceSnowflakeAuthorizationMethod of(SourceSnowflakeKeyPairAuthentication value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflakeKeyPairAuthentication>(){}));
+    }
+
     public static SourceSnowflakeAuthorizationMethod of(SourceSnowflakeUsernameAndPassword value) {
         Utils.checkNotNull(value, "value");
         return new SourceSnowflakeAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSnowflakeUsernameAndPassword>(){}));
@@ -46,6 +51,7 @@ public class SourceSnowflakeAuthorizationMethod {
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code SourceSnowflakeOAuth20}</li>
+     * <li>{@code SourceSnowflakeKeyPairAuthentication}</li>
      * <li>{@code SourceSnowflakeUsernameAndPassword}</li>
      * </ul>
      * 
@@ -87,6 +93,7 @@ public class SourceSnowflakeAuthorizationMethod {
         public _Deserializer() {
             super(SourceSnowflakeAuthorizationMethod.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSnowflakeOAuth20>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceSnowflakeKeyPairAuthentication>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSnowflakeUsernameAndPassword>() {}, Utils.JsonShape.DEFAULT));
         }
     }

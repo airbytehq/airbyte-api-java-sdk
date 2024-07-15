@@ -82,7 +82,7 @@ public class SourceAmazonSellerPartner {
     private Optional<? extends OffsetDateTime> replicationEndDate;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("replication_start_date")
@@ -217,7 +217,7 @@ public class SourceAmazonSellerPartner {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -361,7 +361,7 @@ public class SourceAmazonSellerPartner {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
      */
     public SourceAmazonSellerPartner withReplicationStartDate(OffsetDateTime replicationStartDate) {
         Utils.checkNotNull(replicationStartDate, "replicationStartDate");
@@ -370,7 +370,7 @@ public class SourceAmazonSellerPartner {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
      */
     public SourceAmazonSellerPartner withReplicationStartDate(Optional<? extends OffsetDateTime> replicationStartDate) {
         Utils.checkNotNull(replicationStartDate, "replicationStartDate");
@@ -598,7 +598,7 @@ public class SourceAmazonSellerPartner {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
          */
         public Builder replicationStartDate(OffsetDateTime replicationStartDate) {
             Utils.checkNotNull(replicationStartDate, "replicationStartDate");
@@ -607,7 +607,7 @@ public class SourceAmazonSellerPartner {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided, the date 2 years ago from today will be used.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
          */
         public Builder replicationStartDate(Optional<? extends OffsetDateTime> replicationStartDate) {
             Utils.checkNotNull(replicationStartDate, "replicationStartDate");

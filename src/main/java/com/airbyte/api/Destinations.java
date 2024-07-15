@@ -41,6 +41,7 @@ public class Destinations implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
+
     /**
      * Create a destination
      * Creates a destination given a name, workspace id, and a json blob containing the configuration for the source.
@@ -90,7 +91,7 @@ public class Destinations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("createDestination", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("createDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -98,18 +99,18 @@ public class Destinations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("createDestination", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("createDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("createDestination", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("createDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("createDestination", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("createDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -157,6 +158,7 @@ public class Destinations implements
     }
 
 
+
     /**
      * Delete a Destination
      * @return The call builder
@@ -192,7 +194,7 @@ public class Destinations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("deleteDestination", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("deleteDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -200,18 +202,18 @@ public class Destinations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("deleteDestination", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("deleteDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("deleteDestination", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("deleteDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("deleteDestination", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("deleteDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -246,6 +248,7 @@ public class Destinations implements
             "Unexpected status code received: " + _httpRes.statusCode(), 
             Utils.toByteArrayAndClose(_httpRes.body()));
     }
+
 
 
     /**
@@ -283,7 +286,7 @@ public class Destinations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("getDestination", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("getDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -291,18 +294,18 @@ public class Destinations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("getDestination", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("getDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("getDestination", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("getDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("getDestination", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("getDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -350,6 +353,7 @@ public class Destinations implements
     }
 
 
+
     /**
      * List destinations
      * @return The call builder
@@ -388,7 +392,7 @@ public class Destinations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("listDestinations", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("listDestinations", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -396,18 +400,18 @@ public class Destinations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("listDestinations", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("listDestinations", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("listDestinations", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("listDestinations", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("listDestinations", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("listDestinations", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -455,6 +459,7 @@ public class Destinations implements
     }
 
 
+
     /**
      * Update a Destination
      * @return The call builder
@@ -495,7 +500,7 @@ public class Destinations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("patchDestination", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("patchDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -503,18 +508,18 @@ public class Destinations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("patchDestination", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("patchDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("patchDestination", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("patchDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("patchDestination", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("patchDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -562,6 +567,7 @@ public class Destinations implements
     }
 
 
+
     /**
      * Update a Destination and fully overwrite it
      * @return The call builder
@@ -602,7 +608,7 @@ public class Destinations implements
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
-                  new BeforeRequestContextImpl("putDestination", sdkConfiguration.securitySource()),
+                  new BeforeRequestContextImpl("putDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -610,18 +616,18 @@ public class Destinations implements
             if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
-                        new AfterErrorContextImpl("putDestination", sdkConfiguration.securitySource()),
+                        new AfterErrorContextImpl("putDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
-                        new AfterSuccessContextImpl("putDestination", sdkConfiguration.securitySource()),
+                        new AfterSuccessContextImpl("putDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()),
                          _httpRes);
             }
         } catch (Exception _e) {
             _httpRes = sdkConfiguration.hooks()
-                    .afterError(new AfterErrorContextImpl("putDestination", sdkConfiguration.securitySource()), 
+                    .afterError(new AfterErrorContextImpl("putDestination", Optional.of(java.util.List.of()), sdkConfiguration.securitySource()), 
                         Optional.empty(),
                         Optional.of(_e));
         }

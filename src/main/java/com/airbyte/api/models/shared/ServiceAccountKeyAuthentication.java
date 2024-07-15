@@ -21,36 +21,36 @@ import java.util.Optional;
 
 public class ServiceAccountKeyAuthentication {
 
+    /**
+     * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
+     */
+    @JsonProperty("access_token")
+    private String accessToken;
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    private Optional<? extends SourceGoogleAnalyticsDataApiSchemasAuthType> authType;
-
-    /**
-     * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
-     */
-    @JsonProperty("credentials_json")
-    private String credentialsJson;
+    private Optional<? extends SourceFacebookMarketingSchemasAuthType> authType;
 
     @JsonCreator
     public ServiceAccountKeyAuthentication(
-            @JsonProperty("credentials_json") String credentialsJson) {
-        Utils.checkNotNull(credentialsJson, "credentialsJson");
+            @JsonProperty("access_token") String accessToken) {
+        Utils.checkNotNull(accessToken, "accessToken");
+        this.accessToken = accessToken;
         this.authType = Builder._SINGLETON_VALUE_AuthType.value();
-        this.credentialsJson = credentialsJson;
+    }
+
+    /**
+     * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
+     */
+    @JsonIgnore
+    public String accessToken() {
+        return accessToken;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceGoogleAnalyticsDataApiSchemasAuthType> authType() {
-        return (Optional<SourceGoogleAnalyticsDataApiSchemasAuthType>) authType;
-    }
-
-    /**
-     * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
-     */
-    @JsonIgnore
-    public String credentialsJson() {
-        return credentialsJson;
+    public Optional<SourceFacebookMarketingSchemasAuthType> authType() {
+        return (Optional<SourceFacebookMarketingSchemasAuthType>) authType;
     }
 
     public final static Builder builder() {
@@ -58,11 +58,11 @@ public class ServiceAccountKeyAuthentication {
     }
 
     /**
-     * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
+     * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
-    public ServiceAccountKeyAuthentication withCredentialsJson(String credentialsJson) {
-        Utils.checkNotNull(credentialsJson, "credentialsJson");
-        this.credentialsJson = credentialsJson;
+    public ServiceAccountKeyAuthentication withAccessToken(String accessToken) {
+        Utils.checkNotNull(accessToken, "accessToken");
+        this.accessToken = accessToken;
         return this;
     }
     
@@ -76,51 +76,51 @@ public class ServiceAccountKeyAuthentication {
         }
         ServiceAccountKeyAuthentication other = (ServiceAccountKeyAuthentication) o;
         return 
-            java.util.Objects.deepEquals(this.authType, other.authType) &&
-            java.util.Objects.deepEquals(this.credentialsJson, other.credentialsJson);
+            java.util.Objects.deepEquals(this.accessToken, other.accessToken) &&
+            java.util.Objects.deepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            authType,
-            credentialsJson);
+            accessToken,
+            authType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ServiceAccountKeyAuthentication.class,
-                "authType", authType,
-                "credentialsJson", credentialsJson);
+                "accessToken", accessToken,
+                "authType", authType);
     }
     
     public final static class Builder {
  
-        private String credentialsJson;  
+        private String accessToken;  
         
         private Builder() {
           // force use of static builder() method
         }
 
         /**
-         * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
+         * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
          */
-        public Builder credentialsJson(String credentialsJson) {
-            Utils.checkNotNull(credentialsJson, "credentialsJson");
-            this.credentialsJson = credentialsJson;
+        public Builder accessToken(String accessToken) {
+            Utils.checkNotNull(accessToken, "accessToken");
+            this.accessToken = accessToken;
             return this;
         }
         
         public ServiceAccountKeyAuthentication build() {
             return new ServiceAccountKeyAuthentication(
-                credentialsJson);
+                accessToken);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasAuthType>> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<Optional<? extends SourceFacebookMarketingSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"Service\"",
-                        new TypeReference<Optional<? extends SourceGoogleAnalyticsDataApiSchemasAuthType>>() {});
+                        new TypeReference<Optional<? extends SourceFacebookMarketingSchemasAuthType>>() {});
     }
 }
 

@@ -87,7 +87,7 @@ public class DestinationSnowflake {
     private String username;
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to sync data into
+     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
      */
     @JsonProperty("warehouse")
     private String warehouse;
@@ -228,7 +228,7 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to sync data into
+     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
      */
     @JsonIgnore
     public String warehouse() {
@@ -369,7 +369,7 @@ public class DestinationSnowflake {
     }
 
     /**
-     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to sync data into
+     * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
      */
     public DestinationSnowflake withWarehouse(String warehouse) {
         Utils.checkNotNull(warehouse, "warehouse");
@@ -593,7 +593,7 @@ public class DestinationSnowflake {
         }
 
         /**
-         * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to sync data into
+         * Enter the name of the &lt;a href="https://docs.snowflake.com/en/user-guide/warehouses-overview.html#overview-of-warehouses"&gt;warehouse&lt;/a&gt; that you want to use as a compute cluster
          */
         public Builder warehouse(String warehouse) {
             Utils.checkNotNull(warehouse, "warehouse");

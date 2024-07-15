@@ -58,6 +58,13 @@ public class SourceGoogleAnalyticsDataApi {
     private Optional<? extends Boolean> keepEmptyRows;
 
     /**
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_window")
+    private Optional<? extends Long> lookbackWindow;
+
+    /**
      * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
      */
     @JsonProperty("property_ids")
@@ -80,6 +87,7 @@ public class SourceGoogleAnalyticsDataApi {
             @JsonProperty("custom_reports_array") Optional<? extends java.util.List<SourceGoogleAnalyticsDataApiCustomReportConfig>> customReportsArray,
             @JsonProperty("date_ranges_start_date") Optional<? extends LocalDate> dateRangesStartDate,
             @JsonProperty("keep_empty_rows") Optional<? extends Boolean> keepEmptyRows,
+            @JsonProperty("lookback_window") Optional<? extends Long> lookbackWindow,
             @JsonProperty("property_ids") java.util.List<String> propertyIds,
             @JsonProperty("window_in_days") Optional<? extends Long> windowInDays) {
         Utils.checkNotNull(convertConversionsEvent, "convertConversionsEvent");
@@ -87,6 +95,7 @@ public class SourceGoogleAnalyticsDataApi {
         Utils.checkNotNull(customReportsArray, "customReportsArray");
         Utils.checkNotNull(dateRangesStartDate, "dateRangesStartDate");
         Utils.checkNotNull(keepEmptyRows, "keepEmptyRows");
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
         Utils.checkNotNull(propertyIds, "propertyIds");
         Utils.checkNotNull(windowInDays, "windowInDays");
         this.convertConversionsEvent = convertConversionsEvent;
@@ -94,6 +103,7 @@ public class SourceGoogleAnalyticsDataApi {
         this.customReportsArray = customReportsArray;
         this.dateRangesStartDate = dateRangesStartDate;
         this.keepEmptyRows = keepEmptyRows;
+        this.lookbackWindow = lookbackWindow;
         this.propertyIds = propertyIds;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.windowInDays = windowInDays;
@@ -101,7 +111,7 @@ public class SourceGoogleAnalyticsDataApi {
     
     public SourceGoogleAnalyticsDataApi(
             java.util.List<String> propertyIds) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), propertyIds, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), propertyIds, Optional.empty());
     }
 
     /**
@@ -147,6 +157,15 @@ public class SourceGoogleAnalyticsDataApi {
     @JsonIgnore
     public Optional<Boolean> keepEmptyRows() {
         return (Optional<Boolean>) keepEmptyRows;
+    }
+
+    /**
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindow() {
+        return (Optional<Long>) lookbackWindow;
     }
 
     /**
@@ -266,6 +285,24 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     */
+    public SourceGoogleAnalyticsDataApi withLookbackWindow(long lookbackWindow) {
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        this.lookbackWindow = Optional.ofNullable(lookbackWindow);
+        return this;
+    }
+
+    /**
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     */
+    public SourceGoogleAnalyticsDataApi withLookbackWindow(Optional<? extends Long> lookbackWindow) {
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+
+    /**
      * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
      */
     public SourceGoogleAnalyticsDataApi withPropertyIds(java.util.List<String> propertyIds) {
@@ -307,6 +344,7 @@ public class SourceGoogleAnalyticsDataApi {
             java.util.Objects.deepEquals(this.customReportsArray, other.customReportsArray) &&
             java.util.Objects.deepEquals(this.dateRangesStartDate, other.dateRangesStartDate) &&
             java.util.Objects.deepEquals(this.keepEmptyRows, other.keepEmptyRows) &&
+            java.util.Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
             java.util.Objects.deepEquals(this.propertyIds, other.propertyIds) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.windowInDays, other.windowInDays);
@@ -320,6 +358,7 @@ public class SourceGoogleAnalyticsDataApi {
             customReportsArray,
             dateRangesStartDate,
             keepEmptyRows,
+            lookbackWindow,
             propertyIds,
             sourceType,
             windowInDays);
@@ -333,6 +372,7 @@ public class SourceGoogleAnalyticsDataApi {
                 "customReportsArray", customReportsArray,
                 "dateRangesStartDate", dateRangesStartDate,
                 "keepEmptyRows", keepEmptyRows,
+                "lookbackWindow", lookbackWindow,
                 "propertyIds", propertyIds,
                 "sourceType", sourceType,
                 "windowInDays", windowInDays);
@@ -349,6 +389,8 @@ public class SourceGoogleAnalyticsDataApi {
         private Optional<? extends LocalDate> dateRangesStartDate = Optional.empty();
  
         private Optional<? extends Boolean> keepEmptyRows;
+ 
+        private Optional<? extends Long> lookbackWindow;
  
         private java.util.List<String> propertyIds;
  
@@ -449,6 +491,24 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
+         * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+         */
+        public Builder lookbackWindow(long lookbackWindow) {
+            Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+            this.lookbackWindow = Optional.ofNullable(lookbackWindow);
+            return this;
+        }
+
+        /**
+         * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+         */
+        public Builder lookbackWindow(Optional<? extends Long> lookbackWindow) {
+            Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+            this.lookbackWindow = lookbackWindow;
+            return this;
+        }
+
+        /**
          * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
          */
         public Builder propertyIds(java.util.List<String> propertyIds) {
@@ -482,6 +542,9 @@ public class SourceGoogleAnalyticsDataApi {
             if (keepEmptyRows == null) {
                 keepEmptyRows = _SINGLETON_VALUE_KeepEmptyRows.value();
             }
+            if (lookbackWindow == null) {
+                lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
+            }
             if (windowInDays == null) {
                 windowInDays = _SINGLETON_VALUE_WindowInDays.value();
             }
@@ -491,6 +554,7 @@ public class SourceGoogleAnalyticsDataApi {
                 customReportsArray,
                 dateRangesStartDate,
                 keepEmptyRows,
+                lookbackWindow,
                 propertyIds,
                 windowInDays);
         }
@@ -506,6 +570,12 @@ public class SourceGoogleAnalyticsDataApi {
                         "keep_empty_rows",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_LookbackWindow =
+                new LazySingletonValue<>(
+                        "lookback_window",
+                        "2",
+                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -16,11 +16,11 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * SourceKlarnaRegion - Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'us', 'oc'
+ * SourceKlarnaRegion - Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
  */
 public enum SourceKlarnaRegion {
     EU("eu"),
-    US("us"),
+    NA("na"),
     OC("oc");
 
     @JsonValue

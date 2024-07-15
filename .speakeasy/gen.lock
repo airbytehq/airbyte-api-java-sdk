@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: 241d5a786e59837e86f30500836a2a90
+  docChecksum: 9d937f0b088a71ee7aaf5a76d6324576
   docVersion: 1.0.0
-  speakeasyVersion: 1.296.1
-  generationVersion: 2.338.1
-  releaseVersion: 1.4.1
-  configChecksum: 7f0146c31f8d45dea6e579afdf257bf7
+  speakeasyVersion: 1.335.2
+  generationVersion: 2.372.3
+  releaseVersion: 1.5.0
+  configChecksum: ab72ffd6e84b0f36b5d464a90a3d1702
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -14,12 +14,13 @@ features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.21.0
+    core: 3.26.2
     globalSecurity: 2.82.5
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
     groups: 2.81.2
     nullables: 0.1.0
+    oauth2ClientCredentials: 0.0.2
     sdkHooks: 0.1.0
     unions: 0.0.4
 generatedFiles:
@@ -29,9 +30,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/Destinations.java
   - src/main/java/com/airbyte/api/Health.java
   - src/main/java/com/airbyte/api/Jobs.java
+  - src/main/java/com/airbyte/api/Organizations.java
   - src/main/java/com/airbyte/api/Permissions.java
   - src/main/java/com/airbyte/api/Sources.java
   - src/main/java/com/airbyte/api/Streams.java
+  - src/main/java/com/airbyte/api/Users.java
   - src/main/java/com/airbyte/api/Workspaces.java
   - src/main/java/com/airbyte/api/models/operations/CreateConnectionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeleteConnectionRequestBuilder.java
@@ -49,6 +52,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/CreateJobRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetJobRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/ListJobsRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/ListOrganizationsForUserRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreatePermissionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeletePermissionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetPermissionRequestBuilder.java
@@ -62,6 +66,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/PatchSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/PutSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/ListUsersWithinAnOrganizationRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateWorkspaceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceRequestBuilder.java
@@ -89,6 +94,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/HTTPClient.java
   - src/main/java/com/airbyte/api/utils/HTTPRequest.java
   - src/main/java/com/airbyte/api/utils/HeaderMetadata.java
+  - src/main/java/com/airbyte/api/utils/Helpers.java
   - src/main/java/com/airbyte/api/utils/Hook.java
   - src/main/java/com/airbyte/api/utils/Hooks.java
   - src/main/java/com/airbyte/api/utils/JSON.java
@@ -113,6 +119,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/TypedObject.java
   - src/main/java/com/airbyte/api/utils/Types.java
   - src/main/java/com/airbyte/api/utils/Utils.java
+  - src/main/java/com/airbyte/api/models/errors/AuthException.java
   - src/main/java/com/airbyte/api/models/errors/SDKError.java
   - src/main/java/com/airbyte/api/models/operations/CreateConnectionResponse.java
   - src/main/java/com/airbyte/api/models/operations/DeleteConnectionRequest.java
@@ -142,6 +149,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/GetJobResponse.java
   - src/main/java/com/airbyte/api/models/operations/ListJobsRequest.java
   - src/main/java/com/airbyte/api/models/operations/ListJobsResponse.java
+  - src/main/java/com/airbyte/api/models/operations/ListOrganizationsForUserResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreatePermissionResponse.java
   - src/main/java/com/airbyte/api/models/operations/DeletePermissionRequest.java
   - src/main/java/com/airbyte/api/models/operations/DeletePermissionResponse.java
@@ -165,6 +173,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/PutSourceResponse.java
   - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequest.java
   - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesResponse.java
+  - src/main/java/com/airbyte/api/models/operations/ListUsersWithinAnOrganizationRequest.java
+  - src/main/java/com/airbyte/api/models/operations/ListUsersWithinAnOrganizationResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.java
   - src/main/java/com/airbyte/api/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateWorkspaceResponse.java
@@ -186,6 +196,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/StreamConfigurations.java
   - src/main/java/com/airbyte/api/models/shared/StreamConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionSyncModeEnum.java
+  - src/main/java/com/airbyte/api/models/shared/SelectedFieldInfo.java
   - src/main/java/com/airbyte/api/models/shared/ConnectionCreateRequest.java
   - src/main/java/com/airbyte/api/models/shared/AirbyteApiConnectionSchedule.java
   - src/main/java/com/airbyte/api/models/shared/ScheduleTypeEnum.java
@@ -298,6 +309,13 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/AuthenticationMethod.java
   - src/main/java/com/airbyte/api/models/shared/Elasticsearch.java
   - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearch.java
+  - src/main/java/com/airbyte/api/models/shared/Firebolt.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationFireboltSchemasMethod.java
+  - src/main/java/com/airbyte/api/models/shared/ExternalTableViaS3.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationFireboltMethod.java
+  - src/main/java/com/airbyte/api/models/shared/SQLInserts.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationFireboltLoadingMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationFirebolt.java
   - src/main/java/com/airbyte/api/models/shared/Firestore.java
   - src/main/java/com/airbyte/api/models/shared/DestinationFirestore.java
   - src/main/java/com/airbyte/api/models/shared/CredentialType.java
@@ -340,21 +358,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationGcsOutputFormat.java
   - src/main/java/com/airbyte/api/models/shared/GCSBucketRegion.java
   - src/main/java/com/airbyte/api/models/shared/DestinationGcs.java
-  - src/main/java/com/airbyte/api/models/shared/Langchain.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainSchemasMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainFake.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainOpenAI.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainEmbedding.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainSchemasIndexingIndexing3Mode.java
-  - src/main/java/com/airbyte/api/models/shared/ChromaLocalPersistance.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainSchemasIndexingIndexingMode.java
-  - src/main/java/com/airbyte/api/models/shared/DocArrayHnswSearch.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainSchemasIndexingMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainPinecone.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainIndexing.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchainProcessingConfigModel.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationLangchain.java
   - src/main/java/com/airbyte/api/models/shared/Milvus.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMilvusSchemasEmbeddingEmbedding5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMilvusOpenAICompatible.java
@@ -540,13 +543,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftNoTunnel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftSSHTunnelMethod.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftSchemasMethod.java
-  - src/main/java/com/airbyte/api/models/shared/Standard.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftEncryptionType.java
-  - src/main/java/com/airbyte/api/models/shared/AESCBCEnvelopeEncryption.java
-  - src/main/java/com/airbyte/api/models/shared/EncryptionType.java
-  - src/main/java/com/airbyte/api/models/shared/NoEncryption.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftEncryption.java
   - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationRedshiftS3BucketRegion.java
   - src/main/java/com/airbyte/api/models/shared/AWSS3Staging.java
@@ -627,7 +623,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexOpenAI.java
   - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexEmbedding.java
   - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexIndexing.java
+  - src/main/java/com/airbyte/api/models/shared/SnowflakeConnection.java
   - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexFieldNameMappingConfigModel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexLanguage.java
   - src/main/java/com/airbyte/api/models/shared/DestinationSnowflakeCortexSchemasProcessingTextSplitterTextSplitterMode.java
@@ -727,9 +723,12 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/JobTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/JobCreateRequest.java
   - src/main/java/com/airbyte/api/models/shared/JobsResponse.java
+  - src/main/java/com/airbyte/api/models/shared/OrganizationsResponse.java
+  - src/main/java/com/airbyte/api/models/shared/OrganizationResponse.java
   - src/main/java/com/airbyte/api/models/shared/PermissionResponse.java
   - src/main/java/com/airbyte/api/models/shared/PermissionType.java
   - src/main/java/com/airbyte/api/models/shared/PermissionCreateRequest.java
+  - src/main/java/com/airbyte/api/models/shared/PublicPermissionType.java
   - src/main/java/com/airbyte/api/models/shared/PermissionsResponse.java
   - src/main/java/com/airbyte/api/models/shared/PermissionResponseRead.java
   - src/main/java/com/airbyte/api/models/shared/PermissionScope.java
@@ -758,7 +757,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/AWSEnvironment.java
   - src/main/java/com/airbyte/api/models/shared/AWSRegion.java
   - src/main/java/com/airbyte/api/models/shared/OptionsList.java
-  - src/main/java/com/airbyte/api/models/shared/StreamName.java
+  - src/main/java/com/airbyte/api/models/shared/ReportName.java
   - src/main/java/com/airbyte/api/models/shared/ReportOptions.java
   - src/main/java/com/airbyte/api/models/shared/SourceAmazonSellerPartnerAmazonSellerPartner.java
   - src/main/java/com/airbyte/api/models/shared/SourceAmazonSellerPartner.java
@@ -786,6 +785,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceAuth0AuthenticationMethod.java
   - src/main/java/com/airbyte/api/models/shared/Auth0.java
   - src/main/java/com/airbyte/api/models/shared/SourceAuth0.java
+  - src/main/java/com/airbyte/api/models/shared/FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody.java
   - src/main/java/com/airbyte/api/models/shared/AwsCloudtrail.java
   - src/main/java/com/airbyte/api/models/shared/SourceAwsCloudtrail.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasAuthType.java
@@ -850,6 +850,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceChargebee.java
   - src/main/java/com/airbyte/api/models/shared/Chartmogul.java
   - src/main/java/com/airbyte/api/models/shared/SourceChartmogul.java
+  - src/main/java/com/airbyte/api/models/shared/Clazar.java
+  - src/main/java/com/airbyte/api/models/shared/SourceClazar.java
   - src/main/java/com/airbyte/api/models/shared/SourceClickhouseClickhouse.java
   - src/main/java/com/airbyte/api/models/shared/SourceClickhouseSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceClickhousePasswordAuthentication.java
@@ -879,6 +881,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceConfluence.java
   - src/main/java/com/airbyte/api/models/shared/SourceConvexConvex.java
   - src/main/java/com/airbyte/api/models/shared/SourceConvex.java
+  - src/main/java/com/airbyte/api/models/shared/SourceDatadogDataSource.java
+  - src/main/java/com/airbyte/api/models/shared/Queries.java
+  - src/main/java/com/airbyte/api/models/shared/Site.java
+  - src/main/java/com/airbyte/api/models/shared/Datadog.java
+  - src/main/java/com/airbyte/api/models/shared/SourceDatadog.java
   - src/main/java/com/airbyte/api/models/shared/Datascope.java
   - src/main/java/com/airbyte/api/models/shared/SourceDatascope.java
   - src/main/java/com/airbyte/api/models/shared/Delighted.java
@@ -900,6 +907,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ValidAdStatuses.java
   - src/main/java/com/airbyte/api/models/shared/ValidAdSetStatuses.java
   - src/main/java/com/airbyte/api/models/shared/ValidCampaignStatuses.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/ServiceAccountKeyAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/AuthenticateViaFacebookMarketingOauth.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/ValidActionBreakdowns.java
   - src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingActionReportTime.java
   - src/main/java/com/airbyte/api/models/shared/ValidBreakdowns.java
@@ -936,8 +948,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/StorageProvider.java
   - src/main/java/com/airbyte/api/models/shared/File.java
   - src/main/java/com/airbyte/api/models/shared/SourceFile.java
-  - src/main/java/com/airbyte/api/models/shared/Firebolt.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFireboltFirebolt.java
   - src/main/java/com/airbyte/api/models/shared/SourceFirebolt.java
+  - src/main/java/com/airbyte/api/models/shared/Fleetio.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFleetio.java
   - src/main/java/com/airbyte/api/models/shared/Freshcaller.java
   - src/main/java/com/airbyte/api/models/shared/SourceFreshcaller.java
   - src/main/java/com/airbyte/api/models/shared/Freshdesk.java
@@ -987,13 +1001,15 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Gnews.java
   - src/main/java/com/airbyte/api/models/shared/TopHeadlinesTopic.java
   - src/main/java/com/airbyte/api/models/shared/SourceGnews.java
+  - src/main/java/com/airbyte/api/models/shared/Goldcast.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoldcast.java
   - src/main/java/com/airbyte/api/models/shared/GoogleCredentials.java
   - src/main/java/com/airbyte/api/models/shared/CustomQueriesArray.java
   - src/main/java/com/airbyte/api/models/shared/CustomerStatus.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAdsGoogleAds.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAds.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasAuthType.java
-  - src/main/java/com/airbyte/api/models/shared/ServiceAccountKeyAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiAuthType.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaGoogleOauth.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiCredentials.java
@@ -1243,11 +1259,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiCustomReportConfig.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApi.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnlyAuthType.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnlyServiceAccountKeyAuthentication.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnlyCredentials.java
-  - src/main/java/com/airbyte/api/models/shared/GoogleAnalyticsV4ServiceAccountOnly.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnly.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectorySchemasCredentialsTitle.java
   - src/main/java/com/airbyte/api/models/shared/ServiceAccountKey.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDirectoryCredentialsTitle.java
@@ -1376,6 +1387,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceLinkedinPagesOAuth20.java
   - src/main/java/com/airbyte/api/models/shared/SourceLinkedinPagesAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/LinkedinPages.java
+  - src/main/java/com/airbyte/api/models/shared/TimeGranularityType.java
   - src/main/java/com/airbyte/api/models/shared/SourceLinkedinPages.java
   - src/main/java/com/airbyte/api/models/shared/Linnworks.java
   - src/main/java/com/airbyte/api/models/shared/SourceLinnworks.java
@@ -1388,6 +1400,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMailchimpAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailchimpMailchimp.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailchimp.java
+  - src/main/java/com/airbyte/api/models/shared/DomainRegionCode.java
   - src/main/java/com/airbyte/api/models/shared/Mailgun.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailgun.java
   - src/main/java/com/airbyte/api/models/shared/MailjetSms.java
@@ -1408,7 +1421,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveLocal.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveProcessing.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveParsingStrategy.java
-  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental.java
+  - src/main/java/com/airbyte/api/models/shared/UnstructuredDocumentFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveSchemasStreamsFormatFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveParquetFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftOnedriveSchemasStreamsFiletype.java
@@ -1440,7 +1453,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointLocal.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointProcessing.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointParsingStrategy.java
-  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointDocumentFileTypeFormatExperimental.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointUnstructuredDocumentFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasStreamsFormatFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointParquetFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasStreamsFiletype.java
@@ -1653,8 +1666,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePostmarkapp.java
   - src/main/java/com/airbyte/api/models/shared/Prestashop.java
   - src/main/java/com/airbyte/api/models/shared/SourcePrestashop.java
-  - src/main/java/com/airbyte/api/models/shared/PunkApi.java
-  - src/main/java/com/airbyte/api/models/shared/SourcePunkApi.java
   - src/main/java/com/airbyte/api/models/shared/Pypi.java
   - src/main/java/com/airbyte/api/models/shared/SourcePypi.java
   - src/main/java/com/airbyte/api/models/shared/Qualaroo.java
@@ -1694,7 +1705,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceS3Local.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Processing.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3ParsingStrategy.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3DocumentFileTypeFormatExperimental.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3UnstructuredDocumentFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFormat4Filetype.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3ParquetFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFormatFiletype.java
@@ -1814,8 +1825,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SwipeUpAttributionWindow.java
   - src/main/java/com/airbyte/api/models/shared/ViewAttributionWindow.java
   - src/main/java/com/airbyte/api/models/shared/SourceSnapchatMarketing.java
-  - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeSchemasCredentialsAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeUsernameAndPassword.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeKeyPairAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeOAuth20.java
   - src/main/java/com/airbyte/api/models/shared/SourceSnowflakeAuthorizationMethod.java
@@ -1940,6 +1953,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePatchRequest.java
   - src/main/java/com/airbyte/api/models/shared/SourcePutRequest.java
   - src/main/java/com/airbyte/api/models/shared/StreamProperties.java
+  - src/main/java/com/airbyte/api/models/shared/UsersResponse.java
+  - src/main/java/com/airbyte/api/models/shared/UserResponse.java
   - src/main/java/com/airbyte/api/models/shared/WorkspaceOAuthCredentialsRequest.java
   - src/main/java/com/airbyte/api/models/shared/OAuthCredentialsConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/Credentials.java
@@ -1951,6 +1966,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/AzureBlobStorageCredentials.java
   - src/main/java/com/airbyte/api/models/shared/AzureBlobStorage.java
   - src/main/java/com/airbyte/api/models/shared/BingAds.java
+  - src/main/java/com/airbyte/api/models/shared/FacebookMarketingCredentials.java
   - src/main/java/com/airbyte/api/models/shared/FacebookMarketing.java
   - src/main/java/com/airbyte/api/models/shared/GithubCredentials.java
   - src/main/java/com/airbyte/api/models/shared/Github.java
@@ -2025,6 +2041,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/WorkspacesResponse.java
   - src/main/java/com/airbyte/api/models/shared/WorkspaceUpdateRequest.java
   - src/main/java/com/airbyte/api/models/shared/Security.java
+  - src/main/java/com/airbyte/api/models/shared/SchemeClientCredentials.java
   - src/main/java/com/airbyte/api/models/shared/SchemeBasicAuth.java
   - docs/models/operations/CreateConnectionResponse.md
   - docs/models/operations/DeleteConnectionRequest.md
@@ -2054,6 +2071,7 @@ generatedFiles:
   - docs/models/operations/GetJobResponse.md
   - docs/models/operations/ListJobsRequest.md
   - docs/models/operations/ListJobsResponse.md
+  - docs/models/operations/ListOrganizationsForUserResponse.md
   - docs/models/operations/CreatePermissionResponse.md
   - docs/models/operations/DeletePermissionRequest.md
   - docs/models/operations/DeletePermissionResponse.md
@@ -2077,6 +2095,8 @@ generatedFiles:
   - docs/models/operations/PutSourceResponse.md
   - docs/models/operations/GetStreamPropertiesRequest.md
   - docs/models/operations/GetStreamPropertiesResponse.md
+  - docs/models/operations/ListUsersWithinAnOrganizationRequest.md
+  - docs/models/operations/ListUsersWithinAnOrganizationResponse.md
   - docs/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.md
   - docs/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md
   - docs/models/operations/CreateWorkspaceResponse.md
@@ -2098,6 +2118,7 @@ generatedFiles:
   - docs/models/shared/StreamConfigurations.md
   - docs/models/shared/StreamConfiguration.md
   - docs/models/shared/ConnectionSyncModeEnum.md
+  - docs/models/shared/SelectedFieldInfo.md
   - docs/models/shared/ConnectionCreateRequest.md
   - docs/models/shared/AirbyteApiConnectionSchedule.md
   - docs/models/shared/ScheduleTypeEnum.md
@@ -2210,6 +2231,13 @@ generatedFiles:
   - docs/models/shared/AuthenticationMethod.md
   - docs/models/shared/Elasticsearch.md
   - docs/models/shared/DestinationElasticsearch.md
+  - docs/models/shared/Firebolt.md
+  - docs/models/shared/DestinationFireboltSchemasMethod.md
+  - docs/models/shared/ExternalTableViaS3.md
+  - docs/models/shared/DestinationFireboltMethod.md
+  - docs/models/shared/SQLInserts.md
+  - docs/models/shared/DestinationFireboltLoadingMethod.md
+  - docs/models/shared/DestinationFirebolt.md
   - docs/models/shared/Firestore.md
   - docs/models/shared/DestinationFirestore.md
   - docs/models/shared/CredentialType.md
@@ -2252,21 +2280,6 @@ generatedFiles:
   - docs/models/shared/DestinationGcsOutputFormat.md
   - docs/models/shared/GCSBucketRegion.md
   - docs/models/shared/DestinationGcs.md
-  - docs/models/shared/Langchain.md
-  - docs/models/shared/DestinationLangchainSchemasMode.md
-  - docs/models/shared/DestinationLangchainFake.md
-  - docs/models/shared/DestinationLangchainMode.md
-  - docs/models/shared/DestinationLangchainOpenAI.md
-  - docs/models/shared/DestinationLangchainEmbedding.md
-  - docs/models/shared/DestinationLangchainSchemasIndexingIndexing3Mode.md
-  - docs/models/shared/ChromaLocalPersistance.md
-  - docs/models/shared/DestinationLangchainSchemasIndexingIndexingMode.md
-  - docs/models/shared/DocArrayHnswSearch.md
-  - docs/models/shared/DestinationLangchainSchemasIndexingMode.md
-  - docs/models/shared/DestinationLangchainPinecone.md
-  - docs/models/shared/DestinationLangchainIndexing.md
-  - docs/models/shared/DestinationLangchainProcessingConfigModel.md
-  - docs/models/shared/DestinationLangchain.md
   - docs/models/shared/Milvus.md
   - docs/models/shared/DestinationMilvusSchemasEmbeddingEmbedding5Mode.md
   - docs/models/shared/DestinationMilvusOpenAICompatible.md
@@ -2452,13 +2465,6 @@ generatedFiles:
   - docs/models/shared/DestinationRedshiftTunnelMethod.md
   - docs/models/shared/DestinationRedshiftNoTunnel.md
   - docs/models/shared/DestinationRedshiftSSHTunnelMethod.md
-  - docs/models/shared/DestinationRedshiftSchemasMethod.md
-  - docs/models/shared/Standard.md
-  - docs/models/shared/DestinationRedshiftEncryptionType.md
-  - docs/models/shared/AESCBCEnvelopeEncryption.md
-  - docs/models/shared/EncryptionType.md
-  - docs/models/shared/NoEncryption.md
-  - docs/models/shared/DestinationRedshiftEncryption.md
   - docs/models/shared/DestinationRedshiftMethod.md
   - docs/models/shared/DestinationRedshiftS3BucketRegion.md
   - docs/models/shared/Awss3Staging.md
@@ -2539,7 +2545,7 @@ generatedFiles:
   - docs/models/shared/DestinationSnowflakeCortexOpenAI.md
   - docs/models/shared/DestinationSnowflakeCortexEmbedding.md
   - docs/models/shared/DestinationSnowflakeCortexCredentials.md
-  - docs/models/shared/DestinationSnowflakeCortexIndexing.md
+  - docs/models/shared/SnowflakeConnection.md
   - docs/models/shared/DestinationSnowflakeCortexFieldNameMappingConfigModel.md
   - docs/models/shared/DestinationSnowflakeCortexLanguage.md
   - docs/models/shared/DestinationSnowflakeCortexSchemasProcessingTextSplitterTextSplitterMode.md
@@ -2639,9 +2645,12 @@ generatedFiles:
   - docs/models/shared/JobTypeEnum.md
   - docs/models/shared/JobCreateRequest.md
   - docs/models/shared/JobsResponse.md
+  - docs/models/shared/OrganizationsResponse.md
+  - docs/models/shared/OrganizationResponse.md
   - docs/models/shared/PermissionResponse.md
   - docs/models/shared/PermissionType.md
   - docs/models/shared/PermissionCreateRequest.md
+  - docs/models/shared/PublicPermissionType.md
   - docs/models/shared/PermissionsResponse.md
   - docs/models/shared/PermissionResponseRead.md
   - docs/models/shared/PermissionScope.md
@@ -2670,7 +2679,7 @@ generatedFiles:
   - docs/models/shared/AWSEnvironment.md
   - docs/models/shared/AWSRegion.md
   - docs/models/shared/OptionsList.md
-  - docs/models/shared/StreamName.md
+  - docs/models/shared/ReportName.md
   - docs/models/shared/ReportOptions.md
   - docs/models/shared/SourceAmazonSellerPartnerAmazonSellerPartner.md
   - docs/models/shared/SourceAmazonSellerPartner.md
@@ -2698,6 +2707,7 @@ generatedFiles:
   - docs/models/shared/SourceAuth0AuthenticationMethod.md
   - docs/models/shared/Auth0.md
   - docs/models/shared/SourceAuth0.md
+  - docs/models/shared/FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody.md
   - docs/models/shared/AwsCloudtrail.md
   - docs/models/shared/SourceAwsCloudtrail.md
   - docs/models/shared/SourceAzureBlobStorageSchemasAuthType.md
@@ -2762,6 +2772,8 @@ generatedFiles:
   - docs/models/shared/SourceChargebee.md
   - docs/models/shared/Chartmogul.md
   - docs/models/shared/SourceChartmogul.md
+  - docs/models/shared/Clazar.md
+  - docs/models/shared/SourceClazar.md
   - docs/models/shared/SourceClickhouseClickhouse.md
   - docs/models/shared/SourceClickhouseSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/SourceClickhousePasswordAuthentication.md
@@ -2791,6 +2803,11 @@ generatedFiles:
   - docs/models/shared/SourceConfluence.md
   - docs/models/shared/SourceConvexConvex.md
   - docs/models/shared/SourceConvex.md
+  - docs/models/shared/SourceDatadogDataSource.md
+  - docs/models/shared/Queries.md
+  - docs/models/shared/Site.md
+  - docs/models/shared/Datadog.md
+  - docs/models/shared/SourceDatadog.md
   - docs/models/shared/Datascope.md
   - docs/models/shared/SourceDatascope.md
   - docs/models/shared/Delighted.md
@@ -2812,6 +2829,11 @@ generatedFiles:
   - docs/models/shared/ValidAdStatuses.md
   - docs/models/shared/ValidAdSetStatuses.md
   - docs/models/shared/ValidCampaignStatuses.md
+  - docs/models/shared/SourceFacebookMarketingSchemasAuthType.md
+  - docs/models/shared/ServiceAccountKeyAuthentication.md
+  - docs/models/shared/SourceFacebookMarketingAuthType.md
+  - docs/models/shared/AuthenticateViaFacebookMarketingOauth.md
+  - docs/models/shared/SourceFacebookMarketingAuthentication.md
   - docs/models/shared/ValidActionBreakdowns.md
   - docs/models/shared/SourceFacebookMarketingActionReportTime.md
   - docs/models/shared/ValidBreakdowns.md
@@ -2848,8 +2870,10 @@ generatedFiles:
   - docs/models/shared/StorageProvider.md
   - docs/models/shared/File.md
   - docs/models/shared/SourceFile.md
-  - docs/models/shared/Firebolt.md
+  - docs/models/shared/SourceFireboltFirebolt.md
   - docs/models/shared/SourceFirebolt.md
+  - docs/models/shared/Fleetio.md
+  - docs/models/shared/SourceFleetio.md
   - docs/models/shared/Freshcaller.md
   - docs/models/shared/SourceFreshcaller.md
   - docs/models/shared/Freshdesk.md
@@ -2899,13 +2923,15 @@ generatedFiles:
   - docs/models/shared/Gnews.md
   - docs/models/shared/TopHeadlinesTopic.md
   - docs/models/shared/SourceGnews.md
+  - docs/models/shared/Goldcast.md
+  - docs/models/shared/SourceGoldcast.md
   - docs/models/shared/GoogleCredentials.md
   - docs/models/shared/CustomQueriesArray.md
   - docs/models/shared/CustomerStatus.md
   - docs/models/shared/SourceGoogleAdsGoogleAds.md
   - docs/models/shared/SourceGoogleAds.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasAuthType.md
-  - docs/models/shared/ServiceAccountKeyAuthentication.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiAuthType.md
   - docs/models/shared/AuthenticateViaGoogleOauth.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiCredentials.md
@@ -3155,11 +3181,6 @@ generatedFiles:
   - docs/models/shared/SourceGoogleAnalyticsDataApiCustomReportConfig.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi.md
   - docs/models/shared/SourceGoogleAnalyticsDataApi.md
-  - docs/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnlyAuthType.md
-  - docs/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnlyServiceAccountKeyAuthentication.md
-  - docs/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnlyCredentials.md
-  - docs/models/shared/GoogleAnalyticsV4ServiceAccountOnly.md
-  - docs/models/shared/SourceGoogleAnalyticsV4ServiceAccountOnly.md
   - docs/models/shared/SourceGoogleDirectorySchemasCredentialsTitle.md
   - docs/models/shared/ServiceAccountKey.md
   - docs/models/shared/SourceGoogleDirectoryCredentialsTitle.md
@@ -3288,6 +3309,7 @@ generatedFiles:
   - docs/models/shared/SourceLinkedinPagesOAuth20.md
   - docs/models/shared/SourceLinkedinPagesAuthentication.md
   - docs/models/shared/LinkedinPages.md
+  - docs/models/shared/TimeGranularityType.md
   - docs/models/shared/SourceLinkedinPages.md
   - docs/models/shared/Linnworks.md
   - docs/models/shared/SourceLinnworks.md
@@ -3300,6 +3322,7 @@ generatedFiles:
   - docs/models/shared/SourceMailchimpAuthentication.md
   - docs/models/shared/SourceMailchimpMailchimp.md
   - docs/models/shared/SourceMailchimp.md
+  - docs/models/shared/DomainRegionCode.md
   - docs/models/shared/Mailgun.md
   - docs/models/shared/SourceMailgun.md
   - docs/models/shared/MailjetSms.md
@@ -3320,7 +3343,7 @@ generatedFiles:
   - docs/models/shared/SourceMicrosoftOnedriveLocal.md
   - docs/models/shared/SourceMicrosoftOnedriveProcessing.md
   - docs/models/shared/SourceMicrosoftOnedriveParsingStrategy.md
-  - docs/models/shared/SourceMicrosoftOnedriveDocumentFileTypeFormatExperimental.md
+  - docs/models/shared/UnstructuredDocumentFormat.md
   - docs/models/shared/SourceMicrosoftOnedriveSchemasStreamsFormatFiletype.md
   - docs/models/shared/SourceMicrosoftOnedriveParquetFormat.md
   - docs/models/shared/SourceMicrosoftOnedriveSchemasStreamsFiletype.md
@@ -3352,7 +3375,7 @@ generatedFiles:
   - docs/models/shared/SourceMicrosoftSharepointLocal.md
   - docs/models/shared/SourceMicrosoftSharepointProcessing.md
   - docs/models/shared/SourceMicrosoftSharepointParsingStrategy.md
-  - docs/models/shared/SourceMicrosoftSharepointDocumentFileTypeFormatExperimental.md
+  - docs/models/shared/SourceMicrosoftSharepointUnstructuredDocumentFormat.md
   - docs/models/shared/SourceMicrosoftSharepointSchemasStreamsFormatFiletype.md
   - docs/models/shared/SourceMicrosoftSharepointParquetFormat.md
   - docs/models/shared/SourceMicrosoftSharepointSchemasStreamsFiletype.md
@@ -3565,8 +3588,6 @@ generatedFiles:
   - docs/models/shared/SourcePostmarkapp.md
   - docs/models/shared/Prestashop.md
   - docs/models/shared/SourcePrestashop.md
-  - docs/models/shared/PunkApi.md
-  - docs/models/shared/SourcePunkApi.md
   - docs/models/shared/Pypi.md
   - docs/models/shared/SourcePypi.md
   - docs/models/shared/Qualaroo.md
@@ -3606,7 +3627,7 @@ generatedFiles:
   - docs/models/shared/SourceS3Local.md
   - docs/models/shared/SourceS3Processing.md
   - docs/models/shared/SourceS3ParsingStrategy.md
-  - docs/models/shared/SourceS3DocumentFileTypeFormatExperimental.md
+  - docs/models/shared/SourceS3UnstructuredDocumentFormat.md
   - docs/models/shared/SourceS3SchemasStreamsFormatFormat4Filetype.md
   - docs/models/shared/SourceS3ParquetFormat.md
   - docs/models/shared/SourceS3SchemasStreamsFormatFormatFiletype.md
@@ -3726,8 +3747,10 @@ generatedFiles:
   - docs/models/shared/SwipeUpAttributionWindow.md
   - docs/models/shared/ViewAttributionWindow.md
   - docs/models/shared/SourceSnapchatMarketing.md
-  - docs/models/shared/SourceSnowflakeSchemasAuthType.md
+  - docs/models/shared/SourceSnowflakeSchemasCredentialsAuthType.md
   - docs/models/shared/SourceSnowflakeUsernameAndPassword.md
+  - docs/models/shared/SourceSnowflakeSchemasAuthType.md
+  - docs/models/shared/SourceSnowflakeKeyPairAuthentication.md
   - docs/models/shared/SourceSnowflakeAuthType.md
   - docs/models/shared/SourceSnowflakeOAuth20.md
   - docs/models/shared/SourceSnowflakeAuthorizationMethod.md
@@ -3852,6 +3875,8 @@ generatedFiles:
   - docs/models/shared/SourcePatchRequest.md
   - docs/models/shared/SourcePutRequest.md
   - docs/models/shared/StreamProperties.md
+  - docs/models/shared/UsersResponse.md
+  - docs/models/shared/UserResponse.md
   - docs/models/shared/WorkspaceOAuthCredentialsRequest.md
   - docs/models/shared/OAuthCredentialsConfiguration.md
   - docs/models/shared/Credentials.md
@@ -3863,6 +3888,7 @@ generatedFiles:
   - docs/models/shared/AzureBlobStorageCredentials.md
   - docs/models/shared/AzureBlobStorage.md
   - docs/models/shared/BingAds.md
+  - docs/models/shared/FacebookMarketingCredentials.md
   - docs/models/shared/FacebookMarketing.md
   - docs/models/shared/GithubCredentials.md
   - docs/models/shared/Github.md
@@ -3937,14 +3963,18 @@ generatedFiles:
   - docs/models/shared/WorkspacesResponse.md
   - docs/models/shared/WorkspaceUpdateRequest.md
   - docs/models/shared/Security.md
+  - docs/models/shared/SchemeClientCredentials.md
   - docs/models/shared/SchemeBasicAuth.md
   - docs/sdks/airbyte/README.md
   - docs/sdks/connections/README.md
   - docs/sdks/destinations/README.md
   - docs/sdks/health/README.md
   - docs/sdks/jobs/README.md
+  - docs/sdks/organizations/README.md
   - docs/sdks/permissions/README.md
   - docs/sdks/sources/README.md
   - docs/sdks/streams/README.md
+  - docs/sdks/users/README.md
   - docs/sdks/workspaces/README.md
   - USAGE.md
+  - src/main/java/com/airbyte/api/hooks/ClientCredentialsHook.java
