@@ -52,6 +52,13 @@ public class SourceGithub {
     private SourceGithubAuthentication credentials;
 
     /**
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("max_waiting_time")
+    private Optional<? extends Long> maxWaitingTime;
+
+    /**
      * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
      */
     @JsonProperty("repositories")
@@ -80,6 +87,7 @@ public class SourceGithub {
             @JsonProperty("branch") Optional<? extends String> branch,
             @JsonProperty("branches") Optional<? extends java.util.List<String>> branches,
             @JsonProperty("credentials") SourceGithubAuthentication credentials,
+            @JsonProperty("max_waiting_time") Optional<? extends Long> maxWaitingTime,
             @JsonProperty("repositories") java.util.List<String> repositories,
             @JsonProperty("repository") Optional<? extends String> repository,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
@@ -87,6 +95,7 @@ public class SourceGithub {
         Utils.checkNotNull(branch, "branch");
         Utils.checkNotNull(branches, "branches");
         Utils.checkNotNull(credentials, "credentials");
+        Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
         Utils.checkNotNull(repositories, "repositories");
         Utils.checkNotNull(repository, "repository");
         Utils.checkNotNull(startDate, "startDate");
@@ -94,6 +103,7 @@ public class SourceGithub {
         this.branch = branch;
         this.branches = branches;
         this.credentials = credentials;
+        this.maxWaitingTime = maxWaitingTime;
         this.repositories = repositories;
         this.repository = repository;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
@@ -103,7 +113,7 @@ public class SourceGithub {
     public SourceGithub(
             SourceGithubAuthentication credentials,
             java.util.List<String> repositories) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), credentials, repositories, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), repositories, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -139,6 +149,15 @@ public class SourceGithub {
     @JsonIgnore
     public SourceGithubAuthentication credentials() {
         return credentials;
+    }
+
+    /**
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> maxWaitingTime() {
+        return (Optional<Long>) maxWaitingTime;
     }
 
     /**
@@ -240,6 +259,24 @@ public class SourceGithub {
     }
 
     /**
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     */
+    public SourceGithub withMaxWaitingTime(long maxWaitingTime) {
+        Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
+        this.maxWaitingTime = Optional.ofNullable(maxWaitingTime);
+        return this;
+    }
+
+    /**
+     * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+     */
+    public SourceGithub withMaxWaitingTime(Optional<? extends Long> maxWaitingTime) {
+        Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
+        this.maxWaitingTime = maxWaitingTime;
+        return this;
+    }
+
+    /**
      * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
      */
     public SourceGithub withRepositories(java.util.List<String> repositories) {
@@ -298,6 +335,7 @@ public class SourceGithub {
             java.util.Objects.deepEquals(this.branch, other.branch) &&
             java.util.Objects.deepEquals(this.branches, other.branches) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
+            java.util.Objects.deepEquals(this.maxWaitingTime, other.maxWaitingTime) &&
             java.util.Objects.deepEquals(this.repositories, other.repositories) &&
             java.util.Objects.deepEquals(this.repository, other.repository) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
@@ -311,6 +349,7 @@ public class SourceGithub {
             branch,
             branches,
             credentials,
+            maxWaitingTime,
             repositories,
             repository,
             sourceType,
@@ -324,6 +363,7 @@ public class SourceGithub {
                 "branch", branch,
                 "branches", branches,
                 "credentials", credentials,
+                "maxWaitingTime", maxWaitingTime,
                 "repositories", repositories,
                 "repository", repository,
                 "sourceType", sourceType,
@@ -339,6 +379,8 @@ public class SourceGithub {
         private Optional<? extends java.util.List<String>> branches = Optional.empty();
  
         private SourceGithubAuthentication credentials;
+ 
+        private Optional<? extends Long> maxWaitingTime;
  
         private java.util.List<String> repositories;
  
@@ -414,6 +456,24 @@ public class SourceGithub {
         }
 
         /**
+         * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+         */
+        public Builder maxWaitingTime(long maxWaitingTime) {
+            Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
+            this.maxWaitingTime = Optional.ofNullable(maxWaitingTime);
+            return this;
+        }
+
+        /**
+         * Max Waiting Time for rate limit. Set higher value to wait till rate limits will be resetted to continue sync
+         */
+        public Builder maxWaitingTime(Optional<? extends Long> maxWaitingTime) {
+            Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
+            this.maxWaitingTime = maxWaitingTime;
+            return this;
+        }
+
+        /**
          * List of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/a* for matching multiple repositories by pattern.
          */
         public Builder repositories(java.util.List<String> repositories) {
@@ -462,11 +522,15 @@ public class SourceGithub {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
             }
+            if (maxWaitingTime == null) {
+                maxWaitingTime = _SINGLETON_VALUE_MaxWaitingTime.value();
+            }
             return new SourceGithub(
                 apiUrl,
                 branch,
                 branches,
                 credentials,
+                maxWaitingTime,
                 repositories,
                 repository,
                 startDate);
@@ -477,6 +541,12 @@ public class SourceGithub {
                         "api_url",
                         "\"https://api.github.com/\"",
                         new TypeReference<Optional<? extends String>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_MaxWaitingTime =
+                new LazySingletonValue<>(
+                        "max_waiting_time",
+                        "10",
+                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<SourceGithubGithub> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

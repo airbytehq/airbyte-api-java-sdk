@@ -46,7 +46,7 @@ public class DestinationSnowflakeCortex {
      * Snowflake can be used to store vector data and retrieve embeddings.
      */
     @JsonProperty("indexing")
-    private DestinationSnowflakeCortexIndexing indexing;
+    private SnowflakeConnection indexing;
 
     /**
      * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
@@ -61,7 +61,7 @@ public class DestinationSnowflakeCortex {
     @JsonCreator
     public DestinationSnowflakeCortex(
             @JsonProperty("embedding") DestinationSnowflakeCortexEmbedding embedding,
-            @JsonProperty("indexing") DestinationSnowflakeCortexIndexing indexing,
+            @JsonProperty("indexing") SnowflakeConnection indexing,
             @JsonProperty("omit_raw_text") Optional<? extends Boolean> omitRawText,
             @JsonProperty("processing") DestinationSnowflakeCortexProcessingConfigModel processing) {
         Utils.checkNotNull(embedding, "embedding");
@@ -77,7 +77,7 @@ public class DestinationSnowflakeCortex {
     
     public DestinationSnowflakeCortex(
             DestinationSnowflakeCortexEmbedding embedding,
-            DestinationSnowflakeCortexIndexing indexing,
+            SnowflakeConnection indexing,
             DestinationSnowflakeCortexProcessingConfigModel processing) {
         this(embedding, indexing, Optional.empty(), processing);
     }
@@ -99,7 +99,7 @@ public class DestinationSnowflakeCortex {
      * Snowflake can be used to store vector data and retrieve embeddings.
      */
     @JsonIgnore
-    public DestinationSnowflakeCortexIndexing indexing() {
+    public SnowflakeConnection indexing() {
         return indexing;
     }
 
@@ -133,7 +133,7 @@ public class DestinationSnowflakeCortex {
     /**
      * Snowflake can be used to store vector data and retrieve embeddings.
      */
-    public DestinationSnowflakeCortex withIndexing(DestinationSnowflakeCortexIndexing indexing) {
+    public DestinationSnowflakeCortex withIndexing(SnowflakeConnection indexing) {
         Utils.checkNotNull(indexing, "indexing");
         this.indexing = indexing;
         return this;
@@ -204,7 +204,7 @@ public class DestinationSnowflakeCortex {
  
         private DestinationSnowflakeCortexEmbedding embedding;
  
-        private DestinationSnowflakeCortexIndexing indexing;
+        private SnowflakeConnection indexing;
  
         private Optional<? extends Boolean> omitRawText;
  
@@ -226,7 +226,7 @@ public class DestinationSnowflakeCortex {
         /**
          * Snowflake can be used to store vector data and retrieve embeddings.
          */
-        public Builder indexing(DestinationSnowflakeCortexIndexing indexing) {
+        public Builder indexing(SnowflakeConnection indexing) {
             Utils.checkNotNull(indexing, "indexing");
             this.indexing = indexing;
             return this;

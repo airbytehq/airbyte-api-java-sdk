@@ -13,7 +13,7 @@
 ## createOrUpdateWorkspaceOAuthCredentials
 
 Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
-In order to determine what the credential configuration needs to be, please see the connector specification of the relevant  source/destination.
+In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
 
 ### Example Usage
 
@@ -69,6 +69,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -82,12 +83,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse>](../../models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md)**
+**[com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse](../../models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## createWorkspace
 
@@ -143,6 +144,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -156,12 +158,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.CreateWorkspaceResponse>](../../models/operations/CreateWorkspaceResponse.md)**
+**[com.airbyte.api.models.operations.CreateWorkspaceResponse](../../models/operations/CreateWorkspaceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## deleteWorkspace
 
@@ -215,6 +217,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -228,12 +231,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.DeleteWorkspaceResponse>](../../models/operations/DeleteWorkspaceResponse.md)**
+**[com.airbyte.api.models.operations.DeleteWorkspaceResponse](../../models/operations/DeleteWorkspaceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## getWorkspace
 
@@ -289,6 +292,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -302,12 +306,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetWorkspaceResponse>](../../models/operations/GetWorkspaceResponse.md)**
+**[com.airbyte.api.models.operations.GetWorkspaceResponse](../../models/operations/GetWorkspaceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## listWorkspaces
 
@@ -362,6 +366,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -375,12 +380,12 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.ListWorkspacesResponse>](../../models/operations/ListWorkspacesResponse.md)**
+**[com.airbyte.api.models.operations.ListWorkspacesResponse](../../models/operations/ListWorkspacesResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## updateWorkspace
 
@@ -439,6 +444,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -452,9 +458,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.UpdateWorkspaceResponse>](../../models/operations/UpdateWorkspaceResponse.md)**
+**[com.airbyte.api.models.operations.UpdateWorkspaceResponse](../../models/operations/UpdateWorkspaceResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

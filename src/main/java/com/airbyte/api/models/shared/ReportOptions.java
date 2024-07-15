@@ -23,16 +23,22 @@ public class ReportOptions {
     @JsonProperty("options_list")
     private java.util.List<OptionsList> optionsList;
 
+    @JsonProperty("report_name")
+    private ReportName reportName;
+
     @JsonProperty("stream_name")
-    private StreamName streamName;
+    private String streamName;
 
     @JsonCreator
     public ReportOptions(
             @JsonProperty("options_list") java.util.List<OptionsList> optionsList,
-            @JsonProperty("stream_name") StreamName streamName) {
+            @JsonProperty("report_name") ReportName reportName,
+            @JsonProperty("stream_name") String streamName) {
         Utils.checkNotNull(optionsList, "optionsList");
+        Utils.checkNotNull(reportName, "reportName");
         Utils.checkNotNull(streamName, "streamName");
         this.optionsList = optionsList;
+        this.reportName = reportName;
         this.streamName = streamName;
     }
 
@@ -45,7 +51,12 @@ public class ReportOptions {
     }
 
     @JsonIgnore
-    public StreamName streamName() {
+    public ReportName reportName() {
+        return reportName;
+    }
+
+    @JsonIgnore
+    public String streamName() {
         return streamName;
     }
 
@@ -62,7 +73,13 @@ public class ReportOptions {
         return this;
     }
 
-    public ReportOptions withStreamName(StreamName streamName) {
+    public ReportOptions withReportName(ReportName reportName) {
+        Utils.checkNotNull(reportName, "reportName");
+        this.reportName = reportName;
+        return this;
+    }
+
+    public ReportOptions withStreamName(String streamName) {
         Utils.checkNotNull(streamName, "streamName");
         this.streamName = streamName;
         return this;
@@ -79,6 +96,7 @@ public class ReportOptions {
         ReportOptions other = (ReportOptions) o;
         return 
             java.util.Objects.deepEquals(this.optionsList, other.optionsList) &&
+            java.util.Objects.deepEquals(this.reportName, other.reportName) &&
             java.util.Objects.deepEquals(this.streamName, other.streamName);
     }
     
@@ -86,6 +104,7 @@ public class ReportOptions {
     public int hashCode() {
         return java.util.Objects.hash(
             optionsList,
+            reportName,
             streamName);
     }
     
@@ -93,6 +112,7 @@ public class ReportOptions {
     public String toString() {
         return Utils.toString(ReportOptions.class,
                 "optionsList", optionsList,
+                "reportName", reportName,
                 "streamName", streamName);
     }
     
@@ -100,7 +120,9 @@ public class ReportOptions {
  
         private java.util.List<OptionsList> optionsList;
  
-        private StreamName streamName;  
+        private ReportName reportName;
+ 
+        private String streamName;  
         
         private Builder() {
           // force use of static builder() method
@@ -115,7 +137,13 @@ public class ReportOptions {
             return this;
         }
 
-        public Builder streamName(StreamName streamName) {
+        public Builder reportName(ReportName reportName) {
+            Utils.checkNotNull(reportName, "reportName");
+            this.reportName = reportName;
+            return this;
+        }
+
+        public Builder streamName(String streamName) {
             Utils.checkNotNull(streamName, "streamName");
             this.streamName = streamName;
             return this;
@@ -124,6 +152,7 @@ public class ReportOptions {
         public ReportOptions build() {
             return new ReportOptions(
                 optionsList,
+                reportName,
                 streamName);
         }
     }

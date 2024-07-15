@@ -15,10 +15,10 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 /**
- * DestinationSnowflakeCortexIndexing - Snowflake can be used to store vector data and retrieve embeddings.
+ * SnowflakeConnection - Snowflake can be used to store vector data and retrieve embeddings.
  */
 
-public class DestinationSnowflakeCortexIndexing {
+public class SnowflakeConnection {
 
     @JsonProperty("credentials")
     private DestinationSnowflakeCortexCredentials credentials;
@@ -60,7 +60,7 @@ public class DestinationSnowflakeCortexIndexing {
     private String warehouse;
 
     @JsonCreator
-    public DestinationSnowflakeCortexIndexing(
+    public SnowflakeConnection(
             @JsonProperty("credentials") DestinationSnowflakeCortexCredentials credentials,
             @JsonProperty("database") String database,
             @JsonProperty("default_schema") String defaultSchema,
@@ -141,7 +141,7 @@ public class DestinationSnowflakeCortexIndexing {
         return new Builder();
     }
 
-    public DestinationSnowflakeCortexIndexing withCredentials(DestinationSnowflakeCortexCredentials credentials) {
+    public SnowflakeConnection withCredentials(DestinationSnowflakeCortexCredentials credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         return this;
@@ -150,7 +150,7 @@ public class DestinationSnowflakeCortexIndexing {
     /**
      * Enter the name of the database that you want to sync data into
      */
-    public DestinationSnowflakeCortexIndexing withDatabase(String database) {
+    public SnowflakeConnection withDatabase(String database) {
         Utils.checkNotNull(database, "database");
         this.database = database;
         return this;
@@ -159,7 +159,7 @@ public class DestinationSnowflakeCortexIndexing {
     /**
      * Enter the name of the default schema
      */
-    public DestinationSnowflakeCortexIndexing withDefaultSchema(String defaultSchema) {
+    public SnowflakeConnection withDefaultSchema(String defaultSchema) {
         Utils.checkNotNull(defaultSchema, "defaultSchema");
         this.defaultSchema = defaultSchema;
         return this;
@@ -168,7 +168,7 @@ public class DestinationSnowflakeCortexIndexing {
     /**
      * Enter the account name you want to use to access the database. This is usually the identifier before .snowflakecomputing.com
      */
-    public DestinationSnowflakeCortexIndexing withHost(String host) {
+    public SnowflakeConnection withHost(String host) {
         Utils.checkNotNull(host, "host");
         this.host = host;
         return this;
@@ -177,7 +177,7 @@ public class DestinationSnowflakeCortexIndexing {
     /**
      * Enter the role that you want to use to access Snowflake
      */
-    public DestinationSnowflakeCortexIndexing withRole(String role) {
+    public SnowflakeConnection withRole(String role) {
         Utils.checkNotNull(role, "role");
         this.role = role;
         return this;
@@ -186,7 +186,7 @@ public class DestinationSnowflakeCortexIndexing {
     /**
      * Enter the name of the user you want to use to access the database
      */
-    public DestinationSnowflakeCortexIndexing withUsername(String username) {
+    public SnowflakeConnection withUsername(String username) {
         Utils.checkNotNull(username, "username");
         this.username = username;
         return this;
@@ -195,7 +195,7 @@ public class DestinationSnowflakeCortexIndexing {
     /**
      * Enter the name of the warehouse that you want to sync data into
      */
-    public DestinationSnowflakeCortexIndexing withWarehouse(String warehouse) {
+    public SnowflakeConnection withWarehouse(String warehouse) {
         Utils.checkNotNull(warehouse, "warehouse");
         this.warehouse = warehouse;
         return this;
@@ -209,7 +209,7 @@ public class DestinationSnowflakeCortexIndexing {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        DestinationSnowflakeCortexIndexing other = (DestinationSnowflakeCortexIndexing) o;
+        SnowflakeConnection other = (SnowflakeConnection) o;
         return 
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.database, other.database) &&
@@ -234,7 +234,7 @@ public class DestinationSnowflakeCortexIndexing {
     
     @Override
     public String toString() {
-        return Utils.toString(DestinationSnowflakeCortexIndexing.class,
+        return Utils.toString(SnowflakeConnection.class,
                 "credentials", credentials,
                 "database", database,
                 "defaultSchema", defaultSchema,
@@ -324,8 +324,8 @@ public class DestinationSnowflakeCortexIndexing {
             return this;
         }
         
-        public DestinationSnowflakeCortexIndexing build() {
-            return new DestinationSnowflakeCortexIndexing(
+        public SnowflakeConnection build() {
+            return new SnowflakeConnection(
                 credentials,
                 database,
                 defaultSchema,

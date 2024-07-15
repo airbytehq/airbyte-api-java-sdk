@@ -265,6 +265,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFirebolt>(){}));
     }
 
+    public static SourceConfiguration of(SourceFleetio value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFleetio>(){}));
+    }
+
     public static SourceConfiguration of(SourceFreshcaller value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshcaller>(){}));
@@ -1054,6 +1059,7 @@ public class SourceConfiguration {
      * <li>{@code SourceFauna}</li>
      * <li>{@code SourceFile}</li>
      * <li>{@code SourceFirebolt}</li>
+     * <li>{@code SourceFleetio}</li>
      * <li>{@code SourceFreshcaller}</li>
      * <li>{@code SourceFreshdesk}</li>
      * <li>{@code SourceFreshsales}</li>
@@ -1287,6 +1293,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFauna>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFile>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFirebolt>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceFleetio>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshcaller>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshdesk>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshsales>() {}, Utils.JsonShape.DEFAULT),

@@ -20,7 +20,9 @@ import java.math.BigInteger;
  */
 public enum JobTypeEnum {
     SYNC("sync"),
-    RESET("reset");
+    RESET("reset"),
+    REFRESH("refresh"),
+    CLEAR("clear");
 
     @JsonValue
     private final String value;

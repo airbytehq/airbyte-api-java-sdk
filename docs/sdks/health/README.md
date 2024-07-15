@@ -45,6 +45,7 @@ public class Application {
             // handle exception
             throw e;
         }
+
     }
 }
 ```
@@ -52,9 +53,9 @@ public class Application {
 
 ### Response
 
-**[Optional<? extends com.airbyte.api.models.operations.GetHealthCheckResponse>](../../models/operations/GetHealthCheckResponse.md)**
+**[com.airbyte.api.models.operations.GetHealthCheckResponse](../../models/operations/GetHealthCheckResponse.md)**
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | */*                    |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |

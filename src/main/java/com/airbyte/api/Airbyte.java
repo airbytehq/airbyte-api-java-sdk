@@ -47,11 +47,15 @@ public class Airbyte {
 
     private final Jobs jobs;
 
+    private final Organizations organizations;
+
     private final Permissions permissions;
 
     private final Sources sources;
 
     private final Streams streams;
+
+    private final Users users;
 
     private final Workspaces workspaces;
 
@@ -71,6 +75,10 @@ public class Airbyte {
         return jobs;
     }
 
+    public Organizations organizations() {
+        return organizations;
+    }
+
     public Permissions permissions() {
         return permissions;
     }
@@ -81,6 +89,10 @@ public class Airbyte {
 
     public Streams streams() {
         return streams;
+    }
+
+    public Users users() {
+        return users;
     }
 
     public Workspaces workspaces() {
@@ -217,9 +229,11 @@ public class Airbyte {
         this.destinations = new Destinations(sdkConfiguration);
         this.health = new Health(sdkConfiguration);
         this.jobs = new Jobs(sdkConfiguration);
+        this.organizations = new Organizations(sdkConfiguration);
         this.permissions = new Permissions(sdkConfiguration);
         this.sources = new Sources(sdkConfiguration);
         this.streams = new Streams(sdkConfiguration);
+        this.users = new Users(sdkConfiguration);
         this.workspaces = new Workspaces(sdkConfiguration);
         this.sdkConfiguration.initialize();
     }}

@@ -5,12 +5,17 @@
 package com.airbyte.api.utils;
 
 import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URI;
 import java.net.URLEncoder;
+import java.net.http.HttpClient.Version;
+import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -18,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.Callable;
+import java.util.function.BiPredicate;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +37,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+import javax.net.ssl.SSLSession;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.NameValuePair;
@@ -836,6 +844,18 @@ public final class Utils {
      * @return a builder initialized with values from {@code request}
      */
     public static HttpRequest.Builder copy(HttpRequest request) {
+        return copy(request, (k, v) -> true);
+    }
+    
+    /**
+     * Returns an {@link HttpRequest.Builder} which is initialized with the 
+     * state of the given {@link HttpRequest}.
+     * 
+     * @param request request to copy
+     * @param filter selects which header key-values to include in the copied request
+     * @return a builder initialized with values from {@code request}
+     */
+    public static HttpRequest.Builder copy(HttpRequest request, BiPredicate<String, String> filter) {
         // in JDK 16+ we can use this
         // return HttpRequest.newBuilder(request, (k, v) -> true);
         checkNotNull(request, "request");
@@ -844,8 +864,12 @@ public final class Utils {
         builder.uri(request.uri());
         builder.expectContinue(request.expectContinue());
 
-        request.headers().map().forEach((name, values) ->
-                values.forEach(value -> builder.header(name, value)));
+        request.headers() 
+            .map() 
+            .forEach((name, values) ->
+                values.stream()
+                    .filter(v -> filter.test(name, v))
+                    .forEach(value -> builder.header(name, value)));
 
         request.version().ifPresent(builder::version);
         request.timeout().ifPresent(builder::timeout);
@@ -903,4 +927,100 @@ public final class Utils {
         return mapper.writeValueAsString(node);
     }
     
+    /**
+     * Fully reads the body of the given response and caches it in memory. The
+     * returned response has utility methods to view the body
+     * ({@code bodyAsUtf8(), bodyAsBytes()} and the {@code body()} method can be
+     * called multiple times, each returning a fresh {@link InputStream} that will
+     * read from the cached byte array.
+     * 
+     * <p>
+     * This method is most likely to be used in a diagnostic/logging situtation so
+     * that the contents of a response can be viewed without affecting processing.
+     * Using this method with a very large body may be problematic in
+     * terms of memory use.
+     * 
+     * @param response response to cache
+     * @return response with a cached body
+     * @throws IOException
+     */
+    public static HttpResponseCached cache(HttpResponse<InputStream> response) throws IOException {
+        return new HttpResponseCached(response);
+    }
+    
+    public static final class HttpResponseCached implements HttpResponse<InputStream> {
+
+        private final HttpResponse<InputStream> response;
+        private final byte[] bytes;
+        
+        public HttpResponseCached(HttpResponse<InputStream> response) throws IOException {
+            this.response = response;
+            this.bytes = Utils.toByteArrayAndClose(response.body());
+        }
+
+        public String bodyAsUtf8() {
+            return new String(bytes, StandardCharsets.UTF_8);
+        }
+        
+        public byte[] bodyAsBytes() {
+            return bytes;
+        }
+
+        @Override
+        public int statusCode() {
+            return response.statusCode();
+        }
+
+        @Override
+        public HttpRequest request() {
+            return response.request();
+        }
+
+        @Override
+        public Optional<HttpResponse<InputStream>> previousResponse() {
+            return response.previousResponse();
+        }
+        
+        @Override
+        public HttpHeaders headers() {
+            return response.headers();
+        }
+
+        @Override
+        public InputStream body() {
+            return new ByteArrayInputStream(bytes);
+        }
+
+        @Override
+        public Optional<SSLSession> sslSession() {
+            return response.sslSession();
+        }
+
+        @Override
+        public URI uri() {
+            return response.uri();
+        }
+
+        @Override
+        public Version version() {
+            return response.version();
+        }
+        
+        @Override
+        public String toString() {
+            return response.toString();
+        }
+    }
+    
+    private static final char[] HEX_ARRAY = "0123456789abcdef".toCharArray();
+
+    public static String bytesToLowerCaseHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = HEX_ARRAY[v >>> 4];
+            hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
 }

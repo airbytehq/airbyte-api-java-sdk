@@ -95,6 +95,11 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationElasticsearch>(){}));
     }
 
+    public static DestinationConfiguration of(DestinationFirebolt value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationFirebolt>(){}));
+    }
+
     public static DestinationConfiguration of(DestinationFirestore value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationFirestore>(){}));
@@ -230,6 +235,7 @@ public class DestinationConfiguration {
      * <li>{@code DestinationDuckdb}</li>
      * <li>{@code DestinationDynamodb}</li>
      * <li>{@code DestinationElasticsearch}</li>
+     * <li>{@code DestinationFirebolt}</li>
      * <li>{@code DestinationFirestore}</li>
      * <li>{@code DestinationGcs}</li>
      * <li>{@code DestinationLangchain}</li>
@@ -305,6 +311,7 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDuckdb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDynamodb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearch>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationFirebolt>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationFirestore>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationGcs>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationLangchain>() {}, Utils.JsonShape.DEFAULT),
