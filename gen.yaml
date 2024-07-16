@@ -36,7 +36,6 @@ java:
     shortName: MIT
     url: https://mit-license.org/
   maxMethodParams: 0
-  ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   outputModelSuffix: output
   projectName: public-api
   templateVersion: v2
