@@ -12,7 +12,7 @@ targets:
         source: my-source
         publish:
             java:
-                ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
-                ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
-                gpgSecretKey: ${{ secrets.GPG_SECRET_KEY }}
-                gpgPassPhrase: ${{ secrets.GPG_PASSPHRASE }}
+                ossrhUsername: $OSSRH_USERNAME
+                ossrhPassword: $OSSRH_PASSWORD
+                gpgSecretKey: $GPG_SECRET_KEY
+                gpgPassPhrase: $GPG_PASSPHRASE
