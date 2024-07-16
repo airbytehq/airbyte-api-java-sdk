@@ -3,10 +3,10 @@ id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
   docChecksum: 9d937f0b088a71ee7aaf5a76d6324576
   docVersion: 1.0.0
-  speakeasyVersion: 1.335.2
-  generationVersion: 2.372.3
-  releaseVersion: 1.5.1
-  configChecksum: 53ab2446c5b60024a10bb79d807fbbbe
+  speakeasyVersion: 1.337.1
+  generationVersion: 2.373.2
+  releaseVersion: 1.5.2
+  configChecksum: 80e54e63a5df79c50e37d9e7cc24c834
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -14,7 +14,7 @@ features:
   java:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 3.26.2
+    core: 3.26.3
     globalSecurity: 2.82.5
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
@@ -3978,3 +3978,4 @@ generatedFiles:
   - docs/sdks/workspaces/README.md
   - USAGE.md
   - src/main/java/com/airbyte/api/hooks/ClientCredentialsHook.java
+  - CONTRIBUTING.md
