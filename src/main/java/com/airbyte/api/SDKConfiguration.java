@@ -22,9 +22,9 @@ class SDKConfiguration {
     public int serverIdx = 0;
     public String language = "java";
     public String openapiDocVersion = "1.0.0";
-    public String sdkVersion = "1.5.1";
-    public String genVersion = "2.372.3";
-    public String userAgent = "speakeasy-sdk/java 1.5.1 2.372.3 1.0.0 com.airbyte.api";
+    public String sdkVersion = "1.5.2";
+    public String genVersion = "2.373.2";
+    public String userAgent = "speakeasy-sdk/java 1.5.2 2.373.2 1.0.0 com.airbyte.api";
 
     private com.airbyte.api.utils.Hooks _hooks = createHooks();
 
