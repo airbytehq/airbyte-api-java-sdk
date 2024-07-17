@@ -7,6 +7,13 @@ sources:
         tags:
             - latest
             - main
+    sample-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:52214cad5906e3076bfa027f4d254e8b2a4912a23f07b96c0ebfbf63732af8ad
+        sourceBlobDigest: sha256:8a75ab4bf20d7f6b033afca375f5bf2369783a9ab3bf7a9d760437ae57511ef0
+        tags:
+            - latest
+            - main
 targets:
     airbyte-api:
         source: my-source
@@ -14,22 +21,28 @@ targets:
         sourceRevisionDigest: sha256:5db6fea2e03621459da94766b8bf4b07a5eac21c621b8f5958c0fe5a8295a41d
         sourceBlobDigest: sha256:d035f3b407f273be49c1b0bfbc6b503f48974a8b2944883eab13ef56203a662d
         outLocation: /github/workspace/repo
+    testing:
+        source: sample-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:52214cad5906e3076bfa027f4d254e8b2a4912a23f07b96c0ebfbf63732af8ad
+        sourceBlobDigest: sha256:8a75ab4bf20d7f6b033afca375f5bf2369783a9ab3bf7a9d760437ae57511ef0
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        my-source:
+        sample-source:
             inputs:
                 - location: https://raw.githubusercontent.com/airbytehq/airbyte-api-python-sdk/main/airbyte-api.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source
     targets:
-        airbyte-api:
+        testing:
             target: java
-            source: my-source
+            source: sample-source
             publish:
                 java:
-                    ossrhUsername: $OSSRH_USERNAME
-                    ossrhPassword: $OSSRH_PASSWORD
-                    gpgSecretKey: $GPG_SECRET_KEY
-                    gpgPassPhrase: $GPG_PASSPHRASE
+                    ossrhUsername: brycegroff
+                    ossrhPassword: $ossrh_password
+                    gpgSecretKey: $java_gpg_secret_key
+                    gpgPassPhrase: $java_gpg_passphrase
