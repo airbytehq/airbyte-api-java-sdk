@@ -61,7 +61,7 @@ tasks.withType(Javadoc) {
   options.addStringOption('Xdoclint:none', '-quiet')
 }
 group = "com.airbyte"
-version = "1.5.4"
+version = "1.5.5"
 
 sourcesJar {
     archiveBaseName = "api"
@@ -98,7 +98,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '1.5.4'
+            version = '1.5.5'
 
             from components.java
 
