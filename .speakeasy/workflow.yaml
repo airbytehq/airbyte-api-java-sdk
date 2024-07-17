@@ -1,18 +1,17 @@
 workflowVersion: 1.0.0
-speakeasyVersion: latest
 sources:
-    my-source:
+    sample-source:
         inputs:
             - location: https://raw.githubusercontent.com/airbytehq/airbyte-api-python-sdk/main/airbyte-api.openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source
 targets:
-    airbyte-api:
+    testing:
         target: java
-        source: my-source
+        source: sample-source
         publish:
             java:
-                ossrhUsername: $OSSRH_USERNAME
-                ossrhPassword: $OSSRH_PASSWORD
-                gpgSecretKey: $GPG_SECRET_KEY
-                gpgPassPhrase: $GPG_PASSPHRASE
+                ossrhUsername: brycegroff
+                ossrhPassword: $ossrh_password
+                gpgSecretKey: $java_gpg_secret_key
+                gpgPassPhrase: $java_gpg_passphrase
