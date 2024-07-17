@@ -12,7 +12,7 @@ targets:
         source: sample-source
         publish:
             java:
-                ossrhUsername: brycegroff
+                ossrhUsername: $ossrh_username
                 ossrhPassword: $ossrh_password
                 gpgSecretKey: $java_gpg_secret_key
                 gpgPassPhrase: $java_gpg_passphrase
