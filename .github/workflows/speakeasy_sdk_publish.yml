@@ -13,4 +13,5 @@ jobs:
             java_gpg_passphrase: ${{ secrets.JAVA_GPG_PASSPHRASE }}
             java_gpg_secret_key: ${{ secrets.JAVA_GPG_SECRET_KEY }}
             ossrh_password: ${{ secrets.OSSRH_PASSWORD }}
+            ossrh_username: brycegroff
             speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
