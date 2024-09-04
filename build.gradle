@@ -8,12 +8,13 @@
 // Additions to the plugins block can be made by setting the `additionalPlugins` property (an array 
 // of string where each string value is an additional line in the block) in gen.yaml.
 ////////////////////////////////////////////////////////////////////////////////////////////
+
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
     id 'maven-publish'
     id 'signing'
-    id 'cl.franciscosolis.sonatype-central-upload' version '1.0.0'
+    id 'cl.franciscosolis.sonatype-central-upload' version '1.0.3'
 }
 
 compileJava.options.encoding = "UTF-8"
@@ -31,6 +32,7 @@ java {
     withSourcesJar()
     withJavadocJar()
 }
+
 model {
     tasks.generatePomFileForMavenPublication {
         destination = file("$buildDir/pom.xml")
@@ -55,13 +57,13 @@ javadoc {
     options.addStringOption('Xdoclint:none', '-quiet')
 }
 
-
 tasks.withType(Javadoc) {
   failOnError false
   options.addStringOption('Xdoclint:none', '-quiet')
 }
+
 group = "com.airbyte"
-version = "1.5.8"
+version = "1.6.0"
 
 sourcesJar {
     archiveBaseName = "api"
@@ -70,7 +72,6 @@ sourcesJar {
 javadocJar {
     archiveBaseName = "api"
 }
-
 sonatypeCentralUpload {
     // This is your Sonatype generated username
     username = System.getenv("SONATYPE_USERNAME")
@@ -92,13 +93,15 @@ sonatypeCentralUpload {
     // This is your PGP private key passphrase to decrypt your private key
     signingKeyPassphrase = System.getenv("SIGNING_KEY_PASSPHRASE")
 }
+
+
 publishing {
 
     publications {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '1.5.8'
+            version = '1.6.0'
 
             from components.java
 
@@ -142,9 +145,9 @@ if (!project.hasProperty('skip.signing')) {
 }
 
 dependencies {
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.0'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.2'
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
     implementation 'org.apache.httpcomponents:httpclient:4.5.14'
     implementation 'org.apache.httpcomponents:httpmime:4.5.14'

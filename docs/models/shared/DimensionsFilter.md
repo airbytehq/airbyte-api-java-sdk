@@ -1,4 +1,0 @@
-# DimensionsFilter
-
-Dimensions filter
-

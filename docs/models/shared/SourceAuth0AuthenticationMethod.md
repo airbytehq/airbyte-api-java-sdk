@@ -1,2 +1,0 @@
-# SourceAuth0AuthenticationMethod
-

@@ -1,4 +1,0 @@
-# MetricsFilter
-
-Metrics filter
-

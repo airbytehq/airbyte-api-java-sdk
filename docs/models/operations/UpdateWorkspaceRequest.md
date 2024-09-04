@@ -1,9 +1,0 @@
-# UpdateWorkspaceRequest
-
-
-## Fields
-
-| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `workspaceUpdateRequest`                                                                              | [com.airbyte.api.models.shared.WorkspaceUpdateRequest](../../models/shared/WorkspaceUpdateRequest.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
-| `workspaceId`                                                                                         | *String*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |

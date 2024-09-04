@@ -1,4 +1,0 @@
-# Processing
-
-Processing configuration
-

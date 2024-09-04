@@ -1,4 +1,0 @@
-# SourceMicrosoftSharepointProcessing
-
-Processing configuration
-

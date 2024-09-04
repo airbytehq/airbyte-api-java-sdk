@@ -1,9 +1,0 @@
-# UpdatePermissionRequest
-
-
-## Fields
-
-| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `permissionUpdateRequest`                                                                               | [com.airbyte.api.models.shared.PermissionUpdateRequest](../../models/shared/PermissionUpdateRequest.md) | :heavy_check_mark:                                                                                      | N/A                                                                                                     |
-| `permissionId`                                                                                          | *String*                                                                                                | :heavy_check_mark:                                                                                      | N/A                                                                                                     |

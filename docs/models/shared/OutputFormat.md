@@ -1,4 +1,0 @@
-# OutputFormat
-
-Output data format
-

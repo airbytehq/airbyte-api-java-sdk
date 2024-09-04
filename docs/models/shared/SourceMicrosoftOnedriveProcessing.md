@@ -1,4 +1,0 @@
-# SourceMicrosoftOnedriveProcessing
-
-Processing configuration
-

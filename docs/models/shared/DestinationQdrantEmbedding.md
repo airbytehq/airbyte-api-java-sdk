@@ -1,4 +1,0 @@
-# DestinationQdrantEmbedding
-
-Embedding configuration
-

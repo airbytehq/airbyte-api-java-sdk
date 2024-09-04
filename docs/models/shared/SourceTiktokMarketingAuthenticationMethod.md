@@ -1,4 +1,0 @@
-# SourceTiktokMarketingAuthenticationMethod
-
-Authentication method
-

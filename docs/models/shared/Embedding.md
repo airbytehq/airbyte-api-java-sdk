@@ -1,4 +1,0 @@
-# Embedding
-
-Embedding configuration
-

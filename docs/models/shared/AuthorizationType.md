@@ -1,4 +1,0 @@
-# AuthorizationType
-
-Authorization type.
-

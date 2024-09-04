@@ -1,4 +1,0 @@
-# DestinationMilvusEmbedding
-
-Embedding configuration
-

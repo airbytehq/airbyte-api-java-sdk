@@ -1,4 +1,0 @@
-# DestinationWeaviateEmbedding
-
-Embedding configuration
-
