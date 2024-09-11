@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum DestinationSnowflakeSchemasAuthType {
-    O_AUTH20("OAuth2.0");
+    USERNAME_AND_PASSWORD("Username and Password");
 
     @JsonValue
     private final String value;

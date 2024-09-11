@@ -25,6 +25,13 @@ import java.util.Optional;
 public class ReadChangesUsingChangeDataCaptureCDC {
 
     /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("initial_load_timeout_hours")
+    private Optional<? extends Long> initialLoadTimeoutHours;
+
+    /**
      * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 3600 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/mysql/#change-data-capture-cdc"&gt;initial waiting time&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -50,12 +57,15 @@ public class ReadChangesUsingChangeDataCaptureCDC {
 
     @JsonCreator
     public ReadChangesUsingChangeDataCaptureCDC(
+            @JsonProperty("initial_load_timeout_hours") Optional<? extends Long> initialLoadTimeoutHours,
             @JsonProperty("initial_waiting_seconds") Optional<? extends Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends SourceMssqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
             @JsonProperty("queue_size") Optional<? extends Long> queueSize) {
+        Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
         Utils.checkNotNull(queueSize, "queueSize");
+        this.initialLoadTimeoutHours = initialLoadTimeoutHours;
         this.initialWaitingSeconds = initialWaitingSeconds;
         this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
         this.method = Builder._SINGLETON_VALUE_Method.value();
@@ -63,7 +73,16 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     }
     
     public ReadChangesUsingChangeDataCaptureCDC() {
-        this(Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> initialLoadTimeoutHours() {
+        return (Optional<Long>) initialLoadTimeoutHours;
     }
 
     /**
@@ -100,6 +119,24 @@ public class ReadChangesUsingChangeDataCaptureCDC {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    public ReadChangesUsingChangeDataCaptureCDC withInitialLoadTimeoutHours(long initialLoadTimeoutHours) {
+        Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+        this.initialLoadTimeoutHours = Optional.ofNullable(initialLoadTimeoutHours);
+        return this;
+    }
+
+    /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    public ReadChangesUsingChangeDataCaptureCDC withInitialLoadTimeoutHours(Optional<? extends Long> initialLoadTimeoutHours) {
+        Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+        this.initialLoadTimeoutHours = initialLoadTimeoutHours;
+        return this;
     }
 
     /**
@@ -166,6 +203,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
         }
         ReadChangesUsingChangeDataCaptureCDC other = (ReadChangesUsingChangeDataCaptureCDC) o;
         return 
+            java.util.Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
             java.util.Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
             java.util.Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
             java.util.Objects.deepEquals(this.method, other.method) &&
@@ -175,6 +213,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
+            initialLoadTimeoutHours,
             initialWaitingSeconds,
             invalidCdcCursorPositionBehavior,
             method,
@@ -184,6 +223,7 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     @Override
     public String toString() {
         return Utils.toString(ReadChangesUsingChangeDataCaptureCDC.class,
+                "initialLoadTimeoutHours", initialLoadTimeoutHours,
                 "initialWaitingSeconds", initialWaitingSeconds,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior,
                 "method", method,
@@ -191,6 +231,8 @@ public class ReadChangesUsingChangeDataCaptureCDC {
     }
     
     public final static class Builder {
+ 
+        private Optional<? extends Long> initialLoadTimeoutHours;
  
         private Optional<? extends Long> initialWaitingSeconds;
  
@@ -200,6 +242,24 @@ public class ReadChangesUsingChangeDataCaptureCDC {
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+         */
+        public Builder initialLoadTimeoutHours(long initialLoadTimeoutHours) {
+            Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+            this.initialLoadTimeoutHours = Optional.ofNullable(initialLoadTimeoutHours);
+            return this;
+        }
+
+        /**
+         * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+         */
+        public Builder initialLoadTimeoutHours(Optional<? extends Long> initialLoadTimeoutHours) {
+            Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+            this.initialLoadTimeoutHours = initialLoadTimeoutHours;
+            return this;
         }
 
         /**
@@ -257,6 +317,9 @@ public class ReadChangesUsingChangeDataCaptureCDC {
         }
         
         public ReadChangesUsingChangeDataCaptureCDC build() {
+            if (initialLoadTimeoutHours == null) {
+                initialLoadTimeoutHours = _SINGLETON_VALUE_InitialLoadTimeoutHours.value();
+            }
             if (initialWaitingSeconds == null) {
                 initialWaitingSeconds = _SINGLETON_VALUE_InitialWaitingSeconds.value();
             }
@@ -267,10 +330,17 @@ public class ReadChangesUsingChangeDataCaptureCDC {
                 queueSize = _SINGLETON_VALUE_QueueSize.value();
             }
             return new ReadChangesUsingChangeDataCaptureCDC(
+                initialLoadTimeoutHours,
                 initialWaitingSeconds,
                 invalidCdcCursorPositionBehavior,
                 queueSize);
         }
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_InitialLoadTimeoutHours =
+                new LazySingletonValue<>(
+                        "initial_load_timeout_hours",
+                        "8",
+                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_InitialWaitingSeconds =
                 new LazySingletonValue<>(

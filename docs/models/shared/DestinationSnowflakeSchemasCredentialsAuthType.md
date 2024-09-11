@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                      | Value                     |
-| ------------------------- | ------------------------- |
-| `KEY_PAIR_AUTHENTICATION` | Key Pair Authentication   |
+| Name       | Value      |
+| ---------- | ---------- |
+| `O_AUTH20` | OAuth2.0   |

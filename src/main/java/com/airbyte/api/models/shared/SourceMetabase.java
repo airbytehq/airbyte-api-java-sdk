@@ -46,16 +46,15 @@ public class SourceMetabase {
     @JsonProperty("sourceType")
     private Metabase sourceType;
 
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("username")
-    private Optional<? extends String> username;
+    private String username;
 
     @JsonCreator
     public SourceMetabase(
             @JsonProperty("instance_api_url") String instanceApiUrl,
             @JsonProperty("password") Optional<? extends String> password,
             @JsonProperty("session_token") Optional<? extends String> sessionToken,
-            @JsonProperty("username") Optional<? extends String> username) {
+            @JsonProperty("username") String username) {
         Utils.checkNotNull(instanceApiUrl, "instanceApiUrl");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(sessionToken, "sessionToken");
@@ -68,8 +67,9 @@ public class SourceMetabase {
     }
     
     public SourceMetabase(
-            String instanceApiUrl) {
-        this(instanceApiUrl, Optional.empty(), Optional.empty(), Optional.empty());
+            String instanceApiUrl,
+            String username) {
+        this(instanceApiUrl, Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -105,10 +105,9 @@ public class SourceMetabase {
         return sourceType;
     }
 
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<String> username() {
-        return (Optional<String>) username;
+    public String username() {
+        return username;
     }
 
     public final static Builder builder() {
@@ -166,12 +165,6 @@ public class SourceMetabase {
 
     public SourceMetabase withUsername(String username) {
         Utils.checkNotNull(username, "username");
-        this.username = Optional.ofNullable(username);
-        return this;
-    }
-
-    public SourceMetabase withUsername(Optional<? extends String> username) {
-        Utils.checkNotNull(username, "username");
         this.username = username;
         return this;
     }
@@ -221,7 +214,7 @@ public class SourceMetabase {
  
         private Optional<? extends String> sessionToken = Optional.empty();
  
-        private Optional<? extends String> username = Optional.empty();  
+        private String username;  
         
         private Builder() {
           // force use of static builder() method
@@ -277,12 +270,6 @@ public class SourceMetabase {
         }
 
         public Builder username(String username) {
-            Utils.checkNotNull(username, "username");
-            this.username = Optional.ofNullable(username);
-            return this;
-        }
-
-        public Builder username(Optional<? extends String> username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;

@@ -26,14 +26,14 @@ public class UnstructuredDocumentFormat {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype> filetype;
+    private Optional<? extends SourceGcsSchemasStreamsFormatFormatFiletype> filetype;
 
     /**
      * Processing configuration
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("processing")
-    private Optional<? extends SourceMicrosoftOnedriveProcessing> processing;
+    private Optional<? extends SourceGcsProcessing> processing;
 
     /**
      * If true, skip files that cannot be parsed and pass the error message along as the _ab_source_file_parse_error field. If false, fail the sync.
@@ -47,13 +47,13 @@ public class UnstructuredDocumentFormat {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("strategy")
-    private Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy;
+    private Optional<? extends SourceGcsParsingStrategy> strategy;
 
     @JsonCreator
     public UnstructuredDocumentFormat(
-            @JsonProperty("processing") Optional<? extends SourceMicrosoftOnedriveProcessing> processing,
+            @JsonProperty("processing") Optional<? extends SourceGcsProcessing> processing,
             @JsonProperty("skip_unprocessable_files") Optional<? extends Boolean> skipUnprocessableFiles,
-            @JsonProperty("strategy") Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy) {
+            @JsonProperty("strategy") Optional<? extends SourceGcsParsingStrategy> strategy) {
         Utils.checkNotNull(processing, "processing");
         Utils.checkNotNull(skipUnprocessableFiles, "skipUnprocessableFiles");
         Utils.checkNotNull(strategy, "strategy");
@@ -69,8 +69,8 @@ public class UnstructuredDocumentFormat {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype> filetype() {
-        return (Optional<SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype>) filetype;
+    public Optional<SourceGcsSchemasStreamsFormatFormatFiletype> filetype() {
+        return (Optional<SourceGcsSchemasStreamsFormatFormatFiletype>) filetype;
     }
 
     /**
@@ -78,8 +78,8 @@ public class UnstructuredDocumentFormat {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceMicrosoftOnedriveProcessing> processing() {
-        return (Optional<SourceMicrosoftOnedriveProcessing>) processing;
+    public Optional<SourceGcsProcessing> processing() {
+        return (Optional<SourceGcsProcessing>) processing;
     }
 
     /**
@@ -96,8 +96,8 @@ public class UnstructuredDocumentFormat {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceMicrosoftOnedriveParsingStrategy> strategy() {
-        return (Optional<SourceMicrosoftOnedriveParsingStrategy>) strategy;
+    public Optional<SourceGcsParsingStrategy> strategy() {
+        return (Optional<SourceGcsParsingStrategy>) strategy;
     }
 
     public final static Builder builder() {
@@ -107,7 +107,7 @@ public class UnstructuredDocumentFormat {
     /**
      * Processing configuration
      */
-    public UnstructuredDocumentFormat withProcessing(SourceMicrosoftOnedriveProcessing processing) {
+    public UnstructuredDocumentFormat withProcessing(SourceGcsProcessing processing) {
         Utils.checkNotNull(processing, "processing");
         this.processing = Optional.ofNullable(processing);
         return this;
@@ -116,7 +116,7 @@ public class UnstructuredDocumentFormat {
     /**
      * Processing configuration
      */
-    public UnstructuredDocumentFormat withProcessing(Optional<? extends SourceMicrosoftOnedriveProcessing> processing) {
+    public UnstructuredDocumentFormat withProcessing(Optional<? extends SourceGcsProcessing> processing) {
         Utils.checkNotNull(processing, "processing");
         this.processing = processing;
         return this;
@@ -143,7 +143,7 @@ public class UnstructuredDocumentFormat {
     /**
      * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
-    public UnstructuredDocumentFormat withStrategy(SourceMicrosoftOnedriveParsingStrategy strategy) {
+    public UnstructuredDocumentFormat withStrategy(SourceGcsParsingStrategy strategy) {
         Utils.checkNotNull(strategy, "strategy");
         this.strategy = Optional.ofNullable(strategy);
         return this;
@@ -152,7 +152,7 @@ public class UnstructuredDocumentFormat {
     /**
      * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
      */
-    public UnstructuredDocumentFormat withStrategy(Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy) {
+    public UnstructuredDocumentFormat withStrategy(Optional<? extends SourceGcsParsingStrategy> strategy) {
         Utils.checkNotNull(strategy, "strategy");
         this.strategy = strategy;
         return this;
@@ -194,11 +194,11 @@ public class UnstructuredDocumentFormat {
     
     public final static class Builder {
  
-        private Optional<? extends SourceMicrosoftOnedriveProcessing> processing = Optional.empty();
+        private Optional<? extends SourceGcsProcessing> processing = Optional.empty();
  
         private Optional<? extends Boolean> skipUnprocessableFiles;
  
-        private Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy;  
+        private Optional<? extends SourceGcsParsingStrategy> strategy;  
         
         private Builder() {
           // force use of static builder() method
@@ -207,7 +207,7 @@ public class UnstructuredDocumentFormat {
         /**
          * Processing configuration
          */
-        public Builder processing(SourceMicrosoftOnedriveProcessing processing) {
+        public Builder processing(SourceGcsProcessing processing) {
             Utils.checkNotNull(processing, "processing");
             this.processing = Optional.ofNullable(processing);
             return this;
@@ -216,7 +216,7 @@ public class UnstructuredDocumentFormat {
         /**
          * Processing configuration
          */
-        public Builder processing(Optional<? extends SourceMicrosoftOnedriveProcessing> processing) {
+        public Builder processing(Optional<? extends SourceGcsProcessing> processing) {
             Utils.checkNotNull(processing, "processing");
             this.processing = processing;
             return this;
@@ -243,7 +243,7 @@ public class UnstructuredDocumentFormat {
         /**
          * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
          */
-        public Builder strategy(SourceMicrosoftOnedriveParsingStrategy strategy) {
+        public Builder strategy(SourceGcsParsingStrategy strategy) {
             Utils.checkNotNull(strategy, "strategy");
             this.strategy = Optional.ofNullable(strategy);
             return this;
@@ -252,7 +252,7 @@ public class UnstructuredDocumentFormat {
         /**
          * The strategy used to parse documents. `fast` extracts text directly from the document which doesn't work for all files. `ocr_only` is more reliable, but slower. `hi_res` is the most reliable, but requires an API key and a hosted instance of unstructured and can't be used with local mode. See the unstructured.io documentation for more details: https://unstructured-io.github.io/unstructured/core/partition.html#partition-pdf
          */
-        public Builder strategy(Optional<? extends SourceMicrosoftOnedriveParsingStrategy> strategy) {
+        public Builder strategy(Optional<? extends SourceGcsParsingStrategy> strategy) {
             Utils.checkNotNull(strategy, "strategy");
             this.strategy = strategy;
             return this;
@@ -271,11 +271,11 @@ public class UnstructuredDocumentFormat {
                 strategy);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends SourceGcsSchemasStreamsFormatFormatFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"unstructured\"",
-                        new TypeReference<Optional<? extends SourceMicrosoftOnedriveSchemasStreamsFormatFormatFiletype>>() {});
+                        new TypeReference<Optional<? extends SourceGcsSchemasStreamsFormatFormatFiletype>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_SkipUnprocessableFiles =
                 new LazySingletonValue<>(
@@ -283,11 +283,11 @@ public class UnstructuredDocumentFormat {
                         "true",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<Optional<? extends SourceMicrosoftOnedriveParsingStrategy>> _SINGLETON_VALUE_Strategy =
+        private static final LazySingletonValue<Optional<? extends SourceGcsParsingStrategy>> _SINGLETON_VALUE_Strategy =
                 new LazySingletonValue<>(
                         "strategy",
                         "\"auto\"",
-                        new TypeReference<Optional<? extends SourceMicrosoftOnedriveParsingStrategy>>() {});
+                        new TypeReference<Optional<? extends SourceGcsParsingStrategy>>() {});
     }
 }
 

@@ -35,6 +35,13 @@ public class SourceMongodbV2 {
     private Optional<? extends Long> discoverSampleSize;
 
     /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("initial_load_timeout_hours")
+    private Optional<? extends Long> initialLoadTimeoutHours;
+
+    /**
      * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 300 seconds. Valid range: 120 seconds to 1200 seconds.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -69,18 +76,21 @@ public class SourceMongodbV2 {
     public SourceMongodbV2(
             @JsonProperty("database_config") java.lang.Object databaseConfig,
             @JsonProperty("discover_sample_size") Optional<? extends Long> discoverSampleSize,
+            @JsonProperty("initial_load_timeout_hours") Optional<? extends Long> initialLoadTimeoutHours,
             @JsonProperty("initial_waiting_seconds") Optional<? extends Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
             @JsonProperty("queue_size") Optional<? extends Long> queueSize,
             @JsonProperty("update_capture_mode") Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
         Utils.checkNotNull(databaseConfig, "databaseConfig");
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
+        Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
         Utils.checkNotNull(queueSize, "queueSize");
         Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
         this.databaseConfig = databaseConfig;
         this.discoverSampleSize = discoverSampleSize;
+        this.initialLoadTimeoutHours = initialLoadTimeoutHours;
         this.initialWaitingSeconds = initialWaitingSeconds;
         this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
         this.queueSize = queueSize;
@@ -90,7 +100,7 @@ public class SourceMongodbV2 {
     
     public SourceMongodbV2(
             java.lang.Object databaseConfig) {
-        this(databaseConfig, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(databaseConfig, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -108,6 +118,15 @@ public class SourceMongodbV2 {
     @JsonIgnore
     public Optional<Long> discoverSampleSize() {
         return (Optional<Long>) discoverSampleSize;
+    }
+
+    /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> initialLoadTimeoutHours() {
+        return (Optional<Long>) initialLoadTimeoutHours;
     }
 
     /**
@@ -179,6 +198,24 @@ public class SourceMongodbV2 {
     public SourceMongodbV2 withDiscoverSampleSize(Optional<? extends Long> discoverSampleSize) {
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
         this.discoverSampleSize = discoverSampleSize;
+        return this;
+    }
+
+    /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    public SourceMongodbV2 withInitialLoadTimeoutHours(long initialLoadTimeoutHours) {
+        Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+        this.initialLoadTimeoutHours = Optional.ofNullable(initialLoadTimeoutHours);
+        return this;
+    }
+
+    /**
+     * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+     */
+    public SourceMongodbV2 withInitialLoadTimeoutHours(Optional<? extends Long> initialLoadTimeoutHours) {
+        Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+        this.initialLoadTimeoutHours = initialLoadTimeoutHours;
         return this;
     }
 
@@ -266,6 +303,7 @@ public class SourceMongodbV2 {
         return 
             java.util.Objects.deepEquals(this.databaseConfig, other.databaseConfig) &&
             java.util.Objects.deepEquals(this.discoverSampleSize, other.discoverSampleSize) &&
+            java.util.Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
             java.util.Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
             java.util.Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
             java.util.Objects.deepEquals(this.queueSize, other.queueSize) &&
@@ -278,6 +316,7 @@ public class SourceMongodbV2 {
         return java.util.Objects.hash(
             databaseConfig,
             discoverSampleSize,
+            initialLoadTimeoutHours,
             initialWaitingSeconds,
             invalidCdcCursorPositionBehavior,
             queueSize,
@@ -290,6 +329,7 @@ public class SourceMongodbV2 {
         return Utils.toString(SourceMongodbV2.class,
                 "databaseConfig", databaseConfig,
                 "discoverSampleSize", discoverSampleSize,
+                "initialLoadTimeoutHours", initialLoadTimeoutHours,
                 "initialWaitingSeconds", initialWaitingSeconds,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior,
                 "queueSize", queueSize,
@@ -302,6 +342,8 @@ public class SourceMongodbV2 {
         private java.lang.Object databaseConfig;
  
         private Optional<? extends Long> discoverSampleSize;
+ 
+        private Optional<? extends Long> initialLoadTimeoutHours;
  
         private Optional<? extends Long> initialWaitingSeconds;
  
@@ -339,6 +381,24 @@ public class SourceMongodbV2 {
         public Builder discoverSampleSize(Optional<? extends Long> discoverSampleSize) {
             Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
             this.discoverSampleSize = discoverSampleSize;
+            return this;
+        }
+
+        /**
+         * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+         */
+        public Builder initialLoadTimeoutHours(long initialLoadTimeoutHours) {
+            Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+            this.initialLoadTimeoutHours = Optional.ofNullable(initialLoadTimeoutHours);
+            return this;
+        }
+
+        /**
+         * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
+         */
+        public Builder initialLoadTimeoutHours(Optional<? extends Long> initialLoadTimeoutHours) {
+            Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
+            this.initialLoadTimeoutHours = initialLoadTimeoutHours;
             return this;
         }
 
@@ -418,6 +478,9 @@ public class SourceMongodbV2 {
             if (discoverSampleSize == null) {
                 discoverSampleSize = _SINGLETON_VALUE_DiscoverSampleSize.value();
             }
+            if (initialLoadTimeoutHours == null) {
+                initialLoadTimeoutHours = _SINGLETON_VALUE_InitialLoadTimeoutHours.value();
+            }
             if (initialWaitingSeconds == null) {
                 initialWaitingSeconds = _SINGLETON_VALUE_InitialWaitingSeconds.value();
             }
@@ -433,6 +496,7 @@ public class SourceMongodbV2 {
             return new SourceMongodbV2(
                 databaseConfig,
                 discoverSampleSize,
+                initialLoadTimeoutHours,
                 initialWaitingSeconds,
                 invalidCdcCursorPositionBehavior,
                 queueSize,
@@ -443,6 +507,12 @@ public class SourceMongodbV2 {
                 new LazySingletonValue<>(
                         "discover_sample_size",
                         "10000",
+                        new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_InitialLoadTimeoutHours =
+                new LazySingletonValue<>(
+                        "initial_load_timeout_hours",
+                        "8",
                         new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_InitialWaitingSeconds =

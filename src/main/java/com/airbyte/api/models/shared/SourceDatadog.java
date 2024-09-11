@@ -373,7 +373,7 @@ public class SourceDatadog {
  
         private String applicationKey;
  
-        private Optional<? extends String> endDate = Optional.empty();
+        private Optional<? extends String> endDate;
  
         private Optional<? extends Long> maxRecordsPerRequest;
  
@@ -383,7 +383,7 @@ public class SourceDatadog {
  
         private Optional<? extends Site> site;
  
-        private Optional<? extends String> startDate = Optional.empty();  
+        private Optional<? extends String> startDate;  
         
         private Builder() {
           // force use of static builder() method
@@ -516,11 +516,17 @@ public class SourceDatadog {
         }
         
         public SourceDatadog build() {
+            if (endDate == null) {
+                endDate = _SINGLETON_VALUE_EndDate.value();
+            }
             if (maxRecordsPerRequest == null) {
                 maxRecordsPerRequest = _SINGLETON_VALUE_MaxRecordsPerRequest.value();
             }
             if (site == null) {
                 site = _SINGLETON_VALUE_Site.value();
+            }
+            if (startDate == null) {
+                startDate = _SINGLETON_VALUE_StartDate.value();
             }
             return new SourceDatadog(
                 apiKey,
@@ -532,6 +538,12 @@ public class SourceDatadog {
                 site,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_EndDate =
+                new LazySingletonValue<>(
+                        "end_date",
+                        "\"2024-01-01T00:00:00Z\"",
+                        new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_MaxRecordsPerRequest =
                 new LazySingletonValue<>(
@@ -550,6 +562,12 @@ public class SourceDatadog {
                         "sourceType",
                         "\"datadog\"",
                         new TypeReference<Datadog>() {});
+
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_StartDate =
+                new LazySingletonValue<>(
+                        "start_date",
+                        "\"2023-12-01T00:00:00Z\"",
+                        new TypeReference<Optional<? extends String>>() {});
     }
 }
 

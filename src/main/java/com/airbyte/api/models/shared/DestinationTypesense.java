@@ -38,7 +38,7 @@ public class DestinationTypesense {
     private Typesense destinationType;
 
     /**
-     * Hostname of the Typesense instance without protocol.
+     * Hostname of the Typesense instance without protocol. Accept multiple hosts separated by comma.
      */
     @JsonProperty("host")
     private String host;
@@ -116,7 +116,7 @@ public class DestinationTypesense {
     }
 
     /**
-     * Hostname of the Typesense instance without protocol.
+     * Hostname of the Typesense instance without protocol. Accept multiple hosts separated by comma.
      */
     @JsonIgnore
     public String host() {
@@ -182,7 +182,7 @@ public class DestinationTypesense {
     }
 
     /**
-     * Hostname of the Typesense instance without protocol.
+     * Hostname of the Typesense instance without protocol. Accept multiple hosts separated by comma.
      */
     public DestinationTypesense withHost(String host) {
         Utils.checkNotNull(host, "host");
@@ -333,7 +333,7 @@ public class DestinationTypesense {
         }
 
         /**
-         * Hostname of the Typesense instance without protocol.
+         * Hostname of the Typesense instance without protocol. Accept multiple hosts separated by comma.
          */
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");

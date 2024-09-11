@@ -35,15 +35,45 @@ public class SourceGcsFormat {
         this.value = value;
     }
 
+    public static SourceGcsFormat of(SourceGcsAvroFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsAvroFormat>(){}));
+    }
+
     public static SourceGcsFormat of(SourceGcsCSVFormat value) {
         Utils.checkNotNull(value, "value");
         return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsCSVFormat>(){}));
+    }
+
+    public static SourceGcsFormat of(SourceGcsJsonlFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsJsonlFormat>(){}));
+    }
+
+    public static SourceGcsFormat of(SourceGcsParquetFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsParquetFormat>(){}));
+    }
+
+    public static SourceGcsFormat of(UnstructuredDocumentFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<UnstructuredDocumentFormat>(){}));
+    }
+
+    public static SourceGcsFormat of(ExcelFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ExcelFormat>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
+     * <li>{@code SourceGcsAvroFormat}</li>
      * <li>{@code SourceGcsCSVFormat}</li>
+     * <li>{@code SourceGcsJsonlFormat}</li>
+     * <li>{@code SourceGcsParquetFormat}</li>
+     * <li>{@code UnstructuredDocumentFormat}</li>
+     * <li>{@code ExcelFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -83,7 +113,12 @@ public class SourceGcsFormat {
 
         public _Deserializer() {
             super(SourceGcsFormat.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGcsCSVFormat>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGcsAvroFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGcsCSVFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGcsJsonlFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGcsParquetFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<UnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<ExcelFormat>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

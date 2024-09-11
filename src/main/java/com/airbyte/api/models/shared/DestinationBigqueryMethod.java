@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum DestinationBigqueryMethod {
-    STANDARD("Standard");
+    GCS_STAGING("GCS Staging");
 
     @JsonValue
     private final String value;

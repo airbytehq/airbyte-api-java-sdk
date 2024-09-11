@@ -49,7 +49,6 @@ public enum OAuthActorNames {
     SNAPCHAT_MARKETING("snapchat-marketing"),
     SNOWFLAKE("snowflake"),
     SQUARE("square"),
-    STRAVA("strava"),
     SURVEYMONKEY("surveymonkey"),
     TIKTOK_MARKETING("tiktok-marketing"),
     TRELLO("trello"),

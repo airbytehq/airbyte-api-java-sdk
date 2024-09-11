@@ -44,6 +44,20 @@ public class SourceShopify {
     private Optional<? extends Boolean> fetchTransactionsUserId;
 
     /**
+     * The threshold, after which the single BULK Job should be checkpointed.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("job_checkpoint_interval")
+    private Optional<? extends Long> jobCheckpointInterval;
+
+    /**
+     * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("job_product_variants_include_pres_prices")
+    private Optional<? extends Boolean> jobProductVariantsIncludePresPrices;
+
+    /**
      * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -71,18 +85,24 @@ public class SourceShopify {
             @JsonProperty("bulk_window_in_days") Optional<? extends Long> bulkWindowInDays,
             @JsonProperty("credentials") Optional<? extends ShopifyAuthorizationMethod> credentials,
             @JsonProperty("fetch_transactions_user_id") Optional<? extends Boolean> fetchTransactionsUserId,
+            @JsonProperty("job_checkpoint_interval") Optional<? extends Long> jobCheckpointInterval,
+            @JsonProperty("job_product_variants_include_pres_prices") Optional<? extends Boolean> jobProductVariantsIncludePresPrices,
             @JsonProperty("job_termination_threshold") Optional<? extends Long> jobTerminationThreshold,
             @JsonProperty("shop") String shop,
             @JsonProperty("start_date") Optional<? extends LocalDate> startDate) {
         Utils.checkNotNull(bulkWindowInDays, "bulkWindowInDays");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(fetchTransactionsUserId, "fetchTransactionsUserId");
+        Utils.checkNotNull(jobCheckpointInterval, "jobCheckpointInterval");
+        Utils.checkNotNull(jobProductVariantsIncludePresPrices, "jobProductVariantsIncludePresPrices");
         Utils.checkNotNull(jobTerminationThreshold, "jobTerminationThreshold");
         Utils.checkNotNull(shop, "shop");
         Utils.checkNotNull(startDate, "startDate");
         this.bulkWindowInDays = bulkWindowInDays;
         this.credentials = credentials;
         this.fetchTransactionsUserId = fetchTransactionsUserId;
+        this.jobCheckpointInterval = jobCheckpointInterval;
+        this.jobProductVariantsIncludePresPrices = jobProductVariantsIncludePresPrices;
         this.jobTerminationThreshold = jobTerminationThreshold;
         this.shop = shop;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
@@ -91,7 +111,7 @@ public class SourceShopify {
     
     public SourceShopify(
             String shop) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), shop, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), shop, Optional.empty());
     }
 
     /**
@@ -119,6 +139,24 @@ public class SourceShopify {
     @JsonIgnore
     public Optional<Boolean> fetchTransactionsUserId() {
         return (Optional<Boolean>) fetchTransactionsUserId;
+    }
+
+    /**
+     * The threshold, after which the single BULK Job should be checkpointed.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> jobCheckpointInterval() {
+        return (Optional<Long>) jobCheckpointInterval;
+    }
+
+    /**
+     * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> jobProductVariantsIncludePresPrices() {
+        return (Optional<Boolean>) jobProductVariantsIncludePresPrices;
     }
 
     /**
@@ -211,6 +249,42 @@ public class SourceShopify {
     }
 
     /**
+     * The threshold, after which the single BULK Job should be checkpointed.
+     */
+    public SourceShopify withJobCheckpointInterval(long jobCheckpointInterval) {
+        Utils.checkNotNull(jobCheckpointInterval, "jobCheckpointInterval");
+        this.jobCheckpointInterval = Optional.ofNullable(jobCheckpointInterval);
+        return this;
+    }
+
+    /**
+     * The threshold, after which the single BULK Job should be checkpointed.
+     */
+    public SourceShopify withJobCheckpointInterval(Optional<? extends Long> jobCheckpointInterval) {
+        Utils.checkNotNull(jobCheckpointInterval, "jobCheckpointInterval");
+        this.jobCheckpointInterval = jobCheckpointInterval;
+        return this;
+    }
+
+    /**
+     * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
+     */
+    public SourceShopify withJobProductVariantsIncludePresPrices(boolean jobProductVariantsIncludePresPrices) {
+        Utils.checkNotNull(jobProductVariantsIncludePresPrices, "jobProductVariantsIncludePresPrices");
+        this.jobProductVariantsIncludePresPrices = Optional.ofNullable(jobProductVariantsIncludePresPrices);
+        return this;
+    }
+
+    /**
+     * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
+     */
+    public SourceShopify withJobProductVariantsIncludePresPrices(Optional<? extends Boolean> jobProductVariantsIncludePresPrices) {
+        Utils.checkNotNull(jobProductVariantsIncludePresPrices, "jobProductVariantsIncludePresPrices");
+        this.jobProductVariantsIncludePresPrices = jobProductVariantsIncludePresPrices;
+        return this;
+    }
+
+    /**
      * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
      */
     public SourceShopify withJobTerminationThreshold(long jobTerminationThreshold) {
@@ -268,6 +342,8 @@ public class SourceShopify {
             java.util.Objects.deepEquals(this.bulkWindowInDays, other.bulkWindowInDays) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.fetchTransactionsUserId, other.fetchTransactionsUserId) &&
+            java.util.Objects.deepEquals(this.jobCheckpointInterval, other.jobCheckpointInterval) &&
+            java.util.Objects.deepEquals(this.jobProductVariantsIncludePresPrices, other.jobProductVariantsIncludePresPrices) &&
             java.util.Objects.deepEquals(this.jobTerminationThreshold, other.jobTerminationThreshold) &&
             java.util.Objects.deepEquals(this.shop, other.shop) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
@@ -280,6 +356,8 @@ public class SourceShopify {
             bulkWindowInDays,
             credentials,
             fetchTransactionsUserId,
+            jobCheckpointInterval,
+            jobProductVariantsIncludePresPrices,
             jobTerminationThreshold,
             shop,
             sourceType,
@@ -292,6 +370,8 @@ public class SourceShopify {
                 "bulkWindowInDays", bulkWindowInDays,
                 "credentials", credentials,
                 "fetchTransactionsUserId", fetchTransactionsUserId,
+                "jobCheckpointInterval", jobCheckpointInterval,
+                "jobProductVariantsIncludePresPrices", jobProductVariantsIncludePresPrices,
                 "jobTerminationThreshold", jobTerminationThreshold,
                 "shop", shop,
                 "sourceType", sourceType,
@@ -305,6 +385,10 @@ public class SourceShopify {
         private Optional<? extends ShopifyAuthorizationMethod> credentials = Optional.empty();
  
         private Optional<? extends Boolean> fetchTransactionsUserId;
+ 
+        private Optional<? extends Long> jobCheckpointInterval;
+ 
+        private Optional<? extends Boolean> jobProductVariantsIncludePresPrices;
  
         private Optional<? extends Long> jobTerminationThreshold;
  
@@ -371,6 +455,42 @@ public class SourceShopify {
         }
 
         /**
+         * The threshold, after which the single BULK Job should be checkpointed.
+         */
+        public Builder jobCheckpointInterval(long jobCheckpointInterval) {
+            Utils.checkNotNull(jobCheckpointInterval, "jobCheckpointInterval");
+            this.jobCheckpointInterval = Optional.ofNullable(jobCheckpointInterval);
+            return this;
+        }
+
+        /**
+         * The threshold, after which the single BULK Job should be checkpointed.
+         */
+        public Builder jobCheckpointInterval(Optional<? extends Long> jobCheckpointInterval) {
+            Utils.checkNotNull(jobCheckpointInterval, "jobCheckpointInterval");
+            this.jobCheckpointInterval = jobCheckpointInterval;
+            return this;
+        }
+
+        /**
+         * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
+         */
+        public Builder jobProductVariantsIncludePresPrices(boolean jobProductVariantsIncludePresPrices) {
+            Utils.checkNotNull(jobProductVariantsIncludePresPrices, "jobProductVariantsIncludePresPrices");
+            this.jobProductVariantsIncludePresPrices = Optional.ofNullable(jobProductVariantsIncludePresPrices);
+            return this;
+        }
+
+        /**
+         * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
+         */
+        public Builder jobProductVariantsIncludePresPrices(Optional<? extends Boolean> jobProductVariantsIncludePresPrices) {
+            Utils.checkNotNull(jobProductVariantsIncludePresPrices, "jobProductVariantsIncludePresPrices");
+            this.jobProductVariantsIncludePresPrices = jobProductVariantsIncludePresPrices;
+            return this;
+        }
+
+        /**
          * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
          */
         public Builder jobTerminationThreshold(long jobTerminationThreshold) {
@@ -422,6 +542,12 @@ public class SourceShopify {
             if (fetchTransactionsUserId == null) {
                 fetchTransactionsUserId = _SINGLETON_VALUE_FetchTransactionsUserId.value();
             }
+            if (jobCheckpointInterval == null) {
+                jobCheckpointInterval = _SINGLETON_VALUE_JobCheckpointInterval.value();
+            }
+            if (jobProductVariantsIncludePresPrices == null) {
+                jobProductVariantsIncludePresPrices = _SINGLETON_VALUE_JobProductVariantsIncludePresPrices.value();
+            }
             if (jobTerminationThreshold == null) {
                 jobTerminationThreshold = _SINGLETON_VALUE_JobTerminationThreshold.value();
             }
@@ -432,6 +558,8 @@ public class SourceShopify {
                 bulkWindowInDays,
                 credentials,
                 fetchTransactionsUserId,
+                jobCheckpointInterval,
+                jobProductVariantsIncludePresPrices,
                 jobTerminationThreshold,
                 shop,
                 startDate);
@@ -449,10 +577,22 @@ public class SourceShopify {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_JobCheckpointInterval =
+                new LazySingletonValue<>(
+                        "job_checkpoint_interval",
+                        "100000",
+                        new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_JobProductVariantsIncludePresPrices =
+                new LazySingletonValue<>(
+                        "job_product_variants_include_pres_prices",
+                        "true",
+                        new TypeReference<Optional<? extends Boolean>>() {});
+
         private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_JobTerminationThreshold =
                 new LazySingletonValue<>(
                         "job_termination_threshold",
-                        "3600",
+                        "7200",
                         new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<SourceShopifyShopify> _SINGLETON_VALUE_SourceType =

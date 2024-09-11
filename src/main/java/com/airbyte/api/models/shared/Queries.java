@@ -21,7 +21,7 @@ public class Queries {
      * A data source that is powered by the platform.
      */
     @JsonProperty("data_source")
-    private SourceDatadogDataSource dataSource;
+    private DataSource dataSource;
 
     /**
      * The variable name for use in queries.
@@ -37,7 +37,7 @@ public class Queries {
 
     @JsonCreator
     public Queries(
-            @JsonProperty("data_source") SourceDatadogDataSource dataSource,
+            @JsonProperty("data_source") DataSource dataSource,
             @JsonProperty("name") String name,
             @JsonProperty("query") String query) {
         Utils.checkNotNull(dataSource, "dataSource");
@@ -52,7 +52,7 @@ public class Queries {
      * A data source that is powered by the platform.
      */
     @JsonIgnore
-    public SourceDatadogDataSource dataSource() {
+    public DataSource dataSource() {
         return dataSource;
     }
 
@@ -79,7 +79,7 @@ public class Queries {
     /**
      * A data source that is powered by the platform.
      */
-    public Queries withDataSource(SourceDatadogDataSource dataSource) {
+    public Queries withDataSource(DataSource dataSource) {
         Utils.checkNotNull(dataSource, "dataSource");
         this.dataSource = dataSource;
         return this;
@@ -136,7 +136,7 @@ public class Queries {
     
     public final static class Builder {
  
-        private SourceDatadogDataSource dataSource;
+        private DataSource dataSource;
  
         private String name;
  
@@ -149,7 +149,7 @@ public class Queries {
         /**
          * A data source that is powered by the platform.
          */
-        public Builder dataSource(SourceDatadogDataSource dataSource) {
+        public Builder dataSource(DataSource dataSource) {
             Utils.checkNotNull(dataSource, "dataSource");
             this.dataSource = dataSource;
             return this;

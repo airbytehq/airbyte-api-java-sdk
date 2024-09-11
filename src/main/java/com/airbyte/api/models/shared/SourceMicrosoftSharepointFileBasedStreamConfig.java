@@ -62,6 +62,13 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     private Optional<? extends String> primaryKey;
 
     /**
+     * The number of resent files which will be used to discover the schema for this stream.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("recent_n_files_to_read_for_schema_discovery")
+    private Optional<? extends Long> recentNFilesToReadForSchemaDiscovery;
+
+    /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -83,6 +90,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
             @JsonProperty("input_schema") Optional<? extends String> inputSchema,
             @JsonProperty("name") String name,
             @JsonProperty("primary_key") Optional<? extends String> primaryKey,
+            @JsonProperty("recent_n_files_to_read_for_schema_discovery") Optional<? extends Long> recentNFilesToReadForSchemaDiscovery,
             @JsonProperty("schemaless") Optional<? extends Boolean> schemaless,
             @JsonProperty("validation_policy") Optional<? extends SourceMicrosoftSharepointValidationPolicy> validationPolicy) {
         Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
@@ -91,6 +99,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         Utils.checkNotNull(inputSchema, "inputSchema");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(primaryKey, "primaryKey");
+        Utils.checkNotNull(recentNFilesToReadForSchemaDiscovery, "recentNFilesToReadForSchemaDiscovery");
         Utils.checkNotNull(schemaless, "schemaless");
         Utils.checkNotNull(validationPolicy, "validationPolicy");
         this.daysToSyncIfHistoryIsFull = daysToSyncIfHistoryIsFull;
@@ -99,6 +108,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         this.inputSchema = inputSchema;
         this.name = name;
         this.primaryKey = primaryKey;
+        this.recentNFilesToReadForSchemaDiscovery = recentNFilesToReadForSchemaDiscovery;
         this.schemaless = schemaless;
         this.validationPolicy = validationPolicy;
     }
@@ -106,7 +116,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     public SourceMicrosoftSharepointFileBasedStreamConfig(
             SourceMicrosoftSharepointFormat format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -159,6 +169,15 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     @JsonIgnore
     public Optional<String> primaryKey() {
         return (Optional<String>) primaryKey;
+    }
+
+    /**
+     * The number of resent files which will be used to discover the schema for this stream.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> recentNFilesToReadForSchemaDiscovery() {
+        return (Optional<Long>) recentNFilesToReadForSchemaDiscovery;
     }
 
     /**
@@ -274,6 +293,24 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     }
 
     /**
+     * The number of resent files which will be used to discover the schema for this stream.
+     */
+    public SourceMicrosoftSharepointFileBasedStreamConfig withRecentNFilesToReadForSchemaDiscovery(long recentNFilesToReadForSchemaDiscovery) {
+        Utils.checkNotNull(recentNFilesToReadForSchemaDiscovery, "recentNFilesToReadForSchemaDiscovery");
+        this.recentNFilesToReadForSchemaDiscovery = Optional.ofNullable(recentNFilesToReadForSchemaDiscovery);
+        return this;
+    }
+
+    /**
+     * The number of resent files which will be used to discover the schema for this stream.
+     */
+    public SourceMicrosoftSharepointFileBasedStreamConfig withRecentNFilesToReadForSchemaDiscovery(Optional<? extends Long> recentNFilesToReadForSchemaDiscovery) {
+        Utils.checkNotNull(recentNFilesToReadForSchemaDiscovery, "recentNFilesToReadForSchemaDiscovery");
+        this.recentNFilesToReadForSchemaDiscovery = recentNFilesToReadForSchemaDiscovery;
+        return this;
+    }
+
+    /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
     public SourceMicrosoftSharepointFileBasedStreamConfig withSchemaless(boolean schemaless) {
@@ -325,6 +362,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
             java.util.Objects.deepEquals(this.inputSchema, other.inputSchema) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
             java.util.Objects.deepEquals(this.primaryKey, other.primaryKey) &&
+            java.util.Objects.deepEquals(this.recentNFilesToReadForSchemaDiscovery, other.recentNFilesToReadForSchemaDiscovery) &&
             java.util.Objects.deepEquals(this.schemaless, other.schemaless) &&
             java.util.Objects.deepEquals(this.validationPolicy, other.validationPolicy);
     }
@@ -338,6 +376,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
             inputSchema,
             name,
             primaryKey,
+            recentNFilesToReadForSchemaDiscovery,
             schemaless,
             validationPolicy);
     }
@@ -351,6 +390,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
                 "inputSchema", inputSchema,
                 "name", name,
                 "primaryKey", primaryKey,
+                "recentNFilesToReadForSchemaDiscovery", recentNFilesToReadForSchemaDiscovery,
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
     }
@@ -368,6 +408,8 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         private String name;
  
         private Optional<? extends String> primaryKey = Optional.empty();
+ 
+        private Optional<? extends Long> recentNFilesToReadForSchemaDiscovery = Optional.empty();
  
         private Optional<? extends Boolean> schemaless;
  
@@ -468,6 +510,24 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         }
 
         /**
+         * The number of resent files which will be used to discover the schema for this stream.
+         */
+        public Builder recentNFilesToReadForSchemaDiscovery(long recentNFilesToReadForSchemaDiscovery) {
+            Utils.checkNotNull(recentNFilesToReadForSchemaDiscovery, "recentNFilesToReadForSchemaDiscovery");
+            this.recentNFilesToReadForSchemaDiscovery = Optional.ofNullable(recentNFilesToReadForSchemaDiscovery);
+            return this;
+        }
+
+        /**
+         * The number of resent files which will be used to discover the schema for this stream.
+         */
+        public Builder recentNFilesToReadForSchemaDiscovery(Optional<? extends Long> recentNFilesToReadForSchemaDiscovery) {
+            Utils.checkNotNull(recentNFilesToReadForSchemaDiscovery, "recentNFilesToReadForSchemaDiscovery");
+            this.recentNFilesToReadForSchemaDiscovery = recentNFilesToReadForSchemaDiscovery;
+            return this;
+        }
+
+        /**
          * When enabled, syncs will not validate or structure records against the stream's schema.
          */
         public Builder schemaless(boolean schemaless) {
@@ -520,6 +580,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
                 inputSchema,
                 name,
                 primaryKey,
+                recentNFilesToReadForSchemaDiscovery,
                 schemaless,
                 validationPolicy);
         }

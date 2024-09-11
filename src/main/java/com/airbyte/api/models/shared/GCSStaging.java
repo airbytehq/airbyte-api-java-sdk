@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 /**
- * GCSStaging - &lt;i&gt;(recommended)&lt;/i&gt; Writes large batches of records to a file, uploads the file to GCS, then uses COPY INTO to load your data into BigQuery. Provides best-in-class speed, reliability and scalability. Read more about GCS Staging &lt;a href="https://docs.airbyte.com/integrations/destinations/bigquery#gcs-staging"&gt;here&lt;/a&gt;.
+ * GCSStaging - Writes large batches of records to a file, uploads the file to GCS, then uses COPY INTO to load your data into BigQuery.
  */
 
 public class GCSStaging {
@@ -50,7 +50,7 @@ public class GCSStaging {
     private Optional<? extends GCSTmpFilesAfterwardProcessing> keepFilesInGcsBucket;
 
     @JsonProperty("method")
-    private Method method;
+    private DestinationBigqueryMethod method;
 
     @JsonCreator
     public GCSStaging(
@@ -110,7 +110,7 @@ public class GCSStaging {
     }
 
     @JsonIgnore
-    public Method method() {
+    public DestinationBigqueryMethod method() {
         return method;
     }
 
@@ -276,11 +276,11 @@ public class GCSStaging {
                         "\"Delete all tmp files from GCS\"",
                         new TypeReference<Optional<? extends GCSTmpFilesAfterwardProcessing>>() {});
 
-        private static final LazySingletonValue<Method> _SINGLETON_VALUE_Method =
+        private static final LazySingletonValue<DestinationBigqueryMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(
                         "method",
                         "\"GCS Staging\"",
-                        new TypeReference<Method>() {});
+                        new TypeReference<DestinationBigqueryMethod>() {});
     }
 }
 

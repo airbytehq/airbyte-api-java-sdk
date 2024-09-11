@@ -25,7 +25,7 @@ public class SourceOktaAPIToken {
     private String apiToken;
 
     @JsonProperty("auth_type")
-    private SourceOktaSchemasAuthType authType;
+    private SourceOktaSchemasCredentialsAuthType authType;
 
     @JsonCreator
     public SourceOktaAPIToken(
@@ -44,7 +44,7 @@ public class SourceOktaAPIToken {
     }
 
     @JsonIgnore
-    public SourceOktaSchemasAuthType authType() {
+    public SourceOktaSchemasCredentialsAuthType authType() {
         return authType;
     }
 
@@ -111,11 +111,11 @@ public class SourceOktaAPIToken {
                 apiToken);
         }
 
-        private static final LazySingletonValue<SourceOktaSchemasAuthType> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<SourceOktaSchemasCredentialsAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"api_token\"",
-                        new TypeReference<SourceOktaSchemasAuthType>() {});
+                        new TypeReference<SourceOktaSchemasCredentialsAuthType>() {});
     }
 }
 

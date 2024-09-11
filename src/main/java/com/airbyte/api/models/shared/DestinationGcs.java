@@ -25,7 +25,7 @@ public class DestinationGcs {
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("credential")
-    private Authentication credential;
+    private DestinationGcsAuthentication credential;
 
     @JsonProperty("destinationType")
     private Gcs destinationType;
@@ -57,7 +57,7 @@ public class DestinationGcs {
 
     @JsonCreator
     public DestinationGcs(
-            @JsonProperty("credential") Authentication credential,
+            @JsonProperty("credential") DestinationGcsAuthentication credential,
             @JsonProperty("format") DestinationGcsOutputFormat format,
             @JsonProperty("gcs_bucket_name") String gcsBucketName,
             @JsonProperty("gcs_bucket_path") String gcsBucketPath,
@@ -76,7 +76,7 @@ public class DestinationGcs {
     }
     
     public DestinationGcs(
-            Authentication credential,
+            DestinationGcsAuthentication credential,
             DestinationGcsOutputFormat format,
             String gcsBucketName,
             String gcsBucketPath) {
@@ -87,7 +87,7 @@ public class DestinationGcs {
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
     @JsonIgnore
-    public Authentication credential() {
+    public DestinationGcsAuthentication credential() {
         return credential;
     }
 
@@ -136,7 +136,7 @@ public class DestinationGcs {
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
-    public DestinationGcs withCredential(Authentication credential) {
+    public DestinationGcs withCredential(DestinationGcsAuthentication credential) {
         Utils.checkNotNull(credential, "credential");
         this.credential = credential;
         return this;
@@ -229,7 +229,7 @@ public class DestinationGcs {
     
     public final static class Builder {
  
-        private Authentication credential;
+        private DestinationGcsAuthentication credential;
  
         private DestinationGcsOutputFormat format;
  
@@ -246,7 +246,7 @@ public class DestinationGcs {
         /**
          * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
          */
-        public Builder credential(Authentication credential) {
+        public Builder credential(DestinationGcsAuthentication credential) {
             Utils.checkNotNull(credential, "credential");
             this.credential = credential;
             return this;

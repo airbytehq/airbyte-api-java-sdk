@@ -59,6 +59,11 @@ public class SourceMicrosoftSharepointFormat {
         Utils.checkNotNull(value, "value");
         return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointUnstructuredDocumentFormat>(){}));
     }
+
+    public static SourceMicrosoftSharepointFormat of(SourceMicrosoftSharepointExcelFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceMicrosoftSharepointFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftSharepointExcelFormat>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
@@ -68,6 +73,7 @@ public class SourceMicrosoftSharepointFormat {
      * <li>{@code SourceMicrosoftSharepointJsonlFormat}</li>
      * <li>{@code SourceMicrosoftSharepointParquetFormat}</li>
      * <li>{@code SourceMicrosoftSharepointUnstructuredDocumentFormat}</li>
+     * <li>{@code SourceMicrosoftSharepointExcelFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -111,7 +117,8 @@ public class SourceMicrosoftSharepointFormat {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointCSVFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointJsonlFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointParquetFormat>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointUnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointUnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftSharepointExcelFormat>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

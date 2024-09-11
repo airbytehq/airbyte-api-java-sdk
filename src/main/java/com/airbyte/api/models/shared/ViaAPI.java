@@ -40,7 +40,7 @@ public class ViaAPI {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends SourceSftpBulkSchemasMode> mode;
+    private Optional<? extends SourceGcsSchemasMode> mode;
 
     /**
      * List of parameters send to the API
@@ -87,8 +87,8 @@ public class ViaAPI {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceSftpBulkSchemasMode> mode() {
-        return (Optional<SourceSftpBulkSchemasMode>) mode;
+    public Optional<SourceGcsSchemasMode> mode() {
+        return (Optional<SourceGcsSchemasMode>) mode;
     }
 
     /**
@@ -283,11 +283,11 @@ public class ViaAPI {
                         "\"https://api.unstructured.io\"",
                         new TypeReference<Optional<? extends String>>() {});
 
-        private static final LazySingletonValue<Optional<? extends SourceSftpBulkSchemasMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends SourceGcsSchemasMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"api\"",
-                        new TypeReference<Optional<? extends SourceSftpBulkSchemasMode>>() {});
+                        new TypeReference<Optional<? extends SourceGcsSchemasMode>>() {});
     }
 }
 

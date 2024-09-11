@@ -29,7 +29,7 @@ public class DestinationSnowflakeOAuth20 {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    private Optional<? extends DestinationSnowflakeSchemasAuthType> authType;
+    private Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType> authType;
 
     /**
      * Enter your application's Client ID
@@ -84,8 +84,8 @@ public class DestinationSnowflakeOAuth20 {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationSnowflakeSchemasAuthType> authType() {
-        return (Optional<DestinationSnowflakeSchemasAuthType>) authType;
+    public Optional<DestinationSnowflakeSchemasCredentialsAuthType> authType() {
+        return (Optional<DestinationSnowflakeSchemasCredentialsAuthType>) authType;
     }
 
     /**
@@ -285,11 +285,11 @@ public class DestinationSnowflakeOAuth20 {
                 refreshToken);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasAuthType>> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"OAuth2.0\"",
-                        new TypeReference<Optional<? extends DestinationSnowflakeSchemasAuthType>>() {});
+                        new TypeReference<Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType>>() {});
     }
 }
 
