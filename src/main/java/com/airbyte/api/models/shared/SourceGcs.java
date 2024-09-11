@@ -52,17 +52,17 @@ public class SourceGcs {
     private Optional<? extends OffsetDateTime> startDate;
 
     /**
-     * Each instance of this configuration defines a &lt;a href=https://docs.airbyte.com/cloud/core-concepts#stream&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonProperty("streams")
-    private java.util.List<SourceGCSStreamConfig> streams;
+    private java.util.List<SourceGcsFileBasedStreamConfig> streams;
 
     @JsonCreator
     public SourceGcs(
             @JsonProperty("bucket") String bucket,
             @JsonProperty("service_account") String serviceAccount,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
-            @JsonProperty("streams") java.util.List<SourceGCSStreamConfig> streams) {
+            @JsonProperty("streams") java.util.List<SourceGcsFileBasedStreamConfig> streams) {
         Utils.checkNotNull(bucket, "bucket");
         Utils.checkNotNull(serviceAccount, "serviceAccount");
         Utils.checkNotNull(startDate, "startDate");
@@ -77,7 +77,7 @@ public class SourceGcs {
     public SourceGcs(
             String bucket,
             String serviceAccount,
-            java.util.List<SourceGCSStreamConfig> streams) {
+            java.util.List<SourceGcsFileBasedStreamConfig> streams) {
         this(bucket, serviceAccount, Optional.empty(), streams);
     }
 
@@ -112,10 +112,10 @@ public class SourceGcs {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href=https://docs.airbyte.com/cloud/core-concepts#stream&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
     @JsonIgnore
-    public java.util.List<SourceGCSStreamConfig> streams() {
+    public java.util.List<SourceGcsFileBasedStreamConfig> streams() {
         return streams;
     }
 
@@ -160,9 +160,9 @@ public class SourceGcs {
     }
 
     /**
-     * Each instance of this configuration defines a &lt;a href=https://docs.airbyte.com/cloud/core-concepts#stream&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+     * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
      */
-    public SourceGcs withStreams(java.util.List<SourceGCSStreamConfig> streams) {
+    public SourceGcs withStreams(java.util.List<SourceGcsFileBasedStreamConfig> streams) {
         Utils.checkNotNull(streams, "streams");
         this.streams = streams;
         return this;
@@ -213,7 +213,7 @@ public class SourceGcs {
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
-        private java.util.List<SourceGCSStreamConfig> streams;  
+        private java.util.List<SourceGcsFileBasedStreamConfig> streams;  
         
         private Builder() {
           // force use of static builder() method
@@ -256,9 +256,9 @@ public class SourceGcs {
         }
 
         /**
-         * Each instance of this configuration defines a &lt;a href=https://docs.airbyte.com/cloud/core-concepts#stream&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
+         * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
-        public Builder streams(java.util.List<SourceGCSStreamConfig> streams) {
+        public Builder streams(java.util.List<SourceGcsFileBasedStreamConfig> streams) {
             Utils.checkNotNull(streams, "streams");
             this.streams = streams;
             return this;

@@ -40,16 +40,16 @@ public class SourceSftpBulkProcessing {
         return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkLocal>(){}));
     }
 
-    public static SourceSftpBulkProcessing of(ViaAPI value) {
+    public static SourceSftpBulkProcessing of(SourceSftpBulkViaAPI value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ViaAPI>(){}));
+        return new SourceSftpBulkProcessing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkViaAPI>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code SourceSftpBulkLocal}</li>
-     * <li>{@code ViaAPI}</li>
+     * <li>{@code SourceSftpBulkViaAPI}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -90,7 +90,7 @@ public class SourceSftpBulkProcessing {
         public _Deserializer() {
             super(SourceSftpBulkProcessing.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkLocal>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<ViaAPI>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkViaAPI>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

@@ -29,52 +29,38 @@ public class DestinationDatabricks {
     private Optional<? extends Boolean> acceptTerms;
 
     /**
-     * Storage on which the delta lake is built.
+     * Authentication mechanism for Staging files and running queries
      */
-    @JsonProperty("data_source")
-    private DataSource dataSource;
+    @JsonProperty("authentication")
+    private Authentication authentication;
 
     /**
-     * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
+     * The name of the unity catalog for the database
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("database")
-    private Optional<? extends String> database;
-
-    /**
-     * Databricks Cluster HTTP Path.
-     */
-    @JsonProperty("databricks_http_path")
-    private String databricksHttpPath;
-
-    /**
-     * Databricks Personal Access Token for making authenticated requests.
-     */
-    @JsonProperty("databricks_personal_access_token")
-    private String databricksPersonalAccessToken;
-
-    /**
-     * Databricks Cluster Port.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("databricks_port")
-    private Optional<? extends String> databricksPort;
-
-    /**
-     * Databricks Cluster Server Hostname.
-     */
-    @JsonProperty("databricks_server_hostname")
-    private String databricksServerHostname;
+    private String database;
 
     @JsonProperty("destinationType")
     private Databricks destinationType;
 
     /**
-     * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+     * Databricks Cluster Server Hostname.
+     */
+    @JsonProperty("hostname")
+    private String hostname;
+
+    /**
+     * Databricks Cluster HTTP Path.
+     */
+    @JsonProperty("http_path")
+    private String httpPath;
+
+    /**
+     * Databricks Cluster Port.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("enable_schema_evolution")
-    private Optional<? extends Boolean> enableSchemaEvolution;
+    @JsonProperty("port")
+    private Optional<? extends String> port;
 
     /**
      * Default to 'true'. Switch it to 'false' for debugging purpose.
@@ -82,6 +68,13 @@ public class DestinationDatabricks {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("purge_staging_data")
     private Optional<? extends Boolean> purgeStagingData;
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_schema_override")
+    private Optional<? extends String> rawSchemaOverride;
 
     /**
      * The default schema tables are written. If not specified otherwise, the "default" will be used.
@@ -93,44 +86,41 @@ public class DestinationDatabricks {
     @JsonCreator
     public DestinationDatabricks(
             @JsonProperty("accept_terms") Optional<? extends Boolean> acceptTerms,
-            @JsonProperty("data_source") DataSource dataSource,
-            @JsonProperty("database") Optional<? extends String> database,
-            @JsonProperty("databricks_http_path") String databricksHttpPath,
-            @JsonProperty("databricks_personal_access_token") String databricksPersonalAccessToken,
-            @JsonProperty("databricks_port") Optional<? extends String> databricksPort,
-            @JsonProperty("databricks_server_hostname") String databricksServerHostname,
-            @JsonProperty("enable_schema_evolution") Optional<? extends Boolean> enableSchemaEvolution,
+            @JsonProperty("authentication") Authentication authentication,
+            @JsonProperty("database") String database,
+            @JsonProperty("hostname") String hostname,
+            @JsonProperty("http_path") String httpPath,
+            @JsonProperty("port") Optional<? extends String> port,
             @JsonProperty("purge_staging_data") Optional<? extends Boolean> purgeStagingData,
+            @JsonProperty("raw_schema_override") Optional<? extends String> rawSchemaOverride,
             @JsonProperty("schema") Optional<? extends String> schema) {
         Utils.checkNotNull(acceptTerms, "acceptTerms");
-        Utils.checkNotNull(dataSource, "dataSource");
+        Utils.checkNotNull(authentication, "authentication");
         Utils.checkNotNull(database, "database");
-        Utils.checkNotNull(databricksHttpPath, "databricksHttpPath");
-        Utils.checkNotNull(databricksPersonalAccessToken, "databricksPersonalAccessToken");
-        Utils.checkNotNull(databricksPort, "databricksPort");
-        Utils.checkNotNull(databricksServerHostname, "databricksServerHostname");
-        Utils.checkNotNull(enableSchemaEvolution, "enableSchemaEvolution");
+        Utils.checkNotNull(hostname, "hostname");
+        Utils.checkNotNull(httpPath, "httpPath");
+        Utils.checkNotNull(port, "port");
         Utils.checkNotNull(purgeStagingData, "purgeStagingData");
+        Utils.checkNotNull(rawSchemaOverride, "rawSchemaOverride");
         Utils.checkNotNull(schema, "schema");
         this.acceptTerms = acceptTerms;
-        this.dataSource = dataSource;
+        this.authentication = authentication;
         this.database = database;
-        this.databricksHttpPath = databricksHttpPath;
-        this.databricksPersonalAccessToken = databricksPersonalAccessToken;
-        this.databricksPort = databricksPort;
-        this.databricksServerHostname = databricksServerHostname;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
-        this.enableSchemaEvolution = enableSchemaEvolution;
+        this.hostname = hostname;
+        this.httpPath = httpPath;
+        this.port = port;
         this.purgeStagingData = purgeStagingData;
+        this.rawSchemaOverride = rawSchemaOverride;
         this.schema = schema;
     }
     
     public DestinationDatabricks(
-            DataSource dataSource,
-            String databricksHttpPath,
-            String databricksPersonalAccessToken,
-            String databricksServerHostname) {
-        this(Optional.empty(), dataSource, Optional.empty(), databricksHttpPath, databricksPersonalAccessToken, Optional.empty(), databricksServerHostname, Optional.empty(), Optional.empty(), Optional.empty());
+            Authentication authentication,
+            String database,
+            String hostname,
+            String httpPath) {
+        this(Optional.empty(), authentication, database, hostname, httpPath, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -143,53 +133,19 @@ public class DestinationDatabricks {
     }
 
     /**
-     * Storage on which the delta lake is built.
+     * Authentication mechanism for Staging files and running queries
      */
     @JsonIgnore
-    public DataSource dataSource() {
-        return dataSource;
+    public Authentication authentication() {
+        return authentication;
     }
 
     /**
-     * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> database() {
-        return (Optional<String>) database;
-    }
-
-    /**
-     * Databricks Cluster HTTP Path.
+     * The name of the unity catalog for the database
      */
     @JsonIgnore
-    public String databricksHttpPath() {
-        return databricksHttpPath;
-    }
-
-    /**
-     * Databricks Personal Access Token for making authenticated requests.
-     */
-    @JsonIgnore
-    public String databricksPersonalAccessToken() {
-        return databricksPersonalAccessToken;
-    }
-
-    /**
-     * Databricks Cluster Port.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> databricksPort() {
-        return (Optional<String>) databricksPort;
-    }
-
-    /**
-     * Databricks Cluster Server Hostname.
-     */
-    @JsonIgnore
-    public String databricksServerHostname() {
-        return databricksServerHostname;
+    public String database() {
+        return database;
     }
 
     @JsonIgnore
@@ -198,12 +154,28 @@ public class DestinationDatabricks {
     }
 
     /**
-     * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+     * Databricks Cluster Server Hostname.
+     */
+    @JsonIgnore
+    public String hostname() {
+        return hostname;
+    }
+
+    /**
+     * Databricks Cluster HTTP Path.
+     */
+    @JsonIgnore
+    public String httpPath() {
+        return httpPath;
+    }
+
+    /**
+     * Databricks Cluster Port.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Boolean> enableSchemaEvolution() {
-        return (Optional<Boolean>) enableSchemaEvolution;
+    public Optional<String> port() {
+        return (Optional<String>) port;
     }
 
     /**
@@ -213,6 +185,15 @@ public class DestinationDatabricks {
     @JsonIgnore
     public Optional<Boolean> purgeStagingData() {
         return (Optional<Boolean>) purgeStagingData;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> rawSchemaOverride() {
+        return (Optional<String>) rawSchemaOverride;
     }
 
     /**
@@ -247,92 +228,56 @@ public class DestinationDatabricks {
     }
 
     /**
-     * Storage on which the delta lake is built.
+     * Authentication mechanism for Staging files and running queries
      */
-    public DestinationDatabricks withDataSource(DataSource dataSource) {
-        Utils.checkNotNull(dataSource, "dataSource");
-        this.dataSource = dataSource;
+    public DestinationDatabricks withAuthentication(Authentication authentication) {
+        Utils.checkNotNull(authentication, "authentication");
+        this.authentication = authentication;
         return this;
     }
 
     /**
-     * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
+     * The name of the unity catalog for the database
      */
     public DestinationDatabricks withDatabase(String database) {
-        Utils.checkNotNull(database, "database");
-        this.database = Optional.ofNullable(database);
-        return this;
-    }
-
-    /**
-     * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
-     */
-    public DestinationDatabricks withDatabase(Optional<? extends String> database) {
         Utils.checkNotNull(database, "database");
         this.database = database;
         return this;
     }
 
     /**
-     * Databricks Cluster HTTP Path.
-     */
-    public DestinationDatabricks withDatabricksHttpPath(String databricksHttpPath) {
-        Utils.checkNotNull(databricksHttpPath, "databricksHttpPath");
-        this.databricksHttpPath = databricksHttpPath;
-        return this;
-    }
-
-    /**
-     * Databricks Personal Access Token for making authenticated requests.
-     */
-    public DestinationDatabricks withDatabricksPersonalAccessToken(String databricksPersonalAccessToken) {
-        Utils.checkNotNull(databricksPersonalAccessToken, "databricksPersonalAccessToken");
-        this.databricksPersonalAccessToken = databricksPersonalAccessToken;
-        return this;
-    }
-
-    /**
-     * Databricks Cluster Port.
-     */
-    public DestinationDatabricks withDatabricksPort(String databricksPort) {
-        Utils.checkNotNull(databricksPort, "databricksPort");
-        this.databricksPort = Optional.ofNullable(databricksPort);
-        return this;
-    }
-
-    /**
-     * Databricks Cluster Port.
-     */
-    public DestinationDatabricks withDatabricksPort(Optional<? extends String> databricksPort) {
-        Utils.checkNotNull(databricksPort, "databricksPort");
-        this.databricksPort = databricksPort;
-        return this;
-    }
-
-    /**
      * Databricks Cluster Server Hostname.
      */
-    public DestinationDatabricks withDatabricksServerHostname(String databricksServerHostname) {
-        Utils.checkNotNull(databricksServerHostname, "databricksServerHostname");
-        this.databricksServerHostname = databricksServerHostname;
+    public DestinationDatabricks withHostname(String hostname) {
+        Utils.checkNotNull(hostname, "hostname");
+        this.hostname = hostname;
         return this;
     }
 
     /**
-     * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+     * Databricks Cluster HTTP Path.
      */
-    public DestinationDatabricks withEnableSchemaEvolution(boolean enableSchemaEvolution) {
-        Utils.checkNotNull(enableSchemaEvolution, "enableSchemaEvolution");
-        this.enableSchemaEvolution = Optional.ofNullable(enableSchemaEvolution);
+    public DestinationDatabricks withHttpPath(String httpPath) {
+        Utils.checkNotNull(httpPath, "httpPath");
+        this.httpPath = httpPath;
         return this;
     }
 
     /**
-     * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+     * Databricks Cluster Port.
      */
-    public DestinationDatabricks withEnableSchemaEvolution(Optional<? extends Boolean> enableSchemaEvolution) {
-        Utils.checkNotNull(enableSchemaEvolution, "enableSchemaEvolution");
-        this.enableSchemaEvolution = enableSchemaEvolution;
+    public DestinationDatabricks withPort(String port) {
+        Utils.checkNotNull(port, "port");
+        this.port = Optional.ofNullable(port);
+        return this;
+    }
+
+    /**
+     * Databricks Cluster Port.
+     */
+    public DestinationDatabricks withPort(Optional<? extends String> port) {
+        Utils.checkNotNull(port, "port");
+        this.port = port;
         return this;
     }
 
@@ -351,6 +296,24 @@ public class DestinationDatabricks {
     public DestinationDatabricks withPurgeStagingData(Optional<? extends Boolean> purgeStagingData) {
         Utils.checkNotNull(purgeStagingData, "purgeStagingData");
         this.purgeStagingData = purgeStagingData;
+        return this;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    public DestinationDatabricks withRawSchemaOverride(String rawSchemaOverride) {
+        Utils.checkNotNull(rawSchemaOverride, "rawSchemaOverride");
+        this.rawSchemaOverride = Optional.ofNullable(rawSchemaOverride);
+        return this;
+    }
+
+    /**
+     * The schema to write raw tables into (default: airbyte_internal)
+     */
+    public DestinationDatabricks withRawSchemaOverride(Optional<? extends String> rawSchemaOverride) {
+        Utils.checkNotNull(rawSchemaOverride, "rawSchemaOverride");
+        this.rawSchemaOverride = rawSchemaOverride;
         return this;
     }
 
@@ -383,15 +346,14 @@ public class DestinationDatabricks {
         DestinationDatabricks other = (DestinationDatabricks) o;
         return 
             java.util.Objects.deepEquals(this.acceptTerms, other.acceptTerms) &&
-            java.util.Objects.deepEquals(this.dataSource, other.dataSource) &&
+            java.util.Objects.deepEquals(this.authentication, other.authentication) &&
             java.util.Objects.deepEquals(this.database, other.database) &&
-            java.util.Objects.deepEquals(this.databricksHttpPath, other.databricksHttpPath) &&
-            java.util.Objects.deepEquals(this.databricksPersonalAccessToken, other.databricksPersonalAccessToken) &&
-            java.util.Objects.deepEquals(this.databricksPort, other.databricksPort) &&
-            java.util.Objects.deepEquals(this.databricksServerHostname, other.databricksServerHostname) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
-            java.util.Objects.deepEquals(this.enableSchemaEvolution, other.enableSchemaEvolution) &&
+            java.util.Objects.deepEquals(this.hostname, other.hostname) &&
+            java.util.Objects.deepEquals(this.httpPath, other.httpPath) &&
+            java.util.Objects.deepEquals(this.port, other.port) &&
             java.util.Objects.deepEquals(this.purgeStagingData, other.purgeStagingData) &&
+            java.util.Objects.deepEquals(this.rawSchemaOverride, other.rawSchemaOverride) &&
             java.util.Objects.deepEquals(this.schema, other.schema);
     }
     
@@ -399,15 +361,14 @@ public class DestinationDatabricks {
     public int hashCode() {
         return java.util.Objects.hash(
             acceptTerms,
-            dataSource,
+            authentication,
             database,
-            databricksHttpPath,
-            databricksPersonalAccessToken,
-            databricksPort,
-            databricksServerHostname,
             destinationType,
-            enableSchemaEvolution,
+            hostname,
+            httpPath,
+            port,
             purgeStagingData,
+            rawSchemaOverride,
             schema);
     }
     
@@ -415,15 +376,14 @@ public class DestinationDatabricks {
     public String toString() {
         return Utils.toString(DestinationDatabricks.class,
                 "acceptTerms", acceptTerms,
-                "dataSource", dataSource,
+                "authentication", authentication,
                 "database", database,
-                "databricksHttpPath", databricksHttpPath,
-                "databricksPersonalAccessToken", databricksPersonalAccessToken,
-                "databricksPort", databricksPort,
-                "databricksServerHostname", databricksServerHostname,
                 "destinationType", destinationType,
-                "enableSchemaEvolution", enableSchemaEvolution,
+                "hostname", hostname,
+                "httpPath", httpPath,
+                "port", port,
                 "purgeStagingData", purgeStagingData,
+                "rawSchemaOverride", rawSchemaOverride,
                 "schema", schema);
     }
     
@@ -431,21 +391,19 @@ public class DestinationDatabricks {
  
         private Optional<? extends Boolean> acceptTerms;
  
-        private DataSource dataSource;
+        private Authentication authentication;
  
-        private Optional<? extends String> database = Optional.empty();
+        private String database;
  
-        private String databricksHttpPath;
+        private String hostname;
  
-        private String databricksPersonalAccessToken;
+        private String httpPath;
  
-        private Optional<? extends String> databricksPort;
- 
-        private String databricksServerHostname;
- 
-        private Optional<? extends Boolean> enableSchemaEvolution;
+        private Optional<? extends String> port;
  
         private Optional<? extends Boolean> purgeStagingData;
+ 
+        private Optional<? extends String> rawSchemaOverride;
  
         private Optional<? extends String> schema;  
         
@@ -472,92 +430,56 @@ public class DestinationDatabricks {
         }
 
         /**
-         * Storage on which the delta lake is built.
+         * Authentication mechanism for Staging files and running queries
          */
-        public Builder dataSource(DataSource dataSource) {
-            Utils.checkNotNull(dataSource, "dataSource");
-            this.dataSource = dataSource;
+        public Builder authentication(Authentication authentication) {
+            Utils.checkNotNull(authentication, "authentication");
+            this.authentication = authentication;
             return this;
         }
 
         /**
-         * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
+         * The name of the unity catalog for the database
          */
         public Builder database(String database) {
-            Utils.checkNotNull(database, "database");
-            this.database = Optional.ofNullable(database);
-            return this;
-        }
-
-        /**
-         * The name of the catalog. If not specified otherwise, the "hive_metastore" will be used.
-         */
-        public Builder database(Optional<? extends String> database) {
             Utils.checkNotNull(database, "database");
             this.database = database;
             return this;
         }
 
         /**
-         * Databricks Cluster HTTP Path.
-         */
-        public Builder databricksHttpPath(String databricksHttpPath) {
-            Utils.checkNotNull(databricksHttpPath, "databricksHttpPath");
-            this.databricksHttpPath = databricksHttpPath;
-            return this;
-        }
-
-        /**
-         * Databricks Personal Access Token for making authenticated requests.
-         */
-        public Builder databricksPersonalAccessToken(String databricksPersonalAccessToken) {
-            Utils.checkNotNull(databricksPersonalAccessToken, "databricksPersonalAccessToken");
-            this.databricksPersonalAccessToken = databricksPersonalAccessToken;
-            return this;
-        }
-
-        /**
-         * Databricks Cluster Port.
-         */
-        public Builder databricksPort(String databricksPort) {
-            Utils.checkNotNull(databricksPort, "databricksPort");
-            this.databricksPort = Optional.ofNullable(databricksPort);
-            return this;
-        }
-
-        /**
-         * Databricks Cluster Port.
-         */
-        public Builder databricksPort(Optional<? extends String> databricksPort) {
-            Utils.checkNotNull(databricksPort, "databricksPort");
-            this.databricksPort = databricksPort;
-            return this;
-        }
-
-        /**
          * Databricks Cluster Server Hostname.
          */
-        public Builder databricksServerHostname(String databricksServerHostname) {
-            Utils.checkNotNull(databricksServerHostname, "databricksServerHostname");
-            this.databricksServerHostname = databricksServerHostname;
+        public Builder hostname(String hostname) {
+            Utils.checkNotNull(hostname, "hostname");
+            this.hostname = hostname;
             return this;
         }
 
         /**
-         * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+         * Databricks Cluster HTTP Path.
          */
-        public Builder enableSchemaEvolution(boolean enableSchemaEvolution) {
-            Utils.checkNotNull(enableSchemaEvolution, "enableSchemaEvolution");
-            this.enableSchemaEvolution = Optional.ofNullable(enableSchemaEvolution);
+        public Builder httpPath(String httpPath) {
+            Utils.checkNotNull(httpPath, "httpPath");
+            this.httpPath = httpPath;
             return this;
         }
 
         /**
-         * Support schema evolution for all streams. If "false", the connector might fail when a stream's schema changes.
+         * Databricks Cluster Port.
          */
-        public Builder enableSchemaEvolution(Optional<? extends Boolean> enableSchemaEvolution) {
-            Utils.checkNotNull(enableSchemaEvolution, "enableSchemaEvolution");
-            this.enableSchemaEvolution = enableSchemaEvolution;
+        public Builder port(String port) {
+            Utils.checkNotNull(port, "port");
+            this.port = Optional.ofNullable(port);
+            return this;
+        }
+
+        /**
+         * Databricks Cluster Port.
+         */
+        public Builder port(Optional<? extends String> port) {
+            Utils.checkNotNull(port, "port");
+            this.port = port;
             return this;
         }
 
@@ -576,6 +498,24 @@ public class DestinationDatabricks {
         public Builder purgeStagingData(Optional<? extends Boolean> purgeStagingData) {
             Utils.checkNotNull(purgeStagingData, "purgeStagingData");
             this.purgeStagingData = purgeStagingData;
+            return this;
+        }
+
+        /**
+         * The schema to write raw tables into (default: airbyte_internal)
+         */
+        public Builder rawSchemaOverride(String rawSchemaOverride) {
+            Utils.checkNotNull(rawSchemaOverride, "rawSchemaOverride");
+            this.rawSchemaOverride = Optional.ofNullable(rawSchemaOverride);
+            return this;
+        }
+
+        /**
+         * The schema to write raw tables into (default: airbyte_internal)
+         */
+        public Builder rawSchemaOverride(Optional<? extends String> rawSchemaOverride) {
+            Utils.checkNotNull(rawSchemaOverride, "rawSchemaOverride");
+            this.rawSchemaOverride = rawSchemaOverride;
             return this;
         }
 
@@ -601,28 +541,27 @@ public class DestinationDatabricks {
             if (acceptTerms == null) {
                 acceptTerms = _SINGLETON_VALUE_AcceptTerms.value();
             }
-            if (databricksPort == null) {
-                databricksPort = _SINGLETON_VALUE_DatabricksPort.value();
-            }
-            if (enableSchemaEvolution == null) {
-                enableSchemaEvolution = _SINGLETON_VALUE_EnableSchemaEvolution.value();
+            if (port == null) {
+                port = _SINGLETON_VALUE_Port.value();
             }
             if (purgeStagingData == null) {
                 purgeStagingData = _SINGLETON_VALUE_PurgeStagingData.value();
+            }
+            if (rawSchemaOverride == null) {
+                rawSchemaOverride = _SINGLETON_VALUE_RawSchemaOverride.value();
             }
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
             return new DestinationDatabricks(
                 acceptTerms,
-                dataSource,
+                authentication,
                 database,
-                databricksHttpPath,
-                databricksPersonalAccessToken,
-                databricksPort,
-                databricksServerHostname,
-                enableSchemaEvolution,
+                hostname,
+                httpPath,
+                port,
                 purgeStagingData,
+                rawSchemaOverride,
                 schema);
         }
 
@@ -632,29 +571,29 @@ public class DestinationDatabricks {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_DatabricksPort =
-                new LazySingletonValue<>(
-                        "databricks_port",
-                        "\"443\"",
-                        new TypeReference<Optional<? extends String>>() {});
-
         private static final LazySingletonValue<Databricks> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
                         "destinationType",
                         "\"databricks\"",
                         new TypeReference<Databricks>() {});
 
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_EnableSchemaEvolution =
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(
-                        "enable_schema_evolution",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
+                        "port",
+                        "\"443\"",
+                        new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_PurgeStagingData =
                 new LazySingletonValue<>(
                         "purge_staging_data",
                         "true",
                         new TypeReference<Optional<? extends Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_RawSchemaOverride =
+                new LazySingletonValue<>(
+                        "raw_schema_override",
+                        "\"airbyte_internal\"",
+                        new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_Schema =
                 new LazySingletonValue<>(

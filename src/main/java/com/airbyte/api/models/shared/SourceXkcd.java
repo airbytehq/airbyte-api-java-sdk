@@ -21,14 +21,36 @@ import java.util.Optional;
 
 public class SourceXkcd {
 
+    /**
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("comic_number")
+    private Optional<? extends String> comicNumber;
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
     private Optional<? extends Xkcd> sourceType;
 
     @JsonCreator
-    public SourceXkcd() {
-        
+    public SourceXkcd(
+            @JsonProperty("comic_number") Optional<? extends String> comicNumber) {
+        Utils.checkNotNull(comicNumber, "comicNumber");
+        this.comicNumber = comicNumber;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+    }
+    
+    public SourceXkcd() {
+        this(Optional.empty());
+    }
+
+    /**
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<String> comicNumber() {
+        return (Optional<String>) comicNumber;
     }
 
     @SuppressWarnings("unchecked")
@@ -39,6 +61,24 @@ public class SourceXkcd {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     */
+    public SourceXkcd withComicNumber(String comicNumber) {
+        Utils.checkNotNull(comicNumber, "comicNumber");
+        this.comicNumber = Optional.ofNullable(comicNumber);
+        return this;
+    }
+
+    /**
+     * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+     */
+    public SourceXkcd withComicNumber(Optional<? extends String> comicNumber) {
+        Utils.checkNotNull(comicNumber, "comicNumber");
+        this.comicNumber = comicNumber;
+        return this;
     }
     
     @Override
@@ -51,31 +91,63 @@ public class SourceXkcd {
         }
         SourceXkcd other = (SourceXkcd) o;
         return 
+            java.util.Objects.deepEquals(this.comicNumber, other.comicNumber) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
+            comicNumber,
             sourceType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceXkcd.class,
+                "comicNumber", comicNumber,
                 "sourceType", sourceType);
     }
     
-    public final static class Builder {  
+    public final static class Builder {
+ 
+        private Optional<? extends String> comicNumber;  
         
         private Builder() {
           // force use of static builder() method
         }
+
+        /**
+         * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+         */
+        public Builder comicNumber(String comicNumber) {
+            Utils.checkNotNull(comicNumber, "comicNumber");
+            this.comicNumber = Optional.ofNullable(comicNumber);
+            return this;
+        }
+
+        /**
+         * Specifies the comic number in which details are to be extracted, pagination will begin with that number to end of available comics
+         */
+        public Builder comicNumber(Optional<? extends String> comicNumber) {
+            Utils.checkNotNull(comicNumber, "comicNumber");
+            this.comicNumber = comicNumber;
+            return this;
+        }
         
         public SourceXkcd build() {
+            if (comicNumber == null) {
+                comicNumber = _SINGLETON_VALUE_ComicNumber.value();
+            }
             return new SourceXkcd(
-                );
+                comicNumber);
         }
+
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_ComicNumber =
+                new LazySingletonValue<>(
+                        "comic_number",
+                        "\"2960\"",
+                        new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<Optional<? extends Xkcd>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

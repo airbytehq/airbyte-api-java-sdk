@@ -195,6 +195,11 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTeradata>(){}));
     }
 
+    public static DestinationConfiguration of(DestinationTimeplus value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTimeplus>(){}));
+    }
+
     public static DestinationConfiguration of(DestinationTypesense value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationTypesense>(){}));
@@ -250,6 +255,7 @@ public class DestinationConfiguration {
      * <li>{@code DestinationSnowflake}</li>
      * <li>{@code DestinationSnowflakeCortex}</li>
      * <li>{@code DestinationTeradata}</li>
+     * <li>{@code DestinationTimeplus}</li>
      * <li>{@code DestinationTypesense}</li>
      * <li>{@code DestinationVectara}</li>
      * <li>{@code DestinationWeaviate}</li>
@@ -325,6 +331,7 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationSnowflake>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortex>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationTeradata>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationTimeplus>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationTypesense>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationVectara>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationWeaviate>() {}, Utils.JsonShape.DEFAULT),

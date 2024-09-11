@@ -55,9 +55,14 @@ public class SourceSftpBulkFormat {
         return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkParquetFormat>(){}));
     }
 
-    public static SourceSftpBulkFormat of(SourceSftpBulkDocumentFileTypeFormatExperimental value) {
+    public static SourceSftpBulkFormat of(SourceSftpBulkUnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkDocumentFileTypeFormatExperimental>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkUnstructuredDocumentFormat>(){}));
+    }
+
+    public static SourceSftpBulkFormat of(SourceSftpBulkExcelFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkExcelFormat>(){}));
     }
     
     /**
@@ -67,7 +72,8 @@ public class SourceSftpBulkFormat {
      * <li>{@code SourceSftpBulkCSVFormat}</li>
      * <li>{@code SourceSftpBulkJsonlFormat}</li>
      * <li>{@code SourceSftpBulkParquetFormat}</li>
-     * <li>{@code SourceSftpBulkDocumentFileTypeFormatExperimental}</li>
+     * <li>{@code SourceSftpBulkUnstructuredDocumentFormat}</li>
+     * <li>{@code SourceSftpBulkExcelFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -111,7 +117,8 @@ public class SourceSftpBulkFormat {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkCSVFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkJsonlFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkParquetFormat>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkDocumentFileTypeFormatExperimental>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkUnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkExcelFormat>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

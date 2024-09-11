@@ -13,10 +13,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 
 public class SourceBambooHr {
@@ -44,6 +47,10 @@ public class SourceBambooHr {
     @JsonProperty("sourceType")
     private BambooHr sourceType;
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("start_date")
+    private Optional<? extends OffsetDateTime> startDate;
+
     /**
      * Sub Domain of bamboo hr
      */
@@ -55,22 +62,25 @@ public class SourceBambooHr {
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("custom_reports_fields") Optional<? extends String> customReportsFields,
             @JsonProperty("custom_reports_include_default_fields") Optional<? extends Boolean> customReportsIncludeDefaultFields,
+            @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
             @JsonProperty("subdomain") String subdomain) {
         Utils.checkNotNull(apiKey, "apiKey");
         Utils.checkNotNull(customReportsFields, "customReportsFields");
         Utils.checkNotNull(customReportsIncludeDefaultFields, "customReportsIncludeDefaultFields");
+        Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(subdomain, "subdomain");
         this.apiKey = apiKey;
         this.customReportsFields = customReportsFields;
         this.customReportsIncludeDefaultFields = customReportsIncludeDefaultFields;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+        this.startDate = startDate;
         this.subdomain = subdomain;
     }
     
     public SourceBambooHr(
             String apiKey,
             String subdomain) {
-        this(apiKey, Optional.empty(), Optional.empty(), subdomain);
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), subdomain);
     }
 
     /**
@@ -102,6 +112,12 @@ public class SourceBambooHr {
     @JsonIgnore
     public BambooHr sourceType() {
         return sourceType;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<OffsetDateTime> startDate() {
+        return (Optional<OffsetDateTime>) startDate;
     }
 
     /**
@@ -161,6 +177,18 @@ public class SourceBambooHr {
         return this;
     }
 
+    public SourceBambooHr withStartDate(OffsetDateTime startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = Optional.ofNullable(startDate);
+        return this;
+    }
+
+    public SourceBambooHr withStartDate(Optional<? extends OffsetDateTime> startDate) {
+        Utils.checkNotNull(startDate, "startDate");
+        this.startDate = startDate;
+        return this;
+    }
+
     /**
      * Sub Domain of bamboo hr
      */
@@ -184,6 +212,7 @@ public class SourceBambooHr {
             java.util.Objects.deepEquals(this.customReportsFields, other.customReportsFields) &&
             java.util.Objects.deepEquals(this.customReportsIncludeDefaultFields, other.customReportsIncludeDefaultFields) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
+            java.util.Objects.deepEquals(this.startDate, other.startDate) &&
             java.util.Objects.deepEquals(this.subdomain, other.subdomain);
     }
     
@@ -194,6 +223,7 @@ public class SourceBambooHr {
             customReportsFields,
             customReportsIncludeDefaultFields,
             sourceType,
+            startDate,
             subdomain);
     }
     
@@ -204,6 +234,7 @@ public class SourceBambooHr {
                 "customReportsFields", customReportsFields,
                 "customReportsIncludeDefaultFields", customReportsIncludeDefaultFields,
                 "sourceType", sourceType,
+                "startDate", startDate,
                 "subdomain", subdomain);
     }
     
@@ -214,6 +245,8 @@ public class SourceBambooHr {
         private Optional<? extends String> customReportsFields = Optional.empty();
  
         private Optional<? extends Boolean> customReportsIncludeDefaultFields;
+ 
+        private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
         private String subdomain;  
         
@@ -266,6 +299,18 @@ public class SourceBambooHr {
             return this;
         }
 
+        public Builder startDate(OffsetDateTime startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = Optional.ofNullable(startDate);
+            return this;
+        }
+
+        public Builder startDate(Optional<? extends OffsetDateTime> startDate) {
+            Utils.checkNotNull(startDate, "startDate");
+            this.startDate = startDate;
+            return this;
+        }
+
         /**
          * Sub Domain of bamboo hr
          */
@@ -283,6 +328,7 @@ public class SourceBambooHr {
                 apiKey,
                 customReportsFields,
                 customReportsIncludeDefaultFields,
+                startDate,
                 subdomain);
         }
 

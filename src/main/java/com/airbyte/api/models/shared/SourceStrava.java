@@ -53,7 +53,7 @@ public class SourceStrava {
     private String refreshToken;
 
     @JsonProperty("sourceType")
-    private SourceStravaStrava sourceType;
+    private Strava sourceType;
 
     /**
      * UTC date and time. Any data before this date will not be replicated.
@@ -121,7 +121,7 @@ public class SourceStrava {
     }
 
     @JsonIgnore
-    public SourceStravaStrava sourceType() {
+    public Strava sourceType() {
         return sourceType;
     }
 
@@ -301,11 +301,11 @@ public class SourceStrava {
                         "\"Client\"",
                         new TypeReference<Optional<? extends SourceStravaAuthType>>() {});
 
-        private static final LazySingletonValue<SourceStravaStrava> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<Strava> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"strava\"",
-                        new TypeReference<SourceStravaStrava>() {});
+                        new TypeReference<Strava>() {});
     }
 }
 

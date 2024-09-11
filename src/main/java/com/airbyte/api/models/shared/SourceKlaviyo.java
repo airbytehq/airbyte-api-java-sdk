@@ -30,6 +30,13 @@ public class SourceKlaviyo {
     @JsonProperty("api_key")
     private String apiKey;
 
+    /**
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("disable_fetching_predictive_analytics")
+    private Optional<? extends Boolean> disableFetchingPredictiveAnalytics;
+
     @JsonProperty("sourceType")
     private Klaviyo sourceType;
 
@@ -43,17 +50,20 @@ public class SourceKlaviyo {
     @JsonCreator
     public SourceKlaviyo(
             @JsonProperty("api_key") String apiKey,
+            @JsonProperty("disable_fetching_predictive_analytics") Optional<? extends Boolean> disableFetchingPredictiveAnalytics,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(apiKey, "apiKey");
+        Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
         Utils.checkNotNull(startDate, "startDate");
         this.apiKey = apiKey;
+        this.disableFetchingPredictiveAnalytics = disableFetchingPredictiveAnalytics;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceKlaviyo(
             String apiKey) {
-        this(apiKey, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -62,6 +72,15 @@ public class SourceKlaviyo {
     @JsonIgnore
     public String apiKey() {
         return apiKey;
+    }
+
+    /**
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> disableFetchingPredictiveAnalytics() {
+        return (Optional<Boolean>) disableFetchingPredictiveAnalytics;
     }
 
     @JsonIgnore
@@ -88,6 +107,24 @@ public class SourceKlaviyo {
     public SourceKlaviyo withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
         this.apiKey = apiKey;
+        return this;
+    }
+
+    /**
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     */
+    public SourceKlaviyo withDisableFetchingPredictiveAnalytics(boolean disableFetchingPredictiveAnalytics) {
+        Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
+        this.disableFetchingPredictiveAnalytics = Optional.ofNullable(disableFetchingPredictiveAnalytics);
+        return this;
+    }
+
+    /**
+     * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+     */
+    public SourceKlaviyo withDisableFetchingPredictiveAnalytics(Optional<? extends Boolean> disableFetchingPredictiveAnalytics) {
+        Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
+        this.disableFetchingPredictiveAnalytics = disableFetchingPredictiveAnalytics;
         return this;
     }
 
@@ -120,6 +157,7 @@ public class SourceKlaviyo {
         SourceKlaviyo other = (SourceKlaviyo) o;
         return 
             java.util.Objects.deepEquals(this.apiKey, other.apiKey) &&
+            java.util.Objects.deepEquals(this.disableFetchingPredictiveAnalytics, other.disableFetchingPredictiveAnalytics) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -128,6 +166,7 @@ public class SourceKlaviyo {
     public int hashCode() {
         return java.util.Objects.hash(
             apiKey,
+            disableFetchingPredictiveAnalytics,
             sourceType,
             startDate);
     }
@@ -136,6 +175,7 @@ public class SourceKlaviyo {
     public String toString() {
         return Utils.toString(SourceKlaviyo.class,
                 "apiKey", apiKey,
+                "disableFetchingPredictiveAnalytics", disableFetchingPredictiveAnalytics,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -143,6 +183,8 @@ public class SourceKlaviyo {
     public final static class Builder {
  
         private String apiKey;
+ 
+        private Optional<? extends Boolean> disableFetchingPredictiveAnalytics = Optional.empty();
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
@@ -156,6 +198,24 @@ public class SourceKlaviyo {
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
+            return this;
+        }
+
+        /**
+         * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+         */
+        public Builder disableFetchingPredictiveAnalytics(boolean disableFetchingPredictiveAnalytics) {
+            Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
+            this.disableFetchingPredictiveAnalytics = Optional.ofNullable(disableFetchingPredictiveAnalytics);
+            return this;
+        }
+
+        /**
+         * Certain streams like the profiles stream can retrieve predictive analytics data from Klaviyo's API. However, at high volume, this can lead to service availability issues on the API which can be improved by not fetching this field. WARNING: Enabling this setting will stop the  "predictive_analytics" column from being populated in your downstream destination.
+         */
+        public Builder disableFetchingPredictiveAnalytics(Optional<? extends Boolean> disableFetchingPredictiveAnalytics) {
+            Utils.checkNotNull(disableFetchingPredictiveAnalytics, "disableFetchingPredictiveAnalytics");
+            this.disableFetchingPredictiveAnalytics = disableFetchingPredictiveAnalytics;
             return this;
         }
 
@@ -180,6 +240,7 @@ public class SourceKlaviyo {
         public SourceKlaviyo build() {
             return new SourceKlaviyo(
                 apiKey,
+                disableFetchingPredictiveAnalytics,
                 startDate);
         }
 

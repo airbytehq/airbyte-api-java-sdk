@@ -35,21 +35,21 @@ public class LoadingMethod {
         this.value = value;
     }
 
+    public static LoadingMethod of(BatchedStandardInserts value) {
+        Utils.checkNotNull(value, "value");
+        return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BatchedStandardInserts>(){}));
+    }
+
     public static LoadingMethod of(GCSStaging value) {
         Utils.checkNotNull(value, "value");
         return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GCSStaging>(){}));
-    }
-
-    public static LoadingMethod of(StandardInserts value) {
-        Utils.checkNotNull(value, "value");
-        return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<StandardInserts>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
+     * <li>{@code BatchedStandardInserts}</li>
      * <li>{@code GCSStaging}</li>
-     * <li>{@code StandardInserts}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -89,8 +89,8 @@ public class LoadingMethod {
 
         public _Deserializer() {
             super(LoadingMethod.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<GCSStaging>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<StandardInserts>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<BatchedStandardInserts>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<GCSStaging>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

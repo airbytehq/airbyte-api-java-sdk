@@ -23,7 +23,7 @@ public class KeyPairAuthentication {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    private Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType> authType;
+    private Optional<? extends DestinationSnowflakeAuthType> authType;
 
     /**
      * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/snowflake"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -56,8 +56,8 @@ public class KeyPairAuthentication {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationSnowflakeSchemasCredentialsAuthType> authType() {
-        return (Optional<DestinationSnowflakeSchemasCredentialsAuthType>) authType;
+    public Optional<DestinationSnowflakeAuthType> authType() {
+        return (Optional<DestinationSnowflakeAuthType>) authType;
     }
 
     /**
@@ -182,11 +182,11 @@ public class KeyPairAuthentication {
                 privateKeyPassword);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType>> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"Key Pair Authentication\"",
-                        new TypeReference<Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType>>() {});
+                        new TypeReference<Optional<? extends DestinationSnowflakeAuthType>>() {});
     }
 }
 

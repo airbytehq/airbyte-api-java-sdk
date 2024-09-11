@@ -81,6 +81,13 @@ public class DestinationSnowflake {
     private String schema;
 
     /**
+     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("use_merge_for_upsert")
+    private Optional<? extends Boolean> useMergeForUpsert;
+
+    /**
      * Enter the name of the user you want to use to access the database
      */
     @JsonProperty("username")
@@ -103,6 +110,7 @@ public class DestinationSnowflake {
             @JsonProperty("retention_period_days") Optional<? extends Long> retentionPeriodDays,
             @JsonProperty("role") String role,
             @JsonProperty("schema") String schema,
+            @JsonProperty("use_merge_for_upsert") Optional<? extends Boolean> useMergeForUpsert,
             @JsonProperty("username") String username,
             @JsonProperty("warehouse") String warehouse) {
         Utils.checkNotNull(credentials, "credentials");
@@ -114,6 +122,7 @@ public class DestinationSnowflake {
         Utils.checkNotNull(retentionPeriodDays, "retentionPeriodDays");
         Utils.checkNotNull(role, "role");
         Utils.checkNotNull(schema, "schema");
+        Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
         Utils.checkNotNull(username, "username");
         Utils.checkNotNull(warehouse, "warehouse");
         this.credentials = credentials;
@@ -126,6 +135,7 @@ public class DestinationSnowflake {
         this.retentionPeriodDays = retentionPeriodDays;
         this.role = role;
         this.schema = schema;
+        this.useMergeForUpsert = useMergeForUpsert;
         this.username = username;
         this.warehouse = warehouse;
     }
@@ -137,7 +147,7 @@ public class DestinationSnowflake {
             String schema,
             String username,
             String warehouse) {
-        this(Optional.empty(), database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), role, schema, username, warehouse);
+        this(Optional.empty(), database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), role, schema, Optional.empty(), username, warehouse);
     }
 
     @SuppressWarnings("unchecked")
@@ -217,6 +227,15 @@ public class DestinationSnowflake {
     @JsonIgnore
     public String schema() {
         return schema;
+    }
+
+    /**
+     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> useMergeForUpsert() {
+        return (Optional<Boolean>) useMergeForUpsert;
     }
 
     /**
@@ -360,6 +379,24 @@ public class DestinationSnowflake {
     }
 
     /**
+     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
+     */
+    public DestinationSnowflake withUseMergeForUpsert(boolean useMergeForUpsert) {
+        Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
+        this.useMergeForUpsert = Optional.ofNullable(useMergeForUpsert);
+        return this;
+    }
+
+    /**
+     * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
+     */
+    public DestinationSnowflake withUseMergeForUpsert(Optional<? extends Boolean> useMergeForUpsert) {
+        Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
+        this.useMergeForUpsert = useMergeForUpsert;
+        return this;
+    }
+
+    /**
      * Enter the name of the user you want to use to access the database
      */
     public DestinationSnowflake withUsername(String username) {
@@ -397,6 +434,7 @@ public class DestinationSnowflake {
             java.util.Objects.deepEquals(this.retentionPeriodDays, other.retentionPeriodDays) &&
             java.util.Objects.deepEquals(this.role, other.role) &&
             java.util.Objects.deepEquals(this.schema, other.schema) &&
+            java.util.Objects.deepEquals(this.useMergeForUpsert, other.useMergeForUpsert) &&
             java.util.Objects.deepEquals(this.username, other.username) &&
             java.util.Objects.deepEquals(this.warehouse, other.warehouse);
     }
@@ -414,6 +452,7 @@ public class DestinationSnowflake {
             retentionPeriodDays,
             role,
             schema,
+            useMergeForUpsert,
             username,
             warehouse);
     }
@@ -431,6 +470,7 @@ public class DestinationSnowflake {
                 "retentionPeriodDays", retentionPeriodDays,
                 "role", role,
                 "schema", schema,
+                "useMergeForUpsert", useMergeForUpsert,
                 "username", username,
                 "warehouse", warehouse);
     }
@@ -454,6 +494,8 @@ public class DestinationSnowflake {
         private String role;
  
         private String schema;
+ 
+        private Optional<? extends Boolean> useMergeForUpsert;
  
         private String username;
  
@@ -584,6 +626,24 @@ public class DestinationSnowflake {
         }
 
         /**
+         * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
+         */
+        public Builder useMergeForUpsert(boolean useMergeForUpsert) {
+            Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
+            this.useMergeForUpsert = Optional.ofNullable(useMergeForUpsert);
+            return this;
+        }
+
+        /**
+         * Use MERGE for de-duplication of final tables. This option no effect if Final tables are disabled or Sync mode is not DEDUPE
+         */
+        public Builder useMergeForUpsert(Optional<? extends Boolean> useMergeForUpsert) {
+            Utils.checkNotNull(useMergeForUpsert, "useMergeForUpsert");
+            this.useMergeForUpsert = useMergeForUpsert;
+            return this;
+        }
+
+        /**
          * Enter the name of the user you want to use to access the database
          */
         public Builder username(String username) {
@@ -608,6 +668,9 @@ public class DestinationSnowflake {
             if (retentionPeriodDays == null) {
                 retentionPeriodDays = _SINGLETON_VALUE_RetentionPeriodDays.value();
             }
+            if (useMergeForUpsert == null) {
+                useMergeForUpsert = _SINGLETON_VALUE_UseMergeForUpsert.value();
+            }
             return new DestinationSnowflake(
                 credentials,
                 database,
@@ -618,6 +681,7 @@ public class DestinationSnowflake {
                 retentionPeriodDays,
                 role,
                 schema,
+                useMergeForUpsert,
                 username,
                 warehouse);
         }
@@ -639,6 +703,12 @@ public class DestinationSnowflake {
                         "retention_period_days",
                         "1",
                         new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_UseMergeForUpsert =
+                new LazySingletonValue<>(
+                        "use_merge_for_upsert",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
     }
 }
 

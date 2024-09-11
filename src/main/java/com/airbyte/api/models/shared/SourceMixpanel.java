@@ -52,6 +52,13 @@ public class SourceMixpanel {
     private Optional<? extends OffsetDateTime> endDate;
 
     /**
+     * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("page_size")
+    private Optional<? extends Long> pageSize;
+
+    /**
      * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -88,6 +95,7 @@ public class SourceMixpanel {
             @JsonProperty("credentials") AuthenticationWildcard credentials,
             @JsonProperty("date_window_size") Optional<? extends Long> dateWindowSize,
             @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
+            @JsonProperty("page_size") Optional<? extends Long> pageSize,
             @JsonProperty("project_timezone") Optional<? extends String> projectTimezone,
             @JsonProperty("region") Optional<? extends SourceMixpanelRegion> region,
             @JsonProperty("select_properties_by_default") Optional<? extends Boolean> selectPropertiesByDefault,
@@ -96,6 +104,7 @@ public class SourceMixpanel {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(dateWindowSize, "dateWindowSize");
         Utils.checkNotNull(endDate, "endDate");
+        Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(projectTimezone, "projectTimezone");
         Utils.checkNotNull(region, "region");
         Utils.checkNotNull(selectPropertiesByDefault, "selectPropertiesByDefault");
@@ -104,6 +113,7 @@ public class SourceMixpanel {
         this.credentials = credentials;
         this.dateWindowSize = dateWindowSize;
         this.endDate = endDate;
+        this.pageSize = pageSize;
         this.projectTimezone = projectTimezone;
         this.region = region;
         this.selectPropertiesByDefault = selectPropertiesByDefault;
@@ -113,7 +123,7 @@ public class SourceMixpanel {
     
     public SourceMixpanel(
             AuthenticationWildcard credentials) {
-        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -149,6 +159,15 @@ public class SourceMixpanel {
     @JsonIgnore
     public Optional<OffsetDateTime> endDate() {
         return (Optional<OffsetDateTime>) endDate;
+    }
+
+    /**
+     * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> pageSize() {
+        return (Optional<Long>) pageSize;
     }
 
     /**
@@ -260,6 +279,24 @@ public class SourceMixpanel {
     }
 
     /**
+     * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
+     */
+    public SourceMixpanel withPageSize(long pageSize) {
+        Utils.checkNotNull(pageSize, "pageSize");
+        this.pageSize = Optional.ofNullable(pageSize);
+        return this;
+    }
+
+    /**
+     * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
+     */
+    public SourceMixpanel withPageSize(Optional<? extends Long> pageSize) {
+        Utils.checkNotNull(pageSize, "pageSize");
+        this.pageSize = pageSize;
+        return this;
+    }
+
+    /**
      * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
      */
     public SourceMixpanel withProjectTimezone(String projectTimezone) {
@@ -345,6 +382,7 @@ public class SourceMixpanel {
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.dateWindowSize, other.dateWindowSize) &&
             java.util.Objects.deepEquals(this.endDate, other.endDate) &&
+            java.util.Objects.deepEquals(this.pageSize, other.pageSize) &&
             java.util.Objects.deepEquals(this.projectTimezone, other.projectTimezone) &&
             java.util.Objects.deepEquals(this.region, other.region) &&
             java.util.Objects.deepEquals(this.selectPropertiesByDefault, other.selectPropertiesByDefault) &&
@@ -359,6 +397,7 @@ public class SourceMixpanel {
             credentials,
             dateWindowSize,
             endDate,
+            pageSize,
             projectTimezone,
             region,
             selectPropertiesByDefault,
@@ -373,6 +412,7 @@ public class SourceMixpanel {
                 "credentials", credentials,
                 "dateWindowSize", dateWindowSize,
                 "endDate", endDate,
+                "pageSize", pageSize,
                 "projectTimezone", projectTimezone,
                 "region", region,
                 "selectPropertiesByDefault", selectPropertiesByDefault,
@@ -389,6 +429,8 @@ public class SourceMixpanel {
         private Optional<? extends Long> dateWindowSize;
  
         private Optional<? extends OffsetDateTime> endDate = Optional.empty();
+ 
+        private Optional<? extends Long> pageSize;
  
         private Optional<? extends String> projectTimezone;
  
@@ -462,6 +504,24 @@ public class SourceMixpanel {
         public Builder endDate(Optional<? extends OffsetDateTime> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
+            return this;
+        }
+
+        /**
+         * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
+         */
+        public Builder pageSize(long pageSize) {
+            Utils.checkNotNull(pageSize, "pageSize");
+            this.pageSize = Optional.ofNullable(pageSize);
+            return this;
+        }
+
+        /**
+         * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
+         */
+        public Builder pageSize(Optional<? extends Long> pageSize) {
+            Utils.checkNotNull(pageSize, "pageSize");
+            this.pageSize = pageSize;
             return this;
         }
 
@@ -544,6 +604,9 @@ public class SourceMixpanel {
             if (dateWindowSize == null) {
                 dateWindowSize = _SINGLETON_VALUE_DateWindowSize.value();
             }
+            if (pageSize == null) {
+                pageSize = _SINGLETON_VALUE_PageSize.value();
+            }
             if (projectTimezone == null) {
                 projectTimezone = _SINGLETON_VALUE_ProjectTimezone.value();
             }
@@ -558,6 +621,7 @@ public class SourceMixpanel {
                 credentials,
                 dateWindowSize,
                 endDate,
+                pageSize,
                 projectTimezone,
                 region,
                 selectPropertiesByDefault,
@@ -574,6 +638,12 @@ public class SourceMixpanel {
                 new LazySingletonValue<>(
                         "date_window_size",
                         "30",
+                        new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_PageSize =
+                new LazySingletonValue<>(
+                        "page_size",
+                        "1000",
                         new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_ProjectTimezone =

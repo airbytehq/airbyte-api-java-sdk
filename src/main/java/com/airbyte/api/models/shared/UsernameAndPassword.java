@@ -23,7 +23,7 @@ public class UsernameAndPassword {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    private Optional<? extends DestinationSnowflakeAuthType> authType;
+    private Optional<? extends DestinationSnowflakeSchemasAuthType> authType;
 
     /**
      * Enter the password associated with the username.
@@ -41,8 +41,8 @@ public class UsernameAndPassword {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationSnowflakeAuthType> authType() {
-        return (Optional<DestinationSnowflakeAuthType>) authType;
+    public Optional<DestinationSnowflakeSchemasAuthType> authType() {
+        return (Optional<DestinationSnowflakeSchemasAuthType>) authType;
     }
 
     /**
@@ -116,11 +116,11 @@ public class UsernameAndPassword {
                 password);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeAuthType>> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"Username and Password\"",
-                        new TypeReference<Optional<? extends DestinationSnowflakeAuthType>>() {});
+                        new TypeReference<Optional<? extends DestinationSnowflakeSchemasAuthType>>() {});
     }
 }
 

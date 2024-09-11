@@ -37,6 +37,11 @@ public class SourceOktaAuthorizationMethod {
         return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOktaOAuth20>(){}));
     }
 
+    public static SourceOktaAuthorizationMethod of(OAuth20WithPrivateKey value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth20WithPrivateKey>(){}));
+    }
+
     public static SourceOktaAuthorizationMethod of(SourceOktaAPIToken value) {
         Utils.checkNotNull(value, "value");
         return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOktaAPIToken>(){}));
@@ -46,6 +51,7 @@ public class SourceOktaAuthorizationMethod {
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code SourceOktaOAuth20}</li>
+     * <li>{@code OAuth20WithPrivateKey}</li>
      * <li>{@code SourceOktaAPIToken}</li>
      * </ul>
      * 
@@ -87,6 +93,7 @@ public class SourceOktaAuthorizationMethod {
         public _Deserializer() {
             super(SourceOktaAuthorizationMethod.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceOktaOAuth20>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<OAuth20WithPrivateKey>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceOktaAPIToken>() {}, Utils.JsonShape.DEFAULT));
         }
     }

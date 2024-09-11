@@ -22,7 +22,7 @@ import com.airbyte.api.utils.TypedObject;
 import com.airbyte.api.utils.Utils.JsonShape;
 
 /**
- * Authentication - An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
+ * Authentication - Authentication mechanism for Staging files and running queries
  */
 
 @JsonDeserialize(using = Authentication._Deserializer.class)
@@ -35,15 +35,21 @@ public class Authentication {
         this.value = value;
     }
 
-    public static Authentication of(HMACKey value) {
+    public static Authentication of(OAuth2Recommended value) {
         Utils.checkNotNull(value, "value");
-        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<HMACKey>(){}));
+        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth2Recommended>(){}));
+    }
+
+    public static Authentication of(PersonalAccessToken value) {
+        Utils.checkNotNull(value, "value");
+        return new Authentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PersonalAccessToken>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code HMACKey}</li>
+     * <li>{@code OAuth2Recommended}</li>
+     * <li>{@code PersonalAccessToken}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -83,7 +89,8 @@ public class Authentication {
 
         public _Deserializer() {
             super(Authentication.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<HMACKey>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<OAuth2Recommended>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<PersonalAccessToken>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

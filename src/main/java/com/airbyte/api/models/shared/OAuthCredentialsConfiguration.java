@@ -205,11 +205,6 @@ public class OAuthCredentialsConfiguration {
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Square>(){}));
     }
 
-    public static OAuthCredentialsConfiguration of(Strava value) {
-        Utils.checkNotNull(value, "value");
-        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Strava>(){}));
-    }
-
     public static OAuthCredentialsConfiguration of(Surveymonkey value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Surveymonkey>(){}));
@@ -292,7 +287,6 @@ public class OAuthCredentialsConfiguration {
      * <li>{@code SnapchatMarketing}</li>
      * <li>{@code Snowflake}</li>
      * <li>{@code Square}</li>
-     * <li>{@code Strava}</li>
      * <li>{@code Surveymonkey}</li>
      * <li>{@code TiktokMarketing}</li>
      * <li>{@code java.lang.Object}</li>
@@ -375,7 +369,6 @@ public class OAuthCredentialsConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SnapchatMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Snowflake>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Square>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<Strava>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Surveymonkey>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<TiktokMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<java.lang.Object>() {}, Utils.JsonShape.DEFAULT),

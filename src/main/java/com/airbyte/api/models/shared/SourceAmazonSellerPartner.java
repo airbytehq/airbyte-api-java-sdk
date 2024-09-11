@@ -98,6 +98,13 @@ public class SourceAmazonSellerPartner {
     @JsonProperty("sourceType")
     private SourceAmazonSellerPartnerAmazonSellerPartner sourceType;
 
+    /**
+     * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("wait_to_avoid_fatal_errors")
+    private Optional<? extends Boolean> waitToAvoidFatalErrors;
+
     @JsonCreator
     public SourceAmazonSellerPartner(
             @JsonProperty("account_type") Optional<? extends AWSSellerPartnerAccountType> accountType,
@@ -109,7 +116,8 @@ public class SourceAmazonSellerPartner {
             @JsonProperty("region") Optional<? extends AWSRegion> region,
             @JsonProperty("replication_end_date") Optional<? extends OffsetDateTime> replicationEndDate,
             @JsonProperty("replication_start_date") Optional<? extends OffsetDateTime> replicationStartDate,
-            @JsonProperty("report_options_list") Optional<? extends java.util.List<ReportOptions>> reportOptionsList) {
+            @JsonProperty("report_options_list") Optional<? extends java.util.List<ReportOptions>> reportOptionsList,
+            @JsonProperty("wait_to_avoid_fatal_errors") Optional<? extends Boolean> waitToAvoidFatalErrors) {
         Utils.checkNotNull(accountType, "accountType");
         Utils.checkNotNull(awsEnvironment, "awsEnvironment");
         Utils.checkNotNull(lwaAppId, "lwaAppId");
@@ -120,6 +128,7 @@ public class SourceAmazonSellerPartner {
         Utils.checkNotNull(replicationEndDate, "replicationEndDate");
         Utils.checkNotNull(replicationStartDate, "replicationStartDate");
         Utils.checkNotNull(reportOptionsList, "reportOptionsList");
+        Utils.checkNotNull(waitToAvoidFatalErrors, "waitToAvoidFatalErrors");
         this.accountType = accountType;
         this.authType = Builder._SINGLETON_VALUE_AuthType.value();
         this.awsEnvironment = awsEnvironment;
@@ -132,13 +141,14 @@ public class SourceAmazonSellerPartner {
         this.replicationStartDate = replicationStartDate;
         this.reportOptionsList = reportOptionsList;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+        this.waitToAvoidFatalErrors = waitToAvoidFatalErrors;
     }
     
     public SourceAmazonSellerPartner(
             String lwaAppId,
             String lwaClientSecret,
             String refreshToken) {
-        this(Optional.empty(), Optional.empty(), lwaAppId, lwaClientSecret, Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), lwaAppId, lwaClientSecret, Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -237,6 +247,15 @@ public class SourceAmazonSellerPartner {
     @JsonIgnore
     public SourceAmazonSellerPartnerAmazonSellerPartner sourceType() {
         return sourceType;
+    }
+
+    /**
+     * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> waitToAvoidFatalErrors() {
+        return (Optional<Boolean>) waitToAvoidFatalErrors;
     }
 
     public final static Builder builder() {
@@ -395,6 +414,24 @@ public class SourceAmazonSellerPartner {
         this.reportOptionsList = reportOptionsList;
         return this;
     }
+
+    /**
+     * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
+     */
+    public SourceAmazonSellerPartner withWaitToAvoidFatalErrors(boolean waitToAvoidFatalErrors) {
+        Utils.checkNotNull(waitToAvoidFatalErrors, "waitToAvoidFatalErrors");
+        this.waitToAvoidFatalErrors = Optional.ofNullable(waitToAvoidFatalErrors);
+        return this;
+    }
+
+    /**
+     * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
+     */
+    public SourceAmazonSellerPartner withWaitToAvoidFatalErrors(Optional<? extends Boolean> waitToAvoidFatalErrors) {
+        Utils.checkNotNull(waitToAvoidFatalErrors, "waitToAvoidFatalErrors");
+        this.waitToAvoidFatalErrors = waitToAvoidFatalErrors;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -417,7 +454,8 @@ public class SourceAmazonSellerPartner {
             java.util.Objects.deepEquals(this.replicationEndDate, other.replicationEndDate) &&
             java.util.Objects.deepEquals(this.replicationStartDate, other.replicationStartDate) &&
             java.util.Objects.deepEquals(this.reportOptionsList, other.reportOptionsList) &&
-            java.util.Objects.deepEquals(this.sourceType, other.sourceType);
+            java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
+            java.util.Objects.deepEquals(this.waitToAvoidFatalErrors, other.waitToAvoidFatalErrors);
     }
     
     @Override
@@ -434,7 +472,8 @@ public class SourceAmazonSellerPartner {
             replicationEndDate,
             replicationStartDate,
             reportOptionsList,
-            sourceType);
+            sourceType,
+            waitToAvoidFatalErrors);
     }
     
     @Override
@@ -451,7 +490,8 @@ public class SourceAmazonSellerPartner {
                 "replicationEndDate", replicationEndDate,
                 "replicationStartDate", replicationStartDate,
                 "reportOptionsList", reportOptionsList,
-                "sourceType", sourceType);
+                "sourceType", sourceType,
+                "waitToAvoidFatalErrors", waitToAvoidFatalErrors);
     }
     
     public final static class Builder {
@@ -474,7 +514,9 @@ public class SourceAmazonSellerPartner {
  
         private Optional<? extends OffsetDateTime> replicationStartDate = Optional.empty();
  
-        private Optional<? extends java.util.List<ReportOptions>> reportOptionsList = Optional.empty();  
+        private Optional<? extends java.util.List<ReportOptions>> reportOptionsList = Optional.empty();
+ 
+        private Optional<? extends Boolean> waitToAvoidFatalErrors;  
         
         private Builder() {
           // force use of static builder() method
@@ -632,6 +674,24 @@ public class SourceAmazonSellerPartner {
             this.reportOptionsList = reportOptionsList;
             return this;
         }
+
+        /**
+         * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
+         */
+        public Builder waitToAvoidFatalErrors(boolean waitToAvoidFatalErrors) {
+            Utils.checkNotNull(waitToAvoidFatalErrors, "waitToAvoidFatalErrors");
+            this.waitToAvoidFatalErrors = Optional.ofNullable(waitToAvoidFatalErrors);
+            return this;
+        }
+
+        /**
+         * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
+         */
+        public Builder waitToAvoidFatalErrors(Optional<? extends Boolean> waitToAvoidFatalErrors) {
+            Utils.checkNotNull(waitToAvoidFatalErrors, "waitToAvoidFatalErrors");
+            this.waitToAvoidFatalErrors = waitToAvoidFatalErrors;
+            return this;
+        }
         
         public SourceAmazonSellerPartner build() {
             if (accountType == null) {
@@ -646,6 +706,9 @@ public class SourceAmazonSellerPartner {
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+            if (waitToAvoidFatalErrors == null) {
+                waitToAvoidFatalErrors = _SINGLETON_VALUE_WaitToAvoidFatalErrors.value();
+            }
             return new SourceAmazonSellerPartner(
                 accountType,
                 awsEnvironment,
@@ -656,7 +719,8 @@ public class SourceAmazonSellerPartner {
                 region,
                 replicationEndDate,
                 replicationStartDate,
-                reportOptionsList);
+                reportOptionsList,
+                waitToAvoidFatalErrors);
         }
 
         private static final LazySingletonValue<Optional<? extends AWSSellerPartnerAccountType>> _SINGLETON_VALUE_AccountType =
@@ -694,6 +758,12 @@ public class SourceAmazonSellerPartner {
                         "sourceType",
                         "\"amazon-seller-partner\"",
                         new TypeReference<SourceAmazonSellerPartnerAmazonSellerPartner>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_WaitToAvoidFatalErrors =
+                new LazySingletonValue<>(
+                        "wait_to_avoid_fatal_errors",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
     }
 }
 

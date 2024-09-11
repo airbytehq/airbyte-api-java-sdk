@@ -82,9 +82,8 @@ public class SourceFacebookMarketing {
     /**
      * Credentials for connecting to the Facebook Marketing API
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
-    private Optional<? extends SourceFacebookMarketingAuthentication> credentials;
+    private SourceFacebookMarketingAuthentication credentials;
 
     /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
@@ -148,7 +147,7 @@ public class SourceFacebookMarketing {
             @JsonProperty("campaign_statuses") Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses,
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret,
-            @JsonProperty("credentials") Optional<? extends SourceFacebookMarketingAuthentication> credentials,
+            @JsonProperty("credentials") SourceFacebookMarketingAuthentication credentials,
             @JsonProperty("custom_insights") Optional<? extends java.util.List<InsightConfig>> customInsights,
             @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
             @JsonProperty("fetch_thumbnail_images") Optional<? extends Boolean> fetchThumbnailImages,
@@ -192,8 +191,9 @@ public class SourceFacebookMarketing {
     }
     
     public SourceFacebookMarketing(
-            java.util.List<String> accountIds) {
-        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+            java.util.List<String> accountIds,
+            SourceFacebookMarketingAuthentication credentials) {
+        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -270,10 +270,9 @@ public class SourceFacebookMarketing {
     /**
      * Credentials for connecting to the Facebook Marketing API
      */
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceFacebookMarketingAuthentication> credentials() {
-        return (Optional<SourceFacebookMarketingAuthentication>) credentials;
+    public SourceFacebookMarketingAuthentication credentials() {
+        return credentials;
     }
 
     /**
@@ -487,15 +486,6 @@ public class SourceFacebookMarketing {
      * Credentials for connecting to the Facebook Marketing API
      */
     public SourceFacebookMarketing withCredentials(SourceFacebookMarketingAuthentication credentials) {
-        Utils.checkNotNull(credentials, "credentials");
-        this.credentials = Optional.ofNullable(credentials);
-        return this;
-    }
-
-    /**
-     * Credentials for connecting to the Facebook Marketing API
-     */
-    public SourceFacebookMarketing withCredentials(Optional<? extends SourceFacebookMarketingAuthentication> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         return this;
@@ -718,7 +708,7 @@ public class SourceFacebookMarketing {
  
         private Optional<? extends String> clientSecret = Optional.empty();
  
-        private Optional<? extends SourceFacebookMarketingAuthentication> credentials = Optional.empty();
+        private SourceFacebookMarketingAuthentication credentials;
  
         private Optional<? extends java.util.List<InsightConfig>> customInsights = Optional.empty();
  
@@ -877,15 +867,6 @@ public class SourceFacebookMarketing {
          * Credentials for connecting to the Facebook Marketing API
          */
         public Builder credentials(SourceFacebookMarketingAuthentication credentials) {
-            Utils.checkNotNull(credentials, "credentials");
-            this.credentials = Optional.ofNullable(credentials);
-            return this;
-        }
-
-        /**
-         * Credentials for connecting to the Facebook Marketing API
-         */
-        public Builder credentials(Optional<? extends SourceFacebookMarketingAuthentication> credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;

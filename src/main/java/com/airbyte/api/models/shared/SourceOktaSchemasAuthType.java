@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceOktaSchemasAuthType {
-    API_TOKEN("api_token");
+    OAUTH20_PRIVATE_KEY("oauth2.0_private_key");
 
     @JsonValue
     private final String value;

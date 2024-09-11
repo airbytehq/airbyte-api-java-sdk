@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceGcsFiletype {
-    CSV("csv");
+    AVRO("avro");
 
     @JsonValue
     private final String value;

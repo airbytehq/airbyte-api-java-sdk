@@ -9,60 +9,46 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Optional;
 
 public class PersonalAccessToken {
 
-    /**
-     * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
-     */
-    @JsonProperty("api_key")
-    private String apiKey;
+    @JsonProperty("auth_type")
+    private DestinationDatabricksAuthType authType;
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_method")
-    private Optional<? extends SourceAirtableAuthMethod> authMethod;
+    @JsonProperty("personal_access_token")
+    private String personalAccessToken;
 
     @JsonCreator
     public PersonalAccessToken(
-            @JsonProperty("api_key") String apiKey) {
-        Utils.checkNotNull(apiKey, "apiKey");
-        this.apiKey = apiKey;
-        this.authMethod = Builder._SINGLETON_VALUE_AuthMethod.value();
+            @JsonProperty("personal_access_token") String personalAccessToken) {
+        Utils.checkNotNull(personalAccessToken, "personalAccessToken");
+        this.authType = Builder._SINGLETON_VALUE_AuthType.value();
+        this.personalAccessToken = personalAccessToken;
     }
 
-    /**
-     * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
-     */
     @JsonIgnore
-    public String apiKey() {
-        return apiKey;
+    public DestinationDatabricksAuthType authType() {
+        return authType;
     }
 
-    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceAirtableAuthMethod> authMethod() {
-        return (Optional<SourceAirtableAuthMethod>) authMethod;
+    public String personalAccessToken() {
+        return personalAccessToken;
     }
 
     public final static Builder builder() {
         return new Builder();
     }
 
-    /**
-     * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
-     */
-    public PersonalAccessToken withApiKey(String apiKey) {
-        Utils.checkNotNull(apiKey, "apiKey");
-        this.apiKey = apiKey;
+    public PersonalAccessToken withPersonalAccessToken(String personalAccessToken) {
+        Utils.checkNotNull(personalAccessToken, "personalAccessToken");
+        this.personalAccessToken = personalAccessToken;
         return this;
     }
     
@@ -76,51 +62,48 @@ public class PersonalAccessToken {
         }
         PersonalAccessToken other = (PersonalAccessToken) o;
         return 
-            java.util.Objects.deepEquals(this.apiKey, other.apiKey) &&
-            java.util.Objects.deepEquals(this.authMethod, other.authMethod);
+            java.util.Objects.deepEquals(this.authType, other.authType) &&
+            java.util.Objects.deepEquals(this.personalAccessToken, other.personalAccessToken);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            apiKey,
-            authMethod);
+            authType,
+            personalAccessToken);
     }
     
     @Override
     public String toString() {
         return Utils.toString(PersonalAccessToken.class,
-                "apiKey", apiKey,
-                "authMethod", authMethod);
+                "authType", authType,
+                "personalAccessToken", personalAccessToken);
     }
     
     public final static class Builder {
  
-        private String apiKey;  
+        private String personalAccessToken;  
         
         private Builder() {
           // force use of static builder() method
         }
 
-        /**
-         * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
-         */
-        public Builder apiKey(String apiKey) {
-            Utils.checkNotNull(apiKey, "apiKey");
-            this.apiKey = apiKey;
+        public Builder personalAccessToken(String personalAccessToken) {
+            Utils.checkNotNull(personalAccessToken, "personalAccessToken");
+            this.personalAccessToken = personalAccessToken;
             return this;
         }
         
         public PersonalAccessToken build() {
             return new PersonalAccessToken(
-                apiKey);
+                personalAccessToken);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceAirtableAuthMethod>> _SINGLETON_VALUE_AuthMethod =
+        private static final LazySingletonValue<DestinationDatabricksAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
-                        "auth_method",
-                        "\"api_key\"",
-                        new TypeReference<Optional<? extends SourceAirtableAuthMethod>>() {});
+                        "auth_type",
+                        "\"BASIC\"",
+                        new TypeReference<DestinationDatabricksAuthType>() {});
     }
 }
 

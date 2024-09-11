@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum DestinationSnowflakeSchemasCredentialsAuthType {
-    KEY_PAIR_AUTHENTICATION("Key Pair Authentication");
+    O_AUTH20("OAuth2.0");
 
     @JsonValue
     private final String value;

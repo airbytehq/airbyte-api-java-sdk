@@ -37,16 +37,16 @@ public class SourceAirtableAuthentication {
         return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirtableOAuth20>(){}));
     }
 
-    public static SourceAirtableAuthentication of(PersonalAccessToken value) {
+    public static SourceAirtableAuthentication of(SourceAirtablePersonalAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PersonalAccessToken>(){}));
+        return new SourceAirtableAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirtablePersonalAccessToken>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code SourceAirtableOAuth20}</li>
-     * <li>{@code PersonalAccessToken}</li>
+     * <li>{@code SourceAirtablePersonalAccessToken}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -87,7 +87,7 @@ public class SourceAirtableAuthentication {
         public _Deserializer() {
             super(SourceAirtableAuthentication.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAirtableOAuth20>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<PersonalAccessToken>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceAirtablePersonalAccessToken>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     
