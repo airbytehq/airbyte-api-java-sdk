@@ -9,20 +9,24 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 /**
  * TLSEncryptedVerifyCertificate - Verify and use the certificate provided by the server.
  */
 
 public class TLSEncryptedVerifyCertificate {
 
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
-    private SourceOracleEncryptionMethod encryptionMethod;
+    private Optional<? extends DestinationOracleSchemasEncryptionMethod> encryptionMethod;
 
     /**
      * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
@@ -38,9 +42,10 @@ public class TLSEncryptedVerifyCertificate {
         this.sslCertificate = sslCertificate;
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public SourceOracleEncryptionMethod encryptionMethod() {
-        return encryptionMethod;
+    public Optional<DestinationOracleSchemasEncryptionMethod> encryptionMethod() {
+        return (Optional<DestinationOracleSchemasEncryptionMethod>) encryptionMethod;
     }
 
     /**
@@ -114,11 +119,11 @@ public class TLSEncryptedVerifyCertificate {
                 sslCertificate);
         }
 
-        private static final LazySingletonValue<SourceOracleEncryptionMethod> _SINGLETON_VALUE_EncryptionMethod =
+        private static final LazySingletonValue<Optional<? extends DestinationOracleSchemasEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(
                         "encryption_method",
                         "\"encrypted_verify_certificate\"",
-                        new TypeReference<SourceOracleEncryptionMethod>() {});
+                        new TypeReference<Optional<? extends DestinationOracleSchemasEncryptionMethod>>() {});
     }
 }
 

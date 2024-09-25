@@ -22,20 +22,6 @@ import java.util.Optional;
 public class SourceKyve {
 
     /**
-     * The maximum amount of pages to go trough. Set to 'null' for all pages.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("max_pages")
-    private Optional<? extends Long> maxPages;
-
-    /**
-     * The pagesize for pagination, smaller numbers are used in integration tests.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("page_size")
-    private Optional<? extends Long> pageSize;
-
-    /**
      * The IDs of the KYVE storage pool you want to archive. (Comma separated)
      */
     @JsonProperty("pool_ids")
@@ -59,18 +45,12 @@ public class SourceKyve {
 
     @JsonCreator
     public SourceKyve(
-            @JsonProperty("max_pages") Optional<? extends Long> maxPages,
-            @JsonProperty("page_size") Optional<? extends Long> pageSize,
             @JsonProperty("pool_ids") String poolIds,
             @JsonProperty("start_ids") String startIds,
             @JsonProperty("url_base") Optional<? extends String> urlBase) {
-        Utils.checkNotNull(maxPages, "maxPages");
-        Utils.checkNotNull(pageSize, "pageSize");
         Utils.checkNotNull(poolIds, "poolIds");
         Utils.checkNotNull(startIds, "startIds");
         Utils.checkNotNull(urlBase, "urlBase");
-        this.maxPages = maxPages;
-        this.pageSize = pageSize;
         this.poolIds = poolIds;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startIds = startIds;
@@ -80,25 +60,7 @@ public class SourceKyve {
     public SourceKyve(
             String poolIds,
             String startIds) {
-        this(Optional.empty(), Optional.empty(), poolIds, startIds, Optional.empty());
-    }
-
-    /**
-     * The maximum amount of pages to go trough. Set to 'null' for all pages.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Long> maxPages() {
-        return (Optional<Long>) maxPages;
-    }
-
-    /**
-     * The pagesize for pagination, smaller numbers are used in integration tests.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Long> pageSize() {
-        return (Optional<Long>) pageSize;
+        this(poolIds, startIds, Optional.empty());
     }
 
     /**
@@ -133,42 +95,6 @@ public class SourceKyve {
 
     public final static Builder builder() {
         return new Builder();
-    }
-
-    /**
-     * The maximum amount of pages to go trough. Set to 'null' for all pages.
-     */
-    public SourceKyve withMaxPages(long maxPages) {
-        Utils.checkNotNull(maxPages, "maxPages");
-        this.maxPages = Optional.ofNullable(maxPages);
-        return this;
-    }
-
-    /**
-     * The maximum amount of pages to go trough. Set to 'null' for all pages.
-     */
-    public SourceKyve withMaxPages(Optional<? extends Long> maxPages) {
-        Utils.checkNotNull(maxPages, "maxPages");
-        this.maxPages = maxPages;
-        return this;
-    }
-
-    /**
-     * The pagesize for pagination, smaller numbers are used in integration tests.
-     */
-    public SourceKyve withPageSize(long pageSize) {
-        Utils.checkNotNull(pageSize, "pageSize");
-        this.pageSize = Optional.ofNullable(pageSize);
-        return this;
-    }
-
-    /**
-     * The pagesize for pagination, smaller numbers are used in integration tests.
-     */
-    public SourceKyve withPageSize(Optional<? extends Long> pageSize) {
-        Utils.checkNotNull(pageSize, "pageSize");
-        this.pageSize = pageSize;
-        return this;
     }
 
     /**
@@ -217,8 +143,6 @@ public class SourceKyve {
         }
         SourceKyve other = (SourceKyve) o;
         return 
-            java.util.Objects.deepEquals(this.maxPages, other.maxPages) &&
-            java.util.Objects.deepEquals(this.pageSize, other.pageSize) &&
             java.util.Objects.deepEquals(this.poolIds, other.poolIds) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startIds, other.startIds) &&
@@ -228,8 +152,6 @@ public class SourceKyve {
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            maxPages,
-            pageSize,
             poolIds,
             sourceType,
             startIds,
@@ -239,8 +161,6 @@ public class SourceKyve {
     @Override
     public String toString() {
         return Utils.toString(SourceKyve.class,
-                "maxPages", maxPages,
-                "pageSize", pageSize,
                 "poolIds", poolIds,
                 "sourceType", sourceType,
                 "startIds", startIds,
@@ -248,10 +168,6 @@ public class SourceKyve {
     }
     
     public final static class Builder {
- 
-        private Optional<? extends Long> maxPages = Optional.empty();
- 
-        private Optional<? extends Long> pageSize;
  
         private String poolIds;
  
@@ -261,42 +177,6 @@ public class SourceKyve {
         
         private Builder() {
           // force use of static builder() method
-        }
-
-        /**
-         * The maximum amount of pages to go trough. Set to 'null' for all pages.
-         */
-        public Builder maxPages(long maxPages) {
-            Utils.checkNotNull(maxPages, "maxPages");
-            this.maxPages = Optional.ofNullable(maxPages);
-            return this;
-        }
-
-        /**
-         * The maximum amount of pages to go trough. Set to 'null' for all pages.
-         */
-        public Builder maxPages(Optional<? extends Long> maxPages) {
-            Utils.checkNotNull(maxPages, "maxPages");
-            this.maxPages = maxPages;
-            return this;
-        }
-
-        /**
-         * The pagesize for pagination, smaller numbers are used in integration tests.
-         */
-        public Builder pageSize(long pageSize) {
-            Utils.checkNotNull(pageSize, "pageSize");
-            this.pageSize = Optional.ofNullable(pageSize);
-            return this;
-        }
-
-        /**
-         * The pagesize for pagination, smaller numbers are used in integration tests.
-         */
-        public Builder pageSize(Optional<? extends Long> pageSize) {
-            Utils.checkNotNull(pageSize, "pageSize");
-            this.pageSize = pageSize;
-            return this;
         }
 
         /**
@@ -336,25 +216,14 @@ public class SourceKyve {
         }
         
         public SourceKyve build() {
-            if (pageSize == null) {
-                pageSize = _SINGLETON_VALUE_PageSize.value();
-            }
             if (urlBase == null) {
                 urlBase = _SINGLETON_VALUE_UrlBase.value();
             }
             return new SourceKyve(
-                maxPages,
-                pageSize,
                 poolIds,
                 startIds,
                 urlBase);
         }
-
-        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_PageSize =
-                new LazySingletonValue<>(
-                        "page_size",
-                        "100",
-                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<Kyve> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

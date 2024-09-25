@@ -22,7 +22,7 @@ import com.airbyte.api.utils.TypedObject;
 import com.airbyte.api.utils.Utils.JsonShape;
 
 /**
- * Encryption - The encryption method with is used when communicating with the database.
+ * Encryption - The encryption method which is used when communicating with the database.
  */
 
 @JsonDeserialize(using = Encryption._Deserializer.class)
@@ -33,6 +33,11 @@ public class Encryption {
     
     private Encryption(TypedObject value) {
         this.value = value;
+    }
+
+    public static Encryption of(DestinationOracleUnencrypted value) {
+        Utils.checkNotNull(value, "value");
+        return new Encryption(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationOracleUnencrypted>(){}));
     }
 
     public static Encryption of(NativeNetworkEncryptionNNE value) {
@@ -48,6 +53,7 @@ public class Encryption {
     /**
      * Returns an instance of one of these types:
      * <ul>
+     * <li>{@code DestinationOracleUnencrypted}</li>
      * <li>{@code NativeNetworkEncryptionNNE}</li>
      * <li>{@code TLSEncryptedVerifyCertificate}</li>
      * </ul>
@@ -89,6 +95,7 @@ public class Encryption {
 
         public _Deserializer() {
             super(Encryption.class,
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationOracleUnencrypted>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<NativeNetworkEncryptionNNE>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<TLSEncryptedVerifyCertificate>() {}, Utils.JsonShape.DEFAULT));
         }

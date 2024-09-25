@@ -39,29 +39,19 @@ public class SourceAsana {
     @JsonProperty("sourceType")
     private Optional<? extends SourceAsanaAsana> sourceType;
 
-    /**
-     * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("test_mode")
-    private Optional<? extends Boolean> testMode;
-
     @JsonCreator
     public SourceAsana(
             @JsonProperty("credentials") Optional<? extends AuthenticationMechanism> credentials,
-            @JsonProperty("organization_export_ids") Optional<? extends java.util.List<java.lang.Object>> organizationExportIds,
-            @JsonProperty("test_mode") Optional<? extends Boolean> testMode) {
+            @JsonProperty("organization_export_ids") Optional<? extends java.util.List<java.lang.Object>> organizationExportIds) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(organizationExportIds, "organizationExportIds");
-        Utils.checkNotNull(testMode, "testMode");
         this.credentials = credentials;
         this.organizationExportIds = organizationExportIds;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
-        this.testMode = testMode;
     }
     
     public SourceAsana() {
-        this(Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty());
     }
 
     /**
@@ -86,15 +76,6 @@ public class SourceAsana {
     @JsonIgnore
     public Optional<SourceAsanaAsana> sourceType() {
         return (Optional<SourceAsanaAsana>) sourceType;
-    }
-
-    /**
-     * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Boolean> testMode() {
-        return (Optional<Boolean>) testMode;
     }
 
     public final static Builder builder() {
@@ -136,24 +117,6 @@ public class SourceAsana {
         this.organizationExportIds = organizationExportIds;
         return this;
     }
-
-    /**
-     * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
-     */
-    public SourceAsana withTestMode(boolean testMode) {
-        Utils.checkNotNull(testMode, "testMode");
-        this.testMode = Optional.ofNullable(testMode);
-        return this;
-    }
-
-    /**
-     * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
-     */
-    public SourceAsana withTestMode(Optional<? extends Boolean> testMode) {
-        Utils.checkNotNull(testMode, "testMode");
-        this.testMode = testMode;
-        return this;
-    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -167,8 +130,7 @@ public class SourceAsana {
         return 
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.organizationExportIds, other.organizationExportIds) &&
-            java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
-            java.util.Objects.deepEquals(this.testMode, other.testMode);
+            java.util.Objects.deepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
@@ -176,8 +138,7 @@ public class SourceAsana {
         return java.util.Objects.hash(
             credentials,
             organizationExportIds,
-            sourceType,
-            testMode);
+            sourceType);
     }
     
     @Override
@@ -185,17 +146,14 @@ public class SourceAsana {
         return Utils.toString(SourceAsana.class,
                 "credentials", credentials,
                 "organizationExportIds", organizationExportIds,
-                "sourceType", sourceType,
-                "testMode", testMode);
+                "sourceType", sourceType);
     }
     
     public final static class Builder {
  
         private Optional<? extends AuthenticationMechanism> credentials = Optional.empty();
  
-        private Optional<? extends java.util.List<java.lang.Object>> organizationExportIds = Optional.empty();
- 
-        private Optional<? extends Boolean> testMode = Optional.empty();  
+        private Optional<? extends java.util.List<java.lang.Object>> organizationExportIds = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -236,30 +194,11 @@ public class SourceAsana {
             this.organizationExportIds = organizationExportIds;
             return this;
         }
-
-        /**
-         * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
-         */
-        public Builder testMode(boolean testMode) {
-            Utils.checkNotNull(testMode, "testMode");
-            this.testMode = Optional.ofNullable(testMode);
-            return this;
-        }
-
-        /**
-         * This flag is used for testing purposes for certain streams that return a lot of data. This flag is not meant to be enabled for prod.
-         */
-        public Builder testMode(Optional<? extends Boolean> testMode) {
-            Utils.checkNotNull(testMode, "testMode");
-            this.testMode = testMode;
-            return this;
-        }
         
         public SourceAsana build() {
             return new SourceAsana(
                 credentials,
-                organizationExportIds,
-                testMode);
+                organizationExportIds);
         }
 
         private static final LazySingletonValue<Optional<? extends SourceAsanaAsana>> _SINGLETON_VALUE_SourceType =

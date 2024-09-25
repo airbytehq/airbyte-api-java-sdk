@@ -75,13 +75,6 @@ public class CSVFormat {
     private Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch;
 
     /**
-     * How to infer the types of the columns. If none, inference default to strings.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("inference_type")
-    private Optional<? extends InferenceType> inferenceType;
-
-    /**
      * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -132,7 +125,6 @@ public class CSVFormat {
             @JsonProperty("false_values") Optional<? extends java.util.List<String>> falseValues,
             @JsonProperty("header_definition") Optional<? extends CSVHeaderDefinition> headerDefinition,
             @JsonProperty("ignore_errors_on_fields_mismatch") Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch,
-            @JsonProperty("inference_type") Optional<? extends InferenceType> inferenceType,
             @JsonProperty("null_values") Optional<? extends java.util.List<String>> nullValues,
             @JsonProperty("quote_char") Optional<? extends String> quoteChar,
             @JsonProperty("skip_rows_after_header") Optional<? extends Long> skipRowsAfterHeader,
@@ -146,7 +138,6 @@ public class CSVFormat {
         Utils.checkNotNull(falseValues, "falseValues");
         Utils.checkNotNull(headerDefinition, "headerDefinition");
         Utils.checkNotNull(ignoreErrorsOnFieldsMismatch, "ignoreErrorsOnFieldsMismatch");
-        Utils.checkNotNull(inferenceType, "inferenceType");
         Utils.checkNotNull(nullValues, "nullValues");
         Utils.checkNotNull(quoteChar, "quoteChar");
         Utils.checkNotNull(skipRowsAfterHeader, "skipRowsAfterHeader");
@@ -161,7 +152,6 @@ public class CSVFormat {
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
         this.headerDefinition = headerDefinition;
         this.ignoreErrorsOnFieldsMismatch = ignoreErrorsOnFieldsMismatch;
-        this.inferenceType = inferenceType;
         this.nullValues = nullValues;
         this.quoteChar = quoteChar;
         this.skipRowsAfterHeader = skipRowsAfterHeader;
@@ -171,7 +161,7 @@ public class CSVFormat {
     }
     
     public CSVFormat() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -241,15 +231,6 @@ public class CSVFormat {
     @JsonIgnore
     public Optional<Boolean> ignoreErrorsOnFieldsMismatch() {
         return (Optional<Boolean>) ignoreErrorsOnFieldsMismatch;
-    }
-
-    /**
-     * How to infer the types of the columns. If none, inference default to strings.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<InferenceType> inferenceType() {
-        return (Optional<InferenceType>) inferenceType;
     }
 
     /**
@@ -437,24 +418,6 @@ public class CSVFormat {
     }
 
     /**
-     * How to infer the types of the columns. If none, inference default to strings.
-     */
-    public CSVFormat withInferenceType(InferenceType inferenceType) {
-        Utils.checkNotNull(inferenceType, "inferenceType");
-        this.inferenceType = Optional.ofNullable(inferenceType);
-        return this;
-    }
-
-    /**
-     * How to infer the types of the columns. If none, inference default to strings.
-     */
-    public CSVFormat withInferenceType(Optional<? extends InferenceType> inferenceType) {
-        Utils.checkNotNull(inferenceType, "inferenceType");
-        this.inferenceType = inferenceType;
-        return this;
-    }
-
-    /**
      * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
      */
     public CSVFormat withNullValues(java.util.List<String> nullValues) {
@@ -580,7 +543,6 @@ public class CSVFormat {
             java.util.Objects.deepEquals(this.filetype, other.filetype) &&
             java.util.Objects.deepEquals(this.headerDefinition, other.headerDefinition) &&
             java.util.Objects.deepEquals(this.ignoreErrorsOnFieldsMismatch, other.ignoreErrorsOnFieldsMismatch) &&
-            java.util.Objects.deepEquals(this.inferenceType, other.inferenceType) &&
             java.util.Objects.deepEquals(this.nullValues, other.nullValues) &&
             java.util.Objects.deepEquals(this.quoteChar, other.quoteChar) &&
             java.util.Objects.deepEquals(this.skipRowsAfterHeader, other.skipRowsAfterHeader) &&
@@ -600,7 +562,6 @@ public class CSVFormat {
             filetype,
             headerDefinition,
             ignoreErrorsOnFieldsMismatch,
-            inferenceType,
             nullValues,
             quoteChar,
             skipRowsAfterHeader,
@@ -620,7 +581,6 @@ public class CSVFormat {
                 "filetype", filetype,
                 "headerDefinition", headerDefinition,
                 "ignoreErrorsOnFieldsMismatch", ignoreErrorsOnFieldsMismatch,
-                "inferenceType", inferenceType,
                 "nullValues", nullValues,
                 "quoteChar", quoteChar,
                 "skipRowsAfterHeader", skipRowsAfterHeader,
@@ -644,8 +604,6 @@ public class CSVFormat {
         private Optional<? extends CSVHeaderDefinition> headerDefinition = Optional.empty();
  
         private Optional<? extends Boolean> ignoreErrorsOnFieldsMismatch;
- 
-        private Optional<? extends InferenceType> inferenceType;
  
         private Optional<? extends java.util.List<String>> nullValues = Optional.empty();
  
@@ -790,24 +748,6 @@ public class CSVFormat {
         }
 
         /**
-         * How to infer the types of the columns. If none, inference default to strings.
-         */
-        public Builder inferenceType(InferenceType inferenceType) {
-            Utils.checkNotNull(inferenceType, "inferenceType");
-            this.inferenceType = Optional.ofNullable(inferenceType);
-            return this;
-        }
-
-        /**
-         * How to infer the types of the columns. If none, inference default to strings.
-         */
-        public Builder inferenceType(Optional<? extends InferenceType> inferenceType) {
-            Utils.checkNotNull(inferenceType, "inferenceType");
-            this.inferenceType = inferenceType;
-            return this;
-        }
-
-        /**
          * A set of case-sensitive strings that should be interpreted as null values. For example, if the value 'NA' should be interpreted as null, enter 'NA' in this field.
          */
         public Builder nullValues(java.util.List<String> nullValues) {
@@ -928,9 +868,6 @@ public class CSVFormat {
             if (ignoreErrorsOnFieldsMismatch == null) {
                 ignoreErrorsOnFieldsMismatch = _SINGLETON_VALUE_IgnoreErrorsOnFieldsMismatch.value();
             }
-            if (inferenceType == null) {
-                inferenceType = _SINGLETON_VALUE_InferenceType.value();
-            }
             if (quoteChar == null) {
                 quoteChar = _SINGLETON_VALUE_QuoteChar.value();
             }
@@ -951,7 +888,6 @@ public class CSVFormat {
                 falseValues,
                 headerDefinition,
                 ignoreErrorsOnFieldsMismatch,
-                inferenceType,
                 nullValues,
                 quoteChar,
                 skipRowsAfterHeader,
@@ -989,12 +925,6 @@ public class CSVFormat {
                         "ignore_errors_on_fields_mismatch",
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<? extends InferenceType>> _SINGLETON_VALUE_InferenceType =
-                new LazySingletonValue<>(
-                        "inference_type",
-                        "\"None\"",
-                        new TypeReference<Optional<? extends InferenceType>>() {});
 
         private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_QuoteChar =
                 new LazySingletonValue<>(

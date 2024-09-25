@@ -26,7 +26,7 @@ public class EncryptedTrustServerCertificate {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_method")
-    private Optional<? extends DestinationMssqlSslMethod> sslMethod;
+    private Optional<? extends DestinationMssqlSchemasSslMethod> sslMethod;
 
     @JsonCreator
     public EncryptedTrustServerCertificate() {
@@ -36,8 +36,8 @@ public class EncryptedTrustServerCertificate {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationMssqlSslMethod> sslMethod() {
-        return (Optional<DestinationMssqlSslMethod>) sslMethod;
+    public Optional<DestinationMssqlSchemasSslMethod> sslMethod() {
+        return (Optional<DestinationMssqlSchemasSslMethod>) sslMethod;
     }
 
     public final static Builder builder() {
@@ -80,11 +80,11 @@ public class EncryptedTrustServerCertificate {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationMssqlSslMethod>> _SINGLETON_VALUE_SslMethod =
+        private static final LazySingletonValue<Optional<? extends DestinationMssqlSchemasSslMethod>> _SINGLETON_VALUE_SslMethod =
                 new LazySingletonValue<>(
                         "ssl_method",
                         "\"encrypted_trust_server_certificate\"",
-                        new TypeReference<Optional<? extends DestinationMssqlSslMethod>>() {});
+                        new TypeReference<Optional<? extends DestinationMssqlSchemasSslMethod>>() {});
     }
 }
 

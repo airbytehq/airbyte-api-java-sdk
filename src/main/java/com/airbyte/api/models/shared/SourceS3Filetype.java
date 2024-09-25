@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceS3Filetype {
-    PARQUET("parquet");
+    AVRO("avro");
 
     @JsonValue
     private final String value;

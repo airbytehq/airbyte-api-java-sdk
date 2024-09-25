@@ -86,6 +86,13 @@ public class DestinationPostgres {
     private Optional<? extends String> schema;
 
     /**
+     * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ssl")
+    private Optional<? extends Boolean> ssl;
+
+    /**
      * SSL connection modes. 
      *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
      *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
@@ -123,6 +130,7 @@ public class DestinationPostgres {
             @JsonProperty("port") Optional<? extends Long> port,
             @JsonProperty("raw_data_schema") Optional<? extends String> rawDataSchema,
             @JsonProperty("schema") Optional<? extends String> schema,
+            @JsonProperty("ssl") Optional<? extends Boolean> ssl,
             @JsonProperty("ssl_mode") Optional<? extends SSLModes> sslMode,
             @JsonProperty("tunnel_method") Optional<? extends DestinationPostgresSSHTunnelMethod> tunnelMethod,
             @JsonProperty("username") String username) {
@@ -135,6 +143,7 @@ public class DestinationPostgres {
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
         Utils.checkNotNull(schema, "schema");
+        Utils.checkNotNull(ssl, "ssl");
         Utils.checkNotNull(sslMode, "sslMode");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
@@ -148,6 +157,7 @@ public class DestinationPostgres {
         this.port = port;
         this.rawDataSchema = rawDataSchema;
         this.schema = schema;
+        this.ssl = ssl;
         this.sslMode = sslMode;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
@@ -157,7 +167,7 @@ public class DestinationPostgres {
             String database,
             String host,
             String username) {
-        this(database, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -242,6 +252,15 @@ public class DestinationPostgres {
     @JsonIgnore
     public Optional<String> schema() {
         return (Optional<String>) schema;
+    }
+
+    /**
+     * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ssl() {
+        return (Optional<Boolean>) ssl;
     }
 
     /**
@@ -426,6 +445,24 @@ public class DestinationPostgres {
     }
 
     /**
+     * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
+     */
+    public DestinationPostgres withSsl(boolean ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = Optional.ofNullable(ssl);
+        return this;
+    }
+
+    /**
+     * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
+     */
+    public DestinationPostgres withSsl(Optional<? extends Boolean> ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = ssl;
+        return this;
+    }
+
+    /**
      * SSL connection modes. 
      *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
      *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
@@ -504,6 +541,7 @@ public class DestinationPostgres {
             java.util.Objects.deepEquals(this.port, other.port) &&
             java.util.Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
             java.util.Objects.deepEquals(this.schema, other.schema) &&
+            java.util.Objects.deepEquals(this.ssl, other.ssl) &&
             java.util.Objects.deepEquals(this.sslMode, other.sslMode) &&
             java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
             java.util.Objects.deepEquals(this.username, other.username);
@@ -522,6 +560,7 @@ public class DestinationPostgres {
             port,
             rawDataSchema,
             schema,
+            ssl,
             sslMode,
             tunnelMethod,
             username);
@@ -540,6 +579,7 @@ public class DestinationPostgres {
                 "port", port,
                 "rawDataSchema", rawDataSchema,
                 "schema", schema,
+                "ssl", ssl,
                 "sslMode", sslMode,
                 "tunnelMethod", tunnelMethod,
                 "username", username);
@@ -564,6 +604,8 @@ public class DestinationPostgres {
         private Optional<? extends String> rawDataSchema = Optional.empty();
  
         private Optional<? extends String> schema;
+ 
+        private Optional<? extends Boolean> ssl;
  
         private Optional<? extends SSLModes> sslMode = Optional.empty();
  
@@ -720,6 +762,24 @@ public class DestinationPostgres {
         }
 
         /**
+         * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
+         */
+        public Builder ssl(boolean ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = Optional.ofNullable(ssl);
+            return this;
+        }
+
+        /**
+         * Encrypt data using SSL. When activating SSL, please select one of the connection modes.
+         */
+        public Builder ssl(Optional<? extends Boolean> ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = ssl;
+            return this;
+        }
+
+        /**
          * SSL connection modes. 
          *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
          *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the source database
@@ -791,6 +851,9 @@ public class DestinationPostgres {
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
+            if (ssl == null) {
+                ssl = _SINGLETON_VALUE_Ssl.value();
+            }
             return new DestinationPostgres(
                 database,
                 disableTypeDedupe,
@@ -801,6 +864,7 @@ public class DestinationPostgres {
                 port,
                 rawDataSchema,
                 schema,
+                ssl,
                 sslMode,
                 tunnelMethod,
                 username);
@@ -835,6 +899,12 @@ public class DestinationPostgres {
                         "schema",
                         "\"public\"",
                         new TypeReference<Optional<? extends String>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_Ssl =
+                new LazySingletonValue<>(
+                        "ssl",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
     }
 }
 

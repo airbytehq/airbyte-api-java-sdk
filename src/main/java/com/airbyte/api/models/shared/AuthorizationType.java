@@ -35,9 +35,9 @@ public class AuthorizationType {
         this.value = value;
     }
 
-    public static AuthorizationType of(None value) {
+    public static AuthorizationType of(DestinationMongodbNone value) {
         Utils.checkNotNull(value, "value");
-        return new AuthorizationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<None>(){}));
+        return new AuthorizationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMongodbNone>(){}));
     }
 
     public static AuthorizationType of(LoginPassword value) {
@@ -48,7 +48,7 @@ public class AuthorizationType {
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code None}</li>
+     * <li>{@code DestinationMongodbNone}</li>
      * <li>{@code LoginPassword}</li>
      * </ul>
      * 
@@ -89,7 +89,7 @@ public class AuthorizationType {
 
         public _Deserializer() {
             super(AuthorizationType.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<None>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMongodbNone>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<LoginPassword>() {}, Utils.JsonShape.DEFAULT));
         }
     }

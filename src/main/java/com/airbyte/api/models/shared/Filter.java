@@ -4,143 +4,33 @@
 
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Optional;
+
 /**
- * Filter - A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions.
+ * Filter - Filter for using in the `segments_experiences` stream
  */
+public enum Filter {
+    TOUR("tour"),
+    SURVEY("survey"),
+    LAUNCHER("launcher");
 
-public class Filter {
+    @JsonValue
+    private final String value;
 
-    @JsonProperty("field_name")
-    private String fieldName;
-
-    @JsonProperty("filter")
-    private SourceGoogleAnalyticsDataApiSchemasFilter filter;
-
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("filter_type")
-    private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType> filterType;
-
-    @JsonCreator
-    public Filter(
-            @JsonProperty("field_name") String fieldName,
-            @JsonProperty("filter") SourceGoogleAnalyticsDataApiSchemasFilter filter) {
-        Utils.checkNotNull(fieldName, "fieldName");
-        Utils.checkNotNull(filter, "filter");
-        this.fieldName = fieldName;
-        this.filter = filter;
-        this.filterType = Builder._SINGLETON_VALUE_FilterType.value();
-    }
-
-    @JsonIgnore
-    public String fieldName() {
-        return fieldName;
-    }
-
-    @JsonIgnore
-    public SourceGoogleAnalyticsDataApiSchemasFilter filter() {
-        return filter;
-    }
-
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType> filterType() {
-        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType>) filterType;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }
-
-    public Filter withFieldName(String fieldName) {
-        Utils.checkNotNull(fieldName, "fieldName");
-        this.fieldName = fieldName;
-        return this;
-    }
-
-    public Filter withFilter(SourceGoogleAnalyticsDataApiSchemasFilter filter) {
-        Utils.checkNotNull(filter, "filter");
-        this.filter = filter;
-        return this;
+    private Filter(String value) {
+        this.value = value;
     }
     
-    @Override
-    public boolean equals(java.lang.Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Filter other = (Filter) o;
-        return 
-            java.util.Objects.deepEquals(this.fieldName, other.fieldName) &&
-            java.util.Objects.deepEquals(this.filter, other.filter) &&
-            java.util.Objects.deepEquals(this.filterType, other.filterType);
-    }
-    
-    @Override
-    public int hashCode() {
-        return java.util.Objects.hash(
-            fieldName,
-            filter,
-            filterType);
-    }
-    
-    @Override
-    public String toString() {
-        return Utils.toString(Filter.class,
-                "fieldName", fieldName,
-                "filter", filter,
-                "filterType", filterType);
-    }
-    
-    public final static class Builder {
- 
-        private String fieldName;
- 
-        private SourceGoogleAnalyticsDataApiSchemasFilter filter;  
-        
-        private Builder() {
-          // force use of static builder() method
-        }
-
-        public Builder fieldName(String fieldName) {
-            Utils.checkNotNull(fieldName, "fieldName");
-            this.fieldName = fieldName;
-            return this;
-        }
-
-        public Builder filter(SourceGoogleAnalyticsDataApiSchemasFilter filter) {
-            Utils.checkNotNull(filter, "filter");
-            this.filter = filter;
-            return this;
-        }
-        
-        public Filter build() {
-            return new Filter(
-                fieldName,
-                filter);
-        }
-
-        private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType>> _SINGLETON_VALUE_FilterType =
-                new LazySingletonValue<>(
-                        "filter_type",
-                        "\"filter\"",
-                        new TypeReference<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType>>() {});
+    public String value() {
+        return value;
     }
 }
-

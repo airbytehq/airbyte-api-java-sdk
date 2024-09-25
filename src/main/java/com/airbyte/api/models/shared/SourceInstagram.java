@@ -30,20 +30,6 @@ public class SourceInstagram {
     @JsonProperty("access_token")
     private String accessToken;
 
-    /**
-     * The Client ID for your Oauth application
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_id")
-    private Optional<? extends String> clientId;
-
-    /**
-     * The Client Secret for your Oauth application
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_secret")
-    private Optional<? extends String> clientSecret;
-
     @JsonProperty("sourceType")
     private SourceInstagramInstagram sourceType;
 
@@ -57,23 +43,17 @@ public class SourceInstagram {
     @JsonCreator
     public SourceInstagram(
             @JsonProperty("access_token") String accessToken,
-            @JsonProperty("client_id") Optional<? extends String> clientId,
-            @JsonProperty("client_secret") Optional<? extends String> clientSecret,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(accessToken, "accessToken");
-        Utils.checkNotNull(clientId, "clientId");
-        Utils.checkNotNull(clientSecret, "clientSecret");
         Utils.checkNotNull(startDate, "startDate");
         this.accessToken = accessToken;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceInstagram(
             String accessToken) {
-        this(accessToken, Optional.empty(), Optional.empty(), Optional.empty());
+        this(accessToken, Optional.empty());
     }
 
     /**
@@ -82,24 +62,6 @@ public class SourceInstagram {
     @JsonIgnore
     public String accessToken() {
         return accessToken;
-    }
-
-    /**
-     * The Client ID for your Oauth application
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> clientId() {
-        return (Optional<String>) clientId;
-    }
-
-    /**
-     * The Client Secret for your Oauth application
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> clientSecret() {
-        return (Optional<String>) clientSecret;
     }
 
     @JsonIgnore
@@ -126,42 +88,6 @@ public class SourceInstagram {
     public SourceInstagram withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
         this.accessToken = accessToken;
-        return this;
-    }
-
-    /**
-     * The Client ID for your Oauth application
-     */
-    public SourceInstagram withClientId(String clientId) {
-        Utils.checkNotNull(clientId, "clientId");
-        this.clientId = Optional.ofNullable(clientId);
-        return this;
-    }
-
-    /**
-     * The Client ID for your Oauth application
-     */
-    public SourceInstagram withClientId(Optional<? extends String> clientId) {
-        Utils.checkNotNull(clientId, "clientId");
-        this.clientId = clientId;
-        return this;
-    }
-
-    /**
-     * The Client Secret for your Oauth application
-     */
-    public SourceInstagram withClientSecret(String clientSecret) {
-        Utils.checkNotNull(clientSecret, "clientSecret");
-        this.clientSecret = Optional.ofNullable(clientSecret);
-        return this;
-    }
-
-    /**
-     * The Client Secret for your Oauth application
-     */
-    public SourceInstagram withClientSecret(Optional<? extends String> clientSecret) {
-        Utils.checkNotNull(clientSecret, "clientSecret");
-        this.clientSecret = clientSecret;
         return this;
     }
 
@@ -194,8 +120,6 @@ public class SourceInstagram {
         SourceInstagram other = (SourceInstagram) o;
         return 
             java.util.Objects.deepEquals(this.accessToken, other.accessToken) &&
-            java.util.Objects.deepEquals(this.clientId, other.clientId) &&
-            java.util.Objects.deepEquals(this.clientSecret, other.clientSecret) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -204,8 +128,6 @@ public class SourceInstagram {
     public int hashCode() {
         return java.util.Objects.hash(
             accessToken,
-            clientId,
-            clientSecret,
             sourceType,
             startDate);
     }
@@ -214,8 +136,6 @@ public class SourceInstagram {
     public String toString() {
         return Utils.toString(SourceInstagram.class,
                 "accessToken", accessToken,
-                "clientId", clientId,
-                "clientSecret", clientSecret,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -223,10 +143,6 @@ public class SourceInstagram {
     public final static class Builder {
  
         private String accessToken;
- 
-        private Optional<? extends String> clientId = Optional.empty();
- 
-        private Optional<? extends String> clientSecret = Optional.empty();
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
@@ -240,42 +156,6 @@ public class SourceInstagram {
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
-            return this;
-        }
-
-        /**
-         * The Client ID for your Oauth application
-         */
-        public Builder clientId(String clientId) {
-            Utils.checkNotNull(clientId, "clientId");
-            this.clientId = Optional.ofNullable(clientId);
-            return this;
-        }
-
-        /**
-         * The Client ID for your Oauth application
-         */
-        public Builder clientId(Optional<? extends String> clientId) {
-            Utils.checkNotNull(clientId, "clientId");
-            this.clientId = clientId;
-            return this;
-        }
-
-        /**
-         * The Client Secret for your Oauth application
-         */
-        public Builder clientSecret(String clientSecret) {
-            Utils.checkNotNull(clientSecret, "clientSecret");
-            this.clientSecret = Optional.ofNullable(clientSecret);
-            return this;
-        }
-
-        /**
-         * The Client Secret for your Oauth application
-         */
-        public Builder clientSecret(Optional<? extends String> clientSecret) {
-            Utils.checkNotNull(clientSecret, "clientSecret");
-            this.clientSecret = clientSecret;
             return this;
         }
 
@@ -300,8 +180,6 @@ public class SourceInstagram {
         public SourceInstagram build() {
             return new SourceInstagram(
                 accessToken,
-                clientId,
-                clientSecret,
                 startDate);
         }
 

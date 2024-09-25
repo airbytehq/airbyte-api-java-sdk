@@ -55,13 +55,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     private String name;
 
     /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("primary_key")
-    private Optional<? extends String> primaryKey;
-
-    /**
      * The number of resent files which will be used to discover the schema for this stream.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -89,7 +82,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
             @JsonProperty("globs") Optional<? extends java.util.List<String>> globs,
             @JsonProperty("input_schema") Optional<? extends String> inputSchema,
             @JsonProperty("name") String name,
-            @JsonProperty("primary_key") Optional<? extends String> primaryKey,
             @JsonProperty("recent_n_files_to_read_for_schema_discovery") Optional<? extends Long> recentNFilesToReadForSchemaDiscovery,
             @JsonProperty("schemaless") Optional<? extends Boolean> schemaless,
             @JsonProperty("validation_policy") Optional<? extends SourceMicrosoftSharepointValidationPolicy> validationPolicy) {
@@ -98,7 +90,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         Utils.checkNotNull(globs, "globs");
         Utils.checkNotNull(inputSchema, "inputSchema");
         Utils.checkNotNull(name, "name");
-        Utils.checkNotNull(primaryKey, "primaryKey");
         Utils.checkNotNull(recentNFilesToReadForSchemaDiscovery, "recentNFilesToReadForSchemaDiscovery");
         Utils.checkNotNull(schemaless, "schemaless");
         Utils.checkNotNull(validationPolicy, "validationPolicy");
@@ -107,7 +98,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         this.globs = globs;
         this.inputSchema = inputSchema;
         this.name = name;
-        this.primaryKey = primaryKey;
         this.recentNFilesToReadForSchemaDiscovery = recentNFilesToReadForSchemaDiscovery;
         this.schemaless = schemaless;
         this.validationPolicy = validationPolicy;
@@ -116,7 +106,7 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     public SourceMicrosoftSharepointFileBasedStreamConfig(
             SourceMicrosoftSharepointFormat format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -160,15 +150,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     @JsonIgnore
     public String name() {
         return name;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> primaryKey() {
-        return (Optional<String>) primaryKey;
     }
 
     /**
@@ -275,24 +256,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
     }
 
     /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    public SourceMicrosoftSharepointFileBasedStreamConfig withPrimaryKey(String primaryKey) {
-        Utils.checkNotNull(primaryKey, "primaryKey");
-        this.primaryKey = Optional.ofNullable(primaryKey);
-        return this;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    public SourceMicrosoftSharepointFileBasedStreamConfig withPrimaryKey(Optional<? extends String> primaryKey) {
-        Utils.checkNotNull(primaryKey, "primaryKey");
-        this.primaryKey = primaryKey;
-        return this;
-    }
-
-    /**
      * The number of resent files which will be used to discover the schema for this stream.
      */
     public SourceMicrosoftSharepointFileBasedStreamConfig withRecentNFilesToReadForSchemaDiscovery(long recentNFilesToReadForSchemaDiscovery) {
@@ -361,7 +324,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
             java.util.Objects.deepEquals(this.globs, other.globs) &&
             java.util.Objects.deepEquals(this.inputSchema, other.inputSchema) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
-            java.util.Objects.deepEquals(this.primaryKey, other.primaryKey) &&
             java.util.Objects.deepEquals(this.recentNFilesToReadForSchemaDiscovery, other.recentNFilesToReadForSchemaDiscovery) &&
             java.util.Objects.deepEquals(this.schemaless, other.schemaless) &&
             java.util.Objects.deepEquals(this.validationPolicy, other.validationPolicy);
@@ -375,7 +337,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
             globs,
             inputSchema,
             name,
-            primaryKey,
             recentNFilesToReadForSchemaDiscovery,
             schemaless,
             validationPolicy);
@@ -389,7 +350,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
                 "globs", globs,
                 "inputSchema", inputSchema,
                 "name", name,
-                "primaryKey", primaryKey,
                 "recentNFilesToReadForSchemaDiscovery", recentNFilesToReadForSchemaDiscovery,
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
@@ -406,8 +366,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         private Optional<? extends String> inputSchema = Optional.empty();
  
         private String name;
- 
-        private Optional<? extends String> primaryKey = Optional.empty();
  
         private Optional<? extends Long> recentNFilesToReadForSchemaDiscovery = Optional.empty();
  
@@ -492,24 +450,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
         }
 
         /**
-         * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-         */
-        public Builder primaryKey(String primaryKey) {
-            Utils.checkNotNull(primaryKey, "primaryKey");
-            this.primaryKey = Optional.ofNullable(primaryKey);
-            return this;
-        }
-
-        /**
-         * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-         */
-        public Builder primaryKey(Optional<? extends String> primaryKey) {
-            Utils.checkNotNull(primaryKey, "primaryKey");
-            this.primaryKey = primaryKey;
-            return this;
-        }
-
-        /**
          * The number of resent files which will be used to discover the schema for this stream.
          */
         public Builder recentNFilesToReadForSchemaDiscovery(long recentNFilesToReadForSchemaDiscovery) {
@@ -579,7 +519,6 @@ public class SourceMicrosoftSharepointFileBasedStreamConfig {
                 globs,
                 inputSchema,
                 name,
-                primaryKey,
                 recentNFilesToReadForSchemaDiscovery,
                 schemaless,
                 validationPolicy);

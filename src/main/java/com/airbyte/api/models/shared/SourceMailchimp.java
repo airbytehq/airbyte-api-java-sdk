@@ -28,13 +28,6 @@ public class SourceMailchimp {
     @JsonProperty("credentials")
     private Optional<? extends SourceMailchimpAuthentication> credentials;
 
-    /**
-     * Technical fields used to identify datacenter to send request to
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("data_center")
-    private Optional<? extends String> dataCenter;
-
     @JsonProperty("sourceType")
     private SourceMailchimpMailchimp sourceType;
 
@@ -48,34 +41,22 @@ public class SourceMailchimp {
     @JsonCreator
     public SourceMailchimp(
             @JsonProperty("credentials") Optional<? extends SourceMailchimpAuthentication> credentials,
-            @JsonProperty("data_center") Optional<? extends String> dataCenter,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(credentials, "credentials");
-        Utils.checkNotNull(dataCenter, "dataCenter");
         Utils.checkNotNull(startDate, "startDate");
         this.credentials = credentials;
-        this.dataCenter = dataCenter;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceMailchimp() {
-        this(Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public Optional<SourceMailchimpAuthentication> credentials() {
         return (Optional<SourceMailchimpAuthentication>) credentials;
-    }
-
-    /**
-     * Technical fields used to identify datacenter to send request to
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> dataCenter() {
-        return (Optional<String>) dataCenter;
     }
 
     @JsonIgnore
@@ -109,24 +90,6 @@ public class SourceMailchimp {
     }
 
     /**
-     * Technical fields used to identify datacenter to send request to
-     */
-    public SourceMailchimp withDataCenter(String dataCenter) {
-        Utils.checkNotNull(dataCenter, "dataCenter");
-        this.dataCenter = Optional.ofNullable(dataCenter);
-        return this;
-    }
-
-    /**
-     * Technical fields used to identify datacenter to send request to
-     */
-    public SourceMailchimp withDataCenter(Optional<? extends String> dataCenter) {
-        Utils.checkNotNull(dataCenter, "dataCenter");
-        this.dataCenter = dataCenter;
-        return this;
-    }
-
-    /**
      * The date from which you want to start syncing data for Incremental streams. Only records that have been created or modified since this date will be synced. If left blank, all data will by synced.
      */
     public SourceMailchimp withStartDate(OffsetDateTime startDate) {
@@ -155,7 +118,6 @@ public class SourceMailchimp {
         SourceMailchimp other = (SourceMailchimp) o;
         return 
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
-            java.util.Objects.deepEquals(this.dataCenter, other.dataCenter) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -164,7 +126,6 @@ public class SourceMailchimp {
     public int hashCode() {
         return java.util.Objects.hash(
             credentials,
-            dataCenter,
             sourceType,
             startDate);
     }
@@ -173,7 +134,6 @@ public class SourceMailchimp {
     public String toString() {
         return Utils.toString(SourceMailchimp.class,
                 "credentials", credentials,
-                "dataCenter", dataCenter,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -181,8 +141,6 @@ public class SourceMailchimp {
     public final static class Builder {
  
         private Optional<? extends SourceMailchimpAuthentication> credentials = Optional.empty();
- 
-        private Optional<? extends String> dataCenter = Optional.empty();
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
@@ -199,24 +157,6 @@ public class SourceMailchimp {
         public Builder credentials(Optional<? extends SourceMailchimpAuthentication> credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
-            return this;
-        }
-
-        /**
-         * Technical fields used to identify datacenter to send request to
-         */
-        public Builder dataCenter(String dataCenter) {
-            Utils.checkNotNull(dataCenter, "dataCenter");
-            this.dataCenter = Optional.ofNullable(dataCenter);
-            return this;
-        }
-
-        /**
-         * Technical fields used to identify datacenter to send request to
-         */
-        public Builder dataCenter(Optional<? extends String> dataCenter) {
-            Utils.checkNotNull(dataCenter, "dataCenter");
-            this.dataCenter = dataCenter;
             return this;
         }
 
@@ -241,7 +181,6 @@ public class SourceMailchimp {
         public SourceMailchimp build() {
             return new SourceMailchimp(
                 credentials,
-                dataCenter,
                 startDate);
         }
 

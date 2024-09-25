@@ -49,39 +49,11 @@ public class SourceS3 {
     private String bucket;
 
     /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("dataset")
-    private Optional<? extends String> dataset;
-
-    /**
-     * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
+     * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endpoint")
     private Optional<? extends String> endpoint;
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("format")
-    private Optional<? extends SourceS3FileFormat> format;
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("path_pattern")
-    private Optional<? extends String> pathPattern;
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("provider")
-    private Optional<? extends S3AmazonWebServices> provider;
 
     /**
      * AWS region where the S3 bucket is located. If not provided, the region will be determined automatically.
@@ -96,13 +68,6 @@ public class SourceS3 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("role_arn")
     private Optional<? extends String> roleArn;
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("schema")
-    private Optional<? extends String> schema;
 
     @JsonProperty("sourceType")
     private SourceS3S3 sourceType;
@@ -125,40 +90,25 @@ public class SourceS3 {
             @JsonProperty("aws_access_key_id") Optional<? extends String> awsAccessKeyId,
             @JsonProperty("aws_secret_access_key") Optional<? extends String> awsSecretAccessKey,
             @JsonProperty("bucket") String bucket,
-            @JsonProperty("dataset") Optional<? extends String> dataset,
             @JsonProperty("endpoint") Optional<? extends String> endpoint,
-            @JsonProperty("format") Optional<? extends SourceS3FileFormat> format,
-            @JsonProperty("path_pattern") Optional<? extends String> pathPattern,
-            @JsonProperty("provider") Optional<? extends S3AmazonWebServices> provider,
             @JsonProperty("region_name") Optional<? extends String> regionName,
             @JsonProperty("role_arn") Optional<? extends String> roleArn,
-            @JsonProperty("schema") Optional<? extends String> schema,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
             @JsonProperty("streams") java.util.List<SourceS3FileBasedStreamConfig> streams) {
         Utils.checkNotNull(awsAccessKeyId, "awsAccessKeyId");
         Utils.checkNotNull(awsSecretAccessKey, "awsSecretAccessKey");
         Utils.checkNotNull(bucket, "bucket");
-        Utils.checkNotNull(dataset, "dataset");
         Utils.checkNotNull(endpoint, "endpoint");
-        Utils.checkNotNull(format, "format");
-        Utils.checkNotNull(pathPattern, "pathPattern");
-        Utils.checkNotNull(provider, "provider");
         Utils.checkNotNull(regionName, "regionName");
         Utils.checkNotNull(roleArn, "roleArn");
-        Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(streams, "streams");
         this.awsAccessKeyId = awsAccessKeyId;
         this.awsSecretAccessKey = awsSecretAccessKey;
         this.bucket = bucket;
-        this.dataset = dataset;
         this.endpoint = endpoint;
-        this.format = format;
-        this.pathPattern = pathPattern;
-        this.provider = provider;
         this.regionName = regionName;
         this.roleArn = roleArn;
-        this.schema = schema;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.streams = streams;
@@ -167,7 +117,7 @@ public class SourceS3 {
     public SourceS3(
             String bucket,
             java.util.List<SourceS3FileBasedStreamConfig> streams) {
-        this(Optional.empty(), Optional.empty(), bucket, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), streams);
+        this(Optional.empty(), Optional.empty(), bucket, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), streams);
     }
 
     /**
@@ -197,48 +147,12 @@ public class SourceS3 {
     }
 
     /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> dataset() {
-        return (Optional<String>) dataset;
-    }
-
-    /**
-     * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
+     * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public Optional<String> endpoint() {
         return (Optional<String>) endpoint;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<SourceS3FileFormat> format() {
-        return (Optional<SourceS3FileFormat>) format;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> pathPattern() {
-        return (Optional<String>) pathPattern;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<S3AmazonWebServices> provider() {
-        return (Optional<S3AmazonWebServices>) provider;
     }
 
     /**
@@ -257,15 +171,6 @@ public class SourceS3 {
     @JsonIgnore
     public Optional<String> roleArn() {
         return (Optional<String>) roleArn;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> schema() {
-        return (Optional<String>) schema;
     }
 
     @JsonIgnore
@@ -340,25 +245,7 @@ public class SourceS3 {
     }
 
     /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
-     */
-    public SourceS3 withDataset(String dataset) {
-        Utils.checkNotNull(dataset, "dataset");
-        this.dataset = Optional.ofNullable(dataset);
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
-     */
-    public SourceS3 withDataset(Optional<? extends String> dataset) {
-        Utils.checkNotNull(dataset, "dataset");
-        this.dataset = dataset;
-        return this;
-    }
-
-    /**
-     * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
+     * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
     public SourceS3 withEndpoint(String endpoint) {
         Utils.checkNotNull(endpoint, "endpoint");
@@ -367,65 +254,11 @@ public class SourceS3 {
     }
 
     /**
-     * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
+     * Endpoint to an S3 compatible service. Leave empty to use AWS.
      */
     public SourceS3 withEndpoint(Optional<? extends String> endpoint) {
         Utils.checkNotNull(endpoint, "endpoint");
         this.endpoint = endpoint;
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
-     */
-    public SourceS3 withFormat(SourceS3FileFormat format) {
-        Utils.checkNotNull(format, "format");
-        this.format = Optional.ofNullable(format);
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
-     */
-    public SourceS3 withFormat(Optional<? extends SourceS3FileFormat> format) {
-        Utils.checkNotNull(format, "format");
-        this.format = format;
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
-     */
-    public SourceS3 withPathPattern(String pathPattern) {
-        Utils.checkNotNull(pathPattern, "pathPattern");
-        this.pathPattern = Optional.ofNullable(pathPattern);
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
-     */
-    public SourceS3 withPathPattern(Optional<? extends String> pathPattern) {
-        Utils.checkNotNull(pathPattern, "pathPattern");
-        this.pathPattern = pathPattern;
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
-     */
-    public SourceS3 withProvider(S3AmazonWebServices provider) {
-        Utils.checkNotNull(provider, "provider");
-        this.provider = Optional.ofNullable(provider);
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
-     */
-    public SourceS3 withProvider(Optional<? extends S3AmazonWebServices> provider) {
-        Utils.checkNotNull(provider, "provider");
-        this.provider = provider;
         return this;
     }
 
@@ -462,24 +295,6 @@ public class SourceS3 {
     public SourceS3 withRoleArn(Optional<? extends String> roleArn) {
         Utils.checkNotNull(roleArn, "roleArn");
         this.roleArn = roleArn;
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
-     */
-    public SourceS3 withSchema(String schema) {
-        Utils.checkNotNull(schema, "schema");
-        this.schema = Optional.ofNullable(schema);
-        return this;
-    }
-
-    /**
-     * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
-     */
-    public SourceS3 withSchema(Optional<? extends String> schema) {
-        Utils.checkNotNull(schema, "schema");
-        this.schema = schema;
         return this;
     }
 
@@ -523,14 +338,9 @@ public class SourceS3 {
             java.util.Objects.deepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
             java.util.Objects.deepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
             java.util.Objects.deepEquals(this.bucket, other.bucket) &&
-            java.util.Objects.deepEquals(this.dataset, other.dataset) &&
             java.util.Objects.deepEquals(this.endpoint, other.endpoint) &&
-            java.util.Objects.deepEquals(this.format, other.format) &&
-            java.util.Objects.deepEquals(this.pathPattern, other.pathPattern) &&
-            java.util.Objects.deepEquals(this.provider, other.provider) &&
             java.util.Objects.deepEquals(this.regionName, other.regionName) &&
             java.util.Objects.deepEquals(this.roleArn, other.roleArn) &&
-            java.util.Objects.deepEquals(this.schema, other.schema) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate) &&
             java.util.Objects.deepEquals(this.streams, other.streams);
@@ -542,14 +352,9 @@ public class SourceS3 {
             awsAccessKeyId,
             awsSecretAccessKey,
             bucket,
-            dataset,
             endpoint,
-            format,
-            pathPattern,
-            provider,
             regionName,
             roleArn,
-            schema,
             sourceType,
             startDate,
             streams);
@@ -561,14 +366,9 @@ public class SourceS3 {
                 "awsAccessKeyId", awsAccessKeyId,
                 "awsSecretAccessKey", awsSecretAccessKey,
                 "bucket", bucket,
-                "dataset", dataset,
                 "endpoint", endpoint,
-                "format", format,
-                "pathPattern", pathPattern,
-                "provider", provider,
                 "regionName", regionName,
                 "roleArn", roleArn,
-                "schema", schema,
                 "sourceType", sourceType,
                 "startDate", startDate,
                 "streams", streams);
@@ -582,21 +382,11 @@ public class SourceS3 {
  
         private String bucket;
  
-        private Optional<? extends String> dataset = Optional.empty();
- 
         private Optional<? extends String> endpoint;
- 
-        private Optional<? extends SourceS3FileFormat> format = Optional.empty();
- 
-        private Optional<? extends String> pathPattern = Optional.empty();
- 
-        private Optional<? extends S3AmazonWebServices> provider = Optional.empty();
  
         private Optional<? extends String> regionName = Optional.empty();
  
         private Optional<? extends String> roleArn = Optional.empty();
- 
-        private Optional<? extends String> schema;
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
@@ -652,25 +442,7 @@ public class SourceS3 {
         }
 
         /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
-         */
-        public Builder dataset(String dataset) {
-            Utils.checkNotNull(dataset, "dataset");
-            this.dataset = Optional.ofNullable(dataset);
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.name instead. The name of the stream you would like this source to output. Can contain letters, numbers, or underscores.
-         */
-        public Builder dataset(Optional<? extends String> dataset) {
-            Utils.checkNotNull(dataset, "dataset");
-            this.dataset = dataset;
-            return this;
-        }
-
-        /**
-         * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
+         * Endpoint to an S3 compatible service. Leave empty to use AWS.
          */
         public Builder endpoint(String endpoint) {
             Utils.checkNotNull(endpoint, "endpoint");
@@ -679,65 +451,11 @@ public class SourceS3 {
         }
 
         /**
-         * Endpoint to an S3 compatible service. Leave empty to use AWS. The custom endpoint must be secure, but the 'https' prefix is not required.
+         * Endpoint to an S3 compatible service. Leave empty to use AWS.
          */
         public Builder endpoint(Optional<? extends String> endpoint) {
             Utils.checkNotNull(endpoint, "endpoint");
             this.endpoint = endpoint;
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
-         */
-        public Builder format(SourceS3FileFormat format) {
-            Utils.checkNotNull(format, "format");
-            this.format = Optional.ofNullable(format);
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.format instead. The format of the files you'd like to replicate
-         */
-        public Builder format(Optional<? extends SourceS3FileFormat> format) {
-            Utils.checkNotNull(format, "format");
-            this.format = format;
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
-         */
-        public Builder pathPattern(String pathPattern) {
-            Utils.checkNotNull(pathPattern, "pathPattern");
-            this.pathPattern = Optional.ofNullable(pathPattern);
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.globs instead. A regular expression which tells the connector which files to replicate. All files which match this pattern will be replicated. Use | to separate multiple patterns. See &lt;a href="https://facelessuser.github.io/wcmatch/glob/" target="_blank"&gt;this page&lt;/a&gt; to understand pattern syntax (GLOBSTAR and SPLIT flags are enabled). Use pattern &lt;strong&gt;**&lt;/strong&gt; to pick up all files.
-         */
-        public Builder pathPattern(Optional<? extends String> pathPattern) {
-            Utils.checkNotNull(pathPattern, "pathPattern");
-            this.pathPattern = pathPattern;
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
-         */
-        public Builder provider(S3AmazonWebServices provider) {
-            Utils.checkNotNull(provider, "provider");
-            this.provider = Optional.ofNullable(provider);
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use bucket, aws_access_key_id, aws_secret_access_key and endpoint instead. Use this to load files from S3 or S3-compatible services
-         */
-        public Builder provider(Optional<? extends S3AmazonWebServices> provider) {
-            Utils.checkNotNull(provider, "provider");
-            this.provider = provider;
             return this;
         }
 
@@ -778,24 +496,6 @@ public class SourceS3 {
         }
 
         /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
-         */
-        public Builder schema(String schema) {
-            Utils.checkNotNull(schema, "schema");
-            this.schema = Optional.ofNullable(schema);
-            return this;
-        }
-
-        /**
-         * Deprecated and will be removed soon. Please do not use this field anymore and use streams.input_schema instead. Optionally provide a schema to enforce, as a valid JSON string. Ensure this is a mapping of &lt;strong&gt;{ "column" : "type" }&lt;/strong&gt;, where types are valid &lt;a href="https://json-schema.org/understanding-json-schema/reference/type.html" target="_blank"&gt;JSON Schema datatypes&lt;/a&gt;. Leave as {} to auto-infer the schema.
-         */
-        public Builder schema(Optional<? extends String> schema) {
-            Utils.checkNotNull(schema, "schema");
-            this.schema = schema;
-            return this;
-        }
-
-        /**
          * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
@@ -826,21 +526,13 @@ public class SourceS3 {
             if (endpoint == null) {
                 endpoint = _SINGLETON_VALUE_Endpoint.value();
             }
-            if (schema == null) {
-                schema = _SINGLETON_VALUE_Schema.value();
-            }
             return new SourceS3(
                 awsAccessKeyId,
                 awsSecretAccessKey,
                 bucket,
-                dataset,
                 endpoint,
-                format,
-                pathPattern,
-                provider,
                 regionName,
                 roleArn,
-                schema,
                 startDate,
                 streams);
         }
@@ -849,12 +541,6 @@ public class SourceS3 {
                 new LazySingletonValue<>(
                         "endpoint",
                         "\"\"",
-                        new TypeReference<Optional<? extends String>>() {});
-
-        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_Schema =
-                new LazySingletonValue<>(
-                        "schema",
-                        "\"{}\"",
                         new TypeReference<Optional<? extends String>>() {});
 
         private static final LazySingletonValue<SourceS3S3> _SINGLETON_VALUE_SourceType =

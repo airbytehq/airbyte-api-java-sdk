@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceS3SchemasStreamsFormatFormatFiletype {
-    JSONL("jsonl");
+    UNSTRUCTURED("unstructured");
 
     @JsonValue
     private final String value;

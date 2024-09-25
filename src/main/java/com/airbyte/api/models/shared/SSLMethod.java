@@ -35,6 +35,11 @@ public class SSLMethod {
         this.value = value;
     }
 
+    public static SSLMethod of(Unencrypted value) {
+        Utils.checkNotNull(value, "value");
+        return new SSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Unencrypted>(){}));
+    }
+
     public static SSLMethod of(EncryptedTrustServerCertificate value) {
         Utils.checkNotNull(value, "value");
         return new SSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EncryptedTrustServerCertificate>(){}));
@@ -48,6 +53,7 @@ public class SSLMethod {
     /**
      * Returns an instance of one of these types:
      * <ul>
+     * <li>{@code Unencrypted}</li>
      * <li>{@code EncryptedTrustServerCertificate}</li>
      * <li>{@code EncryptedVerifyCertificate}</li>
      * </ul>
@@ -89,6 +95,7 @@ public class SSLMethod {
 
         public _Deserializer() {
             super(SSLMethod.class,
+                  Utils.TypeReferenceWithShape.of(new TypeReference<Unencrypted>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<EncryptedTrustServerCertificate>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<EncryptedVerifyCertificate>() {}, Utils.JsonShape.DEFAULT));
         }

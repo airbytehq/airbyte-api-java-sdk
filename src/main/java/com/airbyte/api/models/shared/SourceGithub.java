@@ -32,13 +32,6 @@ public class SourceGithub {
     private Optional<? extends String> apiUrl;
 
     /**
-     * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("branch")
-    private Optional<? extends String> branch;
-
-    /**
      * List of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -64,13 +57,6 @@ public class SourceGithub {
     @JsonProperty("repositories")
     private java.util.List<String> repositories;
 
-    /**
-     * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("repository")
-    private Optional<? extends String> repository;
-
     @JsonProperty("sourceType")
     private SourceGithubGithub sourceType;
 
@@ -84,28 +70,22 @@ public class SourceGithub {
     @JsonCreator
     public SourceGithub(
             @JsonProperty("api_url") Optional<? extends String> apiUrl,
-            @JsonProperty("branch") Optional<? extends String> branch,
             @JsonProperty("branches") Optional<? extends java.util.List<String>> branches,
             @JsonProperty("credentials") SourceGithubAuthentication credentials,
             @JsonProperty("max_waiting_time") Optional<? extends Long> maxWaitingTime,
             @JsonProperty("repositories") java.util.List<String> repositories,
-            @JsonProperty("repository") Optional<? extends String> repository,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(apiUrl, "apiUrl");
-        Utils.checkNotNull(branch, "branch");
         Utils.checkNotNull(branches, "branches");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(maxWaitingTime, "maxWaitingTime");
         Utils.checkNotNull(repositories, "repositories");
-        Utils.checkNotNull(repository, "repository");
         Utils.checkNotNull(startDate, "startDate");
         this.apiUrl = apiUrl;
-        this.branch = branch;
         this.branches = branches;
         this.credentials = credentials;
         this.maxWaitingTime = maxWaitingTime;
         this.repositories = repositories;
-        this.repository = repository;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
@@ -113,7 +93,7 @@ public class SourceGithub {
     public SourceGithub(
             SourceGithubAuthentication credentials,
             java.util.List<String> repositories) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), repositories, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), credentials, Optional.empty(), repositories, Optional.empty());
     }
 
     /**
@@ -123,15 +103,6 @@ public class SourceGithub {
     @JsonIgnore
     public Optional<String> apiUrl() {
         return (Optional<String>) apiUrl;
-    }
-
-    /**
-     * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> branch() {
-        return (Optional<String>) branch;
     }
 
     /**
@@ -168,15 +139,6 @@ public class SourceGithub {
         return repositories;
     }
 
-    /**
-     * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> repository() {
-        return (Optional<String>) repository;
-    }
-
     @JsonIgnore
     public SourceGithubGithub sourceType() {
         return sourceType;
@@ -210,24 +172,6 @@ public class SourceGithub {
     public SourceGithub withApiUrl(Optional<? extends String> apiUrl) {
         Utils.checkNotNull(apiUrl, "apiUrl");
         this.apiUrl = apiUrl;
-        return this;
-    }
-
-    /**
-     * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
-     */
-    public SourceGithub withBranch(String branch) {
-        Utils.checkNotNull(branch, "branch");
-        this.branch = Optional.ofNullable(branch);
-        return this;
-    }
-
-    /**
-     * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
-     */
-    public SourceGithub withBranch(Optional<? extends String> branch) {
-        Utils.checkNotNull(branch, "branch");
-        this.branch = branch;
         return this;
     }
 
@@ -286,24 +230,6 @@ public class SourceGithub {
     }
 
     /**
-     * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
-     */
-    public SourceGithub withRepository(String repository) {
-        Utils.checkNotNull(repository, "repository");
-        this.repository = Optional.ofNullable(repository);
-        return this;
-    }
-
-    /**
-     * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
-     */
-    public SourceGithub withRepository(Optional<? extends String> repository) {
-        Utils.checkNotNull(repository, "repository");
-        this.repository = repository;
-        return this;
-    }
-
-    /**
      * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
      */
     public SourceGithub withStartDate(OffsetDateTime startDate) {
@@ -332,12 +258,10 @@ public class SourceGithub {
         SourceGithub other = (SourceGithub) o;
         return 
             java.util.Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            java.util.Objects.deepEquals(this.branch, other.branch) &&
             java.util.Objects.deepEquals(this.branches, other.branches) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.maxWaitingTime, other.maxWaitingTime) &&
             java.util.Objects.deepEquals(this.repositories, other.repositories) &&
-            java.util.Objects.deepEquals(this.repository, other.repository) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -346,12 +270,10 @@ public class SourceGithub {
     public int hashCode() {
         return java.util.Objects.hash(
             apiUrl,
-            branch,
             branches,
             credentials,
             maxWaitingTime,
             repositories,
-            repository,
             sourceType,
             startDate);
     }
@@ -360,12 +282,10 @@ public class SourceGithub {
     public String toString() {
         return Utils.toString(SourceGithub.class,
                 "apiUrl", apiUrl,
-                "branch", branch,
                 "branches", branches,
                 "credentials", credentials,
                 "maxWaitingTime", maxWaitingTime,
                 "repositories", repositories,
-                "repository", repository,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -374,8 +294,6 @@ public class SourceGithub {
  
         private Optional<? extends String> apiUrl;
  
-        private Optional<? extends String> branch = Optional.empty();
- 
         private Optional<? extends java.util.List<String>> branches = Optional.empty();
  
         private SourceGithubAuthentication credentials;
@@ -383,8 +301,6 @@ public class SourceGithub {
         private Optional<? extends Long> maxWaitingTime;
  
         private java.util.List<String> repositories;
- 
-        private Optional<? extends String> repository = Optional.empty();
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
@@ -407,24 +323,6 @@ public class SourceGithub {
         public Builder apiUrl(Optional<? extends String> apiUrl) {
             Utils.checkNotNull(apiUrl, "apiUrl");
             this.apiUrl = apiUrl;
-            return this;
-        }
-
-        /**
-         * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
-         */
-        public Builder branch(String branch) {
-            Utils.checkNotNull(branch, "branch");
-            this.branch = Optional.ofNullable(branch);
-            return this;
-        }
-
-        /**
-         * (DEPRCATED) Space-delimited list of GitHub repository branches to pull commits for, e.g. `airbytehq/airbyte/master`. If no branches are specified for a repository, the default branch will be pulled.
-         */
-        public Builder branch(Optional<? extends String> branch) {
-            Utils.checkNotNull(branch, "branch");
-            this.branch = branch;
             return this;
         }
 
@@ -483,24 +381,6 @@ public class SourceGithub {
         }
 
         /**
-         * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
-         */
-        public Builder repository(String repository) {
-            Utils.checkNotNull(repository, "repository");
-            this.repository = Optional.ofNullable(repository);
-            return this;
-        }
-
-        /**
-         * (DEPRCATED) Space-delimited list of GitHub organizations/repositories, e.g. `airbytehq/airbyte` for single repository, `airbytehq/*` for get all repositories from organization and `airbytehq/airbyte airbytehq/another-repo` for multiple repositories.
-         */
-        public Builder repository(Optional<? extends String> repository) {
-            Utils.checkNotNull(repository, "repository");
-            this.repository = repository;
-            return this;
-        }
-
-        /**
          * The date from which you'd like to replicate data from GitHub in the format YYYY-MM-DDT00:00:00Z. If the date is not set, all data will be replicated.  For the streams which support this configuration, only data generated on or after the start date will be replicated. This field doesn't apply to all streams, see the &lt;a href="https://docs.airbyte.com/integrations/sources/github"&gt;docs&lt;/a&gt; for more info
          */
         public Builder startDate(OffsetDateTime startDate) {
@@ -527,12 +407,10 @@ public class SourceGithub {
             }
             return new SourceGithub(
                 apiUrl,
-                branch,
                 branches,
                 credentials,
                 maxWaitingTime,
                 repositories,
-                repository,
                 startDate);
         }
 

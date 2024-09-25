@@ -38,13 +38,6 @@ public class SourceFacebookMarketing {
     private java.util.List<String> accountIds;
 
     /**
-     * Allows action_breakdowns to be an empty list
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("action_breakdowns_allow_empty")
-    private Optional<? extends Boolean> actionBreakdownsAllowEmpty;
-
-    /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -64,20 +57,6 @@ public class SourceFacebookMarketing {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("campaign_statuses")
     private Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses;
-
-    /**
-     * The Client Id for your OAuth app
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_id")
-    private Optional<? extends String> clientId;
-
-    /**
-     * The Client Secret for your OAuth app
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("client_secret")
-    private Optional<? extends String> clientSecret;
 
     /**
      * Credentials for connecting to the Facebook Marketing API
@@ -141,12 +120,9 @@ public class SourceFacebookMarketing {
     public SourceFacebookMarketing(
             @JsonProperty("access_token") Optional<? extends String> accessToken,
             @JsonProperty("account_ids") java.util.List<String> accountIds,
-            @JsonProperty("action_breakdowns_allow_empty") Optional<? extends Boolean> actionBreakdownsAllowEmpty,
             @JsonProperty("ad_statuses") Optional<? extends java.util.List<ValidAdStatuses>> adStatuses,
             @JsonProperty("adset_statuses") Optional<? extends java.util.List<ValidAdSetStatuses>> adsetStatuses,
             @JsonProperty("campaign_statuses") Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses,
-            @JsonProperty("client_id") Optional<? extends String> clientId,
-            @JsonProperty("client_secret") Optional<? extends String> clientSecret,
             @JsonProperty("credentials") SourceFacebookMarketingAuthentication credentials,
             @JsonProperty("custom_insights") Optional<? extends java.util.List<InsightConfig>> customInsights,
             @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
@@ -157,12 +133,9 @@ public class SourceFacebookMarketing {
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(accessToken, "accessToken");
         Utils.checkNotNull(accountIds, "accountIds");
-        Utils.checkNotNull(actionBreakdownsAllowEmpty, "actionBreakdownsAllowEmpty");
         Utils.checkNotNull(adStatuses, "adStatuses");
         Utils.checkNotNull(adsetStatuses, "adsetStatuses");
         Utils.checkNotNull(campaignStatuses, "campaignStatuses");
-        Utils.checkNotNull(clientId, "clientId");
-        Utils.checkNotNull(clientSecret, "clientSecret");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(customInsights, "customInsights");
         Utils.checkNotNull(endDate, "endDate");
@@ -173,12 +146,9 @@ public class SourceFacebookMarketing {
         Utils.checkNotNull(startDate, "startDate");
         this.accessToken = accessToken;
         this.accountIds = accountIds;
-        this.actionBreakdownsAllowEmpty = actionBreakdownsAllowEmpty;
         this.adStatuses = adStatuses;
         this.adsetStatuses = adsetStatuses;
         this.campaignStatuses = campaignStatuses;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
         this.credentials = credentials;
         this.customInsights = customInsights;
         this.endDate = endDate;
@@ -193,7 +163,7 @@ public class SourceFacebookMarketing {
     public SourceFacebookMarketing(
             java.util.List<String> accountIds,
             SourceFacebookMarketingAuthentication credentials) {
-        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -211,15 +181,6 @@ public class SourceFacebookMarketing {
     @JsonIgnore
     public java.util.List<String> accountIds() {
         return accountIds;
-    }
-
-    /**
-     * Allows action_breakdowns to be an empty list
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Boolean> actionBreakdownsAllowEmpty() {
-        return (Optional<Boolean>) actionBreakdownsAllowEmpty;
     }
 
     /**
@@ -247,24 +208,6 @@ public class SourceFacebookMarketing {
     @JsonIgnore
     public Optional<java.util.List<ValidCampaignStatuses>> campaignStatuses() {
         return (Optional<java.util.List<ValidCampaignStatuses>>) campaignStatuses;
-    }
-
-    /**
-     * The Client Id for your OAuth app
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> clientId() {
-        return (Optional<String>) clientId;
-    }
-
-    /**
-     * The Client Secret for your OAuth app
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> clientSecret() {
-        return (Optional<String>) clientSecret;
     }
 
     /**
@@ -375,24 +318,6 @@ public class SourceFacebookMarketing {
     }
 
     /**
-     * Allows action_breakdowns to be an empty list
-     */
-    public SourceFacebookMarketing withActionBreakdownsAllowEmpty(boolean actionBreakdownsAllowEmpty) {
-        Utils.checkNotNull(actionBreakdownsAllowEmpty, "actionBreakdownsAllowEmpty");
-        this.actionBreakdownsAllowEmpty = Optional.ofNullable(actionBreakdownsAllowEmpty);
-        return this;
-    }
-
-    /**
-     * Allows action_breakdowns to be an empty list
-     */
-    public SourceFacebookMarketing withActionBreakdownsAllowEmpty(Optional<? extends Boolean> actionBreakdownsAllowEmpty) {
-        Utils.checkNotNull(actionBreakdownsAllowEmpty, "actionBreakdownsAllowEmpty");
-        this.actionBreakdownsAllowEmpty = actionBreakdownsAllowEmpty;
-        return this;
-    }
-
-    /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
     public SourceFacebookMarketing withAdStatuses(java.util.List<ValidAdStatuses> adStatuses) {
@@ -443,42 +368,6 @@ public class SourceFacebookMarketing {
     public SourceFacebookMarketing withCampaignStatuses(Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses) {
         Utils.checkNotNull(campaignStatuses, "campaignStatuses");
         this.campaignStatuses = campaignStatuses;
-        return this;
-    }
-
-    /**
-     * The Client Id for your OAuth app
-     */
-    public SourceFacebookMarketing withClientId(String clientId) {
-        Utils.checkNotNull(clientId, "clientId");
-        this.clientId = Optional.ofNullable(clientId);
-        return this;
-    }
-
-    /**
-     * The Client Id for your OAuth app
-     */
-    public SourceFacebookMarketing withClientId(Optional<? extends String> clientId) {
-        Utils.checkNotNull(clientId, "clientId");
-        this.clientId = clientId;
-        return this;
-    }
-
-    /**
-     * The Client Secret for your OAuth app
-     */
-    public SourceFacebookMarketing withClientSecret(String clientSecret) {
-        Utils.checkNotNull(clientSecret, "clientSecret");
-        this.clientSecret = Optional.ofNullable(clientSecret);
-        return this;
-    }
-
-    /**
-     * The Client Secret for your OAuth app
-     */
-    public SourceFacebookMarketing withClientSecret(Optional<? extends String> clientSecret) {
-        Utils.checkNotNull(clientSecret, "clientSecret");
-        this.clientSecret = clientSecret;
         return this;
     }
 
@@ -629,12 +518,9 @@ public class SourceFacebookMarketing {
         return 
             java.util.Objects.deepEquals(this.accessToken, other.accessToken) &&
             java.util.Objects.deepEquals(this.accountIds, other.accountIds) &&
-            java.util.Objects.deepEquals(this.actionBreakdownsAllowEmpty, other.actionBreakdownsAllowEmpty) &&
             java.util.Objects.deepEquals(this.adStatuses, other.adStatuses) &&
             java.util.Objects.deepEquals(this.adsetStatuses, other.adsetStatuses) &&
             java.util.Objects.deepEquals(this.campaignStatuses, other.campaignStatuses) &&
-            java.util.Objects.deepEquals(this.clientId, other.clientId) &&
-            java.util.Objects.deepEquals(this.clientSecret, other.clientSecret) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.customInsights, other.customInsights) &&
             java.util.Objects.deepEquals(this.endDate, other.endDate) &&
@@ -651,12 +537,9 @@ public class SourceFacebookMarketing {
         return java.util.Objects.hash(
             accessToken,
             accountIds,
-            actionBreakdownsAllowEmpty,
             adStatuses,
             adsetStatuses,
             campaignStatuses,
-            clientId,
-            clientSecret,
             credentials,
             customInsights,
             endDate,
@@ -673,12 +556,9 @@ public class SourceFacebookMarketing {
         return Utils.toString(SourceFacebookMarketing.class,
                 "accessToken", accessToken,
                 "accountIds", accountIds,
-                "actionBreakdownsAllowEmpty", actionBreakdownsAllowEmpty,
                 "adStatuses", adStatuses,
                 "adsetStatuses", adsetStatuses,
                 "campaignStatuses", campaignStatuses,
-                "clientId", clientId,
-                "clientSecret", clientSecret,
                 "credentials", credentials,
                 "customInsights", customInsights,
                 "endDate", endDate,
@@ -696,17 +576,11 @@ public class SourceFacebookMarketing {
  
         private java.util.List<String> accountIds;
  
-        private Optional<? extends Boolean> actionBreakdownsAllowEmpty;
- 
         private Optional<? extends java.util.List<ValidAdStatuses>> adStatuses = Optional.empty();
  
         private Optional<? extends java.util.List<ValidAdSetStatuses>> adsetStatuses = Optional.empty();
  
         private Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses = Optional.empty();
- 
-        private Optional<? extends String> clientId = Optional.empty();
- 
-        private Optional<? extends String> clientSecret = Optional.empty();
  
         private SourceFacebookMarketingAuthentication credentials;
  
@@ -752,24 +626,6 @@ public class SourceFacebookMarketing {
         public Builder accountIds(java.util.List<String> accountIds) {
             Utils.checkNotNull(accountIds, "accountIds");
             this.accountIds = accountIds;
-            return this;
-        }
-
-        /**
-         * Allows action_breakdowns to be an empty list
-         */
-        public Builder actionBreakdownsAllowEmpty(boolean actionBreakdownsAllowEmpty) {
-            Utils.checkNotNull(actionBreakdownsAllowEmpty, "actionBreakdownsAllowEmpty");
-            this.actionBreakdownsAllowEmpty = Optional.ofNullable(actionBreakdownsAllowEmpty);
-            return this;
-        }
-
-        /**
-         * Allows action_breakdowns to be an empty list
-         */
-        public Builder actionBreakdownsAllowEmpty(Optional<? extends Boolean> actionBreakdownsAllowEmpty) {
-            Utils.checkNotNull(actionBreakdownsAllowEmpty, "actionBreakdownsAllowEmpty");
-            this.actionBreakdownsAllowEmpty = actionBreakdownsAllowEmpty;
             return this;
         }
 
@@ -824,42 +680,6 @@ public class SourceFacebookMarketing {
         public Builder campaignStatuses(Optional<? extends java.util.List<ValidCampaignStatuses>> campaignStatuses) {
             Utils.checkNotNull(campaignStatuses, "campaignStatuses");
             this.campaignStatuses = campaignStatuses;
-            return this;
-        }
-
-        /**
-         * The Client Id for your OAuth app
-         */
-        public Builder clientId(String clientId) {
-            Utils.checkNotNull(clientId, "clientId");
-            this.clientId = Optional.ofNullable(clientId);
-            return this;
-        }
-
-        /**
-         * The Client Id for your OAuth app
-         */
-        public Builder clientId(Optional<? extends String> clientId) {
-            Utils.checkNotNull(clientId, "clientId");
-            this.clientId = clientId;
-            return this;
-        }
-
-        /**
-         * The Client Secret for your OAuth app
-         */
-        public Builder clientSecret(String clientSecret) {
-            Utils.checkNotNull(clientSecret, "clientSecret");
-            this.clientSecret = Optional.ofNullable(clientSecret);
-            return this;
-        }
-
-        /**
-         * The Client Secret for your OAuth app
-         */
-        public Builder clientSecret(Optional<? extends String> clientSecret) {
-            Utils.checkNotNull(clientSecret, "clientSecret");
-            this.clientSecret = clientSecret;
             return this;
         }
 
@@ -999,9 +819,6 @@ public class SourceFacebookMarketing {
         }
         
         public SourceFacebookMarketing build() {
-            if (actionBreakdownsAllowEmpty == null) {
-                actionBreakdownsAllowEmpty = _SINGLETON_VALUE_ActionBreakdownsAllowEmpty.value();
-            }
             if (fetchThumbnailImages == null) {
                 fetchThumbnailImages = _SINGLETON_VALUE_FetchThumbnailImages.value();
             }
@@ -1017,12 +834,9 @@ public class SourceFacebookMarketing {
             return new SourceFacebookMarketing(
                 accessToken,
                 accountIds,
-                actionBreakdownsAllowEmpty,
                 adStatuses,
                 adsetStatuses,
                 campaignStatuses,
-                clientId,
-                clientSecret,
                 credentials,
                 customInsights,
                 endDate,
@@ -1032,12 +846,6 @@ public class SourceFacebookMarketing {
                 pageSize,
                 startDate);
         }
-
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_ActionBreakdownsAllowEmpty =
-                new LazySingletonValue<>(
-                        "action_breakdowns_allow_empty",
-                        "true",
-                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_FetchThumbnailImages =
                 new LazySingletonValue<>(

@@ -30,7 +30,7 @@ public class SourceS3AvroFormat {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceS3SchemasStreamsFiletype> filetype;
+    private Optional<? extends SourceS3Filetype> filetype;
 
     @JsonCreator
     public SourceS3AvroFormat(
@@ -55,8 +55,8 @@ public class SourceS3AvroFormat {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceS3SchemasStreamsFiletype> filetype() {
-        return (Optional<SourceS3SchemasStreamsFiletype>) filetype;
+    public Optional<SourceS3Filetype> filetype() {
+        return (Optional<SourceS3Filetype>) filetype;
     }
 
     public final static Builder builder() {
@@ -149,11 +149,11 @@ public class SourceS3AvroFormat {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFiletype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends SourceS3Filetype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"avro\"",
-                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFiletype>>() {});
+                        new TypeReference<Optional<? extends SourceS3Filetype>>() {});
     }
 }
 

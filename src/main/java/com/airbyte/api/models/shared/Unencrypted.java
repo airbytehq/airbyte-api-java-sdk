@@ -9,20 +9,24 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 /**
- * Unencrypted - Data transfer will not be encrypted.
+ * Unencrypted - The data transfer will not be encrypted.
  */
 
 public class Unencrypted {
 
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_method")
-    private SourceMssqlSchemasSslMethod sslMethod;
+    private Optional<? extends DestinationMssqlSslMethod> sslMethod;
 
     @JsonCreator
     public Unencrypted() {
@@ -30,9 +34,10 @@ public class Unencrypted {
         this.sslMethod = Builder._SINGLETON_VALUE_SslMethod.value();
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public SourceMssqlSchemasSslMethod sslMethod() {
-        return sslMethod;
+    public Optional<DestinationMssqlSslMethod> sslMethod() {
+        return (Optional<DestinationMssqlSslMethod>) sslMethod;
     }
 
     public final static Builder builder() {
@@ -75,11 +80,11 @@ public class Unencrypted {
                 );
         }
 
-        private static final LazySingletonValue<SourceMssqlSchemasSslMethod> _SINGLETON_VALUE_SslMethod =
+        private static final LazySingletonValue<Optional<? extends DestinationMssqlSslMethod>> _SINGLETON_VALUE_SslMethod =
                 new LazySingletonValue<>(
                         "ssl_method",
                         "\"unencrypted\"",
-                        new TypeReference<SourceMssqlSchemasSslMethod>() {});
+                        new TypeReference<Optional<? extends DestinationMssqlSslMethod>>() {});
     }
 }
 

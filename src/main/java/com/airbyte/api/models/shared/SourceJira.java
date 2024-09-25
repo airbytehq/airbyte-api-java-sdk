@@ -50,27 +50,6 @@ public class SourceJira {
     private Optional<? extends Boolean> enableExperimentalStreams;
 
     /**
-     * (DEPRECATED) Expand the changelog when replicating issues.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("expand_issue_changelog")
-    private Optional<? extends Boolean> expandIssueChangelog;
-
-    /**
-     * (DEPRECATED) Expand the transitions when replicating issues.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("expand_issue_transition")
-    private Optional<? extends Boolean> expandIssueTransition;
-
-    /**
-     * Select fields to Expand the `Issues` stream when replicating with: 
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("issues_stream_expand_with")
-    private Optional<? extends java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith;
-
-    /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -83,13 +62,6 @@ public class SourceJira {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("projects")
     private Optional<? extends java.util.List<String>> projects;
-
-    /**
-     * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("render_fields")
-    private Optional<? extends Boolean> renderFields;
 
     @JsonProperty("sourceType")
     private Jira sourceType;
@@ -107,34 +79,22 @@ public class SourceJira {
             @JsonProperty("domain") String domain,
             @JsonProperty("email") String email,
             @JsonProperty("enable_experimental_streams") Optional<? extends Boolean> enableExperimentalStreams,
-            @JsonProperty("expand_issue_changelog") Optional<? extends Boolean> expandIssueChangelog,
-            @JsonProperty("expand_issue_transition") Optional<? extends Boolean> expandIssueTransition,
-            @JsonProperty("issues_stream_expand_with") Optional<? extends java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith,
             @JsonProperty("lookback_window_minutes") Optional<? extends Long> lookbackWindowMinutes,
             @JsonProperty("projects") Optional<? extends java.util.List<String>> projects,
-            @JsonProperty("render_fields") Optional<? extends Boolean> renderFields,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(apiToken, "apiToken");
         Utils.checkNotNull(domain, "domain");
         Utils.checkNotNull(email, "email");
         Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-        Utils.checkNotNull(expandIssueChangelog, "expandIssueChangelog");
-        Utils.checkNotNull(expandIssueTransition, "expandIssueTransition");
-        Utils.checkNotNull(issuesStreamExpandWith, "issuesStreamExpandWith");
         Utils.checkNotNull(lookbackWindowMinutes, "lookbackWindowMinutes");
         Utils.checkNotNull(projects, "projects");
-        Utils.checkNotNull(renderFields, "renderFields");
         Utils.checkNotNull(startDate, "startDate");
         this.apiToken = apiToken;
         this.domain = domain;
         this.email = email;
         this.enableExperimentalStreams = enableExperimentalStreams;
-        this.expandIssueChangelog = expandIssueChangelog;
-        this.expandIssueTransition = expandIssueTransition;
-        this.issuesStreamExpandWith = issuesStreamExpandWith;
         this.lookbackWindowMinutes = lookbackWindowMinutes;
         this.projects = projects;
-        this.renderFields = renderFields;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
@@ -143,7 +103,7 @@ public class SourceJira {
             String apiToken,
             String domain,
             String email) {
-        this(apiToken, domain, email, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiToken, domain, email, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -180,33 +140,6 @@ public class SourceJira {
     }
 
     /**
-     * (DEPRECATED) Expand the changelog when replicating issues.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Boolean> expandIssueChangelog() {
-        return (Optional<Boolean>) expandIssueChangelog;
-    }
-
-    /**
-     * (DEPRECATED) Expand the transitions when replicating issues.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Boolean> expandIssueTransition() {
-        return (Optional<Boolean>) expandIssueTransition;
-    }
-
-    /**
-     * Select fields to Expand the `Issues` stream when replicating with: 
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith() {
-        return (Optional<java.util.List<IssuesStreamExpandWith>>) issuesStreamExpandWith;
-    }
-
-    /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
      */
     @SuppressWarnings("unchecked")
@@ -222,15 +155,6 @@ public class SourceJira {
     @JsonIgnore
     public Optional<java.util.List<String>> projects() {
         return (Optional<java.util.List<String>>) projects;
-    }
-
-    /**
-     * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Boolean> renderFields() {
-        return (Optional<Boolean>) renderFields;
     }
 
     @JsonIgnore
@@ -297,60 +221,6 @@ public class SourceJira {
     }
 
     /**
-     * (DEPRECATED) Expand the changelog when replicating issues.
-     */
-    public SourceJira withExpandIssueChangelog(boolean expandIssueChangelog) {
-        Utils.checkNotNull(expandIssueChangelog, "expandIssueChangelog");
-        this.expandIssueChangelog = Optional.ofNullable(expandIssueChangelog);
-        return this;
-    }
-
-    /**
-     * (DEPRECATED) Expand the changelog when replicating issues.
-     */
-    public SourceJira withExpandIssueChangelog(Optional<? extends Boolean> expandIssueChangelog) {
-        Utils.checkNotNull(expandIssueChangelog, "expandIssueChangelog");
-        this.expandIssueChangelog = expandIssueChangelog;
-        return this;
-    }
-
-    /**
-     * (DEPRECATED) Expand the transitions when replicating issues.
-     */
-    public SourceJira withExpandIssueTransition(boolean expandIssueTransition) {
-        Utils.checkNotNull(expandIssueTransition, "expandIssueTransition");
-        this.expandIssueTransition = Optional.ofNullable(expandIssueTransition);
-        return this;
-    }
-
-    /**
-     * (DEPRECATED) Expand the transitions when replicating issues.
-     */
-    public SourceJira withExpandIssueTransition(Optional<? extends Boolean> expandIssueTransition) {
-        Utils.checkNotNull(expandIssueTransition, "expandIssueTransition");
-        this.expandIssueTransition = expandIssueTransition;
-        return this;
-    }
-
-    /**
-     * Select fields to Expand the `Issues` stream when replicating with: 
-     */
-    public SourceJira withIssuesStreamExpandWith(java.util.List<IssuesStreamExpandWith> issuesStreamExpandWith) {
-        Utils.checkNotNull(issuesStreamExpandWith, "issuesStreamExpandWith");
-        this.issuesStreamExpandWith = Optional.ofNullable(issuesStreamExpandWith);
-        return this;
-    }
-
-    /**
-     * Select fields to Expand the `Issues` stream when replicating with: 
-     */
-    public SourceJira withIssuesStreamExpandWith(Optional<? extends java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith) {
-        Utils.checkNotNull(issuesStreamExpandWith, "issuesStreamExpandWith");
-        this.issuesStreamExpandWith = issuesStreamExpandWith;
-        return this;
-    }
-
-    /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
      */
     public SourceJira withLookbackWindowMinutes(long lookbackWindowMinutes) {
@@ -387,24 +257,6 @@ public class SourceJira {
     }
 
     /**
-     * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
-     */
-    public SourceJira withRenderFields(boolean renderFields) {
-        Utils.checkNotNull(renderFields, "renderFields");
-        this.renderFields = Optional.ofNullable(renderFields);
-        return this;
-    }
-
-    /**
-     * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
-     */
-    public SourceJira withRenderFields(Optional<? extends Boolean> renderFields) {
-        Utils.checkNotNull(renderFields, "renderFields");
-        this.renderFields = renderFields;
-        return this;
-    }
-
-    /**
      * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. Or leave it empty if you want to replicate all data. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
      */
     public SourceJira withStartDate(OffsetDateTime startDate) {
@@ -436,12 +288,8 @@ public class SourceJira {
             java.util.Objects.deepEquals(this.domain, other.domain) &&
             java.util.Objects.deepEquals(this.email, other.email) &&
             java.util.Objects.deepEquals(this.enableExperimentalStreams, other.enableExperimentalStreams) &&
-            java.util.Objects.deepEquals(this.expandIssueChangelog, other.expandIssueChangelog) &&
-            java.util.Objects.deepEquals(this.expandIssueTransition, other.expandIssueTransition) &&
-            java.util.Objects.deepEquals(this.issuesStreamExpandWith, other.issuesStreamExpandWith) &&
             java.util.Objects.deepEquals(this.lookbackWindowMinutes, other.lookbackWindowMinutes) &&
             java.util.Objects.deepEquals(this.projects, other.projects) &&
-            java.util.Objects.deepEquals(this.renderFields, other.renderFields) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -453,12 +301,8 @@ public class SourceJira {
             domain,
             email,
             enableExperimentalStreams,
-            expandIssueChangelog,
-            expandIssueTransition,
-            issuesStreamExpandWith,
             lookbackWindowMinutes,
             projects,
-            renderFields,
             sourceType,
             startDate);
     }
@@ -470,12 +314,8 @@ public class SourceJira {
                 "domain", domain,
                 "email", email,
                 "enableExperimentalStreams", enableExperimentalStreams,
-                "expandIssueChangelog", expandIssueChangelog,
-                "expandIssueTransition", expandIssueTransition,
-                "issuesStreamExpandWith", issuesStreamExpandWith,
                 "lookbackWindowMinutes", lookbackWindowMinutes,
                 "projects", projects,
-                "renderFields", renderFields,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -490,17 +330,9 @@ public class SourceJira {
  
         private Optional<? extends Boolean> enableExperimentalStreams;
  
-        private Optional<? extends Boolean> expandIssueChangelog;
- 
-        private Optional<? extends Boolean> expandIssueTransition;
- 
-        private Optional<? extends java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith = Optional.empty();
- 
         private Optional<? extends Long> lookbackWindowMinutes;
  
         private Optional<? extends java.util.List<String>> projects = Optional.empty();
- 
-        private Optional<? extends Boolean> renderFields;
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();  
         
@@ -554,60 +386,6 @@ public class SourceJira {
         }
 
         /**
-         * (DEPRECATED) Expand the changelog when replicating issues.
-         */
-        public Builder expandIssueChangelog(boolean expandIssueChangelog) {
-            Utils.checkNotNull(expandIssueChangelog, "expandIssueChangelog");
-            this.expandIssueChangelog = Optional.ofNullable(expandIssueChangelog);
-            return this;
-        }
-
-        /**
-         * (DEPRECATED) Expand the changelog when replicating issues.
-         */
-        public Builder expandIssueChangelog(Optional<? extends Boolean> expandIssueChangelog) {
-            Utils.checkNotNull(expandIssueChangelog, "expandIssueChangelog");
-            this.expandIssueChangelog = expandIssueChangelog;
-            return this;
-        }
-
-        /**
-         * (DEPRECATED) Expand the transitions when replicating issues.
-         */
-        public Builder expandIssueTransition(boolean expandIssueTransition) {
-            Utils.checkNotNull(expandIssueTransition, "expandIssueTransition");
-            this.expandIssueTransition = Optional.ofNullable(expandIssueTransition);
-            return this;
-        }
-
-        /**
-         * (DEPRECATED) Expand the transitions when replicating issues.
-         */
-        public Builder expandIssueTransition(Optional<? extends Boolean> expandIssueTransition) {
-            Utils.checkNotNull(expandIssueTransition, "expandIssueTransition");
-            this.expandIssueTransition = expandIssueTransition;
-            return this;
-        }
-
-        /**
-         * Select fields to Expand the `Issues` stream when replicating with: 
-         */
-        public Builder issuesStreamExpandWith(java.util.List<IssuesStreamExpandWith> issuesStreamExpandWith) {
-            Utils.checkNotNull(issuesStreamExpandWith, "issuesStreamExpandWith");
-            this.issuesStreamExpandWith = Optional.ofNullable(issuesStreamExpandWith);
-            return this;
-        }
-
-        /**
-         * Select fields to Expand the `Issues` stream when replicating with: 
-         */
-        public Builder issuesStreamExpandWith(Optional<? extends java.util.List<IssuesStreamExpandWith>> issuesStreamExpandWith) {
-            Utils.checkNotNull(issuesStreamExpandWith, "issuesStreamExpandWith");
-            this.issuesStreamExpandWith = issuesStreamExpandWith;
-            return this;
-        }
-
-        /**
          * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
          */
         public Builder lookbackWindowMinutes(long lookbackWindowMinutes) {
@@ -644,24 +422,6 @@ public class SourceJira {
         }
 
         /**
-         * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
-         */
-        public Builder renderFields(boolean renderFields) {
-            Utils.checkNotNull(renderFields, "renderFields");
-            this.renderFields = Optional.ofNullable(renderFields);
-            return this;
-        }
-
-        /**
-         * (DEPRECATED) Render issue fields in HTML format in addition to Jira JSON-like format.
-         */
-        public Builder renderFields(Optional<? extends Boolean> renderFields) {
-            Utils.checkNotNull(renderFields, "renderFields");
-            this.renderFields = renderFields;
-            return this;
-        }
-
-        /**
          * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. Or leave it empty if you want to replicate all data. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
          */
         public Builder startDate(OffsetDateTime startDate) {
@@ -683,29 +443,16 @@ public class SourceJira {
             if (enableExperimentalStreams == null) {
                 enableExperimentalStreams = _SINGLETON_VALUE_EnableExperimentalStreams.value();
             }
-            if (expandIssueChangelog == null) {
-                expandIssueChangelog = _SINGLETON_VALUE_ExpandIssueChangelog.value();
-            }
-            if (expandIssueTransition == null) {
-                expandIssueTransition = _SINGLETON_VALUE_ExpandIssueTransition.value();
-            }
             if (lookbackWindowMinutes == null) {
                 lookbackWindowMinutes = _SINGLETON_VALUE_LookbackWindowMinutes.value();
-            }
-            if (renderFields == null) {
-                renderFields = _SINGLETON_VALUE_RenderFields.value();
             }
             return new SourceJira(
                 apiToken,
                 domain,
                 email,
                 enableExperimentalStreams,
-                expandIssueChangelog,
-                expandIssueTransition,
-                issuesStreamExpandWith,
                 lookbackWindowMinutes,
                 projects,
-                renderFields,
                 startDate);
         }
 
@@ -715,29 +462,11 @@ public class SourceJira {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_ExpandIssueChangelog =
-                new LazySingletonValue<>(
-                        "expand_issue_changelog",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_ExpandIssueTransition =
-                new LazySingletonValue<>(
-                        "expand_issue_transition",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
-
         private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_LookbackWindowMinutes =
                 new LazySingletonValue<>(
                         "lookback_window_minutes",
                         "0",
                         new TypeReference<Optional<? extends Long>>() {});
-
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_RenderFields =
-                new LazySingletonValue<>(
-                        "render_fields",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Jira> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

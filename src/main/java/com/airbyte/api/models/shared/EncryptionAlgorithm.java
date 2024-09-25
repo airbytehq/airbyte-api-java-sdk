@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * EncryptionAlgorithm - This parameter defines what encryption algorithm is used.
+ * EncryptionAlgorithm - This parameter defines the database encryption algorithm.
  */
 public enum EncryptionAlgorithm {
     AES256("AES256"),

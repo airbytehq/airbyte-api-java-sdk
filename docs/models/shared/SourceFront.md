@@ -1,0 +1,11 @@
+# SourceFront
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `pageLimit`                                                                               | *Optional<? extends String>*                                                              | :heavy_minus_sign:                                                                        | Page limit for the responses                                                              |
+| `sourceType`                                                                              | [com.airbyte.api.models.shared.Front](../../models/shared/Front.md)                       | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

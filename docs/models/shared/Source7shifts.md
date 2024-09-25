@@ -1,0 +1,10 @@
+# Source7shifts
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `accessToken`                                                                             | *String*                                                                                  | :heavy_check_mark:                                                                        | Access token to use for authentication. Generate it in the 7shifts Developer Tools.       |
+| `sourceType`                                                                              | [com.airbyte.api.models.shared.Sevenshifts](../../models/shared/Sevenshifts.md)           | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

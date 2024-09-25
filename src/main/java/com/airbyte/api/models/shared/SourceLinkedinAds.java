@@ -37,6 +37,13 @@ public class SourceLinkedinAds {
     @JsonProperty("credentials")
     private Optional<? extends SourceLinkedinAdsAuthentication> credentials;
 
+    /**
+     * How far into the past to look for records. (in days)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_window")
+    private Optional<? extends Long> lookbackWindow;
+
     @JsonProperty("sourceType")
     private SourceLinkedinAdsLinkedinAds sourceType;
 
@@ -51,21 +58,24 @@ public class SourceLinkedinAds {
             @JsonProperty("account_ids") Optional<? extends java.util.List<Long>> accountIds,
             @JsonProperty("ad_analytics_reports") Optional<? extends java.util.List<AdAnalyticsReportConfiguration>> adAnalyticsReports,
             @JsonProperty("credentials") Optional<? extends SourceLinkedinAdsAuthentication> credentials,
+            @JsonProperty("lookback_window") Optional<? extends Long> lookbackWindow,
             @JsonProperty("start_date") LocalDate startDate) {
         Utils.checkNotNull(accountIds, "accountIds");
         Utils.checkNotNull(adAnalyticsReports, "adAnalyticsReports");
         Utils.checkNotNull(credentials, "credentials");
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
         Utils.checkNotNull(startDate, "startDate");
         this.accountIds = accountIds;
         this.adAnalyticsReports = adAnalyticsReports;
         this.credentials = credentials;
+        this.lookbackWindow = lookbackWindow;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceLinkedinAds(
             LocalDate startDate) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
@@ -87,6 +97,15 @@ public class SourceLinkedinAds {
     @JsonIgnore
     public Optional<SourceLinkedinAdsAuthentication> credentials() {
         return (Optional<SourceLinkedinAdsAuthentication>) credentials;
+    }
+
+    /**
+     * How far into the past to look for records. (in days)
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindow() {
+        return (Optional<Long>) lookbackWindow;
     }
 
     @JsonIgnore
@@ -149,6 +168,24 @@ public class SourceLinkedinAds {
     }
 
     /**
+     * How far into the past to look for records. (in days)
+     */
+    public SourceLinkedinAds withLookbackWindow(long lookbackWindow) {
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        this.lookbackWindow = Optional.ofNullable(lookbackWindow);
+        return this;
+    }
+
+    /**
+     * How far into the past to look for records. (in days)
+     */
+    public SourceLinkedinAds withLookbackWindow(Optional<? extends Long> lookbackWindow) {
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+
+    /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
      */
     public SourceLinkedinAds withStartDate(LocalDate startDate) {
@@ -170,6 +207,7 @@ public class SourceLinkedinAds {
             java.util.Objects.deepEquals(this.accountIds, other.accountIds) &&
             java.util.Objects.deepEquals(this.adAnalyticsReports, other.adAnalyticsReports) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
+            java.util.Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -180,6 +218,7 @@ public class SourceLinkedinAds {
             accountIds,
             adAnalyticsReports,
             credentials,
+            lookbackWindow,
             sourceType,
             startDate);
     }
@@ -190,6 +229,7 @@ public class SourceLinkedinAds {
                 "accountIds", accountIds,
                 "adAnalyticsReports", adAnalyticsReports,
                 "credentials", credentials,
+                "lookbackWindow", lookbackWindow,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -201,6 +241,8 @@ public class SourceLinkedinAds {
         private Optional<? extends java.util.List<AdAnalyticsReportConfiguration>> adAnalyticsReports = Optional.empty();
  
         private Optional<? extends SourceLinkedinAdsAuthentication> credentials = Optional.empty();
+ 
+        private Optional<? extends Long> lookbackWindow;
  
         private LocalDate startDate;  
         
@@ -251,6 +293,24 @@ public class SourceLinkedinAds {
         }
 
         /**
+         * How far into the past to look for records. (in days)
+         */
+        public Builder lookbackWindow(long lookbackWindow) {
+            Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+            this.lookbackWindow = Optional.ofNullable(lookbackWindow);
+            return this;
+        }
+
+        /**
+         * How far into the past to look for records. (in days)
+         */
+        public Builder lookbackWindow(Optional<? extends Long> lookbackWindow) {
+            Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+            this.lookbackWindow = lookbackWindow;
+            return this;
+        }
+
+        /**
          * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
          */
         public Builder startDate(LocalDate startDate) {
@@ -260,12 +320,22 @@ public class SourceLinkedinAds {
         }
         
         public SourceLinkedinAds build() {
+            if (lookbackWindow == null) {
+                lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
+            }
             return new SourceLinkedinAds(
                 accountIds,
                 adAnalyticsReports,
                 credentials,
+                lookbackWindow,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_LookbackWindow =
+                new LazySingletonValue<>(
+                        "lookback_window",
+                        "0",
+                        new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<SourceLinkedinAdsLinkedinAds> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

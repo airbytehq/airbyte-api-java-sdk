@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum DestinationElasticsearchMethod {
-    SECRET("secret");
+    NONE("none");
 
     @JsonValue
     private final String value;

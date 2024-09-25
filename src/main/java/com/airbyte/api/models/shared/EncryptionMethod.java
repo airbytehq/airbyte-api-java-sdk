@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum EncryptionMethod {
-    CLIENT_NNE("client_nne");
+    UNENCRYPTED("unencrypted");
 
     @JsonValue
     private final String value;

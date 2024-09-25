@@ -35,9 +35,9 @@ public class SourceMssqlSSLMethod {
         this.value = value;
     }
 
-    public static SourceMssqlSSLMethod of(Unencrypted value) {
+    public static SourceMssqlSSLMethod of(SourceMssqlUnencrypted value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Unencrypted>(){}));
+        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlUnencrypted>(){}));
     }
 
     public static SourceMssqlSSLMethod of(SourceMssqlEncryptedTrustServerCertificate value) {
@@ -53,7 +53,7 @@ public class SourceMssqlSSLMethod {
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code Unencrypted}</li>
+     * <li>{@code SourceMssqlUnencrypted}</li>
      * <li>{@code SourceMssqlEncryptedTrustServerCertificate}</li>
      * <li>{@code SourceMssqlEncryptedVerifyCertificate}</li>
      * </ul>
@@ -95,7 +95,7 @@ public class SourceMssqlSSLMethod {
 
         public _Deserializer() {
             super(SourceMssqlSSLMethod.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<Unencrypted>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceMssqlUnencrypted>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMssqlEncryptedTrustServerCertificate>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceMssqlEncryptedVerifyCertificate>() {}, Utils.JsonShape.DEFAULT));
         }

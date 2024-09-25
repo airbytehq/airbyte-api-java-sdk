@@ -64,6 +64,13 @@ public class SourceMysql {
     private SourceMysqlMysql sourceType;
 
     /**
+     * Encrypt data using SSL.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ssl")
+    private Optional<? extends Boolean> ssl;
+
+    /**
      * SSL connection modes. Read more &lt;a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html"&gt; in the docs&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -91,6 +98,7 @@ public class SourceMysql {
             @JsonProperty("password") Optional<? extends String> password,
             @JsonProperty("port") Optional<? extends Long> port,
             @JsonProperty("replication_method") SourceMysqlUpdateMethod replicationMethod,
+            @JsonProperty("ssl") Optional<? extends Boolean> ssl,
             @JsonProperty("ssl_mode") Optional<? extends SourceMysqlSSLModes> sslMode,
             @JsonProperty("tunnel_method") Optional<? extends SourceMysqlSSHTunnelMethod> tunnelMethod,
             @JsonProperty("username") String username) {
@@ -100,6 +108,7 @@ public class SourceMysql {
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(replicationMethod, "replicationMethod");
+        Utils.checkNotNull(ssl, "ssl");
         Utils.checkNotNull(sslMode, "sslMode");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
@@ -110,6 +119,7 @@ public class SourceMysql {
         this.port = port;
         this.replicationMethod = replicationMethod;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
+        this.ssl = ssl;
         this.sslMode = sslMode;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
@@ -120,7 +130,7 @@ public class SourceMysql {
             String host,
             SourceMysqlUpdateMethod replicationMethod,
             String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), replicationMethod, Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), replicationMethod, Optional.empty(), Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -177,6 +187,15 @@ public class SourceMysql {
     @JsonIgnore
     public SourceMysqlMysql sourceType() {
         return sourceType;
+    }
+
+    /**
+     * Encrypt data using SSL.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ssl() {
+        return (Optional<Boolean>) ssl;
     }
 
     /**
@@ -291,6 +310,24 @@ public class SourceMysql {
     }
 
     /**
+     * Encrypt data using SSL.
+     */
+    public SourceMysql withSsl(boolean ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = Optional.ofNullable(ssl);
+        return this;
+    }
+
+    /**
+     * Encrypt data using SSL.
+     */
+    public SourceMysql withSsl(Optional<? extends Boolean> ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = ssl;
+        return this;
+    }
+
+    /**
      * SSL connection modes. Read more &lt;a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html"&gt; in the docs&lt;/a&gt;.
      */
     public SourceMysql withSslMode(SourceMysqlSSLModes sslMode) {
@@ -352,6 +389,7 @@ public class SourceMysql {
             java.util.Objects.deepEquals(this.port, other.port) &&
             java.util.Objects.deepEquals(this.replicationMethod, other.replicationMethod) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
+            java.util.Objects.deepEquals(this.ssl, other.ssl) &&
             java.util.Objects.deepEquals(this.sslMode, other.sslMode) &&
             java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
             java.util.Objects.deepEquals(this.username, other.username);
@@ -367,6 +405,7 @@ public class SourceMysql {
             port,
             replicationMethod,
             sourceType,
+            ssl,
             sslMode,
             tunnelMethod,
             username);
@@ -382,6 +421,7 @@ public class SourceMysql {
                 "port", port,
                 "replicationMethod", replicationMethod,
                 "sourceType", sourceType,
+                "ssl", ssl,
                 "sslMode", sslMode,
                 "tunnelMethod", tunnelMethod,
                 "username", username);
@@ -400,6 +440,8 @@ public class SourceMysql {
         private Optional<? extends Long> port;
  
         private SourceMysqlUpdateMethod replicationMethod;
+ 
+        private Optional<? extends Boolean> ssl;
  
         private Optional<? extends SourceMysqlSSLModes> sslMode = Optional.empty();
  
@@ -493,6 +535,24 @@ public class SourceMysql {
         }
 
         /**
+         * Encrypt data using SSL.
+         */
+        public Builder ssl(boolean ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = Optional.ofNullable(ssl);
+            return this;
+        }
+
+        /**
+         * Encrypt data using SSL.
+         */
+        public Builder ssl(Optional<? extends Boolean> ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = ssl;
+            return this;
+        }
+
+        /**
          * SSL connection modes. Read more &lt;a href="https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-using-ssl.html"&gt; in the docs&lt;/a&gt;.
          */
         public Builder sslMode(SourceMysqlSSLModes sslMode) {
@@ -541,6 +601,9 @@ public class SourceMysql {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+            if (ssl == null) {
+                ssl = _SINGLETON_VALUE_Ssl.value();
+            }
             return new SourceMysql(
                 database,
                 host,
@@ -548,6 +611,7 @@ public class SourceMysql {
                 password,
                 port,
                 replicationMethod,
+                ssl,
                 sslMode,
                 tunnelMethod,
                 username);
@@ -564,6 +628,12 @@ public class SourceMysql {
                         "sourceType",
                         "\"mysql\"",
                         new TypeReference<SourceMysqlMysql>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_Ssl =
+                new LazySingletonValue<>(
+                        "ssl",
+                        "true",
+                        new TypeReference<Optional<? extends Boolean>>() {});
     }
 }
 

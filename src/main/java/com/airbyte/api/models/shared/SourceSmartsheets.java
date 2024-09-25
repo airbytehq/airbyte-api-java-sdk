@@ -13,13 +13,10 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.time.OffsetDateTime;
 import java.util.Optional;
 
 public class SourceSmartsheets {
@@ -43,34 +40,24 @@ public class SourceSmartsheets {
     @JsonProperty("spreadsheet_id")
     private String spreadsheetId;
 
-    /**
-     * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("start_datetime")
-    private Optional<? extends OffsetDateTime> startDatetime;
-
     @JsonCreator
     public SourceSmartsheets(
             @JsonProperty("credentials") SourceSmartsheetsAuthorizationMethod credentials,
             @JsonProperty("metadata_fields") Optional<? extends java.util.List<Validenums>> metadataFields,
-            @JsonProperty("spreadsheet_id") String spreadsheetId,
-            @JsonProperty("start_datetime") Optional<? extends OffsetDateTime> startDatetime) {
+            @JsonProperty("spreadsheet_id") String spreadsheetId) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(metadataFields, "metadataFields");
         Utils.checkNotNull(spreadsheetId, "spreadsheetId");
-        Utils.checkNotNull(startDatetime, "startDatetime");
         this.credentials = credentials;
         this.metadataFields = metadataFields;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.spreadsheetId = spreadsheetId;
-        this.startDatetime = startDatetime;
     }
     
     public SourceSmartsheets(
             SourceSmartsheetsAuthorizationMethod credentials,
             String spreadsheetId) {
-        this(credentials, Optional.empty(), spreadsheetId, Optional.empty());
+        this(credentials, Optional.empty(), spreadsheetId);
     }
 
     @JsonIgnore
@@ -98,15 +85,6 @@ public class SourceSmartsheets {
     @JsonIgnore
     public String spreadsheetId() {
         return spreadsheetId;
-    }
-
-    /**
-     * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<OffsetDateTime> startDatetime() {
-        return (Optional<OffsetDateTime>) startDatetime;
     }
 
     public final static Builder builder() {
@@ -145,24 +123,6 @@ public class SourceSmartsheets {
         this.spreadsheetId = spreadsheetId;
         return this;
     }
-
-    /**
-     * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
-     */
-    public SourceSmartsheets withStartDatetime(OffsetDateTime startDatetime) {
-        Utils.checkNotNull(startDatetime, "startDatetime");
-        this.startDatetime = Optional.ofNullable(startDatetime);
-        return this;
-    }
-
-    /**
-     * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
-     */
-    public SourceSmartsheets withStartDatetime(Optional<? extends OffsetDateTime> startDatetime) {
-        Utils.checkNotNull(startDatetime, "startDatetime");
-        this.startDatetime = startDatetime;
-        return this;
-    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -177,8 +137,7 @@ public class SourceSmartsheets {
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.metadataFields, other.metadataFields) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
-            java.util.Objects.deepEquals(this.spreadsheetId, other.spreadsheetId) &&
-            java.util.Objects.deepEquals(this.startDatetime, other.startDatetime);
+            java.util.Objects.deepEquals(this.spreadsheetId, other.spreadsheetId);
     }
     
     @Override
@@ -187,8 +146,7 @@ public class SourceSmartsheets {
             credentials,
             metadataFields,
             sourceType,
-            spreadsheetId,
-            startDatetime);
+            spreadsheetId);
     }
     
     @Override
@@ -197,8 +155,7 @@ public class SourceSmartsheets {
                 "credentials", credentials,
                 "metadataFields", metadataFields,
                 "sourceType", sourceType,
-                "spreadsheetId", spreadsheetId,
-                "startDatetime", startDatetime);
+                "spreadsheetId", spreadsheetId);
     }
     
     public final static class Builder {
@@ -207,9 +164,7 @@ public class SourceSmartsheets {
  
         private Optional<? extends java.util.List<Validenums>> metadataFields = Optional.empty();
  
-        private String spreadsheetId;
- 
-        private Optional<? extends OffsetDateTime> startDatetime;  
+        private String spreadsheetId;  
         
         private Builder() {
           // force use of static builder() method
@@ -247,34 +202,12 @@ public class SourceSmartsheets {
             this.spreadsheetId = spreadsheetId;
             return this;
         }
-
-        /**
-         * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
-         */
-        public Builder startDatetime(OffsetDateTime startDatetime) {
-            Utils.checkNotNull(startDatetime, "startDatetime");
-            this.startDatetime = Optional.ofNullable(startDatetime);
-            return this;
-        }
-
-        /**
-         * Only rows modified after this date/time will be replicated. This should be an ISO 8601 string, for instance: `2000-01-01T13:00:00`
-         */
-        public Builder startDatetime(Optional<? extends OffsetDateTime> startDatetime) {
-            Utils.checkNotNull(startDatetime, "startDatetime");
-            this.startDatetime = startDatetime;
-            return this;
-        }
         
         public SourceSmartsheets build() {
-            if (startDatetime == null) {
-                startDatetime = _SINGLETON_VALUE_StartDatetime.value();
-            }
             return new SourceSmartsheets(
                 credentials,
                 metadataFields,
-                spreadsheetId,
-                startDatetime);
+                spreadsheetId);
         }
 
         private static final LazySingletonValue<SourceSmartsheetsSmartsheets> _SINGLETON_VALUE_SourceType =
@@ -282,12 +215,6 @@ public class SourceSmartsheets {
                         "sourceType",
                         "\"smartsheets\"",
                         new TypeReference<SourceSmartsheetsSmartsheets>() {});
-
-        private static final LazySingletonValue<Optional<? extends OffsetDateTime>> _SINGLETON_VALUE_StartDatetime =
-                new LazySingletonValue<>(
-                        "start_datetime",
-                        "\"2020-01-01T00:00:00+00:00\"",
-                        new TypeReference<Optional<? extends OffsetDateTime>>() {});
     }
 }
 

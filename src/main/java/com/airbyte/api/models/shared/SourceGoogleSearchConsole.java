@@ -26,13 +26,6 @@ public class SourceGoogleSearchConsole {
     private AuthenticationType authorization;
 
     /**
-     * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("custom_reports")
-    private Optional<? extends String> customReports;
-
-    /**
      * You can add your Custom Analytics report by creating one.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -72,21 +65,18 @@ public class SourceGoogleSearchConsole {
     @JsonCreator
     public SourceGoogleSearchConsole(
             @JsonProperty("authorization") AuthenticationType authorization,
-            @JsonProperty("custom_reports") Optional<? extends String> customReports,
             @JsonProperty("custom_reports_array") Optional<? extends java.util.List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray,
             @JsonProperty("data_state") Optional<? extends DataFreshness> dataState,
             @JsonProperty("end_date") Optional<? extends LocalDate> endDate,
             @JsonProperty("site_urls") java.util.List<String> siteUrls,
             @JsonProperty("start_date") Optional<? extends LocalDate> startDate) {
         Utils.checkNotNull(authorization, "authorization");
-        Utils.checkNotNull(customReports, "customReports");
         Utils.checkNotNull(customReportsArray, "customReportsArray");
         Utils.checkNotNull(dataState, "dataState");
         Utils.checkNotNull(endDate, "endDate");
         Utils.checkNotNull(siteUrls, "siteUrls");
         Utils.checkNotNull(startDate, "startDate");
         this.authorization = authorization;
-        this.customReports = customReports;
         this.customReportsArray = customReportsArray;
         this.dataState = dataState;
         this.endDate = endDate;
@@ -98,21 +88,12 @@ public class SourceGoogleSearchConsole {
     public SourceGoogleSearchConsole(
             AuthenticationType authorization,
             java.util.List<String> siteUrls) {
-        this(authorization, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), siteUrls, Optional.empty());
+        this(authorization, Optional.empty(), Optional.empty(), Optional.empty(), siteUrls, Optional.empty());
     }
 
     @JsonIgnore
     public AuthenticationType authorization() {
         return authorization;
-    }
-
-    /**
-     * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> customReports() {
-        return (Optional<String>) customReports;
     }
 
     /**
@@ -171,24 +152,6 @@ public class SourceGoogleSearchConsole {
     public SourceGoogleSearchConsole withAuthorization(AuthenticationType authorization) {
         Utils.checkNotNull(authorization, "authorization");
         this.authorization = authorization;
-        return this;
-    }
-
-    /**
-     * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
-     */
-    public SourceGoogleSearchConsole withCustomReports(String customReports) {
-        Utils.checkNotNull(customReports, "customReports");
-        this.customReports = Optional.ofNullable(customReports);
-        return this;
-    }
-
-    /**
-     * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
-     */
-    public SourceGoogleSearchConsole withCustomReports(Optional<? extends String> customReports) {
-        Utils.checkNotNull(customReports, "customReports");
-        this.customReports = customReports;
         return this;
     }
 
@@ -284,7 +247,6 @@ public class SourceGoogleSearchConsole {
         SourceGoogleSearchConsole other = (SourceGoogleSearchConsole) o;
         return 
             java.util.Objects.deepEquals(this.authorization, other.authorization) &&
-            java.util.Objects.deepEquals(this.customReports, other.customReports) &&
             java.util.Objects.deepEquals(this.customReportsArray, other.customReportsArray) &&
             java.util.Objects.deepEquals(this.dataState, other.dataState) &&
             java.util.Objects.deepEquals(this.endDate, other.endDate) &&
@@ -297,7 +259,6 @@ public class SourceGoogleSearchConsole {
     public int hashCode() {
         return java.util.Objects.hash(
             authorization,
-            customReports,
             customReportsArray,
             dataState,
             endDate,
@@ -310,7 +271,6 @@ public class SourceGoogleSearchConsole {
     public String toString() {
         return Utils.toString(SourceGoogleSearchConsole.class,
                 "authorization", authorization,
-                "customReports", customReports,
                 "customReportsArray", customReportsArray,
                 "dataState", dataState,
                 "endDate", endDate,
@@ -322,8 +282,6 @@ public class SourceGoogleSearchConsole {
     public final static class Builder {
  
         private AuthenticationType authorization;
- 
-        private Optional<? extends String> customReports = Optional.empty();
  
         private Optional<? extends java.util.List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray = Optional.empty();
  
@@ -342,24 +300,6 @@ public class SourceGoogleSearchConsole {
         public Builder authorization(AuthenticationType authorization) {
             Utils.checkNotNull(authorization, "authorization");
             this.authorization = authorization;
-            return this;
-        }
-
-        /**
-         * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
-         */
-        public Builder customReports(String customReports) {
-            Utils.checkNotNull(customReports, "customReports");
-            this.customReports = Optional.ofNullable(customReports);
-            return this;
-        }
-
-        /**
-         * (DEPRCATED) A JSON array describing the custom reports you want to sync from Google Search Console. See our &lt;a href='https://docs.airbyte.com/integrations/sources/google-search-console'&gt;documentation&lt;/a&gt; for more information on formulating custom reports.
-         */
-        public Builder customReports(Optional<? extends String> customReports) {
-            Utils.checkNotNull(customReports, "customReports");
-            this.customReports = customReports;
             return this;
         }
 
@@ -453,7 +393,6 @@ public class SourceGoogleSearchConsole {
             }
             return new SourceGoogleSearchConsole(
                 authorization,
-                customReports,
                 customReportsArray,
                 dataState,
                 endDate,

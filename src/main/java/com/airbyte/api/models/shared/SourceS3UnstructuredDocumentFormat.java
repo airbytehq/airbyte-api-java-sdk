@@ -26,7 +26,7 @@ public class SourceS3UnstructuredDocumentFormat {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceS3SchemasStreamsFormatFormat5Filetype> filetype;
+    private Optional<? extends SourceS3SchemasStreamsFormatFormatFiletype> filetype;
 
     /**
      * Processing configuration
@@ -69,8 +69,8 @@ public class SourceS3UnstructuredDocumentFormat {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceS3SchemasStreamsFormatFormat5Filetype> filetype() {
-        return (Optional<SourceS3SchemasStreamsFormatFormat5Filetype>) filetype;
+    public Optional<SourceS3SchemasStreamsFormatFormatFiletype> filetype() {
+        return (Optional<SourceS3SchemasStreamsFormatFormatFiletype>) filetype;
     }
 
     /**
@@ -271,11 +271,11 @@ public class SourceS3UnstructuredDocumentFormat {
                 strategy);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFormatFormat5Filetype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFormatFormatFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"unstructured\"",
-                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFormatFormat5Filetype>>() {});
+                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFormatFormatFiletype>>() {});
 
         private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_SkipUnprocessableFiles =
                 new LazySingletonValue<>(

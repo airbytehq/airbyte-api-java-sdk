@@ -31,8 +31,9 @@ public class SourceOracle {
     /**
      * The encryption method with is used when communicating with the database.
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption")
-    private Encryption encryption;
+    private Optional<? extends SourceOracleEncryption> encryption;
 
     /**
      * Hostname of the database.
@@ -90,7 +91,7 @@ public class SourceOracle {
     @JsonCreator
     public SourceOracle(
             @JsonProperty("connection_data") Optional<? extends ConnectBy> connectionData,
-            @JsonProperty("encryption") Encryption encryption,
+            @JsonProperty("encryption") Optional<? extends SourceOracleEncryption> encryption,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") Optional<? extends String> password,
@@ -120,10 +121,9 @@ public class SourceOracle {
     }
     
     public SourceOracle(
-            Encryption encryption,
             String host,
             String username) {
-        this(Optional.empty(), encryption, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -138,9 +138,10 @@ public class SourceOracle {
     /**
      * The encryption method with is used when communicating with the database.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Encryption encryption() {
-        return encryption;
+    public Optional<SourceOracleEncryption> encryption() {
+        return (Optional<SourceOracleEncryption>) encryption;
     }
 
     /**
@@ -237,7 +238,16 @@ public class SourceOracle {
     /**
      * The encryption method with is used when communicating with the database.
      */
-    public SourceOracle withEncryption(Encryption encryption) {
+    public SourceOracle withEncryption(SourceOracleEncryption encryption) {
+        Utils.checkNotNull(encryption, "encryption");
+        this.encryption = Optional.ofNullable(encryption);
+        return this;
+    }
+
+    /**
+     * The encryption method with is used when communicating with the database.
+     */
+    public SourceOracle withEncryption(Optional<? extends SourceOracleEncryption> encryption) {
         Utils.checkNotNull(encryption, "encryption");
         this.encryption = encryption;
         return this;
@@ -413,7 +423,7 @@ public class SourceOracle {
  
         private Optional<? extends ConnectBy> connectionData = Optional.empty();
  
-        private Encryption encryption;
+        private Optional<? extends SourceOracleEncryption> encryption = Optional.empty();
  
         private String host;
  
@@ -454,7 +464,16 @@ public class SourceOracle {
         /**
          * The encryption method with is used when communicating with the database.
          */
-        public Builder encryption(Encryption encryption) {
+        public Builder encryption(SourceOracleEncryption encryption) {
+            Utils.checkNotNull(encryption, "encryption");
+            this.encryption = Optional.ofNullable(encryption);
+            return this;
+        }
+
+        /**
+         * The encryption method with is used when communicating with the database.
+         */
+        public Builder encryption(Optional<? extends SourceOracleEncryption> encryption) {
             Utils.checkNotNull(encryption, "encryption");
             this.encryption = encryption;
             return this;

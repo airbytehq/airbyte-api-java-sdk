@@ -50,9 +50,9 @@ public class MetricsFilter {
         return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiNotExpression>(){}));
     }
 
-    public static MetricsFilter of(SourceGoogleAnalyticsDataApiFilter value) {
+    public static MetricsFilter of(SourceGoogleAnalyticsDataApiSchemasFilter value) {
         Utils.checkNotNull(value, "value");
-        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiFilter>(){}));
+        return new MetricsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasFilter>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class MetricsFilter {
      * <li>{@code SourceGoogleAnalyticsDataApiAndGroup}</li>
      * <li>{@code SourceGoogleAnalyticsDataApiOrGroup}</li>
      * <li>{@code SourceGoogleAnalyticsDataApiNotExpression}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiSchemasFilter}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -104,7 +104,7 @@ public class MetricsFilter {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiAndGroup>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiOrGroup>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiNotExpression>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiFilter>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasFilter>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

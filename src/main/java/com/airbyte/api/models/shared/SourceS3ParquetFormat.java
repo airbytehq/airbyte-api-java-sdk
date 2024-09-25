@@ -30,7 +30,7 @@ public class SourceS3ParquetFormat {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceS3SchemasStreamsFormatFormat4Filetype> filetype;
+    private Optional<? extends SourceS3SchemasStreamsFormatFiletype> filetype;
 
     @JsonCreator
     public SourceS3ParquetFormat(
@@ -55,8 +55,8 @@ public class SourceS3ParquetFormat {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceS3SchemasStreamsFormatFormat4Filetype> filetype() {
-        return (Optional<SourceS3SchemasStreamsFormatFormat4Filetype>) filetype;
+    public Optional<SourceS3SchemasStreamsFormatFiletype> filetype() {
+        return (Optional<SourceS3SchemasStreamsFormatFiletype>) filetype;
     }
 
     public final static Builder builder() {
@@ -149,11 +149,11 @@ public class SourceS3ParquetFormat {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFormatFormat4Filetype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFormatFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"parquet\"",
-                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFormatFormat4Filetype>>() {});
+                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFormatFiletype>>() {});
     }
 }
 

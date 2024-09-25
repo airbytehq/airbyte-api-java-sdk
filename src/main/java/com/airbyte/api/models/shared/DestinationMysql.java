@@ -72,6 +72,13 @@ public class DestinationMysql {
     private Optional<? extends String> rawDataSchema;
 
     /**
+     * Encrypt data using SSL.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ssl")
+    private Optional<? extends Boolean> ssl;
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -93,6 +100,7 @@ public class DestinationMysql {
             @JsonProperty("password") Optional<? extends String> password,
             @JsonProperty("port") Optional<? extends Long> port,
             @JsonProperty("raw_data_schema") Optional<? extends String> rawDataSchema,
+            @JsonProperty("ssl") Optional<? extends Boolean> ssl,
             @JsonProperty("tunnel_method") Optional<? extends DestinationMysqlSSHTunnelMethod> tunnelMethod,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(database, "database");
@@ -102,6 +110,7 @@ public class DestinationMysql {
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        Utils.checkNotNull(ssl, "ssl");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
         this.database = database;
@@ -112,6 +121,7 @@ public class DestinationMysql {
         this.password = password;
         this.port = port;
         this.rawDataSchema = rawDataSchema;
+        this.ssl = ssl;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
@@ -120,7 +130,7 @@ public class DestinationMysql {
             String database,
             String host,
             String username) {
-        this(database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -187,6 +197,15 @@ public class DestinationMysql {
     @JsonIgnore
     public Optional<String> rawDataSchema() {
         return (Optional<String>) rawDataSchema;
+    }
+
+    /**
+     * Encrypt data using SSL.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ssl() {
+        return (Optional<Boolean>) ssl;
     }
 
     /**
@@ -319,6 +338,24 @@ public class DestinationMysql {
     }
 
     /**
+     * Encrypt data using SSL.
+     */
+    public DestinationMysql withSsl(boolean ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = Optional.ofNullable(ssl);
+        return this;
+    }
+
+    /**
+     * Encrypt data using SSL.
+     */
+    public DestinationMysql withSsl(Optional<? extends Boolean> ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = ssl;
+        return this;
+    }
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     public DestinationMysql withTunnelMethod(DestinationMysqlSSHTunnelMethod tunnelMethod) {
@@ -363,6 +400,7 @@ public class DestinationMysql {
             java.util.Objects.deepEquals(this.password, other.password) &&
             java.util.Objects.deepEquals(this.port, other.port) &&
             java.util.Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            java.util.Objects.deepEquals(this.ssl, other.ssl) &&
             java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
             java.util.Objects.deepEquals(this.username, other.username);
     }
@@ -378,6 +416,7 @@ public class DestinationMysql {
             password,
             port,
             rawDataSchema,
+            ssl,
             tunnelMethod,
             username);
     }
@@ -393,6 +432,7 @@ public class DestinationMysql {
                 "password", password,
                 "port", port,
                 "rawDataSchema", rawDataSchema,
+                "ssl", ssl,
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
@@ -412,6 +452,8 @@ public class DestinationMysql {
         private Optional<? extends Long> port;
  
         private Optional<? extends String> rawDataSchema = Optional.empty();
+ 
+        private Optional<? extends Boolean> ssl;
  
         private Optional<? extends DestinationMysqlSSHTunnelMethod> tunnelMethod = Optional.empty();
  
@@ -530,6 +572,24 @@ public class DestinationMysql {
         }
 
         /**
+         * Encrypt data using SSL.
+         */
+        public Builder ssl(boolean ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = Optional.ofNullable(ssl);
+            return this;
+        }
+
+        /**
+         * Encrypt data using SSL.
+         */
+        public Builder ssl(Optional<? extends Boolean> ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = ssl;
+            return this;
+        }
+
+        /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
         public Builder tunnelMethod(DestinationMysqlSSHTunnelMethod tunnelMethod) {
@@ -563,6 +623,9 @@ public class DestinationMysql {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+            if (ssl == null) {
+                ssl = _SINGLETON_VALUE_Ssl.value();
+            }
             return new DestinationMysql(
                 database,
                 disableTypeDedupe,
@@ -571,6 +634,7 @@ public class DestinationMysql {
                 password,
                 port,
                 rawDataSchema,
+                ssl,
                 tunnelMethod,
                 username);
         }
@@ -592,6 +656,12 @@ public class DestinationMysql {
                         "port",
                         "3306",
                         new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_Ssl =
+                new LazySingletonValue<>(
+                        "ssl",
+                        "true",
+                        new TypeReference<Optional<? extends Boolean>>() {});
     }
 }
 

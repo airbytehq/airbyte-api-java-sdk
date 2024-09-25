@@ -1,0 +1,4 @@
+# DestinationPgvectorEmbedding
+
+Embedding configuration
+

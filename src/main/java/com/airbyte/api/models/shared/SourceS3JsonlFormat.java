@@ -23,7 +23,7 @@ public class SourceS3JsonlFormat {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceS3SchemasStreamsFormatFormatFiletype> filetype;
+    private Optional<? extends SourceS3SchemasStreamsFiletype> filetype;
 
     @JsonCreator
     public SourceS3JsonlFormat() {
@@ -33,8 +33,8 @@ public class SourceS3JsonlFormat {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceS3SchemasStreamsFormatFormatFiletype> filetype() {
-        return (Optional<SourceS3SchemasStreamsFormatFormatFiletype>) filetype;
+    public Optional<SourceS3SchemasStreamsFiletype> filetype() {
+        return (Optional<SourceS3SchemasStreamsFiletype>) filetype;
     }
 
     public final static Builder builder() {
@@ -77,11 +77,11 @@ public class SourceS3JsonlFormat {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFormatFormatFiletype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"jsonl\"",
-                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFormatFormatFiletype>>() {});
+                        new TypeReference<Optional<? extends SourceS3SchemasStreamsFiletype>>() {});
     }
 }
 
