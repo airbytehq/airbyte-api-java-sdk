@@ -31,13 +31,6 @@ public class SourceZendeskSupport {
     @JsonProperty("credentials")
     private Optional<? extends java.lang.Object> credentials;
 
-    /**
-     * Makes each stream read a single page of data.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ignore_pagination")
-    private Optional<? extends Boolean> ignorePagination;
-
     @JsonProperty("sourceType")
     private SourceZendeskSupportZendeskSupport sourceType;
 
@@ -57,15 +50,12 @@ public class SourceZendeskSupport {
     @JsonCreator
     public SourceZendeskSupport(
             @JsonProperty("credentials") Optional<? extends java.lang.Object> credentials,
-            @JsonProperty("ignore_pagination") Optional<? extends Boolean> ignorePagination,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
             @JsonProperty("subdomain") String subdomain) {
         Utils.checkNotNull(credentials, "credentials");
-        Utils.checkNotNull(ignorePagination, "ignorePagination");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(subdomain, "subdomain");
         this.credentials = credentials;
-        this.ignorePagination = ignorePagination;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.subdomain = subdomain;
@@ -73,7 +63,7 @@ public class SourceZendeskSupport {
     
     public SourceZendeskSupport(
             String subdomain) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), subdomain);
+        this(Optional.empty(), Optional.empty(), subdomain);
     }
 
     /**
@@ -83,15 +73,6 @@ public class SourceZendeskSupport {
     @JsonIgnore
     public Optional<java.lang.Object> credentials() {
         return (Optional<java.lang.Object>) credentials;
-    }
-
-    /**
-     * Makes each stream read a single page of data.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<Boolean> ignorePagination() {
-        return (Optional<Boolean>) ignorePagination;
     }
 
     @JsonIgnore
@@ -139,24 +120,6 @@ public class SourceZendeskSupport {
     }
 
     /**
-     * Makes each stream read a single page of data.
-     */
-    public SourceZendeskSupport withIgnorePagination(boolean ignorePagination) {
-        Utils.checkNotNull(ignorePagination, "ignorePagination");
-        this.ignorePagination = Optional.ofNullable(ignorePagination);
-        return this;
-    }
-
-    /**
-     * Makes each stream read a single page of data.
-     */
-    public SourceZendeskSupport withIgnorePagination(Optional<? extends Boolean> ignorePagination) {
-        Utils.checkNotNull(ignorePagination, "ignorePagination");
-        this.ignorePagination = ignorePagination;
-        return this;
-    }
-
-    /**
      * The UTC date and time from which you'd like to replicate data, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
      */
     public SourceZendeskSupport withStartDate(OffsetDateTime startDate) {
@@ -194,7 +157,6 @@ public class SourceZendeskSupport {
         SourceZendeskSupport other = (SourceZendeskSupport) o;
         return 
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
-            java.util.Objects.deepEquals(this.ignorePagination, other.ignorePagination) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate) &&
             java.util.Objects.deepEquals(this.subdomain, other.subdomain);
@@ -204,7 +166,6 @@ public class SourceZendeskSupport {
     public int hashCode() {
         return java.util.Objects.hash(
             credentials,
-            ignorePagination,
             sourceType,
             startDate,
             subdomain);
@@ -214,7 +175,6 @@ public class SourceZendeskSupport {
     public String toString() {
         return Utils.toString(SourceZendeskSupport.class,
                 "credentials", credentials,
-                "ignorePagination", ignorePagination,
                 "sourceType", sourceType,
                 "startDate", startDate,
                 "subdomain", subdomain);
@@ -223,8 +183,6 @@ public class SourceZendeskSupport {
     public final static class Builder {
  
         private Optional<? extends java.lang.Object> credentials = Optional.empty();
- 
-        private Optional<? extends Boolean> ignorePagination;
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
@@ -249,24 +207,6 @@ public class SourceZendeskSupport {
         public Builder credentials(Optional<? extends java.lang.Object> credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
-            return this;
-        }
-
-        /**
-         * Makes each stream read a single page of data.
-         */
-        public Builder ignorePagination(boolean ignorePagination) {
-            Utils.checkNotNull(ignorePagination, "ignorePagination");
-            this.ignorePagination = Optional.ofNullable(ignorePagination);
-            return this;
-        }
-
-        /**
-         * Makes each stream read a single page of data.
-         */
-        public Builder ignorePagination(Optional<? extends Boolean> ignorePagination) {
-            Utils.checkNotNull(ignorePagination, "ignorePagination");
-            this.ignorePagination = ignorePagination;
             return this;
         }
 
@@ -298,21 +238,11 @@ public class SourceZendeskSupport {
         }
         
         public SourceZendeskSupport build() {
-            if (ignorePagination == null) {
-                ignorePagination = _SINGLETON_VALUE_IgnorePagination.value();
-            }
             return new SourceZendeskSupport(
                 credentials,
-                ignorePagination,
                 startDate,
                 subdomain);
         }
-
-        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_IgnorePagination =
-                new LazySingletonValue<>(
-                        "ignore_pagination",
-                        "false",
-                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<SourceZendeskSupportZendeskSupport> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

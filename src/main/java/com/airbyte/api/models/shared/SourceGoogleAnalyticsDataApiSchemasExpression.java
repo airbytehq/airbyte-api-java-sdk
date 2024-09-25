@@ -21,12 +21,12 @@ public class SourceGoogleAnalyticsDataApiSchemasExpression {
     private String fieldName;
 
     @JsonProperty("filter")
-    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter;
+    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter filter;
 
     @JsonCreator
     public SourceGoogleAnalyticsDataApiSchemasExpression(
             @JsonProperty("field_name") String fieldName,
-            @JsonProperty("filter") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter) {
+            @JsonProperty("filter") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter filter) {
         Utils.checkNotNull(fieldName, "fieldName");
         Utils.checkNotNull(filter, "filter");
         this.fieldName = fieldName;
@@ -39,7 +39,7 @@ public class SourceGoogleAnalyticsDataApiSchemasExpression {
     }
 
     @JsonIgnore
-    public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter() {
+    public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter filter() {
         return filter;
     }
 
@@ -53,7 +53,7 @@ public class SourceGoogleAnalyticsDataApiSchemasExpression {
         return this;
     }
 
-    public SourceGoogleAnalyticsDataApiSchemasExpression withFilter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter) {
+    public SourceGoogleAnalyticsDataApiSchemasExpression withFilter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter filter) {
         Utils.checkNotNull(filter, "filter");
         this.filter = filter;
         return this;
@@ -91,7 +91,7 @@ public class SourceGoogleAnalyticsDataApiSchemasExpression {
  
         private String fieldName;
  
-        private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter;  
+        private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter filter;  
         
         private Builder() {
           // force use of static builder() method
@@ -103,7 +103,7 @@ public class SourceGoogleAnalyticsDataApiSchemasExpression {
             return this;
         }
 
-        public Builder filter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter) {
+        public Builder filter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter filter) {
             Utils.checkNotNull(filter, "filter");
             this.filter = filter;
             return this;

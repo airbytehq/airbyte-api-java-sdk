@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum DestinationMssqlSslMethod {
-    ENCRYPTED_TRUST_SERVER_CERTIFICATE("encrypted_trust_server_certificate");
+    UNENCRYPTED("unencrypted");
 
     @JsonValue
     private final String value;

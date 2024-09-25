@@ -9,8 +9,8 @@ sources:
             - main
     sample-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:36d8228d8dff7dbba9d36672157e8cc40873b7feabebd86fc52a2d500af9ffcf
-        sourceBlobDigest: sha256:6b6e5ec987cafa803612cc3f6ebbdea1d9b9d4d14426c10092ac2b459eac7ea5
+        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
+        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
         tags:
             - latest
             - main
@@ -24,8 +24,8 @@ targets:
     testing:
         source: sample-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:36d8228d8dff7dbba9d36672157e8cc40873b7feabebd86fc52a2d500af9ffcf
-        sourceBlobDigest: sha256:6b6e5ec987cafa803612cc3f6ebbdea1d9b9d4d14426c10092ac2b459eac7ea5
+        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
+        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0

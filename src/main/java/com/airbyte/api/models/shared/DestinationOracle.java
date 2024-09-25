@@ -25,6 +25,13 @@ public class DestinationOracle {
     private Oracle destinationType;
 
     /**
+     * The encryption method which is used when communicating with the database.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("encryption")
+    private Optional<? extends Encryption> encryption;
+
+    /**
      * The hostname of the database.
      */
     @JsonProperty("host")
@@ -86,6 +93,7 @@ public class DestinationOracle {
 
     @JsonCreator
     public DestinationOracle(
+            @JsonProperty("encryption") Optional<? extends Encryption> encryption,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<? extends String> jdbcUrlParams,
             @JsonProperty("password") Optional<? extends String> password,
@@ -95,6 +103,7 @@ public class DestinationOracle {
             @JsonProperty("sid") String sid,
             @JsonProperty("tunnel_method") Optional<? extends DestinationOracleSSHTunnelMethod> tunnelMethod,
             @JsonProperty("username") String username) {
+        Utils.checkNotNull(encryption, "encryption");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
@@ -105,6 +114,7 @@ public class DestinationOracle {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
+        this.encryption = encryption;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
@@ -120,12 +130,21 @@ public class DestinationOracle {
             String host,
             String sid,
             String username) {
-        this(host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), sid, Optional.empty(), username);
+        this(Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), sid, Optional.empty(), username);
     }
 
     @JsonIgnore
     public Oracle destinationType() {
         return destinationType;
+    }
+
+    /**
+     * The encryption method which is used when communicating with the database.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Encryption> encryption() {
+        return (Optional<Encryption>) encryption;
     }
 
     /**
@@ -208,6 +227,24 @@ public class DestinationOracle {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * The encryption method which is used when communicating with the database.
+     */
+    public DestinationOracle withEncryption(Encryption encryption) {
+        Utils.checkNotNull(encryption, "encryption");
+        this.encryption = Optional.ofNullable(encryption);
+        return this;
+    }
+
+    /**
+     * The encryption method which is used when communicating with the database.
+     */
+    public DestinationOracle withEncryption(Optional<? extends Encryption> encryption) {
+        Utils.checkNotNull(encryption, "encryption");
+        this.encryption = encryption;
+        return this;
     }
 
     /**
@@ -356,6 +393,7 @@ public class DestinationOracle {
         DestinationOracle other = (DestinationOracle) o;
         return 
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
+            java.util.Objects.deepEquals(this.encryption, other.encryption) &&
             java.util.Objects.deepEquals(this.host, other.host) &&
             java.util.Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
             java.util.Objects.deepEquals(this.password, other.password) &&
@@ -371,6 +409,7 @@ public class DestinationOracle {
     public int hashCode() {
         return java.util.Objects.hash(
             destinationType,
+            encryption,
             host,
             jdbcUrlParams,
             password,
@@ -386,6 +425,7 @@ public class DestinationOracle {
     public String toString() {
         return Utils.toString(DestinationOracle.class,
                 "destinationType", destinationType,
+                "encryption", encryption,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
@@ -398,6 +438,8 @@ public class DestinationOracle {
     }
     
     public final static class Builder {
+ 
+        private Optional<? extends Encryption> encryption = Optional.empty();
  
         private String host;
  
@@ -419,6 +461,24 @@ public class DestinationOracle {
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * The encryption method which is used when communicating with the database.
+         */
+        public Builder encryption(Encryption encryption) {
+            Utils.checkNotNull(encryption, "encryption");
+            this.encryption = Optional.ofNullable(encryption);
+            return this;
+        }
+
+        /**
+         * The encryption method which is used when communicating with the database.
+         */
+        public Builder encryption(Optional<? extends Encryption> encryption) {
+            Utils.checkNotNull(encryption, "encryption");
+            this.encryption = encryption;
+            return this;
         }
 
         /**
@@ -564,6 +624,7 @@ public class DestinationOracle {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
             return new DestinationOracle(
+                encryption,
                 host,
                 jdbcUrlParams,
                 password,

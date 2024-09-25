@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceS3SchemasStreamsFormatFiletype {
-    CSV("csv");
+    PARQUET("parquet");
 
     @JsonValue
     private final String value;

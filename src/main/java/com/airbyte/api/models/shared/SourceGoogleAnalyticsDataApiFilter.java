@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Optional;
 /**
- * SourceGoogleAnalyticsDataApiFilter - A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all metrics.
+ * SourceGoogleAnalyticsDataApiFilter - A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all dimensions.
  */
 
 public class SourceGoogleAnalyticsDataApiFilter {
@@ -32,7 +32,7 @@ public class SourceGoogleAnalyticsDataApiFilter {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filter_type")
-    private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType;
+    private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType> filterType;
 
     @JsonCreator
     public SourceGoogleAnalyticsDataApiFilter(
@@ -57,8 +57,8 @@ public class SourceGoogleAnalyticsDataApiFilter {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType() {
-        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>) filterType;
+    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType> filterType() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType>) filterType;
     }
 
     public final static Builder builder() {
@@ -136,11 +136,11 @@ public class SourceGoogleAnalyticsDataApiFilter {
                 filter);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>> _SINGLETON_VALUE_FilterType =
+        private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType>> _SINGLETON_VALUE_FilterType =
                 new LazySingletonValue<>(
                         "filter_type",
                         "\"filter\"",
-                        new TypeReference<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>>() {});
+                        new TypeReference<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType>>() {});
     }
 }
 

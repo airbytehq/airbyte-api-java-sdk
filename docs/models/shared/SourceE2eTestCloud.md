@@ -1,2 +1,0 @@
-# SourceE2eTestCloud
-

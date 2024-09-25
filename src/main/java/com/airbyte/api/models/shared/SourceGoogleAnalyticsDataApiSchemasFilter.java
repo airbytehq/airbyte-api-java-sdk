@@ -4,77 +4,78 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
+/**
+ * SourceGoogleAnalyticsDataApiSchemasFilter - A primitive filter. In the same FilterExpression, all of the filter's field names need to be either all metrics.
+ */
 
-import java.time.OffsetDateTime;
-import java.time.LocalDate;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.airbyte.api.utils.TypedObject;
-import com.airbyte.api.utils.Utils.JsonShape;
-
-
-@JsonDeserialize(using = SourceGoogleAnalyticsDataApiSchemasFilter._Deserializer.class)
 public class SourceGoogleAnalyticsDataApiSchemasFilter {
 
-    @com.fasterxml.jackson.annotation.JsonValue
-    private TypedObject value;
-    
-    private SourceGoogleAnalyticsDataApiSchemasFilter(TypedObject value) {
-        this.value = value;
+    @JsonProperty("field_name")
+    private String fieldName;
+
+    @JsonProperty("filter")
+    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter;
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("filter_type")
+    private Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType;
+
+    @JsonCreator
+    public SourceGoogleAnalyticsDataApiSchemasFilter(
+            @JsonProperty("field_name") String fieldName,
+            @JsonProperty("filter") SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter) {
+        Utils.checkNotNull(fieldName, "fieldName");
+        Utils.checkNotNull(filter, "filter");
+        this.fieldName = fieldName;
+        this.filter = filter;
+        this.filterType = Builder._SINGLETON_VALUE_FilterType.value();
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasFilter of(StringFilter value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<StringFilter>(){}));
+    @JsonIgnore
+    public String fieldName() {
+        return fieldName;
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasFilter of(InListFilter value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<InListFilter>(){}));
+    @JsonIgnore
+    public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter() {
+        return filter;
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasFilter of(NumericFilter value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NumericFilter>(){}));
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType> filterType() {
+        return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>) filterType;
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasFilter of(BetweenFilter value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BetweenFilter>(){}));
+    public final static Builder builder() {
+        return new Builder();
     }
-    
-    /**
-     * Returns an instance of one of these types:
-     * <ul>
-     * <li>{@code StringFilter}</li>
-     * <li>{@code InListFilter}</li>
-     * <li>{@code NumericFilter}</li>
-     * <li>{@code BetweenFilter}</li>
-     * </ul>
-     * 
-     * <p>Use {@code instanceof} to determine what type is returned. For example:
-     * 
-     * <pre>
-     * if (obj.value() instanceof String) {
-     *     String answer = (String) obj.value();
-     *     System.out.println("answer=" + answer);
-     * }
-     * </pre>
-     * 
-     * @return value of oneOf type
-     **/ 
-    public java.lang.Object value() {
-        return value.value();
-    }    
+
+    public SourceGoogleAnalyticsDataApiSchemasFilter withFieldName(String fieldName) {
+        Utils.checkNotNull(fieldName, "fieldName");
+        this.fieldName = fieldName;
+        return this;
+    }
+
+    public SourceGoogleAnalyticsDataApiSchemasFilter withFilter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter) {
+        Utils.checkNotNull(filter, "filter");
+        this.filter = filter;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -85,30 +86,61 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
             return false;
         }
         SourceGoogleAnalyticsDataApiSchemasFilter other = (SourceGoogleAnalyticsDataApiSchemasFilter) o;
-        return java.util.Objects.deepEquals(this.value.value(), other.value.value()); 
+        return 
+            java.util.Objects.deepEquals(this.fieldName, other.fieldName) &&
+            java.util.Objects.deepEquals(this.filter, other.filter) &&
+            java.util.Objects.deepEquals(this.filterType, other.filterType);
     }
     
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(value.value());
-    }
-    
-    @SuppressWarnings("serial")
-    public static final class _Deserializer extends com.airbyte.api.utils.OneOfDeserializer<SourceGoogleAnalyticsDataApiSchemasFilter> {
-
-        public _Deserializer() {
-            super(SourceGoogleAnalyticsDataApiSchemasFilter.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<StringFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<InListFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<NumericFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<BetweenFilter>() {}, Utils.JsonShape.DEFAULT));
-        }
+        return java.util.Objects.hash(
+            fieldName,
+            filter,
+            filterType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceGoogleAnalyticsDataApiSchemasFilter.class,
-                "value", value);
+                "fieldName", fieldName,
+                "filter", filter,
+                "filterType", filterType);
     }
+    
+    public final static class Builder {
  
+        private String fieldName;
+ 
+        private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter;  
+        
+        private Builder() {
+          // force use of static builder() method
+        }
+
+        public Builder fieldName(String fieldName) {
+            Utils.checkNotNull(fieldName, "fieldName");
+            this.fieldName = fieldName;
+            return this;
+        }
+
+        public Builder filter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter) {
+            Utils.checkNotNull(filter, "filter");
+            this.filter = filter;
+            return this;
+        }
+        
+        public SourceGoogleAnalyticsDataApiSchemasFilter build() {
+            return new SourceGoogleAnalyticsDataApiSchemasFilter(
+                fieldName,
+                filter);
+        }
+
+        private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>> _SINGLETON_VALUE_FilterType =
+                new LazySingletonValue<>(
+                        "filter_type",
+                        "\"filter\"",
+                        new TypeReference<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>>() {});
+    }
 }
+

@@ -45,6 +45,13 @@ public class DestinationElasticsearch {
     private String endpoint;
 
     /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("tunnel_method")
+    private Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod;
+
+    /**
      * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -56,21 +63,24 @@ public class DestinationElasticsearch {
             @JsonProperty("authenticationMethod") Optional<? extends AuthenticationMethod> authenticationMethod,
             @JsonProperty("ca_certificate") Optional<? extends String> caCertificate,
             @JsonProperty("endpoint") String endpoint,
+            @JsonProperty("tunnel_method") Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod,
             @JsonProperty("upsert") Optional<? extends Boolean> upsert) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         Utils.checkNotNull(caCertificate, "caCertificate");
         Utils.checkNotNull(endpoint, "endpoint");
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(upsert, "upsert");
         this.authenticationMethod = authenticationMethod;
         this.caCertificate = caCertificate;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.endpoint = endpoint;
+        this.tunnelMethod = tunnelMethod;
         this.upsert = upsert;
     }
     
     public DestinationElasticsearch(
             String endpoint) {
-        this(Optional.empty(), Optional.empty(), endpoint, Optional.empty());
+        this(Optional.empty(), Optional.empty(), endpoint, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -102,6 +112,15 @@ public class DestinationElasticsearch {
     @JsonIgnore
     public String endpoint() {
         return endpoint;
+    }
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<DestinationElasticsearchSSHTunnelMethod> tunnelMethod() {
+        return (Optional<DestinationElasticsearchSSHTunnelMethod>) tunnelMethod;
     }
 
     /**
@@ -163,6 +182,24 @@ public class DestinationElasticsearch {
     }
 
     /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     */
+    public DestinationElasticsearch withTunnelMethod(DestinationElasticsearchSSHTunnelMethod tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+        return this;
+    }
+
+    /**
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     */
+    public DestinationElasticsearch withTunnelMethod(Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod) {
+        Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+        this.tunnelMethod = tunnelMethod;
+        return this;
+    }
+
+    /**
      * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
      */
     public DestinationElasticsearch withUpsert(boolean upsert) {
@@ -194,6 +231,7 @@ public class DestinationElasticsearch {
             java.util.Objects.deepEquals(this.caCertificate, other.caCertificate) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.endpoint, other.endpoint) &&
+            java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
             java.util.Objects.deepEquals(this.upsert, other.upsert);
     }
     
@@ -204,6 +242,7 @@ public class DestinationElasticsearch {
             caCertificate,
             destinationType,
             endpoint,
+            tunnelMethod,
             upsert);
     }
     
@@ -214,6 +253,7 @@ public class DestinationElasticsearch {
                 "caCertificate", caCertificate,
                 "destinationType", destinationType,
                 "endpoint", endpoint,
+                "tunnelMethod", tunnelMethod,
                 "upsert", upsert);
     }
     
@@ -224,6 +264,8 @@ public class DestinationElasticsearch {
         private Optional<? extends String> caCertificate = Optional.empty();
  
         private String endpoint;
+ 
+        private Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod = Optional.empty();
  
         private Optional<? extends Boolean> upsert;  
         
@@ -277,6 +319,24 @@ public class DestinationElasticsearch {
         }
 
         /**
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         */
+        public Builder tunnelMethod(DestinationElasticsearchSSHTunnelMethod tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = Optional.ofNullable(tunnelMethod);
+            return this;
+        }
+
+        /**
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         */
+        public Builder tunnelMethod(Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod) {
+            Utils.checkNotNull(tunnelMethod, "tunnelMethod");
+            this.tunnelMethod = tunnelMethod;
+            return this;
+        }
+
+        /**
          * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
          */
         public Builder upsert(boolean upsert) {
@@ -302,6 +362,7 @@ public class DestinationElasticsearch {
                 authenticationMethod,
                 caCertificate,
                 endpoint,
+                tunnelMethod,
                 upsert);
         }
 

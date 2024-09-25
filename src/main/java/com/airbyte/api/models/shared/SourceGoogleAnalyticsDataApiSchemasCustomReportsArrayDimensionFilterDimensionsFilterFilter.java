@@ -32,33 +32,33 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
         this.value = value;
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasStringFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterStringFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasStringFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterStringFilter>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasInListFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInListFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasInListFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInListFilter>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasNumericFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterNumericFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasNumericFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterNumericFilter>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasBetweenFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasBetweenFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasStringFilter}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasInListFilter}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasNumericFilter}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasBetweenFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterStringFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInListFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterNumericFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -98,10 +98,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilte
 
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasStringFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasInListFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasNumericFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasBetweenFilter>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterStringFilter>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterInListFilter>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterNumericFilter>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterBetweenFilter>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

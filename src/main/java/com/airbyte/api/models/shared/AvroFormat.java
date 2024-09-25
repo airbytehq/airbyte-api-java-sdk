@@ -30,7 +30,7 @@ public class AvroFormat {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
-    private Optional<? extends SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype> filetype;
+    private Optional<? extends Filetype> filetype;
 
     @JsonCreator
     public AvroFormat(
@@ -55,8 +55,8 @@ public class AvroFormat {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype> filetype() {
-        return (Optional<SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype>) filetype;
+    public Optional<Filetype> filetype() {
+        return (Optional<Filetype>) filetype;
     }
 
     public final static Builder builder() {
@@ -149,11 +149,11 @@ public class AvroFormat {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<Optional<? extends SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype>> _SINGLETON_VALUE_Filetype =
+        private static final LazySingletonValue<Optional<? extends Filetype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(
                         "filetype",
                         "\"avro\"",
-                        new TypeReference<Optional<? extends SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype>>() {});
+                        new TypeReference<Optional<? extends Filetype>>() {});
     }
 }
 

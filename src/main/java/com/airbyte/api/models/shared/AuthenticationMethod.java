@@ -35,6 +35,11 @@ public class AuthenticationMethod {
         this.value = value;
     }
 
+    public static AuthenticationMethod of(None value) {
+        Utils.checkNotNull(value, "value");
+        return new AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<None>(){}));
+    }
+
     public static AuthenticationMethod of(ApiKeySecret value) {
         Utils.checkNotNull(value, "value");
         return new AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ApiKeySecret>(){}));
@@ -48,6 +53,7 @@ public class AuthenticationMethod {
     /**
      * Returns an instance of one of these types:
      * <ul>
+     * <li>{@code None}</li>
      * <li>{@code ApiKeySecret}</li>
      * <li>{@code UsernamePassword}</li>
      * </ul>
@@ -89,6 +95,7 @@ public class AuthenticationMethod {
 
         public _Deserializer() {
             super(AuthenticationMethod.class,
+                  Utils.TypeReferenceWithShape.of(new TypeReference<None>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<ApiKeySecret>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<UsernamePassword>() {}, Utils.JsonShape.DEFAULT));
         }

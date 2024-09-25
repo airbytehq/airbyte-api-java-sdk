@@ -34,7 +34,7 @@ public class ApiKeySecret {
     private String apiKeySecret;
 
     @JsonProperty("method")
-    private DestinationElasticsearchMethod method;
+    private DestinationElasticsearchSchemasMethod method;
 
     @JsonCreator
     public ApiKeySecret(
@@ -64,7 +64,7 @@ public class ApiKeySecret {
     }
 
     @JsonIgnore
-    public DestinationElasticsearchMethod method() {
+    public DestinationElasticsearchSchemasMethod method() {
         return method;
     }
 
@@ -155,11 +155,11 @@ public class ApiKeySecret {
                 apiKeySecret);
         }
 
-        private static final LazySingletonValue<DestinationElasticsearchMethod> _SINGLETON_VALUE_Method =
+        private static final LazySingletonValue<DestinationElasticsearchSchemasMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(
                         "method",
                         "\"secret\"",
-                        new TypeReference<DestinationElasticsearchMethod>() {});
+                        new TypeReference<DestinationElasticsearchSchemasMethod>() {});
     }
 }
 

@@ -32,33 +32,33 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFi
         this.value = value;
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterStringFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiStringFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterStringFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiStringFilter>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterInListFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiInListFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterInListFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiInListFilter>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterNumericFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiNumericFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterNumericFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiNumericFilter>(){}));
     }
 
-    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBetweenFilter value) {
+    public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter of(SourceGoogleAnalyticsDataApiBetweenFilter value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBetweenFilter>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiBetweenFilter>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterStringFilter}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterInListFilter}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterNumericFilter}</li>
-     * <li>{@code SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBetweenFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiStringFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiInListFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiNumericFilter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiBetweenFilter}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -98,10 +98,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFi
 
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterStringFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterInListFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterNumericFilter>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterBetweenFilter>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiStringFilter>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiInListFilter>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiNumericFilter>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiBetweenFilter>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

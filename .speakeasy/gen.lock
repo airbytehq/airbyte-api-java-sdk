@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: b43c86bb9d2242c34e3771d650a5173e
+  docChecksum: 1308fa7ec8504c6d50430974d4647f3f
   docVersion: 1.0.0
   speakeasyVersion: 1.337.1
   generationVersion: 2.373.2
-  releaseVersion: 1.5.9
-  configChecksum: ea282eedbffdadbc66fa72372cd33004
+  releaseVersion: 1.5.10
+  configChecksum: 849346c40e6723c0675b0bacc97f7073
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -289,22 +289,26 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Authentication.java
   - src/main/java/com/airbyte/api/models/shared/Databricks.java
   - src/main/java/com/airbyte/api/models/shared/DestinationDatabricks.java
-  - src/main/java/com/airbyte/api/models/shared/DevNull.java
-  - src/main/java/com/airbyte/api/models/shared/TestDestinationType.java
-  - src/main/java/com/airbyte/api/models/shared/Silent.java
-  - src/main/java/com/airbyte/api/models/shared/TestDestination.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationDevNull.java
   - src/main/java/com/airbyte/api/models/shared/Duckdb.java
   - src/main/java/com/airbyte/api/models/shared/DestinationDuckdb.java
   - src/main/java/com/airbyte/api/models/shared/Dynamodb.java
   - src/main/java/com/airbyte/api/models/shared/DynamoDBRegion.java
   - src/main/java/com/airbyte/api/models/shared/DestinationDynamodb.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSchemasMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSchemasAuthenticationMethodMethod.java
   - src/main/java/com/airbyte/api/models/shared/UsernamePassword.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSchemasMethod.java
   - src/main/java/com/airbyte/api/models/shared/ApiKeySecret.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchMethod.java
+  - src/main/java/com/airbyte/api/models/shared/None.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticationMethod.java
   - src/main/java/com/airbyte/api/models/shared/Elasticsearch.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSchemasTunnelMethodTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchPasswordAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSchemasTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSSHKeyAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchNoTunnel.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearchSSHTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationElasticsearch.java
   - src/main/java/com/airbyte/api/models/shared/Firebolt.java
   - src/main/java/com/airbyte/api/models/shared/DestinationFireboltSchemasMethod.java
@@ -389,7 +393,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationMongodbAuthorization.java
   - src/main/java/com/airbyte/api/models/shared/LoginPassword.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMongodbSchemasAuthorization.java
-  - src/main/java/com/airbyte/api/models/shared/None.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMongodbNone.java
   - src/main/java/com/airbyte/api/models/shared/AuthorizationType.java
   - src/main/java/com/airbyte/api/models/shared/Mongodb.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMongodbSchemasInstance.java
@@ -408,10 +412,12 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationMongodbSSHTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMongodb.java
   - src/main/java/com/airbyte/api/models/shared/Mssql.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSchemasSslMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSchemasSslMethodSslMethod.java
   - src/main/java/com/airbyte/api/models/shared/EncryptedVerifyCertificate.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSslMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSchemasSslMethod.java
   - src/main/java/com/airbyte/api/models/shared/EncryptedTrustServerCertificate.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSslMethod.java
+  - src/main/java/com/airbyte/api/models/shared/Unencrypted.java
   - src/main/java/com/airbyte/api/models/shared/SSLMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMssqlPasswordAuthentication.java
@@ -431,6 +437,14 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlSSHTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMysql.java
   - src/main/java/com/airbyte/api/models/shared/Oracle.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationOracleSchemasEncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/TLSEncryptedVerifyCertificate.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionAlgorithm.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationOracleEncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/NativeNetworkEncryptionNNE.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationOracleUnencrypted.java
+  - src/main/java/com/airbyte/api/models/shared/Encryption.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOraclePasswordAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleSchemasTunnelMethod.java
@@ -439,6 +453,31 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleNoTunnel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleSSHTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracle.java
+  - src/main/java/com/airbyte/api/models/shared/Pgvector.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasEmbeddingEmbedding5Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorOpenAICompatible.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasEmbeddingEmbeddingMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorAzureOpenAI.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasEmbeddingMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorFake.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorCohere.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorOpenAI.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorEmbedding.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/PostgresConnection.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorFieldNameMappingConfigModel.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorLanguage.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasProcessingTextSplitterTextSplitterMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorByProgrammingLanguage.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasProcessingTextSplitterMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorByMarkdownHeader.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorSchemasProcessingMode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorBySeparator.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorTextSplitter.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvectorProcessingConfigModel.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPgvector.java
   - src/main/java/com/airbyte/api/models/shared/Pinecone.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPineconeSchemasEmbeddingEmbedding5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPineconeOpenAICompatible.java
@@ -736,6 +775,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/Aha.java
   - src/main/java/com/airbyte/api/models/shared/SourceAha.java
+  - src/main/java/com/airbyte/api/models/shared/Sevenshifts.java
+  - src/main/java/com/airbyte/api/models/shared/Source7shifts.java
   - src/main/java/com/airbyte/api/models/shared/Airbyte.java
   - src/main/java/com/airbyte/api/models/shared/SourceAirbyte.java
   - src/main/java/com/airbyte/api/models/shared/Aircall.java
@@ -770,6 +811,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceAmplitude.java
   - src/main/java/com/airbyte/api/models/shared/ApifyDataset.java
   - src/main/java/com/airbyte/api/models/shared/SourceApifyDataset.java
+  - src/main/java/com/airbyte/api/models/shared/Appcues.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAppcues.java
+  - src/main/java/com/airbyte/api/models/shared/GroupBy.java
+  - src/main/java/com/airbyte/api/models/shared/Appfigures.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAppfigures.java
   - src/main/java/com/airbyte/api/models/shared/Appfollow.java
   - src/main/java/com/airbyte/api/models/shared/SourceAppfollow.java
   - src/main/java/com/airbyte/api/models/shared/SourceAsanaSchemasCredentialsTitle.java
@@ -813,9 +859,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/HeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/FromCSV.java
   - src/main/java/com/airbyte/api/models/shared/CSVHeaderDefinition.java
-  - src/main/java/com/airbyte/api/models/shared/InferenceType.java
   - src/main/java/com/airbyte/api/models/shared/CSVFormat.java
-  - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/Filetype.java
   - src/main/java/com/airbyte/api/models/shared/AvroFormat.java
   - src/main/java/com/airbyte/api/models/shared/Format.java
   - src/main/java/com/airbyte/api/models/shared/ValidationPolicy.java
@@ -836,6 +881,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/CustomReportConfig.java
   - src/main/java/com/airbyte/api/models/shared/SourceBingAdsBingAds.java
   - src/main/java/com/airbyte/api/models/shared/SourceBingAds.java
+  - src/main/java/com/airbyte/api/models/shared/Bitly.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBitly.java
   - src/main/java/com/airbyte/api/models/shared/SourceBraintreeEnvironment.java
   - src/main/java/com/airbyte/api/models/shared/Braintree.java
   - src/main/java/com/airbyte/api/models/shared/SourceBraintree.java
@@ -843,8 +890,16 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceBraze.java
   - src/main/java/com/airbyte/api/models/shared/BreezyHr.java
   - src/main/java/com/airbyte/api/models/shared/SourceBreezyHr.java
+  - src/main/java/com/airbyte/api/models/shared/Brevo.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBrevo.java
+  - src/main/java/com/airbyte/api/models/shared/Buildkite.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBuildkite.java
+  - src/main/java/com/airbyte/api/models/shared/Buzzsprout.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBuzzsprout.java
   - src/main/java/com/airbyte/api/models/shared/Calendly.java
   - src/main/java/com/airbyte/api/models/shared/SourceCalendly.java
+  - src/main/java/com/airbyte/api/models/shared/Canny.java
+  - src/main/java/com/airbyte/api/models/shared/SourceCanny.java
   - src/main/java/com/airbyte/api/models/shared/SourceCartSchemasAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SingleStoreAccessToken.java
   - src/main/java/com/airbyte/api/models/shared/SourceCartAuthType.java
@@ -852,11 +907,18 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceCartAuthorizationMethod.java
   - src/main/java/com/airbyte/api/models/shared/Cart.java
   - src/main/java/com/airbyte/api/models/shared/SourceCart.java
+  - src/main/java/com/airbyte/api/models/shared/Filter.java
+  - src/main/java/com/airbyte/api/models/shared/Chameleon.java
+  - src/main/java/com/airbyte/api/models/shared/SourceChameleon.java
   - src/main/java/com/airbyte/api/models/shared/ProductCatalog.java
   - src/main/java/com/airbyte/api/models/shared/Chargebee.java
   - src/main/java/com/airbyte/api/models/shared/SourceChargebee.java
   - src/main/java/com/airbyte/api/models/shared/Chartmogul.java
   - src/main/java/com/airbyte/api/models/shared/SourceChartmogul.java
+  - src/main/java/com/airbyte/api/models/shared/Cimis.java
+  - src/main/java/com/airbyte/api/models/shared/TargetsType.java
+  - src/main/java/com/airbyte/api/models/shared/UnitOfMeasure.java
+  - src/main/java/com/airbyte/api/models/shared/SourceCimis.java
   - src/main/java/com/airbyte/api/models/shared/Clazar.java
   - src/main/java/com/airbyte/api/models/shared/SourceClazar.java
   - src/main/java/com/airbyte/api/models/shared/SourceClickhouseClickhouse.java
@@ -910,11 +972,12 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceDynamodbDynamodbRegion.java
   - src/main/java/com/airbyte/api/models/shared/SourceDynamodbDynamodb.java
   - src/main/java/com/airbyte/api/models/shared/SourceDynamodb.java
-  - src/main/java/com/airbyte/api/models/shared/SourceE2eTestCloud.java
   - src/main/java/com/airbyte/api/models/shared/Emailoctopus.java
   - src/main/java/com/airbyte/api/models/shared/SourceEmailoctopus.java
   - src/main/java/com/airbyte/api/models/shared/ExchangeRates.java
   - src/main/java/com/airbyte/api/models/shared/SourceExchangeRates.java
+  - src/main/java/com/airbyte/api/models/shared/Ezofficeinventory.java
+  - src/main/java/com/airbyte/api/models/shared/SourceEzofficeinventory.java
   - src/main/java/com/airbyte/api/models/shared/ValidAdStatuses.java
   - src/main/java/com/airbyte/api/models/shared/ValidAdSetStatuses.java
   - src/main/java/com/airbyte/api/models/shared/ValidCampaignStatuses.java
@@ -942,6 +1005,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Fauna.java
   - src/main/java/com/airbyte/api/models/shared/SourceFauna.java
   - src/main/java/com/airbyte/api/models/shared/FileFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasProviderStorageProvider8Storage.java
+  - src/main/java/com/airbyte/api/models/shared/LocalFilesystemLimited.java
   - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasProviderStorageProvider7Storage.java
   - src/main/java/com/airbyte/api/models/shared/SFTPSecureFileTransferProtocol.java
   - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasProviderStorageProvider6Storage.java
@@ -951,7 +1016,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasProviderStorage.java
   - src/main/java/com/airbyte/api/models/shared/AzBlobAzureBlobStorage.java
   - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasStorage.java
-  - src/main/java/com/airbyte/api/models/shared/SourceFileS3AmazonWebServices.java
+  - src/main/java/com/airbyte/api/models/shared/S3AmazonWebServices.java
   - src/main/java/com/airbyte/api/models/shared/SourceFileStorage.java
   - src/main/java/com/airbyte/api/models/shared/GCSGoogleCloudStorage.java
   - src/main/java/com/airbyte/api/models/shared/Storage.java
@@ -969,6 +1034,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceFreshdesk.java
   - src/main/java/com/airbyte/api/models/shared/Freshsales.java
   - src/main/java/com/airbyte/api/models/shared/SourceFreshsales.java
+  - src/main/java/com/airbyte/api/models/shared/Front.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFront.java
   - src/main/java/com/airbyte/api/models/shared/GainsightPx.java
   - src/main/java/com/airbyte/api/models/shared/SourceGainsightPx.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsGcs.java
@@ -995,7 +1062,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGcsHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsFromCSV.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsCSVHeaderDefinition.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGcsInferenceType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsCSVFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsAvroFormat.java
@@ -1077,9 +1143,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/FilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/StringFilter.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasFilter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType.java
-  - src/main/java/com/airbyte/api/models/shared/Filter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiFilter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionFilterFilterFilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionFilterFilterValueType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionDoubleValue.java
@@ -1105,7 +1171,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3FilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasStringFilter.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasExpression.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasFilterType.java
   - src/main/java/com/airbyte/api/models/shared/NotExpression.java
@@ -1134,7 +1200,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2ValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterStringFilter.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiExpression.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiFilterType.java
   - src/main/java/com/airbyte/api/models/shared/OrGroup.java
@@ -1163,7 +1229,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1FilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayStringFilter.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1Filter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter.java
   - src/main/java/com/airbyte/api/models/shared/Expression.java
   - src/main/java/com/airbyte/api/models/shared/FilterType.java
   - src/main/java/com/airbyte/api/models/shared/AndGroup.java
@@ -1193,9 +1259,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiStringFilter.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiFilter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasFilter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ExpressionFilterFilterFilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ExpressionFilterFilterValueType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ExpressionDoubleValue.java
@@ -1279,7 +1345,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsFilterFilterName.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterStringFilter.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Filter.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayExpression.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilterType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleAnalyticsDataApiAndGroup.java
@@ -1346,16 +1412,22 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleSheetsGoogleSheets.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleSheets.java
+  - src/main/java/com/airbyte/api/models/shared/GoogleTasks.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleTasks.java
   - src/main/java/com/airbyte/api/models/shared/GoogleWebfonts.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleWebfonts.java
   - src/main/java/com/airbyte/api/models/shared/Greenhouse.java
   - src/main/java/com/airbyte/api/models/shared/SourceGreenhouse.java
   - src/main/java/com/airbyte/api/models/shared/Gridly.java
   - src/main/java/com/airbyte/api/models/shared/SourceGridly.java
+  - src/main/java/com/airbyte/api/models/shared/Guru.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGuru.java
   - src/main/java/com/airbyte/api/models/shared/HardcodedRecords.java
   - src/main/java/com/airbyte/api/models/shared/SourceHardcodedRecords.java
   - src/main/java/com/airbyte/api/models/shared/Harvest.java
   - src/main/java/com/airbyte/api/models/shared/SourceHarvest.java
+  - src/main/java/com/airbyte/api/models/shared/Height.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHeight.java
   - src/main/java/com/airbyte/api/models/shared/Hibob.java
   - src/main/java/com/airbyte/api/models/shared/SourceHibob.java
   - src/main/java/com/airbyte/api/models/shared/HighLevel.java
@@ -1381,9 +1453,16 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceIp2whois.java
   - src/main/java/com/airbyte/api/models/shared/Iterable.java
   - src/main/java/com/airbyte/api/models/shared/SourceIterable.java
-  - src/main/java/com/airbyte/api/models/shared/IssuesStreamExpandWith.java
   - src/main/java/com/airbyte/api/models/shared/Jira.java
   - src/main/java/com/airbyte/api/models/shared/SourceJira.java
+  - src/main/java/com/airbyte/api/models/shared/SourceJotformSchemasApiEndpoint.java
+  - src/main/java/com/airbyte/api/models/shared/Enterprise.java
+  - src/main/java/com/airbyte/api/models/shared/SourceJotformApiEndpoint.java
+  - src/main/java/com/airbyte/api/models/shared/BaseURLPrefix.java
+  - src/main/java/com/airbyte/api/models/shared/Basic.java
+  - src/main/java/com/airbyte/api/models/shared/APIEndpoint.java
+  - src/main/java/com/airbyte/api/models/shared/Jotform.java
+  - src/main/java/com/airbyte/api/models/shared/SourceJotform.java
   - src/main/java/com/airbyte/api/models/shared/K6Cloud.java
   - src/main/java/com/airbyte/api/models/shared/SourceK6Cloud.java
   - src/main/java/com/airbyte/api/models/shared/SourceKlarnaRegion.java
@@ -1553,7 +1632,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlSchemasSslMethodSslMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlEncryptedTrustServerCertificate.java
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlSchemasSslMethod.java
-  - src/main/java/com/airbyte/api/models/shared/Unencrypted.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMssqlUnencrypted.java
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlSSLMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMssqlPasswordAuthentication.java
@@ -1600,6 +1679,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceNotionAuthenticationMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceNotionNotion.java
   - src/main/java/com/airbyte/api/models/shared/SourceNotion.java
+  - src/main/java/com/airbyte/api/models/shared/APIServer.java
+  - src/main/java/com/airbyte/api/models/shared/Nylas.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNylas.java
   - src/main/java/com/airbyte/api/models/shared/PeriodUsedForMostPopularStreams.java
   - src/main/java/com/airbyte/api/models/shared/ShareTypeUsedForMostPopularSharedStream.java
   - src/main/java/com/airbyte/api/models/shared/Nytimes.java
@@ -1623,12 +1705,14 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ConnectionType.java
   - src/main/java/com/airbyte/api/models/shared/ServiceName.java
   - src/main/java/com/airbyte/api/models/shared/ConnectBy.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleSchemasEncryptionEncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleTLSEncryptedVerifyCertificate.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleEncryptionAlgorithm.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleSchemasEncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleNativeNetworkEncryptionNNE.java
   - src/main/java/com/airbyte/api/models/shared/SourceOracleEncryptionMethod.java
-  - src/main/java/com/airbyte/api/models/shared/TLSEncryptedVerifyCertificate.java
-  - src/main/java/com/airbyte/api/models/shared/EncryptionAlgorithm.java
-  - src/main/java/com/airbyte/api/models/shared/EncryptionMethod.java
-  - src/main/java/com/airbyte/api/models/shared/NativeNetworkEncryptionNNE.java
-  - src/main/java/com/airbyte/api/models/shared/Encryption.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleUnencrypted.java
+  - src/main/java/com/airbyte/api/models/shared/SourceOracleEncryption.java
   - src/main/java/com/airbyte/api/models/shared/SourceOracleOracle.java
   - src/main/java/com/airbyte/api/models/shared/SourceOracleSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceOraclePasswordAuthentication.java
@@ -1665,6 +1749,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePersistiq.java
   - src/main/java/com/airbyte/api/models/shared/PexelsApi.java
   - src/main/java/com/airbyte/api/models/shared/SourcePexelsApi.java
+  - src/main/java/com/airbyte/api/models/shared/Picqer.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePicqer.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterestAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/OAuth20.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterestValidEnums.java
@@ -1681,6 +1767,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePinterest.java
   - src/main/java/com/airbyte/api/models/shared/Pipedrive.java
   - src/main/java/com/airbyte/api/models/shared/SourcePipedrive.java
+  - src/main/java/com/airbyte/api/models/shared/Piwik.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePiwik.java
   - src/main/java/com/airbyte/api/models/shared/Planhat.java
   - src/main/java/com/airbyte/api/models/shared/SourcePlanhat.java
   - src/main/java/com/airbyte/api/models/shared/ContentType.java
@@ -1714,6 +1802,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePostmarkapp.java
   - src/main/java/com/airbyte/api/models/shared/Prestashop.java
   - src/main/java/com/airbyte/api/models/shared/SourcePrestashop.java
+  - src/main/java/com/airbyte/api/models/shared/Productboard.java
+  - src/main/java/com/airbyte/api/models/shared/SourceProductboard.java
+  - src/main/java/com/airbyte/api/models/shared/Productive.java
+  - src/main/java/com/airbyte/api/models/shared/SourceProductive.java
   - src/main/java/com/airbyte/api/models/shared/Pypi.java
   - src/main/java/com/airbyte/api/models/shared/SourcePypi.java
   - src/main/java/com/airbyte/api/models/shared/Qualaroo.java
@@ -1738,29 +1830,18 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceRkiCovid.java
   - src/main/java/com/airbyte/api/models/shared/Rss.java
   - src/main/java/com/airbyte/api/models/shared/SourceRss.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasFormatFiletype.java
-  - src/main/java/com/airbyte/api/models/shared/UnexpectedFieldBehavior.java
-  - src/main/java/com/airbyte/api/models/shared/Jsonl.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasFiletype.java
-  - src/main/java/com/airbyte/api/models/shared/Avro.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3Filetype.java
-  - src/main/java/com/airbyte/api/models/shared/Parquet.java
-  - src/main/java/com/airbyte/api/models/shared/Filetype.java
-  - src/main/java/com/airbyte/api/models/shared/Csv.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3FileFormat.java
-  - src/main/java/com/airbyte/api/models/shared/S3AmazonWebServices.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3S3.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFormat5Filetype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFormatFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Mode.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Local.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Processing.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3ParsingStrategy.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3UnstructuredDocumentFormat.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFormat4Filetype.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3ParquetFormat.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFormatFiletype.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3JsonlFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFormatFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3ParquetFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3JsonlFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3UserProvided.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasHeaderDefinitionType.java
@@ -1768,9 +1849,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceS3HeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3FromCSV.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3CSVHeaderDefinition.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3InferenceType.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3CSVFormat.java
-  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3Filetype.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3AvroFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Format.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3ValidationPolicy.java
@@ -1840,7 +1920,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkFromCSV.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkCSVHeaderDefinition.java
-  - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkInferenceType.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkCSVFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpBulkAvroFormat.java
@@ -1855,6 +1934,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ShopifyAuthorizationMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceShopifyShopify.java
   - src/main/java/com/airbyte/api/models/shared/SourceShopify.java
+  - src/main/java/com/airbyte/api/models/shared/Shortcut.java
+  - src/main/java/com/airbyte/api/models/shared/SourceShortcut.java
   - src/main/java/com/airbyte/api/models/shared/Shortio.java
   - src/main/java/com/airbyte/api/models/shared/SourceShortio.java
   - src/main/java/com/airbyte/api/models/shared/SourceSlackSchemasOptionTitle.java
@@ -1918,6 +1999,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/OriginDatacenterOfTheSurveyMonkeyAccount.java
   - src/main/java/com/airbyte/api/models/shared/SourceSurveymonkeySurveymonkey.java
   - src/main/java/com/airbyte/api/models/shared/SourceSurveymonkey.java
+  - src/main/java/com/airbyte/api/models/shared/Survicate.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSurvicate.java
+  - src/main/java/com/airbyte/api/models/shared/Teamwork.java
+  - src/main/java/com/airbyte/api/models/shared/SourceTeamwork.java
   - src/main/java/com/airbyte/api/models/shared/Tempo.java
   - src/main/java/com/airbyte/api/models/shared/SourceTempo.java
   - src/main/java/com/airbyte/api/models/shared/TheGuardianApi.java
@@ -1959,6 +2044,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceVantage.java
   - src/main/java/com/airbyte/api/models/shared/Webflow.java
   - src/main/java/com/airbyte/api/models/shared/SourceWebflow.java
+  - src/main/java/com/airbyte/api/models/shared/WhenIWork.java
+  - src/main/java/com/airbyte/api/models/shared/SourceWhenIWork.java
   - src/main/java/com/airbyte/api/models/shared/WhiskyHunter.java
   - src/main/java/com/airbyte/api/models/shared/SourceWhiskyHunter.java
   - src/main/java/com/airbyte/api/models/shared/WikipediaPageviews.java
@@ -1980,8 +2067,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceZendeskChatAuthorizationMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceZendeskChatZendeskChat.java
   - src/main/java/com/airbyte/api/models/shared/SourceZendeskChat.java
-  - src/main/java/com/airbyte/api/models/shared/ZendeskSell.java
-  - src/main/java/com/airbyte/api/models/shared/SourceZendeskSell.java
   - src/main/java/com/airbyte/api/models/shared/SourceZendeskSunshineSchemasAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceZendeskSunshineAPIToken.java
   - src/main/java/com/airbyte/api/models/shared/SourceZendeskSunshineAuthMethod.java
@@ -2266,22 +2351,26 @@ generatedFiles:
   - docs/models/shared/Authentication.md
   - docs/models/shared/Databricks.md
   - docs/models/shared/DestinationDatabricks.md
-  - docs/models/shared/DevNull.md
-  - docs/models/shared/TestDestinationType.md
-  - docs/models/shared/Silent.md
-  - docs/models/shared/TestDestination.md
-  - docs/models/shared/DestinationDevNull.md
   - docs/models/shared/Duckdb.md
   - docs/models/shared/DestinationDuckdb.md
   - docs/models/shared/Dynamodb.md
   - docs/models/shared/DynamoDBRegion.md
   - docs/models/shared/DestinationDynamodb.md
-  - docs/models/shared/DestinationElasticsearchSchemasMethod.md
+  - docs/models/shared/DestinationElasticsearchSchemasAuthenticationMethodMethod.md
   - docs/models/shared/UsernamePassword.md
-  - docs/models/shared/DestinationElasticsearchMethod.md
+  - docs/models/shared/DestinationElasticsearchSchemasMethod.md
   - docs/models/shared/ApiKeySecret.md
+  - docs/models/shared/DestinationElasticsearchMethod.md
+  - docs/models/shared/None.md
   - docs/models/shared/AuthenticationMethod.md
   - docs/models/shared/Elasticsearch.md
+  - docs/models/shared/DestinationElasticsearchSchemasTunnelMethodTunnelMethod.md
+  - docs/models/shared/DestinationElasticsearchPasswordAuthentication.md
+  - docs/models/shared/DestinationElasticsearchSchemasTunnelMethod.md
+  - docs/models/shared/DestinationElasticsearchSSHKeyAuthentication.md
+  - docs/models/shared/DestinationElasticsearchTunnelMethod.md
+  - docs/models/shared/DestinationElasticsearchNoTunnel.md
+  - docs/models/shared/DestinationElasticsearchSSHTunnelMethod.md
   - docs/models/shared/DestinationElasticsearch.md
   - docs/models/shared/Firebolt.md
   - docs/models/shared/DestinationFireboltSchemasMethod.md
@@ -2366,7 +2455,7 @@ generatedFiles:
   - docs/models/shared/DestinationMongodbAuthorization.md
   - docs/models/shared/LoginPassword.md
   - docs/models/shared/DestinationMongodbSchemasAuthorization.md
-  - docs/models/shared/None.md
+  - docs/models/shared/DestinationMongodbNone.md
   - docs/models/shared/AuthorizationType.md
   - docs/models/shared/Mongodb.md
   - docs/models/shared/DestinationMongodbSchemasInstance.md
@@ -2385,10 +2474,12 @@ generatedFiles:
   - docs/models/shared/DestinationMongodbSSHTunnelMethod.md
   - docs/models/shared/DestinationMongodb.md
   - docs/models/shared/Mssql.md
-  - docs/models/shared/DestinationMssqlSchemasSslMethod.md
+  - docs/models/shared/DestinationMssqlSchemasSslMethodSslMethod.md
   - docs/models/shared/EncryptedVerifyCertificate.md
-  - docs/models/shared/DestinationMssqlSslMethod.md
+  - docs/models/shared/DestinationMssqlSchemasSslMethod.md
   - docs/models/shared/EncryptedTrustServerCertificate.md
+  - docs/models/shared/DestinationMssqlSslMethod.md
+  - docs/models/shared/Unencrypted.md
   - docs/models/shared/SSLMethod.md
   - docs/models/shared/DestinationMssqlSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/DestinationMssqlPasswordAuthentication.md
@@ -2408,6 +2499,14 @@ generatedFiles:
   - docs/models/shared/DestinationMysqlSSHTunnelMethod.md
   - docs/models/shared/DestinationMysql.md
   - docs/models/shared/Oracle.md
+  - docs/models/shared/DestinationOracleSchemasEncryptionMethod.md
+  - docs/models/shared/TLSEncryptedVerifyCertificate.md
+  - docs/models/shared/EncryptionAlgorithm.md
+  - docs/models/shared/DestinationOracleEncryptionMethod.md
+  - docs/models/shared/NativeNetworkEncryptionNNE.md
+  - docs/models/shared/EncryptionMethod.md
+  - docs/models/shared/DestinationOracleUnencrypted.md
+  - docs/models/shared/Encryption.md
   - docs/models/shared/DestinationOracleSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/DestinationOraclePasswordAuthentication.md
   - docs/models/shared/DestinationOracleSchemasTunnelMethod.md
@@ -2416,6 +2515,31 @@ generatedFiles:
   - docs/models/shared/DestinationOracleNoTunnel.md
   - docs/models/shared/DestinationOracleSSHTunnelMethod.md
   - docs/models/shared/DestinationOracle.md
+  - docs/models/shared/Pgvector.md
+  - docs/models/shared/DestinationPgvectorSchemasEmbeddingEmbedding5Mode.md
+  - docs/models/shared/DestinationPgvectorOpenAICompatible.md
+  - docs/models/shared/DestinationPgvectorSchemasEmbeddingEmbeddingMode.md
+  - docs/models/shared/DestinationPgvectorAzureOpenAI.md
+  - docs/models/shared/DestinationPgvectorSchemasEmbeddingMode.md
+  - docs/models/shared/DestinationPgvectorFake.md
+  - docs/models/shared/DestinationPgvectorSchemasMode.md
+  - docs/models/shared/DestinationPgvectorCohere.md
+  - docs/models/shared/DestinationPgvectorMode.md
+  - docs/models/shared/DestinationPgvectorOpenAI.md
+  - docs/models/shared/DestinationPgvectorEmbedding.md
+  - docs/models/shared/DestinationPgvectorCredentials.md
+  - docs/models/shared/PostgresConnection.md
+  - docs/models/shared/DestinationPgvectorFieldNameMappingConfigModel.md
+  - docs/models/shared/DestinationPgvectorLanguage.md
+  - docs/models/shared/DestinationPgvectorSchemasProcessingTextSplitterTextSplitterMode.md
+  - docs/models/shared/DestinationPgvectorByProgrammingLanguage.md
+  - docs/models/shared/DestinationPgvectorSchemasProcessingTextSplitterMode.md
+  - docs/models/shared/DestinationPgvectorByMarkdownHeader.md
+  - docs/models/shared/DestinationPgvectorSchemasProcessingMode.md
+  - docs/models/shared/DestinationPgvectorBySeparator.md
+  - docs/models/shared/DestinationPgvectorTextSplitter.md
+  - docs/models/shared/DestinationPgvectorProcessingConfigModel.md
+  - docs/models/shared/DestinationPgvector.md
   - docs/models/shared/Pinecone.md
   - docs/models/shared/DestinationPineconeSchemasEmbeddingEmbedding5Mode.md
   - docs/models/shared/DestinationPineconeOpenAICompatible.md
@@ -2713,6 +2837,8 @@ generatedFiles:
   - docs/models/shared/SourceConfiguration.md
   - docs/models/shared/Aha.md
   - docs/models/shared/SourceAha.md
+  - docs/models/shared/Sevenshifts.md
+  - docs/models/shared/Source7shifts.md
   - docs/models/shared/Airbyte.md
   - docs/models/shared/SourceAirbyte.md
   - docs/models/shared/Aircall.md
@@ -2747,6 +2873,11 @@ generatedFiles:
   - docs/models/shared/SourceAmplitude.md
   - docs/models/shared/ApifyDataset.md
   - docs/models/shared/SourceApifyDataset.md
+  - docs/models/shared/Appcues.md
+  - docs/models/shared/SourceAppcues.md
+  - docs/models/shared/GroupBy.md
+  - docs/models/shared/Appfigures.md
+  - docs/models/shared/SourceAppfigures.md
   - docs/models/shared/Appfollow.md
   - docs/models/shared/SourceAppfollow.md
   - docs/models/shared/SourceAsanaSchemasCredentialsTitle.md
@@ -2790,9 +2921,8 @@ generatedFiles:
   - docs/models/shared/HeaderDefinitionType.md
   - docs/models/shared/FromCSV.md
   - docs/models/shared/CSVHeaderDefinition.md
-  - docs/models/shared/InferenceType.md
   - docs/models/shared/CSVFormat.md
-  - docs/models/shared/SourceAzureBlobStorageSchemasStreamsFormatFormatFiletype.md
+  - docs/models/shared/Filetype.md
   - docs/models/shared/AvroFormat.md
   - docs/models/shared/Format.md
   - docs/models/shared/ValidationPolicy.md
@@ -2813,6 +2943,8 @@ generatedFiles:
   - docs/models/shared/CustomReportConfig.md
   - docs/models/shared/SourceBingAdsBingAds.md
   - docs/models/shared/SourceBingAds.md
+  - docs/models/shared/Bitly.md
+  - docs/models/shared/SourceBitly.md
   - docs/models/shared/SourceBraintreeEnvironment.md
   - docs/models/shared/Braintree.md
   - docs/models/shared/SourceBraintree.md
@@ -2820,8 +2952,16 @@ generatedFiles:
   - docs/models/shared/SourceBraze.md
   - docs/models/shared/BreezyHr.md
   - docs/models/shared/SourceBreezyHr.md
+  - docs/models/shared/Brevo.md
+  - docs/models/shared/SourceBrevo.md
+  - docs/models/shared/Buildkite.md
+  - docs/models/shared/SourceBuildkite.md
+  - docs/models/shared/Buzzsprout.md
+  - docs/models/shared/SourceBuzzsprout.md
   - docs/models/shared/Calendly.md
   - docs/models/shared/SourceCalendly.md
+  - docs/models/shared/Canny.md
+  - docs/models/shared/SourceCanny.md
   - docs/models/shared/SourceCartSchemasAuthType.md
   - docs/models/shared/SingleStoreAccessToken.md
   - docs/models/shared/SourceCartAuthType.md
@@ -2829,11 +2969,18 @@ generatedFiles:
   - docs/models/shared/SourceCartAuthorizationMethod.md
   - docs/models/shared/Cart.md
   - docs/models/shared/SourceCart.md
+  - docs/models/shared/Filter.md
+  - docs/models/shared/Chameleon.md
+  - docs/models/shared/SourceChameleon.md
   - docs/models/shared/ProductCatalog.md
   - docs/models/shared/Chargebee.md
   - docs/models/shared/SourceChargebee.md
   - docs/models/shared/Chartmogul.md
   - docs/models/shared/SourceChartmogul.md
+  - docs/models/shared/Cimis.md
+  - docs/models/shared/TargetsType.md
+  - docs/models/shared/UnitOfMeasure.md
+  - docs/models/shared/SourceCimis.md
   - docs/models/shared/Clazar.md
   - docs/models/shared/SourceClazar.md
   - docs/models/shared/SourceClickhouseClickhouse.md
@@ -2887,11 +3034,12 @@ generatedFiles:
   - docs/models/shared/SourceDynamodbDynamodbRegion.md
   - docs/models/shared/SourceDynamodbDynamodb.md
   - docs/models/shared/SourceDynamodb.md
-  - docs/models/shared/SourceE2eTestCloud.md
   - docs/models/shared/Emailoctopus.md
   - docs/models/shared/SourceEmailoctopus.md
   - docs/models/shared/ExchangeRates.md
   - docs/models/shared/SourceExchangeRates.md
+  - docs/models/shared/Ezofficeinventory.md
+  - docs/models/shared/SourceEzofficeinventory.md
   - docs/models/shared/ValidAdStatuses.md
   - docs/models/shared/ValidAdSetStatuses.md
   - docs/models/shared/ValidCampaignStatuses.md
@@ -2919,6 +3067,8 @@ generatedFiles:
   - docs/models/shared/Fauna.md
   - docs/models/shared/SourceFauna.md
   - docs/models/shared/FileFormat.md
+  - docs/models/shared/SourceFileSchemasProviderStorageProvider8Storage.md
+  - docs/models/shared/LocalFilesystemLimited.md
   - docs/models/shared/SourceFileSchemasProviderStorageProvider7Storage.md
   - docs/models/shared/SFTPSecureFileTransferProtocol.md
   - docs/models/shared/SourceFileSchemasProviderStorageProvider6Storage.md
@@ -2928,7 +3078,7 @@ generatedFiles:
   - docs/models/shared/SourceFileSchemasProviderStorage.md
   - docs/models/shared/AzBlobAzureBlobStorage.md
   - docs/models/shared/SourceFileSchemasStorage.md
-  - docs/models/shared/SourceFileS3AmazonWebServices.md
+  - docs/models/shared/S3AmazonWebServices.md
   - docs/models/shared/SourceFileStorage.md
   - docs/models/shared/GCSGoogleCloudStorage.md
   - docs/models/shared/Storage.md
@@ -2946,6 +3096,8 @@ generatedFiles:
   - docs/models/shared/SourceFreshdesk.md
   - docs/models/shared/Freshsales.md
   - docs/models/shared/SourceFreshsales.md
+  - docs/models/shared/Front.md
+  - docs/models/shared/SourceFront.md
   - docs/models/shared/GainsightPx.md
   - docs/models/shared/SourceGainsightPx.md
   - docs/models/shared/SourceGcsGcs.md
@@ -2972,7 +3124,6 @@ generatedFiles:
   - docs/models/shared/SourceGcsHeaderDefinitionType.md
   - docs/models/shared/SourceGcsFromCSV.md
   - docs/models/shared/SourceGcsCSVHeaderDefinition.md
-  - docs/models/shared/SourceGcsInferenceType.md
   - docs/models/shared/SourceGcsCSVFormat.md
   - docs/models/shared/SourceGcsFiletype.md
   - docs/models/shared/SourceGcsAvroFormat.md
@@ -3054,9 +3205,9 @@ generatedFiles:
   - docs/models/shared/FilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiValidEnums.md
   - docs/models/shared/StringFilter.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasFilter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilterType.md
-  - docs/models/shared/Filter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiFilter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionFilterFilterFilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionFilterFilterValueType.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3ExpressionDoubleValue.md
@@ -3082,7 +3233,7 @@ generatedFiles:
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3FilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterValidEnums.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasStringFilter.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter3Filter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasExpression.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasFilterType.md
   - docs/models/shared/NotExpression.md
@@ -3111,7 +3262,7 @@ generatedFiles:
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2ValidEnums.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterStringFilter.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiExpression.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiFilterType.md
   - docs/models/shared/OrGroup.md
@@ -3140,7 +3291,7 @@ generatedFiles:
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1FilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1ValidEnums.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayStringFilter.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter1Filter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterFilter.md
   - docs/models/shared/Expression.md
   - docs/models/shared/FilterType.md
   - docs/models/shared/AndGroup.md
@@ -3170,9 +3321,9 @@ generatedFiles:
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiStringFilter.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayFilter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiFilter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasFilter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ExpressionFilterFilterFilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ExpressionFilterFilterValueType.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter3ExpressionDoubleValue.md
@@ -3256,7 +3407,7 @@ generatedFiles:
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsFilterFilterName.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ValidEnums.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterStringFilter.md
-  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter.md
+  - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1Filter.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayExpression.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilterType.md
   - docs/models/shared/SourceGoogleAnalyticsDataApiAndGroup.md
@@ -3323,16 +3474,22 @@ generatedFiles:
   - docs/models/shared/SourceGoogleSheetsAuthentication.md
   - docs/models/shared/SourceGoogleSheetsGoogleSheets.md
   - docs/models/shared/SourceGoogleSheets.md
+  - docs/models/shared/GoogleTasks.md
+  - docs/models/shared/SourceGoogleTasks.md
   - docs/models/shared/GoogleWebfonts.md
   - docs/models/shared/SourceGoogleWebfonts.md
   - docs/models/shared/Greenhouse.md
   - docs/models/shared/SourceGreenhouse.md
   - docs/models/shared/Gridly.md
   - docs/models/shared/SourceGridly.md
+  - docs/models/shared/Guru.md
+  - docs/models/shared/SourceGuru.md
   - docs/models/shared/HardcodedRecords.md
   - docs/models/shared/SourceHardcodedRecords.md
   - docs/models/shared/Harvest.md
   - docs/models/shared/SourceHarvest.md
+  - docs/models/shared/Height.md
+  - docs/models/shared/SourceHeight.md
   - docs/models/shared/Hibob.md
   - docs/models/shared/SourceHibob.md
   - docs/models/shared/HighLevel.md
@@ -3358,9 +3515,16 @@ generatedFiles:
   - docs/models/shared/SourceIp2whois.md
   - docs/models/shared/Iterable.md
   - docs/models/shared/SourceIterable.md
-  - docs/models/shared/IssuesStreamExpandWith.md
   - docs/models/shared/Jira.md
   - docs/models/shared/SourceJira.md
+  - docs/models/shared/SourceJotformSchemasApiEndpoint.md
+  - docs/models/shared/Enterprise.md
+  - docs/models/shared/SourceJotformApiEndpoint.md
+  - docs/models/shared/BaseURLPrefix.md
+  - docs/models/shared/Basic.md
+  - docs/models/shared/APIEndpoint.md
+  - docs/models/shared/Jotform.md
+  - docs/models/shared/SourceJotform.md
   - docs/models/shared/K6Cloud.md
   - docs/models/shared/SourceK6Cloud.md
   - docs/models/shared/SourceKlarnaRegion.md
@@ -3530,7 +3694,7 @@ generatedFiles:
   - docs/models/shared/SourceMssqlSchemasSslMethodSslMethod.md
   - docs/models/shared/SourceMssqlEncryptedTrustServerCertificate.md
   - docs/models/shared/SourceMssqlSchemasSslMethod.md
-  - docs/models/shared/Unencrypted.md
+  - docs/models/shared/SourceMssqlUnencrypted.md
   - docs/models/shared/SourceMssqlSSLMethod.md
   - docs/models/shared/SourceMssqlSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/SourceMssqlPasswordAuthentication.md
@@ -3577,6 +3741,9 @@ generatedFiles:
   - docs/models/shared/SourceNotionAuthenticationMethod.md
   - docs/models/shared/SourceNotionNotion.md
   - docs/models/shared/SourceNotion.md
+  - docs/models/shared/APIServer.md
+  - docs/models/shared/Nylas.md
+  - docs/models/shared/SourceNylas.md
   - docs/models/shared/PeriodUsedForMostPopularStreams.md
   - docs/models/shared/ShareTypeUsedForMostPopularSharedStream.md
   - docs/models/shared/Nytimes.md
@@ -3600,12 +3767,14 @@ generatedFiles:
   - docs/models/shared/ConnectionType.md
   - docs/models/shared/ServiceName.md
   - docs/models/shared/ConnectBy.md
+  - docs/models/shared/SourceOracleSchemasEncryptionEncryptionMethod.md
+  - docs/models/shared/SourceOracleTLSEncryptedVerifyCertificate.md
+  - docs/models/shared/SourceOracleEncryptionAlgorithm.md
+  - docs/models/shared/SourceOracleSchemasEncryptionMethod.md
+  - docs/models/shared/SourceOracleNativeNetworkEncryptionNNE.md
   - docs/models/shared/SourceOracleEncryptionMethod.md
-  - docs/models/shared/TLSEncryptedVerifyCertificate.md
-  - docs/models/shared/EncryptionAlgorithm.md
-  - docs/models/shared/EncryptionMethod.md
-  - docs/models/shared/NativeNetworkEncryptionNNE.md
-  - docs/models/shared/Encryption.md
+  - docs/models/shared/SourceOracleUnencrypted.md
+  - docs/models/shared/SourceOracleEncryption.md
   - docs/models/shared/SourceOracleOracle.md
   - docs/models/shared/SourceOracleSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/SourceOraclePasswordAuthentication.md
@@ -3642,6 +3811,8 @@ generatedFiles:
   - docs/models/shared/SourcePersistiq.md
   - docs/models/shared/PexelsApi.md
   - docs/models/shared/SourcePexelsApi.md
+  - docs/models/shared/Picqer.md
+  - docs/models/shared/SourcePicqer.md
   - docs/models/shared/SourcePinterestAuthMethod.md
   - docs/models/shared/OAuth20.md
   - docs/models/shared/SourcePinterestValidEnums.md
@@ -3658,6 +3829,8 @@ generatedFiles:
   - docs/models/shared/SourcePinterest.md
   - docs/models/shared/Pipedrive.md
   - docs/models/shared/SourcePipedrive.md
+  - docs/models/shared/Piwik.md
+  - docs/models/shared/SourcePiwik.md
   - docs/models/shared/Planhat.md
   - docs/models/shared/SourcePlanhat.md
   - docs/models/shared/ContentType.md
@@ -3691,6 +3864,10 @@ generatedFiles:
   - docs/models/shared/SourcePostmarkapp.md
   - docs/models/shared/Prestashop.md
   - docs/models/shared/SourcePrestashop.md
+  - docs/models/shared/Productboard.md
+  - docs/models/shared/SourceProductboard.md
+  - docs/models/shared/Productive.md
+  - docs/models/shared/SourceProductive.md
   - docs/models/shared/Pypi.md
   - docs/models/shared/SourcePypi.md
   - docs/models/shared/Qualaroo.md
@@ -3715,29 +3892,18 @@ generatedFiles:
   - docs/models/shared/SourceRkiCovid.md
   - docs/models/shared/Rss.md
   - docs/models/shared/SourceRss.md
-  - docs/models/shared/SourceS3SchemasFormatFiletype.md
-  - docs/models/shared/UnexpectedFieldBehavior.md
-  - docs/models/shared/Jsonl.md
-  - docs/models/shared/SourceS3SchemasFiletype.md
-  - docs/models/shared/Avro.md
-  - docs/models/shared/SourceS3Filetype.md
-  - docs/models/shared/Parquet.md
-  - docs/models/shared/Filetype.md
-  - docs/models/shared/Csv.md
-  - docs/models/shared/SourceS3FileFormat.md
-  - docs/models/shared/S3AmazonWebServices.md
   - docs/models/shared/SourceS3S3.md
-  - docs/models/shared/SourceS3SchemasStreamsFormatFormat5Filetype.md
+  - docs/models/shared/SourceS3SchemasStreamsFormatFormatFiletype.md
   - docs/models/shared/SourceS3Mode.md
   - docs/models/shared/SourceS3Local.md
   - docs/models/shared/SourceS3Processing.md
   - docs/models/shared/SourceS3ParsingStrategy.md
   - docs/models/shared/SourceS3UnstructuredDocumentFormat.md
-  - docs/models/shared/SourceS3SchemasStreamsFormatFormat4Filetype.md
-  - docs/models/shared/SourceS3ParquetFormat.md
-  - docs/models/shared/SourceS3SchemasStreamsFormatFormatFiletype.md
-  - docs/models/shared/SourceS3JsonlFormat.md
   - docs/models/shared/SourceS3SchemasStreamsFormatFiletype.md
+  - docs/models/shared/SourceS3ParquetFormat.md
+  - docs/models/shared/SourceS3SchemasStreamsFiletype.md
+  - docs/models/shared/SourceS3JsonlFormat.md
+  - docs/models/shared/SourceS3SchemasFiletype.md
   - docs/models/shared/SourceS3SchemasStreamsHeaderDefinitionType.md
   - docs/models/shared/SourceS3UserProvided.md
   - docs/models/shared/SourceS3SchemasHeaderDefinitionType.md
@@ -3745,9 +3911,8 @@ generatedFiles:
   - docs/models/shared/SourceS3HeaderDefinitionType.md
   - docs/models/shared/SourceS3FromCSV.md
   - docs/models/shared/SourceS3CSVHeaderDefinition.md
-  - docs/models/shared/SourceS3InferenceType.md
   - docs/models/shared/SourceS3CSVFormat.md
-  - docs/models/shared/SourceS3SchemasStreamsFiletype.md
+  - docs/models/shared/SourceS3Filetype.md
   - docs/models/shared/SourceS3AvroFormat.md
   - docs/models/shared/SourceS3Format.md
   - docs/models/shared/SourceS3ValidationPolicy.md
@@ -3817,7 +3982,6 @@ generatedFiles:
   - docs/models/shared/SourceSftpBulkHeaderDefinitionType.md
   - docs/models/shared/SourceSftpBulkFromCSV.md
   - docs/models/shared/SourceSftpBulkCSVHeaderDefinition.md
-  - docs/models/shared/SourceSftpBulkInferenceType.md
   - docs/models/shared/SourceSftpBulkCSVFormat.md
   - docs/models/shared/SourceSftpBulkFiletype.md
   - docs/models/shared/SourceSftpBulkAvroFormat.md
@@ -3832,6 +3996,8 @@ generatedFiles:
   - docs/models/shared/ShopifyAuthorizationMethod.md
   - docs/models/shared/SourceShopifyShopify.md
   - docs/models/shared/SourceShopify.md
+  - docs/models/shared/Shortcut.md
+  - docs/models/shared/SourceShortcut.md
   - docs/models/shared/Shortio.md
   - docs/models/shared/SourceShortio.md
   - docs/models/shared/SourceSlackSchemasOptionTitle.md
@@ -3895,6 +4061,10 @@ generatedFiles:
   - docs/models/shared/OriginDatacenterOfTheSurveyMonkeyAccount.md
   - docs/models/shared/SourceSurveymonkeySurveymonkey.md
   - docs/models/shared/SourceSurveymonkey.md
+  - docs/models/shared/Survicate.md
+  - docs/models/shared/SourceSurvicate.md
+  - docs/models/shared/Teamwork.md
+  - docs/models/shared/SourceTeamwork.md
   - docs/models/shared/Tempo.md
   - docs/models/shared/SourceTempo.md
   - docs/models/shared/TheGuardianApi.md
@@ -3936,6 +4106,8 @@ generatedFiles:
   - docs/models/shared/SourceVantage.md
   - docs/models/shared/Webflow.md
   - docs/models/shared/SourceWebflow.md
+  - docs/models/shared/WhenIWork.md
+  - docs/models/shared/SourceWhenIWork.md
   - docs/models/shared/WhiskyHunter.md
   - docs/models/shared/SourceWhiskyHunter.md
   - docs/models/shared/WikipediaPageviews.md
@@ -3957,8 +4129,6 @@ generatedFiles:
   - docs/models/shared/SourceZendeskChatAuthorizationMethod.md
   - docs/models/shared/SourceZendeskChatZendeskChat.md
   - docs/models/shared/SourceZendeskChat.md
-  - docs/models/shared/ZendeskSell.md
-  - docs/models/shared/SourceZendeskSell.md
   - docs/models/shared/SourceZendeskSunshineSchemasAuthMethod.md
   - docs/models/shared/SourceZendeskSunshineAPIToken.md
   - docs/models/shared/SourceZendeskSunshineAuthMethod.md

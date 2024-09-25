@@ -38,13 +38,6 @@ public class SourceHarvest {
     private Optional<? extends java.lang.Object> credentials;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("replication_end_date")
-    private Optional<? extends OffsetDateTime> replicationEndDate;
-
-    /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
     @JsonProperty("replication_start_date")
@@ -57,15 +50,12 @@ public class SourceHarvest {
     public SourceHarvest(
             @JsonProperty("account_id") String accountId,
             @JsonProperty("credentials") Optional<? extends java.lang.Object> credentials,
-            @JsonProperty("replication_end_date") Optional<? extends OffsetDateTime> replicationEndDate,
             @JsonProperty("replication_start_date") OffsetDateTime replicationStartDate) {
         Utils.checkNotNull(accountId, "accountId");
         Utils.checkNotNull(credentials, "credentials");
-        Utils.checkNotNull(replicationEndDate, "replicationEndDate");
         Utils.checkNotNull(replicationStartDate, "replicationStartDate");
         this.accountId = accountId;
         this.credentials = credentials;
-        this.replicationEndDate = replicationEndDate;
         this.replicationStartDate = replicationStartDate;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
@@ -73,7 +63,7 @@ public class SourceHarvest {
     public SourceHarvest(
             String accountId,
             OffsetDateTime replicationStartDate) {
-        this(accountId, Optional.empty(), Optional.empty(), replicationStartDate);
+        this(accountId, Optional.empty(), replicationStartDate);
     }
 
     /**
@@ -91,15 +81,6 @@ public class SourceHarvest {
     @JsonIgnore
     public Optional<java.lang.Object> credentials() {
         return (Optional<java.lang.Object>) credentials;
-    }
-
-    /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<OffsetDateTime> replicationEndDate() {
-        return (Optional<OffsetDateTime>) replicationEndDate;
     }
 
     /**
@@ -147,24 +128,6 @@ public class SourceHarvest {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
-     */
-    public SourceHarvest withReplicationEndDate(OffsetDateTime replicationEndDate) {
-        Utils.checkNotNull(replicationEndDate, "replicationEndDate");
-        this.replicationEndDate = Optional.ofNullable(replicationEndDate);
-        return this;
-    }
-
-    /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
-     */
-    public SourceHarvest withReplicationEndDate(Optional<? extends OffsetDateTime> replicationEndDate) {
-        Utils.checkNotNull(replicationEndDate, "replicationEndDate");
-        this.replicationEndDate = replicationEndDate;
-        return this;
-    }
-
-    /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
     public SourceHarvest withReplicationStartDate(OffsetDateTime replicationStartDate) {
@@ -185,7 +148,6 @@ public class SourceHarvest {
         return 
             java.util.Objects.deepEquals(this.accountId, other.accountId) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
-            java.util.Objects.deepEquals(this.replicationEndDate, other.replicationEndDate) &&
             java.util.Objects.deepEquals(this.replicationStartDate, other.replicationStartDate) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType);
     }
@@ -195,7 +157,6 @@ public class SourceHarvest {
         return java.util.Objects.hash(
             accountId,
             credentials,
-            replicationEndDate,
             replicationStartDate,
             sourceType);
     }
@@ -205,7 +166,6 @@ public class SourceHarvest {
         return Utils.toString(SourceHarvest.class,
                 "accountId", accountId,
                 "credentials", credentials,
-                "replicationEndDate", replicationEndDate,
                 "replicationStartDate", replicationStartDate,
                 "sourceType", sourceType);
     }
@@ -215,8 +175,6 @@ public class SourceHarvest {
         private String accountId;
  
         private Optional<? extends java.lang.Object> credentials = Optional.empty();
- 
-        private Optional<? extends OffsetDateTime> replicationEndDate = Optional.empty();
  
         private OffsetDateTime replicationStartDate;  
         
@@ -252,24 +210,6 @@ public class SourceHarvest {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
-         */
-        public Builder replicationEndDate(OffsetDateTime replicationEndDate) {
-            Utils.checkNotNull(replicationEndDate, "replicationEndDate");
-            this.replicationEndDate = Optional.ofNullable(replicationEndDate);
-            return this;
-        }
-
-        /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
-         */
-        public Builder replicationEndDate(Optional<? extends OffsetDateTime> replicationEndDate) {
-            Utils.checkNotNull(replicationEndDate, "replicationEndDate");
-            this.replicationEndDate = replicationEndDate;
-            return this;
-        }
-
-        /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
         public Builder replicationStartDate(OffsetDateTime replicationStartDate) {
@@ -282,7 +222,6 @@ public class SourceHarvest {
             return new SourceHarvest(
                 accountId,
                 credentials,
-                replicationEndDate,
                 replicationStartDate);
         }
 

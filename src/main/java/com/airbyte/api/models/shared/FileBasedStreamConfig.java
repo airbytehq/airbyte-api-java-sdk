@@ -49,24 +49,10 @@ public class FileBasedStreamConfig {
     private Optional<? extends String> inputSchema;
 
     /**
-     * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("legacy_prefix")
-    private Optional<? extends String> legacyPrefix;
-
-    /**
      * The name of the stream.
      */
     @JsonProperty("name")
     private String name;
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("primary_key")
-    private Optional<? extends String> primaryKey;
 
     /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
@@ -88,27 +74,21 @@ public class FileBasedStreamConfig {
             @JsonProperty("format") Format format,
             @JsonProperty("globs") Optional<? extends java.util.List<String>> globs,
             @JsonProperty("input_schema") Optional<? extends String> inputSchema,
-            @JsonProperty("legacy_prefix") Optional<? extends String> legacyPrefix,
             @JsonProperty("name") String name,
-            @JsonProperty("primary_key") Optional<? extends String> primaryKey,
             @JsonProperty("schemaless") Optional<? extends Boolean> schemaless,
             @JsonProperty("validation_policy") Optional<? extends ValidationPolicy> validationPolicy) {
         Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
         Utils.checkNotNull(format, "format");
         Utils.checkNotNull(globs, "globs");
         Utils.checkNotNull(inputSchema, "inputSchema");
-        Utils.checkNotNull(legacyPrefix, "legacyPrefix");
         Utils.checkNotNull(name, "name");
-        Utils.checkNotNull(primaryKey, "primaryKey");
         Utils.checkNotNull(schemaless, "schemaless");
         Utils.checkNotNull(validationPolicy, "validationPolicy");
         this.daysToSyncIfHistoryIsFull = daysToSyncIfHistoryIsFull;
         this.format = format;
         this.globs = globs;
         this.inputSchema = inputSchema;
-        this.legacyPrefix = legacyPrefix;
         this.name = name;
-        this.primaryKey = primaryKey;
         this.schemaless = schemaless;
         this.validationPolicy = validationPolicy;
     }
@@ -116,7 +96,7 @@ public class FileBasedStreamConfig {
     public FileBasedStreamConfig(
             Format format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -155,29 +135,11 @@ public class FileBasedStreamConfig {
     }
 
     /**
-     * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> legacyPrefix() {
-        return (Optional<String>) legacyPrefix;
-    }
-
-    /**
      * The name of the stream.
      */
     @JsonIgnore
     public String name() {
         return name;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> primaryKey() {
-        return (Optional<String>) primaryKey;
     }
 
     /**
@@ -266,47 +228,11 @@ public class FileBasedStreamConfig {
     }
 
     /**
-     * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
-     */
-    public FileBasedStreamConfig withLegacyPrefix(String legacyPrefix) {
-        Utils.checkNotNull(legacyPrefix, "legacyPrefix");
-        this.legacyPrefix = Optional.ofNullable(legacyPrefix);
-        return this;
-    }
-
-    /**
-     * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
-     */
-    public FileBasedStreamConfig withLegacyPrefix(Optional<? extends String> legacyPrefix) {
-        Utils.checkNotNull(legacyPrefix, "legacyPrefix");
-        this.legacyPrefix = legacyPrefix;
-        return this;
-    }
-
-    /**
      * The name of the stream.
      */
     public FileBasedStreamConfig withName(String name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
-        return this;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    public FileBasedStreamConfig withPrimaryKey(String primaryKey) {
-        Utils.checkNotNull(primaryKey, "primaryKey");
-        this.primaryKey = Optional.ofNullable(primaryKey);
-        return this;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    public FileBasedStreamConfig withPrimaryKey(Optional<? extends String> primaryKey) {
-        Utils.checkNotNull(primaryKey, "primaryKey");
-        this.primaryKey = primaryKey;
         return this;
     }
 
@@ -360,9 +286,7 @@ public class FileBasedStreamConfig {
             java.util.Objects.deepEquals(this.format, other.format) &&
             java.util.Objects.deepEquals(this.globs, other.globs) &&
             java.util.Objects.deepEquals(this.inputSchema, other.inputSchema) &&
-            java.util.Objects.deepEquals(this.legacyPrefix, other.legacyPrefix) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
-            java.util.Objects.deepEquals(this.primaryKey, other.primaryKey) &&
             java.util.Objects.deepEquals(this.schemaless, other.schemaless) &&
             java.util.Objects.deepEquals(this.validationPolicy, other.validationPolicy);
     }
@@ -374,9 +298,7 @@ public class FileBasedStreamConfig {
             format,
             globs,
             inputSchema,
-            legacyPrefix,
             name,
-            primaryKey,
             schemaless,
             validationPolicy);
     }
@@ -388,9 +310,7 @@ public class FileBasedStreamConfig {
                 "format", format,
                 "globs", globs,
                 "inputSchema", inputSchema,
-                "legacyPrefix", legacyPrefix,
                 "name", name,
-                "primaryKey", primaryKey,
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
     }
@@ -405,11 +325,7 @@ public class FileBasedStreamConfig {
  
         private Optional<? extends String> inputSchema = Optional.empty();
  
-        private Optional<? extends String> legacyPrefix = Optional.empty();
- 
         private String name;
- 
-        private Optional<? extends String> primaryKey = Optional.empty();
  
         private Optional<? extends Boolean> schemaless;
  
@@ -483,47 +399,11 @@ public class FileBasedStreamConfig {
         }
 
         /**
-         * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
-         */
-        public Builder legacyPrefix(String legacyPrefix) {
-            Utils.checkNotNull(legacyPrefix, "legacyPrefix");
-            this.legacyPrefix = Optional.ofNullable(legacyPrefix);
-            return this;
-        }
-
-        /**
-         * The path prefix configured in v3 versions of the S3 connector. This option is deprecated in favor of a single glob.
-         */
-        public Builder legacyPrefix(Optional<? extends String> legacyPrefix) {
-            Utils.checkNotNull(legacyPrefix, "legacyPrefix");
-            this.legacyPrefix = legacyPrefix;
-            return this;
-        }
-
-        /**
          * The name of the stream.
          */
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
-            return this;
-        }
-
-        /**
-         * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-         */
-        public Builder primaryKey(String primaryKey) {
-            Utils.checkNotNull(primaryKey, "primaryKey");
-            this.primaryKey = Optional.ofNullable(primaryKey);
-            return this;
-        }
-
-        /**
-         * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-         */
-        public Builder primaryKey(Optional<? extends String> primaryKey) {
-            Utils.checkNotNull(primaryKey, "primaryKey");
-            this.primaryKey = primaryKey;
             return this;
         }
 
@@ -578,9 +458,7 @@ public class FileBasedStreamConfig {
                 format,
                 globs,
                 inputSchema,
-                legacyPrefix,
                 name,
-                primaryKey,
                 schemaless,
                 validationPolicy);
         }

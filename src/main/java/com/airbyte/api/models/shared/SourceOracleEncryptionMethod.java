@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceOracleEncryptionMethod {
-    ENCRYPTED_VERIFY_CERTIFICATE("encrypted_verify_certificate");
+    UNENCRYPTED("unencrypted");
 
     @JsonValue
     private final String value;

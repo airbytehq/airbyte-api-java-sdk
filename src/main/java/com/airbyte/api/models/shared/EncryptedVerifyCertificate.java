@@ -33,7 +33,7 @@ public class EncryptedVerifyCertificate {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_method")
-    private Optional<? extends DestinationMssqlSchemasSslMethod> sslMethod;
+    private Optional<? extends DestinationMssqlSchemasSslMethodSslMethod> sslMethod;
 
     @JsonCreator
     public EncryptedVerifyCertificate(
@@ -58,8 +58,8 @@ public class EncryptedVerifyCertificate {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationMssqlSchemasSslMethod> sslMethod() {
-        return (Optional<DestinationMssqlSchemasSslMethod>) sslMethod;
+    public Optional<DestinationMssqlSchemasSslMethodSslMethod> sslMethod() {
+        return (Optional<DestinationMssqlSchemasSslMethodSslMethod>) sslMethod;
     }
 
     public final static Builder builder() {
@@ -143,11 +143,11 @@ public class EncryptedVerifyCertificate {
                 hostNameInCertificate);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationMssqlSchemasSslMethod>> _SINGLETON_VALUE_SslMethod =
+        private static final LazySingletonValue<Optional<? extends DestinationMssqlSchemasSslMethodSslMethod>> _SINGLETON_VALUE_SslMethod =
                 new LazySingletonValue<>(
                         "ssl_method",
                         "\"encrypted_verify_certificate\"",
-                        new TypeReference<Optional<? extends DestinationMssqlSchemasSslMethod>>() {});
+                        new TypeReference<Optional<? extends DestinationMssqlSchemasSslMethodSslMethod>>() {});
     }
 }
 

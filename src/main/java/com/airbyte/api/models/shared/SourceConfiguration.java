@@ -40,6 +40,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAha>(){}));
     }
 
+    public static SourceConfiguration of(Source7shifts value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Source7shifts>(){}));
+    }
+
     public static SourceConfiguration of(SourceAirbyte value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAirbyte>(){}));
@@ -78,6 +83,16 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceApifyDataset value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceApifyDataset>(){}));
+    }
+
+    public static SourceConfiguration of(SourceAppcues value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAppcues>(){}));
+    }
+
+    public static SourceConfiguration of(SourceAppfigures value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceAppfigures>(){}));
     }
 
     public static SourceConfiguration of(SourceAppfollow value) {
@@ -130,6 +145,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBingAds>(){}));
     }
 
+    public static SourceConfiguration of(SourceBitly value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBitly>(){}));
+    }
+
     public static SourceConfiguration of(SourceBraintree value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBraintree>(){}));
@@ -145,14 +165,39 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBreezyHr>(){}));
     }
 
+    public static SourceConfiguration of(SourceBrevo value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBrevo>(){}));
+    }
+
+    public static SourceConfiguration of(SourceBuildkite value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBuildkite>(){}));
+    }
+
+    public static SourceConfiguration of(SourceBuzzsprout value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceBuzzsprout>(){}));
+    }
+
     public static SourceConfiguration of(SourceCalendly value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCalendly>(){}));
     }
 
+    public static SourceConfiguration of(SourceCanny value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCanny>(){}));
+    }
+
     public static SourceConfiguration of(SourceCart value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCart>(){}));
+    }
+
+    public static SourceConfiguration of(SourceChameleon value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChameleon>(){}));
     }
 
     public static SourceConfiguration of(SourceChargebee value) {
@@ -163,6 +208,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceChartmogul value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceChartmogul>(){}));
+    }
+
+    public static SourceConfiguration of(SourceCimis value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceCimis>(){}));
     }
 
     public static SourceConfiguration of(SourceClazar value) {
@@ -265,11 +315,6 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDynamodb>(){}));
     }
 
-    public static SourceConfiguration of(SourceE2eTestCloud value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceE2eTestCloud>(){}));
-    }
-
     public static SourceConfiguration of(SourceEmailoctopus value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEmailoctopus>(){}));
@@ -278,6 +323,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceExchangeRates value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceExchangeRates>(){}));
+    }
+
+    public static SourceConfiguration of(SourceEzofficeinventory value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceEzofficeinventory>(){}));
     }
 
     public static SourceConfiguration of(SourceFacebookMarketing value) {
@@ -323,6 +373,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceFreshsales value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFreshsales>(){}));
+    }
+
+    public static SourceConfiguration of(SourceFront value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFront>(){}));
     }
 
     public static SourceConfiguration of(SourceGainsightPx value) {
@@ -400,6 +455,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSheets>(){}));
     }
 
+    public static SourceConfiguration of(SourceGoogleTasks value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleTasks>(){}));
+    }
+
     public static SourceConfiguration of(SourceGoogleWebfonts value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleWebfonts>(){}));
@@ -415,6 +475,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGridly>(){}));
     }
 
+    public static SourceConfiguration of(SourceGuru value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGuru>(){}));
+    }
+
     public static SourceConfiguration of(SourceHardcodedRecords value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHardcodedRecords>(){}));
@@ -423,6 +488,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceHarvest value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHarvest>(){}));
+    }
+
+    public static SourceConfiguration of(SourceHeight value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceHeight>(){}));
     }
 
     public static SourceConfiguration of(SourceHibob value) {
@@ -478,6 +548,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourceJira value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJira>(){}));
+    }
+
+    public static SourceConfiguration of(SourceJotform value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceJotform>(){}));
     }
 
     public static SourceConfiguration of(SourceK6Cloud value) {
@@ -635,6 +710,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNotion>(){}));
     }
 
+    public static SourceConfiguration of(SourceNylas value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNylas>(){}));
+    }
+
     public static SourceConfiguration of(SourceNytimes value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNytimes>(){}));
@@ -710,6 +790,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePexelsApi>(){}));
     }
 
+    public static SourceConfiguration of(SourcePicqer value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePicqer>(){}));
+    }
+
     public static SourceConfiguration of(SourcePinterest value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePinterest>(){}));
@@ -718,6 +803,11 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourcePipedrive value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePipedrive>(){}));
+    }
+
+    public static SourceConfiguration of(SourcePiwik value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePiwik>(){}));
     }
 
     public static SourceConfiguration of(SourcePlanhat value) {
@@ -758,6 +848,16 @@ public class SourceConfiguration {
     public static SourceConfiguration of(SourcePrestashop value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourcePrestashop>(){}));
+    }
+
+    public static SourceConfiguration of(SourceProductboard value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceProductboard>(){}));
+    }
+
+    public static SourceConfiguration of(SourceProductive value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceProductive>(){}));
     }
 
     public static SourceConfiguration of(SourcePypi value) {
@@ -890,6 +990,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShopify>(){}));
     }
 
+    public static SourceConfiguration of(SourceShortcut value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShortcut>(){}));
+    }
+
     public static SourceConfiguration of(SourceShortio value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceShortio>(){}));
@@ -960,6 +1065,16 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSurveymonkey>(){}));
     }
 
+    public static SourceConfiguration of(SourceSurvicate value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSurvicate>(){}));
+    }
+
+    public static SourceConfiguration of(SourceTeamwork value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTeamwork>(){}));
+    }
+
     public static SourceConfiguration of(SourceTempo value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTempo>(){}));
@@ -1025,6 +1140,11 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWebflow>(){}));
     }
 
+    public static SourceConfiguration of(SourceWhenIWork value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWhenIWork>(){}));
+    }
+
     public static SourceConfiguration of(SourceWhiskyHunter value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceWhiskyHunter>(){}));
@@ -1065,11 +1185,6 @@ public class SourceConfiguration {
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskChat>(){}));
     }
 
-    public static SourceConfiguration of(SourceZendeskSell value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskSell>(){}));
-    }
-
     public static SourceConfiguration of(SourceZendeskSunshine value) {
         Utils.checkNotNull(value, "value");
         return new SourceConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceZendeskSunshine>(){}));
@@ -1104,6 +1219,7 @@ public class SourceConfiguration {
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code SourceAha}</li>
+     * <li>{@code Source7shifts}</li>
      * <li>{@code SourceAirbyte}</li>
      * <li>{@code SourceAircall}</li>
      * <li>{@code SourceAirtable}</li>
@@ -1112,6 +1228,8 @@ public class SourceConfiguration {
      * <li>{@code SourceAmazonSqs}</li>
      * <li>{@code SourceAmplitude}</li>
      * <li>{@code SourceApifyDataset}</li>
+     * <li>{@code SourceAppcues}</li>
+     * <li>{@code SourceAppfigures}</li>
      * <li>{@code SourceAppfollow}</li>
      * <li>{@code SourceAsana}</li>
      * <li>{@code SourceAuth0}</li>
@@ -1122,13 +1240,20 @@ public class SourceConfiguration {
      * <li>{@code SourceBasecamp}</li>
      * <li>{@code SourceBigquery}</li>
      * <li>{@code SourceBingAds}</li>
+     * <li>{@code SourceBitly}</li>
      * <li>{@code SourceBraintree}</li>
      * <li>{@code SourceBraze}</li>
      * <li>{@code SourceBreezyHr}</li>
+     * <li>{@code SourceBrevo}</li>
+     * <li>{@code SourceBuildkite}</li>
+     * <li>{@code SourceBuzzsprout}</li>
      * <li>{@code SourceCalendly}</li>
+     * <li>{@code SourceCanny}</li>
      * <li>{@code SourceCart}</li>
+     * <li>{@code SourceChameleon}</li>
      * <li>{@code SourceChargebee}</li>
      * <li>{@code SourceChartmogul}</li>
+     * <li>{@code SourceCimis}</li>
      * <li>{@code SourceClazar}</li>
      * <li>{@code SourceClickhouse}</li>
      * <li>{@code SourceClickupApi}</li>
@@ -1149,9 +1274,9 @@ public class SourceConfiguration {
      * <li>{@code SourceDockerhub}</li>
      * <li>{@code SourceDremio}</li>
      * <li>{@code SourceDynamodb}</li>
-     * <li>{@code SourceE2eTestCloud}</li>
      * <li>{@code SourceEmailoctopus}</li>
      * <li>{@code SourceExchangeRates}</li>
+     * <li>{@code SourceEzofficeinventory}</li>
      * <li>{@code SourceFacebookMarketing}</li>
      * <li>{@code SourceFaker}</li>
      * <li>{@code SourceFauna}</li>
@@ -1161,6 +1286,7 @@ public class SourceConfiguration {
      * <li>{@code SourceFreshcaller}</li>
      * <li>{@code SourceFreshdesk}</li>
      * <li>{@code SourceFreshsales}</li>
+     * <li>{@code SourceFront}</li>
      * <li>{@code SourceGainsightPx}</li>
      * <li>{@code SourceGcs}</li>
      * <li>{@code SourceGetlago}</li>
@@ -1176,11 +1302,14 @@ public class SourceConfiguration {
      * <li>{@code SourceGooglePagespeedInsights}</li>
      * <li>{@code SourceGoogleSearchConsole}</li>
      * <li>{@code SourceGoogleSheets}</li>
+     * <li>{@code SourceGoogleTasks}</li>
      * <li>{@code SourceGoogleWebfonts}</li>
      * <li>{@code SourceGreenhouse}</li>
      * <li>{@code SourceGridly}</li>
+     * <li>{@code SourceGuru}</li>
      * <li>{@code SourceHardcodedRecords}</li>
      * <li>{@code SourceHarvest}</li>
+     * <li>{@code SourceHeight}</li>
      * <li>{@code SourceHibob}</li>
      * <li>{@code SourceHighLevel}</li>
      * <li>{@code SourceHubplanner}</li>
@@ -1192,6 +1321,7 @@ public class SourceConfiguration {
      * <li>{@code SourceIp2whois}</li>
      * <li>{@code SourceIterable}</li>
      * <li>{@code SourceJira}</li>
+     * <li>{@code SourceJotform}</li>
      * <li>{@code SourceK6Cloud}</li>
      * <li>{@code SourceKlarna}</li>
      * <li>{@code SourceKlaviyo}</li>
@@ -1223,6 +1353,7 @@ public class SourceConfiguration {
      * <li>{@code SourceNetsuite}</li>
      * <li>{@code SourceNorthpassLms}</li>
      * <li>{@code SourceNotion}</li>
+     * <li>{@code SourceNylas}</li>
      * <li>{@code SourceNytimes}</li>
      * <li>{@code SourceOkta}</li>
      * <li>{@code SourceOmnisend}</li>
@@ -1238,8 +1369,10 @@ public class SourceConfiguration {
      * <li>{@code SourcePennylane}</li>
      * <li>{@code SourcePersistiq}</li>
      * <li>{@code SourcePexelsApi}</li>
+     * <li>{@code SourcePicqer}</li>
      * <li>{@code SourcePinterest}</li>
      * <li>{@code SourcePipedrive}</li>
+     * <li>{@code SourcePiwik}</li>
      * <li>{@code SourcePlanhat}</li>
      * <li>{@code SourcePocket}</li>
      * <li>{@code SourcePokeapi}</li>
@@ -1248,6 +1381,8 @@ public class SourceConfiguration {
      * <li>{@code SourcePosthog}</li>
      * <li>{@code SourcePostmarkapp}</li>
      * <li>{@code SourcePrestashop}</li>
+     * <li>{@code SourceProductboard}</li>
+     * <li>{@code SourceProductive}</li>
      * <li>{@code SourcePypi}</li>
      * <li>{@code SourceQualaroo}</li>
      * <li>{@code SourceRailz}</li>
@@ -1274,6 +1409,7 @@ public class SourceConfiguration {
      * <li>{@code SourceSftp}</li>
      * <li>{@code SourceSftpBulk}</li>
      * <li>{@code SourceShopify}</li>
+     * <li>{@code SourceShortcut}</li>
      * <li>{@code SourceShortio}</li>
      * <li>{@code SourceSlack}</li>
      * <li>{@code SourceSmaily}</li>
@@ -1288,6 +1424,8 @@ public class SourceConfiguration {
      * <li>{@code SourceStripe}</li>
      * <li>{@code SourceSurveySparrow}</li>
      * <li>{@code SourceSurveymonkey}</li>
+     * <li>{@code SourceSurvicate}</li>
+     * <li>{@code SourceTeamwork}</li>
      * <li>{@code SourceTempo}</li>
      * <li>{@code SourceTheGuardianApi}</li>
      * <li>{@code SourceTiktokMarketing}</li>
@@ -1301,6 +1439,7 @@ public class SourceConfiguration {
      * <li>{@code SourceUsCensus}</li>
      * <li>{@code SourceVantage}</li>
      * <li>{@code SourceWebflow}</li>
+     * <li>{@code SourceWhenIWork}</li>
      * <li>{@code SourceWhiskyHunter}</li>
      * <li>{@code SourceWikipediaPageviews}</li>
      * <li>{@code SourceWoocommerce}</li>
@@ -1309,7 +1448,6 @@ public class SourceConfiguration {
      * <li>{@code SourceYotpo}</li>
      * <li>{@code SourceYoutubeAnalytics}</li>
      * <li>{@code SourceZendeskChat}</li>
-     * <li>{@code SourceZendeskSell}</li>
      * <li>{@code SourceZendeskSunshine}</li>
      * <li>{@code SourceZendeskSupport}</li>
      * <li>{@code SourceZendeskTalk}</li>
@@ -1356,6 +1494,7 @@ public class SourceConfiguration {
         public _Deserializer() {
             super(SourceConfiguration.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAha>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<Source7shifts>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAirbyte>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAircall>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAirtable>() {}, Utils.JsonShape.DEFAULT),
@@ -1364,6 +1503,8 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAmazonSqs>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAmplitude>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceApifyDataset>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceAppcues>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceAppfigures>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAppfollow>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAsana>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceAuth0>() {}, Utils.JsonShape.DEFAULT),
@@ -1374,13 +1515,20 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceBasecamp>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceBigquery>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceBingAds>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceBitly>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceBraintree>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceBraze>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceBreezyHr>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceBrevo>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceBuildkite>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceBuzzsprout>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceCalendly>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceCanny>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceCart>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceChameleon>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceChargebee>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceChartmogul>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceCimis>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceClazar>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceClickhouse>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceClickupApi>() {}, Utils.JsonShape.DEFAULT),
@@ -1401,9 +1549,9 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceDockerhub>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceDremio>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceDynamodb>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceE2eTestCloud>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceEmailoctopus>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceExchangeRates>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceEzofficeinventory>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFacebookMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFaker>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFauna>() {}, Utils.JsonShape.DEFAULT),
@@ -1413,6 +1561,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshcaller>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshdesk>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceFreshsales>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceFront>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGainsightPx>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGcs>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGetlago>() {}, Utils.JsonShape.DEFAULT),
@@ -1428,11 +1577,14 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGooglePagespeedInsights>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleSearchConsole>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleSheets>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleTasks>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleWebfonts>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGreenhouse>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGridly>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGuru>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceHardcodedRecords>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceHarvest>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceHeight>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceHibob>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceHighLevel>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceHubplanner>() {}, Utils.JsonShape.DEFAULT),
@@ -1444,6 +1596,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceIp2whois>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceIterable>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceJira>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceJotform>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceK6Cloud>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceKlarna>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceKlaviyo>() {}, Utils.JsonShape.DEFAULT),
@@ -1475,6 +1628,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceNetsuite>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceNorthpassLms>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceNotion>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceNylas>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceNytimes>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceOkta>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceOmnisend>() {}, Utils.JsonShape.DEFAULT),
@@ -1490,8 +1644,10 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePennylane>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePersistiq>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePexelsApi>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourcePicqer>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePinterest>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePipedrive>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourcePiwik>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePlanhat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePocket>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePokeapi>() {}, Utils.JsonShape.DEFAULT),
@@ -1500,6 +1656,8 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePosthog>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePostmarkapp>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePrestashop>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceProductboard>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceProductive>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourcePypi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceQualaroo>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceRailz>() {}, Utils.JsonShape.DEFAULT),
@@ -1526,6 +1684,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftp>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSftpBulk>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceShopify>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceShortcut>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceShortio>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSlack>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSmaily>() {}, Utils.JsonShape.DEFAULT),
@@ -1540,6 +1699,8 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceStripe>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSurveySparrow>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceSurveymonkey>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceSurvicate>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceTeamwork>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceTempo>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceTheGuardianApi>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceTiktokMarketing>() {}, Utils.JsonShape.DEFAULT),
@@ -1553,6 +1714,7 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceUsCensus>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceVantage>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceWebflow>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceWhenIWork>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceWhiskyHunter>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceWikipediaPageviews>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceWoocommerce>() {}, Utils.JsonShape.DEFAULT),
@@ -1561,7 +1723,6 @@ public class SourceConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceYotpo>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceYoutubeAnalytics>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceZendeskChat>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceZendeskSell>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceZendeskSunshine>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceZendeskSupport>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceZendeskTalk>() {}, Utils.JsonShape.DEFAULT),

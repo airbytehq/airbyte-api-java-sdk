@@ -45,9 +45,9 @@ public class StorageProvider {
         return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GCSGoogleCloudStorage>(){}));
     }
 
-    public static StorageProvider of(SourceFileS3AmazonWebServices value) {
+    public static StorageProvider of(S3AmazonWebServices value) {
         Utils.checkNotNull(value, "value");
-        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceFileS3AmazonWebServices>(){}));
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<S3AmazonWebServices>(){}));
     }
 
     public static StorageProvider of(AzBlobAzureBlobStorage value) {
@@ -69,17 +69,23 @@ public class StorageProvider {
         Utils.checkNotNull(value, "value");
         return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SFTPSecureFileTransferProtocol>(){}));
     }
+
+    public static StorageProvider of(LocalFilesystemLimited value) {
+        Utils.checkNotNull(value, "value");
+        return new StorageProvider(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<LocalFilesystemLimited>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code HTTPSPublicWeb}</li>
      * <li>{@code GCSGoogleCloudStorage}</li>
-     * <li>{@code SourceFileS3AmazonWebServices}</li>
+     * <li>{@code S3AmazonWebServices}</li>
      * <li>{@code AzBlobAzureBlobStorage}</li>
      * <li>{@code SSHSecureShell}</li>
      * <li>{@code SCPSecureCopyProtocol}</li>
      * <li>{@code SFTPSecureFileTransferProtocol}</li>
+     * <li>{@code LocalFilesystemLimited}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -121,11 +127,12 @@ public class StorageProvider {
             super(StorageProvider.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<HTTPSPublicWeb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<GCSGoogleCloudStorage>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceFileS3AmazonWebServices>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<S3AmazonWebServices>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<AzBlobAzureBlobStorage>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SSHSecureShell>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SCPSecureCopyProtocol>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SFTPSecureFileTransferProtocol>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SFTPSecureFileTransferProtocol>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<LocalFilesystemLimited>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

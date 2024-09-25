@@ -65,6 +65,13 @@ public class DestinationClickhouse {
     private Optional<? extends String> rawDataSchema;
 
     /**
+     * Encrypt data using SSL.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("ssl")
+    private Optional<? extends Boolean> ssl;
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -85,6 +92,7 @@ public class DestinationClickhouse {
             @JsonProperty("password") Optional<? extends String> password,
             @JsonProperty("port") Optional<? extends Long> port,
             @JsonProperty("raw_data_schema") Optional<? extends String> rawDataSchema,
+            @JsonProperty("ssl") Optional<? extends Boolean> ssl,
             @JsonProperty("tunnel_method") Optional<? extends SSHTunnelMethod> tunnelMethod,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(database, "database");
@@ -93,6 +101,7 @@ public class DestinationClickhouse {
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        Utils.checkNotNull(ssl, "ssl");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(username, "username");
         this.database = database;
@@ -102,6 +111,7 @@ public class DestinationClickhouse {
         this.password = password;
         this.port = port;
         this.rawDataSchema = rawDataSchema;
+        this.ssl = ssl;
         this.tunnelMethod = tunnelMethod;
         this.username = username;
     }
@@ -110,7 +120,7 @@ public class DestinationClickhouse {
             String database,
             String host,
             String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -168,6 +178,15 @@ public class DestinationClickhouse {
     @JsonIgnore
     public Optional<String> rawDataSchema() {
         return (Optional<String>) rawDataSchema;
+    }
+
+    /**
+     * Encrypt data using SSL.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> ssl() {
+        return (Optional<Boolean>) ssl;
     }
 
     /**
@@ -282,6 +301,24 @@ public class DestinationClickhouse {
     }
 
     /**
+     * Encrypt data using SSL.
+     */
+    public DestinationClickhouse withSsl(boolean ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = Optional.ofNullable(ssl);
+        return this;
+    }
+
+    /**
+     * Encrypt data using SSL.
+     */
+    public DestinationClickhouse withSsl(Optional<? extends Boolean> ssl) {
+        Utils.checkNotNull(ssl, "ssl");
+        this.ssl = ssl;
+        return this;
+    }
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     public DestinationClickhouse withTunnelMethod(SSHTunnelMethod tunnelMethod) {
@@ -325,6 +362,7 @@ public class DestinationClickhouse {
             java.util.Objects.deepEquals(this.password, other.password) &&
             java.util.Objects.deepEquals(this.port, other.port) &&
             java.util.Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            java.util.Objects.deepEquals(this.ssl, other.ssl) &&
             java.util.Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
             java.util.Objects.deepEquals(this.username, other.username);
     }
@@ -339,6 +377,7 @@ public class DestinationClickhouse {
             password,
             port,
             rawDataSchema,
+            ssl,
             tunnelMethod,
             username);
     }
@@ -353,6 +392,7 @@ public class DestinationClickhouse {
                 "password", password,
                 "port", port,
                 "rawDataSchema", rawDataSchema,
+                "ssl", ssl,
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
@@ -370,6 +410,8 @@ public class DestinationClickhouse {
         private Optional<? extends Long> port;
  
         private Optional<? extends String> rawDataSchema = Optional.empty();
+ 
+        private Optional<? extends Boolean> ssl;
  
         private Optional<? extends SSHTunnelMethod> tunnelMethod = Optional.empty();
  
@@ -470,6 +512,24 @@ public class DestinationClickhouse {
         }
 
         /**
+         * Encrypt data using SSL.
+         */
+        public Builder ssl(boolean ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = Optional.ofNullable(ssl);
+            return this;
+        }
+
+        /**
+         * Encrypt data using SSL.
+         */
+        public Builder ssl(Optional<? extends Boolean> ssl) {
+            Utils.checkNotNull(ssl, "ssl");
+            this.ssl = ssl;
+            return this;
+        }
+
+        /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
         public Builder tunnelMethod(SSHTunnelMethod tunnelMethod) {
@@ -500,6 +560,9 @@ public class DestinationClickhouse {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+            if (ssl == null) {
+                ssl = _SINGLETON_VALUE_Ssl.value();
+            }
             return new DestinationClickhouse(
                 database,
                 host,
@@ -507,6 +570,7 @@ public class DestinationClickhouse {
                 password,
                 port,
                 rawDataSchema,
+                ssl,
                 tunnelMethod,
                 username);
         }
@@ -522,6 +586,12 @@ public class DestinationClickhouse {
                         "port",
                         "8123",
                         new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_Ssl =
+                new LazySingletonValue<>(
+                        "ssl",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
     }
 }
 

@@ -16,23 +16,23 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 /**
- * None - None.
+ * None - No authentication will be used
  */
 
 public class None {
 
-    @JsonProperty("authorization")
-    private DestinationMongodbSchemasAuthorization authorization;
+    @JsonProperty("method")
+    private DestinationElasticsearchMethod method;
 
     @JsonCreator
     public None() {
         
-        this.authorization = Builder._SINGLETON_VALUE_Authorization.value();
+        this.method = Builder._SINGLETON_VALUE_Method.value();
     }
 
     @JsonIgnore
-    public DestinationMongodbSchemasAuthorization authorization() {
-        return authorization;
+    public DestinationElasticsearchMethod method() {
+        return method;
     }
 
     public final static Builder builder() {
@@ -49,19 +49,19 @@ public class None {
         }
         None other = (None) o;
         return 
-            java.util.Objects.deepEquals(this.authorization, other.authorization);
+            java.util.Objects.deepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
-            authorization);
+            method);
     }
     
     @Override
     public String toString() {
         return Utils.toString(None.class,
-                "authorization", authorization);
+                "method", method);
     }
     
     public final static class Builder {  
@@ -75,11 +75,11 @@ public class None {
                 );
         }
 
-        private static final LazySingletonValue<DestinationMongodbSchemasAuthorization> _SINGLETON_VALUE_Authorization =
+        private static final LazySingletonValue<DestinationElasticsearchMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(
-                        "authorization",
+                        "method",
                         "\"none\"",
-                        new TypeReference<DestinationMongodbSchemasAuthorization>() {});
+                        new TypeReference<DestinationElasticsearchMethod>() {});
     }
 }
 

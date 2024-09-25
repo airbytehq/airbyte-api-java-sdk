@@ -22,7 +22,7 @@ import java.math.BigInteger;
 public class UsernamePassword {
 
     @JsonProperty("method")
-    private DestinationElasticsearchSchemasMethod method;
+    private DestinationElasticsearchSchemasAuthenticationMethodMethod method;
 
     /**
      * Basic auth password to access a secure Elasticsearch server
@@ -48,7 +48,7 @@ public class UsernamePassword {
     }
 
     @JsonIgnore
-    public DestinationElasticsearchSchemasMethod method() {
+    public DestinationElasticsearchSchemasAuthenticationMethodMethod method() {
         return method;
     }
 
@@ -155,11 +155,11 @@ public class UsernamePassword {
                 username);
         }
 
-        private static final LazySingletonValue<DestinationElasticsearchSchemasMethod> _SINGLETON_VALUE_Method =
+        private static final LazySingletonValue<DestinationElasticsearchSchemasAuthenticationMethodMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(
                         "method",
                         "\"basic\"",
-                        new TypeReference<DestinationElasticsearchSchemasMethod>() {});
+                        new TypeReference<DestinationElasticsearchSchemasAuthenticationMethodMethod>() {});
     }
 }
 

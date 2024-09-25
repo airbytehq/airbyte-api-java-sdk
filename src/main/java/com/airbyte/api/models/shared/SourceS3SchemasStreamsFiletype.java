@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum SourceS3SchemasStreamsFiletype {
-    AVRO("avro");
+    JSONL("jsonl");
 
     @JsonValue
     private final String value;

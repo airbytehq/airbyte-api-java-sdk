@@ -1,0 +1,11 @@
+# SourceBitly
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `endDate`                                                                                 | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `sourceType`                                                                              | [com.airbyte.api.models.shared.Bitly](../../models/shared/Bitly.md)                       | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

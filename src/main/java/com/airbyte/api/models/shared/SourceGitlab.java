@@ -35,25 +35,11 @@ public class SourceGitlab {
     private SourceGitlabAuthorizationMethod credentials;
 
     /**
-     * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("groups")
-    private Optional<? extends String> groups;
-
-    /**
      * List of groups. e.g. airbyte.io.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("groups_list")
     private Optional<? extends java.util.List<String>> groupsList;
-
-    /**
-     * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("projects")
-    private Optional<? extends String> projects;
 
     /**
      * Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
@@ -76,23 +62,17 @@ public class SourceGitlab {
     public SourceGitlab(
             @JsonProperty("api_url") Optional<? extends String> apiUrl,
             @JsonProperty("credentials") SourceGitlabAuthorizationMethod credentials,
-            @JsonProperty("groups") Optional<? extends String> groups,
             @JsonProperty("groups_list") Optional<? extends java.util.List<String>> groupsList,
-            @JsonProperty("projects") Optional<? extends String> projects,
             @JsonProperty("projects_list") Optional<? extends java.util.List<String>> projectsList,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate) {
         Utils.checkNotNull(apiUrl, "apiUrl");
         Utils.checkNotNull(credentials, "credentials");
-        Utils.checkNotNull(groups, "groups");
         Utils.checkNotNull(groupsList, "groupsList");
-        Utils.checkNotNull(projects, "projects");
         Utils.checkNotNull(projectsList, "projectsList");
         Utils.checkNotNull(startDate, "startDate");
         this.apiUrl = apiUrl;
         this.credentials = credentials;
-        this.groups = groups;
         this.groupsList = groupsList;
-        this.projects = projects;
         this.projectsList = projectsList;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
@@ -100,7 +80,7 @@ public class SourceGitlab {
     
     public SourceGitlab(
             SourceGitlabAuthorizationMethod credentials) {
-        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -118,30 +98,12 @@ public class SourceGitlab {
     }
 
     /**
-     * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> groups() {
-        return (Optional<String>) groups;
-    }
-
-    /**
      * List of groups. e.g. airbyte.io.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public Optional<java.util.List<String>> groupsList() {
         return (Optional<java.util.List<String>>) groupsList;
-    }
-
-    /**
-     * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> projects() {
-        return (Optional<String>) projects;
     }
 
     /**
@@ -196,24 +158,6 @@ public class SourceGitlab {
     }
 
     /**
-     * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
-     */
-    public SourceGitlab withGroups(String groups) {
-        Utils.checkNotNull(groups, "groups");
-        this.groups = Optional.ofNullable(groups);
-        return this;
-    }
-
-    /**
-     * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
-     */
-    public SourceGitlab withGroups(Optional<? extends String> groups) {
-        Utils.checkNotNull(groups, "groups");
-        this.groups = groups;
-        return this;
-    }
-
-    /**
      * List of groups. e.g. airbyte.io.
      */
     public SourceGitlab withGroupsList(java.util.List<String> groupsList) {
@@ -228,24 +172,6 @@ public class SourceGitlab {
     public SourceGitlab withGroupsList(Optional<? extends java.util.List<String>> groupsList) {
         Utils.checkNotNull(groupsList, "groupsList");
         this.groupsList = groupsList;
-        return this;
-    }
-
-    /**
-     * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
-     */
-    public SourceGitlab withProjects(String projects) {
-        Utils.checkNotNull(projects, "projects");
-        this.projects = Optional.ofNullable(projects);
-        return this;
-    }
-
-    /**
-     * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
-     */
-    public SourceGitlab withProjects(Optional<? extends String> projects) {
-        Utils.checkNotNull(projects, "projects");
-        this.projects = projects;
         return this;
     }
 
@@ -297,9 +223,7 @@ public class SourceGitlab {
         return 
             java.util.Objects.deepEquals(this.apiUrl, other.apiUrl) &&
             java.util.Objects.deepEquals(this.credentials, other.credentials) &&
-            java.util.Objects.deepEquals(this.groups, other.groups) &&
             java.util.Objects.deepEquals(this.groupsList, other.groupsList) &&
-            java.util.Objects.deepEquals(this.projects, other.projects) &&
             java.util.Objects.deepEquals(this.projectsList, other.projectsList) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
@@ -310,9 +234,7 @@ public class SourceGitlab {
         return java.util.Objects.hash(
             apiUrl,
             credentials,
-            groups,
             groupsList,
-            projects,
             projectsList,
             sourceType,
             startDate);
@@ -323,9 +245,7 @@ public class SourceGitlab {
         return Utils.toString(SourceGitlab.class,
                 "apiUrl", apiUrl,
                 "credentials", credentials,
-                "groups", groups,
                 "groupsList", groupsList,
-                "projects", projects,
                 "projectsList", projectsList,
                 "sourceType", sourceType,
                 "startDate", startDate);
@@ -337,11 +257,7 @@ public class SourceGitlab {
  
         private SourceGitlabAuthorizationMethod credentials;
  
-        private Optional<? extends String> groups = Optional.empty();
- 
         private Optional<? extends java.util.List<String>> groupsList = Optional.empty();
- 
-        private Optional<? extends String> projects = Optional.empty();
  
         private Optional<? extends java.util.List<String>> projectsList = Optional.empty();
  
@@ -376,24 +292,6 @@ public class SourceGitlab {
         }
 
         /**
-         * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
-         */
-        public Builder groups(String groups) {
-            Utils.checkNotNull(groups, "groups");
-            this.groups = Optional.ofNullable(groups);
-            return this;
-        }
-
-        /**
-         * [DEPRECATED] Space-delimited list of groups. e.g. airbyte.io.
-         */
-        public Builder groups(Optional<? extends String> groups) {
-            Utils.checkNotNull(groups, "groups");
-            this.groups = groups;
-            return this;
-        }
-
-        /**
          * List of groups. e.g. airbyte.io.
          */
         public Builder groupsList(java.util.List<String> groupsList) {
@@ -408,24 +306,6 @@ public class SourceGitlab {
         public Builder groupsList(Optional<? extends java.util.List<String>> groupsList) {
             Utils.checkNotNull(groupsList, "groupsList");
             this.groupsList = groupsList;
-            return this;
-        }
-
-        /**
-         * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
-         */
-        public Builder projects(String projects) {
-            Utils.checkNotNull(projects, "projects");
-            this.projects = Optional.ofNullable(projects);
-            return this;
-        }
-
-        /**
-         * [DEPRECATED] Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
-         */
-        public Builder projects(Optional<? extends String> projects) {
-            Utils.checkNotNull(projects, "projects");
-            this.projects = projects;
             return this;
         }
 
@@ -472,9 +352,7 @@ public class SourceGitlab {
             return new SourceGitlab(
                 apiUrl,
                 credentials,
-                groups,
                 groupsList,
-                projects,
                 projectsList,
                 startDate);
         }

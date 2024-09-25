@@ -75,11 +75,6 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationDatabricks>(){}));
     }
 
-    public static DestinationConfiguration of(DestinationDevNull value) {
-        Utils.checkNotNull(value, "value");
-        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationDevNull>(){}));
-    }
-
     public static DestinationConfiguration of(DestinationDuckdb value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationDuckdb>(){}));
@@ -133,6 +128,11 @@ public class DestinationConfiguration {
     public static DestinationConfiguration of(DestinationOracle value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationOracle>(){}));
+    }
+
+    public static DestinationConfiguration of(DestinationPgvector value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPgvector>(){}));
     }
 
     public static DestinationConfiguration of(DestinationPinecone value) {
@@ -231,7 +231,6 @@ public class DestinationConfiguration {
      * <li>{@code DestinationClickhouse}</li>
      * <li>{@code DestinationConvex}</li>
      * <li>{@code DestinationDatabricks}</li>
-     * <li>{@code DestinationDevNull}</li>
      * <li>{@code DestinationDuckdb}</li>
      * <li>{@code DestinationDynamodb}</li>
      * <li>{@code DestinationElasticsearch}</li>
@@ -243,6 +242,7 @@ public class DestinationConfiguration {
      * <li>{@code DestinationMssql}</li>
      * <li>{@code DestinationMysql}</li>
      * <li>{@code DestinationOracle}</li>
+     * <li>{@code DestinationPgvector}</li>
      * <li>{@code DestinationPinecone}</li>
      * <li>{@code DestinationPostgres}</li>
      * <li>{@code DestinationPubsub}</li>
@@ -307,7 +307,6 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationClickhouse>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationConvex>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDatabricks>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDevNull>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDuckdb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDynamodb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearch>() {}, Utils.JsonShape.DEFAULT),
@@ -319,6 +318,7 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMssql>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMysql>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationOracle>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationPgvector>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationPinecone>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationPostgres>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationPubsub>() {}, Utils.JsonShape.DEFAULT),

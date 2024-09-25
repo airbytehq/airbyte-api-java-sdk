@@ -55,13 +55,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
     private String name;
 
     /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("primary_key")
-    private Optional<? extends String> primaryKey;
-
-    /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -82,7 +75,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
             @JsonProperty("globs") Optional<? extends java.util.List<String>> globs,
             @JsonProperty("input_schema") Optional<? extends String> inputSchema,
             @JsonProperty("name") String name,
-            @JsonProperty("primary_key") Optional<? extends String> primaryKey,
             @JsonProperty("schemaless") Optional<? extends Boolean> schemaless,
             @JsonProperty("validation_policy") Optional<? extends SourceGoogleDriveValidationPolicy> validationPolicy) {
         Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
@@ -90,7 +82,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
         Utils.checkNotNull(globs, "globs");
         Utils.checkNotNull(inputSchema, "inputSchema");
         Utils.checkNotNull(name, "name");
-        Utils.checkNotNull(primaryKey, "primaryKey");
         Utils.checkNotNull(schemaless, "schemaless");
         Utils.checkNotNull(validationPolicy, "validationPolicy");
         this.daysToSyncIfHistoryIsFull = daysToSyncIfHistoryIsFull;
@@ -98,7 +89,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
         this.globs = globs;
         this.inputSchema = inputSchema;
         this.name = name;
-        this.primaryKey = primaryKey;
         this.schemaless = schemaless;
         this.validationPolicy = validationPolicy;
     }
@@ -106,7 +96,7 @@ public class SourceGoogleDriveFileBasedStreamConfig {
     public SourceGoogleDriveFileBasedStreamConfig(
             SourceGoogleDriveFormat format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -150,15 +140,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
     @JsonIgnore
     public String name() {
         return name;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<String> primaryKey() {
-        return (Optional<String>) primaryKey;
     }
 
     /**
@@ -256,24 +237,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
     }
 
     /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    public SourceGoogleDriveFileBasedStreamConfig withPrimaryKey(String primaryKey) {
-        Utils.checkNotNull(primaryKey, "primaryKey");
-        this.primaryKey = Optional.ofNullable(primaryKey);
-        return this;
-    }
-
-    /**
-     * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-     */
-    public SourceGoogleDriveFileBasedStreamConfig withPrimaryKey(Optional<? extends String> primaryKey) {
-        Utils.checkNotNull(primaryKey, "primaryKey");
-        this.primaryKey = primaryKey;
-        return this;
-    }
-
-    /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
     public SourceGoogleDriveFileBasedStreamConfig withSchemaless(boolean schemaless) {
@@ -324,7 +287,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
             java.util.Objects.deepEquals(this.globs, other.globs) &&
             java.util.Objects.deepEquals(this.inputSchema, other.inputSchema) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
-            java.util.Objects.deepEquals(this.primaryKey, other.primaryKey) &&
             java.util.Objects.deepEquals(this.schemaless, other.schemaless) &&
             java.util.Objects.deepEquals(this.validationPolicy, other.validationPolicy);
     }
@@ -337,7 +299,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
             globs,
             inputSchema,
             name,
-            primaryKey,
             schemaless,
             validationPolicy);
     }
@@ -350,7 +311,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
                 "globs", globs,
                 "inputSchema", inputSchema,
                 "name", name,
-                "primaryKey", primaryKey,
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
     }
@@ -366,8 +326,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
         private Optional<? extends String> inputSchema = Optional.empty();
  
         private String name;
- 
-        private Optional<? extends String> primaryKey = Optional.empty();
  
         private Optional<? extends Boolean> schemaless;
  
@@ -450,24 +408,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
         }
 
         /**
-         * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-         */
-        public Builder primaryKey(String primaryKey) {
-            Utils.checkNotNull(primaryKey, "primaryKey");
-            this.primaryKey = Optional.ofNullable(primaryKey);
-            return this;
-        }
-
-        /**
-         * The column or columns (for a composite key) that serves as the unique identifier of a record. If empty, the primary key will default to the parser's default primary key.
-         */
-        public Builder primaryKey(Optional<? extends String> primaryKey) {
-            Utils.checkNotNull(primaryKey, "primaryKey");
-            this.primaryKey = primaryKey;
-            return this;
-        }
-
-        /**
          * When enabled, syncs will not validate or structure records against the stream's schema.
          */
         public Builder schemaless(boolean schemaless) {
@@ -519,7 +459,6 @@ public class SourceGoogleDriveFileBasedStreamConfig {
                 globs,
                 inputSchema,
                 name,
-                primaryKey,
                 schemaless,
                 validationPolicy);
         }

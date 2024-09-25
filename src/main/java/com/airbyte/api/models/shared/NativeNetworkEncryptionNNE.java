@@ -25,14 +25,15 @@ import java.util.Optional;
 public class NativeNetworkEncryptionNNE {
 
     /**
-     * This parameter defines what encryption algorithm is used.
+     * This parameter defines the database encryption algorithm.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_algorithm")
     private Optional<? extends EncryptionAlgorithm> encryptionAlgorithm;
 
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
-    private EncryptionMethod encryptionMethod;
+    private Optional<? extends DestinationOracleEncryptionMethod> encryptionMethod;
 
     @JsonCreator
     public NativeNetworkEncryptionNNE(
@@ -47,7 +48,7 @@ public class NativeNetworkEncryptionNNE {
     }
 
     /**
-     * This parameter defines what encryption algorithm is used.
+     * This parameter defines the database encryption algorithm.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -55,9 +56,10 @@ public class NativeNetworkEncryptionNNE {
         return (Optional<EncryptionAlgorithm>) encryptionAlgorithm;
     }
 
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public EncryptionMethod encryptionMethod() {
-        return encryptionMethod;
+    public Optional<DestinationOracleEncryptionMethod> encryptionMethod() {
+        return (Optional<DestinationOracleEncryptionMethod>) encryptionMethod;
     }
 
     public final static Builder builder() {
@@ -65,7 +67,7 @@ public class NativeNetworkEncryptionNNE {
     }
 
     /**
-     * This parameter defines what encryption algorithm is used.
+     * This parameter defines the database encryption algorithm.
      */
     public NativeNetworkEncryptionNNE withEncryptionAlgorithm(EncryptionAlgorithm encryptionAlgorithm) {
         Utils.checkNotNull(encryptionAlgorithm, "encryptionAlgorithm");
@@ -74,7 +76,7 @@ public class NativeNetworkEncryptionNNE {
     }
 
     /**
-     * This parameter defines what encryption algorithm is used.
+     * This parameter defines the database encryption algorithm.
      */
     public NativeNetworkEncryptionNNE withEncryptionAlgorithm(Optional<? extends EncryptionAlgorithm> encryptionAlgorithm) {
         Utils.checkNotNull(encryptionAlgorithm, "encryptionAlgorithm");
@@ -119,7 +121,7 @@ public class NativeNetworkEncryptionNNE {
         }
 
         /**
-         * This parameter defines what encryption algorithm is used.
+         * This parameter defines the database encryption algorithm.
          */
         public Builder encryptionAlgorithm(EncryptionAlgorithm encryptionAlgorithm) {
             Utils.checkNotNull(encryptionAlgorithm, "encryptionAlgorithm");
@@ -128,7 +130,7 @@ public class NativeNetworkEncryptionNNE {
         }
 
         /**
-         * This parameter defines what encryption algorithm is used.
+         * This parameter defines the database encryption algorithm.
          */
         public Builder encryptionAlgorithm(Optional<? extends EncryptionAlgorithm> encryptionAlgorithm) {
             Utils.checkNotNull(encryptionAlgorithm, "encryptionAlgorithm");
@@ -150,11 +152,11 @@ public class NativeNetworkEncryptionNNE {
                         "\"AES256\"",
                         new TypeReference<Optional<? extends EncryptionAlgorithm>>() {});
 
-        private static final LazySingletonValue<EncryptionMethod> _SINGLETON_VALUE_EncryptionMethod =
+        private static final LazySingletonValue<Optional<? extends DestinationOracleEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(
                         "encryption_method",
                         "\"client_nne\"",
-                        new TypeReference<EncryptionMethod>() {});
+                        new TypeReference<Optional<? extends DestinationOracleEncryptionMethod>>() {});
     }
 }
 

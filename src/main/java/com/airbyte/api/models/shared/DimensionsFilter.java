@@ -50,9 +50,9 @@ public class DimensionsFilter {
         return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NotExpression>(){}));
     }
 
-    public static DimensionsFilter of(Filter value) {
+    public static DimensionsFilter of(SourceGoogleAnalyticsDataApiFilter value) {
         Utils.checkNotNull(value, "value");
-        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Filter>(){}));
+        return new DimensionsFilter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiFilter>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class DimensionsFilter {
      * <li>{@code AndGroup}</li>
      * <li>{@code OrGroup}</li>
      * <li>{@code NotExpression}</li>
-     * <li>{@code Filter}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiFilter}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -104,7 +104,7 @@ public class DimensionsFilter {
                   Utils.TypeReferenceWithShape.of(new TypeReference<AndGroup>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<OrGroup>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<NotExpression>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<Filter>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiFilter>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     
