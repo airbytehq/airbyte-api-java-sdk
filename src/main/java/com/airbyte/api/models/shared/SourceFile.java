@@ -32,7 +32,7 @@ public class SourceFile {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format")
-    private Optional<? extends FileFormat> format;
+    private Optional<? extends SourceFileFileFormat> format;
 
     /**
      * The storage Provider or Location of the file(s) which should be replicated.
@@ -59,7 +59,7 @@ public class SourceFile {
     @JsonCreator
     public SourceFile(
             @JsonProperty("dataset_name") String datasetName,
-            @JsonProperty("format") Optional<? extends FileFormat> format,
+            @JsonProperty("format") Optional<? extends SourceFileFileFormat> format,
             @JsonProperty("provider") StorageProvider provider,
             @JsonProperty("reader_options") Optional<? extends String> readerOptions,
             @JsonProperty("url") String url) {
@@ -96,8 +96,8 @@ public class SourceFile {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<FileFormat> format() {
-        return (Optional<FileFormat>) format;
+    public Optional<SourceFileFileFormat> format() {
+        return (Optional<SourceFileFileFormat>) format;
     }
 
     /**
@@ -146,7 +146,7 @@ public class SourceFile {
     /**
      * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
      */
-    public SourceFile withFormat(FileFormat format) {
+    public SourceFile withFormat(SourceFileFileFormat format) {
         Utils.checkNotNull(format, "format");
         this.format = Optional.ofNullable(format);
         return this;
@@ -155,7 +155,7 @@ public class SourceFile {
     /**
      * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
      */
-    public SourceFile withFormat(Optional<? extends FileFormat> format) {
+    public SourceFile withFormat(Optional<? extends SourceFileFileFormat> format) {
         Utils.checkNotNull(format, "format");
         this.format = format;
         return this;
@@ -241,7 +241,7 @@ public class SourceFile {
  
         private String datasetName;
  
-        private Optional<? extends FileFormat> format;
+        private Optional<? extends SourceFileFileFormat> format;
  
         private StorageProvider provider;
  
@@ -265,7 +265,7 @@ public class SourceFile {
         /**
          * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
          */
-        public Builder format(FileFormat format) {
+        public Builder format(SourceFileFileFormat format) {
             Utils.checkNotNull(format, "format");
             this.format = Optional.ofNullable(format);
             return this;
@@ -274,7 +274,7 @@ public class SourceFile {
         /**
          * The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
          */
-        public Builder format(Optional<? extends FileFormat> format) {
+        public Builder format(Optional<? extends SourceFileFileFormat> format) {
             Utils.checkNotNull(format, "format");
             this.format = format;
             return this;
@@ -328,11 +328,11 @@ public class SourceFile {
                 url);
         }
 
-        private static final LazySingletonValue<Optional<? extends FileFormat>> _SINGLETON_VALUE_Format =
+        private static final LazySingletonValue<Optional<? extends SourceFileFileFormat>> _SINGLETON_VALUE_Format =
                 new LazySingletonValue<>(
                         "format",
                         "\"csv\"",
-                        new TypeReference<Optional<? extends FileFormat>>() {});
+                        new TypeReference<Optional<? extends SourceFileFileFormat>>() {});
 
         private static final LazySingletonValue<File> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
