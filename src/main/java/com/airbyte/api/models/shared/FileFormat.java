@@ -4,39 +4,331 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
+import java.util.Optional;
 /**
- * FileFormat - The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+ * FileFormat - File format of Iceberg storage.
  */
-public enum FileFormat {
-    CSV("csv"),
-    JSON("json"),
-    JSONL("jsonl"),
-    EXCEL("excel"),
-    EXCEL_BINARY("excel_binary"),
-    FWF("fwf"),
-    FEATHER("feather"),
-    PARQUET("parquet"),
-    YAML("yaml");
 
-    @JsonValue
-    private final String value;
+public class FileFormat {
 
-    private FileFormat(String value) {
-        this.value = value;
+    /**
+     * Auto compact data files when stream close
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("auto_compact")
+    private Optional<? extends Boolean> autoCompact;
+
+    /**
+     * Specify the target size of Iceberg data file when performing a compaction action. 
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("compact_target_file_size_in_mb")
+    private Optional<? extends Long> compactTargetFileSizeInMb;
+
+    /**
+     * Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("flush_batch_size")
+    private Optional<? extends Long> flushBatchSize;
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("format")
+    private Optional<? extends FileStorageFormat> format;
+
+    @JsonCreator
+    public FileFormat(
+            @JsonProperty("auto_compact") Optional<? extends Boolean> autoCompact,
+            @JsonProperty("compact_target_file_size_in_mb") Optional<? extends Long> compactTargetFileSizeInMb,
+            @JsonProperty("flush_batch_size") Optional<? extends Long> flushBatchSize,
+            @JsonProperty("format") Optional<? extends FileStorageFormat> format) {
+        Utils.checkNotNull(autoCompact, "autoCompact");
+        Utils.checkNotNull(compactTargetFileSizeInMb, "compactTargetFileSizeInMb");
+        Utils.checkNotNull(flushBatchSize, "flushBatchSize");
+        Utils.checkNotNull(format, "format");
+        this.autoCompact = autoCompact;
+        this.compactTargetFileSizeInMb = compactTargetFileSizeInMb;
+        this.flushBatchSize = flushBatchSize;
+        this.format = format;
     }
     
-    public String value() {
-        return value;
+    public FileFormat() {
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Auto compact data files when stream close
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> autoCompact() {
+        return (Optional<Boolean>) autoCompact;
+    }
+
+    /**
+     * Specify the target size of Iceberg data file when performing a compaction action. 
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> compactTargetFileSizeInMb() {
+        return (Optional<Long>) compactTargetFileSizeInMb;
+    }
+
+    /**
+     * Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> flushBatchSize() {
+        return (Optional<Long>) flushBatchSize;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<FileStorageFormat> format() {
+        return (Optional<FileStorageFormat>) format;
+    }
+
+    public final static Builder builder() {
+        return new Builder();
+    }
+
+    /**
+     * Auto compact data files when stream close
+     */
+    public FileFormat withAutoCompact(boolean autoCompact) {
+        Utils.checkNotNull(autoCompact, "autoCompact");
+        this.autoCompact = Optional.ofNullable(autoCompact);
+        return this;
+    }
+
+    /**
+     * Auto compact data files when stream close
+     */
+    public FileFormat withAutoCompact(Optional<? extends Boolean> autoCompact) {
+        Utils.checkNotNull(autoCompact, "autoCompact");
+        this.autoCompact = autoCompact;
+        return this;
+    }
+
+    /**
+     * Specify the target size of Iceberg data file when performing a compaction action. 
+     */
+    public FileFormat withCompactTargetFileSizeInMb(long compactTargetFileSizeInMb) {
+        Utils.checkNotNull(compactTargetFileSizeInMb, "compactTargetFileSizeInMb");
+        this.compactTargetFileSizeInMb = Optional.ofNullable(compactTargetFileSizeInMb);
+        return this;
+    }
+
+    /**
+     * Specify the target size of Iceberg data file when performing a compaction action. 
+     */
+    public FileFormat withCompactTargetFileSizeInMb(Optional<? extends Long> compactTargetFileSizeInMb) {
+        Utils.checkNotNull(compactTargetFileSizeInMb, "compactTargetFileSizeInMb");
+        this.compactTargetFileSizeInMb = compactTargetFileSizeInMb;
+        return this;
+    }
+
+    /**
+     * Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file.
+     */
+    public FileFormat withFlushBatchSize(long flushBatchSize) {
+        Utils.checkNotNull(flushBatchSize, "flushBatchSize");
+        this.flushBatchSize = Optional.ofNullable(flushBatchSize);
+        return this;
+    }
+
+    /**
+     * Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file.
+     */
+    public FileFormat withFlushBatchSize(Optional<? extends Long> flushBatchSize) {
+        Utils.checkNotNull(flushBatchSize, "flushBatchSize");
+        this.flushBatchSize = flushBatchSize;
+        return this;
+    }
+
+    public FileFormat withFormat(FileStorageFormat format) {
+        Utils.checkNotNull(format, "format");
+        this.format = Optional.ofNullable(format);
+        return this;
+    }
+
+    public FileFormat withFormat(Optional<? extends FileStorageFormat> format) {
+        Utils.checkNotNull(format, "format");
+        this.format = format;
+        return this;
+    }
+    
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FileFormat other = (FileFormat) o;
+        return 
+            java.util.Objects.deepEquals(this.autoCompact, other.autoCompact) &&
+            java.util.Objects.deepEquals(this.compactTargetFileSizeInMb, other.compactTargetFileSizeInMb) &&
+            java.util.Objects.deepEquals(this.flushBatchSize, other.flushBatchSize) &&
+            java.util.Objects.deepEquals(this.format, other.format);
+    }
+    
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(
+            autoCompact,
+            compactTargetFileSizeInMb,
+            flushBatchSize,
+            format);
+    }
+    
+    @Override
+    public String toString() {
+        return Utils.toString(FileFormat.class,
+                "autoCompact", autoCompact,
+                "compactTargetFileSizeInMb", compactTargetFileSizeInMb,
+                "flushBatchSize", flushBatchSize,
+                "format", format);
+    }
+    
+    public final static class Builder {
+ 
+        private Optional<? extends Boolean> autoCompact;
+ 
+        private Optional<? extends Long> compactTargetFileSizeInMb;
+ 
+        private Optional<? extends Long> flushBatchSize;
+ 
+        private Optional<? extends FileStorageFormat> format;  
+        
+        private Builder() {
+          // force use of static builder() method
+        }
+
+        /**
+         * Auto compact data files when stream close
+         */
+        public Builder autoCompact(boolean autoCompact) {
+            Utils.checkNotNull(autoCompact, "autoCompact");
+            this.autoCompact = Optional.ofNullable(autoCompact);
+            return this;
+        }
+
+        /**
+         * Auto compact data files when stream close
+         */
+        public Builder autoCompact(Optional<? extends Boolean> autoCompact) {
+            Utils.checkNotNull(autoCompact, "autoCompact");
+            this.autoCompact = autoCompact;
+            return this;
+        }
+
+        /**
+         * Specify the target size of Iceberg data file when performing a compaction action. 
+         */
+        public Builder compactTargetFileSizeInMb(long compactTargetFileSizeInMb) {
+            Utils.checkNotNull(compactTargetFileSizeInMb, "compactTargetFileSizeInMb");
+            this.compactTargetFileSizeInMb = Optional.ofNullable(compactTargetFileSizeInMb);
+            return this;
+        }
+
+        /**
+         * Specify the target size of Iceberg data file when performing a compaction action. 
+         */
+        public Builder compactTargetFileSizeInMb(Optional<? extends Long> compactTargetFileSizeInMb) {
+            Utils.checkNotNull(compactTargetFileSizeInMb, "compactTargetFileSizeInMb");
+            this.compactTargetFileSizeInMb = compactTargetFileSizeInMb;
+            return this;
+        }
+
+        /**
+         * Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file.
+         */
+        public Builder flushBatchSize(long flushBatchSize) {
+            Utils.checkNotNull(flushBatchSize, "flushBatchSize");
+            this.flushBatchSize = Optional.ofNullable(flushBatchSize);
+            return this;
+        }
+
+        /**
+         * Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file.
+         */
+        public Builder flushBatchSize(Optional<? extends Long> flushBatchSize) {
+            Utils.checkNotNull(flushBatchSize, "flushBatchSize");
+            this.flushBatchSize = flushBatchSize;
+            return this;
+        }
+
+        public Builder format(FileStorageFormat format) {
+            Utils.checkNotNull(format, "format");
+            this.format = Optional.ofNullable(format);
+            return this;
+        }
+
+        public Builder format(Optional<? extends FileStorageFormat> format) {
+            Utils.checkNotNull(format, "format");
+            this.format = format;
+            return this;
+        }
+        
+        public FileFormat build() {
+            if (autoCompact == null) {
+                autoCompact = _SINGLETON_VALUE_AutoCompact.value();
+            }
+            if (compactTargetFileSizeInMb == null) {
+                compactTargetFileSizeInMb = _SINGLETON_VALUE_CompactTargetFileSizeInMb.value();
+            }
+            if (flushBatchSize == null) {
+                flushBatchSize = _SINGLETON_VALUE_FlushBatchSize.value();
+            }
+            if (format == null) {
+                format = _SINGLETON_VALUE_Format.value();
+            }
+            return new FileFormat(
+                autoCompact,
+                compactTargetFileSizeInMb,
+                flushBatchSize,
+                format);
+        }
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_AutoCompact =
+                new LazySingletonValue<>(
+                        "auto_compact",
+                        "false",
+                        new TypeReference<Optional<? extends Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_CompactTargetFileSizeInMb =
+                new LazySingletonValue<>(
+                        "compact_target_file_size_in_mb",
+                        "100",
+                        new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_FlushBatchSize =
+                new LazySingletonValue<>(
+                        "flush_batch_size",
+                        "10000",
+                        new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends FileStorageFormat>> _SINGLETON_VALUE_Format =
+                new LazySingletonValue<>(
+                        "format",
+                        "\"Parquet\"",
+                        new TypeReference<Optional<? extends FileStorageFormat>>() {});
     }
 }
+

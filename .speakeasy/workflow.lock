@@ -9,8 +9,8 @@ sources:
             - main
     sample-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
-        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
+        sourceRevisionDigest: sha256:ec3dbd14b7e1c86876e6640d1e6b9bdf397726c0031cfa314fadfddff7c56ebc
+        sourceBlobDigest: sha256:012b38599b807396f81d524a813f8598cbe0eeffc4a2e49a2858c5ca8d1c21ba
         tags:
             - latest
             - main
@@ -24,8 +24,8 @@ targets:
     testing:
         source: sample-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
-        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
+        sourceRevisionDigest: sha256:ec3dbd14b7e1c86876e6640d1e6b9bdf397726c0031cfa314fadfddff7c56ebc
+        sourceBlobDigest: sha256:012b38599b807396f81d524a813f8598cbe0eeffc4a2e49a2858c5ca8d1c21ba
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -33,7 +33,7 @@ workflow:
     sources:
         sample-source:
             inputs:
-                - location: https://raw.githubusercontent.com/airbytehq/airbyte-api-python-sdk/main/airbyte-api.openapi.yaml
+                - location: https://raw.githubusercontent.com/airbytehq/airbyte-platform/refs/heads/main/airbyte-api/server-api/src/main/openapi/api_sdk.yaml
             registry:
                 location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source
     targets:
