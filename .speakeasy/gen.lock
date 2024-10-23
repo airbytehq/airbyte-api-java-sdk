@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: 1308fa7ec8504c6d50430974d4647f3f
+  docChecksum: 6596a842605e55092c4ef088c92feba8
   docVersion: 1.0.0
   speakeasyVersion: 1.337.1
   generationVersion: 2.373.2
-  releaseVersion: 1.5.10
-  configChecksum: 849346c40e6723c0675b0bacc97f7073
+  releaseVersion: 1.5.11
+  configChecksum: ff7da1556d633e1b2358345ff1fc8dd4
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -289,6 +289,24 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Authentication.java
   - src/main/java/com/airbyte/api/models/shared/Databricks.java
   - src/main/java/com/airbyte/api/models/shared/DestinationDatabricks.java
+  - src/main/java/com/airbyte/api/models/shared/DevNull.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationDevNullSchemasTestDestinationTestDestinationType.java
+  - src/main/java/com/airbyte/api/models/shared/Failing.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationDevNullSchemasTestDestinationType.java
+  - src/main/java/com/airbyte/api/models/shared/Throttled.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationDevNullTestDestinationType.java
+  - src/main/java/com/airbyte/api/models/shared/Silent.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationDevNullSchemasLoggingType.java
+  - src/main/java/com/airbyte/api/models/shared/RandomSampling.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationDevNullLoggingType.java
+  - src/main/java/com/airbyte/api/models/shared/EveryNThEntry.java
+  - src/main/java/com/airbyte/api/models/shared/LoggingType.java
+  - src/main/java/com/airbyte/api/models/shared/FirstNEntries.java
+  - src/main/java/com/airbyte/api/models/shared/LoggingConfiguration.java
+  - src/main/java/com/airbyte/api/models/shared/TestDestinationType.java
+  - src/main/java/com/airbyte/api/models/shared/Logging.java
+  - src/main/java/com/airbyte/api/models/shared/TestDestination.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationDevNull.java
   - src/main/java/com/airbyte/api/models/shared/Duckdb.java
   - src/main/java/com/airbyte/api/models/shared/DestinationDuckdb.java
   - src/main/java/com/airbyte/api/models/shared/Dynamodb.java
@@ -359,6 +377,27 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationGcsOutputFormat.java
   - src/main/java/com/airbyte/api/models/shared/GCSBucketRegion.java
   - src/main/java/com/airbyte/api/models/shared/DestinationGcs.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogConfigIcebergCatalogConfigCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/GlueCatalog.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogConfigCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/RESTCatalog.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/JdbcCatalogUseRelationalDatabase.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/HadoopCatalogUseHierarchicalFileSystemsAsSameAsStorageConfig.java
+  - src/main/java/com/airbyte/api/models/shared/CatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/HiveCatalogUseApacheHiveMetaStore.java
+  - src/main/java/com/airbyte/api/models/shared/IcebergCatalogConfig.java
+  - src/main/java/com/airbyte/api/models/shared/Iceberg.java
+  - src/main/java/com/airbyte/api/models/shared/FileStorageFormat.java
+  - src/main/java/com/airbyte/api/models/shared/FileFormat.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergStorageType.java
+  - src/main/java/com/airbyte/api/models/shared/ServerManaged.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergS3BucketRegion.java
+  - src/main/java/com/airbyte/api/models/shared/StorageType.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergS3.java
+  - src/main/java/com/airbyte/api/models/shared/StorageConfig.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIceberg.java
   - src/main/java/com/airbyte/api/models/shared/Milvus.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMilvusSchemasEmbeddingEmbedding5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMilvusOpenAICompatible.java
@@ -788,6 +827,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceAirtableAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceAirtableAirtable.java
   - src/main/java/com/airbyte/api/models/shared/SourceAirtable.java
+  - src/main/java/com/airbyte/api/models/shared/Algolia.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAlgolia.java
   - src/main/java/com/airbyte/api/models/shared/SourceAmazonAdsAuthType.java
   - src/main/java/com/airbyte/api/models/shared/Region.java
   - src/main/java/com/airbyte/api/models/shared/ReportRecordTypes.java
@@ -872,6 +913,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceBambooHr.java
   - src/main/java/com/airbyte/api/models/shared/Basecamp.java
   - src/main/java/com/airbyte/api/models/shared/SourceBasecamp.java
+  - src/main/java/com/airbyte/api/models/shared/Beamer.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBeamer.java
   - src/main/java/com/airbyte/api/models/shared/SourceBigqueryBigquery.java
   - src/main/java/com/airbyte/api/models/shared/SourceBigquery.java
   - src/main/java/com/airbyte/api/models/shared/Operator.java
@@ -969,11 +1012,15 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceDockerhub.java
   - src/main/java/com/airbyte/api/models/shared/Dremio.java
   - src/main/java/com/airbyte/api/models/shared/SourceDremio.java
+  - src/main/java/com/airbyte/api/models/shared/DropboxSign.java
+  - src/main/java/com/airbyte/api/models/shared/SourceDropboxSign.java
   - src/main/java/com/airbyte/api/models/shared/SourceDynamodbDynamodbRegion.java
   - src/main/java/com/airbyte/api/models/shared/SourceDynamodbDynamodb.java
   - src/main/java/com/airbyte/api/models/shared/SourceDynamodb.java
   - src/main/java/com/airbyte/api/models/shared/Emailoctopus.java
   - src/main/java/com/airbyte/api/models/shared/SourceEmailoctopus.java
+  - src/main/java/com/airbyte/api/models/shared/Eventbrite.java
+  - src/main/java/com/airbyte/api/models/shared/SourceEventbrite.java
   - src/main/java/com/airbyte/api/models/shared/ExchangeRates.java
   - src/main/java/com/airbyte/api/models/shared/SourceExchangeRates.java
   - src/main/java/com/airbyte/api/models/shared/Ezofficeinventory.java
@@ -1004,7 +1051,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Collection.java
   - src/main/java/com/airbyte/api/models/shared/Fauna.java
   - src/main/java/com/airbyte/api/models/shared/SourceFauna.java
-  - src/main/java/com/airbyte/api/models/shared/FileFormat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFileFileFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasProviderStorageProvider8Storage.java
   - src/main/java/com/airbyte/api/models/shared/LocalFilesystemLimited.java
   - src/main/java/com/airbyte/api/models/shared/SourceFileSchemasProviderStorageProvider7Storage.java
@@ -1030,6 +1077,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceFleetio.java
   - src/main/java/com/airbyte/api/models/shared/Freshcaller.java
   - src/main/java/com/airbyte/api/models/shared/SourceFreshcaller.java
+  - src/main/java/com/airbyte/api/models/shared/Freshchat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFreshchat.java
   - src/main/java/com/airbyte/api/models/shared/Freshdesk.java
   - src/main/java/com/airbyte/api/models/shared/SourceFreshdesk.java
   - src/main/java/com/airbyte/api/models/shared/Freshsales.java
@@ -1465,6 +1514,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceJotform.java
   - src/main/java/com/airbyte/api/models/shared/K6Cloud.java
   - src/main/java/com/airbyte/api/models/shared/SourceK6Cloud.java
+  - src/main/java/com/airbyte/api/models/shared/Kissmetrics.java
+  - src/main/java/com/airbyte/api/models/shared/SourceKissmetrics.java
   - src/main/java/com/airbyte/api/models/shared/SourceKlarnaRegion.java
   - src/main/java/com/airbyte/api/models/shared/Klarna.java
   - src/main/java/com/airbyte/api/models/shared/SourceKlarna.java
@@ -1506,6 +1557,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceLinkedinPages.java
   - src/main/java/com/airbyte/api/models/shared/Linnworks.java
   - src/main/java/com/airbyte/api/models/shared/SourceLinnworks.java
+  - src/main/java/com/airbyte/api/models/shared/Lob.java
+  - src/main/java/com/airbyte/api/models/shared/SourceLob.java
   - src/main/java/com/airbyte/api/models/shared/Lokalise.java
   - src/main/java/com/airbyte/api/models/shared/SourceLokalise.java
   - src/main/java/com/airbyte/api/models/shared/Looker.java
@@ -1828,6 +1881,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceRetently.java
   - src/main/java/com/airbyte/api/models/shared/RkiCovid.java
   - src/main/java/com/airbyte/api/models/shared/SourceRkiCovid.java
+  - src/main/java/com/airbyte/api/models/shared/Rollbar.java
+  - src/main/java/com/airbyte/api/models/shared/SourceRollbar.java
   - src/main/java/com/airbyte/api/models/shared/Rss.java
   - src/main/java/com/airbyte/api/models/shared/SourceRss.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3S3.java
@@ -1975,6 +2030,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceSonarCloud.java
   - src/main/java/com/airbyte/api/models/shared/SpacexApi.java
   - src/main/java/com/airbyte/api/models/shared/SourceSpacexApi.java
+  - src/main/java/com/airbyte/api/models/shared/SplitIo.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSplitIo.java
   - src/main/java/com/airbyte/api/models/shared/SourceSquareSchemasAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceSquareAPIKey.java
   - src/main/java/com/airbyte/api/models/shared/SourceSquareAuthType.java
@@ -2042,6 +2099,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceUsCensus.java
   - src/main/java/com/airbyte/api/models/shared/Vantage.java
   - src/main/java/com/airbyte/api/models/shared/SourceVantage.java
+  - src/main/java/com/airbyte/api/models/shared/Vwo.java
+  - src/main/java/com/airbyte/api/models/shared/SourceVwo.java
   - src/main/java/com/airbyte/api/models/shared/Webflow.java
   - src/main/java/com/airbyte/api/models/shared/SourceWebflow.java
   - src/main/java/com/airbyte/api/models/shared/WhenIWork.java
@@ -2351,6 +2410,24 @@ generatedFiles:
   - docs/models/shared/Authentication.md
   - docs/models/shared/Databricks.md
   - docs/models/shared/DestinationDatabricks.md
+  - docs/models/shared/DevNull.md
+  - docs/models/shared/DestinationDevNullSchemasTestDestinationTestDestinationType.md
+  - docs/models/shared/Failing.md
+  - docs/models/shared/DestinationDevNullSchemasTestDestinationType.md
+  - docs/models/shared/Throttled.md
+  - docs/models/shared/DestinationDevNullTestDestinationType.md
+  - docs/models/shared/Silent.md
+  - docs/models/shared/DestinationDevNullSchemasLoggingType.md
+  - docs/models/shared/RandomSampling.md
+  - docs/models/shared/DestinationDevNullLoggingType.md
+  - docs/models/shared/EveryNThEntry.md
+  - docs/models/shared/LoggingType.md
+  - docs/models/shared/FirstNEntries.md
+  - docs/models/shared/LoggingConfiguration.md
+  - docs/models/shared/TestDestinationType.md
+  - docs/models/shared/Logging.md
+  - docs/models/shared/TestDestination.md
+  - docs/models/shared/DestinationDevNull.md
   - docs/models/shared/Duckdb.md
   - docs/models/shared/DestinationDuckdb.md
   - docs/models/shared/Dynamodb.md
@@ -2421,6 +2498,27 @@ generatedFiles:
   - docs/models/shared/DestinationGcsOutputFormat.md
   - docs/models/shared/GCSBucketRegion.md
   - docs/models/shared/DestinationGcs.md
+  - docs/models/shared/DestinationIcebergSchemasCatalogConfigIcebergCatalogConfigCatalogType.md
+  - docs/models/shared/GlueCatalog.md
+  - docs/models/shared/DestinationIcebergSchemasCatalogConfigCatalogType.md
+  - docs/models/shared/RESTCatalog.md
+  - docs/models/shared/DestinationIcebergSchemasCatalogType.md
+  - docs/models/shared/JdbcCatalogUseRelationalDatabase.md
+  - docs/models/shared/DestinationIcebergCatalogType.md
+  - docs/models/shared/HadoopCatalogUseHierarchicalFileSystemsAsSameAsStorageConfig.md
+  - docs/models/shared/CatalogType.md
+  - docs/models/shared/HiveCatalogUseApacheHiveMetaStore.md
+  - docs/models/shared/IcebergCatalogConfig.md
+  - docs/models/shared/Iceberg.md
+  - docs/models/shared/FileStorageFormat.md
+  - docs/models/shared/FileFormat.md
+  - docs/models/shared/DestinationIcebergStorageType.md
+  - docs/models/shared/ServerManaged.md
+  - docs/models/shared/DestinationIcebergS3BucketRegion.md
+  - docs/models/shared/StorageType.md
+  - docs/models/shared/DestinationIcebergS3.md
+  - docs/models/shared/StorageConfig.md
+  - docs/models/shared/DestinationIceberg.md
   - docs/models/shared/Milvus.md
   - docs/models/shared/DestinationMilvusSchemasEmbeddingEmbedding5Mode.md
   - docs/models/shared/DestinationMilvusOpenAICompatible.md
@@ -2850,6 +2948,8 @@ generatedFiles:
   - docs/models/shared/SourceAirtableAuthentication.md
   - docs/models/shared/SourceAirtableAirtable.md
   - docs/models/shared/SourceAirtable.md
+  - docs/models/shared/Algolia.md
+  - docs/models/shared/SourceAlgolia.md
   - docs/models/shared/SourceAmazonAdsAuthType.md
   - docs/models/shared/Region.md
   - docs/models/shared/ReportRecordTypes.md
@@ -2934,6 +3034,8 @@ generatedFiles:
   - docs/models/shared/SourceBambooHr.md
   - docs/models/shared/Basecamp.md
   - docs/models/shared/SourceBasecamp.md
+  - docs/models/shared/Beamer.md
+  - docs/models/shared/SourceBeamer.md
   - docs/models/shared/SourceBigqueryBigquery.md
   - docs/models/shared/SourceBigquery.md
   - docs/models/shared/Operator.md
@@ -3031,11 +3133,15 @@ generatedFiles:
   - docs/models/shared/SourceDockerhub.md
   - docs/models/shared/Dremio.md
   - docs/models/shared/SourceDremio.md
+  - docs/models/shared/DropboxSign.md
+  - docs/models/shared/SourceDropboxSign.md
   - docs/models/shared/SourceDynamodbDynamodbRegion.md
   - docs/models/shared/SourceDynamodbDynamodb.md
   - docs/models/shared/SourceDynamodb.md
   - docs/models/shared/Emailoctopus.md
   - docs/models/shared/SourceEmailoctopus.md
+  - docs/models/shared/Eventbrite.md
+  - docs/models/shared/SourceEventbrite.md
   - docs/models/shared/ExchangeRates.md
   - docs/models/shared/SourceExchangeRates.md
   - docs/models/shared/Ezofficeinventory.md
@@ -3066,7 +3172,7 @@ generatedFiles:
   - docs/models/shared/Collection.md
   - docs/models/shared/Fauna.md
   - docs/models/shared/SourceFauna.md
-  - docs/models/shared/FileFormat.md
+  - docs/models/shared/SourceFileFileFormat.md
   - docs/models/shared/SourceFileSchemasProviderStorageProvider8Storage.md
   - docs/models/shared/LocalFilesystemLimited.md
   - docs/models/shared/SourceFileSchemasProviderStorageProvider7Storage.md
@@ -3092,6 +3198,8 @@ generatedFiles:
   - docs/models/shared/SourceFleetio.md
   - docs/models/shared/Freshcaller.md
   - docs/models/shared/SourceFreshcaller.md
+  - docs/models/shared/Freshchat.md
+  - docs/models/shared/SourceFreshchat.md
   - docs/models/shared/Freshdesk.md
   - docs/models/shared/SourceFreshdesk.md
   - docs/models/shared/Freshsales.md
@@ -3527,6 +3635,8 @@ generatedFiles:
   - docs/models/shared/SourceJotform.md
   - docs/models/shared/K6Cloud.md
   - docs/models/shared/SourceK6Cloud.md
+  - docs/models/shared/Kissmetrics.md
+  - docs/models/shared/SourceKissmetrics.md
   - docs/models/shared/SourceKlarnaRegion.md
   - docs/models/shared/Klarna.md
   - docs/models/shared/SourceKlarna.md
@@ -3568,6 +3678,8 @@ generatedFiles:
   - docs/models/shared/SourceLinkedinPages.md
   - docs/models/shared/Linnworks.md
   - docs/models/shared/SourceLinnworks.md
+  - docs/models/shared/Lob.md
+  - docs/models/shared/SourceLob.md
   - docs/models/shared/Lokalise.md
   - docs/models/shared/SourceLokalise.md
   - docs/models/shared/Looker.md
@@ -3890,6 +4002,8 @@ generatedFiles:
   - docs/models/shared/SourceRetently.md
   - docs/models/shared/RkiCovid.md
   - docs/models/shared/SourceRkiCovid.md
+  - docs/models/shared/Rollbar.md
+  - docs/models/shared/SourceRollbar.md
   - docs/models/shared/Rss.md
   - docs/models/shared/SourceRss.md
   - docs/models/shared/SourceS3S3.md
@@ -4037,6 +4151,8 @@ generatedFiles:
   - docs/models/shared/SourceSonarCloud.md
   - docs/models/shared/SpacexApi.md
   - docs/models/shared/SourceSpacexApi.md
+  - docs/models/shared/SplitIo.md
+  - docs/models/shared/SourceSplitIo.md
   - docs/models/shared/SourceSquareSchemasAuthType.md
   - docs/models/shared/SourceSquareAPIKey.md
   - docs/models/shared/SourceSquareAuthType.md
@@ -4104,6 +4220,8 @@ generatedFiles:
   - docs/models/shared/SourceUsCensus.md
   - docs/models/shared/Vantage.md
   - docs/models/shared/SourceVantage.md
+  - docs/models/shared/Vwo.md
+  - docs/models/shared/SourceVwo.md
   - docs/models/shared/Webflow.md
   - docs/models/shared/SourceWebflow.md
   - docs/models/shared/WhenIWork.md

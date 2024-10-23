@@ -1,18 +1,13 @@
 # FileFormat
 
-The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
+File format of Iceberg storage.
 
 
-## Values
+## Fields
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `CSV`          | csv            |
-| `JSON`         | json           |
-| `JSONL`        | jsonl          |
-| `EXCEL`        | excel          |
-| `EXCEL_BINARY` | excel_binary   |
-| `FWF`          | fwf            |
-| `FEATHER`      | feather        |
-| `PARQUET`      | parquet        |
-| `YAML`         | yaml           |
+| Field                                                                                                                                                   | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `autoCompact`                                                                                                                                           | *Optional<? extends Boolean>*                                                                                                                           | :heavy_minus_sign:                                                                                                                                      | Auto compact data files when stream close                                                                                                               |
+| `compactTargetFileSizeInMb`                                                                                                                             | *Optional<? extends Long>*                                                                                                                              | :heavy_minus_sign:                                                                                                                                      | Specify the target size of Iceberg data file when performing a compaction action.                                                                       |
+| `flushBatchSize`                                                                                                                                        | *Optional<? extends Long>*                                                                                                                              | :heavy_minus_sign:                                                                                                                                      | Iceberg data file flush batch size. Incoming rows write to cache firstly; When cache size reaches this 'batch size', flush into real Iceberg data file. |
+| `format`                                                                                                                                                | [Optional<? extends com.airbyte.api.models.shared.FileStorageFormat>](../../models/shared/FileStorageFormat.md)                                         | :heavy_minus_sign:                                                                                                                                      | N/A                                                                                                                                                     |

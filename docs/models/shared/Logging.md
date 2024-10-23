@@ -1,0 +1,9 @@
+# Logging
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `loggingConfig`                                                                                                     | [com.airbyte.api.models.shared.LoggingConfiguration](../../models/shared/LoggingConfiguration.md)                   | :heavy_check_mark:                                                                                                  | Configurate how the messages are logged.                                                                            |
+| `testDestinationType`                                                                                               | [Optional<? extends com.airbyte.api.models.shared.TestDestinationType>](../../models/shared/TestDestinationType.md) | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |

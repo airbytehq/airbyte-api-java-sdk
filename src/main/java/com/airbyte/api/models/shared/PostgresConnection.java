@@ -4,16 +4,20 @@
 
 package com.airbyte.api.models.shared;
 
+import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 /**
  * PostgresConnection - Postgres can be used to store vector data and retrieve embeddings.
  */
@@ -32,8 +36,9 @@ public class PostgresConnection {
     /**
      * Enter the name of the default schema
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("default_schema")
-    private String defaultSchema;
+    private Optional<? extends String> defaultSchema;
 
     /**
      * Enter the account name you want to use to access the database.
@@ -44,8 +49,9 @@ public class PostgresConnection {
     /**
      * Enter the port you want to use to access the database
      */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
-    private long port;
+    private Optional<? extends Long> port;
 
     /**
      * Enter the name of the user you want to use to access the database
@@ -57,9 +63,9 @@ public class PostgresConnection {
     public PostgresConnection(
             @JsonProperty("credentials") DestinationPgvectorCredentials credentials,
             @JsonProperty("database") String database,
-            @JsonProperty("default_schema") String defaultSchema,
+            @JsonProperty("default_schema") Optional<? extends String> defaultSchema,
             @JsonProperty("host") String host,
-            @JsonProperty("port") long port,
+            @JsonProperty("port") Optional<? extends Long> port,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(database, "database");
@@ -73,6 +79,14 @@ public class PostgresConnection {
         this.host = host;
         this.port = port;
         this.username = username;
+    }
+    
+    public PostgresConnection(
+            DestinationPgvectorCredentials credentials,
+            String database,
+            String host,
+            String username) {
+        this(credentials, database, Optional.empty(), host, Optional.empty(), username);
     }
 
     @JsonIgnore
@@ -91,9 +105,10 @@ public class PostgresConnection {
     /**
      * Enter the name of the default schema
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public String defaultSchema() {
-        return defaultSchema;
+    public Optional<String> defaultSchema() {
+        return (Optional<String>) defaultSchema;
     }
 
     /**
@@ -107,9 +122,10 @@ public class PostgresConnection {
     /**
      * Enter the port you want to use to access the database
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public long port() {
-        return port;
+    public Optional<Long> port() {
+        return (Optional<Long>) port;
     }
 
     /**
@@ -144,6 +160,15 @@ public class PostgresConnection {
      */
     public PostgresConnection withDefaultSchema(String defaultSchema) {
         Utils.checkNotNull(defaultSchema, "defaultSchema");
+        this.defaultSchema = Optional.ofNullable(defaultSchema);
+        return this;
+    }
+
+    /**
+     * Enter the name of the default schema
+     */
+    public PostgresConnection withDefaultSchema(Optional<? extends String> defaultSchema) {
+        Utils.checkNotNull(defaultSchema, "defaultSchema");
         this.defaultSchema = defaultSchema;
         return this;
     }
@@ -161,6 +186,15 @@ public class PostgresConnection {
      * Enter the port you want to use to access the database
      */
     public PostgresConnection withPort(long port) {
+        Utils.checkNotNull(port, "port");
+        this.port = Optional.ofNullable(port);
+        return this;
+    }
+
+    /**
+     * Enter the port you want to use to access the database
+     */
+    public PostgresConnection withPort(Optional<? extends Long> port) {
         Utils.checkNotNull(port, "port");
         this.port = port;
         return this;
@@ -221,11 +255,11 @@ public class PostgresConnection {
  
         private String database;
  
-        private String defaultSchema;
+        private Optional<? extends String> defaultSchema;
  
         private String host;
  
-        private Long port;
+        private Optional<? extends Long> port;
  
         private String username;  
         
@@ -253,6 +287,15 @@ public class PostgresConnection {
          */
         public Builder defaultSchema(String defaultSchema) {
             Utils.checkNotNull(defaultSchema, "defaultSchema");
+            this.defaultSchema = Optional.ofNullable(defaultSchema);
+            return this;
+        }
+
+        /**
+         * Enter the name of the default schema
+         */
+        public Builder defaultSchema(Optional<? extends String> defaultSchema) {
+            Utils.checkNotNull(defaultSchema, "defaultSchema");
             this.defaultSchema = defaultSchema;
             return this;
         }
@@ -271,6 +314,15 @@ public class PostgresConnection {
          */
         public Builder port(long port) {
             Utils.checkNotNull(port, "port");
+            this.port = Optional.ofNullable(port);
+            return this;
+        }
+
+        /**
+         * Enter the port you want to use to access the database
+         */
+        public Builder port(Optional<? extends Long> port) {
+            Utils.checkNotNull(port, "port");
             this.port = port;
             return this;
         }
@@ -285,6 +337,12 @@ public class PostgresConnection {
         }
         
         public PostgresConnection build() {
+            if (defaultSchema == null) {
+                defaultSchema = _SINGLETON_VALUE_DefaultSchema.value();
+            }
+            if (port == null) {
+                port = _SINGLETON_VALUE_Port.value();
+            }
             return new PostgresConnection(
                 credentials,
                 database,
@@ -293,6 +351,18 @@ public class PostgresConnection {
                 port,
                 username);
         }
+
+        private static final LazySingletonValue<Optional<? extends String>> _SINGLETON_VALUE_DefaultSchema =
+                new LazySingletonValue<>(
+                        "default_schema",
+                        "\"public\"",
+                        new TypeReference<Optional<? extends String>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_Port =
+                new LazySingletonValue<>(
+                        "port",
+                        "5432",
+                        new TypeReference<Optional<? extends Long>>() {});
     }
 }
 
