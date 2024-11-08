@@ -59,6 +59,11 @@ public class SourceS3Format {
         Utils.checkNotNull(value, "value");
         return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3UnstructuredDocumentFormat>(){}));
     }
+
+    public static SourceS3Format of(SourceS3ExcelFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceS3Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3ExcelFormat>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
@@ -68,6 +73,7 @@ public class SourceS3Format {
      * <li>{@code SourceS3JsonlFormat}</li>
      * <li>{@code SourceS3ParquetFormat}</li>
      * <li>{@code SourceS3UnstructuredDocumentFormat}</li>
+     * <li>{@code SourceS3ExcelFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -111,7 +117,8 @@ public class SourceS3Format {
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceS3CSVFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceS3JsonlFormat>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceS3ParquetFormat>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceS3UnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceS3UnstructuredDocumentFormat>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceS3ExcelFormat>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

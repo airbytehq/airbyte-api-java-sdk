@@ -15,29 +15,26 @@ import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+/**
+ * Language - The 2-letter ISO-639-1 code of the language you want to get headlines
+ * for. Possible options: ar de en es fr he it nl no pt ru se ud zh.
+ * 
+ */
 public enum Language {
     AR("ar"),
-    ZH("zh"),
-    NL("nl"),
-    EN("en"),
-    FR("fr"),
     DE("de"),
-    EL("el"),
+    EN("en"),
+    ES("es"),
+    FR("fr"),
     HE("he"),
-    HI("hi"),
     IT("it"),
-    JA("ja"),
-    ML("ml"),
-    MR("mr"),
+    NL("nl"),
     NO("no"),
     PT("pt"),
-    RO("ro"),
     RU("ru"),
-    ES("es"),
-    SV("sv"),
-    TA("ta"),
-    TE("te"),
-    UK("uk");
+    SE("se"),
+    UD("ud"),
+    ZH("zh");
 
     @JsonValue
     private final String value;

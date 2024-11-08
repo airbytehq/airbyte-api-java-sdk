@@ -11,7 +11,9 @@
 | `ASANA`                     | asana                       |
 | `AZURE_BLOB_STORAGE`        | azure-blob-storage          |
 | `BING_ADS`                  | bing-ads                    |
+| `DRIFT`                     | drift                       |
 | `FACEBOOK_MARKETING`        | facebook-marketing          |
+| `GCS`                       | gcs                         |
 | `GITHUB`                    | github                      |
 | `GITLAB`                    | gitlab                      |
 | `GOOGLE_ADS`                | google-ads                  |
@@ -31,13 +33,12 @@
 | `MONDAY`                    | monday                      |
 | `NOTION`                    | notion                      |
 | `PINTEREST`                 | pinterest                   |
+| `RD_STATION_MARKETING`      | rd-station-marketing        |
 | `RETENTLY`                  | retently                    |
 | `SALESFORCE`                | salesforce                  |
 | `SLACK`                     | slack                       |
 | `SMARTSHEETS`               | smartsheets                 |
-| `SNAPCHAT_MARKETING`        | snapchat-marketing          |
 | `SNOWFLAKE`                 | snowflake                   |
-| `SQUARE`                    | square                      |
 | `SURVEYMONKEY`              | surveymonkey                |
 | `TIKTOK_MARKETING`          | tiktok-marketing            |
 | `TRELLO`                    | trello                      |

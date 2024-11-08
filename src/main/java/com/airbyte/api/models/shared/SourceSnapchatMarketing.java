@@ -55,7 +55,7 @@ public class SourceSnapchatMarketing {
     private String refreshToken;
 
     @JsonProperty("sourceType")
-    private SourceSnapchatMarketingSnapchatMarketing sourceType;
+    private SnapchatMarketing sourceType;
 
     /**
      * Date in the format 2022-01-01. Any data before this date will not be replicated.
@@ -157,7 +157,7 @@ public class SourceSnapchatMarketing {
     }
 
     @JsonIgnore
-    public SourceSnapchatMarketingSnapchatMarketing sourceType() {
+    public SnapchatMarketing sourceType() {
         return sourceType;
     }
 
@@ -527,11 +527,11 @@ public class SourceSnapchatMarketing {
                         "\"conversion\"",
                         new TypeReference<Optional<? extends ActionReportTime>>() {});
 
-        private static final LazySingletonValue<SourceSnapchatMarketingSnapchatMarketing> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<SnapchatMarketing> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"snapchat-marketing\"",
-                        new TypeReference<SourceSnapchatMarketingSnapchatMarketing>() {});
+                        new TypeReference<SnapchatMarketing>() {});
 
         private static final LazySingletonValue<Optional<? extends LocalDate>> _SINGLETON_VALUE_StartDate =
                 new LazySingletonValue<>(

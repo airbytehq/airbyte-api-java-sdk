@@ -16,13 +16,14 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * SortBy - This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
- *   - publishedAt = sort by publication date, the articles with the most recent publication date are returned first
- *   - relevance = sort by best match to keywords, the articles with the best match are returned first
+ * SortBy - The order to sort the articles in. Possible options: relevancy,
+ * popularity, publishedAt.
+ * 
  */
 public enum SortBy {
-    PUBLISHED_AT("publishedAt"),
-    RELEVANCE("relevance");
+    RELEVANCY("relevancy"),
+    POPULARITY("popularity"),
+    PUBLISHED_AT("publishedAt");
 
     @JsonValue
     private final String value;

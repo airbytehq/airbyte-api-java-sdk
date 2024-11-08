@@ -1,0 +1,9 @@
+# SourceJustSift
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `apiToken`                                                                                           | *String*                                                                                             | :heavy_check_mark:                                                                                   | API token to use for accessing the Sift API. Obtain this token from your Sift account administrator. |
+| `sourceType`                                                                                         | [com.airbyte.api.models.shared.JustSift](../../models/shared/JustSift.md)                            | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

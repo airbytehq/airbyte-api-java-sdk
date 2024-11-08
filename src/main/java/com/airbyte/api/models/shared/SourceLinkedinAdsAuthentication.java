@@ -37,16 +37,16 @@ public class SourceLinkedinAdsAuthentication {
         return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinAdsOAuth20>(){}));
     }
 
-    public static SourceLinkedinAdsAuthentication of(AccessToken value) {
+    public static SourceLinkedinAdsAuthentication of(SourceLinkedinAdsAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccessToken>(){}));
+        return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinAdsAccessToken>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code SourceLinkedinAdsOAuth20}</li>
-     * <li>{@code AccessToken}</li>
+     * <li>{@code SourceLinkedinAdsAccessToken}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -87,7 +87,7 @@ public class SourceLinkedinAdsAuthentication {
         public _Deserializer() {
             super(SourceLinkedinAdsAuthentication.class,
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceLinkedinAdsOAuth20>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<AccessToken>() {}, Utils.JsonShape.DEFAULT));
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceLinkedinAdsAccessToken>() {}, Utils.JsonShape.DEFAULT));
         }
     }
     

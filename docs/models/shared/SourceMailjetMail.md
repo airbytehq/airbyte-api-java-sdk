@@ -1,0 +1,10 @@
+# SourceMailjetMail
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                          | *String*                                                                                          | :heavy_check_mark:                                                                                | Your API Key. See <a href="https://dev.mailjet.com/email/guides/#authentication">here</a>.        |
+| `apiKeySecret`                                                                                    | *String*                                                                                          | :heavy_check_mark:                                                                                | Your API Secret Key. See <a href="https://dev.mailjet.com/email/guides/#authentication">here</a>. |
+| `sourceType`                                                                                      | [com.airbyte.api.models.shared.MailjetMail](../../models/shared/MailjetMail.md)                   | :heavy_check_mark:                                                                                | N/A                                                                                               |

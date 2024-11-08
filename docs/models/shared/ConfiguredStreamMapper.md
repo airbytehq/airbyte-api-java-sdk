@@ -1,0 +1,9 @@
+# ConfiguredStreamMapper
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `mapperConfiguration`                                                                           | [com.airbyte.api.models.shared.MapperConfiguration](../../models/shared/MapperConfiguration.md) | :heavy_check_mark:                                                                              | The values required to configure the mapper.                                                    |
+| `type`                                                                                          | [com.airbyte.api.models.shared.StreamMapperType](../../models/shared/StreamMapperType.md)       | :heavy_check_mark:                                                                              | N/A                                                                                             |

@@ -65,9 +65,19 @@ public class OAuthCredentialsConfiguration {
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BingAds>(){}));
     }
 
+    public static OAuthCredentialsConfiguration of(Drift value) {
+        Utils.checkNotNull(value, "value");
+        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Drift>(){}));
+    }
+
     public static OAuthCredentialsConfiguration of(FacebookMarketing value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FacebookMarketing>(){}));
+    }
+
+    public static OAuthCredentialsConfiguration of(Gcs value) {
+        Utils.checkNotNull(value, "value");
+        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Gcs>(){}));
     }
 
     public static OAuthCredentialsConfiguration of(Github value) {
@@ -165,6 +175,11 @@ public class OAuthCredentialsConfiguration {
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Pinterest>(){}));
     }
 
+    public static OAuthCredentialsConfiguration of(RdStationMarketing value) {
+        Utils.checkNotNull(value, "value");
+        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<RdStationMarketing>(){}));
+    }
+
     public static OAuthCredentialsConfiguration of(Retently value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Retently>(){}));
@@ -190,19 +205,9 @@ public class OAuthCredentialsConfiguration {
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Smartsheets>(){}));
     }
 
-    public static OAuthCredentialsConfiguration of(SnapchatMarketing value) {
-        Utils.checkNotNull(value, "value");
-        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SnapchatMarketing>(){}));
-    }
-
     public static OAuthCredentialsConfiguration of(Snowflake value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Snowflake>(){}));
-    }
-
-    public static OAuthCredentialsConfiguration of(Square value) {
-        Utils.checkNotNull(value, "value");
-        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Square>(){}));
     }
 
     public static OAuthCredentialsConfiguration of(Surveymonkey value) {
@@ -259,7 +264,9 @@ public class OAuthCredentialsConfiguration {
      * <li>{@code Asana}</li>
      * <li>{@code AzureBlobStorage}</li>
      * <li>{@code BingAds}</li>
+     * <li>{@code Drift}</li>
      * <li>{@code FacebookMarketing}</li>
+     * <li>{@code Gcs}</li>
      * <li>{@code Github}</li>
      * <li>{@code Gitlab}</li>
      * <li>{@code GoogleAds}</li>
@@ -279,14 +286,13 @@ public class OAuthCredentialsConfiguration {
      * <li>{@code Monday}</li>
      * <li>{@code Notion}</li>
      * <li>{@code Pinterest}</li>
+     * <li>{@code RdStationMarketing}</li>
      * <li>{@code Retently}</li>
      * <li>{@code Salesforce}</li>
      * <li>{@code Shopify}</li>
      * <li>{@code Slack}</li>
      * <li>{@code Smartsheets}</li>
-     * <li>{@code SnapchatMarketing}</li>
      * <li>{@code Snowflake}</li>
-     * <li>{@code Square}</li>
      * <li>{@code Surveymonkey}</li>
      * <li>{@code TiktokMarketing}</li>
      * <li>{@code java.lang.Object}</li>
@@ -341,7 +347,9 @@ public class OAuthCredentialsConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<Asana>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<AzureBlobStorage>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<BingAds>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<Drift>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<FacebookMarketing>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<Gcs>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Github>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Gitlab>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<GoogleAds>() {}, Utils.JsonShape.DEFAULT),
@@ -361,14 +369,13 @@ public class OAuthCredentialsConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<Monday>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Notion>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Pinterest>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<RdStationMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Retently>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Salesforce>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Shopify>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Slack>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Smartsheets>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<SnapchatMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Snowflake>() {}, Utils.JsonShape.DEFAULT),
-                  Utils.TypeReferenceWithShape.of(new TypeReference<Square>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<Surveymonkey>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<TiktokMarketing>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<java.lang.Object>() {}, Utils.JsonShape.DEFAULT),

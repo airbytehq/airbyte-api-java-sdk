@@ -36,10 +36,10 @@ public class SourceGcs {
     private String bucket;
 
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * Credentials for connecting to the Google Cloud Storage API
      */
-    @JsonProperty("service_account")
-    private String serviceAccount;
+    @JsonProperty("credentials")
+    private SourceGcsAuthentication credentials;
 
     @JsonProperty("sourceType")
     private SourceGcsGcs sourceType;
@@ -60,15 +60,15 @@ public class SourceGcs {
     @JsonCreator
     public SourceGcs(
             @JsonProperty("bucket") String bucket,
-            @JsonProperty("service_account") String serviceAccount,
+            @JsonProperty("credentials") SourceGcsAuthentication credentials,
             @JsonProperty("start_date") Optional<? extends OffsetDateTime> startDate,
             @JsonProperty("streams") java.util.List<SourceGcsFileBasedStreamConfig> streams) {
         Utils.checkNotNull(bucket, "bucket");
-        Utils.checkNotNull(serviceAccount, "serviceAccount");
+        Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(streams, "streams");
         this.bucket = bucket;
-        this.serviceAccount = serviceAccount;
+        this.credentials = credentials;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.streams = streams;
@@ -76,9 +76,9 @@ public class SourceGcs {
     
     public SourceGcs(
             String bucket,
-            String serviceAccount,
+            SourceGcsAuthentication credentials,
             java.util.List<SourceGcsFileBasedStreamConfig> streams) {
-        this(bucket, serviceAccount, Optional.empty(), streams);
+        this(bucket, credentials, Optional.empty(), streams);
     }
 
     /**
@@ -90,11 +90,11 @@ public class SourceGcs {
     }
 
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * Credentials for connecting to the Google Cloud Storage API
      */
     @JsonIgnore
-    public String serviceAccount() {
-        return serviceAccount;
+    public SourceGcsAuthentication credentials() {
+        return credentials;
     }
 
     @JsonIgnore
@@ -133,11 +133,11 @@ public class SourceGcs {
     }
 
     /**
-     * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+     * Credentials for connecting to the Google Cloud Storage API
      */
-    public SourceGcs withServiceAccount(String serviceAccount) {
-        Utils.checkNotNull(serviceAccount, "serviceAccount");
-        this.serviceAccount = serviceAccount;
+    public SourceGcs withCredentials(SourceGcsAuthentication credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
         return this;
     }
 
@@ -179,7 +179,7 @@ public class SourceGcs {
         SourceGcs other = (SourceGcs) o;
         return 
             java.util.Objects.deepEquals(this.bucket, other.bucket) &&
-            java.util.Objects.deepEquals(this.serviceAccount, other.serviceAccount) &&
+            java.util.Objects.deepEquals(this.credentials, other.credentials) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate) &&
             java.util.Objects.deepEquals(this.streams, other.streams);
@@ -189,7 +189,7 @@ public class SourceGcs {
     public int hashCode() {
         return java.util.Objects.hash(
             bucket,
-            serviceAccount,
+            credentials,
             sourceType,
             startDate,
             streams);
@@ -199,7 +199,7 @@ public class SourceGcs {
     public String toString() {
         return Utils.toString(SourceGcs.class,
                 "bucket", bucket,
-                "serviceAccount", serviceAccount,
+                "credentials", credentials,
                 "sourceType", sourceType,
                 "startDate", startDate,
                 "streams", streams);
@@ -209,7 +209,7 @@ public class SourceGcs {
  
         private String bucket;
  
-        private String serviceAccount;
+        private SourceGcsAuthentication credentials;
  
         private Optional<? extends OffsetDateTime> startDate = Optional.empty();
  
@@ -229,11 +229,11 @@ public class SourceGcs {
         }
 
         /**
-         * Enter your Google Cloud &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;service account key&lt;/a&gt; in JSON format
+         * Credentials for connecting to the Google Cloud Storage API
          */
-        public Builder serviceAccount(String serviceAccount) {
-            Utils.checkNotNull(serviceAccount, "serviceAccount");
-            this.serviceAccount = serviceAccount;
+        public Builder credentials(SourceGcsAuthentication credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
             return this;
         }
 
@@ -267,7 +267,7 @@ public class SourceGcs {
         public SourceGcs build() {
             return new SourceGcs(
                 bucket,
-                serviceAccount,
+                credentials,
                 startDate,
                 streams);
         }

@@ -1,0 +1,11 @@
+# SourceOura
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | API Key                                                                                   |
+| `endDatetime`                                                                             | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_minus_sign:                                                                        | End datetime to sync until. Default is current UTC datetime.                              |
+| `sourceType`                                                                              | [com.airbyte.api.models.shared.Oura](../../models/shared/Oura.md)                         | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDatetime`                                                                           | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_minus_sign:                                                                        | Start datetime to sync from. Default is current UTC datetime minus 1<br/>day.<br/>        |

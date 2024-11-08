@@ -1,0 +1,12 @@
+# SourceGmail
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `clientId`                                                                     | *String*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `clientRefreshToken`                                                           | *String*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `clientSecret`                                                                 | *String*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `includeSpamAndTrash`                                                          | *Optional<? extends Boolean>*                                                  | :heavy_minus_sign:                                                             | Include drafts/messages from SPAM and TRASH in the results. Defaults to false. |
+| `sourceType`                                                                   | [com.airbyte.api.models.shared.Gmail](../../models/shared/Gmail.md)            | :heavy_check_mark:                                                             | N/A                                                                            |

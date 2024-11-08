@@ -35,9 +35,9 @@ public class SourceGoogleAnalyticsDataApiCredentials {
         this.value = value;
     }
 
-    public static SourceGoogleAnalyticsDataApiCredentials of(AuthenticateViaGoogleOauth value) {
+    public static SourceGoogleAnalyticsDataApiCredentials of(SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaGoogleOauth>(){}));
+        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiCredentials of(SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication value) {
@@ -48,7 +48,7 @@ public class SourceGoogleAnalyticsDataApiCredentials {
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code AuthenticateViaGoogleOauth}</li>
+     * <li>{@code SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth}</li>
      * <li>{@code SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication}</li>
      * </ul>
      * 
@@ -89,7 +89,7 @@ public class SourceGoogleAnalyticsDataApiCredentials {
 
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiCredentials.class,
-                  Utils.TypeReferenceWithShape.of(new TypeReference<AuthenticateViaGoogleOauth>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication>() {}, Utils.JsonShape.DEFAULT));
         }
     }

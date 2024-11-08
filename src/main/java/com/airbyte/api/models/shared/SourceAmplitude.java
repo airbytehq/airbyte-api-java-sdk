@@ -25,6 +25,13 @@ import java.util.Optional;
 public class SourceAmplitude {
 
     /**
+     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Considerations&lt;/a&gt; the grouping by `Country` is optional, if you're facing issues fetching the stream, or checking the connection please set this to `False` instead.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("active_users_group_by_country")
+    private Optional<? extends Boolean> activeUsersGroupByCountry;
+
+    /**
      * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
      */
     @JsonProperty("api_key")
@@ -61,16 +68,19 @@ public class SourceAmplitude {
 
     @JsonCreator
     public SourceAmplitude(
+            @JsonProperty("active_users_group_by_country") Optional<? extends Boolean> activeUsersGroupByCountry,
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("data_region") Optional<? extends DataRegion> dataRegion,
             @JsonProperty("request_time_range") Optional<? extends Long> requestTimeRange,
             @JsonProperty("secret_key") String secretKey,
             @JsonProperty("start_date") OffsetDateTime startDate) {
+        Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
         Utils.checkNotNull(apiKey, "apiKey");
         Utils.checkNotNull(dataRegion, "dataRegion");
         Utils.checkNotNull(requestTimeRange, "requestTimeRange");
         Utils.checkNotNull(secretKey, "secretKey");
         Utils.checkNotNull(startDate, "startDate");
+        this.activeUsersGroupByCountry = activeUsersGroupByCountry;
         this.apiKey = apiKey;
         this.dataRegion = dataRegion;
         this.requestTimeRange = requestTimeRange;
@@ -83,7 +93,16 @@ public class SourceAmplitude {
             String apiKey,
             String secretKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), secretKey, startDate);
+        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty(), secretKey, startDate);
+    }
+
+    /**
+     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Considerations&lt;/a&gt; the grouping by `Country` is optional, if you're facing issues fetching the stream, or checking the connection please set this to `False` instead.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Boolean> activeUsersGroupByCountry() {
+        return (Optional<Boolean>) activeUsersGroupByCountry;
     }
 
     /**
@@ -135,6 +154,24 @@ public class SourceAmplitude {
 
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Considerations&lt;/a&gt; the grouping by `Country` is optional, if you're facing issues fetching the stream, or checking the connection please set this to `False` instead.
+     */
+    public SourceAmplitude withActiveUsersGroupByCountry(boolean activeUsersGroupByCountry) {
+        Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
+        this.activeUsersGroupByCountry = Optional.ofNullable(activeUsersGroupByCountry);
+        return this;
+    }
+
+    /**
+     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Considerations&lt;/a&gt; the grouping by `Country` is optional, if you're facing issues fetching the stream, or checking the connection please set this to `False` instead.
+     */
+    public SourceAmplitude withActiveUsersGroupByCountry(Optional<? extends Boolean> activeUsersGroupByCountry) {
+        Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
+        this.activeUsersGroupByCountry = activeUsersGroupByCountry;
+        return this;
     }
 
     /**
@@ -210,6 +247,7 @@ public class SourceAmplitude {
         }
         SourceAmplitude other = (SourceAmplitude) o;
         return 
+            java.util.Objects.deepEquals(this.activeUsersGroupByCountry, other.activeUsersGroupByCountry) &&
             java.util.Objects.deepEquals(this.apiKey, other.apiKey) &&
             java.util.Objects.deepEquals(this.dataRegion, other.dataRegion) &&
             java.util.Objects.deepEquals(this.requestTimeRange, other.requestTimeRange) &&
@@ -221,6 +259,7 @@ public class SourceAmplitude {
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
+            activeUsersGroupByCountry,
             apiKey,
             dataRegion,
             requestTimeRange,
@@ -232,6 +271,7 @@ public class SourceAmplitude {
     @Override
     public String toString() {
         return Utils.toString(SourceAmplitude.class,
+                "activeUsersGroupByCountry", activeUsersGroupByCountry,
                 "apiKey", apiKey,
                 "dataRegion", dataRegion,
                 "requestTimeRange", requestTimeRange,
@@ -241,6 +281,8 @@ public class SourceAmplitude {
     }
     
     public final static class Builder {
+ 
+        private Optional<? extends Boolean> activeUsersGroupByCountry;
  
         private String apiKey;
  
@@ -254,6 +296,24 @@ public class SourceAmplitude {
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Considerations&lt;/a&gt; the grouping by `Country` is optional, if you're facing issues fetching the stream, or checking the connection please set this to `False` instead.
+         */
+        public Builder activeUsersGroupByCountry(boolean activeUsersGroupByCountry) {
+            Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
+            this.activeUsersGroupByCountry = Optional.ofNullable(activeUsersGroupByCountry);
+            return this;
+        }
+
+        /**
+         * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Considerations&lt;/a&gt; the grouping by `Country` is optional, if you're facing issues fetching the stream, or checking the connection please set this to `False` instead.
+         */
+        public Builder activeUsersGroupByCountry(Optional<? extends Boolean> activeUsersGroupByCountry) {
+            Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
+            this.activeUsersGroupByCountry = activeUsersGroupByCountry;
+            return this;
         }
 
         /**
@@ -320,6 +380,9 @@ public class SourceAmplitude {
         }
         
         public SourceAmplitude build() {
+            if (activeUsersGroupByCountry == null) {
+                activeUsersGroupByCountry = _SINGLETON_VALUE_ActiveUsersGroupByCountry.value();
+            }
             if (dataRegion == null) {
                 dataRegion = _SINGLETON_VALUE_DataRegion.value();
             }
@@ -327,12 +390,19 @@ public class SourceAmplitude {
                 requestTimeRange = _SINGLETON_VALUE_RequestTimeRange.value();
             }
             return new SourceAmplitude(
+                activeUsersGroupByCountry,
                 apiKey,
                 dataRegion,
                 requestTimeRange,
                 secretKey,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<? extends Boolean>> _SINGLETON_VALUE_ActiveUsersGroupByCountry =
+                new LazySingletonValue<>(
+                        "active_users_group_by_country",
+                        "true",
+                        new TypeReference<Optional<? extends Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends DataRegion>> _SINGLETON_VALUE_DataRegion =
                 new LazySingletonValue<>(

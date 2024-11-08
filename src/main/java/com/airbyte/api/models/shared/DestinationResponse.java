@@ -26,6 +26,9 @@ public class DestinationResponse {
     @JsonProperty("configuration")
     private DestinationConfiguration configuration;
 
+    @JsonProperty("definitionId")
+    private String definitionId;
+
     @JsonProperty("destinationId")
     private String destinationId;
 
@@ -41,16 +44,19 @@ public class DestinationResponse {
     @JsonCreator
     public DestinationResponse(
             @JsonProperty("configuration") DestinationConfiguration configuration,
+            @JsonProperty("definitionId") String definitionId,
             @JsonProperty("destinationId") String destinationId,
             @JsonProperty("destinationType") String destinationType,
             @JsonProperty("name") String name,
             @JsonProperty("workspaceId") String workspaceId) {
         Utils.checkNotNull(configuration, "configuration");
+        Utils.checkNotNull(definitionId, "definitionId");
         Utils.checkNotNull(destinationId, "destinationId");
         Utils.checkNotNull(destinationType, "destinationType");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.configuration = configuration;
+        this.definitionId = definitionId;
         this.destinationId = destinationId;
         this.destinationType = destinationType;
         this.name = name;
@@ -63,6 +69,11 @@ public class DestinationResponse {
     @JsonIgnore
     public DestinationConfiguration configuration() {
         return configuration;
+    }
+
+    @JsonIgnore
+    public String definitionId() {
+        return definitionId;
     }
 
     @JsonIgnore
@@ -95,6 +106,12 @@ public class DestinationResponse {
     public DestinationResponse withConfiguration(DestinationConfiguration configuration) {
         Utils.checkNotNull(configuration, "configuration");
         this.configuration = configuration;
+        return this;
+    }
+
+    public DestinationResponse withDefinitionId(String definitionId) {
+        Utils.checkNotNull(definitionId, "definitionId");
+        this.definitionId = definitionId;
         return this;
     }
 
@@ -133,6 +150,7 @@ public class DestinationResponse {
         DestinationResponse other = (DestinationResponse) o;
         return 
             java.util.Objects.deepEquals(this.configuration, other.configuration) &&
+            java.util.Objects.deepEquals(this.definitionId, other.definitionId) &&
             java.util.Objects.deepEquals(this.destinationId, other.destinationId) &&
             java.util.Objects.deepEquals(this.destinationType, other.destinationType) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
@@ -143,6 +161,7 @@ public class DestinationResponse {
     public int hashCode() {
         return java.util.Objects.hash(
             configuration,
+            definitionId,
             destinationId,
             destinationType,
             name,
@@ -153,6 +172,7 @@ public class DestinationResponse {
     public String toString() {
         return Utils.toString(DestinationResponse.class,
                 "configuration", configuration,
+                "definitionId", definitionId,
                 "destinationId", destinationId,
                 "destinationType", destinationType,
                 "name", name,
@@ -162,6 +182,8 @@ public class DestinationResponse {
     public final static class Builder {
  
         private DestinationConfiguration configuration;
+ 
+        private String definitionId;
  
         private String destinationId;
  
@@ -181,6 +203,12 @@ public class DestinationResponse {
         public Builder configuration(DestinationConfiguration configuration) {
             Utils.checkNotNull(configuration, "configuration");
             this.configuration = configuration;
+            return this;
+        }
+
+        public Builder definitionId(String definitionId) {
+            Utils.checkNotNull(definitionId, "definitionId");
+            this.definitionId = definitionId;
             return this;
         }
 
@@ -211,6 +239,7 @@ public class DestinationResponse {
         public DestinationResponse build() {
             return new DestinationResponse(
                 configuration,
+                definitionId,
                 destinationId,
                 destinationType,
                 name,

@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public enum Mode {
-    DISABLE("disable");
+    MODE("mode");
 
     @JsonValue
     private final String value;

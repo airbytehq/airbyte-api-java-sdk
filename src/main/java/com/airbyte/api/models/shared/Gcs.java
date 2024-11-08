@@ -8,24 +8,104 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Deprecated;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Optional;
 
-public enum Gcs {
-    GCS("gcs");
+public class Gcs {
 
-    @JsonValue
-    private final String value;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("credentials")
+    private Optional<? extends GcsCredentials> credentials;
 
-    private Gcs(String value) {
-        this.value = value;
+    @JsonCreator
+    public Gcs(
+            @JsonProperty("credentials") Optional<? extends GcsCredentials> credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
     }
     
-    public String value() {
-        return value;
+    public Gcs() {
+        this(Optional.empty());
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<GcsCredentials> credentials() {
+        return (Optional<GcsCredentials>) credentials;
+    }
+
+    public final static Builder builder() {
+        return new Builder();
+    }
+
+    public Gcs withCredentials(GcsCredentials credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = Optional.ofNullable(credentials);
+        return this;
+    }
+
+    public Gcs withCredentials(Optional<? extends GcsCredentials> credentials) {
+        Utils.checkNotNull(credentials, "credentials");
+        this.credentials = credentials;
+        return this;
+    }
+    
+    @Override
+    public boolean equals(java.lang.Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Gcs other = (Gcs) o;
+        return 
+            java.util.Objects.deepEquals(this.credentials, other.credentials);
+    }
+    
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(
+            credentials);
+    }
+    
+    @Override
+    public String toString() {
+        return Utils.toString(Gcs.class,
+                "credentials", credentials);
+    }
+    
+    public final static class Builder {
+ 
+        private Optional<? extends GcsCredentials> credentials = Optional.empty();  
+        
+        private Builder() {
+          // force use of static builder() method
+        }
+
+        public Builder credentials(GcsCredentials credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = Optional.ofNullable(credentials);
+            return this;
+        }
+
+        public Builder credentials(Optional<? extends GcsCredentials> credentials) {
+            Utils.checkNotNull(credentials, "credentials");
+            this.credentials = credentials;
+            return this;
+        }
+        
+        public Gcs build() {
+            return new Gcs(
+                credentials);
+        }
     }
 }
+

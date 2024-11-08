@@ -1,0 +1,9 @@
+# SourceStatuspage
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                              | *String*                                                                                              | :heavy_check_mark:                                                                                    | Your API Key. See <a href="https://developer.statuspage.io/#section/Authentication/api_key">here</a>. |
+| `sourceType`                                                                                          | [com.airbyte.api.models.shared.Statuspage](../../models/shared/Statuspage.md)                         | :heavy_check_mark:                                                                                    | N/A                                                                                                   |

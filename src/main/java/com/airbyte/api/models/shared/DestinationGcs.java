@@ -28,7 +28,7 @@ public class DestinationGcs {
     private DestinationGcsAuthentication credential;
 
     @JsonProperty("destinationType")
-    private Gcs destinationType;
+    private DestinationGcsGcs destinationType;
 
     /**
      * Output data format. One of the following formats must be selected - &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro"&gt;AVRO&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas"&gt;PARQUET&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table"&gt;CSV&lt;/a&gt; format, or &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table"&gt;JSONL&lt;/a&gt; format.
@@ -92,7 +92,7 @@ public class DestinationGcs {
     }
 
     @JsonIgnore
-    public Gcs destinationType() {
+    public DestinationGcsGcs destinationType() {
         return destinationType;
     }
 
@@ -309,11 +309,11 @@ public class DestinationGcs {
                 gcsBucketRegion);
         }
 
-        private static final LazySingletonValue<Gcs> _SINGLETON_VALUE_DestinationType =
+        private static final LazySingletonValue<DestinationGcsGcs> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
                         "destinationType",
                         "\"gcs\"",
-                        new TypeReference<Gcs>() {});
+                        new TypeReference<DestinationGcsGcs>() {});
 
         private static final LazySingletonValue<Optional<? extends GCSBucketRegion>> _SINGLETON_VALUE_GcsBucketRegion =
                 new LazySingletonValue<>(

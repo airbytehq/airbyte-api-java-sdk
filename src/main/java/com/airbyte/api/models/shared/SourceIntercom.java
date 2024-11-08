@@ -51,6 +51,13 @@ public class SourceIntercom {
     @JsonProperty("client_secret")
     private Optional<? extends String> clientSecret;
 
+    /**
+     * The number of days to shift the state value backward for record sync
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_window")
+    private Optional<? extends Long> lookbackWindow;
+
     @JsonProperty("sourceType")
     private SourceIntercomIntercom sourceType;
 
@@ -66,16 +73,19 @@ public class SourceIntercom {
             @JsonProperty("activity_logs_time_step") Optional<? extends Long> activityLogsTimeStep,
             @JsonProperty("client_id") Optional<? extends String> clientId,
             @JsonProperty("client_secret") Optional<? extends String> clientSecret,
+            @JsonProperty("lookback_window") Optional<? extends Long> lookbackWindow,
             @JsonProperty("start_date") OffsetDateTime startDate) {
         Utils.checkNotNull(accessToken, "accessToken");
         Utils.checkNotNull(activityLogsTimeStep, "activityLogsTimeStep");
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
         Utils.checkNotNull(startDate, "startDate");
         this.accessToken = accessToken;
         this.activityLogsTimeStep = activityLogsTimeStep;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
+        this.lookbackWindow = lookbackWindow;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
@@ -83,7 +93,7 @@ public class SourceIntercom {
     public SourceIntercom(
             String accessToken,
             OffsetDateTime startDate) {
-        this(accessToken, Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(accessToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
@@ -119,6 +129,15 @@ public class SourceIntercom {
     @JsonIgnore
     public Optional<String> clientSecret() {
         return (Optional<String>) clientSecret;
+    }
+
+    /**
+     * The number of days to shift the state value backward for record sync
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Long> lookbackWindow() {
+        return (Optional<Long>) lookbackWindow;
     }
 
     @JsonIgnore
@@ -202,6 +221,24 @@ public class SourceIntercom {
     }
 
     /**
+     * The number of days to shift the state value backward for record sync
+     */
+    public SourceIntercom withLookbackWindow(long lookbackWindow) {
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        this.lookbackWindow = Optional.ofNullable(lookbackWindow);
+        return this;
+    }
+
+    /**
+     * The number of days to shift the state value backward for record sync
+     */
+    public SourceIntercom withLookbackWindow(Optional<? extends Long> lookbackWindow) {
+        Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+
+    /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
      */
     public SourceIntercom withStartDate(OffsetDateTime startDate) {
@@ -224,6 +261,7 @@ public class SourceIntercom {
             java.util.Objects.deepEquals(this.activityLogsTimeStep, other.activityLogsTimeStep) &&
             java.util.Objects.deepEquals(this.clientId, other.clientId) &&
             java.util.Objects.deepEquals(this.clientSecret, other.clientSecret) &&
+            java.util.Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
             java.util.Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -235,6 +273,7 @@ public class SourceIntercom {
             activityLogsTimeStep,
             clientId,
             clientSecret,
+            lookbackWindow,
             sourceType,
             startDate);
     }
@@ -246,6 +285,7 @@ public class SourceIntercom {
                 "activityLogsTimeStep", activityLogsTimeStep,
                 "clientId", clientId,
                 "clientSecret", clientSecret,
+                "lookbackWindow", lookbackWindow,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -259,6 +299,8 @@ public class SourceIntercom {
         private Optional<? extends String> clientId = Optional.empty();
  
         private Optional<? extends String> clientSecret = Optional.empty();
+ 
+        private Optional<? extends Long> lookbackWindow;
  
         private OffsetDateTime startDate;  
         
@@ -330,6 +372,24 @@ public class SourceIntercom {
         }
 
         /**
+         * The number of days to shift the state value backward for record sync
+         */
+        public Builder lookbackWindow(long lookbackWindow) {
+            Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+            this.lookbackWindow = Optional.ofNullable(lookbackWindow);
+            return this;
+        }
+
+        /**
+         * The number of days to shift the state value backward for record sync
+         */
+        public Builder lookbackWindow(Optional<? extends Long> lookbackWindow) {
+            Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+            this.lookbackWindow = lookbackWindow;
+            return this;
+        }
+
+        /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
@@ -342,11 +402,15 @@ public class SourceIntercom {
             if (activityLogsTimeStep == null) {
                 activityLogsTimeStep = _SINGLETON_VALUE_ActivityLogsTimeStep.value();
             }
+            if (lookbackWindow == null) {
+                lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
+            }
             return new SourceIntercom(
                 accessToken,
                 activityLogsTimeStep,
                 clientId,
                 clientSecret,
+                lookbackWindow,
                 startDate);
         }
 
@@ -354,6 +418,12 @@ public class SourceIntercom {
                 new LazySingletonValue<>(
                         "activity_logs_time_step",
                         "30",
+                        new TypeReference<Optional<? extends Long>>() {});
+
+        private static final LazySingletonValue<Optional<? extends Long>> _SINGLETON_VALUE_LookbackWindow =
+                new LazySingletonValue<>(
+                        "lookback_window",
+                        "0",
                         new TypeReference<Optional<? extends Long>>() {});
 
         private static final LazySingletonValue<SourceIntercomIntercom> _SINGLETON_VALUE_SourceType =

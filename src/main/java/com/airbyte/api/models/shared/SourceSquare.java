@@ -44,7 +44,7 @@ public class SourceSquare {
     private Optional<? extends Boolean> isSandbox;
 
     @JsonProperty("sourceType")
-    private SourceSquareSquare sourceType;
+    private Square sourceType;
 
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. If not set, all data will be replicated.
@@ -102,7 +102,7 @@ public class SourceSquare {
     }
 
     @JsonIgnore
-    public SourceSquareSquare sourceType() {
+    public Square sourceType() {
         return sourceType;
     }
 
@@ -343,11 +343,11 @@ public class SourceSquare {
                         "false",
                         new TypeReference<Optional<? extends Boolean>>() {});
 
-        private static final LazySingletonValue<SourceSquareSquare> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<Square> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"square\"",
-                        new TypeReference<SourceSquareSquare>() {});
+                        new TypeReference<Square>() {});
 
         private static final LazySingletonValue<Optional<? extends LocalDate>> _SINGLETON_VALUE_StartDate =
                 new LazySingletonValue<>(

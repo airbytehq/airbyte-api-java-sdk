@@ -22,25 +22,25 @@ import java.util.Optional;
 public class AccessToken {
 
     /**
-     * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
     @JsonProperty("access_token")
     private String accessToken;
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("auth_method")
-    private Optional<? extends SourceLinkedinAdsSchemasAuthMethod> authMethod;
+    @JsonProperty("credentials")
+    private Optional<? extends SourceDriftSchemasCredentials> credentials;
 
     @JsonCreator
     public AccessToken(
             @JsonProperty("access_token") String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
         this.accessToken = accessToken;
-        this.authMethod = Builder._SINGLETON_VALUE_AuthMethod.value();
+        this.credentials = Builder._SINGLETON_VALUE_Credentials.value();
     }
 
     /**
-     * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
     @JsonIgnore
     public String accessToken() {
@@ -49,8 +49,8 @@ public class AccessToken {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceLinkedinAdsSchemasAuthMethod> authMethod() {
-        return (Optional<SourceLinkedinAdsSchemasAuthMethod>) authMethod;
+    public Optional<SourceDriftSchemasCredentials> credentials() {
+        return (Optional<SourceDriftSchemasCredentials>) credentials;
     }
 
     public final static Builder builder() {
@@ -58,7 +58,7 @@ public class AccessToken {
     }
 
     /**
-     * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+     * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
     public AccessToken withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -77,21 +77,21 @@ public class AccessToken {
         AccessToken other = (AccessToken) o;
         return 
             java.util.Objects.deepEquals(this.accessToken, other.accessToken) &&
-            java.util.Objects.deepEquals(this.authMethod, other.authMethod);
+            java.util.Objects.deepEquals(this.credentials, other.credentials);
     }
     
     @Override
     public int hashCode() {
         return java.util.Objects.hash(
             accessToken,
-            authMethod);
+            credentials);
     }
     
     @Override
     public String toString() {
         return Utils.toString(AccessToken.class,
                 "accessToken", accessToken,
-                "authMethod", authMethod);
+                "credentials", credentials);
     }
     
     public final static class Builder {
@@ -103,7 +103,7 @@ public class AccessToken {
         }
 
         /**
-         * The access token generated for your developer application. Refer to our &lt;a href='https://docs.airbyte.com/integrations/sources/linkedin-ads#setup-guide'&gt;documentation&lt;/a&gt; for more information.
+         * Drift Access Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/drift"&gt;docs&lt;/a&gt; for more information on how to generate this key.
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
@@ -116,11 +116,11 @@ public class AccessToken {
                 accessToken);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceLinkedinAdsSchemasAuthMethod>> _SINGLETON_VALUE_AuthMethod =
+        private static final LazySingletonValue<Optional<? extends SourceDriftSchemasCredentials>> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(
-                        "auth_method",
+                        "credentials",
                         "\"access_token\"",
-                        new TypeReference<Optional<? extends SourceLinkedinAdsSchemasAuthMethod>>() {});
+                        new TypeReference<Optional<? extends SourceDriftSchemasCredentials>>() {});
     }
 }
 

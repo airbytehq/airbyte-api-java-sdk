@@ -30,6 +30,13 @@ public class StreamConfiguration {
     @JsonProperty("cursorField")
     private Optional<? extends java.util.List<String>> cursorField;
 
+    /**
+     * Mappers that should be applied to the stream before writing to the destination.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("mappers")
+    private Optional<? extends java.util.List<ConfiguredStreamMapper>> mappers;
+
     @JsonProperty("name")
     private String name;
 
@@ -54,16 +61,19 @@ public class StreamConfiguration {
     @JsonCreator
     public StreamConfiguration(
             @JsonProperty("cursorField") Optional<? extends java.util.List<String>> cursorField,
+            @JsonProperty("mappers") Optional<? extends java.util.List<ConfiguredStreamMapper>> mappers,
             @JsonProperty("name") String name,
             @JsonProperty("primaryKey") Optional<? extends java.util.List<java.util.List<String>>> primaryKey,
             @JsonProperty("selectedFields") Optional<? extends java.util.List<SelectedFieldInfo>> selectedFields,
             @JsonProperty("syncMode") Optional<? extends ConnectionSyncModeEnum> syncMode) {
         Utils.checkNotNull(cursorField, "cursorField");
+        Utils.checkNotNull(mappers, "mappers");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(primaryKey, "primaryKey");
         Utils.checkNotNull(selectedFields, "selectedFields");
         Utils.checkNotNull(syncMode, "syncMode");
         this.cursorField = cursorField;
+        this.mappers = mappers;
         this.name = name;
         this.primaryKey = primaryKey;
         this.selectedFields = selectedFields;
@@ -72,7 +82,7 @@ public class StreamConfiguration {
     
     public StreamConfiguration(
             String name) {
-        this(Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -82,6 +92,15 @@ public class StreamConfiguration {
     @JsonIgnore
     public Optional<java.util.List<String>> cursorField() {
         return (Optional<java.util.List<String>>) cursorField;
+    }
+
+    /**
+     * Mappers that should be applied to the stream before writing to the destination.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<java.util.List<ConfiguredStreamMapper>> mappers() {
+        return (Optional<java.util.List<ConfiguredStreamMapper>>) mappers;
     }
 
     @JsonIgnore
@@ -132,6 +151,24 @@ public class StreamConfiguration {
     public StreamConfiguration withCursorField(Optional<? extends java.util.List<String>> cursorField) {
         Utils.checkNotNull(cursorField, "cursorField");
         this.cursorField = cursorField;
+        return this;
+    }
+
+    /**
+     * Mappers that should be applied to the stream before writing to the destination.
+     */
+    public StreamConfiguration withMappers(java.util.List<ConfiguredStreamMapper> mappers) {
+        Utils.checkNotNull(mappers, "mappers");
+        this.mappers = Optional.ofNullable(mappers);
+        return this;
+    }
+
+    /**
+     * Mappers that should be applied to the stream before writing to the destination.
+     */
+    public StreamConfiguration withMappers(Optional<? extends java.util.List<ConfiguredStreamMapper>> mappers) {
+        Utils.checkNotNull(mappers, "mappers");
+        this.mappers = mappers;
         return this;
     }
 
@@ -200,6 +237,7 @@ public class StreamConfiguration {
         StreamConfiguration other = (StreamConfiguration) o;
         return 
             java.util.Objects.deepEquals(this.cursorField, other.cursorField) &&
+            java.util.Objects.deepEquals(this.mappers, other.mappers) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
             java.util.Objects.deepEquals(this.primaryKey, other.primaryKey) &&
             java.util.Objects.deepEquals(this.selectedFields, other.selectedFields) &&
@@ -210,6 +248,7 @@ public class StreamConfiguration {
     public int hashCode() {
         return java.util.Objects.hash(
             cursorField,
+            mappers,
             name,
             primaryKey,
             selectedFields,
@@ -220,6 +259,7 @@ public class StreamConfiguration {
     public String toString() {
         return Utils.toString(StreamConfiguration.class,
                 "cursorField", cursorField,
+                "mappers", mappers,
                 "name", name,
                 "primaryKey", primaryKey,
                 "selectedFields", selectedFields,
@@ -229,6 +269,8 @@ public class StreamConfiguration {
     public final static class Builder {
  
         private Optional<? extends java.util.List<String>> cursorField = Optional.empty();
+ 
+        private Optional<? extends java.util.List<ConfiguredStreamMapper>> mappers = Optional.empty();
  
         private String name;
  
@@ -257,6 +299,24 @@ public class StreamConfiguration {
         public Builder cursorField(Optional<? extends java.util.List<String>> cursorField) {
             Utils.checkNotNull(cursorField, "cursorField");
             this.cursorField = cursorField;
+            return this;
+        }
+
+        /**
+         * Mappers that should be applied to the stream before writing to the destination.
+         */
+        public Builder mappers(java.util.List<ConfiguredStreamMapper> mappers) {
+            Utils.checkNotNull(mappers, "mappers");
+            this.mappers = Optional.ofNullable(mappers);
+            return this;
+        }
+
+        /**
+         * Mappers that should be applied to the stream before writing to the destination.
+         */
+        public Builder mappers(Optional<? extends java.util.List<ConfiguredStreamMapper>> mappers) {
+            Utils.checkNotNull(mappers, "mappers");
+            this.mappers = mappers;
             return this;
         }
 
@@ -317,6 +377,7 @@ public class StreamConfiguration {
         public StreamConfiguration build() {
             return new StreamConfiguration(
                 cursorField,
+                mappers,
                 name,
                 primaryKey,
                 selectedFields,

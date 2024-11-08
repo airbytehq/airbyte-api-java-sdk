@@ -75,6 +75,11 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationDatabricks>(){}));
     }
 
+    public static DestinationConfiguration of(DestinationDevNull value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationDevNull>(){}));
+    }
+
     public static DestinationConfiguration of(DestinationDuckdb value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationDuckdb>(){}));
@@ -105,6 +110,11 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcs>(){}));
     }
 
+    public static DestinationConfiguration of(DestinationIceberg value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationIceberg>(){}));
+    }
+
     public static DestinationConfiguration of(DestinationMilvus value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMilvus>(){}));
@@ -113,6 +123,11 @@ public class DestinationConfiguration {
     public static DestinationConfiguration of(DestinationMongodb value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMongodb>(){}));
+    }
+
+    public static DestinationConfiguration of(DestinationMotherduck value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationMotherduck>(){}));
     }
 
     public static DestinationConfiguration of(DestinationMssql value) {
@@ -231,14 +246,17 @@ public class DestinationConfiguration {
      * <li>{@code DestinationClickhouse}</li>
      * <li>{@code DestinationConvex}</li>
      * <li>{@code DestinationDatabricks}</li>
+     * <li>{@code DestinationDevNull}</li>
      * <li>{@code DestinationDuckdb}</li>
      * <li>{@code DestinationDynamodb}</li>
      * <li>{@code DestinationElasticsearch}</li>
      * <li>{@code DestinationFirebolt}</li>
      * <li>{@code DestinationFirestore}</li>
      * <li>{@code DestinationGcs}</li>
+     * <li>{@code DestinationIceberg}</li>
      * <li>{@code DestinationMilvus}</li>
      * <li>{@code DestinationMongodb}</li>
+     * <li>{@code DestinationMotherduck}</li>
      * <li>{@code DestinationMssql}</li>
      * <li>{@code DestinationMysql}</li>
      * <li>{@code DestinationOracle}</li>
@@ -307,14 +325,17 @@ public class DestinationConfiguration {
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationClickhouse>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationConvex>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDatabricks>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDevNull>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDuckdb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationDynamodb>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearch>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationFirebolt>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationFirestore>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationGcs>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationIceberg>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMilvus>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMongodb>() {}, Utils.JsonShape.DEFAULT),
+                  Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMotherduck>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMssql>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationMysql>() {}, Utils.JsonShape.DEFAULT),
                   Utils.TypeReferenceWithShape.of(new TypeReference<DestinationOracle>() {}, Utils.JsonShape.DEFAULT),

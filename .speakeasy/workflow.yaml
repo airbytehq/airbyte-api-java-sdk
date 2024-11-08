@@ -16,3 +16,7 @@ targets:
                 ossrhPassword: $ossrh_password
                 gpgSecretKey: $java_gpg_secret_key
                 gpgPassPhrase: $java_gpg_passphrase
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source-code-samples
+            blocking: false

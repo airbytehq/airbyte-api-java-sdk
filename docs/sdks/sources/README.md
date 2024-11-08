@@ -23,6 +23,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.Float;
 import com.airbyte.api.models.shared.Iterable;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.utils.EventStream;
@@ -282,7 +283,7 @@ public class Application {
 
             InitiateOauthRequest req = InitiateOauthRequest.builder()
                 .redirectUrl("<value>")
-                .sourceType(OAuthActorNames.GITLAB)
+                .sourceType(OAuthActorNames.GCS)
                 .workspaceId("fd28130d-9919-4ffa-a67d-4e12eb099447")
                 .build();
 
@@ -479,6 +480,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.Float;
 import com.airbyte.api.models.shared.Iterable;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.utils.EventStream;
@@ -562,6 +564,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.*;
 import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.shared.Float;
 import com.airbyte.api.models.shared.Iterable;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.utils.EventStream;

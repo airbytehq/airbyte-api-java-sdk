@@ -1,0 +1,10 @@
+# SourceEventbrite
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `privateToken`                                                                            | *String*                                                                                  | :heavy_check_mark:                                                                        | The private token to use for authenticating API requests.                                 |
+| `sourceType`                                                                              | [com.airbyte.api.models.shared.Eventbrite](../../models/shared/Eventbrite.md)             | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

@@ -9,8 +9,8 @@ sources:
             - main
     sample-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
-        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
+        sourceRevisionDigest: sha256:19cd9982b0bb4ce43f3d37c3632e3eb04d27c6b76447c342bf2df13c713b7caf
+        sourceBlobDigest: sha256:6635ce1fee01883a8b1b84917f97dc5614ac02413af5d264c47c77446ff8c0a5
         tags:
             - latest
             - main
@@ -24,8 +24,10 @@ targets:
     testing:
         source: sample-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
-        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
+        sourceRevisionDigest: sha256:19cd9982b0bb4ce43f3d37c3632e3eb04d27c6b76447c342bf2df13c713b7caf
+        sourceBlobDigest: sha256:6635ce1fee01883a8b1b84917f97dc5614ac02413af5d264c47c77446ff8c0a5
+        codeSamplesNamespace: my-source-code-samples
+        codeSamplesRevisionDigest: sha256:51f3500a91dc5d9568ddec7cf3edb0e19cd6fea236821dcd86a676396d5940c2
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -33,7 +35,7 @@ workflow:
     sources:
         sample-source:
             inputs:
-                - location: https://raw.githubusercontent.com/airbytehq/airbyte-api-python-sdk/main/airbyte-api.openapi.yaml
+                - location: https://raw.githubusercontent.com/airbytehq/airbyte-platform/refs/heads/main/airbyte-api/server-api/src/main/openapi/api_sdk.yaml
             registry:
                 location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source
     targets:
@@ -46,3 +48,7 @@ workflow:
                     ossrhPassword: $ossrh_password
                     gpgSecretKey: $java_gpg_secret_key
                     gpgPassPhrase: $java_gpg_passphrase
+            codeSamples:
+                output: ""
+                registry:
+                    location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source-code-samples

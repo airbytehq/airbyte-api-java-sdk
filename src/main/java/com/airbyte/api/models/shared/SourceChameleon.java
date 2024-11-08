@@ -27,8 +27,12 @@ public class SourceChameleon {
     @JsonProperty("api_key")
     private String apiKey;
 
+    /**
+     * End date for incremental sync
+     */
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
-    private OffsetDateTime endDate;
+    private Optional<? extends OffsetDateTime> endDate;
 
     /**
      * Filter for using in the `segments_experiences` stream
@@ -53,7 +57,7 @@ public class SourceChameleon {
     @JsonCreator
     public SourceChameleon(
             @JsonProperty("api_key") String apiKey,
-            @JsonProperty("end_date") OffsetDateTime endDate,
+            @JsonProperty("end_date") Optional<? extends OffsetDateTime> endDate,
             @JsonProperty("filter") Optional<? extends Filter> filter,
             @JsonProperty("limit") Optional<? extends String> limit,
             @JsonProperty("start_date") OffsetDateTime startDate) {
@@ -72,9 +76,8 @@ public class SourceChameleon {
     
     public SourceChameleon(
             String apiKey,
-            OffsetDateTime endDate,
             OffsetDateTime startDate) {
-        this(apiKey, endDate, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), startDate);
     }
 
     @JsonIgnore
@@ -82,9 +85,13 @@ public class SourceChameleon {
         return apiKey;
     }
 
+    /**
+     * End date for incremental sync
+     */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public OffsetDateTime endDate() {
-        return endDate;
+    public Optional<OffsetDateTime> endDate() {
+        return (Optional<OffsetDateTime>) endDate;
     }
 
     /**
@@ -125,7 +132,19 @@ public class SourceChameleon {
         return this;
     }
 
+    /**
+     * End date for incremental sync
+     */
     public SourceChameleon withEndDate(OffsetDateTime endDate) {
+        Utils.checkNotNull(endDate, "endDate");
+        this.endDate = Optional.ofNullable(endDate);
+        return this;
+    }
+
+    /**
+     * End date for incremental sync
+     */
+    public SourceChameleon withEndDate(Optional<? extends OffsetDateTime> endDate) {
         Utils.checkNotNull(endDate, "endDate");
         this.endDate = endDate;
         return this;
@@ -217,7 +236,7 @@ public class SourceChameleon {
  
         private String apiKey;
  
-        private OffsetDateTime endDate;
+        private Optional<? extends OffsetDateTime> endDate = Optional.empty();
  
         private Optional<? extends Filter> filter;
  
@@ -235,7 +254,19 @@ public class SourceChameleon {
             return this;
         }
 
+        /**
+         * End date for incremental sync
+         */
         public Builder endDate(OffsetDateTime endDate) {
+            Utils.checkNotNull(endDate, "endDate");
+            this.endDate = Optional.ofNullable(endDate);
+            return this;
+        }
+
+        /**
+         * End date for incremental sync
+         */
+        public Builder endDate(Optional<? extends OffsetDateTime> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;

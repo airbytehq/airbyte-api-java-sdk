@@ -26,6 +26,9 @@ public class SourceResponse {
     @JsonProperty("configuration")
     private SourceConfiguration configuration;
 
+    @JsonProperty("definitionId")
+    private String definitionId;
+
     @JsonProperty("name")
     private String name;
 
@@ -41,16 +44,19 @@ public class SourceResponse {
     @JsonCreator
     public SourceResponse(
             @JsonProperty("configuration") SourceConfiguration configuration,
+            @JsonProperty("definitionId") String definitionId,
             @JsonProperty("name") String name,
             @JsonProperty("sourceId") String sourceId,
             @JsonProperty("sourceType") String sourceType,
             @JsonProperty("workspaceId") String workspaceId) {
         Utils.checkNotNull(configuration, "configuration");
+        Utils.checkNotNull(definitionId, "definitionId");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(sourceId, "sourceId");
         Utils.checkNotNull(sourceType, "sourceType");
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.configuration = configuration;
+        this.definitionId = definitionId;
         this.name = name;
         this.sourceId = sourceId;
         this.sourceType = sourceType;
@@ -63,6 +69,11 @@ public class SourceResponse {
     @JsonIgnore
     public SourceConfiguration configuration() {
         return configuration;
+    }
+
+    @JsonIgnore
+    public String definitionId() {
+        return definitionId;
     }
 
     @JsonIgnore
@@ -95,6 +106,12 @@ public class SourceResponse {
     public SourceResponse withConfiguration(SourceConfiguration configuration) {
         Utils.checkNotNull(configuration, "configuration");
         this.configuration = configuration;
+        return this;
+    }
+
+    public SourceResponse withDefinitionId(String definitionId) {
+        Utils.checkNotNull(definitionId, "definitionId");
+        this.definitionId = definitionId;
         return this;
     }
 
@@ -133,6 +150,7 @@ public class SourceResponse {
         SourceResponse other = (SourceResponse) o;
         return 
             java.util.Objects.deepEquals(this.configuration, other.configuration) &&
+            java.util.Objects.deepEquals(this.definitionId, other.definitionId) &&
             java.util.Objects.deepEquals(this.name, other.name) &&
             java.util.Objects.deepEquals(this.sourceId, other.sourceId) &&
             java.util.Objects.deepEquals(this.sourceType, other.sourceType) &&
@@ -143,6 +161,7 @@ public class SourceResponse {
     public int hashCode() {
         return java.util.Objects.hash(
             configuration,
+            definitionId,
             name,
             sourceId,
             sourceType,
@@ -153,6 +172,7 @@ public class SourceResponse {
     public String toString() {
         return Utils.toString(SourceResponse.class,
                 "configuration", configuration,
+                "definitionId", definitionId,
                 "name", name,
                 "sourceId", sourceId,
                 "sourceType", sourceType,
@@ -162,6 +182,8 @@ public class SourceResponse {
     public final static class Builder {
  
         private SourceConfiguration configuration;
+ 
+        private String definitionId;
  
         private String name;
  
@@ -181,6 +203,12 @@ public class SourceResponse {
         public Builder configuration(SourceConfiguration configuration) {
             Utils.checkNotNull(configuration, "configuration");
             this.configuration = configuration;
+            return this;
+        }
+
+        public Builder definitionId(String definitionId) {
+            Utils.checkNotNull(definitionId, "definitionId");
+            this.definitionId = definitionId;
             return this;
         }
 
@@ -211,6 +239,7 @@ public class SourceResponse {
         public SourceResponse build() {
             return new SourceResponse(
                 configuration,
+                definitionId,
                 name,
                 sourceId,
                 sourceType,

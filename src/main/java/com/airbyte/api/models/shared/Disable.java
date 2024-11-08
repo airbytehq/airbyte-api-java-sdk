@@ -26,7 +26,7 @@ public class Disable {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends Mode> mode;
+    private Optional<? extends DestinationPostgresSchemasSSLModeSSLModes1Mode> mode;
 
     @JsonCreator
     public Disable() {
@@ -36,8 +36,8 @@ public class Disable {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Mode> mode() {
-        return (Optional<Mode>) mode;
+    public Optional<DestinationPostgresSchemasSSLModeSSLModes1Mode> mode() {
+        return (Optional<DestinationPostgresSchemasSSLModeSSLModes1Mode>) mode;
     }
 
     public final static Builder builder() {
@@ -80,11 +80,11 @@ public class Disable {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends Mode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasSSLModeSSLModes1Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"disable\"",
-                        new TypeReference<Optional<? extends Mode>>() {});
+                        new TypeReference<Optional<? extends DestinationPostgresSchemasSSLModeSSLModes1Mode>>() {});
     }
 }
 
