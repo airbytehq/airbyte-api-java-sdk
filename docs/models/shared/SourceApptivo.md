@@ -1,0 +1,10 @@
+# SourceApptivo
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `accessKey`                                                                            | *String*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `apiKey`                                                                               | *String*                                                                               | :heavy_check_mark:                                                                     | API key to use. Find it in your Apptivo account under Business Settings -> API Access. |
+| `sourceType`                                                                           | [Apptivo](../../models/shared/Apptivo.md)                                              | :heavy_check_mark:                                                                     | N/A                                                                                    |

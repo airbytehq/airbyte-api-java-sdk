@@ -7,4 +7,4 @@ Path to a field/column/property in a stream to be selected. For example, if the 
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `fieldPath`        | List<*String*>     | :heavy_minus_sign: | N/A                |
+| `fieldPath`        | List\<*String*>    | :heavy_minus_sign: | N/A                |

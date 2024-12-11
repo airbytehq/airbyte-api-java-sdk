@@ -1,0 +1,12 @@
+# SourceZohoCampaign
+
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `clientId2`                                                                         | *String*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `clientRefreshToken`                                                                | *String*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `clientSecret2`                                                                     | *String*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `dataCenter`                                                                        | [SourceZohoCampaignDataCenter](../../models/shared/SourceZohoCampaignDataCenter.md) | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `sourceType`                                                                        | [ZohoCampaign](../../models/shared/ZohoCampaign.md)                                 | :heavy_check_mark:                                                                  | N/A                                                                                 |

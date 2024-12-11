@@ -1,0 +1,13 @@
+# SourceMicrosoftDataverse
+
+
+## Fields
+
+| Field                                                           | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `clientId`                                                      | *String*                                                        | :heavy_check_mark:                                              | App Registration Client Id                                      |                                                                 |
+| `clientSecretValue`                                             | *String*                                                        | :heavy_check_mark:                                              | App Registration Client Secret                                  |                                                                 |
+| `odataMaxpagesize`                                              | *Optional\<Long>*                                               | :heavy_minus_sign:                                              | Max number of results per page. Default=5000                    |                                                                 |
+| `sourceType`                                                    | [MicrosoftDataverse](../../models/shared/MicrosoftDataverse.md) | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
+| `tenantId`                                                      | *String*                                                        | :heavy_check_mark:                                              | Tenant Id of your Microsoft Dataverse Instance                  |                                                                 |
+| `url`                                                           | *String*                                                        | :heavy_check_mark:                                              | URL to Microsoft Dataverse API                                  | https://<org-id>.crm.dynamics.com                               |

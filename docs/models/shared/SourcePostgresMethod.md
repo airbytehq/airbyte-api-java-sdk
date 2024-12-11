@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `XMIN` | Xmin   |
+| Name  | Value |
+| ----- | ----- |
+| `CDC` | CDC   |

@@ -5,7 +5,7 @@ If set to 'final', the returned data will include only finalized, stable data. I
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `FINAL_` | final    |
-| `ALL`    | all      |
+| Name    | Value   |
+| ------- | ------- |
+| `FINAL` | final   |
+| `ALL`   | all     |

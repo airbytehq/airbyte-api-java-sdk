@@ -1,6 +1,8 @@
 # Streams
 (*streams()*)
 
+## Overview
+
 ### Available Operations
 
 * [getStreamProperties](#getstreamproperties) - Get stream properties
@@ -15,67 +17,52 @@ Get stream properties
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.GetStreamPropertiesRequest;
+import com.airbyte.api.models.operations.GetStreamPropertiesResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            GetStreamPropertiesRequest req = GetStreamPropertiesRequest.builder()
+        GetStreamPropertiesRequest req = GetStreamPropertiesRequest.builder()
                 .sourceId("<value>")
                 .build();
 
-            GetStreamPropertiesResponse res = sdk.streams().getStreamProperties()
+        GetStreamPropertiesResponse res = sdk.streams().getStreamProperties()
                 .request(req)
                 .call();
 
-            if (res.streamPropertiesResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.streamPropertiesResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                             | [com.airbyte.api.models.operations.GetStreamPropertiesRequest](../../models/operations/GetStreamPropertiesRequest.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
-
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [GetStreamPropertiesRequest](../../models/operations/GetStreamPropertiesRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetStreamPropertiesResponse](../../models/operations/GetStreamPropertiesResponse.md)**
+**[GetStreamPropertiesResponse](../../models/operations/GetStreamPropertiesResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

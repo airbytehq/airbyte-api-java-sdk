@@ -1,6 +1,8 @@
 # Health
 (*health()*)
 
+## Overview
+
 ### Available Operations
 
 * [getHealthCheck](#gethealthcheck) - Health Check
@@ -15,47 +17,30 @@ Health Check
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.airbyte.api.models.operations.GetHealthCheckResponse;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
-                .build();
 
-            GetHealthCheckResponse res = sdk.health().getHealthCheck()
+        Airbyte sdk = Airbyte.builder()
+            .build();
+
+        GetHealthCheckResponse res = sdk.health().getHealthCheck()
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
-
 ### Response
 
-**[com.airbyte.api.models.operations.GetHealthCheckResponse](../../models/operations/GetHealthCheckResponse.md)**
+**[GetHealthCheckResponse](../../models/operations/GetHealthCheckResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

@@ -10,8 +10,9 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: false
 java:
-  version: 1.5.10
+  version: 1.6.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: api
@@ -19,6 +20,7 @@ java:
   companyEmail: info@airbyte.com
   companyName: Airbyte
   companyURL: www.airbyte.com
+  defaultErrorName: SDKError
   flattenGlobalSecurity: false
   githubURL: github.com/airbytehq/airbyte-api-java-sdk
   groupID: com.airbyte

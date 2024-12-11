@@ -1,0 +1,9 @@
+# RoleBasedAuthentication
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `additionalProperties`                                                                           | Map\<String, *Object*>                                                                           | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| `authType`                                                                                       | [Optional\<SourceDynamodbSchemasAuthType>](../../models/shared/SourceDynamodbSchemasAuthType.md) | :heavy_minus_sign:                                                                               | N/A                                                                                              |

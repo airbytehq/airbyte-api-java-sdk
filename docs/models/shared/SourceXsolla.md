@@ -1,0 +1,10 @@
+# SourceXsolla
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `apiKey`                                                                                               | *String*                                                                                               | :heavy_check_mark:                                                                                     | Go to Xsolla Dashboard and from company setting get the api_key                                        |
+| `projectId`                                                                                            | *double*                                                                                               | :heavy_check_mark:                                                                                     | You can find this parameter in your Publisher Account next to the name of the project . Example: 44056 |
+| `sourceType`                                                                                           | [Xsolla](../../models/shared/Xsolla.md)                                                                | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

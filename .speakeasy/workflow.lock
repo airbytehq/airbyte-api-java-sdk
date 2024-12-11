@@ -1,4 +1,4 @@
-speakeasyVersion: 1.337.1
+speakeasyVersion: 1.453.10
 sources:
     my-source:
         sourceNamespace: my-source
@@ -9,31 +9,32 @@ sources:
             - main
     sample-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
-        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
+        sourceRevisionDigest: sha256:aa3c5e64a0c5b50601e64821c42101dc6e22d9c63c67fc5b2c6df95683549fc3
+        sourceBlobDigest: sha256:fa5143179ee978611fb032f3948584f4cbf071857ff2ff6611fbac17e1b67eb9
         tags:
             - latest
-            - main
+            - speakeasy-sdk-regen-1733271463
+            - 1.0.0
 targets:
     airbyte-api:
         source: my-source
         sourceNamespace: my-source
         sourceRevisionDigest: sha256:5db6fea2e03621459da94766b8bf4b07a5eac21c621b8f5958c0fe5a8295a41d
         sourceBlobDigest: sha256:d035f3b407f273be49c1b0bfbc6b503f48974a8b2944883eab13ef56203a662d
-        outLocation: /github/workspace/repo
     testing:
         source: sample-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:27e4375e203d81089b86b92c0bc91c23a882561d7e4e046850919adc9f3e1ba6
-        sourceBlobDigest: sha256:1ce4f661fa0156427ebe8ef1f969f98fb1bf7385c584d42a38c11b494face66e
-        outLocation: /github/workspace/repo
+        sourceRevisionDigest: sha256:aa3c5e64a0c5b50601e64821c42101dc6e22d9c63c67fc5b2c6df95683549fc3
+        sourceBlobDigest: sha256:fa5143179ee978611fb032f3948584f4cbf071857ff2ff6611fbac17e1b67eb9
+        codeSamplesNamespace: my-source-java-code-samples
+        codeSamplesRevisionDigest: sha256:4bcdc1c05c1002038c44996ff6e1425317394805a9bbc73842fbd2e75ccfab04
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         sample-source:
             inputs:
-                - location: https://raw.githubusercontent.com/airbytehq/airbyte-api-python-sdk/main/airbyte-api.openapi.yaml
+                - location: https://raw.githubusercontent.com/airbytehq/airbyte-platform/refs/heads/main/airbyte-api/server-api/src/main/openapi/api_sdk.yaml
             registry:
                 location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source
     targets:
@@ -46,3 +47,7 @@ workflow:
                     ossrhPassword: $ossrh_password
                     gpgSecretKey: $java_gpg_secret_key
                     gpgPassPhrase: $java_gpg_passphrase
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/airbyte/airbyte-prod/my-source-java-code-samples
+                blocking: false

@@ -1,0 +1,11 @@
+# SourceSegment
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiToken`                                                                                | *String*                                                                                  | :heavy_check_mark:                                                                        | API token to use. Generate it in Segment's Workspace settings.                            |
+| `region`                                                                                  | *Optional\<String>*                                                                       | :heavy_minus_sign:                                                                        | The region for the API, e.g., 'api' for US or 'eu1' for EU                                |
+| `sourceType`                                                                              | [Segment](../../models/shared/Segment.md)                                                 | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

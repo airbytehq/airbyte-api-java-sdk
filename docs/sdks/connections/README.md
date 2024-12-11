@@ -1,6 +1,8 @@
 # Connections
 (*connections()*)
 
+## Overview
+
 ### Available Operations
 
 * [createConnection](#createconnection) - Create a connection
@@ -19,72 +21,57 @@ Create a connection
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.CreateConnectionResponse;
+import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        ConnectionCreateRequest req = ConnectionCreateRequest.builder()
+                .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
+                .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
+                .name("Postgres-to-Bigquery")
                 .build();
 
-            ConnectionCreateRequest req = ConnectionCreateRequest.builder()
-                .destinationId("c669dd1e-3620-483e-afc8-55914e0a570f")
-                .sourceId("6dd427d8-3a55-4584-b835-842325b6c7b3")
-                .namespaceFormat("${SOURCE_NAMESPACE}")
-                .build();
-
-            CreateConnectionResponse res = sdk.connections().createConnection()
+        CreateConnectionResponse res = sdk.connections().createConnection()
                 .request(req)
                 .call();
 
-            if (res.connectionResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.connectionResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                               | [com.airbyte.api.models.shared.ConnectionCreateRequest](../../models/shared/ConnectionCreateRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [ConnectionCreateRequest](../../models/shared/ConnectionCreateRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[com.airbyte.api.models.operations.CreateConnectionResponse](../../models/operations/CreateConnectionResponse.md)**
+**[CreateConnectionResponse](../../models/operations/CreateConnectionResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## deleteConnection
 
@@ -96,68 +83,53 @@ Delete a Connection
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.DeleteConnectionRequest;
+import com.airbyte.api.models.operations.DeleteConnectionResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            DeleteConnectionRequest req = DeleteConnectionRequest.builder()
+        DeleteConnectionRequest req = DeleteConnectionRequest.builder()
                 .connectionId("<value>")
                 .build();
 
-            DeleteConnectionResponse res = sdk.connections().deleteConnection()
+        DeleteConnectionResponse res = sdk.connections().deleteConnection()
                 .request(req)
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                       | [com.airbyte.api.models.operations.DeleteConnectionRequest](../../models/operations/DeleteConnectionRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
-
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [DeleteConnectionRequest](../../models/operations/DeleteConnectionRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
-**[com.airbyte.api.models.operations.DeleteConnectionResponse](../../models/operations/DeleteConnectionResponse.md)**
+**[DeleteConnectionResponse](../../models/operations/DeleteConnectionResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getConnection
 
@@ -169,70 +141,55 @@ Get Connection details
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.GetConnectionRequest;
+import com.airbyte.api.models.operations.GetConnectionResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            GetConnectionRequest req = GetConnectionRequest.builder()
+        GetConnectionRequest req = GetConnectionRequest.builder()
                 .connectionId("<value>")
                 .build();
 
-            GetConnectionResponse res = sdk.connections().getConnection()
+        GetConnectionResponse res = sdk.connections().getConnection()
                 .request(req)
                 .call();
 
-            if (res.connectionResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.connectionResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                 | [com.airbyte.api.models.operations.GetConnectionRequest](../../models/operations/GetConnectionRequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [GetConnectionRequest](../../models/operations/GetConnectionRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetConnectionResponse](../../models/operations/GetConnectionResponse.md)**
+**[GetConnectionResponse](../../models/operations/GetConnectionResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listConnections
 
@@ -244,69 +201,54 @@ List connections
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.ListConnectionsRequest;
+import com.airbyte.api.models.operations.ListConnectionsResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        ListConnectionsRequest req = ListConnectionsRequest.builder()
                 .build();
 
-            ListConnectionsRequest req = ListConnectionsRequest.builder()
-                .build();
-
-            ListConnectionsResponse res = sdk.connections().listConnections()
+        ListConnectionsResponse res = sdk.connections().listConnections()
                 .request(req)
                 .call();
 
-            if (res.connectionsResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.connectionsResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                     | [com.airbyte.api.models.operations.ListConnectionsRequest](../../models/operations/ListConnectionsRequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
-
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [ListConnectionsRequest](../../models/operations/ListConnectionsRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 
-**[com.airbyte.api.models.operations.ListConnectionsResponse](../../models/operations/ListConnectionsResponse.md)**
+**[ListConnectionsResponse](../../models/operations/ListConnectionsResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## patchConnection
 
@@ -318,70 +260,56 @@ Update Connection details
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.PatchConnectionRequest;
+import com.airbyte.api.models.operations.PatchConnectionResponse;
+import com.airbyte.api.models.shared.ConnectionPatchRequest;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            PatchConnectionRequest req = PatchConnectionRequest.builder()
+        PatchConnectionRequest req = PatchConnectionRequest.builder()
                 .connectionPatchRequest(ConnectionPatchRequest.builder()
-                        .namespaceFormat("${SOURCE_NAMESPACE}")
-                        .build())
+                    .name("Postgres-to-Bigquery")
+                    .build())
                 .connectionId("<value>")
                 .build();
 
-            PatchConnectionResponse res = sdk.connections().patchConnection()
+        PatchConnectionResponse res = sdk.connections().patchConnection()
                 .request(req)
                 .call();
 
-            if (res.connectionResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.connectionResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                     | [com.airbyte.api.models.operations.PatchConnectionRequest](../../models/operations/PatchConnectionRequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
-
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [PatchConnectionRequest](../../models/operations/PatchConnectionRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 
-**[com.airbyte.api.models.operations.PatchConnectionResponse](../../models/operations/PatchConnectionResponse.md)**
+**[PatchConnectionResponse](../../models/operations/PatchConnectionResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

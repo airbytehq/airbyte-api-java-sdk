@@ -1,0 +1,10 @@
+# SourceDrift
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `credentials`                                                                                      | [Optional\<SourceDriftAuthorizationMethod>](../../models/shared/SourceDriftAuthorizationMethod.md) | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `email`                                                                                            | *Optional\<String>*                                                                                | :heavy_minus_sign:                                                                                 | Email used as parameter for contacts stream                                                        |
+| `sourceType`                                                                                       | [SourceDriftDrift](../../models/shared/SourceDriftDrift.md)                                        | :heavy_check_mark:                                                                                 | N/A                                                                                                |

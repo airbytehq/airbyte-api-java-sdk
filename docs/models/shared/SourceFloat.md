@@ -1,0 +1,10 @@
+# SourceFloat
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `accessToken`                                                                             | *String*                                                                                  | :heavy_check_mark:                                                                        | API token obtained from your Float Account Settings page                                  |
+| `sourceType`                                                                              | [Float](../../models/shared/Float.md)                                                     | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |
