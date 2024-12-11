@@ -1,6 +1,8 @@
 # Destinations
 (*destinations()*)
 
+## Overview
+
 ### Available Operations
 
 * [createDestination](#createdestination) - Create a destination
@@ -20,79 +22,85 @@ Creates a destination given a name, workspace id, and a json blob containing the
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.CreateDestinationResponse;
+import com.airbyte.api.models.shared.DestinationConfiguration;
+import com.airbyte.api.models.shared.DestinationCreateRequest;
+import com.airbyte.api.models.shared.DestinationPgvector;
+import com.airbyte.api.models.shared.DestinationPgvectorCredentials;
+import com.airbyte.api.models.shared.DestinationPgvectorEmbedding;
+import com.airbyte.api.models.shared.DestinationPgvectorFake;
+import com.airbyte.api.models.shared.DestinationPgvectorProcessingConfigModel;
+import com.airbyte.api.models.shared.PostgresConnection;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        DestinationCreateRequest req = DestinationCreateRequest.builder()
+                .configuration(DestinationConfiguration.of(DestinationPgvector.builder()
+                    .embedding(DestinationPgvectorEmbedding.of(DestinationPgvectorFake.builder()
+                        .build()))
+                    .indexing(PostgresConnection.builder()
+                        .credentials(DestinationPgvectorCredentials.builder()
+                            .password("AIRBYTE_PASSWORD")
+                            .build())
+                        .database("AIRBYTE_DATABASE")
+                        .host("AIRBYTE_ACCOUNT")
+                        .username("AIRBYTE_USER")
+                        .defaultSchema("AIRBYTE_SCHEMA")
+                        .port(5432L)
+                        .build())
+                    .processing(DestinationPgvectorProcessingConfigModel.builder()
+                        .chunkSize(540943L)
+                        .metadataFields(List.of(
+                            "age"))
+                        .textFields(List.of(
+                            "users.*.name"))
+                        .build())
+                    .build()))
+                .name("Postgres")
+                .workspaceId("2155ae5a-de39-4808-af6a-16fe7b8b4ed2")
                 .build();
 
-            DestinationCreateRequest req = DestinationCreateRequest.builder()
-                .configuration(DestinationConfiguration.of(DestinationGoogleSheets.builder()
-                            .credentials(AuthenticationViaGoogleOAuth.builder()
-                                    .clientId("<value>")
-                                    .clientSecret("<value>")
-                                    .refreshToken("<value>")
-                                    .build())
-                            .spreadsheetId("https://docs.google.com/spreadsheets/d/1hLd9Qqti3UyLXZB2aFfUWDT7BG/edit")
-                            .build()))
-                .name("<value>")
-                .workspaceId("8360860a-d46e-48e6-af62-08e5ba5019ef")
-                .build();
-
-            CreateDestinationResponse res = sdk.destinations().createDestination()
+        CreateDestinationResponse res = sdk.destinations().createDestination()
                 .request(req)
                 .call();
 
-            if (res.destinationResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.destinationResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                 | [com.airbyte.api.models.shared.DestinationCreateRequest](../../models/shared/DestinationCreateRequest.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
-
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [DestinationCreateRequest](../../models/shared/DestinationCreateRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 
-**[com.airbyte.api.models.operations.CreateDestinationResponse](../../models/operations/CreateDestinationResponse.md)**
+**[CreateDestinationResponse](../../models/operations/CreateDestinationResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## deleteDestination
 
@@ -104,68 +112,53 @@ Delete a Destination
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.DeleteDestinationRequest;
+import com.airbyte.api.models.operations.DeleteDestinationResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            DeleteDestinationRequest req = DeleteDestinationRequest.builder()
+        DeleteDestinationRequest req = DeleteDestinationRequest.builder()
                 .destinationId("<value>")
                 .build();
 
-            DeleteDestinationResponse res = sdk.destinations().deleteDestination()
+        DeleteDestinationResponse res = sdk.destinations().deleteDestination()
                 .request(req)
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                         | [com.airbyte.api.models.operations.DeleteDestinationRequest](../../models/operations/DeleteDestinationRequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
-
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [DeleteDestinationRequest](../../models/operations/DeleteDestinationRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 ### Response
 
-**[com.airbyte.api.models.operations.DeleteDestinationResponse](../../models/operations/DeleteDestinationResponse.md)**
+**[DeleteDestinationResponse](../../models/operations/DeleteDestinationResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getDestination
 
@@ -177,70 +170,55 @@ Get Destination details
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.GetDestinationRequest;
+import com.airbyte.api.models.operations.GetDestinationResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            GetDestinationRequest req = GetDestinationRequest.builder()
+        GetDestinationRequest req = GetDestinationRequest.builder()
                 .destinationId("<value>")
                 .build();
 
-            GetDestinationResponse res = sdk.destinations().getDestination()
+        GetDestinationResponse res = sdk.destinations().getDestination()
                 .request(req)
                 .call();
 
-            if (res.destinationResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.destinationResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [com.airbyte.api.models.operations.GetDestinationRequest](../../models/operations/GetDestinationRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [GetDestinationRequest](../../models/operations/GetDestinationRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetDestinationResponse](../../models/operations/GetDestinationResponse.md)**
+**[GetDestinationResponse](../../models/operations/GetDestinationResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listDestinations
 
@@ -252,69 +230,54 @@ List destinations
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.ListDestinationsRequest;
+import com.airbyte.api.models.operations.ListDestinationsResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        ListDestinationsRequest req = ListDestinationsRequest.builder()
                 .build();
 
-            ListDestinationsRequest req = ListDestinationsRequest.builder()
-                .build();
-
-            ListDestinationsResponse res = sdk.destinations().listDestinations()
+        ListDestinationsResponse res = sdk.destinations().listDestinations()
                 .request(req)
                 .call();
 
-            if (res.destinationsResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.destinationsResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                       | [com.airbyte.api.models.operations.ListDestinationsRequest](../../models/operations/ListDestinationsRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
-
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ListDestinationsRequest](../../models/operations/ListDestinationsRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
-**[com.airbyte.api.models.operations.ListDestinationsResponse](../../models/operations/ListDestinationsResponse.md)**
+**[ListDestinationsResponse](../../models/operations/ListDestinationsResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## patchDestination
 
@@ -326,80 +289,64 @@ Update a Destination
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.PatchDestinationRequest;
+import com.airbyte.api.models.operations.PatchDestinationResponse;
+import com.airbyte.api.models.shared.DestinationConfiguration;
+import com.airbyte.api.models.shared.DestinationDuckdb;
+import com.airbyte.api.models.shared.DestinationPatchRequest;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            PatchDestinationRequest req = PatchDestinationRequest.builder()
+        PatchDestinationRequest req = PatchDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPatchRequest(DestinationPatchRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationGoogleSheets.builder()
-                                .credentials(AuthenticationViaGoogleOAuth.builder()
-                                        .clientId("<value>")
-                                        .clientSecret("<value>")
-                                        .refreshToken("<value>")
-                                        .build())
-                                .spreadsheetId("https://docs.google.com/spreadsheets/d/1hLd9Qqti3UyLXZB2aFfUWDT7BG/edit")
-                                .build()))
+                    .configuration(DestinationConfiguration.of(DestinationDuckdb.builder()
+                        .destinationPath("motherduck:")
+                        .build()))
+                    .name("My Destination")
                     .build())
                 .build();
 
-            PatchDestinationResponse res = sdk.destinations().patchDestination()
+        PatchDestinationResponse res = sdk.destinations().patchDestination()
                 .request(req)
                 .call();
 
-            if (res.destinationResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.destinationResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                       | [com.airbyte.api.models.operations.PatchDestinationRequest](../../models/operations/PatchDestinationRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
-
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [PatchDestinationRequest](../../models/operations/PatchDestinationRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
 
 ### Response
 
-**[com.airbyte.api.models.operations.PatchDestinationResponse](../../models/operations/PatchDestinationResponse.md)**
+**[PatchDestinationResponse](../../models/operations/PatchDestinationResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## putDestination
 
@@ -411,78 +358,63 @@ Update a Destination and fully overwrite it
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.PutDestinationRequest;
+import com.airbyte.api.models.operations.PutDestinationResponse;
+import com.airbyte.api.models.shared.DestinationClickhouse;
+import com.airbyte.api.models.shared.DestinationConfiguration;
+import com.airbyte.api.models.shared.DestinationPutRequest;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            PutDestinationRequest req = PutDestinationRequest.builder()
+        PutDestinationRequest req = PutDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPutRequest(DestinationPutRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationGoogleSheets.builder()
-                                .credentials(AuthenticationViaGoogleOAuth.builder()
-                                        .clientId("<value>")
-                                        .clientSecret("<value>")
-                                        .refreshToken("<value>")
-                                        .build())
-                                .spreadsheetId("https://docs.google.com/spreadsheets/d/1hLd9Qqti3UyLXZB2aFfUWDT7BG/edit")
-                                .build()))
-                    .name("<value>")
+                    .configuration(DestinationConfiguration.of(DestinationClickhouse.builder()
+                        .database("<value>")
+                        .host("urban-receptor.org")
+                        .username("Kaylie_Terry")
+                        .build()))
+                    .name("My Destination")
                     .build())
                 .build();
 
-            PutDestinationResponse res = sdk.destinations().putDestination()
+        PutDestinationResponse res = sdk.destinations().putDestination()
                 .request(req)
                 .call();
 
-            if (res.destinationResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.destinationResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [com.airbyte.api.models.operations.PutDestinationRequest](../../models/operations/PutDestinationRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [PutDestinationRequest](../../models/operations/PutDestinationRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[com.airbyte.api.models.operations.PutDestinationResponse](../../models/operations/PutDestinationResponse.md)**
+**[PutDestinationResponse](../../models/operations/PutDestinationResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

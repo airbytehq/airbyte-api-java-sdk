@@ -8,4 +8,4 @@ An Operator that will be used to filter accounts. The Contains predicate has fea
 | Name       | Value      |
 | ---------- | ---------- |
 | `CONTAINS` | Contains   |
-| `EQUALS_`  | Equals     |
+| `EQUALS`   | Equals     |

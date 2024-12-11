@@ -1,0 +1,12 @@
+# AuthenticateViaHarvestOAuth
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `additionalProperties`                                                           | Map\<String, *Object*>                                                           | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `authType`                                                                       | [Optional\<SourceHarvestAuthType>](../../models/shared/SourceHarvestAuthType.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `clientId`                                                                       | *String*                                                                         | :heavy_check_mark:                                                               | The Client ID of your Harvest developer application.                             |
+| `clientSecret`                                                                   | *String*                                                                         | :heavy_check_mark:                                                               | The Client Secret of your Harvest developer application.                         |
+| `refreshToken`                                                                   | *String*                                                                         | :heavy_check_mark:                                                               | Refresh Token to renew the expired Access Token.                                 |

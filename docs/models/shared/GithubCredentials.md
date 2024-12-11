@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `clientId`                   | *Optional<? extends String>* | :heavy_minus_sign:           | OAuth Client Id              |
-| `clientSecret`               | *Optional<? extends String>* | :heavy_minus_sign:           | OAuth Client secret          |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `clientId`          | *Optional\<String>* | :heavy_minus_sign:  | OAuth Client Id     |
+| `clientSecret`      | *Optional\<String>* | :heavy_minus_sign:  | OAuth Client secret |

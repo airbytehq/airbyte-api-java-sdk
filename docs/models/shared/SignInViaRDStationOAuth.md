@@ -1,0 +1,11 @@
+# SignInViaRDStationOAuth
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `authType`                                                                                  | [SourceRdStationMarketingAuthType](../../models/shared/SourceRdStationMarketingAuthType.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `clientId`                                                                                  | *Optional\<String>*                                                                         | :heavy_minus_sign:                                                                          | The Client ID of your RD Station developer application.                                     |
+| `clientSecret`                                                                              | *Optional\<String>*                                                                         | :heavy_minus_sign:                                                                          | The Client Secret of your RD Station developer application                                  |
+| `refreshToken`                                                                              | *Optional\<String>*                                                                         | :heavy_minus_sign:                                                                          | The token for obtaining the new access token.                                               |

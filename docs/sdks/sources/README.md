@@ -1,6 +1,8 @@
 # Sources
 (*sources()*)
 
+## Overview
+
 ### Available Operations
 
 * [createSource](#createsource) - Create a source
@@ -21,76 +23,63 @@ Creates a source given a name, workspace id, and a json blob containing the conf
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.Iterable;
+import com.airbyte.api.models.operations.CreateSourceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
+import com.airbyte.api.models.shared.SourceConfiguration;
+import com.airbyte.api.models.shared.SourceCreateRequest;
+import com.airbyte.api.models.shared.SourcePosthog;
+import java.lang.Exception;
 import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        SourceCreateRequest req = SourceCreateRequest.builder()
+                .configuration(SourceConfiguration.of(SourcePosthog.builder()
+                    .apiKey("<value>")
+                    .startDate(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                    .build()))
+                .name("My Source")
+                .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
                 .build();
 
-            SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourceAha.builder()
-                            .apiKey("<value>")
-                            .url("<value>")
-                            .build()))
-                .name("<value>")
-                .workspaceId("a2cf0f31-f3dd-4c98-88c3-4bdfb109056a")
-                .build();
-
-            CreateSourceResponse res = sdk.sources().createSource()
+        CreateSourceResponse res = sdk.sources().createSource()
                 .request(req)
                 .call();
 
-            if (res.sourceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.sourceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [com.airbyte.api.models.shared.SourceCreateRequest](../../models/shared/SourceCreateRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
-
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [SourceCreateRequest](../../models/shared/SourceCreateRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
-**[com.airbyte.api.models.operations.CreateSourceResponse](../../models/operations/CreateSourceResponse.md)**
+**[CreateSourceResponse](../../models/operations/CreateSourceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## deleteSource
 
@@ -102,68 +91,53 @@ Delete a Source
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.DeleteSourceRequest;
+import com.airbyte.api.models.operations.DeleteSourceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            DeleteSourceRequest req = DeleteSourceRequest.builder()
+        DeleteSourceRequest req = DeleteSourceRequest.builder()
                 .sourceId("<value>")
                 .build();
 
-            DeleteSourceResponse res = sdk.sources().deleteSource()
+        DeleteSourceResponse res = sdk.sources().deleteSource()
                 .request(req)
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                               | [com.airbyte.api.models.operations.DeleteSourceRequest](../../models/operations/DeleteSourceRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
-
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [DeleteSourceRequest](../../models/operations/DeleteSourceRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 
-**[com.airbyte.api.models.operations.DeleteSourceResponse](../../models/operations/DeleteSourceResponse.md)**
+**[DeleteSourceResponse](../../models/operations/DeleteSourceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getSource
 
@@ -175,70 +149,55 @@ Get Source details
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.GetSourceRequest;
+import com.airbyte.api.models.operations.GetSourceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            GetSourceRequest req = GetSourceRequest.builder()
+        GetSourceRequest req = GetSourceRequest.builder()
                 .sourceId("<value>")
                 .build();
 
-            GetSourceResponse res = sdk.sources().getSource()
+        GetSourceResponse res = sdk.sources().getSource()
                 .request(req)
                 .call();
 
-            if (res.sourceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.sourceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `request`                                                                                         | [com.airbyte.api.models.operations.GetSourceRequest](../../models/operations/GetSourceRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
-
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `request`                                                       | [GetSourceRequest](../../models/operations/GetSourceRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetSourceResponse](../../models/operations/GetSourceResponse.md)**
+**[GetSourceResponse](../../models/operations/GetSourceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## initiateOAuth
 
@@ -254,70 +213,56 @@ That secret ID can be used to create a source with credentials in place of actua
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.InitiateOAuthResponse;
+import com.airbyte.api.models.shared.InitiateOauthRequest;
+import com.airbyte.api.models.shared.OAuthActorNames;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        InitiateOauthRequest req = InitiateOauthRequest.builder()
+                .redirectUrl("https://cloud.airbyte.io/v1/api/oauth/callback")
+                .sourceType(OAuthActorNames.GCS)
+                .workspaceId("871d9b60-11d1-44cb-8c92-c246d53bf87e")
                 .build();
 
-            InitiateOauthRequest req = InitiateOauthRequest.builder()
-                .redirectUrl("<value>")
-                .sourceType(OAuthActorNames.GITLAB)
-                .workspaceId("fd28130d-9919-4ffa-a67d-4e12eb099447")
-                .build();
-
-            InitiateOAuthResponse res = sdk.sources().initiateOAuth()
+        InitiateOAuthResponse res = sdk.sources().initiateOAuth()
                 .request(req)
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `request`                                                                                         | [com.airbyte.api.models.shared.InitiateOauthRequest](../../models/shared/InitiateOauthRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [InitiateOauthRequest](../../models/shared/InitiateOauthRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 
 ### Response
 
-**[com.airbyte.api.models.operations.InitiateOAuthResponse](../../models/operations/InitiateOAuthResponse.md)**
+**[InitiateOAuthResponse](../../models/operations/InitiateOAuthResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listSources
 
@@ -329,143 +274,57 @@ List sources
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.ListSourcesRequest;
+import com.airbyte.api.models.operations.ListSourcesResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
+import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        ListSourcesRequest req = ListSourcesRequest.builder()
+                .workspaceIds(List.of(
+                    "df08f6b0-b364-4cc1-9b3f-96f5d2fccfb2,b0796797-de23-4fc7-a5e2-7e131314718c"))
                 .build();
 
-            ListSourcesRequest req = ListSourcesRequest.builder()
-                .workspaceIds(java.util.List.of(
-                    "d",
-                    "f",
-                    "0",
-                    "8",
-                    "f",
-                    "6",
-                    "b",
-                    "0",
-                    "-",
-                    "b",
-                    "3",
-                    "6",
-                    "4",
-                    "-",
-                    "4",
-                    "c",
-                    "c",
-                    "1",
-                    "-",
-                    "9",
-                    "b",
-                    "3",
-                    "f",
-                    "-",
-                    "9",
-                    "6",
-                    "f",
-                    "5",
-                    "d",
-                    "2",
-                    "f",
-                    "c",
-                    "c",
-                    "f",
-                    "b",
-                    "2",
-                    ",",
-                    "b",
-                    "0",
-                    "7",
-                    "9",
-                    "6",
-                    "7",
-                    "9",
-                    "7",
-                    "-",
-                    "d",
-                    "e",
-                    "2",
-                    "3",
-                    "-",
-                    "4",
-                    "f",
-                    "c",
-                    "7",
-                    "-",
-                    "a",
-                    "5",
-                    "e",
-                    "2",
-                    "-",
-                    "7",
-                    "e",
-                    "1",
-                    "3",
-                    "1",
-                    "3",
-                    "1",
-                    "4",
-                    "7",
-                    "1",
-                    "8",
-                    "c"))
-                .build();
-
-            ListSourcesResponse res = sdk.sources().listSources()
+        ListSourcesResponse res = sdk.sources().listSources()
                 .request(req)
                 .call();
 
-            if (res.sourcesResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.sourcesResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [com.airbyte.api.models.operations.ListSourcesRequest](../../models/operations/ListSourcesRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [ListSourcesRequest](../../models/operations/ListSourcesRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 
 ### Response
 
-**[com.airbyte.api.models.operations.ListSourcesResponse](../../models/operations/ListSourcesResponse.md)**
+**[ListSourcesResponse](../../models/operations/ListSourcesResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## patchSource
 
@@ -477,78 +336,65 @@ Update a Source
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.Iterable;
+import com.airbyte.api.models.operations.PatchSourceRequest;
+import com.airbyte.api.models.operations.PatchSourceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.airbyte.api.models.shared.SourceConfiguration;
+import com.airbyte.api.models.shared.SourceEventzilla;
+import com.airbyte.api.models.shared.SourcePatchRequest;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            PatchSourceRequest req = PatchSourceRequest.builder()
+        PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceAha.builder()
-                                .apiKey("<value>")
-                                .url("<value>")
-                                .build()))
-                    .name("My source")
+                    .configuration(SourceConfiguration.of(SourceEventzilla.builder()
+                        .xApiKey("<value>")
+                        .build()))
+                    .name("My Source")
+                    .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
                     .build())
                 .build();
 
-            PatchSourceResponse res = sdk.sources().patchSource()
+        PatchSourceResponse res = sdk.sources().patchSource()
                 .request(req)
                 .call();
 
-            if (res.sourceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.sourceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [com.airbyte.api.models.operations.PatchSourceRequest](../../models/operations/PatchSourceRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
-
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [PatchSourceRequest](../../models/operations/PatchSourceRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 
 ### Response
 
-**[com.airbyte.api.models.operations.PatchSourceResponse](../../models/operations/PatchSourceResponse.md)**
+**[PatchSourceResponse](../../models/operations/PatchSourceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## putSource
 
@@ -560,75 +406,62 @@ Update a Source and fully overwrite it
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
-import com.airbyte.api.models.shared.Iterable;
+import com.airbyte.api.models.operations.PutSourceRequest;
+import com.airbyte.api.models.operations.PutSourceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.airbyte.api.models.shared.SourceConfiguration;
+import com.airbyte.api.models.shared.SourceGridly;
+import com.airbyte.api.models.shared.SourcePutRequest;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            PutSourceRequest req = PutSourceRequest.builder()
+        PutSourceRequest req = PutSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePutRequest(SourcePutRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceAha.builder()
-                                .apiKey("<value>")
-                                .url("<value>")
-                                .build()))
-                    .name("<value>")
+                    .configuration(SourceConfiguration.of(SourceGridly.builder()
+                        .apiKey("<value>")
+                        .gridId("<id>")
+                        .build()))
+                    .name("My Source")
                     .build())
                 .build();
 
-            PutSourceResponse res = sdk.sources().putSource()
+        PutSourceResponse res = sdk.sources().putSource()
                 .request(req)
                 .call();
 
-            if (res.sourceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.sourceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `request`                                                                                         | [com.airbyte.api.models.operations.PutSourceRequest](../../models/operations/PutSourceRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
-
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `request`                                                       | [PutSourceRequest](../../models/operations/PutSourceRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 ### Response
 
-**[com.airbyte.api.models.operations.PutSourceResponse](../../models/operations/PutSourceResponse.md)**
+**[PutSourceResponse](../../models/operations/PutSourceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

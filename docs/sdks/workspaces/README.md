@@ -1,6 +1,8 @@
 # Workspaces
 (*workspaces()*)
 
+## Overview
+
 ### Available Operations
 
 * [createOrUpdateWorkspaceOAuthCredentials](#createorupdateworkspaceoauthcredentials) - Create OAuth override credentials for a workspace and source type.
@@ -21,74 +23,63 @@ In order to determine what the credential configuration needs to be, please see 
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest;
+import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse;
+import com.airbyte.api.models.shared.ActorTypeEnum;
+import com.airbyte.api.models.shared.OAuthActorNames;
+import com.airbyte.api.models.shared.OAuthCredentialsConfiguration;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest;
+import java.lang.Exception;
+import java.util.Map;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsRequest req = CreateOrUpdateWorkspaceOAuthCredentialsRequest.builder()
+        CreateOrUpdateWorkspaceOAuthCredentialsRequest req = CreateOrUpdateWorkspaceOAuthCredentialsRequest.builder()
                 .workspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest.builder()
-                        .actorType(ActorTypeEnum.DESTINATION)
-                        .configuration(OAuthCredentialsConfiguration.of(Airtable.builder()
-                                    .build()))
-                        .name(OAuthActorNames.AMAZON_ADS)
-                        .build())
+                    .actorType(ActorTypeEnum.DESTINATION)
+                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(\n    Map.entry("user", "charles"))))
+                    .name(OAuthActorNames.AIRTABLE)
+                    .build())
                 .workspaceId("<value>")
                 .build();
 
-            CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces().createOrUpdateWorkspaceOAuthCredentials()
+        CreateOrUpdateWorkspaceOAuthCredentialsResponse res = sdk.workspaces().createOrUpdateWorkspaceOAuthCredentials()
                 .request(req)
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                     | Type                                                                                                                                                          | Required                                                                                                                                                      | Description                                                                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                     | [com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest](../../models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.md) | :heavy_check_mark:                                                                                                                                            | The request object to use for the request.                                                                                                                    |
-
+| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                   | [CreateOrUpdateWorkspaceOAuthCredentialsRequest](../../models/operations/CreateOrUpdateWorkspaceOAuthCredentialsRequest.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
 
 ### Response
 
-**[com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse](../../models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md)**
+**[CreateOrUpdateWorkspaceOAuthCredentialsResponse](../../models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## createWorkspace
 
@@ -100,70 +91,55 @@ Create a workspace
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.CreateWorkspaceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.airbyte.api.models.shared.WorkspaceCreateRequest;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        WorkspaceCreateRequest req = WorkspaceCreateRequest.builder()
+                .name("Company Workspace Name")
                 .build();
 
-            WorkspaceCreateRequest req = WorkspaceCreateRequest.builder()
-                .name("<value>")
-                .build();
-
-            CreateWorkspaceResponse res = sdk.workspaces().createWorkspace()
+        CreateWorkspaceResponse res = sdk.workspaces().createWorkspace()
                 .request(req)
                 .call();
 
-            if (res.workspaceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.workspaceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `request`                                                                                             | [com.airbyte.api.models.shared.WorkspaceCreateRequest](../../models/shared/WorkspaceCreateRequest.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [WorkspaceCreateRequest](../../models/shared/WorkspaceCreateRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
 ### Response
 
-**[com.airbyte.api.models.operations.CreateWorkspaceResponse](../../models/operations/CreateWorkspaceResponse.md)**
+**[CreateWorkspaceResponse](../../models/operations/CreateWorkspaceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## deleteWorkspace
 
@@ -175,68 +151,53 @@ Delete a Workspace
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.DeleteWorkspaceRequest;
+import com.airbyte.api.models.operations.DeleteWorkspaceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            DeleteWorkspaceRequest req = DeleteWorkspaceRequest.builder()
+        DeleteWorkspaceRequest req = DeleteWorkspaceRequest.builder()
                 .workspaceId("<value>")
                 .build();
 
-            DeleteWorkspaceResponse res = sdk.workspaces().deleteWorkspace()
+        DeleteWorkspaceResponse res = sdk.workspaces().deleteWorkspace()
                 .request(req)
                 .call();
 
-            // handle response
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
-        }
-
+        // handle response
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                     | [com.airbyte.api.models.operations.DeleteWorkspaceRequest](../../models/operations/DeleteWorkspaceRequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
-
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [DeleteWorkspaceRequest](../../models/operations/DeleteWorkspaceRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 
-**[com.airbyte.api.models.operations.DeleteWorkspaceResponse](../../models/operations/DeleteWorkspaceResponse.md)**
+**[DeleteWorkspaceResponse](../../models/operations/DeleteWorkspaceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## getWorkspace
 
@@ -248,70 +209,55 @@ Get Workspace details
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.GetWorkspaceRequest;
+import com.airbyte.api.models.operations.GetWorkspaceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            GetWorkspaceRequest req = GetWorkspaceRequest.builder()
+        GetWorkspaceRequest req = GetWorkspaceRequest.builder()
                 .workspaceId("<value>")
                 .build();
 
-            GetWorkspaceResponse res = sdk.workspaces().getWorkspace()
+        GetWorkspaceResponse res = sdk.workspaces().getWorkspace()
                 .request(req)
                 .call();
 
-            if (res.workspaceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.workspaceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                               | [com.airbyte.api.models.operations.GetWorkspaceRequest](../../models/operations/GetWorkspaceRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
-
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [GetWorkspaceRequest](../../models/operations/GetWorkspaceRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 
-**[com.airbyte.api.models.operations.GetWorkspaceResponse](../../models/operations/GetWorkspaceResponse.md)**
+**[GetWorkspaceResponse](../../models/operations/GetWorkspaceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## listWorkspaces
 
@@ -323,69 +269,54 @@ List workspaces
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.ListWorkspacesRequest;
+import com.airbyte.api.models.operations.ListWorkspacesResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
+            .build();
+
+        ListWorkspacesRequest req = ListWorkspacesRequest.builder()
                 .build();
 
-            ListWorkspacesRequest req = ListWorkspacesRequest.builder()
-                .build();
-
-            ListWorkspacesResponse res = sdk.workspaces().listWorkspaces()
+        ListWorkspacesResponse res = sdk.workspaces().listWorkspaces()
                 .request(req)
                 .call();
 
-            if (res.workspacesResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.workspacesResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                   | [com.airbyte.api.models.operations.ListWorkspacesRequest](../../models/operations/ListWorkspacesRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [ListWorkspacesRequest](../../models/operations/ListWorkspacesRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[com.airbyte.api.models.operations.ListWorkspacesResponse](../../models/operations/ListWorkspacesResponse.md)**
+**[ListWorkspacesResponse](../../models/operations/ListWorkspacesResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## updateWorkspace
 
@@ -397,70 +328,56 @@ Update a workspace
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.*;
-import com.airbyte.api.models.shared.*;
+import com.airbyte.api.models.operations.UpdateWorkspaceRequest;
+import com.airbyte.api.models.operations.UpdateWorkspaceResponse;
+import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.utils.EventStream;
-import java.math.BigDecimal;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.util.Optional;
-import org.openapitools.jackson.nullable.JsonNullable;
-import static java.util.Map.entry;
+import com.airbyte.api.models.shared.WorkspaceUpdateRequest;
+import java.lang.Exception;
 
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        try {
-            Airbyte sdk = Airbyte.builder()
+
+        Airbyte sdk = Airbyte.builder()
                 .security(Security.builder()
                     .basicAuth(SchemeBasicAuth.builder()
                         .password("")
                         .username("")
                         .build())
                     .build())
-                .build();
+            .build();
 
-            UpdateWorkspaceRequest req = UpdateWorkspaceRequest.builder()
+        UpdateWorkspaceRequest req = UpdateWorkspaceRequest.builder()
                 .workspaceUpdateRequest(WorkspaceUpdateRequest.builder()
-                        .name("<value>")
-                        .build())
+                    .name("Company Workspace Name")
+                    .build())
                 .workspaceId("<value>")
                 .build();
 
-            UpdateWorkspaceResponse res = sdk.workspaces().updateWorkspace()
+        UpdateWorkspaceResponse res = sdk.workspaces().updateWorkspace()
                 .request(req)
                 .call();
 
-            if (res.workspaceResponse().isPresent()) {
-                // handle response
-            }
-        } catch (com.airbyte.api.models.errors.SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.workspaceResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                     | [com.airbyte.api.models.operations.UpdateWorkspaceRequest](../../models/operations/UpdateWorkspaceRequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
-
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [UpdateWorkspaceRequest](../../models/operations/UpdateWorkspaceRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 
-**[com.airbyte.api.models.operations.UpdateWorkspaceResponse](../../models/operations/UpdateWorkspaceResponse.md)**
+**[UpdateWorkspaceResponse](../../models/operations/UpdateWorkspaceResponse.md)**
+
 ### Errors
 
-| Error Object           | Status Code            | Content Type           |
+| Error Type             | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |

@@ -1,0 +1,11 @@
+# SourceFactorial
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `limit`                                                                                   | *Optional\<String>*                                                                       | :heavy_minus_sign:                                                                        | Max records per page limit                                                                |
+| `sourceType`                                                                              | [Factorial](../../models/shared/Factorial.md)                                             | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

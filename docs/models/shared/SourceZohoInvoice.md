@@ -1,0 +1,13 @@
+# SourceZohoInvoice
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `clientId`                                                                | *String*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `clientRefreshToken`                                                      | *String*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `clientSecret`                                                            | *String*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `organizationId`                                                          | *Optional\<String>*                                                       | :heavy_minus_sign:                                                        | To be provided if a user belongs to multiple organizations                |
+| `region`                                                                  | [SourceZohoInvoiceRegion](../../models/shared/SourceZohoInvoiceRegion.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `sourceType`                                                              | [ZohoInvoice](../../models/shared/ZohoInvoice.md)                         | :heavy_check_mark:                                                        | N/A                                                                       |

@@ -1,0 +1,11 @@
+# SourceBunnyInc
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apikey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `sourceType`                                                                              | [BunnyInc](../../models/shared/BunnyInc.md)                                               | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `subdomain`                                                                               | *String*                                                                                  | :heavy_check_mark:                                                                        | The subdomain specific to your Bunny account or service.                                  |

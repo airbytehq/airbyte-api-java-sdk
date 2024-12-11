@@ -1,0 +1,10 @@
+# SourceVitally
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                       | *String*                                                                                       | :heavy_check_mark:                                                                             | The API Token for a Vitally account.                                                           |
+| `sourceType`                                                                                   | [Vitally](../../models/shared/Vitally.md)                                                      | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `status`                                                                                       | [SourceVitallyStatus](../../models/shared/SourceVitallyStatus.md)                              | :heavy_check_mark:                                                                             | Status of the Vitally accounts. One of the following values; active, churned, activeOrChurned. |

@@ -1,0 +1,10 @@
+# SourceShippo
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `shippoToken`                                                                             | *String*                                                                                  | :heavy_check_mark:                                                                        | The bearer token used for making requests                                                 |
+| `sourceType`                                                                              | [Shippo](../../models/shared/Shippo.md)                                                   | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `STANDARD` | Standard   |
+| Name   | Value  |
+| ------ | ------ |
+| `XMIN` | Xmin   |
