@@ -63,7 +63,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "com.airbyte"
-version = "1.6.0"
+version = "1.7.0"
 
 sourcesJar {
     archiveBaseName = "api"
@@ -101,7 +101,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.airbyte'
             artifactId = 'api'
-            version = '1.6.0'
+            version = '1.7.0'
 
             from components.java
 

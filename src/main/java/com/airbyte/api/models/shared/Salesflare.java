@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Salesflare {
     SALESFLARE("salesflare");
@@ -19,5 +21,14 @@ public enum Salesflare {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Salesflare> fromValue(String value) {
+        for (Salesflare o: Salesflare.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleDriveSchemasStreamsHeaderDefinitionType {
     USER_PROVIDED("User Provided");
@@ -19,5 +21,14 @@ public enum SourceGoogleDriveSchemasStreamsHeaderDefinitionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleDriveSchemasStreamsHeaderDefinitionType> fromValue(String value) {
+        for (SourceGoogleDriveSchemasStreamsHeaderDefinitionType o: SourceGoogleDriveSchemasStreamsHeaderDefinitionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

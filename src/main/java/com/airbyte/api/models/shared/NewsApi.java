@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum NewsApi {
     NEWS_API("news-api");
@@ -19,5 +21,14 @@ public enum NewsApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<NewsApi> fromValue(String value) {
+        for (NewsApi o: NewsApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

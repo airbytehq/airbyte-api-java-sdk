@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceZohoExpenseDataCenter - The domain suffix for the Zoho Expense API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
@@ -29,5 +31,14 @@ public enum SourceZohoExpenseDataCenter {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceZohoExpenseDataCenter> fromValue(String value) {
+        for (SourceZohoExpenseDataCenter o: SourceZohoExpenseDataCenter.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

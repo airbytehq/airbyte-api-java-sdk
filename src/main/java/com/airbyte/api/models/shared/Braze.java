@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Braze {
     BRAZE("braze");
@@ -19,5 +21,14 @@ public enum Braze {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Braze> fromValue(String value) {
+        for (Braze o: Braze.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

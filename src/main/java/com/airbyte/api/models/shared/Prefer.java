@@ -27,7 +27,7 @@ public class Prefer {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationPostgresSchemasMode> mode;
+    private Optional<? extends DestinationPostgresSchemasSslModeMode> mode;
 
     @JsonCreator
     public Prefer() {
@@ -37,8 +37,8 @@ public class Prefer {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationPostgresSchemasMode> mode() {
-        return (Optional<DestinationPostgresSchemasMode>) mode;
+    public Optional<DestinationPostgresSchemasSslModeMode> mode() {
+        return (Optional<DestinationPostgresSchemasSslModeMode>) mode;
     }
 
     public final static Builder builder() {
@@ -81,11 +81,11 @@ public class Prefer {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasSslModeMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"prefer\"",
-                        new TypeReference<Optional<? extends DestinationPostgresSchemasMode>>() {});
+                        new TypeReference<Optional<? extends DestinationPostgresSchemasSslModeMode>>() {});
     }
 }
 

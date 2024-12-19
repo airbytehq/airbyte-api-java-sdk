@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -32,6 +33,13 @@ public class SourceAsana {
     private Optional<? extends AuthenticationMechanism> credentials;
 
     /**
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
+    /**
      * Globally unique identifiers for the organization exports
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -45,16 +53,19 @@ public class SourceAsana {
     @JsonCreator
     public SourceAsana(
             @JsonProperty("credentials") Optional<? extends AuthenticationMechanism> credentials,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("organization_export_ids") Optional<? extends List<Object>> organizationExportIds) {
         Utils.checkNotNull(credentials, "credentials");
+        Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(organizationExportIds, "organizationExportIds");
         this.credentials = credentials;
+        this.numWorkers = numWorkers;
         this.organizationExportIds = organizationExportIds;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
     
     public SourceAsana() {
-        this(Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -64,6 +75,14 @@ public class SourceAsana {
     @JsonIgnore
     public Optional<AuthenticationMechanism> credentials() {
         return (Optional<AuthenticationMechanism>) credentials;
+    }
+
+    /**
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
     }
 
     /**
@@ -104,6 +123,24 @@ public class SourceAsana {
     }
 
     /**
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
+     */
+    public SourceAsana withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+    /**
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
+     */
+    public SourceAsana withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
+        return this;
+    }
+
+    /**
      * Globally unique identifiers for the organization exports
      */
     public SourceAsana withOrganizationExportIds(List<Object> organizationExportIds) {
@@ -132,6 +169,7 @@ public class SourceAsana {
         SourceAsana other = (SourceAsana) o;
         return 
             Objects.deepEquals(this.credentials, other.credentials) &&
+            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
             Objects.deepEquals(this.organizationExportIds, other.organizationExportIds) &&
             Objects.deepEquals(this.sourceType, other.sourceType);
     }
@@ -140,6 +178,7 @@ public class SourceAsana {
     public int hashCode() {
         return Objects.hash(
             credentials,
+            numWorkers,
             organizationExportIds,
             sourceType);
     }
@@ -148,6 +187,7 @@ public class SourceAsana {
     public String toString() {
         return Utils.toString(SourceAsana.class,
                 "credentials", credentials,
+                "numWorkers", numWorkers,
                 "organizationExportIds", organizationExportIds,
                 "sourceType", sourceType);
     }
@@ -155,6 +195,8 @@ public class SourceAsana {
     public final static class Builder {
  
         private Optional<? extends AuthenticationMechanism> credentials = Optional.empty();
+ 
+        private Optional<Long> numWorkers;
  
         private Optional<? extends List<Object>> organizationExportIds = Optional.empty();  
         
@@ -181,6 +223,24 @@ public class SourceAsana {
         }
 
         /**
+         * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
+        /**
          * Globally unique identifiers for the organization exports
          */
         public Builder organizationExportIds(List<Object> organizationExportIds) {
@@ -199,10 +259,19 @@ public class SourceAsana {
         }
         
         public SourceAsana build() {
-            return new SourceAsana(
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }            return new SourceAsana(
                 credentials,
+                numWorkers,
                 organizationExportIds);
         }
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "10",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<? extends SourceAsanaAsana>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

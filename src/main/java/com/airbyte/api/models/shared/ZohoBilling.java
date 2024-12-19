@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ZohoBilling {
     ZOHO_BILLING("zoho-billing");
@@ -19,5 +21,14 @@ public enum ZohoBilling {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ZohoBilling> fromValue(String value) {
+        for (ZohoBilling o: ZohoBilling.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceGnewsCountry - This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
@@ -51,5 +53,14 @@ public enum SourceGnewsCountry {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGnewsCountry> fromValue(String value) {
+        for (SourceGnewsCountry o: SourceGnewsCountry.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

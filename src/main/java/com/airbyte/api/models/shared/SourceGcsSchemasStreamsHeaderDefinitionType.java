@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGcsSchemasStreamsHeaderDefinitionType {
     USER_PROVIDED("User Provided");
@@ -19,5 +21,14 @@ public enum SourceGcsSchemasStreamsHeaderDefinitionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGcsSchemasStreamsHeaderDefinitionType> fromValue(String value) {
+        for (SourceGcsSchemasStreamsHeaderDefinitionType o: SourceGcsSchemasStreamsHeaderDefinitionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

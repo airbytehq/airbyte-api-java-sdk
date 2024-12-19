@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum MongodbV2 {
     MONGODB_V2("mongodb-v2");
@@ -19,5 +21,14 @@ public enum MongodbV2 {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<MongodbV2> fromValue(String value) {
+        for (MongodbV2 o: MongodbV2.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

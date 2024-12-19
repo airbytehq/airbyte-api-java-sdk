@@ -27,7 +27,7 @@ public class ConnectionCreateRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("configurations")
-    private Optional<? extends StreamConfigurations> configurations;
+    private Optional<? extends StreamConfigurationsInput> configurations;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
@@ -87,7 +87,7 @@ public class ConnectionCreateRequest {
 
     @JsonCreator
     public ConnectionCreateRequest(
-            @JsonProperty("configurations") Optional<? extends StreamConfigurations> configurations,
+            @JsonProperty("configurations") Optional<? extends StreamConfigurationsInput> configurations,
             @JsonProperty("dataResidency") Optional<? extends GeographyEnum> dataResidency,
             @JsonProperty("destinationId") String destinationId,
             @JsonProperty("name") Optional<String> name,
@@ -133,8 +133,8 @@ public class ConnectionCreateRequest {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<StreamConfigurations> configurations() {
-        return (Optional<StreamConfigurations>) configurations;
+    public Optional<StreamConfigurationsInput> configurations() {
+        return (Optional<StreamConfigurationsInput>) configurations;
     }
 
     @SuppressWarnings("unchecked")
@@ -217,7 +217,7 @@ public class ConnectionCreateRequest {
     /**
      * A list of configured stream options for a connection.
      */
-    public ConnectionCreateRequest withConfigurations(StreamConfigurations configurations) {
+    public ConnectionCreateRequest withConfigurations(StreamConfigurationsInput configurations) {
         Utils.checkNotNull(configurations, "configurations");
         this.configurations = Optional.ofNullable(configurations);
         return this;
@@ -226,7 +226,7 @@ public class ConnectionCreateRequest {
     /**
      * A list of configured stream options for a connection.
      */
-    public ConnectionCreateRequest withConfigurations(Optional<? extends StreamConfigurations> configurations) {
+    public ConnectionCreateRequest withConfigurations(Optional<? extends StreamConfigurationsInput> configurations) {
         Utils.checkNotNull(configurations, "configurations");
         this.configurations = configurations;
         return this;
@@ -433,7 +433,7 @@ public class ConnectionCreateRequest {
     
     public final static class Builder {
  
-        private Optional<? extends StreamConfigurations> configurations = Optional.empty();
+        private Optional<? extends StreamConfigurationsInput> configurations = Optional.empty();
  
         private Optional<? extends GeographyEnum> dataResidency;
  
@@ -462,7 +462,7 @@ public class ConnectionCreateRequest {
         /**
          * A list of configured stream options for a connection.
          */
-        public Builder configurations(StreamConfigurations configurations) {
+        public Builder configurations(StreamConfigurationsInput configurations) {
             Utils.checkNotNull(configurations, "configurations");
             this.configurations = Optional.ofNullable(configurations);
             return this;
@@ -471,7 +471,7 @@ public class ConnectionCreateRequest {
         /**
          * A list of configured stream options for a connection.
          */
-        public Builder configurations(Optional<? extends StreamConfigurations> configurations) {
+        public Builder configurations(Optional<? extends StreamConfigurationsInput> configurations) {
             Utils.checkNotNull(configurations, "configurations");
             this.configurations = configurations;
             return this;

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ConnectionSyncModeEnum {
     FULL_REFRESH_OVERWRITE("full_refresh_overwrite"),
@@ -22,5 +24,14 @@ public enum ConnectionSyncModeEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ConnectionSyncModeEnum> fromValue(String value) {
+        for (ConnectionSyncModeEnum o: ConnectionSyncModeEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReportingDataObject - The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
@@ -55,5 +57,14 @@ public enum ReportingDataObject {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ReportingDataObject> fromValue(String value) {
+        for (ReportingDataObject o: ReportingDataObject.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

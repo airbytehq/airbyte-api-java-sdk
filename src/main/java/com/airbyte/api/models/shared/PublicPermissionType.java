@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PublicPermissionType - Subset of `PermissionType` (removing `instance_admin`), could be used in public-api.
@@ -30,5 +32,14 @@ public enum PublicPermissionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<PublicPermissionType> fromValue(String value) {
+        for (PublicPermissionType o: PublicPermissionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

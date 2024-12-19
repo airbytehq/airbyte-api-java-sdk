@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationRedisMode {
     DISABLE("disable");
@@ -19,5 +21,14 @@ public enum DestinationRedisMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationRedisMode> fromValue(String value) {
+        for (DestinationRedisMode o: DestinationRedisMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

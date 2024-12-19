@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: c154fc44f8133a378fdc9e766757a427
+  docChecksum: 20c551a95555f120a6f86c0a4ded0f8e
   docVersion: 1.0.0
-  speakeasyVersion: 1.453.10
-  generationVersion: 2.474.15
-  releaseVersion: 1.6.0
-  configChecksum: d006360ef852d40cb8491ae4b4ea9373
+  speakeasyVersion: 1.456.1
+  generationVersion: 2.481.0
+  releaseVersion: 1.7.0
+  configChecksum: b182c7f077c447cb636826fcf5839ac0
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -15,11 +15,12 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.33.1
+    core: 3.33.3
     globalSecurity: 2.82.7
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
     groups: 2.81.2
+    inputOutputModels: 2.83.0
     nullables: 0.1.0
     oauth2ClientCredentials: 0.1.1
     sdkHooks: 0.1.0
@@ -318,7 +319,7 @@ generatedFiles:
   - docs/models/shared/DestinationAstra.md
   - docs/models/shared/DestinationAstraLanguage.md
   - docs/models/shared/DestinationAstraMode.md
-  - docs/models/shared/DestinationAstraSchemasEmbeddingEmbedding1Mode.md
+  - docs/models/shared/DestinationAstraSchemasEmbeddingEmbedding5Mode.md
   - docs/models/shared/DestinationAstraSchemasEmbeddingEmbeddingMode.md
   - docs/models/shared/DestinationAstraSchemasEmbeddingMode.md
   - docs/models/shared/DestinationAstraSchemasMode.md
@@ -467,6 +468,7 @@ generatedFiles:
   - docs/models/shared/DestinationMysqlSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/DestinationMysqlTunnelMethod.md
   - docs/models/shared/DestinationOracle.md
+  - docs/models/shared/DestinationOracleEncryption.md
   - docs/models/shared/DestinationOracleEncryptionMethod.md
   - docs/models/shared/DestinationOracleNoTunnel.md
   - docs/models/shared/DestinationOraclePasswordAuthentication.md
@@ -531,7 +533,7 @@ generatedFiles:
   - docs/models/shared/DestinationPostgresSSHKeyAuthentication.md
   - docs/models/shared/DestinationPostgresSSHTunnelMethod.md
   - docs/models/shared/DestinationPostgresSchemasMode.md
-  - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModes1Mode.md
+  - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModes5Mode.md
   - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModes6Mode.md
   - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModesMode.md
   - docs/models/shared/DestinationPostgresSchemasSslModeMode.md
@@ -774,12 +776,16 @@ generatedFiles:
   - docs/models/shared/EncryptedTrustServerCertificate.md
   - docs/models/shared/EncryptedVerifyCertificate.md
   - docs/models/shared/Encryption.md
+  - docs/models/shared/EncryptionAES.md
   - docs/models/shared/EncryptionAlgorithm.md
+  - docs/models/shared/EncryptionMapperAlgorithm.md
   - docs/models/shared/EncryptionMethod.md
+  - docs/models/shared/EncryptionRSA.md
   - docs/models/shared/EngagementWindowDays.md
   - docs/models/shared/Enterprise.md
   - docs/models/shared/Entity.md
   - docs/models/shared/Environment.md
+  - docs/models/shared/Equal.md
   - docs/models/shared/Eventbrite.md
   - docs/models/shared/Eventee.md
   - docs/models/shared/Eventzilla.md
@@ -797,6 +803,7 @@ generatedFiles:
   - docs/models/shared/Faker.md
   - docs/models/shared/Fauna.md
   - docs/models/shared/FieldNameMappingConfigModel.md
+  - docs/models/shared/FieldRenaming.md
   - docs/models/shared/File.md
   - docs/models/shared/FileBasedStreamConfig.md
   - docs/models/shared/FileFormat.md
@@ -885,6 +892,7 @@ generatedFiles:
   - docs/models/shared/GranularityForGeoLocationRegion.md
   - docs/models/shared/GranularityForPeriodicReports.md
   - docs/models/shared/Greenhouse.md
+  - docs/models/shared/Greythr.md
   - docs/models/shared/Gridly.md
   - docs/models/shared/GroupBy.md
   - docs/models/shared/Guru.md
@@ -895,6 +903,8 @@ generatedFiles:
   - docs/models/shared/HadoopCatalogUseHierarchicalFileSystemsAsSameAsStorageConfig.md
   - docs/models/shared/HardcodedRecords.md
   - docs/models/shared/Harvest.md
+  - docs/models/shared/Hashing.md
+  - docs/models/shared/HashingMethod.md
   - docs/models/shared/Header.md
   - docs/models/shared/HeaderDefinitionType.md
   - docs/models/shared/Height.md
@@ -904,6 +914,7 @@ generatedFiles:
   - docs/models/shared/Hubplanner.md
   - docs/models/shared/Hubspot.md
   - docs/models/shared/HubspotCredentials.md
+  - docs/models/shared/HuggingFaceDatasets.md
   - docs/models/shared/Humanitix.md
   - docs/models/shared/IAMRole.md
   - docs/models/shared/IAMUser.md
@@ -1026,6 +1037,7 @@ generatedFiles:
   - docs/models/shared/NamespaceDefinitionEnumNoDefault.md
   - docs/models/shared/Nasa.md
   - docs/models/shared/NativeNetworkEncryptionNNE.md
+  - docs/models/shared/Navan.md
   - docs/models/shared/Netsuite.md
   - docs/models/shared/NewsApi.md
   - docs/models/shared/NewsdataIo.md
@@ -1041,6 +1053,7 @@ generatedFiles:
   - docs/models/shared/Normalization.md
   - docs/models/shared/NormalizationFlattening.md
   - docs/models/shared/NorthpassLms.md
+  - docs/models/shared/Not.md
   - docs/models/shared/NotExpression.md
   - docs/models/shared/Notion.md
   - docs/models/shared/NotionCredentials.md
@@ -1090,6 +1103,7 @@ generatedFiles:
   - docs/models/shared/Outreach.md
   - docs/models/shared/Oveit.md
   - docs/models/shared/PabblySubscriptionsBilling.md
+  - docs/models/shared/Padding.md
   - docs/models/shared/Pandadoc.md
   - docs/models/shared/Paperform.md
   - docs/models/shared/Papersign.md
@@ -1117,6 +1131,7 @@ generatedFiles:
   - docs/models/shared/Pgvector.md
   - docs/models/shared/Picqer.md
   - docs/models/shared/Pinecone.md
+  - docs/models/shared/Pingdom.md
   - docs/models/shared/Pinterest.md
   - docs/models/shared/PinterestCredentials.md
   - docs/models/shared/Pipedrive.md
@@ -1187,6 +1202,7 @@ generatedFiles:
   - docs/models/shared/ReportingDataObject.md
   - docs/models/shared/Require.md
   - docs/models/shared/Required.md
+  - docs/models/shared/Resolution.md
   - docs/models/shared/Retently.md
   - docs/models/shared/Revenuecat.md
   - docs/models/shared/RevolutMerchant.md
@@ -1195,6 +1211,9 @@ generatedFiles:
   - docs/models/shared/RoleBasedAuthentication.md
   - docs/models/shared/Rollbar.md
   - docs/models/shared/Rootly.md
+  - docs/models/shared/RowFiltering.md
+  - docs/models/shared/RowFilteringOperation.md
+  - docs/models/shared/RowFilteringOperationType.md
   - docs/models/shared/Rss.md
   - docs/models/shared/Ruddr.md
   - docs/models/shared/S3.md
@@ -1834,6 +1853,7 @@ generatedFiles:
   - docs/models/shared/SourceGoogleWebfonts.md
   - docs/models/shared/SourceGorgias.md
   - docs/models/shared/SourceGreenhouse.md
+  - docs/models/shared/SourceGreythr.md
   - docs/models/shared/SourceGridly.md
   - docs/models/shared/SourceGuru.md
   - docs/models/shared/SourceGutendex.md
@@ -1853,6 +1873,7 @@ generatedFiles:
   - docs/models/shared/SourceHubspotHubspot.md
   - docs/models/shared/SourceHubspotOAuth.md
   - docs/models/shared/SourceHubspotSchemasAuthType.md
+  - docs/models/shared/SourceHuggingFaceDatasets.md
   - docs/models/shared/SourceHumanitix.md
   - docs/models/shared/SourceIlluminaBasespace.md
   - docs/models/shared/SourceIncidentIo.md
@@ -2007,6 +2028,7 @@ generatedFiles:
   - docs/models/shared/SourceMixpanelRegion.md
   - docs/models/shared/SourceMixpanelSchemasOptionTitle.md
   - docs/models/shared/SourceMode.md
+  - docs/models/shared/SourceModeMode.md
   - docs/models/shared/SourceMonday.md
   - docs/models/shared/SourceMondayAuthType.md
   - docs/models/shared/SourceMondayAuthorizationMethod.md
@@ -2059,6 +2081,7 @@ generatedFiles:
   - docs/models/shared/SourceMysqlVerifyCA.md
   - docs/models/shared/SourceN8n.md
   - docs/models/shared/SourceNasa.md
+  - docs/models/shared/SourceNavan.md
   - docs/models/shared/SourceNetsuite.md
   - docs/models/shared/SourceNewsApi.md
   - docs/models/shared/SourceNewsdataIo.md
@@ -2133,6 +2156,7 @@ generatedFiles:
   - docs/models/shared/SourcePersona.md
   - docs/models/shared/SourcePexelsApi.md
   - docs/models/shared/SourcePicqer.md
+  - docs/models/shared/SourcePingdom.md
   - docs/models/shared/SourcePinterest.md
   - docs/models/shared/SourcePinterestAuthMethod.md
   - docs/models/shared/SourcePinterestLevel.md
@@ -2530,6 +2554,7 @@ generatedFiles:
   - docs/models/shared/Strava.md
   - docs/models/shared/StreamConfiguration.md
   - docs/models/shared/StreamConfigurations.md
+  - docs/models/shared/StreamConfigurationsInput.md
   - docs/models/shared/StreamMapperType.md
   - docs/models/shared/StreamProperties.md
   - docs/models/shared/StreamsCriteria.md
@@ -3043,7 +3068,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationAstra.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraLanguage.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingEmbedding1Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingEmbedding5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingEmbeddingMode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingMode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasMode.java
@@ -3192,6 +3217,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracle.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationOracleEncryption.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleEncryptionMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleNoTunnel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOraclePasswordAuthentication.java
@@ -3256,7 +3282,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSSHKeyAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSSHTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModes1Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModes5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModes6Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModesMode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSslModeMode.java
@@ -3499,12 +3525,16 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/EncryptedTrustServerCertificate.java
   - src/main/java/com/airbyte/api/models/shared/EncryptedVerifyCertificate.java
   - src/main/java/com/airbyte/api/models/shared/Encryption.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionAES.java
   - src/main/java/com/airbyte/api/models/shared/EncryptionAlgorithm.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionMapperAlgorithm.java
   - src/main/java/com/airbyte/api/models/shared/EncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionRSA.java
   - src/main/java/com/airbyte/api/models/shared/EngagementWindowDays.java
   - src/main/java/com/airbyte/api/models/shared/Enterprise.java
   - src/main/java/com/airbyte/api/models/shared/Entity.java
   - src/main/java/com/airbyte/api/models/shared/Environment.java
+  - src/main/java/com/airbyte/api/models/shared/Equal.java
   - src/main/java/com/airbyte/api/models/shared/Eventbrite.java
   - src/main/java/com/airbyte/api/models/shared/Eventee.java
   - src/main/java/com/airbyte/api/models/shared/Eventzilla.java
@@ -3522,6 +3552,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Faker.java
   - src/main/java/com/airbyte/api/models/shared/Fauna.java
   - src/main/java/com/airbyte/api/models/shared/FieldNameMappingConfigModel.java
+  - src/main/java/com/airbyte/api/models/shared/FieldRenaming.java
   - src/main/java/com/airbyte/api/models/shared/File.java
   - src/main/java/com/airbyte/api/models/shared/FileBasedStreamConfig.java
   - src/main/java/com/airbyte/api/models/shared/FileFormat.java
@@ -3610,6 +3641,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/GranularityForGeoLocationRegion.java
   - src/main/java/com/airbyte/api/models/shared/GranularityForPeriodicReports.java
   - src/main/java/com/airbyte/api/models/shared/Greenhouse.java
+  - src/main/java/com/airbyte/api/models/shared/Greythr.java
   - src/main/java/com/airbyte/api/models/shared/Gridly.java
   - src/main/java/com/airbyte/api/models/shared/GroupBy.java
   - src/main/java/com/airbyte/api/models/shared/Guru.java
@@ -3620,6 +3652,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/HadoopCatalogUseHierarchicalFileSystemsAsSameAsStorageConfig.java
   - src/main/java/com/airbyte/api/models/shared/HardcodedRecords.java
   - src/main/java/com/airbyte/api/models/shared/Harvest.java
+  - src/main/java/com/airbyte/api/models/shared/Hashing.java
+  - src/main/java/com/airbyte/api/models/shared/HashingMethod.java
   - src/main/java/com/airbyte/api/models/shared/Header.java
   - src/main/java/com/airbyte/api/models/shared/HeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/Height.java
@@ -3629,6 +3663,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Hubplanner.java
   - src/main/java/com/airbyte/api/models/shared/Hubspot.java
   - src/main/java/com/airbyte/api/models/shared/HubspotCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/HuggingFaceDatasets.java
   - src/main/java/com/airbyte/api/models/shared/Humanitix.java
   - src/main/java/com/airbyte/api/models/shared/IAMRole.java
   - src/main/java/com/airbyte/api/models/shared/IAMUser.java
@@ -3751,6 +3786,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/NamespaceDefinitionEnumNoDefault.java
   - src/main/java/com/airbyte/api/models/shared/Nasa.java
   - src/main/java/com/airbyte/api/models/shared/NativeNetworkEncryptionNNE.java
+  - src/main/java/com/airbyte/api/models/shared/Navan.java
   - src/main/java/com/airbyte/api/models/shared/Netsuite.java
   - src/main/java/com/airbyte/api/models/shared/NewsApi.java
   - src/main/java/com/airbyte/api/models/shared/NewsdataIo.java
@@ -3766,6 +3802,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Normalization.java
   - src/main/java/com/airbyte/api/models/shared/NormalizationFlattening.java
   - src/main/java/com/airbyte/api/models/shared/NorthpassLms.java
+  - src/main/java/com/airbyte/api/models/shared/Not.java
   - src/main/java/com/airbyte/api/models/shared/NotExpression.java
   - src/main/java/com/airbyte/api/models/shared/Notion.java
   - src/main/java/com/airbyte/api/models/shared/NotionCredentials.java
@@ -3815,6 +3852,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Outreach.java
   - src/main/java/com/airbyte/api/models/shared/Oveit.java
   - src/main/java/com/airbyte/api/models/shared/PabblySubscriptionsBilling.java
+  - src/main/java/com/airbyte/api/models/shared/Padding.java
   - src/main/java/com/airbyte/api/models/shared/Pandadoc.java
   - src/main/java/com/airbyte/api/models/shared/Paperform.java
   - src/main/java/com/airbyte/api/models/shared/Papersign.java
@@ -3842,6 +3880,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Pgvector.java
   - src/main/java/com/airbyte/api/models/shared/Picqer.java
   - src/main/java/com/airbyte/api/models/shared/Pinecone.java
+  - src/main/java/com/airbyte/api/models/shared/Pingdom.java
   - src/main/java/com/airbyte/api/models/shared/Pinterest.java
   - src/main/java/com/airbyte/api/models/shared/PinterestCredentials.java
   - src/main/java/com/airbyte/api/models/shared/Pipedrive.java
@@ -3912,6 +3951,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ReportingDataObject.java
   - src/main/java/com/airbyte/api/models/shared/Require.java
   - src/main/java/com/airbyte/api/models/shared/Required.java
+  - src/main/java/com/airbyte/api/models/shared/Resolution.java
   - src/main/java/com/airbyte/api/models/shared/Retently.java
   - src/main/java/com/airbyte/api/models/shared/Revenuecat.java
   - src/main/java/com/airbyte/api/models/shared/RevolutMerchant.java
@@ -3920,6 +3960,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/RoleBasedAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/Rollbar.java
   - src/main/java/com/airbyte/api/models/shared/Rootly.java
+  - src/main/java/com/airbyte/api/models/shared/RowFiltering.java
+  - src/main/java/com/airbyte/api/models/shared/RowFilteringOperation.java
+  - src/main/java/com/airbyte/api/models/shared/RowFilteringOperationType.java
   - src/main/java/com/airbyte/api/models/shared/Rss.java
   - src/main/java/com/airbyte/api/models/shared/Ruddr.java
   - src/main/java/com/airbyte/api/models/shared/S3.java
@@ -4559,6 +4602,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleWebfonts.java
   - src/main/java/com/airbyte/api/models/shared/SourceGorgias.java
   - src/main/java/com/airbyte/api/models/shared/SourceGreenhouse.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGreythr.java
   - src/main/java/com/airbyte/api/models/shared/SourceGridly.java
   - src/main/java/com/airbyte/api/models/shared/SourceGuru.java
   - src/main/java/com/airbyte/api/models/shared/SourceGutendex.java
@@ -4578,6 +4622,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotHubspot.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotOAuth.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHuggingFaceDatasets.java
   - src/main/java/com/airbyte/api/models/shared/SourceHumanitix.java
   - src/main/java/com/airbyte/api/models/shared/SourceIlluminaBasespace.java
   - src/main/java/com/airbyte/api/models/shared/SourceIncidentIo.java
@@ -4732,6 +4777,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMixpanelRegion.java
   - src/main/java/com/airbyte/api/models/shared/SourceMixpanelSchemasOptionTitle.java
   - src/main/java/com/airbyte/api/models/shared/SourceMode.java
+  - src/main/java/com/airbyte/api/models/shared/SourceModeMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceMonday.java
   - src/main/java/com/airbyte/api/models/shared/SourceMondayAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceMondayAuthorizationMethod.java
@@ -4784,6 +4830,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlVerifyCA.java
   - src/main/java/com/airbyte/api/models/shared/SourceN8n.java
   - src/main/java/com/airbyte/api/models/shared/SourceNasa.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNavan.java
   - src/main/java/com/airbyte/api/models/shared/SourceNetsuite.java
   - src/main/java/com/airbyte/api/models/shared/SourceNewsApi.java
   - src/main/java/com/airbyte/api/models/shared/SourceNewsdataIo.java
@@ -4858,6 +4905,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePersona.java
   - src/main/java/com/airbyte/api/models/shared/SourcePexelsApi.java
   - src/main/java/com/airbyte/api/models/shared/SourcePicqer.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePingdom.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterest.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterestAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterestLevel.java
@@ -5255,6 +5303,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Strava.java
   - src/main/java/com/airbyte/api/models/shared/StreamConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/StreamConfigurations.java
+  - src/main/java/com/airbyte/api/models/shared/StreamConfigurationsInput.java
   - src/main/java/com/airbyte/api/models/shared/StreamMapperType.java
   - src/main/java/com/airbyte/api/models/shared/StreamProperties.java
   - src/main/java/com/airbyte/api/models/shared/StreamsCriteria.java
@@ -5509,10 +5558,10 @@ examples:
           application/json: {"configuration": {"indexing": {"auth": {"password": "0SAaZ1kxEg7h49V", "username": "Sonny.Miller"}, "collection": "<value>", "host": "tcp://my-local-milvus:19530"}, "processing": {"chunk_size": 727665, "metadata_fields": ["age"], "text_fields": ["text"]}}, "createdAt": 656314, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Destination Creation Response Example:
       requestBody:
-        application/json: {"configuration": {"credential": {"hmac_key_access_id": "1234567890abcdefghij1234", "hmac_key_secret": "1234567890abcdefghij1234567890ABCDEFGHIJ"}, "gcs_bucket_name": "airbyte_sync", "gcs_bucket_path": "data_sync/test"}, "name": "<value>", "workspaceId": "b4797bfc-7d8a-4652-9eb4-9a265e47b02e"}
+        application/json: {"configuration": {"embedding": {"cohere_key": "<value>"}, "indexing": {"collection": "<value>", "url": "https://simplistic-electronics.info"}, "processing": {"chunk_size": 586224, "metadata_fields": ["user"], "text_fields": ["users.*.name"]}}, "name": "<value>", "workspaceId": "b4797bfc-7d8a-4652-9eb4-9a265e47b02e"}
       responses:
         "200":
-          application/json: {"configuration": {"bucket_name": "<value>", "credentials": {"aws_access_key_id": "<id>", "aws_secret_access_key": "<value>"}, "lakeformation_database_name": "<value>"}, "createdAt": 948482, "definitionId": "<value>", "destinationId": "af0c3c67-aa61-419f-8922-95b0bf840e86", "destinationType": "<value>", "name": "<value>", "workspaceId": "<value>"}
+          application/json: {"configuration": {"corpus_name": "<value>", "customer_id": "<id>", "oauth2": {"client_id": "<id>", "client_secret": "<value>"}}, "createdAt": 948482, "definitionId": "<value>", "destinationId": "af0c3c67-aa61-419f-8922-95b0bf840e86", "destinationType": "<value>", "name": "<value>", "workspaceId": "<value>"}
   deleteDestination:
     speakeasy-default-delete-destination:
       parameters:
@@ -5546,7 +5595,7 @@ examples:
         path:
           destinationId: "<value>"
       requestBody:
-        application/json: {"configuration": {"corpus_name": "<value>", "customer_id": "<id>", "oauth2": {"client_id": "<id>", "client_secret": "<value>"}}}
+        application/json: {"configuration": {"authentication": {"personal_access_token": "<value>"}, "database": "<value>", "hostname": "abc-12345678-wxyz.cloud.databricks.com", "http_path": "sql/1.0/warehouses/0000-1111111-abcd90"}}
       responses:
         "200":
           application/json: {"configuration": {"destination_path": "motherduck:"}, "createdAt": 663057, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
@@ -5565,10 +5614,10 @@ examples:
         path:
           destinationId: "<value>"
       requestBody:
-        application/json: {"configuration": {"credential": {"hmac_key_access_id": "1234567890abcdefghij1234", "hmac_key_secret": "1234567890abcdefghij1234567890ABCDEFGHIJ"}, "gcs_bucket_name": "airbyte_sync", "gcs_bucket_path": "data_sync/test"}, "name": "<value>"}
+        application/json: {"configuration": {"corpus_name": "<value>", "customer_id": "<id>", "oauth2": {"client_id": "<id>", "client_secret": "<value>"}}, "name": "<value>"}
       responses:
         "200":
-          application/json: {"configuration": {"database": "<value>", "host": "concerned-warming.biz", "username": "Helen.Lubowitz52"}, "createdAt": 490036, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"credential": {"hmac_key_access_id": "1234567890abcdefghij1234", "hmac_key_secret": "1234567890abcdefghij1234567890ABCDEFGHIJ"}, "gcs_bucket_name": "airbyte_sync", "gcs_bucket_path": "data_sync/test"}, "createdAt": 490036, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   getHealthCheck: {}
   cancelJob:
     speakeasy-default-cancel-job:
@@ -5671,16 +5720,16 @@ examples:
   createSource:
     Source Creation Request Example:
       requestBody:
-        application/json: {"configuration": {"api_key": "<value>", "start_date": "2021-01-01T00:00:00Z"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+        application/json: {"configuration": {"database": "<value>", "host": "specific-arcade.biz", "username": "Twila_Sawayn52"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
       responses:
         "200":
-          application/json: {"configuration": {"api_key": "<value>"}, "createdAt": 45355, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"api_key": "<value>", "subdomain": "<value>"}, "createdAt": 45355, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Source Creation Response Example:
       requestBody:
-        application/json: {"configuration": {"api_key": "<value>"}, "name": "<value>", "workspaceId": "fdc883bf-195a-466e-bf9b-b403f120decf"}
+        application/json: {"configuration": {"api_token": "<value>"}, "name": "<value>", "workspaceId": "fdc883bf-195a-466e-bf9b-b403f120decf"}
       responses:
         "200":
-          application/json: {"configuration": {"token": "<value>"}, "createdAt": 909345, "definitionId": "<value>", "name": "<value>", "sourceId": "0c31738c-0b2d-4887-b506-e2cd1c39cc35", "sourceType": "<value>", "workspaceId": "<value>"}
+          application/json: {"configuration": {"site": "airbyte-test", "site_api_key": "<value>", "start_date": "2021-01-25T00:00:00Z"}, "createdAt": 909345, "definitionId": "<value>", "name": "<value>", "sourceId": "0c31738c-0b2d-4887-b506-e2cd1c39cc35", "sourceType": "<value>", "workspaceId": "<value>"}
   deleteSource:
     speakeasy-default-delete-source:
       parameters:
@@ -5712,7 +5761,7 @@ examples:
         path:
           sourceId: "<value>"
       requestBody:
-        application/json: {"configuration": {"x-api-key": "<value>"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+        application/json: {"configuration": {"access_key": "<value>", "start_date": "YYYY-MM-DD"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
       responses:
         "200":
           application/json: {"configuration": {"secret": "<value>"}, "createdAt": 183665, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
@@ -5721,10 +5770,10 @@ examples:
         path:
           sourceId: "<value>"
       requestBody:
-        application/json: {"configuration": {"api_key": "<value>"}, "name": "My source"}
+        application/json: {"configuration": {"api_key": "<value>", "application_key": "<value>"}, "name": "My source"}
       responses:
         "200":
-          application/json: {"configuration": {"api_key": "<value>"}, "createdAt": 291381, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"bearer_token": "<value>", "entity": "kases", "start_date": "2022-11-16T08:29:40.113Z"}, "createdAt": 291381, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   putSource:
     Source Update Request Example:
       parameters:
@@ -5740,10 +5789,10 @@ examples:
         path:
           sourceId: "<value>"
       requestBody:
-        application/json: {"configuration": {"client_id": "<id>", "developer_token": "<value>", "refresh_token": "<value>"}, "name": "<value>"}
+        application/json: {"configuration": {"api_key": "<value>", "secret_key": "<value>", "start_date": "2021-01-25T00:00:00Z"}, "name": "<value>"}
       responses:
         "200":
-          application/json: {"configuration": {"api_token": "<value>"}, "createdAt": 959713, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"client_id": "<id>", "developer_token": "<value>", "refresh_token": "<value>"}, "createdAt": 959713, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   getStreamProperties:
     speakeasy-default-get-stream-properties:
       parameters:

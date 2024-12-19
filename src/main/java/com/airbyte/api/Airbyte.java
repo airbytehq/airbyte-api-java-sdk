@@ -4,7 +4,6 @@
 
 package com.airbyte.api;
 
-import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.RetryConfig;
 import com.airbyte.api.utils.SpeakeasyHTTPClient;

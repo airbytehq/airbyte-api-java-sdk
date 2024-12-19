@@ -27,7 +27,7 @@ public class ConnectionPatchRequest {
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("configurations")
-    private Optional<? extends StreamConfigurations> configurations;
+    private Optional<? extends StreamConfigurationsInput> configurations;
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
@@ -81,7 +81,7 @@ public class ConnectionPatchRequest {
 
     @JsonCreator
     public ConnectionPatchRequest(
-            @JsonProperty("configurations") Optional<? extends StreamConfigurations> configurations,
+            @JsonProperty("configurations") Optional<? extends StreamConfigurationsInput> configurations,
             @JsonProperty("dataResidency") Optional<? extends GeographyEnumNoDefault> dataResidency,
             @JsonProperty("name") Optional<String> name,
             @JsonProperty("namespaceDefinition") Optional<? extends NamespaceDefinitionEnumNoDefault> namespaceDefinition,
@@ -119,8 +119,8 @@ public class ConnectionPatchRequest {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<StreamConfigurations> configurations() {
-        return (Optional<StreamConfigurations>) configurations;
+    public Optional<StreamConfigurationsInput> configurations() {
+        return (Optional<StreamConfigurationsInput>) configurations;
     }
 
     @SuppressWarnings("unchecked")
@@ -193,7 +193,7 @@ public class ConnectionPatchRequest {
     /**
      * A list of configured stream options for a connection.
      */
-    public ConnectionPatchRequest withConfigurations(StreamConfigurations configurations) {
+    public ConnectionPatchRequest withConfigurations(StreamConfigurationsInput configurations) {
         Utils.checkNotNull(configurations, "configurations");
         this.configurations = Optional.ofNullable(configurations);
         return this;
@@ -202,7 +202,7 @@ public class ConnectionPatchRequest {
     /**
      * A list of configured stream options for a connection.
      */
-    public ConnectionPatchRequest withConfigurations(Optional<? extends StreamConfigurations> configurations) {
+    public ConnectionPatchRequest withConfigurations(Optional<? extends StreamConfigurationsInput> configurations) {
         Utils.checkNotNull(configurations, "configurations");
         this.configurations = configurations;
         return this;
@@ -391,7 +391,7 @@ public class ConnectionPatchRequest {
     
     public final static class Builder {
  
-        private Optional<? extends StreamConfigurations> configurations = Optional.empty();
+        private Optional<? extends StreamConfigurationsInput> configurations = Optional.empty();
  
         private Optional<? extends GeographyEnumNoDefault> dataResidency = Optional.empty();
  
@@ -416,7 +416,7 @@ public class ConnectionPatchRequest {
         /**
          * A list of configured stream options for a connection.
          */
-        public Builder configurations(StreamConfigurations configurations) {
+        public Builder configurations(StreamConfigurationsInput configurations) {
             Utils.checkNotNull(configurations, "configurations");
             this.configurations = Optional.ofNullable(configurations);
             return this;
@@ -425,7 +425,7 @@ public class ConnectionPatchRequest {
         /**
          * A list of configured stream options for a connection.
          */
-        public Builder configurations(Optional<? extends StreamConfigurations> configurations) {
+        public Builder configurations(Optional<? extends StreamConfigurationsInput> configurations) {
             Utils.checkNotNull(configurations, "configurations");
             this.configurations = configurations;
             return this;

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGcsSchemasFiletype {
     CSV("csv");
@@ -19,5 +21,14 @@ public enum SourceGcsSchemasFiletype {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGcsSchemasFiletype> fromValue(String value) {
+        for (SourceGcsSchemasFiletype o: SourceGcsSchemasFiletype.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

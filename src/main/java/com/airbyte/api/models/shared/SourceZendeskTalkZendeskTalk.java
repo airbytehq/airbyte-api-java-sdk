@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceZendeskTalkZendeskTalk {
     ZENDESK_TALK("zendesk-talk");
@@ -19,5 +21,14 @@ public enum SourceZendeskTalkZendeskTalk {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceZendeskTalkZendeskTalk> fromValue(String value) {
+        for (SourceZendeskTalkZendeskTalk o: SourceZendeskTalkZendeskTalk.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

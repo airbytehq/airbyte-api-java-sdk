@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DestinationOracleSchemasTunnelMethodTunnelMethod - Connect through a jump server tunnel host using username and password authentication
@@ -22,5 +24,14 @@ public enum DestinationOracleSchemasTunnelMethodTunnelMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationOracleSchemasTunnelMethodTunnelMethod> fromValue(String value) {
+        for (DestinationOracleSchemasTunnelMethodTunnelMethod o: DestinationOracleSchemasTunnelMethodTunnelMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

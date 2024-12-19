@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ValidCampaignStatuses - An enumeration.
@@ -27,5 +29,14 @@ public enum ValidCampaignStatuses {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ValidCampaignStatuses> fromValue(String value) {
+        for (ValidCampaignStatuses o: ValidCampaignStatuses.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

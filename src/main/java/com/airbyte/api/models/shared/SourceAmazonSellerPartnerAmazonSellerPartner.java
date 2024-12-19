@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceAmazonSellerPartnerAmazonSellerPartner {
     AMAZON_SELLER_PARTNER("amazon-seller-partner");
@@ -19,5 +21,14 @@ public enum SourceAmazonSellerPartnerAmazonSellerPartner {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceAmazonSellerPartnerAmazonSellerPartner> fromValue(String value) {
+        for (SourceAmazonSellerPartnerAmazonSellerPartner o: SourceAmazonSellerPartnerAmazonSellerPartner.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

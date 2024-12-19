@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceS3HeaderDefinitionType {
     FROM_CSV("From CSV");
@@ -19,5 +21,14 @@ public enum SourceS3HeaderDefinitionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceS3HeaderDefinitionType> fromValue(String value) {
+        for (SourceS3HeaderDefinitionType o: SourceS3HeaderDefinitionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

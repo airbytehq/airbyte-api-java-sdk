@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum YoutubeData {
     YOUTUBE_DATA("youtube-data");
@@ -19,5 +21,14 @@ public enum YoutubeData {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<YoutubeData> fromValue(String value) {
+        for (YoutubeData o: YoutubeData.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceTiktokMarketingSchemasAuthType {
     SANDBOX_ACCESS_TOKEN("sandbox_access_token");
@@ -19,5 +21,14 @@ public enum SourceTiktokMarketingSchemasAuthType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceTiktokMarketingSchemasAuthType> fromValue(String value) {
+        for (SourceTiktokMarketingSchemasAuthType o: SourceTiktokMarketingSchemasAuthType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

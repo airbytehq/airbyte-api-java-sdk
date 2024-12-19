@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * URLRegion - The url region given at time of registration
@@ -24,5 +26,14 @@ public enum URLRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<URLRegion> fromValue(String value) {
+        for (URLRegion o: URLRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

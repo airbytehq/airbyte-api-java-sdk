@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * JobTypeEnum - Enum that describes the different types of jobs that the platform runs.
@@ -25,5 +27,14 @@ public enum JobTypeEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<JobTypeEnum> fromValue(String value) {
+        for (JobTypeEnum o: JobTypeEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

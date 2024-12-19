@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Auth0 {
     AUTH0("auth0");
@@ -19,5 +21,14 @@ public enum Auth0 {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Auth0> fromValue(String value) {
+        for (Auth0 o: Auth0.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

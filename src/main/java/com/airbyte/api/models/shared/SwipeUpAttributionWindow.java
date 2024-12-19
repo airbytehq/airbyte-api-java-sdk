@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SwipeUpAttributionWindow - Attribution window for swipe ups.
@@ -24,5 +26,14 @@ public enum SwipeUpAttributionWindow {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SwipeUpAttributionWindow> fromValue(String value) {
+        for (SwipeUpAttributionWindow o: SwipeUpAttributionWindow.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

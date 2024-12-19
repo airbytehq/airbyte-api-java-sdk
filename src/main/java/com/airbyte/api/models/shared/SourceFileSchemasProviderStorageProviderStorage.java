@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceFileSchemasProviderStorageProviderStorage {
     SSH("SSH");
@@ -19,5 +21,14 @@ public enum SourceFileSchemasProviderStorageProviderStorage {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceFileSchemasProviderStorageProviderStorage> fromValue(String value) {
+        for (SourceFileSchemasProviderStorageProviderStorage o: SourceFileSchemasProviderStorageProviderStorage.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

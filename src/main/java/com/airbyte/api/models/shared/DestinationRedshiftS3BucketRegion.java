@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DestinationRedshiftS3BucketRegion - The region of the S3 staging bucket.
@@ -55,5 +57,14 @@ public enum DestinationRedshiftS3BucketRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationRedshiftS3BucketRegion> fromValue(String value) {
+        for (DestinationRedshiftS3BucketRegion o: DestinationRedshiftS3BucketRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

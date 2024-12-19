@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceAuth0SchemasAuthenticationMethod {
     OAUTH2_CONFIDENTIAL_APPLICATION("oauth2_confidential_application");
@@ -19,5 +21,14 @@ public enum SourceAuth0SchemasAuthenticationMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceAuth0SchemasAuthenticationMethod> fromValue(String value) {
+        for (SourceAuth0SchemasAuthenticationMethod o: SourceAuth0SchemasAuthenticationMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

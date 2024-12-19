@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum MicrosoftEntraId {
     MICROSOFT_ENTRA_ID("microsoft-entra-id");
@@ -19,5 +21,14 @@ public enum MicrosoftEntraId {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<MicrosoftEntraId> fromValue(String value) {
+        for (MicrosoftEntraId o: MicrosoftEntraId.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

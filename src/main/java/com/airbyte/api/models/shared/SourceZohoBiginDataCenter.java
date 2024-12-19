@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceZohoBiginDataCenter - The data center where the Bigin account's resources are hosted
@@ -27,5 +29,14 @@ public enum SourceZohoBiginDataCenter {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceZohoBiginDataCenter> fromValue(String value) {
+        for (SourceZohoBiginDataCenter o: SourceZohoBiginDataCenter.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

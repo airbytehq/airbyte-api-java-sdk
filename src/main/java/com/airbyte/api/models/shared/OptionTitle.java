@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum OptionTitle {
     O_AUTH_CREDENTIALS("OAuth Credentials");
@@ -19,5 +21,14 @@ public enum OptionTitle {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<OptionTitle> fromValue(String value) {
+        for (OptionTitle o: OptionTitle.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

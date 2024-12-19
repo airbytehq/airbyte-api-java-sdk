@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationPineconeSchemasEmbeddingEmbedding5Mode {
     OPENAI_COMPATIBLE("openai_compatible");
@@ -19,5 +21,14 @@ public enum DestinationPineconeSchemasEmbeddingEmbedding5Mode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationPineconeSchemasEmbeddingEmbedding5Mode> fromValue(String value) {
+        for (DestinationPineconeSchemasEmbeddingEmbedding5Mode o: DestinationPineconeSchemasEmbeddingEmbedding5Mode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

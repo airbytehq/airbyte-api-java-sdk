@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * State - Select the state of the items to retrieve.
@@ -24,5 +26,14 @@ public enum State {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<State> fromValue(String value) {
+        for (State o: State.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

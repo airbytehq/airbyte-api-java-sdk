@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceMysqlSchemasSSLModeSSLModesMode {
     VERIFY_IDENTITY("verify_identity");
@@ -19,5 +21,14 @@ public enum SourceMysqlSchemasSSLModeSSLModesMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMysqlSchemasSSLModeSSLModesMode> fromValue(String value) {
+        for (SourceMysqlSchemasSSLModeSSLModesMode o: SourceMysqlSchemasSSLModeSSLModesMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Units - Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
@@ -24,5 +26,14 @@ public enum Units {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Units> fromValue(String value) {
+        for (Units o: Units.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

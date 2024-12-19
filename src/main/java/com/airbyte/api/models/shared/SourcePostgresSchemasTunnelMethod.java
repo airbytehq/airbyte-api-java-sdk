@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourcePostgresSchemasTunnelMethod - Connect through a jump server tunnel host using username and ssh key
@@ -22,5 +24,14 @@ public enum SourcePostgresSchemasTunnelMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourcePostgresSchemasTunnelMethod> fromValue(String value) {
+        for (SourcePostgresSchemasTunnelMethod o: SourcePostgresSchemasTunnelMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

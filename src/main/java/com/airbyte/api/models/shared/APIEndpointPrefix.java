@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum APIEndpointPrefix {
     API("api"),
@@ -20,5 +22,14 @@ public enum APIEndpointPrefix {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<APIEndpointPrefix> fromValue(String value) {
+        for (APIEndpointPrefix o: APIEndpointPrefix.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

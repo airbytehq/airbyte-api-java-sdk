@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Sendgrid {
     SENDGRID("sendgrid");
@@ -19,5 +21,14 @@ public enum Sendgrid {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Sendgrid> fromValue(String value) {
+        for (Sendgrid o: Sendgrid.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

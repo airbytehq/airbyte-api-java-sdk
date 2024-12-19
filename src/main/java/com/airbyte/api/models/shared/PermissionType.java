@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PermissionType - Describes what actions/endpoints the permission entitles to
@@ -32,5 +34,14 @@ public enum PermissionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<PermissionType> fromValue(String value) {
+        for (PermissionType o: PermissionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

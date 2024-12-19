@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PokemonName - Pokemon requested from the API.
@@ -919,5 +921,14 @@ public enum PokemonName {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<PokemonName> fromValue(String value) {
+        for (PokemonName o: PokemonName.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

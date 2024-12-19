@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DestinationS3S3BucketRegion - The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
@@ -55,5 +57,14 @@ public enum DestinationS3S3BucketRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationS3S3BucketRegion> fromValue(String value) {
+        for (DestinationS3S3BucketRegion o: DestinationS3S3BucketRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

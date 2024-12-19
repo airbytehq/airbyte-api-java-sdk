@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceSftpAuthMethod - Connect through password authentication
@@ -22,5 +24,14 @@ public enum SourceSftpAuthMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceSftpAuthMethod> fromValue(String value) {
+        for (SourceSftpAuthMethod o: SourceSftpAuthMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

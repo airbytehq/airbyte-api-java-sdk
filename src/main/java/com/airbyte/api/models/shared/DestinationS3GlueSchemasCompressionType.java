@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationS3GlueSchemasCompressionType {
     GZIP("GZIP");
@@ -19,5 +21,14 @@ public enum DestinationS3GlueSchemasCompressionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationS3GlueSchemasCompressionType> fromValue(String value) {
+        for (DestinationS3GlueSchemasCompressionType o: DestinationS3GlueSchemasCompressionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }
