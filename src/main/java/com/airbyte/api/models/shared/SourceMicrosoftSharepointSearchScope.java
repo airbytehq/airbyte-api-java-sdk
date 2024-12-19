@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceMicrosoftSharepointSearchScope - Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' for all SharePoint drives the user can access, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
@@ -24,5 +26,14 @@ public enum SourceMicrosoftSharepointSearchScope {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMicrosoftSharepointSearchScope> fromValue(String value) {
+        for (SourceMicrosoftSharepointSearchScope o: SourceMicrosoftSharepointSearchScope.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

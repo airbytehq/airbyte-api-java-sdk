@@ -30,7 +30,7 @@ public class Cohere {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationAstraMode> mode;
+    private Optional<? extends DestinationAstraSchemasMode> mode;
 
     @JsonCreator
     public Cohere(
@@ -47,8 +47,8 @@ public class Cohere {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationAstraMode> mode() {
-        return (Optional<DestinationAstraMode>) mode;
+    public Optional<DestinationAstraSchemasMode> mode() {
+        return (Optional<DestinationAstraSchemasMode>) mode;
     }
 
     public final static Builder builder() {
@@ -108,11 +108,11 @@ public class Cohere {
                 cohereKey);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationAstraMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"cohere\"",
-                        new TypeReference<Optional<? extends DestinationAstraMode>>() {});
+                        new TypeReference<Optional<? extends DestinationAstraSchemasMode>>() {});
     }
 }
 

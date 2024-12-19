@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationS3SchemasFormatOutputFormatFormatType {
     PARQUET("Parquet");
@@ -19,5 +21,14 @@ public enum DestinationS3SchemasFormatOutputFormatFormatType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationS3SchemasFormatOutputFormatFormatType> fromValue(String value) {
+        for (DestinationS3SchemasFormatOutputFormatFormatType o: DestinationS3SchemasFormatOutputFormatFormatType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

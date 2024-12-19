@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TimeGranularityType - Granularity of the statistics for metrics per time period. Must be either "DAY" or "MONTH"
@@ -23,5 +25,14 @@ public enum TimeGranularityType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<TimeGranularityType> fromValue(String value) {
+        for (TimeGranularityType o: TimeGranularityType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

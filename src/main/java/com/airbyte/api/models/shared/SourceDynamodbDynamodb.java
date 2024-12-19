@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceDynamodbDynamodb {
     DYNAMODB("dynamodb");
@@ -19,5 +21,14 @@ public enum SourceDynamodbDynamodb {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceDynamodbDynamodb> fromValue(String value) {
+        for (SourceDynamodbDynamodb o: SourceDynamodbDynamodb.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

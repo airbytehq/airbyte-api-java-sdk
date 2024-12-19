@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationWeaviateSchemasIndexingMode {
     TOKEN("token");
@@ -19,5 +21,14 @@ public enum DestinationWeaviateSchemasIndexingMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationWeaviateSchemasIndexingMode> fromValue(String value) {
+        for (DestinationWeaviateSchemasIndexingMode o: DestinationWeaviateSchemasIndexingMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

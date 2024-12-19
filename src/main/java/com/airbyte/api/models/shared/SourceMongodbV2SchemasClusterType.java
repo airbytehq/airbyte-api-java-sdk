@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceMongodbV2SchemasClusterType {
     SELF_MANAGED_REPLICA_SET("SELF_MANAGED_REPLICA_SET");
@@ -19,5 +21,14 @@ public enum SourceMongodbV2SchemasClusterType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMongodbV2SchemasClusterType> fromValue(String value) {
+        for (SourceMongodbV2SchemasClusterType o: SourceMongodbV2SchemasClusterType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

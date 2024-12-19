@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Instatus {
     INSTATUS("instatus");
@@ -19,5 +21,14 @@ public enum Instatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Instatus> fromValue(String value) {
+        for (Instatus o: Instatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

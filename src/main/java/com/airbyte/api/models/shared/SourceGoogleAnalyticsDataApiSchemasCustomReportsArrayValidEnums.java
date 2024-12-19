@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums {
     MATCH_TYPE_UNSPECIFIED("MATCH_TYPE_UNSPECIFIED"),
@@ -25,5 +27,14 @@ public enum SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums> fromValue(String value) {
+        for (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums o: SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayValidEnums.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

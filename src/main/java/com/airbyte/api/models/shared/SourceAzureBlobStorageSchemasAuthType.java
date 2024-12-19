@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceAzureBlobStorageSchemasAuthType {
     STORAGE_ACCOUNT_KEY("storage_account_key");
@@ -19,5 +21,14 @@ public enum SourceAzureBlobStorageSchemasAuthType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceAzureBlobStorageSchemasAuthType> fromValue(String value) {
+        for (SourceAzureBlobStorageSchemasAuthType o: SourceAzureBlobStorageSchemasAuthType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

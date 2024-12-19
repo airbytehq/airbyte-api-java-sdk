@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ClarifAi {
     CLARIF_AI("clarif-ai");
@@ -19,5 +21,14 @@ public enum ClarifAi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ClarifAi> fromValue(String value) {
+        for (ClarifAi o: ClarifAi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

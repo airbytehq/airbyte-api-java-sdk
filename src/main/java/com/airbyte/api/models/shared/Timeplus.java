@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Timeplus {
     TIMEPLUS("timeplus");
@@ -19,5 +21,14 @@ public enum Timeplus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Timeplus> fromValue(String value) {
+        for (Timeplus o: Timeplus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

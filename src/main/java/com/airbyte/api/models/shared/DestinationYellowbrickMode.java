@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationYellowbrickMode {
     DISABLE("disable");
@@ -19,5 +21,14 @@ public enum DestinationYellowbrickMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationYellowbrickMode> fromValue(String value) {
+        for (DestinationYellowbrickMode o: DestinationYellowbrickMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

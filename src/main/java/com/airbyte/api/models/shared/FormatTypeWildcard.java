@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum FormatTypeWildcard {
     JSONL("JSONL");
@@ -19,5 +21,14 @@ public enum FormatTypeWildcard {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<FormatTypeWildcard> fromValue(String value) {
+        for (FormatTypeWildcard o: FormatTypeWildcard.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

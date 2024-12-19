@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DestinationS3SchemasCompressionCodec - The compression algorithm used to compress data pages.
@@ -28,5 +30,14 @@ public enum DestinationS3SchemasCompressionCodec {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationS3SchemasCompressionCodec> fromValue(String value) {
+        for (DestinationS3SchemasCompressionCodec o: DestinationS3SchemasCompressionCodec.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

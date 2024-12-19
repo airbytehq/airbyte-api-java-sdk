@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum PolygonStockApi {
     POLYGON_STOCK_API("polygon-stock-api");
@@ -19,5 +21,14 @@ public enum PolygonStockApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<PolygonStockApi> fromValue(String value) {
+        for (PolygonStockApi o: PolygonStockApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

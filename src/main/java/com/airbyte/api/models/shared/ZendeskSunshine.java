@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ZendeskSunshine {
     ZENDESK_SUNSHINE("zendesk-sunshine");
@@ -19,5 +21,14 @@ public enum ZendeskSunshine {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ZendeskSunshine> fromValue(String value) {
+        for (ZendeskSunshine o: ZendeskSunshine.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

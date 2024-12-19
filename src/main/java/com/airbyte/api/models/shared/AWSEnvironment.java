@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AWSEnvironment - Select the AWS Environment.
@@ -23,5 +25,14 @@ public enum AWSEnvironment {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AWSEnvironment> fromValue(String value) {
+        for (AWSEnvironment o: AWSEnvironment.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceTypeformTypeform {
     TYPEFORM("typeform");
@@ -19,5 +21,14 @@ public enum SourceTypeformTypeform {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceTypeformTypeform> fromValue(String value) {
+        for (SourceTypeformTypeform o: SourceTypeformTypeform.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

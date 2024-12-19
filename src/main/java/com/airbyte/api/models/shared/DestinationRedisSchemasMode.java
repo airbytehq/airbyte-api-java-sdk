@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationRedisSchemasMode {
     VERIFY_FULL("verify-full");
@@ -19,5 +21,14 @@ public enum DestinationRedisSchemasMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationRedisSchemasMode> fromValue(String value) {
+        for (DestinationRedisSchemasMode o: DestinationRedisSchemasMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

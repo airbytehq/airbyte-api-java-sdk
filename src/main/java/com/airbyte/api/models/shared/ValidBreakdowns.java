@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ValidBreakdowns - An enumeration.
@@ -64,5 +66,14 @@ public enum ValidBreakdowns {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ValidBreakdowns> fromValue(String value) {
+        for (ValidBreakdowns o: ValidBreakdowns.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

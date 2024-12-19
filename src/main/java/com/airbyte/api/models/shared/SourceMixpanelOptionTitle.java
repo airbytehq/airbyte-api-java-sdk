@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceMixpanelOptionTitle {
     SERVICE_ACCOUNT("Service Account");
@@ -19,5 +21,14 @@ public enum SourceMixpanelOptionTitle {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMixpanelOptionTitle> fromValue(String value) {
+        for (SourceMixpanelOptionTitle o: SourceMixpanelOptionTitle.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

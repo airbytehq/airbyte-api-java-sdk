@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum WhiskyHunter {
     WHISKY_HUNTER("whisky-hunter");
@@ -19,5 +21,14 @@ public enum WhiskyHunter {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<WhiskyHunter> fromValue(String value) {
+        for (WhiskyHunter o: WhiskyHunter.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

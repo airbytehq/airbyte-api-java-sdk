@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Nylas {
     NYLAS("nylas");
@@ -19,5 +21,14 @@ public enum Nylas {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Nylas> fromValue(String value) {
+        for (Nylas o: Nylas.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

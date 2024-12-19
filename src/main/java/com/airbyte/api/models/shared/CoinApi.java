@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum CoinApi {
     COIN_API("coin-api");
@@ -19,5 +21,14 @@ public enum CoinApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CoinApi> fromValue(String value) {
+        for (CoinApi o: CoinApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

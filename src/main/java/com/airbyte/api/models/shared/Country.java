@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Country - The 2-letter ISO 3166-1 code of the country you want to get headlines
@@ -77,5 +79,14 @@ public enum Country {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Country> fromValue(String value) {
+        for (Country o: Country.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

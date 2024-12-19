@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum MicrosoftDataverse {
     MICROSOFT_DATAVERSE("microsoft-dataverse");
@@ -19,5 +21,14 @@ public enum MicrosoftDataverse {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<MicrosoftDataverse> fromValue(String value) {
+        for (MicrosoftDataverse o: MicrosoftDataverse.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

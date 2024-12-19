@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceLinkedinAdsLinkedinAds {
     LINKEDIN_ADS("linkedin-ads");
@@ -19,5 +21,14 @@ public enum SourceLinkedinAdsLinkedinAds {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceLinkedinAdsLinkedinAds> fromValue(String value) {
+        for (SourceLinkedinAdsLinkedinAds o: SourceLinkedinAdsLinkedinAds.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

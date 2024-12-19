@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ExchangeRates {
     EXCHANGE_RATES("exchange-rates");
@@ -19,5 +21,14 @@ public enum ExchangeRates {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ExchangeRates> fromValue(String value) {
+        for (ExchangeRates o: ExchangeRates.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum WhenIWork {
     WHEN_I_WORK("when-i-work");
@@ -19,5 +21,14 @@ public enum WhenIWork {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<WhenIWork> fromValue(String value) {
+        for (WhenIWork o: WhenIWork.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

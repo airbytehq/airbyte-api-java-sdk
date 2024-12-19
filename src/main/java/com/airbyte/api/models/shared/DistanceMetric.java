@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DistanceMetric - The Distance metric used to measure similarities among vectors. This field is only used if the collection defined in the does not exist yet and is created automatically by the connector.
@@ -24,5 +26,14 @@ public enum DistanceMetric {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DistanceMetric> fromValue(String value) {
+        for (DistanceMetric o: DistanceMetric.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

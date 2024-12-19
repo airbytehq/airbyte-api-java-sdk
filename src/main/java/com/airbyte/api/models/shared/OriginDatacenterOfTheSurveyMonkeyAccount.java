@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OriginDatacenterOfTheSurveyMonkeyAccount - Depending on the originating datacenter of the SurveyMonkey account, the API access URL may be different.
@@ -24,5 +26,14 @@ public enum OriginDatacenterOfTheSurveyMonkeyAccount {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<OriginDatacenterOfTheSurveyMonkeyAccount> fromValue(String value) {
+        for (OriginDatacenterOfTheSurveyMonkeyAccount o: OriginDatacenterOfTheSurveyMonkeyAccount.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

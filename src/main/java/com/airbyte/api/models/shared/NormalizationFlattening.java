@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * NormalizationFlattening - Whether the input json data should be normalized (flattened) in the output CSV. Please refer to docs for details.
@@ -23,5 +25,14 @@ public enum NormalizationFlattening {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<NormalizationFlattening> fromValue(String value) {
+        for (NormalizationFlattening o: NormalizationFlattening.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

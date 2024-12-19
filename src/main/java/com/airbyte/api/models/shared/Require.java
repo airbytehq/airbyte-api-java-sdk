@@ -27,7 +27,7 @@ public class Require {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationPostgresSchemasSslModeMode> mode;
+    private Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode> mode;
 
     @JsonCreator
     public Require() {
@@ -37,8 +37,8 @@ public class Require {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationPostgresSchemasSslModeMode> mode() {
-        return (Optional<DestinationPostgresSchemasSslModeMode>) mode;
+    public Optional<DestinationPostgresSchemasSSLModeSSLModesMode> mode() {
+        return (Optional<DestinationPostgresSchemasSSLModeSSLModesMode>) mode;
     }
 
     public final static Builder builder() {
@@ -81,11 +81,11 @@ public class Require {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasSslModeMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"require\"",
-                        new TypeReference<Optional<? extends DestinationPostgresSchemasSslModeMode>>() {});
+                        new TypeReference<Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode>>() {});
     }
 }
 
