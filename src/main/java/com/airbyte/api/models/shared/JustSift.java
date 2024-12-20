@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum JustSift {
     JUST_SIFT("just-sift");
@@ -19,5 +21,14 @@ public enum JustSift {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<JustSift> fromValue(String value) {
+        for (JustSift o: JustSift.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

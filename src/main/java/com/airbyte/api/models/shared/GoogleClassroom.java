@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum GoogleClassroom {
     GOOGLE_CLASSROOM("google-classroom");
@@ -19,5 +21,14 @@ public enum GoogleClassroom {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<GoogleClassroom> fromValue(String value) {
+        for (GoogleClassroom o: GoogleClassroom.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

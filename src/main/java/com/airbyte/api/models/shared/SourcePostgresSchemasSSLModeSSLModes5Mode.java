@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourcePostgresSchemasSSLModeSSLModes5Mode {
     VERIFY_CA("verify-ca");
@@ -19,5 +21,14 @@ public enum SourcePostgresSchemasSSLModeSSLModes5Mode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourcePostgresSchemasSSLModeSSLModes5Mode> fromValue(String value) {
+        for (SourcePostgresSchemasSSLModeSSLModes5Mode o: SourcePostgresSchemasSSLModeSSLModes5Mode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

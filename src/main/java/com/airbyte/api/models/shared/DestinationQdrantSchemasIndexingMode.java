@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationQdrantSchemasIndexingMode {
     API_KEY_AUTH("api_key_auth");
@@ -19,5 +21,14 @@ public enum DestinationQdrantSchemasIndexingMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationQdrantSchemasIndexingMode> fromValue(String value) {
+        for (DestinationQdrantSchemasIndexingMode o: DestinationQdrantSchemasIndexingMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

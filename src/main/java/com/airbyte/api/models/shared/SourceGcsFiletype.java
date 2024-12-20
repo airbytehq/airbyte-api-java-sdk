@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGcsFiletype {
     AVRO("avro");
@@ -19,5 +21,14 @@ public enum SourceGcsFiletype {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGcsFiletype> fromValue(String value) {
+        for (SourceGcsFiletype o: SourceGcsFiletype.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

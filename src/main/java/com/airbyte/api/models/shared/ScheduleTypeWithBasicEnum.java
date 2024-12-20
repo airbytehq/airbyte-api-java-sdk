@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ScheduleTypeWithBasicEnum {
     MANUAL("manual"),
@@ -21,5 +23,14 @@ public enum ScheduleTypeWithBasicEnum {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ScheduleTypeWithBasicEnum> fromValue(String value) {
+        for (ScheduleTypeWithBasicEnum o: ScheduleTypeWithBasicEnum.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

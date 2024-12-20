@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PivotCategory - Choose a category to pivot your analytics report around. This selection will organize your data based on the chosen attribute, allowing you to analyze trends and performance from different perspectives.
@@ -42,5 +44,14 @@ public enum PivotCategory {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<PivotCategory> fromValue(String value) {
+        for (PivotCategory o: PivotCategory.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

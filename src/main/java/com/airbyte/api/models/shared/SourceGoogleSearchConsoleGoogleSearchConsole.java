@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleSearchConsoleGoogleSearchConsole {
     GOOGLE_SEARCH_CONSOLE("google-search-console");
@@ -19,5 +21,14 @@ public enum SourceGoogleSearchConsoleGoogleSearchConsole {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleSearchConsoleGoogleSearchConsole> fromValue(String value) {
+        for (SourceGoogleSearchConsoleGoogleSearchConsole o: SourceGoogleSearchConsoleGoogleSearchConsole.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

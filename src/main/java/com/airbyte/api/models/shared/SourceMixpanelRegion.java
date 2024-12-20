@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceMixpanelRegion - The region of mixpanel domain instance either US or EU.
@@ -23,5 +25,14 @@ public enum SourceMixpanelRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMixpanelRegion> fromValue(String value) {
+        for (SourceMixpanelRegion o: SourceMixpanelRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

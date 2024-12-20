@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Gmail {
     GMAIL("gmail");
@@ -19,5 +21,14 @@ public enum Gmail {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Gmail> fromValue(String value) {
+        for (Gmail o: Gmail.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

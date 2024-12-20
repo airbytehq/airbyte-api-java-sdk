@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DataCenterLocation - Please choose the region of your Data Center location. More info by this &lt;a href="https://www.zoho.com/crm/developer/docs/api/v2/multi-dc.html"&gt;Link&lt;/a&gt;
@@ -27,5 +29,14 @@ public enum DataCenterLocation {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DataCenterLocation> fromValue(String value) {
+        for (DataCenterLocation o: DataCenterLocation.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

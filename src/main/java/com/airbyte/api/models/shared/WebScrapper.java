@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum WebScrapper {
     WEB_SCRAPPER("web-scrapper");
@@ -19,5 +21,14 @@ public enum WebScrapper {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<WebScrapper> fromValue(String value) {
+        for (WebScrapper o: WebScrapper.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum S3Glue {
     S3_GLUE("s3-glue");
@@ -19,5 +21,14 @@ public enum S3Glue {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<S3Glue> fromValue(String value) {
+        for (S3Glue o: S3Glue.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

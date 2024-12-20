@@ -5,6 +5,8 @@
 package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ViewWindowDays - Number of days to use as the conversion attribution window for a view action.
@@ -26,5 +28,14 @@ public enum ViewWindowDays {
     
     public long value() {
         return value;
+    }
+    
+    public static Optional<ViewWindowDays> fromValue(long value) {
+        for (ViewWindowDays o: ViewWindowDays.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

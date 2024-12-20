@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceLeverHiringLeverHiring {
     LEVER_HIRING("lever-hiring");
@@ -19,5 +21,14 @@ public enum SourceLeverHiringLeverHiring {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceLeverHiringLeverHiring> fromValue(String value) {
+        for (SourceLeverHiringLeverHiring o: SourceLeverHiringLeverHiring.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

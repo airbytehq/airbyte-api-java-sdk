@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Validenums {
     SHEETCREATED_AT("sheetcreatedAt"),
@@ -35,5 +37,14 @@ public enum Validenums {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Validenums> fromValue(String value) {
+        for (Validenums o: Validenums.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

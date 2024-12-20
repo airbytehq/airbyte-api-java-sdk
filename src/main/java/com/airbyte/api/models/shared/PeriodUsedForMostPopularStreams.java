@@ -5,6 +5,8 @@
 package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PeriodUsedForMostPopularStreams - Period of time (in days)
@@ -23,5 +25,14 @@ public enum PeriodUsedForMostPopularStreams {
     
     public long value() {
         return value;
+    }
+    
+    public static Optional<PeriodUsedForMostPopularStreams> fromValue(long value) {
+        for (PeriodUsedForMostPopularStreams o: PeriodUsedForMostPopularStreams.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

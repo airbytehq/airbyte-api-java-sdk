@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SpacexApi {
     SPACEX_API("spacex-api");
@@ -19,5 +21,14 @@ public enum SpacexApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SpacexApi> fromValue(String value) {
+        for (SpacexApi o: SpacexApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

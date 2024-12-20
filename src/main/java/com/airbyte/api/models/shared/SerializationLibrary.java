@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SerializationLibrary - The library that your query engine will use for reading and writing data in your lake.
@@ -23,5 +25,14 @@ public enum SerializationLibrary {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SerializationLibrary> fromValue(String value) {
+        for (SerializationLibrary o: SerializationLibrary.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

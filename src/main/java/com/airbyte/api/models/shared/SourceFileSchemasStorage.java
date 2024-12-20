@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceFileSchemasStorage {
     S3("S3");
@@ -19,5 +21,14 @@ public enum SourceFileSchemasStorage {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceFileSchemasStorage> fromValue(String value) {
+        for (SourceFileSchemasStorage o: SourceFileSchemasStorage.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

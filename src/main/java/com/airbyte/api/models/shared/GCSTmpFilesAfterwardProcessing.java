@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GCSTmpFilesAfterwardProcessing - This upload method is supposed to temporary store records in GCS bucket. By this select you can chose if these records should be removed from GCS when migration has finished. The default "Delete all tmp files from GCS" value is used if not set explicitly.
@@ -23,5 +25,14 @@ public enum GCSTmpFilesAfterwardProcessing {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<GCSTmpFilesAfterwardProcessing> fromValue(String value) {
+        for (GCSTmpFilesAfterwardProcessing o: GCSTmpFilesAfterwardProcessing.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

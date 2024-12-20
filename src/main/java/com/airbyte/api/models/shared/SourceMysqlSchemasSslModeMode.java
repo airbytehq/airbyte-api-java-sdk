@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceMysqlSchemasSslModeMode {
     VERIFY_CA("verify_ca");
@@ -19,5 +21,14 @@ public enum SourceMysqlSchemasSslModeMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMysqlSchemasSslModeMode> fromValue(String value) {
+        for (SourceMysqlSchemasSslModeMode o: SourceMysqlSchemasSslModeMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

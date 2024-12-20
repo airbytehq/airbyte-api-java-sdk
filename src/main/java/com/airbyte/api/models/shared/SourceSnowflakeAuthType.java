@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceSnowflakeAuthType {
     O_AUTH("OAuth");
@@ -19,5 +21,14 @@ public enum SourceSnowflakeAuthType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceSnowflakeAuthType> fromValue(String value) {
+        for (SourceSnowflakeAuthType o: SourceSnowflakeAuthType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

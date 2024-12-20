@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceZohoBooksRegion - The region code for the Zoho Books API, such as 'com', 'eu', 'in', etc.
@@ -29,5 +31,14 @@ public enum SourceZohoBooksRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceZohoBooksRegion> fromValue(String value) {
+        for (SourceZohoBooksRegion o: SourceZohoBooksRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceDriftCredentials {
     OAUTH20("oauth2.0");
@@ -19,5 +21,14 @@ public enum SourceDriftCredentials {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceDriftCredentials> fromValue(String value) {
+        for (SourceDriftCredentials o: SourceDriftCredentials.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

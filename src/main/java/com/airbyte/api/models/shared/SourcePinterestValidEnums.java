@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourcePinterestValidEnums - An enumeration.
@@ -23,5 +25,14 @@ public enum SourcePinterestValidEnums {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourcePinterestValidEnums> fromValue(String value) {
+        for (SourcePinterestValidEnums o: SourcePinterestValidEnums.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceYoutubeAnalyticsYoutubeAnalytics {
     YOUTUBE_ANALYTICS("youtube-analytics");
@@ -19,5 +21,14 @@ public enum SourceYoutubeAnalyticsYoutubeAnalytics {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceYoutubeAnalyticsYoutubeAnalytics> fromValue(String value) {
+        for (SourceYoutubeAnalyticsYoutubeAnalytics o: SourceYoutubeAnalyticsYoutubeAnalytics.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

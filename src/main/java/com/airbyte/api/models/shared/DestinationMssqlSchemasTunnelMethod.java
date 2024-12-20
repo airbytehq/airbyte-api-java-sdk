@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DestinationMssqlSchemasTunnelMethod - Connect through a jump server tunnel host using username and ssh key
@@ -22,5 +24,14 @@ public enum DestinationMssqlSchemasTunnelMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationMssqlSchemasTunnelMethod> fromValue(String value) {
+        for (DestinationMssqlSchemasTunnelMethod o: DestinationMssqlSchemasTunnelMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

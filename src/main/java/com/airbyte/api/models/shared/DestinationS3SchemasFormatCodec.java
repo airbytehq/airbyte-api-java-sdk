@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationS3SchemasFormatCodec {
     BZIP2("bzip2");
@@ -19,5 +21,14 @@ public enum DestinationS3SchemasFormatCodec {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationS3SchemasFormatCodec> fromValue(String value) {
+        for (DestinationS3SchemasFormatCodec o: DestinationS3SchemasFormatCodec.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

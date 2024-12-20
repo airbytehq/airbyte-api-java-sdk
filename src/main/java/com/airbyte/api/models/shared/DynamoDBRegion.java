@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DynamoDBRegion - The region of the DynamoDB.
@@ -55,5 +57,14 @@ public enum DynamoDBRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DynamoDBRegion> fromValue(String value) {
+        for (DynamoDBRegion o: DynamoDBRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

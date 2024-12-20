@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum WasabiStatsApi {
     WASABI_STATS_API("wasabi-stats-api");
@@ -19,5 +21,14 @@ public enum WasabiStatsApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<WasabiStatsApi> fromValue(String value) {
+        for (WasabiStatsApi o: WasabiStatsApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

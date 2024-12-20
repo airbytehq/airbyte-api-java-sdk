@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum OpinionStage {
     OPINION_STAGE("opinion-stage");
@@ -19,5 +21,14 @@ public enum OpinionStage {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<OpinionStage> fromValue(String value) {
+        for (OpinionStage o: OpinionStage.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

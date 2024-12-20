@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AWSRegion - Select the AWS Region.
@@ -43,5 +45,14 @@ public enum AWSRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AWSRegion> fromValue(String value) {
+        for (AWSRegion o: AWSRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

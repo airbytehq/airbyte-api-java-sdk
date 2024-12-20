@@ -31,7 +31,7 @@ public class SourceMode {
     private String apiToken;
 
     @JsonProperty("sourceType")
-    private Mode sourceType;
+    private SourceModeMode sourceType;
 
     @JsonProperty("workspace")
     private String workspace;
@@ -67,7 +67,7 @@ public class SourceMode {
     }
 
     @JsonIgnore
-    public Mode sourceType() {
+    public SourceModeMode sourceType() {
         return sourceType;
     }
 
@@ -181,11 +181,11 @@ public class SourceMode {
                 workspace);
         }
 
-        private static final LazySingletonValue<Mode> _SINGLETON_VALUE_SourceType =
+        private static final LazySingletonValue<SourceModeMode> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"mode\"",
-                        new TypeReference<Mode>() {});
+                        new TypeReference<SourceModeMode>() {});
     }
 }
 

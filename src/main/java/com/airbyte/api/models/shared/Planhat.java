@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Planhat {
     PLANHAT("planhat");
@@ -19,5 +21,14 @@ public enum Planhat {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Planhat> fromValue(String value) {
+        for (Planhat o: Planhat.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

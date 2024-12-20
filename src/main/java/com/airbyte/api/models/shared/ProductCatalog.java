@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ProductCatalog - Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
@@ -23,5 +25,14 @@ public enum ProductCatalog {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ProductCatalog> fromValue(String value) {
+        for (ProductCatalog o: ProductCatalog.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

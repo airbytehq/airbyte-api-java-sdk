@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TechnicalIndicatorType - One of DEMA, EMA, SMA, WMA, RSI, TEMA, Williams, ADX 
@@ -29,5 +31,14 @@ public enum TechnicalIndicatorType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<TechnicalIndicatorType> fromValue(String value) {
+        for (TechnicalIndicatorType o: TechnicalIndicatorType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

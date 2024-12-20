@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Productive {
     PRODUCTIVE("productive");
@@ -19,5 +21,14 @@ public enum Productive {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Productive> fromValue(String value) {
+        for (Productive o: Productive.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

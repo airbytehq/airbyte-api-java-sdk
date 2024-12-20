@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceSnapchatMarketingSnapchatMarketing {
     SNAPCHAT_MARKETING("snapchat-marketing");
@@ -19,5 +21,14 @@ public enum SourceSnapchatMarketingSnapchatMarketing {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceSnapchatMarketingSnapchatMarketing> fromValue(String value) {
+        for (SourceSnapchatMarketingSnapchatMarketing o: SourceSnapchatMarketingSnapchatMarketing.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

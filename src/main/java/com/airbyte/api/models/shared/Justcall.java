@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Justcall {
     JUSTCALL("justcall");
@@ -19,5 +21,14 @@ public enum Justcall {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Justcall> fromValue(String value) {
+        for (Justcall o: Justcall.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

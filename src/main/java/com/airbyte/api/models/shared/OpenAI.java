@@ -27,7 +27,7 @@ public class OpenAI {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationAstraSchemasEmbeddingEmbedding1Mode> mode;
+    private Optional<? extends DestinationAstraMode> mode;
 
     @JsonProperty("openai_key")
     private String openaiKey;
@@ -42,8 +42,8 @@ public class OpenAI {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationAstraSchemasEmbeddingEmbedding1Mode> mode() {
-        return (Optional<DestinationAstraSchemasEmbeddingEmbedding1Mode>) mode;
+    public Optional<DestinationAstraMode> mode() {
+        return (Optional<DestinationAstraMode>) mode;
     }
 
     @JsonIgnore
@@ -108,11 +108,11 @@ public class OpenAI {
                 openaiKey);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasEmbeddingEmbedding1Mode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationAstraMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"openai\"",
-                        new TypeReference<Optional<? extends DestinationAstraSchemasEmbeddingEmbedding1Mode>>() {});
+                        new TypeReference<Optional<? extends DestinationAstraMode>>() {});
     }
 }
 

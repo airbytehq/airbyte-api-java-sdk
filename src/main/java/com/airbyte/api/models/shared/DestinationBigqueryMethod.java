@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationBigqueryMethod {
     GCS_STAGING("GCS Staging");
@@ -19,5 +21,14 @@ public enum DestinationBigqueryMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationBigqueryMethod> fromValue(String value) {
+        for (DestinationBigqueryMethod o: DestinationBigqueryMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

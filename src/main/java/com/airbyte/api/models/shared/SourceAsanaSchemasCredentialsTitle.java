@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceAsanaSchemasCredentialsTitle - PAT Credentials
@@ -22,5 +24,14 @@ public enum SourceAsanaSchemasCredentialsTitle {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceAsanaSchemasCredentialsTitle> fromValue(String value) {
+        for (SourceAsanaSchemasCredentialsTitle o: SourceAsanaSchemasCredentialsTitle.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

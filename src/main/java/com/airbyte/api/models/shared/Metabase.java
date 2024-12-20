@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Metabase {
     METABASE("metabase");
@@ -19,5 +21,14 @@ public enum Metabase {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Metabase> fromValue(String value) {
+        for (Metabase o: Metabase.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationPgvectorSchemasEmbeddingEmbeddingMode {
     AZURE_OPENAI("azure_openai");
@@ -19,5 +21,14 @@ public enum DestinationPgvectorSchemasEmbeddingEmbeddingMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationPgvectorSchemasEmbeddingEmbeddingMode> fromValue(String value) {
+        for (DestinationPgvectorSchemasEmbeddingEmbeddingMode o: DestinationPgvectorSchemasEmbeddingEmbeddingMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }
