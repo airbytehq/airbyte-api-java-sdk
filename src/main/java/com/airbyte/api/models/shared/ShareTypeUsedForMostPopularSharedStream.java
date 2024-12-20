@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ShareTypeUsedForMostPopularSharedStream - Share Type
@@ -22,5 +24,14 @@ public enum ShareTypeUsedForMostPopularSharedStream {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ShareTypeUsedForMostPopularSharedStream> fromValue(String value) {
+        for (ShareTypeUsedForMostPopularSharedStream o: ShareTypeUsedForMostPopularSharedStream.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

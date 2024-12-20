@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourcePinterestAuthMethod {
     OAUTH20("oauth2.0");
@@ -19,5 +21,14 @@ public enum SourcePinterestAuthMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourcePinterestAuthMethod> fromValue(String value) {
+        for (SourcePinterestAuthMethod o: SourcePinterestAuthMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

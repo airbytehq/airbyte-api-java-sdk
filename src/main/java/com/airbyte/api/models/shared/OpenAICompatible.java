@@ -44,7 +44,7 @@ public class OpenAICompatible {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode> mode;
+    private Optional<? extends DestinationAstraSchemasEmbeddingEmbedding5Mode> mode;
 
     /**
      * The name of the model to use for embedding
@@ -99,8 +99,8 @@ public class OpenAICompatible {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationAstraSchemasEmbeddingEmbeddingMode> mode() {
-        return (Optional<DestinationAstraSchemasEmbeddingEmbeddingMode>) mode;
+    public Optional<DestinationAstraSchemasEmbeddingEmbedding5Mode> mode() {
+        return (Optional<DestinationAstraSchemasEmbeddingEmbedding5Mode>) mode;
     }
 
     /**
@@ -281,11 +281,11 @@ public class OpenAICompatible {
                         "\"\"",
                         new TypeReference<Optional<String>>() {});
 
-        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasEmbeddingEmbedding5Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"openai_compatible\"",
-                        new TypeReference<Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode>>() {});
+                        new TypeReference<Optional<? extends DestinationAstraSchemasEmbeddingEmbedding5Mode>>() {});
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ModelName =
                 new LazySingletonValue<>(

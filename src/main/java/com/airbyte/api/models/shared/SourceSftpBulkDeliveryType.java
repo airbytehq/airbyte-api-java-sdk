@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceSftpBulkDeliveryType {
     USE_RECORDS_TRANSFER("use_records_transfer");
@@ -19,5 +21,14 @@ public enum SourceSftpBulkDeliveryType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceSftpBulkDeliveryType> fromValue(String value) {
+        for (SourceSftpBulkDeliveryType o: SourceSftpBulkDeliveryType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

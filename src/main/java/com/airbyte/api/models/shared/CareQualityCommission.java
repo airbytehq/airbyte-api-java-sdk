@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum CareQualityCommission {
     CARE_QUALITY_COMMISSION("care-quality-commission");
@@ -19,5 +21,14 @@ public enum CareQualityCommission {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CareQualityCommission> fromValue(String value) {
+        for (CareQualityCommission o: CareQualityCommission.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

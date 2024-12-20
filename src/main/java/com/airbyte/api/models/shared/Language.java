@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Language - The 2-letter ISO-639-1 code of the language you want to get headlines
@@ -37,5 +39,14 @@ public enum Language {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Language> fromValue(String value) {
+        for (Language o: Language.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

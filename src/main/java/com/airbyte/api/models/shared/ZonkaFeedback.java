@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ZonkaFeedback {
     ZONKA_FEEDBACK("zonka-feedback");
@@ -19,5 +21,14 @@ public enum ZonkaFeedback {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ZonkaFeedback> fromValue(String value) {
+        for (ZonkaFeedback o: ZonkaFeedback.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

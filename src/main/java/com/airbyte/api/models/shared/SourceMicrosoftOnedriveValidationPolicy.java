@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceMicrosoftOnedriveValidationPolicy - The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
@@ -24,5 +26,14 @@ public enum SourceMicrosoftOnedriveValidationPolicy {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMicrosoftOnedriveValidationPolicy> fromValue(String value) {
+        for (SourceMicrosoftOnedriveValidationPolicy o: SourceMicrosoftOnedriveValidationPolicy.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

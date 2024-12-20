@@ -28,9 +28,8 @@ import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.SourceConfiguration;
 import com.airbyte.api.models.shared.SourceCreateRequest;
-import com.airbyte.api.models.shared.SourcePosthog;
+import com.airbyte.api.models.shared.SourcePostgres;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -46,9 +45,10 @@ public class Application {
             .build();
 
         SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourcePosthog.builder()
-                    .apiKey("<value>")
-                    .startDate(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                .configuration(SourceConfiguration.of(SourcePostgres.builder()
+                    .database("<value>")
+                    .host("specific-arcade.biz")
+                    .username("Twila_Sawayn52")
                     .build()))
                 .name("My Source")
                 .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -341,9 +341,10 @@ import com.airbyte.api.models.operations.PatchSourceResponse;
 import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.SourceConfiguration;
-import com.airbyte.api.models.shared.SourceEventzilla;
+import com.airbyte.api.models.shared.SourceExchangeRates;
 import com.airbyte.api.models.shared.SourcePatchRequest;
 import java.lang.Exception;
+import java.time.LocalDate;
 
 public class Application {
 
@@ -361,8 +362,9 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventzilla.builder()
-                        .xApiKey("<value>")
+                    .configuration(SourceConfiguration.of(SourceExchangeRates.builder()
+                        .accessKey("<value>")
+                        .startDate(LocalDate.parse("YYYY-MM-DD"))
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")

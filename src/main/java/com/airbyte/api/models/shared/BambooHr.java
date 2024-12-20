@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum BambooHr {
     BAMBOO_HR("bamboo-hr");
@@ -19,5 +21,14 @@ public enum BambooHr {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<BambooHr> fromValue(String value) {
+        for (BambooHr o: BambooHr.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

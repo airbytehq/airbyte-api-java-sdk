@@ -5,6 +5,8 @@
 package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * EngagementWindowDays - Number of days to use as the conversion attribution window for an engagement action.
@@ -26,5 +28,14 @@ public enum EngagementWindowDays {
     
     public long value() {
         return value;
+    }
+    
+    public static Optional<EngagementWindowDays> fromValue(long value) {
+        for (EngagementWindowDays o: EngagementWindowDays.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum ClickupApi {
     CLICKUP_API("clickup-api");
@@ -19,5 +21,14 @@ public enum ClickupApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ClickupApi> fromValue(String value) {
+        for (ClickupApi o: ClickupApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

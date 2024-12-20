@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceOktaSchemasAuthType {
     OAUTH20_PRIVATE_KEY("oauth2.0_private_key");
@@ -19,5 +21,14 @@ public enum SourceOktaSchemasAuthType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceOktaSchemasAuthType> fromValue(String value) {
+        for (SourceOktaSchemasAuthType o: SourceOktaSchemasAuthType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

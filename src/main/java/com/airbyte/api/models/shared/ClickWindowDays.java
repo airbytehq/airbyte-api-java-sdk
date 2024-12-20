@@ -5,6 +5,8 @@
 package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ClickWindowDays - Number of days to use as the conversion attribution window for a pin click action.
@@ -26,5 +28,14 @@ public enum ClickWindowDays {
     
     public long value() {
         return value;
+    }
+    
+    public static Optional<ClickWindowDays> fromValue(long value) {
+        for (ClickWindowDays o: ClickWindowDays.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

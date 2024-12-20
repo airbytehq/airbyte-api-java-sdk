@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum RkiCovid {
     RKI_COVID("rki-covid");
@@ -19,5 +21,14 @@ public enum RkiCovid {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<RkiCovid> fromValue(String value) {
+        for (RkiCovid o: RkiCovid.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

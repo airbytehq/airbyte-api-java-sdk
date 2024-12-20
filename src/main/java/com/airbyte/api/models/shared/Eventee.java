@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Eventee {
     EVENTEE("eventee");
@@ -19,5 +21,14 @@ public enum Eventee {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Eventee> fromValue(String value) {
+        for (Eventee o: Eventee.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

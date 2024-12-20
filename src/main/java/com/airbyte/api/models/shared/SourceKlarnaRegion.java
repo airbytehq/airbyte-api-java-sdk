@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceKlarnaRegion - Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
@@ -24,5 +26,14 @@ public enum SourceKlarnaRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceKlarnaRegion> fromValue(String value) {
+        for (SourceKlarnaRegion o: SourceKlarnaRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

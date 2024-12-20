@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum NorthpassLms {
     NORTHPASS_LMS("northpass-lms");
@@ -19,5 +21,14 @@ public enum NorthpassLms {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<NorthpassLms> fromValue(String value) {
+        for (NorthpassLms o: NorthpassLms.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

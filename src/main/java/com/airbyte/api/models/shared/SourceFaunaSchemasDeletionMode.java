@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceFaunaSchemasDeletionMode {
     DELETED_FIELD("deleted_field");
@@ -19,5 +21,14 @@ public enum SourceFaunaSchemasDeletionMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceFaunaSchemasDeletionMode> fromValue(String value) {
+        for (SourceFaunaSchemasDeletionMode o: SourceFaunaSchemasDeletionMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

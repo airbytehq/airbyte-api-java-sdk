@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleDriveMode {
     LOCAL("local");
@@ -19,5 +21,14 @@ public enum SourceGoogleDriveMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleDriveMode> fromValue(String value) {
+        for (SourceGoogleDriveMode o: SourceGoogleDriveMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

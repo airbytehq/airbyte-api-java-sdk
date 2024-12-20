@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceFileSchemasProviderStorageProvider8Storage - WARNING: Note that the local storage URL available for reading must start with the local mount "/local/" at the moment until we implement more advanced docker mounting options.
@@ -22,5 +24,14 @@ public enum SourceFileSchemasProviderStorageProvider8Storage {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceFileSchemasProviderStorageProvider8Storage> fromValue(String value) {
+        for (SourceFileSchemasProviderStorageProvider8Storage o: SourceFileSchemasProviderStorageProvider8Storage.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

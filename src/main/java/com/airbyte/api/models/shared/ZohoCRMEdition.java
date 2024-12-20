@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ZohoCRMEdition - Choose your Edition of Zoho CRM to determine API Concurrency Limits
@@ -26,5 +28,14 @@ public enum ZohoCRMEdition {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ZohoCRMEdition> fromValue(String value) {
+        for (ZohoCRMEdition o: ZohoCRMEdition.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationTeradataSchemasMode {
     ALLOW("allow");
@@ -19,5 +21,14 @@ public enum DestinationTeradataSchemasMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationTeradataSchemasMode> fromValue(String value) {
+        for (DestinationTeradataSchemasMode o: DestinationTeradataSchemasMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

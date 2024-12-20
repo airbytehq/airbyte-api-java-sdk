@@ -40,7 +40,7 @@ public class VerifyCa {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode> mode;
+    private Optional<? extends DestinationPostgresSchemasSSLModeSSLModes5Mode> mode;
 
     @JsonCreator
     public VerifyCa(
@@ -76,8 +76,8 @@ public class VerifyCa {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationPostgresSchemasSSLModeSSLModesMode> mode() {
-        return (Optional<DestinationPostgresSchemasSSLModeSSLModesMode>) mode;
+    public Optional<DestinationPostgresSchemasSSLModeSSLModes5Mode> mode() {
+        return (Optional<DestinationPostgresSchemasSSLModeSSLModes5Mode>) mode;
     }
 
     public final static Builder builder() {
@@ -185,11 +185,11 @@ public class VerifyCa {
                 clientKeyPassword);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationPostgresSchemasSSLModeSSLModes5Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"verify-ca\"",
-                        new TypeReference<Optional<? extends DestinationPostgresSchemasSSLModeSSLModesMode>>() {});
+                        new TypeReference<Optional<? extends DestinationPostgresSchemasSSLModeSSLModes5Mode>>() {});
     }
 }
 

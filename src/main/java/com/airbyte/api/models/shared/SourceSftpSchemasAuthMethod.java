@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceSftpSchemasAuthMethod - Connect through ssh key
@@ -22,5 +24,14 @@ public enum SourceSftpSchemasAuthMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceSftpSchemasAuthMethod> fromValue(String value) {
+        for (SourceSftpSchemasAuthMethod o: SourceSftpSchemasAuthMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceFileFileFormat - The Format of the file which should be replicated (Warning: some formats may be experimental, please refer to the docs).
@@ -30,5 +32,14 @@ public enum SourceFileFileFormat {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceFileFileFormat> fromValue(String value) {
+        for (SourceFileFileFormat o: SourceFileFileFormat.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

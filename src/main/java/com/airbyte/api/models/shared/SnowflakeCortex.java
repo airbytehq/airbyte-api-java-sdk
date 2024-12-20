@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SnowflakeCortex {
     SNOWFLAKE_CORTEX("snowflake-cortex");
@@ -19,5 +21,14 @@ public enum SnowflakeCortex {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SnowflakeCortex> fromValue(String value) {
+        for (SnowflakeCortex o: SnowflakeCortex.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

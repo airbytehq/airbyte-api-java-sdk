@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Repairshopr {
     REPAIRSHOPR("repairshopr");
@@ -19,5 +21,14 @@ public enum Repairshopr {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Repairshopr> fromValue(String value) {
+        for (Repairshopr o: Repairshopr.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -27,7 +27,7 @@ public class Fake {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationAstraSchemasMode> mode;
+    private Optional<? extends DestinationAstraSchemasEmbeddingMode> mode;
 
     @JsonCreator
     public Fake() {
@@ -37,8 +37,8 @@ public class Fake {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationAstraSchemasMode> mode() {
-        return (Optional<DestinationAstraSchemasMode>) mode;
+    public Optional<DestinationAstraSchemasEmbeddingMode> mode() {
+        return (Optional<DestinationAstraSchemasEmbeddingMode>) mode;
     }
 
     public final static Builder builder() {
@@ -81,11 +81,11 @@ public class Fake {
                 );
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasEmbeddingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"fake\"",
-                        new TypeReference<Optional<? extends DestinationAstraSchemasMode>>() {});
+                        new TypeReference<Optional<? extends DestinationAstraSchemasEmbeddingMode>>() {});
     }
 }
 

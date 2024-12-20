@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Dremio {
     DREMIO("dremio");
@@ -19,5 +21,14 @@ public enum Dremio {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Dremio> fromValue(String value) {
+        for (Dremio o: Dremio.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

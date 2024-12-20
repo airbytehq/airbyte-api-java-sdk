@@ -39,7 +39,7 @@ public class AzureOpenAI {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
-    private Optional<? extends DestinationAstraSchemasEmbeddingMode> mode;
+    private Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode> mode;
 
     /**
      * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
@@ -79,8 +79,8 @@ public class AzureOpenAI {
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<DestinationAstraSchemasEmbeddingMode> mode() {
-        return (Optional<DestinationAstraSchemasEmbeddingMode>) mode;
+    public Optional<DestinationAstraSchemasEmbeddingEmbeddingMode> mode() {
+        return (Optional<DestinationAstraSchemasEmbeddingEmbeddingMode>) mode;
     }
 
     /**
@@ -202,11 +202,11 @@ public class AzureOpenAI {
                 openaiKey);
         }
 
-        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasEmbeddingMode>> _SINGLETON_VALUE_Mode =
+        private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(
                         "mode",
                         "\"azure_openai\"",
-                        new TypeReference<Optional<? extends DestinationAstraSchemasEmbeddingMode>>() {});
+                        new TypeReference<Optional<? extends DestinationAstraSchemasEmbeddingEmbeddingMode>>() {});
     }
 }
 

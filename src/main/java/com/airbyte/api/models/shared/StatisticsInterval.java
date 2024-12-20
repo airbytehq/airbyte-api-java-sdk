@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * StatisticsInterval - Periodicity of statistics returned. it may be daily(P1D), weekly(P1W) or monthly(P1M).
@@ -24,5 +26,14 @@ public enum StatisticsInterval {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<StatisticsInterval> fromValue(String value) {
+        for (StatisticsInterval o: StatisticsInterval.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

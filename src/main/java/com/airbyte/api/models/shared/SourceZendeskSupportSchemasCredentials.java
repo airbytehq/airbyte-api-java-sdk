@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceZendeskSupportSchemasCredentials {
     API_TOKEN("api_token");
@@ -19,5 +21,14 @@ public enum SourceZendeskSupportSchemasCredentials {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceZendeskSupportSchemasCredentials> fromValue(String value) {
+        for (SourceZendeskSupportSchemasCredentials o: SourceZendeskSupportSchemasCredentials.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

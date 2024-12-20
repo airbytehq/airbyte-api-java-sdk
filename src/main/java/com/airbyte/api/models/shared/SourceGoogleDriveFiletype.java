@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleDriveFiletype {
     AVRO("avro");
@@ -19,5 +21,14 @@ public enum SourceGoogleDriveFiletype {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleDriveFiletype> fromValue(String value) {
+        for (SourceGoogleDriveFiletype o: SourceGoogleDriveFiletype.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

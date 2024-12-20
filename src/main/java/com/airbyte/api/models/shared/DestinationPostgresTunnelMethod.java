@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DestinationPostgresTunnelMethod - No ssh tunnel needed to connect to database
@@ -22,5 +24,14 @@ public enum DestinationPostgresTunnelMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationPostgresTunnelMethod> fromValue(String value) {
+        for (DestinationPostgresTunnelMethod o: DestinationPostgresTunnelMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

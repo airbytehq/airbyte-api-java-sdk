@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceBraintreeEnvironment - Environment specifies where the data will come from.
@@ -25,5 +27,14 @@ public enum SourceBraintreeEnvironment {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceBraintreeEnvironment> fromValue(String value) {
+        for (SourceBraintreeEnvironment o: SourceBraintreeEnvironment.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

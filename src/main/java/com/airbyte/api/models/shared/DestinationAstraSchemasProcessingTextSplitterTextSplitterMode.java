@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationAstraSchemasProcessingTextSplitterTextSplitterMode {
     CODE("code");
@@ -19,5 +21,14 @@ public enum DestinationAstraSchemasProcessingTextSplitterTextSplitterMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationAstraSchemasProcessingTextSplitterTextSplitterMode> fromValue(String value) {
+        for (DestinationAstraSchemasProcessingTextSplitterTextSplitterMode o: DestinationAstraSchemasProcessingTextSplitterTextSplitterMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

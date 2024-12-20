@@ -6,9 +6,11 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationAstraSchemasEmbeddingEmbeddingMode {
-    OPENAI_COMPATIBLE("openai_compatible");
+    AZURE_OPENAI("azure_openai");
 
     @JsonValue
     private final String value;
@@ -19,5 +21,14 @@ public enum DestinationAstraSchemasEmbeddingEmbeddingMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationAstraSchemasEmbeddingEmbeddingMode> fromValue(String value) {
+        for (DestinationAstraSchemasEmbeddingEmbeddingMode o: DestinationAstraSchemasEmbeddingEmbeddingMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

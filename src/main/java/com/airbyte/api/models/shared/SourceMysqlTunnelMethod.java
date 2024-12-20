@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceMysqlTunnelMethod - No ssh tunnel needed to connect to database
@@ -22,5 +24,14 @@ public enum SourceMysqlTunnelMethod {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMysqlTunnelMethod> fromValue(String value) {
+        for (SourceMysqlTunnelMethod o: SourceMysqlTunnelMethod.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

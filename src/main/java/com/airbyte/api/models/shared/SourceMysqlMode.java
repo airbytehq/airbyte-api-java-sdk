@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceMysqlMode {
     PREFERRED("preferred");
@@ -19,5 +21,14 @@ public enum SourceMysqlMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMysqlMode> fromValue(String value) {
+        for (SourceMysqlMode o: SourceMysqlMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

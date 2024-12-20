@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceAzureBlobStorageAzureBlobStorage {
     AZURE_BLOB_STORAGE("azure-blob-storage");
@@ -19,5 +21,14 @@ public enum SourceAzureBlobStorageAzureBlobStorage {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceAzureBlobStorageAzureBlobStorage> fromValue(String value) {
+        for (SourceAzureBlobStorageAzureBlobStorage o: SourceAzureBlobStorageAzureBlobStorage.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

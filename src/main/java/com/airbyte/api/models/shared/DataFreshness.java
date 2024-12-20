@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DataFreshness - If set to 'final', the returned data will include only finalized, stable data. If set to 'all', fresh data will be included. When using Incremental sync mode, we do not recommend setting this parameter to 'all' as it may cause data loss. More information can be found in our &lt;a href='https://docs.airbyte.com/integrations/source/google-search-console'&gt;full documentation&lt;/a&gt;.
@@ -23,5 +25,14 @@ public enum DataFreshness {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DataFreshness> fromValue(String value) {
+        for (DataFreshness o: DataFreshness.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

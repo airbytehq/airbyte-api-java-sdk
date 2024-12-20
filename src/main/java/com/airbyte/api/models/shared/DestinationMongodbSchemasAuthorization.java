@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationMongodbSchemasAuthorization {
     NONE("none");
@@ -19,5 +21,14 @@ public enum DestinationMongodbSchemasAuthorization {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationMongodbSchemasAuthorization> fromValue(String value) {
+        for (DestinationMongodbSchemasAuthorization o: DestinationMongodbSchemasAuthorization.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

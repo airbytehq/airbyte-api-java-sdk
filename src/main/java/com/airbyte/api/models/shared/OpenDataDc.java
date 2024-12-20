@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum OpenDataDc {
     OPEN_DATA_DC("open-data-dc");
@@ -19,5 +21,14 @@ public enum OpenDataDc {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<OpenDataDc> fromValue(String value) {
+        for (OpenDataDc o: OpenDataDc.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

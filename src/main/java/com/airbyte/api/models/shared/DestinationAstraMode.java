@@ -6,9 +6,11 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationAstraMode {
-    COHERE("cohere");
+    OPENAI("openai");
 
     @JsonValue
     private final String value;
@@ -19,5 +21,14 @@ public enum DestinationAstraMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationAstraMode> fromValue(String value) {
+        for (DestinationAstraMode o: DestinationAstraMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

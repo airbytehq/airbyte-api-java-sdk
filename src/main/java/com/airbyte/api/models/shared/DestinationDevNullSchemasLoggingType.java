@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationDevNullSchemasLoggingType {
     RANDOM_SAMPLING("RandomSampling");
@@ -19,5 +21,14 @@ public enum DestinationDevNullSchemasLoggingType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationDevNullSchemasLoggingType> fromValue(String value) {
+        for (DestinationDevNullSchemasLoggingType o: DestinationDevNullSchemasLoggingType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

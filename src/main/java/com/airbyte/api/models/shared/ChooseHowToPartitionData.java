@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ChooseHowToPartitionData - Partition data by cursor fields when a cursor field is a date
@@ -28,5 +30,14 @@ public enum ChooseHowToPartitionData {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<ChooseHowToPartitionData> fromValue(String value) {
+        for (ChooseHowToPartitionData o: ChooseHowToPartitionData.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

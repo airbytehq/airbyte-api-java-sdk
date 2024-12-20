@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceGnewsSortBy - This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
@@ -27,5 +29,14 @@ public enum SourceGnewsSortBy {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGnewsSortBy> fromValue(String value) {
+        for (SourceGnewsSortBy o: SourceGnewsSortBy.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

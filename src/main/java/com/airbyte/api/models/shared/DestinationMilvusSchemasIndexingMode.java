@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationMilvusSchemasIndexingMode {
     TOKEN("token");
@@ -19,5 +21,14 @@ public enum DestinationMilvusSchemasIndexingMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationMilvusSchemasIndexingMode> fromValue(String value) {
+        for (DestinationMilvusSchemasIndexingMode o: DestinationMilvusSchemasIndexingMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

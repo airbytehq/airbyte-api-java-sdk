@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceLeverHiringEnvironment - The environment in which you'd like to replicate data for Lever. This is used to determine which Lever API endpoint to use.
@@ -23,5 +25,14 @@ public enum SourceLeverHiringEnvironment {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceLeverHiringEnvironment> fromValue(String value) {
+        for (SourceLeverHiringEnvironment o: SourceLeverHiringEnvironment.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

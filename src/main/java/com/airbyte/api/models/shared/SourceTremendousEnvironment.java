@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceTremendousEnvironment {
     API("api"),
@@ -20,5 +22,14 @@ public enum SourceTremendousEnvironment {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceTremendousEnvironment> fromValue(String value) {
+        for (SourceTremendousEnvironment o: SourceTremendousEnvironment.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

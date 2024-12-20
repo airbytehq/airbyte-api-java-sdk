@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DataCenterID - The identifier for the data center, such as 'us1' or 'e' for EU.
@@ -23,5 +25,14 @@ public enum DataCenterID {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DataCenterID> fromValue(String value) {
+        for (DataCenterID o: DataCenterID.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

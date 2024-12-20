@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Instance {
     STANDALONE("standalone");
@@ -19,5 +21,14 @@ public enum Instance {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Instance> fromValue(String value) {
+        for (Instance o: Instance.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

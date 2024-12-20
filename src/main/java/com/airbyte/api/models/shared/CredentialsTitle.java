@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CredentialsTitle - Name of the credentials
@@ -22,5 +24,14 @@ public enum CredentialsTitle {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CredentialsTitle> fromValue(String value) {
+        for (CredentialsTitle o: CredentialsTitle.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

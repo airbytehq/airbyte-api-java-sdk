@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourceAmazonSqsAWSRegion - AWS Region of the SQS Queue
@@ -54,5 +56,14 @@ public enum SourceAmazonSqsAWSRegion {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceAmazonSqsAWSRegion> fromValue(String value) {
+        for (SourceAmazonSqsAWSRegion o: SourceAmazonSqsAWSRegion.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

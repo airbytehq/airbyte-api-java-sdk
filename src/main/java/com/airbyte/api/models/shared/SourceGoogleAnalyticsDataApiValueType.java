@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleAnalyticsDataApiValueType {
     DOUBLE_VALUE("doubleValue");
@@ -19,5 +21,14 @@ public enum SourceGoogleAnalyticsDataApiValueType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleAnalyticsDataApiValueType> fromValue(String value) {
+        for (SourceGoogleAnalyticsDataApiValueType o: SourceGoogleAnalyticsDataApiValueType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

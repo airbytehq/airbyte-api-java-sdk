@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SapFieldglass {
     SAP_FIELDGLASS("sap-fieldglass");
@@ -19,5 +21,14 @@ public enum SapFieldglass {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SapFieldglass> fromValue(String value) {
+        for (SapFieldglass o: SapFieldglass.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

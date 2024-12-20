@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi {
     GOOGLE_ANALYTICS_DATA_API("google-analytics-data-api");
@@ -19,5 +21,14 @@ public enum SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi> fromValue(String value) {
+        for (SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi o: SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

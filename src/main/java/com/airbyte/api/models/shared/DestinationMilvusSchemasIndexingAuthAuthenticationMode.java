@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationMilvusSchemasIndexingAuthAuthenticationMode {
     NO_AUTH("no_auth");
@@ -19,5 +21,14 @@ public enum DestinationMilvusSchemasIndexingAuthAuthenticationMode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationMilvusSchemasIndexingAuthAuthenticationMode> fromValue(String value) {
+        for (DestinationMilvusSchemasIndexingAuthAuthenticationMode o: DestinationMilvusSchemasIndexingAuthAuthenticationMode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

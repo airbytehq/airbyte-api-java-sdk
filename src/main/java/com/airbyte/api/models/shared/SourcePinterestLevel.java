@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SourcePinterestLevel - Chosen level for API
@@ -33,5 +35,14 @@ public enum SourcePinterestLevel {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourcePinterestLevel> fromValue(String value) {
+        for (SourcePinterestLevel o: SourcePinterestLevel.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum Coda {
     CODA("coda");
@@ -19,5 +21,14 @@ public enum Coda {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Coda> fromValue(String value) {
+        for (Coda o: Coda.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

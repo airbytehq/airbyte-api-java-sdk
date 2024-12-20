@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum SourceMicrosoftSharepointSchemasStreamsHeaderDefinitionType {
     USER_PROVIDED("User Provided");
@@ -19,5 +21,14 @@ public enum SourceMicrosoftSharepointSchemasStreamsHeaderDefinitionType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<SourceMicrosoftSharepointSchemasStreamsHeaderDefinitionType> fromValue(String value) {
+        for (SourceMicrosoftSharepointSchemasStreamsHeaderDefinitionType o: SourceMicrosoftSharepointSchemasStreamsHeaderDefinitionType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

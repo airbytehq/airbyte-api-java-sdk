@@ -6,6 +6,8 @@ package com.airbyte.api.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum DestinationYellowbrickSchemasSSLModeSSLModes5Mode {
     VERIFY_CA("verify-ca");
@@ -19,5 +21,14 @@ public enum DestinationYellowbrickSchemasSSLModeSSLModes5Mode {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<DestinationYellowbrickSchemasSSLModeSSLModes5Mode> fromValue(String value) {
+        for (DestinationYellowbrickSchemasSSLModeSSLModes5Mode o: DestinationYellowbrickSchemasSSLModeSSLModes5Mode.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }
