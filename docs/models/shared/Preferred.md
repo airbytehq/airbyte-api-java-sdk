@@ -1,10 +1,11 @@
 # Preferred
 
-Automatically attempt SSL connection. If the MySQL server does not support SSL, continue with a regular connection.
+To allow unencrypted communication only when the source doesn't support encryption.
 
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `mode`                                                    | [SourceMysqlMode](../../models/shared/SourceMysqlMode.md) | :heavy_check_mark:                                        | N/A                                                       |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `additionalProperties`                                               | Map\<String, *Object*>                                               | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `mode`                                                               | [Optional\<SourceMysqlMode>](../../models/shared/SourceMysqlMode.md) | :heavy_minus_sign:                                                   | N/A                                                                  |

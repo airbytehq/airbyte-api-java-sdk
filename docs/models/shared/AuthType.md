@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `CLIENT` | Client   |
+| Name      | Value     |
+| --------- | --------- |
+| `OAUTH20` | oauth2.0  |

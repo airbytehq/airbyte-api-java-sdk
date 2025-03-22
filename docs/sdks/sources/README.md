@@ -341,9 +341,10 @@ import com.airbyte.api.models.operations.PatchSourceResponse;
 import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
 import com.airbyte.api.models.shared.SourceConfiguration;
-import com.airbyte.api.models.shared.SourceEventzilla;
+import com.airbyte.api.models.shared.SourceExchangeRates;
 import com.airbyte.api.models.shared.SourcePatchRequest;
 import java.lang.Exception;
+import java.time.LocalDate;
 
 public class Application {
 
@@ -361,8 +362,9 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventzilla.builder()
-                        .xApiKey("<value>")
+                    .configuration(SourceConfiguration.of(SourceExchangeRates.builder()
+                        .accessKey("<value>")
+                        .startDate(LocalDate.parse("YYYY-MM-DD"))
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -410,8 +412,8 @@ import com.airbyte.api.models.operations.PutSourceRequest;
 import com.airbyte.api.models.operations.PutSourceResponse;
 import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.SourceAirtable;
 import com.airbyte.api.models.shared.SourceConfiguration;
-import com.airbyte.api.models.shared.SourceGridly;
 import com.airbyte.api.models.shared.SourcePutRequest;
 import java.lang.Exception;
 
@@ -431,9 +433,7 @@ public class Application {
         PutSourceRequest req = PutSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePutRequest(SourcePutRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceGridly.builder()
-                        .apiKey("<value>")
-                        .gridId("<id>")
+                    .configuration(SourceConfiguration.of(SourceAirtable.builder()
                         .build()))
                     .name("My Source")
                     .build())

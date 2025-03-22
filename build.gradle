@@ -39,9 +39,12 @@ model {
     }
 }
 
+version = "${version}"
+group = "${groupId}"
+
 jar {
     dependsOn(":generatePomFileForMavenPublication")
-    archiveBaseName = "api"
+    archiveBaseName = "${artifactId}"
 
     into("META-INF/maven/com.airbyte/api") {
         from("$buildDir/pom.xml")
@@ -62,15 +65,12 @@ tasks.withType(Javadoc) {
   options.addStringOption('Xdoclint:none', '-quiet')
 }
 
-group = "com.airbyte"
-version = "1.6.0"
-
 sourcesJar {
-    archiveBaseName = "api"
+    archiveBaseName = "${artifactId}"
 }
 
 javadocJar {
-    archiveBaseName = "api"
+    archiveBaseName = "${artifactId}"
 }
 sonatypeCentralUpload {
     // This is your Sonatype generated username
@@ -80,9 +80,9 @@ sonatypeCentralUpload {
 
     // This is a list of files to upload. Ideally you would point to your jar file, source and javadoc jar (required by central)
     archives = files(
-      "$buildDir/libs/api-${version}.jar",
-      "$buildDir/libs/api-${version}-sources.jar",
-      "$buildDir/libs/api-${version}-javadoc.jar"
+      "$buildDir/libs/${artifactId}-${version}.jar",
+      "$buildDir/libs/${artifactId}-${version}-sources.jar",
+      "$buildDir/libs/${artifactId}-${version}-javadoc.jar"
     )
 
     // This is the pom file to upload. This is required by central
@@ -99,9 +99,11 @@ publishing {
 
     publications {
         maven(MavenPublication) {
-            groupId = 'com.airbyte'
-            artifactId = 'api'
-            version = '1.6.0'
+            // note that properties can't yet be used below!
+            // https://github.com/gradle/gradle/issues/18619
+            groupId = "com.airbyte"
+            artifactId = "api"
+            version = "2.0.0"
 
             from components.java
 
@@ -144,17 +146,15 @@ if (!project.hasProperty('skip.signing')) {
     }
 }
 
+
+
 dependencies {
-    api 'com.fasterxml.jackson.core:jackson-annotations:2.17.2'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.17.2'
+    api 'com.fasterxml.jackson.core:jackson-annotations:2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.18.2'
     api('org.openapitools:jackson-databind-nullable:0.2.6') {exclude group: 'com.fasterxml.jackson.core', module: 'jackson-databind'}
-    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
-    implementation 'org.apache.httpcomponents:httpmime:4.5.14'
-    implementation 'commons-io:commons-io:2.15.1'
+    implementation 'commons-io:commons-io:2.18.0'
 }
-
-
 
 apply from: 'build-extras.gradle'

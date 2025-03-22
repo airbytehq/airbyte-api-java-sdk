@@ -6,6 +6,7 @@ package com.airbyte.api.models.operations;
 
 import com.airbyte.api.models.shared.PermissionCreateRequest;
 import com.airbyte.api.utils.Utils;
+import java.lang.Exception;
 
 public class CreatePermissionRequestBuilder {
 

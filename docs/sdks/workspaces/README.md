@@ -50,7 +50,8 @@ public class Application {
         CreateOrUpdateWorkspaceOAuthCredentialsRequest req = CreateOrUpdateWorkspaceOAuthCredentialsRequest.builder()
                 .workspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest.builder()
                     .actorType(ActorTypeEnum.DESTINATION)
-                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(\n    Map.entry("user", "charles"))))
+                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(
+                        Map.entry("user", "charles"))))
                     .name(OAuthActorNames.AIRTABLE)
                     .build())
                 .workspaceId("<value>")

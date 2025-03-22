@@ -60,8 +60,6 @@ public class Application {
                         .database("AIRBYTE_DATABASE")
                         .host("AIRBYTE_ACCOUNT")
                         .username("AIRBYTE_USER")
-                        .defaultSchema("AIRBYTE_SCHEMA")
-                        .port(5432L)
                         .build())
                     .processing(DestinationPgvectorProcessingConfigModel.builder()
                         .chunkSize(540943L)

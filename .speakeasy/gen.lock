@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5b16d152-46cd-4f0b-94e9-018ca2cfe7cd
 management:
-  docChecksum: c154fc44f8133a378fdc9e766757a427
+  docChecksum: 27d70e9764f21458bb96f926035aceb3
   docVersion: 1.0.0
-  speakeasyVersion: 1.453.10
-  generationVersion: 2.474.15
-  releaseVersion: 1.6.0
-  configChecksum: d006360ef852d40cb8491ae4b4ea9373
+  speakeasyVersion: 1.522.0
+  generationVersion: 2.559.0
+  releaseVersion: 2.0.0
+  configChecksum: 68f3368e9c861b65eee7945bae875219
   repoURL: https://github.com/airbytehq/airbyte-api-java-sdk.git
   repoSubDirectory: .
   published: true
@@ -15,18 +15,18 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.1.1
-    core: 3.33.1
-    globalSecurity: 2.82.7
+    core: 3.35.2
+    globalSecurity: 2.82.8
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
     groups: 2.81.2
+    inputOutputModels: 2.83.0
     nullables: 0.1.0
     oauth2ClientCredentials: 0.1.1
-    sdkHooks: 0.1.0
+    sdkHooks: 1.0.0
     unions: 0.0.6
 generatedFiles:
   - .gitattributes
-  - CONTRIBUTING.md
   - USAGE.md
   - build.gradle
   - docs/models/operations/CancelJobRequest.md
@@ -38,6 +38,7 @@ generatedFiles:
   - docs/models/operations/CreateOrUpdateWorkspaceOAuthCredentialsResponse.md
   - docs/models/operations/CreatePermissionResponse.md
   - docs/models/operations/CreateSourceResponse.md
+  - docs/models/operations/CreateTagResponse.md
   - docs/models/operations/CreateWorkspaceResponse.md
   - docs/models/operations/DeleteConnectionRequest.md
   - docs/models/operations/DeleteConnectionResponse.md
@@ -47,6 +48,8 @@ generatedFiles:
   - docs/models/operations/DeletePermissionResponse.md
   - docs/models/operations/DeleteSourceRequest.md
   - docs/models/operations/DeleteSourceResponse.md
+  - docs/models/operations/DeleteTagRequest.md
+  - docs/models/operations/DeleteTagResponse.md
   - docs/models/operations/DeleteWorkspaceRequest.md
   - docs/models/operations/DeleteWorkspaceResponse.md
   - docs/models/operations/GetConnectionRequest.md
@@ -62,6 +65,8 @@ generatedFiles:
   - docs/models/operations/GetSourceResponse.md
   - docs/models/operations/GetStreamPropertiesRequest.md
   - docs/models/operations/GetStreamPropertiesResponse.md
+  - docs/models/operations/GetTagRequest.md
+  - docs/models/operations/GetTagResponse.md
   - docs/models/operations/GetWorkspaceRequest.md
   - docs/models/operations/GetWorkspaceResponse.md
   - docs/models/operations/InitiateOAuthResponse.md
@@ -76,6 +81,8 @@ generatedFiles:
   - docs/models/operations/ListPermissionsResponse.md
   - docs/models/operations/ListSourcesRequest.md
   - docs/models/operations/ListSourcesResponse.md
+  - docs/models/operations/ListTagsRequest.md
+  - docs/models/operations/ListTagsResponse.md
   - docs/models/operations/ListUsersWithinAnOrganizationRequest.md
   - docs/models/operations/ListUsersWithinAnOrganizationResponse.md
   - docs/models/operations/ListWorkspacesRequest.md
@@ -92,6 +99,8 @@ generatedFiles:
   - docs/models/operations/PutSourceResponse.md
   - docs/models/operations/UpdatePermissionRequest.md
   - docs/models/operations/UpdatePermissionResponse.md
+  - docs/models/operations/UpdateTagRequest.md
+  - docs/models/operations/UpdateTagResponse.md
   - docs/models/operations/UpdateWorkspaceRequest.md
   - docs/models/operations/UpdateWorkspaceResponse.md
   - docs/models/shared/APIAccessToken.md
@@ -121,6 +130,7 @@ generatedFiles:
   - docs/models/shared/Akeneo.md
   - docs/models/shared/Algolia.md
   - docs/models/shared/Allow.md
+  - docs/models/shared/AlphaVantage.md
   - docs/models/shared/AmazonAds.md
   - docs/models/shared/AmazonSellerPartner.md
   - docs/models/shared/AmazonSqs.md
@@ -145,6 +155,7 @@ generatedFiles:
   - docs/models/shared/AuthenticateViaAPIKey.md
   - docs/models/shared/AuthenticateViaAccessKeys.md
   - docs/models/shared/AuthenticateViaAsanaOauth.md
+  - docs/models/shared/AuthenticateViaClientCredentials.md
   - docs/models/shared/AuthenticateViaFacebookMarketingOauth.md
   - docs/models/shared/AuthenticateViaGoogleOAuth.md
   - docs/models/shared/AuthenticateViaHarvestOAuth.md
@@ -183,6 +194,7 @@ generatedFiles:
   - docs/models/shared/AzureBlobStorageCredentials.md
   - docs/models/shared/AzureOpenAI.md
   - docs/models/shared/AzureTable.md
+  - docs/models/shared/Babelforce.md
   - docs/models/shared/BambooHr.md
   - docs/models/shared/BaseURL.md
   - docs/models/shared/BaseURLPrefix.md
@@ -200,6 +212,7 @@ generatedFiles:
   - docs/models/shared/Box.md
   - docs/models/shared/Braintree.md
   - docs/models/shared/Braze.md
+  - docs/models/shared/Breezometer.md
   - docs/models/shared/BreezyHr.md
   - docs/models/shared/Brevo.md
   - docs/models/shared/Brex.md
@@ -222,6 +235,7 @@ generatedFiles:
   - docs/models/shared/Campayn.md
   - docs/models/shared/Canny.md
   - docs/models/shared/CapsuleCrm.md
+  - docs/models/shared/CaptainData.md
   - docs/models/shared/CaptureModeAdvanced.md
   - docs/models/shared/CareQualityCommission.md
   - docs/models/shared/Cart.md
@@ -260,6 +274,7 @@ generatedFiles:
   - docs/models/shared/Cohorts.md
   - docs/models/shared/CohortsRange.md
   - docs/models/shared/CoinApi.md
+  - docs/models/shared/CoingeckoCoins.md
   - docs/models/shared/Coinmarketcap.md
   - docs/models/shared/Collection.md
   - docs/models/shared/Compression.md
@@ -307,6 +322,7 @@ generatedFiles:
   - docs/models/shared/Datascope.md
   - docs/models/shared/DatasetLocation.md
   - docs/models/shared/DateRange.md
+  - docs/models/shared/Days.md
   - docs/models/shared/Dbt.md
   - docs/models/shared/DefaultVectorizer.md
   - docs/models/shared/Deflate.md
@@ -318,7 +334,7 @@ generatedFiles:
   - docs/models/shared/DestinationAstra.md
   - docs/models/shared/DestinationAstraLanguage.md
   - docs/models/shared/DestinationAstraMode.md
-  - docs/models/shared/DestinationAstraSchemasEmbeddingEmbedding1Mode.md
+  - docs/models/shared/DestinationAstraSchemasEmbeddingEmbedding5Mode.md
   - docs/models/shared/DestinationAstraSchemasEmbeddingEmbeddingMode.md
   - docs/models/shared/DestinationAstraSchemasEmbeddingMode.md
   - docs/models/shared/DestinationAstraSchemasMode.md
@@ -401,6 +417,7 @@ generatedFiles:
   - docs/models/shared/DestinationIcebergS3.md
   - docs/models/shared/DestinationIcebergS3BucketRegion.md
   - docs/models/shared/DestinationIcebergSchemasCatalogConfigCatalogType.md
+  - docs/models/shared/DestinationIcebergSchemasCatalogConfigIcebergCatalogConfig1CatalogType.md
   - docs/models/shared/DestinationIcebergSchemasCatalogConfigIcebergCatalogConfigCatalogType.md
   - docs/models/shared/DestinationIcebergSchemasCatalogType.md
   - docs/models/shared/DestinationIcebergStorageType.md
@@ -458,6 +475,13 @@ generatedFiles:
   - docs/models/shared/DestinationMssqlSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/DestinationMssqlSslMethod.md
   - docs/models/shared/DestinationMssqlTunnelMethod.md
+  - docs/models/shared/DestinationMssqlV2.md
+  - docs/models/shared/DestinationMssqlV2EncryptedTrustServerCertificate.md
+  - docs/models/shared/DestinationMssqlV2EncryptedVerifyCertificate.md
+  - docs/models/shared/DestinationMssqlV2Name.md
+  - docs/models/shared/DestinationMssqlV2SSLMethod.md
+  - docs/models/shared/DestinationMssqlV2SchemasName.md
+  - docs/models/shared/DestinationMssqlV2Unencrypted.md
   - docs/models/shared/DestinationMysql.md
   - docs/models/shared/DestinationMysqlNoTunnel.md
   - docs/models/shared/DestinationMysqlPasswordAuthentication.md
@@ -467,6 +491,7 @@ generatedFiles:
   - docs/models/shared/DestinationMysqlSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/DestinationMysqlTunnelMethod.md
   - docs/models/shared/DestinationOracle.md
+  - docs/models/shared/DestinationOracleEncryption.md
   - docs/models/shared/DestinationOracleEncryptionMethod.md
   - docs/models/shared/DestinationOracleNoTunnel.md
   - docs/models/shared/DestinationOraclePasswordAuthentication.md
@@ -531,7 +556,7 @@ generatedFiles:
   - docs/models/shared/DestinationPostgresSSHKeyAuthentication.md
   - docs/models/shared/DestinationPostgresSSHTunnelMethod.md
   - docs/models/shared/DestinationPostgresSchemasMode.md
-  - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModes1Mode.md
+  - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModes5Mode.md
   - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModes6Mode.md
   - docs/models/shared/DestinationPostgresSchemasSSLModeSSLModesMode.md
   - docs/models/shared/DestinationPostgresSchemasSslModeMode.md
@@ -599,6 +624,13 @@ generatedFiles:
   - docs/models/shared/DestinationS3Compression.md
   - docs/models/shared/DestinationS3CompressionCodec.md
   - docs/models/shared/DestinationS3CompressionType.md
+  - docs/models/shared/DestinationS3DataLake.md
+  - docs/models/shared/DestinationS3DataLakeCatalogType.md
+  - docs/models/shared/DestinationS3DataLakeGlueCatalog.md
+  - docs/models/shared/DestinationS3DataLakeRestCatalog.md
+  - docs/models/shared/DestinationS3DataLakeS3BucketRegion.md
+  - docs/models/shared/DestinationS3DataLakeSchemasCatalogType.md
+  - docs/models/shared/DestinationS3DataLakeSchemasCatalogTypeCatalogType.md
   - docs/models/shared/DestinationS3Deflate.md
   - docs/models/shared/DestinationS3Flattening.md
   - docs/models/shared/DestinationS3FormatType.md
@@ -606,6 +638,7 @@ generatedFiles:
   - docs/models/shared/DestinationS3Glue.md
   - docs/models/shared/DestinationS3GlueCompression.md
   - docs/models/shared/DestinationS3GlueCompressionType.md
+  - docs/models/shared/DestinationS3GlueFlattening.md
   - docs/models/shared/DestinationS3GlueFormatType.md
   - docs/models/shared/DestinationS3GlueGZIP.md
   - docs/models/shared/DestinationS3GlueJSONLinesNewlineDelimitedJSON.md
@@ -622,7 +655,6 @@ generatedFiles:
   - docs/models/shared/DestinationS3SchemasCompression.md
   - docs/models/shared/DestinationS3SchemasCompressionCodec.md
   - docs/models/shared/DestinationS3SchemasCompressionType.md
-  - docs/models/shared/DestinationS3SchemasFlattening.md
   - docs/models/shared/DestinationS3SchemasFormatCodec.md
   - docs/models/shared/DestinationS3SchemasFormatCompressionType.md
   - docs/models/shared/DestinationS3SchemasFormatFormatType.md
@@ -766,6 +798,7 @@ generatedFiles:
   - docs/models/shared/Easypromos.md
   - docs/models/shared/Elasticemail.md
   - docs/models/shared/Elasticsearch.md
+  - docs/models/shared/EmailNotificationConfig.md
   - docs/models/shared/Emailoctopus.md
   - docs/models/shared/Embedding.md
   - docs/models/shared/EmploymentHero.md
@@ -774,15 +807,20 @@ generatedFiles:
   - docs/models/shared/EncryptedTrustServerCertificate.md
   - docs/models/shared/EncryptedVerifyCertificate.md
   - docs/models/shared/Encryption.md
+  - docs/models/shared/EncryptionAES.md
   - docs/models/shared/EncryptionAlgorithm.md
+  - docs/models/shared/EncryptionMapperAlgorithm.md
   - docs/models/shared/EncryptionMethod.md
+  - docs/models/shared/EncryptionRSA.md
   - docs/models/shared/EngagementWindowDays.md
   - docs/models/shared/Enterprise.md
   - docs/models/shared/Entity.md
   - docs/models/shared/Environment.md
+  - docs/models/shared/Equal.md
   - docs/models/shared/Eventbrite.md
   - docs/models/shared/Eventee.md
   - docs/models/shared/Eventzilla.md
+  - docs/models/shared/Everhour.md
   - docs/models/shared/EveryNThEntry.md
   - docs/models/shared/ExcelFormat.md
   - docs/models/shared/ExchangeRates.md
@@ -795,8 +833,10 @@ generatedFiles:
   - docs/models/shared/Failing.md
   - docs/models/shared/Fake.md
   - docs/models/shared/Faker.md
+  - docs/models/shared/Fastbill.md
   - docs/models/shared/Fauna.md
   - docs/models/shared/FieldNameMappingConfigModel.md
+  - docs/models/shared/FieldRenaming.md
   - docs/models/shared/File.md
   - docs/models/shared/FileBasedStreamConfig.md
   - docs/models/shared/FileFormat.md
@@ -838,6 +878,7 @@ generatedFiles:
   - docs/models/shared/FromValue.md
   - docs/models/shared/Front.md
   - docs/models/shared/Fulcrum.md
+  - docs/models/shared/Fullstory.md
   - docs/models/shared/GCSBucketRegion.md
   - docs/models/shared/GCSGoogleCloudStorage.md
   - docs/models/shared/GCSStaging.md
@@ -885,6 +926,7 @@ generatedFiles:
   - docs/models/shared/GranularityForGeoLocationRegion.md
   - docs/models/shared/GranularityForPeriodicReports.md
   - docs/models/shared/Greenhouse.md
+  - docs/models/shared/Greythr.md
   - docs/models/shared/Gridly.md
   - docs/models/shared/GroupBy.md
   - docs/models/shared/Guru.md
@@ -895,16 +937,23 @@ generatedFiles:
   - docs/models/shared/HadoopCatalogUseHierarchicalFileSystemsAsSameAsStorageConfig.md
   - docs/models/shared/HardcodedRecords.md
   - docs/models/shared/Harvest.md
+  - docs/models/shared/Hashing.md
+  - docs/models/shared/HashingMethod.md
   - docs/models/shared/Header.md
   - docs/models/shared/HeaderDefinitionType.md
   - docs/models/shared/Height.md
+  - docs/models/shared/Hellobaton.md
+  - docs/models/shared/HelpScout.md
   - docs/models/shared/Hibob.md
   - docs/models/shared/HighLevel.md
   - docs/models/shared/HiveCatalogUseApacheHiveMetaStore.md
+  - docs/models/shared/Hoorayhr.md
   - docs/models/shared/Hubplanner.md
   - docs/models/shared/Hubspot.md
   - docs/models/shared/HubspotCredentials.md
+  - docs/models/shared/HuggingFaceDatasets.md
   - docs/models/shared/Humanitix.md
+  - docs/models/shared/Huntr.md
   - docs/models/shared/IAMRole.md
   - docs/models/shared/IAMUser.md
   - docs/models/shared/Iceberg.md
@@ -924,6 +973,7 @@ generatedFiles:
   - docs/models/shared/Int64Value.md
   - docs/models/shared/Intercom.md
   - docs/models/shared/Interval.md
+  - docs/models/shared/Intruder.md
   - docs/models/shared/InvalidCDCPositionBehaviorAdvanced.md
   - docs/models/shared/Invoiced.md
   - docs/models/shared/Invoiceninja.md
@@ -944,6 +994,7 @@ generatedFiles:
   - docs/models/shared/Justcall.md
   - docs/models/shared/K6Cloud.md
   - docs/models/shared/Katana.md
+  - docs/models/shared/Keka.md
   - docs/models/shared/KeyPairAuthentication.md
   - docs/models/shared/Kind.md
   - docs/models/shared/Kisi.md
@@ -981,6 +1032,7 @@ generatedFiles:
   - docs/models/shared/Mailchimp.md
   - docs/models/shared/MailchimpCredentials.md
   - docs/models/shared/Mailerlite.md
+  - docs/models/shared/Mailersend.md
   - docs/models/shared/Mailgun.md
   - docs/models/shared/MailjetMail.md
   - docs/models/shared/MailjetSms.md
@@ -991,6 +1043,7 @@ generatedFiles:
   - docs/models/shared/Marketo.md
   - docs/models/shared/Marketstack.md
   - docs/models/shared/Mention.md
+  - docs/models/shared/Merge.md
   - docs/models/shared/Metabase.md
   - docs/models/shared/Method.md
   - docs/models/shared/MetricsFilter.md
@@ -1018,16 +1071,21 @@ generatedFiles:
   - docs/models/shared/MongodbV2.md
   - docs/models/shared/Motherduck.md
   - docs/models/shared/Mssql.md
+  - docs/models/shared/MssqlV2.md
   - docs/models/shared/Mux.md
   - docs/models/shared/MyHours.md
   - docs/models/shared/Mysql.md
   - docs/models/shared/N8n.md
+  - docs/models/shared/Name.md
   - docs/models/shared/NamespaceDefinitionEnum.md
   - docs/models/shared/NamespaceDefinitionEnumNoDefault.md
   - docs/models/shared/Nasa.md
   - docs/models/shared/NativeNetworkEncryptionNNE.md
+  - docs/models/shared/Navan.md
+  - docs/models/shared/NessieCatalog.md
   - docs/models/shared/Netsuite.md
   - docs/models/shared/NewsApi.md
+  - docs/models/shared/Newsdata.md
   - docs/models/shared/NewsdataIo.md
   - docs/models/shared/NoAuth.md
   - docs/models/shared/NoAuthentication.md
@@ -1041,7 +1099,10 @@ generatedFiles:
   - docs/models/shared/Normalization.md
   - docs/models/shared/NormalizationFlattening.md
   - docs/models/shared/NorthpassLms.md
+  - docs/models/shared/Not.md
   - docs/models/shared/NotExpression.md
+  - docs/models/shared/NotificationConfig.md
+  - docs/models/shared/NotificationsConfig.md
   - docs/models/shared/Notion.md
   - docs/models/shared/NotionCredentials.md
   - docs/models/shared/Nullable.md
@@ -1079,7 +1140,6 @@ generatedFiles:
   - docs/models/shared/OrGroup.md
   - docs/models/shared/Oracle.md
   - docs/models/shared/Orb.md
-  - docs/models/shared/Orbit.md
   - docs/models/shared/OrganizationResponse.md
   - docs/models/shared/OrganizationsResponse.md
   - docs/models/shared/OriginDatacenterOfTheSurveyMonkeyAccount.md
@@ -1087,9 +1147,11 @@ generatedFiles:
   - docs/models/shared/OutbrainAmplify.md
   - docs/models/shared/OutputFormat.md
   - docs/models/shared/OutputFormatWildcard.md
+  - docs/models/shared/OutputSize.md
   - docs/models/shared/Outreach.md
   - docs/models/shared/Oveit.md
   - docs/models/shared/PabblySubscriptionsBilling.md
+  - docs/models/shared/Padding.md
   - docs/models/shared/Pandadoc.md
   - docs/models/shared/Paperform.md
   - docs/models/shared/Papersign.md
@@ -1098,6 +1160,7 @@ generatedFiles:
   - docs/models/shared/ParquetFormat.md
   - docs/models/shared/ParsingStrategy.md
   - docs/models/shared/PasswordAuthentication.md
+  - docs/models/shared/Payfit.md
   - docs/models/shared/PaypalTransaction.md
   - docs/models/shared/Paystack.md
   - docs/models/shared/Pendo.md
@@ -1117,6 +1180,7 @@ generatedFiles:
   - docs/models/shared/Pgvector.md
   - docs/models/shared/Picqer.md
   - docs/models/shared/Pinecone.md
+  - docs/models/shared/Pingdom.md
   - docs/models/shared/Pinterest.md
   - docs/models/shared/PinterestCredentials.md
   - docs/models/shared/Pipedrive.md
@@ -1157,13 +1221,14 @@ generatedFiles:
   - docs/models/shared/Qualaroo.md
   - docs/models/shared/Queries.md
   - docs/models/shared/Quickbooks.md
+  - docs/models/shared/RESTAPIStreams.md
   - docs/models/shared/RESTCatalog.md
+  - docs/models/shared/Raas.md
   - docs/models/shared/Railz.md
   - docs/models/shared/RandomSampling.md
   - docs/models/shared/Range.md
   - docs/models/shared/RdStationMarketing.md
   - docs/models/shared/RdStationMarketingAuthorization.md
-  - docs/models/shared/ReadChangesUsingBinaryLogCDC.md
   - docs/models/shared/ReadChangesUsingChangeDataCaptureCDC.md
   - docs/models/shared/ReadChangesUsingWriteAheadLogCDC.md
   - docs/models/shared/Recharge.md
@@ -1178,28 +1243,38 @@ generatedFiles:
   - docs/models/shared/Rentcast.md
   - docs/models/shared/Repairshopr.md
   - docs/models/shared/ReplicaSet.md
+  - docs/models/shared/ReplicatePermissionsACL.md
   - docs/models/shared/ReplicateRecords.md
   - docs/models/shared/ReplyIo.md
+  - docs/models/shared/ReportBasedStreams.md
   - docs/models/shared/ReportConfig.md
   - docs/models/shared/ReportName.md
   - docs/models/shared/ReportOptions.md
-  - docs/models/shared/ReportRecordTypeEnum.md
   - docs/models/shared/ReportingDataObject.md
   - docs/models/shared/Require.md
   - docs/models/shared/Required.md
+  - docs/models/shared/Resolution.md
+  - docs/models/shared/Rest.md
+  - docs/models/shared/RetailexpressByMaropost.md
   - docs/models/shared/Retently.md
   - docs/models/shared/Revenuecat.md
   - docs/models/shared/RevolutMerchant.md
+  - docs/models/shared/Ringcentral.md
   - docs/models/shared/RkiCovid.md
+  - docs/models/shared/RocketChat.md
   - docs/models/shared/Rocketlane.md
   - docs/models/shared/RoleBasedAuthentication.md
   - docs/models/shared/Rollbar.md
   - docs/models/shared/Rootly.md
+  - docs/models/shared/RowFiltering.md
+  - docs/models/shared/RowFilteringOperation.md
+  - docs/models/shared/RowFilteringOperationType.md
   - docs/models/shared/Rss.md
   - docs/models/shared/Ruddr.md
   - docs/models/shared/S3.md
   - docs/models/shared/S3AmazonWebServices.md
   - docs/models/shared/S3BucketRegion.md
+  - docs/models/shared/S3DataLake.md
   - docs/models/shared/S3Glue.md
   - docs/models/shared/SCPSecureCopyProtocol.md
   - docs/models/shared/SFTPSecureFileTransferProtocol.md
@@ -1239,6 +1314,7 @@ generatedFiles:
   - docs/models/shared/Senseforce.md
   - docs/models/shared/Sentry.md
   - docs/models/shared/SerializationLibrary.md
+  - docs/models/shared/Serpstat.md
   - docs/models/shared/ServerManaged.md
   - docs/models/shared/ServiceAccount.md
   - docs/models/shared/ServiceAccountAuthentication.md
@@ -1246,6 +1322,7 @@ generatedFiles:
   - docs/models/shared/ServiceAccountKeyAuthentication.md
   - docs/models/shared/ServiceKeyAuthentication.md
   - docs/models/shared/ServiceName.md
+  - docs/models/shared/ServiceNow.md
   - docs/models/shared/Sevenshifts.md
   - docs/models/shared/Sftp.md
   - docs/models/shared/SftpBulk.md
@@ -1253,6 +1330,7 @@ generatedFiles:
   - docs/models/shared/ShareTypeUsedForMostPopularSharedStream.md
   - docs/models/shared/Sharetribe.md
   - docs/models/shared/Shippo.md
+  - docs/models/shared/Shipstation.md
   - docs/models/shared/Shopify.md
   - docs/models/shared/ShopifyAuthorizationMethod.md
   - docs/models/shared/ShopifyCredentials.md
@@ -1300,6 +1378,7 @@ generatedFiles:
   - docs/models/shared/SourceAirtableSchemasAuthMethod.md
   - docs/models/shared/SourceAkeneo.md
   - docs/models/shared/SourceAlgolia.md
+  - docs/models/shared/SourceAlphaVantage.md
   - docs/models/shared/SourceAmazonAds.md
   - docs/models/shared/SourceAmazonAdsAmazonAds.md
   - docs/models/shared/SourceAmazonAdsAuthType.md
@@ -1333,11 +1412,14 @@ generatedFiles:
   - docs/models/shared/SourceAzureBlobStorageHeaderDefinitionType.md
   - docs/models/shared/SourceAzureBlobStorageMode.md
   - docs/models/shared/SourceAzureBlobStorageSchemasAuthType.md
+  - docs/models/shared/SourceAzureBlobStorageSchemasCredentialsAuthType.md
   - docs/models/shared/SourceAzureBlobStorageSchemasFiletype.md
   - docs/models/shared/SourceAzureBlobStorageSchemasHeaderDefinitionType.md
   - docs/models/shared/SourceAzureBlobStorageSchemasStreamsFiletype.md
   - docs/models/shared/SourceAzureBlobStorageSchemasStreamsFormatFiletype.md
   - docs/models/shared/SourceAzureTable.md
+  - docs/models/shared/SourceBabelforce.md
+  - docs/models/shared/SourceBabelforceRegion.md
   - docs/models/shared/SourceBambooHr.md
   - docs/models/shared/SourceBasecamp.md
   - docs/models/shared/SourceBeamer.md
@@ -1352,6 +1434,7 @@ generatedFiles:
   - docs/models/shared/SourceBraintree.md
   - docs/models/shared/SourceBraintreeEnvironment.md
   - docs/models/shared/SourceBraze.md
+  - docs/models/shared/SourceBreezometer.md
   - docs/models/shared/SourceBreezyHr.md
   - docs/models/shared/SourceBrevo.md
   - docs/models/shared/SourceBrex.md
@@ -1366,6 +1449,7 @@ generatedFiles:
   - docs/models/shared/SourceCampayn.md
   - docs/models/shared/SourceCanny.md
   - docs/models/shared/SourceCapsuleCrm.md
+  - docs/models/shared/SourceCaptainData.md
   - docs/models/shared/SourceCareQualityCommission.md
   - docs/models/shared/SourceCart.md
   - docs/models/shared/SourceCartAuthType.md
@@ -1401,6 +1485,7 @@ generatedFiles:
   - docs/models/shared/SourceCoda.md
   - docs/models/shared/SourceCodefresh.md
   - docs/models/shared/SourceCoinApi.md
+  - docs/models/shared/SourceCoingeckoCoins.md
   - docs/models/shared/SourceCoinmarketcap.md
   - docs/models/shared/SourceConcord.md
   - docs/models/shared/SourceConcordEnvironment.md
@@ -1446,6 +1531,7 @@ generatedFiles:
   - docs/models/shared/SourceEventbrite.md
   - docs/models/shared/SourceEventee.md
   - docs/models/shared/SourceEventzilla.md
+  - docs/models/shared/SourceEverhour.md
   - docs/models/shared/SourceExchangeRates.md
   - docs/models/shared/SourceEzofficeinventory.md
   - docs/models/shared/SourceFacebookMarketing.md
@@ -1457,6 +1543,7 @@ generatedFiles:
   - docs/models/shared/SourceFacebookMarketingValidEnums.md
   - docs/models/shared/SourceFactorial.md
   - docs/models/shared/SourceFaker.md
+  - docs/models/shared/SourceFastbill.md
   - docs/models/shared/SourceFauna.md
   - docs/models/shared/SourceFaunaDeletionMode.md
   - docs/models/shared/SourceFaunaSchemasDeletionMode.md
@@ -1493,6 +1580,7 @@ generatedFiles:
   - docs/models/shared/SourceFreshservice.md
   - docs/models/shared/SourceFront.md
   - docs/models/shared/SourceFulcrum.md
+  - docs/models/shared/SourceFullstory.md
   - docs/models/shared/SourceGainsightPx.md
   - docs/models/shared/SourceGcs.md
   - docs/models/shared/SourceGcsAuthType.md
@@ -1790,7 +1878,8 @@ generatedFiles:
   - docs/models/shared/SourceGoogleDriveAvroFormat.md
   - docs/models/shared/SourceGoogleDriveCSVFormat.md
   - docs/models/shared/SourceGoogleDriveCSVHeaderDefinition.md
-  - docs/models/shared/SourceGoogleDriveDocumentFileTypeFormatExperimental.md
+  - docs/models/shared/SourceGoogleDriveDeliveryType.md
+  - docs/models/shared/SourceGoogleDriveExcelFormat.md
   - docs/models/shared/SourceGoogleDriveFileBasedStreamConfig.md
   - docs/models/shared/SourceGoogleDriveFiletype.md
   - docs/models/shared/SourceGoogleDriveFormat.md
@@ -1804,13 +1893,16 @@ generatedFiles:
   - docs/models/shared/SourceGoogleDriveParsingStrategy.md
   - docs/models/shared/SourceGoogleDriveProcessing.md
   - docs/models/shared/SourceGoogleDriveSchemasAuthType.md
+  - docs/models/shared/SourceGoogleDriveSchemasDeliveryType.md
   - docs/models/shared/SourceGoogleDriveSchemasFiletype.md
   - docs/models/shared/SourceGoogleDriveSchemasHeaderDefinitionType.md
   - docs/models/shared/SourceGoogleDriveSchemasStreamsFiletype.md
   - docs/models/shared/SourceGoogleDriveSchemasStreamsFormatFiletype.md
+  - docs/models/shared/SourceGoogleDriveSchemasStreamsFormatFormat6Filetype.md
   - docs/models/shared/SourceGoogleDriveSchemasStreamsFormatFormatFiletype.md
   - docs/models/shared/SourceGoogleDriveSchemasStreamsHeaderDefinitionType.md
   - docs/models/shared/SourceGoogleDriveServiceAccountKeyAuthentication.md
+  - docs/models/shared/SourceGoogleDriveUnstructuredDocumentFormat.md
   - docs/models/shared/SourceGoogleDriveUserProvided.md
   - docs/models/shared/SourceGoogleDriveValidationPolicy.md
   - docs/models/shared/SourceGoogleForms.md
@@ -1834,6 +1926,7 @@ generatedFiles:
   - docs/models/shared/SourceGoogleWebfonts.md
   - docs/models/shared/SourceGorgias.md
   - docs/models/shared/SourceGreenhouse.md
+  - docs/models/shared/SourceGreythr.md
   - docs/models/shared/SourceGridly.md
   - docs/models/shared/SourceGuru.md
   - docs/models/shared/SourceGutendex.md
@@ -1844,8 +1937,11 @@ generatedFiles:
   - docs/models/shared/SourceHarvestAuthenticationMechanism.md
   - docs/models/shared/SourceHarvestSchemasAuthType.md
   - docs/models/shared/SourceHeight.md
+  - docs/models/shared/SourceHellobaton.md
+  - docs/models/shared/SourceHelpScout.md
   - docs/models/shared/SourceHibob.md
   - docs/models/shared/SourceHighLevel.md
+  - docs/models/shared/SourceHoorayhr.md
   - docs/models/shared/SourceHubplanner.md
   - docs/models/shared/SourceHubspot.md
   - docs/models/shared/SourceHubspotAuthType.md
@@ -1853,7 +1949,9 @@ generatedFiles:
   - docs/models/shared/SourceHubspotHubspot.md
   - docs/models/shared/SourceHubspotOAuth.md
   - docs/models/shared/SourceHubspotSchemasAuthType.md
+  - docs/models/shared/SourceHuggingFaceDatasets.md
   - docs/models/shared/SourceHumanitix.md
+  - docs/models/shared/SourceHuntr.md
   - docs/models/shared/SourceIlluminaBasespace.md
   - docs/models/shared/SourceIncidentIo.md
   - docs/models/shared/SourceInflowinventory.md
@@ -1862,7 +1960,7 @@ generatedFiles:
   - docs/models/shared/SourceInstagramInstagram.md
   - docs/models/shared/SourceInstatus.md
   - docs/models/shared/SourceIntercom.md
-  - docs/models/shared/SourceIntercomIntercom.md
+  - docs/models/shared/SourceIntruder.md
   - docs/models/shared/SourceInvoiced.md
   - docs/models/shared/SourceInvoiceninja.md
   - docs/models/shared/SourceIp2whois.md
@@ -1876,6 +1974,7 @@ generatedFiles:
   - docs/models/shared/SourceJustcall.md
   - docs/models/shared/SourceK6Cloud.md
   - docs/models/shared/SourceKatana.md
+  - docs/models/shared/SourceKeka.md
   - docs/models/shared/SourceKisi.md
   - docs/models/shared/SourceKissmetrics.md
   - docs/models/shared/SourceKlarna.md
@@ -1919,6 +2018,7 @@ generatedFiles:
   - docs/models/shared/SourceMailchimpOAuth20.md
   - docs/models/shared/SourceMailchimpSchemasAuthType.md
   - docs/models/shared/SourceMailerlite.md
+  - docs/models/shared/SourceMailersend.md
   - docs/models/shared/SourceMailgun.md
   - docs/models/shared/SourceMailjetMail.md
   - docs/models/shared/SourceMailjetSms.md
@@ -1927,6 +2027,7 @@ generatedFiles:
   - docs/models/shared/SourceMarketo.md
   - docs/models/shared/SourceMarketstack.md
   - docs/models/shared/SourceMention.md
+  - docs/models/shared/SourceMerge.md
   - docs/models/shared/SourceMetabase.md
   - docs/models/shared/SourceMicrosoftDataverse.md
   - docs/models/shared/SourceMicrosoftEntraId.md
@@ -1968,6 +2069,9 @@ generatedFiles:
   - docs/models/shared/SourceMicrosoftSharepointAvroFormat.md
   - docs/models/shared/SourceMicrosoftSharepointCSVFormat.md
   - docs/models/shared/SourceMicrosoftSharepointCSVHeaderDefinition.md
+  - docs/models/shared/SourceMicrosoftSharepointCopyRawFiles.md
+  - docs/models/shared/SourceMicrosoftSharepointDeliveryMethod.md
+  - docs/models/shared/SourceMicrosoftSharepointDeliveryType.md
   - docs/models/shared/SourceMicrosoftSharepointExcelFormat.md
   - docs/models/shared/SourceMicrosoftSharepointFileBasedStreamConfig.md
   - docs/models/shared/SourceMicrosoftSharepointFiletype.md
@@ -1981,7 +2085,9 @@ generatedFiles:
   - docs/models/shared/SourceMicrosoftSharepointParquetFormat.md
   - docs/models/shared/SourceMicrosoftSharepointParsingStrategy.md
   - docs/models/shared/SourceMicrosoftSharepointProcessing.md
+  - docs/models/shared/SourceMicrosoftSharepointReplicateRecords.md
   - docs/models/shared/SourceMicrosoftSharepointSchemasAuthType.md
+  - docs/models/shared/SourceMicrosoftSharepointSchemasDeliveryType.md
   - docs/models/shared/SourceMicrosoftSharepointSchemasFiletype.md
   - docs/models/shared/SourceMicrosoftSharepointSchemasHeaderDefinitionType.md
   - docs/models/shared/SourceMicrosoftSharepointSchemasStreamsFiletype.md
@@ -2007,6 +2113,7 @@ generatedFiles:
   - docs/models/shared/SourceMixpanelRegion.md
   - docs/models/shared/SourceMixpanelSchemasOptionTitle.md
   - docs/models/shared/SourceMode.md
+  - docs/models/shared/SourceModeMode.md
   - docs/models/shared/SourceMonday.md
   - docs/models/shared/SourceMondayAuthType.md
   - docs/models/shared/SourceMondayAuthorizationMethod.md
@@ -2038,30 +2145,36 @@ generatedFiles:
   - docs/models/shared/SourceMux.md
   - docs/models/shared/SourceMyHours.md
   - docs/models/shared/SourceMysql.md
+  - docs/models/shared/SourceMysqlEncryption.md
   - docs/models/shared/SourceMysqlInvalidCDCPositionBehaviorAdvanced.md
   - docs/models/shared/SourceMysqlMethod.md
   - docs/models/shared/SourceMysqlMode.md
   - docs/models/shared/SourceMysqlMysql.md
   - docs/models/shared/SourceMysqlNoTunnel.md
   - docs/models/shared/SourceMysqlPasswordAuthentication.md
+  - docs/models/shared/SourceMysqlReadChangesUsingChangeDataCaptureCDC.md
   - docs/models/shared/SourceMysqlSSHKeyAuthentication.md
   - docs/models/shared/SourceMysqlSSHTunnelMethod.md
-  - docs/models/shared/SourceMysqlSSLModes.md
   - docs/models/shared/SourceMysqlScanChangesWithUserDefinedCursor.md
   - docs/models/shared/SourceMysqlSchemasMethod.md
   - docs/models/shared/SourceMysqlSchemasMode.md
-  - docs/models/shared/SourceMysqlSchemasSSLModeSSLModesMode.md
+  - docs/models/shared/SourceMysqlSchemasSslModeEncryptionMode.md
   - docs/models/shared/SourceMysqlSchemasSslModeMode.md
   - docs/models/shared/SourceMysqlSchemasTunnelMethod.md
   - docs/models/shared/SourceMysqlSchemasTunnelMethodTunnelMethod.md
   - docs/models/shared/SourceMysqlTunnelMethod.md
   - docs/models/shared/SourceMysqlUpdateMethod.md
-  - docs/models/shared/SourceMysqlVerifyCA.md
+  - docs/models/shared/SourceMysqlVerifyCa.md
   - docs/models/shared/SourceN8n.md
   - docs/models/shared/SourceNasa.md
+  - docs/models/shared/SourceNavan.md
   - docs/models/shared/SourceNetsuite.md
   - docs/models/shared/SourceNewsApi.md
+  - docs/models/shared/SourceNewsdata.md
+  - docs/models/shared/SourceNewsdataCategory.md
+  - docs/models/shared/SourceNewsdataCountry.md
   - docs/models/shared/SourceNewsdataIo.md
+  - docs/models/shared/SourceNewsdataLanguage.md
   - docs/models/shared/SourceNocrm.md
   - docs/models/shared/SourceNorthpassLms.md
   - docs/models/shared/SourceNotion.md
@@ -2111,7 +2224,6 @@ generatedFiles:
   - docs/models/shared/SourceOracleTunnelMethod.md
   - docs/models/shared/SourceOracleUnencrypted.md
   - docs/models/shared/SourceOrb.md
-  - docs/models/shared/SourceOrbit.md
   - docs/models/shared/SourceOura.md
   - docs/models/shared/SourceOutbrainAmplify.md
   - docs/models/shared/SourceOutbrainAmplifyAccessToken.md
@@ -2125,6 +2237,7 @@ generatedFiles:
   - docs/models/shared/SourcePapersign.md
   - docs/models/shared/SourcePardot.md
   - docs/models/shared/SourcePatchRequest.md
+  - docs/models/shared/SourcePayfit.md
   - docs/models/shared/SourcePaypalTransaction.md
   - docs/models/shared/SourcePaystack.md
   - docs/models/shared/SourcePendo.md
@@ -2133,6 +2246,7 @@ generatedFiles:
   - docs/models/shared/SourcePersona.md
   - docs/models/shared/SourcePexelsApi.md
   - docs/models/shared/SourcePicqer.md
+  - docs/models/shared/SourcePingdom.md
   - docs/models/shared/SourcePinterest.md
   - docs/models/shared/SourcePinterestAuthMethod.md
   - docs/models/shared/SourcePinterestLevel.md
@@ -2189,9 +2303,6 @@ generatedFiles:
   - docs/models/shared/SourcePypi.md
   - docs/models/shared/SourceQualaroo.md
   - docs/models/shared/SourceQuickbooks.md
-  - docs/models/shared/SourceQuickbooksAuthType.md
-  - docs/models/shared/SourceQuickbooksAuthorizationMethod.md
-  - docs/models/shared/SourceQuickbooksOAuth20.md
   - docs/models/shared/SourceRailz.md
   - docs/models/shared/SourceRdStationMarketing.md
   - docs/models/shared/SourceRdStationMarketingAuthType.md
@@ -2209,6 +2320,7 @@ generatedFiles:
   - docs/models/shared/SourceRepairshopr.md
   - docs/models/shared/SourceReplyIo.md
   - docs/models/shared/SourceResponse.md
+  - docs/models/shared/SourceRetailexpressByMaropost.md
   - docs/models/shared/SourceRetently.md
   - docs/models/shared/SourceRetentlyAuthType.md
   - docs/models/shared/SourceRetentlyAuthenticationMechanism.md
@@ -2216,7 +2328,9 @@ generatedFiles:
   - docs/models/shared/SourceRevenuecat.md
   - docs/models/shared/SourceRevolutMerchant.md
   - docs/models/shared/SourceRevolutMerchantEnvironment.md
+  - docs/models/shared/SourceRingcentral.md
   - docs/models/shared/SourceRkiCovid.md
+  - docs/models/shared/SourceRocketChat.md
   - docs/models/shared/SourceRocketlane.md
   - docs/models/shared/SourceRollbar.md
   - docs/models/shared/SourceRootly.md
@@ -2227,6 +2341,8 @@ generatedFiles:
   - docs/models/shared/SourceS3AvroFormat.md
   - docs/models/shared/SourceS3CSVFormat.md
   - docs/models/shared/SourceS3CSVHeaderDefinition.md
+  - docs/models/shared/SourceS3CopyRawFiles.md
+  - docs/models/shared/SourceS3DeliveryMethod.md
   - docs/models/shared/SourceS3DeliveryType.md
   - docs/models/shared/SourceS3ExcelFormat.md
   - docs/models/shared/SourceS3FileBasedStreamConfig.md
@@ -2240,7 +2356,9 @@ generatedFiles:
   - docs/models/shared/SourceS3ParquetFormat.md
   - docs/models/shared/SourceS3ParsingStrategy.md
   - docs/models/shared/SourceS3Processing.md
+  - docs/models/shared/SourceS3ReplicateRecords.md
   - docs/models/shared/SourceS3S3.md
+  - docs/models/shared/SourceS3SchemasDeliveryType.md
   - docs/models/shared/SourceS3SchemasFiletype.md
   - docs/models/shared/SourceS3SchemasHeaderDefinitionType.md
   - docs/models/shared/SourceS3SchemasStreamsFiletype.md
@@ -2255,6 +2373,7 @@ generatedFiles:
   - docs/models/shared/SourceSageHr.md
   - docs/models/shared/SourceSalesflare.md
   - docs/models/shared/SourceSalesforce.md
+  - docs/models/shared/SourceSalesforceAuthType.md
   - docs/models/shared/SourceSalesforceSalesforce.md
   - docs/models/shared/SourceSalesloft.md
   - docs/models/shared/SourceSalesloftAuthType.md
@@ -2271,6 +2390,8 @@ generatedFiles:
   - docs/models/shared/SourceSendpulse.md
   - docs/models/shared/SourceSenseforce.md
   - docs/models/shared/SourceSentry.md
+  - docs/models/shared/SourceSerpstat.md
+  - docs/models/shared/SourceServiceNow.md
   - docs/models/shared/SourceSftp.md
   - docs/models/shared/SourceSftpAuthMethod.md
   - docs/models/shared/SourceSftpAuthentication.md
@@ -2317,6 +2438,7 @@ generatedFiles:
   - docs/models/shared/SourceSftpSchemasAuthMethod.md
   - docs/models/shared/SourceSharetribe.md
   - docs/models/shared/SourceShippo.md
+  - docs/models/shared/SourceShipstation.md
   - docs/models/shared/SourceShopify.md
   - docs/models/shared/SourceShopifyAuthMethod.md
   - docs/models/shared/SourceShopifyOAuth20.md
@@ -2397,7 +2519,9 @@ generatedFiles:
   - docs/models/shared/SourceTiktokMarketingTiktokMarketing.md
   - docs/models/shared/SourceTimely.md
   - docs/models/shared/SourceTinyemail.md
+  - docs/models/shared/SourceTmdb.md
   - docs/models/shared/SourceTodoist.md
+  - docs/models/shared/SourceToggl.md
   - docs/models/shared/SourceTrackPms.md
   - docs/models/shared/SourceTrello.md
   - docs/models/shared/SourceTremendous.md
@@ -2410,9 +2534,11 @@ generatedFiles:
   - docs/models/shared/SourceTrustpilotSchemasAuthType.md
   - docs/models/shared/SourceTvmazeSchedule.md
   - docs/models/shared/SourceTwelveData.md
+  - docs/models/shared/SourceTwelveDataInterval.md
   - docs/models/shared/SourceTwilio.md
   - docs/models/shared/SourceTwilioTaskrouter.md
   - docs/models/shared/SourceTwitter.md
+  - docs/models/shared/SourceTyntecSms.md
   - docs/models/shared/SourceTypeform.md
   - docs/models/shared/SourceTypeformAuthType.md
   - docs/models/shared/SourceTypeformAuthorizationMethod.md
@@ -2443,6 +2569,8 @@ generatedFiles:
   - docs/models/shared/SourceWoocommerce.md
   - docs/models/shared/SourceWordpress.md
   - docs/models/shared/SourceWorkable.md
+  - docs/models/shared/SourceWorkday.md
+  - docs/models/shared/SourceWorkdayAuthentication.md
   - docs/models/shared/SourceWorkflowmax.md
   - docs/models/shared/SourceWorkramp.md
   - docs/models/shared/SourceWrike.md
@@ -2454,6 +2582,7 @@ generatedFiles:
   - docs/models/shared/SourceYandexMetrica.md
   - docs/models/shared/SourceYotpo.md
   - docs/models/shared/SourceYouNeedABudgetYnab.md
+  - docs/models/shared/SourceYounium.md
   - docs/models/shared/SourceYoutubeAnalytics.md
   - docs/models/shared/SourceYoutubeAnalyticsYoutubeAnalytics.md
   - docs/models/shared/SourceYoutubeData.md
@@ -2516,7 +2645,6 @@ generatedFiles:
   - docs/models/shared/Squarespace.md
   - docs/models/shared/StandaloneMongoDbInstance.md
   - docs/models/shared/State.md
-  - docs/models/shared/StateFilterEnum.md
   - docs/models/shared/StatisticsInterval.md
   - docs/models/shared/Statsig.md
   - docs/models/shared/Status.md
@@ -2530,6 +2658,7 @@ generatedFiles:
   - docs/models/shared/Strava.md
   - docs/models/shared/StreamConfiguration.md
   - docs/models/shared/StreamConfigurations.md
+  - docs/models/shared/StreamConfigurationsInput.md
   - docs/models/shared/StreamMapperType.md
   - docs/models/shared/StreamProperties.md
   - docs/models/shared/StreamsCriteria.md
@@ -2545,6 +2674,11 @@ generatedFiles:
   - docs/models/shared/Systeme.md
   - docs/models/shared/TLSEncryptedVerifyCertificate.md
   - docs/models/shared/Taboola.md
+  - docs/models/shared/Tag.md
+  - docs/models/shared/TagCreateRequest.md
+  - docs/models/shared/TagPatchRequest.md
+  - docs/models/shared/TagResponse.md
+  - docs/models/shared/TagsResponse.md
   - docs/models/shared/TargetsType.md
   - docs/models/shared/Teamtailor.md
   - docs/models/shared/Teamwork.md
@@ -2556,6 +2690,7 @@ generatedFiles:
   - docs/models/shared/Testrail.md
   - docs/models/shared/TextSplitter.md
   - docs/models/shared/TheGuardianApi.md
+  - docs/models/shared/TheTargetedActionResourceForTheFetch.md
   - docs/models/shared/Thinkific.md
   - docs/models/shared/Throttled.md
   - docs/models/shared/Ticketmaster.md
@@ -2571,8 +2706,10 @@ generatedFiles:
   - docs/models/shared/Timely.md
   - docs/models/shared/Timeplus.md
   - docs/models/shared/Tinyemail.md
+  - docs/models/shared/Tmdb.md
   - docs/models/shared/ToValue.md
   - docs/models/shared/Todoist.md
+  - docs/models/shared/Toggl.md
   - docs/models/shared/TopHeadlinesTopic.md
   - docs/models/shared/TrackPms.md
   - docs/models/shared/TransformationQueryRunType.md
@@ -2585,6 +2722,7 @@ generatedFiles:
   - docs/models/shared/Twilio.md
   - docs/models/shared/TwilioTaskrouter.md
   - docs/models/shared/Twitter.md
+  - docs/models/shared/TyntecSms.md
   - docs/models/shared/Typeform.md
   - docs/models/shared/TypeformCredentials.md
   - docs/models/shared/Typesense.md
@@ -2634,12 +2772,14 @@ generatedFiles:
   - docs/models/shared/Weaviate.md
   - docs/models/shared/WebScrapper.md
   - docs/models/shared/Webflow.md
+  - docs/models/shared/WebhookNotificationConfig.md
   - docs/models/shared/WhenIWork.md
   - docs/models/shared/WhiskyHunter.md
   - docs/models/shared/WikipediaPageviews.md
   - docs/models/shared/Woocommerce.md
   - docs/models/shared/Wordpress.md
   - docs/models/shared/Workable.md
+  - docs/models/shared/Workday.md
   - docs/models/shared/Workflowmax.md
   - docs/models/shared/Workramp.md
   - docs/models/shared/WorkspaceCreateRequest.md
@@ -2657,6 +2797,7 @@ generatedFiles:
   - docs/models/shared/Yellowbrick.md
   - docs/models/shared/Yotpo.md
   - docs/models/shared/YouNeedABudgetYnab.md
+  - docs/models/shared/Younium.md
   - docs/models/shared/YoutubeAnalytics.md
   - docs/models/shared/YoutubeAnalyticsCredentials.md
   - docs/models/shared/YoutubeData.md
@@ -2693,8 +2834,10 @@ generatedFiles:
   - docs/sdks/permissions/README.md
   - docs/sdks/sources/README.md
   - docs/sdks/streams/README.md
+  - docs/sdks/tags/README.md
   - docs/sdks/users/README.md
   - docs/sdks/workspaces/README.md
+  - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
@@ -2711,6 +2854,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/SecuritySource.java
   - src/main/java/com/airbyte/api/Sources.java
   - src/main/java/com/airbyte/api/Streams.java
+  - src/main/java/com/airbyte/api/Tags.java
   - src/main/java/com/airbyte/api/Users.java
   - src/main/java/com/airbyte/api/Workspaces.java
   - src/main/java/com/airbyte/api/hooks/ClientCredentialsHook.java
@@ -2732,6 +2876,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/CreatePermissionResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateSourceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/CreateTagRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/CreateTagResponse.java
   - src/main/java/com/airbyte/api/models/operations/CreateWorkspaceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/CreateWorkspaceResponse.java
   - src/main/java/com/airbyte/api/models/operations/DeleteConnectionRequest.java
@@ -2746,6 +2892,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/DeleteSourceRequest.java
   - src/main/java/com/airbyte/api/models/operations/DeleteSourceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeleteSourceResponse.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteTagRequest.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteTagRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/DeleteTagResponse.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceRequest.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/DeleteWorkspaceResponse.java
@@ -2769,6 +2918,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequest.java
   - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetStreamPropertiesResponse.java
+  - src/main/java/com/airbyte/api/models/operations/GetTagRequest.java
+  - src/main/java/com/airbyte/api/models/operations/GetTagRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/GetTagResponse.java
   - src/main/java/com/airbyte/api/models/operations/GetWorkspaceRequest.java
   - src/main/java/com/airbyte/api/models/operations/GetWorkspaceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/GetWorkspaceResponse.java
@@ -2791,6 +2943,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/ListSourcesRequest.java
   - src/main/java/com/airbyte/api/models/operations/ListSourcesRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/ListSourcesResponse.java
+  - src/main/java/com/airbyte/api/models/operations/ListTagsRequest.java
+  - src/main/java/com/airbyte/api/models/operations/ListTagsRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/ListTagsResponse.java
   - src/main/java/com/airbyte/api/models/operations/ListUsersWithinAnOrganizationRequest.java
   - src/main/java/com/airbyte/api/models/operations/ListUsersWithinAnOrganizationRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/ListUsersWithinAnOrganizationResponse.java
@@ -2816,6 +2971,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/operations/UpdatePermissionRequest.java
   - src/main/java/com/airbyte/api/models/operations/UpdatePermissionRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/UpdatePermissionResponse.java
+  - src/main/java/com/airbyte/api/models/operations/UpdateTagRequest.java
+  - src/main/java/com/airbyte/api/models/operations/UpdateTagRequestBuilder.java
+  - src/main/java/com/airbyte/api/models/operations/UpdateTagResponse.java
   - src/main/java/com/airbyte/api/models/operations/UpdateWorkspaceRequest.java
   - src/main/java/com/airbyte/api/models/operations/UpdateWorkspaceRequestBuilder.java
   - src/main/java/com/airbyte/api/models/operations/UpdateWorkspaceResponse.java
@@ -2847,6 +3005,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Akeneo.java
   - src/main/java/com/airbyte/api/models/shared/Algolia.java
   - src/main/java/com/airbyte/api/models/shared/Allow.java
+  - src/main/java/com/airbyte/api/models/shared/AlphaVantage.java
   - src/main/java/com/airbyte/api/models/shared/AmazonAds.java
   - src/main/java/com/airbyte/api/models/shared/AmazonSellerPartner.java
   - src/main/java/com/airbyte/api/models/shared/AmazonSqs.java
@@ -2871,6 +3030,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaAPIKey.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaAccessKeys.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaAsanaOauth.java
+  - src/main/java/com/airbyte/api/models/shared/AuthenticateViaClientCredentials.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaFacebookMarketingOauth.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaGoogleOAuth.java
   - src/main/java/com/airbyte/api/models/shared/AuthenticateViaHarvestOAuth.java
@@ -2908,6 +3068,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/AzureBlobStorageCredentials.java
   - src/main/java/com/airbyte/api/models/shared/AzureOpenAI.java
   - src/main/java/com/airbyte/api/models/shared/AzureTable.java
+  - src/main/java/com/airbyte/api/models/shared/Babelforce.java
   - src/main/java/com/airbyte/api/models/shared/BambooHr.java
   - src/main/java/com/airbyte/api/models/shared/BaseURL.java
   - src/main/java/com/airbyte/api/models/shared/BaseURLPrefix.java
@@ -2925,6 +3086,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Box.java
   - src/main/java/com/airbyte/api/models/shared/Braintree.java
   - src/main/java/com/airbyte/api/models/shared/Braze.java
+  - src/main/java/com/airbyte/api/models/shared/Breezometer.java
   - src/main/java/com/airbyte/api/models/shared/BreezyHr.java
   - src/main/java/com/airbyte/api/models/shared/Brevo.java
   - src/main/java/com/airbyte/api/models/shared/Brex.java
@@ -2947,6 +3109,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Campayn.java
   - src/main/java/com/airbyte/api/models/shared/Canny.java
   - src/main/java/com/airbyte/api/models/shared/CapsuleCrm.java
+  - src/main/java/com/airbyte/api/models/shared/CaptainData.java
   - src/main/java/com/airbyte/api/models/shared/CaptureModeAdvanced.java
   - src/main/java/com/airbyte/api/models/shared/CareQualityCommission.java
   - src/main/java/com/airbyte/api/models/shared/Cart.java
@@ -2985,6 +3148,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Cohorts.java
   - src/main/java/com/airbyte/api/models/shared/CohortsRange.java
   - src/main/java/com/airbyte/api/models/shared/CoinApi.java
+  - src/main/java/com/airbyte/api/models/shared/CoingeckoCoins.java
   - src/main/java/com/airbyte/api/models/shared/Coinmarketcap.java
   - src/main/java/com/airbyte/api/models/shared/Collection.java
   - src/main/java/com/airbyte/api/models/shared/Compression.java
@@ -3032,6 +3196,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Datascope.java
   - src/main/java/com/airbyte/api/models/shared/DatasetLocation.java
   - src/main/java/com/airbyte/api/models/shared/DateRange.java
+  - src/main/java/com/airbyte/api/models/shared/Days.java
   - src/main/java/com/airbyte/api/models/shared/Dbt.java
   - src/main/java/com/airbyte/api/models/shared/DefaultVectorizer.java
   - src/main/java/com/airbyte/api/models/shared/Deflate.java
@@ -3043,7 +3208,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationAstra.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraLanguage.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingEmbedding1Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingEmbedding5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingEmbeddingMode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasEmbeddingMode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationAstraSchemasMode.java
@@ -3126,6 +3291,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationIcebergS3.java
   - src/main/java/com/airbyte/api/models/shared/DestinationIcebergS3BucketRegion.java
   - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogConfigCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogConfigIcebergCatalogConfig1CatalogType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogConfigIcebergCatalogConfigCatalogType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationIcebergSchemasCatalogType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationIcebergStorageType.java
@@ -3183,6 +3349,13 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMssqlSslMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMssqlTunnelMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2EncryptedTrustServerCertificate.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2EncryptedVerifyCertificate.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2Name.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2SSLMethod.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2SchemasName.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationMssqlV2Unencrypted.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMysql.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlNoTunnel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlPasswordAuthentication.java
@@ -3192,6 +3365,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationMysqlTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracle.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationOracleEncryption.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleEncryptionMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOracleNoTunnel.java
   - src/main/java/com/airbyte/api/models/shared/DestinationOraclePasswordAuthentication.java
@@ -3256,7 +3430,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSSHKeyAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSSHTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasMode.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModes1Mode.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModes5Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModes6Mode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSSLModeSSLModesMode.java
   - src/main/java/com/airbyte/api/models/shared/DestinationPostgresSchemasSslModeMode.java
@@ -3324,6 +3498,13 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationS3Compression.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3CompressionCodec.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3CompressionType.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLake.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLakeCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLakeGlueCatalog.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLakeRestCatalog.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLakeS3BucketRegion.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLakeSchemasCatalogType.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3DataLakeSchemasCatalogTypeCatalogType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3Deflate.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3Flattening.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3FormatType.java
@@ -3331,6 +3512,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationS3Glue.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3GlueCompression.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3GlueCompressionType.java
+  - src/main/java/com/airbyte/api/models/shared/DestinationS3GlueFlattening.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3GlueFormatType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3GlueGZIP.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3GlueJSONLinesNewlineDelimitedJSON.java
@@ -3347,7 +3529,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasCompression.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasCompressionCodec.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasCompressionType.java
-  - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasFlattening.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasFormatCodec.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasFormatCompressionType.java
   - src/main/java/com/airbyte/api/models/shared/DestinationS3SchemasFormatFormatType.java
@@ -3491,6 +3672,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Easypromos.java
   - src/main/java/com/airbyte/api/models/shared/Elasticemail.java
   - src/main/java/com/airbyte/api/models/shared/Elasticsearch.java
+  - src/main/java/com/airbyte/api/models/shared/EmailNotificationConfig.java
   - src/main/java/com/airbyte/api/models/shared/Emailoctopus.java
   - src/main/java/com/airbyte/api/models/shared/Embedding.java
   - src/main/java/com/airbyte/api/models/shared/EmploymentHero.java
@@ -3499,15 +3681,20 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/EncryptedTrustServerCertificate.java
   - src/main/java/com/airbyte/api/models/shared/EncryptedVerifyCertificate.java
   - src/main/java/com/airbyte/api/models/shared/Encryption.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionAES.java
   - src/main/java/com/airbyte/api/models/shared/EncryptionAlgorithm.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionMapperAlgorithm.java
   - src/main/java/com/airbyte/api/models/shared/EncryptionMethod.java
+  - src/main/java/com/airbyte/api/models/shared/EncryptionRSA.java
   - src/main/java/com/airbyte/api/models/shared/EngagementWindowDays.java
   - src/main/java/com/airbyte/api/models/shared/Enterprise.java
   - src/main/java/com/airbyte/api/models/shared/Entity.java
   - src/main/java/com/airbyte/api/models/shared/Environment.java
+  - src/main/java/com/airbyte/api/models/shared/Equal.java
   - src/main/java/com/airbyte/api/models/shared/Eventbrite.java
   - src/main/java/com/airbyte/api/models/shared/Eventee.java
   - src/main/java/com/airbyte/api/models/shared/Eventzilla.java
+  - src/main/java/com/airbyte/api/models/shared/Everhour.java
   - src/main/java/com/airbyte/api/models/shared/EveryNThEntry.java
   - src/main/java/com/airbyte/api/models/shared/ExcelFormat.java
   - src/main/java/com/airbyte/api/models/shared/ExchangeRates.java
@@ -3520,8 +3707,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Failing.java
   - src/main/java/com/airbyte/api/models/shared/Fake.java
   - src/main/java/com/airbyte/api/models/shared/Faker.java
+  - src/main/java/com/airbyte/api/models/shared/Fastbill.java
   - src/main/java/com/airbyte/api/models/shared/Fauna.java
   - src/main/java/com/airbyte/api/models/shared/FieldNameMappingConfigModel.java
+  - src/main/java/com/airbyte/api/models/shared/FieldRenaming.java
   - src/main/java/com/airbyte/api/models/shared/File.java
   - src/main/java/com/airbyte/api/models/shared/FileBasedStreamConfig.java
   - src/main/java/com/airbyte/api/models/shared/FileFormat.java
@@ -3563,6 +3752,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/FromValue.java
   - src/main/java/com/airbyte/api/models/shared/Front.java
   - src/main/java/com/airbyte/api/models/shared/Fulcrum.java
+  - src/main/java/com/airbyte/api/models/shared/Fullstory.java
   - src/main/java/com/airbyte/api/models/shared/GCSBucketRegion.java
   - src/main/java/com/airbyte/api/models/shared/GCSGoogleCloudStorage.java
   - src/main/java/com/airbyte/api/models/shared/GCSStaging.java
@@ -3610,6 +3800,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/GranularityForGeoLocationRegion.java
   - src/main/java/com/airbyte/api/models/shared/GranularityForPeriodicReports.java
   - src/main/java/com/airbyte/api/models/shared/Greenhouse.java
+  - src/main/java/com/airbyte/api/models/shared/Greythr.java
   - src/main/java/com/airbyte/api/models/shared/Gridly.java
   - src/main/java/com/airbyte/api/models/shared/GroupBy.java
   - src/main/java/com/airbyte/api/models/shared/Guru.java
@@ -3620,16 +3811,23 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/HadoopCatalogUseHierarchicalFileSystemsAsSameAsStorageConfig.java
   - src/main/java/com/airbyte/api/models/shared/HardcodedRecords.java
   - src/main/java/com/airbyte/api/models/shared/Harvest.java
+  - src/main/java/com/airbyte/api/models/shared/Hashing.java
+  - src/main/java/com/airbyte/api/models/shared/HashingMethod.java
   - src/main/java/com/airbyte/api/models/shared/Header.java
   - src/main/java/com/airbyte/api/models/shared/HeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/Height.java
+  - src/main/java/com/airbyte/api/models/shared/Hellobaton.java
+  - src/main/java/com/airbyte/api/models/shared/HelpScout.java
   - src/main/java/com/airbyte/api/models/shared/Hibob.java
   - src/main/java/com/airbyte/api/models/shared/HighLevel.java
   - src/main/java/com/airbyte/api/models/shared/HiveCatalogUseApacheHiveMetaStore.java
+  - src/main/java/com/airbyte/api/models/shared/Hoorayhr.java
   - src/main/java/com/airbyte/api/models/shared/Hubplanner.java
   - src/main/java/com/airbyte/api/models/shared/Hubspot.java
   - src/main/java/com/airbyte/api/models/shared/HubspotCredentials.java
+  - src/main/java/com/airbyte/api/models/shared/HuggingFaceDatasets.java
   - src/main/java/com/airbyte/api/models/shared/Humanitix.java
+  - src/main/java/com/airbyte/api/models/shared/Huntr.java
   - src/main/java/com/airbyte/api/models/shared/IAMRole.java
   - src/main/java/com/airbyte/api/models/shared/IAMUser.java
   - src/main/java/com/airbyte/api/models/shared/Iceberg.java
@@ -3649,6 +3847,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Int64Value.java
   - src/main/java/com/airbyte/api/models/shared/Intercom.java
   - src/main/java/com/airbyte/api/models/shared/Interval.java
+  - src/main/java/com/airbyte/api/models/shared/Intruder.java
   - src/main/java/com/airbyte/api/models/shared/InvalidCDCPositionBehaviorAdvanced.java
   - src/main/java/com/airbyte/api/models/shared/Invoiced.java
   - src/main/java/com/airbyte/api/models/shared/Invoiceninja.java
@@ -3669,6 +3868,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Justcall.java
   - src/main/java/com/airbyte/api/models/shared/K6Cloud.java
   - src/main/java/com/airbyte/api/models/shared/Katana.java
+  - src/main/java/com/airbyte/api/models/shared/Keka.java
   - src/main/java/com/airbyte/api/models/shared/KeyPairAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/Kind.java
   - src/main/java/com/airbyte/api/models/shared/Kisi.java
@@ -3706,6 +3906,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Mailchimp.java
   - src/main/java/com/airbyte/api/models/shared/MailchimpCredentials.java
   - src/main/java/com/airbyte/api/models/shared/Mailerlite.java
+  - src/main/java/com/airbyte/api/models/shared/Mailersend.java
   - src/main/java/com/airbyte/api/models/shared/Mailgun.java
   - src/main/java/com/airbyte/api/models/shared/MailjetMail.java
   - src/main/java/com/airbyte/api/models/shared/MailjetSms.java
@@ -3716,6 +3917,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Marketo.java
   - src/main/java/com/airbyte/api/models/shared/Marketstack.java
   - src/main/java/com/airbyte/api/models/shared/Mention.java
+  - src/main/java/com/airbyte/api/models/shared/Merge.java
   - src/main/java/com/airbyte/api/models/shared/Metabase.java
   - src/main/java/com/airbyte/api/models/shared/Method.java
   - src/main/java/com/airbyte/api/models/shared/MetricsFilter.java
@@ -3743,16 +3945,21 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/MongodbV2.java
   - src/main/java/com/airbyte/api/models/shared/Motherduck.java
   - src/main/java/com/airbyte/api/models/shared/Mssql.java
+  - src/main/java/com/airbyte/api/models/shared/MssqlV2.java
   - src/main/java/com/airbyte/api/models/shared/Mux.java
   - src/main/java/com/airbyte/api/models/shared/MyHours.java
   - src/main/java/com/airbyte/api/models/shared/Mysql.java
   - src/main/java/com/airbyte/api/models/shared/N8n.java
+  - src/main/java/com/airbyte/api/models/shared/Name.java
   - src/main/java/com/airbyte/api/models/shared/NamespaceDefinitionEnum.java
   - src/main/java/com/airbyte/api/models/shared/NamespaceDefinitionEnumNoDefault.java
   - src/main/java/com/airbyte/api/models/shared/Nasa.java
   - src/main/java/com/airbyte/api/models/shared/NativeNetworkEncryptionNNE.java
+  - src/main/java/com/airbyte/api/models/shared/Navan.java
+  - src/main/java/com/airbyte/api/models/shared/NessieCatalog.java
   - src/main/java/com/airbyte/api/models/shared/Netsuite.java
   - src/main/java/com/airbyte/api/models/shared/NewsApi.java
+  - src/main/java/com/airbyte/api/models/shared/Newsdata.java
   - src/main/java/com/airbyte/api/models/shared/NewsdataIo.java
   - src/main/java/com/airbyte/api/models/shared/NoAuth.java
   - src/main/java/com/airbyte/api/models/shared/NoAuthentication.java
@@ -3766,7 +3973,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Normalization.java
   - src/main/java/com/airbyte/api/models/shared/NormalizationFlattening.java
   - src/main/java/com/airbyte/api/models/shared/NorthpassLms.java
+  - src/main/java/com/airbyte/api/models/shared/Not.java
   - src/main/java/com/airbyte/api/models/shared/NotExpression.java
+  - src/main/java/com/airbyte/api/models/shared/NotificationConfig.java
+  - src/main/java/com/airbyte/api/models/shared/NotificationsConfig.java
   - src/main/java/com/airbyte/api/models/shared/Notion.java
   - src/main/java/com/airbyte/api/models/shared/NotionCredentials.java
   - src/main/java/com/airbyte/api/models/shared/Nullable.java
@@ -3804,7 +4014,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/OrGroup.java
   - src/main/java/com/airbyte/api/models/shared/Oracle.java
   - src/main/java/com/airbyte/api/models/shared/Orb.java
-  - src/main/java/com/airbyte/api/models/shared/Orbit.java
   - src/main/java/com/airbyte/api/models/shared/OrganizationResponse.java
   - src/main/java/com/airbyte/api/models/shared/OrganizationsResponse.java
   - src/main/java/com/airbyte/api/models/shared/OriginDatacenterOfTheSurveyMonkeyAccount.java
@@ -3812,9 +4021,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/OutbrainAmplify.java
   - src/main/java/com/airbyte/api/models/shared/OutputFormat.java
   - src/main/java/com/airbyte/api/models/shared/OutputFormatWildcard.java
+  - src/main/java/com/airbyte/api/models/shared/OutputSize.java
   - src/main/java/com/airbyte/api/models/shared/Outreach.java
   - src/main/java/com/airbyte/api/models/shared/Oveit.java
   - src/main/java/com/airbyte/api/models/shared/PabblySubscriptionsBilling.java
+  - src/main/java/com/airbyte/api/models/shared/Padding.java
   - src/main/java/com/airbyte/api/models/shared/Pandadoc.java
   - src/main/java/com/airbyte/api/models/shared/Paperform.java
   - src/main/java/com/airbyte/api/models/shared/Papersign.java
@@ -3823,6 +4034,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ParquetFormat.java
   - src/main/java/com/airbyte/api/models/shared/ParsingStrategy.java
   - src/main/java/com/airbyte/api/models/shared/PasswordAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/Payfit.java
   - src/main/java/com/airbyte/api/models/shared/PaypalTransaction.java
   - src/main/java/com/airbyte/api/models/shared/Paystack.java
   - src/main/java/com/airbyte/api/models/shared/Pendo.java
@@ -3842,6 +4054,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Pgvector.java
   - src/main/java/com/airbyte/api/models/shared/Picqer.java
   - src/main/java/com/airbyte/api/models/shared/Pinecone.java
+  - src/main/java/com/airbyte/api/models/shared/Pingdom.java
   - src/main/java/com/airbyte/api/models/shared/Pinterest.java
   - src/main/java/com/airbyte/api/models/shared/PinterestCredentials.java
   - src/main/java/com/airbyte/api/models/shared/Pipedrive.java
@@ -3882,13 +4095,14 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Qualaroo.java
   - src/main/java/com/airbyte/api/models/shared/Queries.java
   - src/main/java/com/airbyte/api/models/shared/Quickbooks.java
+  - src/main/java/com/airbyte/api/models/shared/RESTAPIStreams.java
   - src/main/java/com/airbyte/api/models/shared/RESTCatalog.java
+  - src/main/java/com/airbyte/api/models/shared/Raas.java
   - src/main/java/com/airbyte/api/models/shared/Railz.java
   - src/main/java/com/airbyte/api/models/shared/RandomSampling.java
   - src/main/java/com/airbyte/api/models/shared/Range.java
   - src/main/java/com/airbyte/api/models/shared/RdStationMarketing.java
   - src/main/java/com/airbyte/api/models/shared/RdStationMarketingAuthorization.java
-  - src/main/java/com/airbyte/api/models/shared/ReadChangesUsingBinaryLogCDC.java
   - src/main/java/com/airbyte/api/models/shared/ReadChangesUsingChangeDataCaptureCDC.java
   - src/main/java/com/airbyte/api/models/shared/ReadChangesUsingWriteAheadLogCDC.java
   - src/main/java/com/airbyte/api/models/shared/Recharge.java
@@ -3903,28 +4117,38 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Rentcast.java
   - src/main/java/com/airbyte/api/models/shared/Repairshopr.java
   - src/main/java/com/airbyte/api/models/shared/ReplicaSet.java
+  - src/main/java/com/airbyte/api/models/shared/ReplicatePermissionsACL.java
   - src/main/java/com/airbyte/api/models/shared/ReplicateRecords.java
   - src/main/java/com/airbyte/api/models/shared/ReplyIo.java
+  - src/main/java/com/airbyte/api/models/shared/ReportBasedStreams.java
   - src/main/java/com/airbyte/api/models/shared/ReportConfig.java
   - src/main/java/com/airbyte/api/models/shared/ReportName.java
   - src/main/java/com/airbyte/api/models/shared/ReportOptions.java
-  - src/main/java/com/airbyte/api/models/shared/ReportRecordTypeEnum.java
   - src/main/java/com/airbyte/api/models/shared/ReportingDataObject.java
   - src/main/java/com/airbyte/api/models/shared/Require.java
   - src/main/java/com/airbyte/api/models/shared/Required.java
+  - src/main/java/com/airbyte/api/models/shared/Resolution.java
+  - src/main/java/com/airbyte/api/models/shared/Rest.java
+  - src/main/java/com/airbyte/api/models/shared/RetailexpressByMaropost.java
   - src/main/java/com/airbyte/api/models/shared/Retently.java
   - src/main/java/com/airbyte/api/models/shared/Revenuecat.java
   - src/main/java/com/airbyte/api/models/shared/RevolutMerchant.java
+  - src/main/java/com/airbyte/api/models/shared/Ringcentral.java
   - src/main/java/com/airbyte/api/models/shared/RkiCovid.java
+  - src/main/java/com/airbyte/api/models/shared/RocketChat.java
   - src/main/java/com/airbyte/api/models/shared/Rocketlane.java
   - src/main/java/com/airbyte/api/models/shared/RoleBasedAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/Rollbar.java
   - src/main/java/com/airbyte/api/models/shared/Rootly.java
+  - src/main/java/com/airbyte/api/models/shared/RowFiltering.java
+  - src/main/java/com/airbyte/api/models/shared/RowFilteringOperation.java
+  - src/main/java/com/airbyte/api/models/shared/RowFilteringOperationType.java
   - src/main/java/com/airbyte/api/models/shared/Rss.java
   - src/main/java/com/airbyte/api/models/shared/Ruddr.java
   - src/main/java/com/airbyte/api/models/shared/S3.java
   - src/main/java/com/airbyte/api/models/shared/S3AmazonWebServices.java
   - src/main/java/com/airbyte/api/models/shared/S3BucketRegion.java
+  - src/main/java/com/airbyte/api/models/shared/S3DataLake.java
   - src/main/java/com/airbyte/api/models/shared/S3Glue.java
   - src/main/java/com/airbyte/api/models/shared/SCPSecureCopyProtocol.java
   - src/main/java/com/airbyte/api/models/shared/SFTPSecureFileTransferProtocol.java
@@ -3964,6 +4188,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Senseforce.java
   - src/main/java/com/airbyte/api/models/shared/Sentry.java
   - src/main/java/com/airbyte/api/models/shared/SerializationLibrary.java
+  - src/main/java/com/airbyte/api/models/shared/Serpstat.java
   - src/main/java/com/airbyte/api/models/shared/ServerManaged.java
   - src/main/java/com/airbyte/api/models/shared/ServiceAccount.java
   - src/main/java/com/airbyte/api/models/shared/ServiceAccountAuthentication.java
@@ -3971,6 +4196,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ServiceAccountKeyAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/ServiceKeyAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/ServiceName.java
+  - src/main/java/com/airbyte/api/models/shared/ServiceNow.java
   - src/main/java/com/airbyte/api/models/shared/Sevenshifts.java
   - src/main/java/com/airbyte/api/models/shared/Sftp.java
   - src/main/java/com/airbyte/api/models/shared/SftpBulk.java
@@ -3978,6 +4204,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/ShareTypeUsedForMostPopularSharedStream.java
   - src/main/java/com/airbyte/api/models/shared/Sharetribe.java
   - src/main/java/com/airbyte/api/models/shared/Shippo.java
+  - src/main/java/com/airbyte/api/models/shared/Shipstation.java
   - src/main/java/com/airbyte/api/models/shared/Shopify.java
   - src/main/java/com/airbyte/api/models/shared/ShopifyAuthorizationMethod.java
   - src/main/java/com/airbyte/api/models/shared/ShopifyCredentials.java
@@ -4025,6 +4252,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceAirtableSchemasAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceAkeneo.java
   - src/main/java/com/airbyte/api/models/shared/SourceAlgolia.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAlphaVantage.java
   - src/main/java/com/airbyte/api/models/shared/SourceAmazonAds.java
   - src/main/java/com/airbyte/api/models/shared/SourceAmazonAdsAmazonAds.java
   - src/main/java/com/airbyte/api/models/shared/SourceAmazonAdsAuthType.java
@@ -4058,11 +4286,14 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasCredentialsAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasStreamsFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureBlobStorageSchemasStreamsFormatFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceAzureTable.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBabelforce.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBabelforceRegion.java
   - src/main/java/com/airbyte/api/models/shared/SourceBambooHr.java
   - src/main/java/com/airbyte/api/models/shared/SourceBasecamp.java
   - src/main/java/com/airbyte/api/models/shared/SourceBeamer.java
@@ -4077,6 +4308,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceBraintree.java
   - src/main/java/com/airbyte/api/models/shared/SourceBraintreeEnvironment.java
   - src/main/java/com/airbyte/api/models/shared/SourceBraze.java
+  - src/main/java/com/airbyte/api/models/shared/SourceBreezometer.java
   - src/main/java/com/airbyte/api/models/shared/SourceBreezyHr.java
   - src/main/java/com/airbyte/api/models/shared/SourceBrevo.java
   - src/main/java/com/airbyte/api/models/shared/SourceBrex.java
@@ -4091,6 +4323,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceCampayn.java
   - src/main/java/com/airbyte/api/models/shared/SourceCanny.java
   - src/main/java/com/airbyte/api/models/shared/SourceCapsuleCrm.java
+  - src/main/java/com/airbyte/api/models/shared/SourceCaptainData.java
   - src/main/java/com/airbyte/api/models/shared/SourceCareQualityCommission.java
   - src/main/java/com/airbyte/api/models/shared/SourceCart.java
   - src/main/java/com/airbyte/api/models/shared/SourceCartAuthType.java
@@ -4126,6 +4359,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceCoda.java
   - src/main/java/com/airbyte/api/models/shared/SourceCodefresh.java
   - src/main/java/com/airbyte/api/models/shared/SourceCoinApi.java
+  - src/main/java/com/airbyte/api/models/shared/SourceCoingeckoCoins.java
   - src/main/java/com/airbyte/api/models/shared/SourceCoinmarketcap.java
   - src/main/java/com/airbyte/api/models/shared/SourceConcord.java
   - src/main/java/com/airbyte/api/models/shared/SourceConcordEnvironment.java
@@ -4171,6 +4405,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceEventbrite.java
   - src/main/java/com/airbyte/api/models/shared/SourceEventee.java
   - src/main/java/com/airbyte/api/models/shared/SourceEventzilla.java
+  - src/main/java/com/airbyte/api/models/shared/SourceEverhour.java
   - src/main/java/com/airbyte/api/models/shared/SourceExchangeRates.java
   - src/main/java/com/airbyte/api/models/shared/SourceEzofficeinventory.java
   - src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketing.java
@@ -4182,6 +4417,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceFacebookMarketingValidEnums.java
   - src/main/java/com/airbyte/api/models/shared/SourceFactorial.java
   - src/main/java/com/airbyte/api/models/shared/SourceFaker.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFastbill.java
   - src/main/java/com/airbyte/api/models/shared/SourceFauna.java
   - src/main/java/com/airbyte/api/models/shared/SourceFaunaDeletionMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceFaunaSchemasDeletionMode.java
@@ -4218,6 +4454,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceFreshservice.java
   - src/main/java/com/airbyte/api/models/shared/SourceFront.java
   - src/main/java/com/airbyte/api/models/shared/SourceFulcrum.java
+  - src/main/java/com/airbyte/api/models/shared/SourceFullstory.java
   - src/main/java/com/airbyte/api/models/shared/SourceGainsightPx.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcs.java
   - src/main/java/com/airbyte/api/models/shared/SourceGcsAuthType.java
@@ -4515,7 +4752,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveAvroFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveCSVFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveCSVHeaderDefinition.java
-  - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveDocumentFileTypeFormatExperimental.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveDeliveryType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveExcelFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveFileBasedStreamConfig.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveFormat.java
@@ -4529,13 +4767,16 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveParsingStrategy.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveProcessing.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasDeliveryType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasStreamsFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasStreamsFormatFiletype.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasStreamsFormatFormat6Filetype.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasStreamsFormatFormatFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveSchemasStreamsHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveServiceAccountKeyAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveUnstructuredDocumentFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveUserProvided.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleDriveValidationPolicy.java
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleForms.java
@@ -4559,6 +4800,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceGoogleWebfonts.java
   - src/main/java/com/airbyte/api/models/shared/SourceGorgias.java
   - src/main/java/com/airbyte/api/models/shared/SourceGreenhouse.java
+  - src/main/java/com/airbyte/api/models/shared/SourceGreythr.java
   - src/main/java/com/airbyte/api/models/shared/SourceGridly.java
   - src/main/java/com/airbyte/api/models/shared/SourceGuru.java
   - src/main/java/com/airbyte/api/models/shared/SourceGutendex.java
@@ -4569,8 +4811,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceHarvestAuthenticationMechanism.java
   - src/main/java/com/airbyte/api/models/shared/SourceHarvestSchemasAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceHeight.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHellobaton.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHelpScout.java
   - src/main/java/com/airbyte/api/models/shared/SourceHibob.java
   - src/main/java/com/airbyte/api/models/shared/SourceHighLevel.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHoorayhr.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubplanner.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubspot.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotAuthType.java
@@ -4578,7 +4823,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotHubspot.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotOAuth.java
   - src/main/java/com/airbyte/api/models/shared/SourceHubspotSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHuggingFaceDatasets.java
   - src/main/java/com/airbyte/api/models/shared/SourceHumanitix.java
+  - src/main/java/com/airbyte/api/models/shared/SourceHuntr.java
   - src/main/java/com/airbyte/api/models/shared/SourceIlluminaBasespace.java
   - src/main/java/com/airbyte/api/models/shared/SourceIncidentIo.java
   - src/main/java/com/airbyte/api/models/shared/SourceInflowinventory.java
@@ -4587,7 +4834,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceInstagramInstagram.java
   - src/main/java/com/airbyte/api/models/shared/SourceInstatus.java
   - src/main/java/com/airbyte/api/models/shared/SourceIntercom.java
-  - src/main/java/com/airbyte/api/models/shared/SourceIntercomIntercom.java
+  - src/main/java/com/airbyte/api/models/shared/SourceIntruder.java
   - src/main/java/com/airbyte/api/models/shared/SourceInvoiced.java
   - src/main/java/com/airbyte/api/models/shared/SourceInvoiceninja.java
   - src/main/java/com/airbyte/api/models/shared/SourceIp2whois.java
@@ -4601,6 +4848,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceJustcall.java
   - src/main/java/com/airbyte/api/models/shared/SourceK6Cloud.java
   - src/main/java/com/airbyte/api/models/shared/SourceKatana.java
+  - src/main/java/com/airbyte/api/models/shared/SourceKeka.java
   - src/main/java/com/airbyte/api/models/shared/SourceKisi.java
   - src/main/java/com/airbyte/api/models/shared/SourceKissmetrics.java
   - src/main/java/com/airbyte/api/models/shared/SourceKlarna.java
@@ -4644,6 +4892,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMailchimpOAuth20.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailchimpSchemasAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailerlite.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMailersend.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailgun.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailjetMail.java
   - src/main/java/com/airbyte/api/models/shared/SourceMailjetSms.java
@@ -4652,6 +4901,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMarketo.java
   - src/main/java/com/airbyte/api/models/shared/SourceMarketstack.java
   - src/main/java/com/airbyte/api/models/shared/SourceMention.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMerge.java
   - src/main/java/com/airbyte/api/models/shared/SourceMetabase.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftDataverse.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftEntraId.java
@@ -4693,6 +4943,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointAvroFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointCSVFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointCSVHeaderDefinition.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointCopyRawFiles.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointDeliveryMethod.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointDeliveryType.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointExcelFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointFileBasedStreamConfig.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointFiletype.java
@@ -4706,7 +4959,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointParquetFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointParsingStrategy.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointProcessing.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointReplicateRecords.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasAuthType.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasDeliveryType.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceMicrosoftSharepointSchemasStreamsFiletype.java
@@ -4732,6 +4987,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMixpanelRegion.java
   - src/main/java/com/airbyte/api/models/shared/SourceMixpanelSchemasOptionTitle.java
   - src/main/java/com/airbyte/api/models/shared/SourceMode.java
+  - src/main/java/com/airbyte/api/models/shared/SourceModeMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceMonday.java
   - src/main/java/com/airbyte/api/models/shared/SourceMondayAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceMondayAuthorizationMethod.java
@@ -4763,30 +5019,36 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceMux.java
   - src/main/java/com/airbyte/api/models/shared/SourceMyHours.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysql.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMysqlEncryption.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlInvalidCDCPositionBehaviorAdvanced.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlMysql.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlNoTunnel.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlPasswordAuthentication.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMysqlReadChangesUsingChangeDataCaptureCDC.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSSHKeyAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSSHTunnelMethod.java
-  - src/main/java/com/airbyte/api/models/shared/SourceMysqlSSLModes.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlScanChangesWithUserDefinedCursor.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasMode.java
-  - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasSSLModeSSLModesMode.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasSslModeEncryptionMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasSslModeMode.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlSchemasTunnelMethodTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceMysqlUpdateMethod.java
-  - src/main/java/com/airbyte/api/models/shared/SourceMysqlVerifyCA.java
+  - src/main/java/com/airbyte/api/models/shared/SourceMysqlVerifyCa.java
   - src/main/java/com/airbyte/api/models/shared/SourceN8n.java
   - src/main/java/com/airbyte/api/models/shared/SourceNasa.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNavan.java
   - src/main/java/com/airbyte/api/models/shared/SourceNetsuite.java
   - src/main/java/com/airbyte/api/models/shared/SourceNewsApi.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNewsdata.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNewsdataCategory.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNewsdataCountry.java
   - src/main/java/com/airbyte/api/models/shared/SourceNewsdataIo.java
+  - src/main/java/com/airbyte/api/models/shared/SourceNewsdataLanguage.java
   - src/main/java/com/airbyte/api/models/shared/SourceNocrm.java
   - src/main/java/com/airbyte/api/models/shared/SourceNorthpassLms.java
   - src/main/java/com/airbyte/api/models/shared/SourceNotion.java
@@ -4836,7 +5098,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceOracleTunnelMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceOracleUnencrypted.java
   - src/main/java/com/airbyte/api/models/shared/SourceOrb.java
-  - src/main/java/com/airbyte/api/models/shared/SourceOrbit.java
   - src/main/java/com/airbyte/api/models/shared/SourceOura.java
   - src/main/java/com/airbyte/api/models/shared/SourceOutbrainAmplify.java
   - src/main/java/com/airbyte/api/models/shared/SourceOutbrainAmplifyAccessToken.java
@@ -4850,6 +5111,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePapersign.java
   - src/main/java/com/airbyte/api/models/shared/SourcePardot.java
   - src/main/java/com/airbyte/api/models/shared/SourcePatchRequest.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePayfit.java
   - src/main/java/com/airbyte/api/models/shared/SourcePaypalTransaction.java
   - src/main/java/com/airbyte/api/models/shared/SourcePaystack.java
   - src/main/java/com/airbyte/api/models/shared/SourcePendo.java
@@ -4858,6 +5120,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePersona.java
   - src/main/java/com/airbyte/api/models/shared/SourcePexelsApi.java
   - src/main/java/com/airbyte/api/models/shared/SourcePicqer.java
+  - src/main/java/com/airbyte/api/models/shared/SourcePingdom.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterest.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterestAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourcePinterestLevel.java
@@ -4914,9 +5177,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourcePypi.java
   - src/main/java/com/airbyte/api/models/shared/SourceQualaroo.java
   - src/main/java/com/airbyte/api/models/shared/SourceQuickbooks.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooksAuthType.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooksAuthorizationMethod.java
-  - src/main/java/com/airbyte/api/models/shared/SourceQuickbooksOAuth20.java
   - src/main/java/com/airbyte/api/models/shared/SourceRailz.java
   - src/main/java/com/airbyte/api/models/shared/SourceRdStationMarketing.java
   - src/main/java/com/airbyte/api/models/shared/SourceRdStationMarketingAuthType.java
@@ -4934,6 +5194,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceRepairshopr.java
   - src/main/java/com/airbyte/api/models/shared/SourceReplyIo.java
   - src/main/java/com/airbyte/api/models/shared/SourceResponse.java
+  - src/main/java/com/airbyte/api/models/shared/SourceRetailexpressByMaropost.java
   - src/main/java/com/airbyte/api/models/shared/SourceRetently.java
   - src/main/java/com/airbyte/api/models/shared/SourceRetentlyAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceRetentlyAuthenticationMechanism.java
@@ -4941,7 +5202,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceRevenuecat.java
   - src/main/java/com/airbyte/api/models/shared/SourceRevolutMerchant.java
   - src/main/java/com/airbyte/api/models/shared/SourceRevolutMerchantEnvironment.java
+  - src/main/java/com/airbyte/api/models/shared/SourceRingcentral.java
   - src/main/java/com/airbyte/api/models/shared/SourceRkiCovid.java
+  - src/main/java/com/airbyte/api/models/shared/SourceRocketChat.java
   - src/main/java/com/airbyte/api/models/shared/SourceRocketlane.java
   - src/main/java/com/airbyte/api/models/shared/SourceRollbar.java
   - src/main/java/com/airbyte/api/models/shared/SourceRootly.java
@@ -4952,6 +5215,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceS3AvroFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3CSVFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3CSVHeaderDefinition.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3CopyRawFiles.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3DeliveryMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3DeliveryType.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3ExcelFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3FileBasedStreamConfig.java
@@ -4965,7 +5230,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceS3ParquetFormat.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3ParsingStrategy.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3Processing.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3ReplicateRecords.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3S3.java
+  - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasDeliveryType.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasFiletype.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasHeaderDefinitionType.java
   - src/main/java/com/airbyte/api/models/shared/SourceS3SchemasStreamsFiletype.java
@@ -4980,6 +5247,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceSageHr.java
   - src/main/java/com/airbyte/api/models/shared/SourceSalesflare.java
   - src/main/java/com/airbyte/api/models/shared/SourceSalesforce.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSalesforceAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceSalesforceSalesforce.java
   - src/main/java/com/airbyte/api/models/shared/SourceSalesloft.java
   - src/main/java/com/airbyte/api/models/shared/SourceSalesloftAuthType.java
@@ -4996,6 +5264,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceSendpulse.java
   - src/main/java/com/airbyte/api/models/shared/SourceSenseforce.java
   - src/main/java/com/airbyte/api/models/shared/SourceSentry.java
+  - src/main/java/com/airbyte/api/models/shared/SourceSerpstat.java
+  - src/main/java/com/airbyte/api/models/shared/SourceServiceNow.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftp.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceSftpAuthentication.java
@@ -5042,6 +5312,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceSftpSchemasAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceSharetribe.java
   - src/main/java/com/airbyte/api/models/shared/SourceShippo.java
+  - src/main/java/com/airbyte/api/models/shared/SourceShipstation.java
   - src/main/java/com/airbyte/api/models/shared/SourceShopify.java
   - src/main/java/com/airbyte/api/models/shared/SourceShopifyAuthMethod.java
   - src/main/java/com/airbyte/api/models/shared/SourceShopifyOAuth20.java
@@ -5122,7 +5393,9 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceTiktokMarketingTiktokMarketing.java
   - src/main/java/com/airbyte/api/models/shared/SourceTimely.java
   - src/main/java/com/airbyte/api/models/shared/SourceTinyemail.java
+  - src/main/java/com/airbyte/api/models/shared/SourceTmdb.java
   - src/main/java/com/airbyte/api/models/shared/SourceTodoist.java
+  - src/main/java/com/airbyte/api/models/shared/SourceToggl.java
   - src/main/java/com/airbyte/api/models/shared/SourceTrackPms.java
   - src/main/java/com/airbyte/api/models/shared/SourceTrello.java
   - src/main/java/com/airbyte/api/models/shared/SourceTremendous.java
@@ -5135,9 +5408,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceTrustpilotSchemasAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceTvmazeSchedule.java
   - src/main/java/com/airbyte/api/models/shared/SourceTwelveData.java
+  - src/main/java/com/airbyte/api/models/shared/SourceTwelveDataInterval.java
   - src/main/java/com/airbyte/api/models/shared/SourceTwilio.java
   - src/main/java/com/airbyte/api/models/shared/SourceTwilioTaskrouter.java
   - src/main/java/com/airbyte/api/models/shared/SourceTwitter.java
+  - src/main/java/com/airbyte/api/models/shared/SourceTyntecSms.java
   - src/main/java/com/airbyte/api/models/shared/SourceTypeform.java
   - src/main/java/com/airbyte/api/models/shared/SourceTypeformAuthType.java
   - src/main/java/com/airbyte/api/models/shared/SourceTypeformAuthorizationMethod.java
@@ -5168,6 +5443,8 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceWoocommerce.java
   - src/main/java/com/airbyte/api/models/shared/SourceWordpress.java
   - src/main/java/com/airbyte/api/models/shared/SourceWorkable.java
+  - src/main/java/com/airbyte/api/models/shared/SourceWorkday.java
+  - src/main/java/com/airbyte/api/models/shared/SourceWorkdayAuthentication.java
   - src/main/java/com/airbyte/api/models/shared/SourceWorkflowmax.java
   - src/main/java/com/airbyte/api/models/shared/SourceWorkramp.java
   - src/main/java/com/airbyte/api/models/shared/SourceWrike.java
@@ -5179,6 +5456,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/SourceYandexMetrica.java
   - src/main/java/com/airbyte/api/models/shared/SourceYotpo.java
   - src/main/java/com/airbyte/api/models/shared/SourceYouNeedABudgetYnab.java
+  - src/main/java/com/airbyte/api/models/shared/SourceYounium.java
   - src/main/java/com/airbyte/api/models/shared/SourceYoutubeAnalytics.java
   - src/main/java/com/airbyte/api/models/shared/SourceYoutubeAnalyticsYoutubeAnalytics.java
   - src/main/java/com/airbyte/api/models/shared/SourceYoutubeData.java
@@ -5241,7 +5519,6 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Squarespace.java
   - src/main/java/com/airbyte/api/models/shared/StandaloneMongoDbInstance.java
   - src/main/java/com/airbyte/api/models/shared/State.java
-  - src/main/java/com/airbyte/api/models/shared/StateFilterEnum.java
   - src/main/java/com/airbyte/api/models/shared/StatisticsInterval.java
   - src/main/java/com/airbyte/api/models/shared/Statsig.java
   - src/main/java/com/airbyte/api/models/shared/Status.java
@@ -5255,6 +5532,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Strava.java
   - src/main/java/com/airbyte/api/models/shared/StreamConfiguration.java
   - src/main/java/com/airbyte/api/models/shared/StreamConfigurations.java
+  - src/main/java/com/airbyte/api/models/shared/StreamConfigurationsInput.java
   - src/main/java/com/airbyte/api/models/shared/StreamMapperType.java
   - src/main/java/com/airbyte/api/models/shared/StreamProperties.java
   - src/main/java/com/airbyte/api/models/shared/StreamsCriteria.java
@@ -5270,6 +5548,11 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Systeme.java
   - src/main/java/com/airbyte/api/models/shared/TLSEncryptedVerifyCertificate.java
   - src/main/java/com/airbyte/api/models/shared/Taboola.java
+  - src/main/java/com/airbyte/api/models/shared/Tag.java
+  - src/main/java/com/airbyte/api/models/shared/TagCreateRequest.java
+  - src/main/java/com/airbyte/api/models/shared/TagPatchRequest.java
+  - src/main/java/com/airbyte/api/models/shared/TagResponse.java
+  - src/main/java/com/airbyte/api/models/shared/TagsResponse.java
   - src/main/java/com/airbyte/api/models/shared/TargetsType.java
   - src/main/java/com/airbyte/api/models/shared/Teamtailor.java
   - src/main/java/com/airbyte/api/models/shared/Teamwork.java
@@ -5281,6 +5564,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Testrail.java
   - src/main/java/com/airbyte/api/models/shared/TextSplitter.java
   - src/main/java/com/airbyte/api/models/shared/TheGuardianApi.java
+  - src/main/java/com/airbyte/api/models/shared/TheTargetedActionResourceForTheFetch.java
   - src/main/java/com/airbyte/api/models/shared/Thinkific.java
   - src/main/java/com/airbyte/api/models/shared/Throttled.java
   - src/main/java/com/airbyte/api/models/shared/Ticketmaster.java
@@ -5296,8 +5580,10 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Timely.java
   - src/main/java/com/airbyte/api/models/shared/Timeplus.java
   - src/main/java/com/airbyte/api/models/shared/Tinyemail.java
+  - src/main/java/com/airbyte/api/models/shared/Tmdb.java
   - src/main/java/com/airbyte/api/models/shared/ToValue.java
   - src/main/java/com/airbyte/api/models/shared/Todoist.java
+  - src/main/java/com/airbyte/api/models/shared/Toggl.java
   - src/main/java/com/airbyte/api/models/shared/TopHeadlinesTopic.java
   - src/main/java/com/airbyte/api/models/shared/TrackPms.java
   - src/main/java/com/airbyte/api/models/shared/TransformationQueryRunType.java
@@ -5310,6 +5596,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Twilio.java
   - src/main/java/com/airbyte/api/models/shared/TwilioTaskrouter.java
   - src/main/java/com/airbyte/api/models/shared/Twitter.java
+  - src/main/java/com/airbyte/api/models/shared/TyntecSms.java
   - src/main/java/com/airbyte/api/models/shared/Typeform.java
   - src/main/java/com/airbyte/api/models/shared/TypeformCredentials.java
   - src/main/java/com/airbyte/api/models/shared/Typesense.java
@@ -5359,12 +5646,14 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Weaviate.java
   - src/main/java/com/airbyte/api/models/shared/WebScrapper.java
   - src/main/java/com/airbyte/api/models/shared/Webflow.java
+  - src/main/java/com/airbyte/api/models/shared/WebhookNotificationConfig.java
   - src/main/java/com/airbyte/api/models/shared/WhenIWork.java
   - src/main/java/com/airbyte/api/models/shared/WhiskyHunter.java
   - src/main/java/com/airbyte/api/models/shared/WikipediaPageviews.java
   - src/main/java/com/airbyte/api/models/shared/Woocommerce.java
   - src/main/java/com/airbyte/api/models/shared/Wordpress.java
   - src/main/java/com/airbyte/api/models/shared/Workable.java
+  - src/main/java/com/airbyte/api/models/shared/Workday.java
   - src/main/java/com/airbyte/api/models/shared/Workflowmax.java
   - src/main/java/com/airbyte/api/models/shared/Workramp.java
   - src/main/java/com/airbyte/api/models/shared/WorkspaceCreateRequest.java
@@ -5382,6 +5671,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/models/shared/Yellowbrick.java
   - src/main/java/com/airbyte/api/models/shared/Yotpo.java
   - src/main/java/com/airbyte/api/models/shared/YouNeedABudgetYnab.java
+  - src/main/java/com/airbyte/api/models/shared/Younium.java
   - src/main/java/com/airbyte/api/models/shared/YoutubeAnalytics.java
   - src/main/java/com/airbyte/api/models/shared/YoutubeAnalyticsCredentials.java
   - src/main/java/com/airbyte/api/models/shared/YoutubeData.java
@@ -5420,6 +5710,7 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/FormMetadata.java
   - src/main/java/com/airbyte/api/utils/HTTPClient.java
   - src/main/java/com/airbyte/api/utils/HTTPRequest.java
+  - src/main/java/com/airbyte/api/utils/HasSecurity.java
   - src/main/java/com/airbyte/api/utils/HeaderMetadata.java
   - src/main/java/com/airbyte/api/utils/Helpers.java
   - src/main/java/com/airbyte/api/utils/Hook.java
@@ -5427,13 +5718,17 @@ generatedFiles:
   - src/main/java/com/airbyte/api/utils/JSON.java
   - src/main/java/com/airbyte/api/utils/LazySingletonValue.java
   - src/main/java/com/airbyte/api/utils/Metadata.java
+  - src/main/java/com/airbyte/api/utils/Multipart.java
   - src/main/java/com/airbyte/api/utils/MultipartFormMetadata.java
+  - src/main/java/com/airbyte/api/utils/NameValue.java
   - src/main/java/com/airbyte/api/utils/OneOfDeserializer.java
   - src/main/java/com/airbyte/api/utils/Options.java
   - src/main/java/com/airbyte/api/utils/PathParamsMetadata.java
+  - src/main/java/com/airbyte/api/utils/QueryEncoding.java
   - src/main/java/com/airbyte/api/utils/QueryParameter.java
   - src/main/java/com/airbyte/api/utils/QueryParameters.java
   - src/main/java/com/airbyte/api/utils/QueryParamsMetadata.java
+  - src/main/java/com/airbyte/api/utils/RecordingClient.java
   - src/main/java/com/airbyte/api/utils/RequestBody.java
   - src/main/java/com/airbyte/api/utils/RequestMetadata.java
   - src/main/java/com/airbyte/api/utils/Response.java
@@ -5453,16 +5748,16 @@ examples:
   createConnection:
     Connection Creation Request Example:
       requestBody:
-        application/json: {"destinationId": "e478de0d-a3a0-475c-b019-25f7dd29e281", "name": "Postgres-to-Bigquery", "sourceId": "95e66a59-8045-4307-9678-63bc3c9b8c93"}
+        application/json: {"dataResidency": "auto", "destinationId": "e478de0d-a3a0-475c-b019-25f7dd29e281", "name": "Postgres-to-Bigquery", "namespaceDefinition": "destination", "namespaceFormat": "<value>", "nonBreakingSchemaUpdatesBehavior": "ignore", "prefix": "", "sourceId": "95e66a59-8045-4307-9678-63bc3c9b8c93"}
       responses:
         "200":
-          application/json: {"connectionId": "<value>", "createdAt": 781932, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "cron"}, "sourceId": "<value>", "status": "deprecated", "workspaceId": "<value>"}
+          application/json: {"configurations": {}, "connectionId": "<value>", "createdAt": 781932, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "cron"}, "sourceId": "<value>", "status": "deprecated", "tags": [], "workspaceId": "<value>"}
     Connection Creation Response Example:
       requestBody:
-        application/json: {"destinationId": "1328ef85-1ea7-4fd4-b78a-5873822bcbf2", "namespaceFormat": "${SOURCE_NAMESPACE}", "sourceId": "0d0b7adc-3b02-490e-a47c-6957e4827afd"}
+        application/json: {"dataResidency": "auto", "destinationId": "328ef851-ea7f-4d47-88a5-873822bcbf2d", "namespaceDefinition": "destination", "namespaceFormat": "<value>", "nonBreakingSchemaUpdatesBehavior": "ignore", "prefix": "", "sourceId": "d0b7adc3-b029-40e4-a7c6-957e4827afdb"}
       responses:
         "200":
-          application/json: {"connectionId": "9924bcd0-99be-453d-ba47-c2c9766f7da5", "createdAt": 633409, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "cron"}, "sourceId": "<value>", "status": "active", "workspaceId": "<value>"}
+          application/json: {"configurations": {}, "connectionId": "9924bcd0-99be-453d-ba47-c2c9766f7da5", "createdAt": 640872, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "manual"}, "sourceId": "<value>", "status": "active", "tags": [{"color": "cyan", "name": "<value>", "tagId": "e853523a-fb3a-4e6f-ab07-c3dab5d69d79", "workspaceId": "ebc4c796-c29d-4482-8595-4d13693c59a2"}], "workspaceId": "<value>"}
   deleteConnection:
     speakeasy-default-delete-connection:
       parameters:
@@ -5475,44 +5770,49 @@ examples:
           connectionId: "<value>"
       responses:
         "200":
-          application/json: {"connectionId": "<value>", "createdAt": 934653, "destinationId": "744cc0ed-7f05-4949-9e60-2a814f90c035", "name": "Postgres To Snowflake", "schedule": {"scheduleType": "basic"}, "sourceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5", "status": "deprecated", "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}
+          application/json: {"configurations": {}, "connectionId": "<value>", "createdAt": 934653, "dataResidency": "auto", "destinationId": "744cc0ed-7f05-4949-9e60-2a814f90c035", "name": "Postgres To Snowflake", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "basic"}, "sourceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5", "status": "deprecated", "tags": [{"color": "plum", "name": "<value>", "tagId": "b4546de2-f321-41c6-9948-142095324d2e", "workspaceId": "17e4951a-e407-4789-8206-b16864ce5f12"}, {"color": "sky blue", "name": "<value>", "tagId": "b4405e44-2947-4837-b244-47b66ef5e8ae", "workspaceId": "918d2ca9-a317-4203-8b6e-805981f43fe2"}], "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}
   listConnections:
     speakeasy-default-list-connections:
+      parameters:
+        query:
+          includeDeleted: false
+          limit: 20
+          offset: 0
       responses:
         "200":
-          application/json: {"data": [{"connectionId": "<value>", "createdAt": 726733, "destinationId": "<value>", "name": "test-connection", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "deprecated", "workspaceId": "<value>"}, {"connectionId": "<value>", "createdAt": 909205, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "manual"}, "sourceId": "<value>", "status": "inactive", "workspaceId": "<value>"}, {"connectionId": "<value>", "createdAt": 374233, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "cron"}, "sourceId": "49237019-645d-47d4-b45b-5eddf97775ce", "status": "deprecated", "workspaceId": "<value>"}, {"connectionId": "<value>", "createdAt": 731924, "destinationId": "al312fs-0ab1-4f72-9ed7-0b8fc27c5826", "name": "<value>", "schedule": {"scheduleType": "manual"}, "sourceId": "<value>", "status": "inactive", "workspaceId": "<value>"}, {"connectionId": "<value>", "createdAt": 901846, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "manual"}, "sourceId": "<value>", "status": "deprecated", "workspaceId": "<value>"}, {"connectionId": "<value>", "createdAt": 475200, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "cron"}, "sourceId": "<value>", "status": "active", "workspaceId": "<value>"}, {"connectionId": "<value>", "createdAt": 143014, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "cron"}, "sourceId": "<value>", "status": "active", "workspaceId": "<value>"}], "next": "https://api.airbyte.com/v1/connections?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/connections?limit=5&offset=0"}
+          application/json: {"data": [{"configurations": {}, "connectionId": "<value>", "createdAt": 726733, "dataResidency": "auto", "destinationId": "<value>", "name": "test-connection", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "deprecated", "tags": [{"color": "grey", "name": "<value>", "tagId": "a57cb08e-c762-471d-8a7a-04783f69e675", "workspaceId": "3c652149-922c-4e01-aac2-001d6f740af7"}, {"color": "white", "name": "<value>", "tagId": "67a4cae4-cdf0-465b-a6aa-51c0435bd42a", "workspaceId": "ced986f7-e9d0-4438-b0f0-4622226f5515"}, {"color": "white", "name": "<value>", "tagId": "6e726826-84d9-475b-9843-2b202970fa01", "workspaceId": "2f301cba-1d84-41d1-9873-2c8d3acb53bb"}], "workspaceId": "<value>"}, {"configurations": {}, "connectionId": "<value>", "createdAt": 808076, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "inactive", "tags": [], "workspaceId": "<value>"}, {"configurations": {}, "connectionId": "<value>", "createdAt": 884379, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "manual"}, "sourceId": "49237019-645d-47d4-b45b-5eddf97775ce", "status": "active", "tags": [{"color": "orange", "name": "<value>", "tagId": "164a228e-17f2-4cbb-832a-554182adc8da", "workspaceId": "6207024d-c903-4e50-8969-f94237c9d7c9"}, {"color": "gold", "name": "<value>", "tagId": "b0cc902b-acff-4def-85ce-25c37e2027ce", "workspaceId": "52bb088a-99ac-49b4-93c4-fdb8fe8d3612"}, {"color": "maroon", "name": "<value>", "tagId": "af798c5c-737f-47ad-95ce-eb405bab6ad1", "workspaceId": "ec04abc4-49b4-4a61-a77f-6c0dd2c2ed68"}], "workspaceId": "<value>"}, {"configurations": {}, "connectionId": "<value>", "createdAt": 584545, "dataResidency": "auto", "destinationId": "al312fs-0ab1-4f72-9ed7-0b8fc27c5826", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "cron"}, "sourceId": "<value>", "status": "inactive", "tags": [{"color": "teal", "name": "<value>", "tagId": "e17d727d-7971-4e63-bc8a-8443f551b94a", "workspaceId": "40a42bea-9fa7-49d3-858c-d28e26b5d262"}, {"color": "tan", "name": "<value>", "tagId": "7f8a0fc7-e3ff-45a9-bc05-4fb599f3003f", "workspaceId": "2a86dca0-6682-477b-b194-3225cfb3db50"}, {"color": "red", "name": "<value>", "tagId": "15955c87-4dcd-4f1e-8d4c-c9a2ad68d233", "workspaceId": "4564af4a-f7b0-407b-8201-5ce5c0aa5c24"}], "workspaceId": "<value>"}, {"configurations": {}, "connectionId": "<value>", "createdAt": 821882, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "manual"}, "sourceId": "<value>", "status": "active", "tags": [], "workspaceId": "<value>"}, {"configurations": {}, "connectionId": "<value>", "createdAt": 105968, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "active", "tags": [], "workspaceId": "<value>"}, {"configurations": {}, "connectionId": "<value>", "createdAt": 283785, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "inactive", "tags": [], "workspaceId": "<value>"}], "next": "https://api.airbyte.com/v1/connections?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/connections?limit=5&offset=0"}
   patchConnection:
     Connection Update Request Example:
       parameters:
         path:
           connectionId: "<value>"
       requestBody:
-        application/json: {"name": "Postgres-to-Bigquery"}
+        application/json: {"name": "Postgres-to-Bigquery", "namespaceFormat": "<value>"}
       responses:
         "200":
-          application/json: {"connectionId": "<value>", "createdAt": 106227, "destinationId": "<value>", "name": "<value>", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "active", "workspaceId": "<value>"}
+          application/json: {"configurations": {}, "connectionId": "<value>", "createdAt": 106227, "dataResidency": "auto", "destinationId": "<value>", "name": "<value>", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "basic"}, "sourceId": "<value>", "status": "active", "tags": [], "workspaceId": "<value>"}
     Connection Get Response Example:
       parameters:
         path:
           connectionId: "<value>"
       requestBody:
-        application/json: {"namespaceFormat": "${SOURCE_NAMESPACE}"}
+        application/json: {"namespaceFormat": "<value>"}
       responses:
         "200":
-          application/json: {"connectionId": "<value>", "createdAt": 184214, "destinationId": "744cc0ed-7f05-4949-9e60-2a814f90c035", "name": "Postgres To Snowflake", "schedule": {"scheduleType": "manual"}, "sourceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5", "status": "active", "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}
+          application/json: {"configurations": {}, "connectionId": "<value>", "createdAt": 287886, "dataResidency": "auto", "destinationId": "744cc0ed-7f05-4949-9e60-2a814f90c035", "name": "Postgres To Snowflake", "namespaceDefinition": "destination", "nonBreakingSchemaUpdatesBehavior": "ignore", "schedule": {"scheduleType": "manual"}, "sourceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5", "status": "active", "tags": [{"color": "sky blue", "name": "<value>", "tagId": "2532230c-083c-40b4-8513-a87f320dcb52", "workspaceId": "73f7fe79-5e52-4d4f-a4a0-e68d60f6f5f8"}, {"color": "red", "name": "<value>", "tagId": "761f7386-b693-45f8-a46c-01122647425f", "workspaceId": "e8035a4c-bbbe-4aca-9e68-2a0b466b2ded"}], "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}
   createDestination:
     Destination Creation Request Example:
       requestBody:
-        application/json: {"configuration": {"indexing": {"credentials": {"password": "AIRBYTE_PASSWORD"}, "database": "AIRBYTE_DATABASE", "default_schema": "AIRBYTE_SCHEMA", "host": "AIRBYTE_ACCOUNT", "port": "5432", "username": "AIRBYTE_USER"}, "processing": {"chunk_size": 540943, "metadata_fields": ["age"], "text_fields": ["users.*.name"]}}, "name": "Postgres", "workspaceId": "2155ae5a-de39-4808-af6a-16fe7b8b4ed2"}
+        application/json: {"configuration": {"embedding": {}, "indexing": {"credentials": {"password": "AIRBYTE_PASSWORD"}, "database": "AIRBYTE_DATABASE", "default_schema": "public", "host": "AIRBYTE_ACCOUNT", "port": 5432, "username": "AIRBYTE_USER"}, "omit_raw_text": false, "processing": {"chunk_overlap": 0, "chunk_size": 540943, "metadata_fields": ["age"], "text_fields": ["users.*.name"]}}, "name": "Postgres", "workspaceId": "2155ae5a-de39-4808-af6a-16fe7b8b4ed2"}
       responses:
         "200":
-          application/json: {"configuration": {"indexing": {"auth": {"password": "0SAaZ1kxEg7h49V", "username": "Sonny.Miller"}, "collection": "<value>", "host": "tcp://my-local-milvus:19530"}, "processing": {"chunk_size": 727665, "metadata_fields": ["age"], "text_fields": ["text"]}}, "createdAt": 656314, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"auth_type": {"password": "G0SAaZ1kxEg7h49", "username": "Virgil.Tremblay59"}, "database": "<value>"}, "createdAt": 167061, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Destination Creation Response Example:
       requestBody:
-        application/json: {"configuration": {"credential": {"hmac_key_access_id": "1234567890abcdefghij1234", "hmac_key_secret": "1234567890abcdefghij1234567890ABCDEFGHIJ"}, "gcs_bucket_name": "airbyte_sync", "gcs_bucket_path": "data_sync/test"}, "name": "<value>", "workspaceId": "b4797bfc-7d8a-4652-9eb4-9a265e47b02e"}
+        application/json: {"configuration": {"database": "<value>", "disable_type_dedupe": false, "host": "soft-railway.com", "port": 3306, "ssl": true, "username": "Cole_Hermiston74"}, "name": "<value>", "workspaceId": "797bfc7d-8a65-42eb-a49a-265e47b02e60"}
       responses:
         "200":
-          application/json: {"configuration": {"bucket_name": "<value>", "credentials": {"aws_access_key_id": "<id>", "aws_secret_access_key": "<value>"}, "lakeformation_database_name": "<value>"}, "createdAt": 948482, "definitionId": "<value>", "destinationId": "af0c3c67-aa61-419f-8922-95b0bf840e86", "destinationType": "<value>", "name": "<value>", "workspaceId": "<value>"}
+          application/json: {"configuration": {"corpus_name": "<value>", "customer_id": "<id>", "oauth2": {"client_id": "<id>", "client_secret": "<value>"}, "parallelize": false, "title_field": ""}, "createdAt": 90520, "definitionId": "<value>", "destinationId": "af0c3c67-aa61-419f-8922-95b0bf840e86", "destinationType": "<value>", "name": "<value>", "workspaceId": "<value>"}
   deleteDestination:
     speakeasy-default-delete-destination:
       parameters:
@@ -5525,12 +5825,17 @@ examples:
           destinationId: "<value>"
       responses:
         "200":
-          application/json: {"configuration": {"host": "cooperative-brochure.biz", "sid": "<id>", "username": "Colt_Greenfelder"}, "createdAt": 243454, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "My Destination", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"host": "cooperative-brochure.biz", "port": 1521, "schema": "airbyte", "sid": "<id>", "username": "Colt_Greenfelder"}, "createdAt": 243454, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "My Destination", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   listDestinations:
     speakeasy-default-list-destinations:
+      parameters:
+        query:
+          includeDeleted: false
+          limit: 20
+          offset: 0
       responses:
         "200":
-          application/json: {"data": [{"configuration": {"glue_database": "airbyte_database", "s3_bucket_name": "airbyte_sync", "s3_bucket_path": "data_sync/test"}, "createdAt": 607289, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}], "next": "https://api.airbyte.com/v1/destinations?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/destinations?limit=5&offset=0"}
+          application/json: {"data": [{"configuration": {"format": {"flattening": "Root level flattening", "format_type": "JSONL"}, "glue_database": "airbyte_database", "glue_serialization_library": "org.openx.data.jsonserde.JsonSerDe", "s3_bucket_name": "airbyte_sync", "s3_bucket_path": "data_sync/test", "s3_bucket_region": "", "s3_endpoint": ""}, "createdAt": 607289, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}], "next": "https://api.airbyte.com/v1/destinations?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/destinations?limit=5&offset=0"}
   patchDestination:
     Destination Update Request Example:
       parameters:
@@ -5540,35 +5845,35 @@ examples:
         application/json: {"configuration": {"destination_path": "motherduck:"}, "name": "My Destination"}
       responses:
         "200":
-          application/json: {"configuration": {"database": "<value>", "host": "disloyal-lox.net", "username": "Tania.Lehner-Yundt67"}, "createdAt": 195047, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"database": "<value>", "host": "disloyal-lox.net", "port": 5432, "schema": "public", "ssl": false, "username": "Tania.Lehner-Yundt67"}, "createdAt": 195047, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Destination Update Response Example:
       parameters:
         path:
           destinationId: "<value>"
       requestBody:
-        application/json: {"configuration": {"corpus_name": "<value>", "customer_id": "<id>", "oauth2": {"client_id": "<id>", "client_secret": "<value>"}}}
+        application/json: {"configuration": {"corpus_name": "<value>", "customer_id": "<id>", "oauth2": {"client_id": "<id>", "client_secret": "<value>"}, "parallelize": false, "title_field": ""}}
       responses:
         "200":
-          application/json: {"configuration": {"destination_path": "motherduck:"}, "createdAt": 663057, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"access_key_id": "A012345678910EXAMPLE", "dynamodb_endpoint": "", "dynamodb_region": "", "dynamodb_table_name_prefix": "airbyte_sync", "secret_access_key": "a012345678910ABCDEFGH/AbCdEfGhEXAMPLEKEY"}, "createdAt": 800544, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   putDestination:
     Destination Update Request Example:
       parameters:
         path:
           destinationId: "<value>"
       requestBody:
-        application/json: {"configuration": {"database": "<value>", "host": "urban-receptor.org", "username": "Kaylie_Terry"}, "name": "My Destination"}
+        application/json: {"configuration": {"database": "<value>", "host": "urban-receptor.org", "port": 8123, "ssl": false, "username": "Kaylie_Terry"}, "name": "My Destination"}
       responses:
         "200":
-          application/json: {"configuration": {"project_id": "<id>"}, "createdAt": 946510, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"credential": {"credential_type": "HMAC_KEY", "hmac_key_access_id": "1234567890abcdefghij1234", "hmac_key_secret": "1234567890abcdefghij1234567890ABCDEFGHIJ"}, "format": {"block_size_mb": 128, "compression_codec": "UNCOMPRESSED", "dictionary_encoding": true, "dictionary_page_size_kb": 1024, "format_type": "Parquet", "max_padding_size_mb": 8, "page_size_kb": 1024}, "gcs_bucket_name": "airbyte_sync", "gcs_bucket_path": "data_sync/test", "gcs_bucket_region": "us"}, "createdAt": 353152, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "postgres", "name": "Analytics Team Postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Destination Update Response Example:
       parameters:
         path:
           destinationId: "<value>"
       requestBody:
-        application/json: {"configuration": {"credential": {"hmac_key_access_id": "1234567890abcdefghij1234", "hmac_key_secret": "1234567890abcdefghij1234567890ABCDEFGHIJ"}, "gcs_bucket_name": "airbyte_sync", "gcs_bucket_path": "data_sync/test"}, "name": "<value>"}
+        application/json: {"configuration": {"project_id": "<id>"}, "name": "<value>"}
       responses:
         "200":
-          application/json: {"configuration": {"database": "<value>", "host": "concerned-warming.biz", "username": "Helen.Lubowitz52"}, "createdAt": 490036, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"database": "<value>", "host": "concerned-warming.biz", "port": "1433", "schema": "public", "ssl_method": {"name": "encrypted_trust_server_certificate"}, "user": "charles"}, "createdAt": 706041, "definitionId": "<value>", "destinationId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "destinationType": "<value>", "name": "running", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   getHealthCheck: {}
   cancelJob:
     speakeasy-default-cancel-job:
@@ -5603,6 +5908,8 @@ examples:
     "":
       parameters:
         query:
+          limit: 20
+          offset: 0
           createdAtStart: 1687450500000
           createdAtEnd: 1687450500000
           updatedAtStart: 1687450500000
@@ -5614,6 +5921,8 @@ examples:
     Job List Response Example:
       parameters:
         query:
+          limit: 20
+          offset: 0
           createdAtStart: 1687450500000
           createdAtEnd: 1687450500000
           updatedAtStart: 1687450500000
@@ -5671,16 +5980,16 @@ examples:
   createSource:
     Source Creation Request Example:
       requestBody:
-        application/json: {"configuration": {"api_key": "<value>", "start_date": "2021-01-01T00:00:00Z"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+        application/json: {"configuration": {"api_key": "<value>", "base_url": "https://app.posthog.com", "events_time_step": 30, "start_date": "2021-01-01T00:00:00Z"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
       responses:
         "200":
-          application/json: {"configuration": {"api_key": "<value>"}, "createdAt": 45355, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"include_private_channels": false, "join_channels": true, "lookback_window": 0, "start_date": "2017-01-25T00:00:00Z"}, "createdAt": 45355, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Source Creation Response Example:
       requestBody:
         application/json: {"configuration": {"api_key": "<value>"}, "name": "<value>", "workspaceId": "fdc883bf-195a-466e-bf9b-b403f120decf"}
       responses:
         "200":
-          application/json: {"configuration": {"token": "<value>"}, "createdAt": 909345, "definitionId": "<value>", "name": "<value>", "sourceId": "0c31738c-0b2d-4887-b506-e2cd1c39cc35", "sourceType": "<value>", "workspaceId": "<value>"}
+          application/json: {"configuration": {"start_date": "2020-10-15T00:00:00Z", "subdomain": "<value>"}, "createdAt": 909345, "definitionId": "<value>", "name": "<value>", "sourceId": "0c31738c-0b2d-4887-b506-e2cd1c39cc35", "sourceType": "<value>", "workspaceId": "<value>"}
   deleteSource:
     speakeasy-default-delete-source:
       parameters:
@@ -5693,7 +6002,7 @@ examples:
           sourceId: "<value>"
       responses:
         "200":
-          application/json: {"configuration": {"credentials": {"access_token": "<value>"}}, "createdAt": 227873, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"credentials": {"access_token": "<value>"}, "enable_experimental_streams": false}, "createdAt": 227873, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   initiateOAuth:
     speakeasy-default-initiate-O-auth:
       requestBody:
@@ -5703,19 +6012,22 @@ examples:
       parameters:
         query:
           workspaceIds: ["df08f6b0-b364-4cc1-9b3f-96f5d2fccfb2,b0796797-de23-4fc7-a5e2-7e131314718c"]
+          includeDeleted: false
+          limit: 20
+          offset: 0
       responses:
         "200":
-          application/json: {"data": [{"configuration": {"api_key": "<value>", "start_date": "2024-07-26T03:28:50.329Z"}, "createdAt": 736973, "definitionId": "<value>", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}], "next": "https://api.airbyte.com/v1/sources?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/sources?limit=5&offset=0"}
+          application/json: {"data": [{"configuration": {"api_token": "<value>", "start_date": "2025-07-26T03:28:50.329Z"}, "createdAt": 736973, "definitionId": "<value>", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}], "next": "https://api.airbyte.com/v1/sources?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/sources?limit=5&offset=0"}
   patchSource:
     Source Update Request Example:
       parameters:
         path:
           sourceId: "<value>"
       requestBody:
-        application/json: {"configuration": {"x-api-key": "<value>"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+        application/json: {"configuration": {"access_key": "<value>", "ignore_weekends": true, "start_date": "YYYY-MM-DD"}, "name": "My Source", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
       responses:
         "200":
-          application/json: {"configuration": {"secret": "<value>"}, "createdAt": 183665, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"api_key": "<value>", "channel_ids": []}, "createdAt": 107996, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Source Update Response Example:
       parameters:
         path:
@@ -5724,34 +6036,70 @@ examples:
         application/json: {"configuration": {"api_key": "<value>"}, "name": "My source"}
       responses:
         "200":
-          application/json: {"configuration": {"api_key": "<value>"}, "createdAt": 291381, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"api_key": "<value>"}, "createdAt": 491555, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   putSource:
     Source Update Request Example:
       parameters:
         path:
           sourceId: "<value>"
       requestBody:
-        application/json: {"configuration": {"api_key": "<value>", "grid_id": "<id>"}, "name": "My Source"}
+        application/json: {"configuration": {}, "name": "My Source"}
       responses:
         "200":
-          application/json: {"configuration": {"api_key": "<value>", "api_secret": "<value>", "shop": "<value>", "start_date": "2021-01-01"}, "createdAt": 27682, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+          application/json: {"configuration": {"access": "all-access", "agent": "all-agents", "article": "Are_You_the_One%3F", "country": "FR", "end": "<value>", "project": "commons.wikimedia.org", "start": "<value>"}, "createdAt": 634630, "definitionId": "321d9b60-11d1-44cb-8c92-c246d53bf98e", "name": "Analytics Team Postgres", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
     Source Update Response Example:
       parameters:
         path:
           sourceId: "<value>"
       requestBody:
-        application/json: {"configuration": {"client_id": "<id>", "developer_token": "<value>", "refresh_token": "<value>"}, "name": "<value>"}
+        application/json: {"configuration": {"api_key": "<value>", "podcast_id": "<id>", "start_date": "2024-01-08T00:32:16.253Z"}, "name": "<value>"}
       responses:
         "200":
-          application/json: {"configuration": {"api_token": "<value>"}, "createdAt": 959713, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
+          application/json: {"configuration": {"api_key": "<value>", "user_email": "<value>"}, "createdAt": 365058, "definitionId": "<value>", "name": "running", "sourceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "sourceType": "postgres", "workspaceId": "744cc0ed-7f05-4949-9e60-2a814f90c035"}
   getStreamProperties:
     speakeasy-default-get-stream-properties:
       parameters:
         query:
           sourceId: "<value>"
+          ignoreCache: false
       responses:
         "200":
-          application/json: []
+          application/json: [{}]
+  createTag:
+    speakeasy-default-create-tag:
+      requestBody:
+        application/json: {"color": "blue", "name": "<value>", "workspaceId": "5f85d5ab-c889-4273-91d7-c22bac981db2"}
+      responses:
+        "200":
+          application/json: {"color": "FF5733", "name": "Analytics Team", "tagId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+  deleteTag:
+    speakeasy-default-delete-tag:
+      parameters:
+        path:
+          tagId: "da1c4fd4-2786-4b27-8b72-2335c85a5af8"
+  getTag:
+    speakeasy-default-get-tag:
+      parameters:
+        path:
+          tagId: "808ab48f-5790-47fe-aa1e-3073281a0300"
+      responses:
+        "200":
+          application/json: {"color": "FF5733", "name": "Analytics Team", "tagId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
+  listTags:
+    speakeasy-default-list-tags:
+      responses:
+        "200":
+          application/json: {"data": [{"color": "FF5733", "name": "Analytics Team", "tagId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}]}
+  updateTag:
+    speakeasy-default-update-tag:
+      parameters:
+        path:
+          tagId: "3043493e-7596-4d2b-8ee9-859838c615f6"
+      requestBody:
+        application/json: {"color": "turquoise", "name": "<value>"}
+      responses:
+        "200":
+          application/json: {"color": "FF5733", "name": "Analytics Team", "tagId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826", "workspaceId": "871d9b60-11d1-44cb-8c92-c246d53bf87e"}
   listUsersWithinAnOrganization:
     speakeasy-default-list-users-within-an-organization:
       parameters:
@@ -5773,13 +6121,13 @@ examples:
         application/json: {"name": "Company Workspace Name"}
       responses:
         "200":
-          application/json: {"name": "<value>", "workspaceId": "<value>"}
+          application/json: {"dataResidency": "auto", "name": "<value>", "notifications": {}, "workspaceId": "<value>"}
     Workspace Creation Response Example:
       requestBody:
         application/json: {"name": "<value>"}
       responses:
         "200":
-          application/json: {"name": "<value>", "workspaceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5"}
+          application/json: {"dataResidency": "auto", "name": "<value>", "notifications": {}, "workspaceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5"}
   deleteWorkspace:
     speakeasy-default-delete-workspace:
       parameters:
@@ -5792,12 +6140,17 @@ examples:
           workspaceId: "<value>"
       responses:
         "200":
-          application/json: {"dataResidency": "auto", "name": "Acme Company", "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}
+          application/json: {"dataResidency": "auto", "name": "Acme Company", "notifications": {}, "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}
   listWorkspaces:
     speakeasy-default-list-workspaces:
+      parameters:
+        query:
+          includeDeleted: false
+          limit: 20
+          offset: 0
       responses:
         "200":
-          application/json: {"data": [{"dataResidency": "auto", "name": "Acme Company", "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}], "next": "https://api.airbyte.com/v1/workspaces?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/workspaces?limit=5&offset=0"}
+          application/json: {"data": [{"dataResidency": "auto", "name": "Acme Company", "notifications": {}, "workspaceId": "18dccc91-0ab1-4f72-9ed7-0b8fc27c5826"}], "next": "https://api.airbyte.com/v1/workspaces?limit=5&offset=10", "previous": "https://api.airbyte.com/v1/workspaces?limit=5&offset=0"}
   updateWorkspace:
     Workspace Update Request Example:
       parameters:
@@ -5807,14 +6160,15 @@ examples:
         application/json: {"name": "Company Workspace Name"}
       responses:
         "200":
-          application/json: {"name": "<value>", "workspaceId": "<value>"}
+          application/json: {"dataResidency": "auto", "name": "<value>", "notifications": {}, "workspaceId": "<value>"}
     Workspace Update Response Example:
       parameters:
         path:
           workspaceId: "<value>"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {}
       responses:
         "200":
-          application/json: {"name": "<value>", "workspaceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5"}
+          application/json: {"dataResidency": "auto", "name": "<value>", "notifications": {}, "workspaceId": "9924bcd0-99be-453d-ba47-c2c9766f7da5"}
+examplesVersion: 1.0.0
 generatedTests: {}
