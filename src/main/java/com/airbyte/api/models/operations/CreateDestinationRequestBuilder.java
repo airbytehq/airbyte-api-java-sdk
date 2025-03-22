@@ -6,6 +6,7 @@ package com.airbyte.api.models.operations;
 
 import com.airbyte.api.models.shared.DestinationCreateRequest;
 import com.airbyte.api.utils.Utils;
+import java.lang.Exception;
 import java.util.Optional;
 
 public class CreateDestinationRequestBuilder {

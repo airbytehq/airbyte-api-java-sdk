@@ -10,6 +10,7 @@ import com.airbyte.api.models.shared.InitiateOauthRequest;
 import com.airbyte.api.models.shared.JobCreateRequest;
 import com.airbyte.api.models.shared.PermissionCreateRequest;
 import com.airbyte.api.models.shared.SourceCreateRequest;
+import com.airbyte.api.models.shared.TagCreateRequest;
 import com.airbyte.api.models.shared.WorkspaceCreateRequest;
 import java.lang.Exception;
 import java.util.Optional;
@@ -192,6 +193,36 @@ public class SDKMethodInterfaces {
     public interface MethodCallGetStreamProperties {
         GetStreamPropertiesResponse getStreamProperties(
             GetStreamPropertiesRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallCreateTag {
+        CreateTagResponse createTag(
+            TagCreateRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallDeleteTag {
+        DeleteTagResponse deleteTag(
+            DeleteTagRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallGetTag {
+        GetTagResponse getTag(
+            GetTagRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallListTags {
+        ListTagsResponse listTags(
+            ListTagsRequest request) throws Exception;
+    }
+
+
+    public interface MethodCallUpdateTag {
+        UpdateTagResponse updateTag(
+            UpdateTagRequest request) throws Exception;
     }
 
 

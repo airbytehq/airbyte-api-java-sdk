@@ -4,6 +4,7 @@
 
 package com.airbyte.api.models.operations;
 
+import java.lang.Exception;
 
 public class GetHealthCheckRequestBuilder {
 

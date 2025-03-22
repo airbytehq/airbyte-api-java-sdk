@@ -5,7 +5,7 @@ Product Catalog version of your Chargebee site. Instructions on how to find your
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `ONE0` | 1.0    |
-| `TWO0` | 2.0    |
+| Name       | Value      |
+| ---------- | ---------- |
+| `ONE_DOT0` | 1.0        |
+| `TWO_DOT0` | 2.0        |

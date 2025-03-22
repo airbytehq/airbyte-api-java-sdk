@@ -1,10 +1,11 @@
 # Required
 
-Always connect with SSL. If the MySQL server doesn’t support SSL, the connection will not be established. Certificate Authority (CA) and Hostname are not verified.
+To always require encryption. Note: The connection will fail if the source doesn't support encryption.
 
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `mode`                                                                  | [SourceMysqlSchemasMode](../../models/shared/SourceMysqlSchemasMode.md) | :heavy_check_mark:                                                      | N/A                                                                     |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `additionalProperties`                                                             | Map\<String, *Object*>                                                             | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `mode`                                                                             | [Optional\<SourceMysqlSchemasMode>](../../models/shared/SourceMysqlSchemasMode.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |

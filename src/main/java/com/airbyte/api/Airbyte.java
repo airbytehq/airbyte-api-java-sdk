@@ -4,7 +4,6 @@
 
 package com.airbyte.api;
 
-import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.utils.HTTPClient;
 import com.airbyte.api.utils.RetryConfig;
 import com.airbyte.api.utils.SpeakeasyHTTPClient;
@@ -46,6 +45,8 @@ public class Airbyte {
 
     private final Streams streams;
 
+    private final Tags tags;
+
     private final Users users;
 
     private final Workspaces workspaces;
@@ -80,6 +81,10 @@ public class Airbyte {
 
     public Streams streams() {
         return streams;
+    }
+
+    public Tags tags() {
+        return tags;
     }
 
     public Users users() {
@@ -231,6 +236,7 @@ public class Airbyte {
         this.permissions = new Permissions(sdkConfiguration);
         this.sources = new Sources(sdkConfiguration);
         this.streams = new Streams(sdkConfiguration);
+        this.tags = new Tags(sdkConfiguration);
         this.users = new Users(sdkConfiguration);
         this.workspaces = new Workspaces(sdkConfiguration);
         this.sdkConfiguration.initialize();
