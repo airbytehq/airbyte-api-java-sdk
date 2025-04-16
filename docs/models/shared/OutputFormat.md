@@ -1,4 +1,4 @@
 # OutputFormat
 
-Output data format
+Format of the data output.
 

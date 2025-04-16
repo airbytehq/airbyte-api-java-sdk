@@ -1,0 +1,11 @@
+# SourceNebiusAi
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | API key or access token                                                                   |
+| `limit`                                                                                   | *Optional\<String>*                                                                       | :heavy_minus_sign:                                                                        | Limit for each response objects                                                           |
+| `sourceType`                                                                              | [NebiusAi](../../models/shared/NebiusAi.md)                                               | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

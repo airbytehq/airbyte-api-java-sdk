@@ -1,0 +1,13 @@
+# EncryptionAES
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `algorithm`                                                                   | [EncryptionMapperAlgorithm](../../models/shared/EncryptionMapperAlgorithm.md) | :heavy_check_mark:                                                            | N/A                                                                           |
+| `fieldNameSuffix`                                                             | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
+| `key`                                                                         | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
+| `mode`                                                                        | [Mode](../../models/shared/Mode.md)                                           | :heavy_check_mark:                                                            | N/A                                                                           |
+| `padding`                                                                     | [Padding](../../models/shared/Padding.md)                                     | :heavy_check_mark:                                                            | N/A                                                                           |
+| `targetField`                                                                 | *String*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |

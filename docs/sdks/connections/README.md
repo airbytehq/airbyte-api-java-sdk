@@ -22,9 +22,7 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateConnectionResponse;
-import com.airbyte.api.models.shared.ConnectionCreateRequest;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -262,9 +260,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PatchConnectionRequest;
 import com.airbyte.api.models.operations.PatchConnectionResponse;
-import com.airbyte.api.models.shared.ConnectionPatchRequest;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {

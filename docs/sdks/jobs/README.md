@@ -81,10 +81,7 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateJobResponse;
-import com.airbyte.api.models.shared.JobCreateRequest;
-import com.airbyte.api.models.shared.JobTypeEnum;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
