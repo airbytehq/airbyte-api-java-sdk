@@ -1,0 +1,12 @@
+# SourceOracleEnterpriseServiceName
+
+Use service name.
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `additionalProperties`                                                                                         | Map\<String, *Object*>                                                                                         | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `connectionType`                                                                                               | [Optional\<SourceOracleEnterpriseConnectionType>](../../models/shared/SourceOracleEnterpriseConnectionType.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `serviceName`                                                                                                  | *String*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

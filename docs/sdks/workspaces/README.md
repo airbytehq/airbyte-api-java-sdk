@@ -25,12 +25,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsRequest;
 import com.airbyte.api.models.operations.CreateOrUpdateWorkspaceOAuthCredentialsResponse;
-import com.airbyte.api.models.shared.ActorTypeEnum;
-import com.airbyte.api.models.shared.OAuthActorNames;
-import com.airbyte.api.models.shared.OAuthCredentialsConfiguration;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.WorkspaceOAuthCredentialsRequest;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 import java.util.Map;
 
@@ -50,7 +45,8 @@ public class Application {
         CreateOrUpdateWorkspaceOAuthCredentialsRequest req = CreateOrUpdateWorkspaceOAuthCredentialsRequest.builder()
                 .workspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest.builder()
                     .actorType(ActorTypeEnum.DESTINATION)
-                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(\n    Map.entry("user", "charles"))))
+                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(
+                        Map.entry("user", "charles"))))
                     .name(OAuthActorNames.AIRTABLE)
                     .build())
                 .workspaceId("<value>")
@@ -92,9 +88,7 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateWorkspaceResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.WorkspaceCreateRequest;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -330,9 +324,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.UpdateWorkspaceRequest;
 import com.airbyte.api.models.operations.UpdateWorkspaceResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.WorkspaceUpdateRequest;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {

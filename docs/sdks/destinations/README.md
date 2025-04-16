@@ -23,18 +23,8 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateDestinationResponse;
-import com.airbyte.api.models.shared.DestinationConfiguration;
-import com.airbyte.api.models.shared.DestinationCreateRequest;
-import com.airbyte.api.models.shared.DestinationPgvector;
-import com.airbyte.api.models.shared.DestinationPgvectorCredentials;
-import com.airbyte.api.models.shared.DestinationPgvectorEmbedding;
-import com.airbyte.api.models.shared.DestinationPgvectorFake;
-import com.airbyte.api.models.shared.DestinationPgvectorProcessingConfigModel;
-import com.airbyte.api.models.shared.PostgresConnection;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
-import java.util.List;
 
 public class Application {
 
@@ -50,26 +40,10 @@ public class Application {
             .build();
 
         DestinationCreateRequest req = DestinationCreateRequest.builder()
-                .configuration(DestinationConfiguration.of(DestinationPgvector.builder()
-                    .embedding(DestinationPgvectorEmbedding.of(DestinationPgvectorFake.builder()
-                        .build()))
-                    .indexing(PostgresConnection.builder()
-                        .credentials(DestinationPgvectorCredentials.builder()
-                            .password("AIRBYTE_PASSWORD")
-                            .build())
-                        .database("AIRBYTE_DATABASE")
-                        .host("AIRBYTE_ACCOUNT")
-                        .username("AIRBYTE_USER")
-                        .defaultSchema("AIRBYTE_SCHEMA")
-                        .port(5432L)
-                        .build())
-                    .processing(DestinationPgvectorProcessingConfigModel.builder()
-                        .chunkSize(540943L)
-                        .metadataFields(List.of(
-                            "age"))
-                        .textFields(List.of(
-                            "users.*.name"))
-                        .build())
+                .configuration(DestinationConfiguration.of(DestinationOracle.builder()
+                    .host("instructive-mainstream.com")
+                    .sid("<id>")
+                    .username("Robert.Legros98")
                     .build()))
                 .name("Postgres")
                 .workspaceId("2155ae5a-de39-4808-af6a-16fe7b8b4ed2")
@@ -291,11 +265,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PatchDestinationRequest;
 import com.airbyte.api.models.operations.PatchDestinationResponse;
-import com.airbyte.api.models.shared.DestinationConfiguration;
-import com.airbyte.api.models.shared.DestinationDuckdb;
-import com.airbyte.api.models.shared.DestinationPatchRequest;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -314,8 +284,9 @@ public class Application {
         PatchDestinationRequest req = PatchDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPatchRequest(DestinationPatchRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationDuckdb.builder()
-                        .destinationPath("motherduck:")
+                    .configuration(DestinationConfiguration.of(DestinationDeepset.builder()
+                        .apiKey("<value>")
+                        .workspace("<value>")
                         .build()))
                     .name("My Destination")
                     .build())
@@ -360,11 +331,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PutDestinationRequest;
 import com.airbyte.api.models.operations.PutDestinationResponse;
-import com.airbyte.api.models.shared.DestinationClickhouse;
-import com.airbyte.api.models.shared.DestinationConfiguration;
-import com.airbyte.api.models.shared.DestinationPutRequest;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {

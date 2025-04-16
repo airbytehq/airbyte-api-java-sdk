@@ -24,13 +24,8 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateSourceResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.SourceConfiguration;
-import com.airbyte.api.models.shared.SourceCreateRequest;
-import com.airbyte.api.models.shared.SourcePosthog;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
-import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -46,9 +41,9 @@ public class Application {
             .build();
 
         SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourcePosthog.builder()
-                    .apiKey("<value>")
-                    .startDate(OffsetDateTime.parse("2021-01-01T00:00:00Z"))
+                .configuration(SourceConfiguration.of(SourcePocket.builder()
+                    .accessToken("<value>")
+                    .consumerKey("<value>")
                     .build()))
                 .name("My Source")
                 .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -214,10 +209,7 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.InitiateOAuthResponse;
-import com.airbyte.api.models.shared.InitiateOauthRequest;
-import com.airbyte.api.models.shared.OAuthActorNames;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -338,11 +330,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PatchSourceRequest;
 import com.airbyte.api.models.operations.PatchSourceResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.SourceConfiguration;
-import com.airbyte.api.models.shared.SourceEventzilla;
-import com.airbyte.api.models.shared.SourcePatchRequest;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -361,8 +349,8 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventzilla.builder()
-                        .xApiKey("<value>")
+                    .configuration(SourceConfiguration.of(SourceEventee.builder()
+                        .apiToken("<value>")
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -408,11 +396,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.PutSourceRequest;
 import com.airbyte.api.models.operations.PutSourceResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
-import com.airbyte.api.models.shared.SourceConfiguration;
-import com.airbyte.api.models.shared.SourceGridly;
-import com.airbyte.api.models.shared.SourcePutRequest;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -431,9 +415,7 @@ public class Application {
         PutSourceRequest req = PutSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePutRequest(SourcePutRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceGridly.builder()
-                        .apiKey("<value>")
-                        .gridId("<id>")
+                    .configuration(SourceConfiguration.of(SourceAirtable.builder()
                         .build()))
                     .name("My Source")
                     .build())

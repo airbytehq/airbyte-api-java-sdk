@@ -22,10 +22,7 @@ package hello.world;
 
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreatePermissionResponse;
-import com.airbyte.api.models.shared.PermissionCreateRequest;
-import com.airbyte.api.models.shared.PublicPermissionType;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -263,10 +260,7 @@ package hello.world;
 import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.UpdatePermissionRequest;
 import com.airbyte.api.models.operations.UpdatePermissionResponse;
-import com.airbyte.api.models.shared.PermissionType;
-import com.airbyte.api.models.shared.PermissionUpdateRequest;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {

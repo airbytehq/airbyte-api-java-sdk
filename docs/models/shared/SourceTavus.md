@@ -1,0 +1,10 @@
+# SourceTavus
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `apiKey`                                                                                  | *String*                                                                                  | :heavy_check_mark:                                                                        | Your Tavus API key. You can find this in your Tavus account settings or API dashboard.    |
+| `sourceType`                                                                              | [Tavus](../../models/shared/Tavus.md)                                                     | :heavy_check_mark:                                                                        | N/A                                                                                       |
+| `startDate`                                                                               | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html) | :heavy_check_mark:                                                                        | N/A                                                                                       |

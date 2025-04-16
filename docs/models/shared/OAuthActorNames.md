@@ -23,7 +23,6 @@
 | `GOOGLE_SHEETS`             | google-sheets               |
 | `HUBSPOT`                   | hubspot                     |
 | `INSTAGRAM`                 | instagram                   |
-| `INTERCOM`                  | intercom                    |
 | `LEVER_HIRING`              | lever-hiring                |
 | `LINKEDIN_ADS`              | linkedin-ads                |
 | `MAILCHIMP`                 | mailchimp                   |
@@ -44,6 +43,5 @@
 | `TRELLO`                    | trello                      |
 | `TYPEFORM`                  | typeform                    |
 | `YOUTUBE_ANALYTICS`         | youtube-analytics           |
-| `ZENDESK_CHAT`              | zendesk-chat                |
 | `ZENDESK_SUPPORT`           | zendesk-support             |
 | `ZENDESK_TALK`              | zendesk-talk                |

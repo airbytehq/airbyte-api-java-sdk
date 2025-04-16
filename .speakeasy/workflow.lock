@@ -1,4 +1,4 @@
-speakeasyVersion: 1.453.10
+speakeasyVersion: 1.533.0
 sources:
     my-source:
         sourceNamespace: my-source
@@ -9,11 +9,11 @@ sources:
             - main
     sample-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:aa3c5e64a0c5b50601e64821c42101dc6e22d9c63c67fc5b2c6df95683549fc3
-        sourceBlobDigest: sha256:fa5143179ee978611fb032f3948584f4cbf071857ff2ff6611fbac17e1b67eb9
+        sourceRevisionDigest: sha256:5c4ac3b133a9b0d18d00a131ead78279d8d36a49e31f5f562d1a200fa11caec3
+        sourceBlobDigest: sha256:7866415b04810057478603476c27c4042cd2561a5f539d7181e4d5eac8ffca0a
         tags:
             - latest
-            - speakeasy-sdk-regen-1733271463
+            - speakeasy-sdk-regen-1733962674
             - 1.0.0
 targets:
     airbyte-api:
@@ -24,10 +24,10 @@ targets:
     testing:
         source: sample-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:aa3c5e64a0c5b50601e64821c42101dc6e22d9c63c67fc5b2c6df95683549fc3
-        sourceBlobDigest: sha256:fa5143179ee978611fb032f3948584f4cbf071857ff2ff6611fbac17e1b67eb9
+        sourceRevisionDigest: sha256:5c4ac3b133a9b0d18d00a131ead78279d8d36a49e31f5f562d1a200fa11caec3
+        sourceBlobDigest: sha256:7866415b04810057478603476c27c4042cd2561a5f539d7181e4d5eac8ffca0a
         codeSamplesNamespace: my-source-java-code-samples
-        codeSamplesRevisionDigest: sha256:4bcdc1c05c1002038c44996ff6e1425317394805a9bbc73842fbd2e75ccfab04
+        codeSamplesRevisionDigest: sha256:b4a63e27822e0b961739d46a6b15049756d339c93f1008fae50a8052afce6cd9
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
