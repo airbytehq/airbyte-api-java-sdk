@@ -6,11 +6,15 @@ package com.airbyte.api.models.shared;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
 
 public class CreateDeclarativeSourceDefinitionRequest {
 
@@ -23,14 +27,27 @@ public class CreateDeclarativeSourceDefinitionRequest {
     @JsonProperty("name")
     private String name;
 
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("version")
+    private Optional<Long> version;
+
     @JsonCreator
     public CreateDeclarativeSourceDefinitionRequest(
             @JsonProperty("manifest") Object manifest,
-            @JsonProperty("name") String name) {
+            @JsonProperty("name") String name,
+            @JsonProperty("version") Optional<Long> version) {
         Utils.checkNotNull(manifest, "manifest");
         Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(version, "version");
         this.manifest = manifest;
         this.name = name;
+        this.version = version;
+    }
+    
+    public CreateDeclarativeSourceDefinitionRequest(
+            Object manifest,
+            String name) {
+        this(manifest, name, Optional.empty());
     }
 
     /**
@@ -44,6 +61,11 @@ public class CreateDeclarativeSourceDefinitionRequest {
     @JsonIgnore
     public String name() {
         return name;
+    }
+
+    @JsonIgnore
+    public Optional<Long> version() {
+        return version;
     }
 
     public final static Builder builder() {
@@ -65,6 +87,18 @@ public class CreateDeclarativeSourceDefinitionRequest {
         return this;
     }
 
+    public CreateDeclarativeSourceDefinitionRequest withVersion(long version) {
+        Utils.checkNotNull(version, "version");
+        this.version = Optional.ofNullable(version);
+        return this;
+    }
+
+    public CreateDeclarativeSourceDefinitionRequest withVersion(Optional<Long> version) {
+        Utils.checkNotNull(version, "version");
+        this.version = version;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -77,21 +111,24 @@ public class CreateDeclarativeSourceDefinitionRequest {
         CreateDeclarativeSourceDefinitionRequest other = (CreateDeclarativeSourceDefinitionRequest) o;
         return 
             Objects.deepEquals(this.manifest, other.manifest) &&
-            Objects.deepEquals(this.name, other.name);
+            Objects.deepEquals(this.name, other.name) &&
+            Objects.deepEquals(this.version, other.version);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
             manifest,
-            name);
+            name,
+            version);
     }
     
     @Override
     public String toString() {
         return Utils.toString(CreateDeclarativeSourceDefinitionRequest.class,
                 "manifest", manifest,
-                "name", name);
+                "name", name,
+                "version", version);
     }
     
     public final static class Builder {
@@ -99,6 +136,8 @@ public class CreateDeclarativeSourceDefinitionRequest {
         private Object manifest;
  
         private String name;
+ 
+        private Optional<Long> version = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -118,11 +157,24 @@ public class CreateDeclarativeSourceDefinitionRequest {
             this.name = name;
             return this;
         }
+
+        public Builder version(long version) {
+            Utils.checkNotNull(version, "version");
+            this.version = Optional.ofNullable(version);
+            return this;
+        }
+
+        public Builder version(Optional<Long> version) {
+            Utils.checkNotNull(version, "version");
+            this.version = version;
+            return this;
+        }
         
         public CreateDeclarativeSourceDefinitionRequest build() {
             return new CreateDeclarativeSourceDefinitionRequest(
                 manifest,
-                name);
+                name,
+                version);
         }
     }
 }

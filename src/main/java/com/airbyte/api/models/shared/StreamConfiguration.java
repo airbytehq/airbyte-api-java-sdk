@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -29,6 +30,13 @@ public class StreamConfiguration {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursorField")
     private Optional<? extends List<String>> cursorField;
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("includeFiles")
+    private Optional<Boolean> includeFiles;
 
     /**
      * Mappers that should be applied to the stream before writing to the destination.
@@ -61,18 +69,21 @@ public class StreamConfiguration {
     @JsonCreator
     public StreamConfiguration(
             @JsonProperty("cursorField") Optional<? extends List<String>> cursorField,
+            @JsonProperty("includeFiles") Optional<Boolean> includeFiles,
             @JsonProperty("mappers") Optional<? extends List<ConfiguredStreamMapper>> mappers,
             @JsonProperty("name") String name,
             @JsonProperty("primaryKey") Optional<? extends List<List<String>>> primaryKey,
             @JsonProperty("selectedFields") Optional<? extends List<SelectedFieldInfo>> selectedFields,
             @JsonProperty("syncMode") Optional<? extends ConnectionSyncModeEnum> syncMode) {
         Utils.checkNotNull(cursorField, "cursorField");
+        Utils.checkNotNull(includeFiles, "includeFiles");
         Utils.checkNotNull(mappers, "mappers");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(primaryKey, "primaryKey");
         Utils.checkNotNull(selectedFields, "selectedFields");
         Utils.checkNotNull(syncMode, "syncMode");
         this.cursorField = cursorField;
+        this.includeFiles = includeFiles;
         this.mappers = mappers;
         this.name = name;
         this.primaryKey = primaryKey;
@@ -82,7 +93,7 @@ public class StreamConfiguration {
     
     public StreamConfiguration(
             String name) {
-        this(Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -92,6 +103,14 @@ public class StreamConfiguration {
     @JsonIgnore
     public Optional<List<String>> cursorField() {
         return (Optional<List<String>>) cursorField;
+    }
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    @JsonIgnore
+    public Optional<Boolean> includeFiles() {
+        return includeFiles;
     }
 
     /**
@@ -151,6 +170,24 @@ public class StreamConfiguration {
     public StreamConfiguration withCursorField(Optional<? extends List<String>> cursorField) {
         Utils.checkNotNull(cursorField, "cursorField");
         this.cursorField = cursorField;
+        return this;
+    }
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    public StreamConfiguration withIncludeFiles(boolean includeFiles) {
+        Utils.checkNotNull(includeFiles, "includeFiles");
+        this.includeFiles = Optional.ofNullable(includeFiles);
+        return this;
+    }
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    public StreamConfiguration withIncludeFiles(Optional<Boolean> includeFiles) {
+        Utils.checkNotNull(includeFiles, "includeFiles");
+        this.includeFiles = includeFiles;
         return this;
     }
 
@@ -238,6 +275,7 @@ public class StreamConfiguration {
         StreamConfiguration other = (StreamConfiguration) o;
         return 
             Objects.deepEquals(this.cursorField, other.cursorField) &&
+            Objects.deepEquals(this.includeFiles, other.includeFiles) &&
             Objects.deepEquals(this.mappers, other.mappers) &&
             Objects.deepEquals(this.name, other.name) &&
             Objects.deepEquals(this.primaryKey, other.primaryKey) &&
@@ -249,6 +287,7 @@ public class StreamConfiguration {
     public int hashCode() {
         return Objects.hash(
             cursorField,
+            includeFiles,
             mappers,
             name,
             primaryKey,
@@ -260,6 +299,7 @@ public class StreamConfiguration {
     public String toString() {
         return Utils.toString(StreamConfiguration.class,
                 "cursorField", cursorField,
+                "includeFiles", includeFiles,
                 "mappers", mappers,
                 "name", name,
                 "primaryKey", primaryKey,
@@ -270,6 +310,8 @@ public class StreamConfiguration {
     public final static class Builder {
  
         private Optional<? extends List<String>> cursorField = Optional.empty();
+ 
+        private Optional<Boolean> includeFiles = Optional.empty();
  
         private Optional<? extends List<ConfiguredStreamMapper>> mappers = Optional.empty();
  
@@ -300,6 +342,24 @@ public class StreamConfiguration {
         public Builder cursorField(Optional<? extends List<String>> cursorField) {
             Utils.checkNotNull(cursorField, "cursorField");
             this.cursorField = cursorField;
+            return this;
+        }
+
+        /**
+         * Whether to move raw files from the source to the destination during the sync.
+         */
+        public Builder includeFiles(boolean includeFiles) {
+            Utils.checkNotNull(includeFiles, "includeFiles");
+            this.includeFiles = Optional.ofNullable(includeFiles);
+            return this;
+        }
+
+        /**
+         * Whether to move raw files from the source to the destination during the sync.
+         */
+        public Builder includeFiles(Optional<Boolean> includeFiles) {
+            Utils.checkNotNull(includeFiles, "includeFiles");
+            this.includeFiles = includeFiles;
             return this;
         }
 
@@ -378,6 +438,7 @@ public class StreamConfiguration {
         public StreamConfiguration build() {
             return new StreamConfiguration(
                 cursorField,
+                includeFiles,
                 mappers,
                 name,
                 primaryKey,

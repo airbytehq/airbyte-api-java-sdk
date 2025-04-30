@@ -34,6 +34,7 @@
 | `PINTEREST`                 | pinterest                   |
 | `RD_STATION_MARKETING`      | rd-station-marketing        |
 | `SALESFORCE`                | salesforce                  |
+| `SHAREPOINT_ENTERPRISE`     | sharepoint-enterprise       |
 | `SLACK`                     | slack                       |
 | `SMARTSHEETS`               | smartsheets                 |
 | `SNAPCHAT_MARKETING`        | snapchat-marketing          |

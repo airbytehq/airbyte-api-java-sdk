@@ -41,9 +41,8 @@ public class Application {
             .build();
 
         SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourcePocket.builder()
-                    .accessToken("<value>")
-                    .consumerKey("<value>")
+                .configuration(SourceConfiguration.of(SourcePokeapi.builder()
+                    .pokemonName(PokemonName.SNORLAX)
                     .build()))
                 .name("My Source")
                 .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -349,8 +348,8 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventee.builder()
-                        .apiToken("<value>")
+                    .configuration(SourceConfiguration.of(SourceEventzilla.builder()
+                        .xApiKey("<value>")
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")

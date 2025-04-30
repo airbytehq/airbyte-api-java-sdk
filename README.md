@@ -42,7 +42,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte:api:2.0.0'
+implementation 'com.airbyte:api:2.0.1'
 ```
 
 Maven:
@@ -50,7 +50,7 @@ Maven:
 <dependency>
     <groupId>com.airbyte</groupId>
     <artifactId>api</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 

@@ -177,6 +177,11 @@ public class OAuthCredentialsConfiguration {
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Salesforce>(){}));
     }
 
+    public static OAuthCredentialsConfiguration of(SharepointEnterprise value) {
+        Utils.checkNotNull(value, "value");
+        return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SharepointEnterprise>(){}));
+    }
+
     public static OAuthCredentialsConfiguration of(Shopify value) {
         Utils.checkNotNull(value, "value");
         return new OAuthCredentialsConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Shopify>(){}));
@@ -269,6 +274,7 @@ public class OAuthCredentialsConfiguration {
      * <li>{@code com.airbyte.api.models.shared.Pinterest}</li>
      * <li>{@code com.airbyte.api.models.shared.RdStationMarketing}</li>
      * <li>{@code com.airbyte.api.models.shared.Salesforce}</li>
+     * <li>{@code com.airbyte.api.models.shared.SharepointEnterprise}</li>
      * <li>{@code com.airbyte.api.models.shared.Shopify}</li>
      * <li>{@code com.airbyte.api.models.shared.Slack}</li>
      * <li>{@code com.airbyte.api.models.shared.Smartsheets}</li>
@@ -332,18 +338,19 @@ public class OAuthCredentialsConfiguration {
                   TypeReferenceWithShape.of(new TypeReference<Smartsheets>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Slack>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Shopify>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SharepointEnterprise>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<TiktokMarketing>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<RdStationMarketing>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Pinterest>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Notion>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Monday>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<MicrosoftTeams>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Airtable>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<MicrosoftSharepoint>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Typeform>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Airtable>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<YoutubeAnalytics>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<LinkedinAds>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<LeverHiring>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<YoutubeAnalytics>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ZendeskSupport>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Hubspot>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<GoogleSheets>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<GoogleSearchConsole>() {}, JsonShape.DEFAULT),
@@ -355,10 +362,10 @@ public class OAuthCredentialsConfiguration {
                   TypeReferenceWithShape.of(new TypeReference<Gcs>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<FacebookMarketing>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Drift>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ZendeskSupport>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ZendeskTalk>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<AzureBlobStorage>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Asana>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ZendeskTalk>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<MicrosoftSharepoint>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<MicrosoftOnedrive>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<Mailchimp>() {}, JsonShape.DEFAULT));
         }
