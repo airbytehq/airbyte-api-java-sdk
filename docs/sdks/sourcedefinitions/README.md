@@ -45,7 +45,7 @@ public class Application {
                     .dockerRepository("<value>")
                     .name("<value>")
                     .build())
-                .workspaceId("06dbde72-63a8-4326-8f4b-67eb708f9ad6")
+                .workspaceId("8198a6e0-f056-42f7-8427-5ff6e06d6b3c")
                 .build();
 
         CreateSourceDefinitionResponse res = sdk.sourceDefinitions().createSourceDefinition()
@@ -105,8 +105,8 @@ public class Application {
             .build();
 
         DeleteSourceDefinitionRequest req = DeleteSourceDefinitionRequest.builder()
-                .definitionId("fddaf9d9-7e09-433e-8e25-895734ad8809")
-                .workspaceId("9789f575-f200-4155-b7ec-0750094af77f")
+                .definitionId("21000375-129d-49b4-8099-23a142e25559")
+                .workspaceId("674a8870-5757-45f8-89f2-a765895d7bcc")
                 .build();
 
         DeleteSourceDefinitionResponse res = sdk.sourceDefinitions().deleteSourceDefinition()
@@ -166,8 +166,8 @@ public class Application {
             .build();
 
         GetSourceDefinitionRequest req = GetSourceDefinitionRequest.builder()
-                .definitionId("b6405f71-0930-4f13-a99b-6b1b0a882853")
-                .workspaceId("e76093e5-5cd8-4b87-ab32-c620a178a1c3")
+                .definitionId("ccda715b-b5a9-4c56-9c95-7285878c622f")
+                .workspaceId("ea535916-6a24-4a05-b039-7da73c74b7c5")
                 .build();
 
         GetSourceDefinitionResponse res = sdk.sourceDefinitions().getSourceDefinition()
@@ -227,7 +227,7 @@ public class Application {
             .build();
 
         ListSourceDefinitionsRequest req = ListSourceDefinitionsRequest.builder()
-                .workspaceId("fb60a310-f38b-47cb-9633-01f0cf740c18")
+                .workspaceId("d85ea6af-c9b0-461e-8a87-d7d38bfb62a3")
                 .build();
 
         ListSourceDefinitionsResponse res = sdk.sourceDefinitions().listSourceDefinitions()
@@ -290,8 +290,8 @@ public class Application {
                     .dockerImageTag("<value>")
                     .name("<value>")
                     .build())
-                .definitionId("6eaf6fbb-3e08-4f73-9ff1-de62553abd76")
-                .workspaceId("b6bd5c36-3814-4489-97fb-3e48c1e0fdea")
+                .definitionId("d83c1bd9-0e8c-47a0-ba61-d9fff4bea47c")
+                .workspaceId("d00d0938-69b2-48ac-878f-e92689d1c3b8")
                 .build();
 
         UpdateSourceDefinitionResponse res = sdk.sourceDefinitions().updateSourceDefinition()
