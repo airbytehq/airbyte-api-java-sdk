@@ -34,6 +34,13 @@ public class SourceMongodbV2 {
     private Optional<Long> discoverSampleSize;
 
     /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds. Valid range: 5 seconds to 1200 seconds.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("discover_timeout_seconds")
+    private Optional<Long> discoverTimeoutSeconds;
+
+    /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -75,6 +82,7 @@ public class SourceMongodbV2 {
     public SourceMongodbV2(
             @JsonProperty("database_config") ClusterType databaseConfig,
             @JsonProperty("discover_sample_size") Optional<Long> discoverSampleSize,
+            @JsonProperty("discover_timeout_seconds") Optional<Long> discoverTimeoutSeconds,
             @JsonProperty("initial_load_timeout_hours") Optional<Long> initialLoadTimeoutHours,
             @JsonProperty("initial_waiting_seconds") Optional<Long> initialWaitingSeconds,
             @JsonProperty("invalid_cdc_cursor_position_behavior") Optional<? extends InvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior,
@@ -82,6 +90,7 @@ public class SourceMongodbV2 {
             @JsonProperty("update_capture_mode") Optional<? extends CaptureModeAdvanced> updateCaptureMode) {
         Utils.checkNotNull(databaseConfig, "databaseConfig");
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
+        Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
         Utils.checkNotNull(initialLoadTimeoutHours, "initialLoadTimeoutHours");
         Utils.checkNotNull(initialWaitingSeconds, "initialWaitingSeconds");
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -89,6 +98,7 @@ public class SourceMongodbV2 {
         Utils.checkNotNull(updateCaptureMode, "updateCaptureMode");
         this.databaseConfig = databaseConfig;
         this.discoverSampleSize = discoverSampleSize;
+        this.discoverTimeoutSeconds = discoverTimeoutSeconds;
         this.initialLoadTimeoutHours = initialLoadTimeoutHours;
         this.initialWaitingSeconds = initialWaitingSeconds;
         this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
@@ -99,7 +109,7 @@ public class SourceMongodbV2 {
     
     public SourceMongodbV2(
             ClusterType databaseConfig) {
-        this(databaseConfig, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(databaseConfig, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -116,6 +126,14 @@ public class SourceMongodbV2 {
     @JsonIgnore
     public Optional<Long> discoverSampleSize() {
         return discoverSampleSize;
+    }
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds. Valid range: 5 seconds to 1200 seconds.
+     */
+    @JsonIgnore
+    public Optional<Long> discoverTimeoutSeconds() {
+        return discoverTimeoutSeconds;
     }
 
     /**
@@ -193,6 +211,24 @@ public class SourceMongodbV2 {
     public SourceMongodbV2 withDiscoverSampleSize(Optional<Long> discoverSampleSize) {
         Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
         this.discoverSampleSize = discoverSampleSize;
+        return this;
+    }
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds. Valid range: 5 seconds to 1200 seconds.
+     */
+    public SourceMongodbV2 withDiscoverTimeoutSeconds(long discoverTimeoutSeconds) {
+        Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+        this.discoverTimeoutSeconds = Optional.ofNullable(discoverTimeoutSeconds);
+        return this;
+    }
+
+    /**
+     * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds. Valid range: 5 seconds to 1200 seconds.
+     */
+    public SourceMongodbV2 withDiscoverTimeoutSeconds(Optional<Long> discoverTimeoutSeconds) {
+        Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+        this.discoverTimeoutSeconds = discoverTimeoutSeconds;
         return this;
     }
 
@@ -299,6 +335,7 @@ public class SourceMongodbV2 {
         return 
             Objects.deepEquals(this.databaseConfig, other.databaseConfig) &&
             Objects.deepEquals(this.discoverSampleSize, other.discoverSampleSize) &&
+            Objects.deepEquals(this.discoverTimeoutSeconds, other.discoverTimeoutSeconds) &&
             Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
             Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
             Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
@@ -312,6 +349,7 @@ public class SourceMongodbV2 {
         return Objects.hash(
             databaseConfig,
             discoverSampleSize,
+            discoverTimeoutSeconds,
             initialLoadTimeoutHours,
             initialWaitingSeconds,
             invalidCdcCursorPositionBehavior,
@@ -325,6 +363,7 @@ public class SourceMongodbV2 {
         return Utils.toString(SourceMongodbV2.class,
                 "databaseConfig", databaseConfig,
                 "discoverSampleSize", discoverSampleSize,
+                "discoverTimeoutSeconds", discoverTimeoutSeconds,
                 "initialLoadTimeoutHours", initialLoadTimeoutHours,
                 "initialWaitingSeconds", initialWaitingSeconds,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior,
@@ -338,6 +377,8 @@ public class SourceMongodbV2 {
         private ClusterType databaseConfig;
  
         private Optional<Long> discoverSampleSize;
+ 
+        private Optional<Long> discoverTimeoutSeconds;
  
         private Optional<Long> initialLoadTimeoutHours;
  
@@ -377,6 +418,24 @@ public class SourceMongodbV2 {
         public Builder discoverSampleSize(Optional<Long> discoverSampleSize) {
             Utils.checkNotNull(discoverSampleSize, "discoverSampleSize");
             this.discoverSampleSize = discoverSampleSize;
+            return this;
+        }
+
+        /**
+         * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds. Valid range: 5 seconds to 1200 seconds.
+         */
+        public Builder discoverTimeoutSeconds(long discoverTimeoutSeconds) {
+            Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+            this.discoverTimeoutSeconds = Optional.ofNullable(discoverTimeoutSeconds);
+            return this;
+        }
+
+        /**
+         * The amount of time the connector will wait when it discovers a document. Defaults to 600 seconds. Valid range: 5 seconds to 1200 seconds.
+         */
+        public Builder discoverTimeoutSeconds(Optional<Long> discoverTimeoutSeconds) {
+            Utils.checkNotNull(discoverTimeoutSeconds, "discoverTimeoutSeconds");
+            this.discoverTimeoutSeconds = discoverTimeoutSeconds;
             return this;
         }
 
@@ -474,6 +533,9 @@ public class SourceMongodbV2 {
             if (discoverSampleSize == null) {
                 discoverSampleSize = _SINGLETON_VALUE_DiscoverSampleSize.value();
             }
+            if (discoverTimeoutSeconds == null) {
+                discoverTimeoutSeconds = _SINGLETON_VALUE_DiscoverTimeoutSeconds.value();
+            }
             if (initialLoadTimeoutHours == null) {
                 initialLoadTimeoutHours = _SINGLETON_VALUE_InitialLoadTimeoutHours.value();
             }
@@ -492,6 +554,7 @@ public class SourceMongodbV2 {
             return new SourceMongodbV2(
                 databaseConfig,
                 discoverSampleSize,
+                discoverTimeoutSeconds,
                 initialLoadTimeoutHours,
                 initialWaitingSeconds,
                 invalidCdcCursorPositionBehavior,
@@ -503,6 +566,12 @@ public class SourceMongodbV2 {
                 new LazySingletonValue<>(
                         "discover_sample_size",
                         "10000",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_DiscoverTimeoutSeconds =
+                new LazySingletonValue<>(
+                        "discover_timeout_seconds",
+                        "600",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_InitialLoadTimeoutHours =

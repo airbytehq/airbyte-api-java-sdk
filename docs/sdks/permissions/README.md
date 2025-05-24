@@ -278,7 +278,7 @@ public class Application {
 
         UpdatePermissionRequest req = UpdatePermissionRequest.builder()
                 .permissionUpdateRequest(PermissionUpdateRequest.builder()
-                    .permissionType(PermissionType.WORKSPACE_OWNER)
+                    .permissionType(PermissionType.ORGANIZATION_READER)
                     .build())
                 .permissionId("<value>")
                 .build();
