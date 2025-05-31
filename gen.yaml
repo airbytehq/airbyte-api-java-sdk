@@ -3,17 +3,19 @@ generation:
   sdkClassName: airbyte
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 java:
-  version: 2.0.0
+  version: 2.1.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: api

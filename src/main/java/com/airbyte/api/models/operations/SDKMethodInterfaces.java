@@ -95,6 +95,11 @@ public class SDKMethodInterfaces {
             ListJobsRequest request) throws Exception;
     }
 
+    public interface MethodCallCreateOrUpdateOrganizationOAuthCredentials {
+        CreateOrUpdateOrganizationOAuthCredentialsResponse createOrUpdateOrganizationOAuthCredentials(
+            CreateOrUpdateOrganizationOAuthCredentialsRequest request) throws Exception;
+    }
+
     public interface MethodCallListOrganizationsForUser {
         ListOrganizationsForUserResponse listOrganizationsForUserDirect() throws Exception;
     }
