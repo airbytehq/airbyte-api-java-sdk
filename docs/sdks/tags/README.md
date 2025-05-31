@@ -39,9 +39,9 @@ public class Application {
             .build();
 
         TagCreateRequest req = TagCreateRequest.builder()
-                .color("blue")
+                .color("mint green")
                 .name("<value>")
-                .workspaceId("5f85d5ab-c889-4273-91d7-c22bac981db2")
+                .workspaceId("fb9b459f-ba25-4500-ab48-74bb184a25d8")
                 .build();
 
         CreateTagResponse res = sdk.tags().createTag()
@@ -101,7 +101,7 @@ public class Application {
             .build();
 
         DeleteTagRequest req = DeleteTagRequest.builder()
-                .tagId("da1c4fd4-2786-4b27-8b72-2335c85a5af8")
+                .tagId("a7b6d3f2-0b68-410f-9d8b-570413d4925b")
                 .build();
 
         DeleteTagResponse res = sdk.tags().deleteTag()
@@ -159,7 +159,7 @@ public class Application {
             .build();
 
         GetTagRequest req = GetTagRequest.builder()
-                .tagId("808ab48f-5790-47fe-aa1e-3073281a0300")
+                .tagId("0e4206b6-0672-45f2-82cb-05850f1907ba")
                 .build();
 
         GetTagResponse res = sdk.tags().getTag()
@@ -278,10 +278,10 @@ public class Application {
 
         UpdateTagRequest req = UpdateTagRequest.builder()
                 .tagPatchRequest(TagPatchRequest.builder()
-                    .color("turquoise")
+                    .color("red")
                     .name("<value>")
                     .build())
-                .tagId("3043493e-7596-4d2b-8ee9-859838c615f6")
+                .tagId("80469d11-8074-4b50-ac85-fa8ba37ca92a")
                 .build();
 
         UpdateTagResponse res = sdk.tags().updateTag()

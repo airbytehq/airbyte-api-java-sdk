@@ -72,7 +72,7 @@ public class DeclarativeSourceDefinitions implements
      */
     public CreateDeclarativeSourceDefinitionResponse createDeclarativeSourceDefinition(
             CreateDeclarativeSourceDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 CreateDeclarativeSourceDefinitionRequest.class,
                 _baseUrl,
@@ -97,14 +97,15 @@ public class DeclarativeSourceDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "createDeclarativeSourceDefinition", 
                       Optional.of(List.of()), 
@@ -117,6 +118,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -127,6 +129,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createDeclarativeSourceDefinition",
                             Optional.of(List.of()), 
@@ -137,6 +140,7 @@ public class DeclarativeSourceDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -215,7 +219,7 @@ public class DeclarativeSourceDefinitions implements
      */
     public DeleteDeclarativeSourceDefinitionResponse deleteDeclarativeSourceDefinition(
             DeleteDeclarativeSourceDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 DeleteDeclarativeSourceDefinitionRequest.class,
                 _baseUrl,
@@ -227,14 +231,15 @@ public class DeclarativeSourceDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "deleteDeclarativeSourceDefinition", 
                       Optional.of(List.of()), 
@@ -247,6 +252,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -257,6 +263,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteDeclarativeSourceDefinition",
                             Optional.of(List.of()), 
@@ -267,6 +274,7 @@ public class DeclarativeSourceDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -345,7 +353,7 @@ public class DeclarativeSourceDefinitions implements
      */
     public GetDeclarativeSourceDefinitionResponse getDeclarativeSourceDefinition(
             GetDeclarativeSourceDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 GetDeclarativeSourceDefinitionRequest.class,
                 _baseUrl,
@@ -357,14 +365,15 @@ public class DeclarativeSourceDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "getDeclarativeSourceDefinition", 
                       Optional.of(List.of()), 
@@ -377,6 +386,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -387,6 +397,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getDeclarativeSourceDefinition",
                             Optional.of(List.of()), 
@@ -397,6 +408,7 @@ public class DeclarativeSourceDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -475,7 +487,7 @@ public class DeclarativeSourceDefinitions implements
      */
     public ListDeclarativeSourceDefinitionsResponse listDeclarativeSourceDefinitions(
             ListDeclarativeSourceDefinitionsRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 ListDeclarativeSourceDefinitionsRequest.class,
                 _baseUrl,
@@ -487,14 +499,15 @@ public class DeclarativeSourceDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "listDeclarativeSourceDefinitions", 
                       Optional.of(List.of()), 
@@ -507,6 +520,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listDeclarativeSourceDefinitions",
                             Optional.of(List.of()),
@@ -517,6 +531,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listDeclarativeSourceDefinitions",
                             Optional.of(List.of()), 
@@ -527,6 +542,7 @@ public class DeclarativeSourceDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listDeclarativeSourceDefinitions",
                             Optional.of(List.of()),
@@ -605,7 +621,7 @@ public class DeclarativeSourceDefinitions implements
      */
     public UpdateDeclarativeSourceDefinitionResponse updateDeclarativeSourceDefinition(
             UpdateDeclarativeSourceDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 UpdateDeclarativeSourceDefinitionRequest.class,
                 _baseUrl,
@@ -630,14 +646,15 @@ public class DeclarativeSourceDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "updateDeclarativeSourceDefinition", 
                       Optional.of(List.of()), 
@@ -650,6 +667,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateDeclarativeSourceDefinition",
                             Optional.of(List.of()),
@@ -660,6 +678,7 @@ public class DeclarativeSourceDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateDeclarativeSourceDefinition",
                             Optional.of(List.of()), 
@@ -670,6 +689,7 @@ public class DeclarativeSourceDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateDeclarativeSourceDefinition",
                             Optional.of(List.of()),

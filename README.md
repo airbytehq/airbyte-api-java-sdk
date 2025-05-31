@@ -42,7 +42,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte:api:2.0.0'
+implementation 'com.airbyte:api:2.1.0'
 ```
 
 Maven:
@@ -50,7 +50,7 @@ Maven:
 <dependency>
     <groupId>com.airbyte</groupId>
     <artifactId>api</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 
@@ -242,6 +242,7 @@ public class Application {
 
 ### [organizations()](docs/sdks/organizations/README.md)
 
+* [createOrUpdateOrganizationOAuthCredentials](docs/sdks/organizations/README.md#createorupdateorganizationoauthcredentials) - Create OAuth override credentials for an organization and source type.
 * [listOrganizationsForUser](docs/sdks/organizations/README.md#listorganizationsforuser) - List all organizations for a user
 
 ### [permissions()](docs/sdks/permissions/README.md)
