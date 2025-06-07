@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
@@ -33,6 +34,13 @@ public class SourceHubspot {
     @JsonProperty("enable_experimental_streams")
     private Optional<Boolean> enableExperimentalStreams;
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_worker")
+    private Optional<Long> numWorker;
+
     @JsonProperty("sourceType")
     private SourceHubspotHubspot sourceType;
 
@@ -47,19 +55,22 @@ public class SourceHubspot {
     public SourceHubspot(
             @JsonProperty("credentials") SourceHubspotAuthentication credentials,
             @JsonProperty("enable_experimental_streams") Optional<Boolean> enableExperimentalStreams,
+            @JsonProperty("num_worker") Optional<Long> numWorker,
             @JsonProperty("start_date") Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
+        Utils.checkNotNull(numWorker, "numWorker");
         Utils.checkNotNull(startDate, "startDate");
         this.credentials = credentials;
         this.enableExperimentalStreams = enableExperimentalStreams;
+        this.numWorker = numWorker;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceHubspot(
             SourceHubspotAuthentication credentials) {
-        this(credentials, Optional.empty(), Optional.empty());
+        this(credentials, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -76,6 +87,14 @@ public class SourceHubspot {
     @JsonIgnore
     public Optional<Boolean> enableExperimentalStreams() {
         return enableExperimentalStreams;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorker() {
+        return numWorker;
     }
 
     @JsonIgnore
@@ -123,6 +142,24 @@ public class SourceHubspot {
     }
 
     /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceHubspot withNumWorker(long numWorker) {
+        Utils.checkNotNull(numWorker, "numWorker");
+        this.numWorker = Optional.ofNullable(numWorker);
+        return this;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceHubspot withNumWorker(Optional<Long> numWorker) {
+        Utils.checkNotNull(numWorker, "numWorker");
+        this.numWorker = numWorker;
+        return this;
+    }
+
+    /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If not set, "2006-06-01T00:00:00Z" (Hubspot creation date) will be used as start date. It's recommended to provide relevant to your data start date value to optimize synchronization.
      */
     public SourceHubspot withStartDate(OffsetDateTime startDate) {
@@ -153,6 +190,7 @@ public class SourceHubspot {
         return 
             Objects.deepEquals(this.credentials, other.credentials) &&
             Objects.deepEquals(this.enableExperimentalStreams, other.enableExperimentalStreams) &&
+            Objects.deepEquals(this.numWorker, other.numWorker) &&
             Objects.deepEquals(this.sourceType, other.sourceType) &&
             Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -162,6 +200,7 @@ public class SourceHubspot {
         return Objects.hash(
             credentials,
             enableExperimentalStreams,
+            numWorker,
             sourceType,
             startDate);
     }
@@ -171,6 +210,7 @@ public class SourceHubspot {
         return Utils.toString(SourceHubspot.class,
                 "credentials", credentials,
                 "enableExperimentalStreams", enableExperimentalStreams,
+                "numWorker", numWorker,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -180,6 +220,8 @@ public class SourceHubspot {
         private SourceHubspotAuthentication credentials;
  
         private Optional<Boolean> enableExperimentalStreams;
+ 
+        private Optional<Long> numWorker;
  
         private Optional<OffsetDateTime> startDate = Optional.empty();
         
@@ -215,6 +257,24 @@ public class SourceHubspot {
         }
 
         /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorker(long numWorker) {
+            Utils.checkNotNull(numWorker, "numWorker");
+            this.numWorker = Optional.ofNullable(numWorker);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorker(Optional<Long> numWorker) {
+            Utils.checkNotNull(numWorker, "numWorker");
+            this.numWorker = numWorker;
+            return this;
+        }
+
+        /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If not set, "2006-06-01T00:00:00Z" (Hubspot creation date) will be used as start date. It's recommended to provide relevant to your data start date value to optimize synchronization.
          */
         public Builder startDate(OffsetDateTime startDate) {
@@ -236,9 +296,13 @@ public class SourceHubspot {
             if (enableExperimentalStreams == null) {
                 enableExperimentalStreams = _SINGLETON_VALUE_EnableExperimentalStreams.value();
             }
+            if (numWorker == null) {
+                numWorker = _SINGLETON_VALUE_NumWorker.value();
+            }
             return new SourceHubspot(
                 credentials,
                 enableExperimentalStreams,
+                numWorker,
                 startDate);
         }
 
@@ -247,6 +311,12 @@ public class SourceHubspot {
                         "enable_experimental_streams",
                         "false",
                         new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorker =
+                new LazySingletonValue<>(
+                        "num_worker",
+                        "3",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<SourceHubspotHubspot> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

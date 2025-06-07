@@ -41,9 +41,8 @@ public class Application {
             .build();
 
         SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourcePocket.builder()
-                    .accessToken("<value>")
-                    .consumerKey("<value>")
+                .configuration(SourceConfiguration.of(SourceOnfleet.builder()
+                    .apiKey("<value>")
                     .build()))
                 .name("My Source")
                 .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -227,7 +226,7 @@ public class Application {
 
         InitiateOauthRequest req = InitiateOauthRequest.builder()
                 .redirectUrl("https://cloud.airbyte.io/v1/api/oauth/callback")
-                .sourceType(OAuthActorNames.GCS)
+                .sourceType(OAuthActorNames.INSTAGRAM)
                 .workspaceId("871d9b60-11d1-44cb-8c92-c246d53bf87e")
                 .build();
 
@@ -349,8 +348,10 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventee.builder()
-                        .apiToken("<value>")
+                    .configuration(SourceConfiguration.of(SourceNytimes.builder()
+                        .apiKey("<value>")
+                        .period(PeriodUsedForMostPopularStreams.ONE)
+                        .startDate("2022-08")
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -398,6 +399,7 @@ import com.airbyte.api.models.operations.PutSourceRequest;
 import com.airbyte.api.models.operations.PutSourceResponse;
 import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -415,7 +417,9 @@ public class Application {
         PutSourceRequest req = PutSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePutRequest(SourcePutRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceAirtable.builder()
+                    .configuration(SourceConfiguration.of(SourceRecharge.builder()
+                        .accessToken("<value>")
+                        .startDate(OffsetDateTime.parse("2021-05-14T00:00:00Z"))
                         .build()))
                     .name("My Source")
                     .build())

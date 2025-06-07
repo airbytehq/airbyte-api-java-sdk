@@ -24,6 +24,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
