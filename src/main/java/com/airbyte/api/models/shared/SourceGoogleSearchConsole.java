@@ -22,7 +22,7 @@ import java.util.Optional;
 public class SourceGoogleSearchConsole {
 
     @JsonProperty("authorization")
-    private AuthenticationType authorization;
+    private SourceGoogleSearchConsoleAuthenticationType authorization;
 
     /**
      * You can add your Custom Analytics report by creating one.
@@ -63,7 +63,7 @@ public class SourceGoogleSearchConsole {
 
     @JsonCreator
     public SourceGoogleSearchConsole(
-            @JsonProperty("authorization") AuthenticationType authorization,
+            @JsonProperty("authorization") SourceGoogleSearchConsoleAuthenticationType authorization,
             @JsonProperty("custom_reports_array") Optional<? extends List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray,
             @JsonProperty("data_state") Optional<? extends DataFreshness> dataState,
             @JsonProperty("end_date") Optional<LocalDate> endDate,
@@ -85,13 +85,13 @@ public class SourceGoogleSearchConsole {
     }
     
     public SourceGoogleSearchConsole(
-            AuthenticationType authorization,
+            SourceGoogleSearchConsoleAuthenticationType authorization,
             List<String> siteUrls) {
         this(authorization, Optional.empty(), Optional.empty(), Optional.empty(), siteUrls, Optional.empty());
     }
 
     @JsonIgnore
-    public AuthenticationType authorization() {
+    public SourceGoogleSearchConsoleAuthenticationType authorization() {
         return authorization;
     }
 
@@ -146,7 +146,7 @@ public class SourceGoogleSearchConsole {
         return new Builder();
     }    
 
-    public SourceGoogleSearchConsole withAuthorization(AuthenticationType authorization) {
+    public SourceGoogleSearchConsole withAuthorization(SourceGoogleSearchConsoleAuthenticationType authorization) {
         Utils.checkNotNull(authorization, "authorization");
         this.authorization = authorization;
         return this;
@@ -279,7 +279,7 @@ public class SourceGoogleSearchConsole {
     
     public final static class Builder {
  
-        private AuthenticationType authorization;
+        private SourceGoogleSearchConsoleAuthenticationType authorization;
  
         private Optional<? extends List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray = Optional.empty();
  
@@ -295,7 +295,7 @@ public class SourceGoogleSearchConsole {
           // force use of static builder() method
         }
 
-        public Builder authorization(AuthenticationType authorization) {
+        public Builder authorization(SourceGoogleSearchConsoleAuthenticationType authorization) {
             Utils.checkNotNull(authorization, "authorization");
             this.authorization = authorization;
             return this;
