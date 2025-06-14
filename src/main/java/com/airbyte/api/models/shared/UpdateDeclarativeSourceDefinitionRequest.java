@@ -6,15 +6,11 @@ package com.airbyte.api.models.shared;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
 
 public class UpdateDeclarativeSourceDefinitionRequest {
 
@@ -24,23 +20,11 @@ public class UpdateDeclarativeSourceDefinitionRequest {
     @JsonProperty("manifest")
     private Object manifest;
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("version")
-    private Optional<Long> version;
-
     @JsonCreator
     public UpdateDeclarativeSourceDefinitionRequest(
-            @JsonProperty("manifest") Object manifest,
-            @JsonProperty("version") Optional<Long> version) {
+            @JsonProperty("manifest") Object manifest) {
         Utils.checkNotNull(manifest, "manifest");
-        Utils.checkNotNull(version, "version");
         this.manifest = manifest;
-        this.version = version;
-    }
-    
-    public UpdateDeclarativeSourceDefinitionRequest(
-            Object manifest) {
-        this(manifest, Optional.empty());
     }
 
     /**
@@ -49,11 +33,6 @@ public class UpdateDeclarativeSourceDefinitionRequest {
     @JsonIgnore
     public Object manifest() {
         return manifest;
-    }
-
-    @JsonIgnore
-    public Optional<Long> version() {
-        return version;
     }
 
     public final static Builder builder() {
@@ -69,18 +48,6 @@ public class UpdateDeclarativeSourceDefinitionRequest {
         return this;
     }
 
-    public UpdateDeclarativeSourceDefinitionRequest withVersion(long version) {
-        Utils.checkNotNull(version, "version");
-        this.version = Optional.ofNullable(version);
-        return this;
-    }
-
-    public UpdateDeclarativeSourceDefinitionRequest withVersion(Optional<Long> version) {
-        Utils.checkNotNull(version, "version");
-        this.version = version;
-        return this;
-    }
-
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -92,29 +59,24 @@ public class UpdateDeclarativeSourceDefinitionRequest {
         }
         UpdateDeclarativeSourceDefinitionRequest other = (UpdateDeclarativeSourceDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.manifest, other.manifest) &&
-            Objects.deepEquals(this.version, other.version);
+            Objects.deepEquals(this.manifest, other.manifest);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
-            manifest,
-            version);
+            manifest);
     }
     
     @Override
     public String toString() {
         return Utils.toString(UpdateDeclarativeSourceDefinitionRequest.class,
-                "manifest", manifest,
-                "version", version);
+                "manifest", manifest);
     }
     
     public final static class Builder {
  
         private Object manifest;
- 
-        private Optional<Long> version = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
@@ -128,23 +90,10 @@ public class UpdateDeclarativeSourceDefinitionRequest {
             this.manifest = manifest;
             return this;
         }
-
-        public Builder version(long version) {
-            Utils.checkNotNull(version, "version");
-            this.version = Optional.ofNullable(version);
-            return this;
-        }
-
-        public Builder version(Optional<Long> version) {
-            Utils.checkNotNull(version, "version");
-            this.version = version;
-            return this;
-        }
         
         public UpdateDeclarativeSourceDefinitionRequest build() {
             return new UpdateDeclarativeSourceDefinitionRequest(
-                manifest,
-                version);
+                manifest);
         }
     }
 }

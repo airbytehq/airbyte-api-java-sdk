@@ -53,7 +53,6 @@ public class Permissions implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Create a permission
      * 
@@ -72,7 +71,7 @@ public class Permissions implements
      */
     public CreatePermissionResponse createPermission(
             PermissionCreateRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/permissions");
@@ -95,14 +94,15 @@ public class Permissions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "createPermission", 
                       Optional.of(List.of()), 
@@ -115,6 +115,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createPermission",
                             Optional.of(List.of()),
@@ -125,6 +126,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createPermission",
                             Optional.of(List.of()), 
@@ -135,6 +137,7 @@ public class Permissions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createPermission",
                             Optional.of(List.of()),
@@ -194,7 +197,6 @@ public class Permissions implements
     }
 
 
-
     /**
      * Delete a Permission
      * 
@@ -213,7 +215,7 @@ public class Permissions implements
      */
     public DeletePermissionResponse deletePermission(
             DeletePermissionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 DeletePermissionRequest.class,
                 _baseUrl,
@@ -225,14 +227,15 @@ public class Permissions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "deletePermission", 
                       Optional.of(List.of()), 
@@ -245,6 +248,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deletePermission",
                             Optional.of(List.of()),
@@ -255,6 +259,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deletePermission",
                             Optional.of(List.of()), 
@@ -265,6 +270,7 @@ public class Permissions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deletePermission",
                             Optional.of(List.of()),
@@ -313,7 +319,6 @@ public class Permissions implements
     }
 
 
-
     /**
      * Get Permission details
      * 
@@ -332,7 +337,7 @@ public class Permissions implements
      */
     public GetPermissionResponse getPermission(
             GetPermissionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 GetPermissionRequest.class,
                 _baseUrl,
@@ -344,14 +349,15 @@ public class Permissions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "getPermission", 
                       Optional.of(List.of()), 
@@ -364,6 +370,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getPermission",
                             Optional.of(List.of()),
@@ -374,6 +381,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getPermission",
                             Optional.of(List.of()), 
@@ -384,6 +392,7 @@ public class Permissions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getPermission",
                             Optional.of(List.of()),
@@ -443,7 +452,6 @@ public class Permissions implements
     }
 
 
-
     /**
      * List Permissions by user id
      * 
@@ -462,7 +470,7 @@ public class Permissions implements
      */
     public ListPermissionsResponse listPermissions(
             ListPermissionsRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/permissions");
@@ -477,14 +485,15 @@ public class Permissions implements
                 request, 
                 null));
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "listPermissions", 
                       Optional.of(List.of()), 
@@ -497,6 +506,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listPermissions",
                             Optional.of(List.of()),
@@ -507,6 +517,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listPermissions",
                             Optional.of(List.of()), 
@@ -517,6 +528,7 @@ public class Permissions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listPermissions",
                             Optional.of(List.of()),
@@ -576,7 +588,6 @@ public class Permissions implements
     }
 
 
-
     /**
      * Update a permission
      * 
@@ -595,7 +606,7 @@ public class Permissions implements
      */
     public UpdatePermissionResponse updatePermission(
             UpdatePermissionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 UpdatePermissionRequest.class,
                 _baseUrl,
@@ -620,14 +631,15 @@ public class Permissions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "updatePermission", 
                       Optional.of(List.of()), 
@@ -640,6 +652,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updatePermission",
                             Optional.of(List.of()),
@@ -650,6 +663,7 @@ public class Permissions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updatePermission",
                             Optional.of(List.of()), 
@@ -660,6 +674,7 @@ public class Permissions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updatePermission",
                             Optional.of(List.of()),

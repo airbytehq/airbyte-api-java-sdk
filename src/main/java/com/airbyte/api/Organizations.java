@@ -4,6 +4,9 @@
 package com.airbyte.api;
 
 import com.airbyte.api.models.errors.SDKError;
+import com.airbyte.api.models.operations.CreateOrUpdateOrganizationOAuthCredentialsRequest;
+import com.airbyte.api.models.operations.CreateOrUpdateOrganizationOAuthCredentialsRequestBuilder;
+import com.airbyte.api.models.operations.CreateOrUpdateOrganizationOAuthCredentialsResponse;
 import com.airbyte.api.models.operations.ListOrganizationsForUserRequestBuilder;
 import com.airbyte.api.models.operations.ListOrganizationsForUserResponse;
 import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
@@ -13,10 +16,13 @@ import com.airbyte.api.utils.HTTPRequest;
 import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
 import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
 import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
+import com.airbyte.api.utils.SerializedBody;
+import com.airbyte.api.utils.Utils.JsonShape;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.InputStream;
 import java.lang.Exception;
+import java.lang.Object;
 import java.lang.String;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -24,12 +30,153 @@ import java.util.List;
 import java.util.Optional;
 
 public class Organizations implements
+            MethodCallCreateOrUpdateOrganizationOAuthCredentials,
             MethodCallListOrganizationsForUser {
 
     private final SDKConfiguration sdkConfiguration;
 
     Organizations(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+    }
+
+    /**
+     * Create OAuth override credentials for an organization and source type.
+     * 
+     * <p>Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
+     * 
+     * @return The call builder
+     */
+    public CreateOrUpdateOrganizationOAuthCredentialsRequestBuilder createOrUpdateOrganizationOAuthCredentials() {
+        return new CreateOrUpdateOrganizationOAuthCredentialsRequestBuilder(this);
+    }
+
+    /**
+     * Create OAuth override credentials for an organization and source type.
+     * 
+     * <p>Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
+     * 
+     * @param request The request object containing all of the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public CreateOrUpdateOrganizationOAuthCredentialsResponse createOrUpdateOrganizationOAuthCredentials(
+            CreateOrUpdateOrganizationOAuthCredentialsRequest request) throws Exception {
+        String _baseUrl = this.sdkConfiguration.serverUrl();
+        String _url = Utils.generateURL(
+                CreateOrUpdateOrganizationOAuthCredentialsRequest.class,
+                _baseUrl,
+                "/organizations/{organizationId}/oauthCredentials",
+                request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "PUT");
+        Object _convertedRequest = Utils.convertToShape(
+                request, 
+                JsonShape.DEFAULT,
+                new TypeReference<CreateOrUpdateOrganizationOAuthCredentialsRequest>() {});
+        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
+                _convertedRequest, 
+                "organizationOAuthCredentialsRequest",
+                "json",
+                false);
+        if (_serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        _req.setBody(Optional.ofNullable(_serializedRequestBody));
+        _req.addHeader("Accept", "*/*")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+        
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
+                      _baseUrl,
+                      "createOrUpdateOrganizationOAuthCredentials", 
+                      Optional.of(List.of()), 
+                      _hookSecuritySource),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl(
+                            this.sdkConfiguration,
+                            _baseUrl,
+                            "createOrUpdateOrganizationOAuthCredentials",
+                            Optional.of(List.of()),
+                            _hookSecuritySource),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
+                            _baseUrl,
+                            "createOrUpdateOrganizationOAuthCredentials",
+                            Optional.of(List.of()), 
+                            _hookSecuritySource),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl(
+                            this.sdkConfiguration,
+                            _baseUrl,
+                            "createOrUpdateOrganizationOAuthCredentials",
+                            Optional.of(List.of()),
+                            _hookSecuritySource), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        CreateOrUpdateOrganizationOAuthCredentialsResponse.Builder _resBuilder = 
+            CreateOrUpdateOrganizationOAuthCredentialsResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        CreateOrUpdateOrganizationOAuthCredentialsResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            // no content 
+            return _res;
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
     }
 
 
@@ -53,7 +200,7 @@ public class Organizations implements
      * @throws Exception if the API call fails
      */
     public ListOrganizationsForUserResponse listOrganizationsForUserDirect() throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/organizations");
@@ -63,14 +210,15 @@ public class Organizations implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "listOrganizationsForUser", 
                       Optional.of(List.of()), 
@@ -83,6 +231,7 @@ public class Organizations implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listOrganizationsForUser",
                             Optional.of(List.of()),
@@ -93,6 +242,7 @@ public class Organizations implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listOrganizationsForUser",
                             Optional.of(List.of()), 
@@ -103,6 +253,7 @@ public class Organizations implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listOrganizationsForUser",
                             Optional.of(List.of()),
