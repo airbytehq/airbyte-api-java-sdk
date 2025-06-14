@@ -53,7 +53,6 @@ public class DestinationDefinitions implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Create a destination definition.
      * 
@@ -72,7 +71,7 @@ public class DestinationDefinitions implements
      */
     public CreateDestinationDefinitionResponse createDestinationDefinition(
             CreateDestinationDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 CreateDestinationDefinitionRequest.class,
                 _baseUrl,
@@ -97,14 +96,15 @@ public class DestinationDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "createDestinationDefinition", 
                       Optional.of(List.of()), 
@@ -117,6 +117,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createDestinationDefinition",
                             Optional.of(List.of()),
@@ -127,6 +128,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createDestinationDefinition",
                             Optional.of(List.of()), 
@@ -137,6 +139,7 @@ public class DestinationDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createDestinationDefinition",
                             Optional.of(List.of()),
@@ -196,7 +199,6 @@ public class DestinationDefinitions implements
     }
 
 
-
     /**
      * Delete a destination definition.
      * 
@@ -215,7 +217,7 @@ public class DestinationDefinitions implements
      */
     public DeleteDestinationDefinitionResponse deleteDestinationDefinition(
             DeleteDestinationDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 DeleteDestinationDefinitionRequest.class,
                 _baseUrl,
@@ -227,14 +229,15 @@ public class DestinationDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "deleteDestinationDefinition", 
                       Optional.of(List.of()), 
@@ -247,6 +250,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteDestinationDefinition",
                             Optional.of(List.of()),
@@ -257,6 +261,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteDestinationDefinition",
                             Optional.of(List.of()), 
@@ -267,6 +272,7 @@ public class DestinationDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteDestinationDefinition",
                             Optional.of(List.of()),
@@ -326,7 +332,6 @@ public class DestinationDefinitions implements
     }
 
 
-
     /**
      * Get destination definition details.
      * 
@@ -345,7 +350,7 @@ public class DestinationDefinitions implements
      */
     public GetDestinationDefinitionResponse getDestinationDefinition(
             GetDestinationDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 GetDestinationDefinitionRequest.class,
                 _baseUrl,
@@ -357,14 +362,15 @@ public class DestinationDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "getDestinationDefinition", 
                       Optional.of(List.of()), 
@@ -377,6 +383,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getDestinationDefinition",
                             Optional.of(List.of()),
@@ -387,6 +394,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getDestinationDefinition",
                             Optional.of(List.of()), 
@@ -397,6 +405,7 @@ public class DestinationDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getDestinationDefinition",
                             Optional.of(List.of()),
@@ -456,7 +465,6 @@ public class DestinationDefinitions implements
     }
 
 
-
     /**
      * List destination definitions.
      * 
@@ -475,7 +483,7 @@ public class DestinationDefinitions implements
      */
     public ListDestinationDefinitionsResponse listDestinationDefinitions(
             ListDestinationDefinitionsRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 ListDestinationDefinitionsRequest.class,
                 _baseUrl,
@@ -487,14 +495,15 @@ public class DestinationDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "listDestinationDefinitions", 
                       Optional.of(List.of()), 
@@ -507,6 +516,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listDestinationDefinitions",
                             Optional.of(List.of()),
@@ -517,6 +527,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listDestinationDefinitions",
                             Optional.of(List.of()), 
@@ -527,6 +538,7 @@ public class DestinationDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listDestinationDefinitions",
                             Optional.of(List.of()),
@@ -586,7 +598,6 @@ public class DestinationDefinitions implements
     }
 
 
-
     /**
      * Update destination definition details.
      * 
@@ -605,7 +616,7 @@ public class DestinationDefinitions implements
      */
     public UpdateDestinationDefinitionResponse updateDestinationDefinition(
             UpdateDestinationDefinitionRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 UpdateDestinationDefinitionRequest.class,
                 _baseUrl,
@@ -630,14 +641,15 @@ public class DestinationDefinitions implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "updateDestinationDefinition", 
                       Optional.of(List.of()), 
@@ -650,6 +662,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateDestinationDefinition",
                             Optional.of(List.of()),
@@ -660,6 +673,7 @@ public class DestinationDefinitions implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateDestinationDefinition",
                             Optional.of(List.of()), 
@@ -670,6 +684,7 @@ public class DestinationDefinitions implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateDestinationDefinition",
                             Optional.of(List.of()),

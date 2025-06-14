@@ -30,7 +30,6 @@ public class Health implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Health Check
      * 
@@ -47,7 +46,7 @@ public class Health implements
      * @throws Exception if the API call fails
      */
     public GetHealthCheckResponse getHealthCheckDirect() throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/health");
@@ -57,11 +56,12 @@ public class Health implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         Optional<SecuritySource> _hookSecuritySource = Optional.empty();
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "getHealthCheck", 
                       Optional.of(List.of()), 
@@ -74,6 +74,7 @@ public class Health implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getHealthCheck",
                             Optional.of(List.of()),
@@ -84,6 +85,7 @@ public class Health implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getHealthCheck",
                             Optional.of(List.of()), 
@@ -94,6 +96,7 @@ public class Health implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getHealthCheck",
                             Optional.of(List.of()),
