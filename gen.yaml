@@ -3,25 +3,29 @@ generation:
   sdkClassName: airbyte
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 java:
-  version: 2.0.0
+  version: 2.1.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: api
+  baseErrorName: AirbyteError
   clientServerStatusCodesAsErrors: true
   companyEmail: info@airbyte.com
   companyName: Airbyte
   companyURL: www.airbyte.com
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
   flattenGlobalSecurity: false
   githubURL: github.com/airbytehq/airbyte-api-java-sdk
   groupID: com.airbyte

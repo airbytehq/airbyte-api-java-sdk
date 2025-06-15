@@ -27,6 +27,8 @@ public class SpeakeasyHTTPClient implements HTTPClient {
     
     private static Consumer<? super String> logger = System.out::println;
 
+    private final HttpClient client = HttpClient.newHttpClient();
+
     /**
      * Experimental, may be changed anytime. Sets debug logging on or off for
      * requests and responses including bodies for JSON content. WARNING: this
@@ -65,7 +67,6 @@ public class SpeakeasyHTTPClient implements HTTPClient {
     @Override
     public HttpResponse<InputStream> send(HttpRequest request)
             throws IOException, InterruptedException, URISyntaxException {
-        HttpClient client = HttpClient.newHttpClient();
         if (debugEnabled) {
             request = logRequest(request);
         }

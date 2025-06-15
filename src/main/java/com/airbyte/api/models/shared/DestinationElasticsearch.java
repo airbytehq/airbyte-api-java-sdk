@@ -44,6 +44,13 @@ public class DestinationElasticsearch {
     private String endpoint;
 
     /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("pathPrefix")
+    private Optional<String> pathPrefix;
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -62,24 +69,27 @@ public class DestinationElasticsearch {
             @JsonProperty("authenticationMethod") Optional<? extends AuthenticationMethod> authenticationMethod,
             @JsonProperty("ca_certificate") Optional<String> caCertificate,
             @JsonProperty("endpoint") String endpoint,
+            @JsonProperty("pathPrefix") Optional<String> pathPrefix,
             @JsonProperty("tunnel_method") Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod,
             @JsonProperty("upsert") Optional<Boolean> upsert) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         Utils.checkNotNull(caCertificate, "caCertificate");
         Utils.checkNotNull(endpoint, "endpoint");
+        Utils.checkNotNull(pathPrefix, "pathPrefix");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(upsert, "upsert");
         this.authenticationMethod = authenticationMethod;
         this.caCertificate = caCertificate;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.endpoint = endpoint;
+        this.pathPrefix = pathPrefix;
         this.tunnelMethod = tunnelMethod;
         this.upsert = upsert;
     }
     
     public DestinationElasticsearch(
             String endpoint) {
-        this(Optional.empty(), Optional.empty(), endpoint, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), endpoint, Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -110,6 +120,14 @@ public class DestinationElasticsearch {
     @JsonIgnore
     public String endpoint() {
         return endpoint;
+    }
+
+    /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    @JsonIgnore
+    public Optional<String> pathPrefix() {
+        return pathPrefix;
     }
 
     /**
@@ -179,6 +197,24 @@ public class DestinationElasticsearch {
     }
 
     /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    public DestinationElasticsearch withPathPrefix(String pathPrefix) {
+        Utils.checkNotNull(pathPrefix, "pathPrefix");
+        this.pathPrefix = Optional.ofNullable(pathPrefix);
+        return this;
+    }
+
+    /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    public DestinationElasticsearch withPathPrefix(Optional<String> pathPrefix) {
+        Utils.checkNotNull(pathPrefix, "pathPrefix");
+        this.pathPrefix = pathPrefix;
+        return this;
+    }
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     public DestinationElasticsearch withTunnelMethod(DestinationElasticsearchSSHTunnelMethod tunnelMethod) {
@@ -229,6 +265,7 @@ public class DestinationElasticsearch {
             Objects.deepEquals(this.caCertificate, other.caCertificate) &&
             Objects.deepEquals(this.destinationType, other.destinationType) &&
             Objects.deepEquals(this.endpoint, other.endpoint) &&
+            Objects.deepEquals(this.pathPrefix, other.pathPrefix) &&
             Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
             Objects.deepEquals(this.upsert, other.upsert);
     }
@@ -240,6 +277,7 @@ public class DestinationElasticsearch {
             caCertificate,
             destinationType,
             endpoint,
+            pathPrefix,
             tunnelMethod,
             upsert);
     }
@@ -251,6 +289,7 @@ public class DestinationElasticsearch {
                 "caCertificate", caCertificate,
                 "destinationType", destinationType,
                 "endpoint", endpoint,
+                "pathPrefix", pathPrefix,
                 "tunnelMethod", tunnelMethod,
                 "upsert", upsert);
     }
@@ -262,6 +301,8 @@ public class DestinationElasticsearch {
         private Optional<String> caCertificate = Optional.empty();
  
         private String endpoint;
+ 
+        private Optional<String> pathPrefix = Optional.empty();
  
         private Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod = Optional.empty();
  
@@ -317,6 +358,24 @@ public class DestinationElasticsearch {
         }
 
         /**
+         * The Path Prefix of the Elasticsearch server
+         */
+        public Builder pathPrefix(String pathPrefix) {
+            Utils.checkNotNull(pathPrefix, "pathPrefix");
+            this.pathPrefix = Optional.ofNullable(pathPrefix);
+            return this;
+        }
+
+        /**
+         * The Path Prefix of the Elasticsearch server
+         */
+        public Builder pathPrefix(Optional<String> pathPrefix) {
+            Utils.checkNotNull(pathPrefix, "pathPrefix");
+            this.pathPrefix = pathPrefix;
+            return this;
+        }
+
+        /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
         public Builder tunnelMethod(DestinationElasticsearchSSHTunnelMethod tunnelMethod) {
@@ -360,6 +419,7 @@ public class DestinationElasticsearch {
                 authenticationMethod,
                 caCertificate,
                 endpoint,
+                pathPrefix,
                 tunnelMethod,
                 upsert);
         }

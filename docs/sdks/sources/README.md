@@ -26,6 +26,8 @@ import com.airbyte.api.Airbyte;
 import com.airbyte.api.models.operations.CreateSourceResponse;
 import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
+import java.util.List;
 
 public class Application {
 
@@ -41,9 +43,11 @@ public class Application {
             .build();
 
         SourceCreateRequest req = SourceCreateRequest.builder()
-                .configuration(SourceConfiguration.of(SourcePocket.builder()
-                    .accessToken("<value>")
-                    .consumerKey("<value>")
+                .configuration(SourceConfiguration.of(SourceOnesignal.builder()
+                    .applications(List.of())
+                    .outcomeNames("os__session_duration.count,os__click.count,CustomOutcomeName.sum")
+                    .startDate(OffsetDateTime.parse("2020-11-16T00:00:00Z"))
+                    .userAuthKey("<value>")
                     .build()))
                 .name("My Source")
                 .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -227,7 +231,7 @@ public class Application {
 
         InitiateOauthRequest req = InitiateOauthRequest.builder()
                 .redirectUrl("https://cloud.airbyte.io/v1/api/oauth/callback")
-                .sourceType(OAuthActorNames.GCS)
+                .sourceType(OAuthActorNames.INSTAGRAM)
                 .workspaceId("871d9b60-11d1-44cb-8c92-c246d53bf87e")
                 .build();
 
@@ -288,7 +292,79 @@ public class Application {
 
         ListSourcesRequest req = ListSourcesRequest.builder()
                 .workspaceIds(List.of(
-                    "df08f6b0-b364-4cc1-9b3f-96f5d2fccfb2,b0796797-de23-4fc7-a5e2-7e131314718c"))
+                    "d",
+                    "f",
+                    "0",
+                    "8",
+                    "f",
+                    "6",
+                    "b",
+                    "0",
+                    "-",
+                    "b",
+                    "3",
+                    "6",
+                    "4",
+                    "-",
+                    "4",
+                    "c",
+                    "c",
+                    "1",
+                    "-",
+                    "9",
+                    "b",
+                    "3",
+                    "f",
+                    "-",
+                    "9",
+                    "6",
+                    "f",
+                    "5",
+                    "d",
+                    "2",
+                    "f",
+                    "c",
+                    "c",
+                    "f",
+                    "b",
+                    "2",
+                    ",",
+                    "b",
+                    "0",
+                    "7",
+                    "9",
+                    "6",
+                    "7",
+                    "9",
+                    "7",
+                    "-",
+                    "d",
+                    "e",
+                    "2",
+                    "3",
+                    "-",
+                    "4",
+                    "f",
+                    "c",
+                    "7",
+                    "-",
+                    "a",
+                    "5",
+                    "e",
+                    "2",
+                    "-",
+                    "7",
+                    "e",
+                    "1",
+                    "3",
+                    "1",
+                    "3",
+                    "1",
+                    "4",
+                    "7",
+                    "1",
+                    "8",
+                    "c"))
                 .build();
 
         ListSourcesResponse res = sdk.sources().listSources()
@@ -332,6 +408,7 @@ import com.airbyte.api.models.operations.PatchSourceRequest;
 import com.airbyte.api.models.operations.PatchSourceResponse;
 import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
+import java.time.OffsetDateTime;
 
 public class Application {
 
@@ -349,8 +426,11 @@ public class Application {
         PatchSourceRequest req = PatchSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePatchRequest(SourcePatchRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceEventee.builder()
-                        .apiToken("<value>")
+                    .configuration(SourceConfiguration.of(SourceNylas.builder()
+                        .apiKey("<value>")
+                        .apiServer(APIServer.US)
+                        .endDate(OffsetDateTime.parse("2024-09-13T05:42:44.905Z"))
+                        .startDate(OffsetDateTime.parse("2023-12-03T11:21:24.468Z"))
                         .build()))
                     .name("My Source")
                     .workspaceId("744cc0ed-7f05-4949-9e60-2a814f90c035")
@@ -415,7 +495,8 @@ public class Application {
         PutSourceRequest req = PutSourceRequest.builder()
                 .sourceId("<value>")
                 .sourcePutRequest(SourcePutRequest.builder()
-                    .configuration(SourceConfiguration.of(SourceAirtable.builder()
+                    .configuration(SourceConfiguration.of(SourceRdStationMarketing.builder()
+                        .startDate("2017-01-25T00:00:00Z")
                         .build()))
                     .name("My Source")
                     .build())

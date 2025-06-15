@@ -42,7 +42,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'com.airbyte:api:2.0.0'
+implementation 'com.airbyte:api:2.1.0'
 ```
 
 Maven:
@@ -50,7 +50,7 @@ Maven:
 <dependency>
     <groupId>com.airbyte</groupId>
     <artifactId>api</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 
@@ -122,6 +122,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
@@ -175,6 +176,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
@@ -242,6 +244,7 @@ public class Application {
 
 ### [organizations()](docs/sdks/organizations/README.md)
 
+* [createOrUpdateOrganizationOAuthCredentials](docs/sdks/organizations/README.md#createorupdateorganizationoauthcredentials) - Create OAuth override credentials for an organization and source type.
 * [listOrganizationsForUser](docs/sdks/organizations/README.md#listorganizationsforuser) - List all organizations for a user
 
 ### [permissions()](docs/sdks/permissions/README.md)
@@ -336,6 +339,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
@@ -382,6 +386,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
