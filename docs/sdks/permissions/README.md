@@ -199,7 +199,6 @@ List Permissions by user id
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.ListPermissionsRequest;
 import com.airbyte.api.models.operations.ListPermissionsResponse;
 import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
@@ -218,11 +217,7 @@ public class Application {
                     .build())
             .build();
 
-        ListPermissionsRequest req = ListPermissionsRequest.builder()
-                .build();
-
         ListPermissionsResponse res = sdk.permissions().listPermissions()
-                .request(req)
                 .call();
 
         if (res.permissionsResponse().isPresent()) {
@@ -278,7 +273,7 @@ public class Application {
 
         UpdatePermissionRequest req = UpdatePermissionRequest.builder()
                 .permissionUpdateRequest(PermissionUpdateRequest.builder()
-                    .permissionType(PermissionType.WORKSPACE_OWNER)
+                    .permissionType(PermissionType.ORGANIZATION_READER)
                     .build())
                 .permissionId("<value>")
                 .build();

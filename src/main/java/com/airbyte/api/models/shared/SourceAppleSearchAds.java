@@ -75,6 +75,13 @@ public class SourceAppleSearchAds {
     @JsonProperty("timezone")
     private Optional<? extends TimeZone> timezone;
 
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to proxy requests to Apple's token endpoint
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("token_refresh_endpoint")
+    private Optional<String> tokenRefreshEndpoint;
+
     @JsonCreator
     public SourceAppleSearchAds(
             @JsonProperty("backoff_factor") Optional<Long> backoffFactor,
@@ -84,7 +91,8 @@ public class SourceAppleSearchAds {
             @JsonProperty("lookback_window") Optional<Long> lookbackWindow,
             @JsonProperty("org_id") long orgId,
             @JsonProperty("start_date") String startDate,
-            @JsonProperty("timezone") Optional<? extends TimeZone> timezone) {
+            @JsonProperty("timezone") Optional<? extends TimeZone> timezone,
+            @JsonProperty("token_refresh_endpoint") Optional<String> tokenRefreshEndpoint) {
         Utils.checkNotNull(backoffFactor, "backoffFactor");
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -93,6 +101,7 @@ public class SourceAppleSearchAds {
         Utils.checkNotNull(orgId, "orgId");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(timezone, "timezone");
+        Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
         this.backoffFactor = backoffFactor;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
@@ -102,6 +111,7 @@ public class SourceAppleSearchAds {
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.timezone = timezone;
+        this.tokenRefreshEndpoint = tokenRefreshEndpoint;
     }
     
     public SourceAppleSearchAds(
@@ -109,7 +119,7 @@ public class SourceAppleSearchAds {
             String clientSecret,
             long orgId,
             String startDate) {
-        this(Optional.empty(), clientId, clientSecret, Optional.empty(), Optional.empty(), orgId, startDate, Optional.empty());
+        this(Optional.empty(), clientId, clientSecret, Optional.empty(), Optional.empty(), orgId, startDate, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -180,6 +190,14 @@ public class SourceAppleSearchAds {
     @JsonIgnore
     public Optional<TimeZone> timezone() {
         return (Optional<TimeZone>) timezone;
+    }
+
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to proxy requests to Apple's token endpoint
+     */
+    @JsonIgnore
+    public Optional<String> tokenRefreshEndpoint() {
+        return tokenRefreshEndpoint;
     }
 
     public final static Builder builder() {
@@ -294,6 +312,24 @@ public class SourceAppleSearchAds {
         return this;
     }
 
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to proxy requests to Apple's token endpoint
+     */
+    public SourceAppleSearchAds withTokenRefreshEndpoint(String tokenRefreshEndpoint) {
+        Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+        this.tokenRefreshEndpoint = Optional.ofNullable(tokenRefreshEndpoint);
+        return this;
+    }
+
+    /**
+     * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to proxy requests to Apple's token endpoint
+     */
+    public SourceAppleSearchAds withTokenRefreshEndpoint(Optional<String> tokenRefreshEndpoint) {
+        Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+        this.tokenRefreshEndpoint = tokenRefreshEndpoint;
+        return this;
+    }
+
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -313,7 +349,8 @@ public class SourceAppleSearchAds {
             Objects.deepEquals(this.orgId, other.orgId) &&
             Objects.deepEquals(this.sourceType, other.sourceType) &&
             Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.timezone, other.timezone);
+            Objects.deepEquals(this.timezone, other.timezone) &&
+            Objects.deepEquals(this.tokenRefreshEndpoint, other.tokenRefreshEndpoint);
     }
     
     @Override
@@ -327,7 +364,8 @@ public class SourceAppleSearchAds {
             orgId,
             sourceType,
             startDate,
-            timezone);
+            timezone,
+            tokenRefreshEndpoint);
     }
     
     @Override
@@ -341,7 +379,8 @@ public class SourceAppleSearchAds {
                 "orgId", orgId,
                 "sourceType", sourceType,
                 "startDate", startDate,
-                "timezone", timezone);
+                "timezone", timezone,
+                "tokenRefreshEndpoint", tokenRefreshEndpoint);
     }
     
     public final static class Builder {
@@ -361,6 +400,8 @@ public class SourceAppleSearchAds {
         private String startDate;
  
         private Optional<? extends TimeZone> timezone;
+ 
+        private Optional<String> tokenRefreshEndpoint;
         
         private Builder() {
           // force use of static builder() method
@@ -473,6 +514,24 @@ public class SourceAppleSearchAds {
             this.timezone = timezone;
             return this;
         }
+
+        /**
+         * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to proxy requests to Apple's token endpoint
+         */
+        public Builder tokenRefreshEndpoint(String tokenRefreshEndpoint) {
+            Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+            this.tokenRefreshEndpoint = Optional.ofNullable(tokenRefreshEndpoint);
+            return this;
+        }
+
+        /**
+         * Token Refresh Endpoint. You should override the default value in scenarios  where it's required to proxy requests to Apple's token endpoint
+         */
+        public Builder tokenRefreshEndpoint(Optional<String> tokenRefreshEndpoint) {
+            Utils.checkNotNull(tokenRefreshEndpoint, "tokenRefreshEndpoint");
+            this.tokenRefreshEndpoint = tokenRefreshEndpoint;
+            return this;
+        }
         
         public SourceAppleSearchAds build() {
             if (backoffFactor == null) {
@@ -484,6 +543,9 @@ public class SourceAppleSearchAds {
             if (timezone == null) {
                 timezone = _SINGLETON_VALUE_Timezone.value();
             }
+            if (tokenRefreshEndpoint == null) {
+                tokenRefreshEndpoint = _SINGLETON_VALUE_TokenRefreshEndpoint.value();
+            }
             return new SourceAppleSearchAds(
                 backoffFactor,
                 clientId,
@@ -492,7 +554,8 @@ public class SourceAppleSearchAds {
                 lookbackWindow,
                 orgId,
                 startDate,
-                timezone);
+                timezone,
+                tokenRefreshEndpoint);
         }
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BackoffFactor =
@@ -518,5 +581,11 @@ public class SourceAppleSearchAds {
                         "timezone",
                         "\"UTC\"",
                         new TypeReference<Optional<? extends TimeZone>>() {});
+
+        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_TokenRefreshEndpoint =
+                new LazySingletonValue<>(
+                        "token_refresh_endpoint",
+                        "\"https://appleid.apple.com/auth/oauth2/token?grant_type=client_credentials&scope=searchadsorg\"",
+                        new TypeReference<Optional<String>>() {});
     }
 }

@@ -57,7 +57,6 @@ public class Workspaces implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * Create OAuth override credentials for a workspace and source type.
      * 
@@ -82,7 +81,7 @@ public class Workspaces implements
      */
     public CreateOrUpdateWorkspaceOAuthCredentialsResponse createOrUpdateWorkspaceOAuthCredentials(
             CreateOrUpdateWorkspaceOAuthCredentialsRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 CreateOrUpdateWorkspaceOAuthCredentialsRequest.class,
                 _baseUrl,
@@ -107,14 +106,15 @@ public class Workspaces implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "createOrUpdateWorkspaceOAuthCredentials", 
                       Optional.of(List.of()), 
@@ -127,6 +127,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createOrUpdateWorkspaceOAuthCredentials",
                             Optional.of(List.of()),
@@ -137,6 +138,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createOrUpdateWorkspaceOAuthCredentials",
                             Optional.of(List.of()), 
@@ -147,6 +149,7 @@ public class Workspaces implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createOrUpdateWorkspaceOAuthCredentials",
                             Optional.of(List.of()),
@@ -195,7 +198,6 @@ public class Workspaces implements
     }
 
 
-
     /**
      * Create a workspace
      * 
@@ -214,7 +216,7 @@ public class Workspaces implements
      */
     public CreateWorkspaceResponse createWorkspace(
             WorkspaceCreateRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/workspaces");
@@ -237,14 +239,15 @@ public class Workspaces implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "createWorkspace", 
                       Optional.of(List.of()), 
@@ -257,6 +260,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createWorkspace",
                             Optional.of(List.of()),
@@ -267,6 +271,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createWorkspace",
                             Optional.of(List.of()), 
@@ -277,6 +282,7 @@ public class Workspaces implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "createWorkspace",
                             Optional.of(List.of()),
@@ -336,7 +342,6 @@ public class Workspaces implements
     }
 
 
-
     /**
      * Delete a Workspace
      * 
@@ -355,7 +360,7 @@ public class Workspaces implements
      */
     public DeleteWorkspaceResponse deleteWorkspace(
             DeleteWorkspaceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 DeleteWorkspaceRequest.class,
                 _baseUrl,
@@ -367,14 +372,15 @@ public class Workspaces implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "deleteWorkspace", 
                       Optional.of(List.of()), 
@@ -387,6 +393,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteWorkspace",
                             Optional.of(List.of()),
@@ -397,6 +404,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteWorkspace",
                             Optional.of(List.of()), 
@@ -407,6 +415,7 @@ public class Workspaces implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "deleteWorkspace",
                             Optional.of(List.of()),
@@ -455,7 +464,6 @@ public class Workspaces implements
     }
 
 
-
     /**
      * Get Workspace details
      * 
@@ -474,7 +482,7 @@ public class Workspaces implements
      */
     public GetWorkspaceResponse getWorkspace(
             GetWorkspaceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 GetWorkspaceRequest.class,
                 _baseUrl,
@@ -486,14 +494,15 @@ public class Workspaces implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "getWorkspace", 
                       Optional.of(List.of()), 
@@ -506,6 +515,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getWorkspace",
                             Optional.of(List.of()),
@@ -516,6 +526,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getWorkspace",
                             Optional.of(List.of()), 
@@ -526,6 +537,7 @@ public class Workspaces implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "getWorkspace",
                             Optional.of(List.of()),
@@ -585,7 +597,6 @@ public class Workspaces implements
     }
 
 
-
     /**
      * List workspaces
      * 
@@ -604,7 +615,7 @@ public class Workspaces implements
      */
     public ListWorkspacesResponse listWorkspaces(
             ListWorkspacesRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/workspaces");
@@ -619,14 +630,15 @@ public class Workspaces implements
                 request, 
                 null));
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "listWorkspaces", 
                       Optional.of(List.of()), 
@@ -639,6 +651,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listWorkspaces",
                             Optional.of(List.of()),
@@ -649,6 +662,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listWorkspaces",
                             Optional.of(List.of()), 
@@ -659,6 +673,7 @@ public class Workspaces implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listWorkspaces",
                             Optional.of(List.of()),
@@ -718,7 +733,6 @@ public class Workspaces implements
     }
 
 
-
     /**
      * Update a workspace
      * 
@@ -737,7 +751,7 @@ public class Workspaces implements
      */
     public UpdateWorkspaceResponse updateWorkspace(
             UpdateWorkspaceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 UpdateWorkspaceRequest.class,
                 _baseUrl,
@@ -762,14 +776,15 @@ public class Workspaces implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "updateWorkspace", 
                       Optional.of(List.of()), 
@@ -782,6 +797,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateWorkspace",
                             Optional.of(List.of()),
@@ -792,6 +808,7 @@ public class Workspaces implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateWorkspace",
                             Optional.of(List.of()), 
@@ -802,6 +819,7 @@ public class Workspaces implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "updateWorkspace",
                             Optional.of(List.of()),

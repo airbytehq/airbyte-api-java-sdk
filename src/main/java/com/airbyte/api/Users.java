@@ -33,7 +33,6 @@ public class Users implements
         this.sdkConfiguration = sdkConfiguration;
     }
 
-
     /**
      * List all users within an organization
      * 
@@ -56,7 +55,7 @@ public class Users implements
      */
     public ListUsersWithinAnOrganizationResponse listUsersWithinAnOrganization(
             ListUsersWithinAnOrganizationRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _baseUrl = this.sdkConfiguration.serverUrl();
         String _url = Utils.generateURL(
                 _baseUrl,
                 "/users");
@@ -71,14 +70,15 @@ public class Users implements
                 request, 
                 null));
         
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
+        Optional<SecuritySource> _hookSecuritySource = Optional.of(this.sdkConfiguration.securitySource());
         Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
+                this.sdkConfiguration.securitySource().getSecurity());
+        HTTPClient _client = this.sdkConfiguration.client();
         HttpRequest _r = 
             sdkConfiguration.hooks()
                .beforeRequest(
                   new BeforeRequestContextImpl(
+                      this.sdkConfiguration,
                       _baseUrl,
                       "listUsersWithinAnOrganization", 
                       Optional.of(List.of()), 
@@ -91,6 +91,7 @@ public class Users implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listUsersWithinAnOrganization",
                             Optional.of(List.of()),
@@ -101,6 +102,7 @@ public class Users implements
                 _httpRes = sdkConfiguration.hooks()
                     .afterSuccess(
                         new AfterSuccessContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listUsersWithinAnOrganization",
                             Optional.of(List.of()), 
@@ -111,6 +113,7 @@ public class Users implements
             _httpRes = sdkConfiguration.hooks()
                     .afterError(
                         new AfterErrorContextImpl(
+                            this.sdkConfiguration,
                             _baseUrl,
                             "listUsersWithinAnOrganization",
                             Optional.of(List.of()),

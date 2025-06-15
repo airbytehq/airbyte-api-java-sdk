@@ -35,13 +35,6 @@ public class InsightConfig {
     private Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns;
 
     /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("action_report_time")
-    private Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime;
-
-    /**
      * A list of chosen breakdowns for breakdowns
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -106,7 +99,6 @@ public class InsightConfig {
     @JsonCreator
     public InsightConfig(
             @JsonProperty("action_breakdowns") Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns,
-            @JsonProperty("action_report_time") Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime,
             @JsonProperty("breakdowns") Optional<? extends List<ValidBreakdowns>> breakdowns,
             @JsonProperty("end_date") Optional<OffsetDateTime> endDate,
             @JsonProperty("fields") Optional<? extends List<SourceFacebookMarketingValidEnums>> fields,
@@ -117,7 +109,6 @@ public class InsightConfig {
             @JsonProperty("start_date") Optional<OffsetDateTime> startDate,
             @JsonProperty("time_increment") Optional<Long> timeIncrement) {
         Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
-        Utils.checkNotNull(actionReportTime, "actionReportTime");
         Utils.checkNotNull(breakdowns, "breakdowns");
         Utils.checkNotNull(endDate, "endDate");
         Utils.checkNotNull(fields, "fields");
@@ -128,7 +119,6 @@ public class InsightConfig {
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(timeIncrement, "timeIncrement");
         this.actionBreakdowns = actionBreakdowns;
-        this.actionReportTime = actionReportTime;
         this.breakdowns = breakdowns;
         this.endDate = endDate;
         this.fields = fields;
@@ -142,7 +132,7 @@ public class InsightConfig {
     
     public InsightConfig(
             String name) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -152,15 +142,6 @@ public class InsightConfig {
     @JsonIgnore
     public Optional<List<ValidActionBreakdowns>> actionBreakdowns() {
         return (Optional<List<ValidActionBreakdowns>>) actionBreakdowns;
-    }
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<SourceFacebookMarketingActionReportTime> actionReportTime() {
-        return (Optional<SourceFacebookMarketingActionReportTime>) actionReportTime;
     }
 
     /**
@@ -257,24 +238,6 @@ public class InsightConfig {
     public InsightConfig withActionBreakdowns(Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns) {
         Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
         this.actionBreakdowns = actionBreakdowns;
-        return this;
-    }
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    public InsightConfig withActionReportTime(SourceFacebookMarketingActionReportTime actionReportTime) {
-        Utils.checkNotNull(actionReportTime, "actionReportTime");
-        this.actionReportTime = Optional.ofNullable(actionReportTime);
-        return this;
-    }
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    public InsightConfig withActionReportTime(Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime) {
-        Utils.checkNotNull(actionReportTime, "actionReportTime");
-        this.actionReportTime = actionReportTime;
         return this;
     }
 
@@ -443,7 +406,6 @@ public class InsightConfig {
         InsightConfig other = (InsightConfig) o;
         return 
             Objects.deepEquals(this.actionBreakdowns, other.actionBreakdowns) &&
-            Objects.deepEquals(this.actionReportTime, other.actionReportTime) &&
             Objects.deepEquals(this.breakdowns, other.breakdowns) &&
             Objects.deepEquals(this.endDate, other.endDate) &&
             Objects.deepEquals(this.fields, other.fields) &&
@@ -459,7 +421,6 @@ public class InsightConfig {
     public int hashCode() {
         return Objects.hash(
             actionBreakdowns,
-            actionReportTime,
             breakdowns,
             endDate,
             fields,
@@ -475,7 +436,6 @@ public class InsightConfig {
     public String toString() {
         return Utils.toString(InsightConfig.class,
                 "actionBreakdowns", actionBreakdowns,
-                "actionReportTime", actionReportTime,
                 "breakdowns", breakdowns,
                 "endDate", endDate,
                 "fields", fields,
@@ -490,8 +450,6 @@ public class InsightConfig {
     public final static class Builder {
  
         private Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns = Optional.empty();
- 
-        private Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime;
  
         private Optional<? extends List<ValidBreakdowns>> breakdowns = Optional.empty();
  
@@ -530,24 +488,6 @@ public class InsightConfig {
         public Builder actionBreakdowns(Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns) {
             Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
             this.actionBreakdowns = actionBreakdowns;
-            return this;
-        }
-
-        /**
-         * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-         */
-        public Builder actionReportTime(SourceFacebookMarketingActionReportTime actionReportTime) {
-            Utils.checkNotNull(actionReportTime, "actionReportTime");
-            this.actionReportTime = Optional.ofNullable(actionReportTime);
-            return this;
-        }
-
-        /**
-         * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-         */
-        public Builder actionReportTime(Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime) {
-            Utils.checkNotNull(actionReportTime, "actionReportTime");
-            this.actionReportTime = actionReportTime;
             return this;
         }
 
@@ -705,9 +645,6 @@ public class InsightConfig {
         }
         
         public InsightConfig build() {
-            if (actionReportTime == null) {
-                actionReportTime = _SINGLETON_VALUE_ActionReportTime.value();
-            }
             if (insightsJobTimeout == null) {
                 insightsJobTimeout = _SINGLETON_VALUE_InsightsJobTimeout.value();
             }
@@ -722,7 +659,6 @@ public class InsightConfig {
             }
             return new InsightConfig(
                 actionBreakdowns,
-                actionReportTime,
                 breakdowns,
                 endDate,
                 fields,
@@ -733,12 +669,6 @@ public class InsightConfig {
                 startDate,
                 timeIncrement);
         }
-
-        private static final LazySingletonValue<Optional<? extends SourceFacebookMarketingActionReportTime>> _SINGLETON_VALUE_ActionReportTime =
-                new LazySingletonValue<>(
-                        "action_report_time",
-                        "\"mixed\"",
-                        new TypeReference<Optional<? extends SourceFacebookMarketingActionReportTime>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_InsightsJobTimeout =
                 new LazySingletonValue<>(

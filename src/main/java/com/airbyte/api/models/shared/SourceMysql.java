@@ -85,7 +85,7 @@ public class SourceMysql {
     private SourceMysqlMysql sourceType;
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
@@ -231,7 +231,7 @@ public class SourceMysql {
     }
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -396,7 +396,7 @@ public class SourceMysql {
     }
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     public SourceMysql withSslMode(SourceMysqlEncryption sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -405,7 +405,7 @@ public class SourceMysql {
     }
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     public SourceMysql withSslMode(Optional<? extends SourceMysqlEncryption> sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -668,7 +668,7 @@ public class SourceMysql {
         }
 
         /**
-         * The encryption method with is used when communicating with the database.
+         * The encryption method which is used when communicating with the database.
          */
         public Builder sslMode(SourceMysqlEncryption sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -677,7 +677,7 @@ public class SourceMysql {
         }
 
         /**
-         * The encryption method with is used when communicating with the database.
+         * The encryption method which is used when communicating with the database.
          */
         public Builder sslMode(Optional<? extends SourceMysqlEncryption> sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");

@@ -7,6 +7,7 @@ import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
@@ -28,7 +29,7 @@ public class WorkspaceOAuthCredentialsRequest {
      * The values required to configure the source.
      */
     @JsonProperty("configuration")
-    private OAuthCredentialsConfiguration configuration;
+    private Object configuration;
 
     @JsonProperty("name")
     private OAuthActorNames name;
@@ -36,7 +37,7 @@ public class WorkspaceOAuthCredentialsRequest {
     @JsonCreator
     public WorkspaceOAuthCredentialsRequest(
             @JsonProperty("actorType") ActorTypeEnum actorType,
-            @JsonProperty("configuration") OAuthCredentialsConfiguration configuration,
+            @JsonProperty("configuration") Object configuration,
             @JsonProperty("name") OAuthActorNames name) {
         Utils.checkNotNull(actorType, "actorType");
         Utils.checkNotNull(configuration, "configuration");
@@ -58,7 +59,7 @@ public class WorkspaceOAuthCredentialsRequest {
      * The values required to configure the source.
      */
     @JsonIgnore
-    public OAuthCredentialsConfiguration configuration() {
+    public Object configuration() {
         return configuration;
     }
 
@@ -83,7 +84,7 @@ public class WorkspaceOAuthCredentialsRequest {
     /**
      * The values required to configure the source.
      */
-    public WorkspaceOAuthCredentialsRequest withConfiguration(OAuthCredentialsConfiguration configuration) {
+    public WorkspaceOAuthCredentialsRequest withConfiguration(Object configuration) {
         Utils.checkNotNull(configuration, "configuration");
         this.configuration = configuration;
         return this;
@@ -131,7 +132,7 @@ public class WorkspaceOAuthCredentialsRequest {
  
         private ActorTypeEnum actorType;
  
-        private OAuthCredentialsConfiguration configuration;
+        private Object configuration;
  
         private OAuthActorNames name;
         
@@ -151,7 +152,7 @@ public class WorkspaceOAuthCredentialsRequest {
         /**
          * The values required to configure the source.
          */
-        public Builder configuration(OAuthCredentialsConfiguration configuration) {
+        public Builder configuration(Object configuration) {
             Utils.checkNotNull(configuration, "configuration");
             this.configuration = configuration;
             return this;

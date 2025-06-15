@@ -1045,12 +1045,21 @@ public final class Utils {
         return readBytes(new File(filename));
     }
     
+    public static String readString(String filename) {
+        return readString(new File(filename));
+    }
+    
     public static byte[] readBytes(File file) {
         try {
             return readBytesAndClose(new FileInputStream(file));
         } catch (FileNotFoundException e) {
             throw new UncheckedIOException(e);
         }
+    }
+    
+    public static String readString(File file) {
+        byte[] bytes = readBytes(file);
+        return new String(bytes, StandardCharsets.UTF_8);
     }
     
     public static byte[] readBytesAndClose(InputStream in) {
