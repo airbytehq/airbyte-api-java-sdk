@@ -13,6 +13,7 @@
 | `BING_ADS`                  | bing-ads                    |
 | `DRIFT`                     | drift                       |
 | `FACEBOOK_MARKETING`        | facebook-marketing          |
+| `FACEBOOK_PAGES`            | facebook-pages              |
 | `GCS`                       | gcs                         |
 | `GITHUB`                    | github                      |
 | `GITLAB`                    | gitlab                      |
@@ -34,6 +35,7 @@
 | `PINTEREST`                 | pinterest                   |
 | `RD_STATION_MARKETING`      | rd-station-marketing        |
 | `SALESFORCE`                | salesforce                  |
+| `SHAREPOINT_ENTERPRISE`     | sharepoint-enterprise       |
 | `SLACK`                     | slack                       |
 | `SMARTSHEETS`               | smartsheets                 |
 | `SNAPCHAT_MARKETING`        | snapchat-marketing          |

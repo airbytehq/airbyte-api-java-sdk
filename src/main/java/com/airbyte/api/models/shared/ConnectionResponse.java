@@ -38,9 +38,6 @@ public class ConnectionResponse {
     @JsonProperty("createdAt")
     private long createdAt;
 
-    @JsonProperty("dataResidency")
-    private String dataResidency;
-
     @JsonProperty("destinationId")
     private String destinationId;
 
@@ -92,7 +89,6 @@ public class ConnectionResponse {
             @JsonProperty("configurations") StreamConfigurations configurations,
             @JsonProperty("connectionId") String connectionId,
             @JsonProperty("createdAt") long createdAt,
-            @JsonProperty("dataResidency") String dataResidency,
             @JsonProperty("destinationId") String destinationId,
             @JsonProperty("name") String name,
             @JsonProperty("namespaceDefinition") Optional<? extends NamespaceDefinitionEnum> namespaceDefinition,
@@ -107,7 +103,6 @@ public class ConnectionResponse {
         Utils.checkNotNull(configurations, "configurations");
         Utils.checkNotNull(connectionId, "connectionId");
         Utils.checkNotNull(createdAt, "createdAt");
-        Utils.checkNotNull(dataResidency, "dataResidency");
         Utils.checkNotNull(destinationId, "destinationId");
         Utils.checkNotNull(name, "name");
         Utils.checkNotNull(namespaceDefinition, "namespaceDefinition");
@@ -122,7 +117,6 @@ public class ConnectionResponse {
         this.configurations = configurations;
         this.connectionId = connectionId;
         this.createdAt = createdAt;
-        this.dataResidency = dataResidency;
         this.destinationId = destinationId;
         this.name = name;
         this.namespaceDefinition = namespaceDefinition;
@@ -140,7 +134,6 @@ public class ConnectionResponse {
             StreamConfigurations configurations,
             String connectionId,
             long createdAt,
-            String dataResidency,
             String destinationId,
             String name,
             ConnectionScheduleResponse schedule,
@@ -148,7 +141,7 @@ public class ConnectionResponse {
             ConnectionStatusEnum status,
             List<Tag> tags,
             String workspaceId) {
-        this(configurations, connectionId, createdAt, dataResidency, destinationId, name, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), schedule, sourceId, status, tags, workspaceId);
+        this(configurations, connectionId, createdAt, destinationId, name, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), schedule, sourceId, status, tags, workspaceId);
     }
 
     /**
@@ -167,11 +160,6 @@ public class ConnectionResponse {
     @JsonIgnore
     public long createdAt() {
         return createdAt;
-    }
-
-    @JsonIgnore
-    public String dataResidency() {
-        return dataResidency;
     }
 
     @JsonIgnore
@@ -262,12 +250,6 @@ public class ConnectionResponse {
     public ConnectionResponse withCreatedAt(long createdAt) {
         Utils.checkNotNull(createdAt, "createdAt");
         this.createdAt = createdAt;
-        return this;
-    }
-
-    public ConnectionResponse withDataResidency(String dataResidency) {
-        Utils.checkNotNull(dataResidency, "dataResidency");
-        this.dataResidency = dataResidency;
         return this;
     }
 
@@ -390,7 +372,6 @@ public class ConnectionResponse {
             Objects.deepEquals(this.configurations, other.configurations) &&
             Objects.deepEquals(this.connectionId, other.connectionId) &&
             Objects.deepEquals(this.createdAt, other.createdAt) &&
-            Objects.deepEquals(this.dataResidency, other.dataResidency) &&
             Objects.deepEquals(this.destinationId, other.destinationId) &&
             Objects.deepEquals(this.name, other.name) &&
             Objects.deepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
@@ -410,7 +391,6 @@ public class ConnectionResponse {
             configurations,
             connectionId,
             createdAt,
-            dataResidency,
             destinationId,
             name,
             namespaceDefinition,
@@ -430,7 +410,6 @@ public class ConnectionResponse {
                 "configurations", configurations,
                 "connectionId", connectionId,
                 "createdAt", createdAt,
-                "dataResidency", dataResidency,
                 "destinationId", destinationId,
                 "name", name,
                 "namespaceDefinition", namespaceDefinition,
@@ -451,8 +430,6 @@ public class ConnectionResponse {
         private String connectionId;
  
         private Long createdAt;
- 
-        private String dataResidency;
  
         private String destinationId;
  
@@ -498,12 +475,6 @@ public class ConnectionResponse {
         public Builder createdAt(long createdAt) {
             Utils.checkNotNull(createdAt, "createdAt");
             this.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder dataResidency(String dataResidency) {
-            Utils.checkNotNull(dataResidency, "dataResidency");
-            this.dataResidency = dataResidency;
             return this;
         }
 
@@ -623,7 +594,6 @@ public class ConnectionResponse {
                 configurations,
                 connectionId,
                 createdAt,
-                dataResidency,
                 destinationId,
                 name,
                 namespaceDefinition,

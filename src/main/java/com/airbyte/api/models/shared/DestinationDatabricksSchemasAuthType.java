@@ -14,7 +14,7 @@ public enum DestinationDatabricksSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private DestinationDatabricksSchemasAuthType(String value) {
+    DestinationDatabricksSchemasAuthType(String value) {
         this.value = value;
     }
     

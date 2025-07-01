@@ -19,7 +19,7 @@ public enum SourceHubspotAuthType {
     @JsonValue
     private final String value;
 
-    private SourceHubspotAuthType(String value) {
+    SourceHubspotAuthType(String value) {
         this.value = value;
     }
     

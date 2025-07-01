@@ -14,7 +14,7 @@ public enum DestinationPgvectorSchemasEmbeddingEmbeddingMode {
     @JsonValue
     private final String value;
 
-    private DestinationPgvectorSchemasEmbeddingEmbeddingMode(String value) {
+    DestinationPgvectorSchemasEmbeddingEmbeddingMode(String value) {
         this.value = value;
     }
     

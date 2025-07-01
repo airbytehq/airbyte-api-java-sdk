@@ -20,7 +20,7 @@ public enum ConversionReportTime {
     @JsonValue
     private final String value;
 
-    private ConversionReportTime(String value) {
+    ConversionReportTime(String value) {
         this.value = value;
     }
     

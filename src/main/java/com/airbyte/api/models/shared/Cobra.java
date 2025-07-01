@@ -14,7 +14,7 @@ public enum Cobra {
     @JsonValue
     private final String value;
 
-    private Cobra(String value) {
+    Cobra(String value) {
         this.value = value;
     }
     

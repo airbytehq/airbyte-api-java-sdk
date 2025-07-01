@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.DeleteDestinationDefinitionOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class DeleteDestinationDefinitionRequestBuilder {
 
     private DeleteDestinationDefinitionRequest request;
-    private final SDKMethodInterfaces.MethodCallDeleteDestinationDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public DeleteDestinationDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallDeleteDestinationDefinition sdk) {
-        this.sdk = sdk;
+    public DeleteDestinationDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public DeleteDestinationDefinitionRequestBuilder request(DeleteDestinationDefinitionRequest request) {
@@ -22,8 +26,10 @@ public class DeleteDestinationDefinitionRequestBuilder {
     }
 
     public DeleteDestinationDefinitionResponse call() throws Exception {
+        
+        RequestOperation<DeleteDestinationDefinitionRequest, DeleteDestinationDefinitionResponse> operation
+              = new DeleteDestinationDefinitionOperation( sdkConfiguration);
 
-        return sdk.deleteDestinationDefinition(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

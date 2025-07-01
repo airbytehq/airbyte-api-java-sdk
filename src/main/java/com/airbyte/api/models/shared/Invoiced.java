@@ -14,7 +14,7 @@ public enum Invoiced {
     @JsonValue
     private final String value;
 
-    private Invoiced(String value) {
+    Invoiced(String value) {
         this.value = value;
     }
     

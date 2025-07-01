@@ -14,7 +14,7 @@ public enum LightspeedRetail {
     @JsonValue
     private final String value;
 
-    private LightspeedRetail(String value) {
+    LightspeedRetail(String value) {
         this.value = value;
     }
     

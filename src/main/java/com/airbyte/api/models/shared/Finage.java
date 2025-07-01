@@ -14,7 +14,7 @@ public enum Finage {
     @JsonValue
     private final String value;
 
-    private Finage(String value) {
+    Finage(String value) {
         this.value = value;
     }
     

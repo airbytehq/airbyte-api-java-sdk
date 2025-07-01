@@ -18,6 +18,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,10 +50,10 @@ public class MongoDBAtlasReplicaSet {
     private String connectionString;
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
-    @JsonProperty("database")
-    private String database;
+    @JsonProperty("databases")
+    private List<String> databases;
 
     /**
      * The password associated with this username.
@@ -77,13 +78,13 @@ public class MongoDBAtlasReplicaSet {
     public MongoDBAtlasReplicaSet(
             @JsonProperty("auth_source") Optional<String> authSource,
             @JsonProperty("connection_string") String connectionString,
-            @JsonProperty("database") String database,
+            @JsonProperty("databases") List<String> databases,
             @JsonProperty("password") String password,
             @JsonProperty("schema_enforced") Optional<Boolean> schemaEnforced,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(authSource, "authSource");
         Utils.checkNotNull(connectionString, "connectionString");
-        Utils.checkNotNull(database, "database");
+        Utils.checkNotNull(databases, "databases");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(schemaEnforced, "schemaEnforced");
         Utils.checkNotNull(username, "username");
@@ -91,7 +92,7 @@ public class MongoDBAtlasReplicaSet {
         this.authSource = authSource;
         this.clusterType = Builder._SINGLETON_VALUE_ClusterType.value();
         this.connectionString = connectionString;
-        this.database = database;
+        this.databases = databases;
         this.password = password;
         this.schemaEnforced = schemaEnforced;
         this.username = username;
@@ -99,10 +100,10 @@ public class MongoDBAtlasReplicaSet {
     
     public MongoDBAtlasReplicaSet(
             String connectionString,
-            String database,
+            List<String> databases,
             String password,
             String username) {
-        this(Optional.empty(), connectionString, database, password, Optional.empty(), username);
+        this(Optional.empty(), connectionString, databases, password, Optional.empty(), username);
     }
 
     @JsonAnyGetter
@@ -132,11 +133,11 @@ public class MongoDBAtlasReplicaSet {
     }
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
     @JsonIgnore
-    public String database() {
-        return database;
+    public List<String> databases() {
+        return databases;
     }
 
     /**
@@ -209,11 +210,11 @@ public class MongoDBAtlasReplicaSet {
     }
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
-    public MongoDBAtlasReplicaSet withDatabase(String database) {
-        Utils.checkNotNull(database, "database");
-        this.database = database;
+    public MongoDBAtlasReplicaSet withDatabases(List<String> databases) {
+        Utils.checkNotNull(databases, "databases");
+        this.databases = databases;
         return this;
     }
 
@@ -268,7 +269,7 @@ public class MongoDBAtlasReplicaSet {
             Objects.deepEquals(this.authSource, other.authSource) &&
             Objects.deepEquals(this.clusterType, other.clusterType) &&
             Objects.deepEquals(this.connectionString, other.connectionString) &&
-            Objects.deepEquals(this.database, other.database) &&
+            Objects.deepEquals(this.databases, other.databases) &&
             Objects.deepEquals(this.password, other.password) &&
             Objects.deepEquals(this.schemaEnforced, other.schemaEnforced) &&
             Objects.deepEquals(this.username, other.username);
@@ -281,7 +282,7 @@ public class MongoDBAtlasReplicaSet {
             authSource,
             clusterType,
             connectionString,
-            database,
+            databases,
             password,
             schemaEnforced,
             username);
@@ -294,7 +295,7 @@ public class MongoDBAtlasReplicaSet {
                 "authSource", authSource,
                 "clusterType", clusterType,
                 "connectionString", connectionString,
-                "database", database,
+                "databases", databases,
                 "password", password,
                 "schemaEnforced", schemaEnforced,
                 "username", username);
@@ -308,7 +309,7 @@ public class MongoDBAtlasReplicaSet {
  
         private String connectionString;
  
-        private String database;
+        private List<String> databases;
  
         private String password;
  
@@ -364,11 +365,11 @@ public class MongoDBAtlasReplicaSet {
         }
 
         /**
-         * The name of the MongoDB database that contains the collection(s) to replicate.
+         * The names of the MongoDB databases that contain the collection(s) to replicate.
          */
-        public Builder database(String database) {
-            Utils.checkNotNull(database, "database");
-            this.database = database;
+        public Builder databases(List<String> databases) {
+            Utils.checkNotNull(databases, "databases");
+            this.databases = databases;
             return this;
         }
 
@@ -418,7 +419,7 @@ public class MongoDBAtlasReplicaSet {
             return new MongoDBAtlasReplicaSet(
                 authSource,
                 connectionString,
-                database,
+                databases,
                 password,
                 schemaEnforced,
                 username)

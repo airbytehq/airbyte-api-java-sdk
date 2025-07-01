@@ -20,7 +20,7 @@ public enum GCSTmpFilesAfterwardProcessing {
     @JsonValue
     private final String value;
 
-    private GCSTmpFilesAfterwardProcessing(String value) {
+    GCSTmpFilesAfterwardProcessing(String value) {
         this.value = value;
     }
     

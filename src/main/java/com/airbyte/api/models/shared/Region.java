@@ -21,7 +21,7 @@ public enum Region {
     @JsonValue
     private final String value;
 
-    private Region(String value) {
+    Region(String value) {
         this.value = value;
     }
     

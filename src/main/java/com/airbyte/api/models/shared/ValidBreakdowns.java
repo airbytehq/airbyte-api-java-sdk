@@ -73,7 +73,7 @@ public enum ValidBreakdowns {
     @JsonValue
     private final String value;
 
-    private ValidBreakdowns(String value) {
+    ValidBreakdowns(String value) {
         this.value = value;
     }
     

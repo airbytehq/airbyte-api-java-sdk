@@ -14,7 +14,7 @@ public enum SourceLeverHiringAuthType {
     @JsonValue
     private final String value;
 
-    private SourceLeverHiringAuthType(String value) {
+    SourceLeverHiringAuthType(String value) {
         this.value = value;
     }
     

@@ -20,7 +20,7 @@ public enum ProductCatalog {
     @JsonValue
     private final String value;
 
-    private ProductCatalog(String value) {
+    ProductCatalog(String value) {
         this.value = value;
     }
     

@@ -30,7 +30,7 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
@@ -150,7 +150,7 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     @JsonIgnore
@@ -255,7 +255,7 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     public ConnectionCreateRequest withDataResidency(String dataResidency) {
@@ -266,7 +266,7 @@ public class ConnectionCreateRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     public ConnectionCreateRequest withDataResidency(Optional<String> dataResidency) {
@@ -529,7 +529,7 @@ public class ConnectionCreateRequest {
 
         /**
          * 
-         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
          */
         @Deprecated
         public Builder dataResidency(String dataResidency) {
@@ -540,7 +540,7 @@ public class ConnectionCreateRequest {
 
         /**
          * 
-         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
          */
         @Deprecated
         public Builder dataResidency(Optional<String> dataResidency) {

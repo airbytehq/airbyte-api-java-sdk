@@ -916,7 +916,7 @@ public enum PokemonName {
     @JsonValue
     private final String value;
 
-    private PokemonName(String value) {
+    PokemonName(String value) {
         this.value = value;
     }
     

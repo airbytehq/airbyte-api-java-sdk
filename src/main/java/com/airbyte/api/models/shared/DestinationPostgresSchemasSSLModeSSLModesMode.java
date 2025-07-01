@@ -14,7 +14,7 @@ public enum DestinationPostgresSchemasSSLModeSSLModesMode {
     @JsonValue
     private final String value;
 
-    private DestinationPostgresSchemasSSLModeSSLModesMode(String value) {
+    DestinationPostgresSchemasSSLModeSSLModesMode(String value) {
         this.value = value;
     }
     

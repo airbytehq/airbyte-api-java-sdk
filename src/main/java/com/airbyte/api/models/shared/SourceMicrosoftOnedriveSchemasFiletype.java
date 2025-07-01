@@ -14,7 +14,7 @@ public enum SourceMicrosoftOnedriveSchemasFiletype {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftOnedriveSchemasFiletype(String value) {
+    SourceMicrosoftOnedriveSchemasFiletype(String value) {
         this.value = value;
     }
     

@@ -7,12 +7,16 @@ import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 public class SourceCalendly {
 
@@ -21,6 +25,13 @@ public class SourceCalendly {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_days")
+    private Optional<Double> lookbackDays;
 
     @JsonProperty("sourceType")
     private Calendly sourceType;
@@ -31,12 +42,21 @@ public class SourceCalendly {
     @JsonCreator
     public SourceCalendly(
             @JsonProperty("api_key") String apiKey,
+            @JsonProperty("lookback_days") Optional<Double> lookbackDays,
             @JsonProperty("start_date") OffsetDateTime startDate) {
         Utils.checkNotNull(apiKey, "apiKey");
+        Utils.checkNotNull(lookbackDays, "lookbackDays");
         Utils.checkNotNull(startDate, "startDate");
         this.apiKey = apiKey;
+        this.lookbackDays = lookbackDays;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
+    }
+    
+    public SourceCalendly(
+            String apiKey,
+            OffsetDateTime startDate) {
+        this(apiKey, Optional.empty(), startDate);
     }
 
     /**
@@ -45,6 +65,14 @@ public class SourceCalendly {
     @JsonIgnore
     public String apiKey() {
         return apiKey;
+    }
+
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    @JsonIgnore
+    public Optional<Double> lookbackDays() {
+        return lookbackDays;
     }
 
     @JsonIgnore
@@ -70,6 +98,24 @@ public class SourceCalendly {
         return this;
     }
 
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    public SourceCalendly withLookbackDays(double lookbackDays) {
+        Utils.checkNotNull(lookbackDays, "lookbackDays");
+        this.lookbackDays = Optional.ofNullable(lookbackDays);
+        return this;
+    }
+
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    public SourceCalendly withLookbackDays(Optional<Double> lookbackDays) {
+        Utils.checkNotNull(lookbackDays, "lookbackDays");
+        this.lookbackDays = lookbackDays;
+        return this;
+    }
+
     public SourceCalendly withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
@@ -88,6 +134,7 @@ public class SourceCalendly {
         SourceCalendly other = (SourceCalendly) o;
         return 
             Objects.deepEquals(this.apiKey, other.apiKey) &&
+            Objects.deepEquals(this.lookbackDays, other.lookbackDays) &&
             Objects.deepEquals(this.sourceType, other.sourceType) &&
             Objects.deepEquals(this.startDate, other.startDate);
     }
@@ -96,6 +143,7 @@ public class SourceCalendly {
     public int hashCode() {
         return Objects.hash(
             apiKey,
+            lookbackDays,
             sourceType,
             startDate);
     }
@@ -104,6 +152,7 @@ public class SourceCalendly {
     public String toString() {
         return Utils.toString(SourceCalendly.class,
                 "apiKey", apiKey,
+                "lookbackDays", lookbackDays,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
@@ -111,6 +160,8 @@ public class SourceCalendly {
     public final static class Builder {
  
         private String apiKey;
+ 
+        private Optional<Double> lookbackDays;
  
         private OffsetDateTime startDate;
         
@@ -127,6 +178,24 @@ public class SourceCalendly {
             return this;
         }
 
+        /**
+         * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+         */
+        public Builder lookbackDays(double lookbackDays) {
+            Utils.checkNotNull(lookbackDays, "lookbackDays");
+            this.lookbackDays = Optional.ofNullable(lookbackDays);
+            return this;
+        }
+
+        /**
+         * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+         */
+        public Builder lookbackDays(Optional<Double> lookbackDays) {
+            Utils.checkNotNull(lookbackDays, "lookbackDays");
+            this.lookbackDays = lookbackDays;
+            return this;
+        }
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
@@ -134,10 +203,20 @@ public class SourceCalendly {
         }
         
         public SourceCalendly build() {
+            if (lookbackDays == null) {
+                lookbackDays = _SINGLETON_VALUE_LookbackDays.value();
+            }
             return new SourceCalendly(
                 apiKey,
+                lookbackDays,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<Double>> _SINGLETON_VALUE_LookbackDays =
+                new LazySingletonValue<>(
+                        "lookback_days",
+                        "0",
+                        new TypeReference<Optional<Double>>() {});
 
         private static final LazySingletonValue<Calendly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

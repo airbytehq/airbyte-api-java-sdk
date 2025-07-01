@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.UpdateTagOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class UpdateTagRequestBuilder {
 
     private UpdateTagRequest request;
-    private final SDKMethodInterfaces.MethodCallUpdateTag sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public UpdateTagRequestBuilder(SDKMethodInterfaces.MethodCallUpdateTag sdk) {
-        this.sdk = sdk;
+    public UpdateTagRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public UpdateTagRequestBuilder request(UpdateTagRequest request) {
@@ -22,8 +26,10 @@ public class UpdateTagRequestBuilder {
     }
 
     public UpdateTagResponse call() throws Exception {
+        
+        RequestOperation<UpdateTagRequest, UpdateTagResponse> operation
+              = new UpdateTagOperation( sdkConfiguration);
 
-        return sdk.updateTag(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

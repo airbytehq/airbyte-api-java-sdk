@@ -14,7 +14,7 @@ public enum HeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private HeaderDefinitionType(String value) {
+    HeaderDefinitionType(String value) {
         this.value = value;
     }
     

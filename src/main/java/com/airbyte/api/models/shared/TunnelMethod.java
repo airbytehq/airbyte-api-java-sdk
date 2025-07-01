@@ -19,7 +19,7 @@ public enum TunnelMethod {
     @JsonValue
     private final String value;
 
-    private TunnelMethod(String value) {
+    TunnelMethod(String value) {
         this.value = value;
     }
     

@@ -21,7 +21,7 @@ public enum SwipeUpAttributionWindow {
     @JsonValue
     private final String value;
 
-    private SwipeUpAttributionWindow(String value) {
+    SwipeUpAttributionWindow(String value) {
         this.value = value;
     }
     

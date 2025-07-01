@@ -22,7 +22,7 @@ public enum UpdateMode {
     @JsonValue
     private final String value;
 
-    private UpdateMode(String value) {
+    UpdateMode(String value) {
         this.value = value;
     }
     

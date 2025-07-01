@@ -14,7 +14,7 @@ public enum SourceSftpBulkSchemasHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkSchemasHeaderDefinitionType(String value) {
+    SourceSftpBulkSchemasHeaderDefinitionType(String value) {
         this.value = value;
     }
     

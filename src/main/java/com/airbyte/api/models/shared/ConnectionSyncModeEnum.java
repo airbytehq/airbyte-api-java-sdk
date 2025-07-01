@@ -18,7 +18,7 @@ public enum ConnectionSyncModeEnum {
     @JsonValue
     private final String value;
 
-    private ConnectionSyncModeEnum(String value) {
+    ConnectionSyncModeEnum(String value) {
         this.value = value;
     }
     

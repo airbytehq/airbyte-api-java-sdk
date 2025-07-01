@@ -21,7 +21,7 @@ public enum SearchScope {
     @JsonValue
     private final String value;
 
-    private SearchScope(String value) {
+    SearchScope(String value) {
         this.value = value;
     }
     

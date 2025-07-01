@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
-import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
@@ -40,13 +39,6 @@ public class SourceJira {
      */
     @JsonProperty("email")
     private String email;
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("enable_experimental_streams")
-    private Optional<Boolean> enableExperimentalStreams;
 
     /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
@@ -84,7 +76,6 @@ public class SourceJira {
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("domain") String domain,
             @JsonProperty("email") String email,
-            @JsonProperty("enable_experimental_streams") Optional<Boolean> enableExperimentalStreams,
             @JsonProperty("lookback_window_minutes") Optional<Long> lookbackWindowMinutes,
             @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("projects") Optional<? extends List<String>> projects,
@@ -92,7 +83,6 @@ public class SourceJira {
         Utils.checkNotNull(apiToken, "apiToken");
         Utils.checkNotNull(domain, "domain");
         Utils.checkNotNull(email, "email");
-        Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
         Utils.checkNotNull(lookbackWindowMinutes, "lookbackWindowMinutes");
         Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(projects, "projects");
@@ -100,7 +90,6 @@ public class SourceJira {
         this.apiToken = apiToken;
         this.domain = domain;
         this.email = email;
-        this.enableExperimentalStreams = enableExperimentalStreams;
         this.lookbackWindowMinutes = lookbackWindowMinutes;
         this.numWorkers = numWorkers;
         this.projects = projects;
@@ -112,7 +101,7 @@ public class SourceJira {
             String apiToken,
             String domain,
             String email) {
-        this(apiToken, domain, email, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiToken, domain, email, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -137,14 +126,6 @@ public class SourceJira {
     @JsonIgnore
     public String email() {
         return email;
-    }
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    @JsonIgnore
-    public Optional<Boolean> enableExperimentalStreams() {
-        return enableExperimentalStreams;
     }
 
     /**
@@ -213,24 +194,6 @@ public class SourceJira {
     public SourceJira withEmail(String email) {
         Utils.checkNotNull(email, "email");
         this.email = email;
-        return this;
-    }
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    public SourceJira withEnableExperimentalStreams(boolean enableExperimentalStreams) {
-        Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-        this.enableExperimentalStreams = Optional.ofNullable(enableExperimentalStreams);
-        return this;
-    }
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    public SourceJira withEnableExperimentalStreams(Optional<Boolean> enableExperimentalStreams) {
-        Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-        this.enableExperimentalStreams = enableExperimentalStreams;
         return this;
     }
 
@@ -320,7 +283,6 @@ public class SourceJira {
             Objects.deepEquals(this.apiToken, other.apiToken) &&
             Objects.deepEquals(this.domain, other.domain) &&
             Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.enableExperimentalStreams, other.enableExperimentalStreams) &&
             Objects.deepEquals(this.lookbackWindowMinutes, other.lookbackWindowMinutes) &&
             Objects.deepEquals(this.numWorkers, other.numWorkers) &&
             Objects.deepEquals(this.projects, other.projects) &&
@@ -334,7 +296,6 @@ public class SourceJira {
             apiToken,
             domain,
             email,
-            enableExperimentalStreams,
             lookbackWindowMinutes,
             numWorkers,
             projects,
@@ -348,7 +309,6 @@ public class SourceJira {
                 "apiToken", apiToken,
                 "domain", domain,
                 "email", email,
-                "enableExperimentalStreams", enableExperimentalStreams,
                 "lookbackWindowMinutes", lookbackWindowMinutes,
                 "numWorkers", numWorkers,
                 "projects", projects,
@@ -363,8 +323,6 @@ public class SourceJira {
         private String domain;
  
         private String email;
- 
-        private Optional<Boolean> enableExperimentalStreams;
  
         private Optional<Long> lookbackWindowMinutes;
  
@@ -402,24 +360,6 @@ public class SourceJira {
         public Builder email(String email) {
             Utils.checkNotNull(email, "email");
             this.email = email;
-            return this;
-        }
-
-        /**
-         * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-         */
-        public Builder enableExperimentalStreams(boolean enableExperimentalStreams) {
-            Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-            this.enableExperimentalStreams = Optional.ofNullable(enableExperimentalStreams);
-            return this;
-        }
-
-        /**
-         * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-         */
-        public Builder enableExperimentalStreams(Optional<Boolean> enableExperimentalStreams) {
-            Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-            this.enableExperimentalStreams = enableExperimentalStreams;
             return this;
         }
 
@@ -496,9 +436,6 @@ public class SourceJira {
         }
         
         public SourceJira build() {
-            if (enableExperimentalStreams == null) {
-                enableExperimentalStreams = _SINGLETON_VALUE_EnableExperimentalStreams.value();
-            }
             if (lookbackWindowMinutes == null) {
                 lookbackWindowMinutes = _SINGLETON_VALUE_LookbackWindowMinutes.value();
             }
@@ -509,18 +446,11 @@ public class SourceJira {
                 apiToken,
                 domain,
                 email,
-                enableExperimentalStreams,
                 lookbackWindowMinutes,
                 numWorkers,
                 projects,
                 startDate);
         }
-
-        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_EnableExperimentalStreams =
-                new LazySingletonValue<>(
-                        "enable_experimental_streams",
-                        "false",
-                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowMinutes =
                 new LazySingletonValue<>(

@@ -40,7 +40,7 @@ public class Application {
             .build();
 
         CancelJobRequest req = CancelJobRequest.builder()
-                .jobId(801771L)
+                .jobId(621441L)
                 .build();
 
         CancelJobResponse res = sdk.jobs().cancelJob()
@@ -159,7 +159,7 @@ public class Application {
             .build();
 
         GetJobRequest req = GetJobRequest.builder()
-                .jobId(131101L)
+                .jobId(245534L)
                 .build();
 
         GetJobResponse res = sdk.jobs().getJob()

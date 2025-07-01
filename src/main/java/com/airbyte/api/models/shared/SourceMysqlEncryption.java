@@ -19,7 +19,7 @@ import java.util.Objects;
 /**
  * SourceMysqlEncryption
  * 
- * <p>The encryption method with is used when communicating with the database.
+ * <p>The encryption method which is used when communicating with the database.
  */
 @JsonDeserialize(using = SourceMysqlEncryption._Deserializer.class)
 public class SourceMysqlEncryption {

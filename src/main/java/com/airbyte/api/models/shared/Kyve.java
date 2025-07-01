@@ -14,7 +14,7 @@ public enum Kyve {
     @JsonValue
     private final String value;
 
-    private Kyve(String value) {
+    Kyve(String value) {
         this.value = value;
     }
     

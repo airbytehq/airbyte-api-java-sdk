@@ -26,7 +26,7 @@ public class SourceVitally {
     private Optional<String> basicAuthHeader;
 
     /**
-     * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+     * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
      */
     @JsonProperty("domain")
     private String domain;
@@ -79,7 +79,7 @@ public class SourceVitally {
     }
 
     /**
-     * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+     * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
      */
     @JsonIgnore
     public String domain() {
@@ -130,7 +130,7 @@ public class SourceVitally {
     }
 
     /**
-     * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+     * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
      */
     public SourceVitally withDomain(String domain) {
         Utils.checkNotNull(domain, "domain");
@@ -227,7 +227,7 @@ public class SourceVitally {
         }
 
         /**
-         * Provide only the domain part, like https://{your-domain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
+         * Provide only the subdomain part, like https://{your-custom-subdomain}.rest.vitally.io/.  Keep empty if you don't have a subdomain.
          */
         public Builder domain(String domain) {
             Utils.checkNotNull(domain, "domain");

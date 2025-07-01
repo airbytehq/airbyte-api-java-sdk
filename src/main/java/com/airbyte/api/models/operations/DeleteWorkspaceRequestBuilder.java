@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.DeleteWorkspaceOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class DeleteWorkspaceRequestBuilder {
 
     private DeleteWorkspaceRequest request;
-    private final SDKMethodInterfaces.MethodCallDeleteWorkspace sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public DeleteWorkspaceRequestBuilder(SDKMethodInterfaces.MethodCallDeleteWorkspace sdk) {
-        this.sdk = sdk;
+    public DeleteWorkspaceRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public DeleteWorkspaceRequestBuilder request(DeleteWorkspaceRequest request) {
@@ -22,8 +26,10 @@ public class DeleteWorkspaceRequestBuilder {
     }
 
     public DeleteWorkspaceResponse call() throws Exception {
+        
+        RequestOperation<DeleteWorkspaceRequest, DeleteWorkspaceResponse> operation
+              = new DeleteWorkspaceOperation( sdkConfiguration);
 
-        return sdk.deleteWorkspace(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

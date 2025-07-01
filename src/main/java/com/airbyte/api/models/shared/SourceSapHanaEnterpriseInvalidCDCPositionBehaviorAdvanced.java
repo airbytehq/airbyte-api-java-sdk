@@ -20,7 +20,7 @@ public enum SourceSapHanaEnterpriseInvalidCDCPositionBehaviorAdvanced {
     @JsonValue
     private final String value;
 
-    private SourceSapHanaEnterpriseInvalidCDCPositionBehaviorAdvanced(String value) {
+    SourceSapHanaEnterpriseInvalidCDCPositionBehaviorAdvanced(String value) {
         this.value = value;
     }
     

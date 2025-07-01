@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.GetSourceOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class GetSourceRequestBuilder {
 
     private GetSourceRequest request;
-    private final SDKMethodInterfaces.MethodCallGetSource sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public GetSourceRequestBuilder(SDKMethodInterfaces.MethodCallGetSource sdk) {
-        this.sdk = sdk;
+    public GetSourceRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public GetSourceRequestBuilder request(GetSourceRequest request) {
@@ -22,8 +26,10 @@ public class GetSourceRequestBuilder {
     }
 
     public GetSourceResponse call() throws Exception {
+        
+        RequestOperation<GetSourceRequest, GetSourceResponse> operation
+              = new GetSourceOperation( sdkConfiguration);
 
-        return sdk.getSource(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

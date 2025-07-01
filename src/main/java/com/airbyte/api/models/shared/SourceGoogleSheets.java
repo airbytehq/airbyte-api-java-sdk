@@ -15,10 +15,19 @@ import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 public class SourceGoogleSheets {
+
+    /**
+     * Allows column names to start with numbers. Example: "50th Percentile" → "50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("allow_leading_numbers")
+    private Optional<Boolean> allowLeadingNumbers;
 
     /**
      * Default value is 1000000. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 1000000 would process rows 2-1000002, then 1000003-2000003 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value.
@@ -28,17 +37,45 @@ public class SourceGoogleSheets {
     private Optional<Long> batchSize;
 
     /**
+     * Combines adjacent letters and numbers. Example: "Q3 2023" → "q3_2023" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("combine_letter_number_pairs")
+    private Optional<Boolean> combineLetterNumberPairs;
+
+    /**
+     * Combines adjacent numbers and words. Example: "50th Percentile?" → "_50th_percentile_" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("combine_number_word_pairs")
+    private Optional<Boolean> combineNumberWordPairs;
+
+    /**
      * Credentials for connecting to the Google Sheets API
      */
     @JsonProperty("credentials")
     private SourceGoogleSheetsAuthentication credentials;
 
     /**
-     * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+     * Converts column names to a SQL-compliant format (snake_case, lowercase, etc). If enabled, you can further customize the sanitization using the options below.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("names_conversion")
     private Optional<Boolean> namesConversion;
+
+    /**
+     * Removes leading and trailing underscores from column names. Does not remove leading underscores from column names that start with a number. Example: "50th Percentile? "→ "_50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("remove_leading_trailing_underscores")
+    private Optional<Boolean> removeLeadingTrailingUnderscores;
+
+    /**
+     * Removes all special characters from column names. Example: "Example ID*" → "example_id" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("remove_special_characters")
+    private Optional<Boolean> removeSpecialCharacters;
 
     @JsonProperty("sourceType")
     private SourceGoogleSheetsGoogleSheets sourceType;
@@ -49,27 +86,71 @@ public class SourceGoogleSheets {
     @JsonProperty("spreadsheet_id")
     private String spreadsheetId;
 
+    /**
+     * **Overridden streams will default to Sync Mode: Full Refresh (Append), which does not support primary keys. If you want to use primary keys and deduplication, update the sync mode to "Full Refresh | Overwrite + Deduped" in your connection settings.**
+     * Allows you to rename streams (Google Sheet tab names) as they appear in Airbyte. 
+     * Each item should be an object with a `source_stream_name` (the exact name of the sheet/tab in your spreadsheet)  and a `custom_stream_name` (the name you want it to appear as in Airbyte and the destination).
+     * If a `source_stream_name` is not found in your spreadsheet, it will be ignored and the default name will be used. This feature only affects stream (sheet/tab) names, not field/column names.
+     * If you want to rename fields or column names, you can do so using the Airbyte Mappings feature after your connection is created. See the Airbyte documentation for more details on how to use Mappings.
+     * Examples:
+     *   - To rename a sheet called "Sheet1" to "sales_data", and "2024 Q1" to "q1_2024":
+     *     [
+     *       { "source_stream_name": "Sheet1", "custom_stream_name": "sales_data" },
+     *       { "source_stream_name": "2024 Q1", "custom_stream_name": "q1_2024" }
+     *     ]
+     *   - If you do not wish to rename any streams, leave this blank.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("stream_name_overrides")
+    private Optional<? extends List<StreamNameOverrides>> streamNameOverrides;
+
     @JsonCreator
     public SourceGoogleSheets(
+            @JsonProperty("allow_leading_numbers") Optional<Boolean> allowLeadingNumbers,
             @JsonProperty("batch_size") Optional<Long> batchSize,
+            @JsonProperty("combine_letter_number_pairs") Optional<Boolean> combineLetterNumberPairs,
+            @JsonProperty("combine_number_word_pairs") Optional<Boolean> combineNumberWordPairs,
             @JsonProperty("credentials") SourceGoogleSheetsAuthentication credentials,
             @JsonProperty("names_conversion") Optional<Boolean> namesConversion,
-            @JsonProperty("spreadsheet_id") String spreadsheetId) {
+            @JsonProperty("remove_leading_trailing_underscores") Optional<Boolean> removeLeadingTrailingUnderscores,
+            @JsonProperty("remove_special_characters") Optional<Boolean> removeSpecialCharacters,
+            @JsonProperty("spreadsheet_id") String spreadsheetId,
+            @JsonProperty("stream_name_overrides") Optional<? extends List<StreamNameOverrides>> streamNameOverrides) {
+        Utils.checkNotNull(allowLeadingNumbers, "allowLeadingNumbers");
         Utils.checkNotNull(batchSize, "batchSize");
+        Utils.checkNotNull(combineLetterNumberPairs, "combineLetterNumberPairs");
+        Utils.checkNotNull(combineNumberWordPairs, "combineNumberWordPairs");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(namesConversion, "namesConversion");
+        Utils.checkNotNull(removeLeadingTrailingUnderscores, "removeLeadingTrailingUnderscores");
+        Utils.checkNotNull(removeSpecialCharacters, "removeSpecialCharacters");
         Utils.checkNotNull(spreadsheetId, "spreadsheetId");
+        Utils.checkNotNull(streamNameOverrides, "streamNameOverrides");
+        this.allowLeadingNumbers = allowLeadingNumbers;
         this.batchSize = batchSize;
+        this.combineLetterNumberPairs = combineLetterNumberPairs;
+        this.combineNumberWordPairs = combineNumberWordPairs;
         this.credentials = credentials;
         this.namesConversion = namesConversion;
+        this.removeLeadingTrailingUnderscores = removeLeadingTrailingUnderscores;
+        this.removeSpecialCharacters = removeSpecialCharacters;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.spreadsheetId = spreadsheetId;
+        this.streamNameOverrides = streamNameOverrides;
     }
     
     public SourceGoogleSheets(
             SourceGoogleSheetsAuthentication credentials,
             String spreadsheetId) {
-        this(Optional.empty(), credentials, Optional.empty(), spreadsheetId);
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), spreadsheetId, Optional.empty());
+    }
+
+    /**
+     * Allows column names to start with numbers. Example: "50th Percentile" → "50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonIgnore
+    public Optional<Boolean> allowLeadingNumbers() {
+        return allowLeadingNumbers;
     }
 
     /**
@@ -81,6 +162,22 @@ public class SourceGoogleSheets {
     }
 
     /**
+     * Combines adjacent letters and numbers. Example: "Q3 2023" → "q3_2023" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonIgnore
+    public Optional<Boolean> combineLetterNumberPairs() {
+        return combineLetterNumberPairs;
+    }
+
+    /**
+     * Combines adjacent numbers and words. Example: "50th Percentile?" → "_50th_percentile_" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonIgnore
+    public Optional<Boolean> combineNumberWordPairs() {
+        return combineNumberWordPairs;
+    }
+
+    /**
      * Credentials for connecting to the Google Sheets API
      */
     @JsonIgnore
@@ -89,11 +186,27 @@ public class SourceGoogleSheets {
     }
 
     /**
-     * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+     * Converts column names to a SQL-compliant format (snake_case, lowercase, etc). If enabled, you can further customize the sanitization using the options below.
      */
     @JsonIgnore
     public Optional<Boolean> namesConversion() {
         return namesConversion;
+    }
+
+    /**
+     * Removes leading and trailing underscores from column names. Does not remove leading underscores from column names that start with a number. Example: "50th Percentile? "→ "_50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonIgnore
+    public Optional<Boolean> removeLeadingTrailingUnderscores() {
+        return removeLeadingTrailingUnderscores;
+    }
+
+    /**
+     * Removes all special characters from column names. Example: "Example ID*" → "example_id" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    @JsonIgnore
+    public Optional<Boolean> removeSpecialCharacters() {
+        return removeSpecialCharacters;
     }
 
     @JsonIgnore
@@ -109,9 +222,47 @@ public class SourceGoogleSheets {
         return spreadsheetId;
     }
 
+    /**
+     * **Overridden streams will default to Sync Mode: Full Refresh (Append), which does not support primary keys. If you want to use primary keys and deduplication, update the sync mode to "Full Refresh | Overwrite + Deduped" in your connection settings.**
+     * Allows you to rename streams (Google Sheet tab names) as they appear in Airbyte. 
+     * Each item should be an object with a `source_stream_name` (the exact name of the sheet/tab in your spreadsheet)  and a `custom_stream_name` (the name you want it to appear as in Airbyte and the destination).
+     * If a `source_stream_name` is not found in your spreadsheet, it will be ignored and the default name will be used. This feature only affects stream (sheet/tab) names, not field/column names.
+     * If you want to rename fields or column names, you can do so using the Airbyte Mappings feature after your connection is created. See the Airbyte documentation for more details on how to use Mappings.
+     * Examples:
+     *   - To rename a sheet called "Sheet1" to "sales_data", and "2024 Q1" to "q1_2024":
+     *     [
+     *       { "source_stream_name": "Sheet1", "custom_stream_name": "sales_data" },
+     *       { "source_stream_name": "2024 Q1", "custom_stream_name": "q1_2024" }
+     *     ]
+     *   - If you do not wish to rename any streams, leave this blank.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<StreamNameOverrides>> streamNameOverrides() {
+        return (Optional<List<StreamNameOverrides>>) streamNameOverrides;
+    }
+
     public final static Builder builder() {
         return new Builder();
     }    
+
+    /**
+     * Allows column names to start with numbers. Example: "50th Percentile" → "50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withAllowLeadingNumbers(boolean allowLeadingNumbers) {
+        Utils.checkNotNull(allowLeadingNumbers, "allowLeadingNumbers");
+        this.allowLeadingNumbers = Optional.ofNullable(allowLeadingNumbers);
+        return this;
+    }
+
+    /**
+     * Allows column names to start with numbers. Example: "50th Percentile" → "50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withAllowLeadingNumbers(Optional<Boolean> allowLeadingNumbers) {
+        Utils.checkNotNull(allowLeadingNumbers, "allowLeadingNumbers");
+        this.allowLeadingNumbers = allowLeadingNumbers;
+        return this;
+    }
 
     /**
      * Default value is 1000000. An integer representing row batch size for each sent request to Google Sheets API. Row batch size means how many rows are processed from the google sheet, for example default value 1000000 would process rows 2-1000002, then 1000003-2000003 and so on. Based on &lt;a href='https://developers.google.com/sheets/api/limits'&gt;Google Sheets API limits documentation&lt;/a&gt;, it is possible to send up to 300 requests per minute, but each individual request has to be processed under 180 seconds, otherwise the request returns a timeout error. In regards to this information, consider network speed and number of columns of the google sheet when deciding a batch_size value.
@@ -132,6 +283,42 @@ public class SourceGoogleSheets {
     }
 
     /**
+     * Combines adjacent letters and numbers. Example: "Q3 2023" → "q3_2023" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withCombineLetterNumberPairs(boolean combineLetterNumberPairs) {
+        Utils.checkNotNull(combineLetterNumberPairs, "combineLetterNumberPairs");
+        this.combineLetterNumberPairs = Optional.ofNullable(combineLetterNumberPairs);
+        return this;
+    }
+
+    /**
+     * Combines adjacent letters and numbers. Example: "Q3 2023" → "q3_2023" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withCombineLetterNumberPairs(Optional<Boolean> combineLetterNumberPairs) {
+        Utils.checkNotNull(combineLetterNumberPairs, "combineLetterNumberPairs");
+        this.combineLetterNumberPairs = combineLetterNumberPairs;
+        return this;
+    }
+
+    /**
+     * Combines adjacent numbers and words. Example: "50th Percentile?" → "_50th_percentile_" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withCombineNumberWordPairs(boolean combineNumberWordPairs) {
+        Utils.checkNotNull(combineNumberWordPairs, "combineNumberWordPairs");
+        this.combineNumberWordPairs = Optional.ofNullable(combineNumberWordPairs);
+        return this;
+    }
+
+    /**
+     * Combines adjacent numbers and words. Example: "50th Percentile?" → "_50th_percentile_" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withCombineNumberWordPairs(Optional<Boolean> combineNumberWordPairs) {
+        Utils.checkNotNull(combineNumberWordPairs, "combineNumberWordPairs");
+        this.combineNumberWordPairs = combineNumberWordPairs;
+        return this;
+    }
+
+    /**
      * Credentials for connecting to the Google Sheets API
      */
     public SourceGoogleSheets withCredentials(SourceGoogleSheetsAuthentication credentials) {
@@ -141,7 +328,7 @@ public class SourceGoogleSheets {
     }
 
     /**
-     * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+     * Converts column names to a SQL-compliant format (snake_case, lowercase, etc). If enabled, you can further customize the sanitization using the options below.
      */
     public SourceGoogleSheets withNamesConversion(boolean namesConversion) {
         Utils.checkNotNull(namesConversion, "namesConversion");
@@ -150,11 +337,47 @@ public class SourceGoogleSheets {
     }
 
     /**
-     * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+     * Converts column names to a SQL-compliant format (snake_case, lowercase, etc). If enabled, you can further customize the sanitization using the options below.
      */
     public SourceGoogleSheets withNamesConversion(Optional<Boolean> namesConversion) {
         Utils.checkNotNull(namesConversion, "namesConversion");
         this.namesConversion = namesConversion;
+        return this;
+    }
+
+    /**
+     * Removes leading and trailing underscores from column names. Does not remove leading underscores from column names that start with a number. Example: "50th Percentile? "→ "_50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withRemoveLeadingTrailingUnderscores(boolean removeLeadingTrailingUnderscores) {
+        Utils.checkNotNull(removeLeadingTrailingUnderscores, "removeLeadingTrailingUnderscores");
+        this.removeLeadingTrailingUnderscores = Optional.ofNullable(removeLeadingTrailingUnderscores);
+        return this;
+    }
+
+    /**
+     * Removes leading and trailing underscores from column names. Does not remove leading underscores from column names that start with a number. Example: "50th Percentile? "→ "_50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withRemoveLeadingTrailingUnderscores(Optional<Boolean> removeLeadingTrailingUnderscores) {
+        Utils.checkNotNull(removeLeadingTrailingUnderscores, "removeLeadingTrailingUnderscores");
+        this.removeLeadingTrailingUnderscores = removeLeadingTrailingUnderscores;
+        return this;
+    }
+
+    /**
+     * Removes all special characters from column names. Example: "Example ID*" → "example_id" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withRemoveSpecialCharacters(boolean removeSpecialCharacters) {
+        Utils.checkNotNull(removeSpecialCharacters, "removeSpecialCharacters");
+        this.removeSpecialCharacters = Optional.ofNullable(removeSpecialCharacters);
+        return this;
+    }
+
+    /**
+     * Removes all special characters from column names. Example: "Example ID*" → "example_id" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+     */
+    public SourceGoogleSheets withRemoveSpecialCharacters(Optional<Boolean> removeSpecialCharacters) {
+        Utils.checkNotNull(removeSpecialCharacters, "removeSpecialCharacters");
+        this.removeSpecialCharacters = removeSpecialCharacters;
         return this;
     }
 
@@ -164,6 +387,46 @@ public class SourceGoogleSheets {
     public SourceGoogleSheets withSpreadsheetId(String spreadsheetId) {
         Utils.checkNotNull(spreadsheetId, "spreadsheetId");
         this.spreadsheetId = spreadsheetId;
+        return this;
+    }
+
+    /**
+     * **Overridden streams will default to Sync Mode: Full Refresh (Append), which does not support primary keys. If you want to use primary keys and deduplication, update the sync mode to "Full Refresh | Overwrite + Deduped" in your connection settings.**
+     * Allows you to rename streams (Google Sheet tab names) as they appear in Airbyte. 
+     * Each item should be an object with a `source_stream_name` (the exact name of the sheet/tab in your spreadsheet)  and a `custom_stream_name` (the name you want it to appear as in Airbyte and the destination).
+     * If a `source_stream_name` is not found in your spreadsheet, it will be ignored and the default name will be used. This feature only affects stream (sheet/tab) names, not field/column names.
+     * If you want to rename fields or column names, you can do so using the Airbyte Mappings feature after your connection is created. See the Airbyte documentation for more details on how to use Mappings.
+     * Examples:
+     *   - To rename a sheet called "Sheet1" to "sales_data", and "2024 Q1" to "q1_2024":
+     *     [
+     *       { "source_stream_name": "Sheet1", "custom_stream_name": "sales_data" },
+     *       { "source_stream_name": "2024 Q1", "custom_stream_name": "q1_2024" }
+     *     ]
+     *   - If you do not wish to rename any streams, leave this blank.
+     */
+    public SourceGoogleSheets withStreamNameOverrides(List<StreamNameOverrides> streamNameOverrides) {
+        Utils.checkNotNull(streamNameOverrides, "streamNameOverrides");
+        this.streamNameOverrides = Optional.ofNullable(streamNameOverrides);
+        return this;
+    }
+
+    /**
+     * **Overridden streams will default to Sync Mode: Full Refresh (Append), which does not support primary keys. If you want to use primary keys and deduplication, update the sync mode to "Full Refresh | Overwrite + Deduped" in your connection settings.**
+     * Allows you to rename streams (Google Sheet tab names) as they appear in Airbyte. 
+     * Each item should be an object with a `source_stream_name` (the exact name of the sheet/tab in your spreadsheet)  and a `custom_stream_name` (the name you want it to appear as in Airbyte and the destination).
+     * If a `source_stream_name` is not found in your spreadsheet, it will be ignored and the default name will be used. This feature only affects stream (sheet/tab) names, not field/column names.
+     * If you want to rename fields or column names, you can do so using the Airbyte Mappings feature after your connection is created. See the Airbyte documentation for more details on how to use Mappings.
+     * Examples:
+     *   - To rename a sheet called "Sheet1" to "sales_data", and "2024 Q1" to "q1_2024":
+     *     [
+     *       { "source_stream_name": "Sheet1", "custom_stream_name": "sales_data" },
+     *       { "source_stream_name": "2024 Q1", "custom_stream_name": "q1_2024" }
+     *     ]
+     *   - If you do not wish to rename any streams, leave this blank.
+     */
+    public SourceGoogleSheets withStreamNameOverrides(Optional<? extends List<StreamNameOverrides>> streamNameOverrides) {
+        Utils.checkNotNull(streamNameOverrides, "streamNameOverrides");
+        this.streamNameOverrides = streamNameOverrides;
         return this;
     }
 
@@ -178,45 +441,93 @@ public class SourceGoogleSheets {
         }
         SourceGoogleSheets other = (SourceGoogleSheets) o;
         return 
+            Objects.deepEquals(this.allowLeadingNumbers, other.allowLeadingNumbers) &&
             Objects.deepEquals(this.batchSize, other.batchSize) &&
+            Objects.deepEquals(this.combineLetterNumberPairs, other.combineLetterNumberPairs) &&
+            Objects.deepEquals(this.combineNumberWordPairs, other.combineNumberWordPairs) &&
             Objects.deepEquals(this.credentials, other.credentials) &&
             Objects.deepEquals(this.namesConversion, other.namesConversion) &&
+            Objects.deepEquals(this.removeLeadingTrailingUnderscores, other.removeLeadingTrailingUnderscores) &&
+            Objects.deepEquals(this.removeSpecialCharacters, other.removeSpecialCharacters) &&
             Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.spreadsheetId, other.spreadsheetId);
+            Objects.deepEquals(this.spreadsheetId, other.spreadsheetId) &&
+            Objects.deepEquals(this.streamNameOverrides, other.streamNameOverrides);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
+            allowLeadingNumbers,
             batchSize,
+            combineLetterNumberPairs,
+            combineNumberWordPairs,
             credentials,
             namesConversion,
+            removeLeadingTrailingUnderscores,
+            removeSpecialCharacters,
             sourceType,
-            spreadsheetId);
+            spreadsheetId,
+            streamNameOverrides);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceGoogleSheets.class,
+                "allowLeadingNumbers", allowLeadingNumbers,
                 "batchSize", batchSize,
+                "combineLetterNumberPairs", combineLetterNumberPairs,
+                "combineNumberWordPairs", combineNumberWordPairs,
                 "credentials", credentials,
                 "namesConversion", namesConversion,
+                "removeLeadingTrailingUnderscores", removeLeadingTrailingUnderscores,
+                "removeSpecialCharacters", removeSpecialCharacters,
                 "sourceType", sourceType,
-                "spreadsheetId", spreadsheetId);
+                "spreadsheetId", spreadsheetId,
+                "streamNameOverrides", streamNameOverrides);
     }
     
     public final static class Builder {
  
+        private Optional<Boolean> allowLeadingNumbers;
+ 
         private Optional<Long> batchSize;
+ 
+        private Optional<Boolean> combineLetterNumberPairs;
+ 
+        private Optional<Boolean> combineNumberWordPairs;
  
         private SourceGoogleSheetsAuthentication credentials;
  
         private Optional<Boolean> namesConversion;
  
+        private Optional<Boolean> removeLeadingTrailingUnderscores;
+ 
+        private Optional<Boolean> removeSpecialCharacters;
+ 
         private String spreadsheetId;
+ 
+        private Optional<? extends List<StreamNameOverrides>> streamNameOverrides = Optional.empty();
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * Allows column names to start with numbers. Example: "50th Percentile" → "50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder allowLeadingNumbers(boolean allowLeadingNumbers) {
+            Utils.checkNotNull(allowLeadingNumbers, "allowLeadingNumbers");
+            this.allowLeadingNumbers = Optional.ofNullable(allowLeadingNumbers);
+            return this;
+        }
+
+        /**
+         * Allows column names to start with numbers. Example: "50th Percentile" → "50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder allowLeadingNumbers(Optional<Boolean> allowLeadingNumbers) {
+            Utils.checkNotNull(allowLeadingNumbers, "allowLeadingNumbers");
+            this.allowLeadingNumbers = allowLeadingNumbers;
+            return this;
         }
 
         /**
@@ -238,6 +549,42 @@ public class SourceGoogleSheets {
         }
 
         /**
+         * Combines adjacent letters and numbers. Example: "Q3 2023" → "q3_2023" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder combineLetterNumberPairs(boolean combineLetterNumberPairs) {
+            Utils.checkNotNull(combineLetterNumberPairs, "combineLetterNumberPairs");
+            this.combineLetterNumberPairs = Optional.ofNullable(combineLetterNumberPairs);
+            return this;
+        }
+
+        /**
+         * Combines adjacent letters and numbers. Example: "Q3 2023" → "q3_2023" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder combineLetterNumberPairs(Optional<Boolean> combineLetterNumberPairs) {
+            Utils.checkNotNull(combineLetterNumberPairs, "combineLetterNumberPairs");
+            this.combineLetterNumberPairs = combineLetterNumberPairs;
+            return this;
+        }
+
+        /**
+         * Combines adjacent numbers and words. Example: "50th Percentile?" → "_50th_percentile_" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder combineNumberWordPairs(boolean combineNumberWordPairs) {
+            Utils.checkNotNull(combineNumberWordPairs, "combineNumberWordPairs");
+            this.combineNumberWordPairs = Optional.ofNullable(combineNumberWordPairs);
+            return this;
+        }
+
+        /**
+         * Combines adjacent numbers and words. Example: "50th Percentile?" → "_50th_percentile_" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder combineNumberWordPairs(Optional<Boolean> combineNumberWordPairs) {
+            Utils.checkNotNull(combineNumberWordPairs, "combineNumberWordPairs");
+            this.combineNumberWordPairs = combineNumberWordPairs;
+            return this;
+        }
+
+        /**
          * Credentials for connecting to the Google Sheets API
          */
         public Builder credentials(SourceGoogleSheetsAuthentication credentials) {
@@ -247,7 +594,7 @@ public class SourceGoogleSheets {
         }
 
         /**
-         * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+         * Converts column names to a SQL-compliant format (snake_case, lowercase, etc). If enabled, you can further customize the sanitization using the options below.
          */
         public Builder namesConversion(boolean namesConversion) {
             Utils.checkNotNull(namesConversion, "namesConversion");
@@ -256,11 +603,47 @@ public class SourceGoogleSheets {
         }
 
         /**
-         * Enables the conversion of column names to a standardized, SQL-compliant format. For example, 'My Name' -&gt; 'my_name'. Enable this option if your destination is SQL-based.
+         * Converts column names to a SQL-compliant format (snake_case, lowercase, etc). If enabled, you can further customize the sanitization using the options below.
          */
         public Builder namesConversion(Optional<Boolean> namesConversion) {
             Utils.checkNotNull(namesConversion, "namesConversion");
             this.namesConversion = namesConversion;
+            return this;
+        }
+
+        /**
+         * Removes leading and trailing underscores from column names. Does not remove leading underscores from column names that start with a number. Example: "50th Percentile? "→ "_50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder removeLeadingTrailingUnderscores(boolean removeLeadingTrailingUnderscores) {
+            Utils.checkNotNull(removeLeadingTrailingUnderscores, "removeLeadingTrailingUnderscores");
+            this.removeLeadingTrailingUnderscores = Optional.ofNullable(removeLeadingTrailingUnderscores);
+            return this;
+        }
+
+        /**
+         * Removes leading and trailing underscores from column names. Does not remove leading underscores from column names that start with a number. Example: "50th Percentile? "→ "_50_th_percentile" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder removeLeadingTrailingUnderscores(Optional<Boolean> removeLeadingTrailingUnderscores) {
+            Utils.checkNotNull(removeLeadingTrailingUnderscores, "removeLeadingTrailingUnderscores");
+            this.removeLeadingTrailingUnderscores = removeLeadingTrailingUnderscores;
+            return this;
+        }
+
+        /**
+         * Removes all special characters from column names. Example: "Example ID*" → "example_id" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder removeSpecialCharacters(boolean removeSpecialCharacters) {
+            Utils.checkNotNull(removeSpecialCharacters, "removeSpecialCharacters");
+            this.removeSpecialCharacters = Optional.ofNullable(removeSpecialCharacters);
+            return this;
+        }
+
+        /**
+         * Removes all special characters from column names. Example: "Example ID*" → "example_id" This option will only work if "Convert Column Names to SQL-Compliant Format (names_conversion)" is enabled.
+         */
+        public Builder removeSpecialCharacters(Optional<Boolean> removeSpecialCharacters) {
+            Utils.checkNotNull(removeSpecialCharacters, "removeSpecialCharacters");
+            this.removeSpecialCharacters = removeSpecialCharacters;
             return this;
         }
 
@@ -272,20 +655,87 @@ public class SourceGoogleSheets {
             this.spreadsheetId = spreadsheetId;
             return this;
         }
+
+        /**
+         * **Overridden streams will default to Sync Mode: Full Refresh (Append), which does not support primary keys. If you want to use primary keys and deduplication, update the sync mode to "Full Refresh | Overwrite + Deduped" in your connection settings.**
+         * Allows you to rename streams (Google Sheet tab names) as they appear in Airbyte. 
+         * Each item should be an object with a `source_stream_name` (the exact name of the sheet/tab in your spreadsheet)  and a `custom_stream_name` (the name you want it to appear as in Airbyte and the destination).
+         * If a `source_stream_name` is not found in your spreadsheet, it will be ignored and the default name will be used. This feature only affects stream (sheet/tab) names, not field/column names.
+         * If you want to rename fields or column names, you can do so using the Airbyte Mappings feature after your connection is created. See the Airbyte documentation for more details on how to use Mappings.
+         * Examples:
+         *   - To rename a sheet called "Sheet1" to "sales_data", and "2024 Q1" to "q1_2024":
+         *     [
+         *       { "source_stream_name": "Sheet1", "custom_stream_name": "sales_data" },
+         *       { "source_stream_name": "2024 Q1", "custom_stream_name": "q1_2024" }
+         *     ]
+         *   - If you do not wish to rename any streams, leave this blank.
+         */
+        public Builder streamNameOverrides(List<StreamNameOverrides> streamNameOverrides) {
+            Utils.checkNotNull(streamNameOverrides, "streamNameOverrides");
+            this.streamNameOverrides = Optional.ofNullable(streamNameOverrides);
+            return this;
+        }
+
+        /**
+         * **Overridden streams will default to Sync Mode: Full Refresh (Append), which does not support primary keys. If you want to use primary keys and deduplication, update the sync mode to "Full Refresh | Overwrite + Deduped" in your connection settings.**
+         * Allows you to rename streams (Google Sheet tab names) as they appear in Airbyte. 
+         * Each item should be an object with a `source_stream_name` (the exact name of the sheet/tab in your spreadsheet)  and a `custom_stream_name` (the name you want it to appear as in Airbyte and the destination).
+         * If a `source_stream_name` is not found in your spreadsheet, it will be ignored and the default name will be used. This feature only affects stream (sheet/tab) names, not field/column names.
+         * If you want to rename fields or column names, you can do so using the Airbyte Mappings feature after your connection is created. See the Airbyte documentation for more details on how to use Mappings.
+         * Examples:
+         *   - To rename a sheet called "Sheet1" to "sales_data", and "2024 Q1" to "q1_2024":
+         *     [
+         *       { "source_stream_name": "Sheet1", "custom_stream_name": "sales_data" },
+         *       { "source_stream_name": "2024 Q1", "custom_stream_name": "q1_2024" }
+         *     ]
+         *   - If you do not wish to rename any streams, leave this blank.
+         */
+        public Builder streamNameOverrides(Optional<? extends List<StreamNameOverrides>> streamNameOverrides) {
+            Utils.checkNotNull(streamNameOverrides, "streamNameOverrides");
+            this.streamNameOverrides = streamNameOverrides;
+            return this;
+        }
         
         public SourceGoogleSheets build() {
+            if (allowLeadingNumbers == null) {
+                allowLeadingNumbers = _SINGLETON_VALUE_AllowLeadingNumbers.value();
+            }
             if (batchSize == null) {
                 batchSize = _SINGLETON_VALUE_BatchSize.value();
+            }
+            if (combineLetterNumberPairs == null) {
+                combineLetterNumberPairs = _SINGLETON_VALUE_CombineLetterNumberPairs.value();
+            }
+            if (combineNumberWordPairs == null) {
+                combineNumberWordPairs = _SINGLETON_VALUE_CombineNumberWordPairs.value();
             }
             if (namesConversion == null) {
                 namesConversion = _SINGLETON_VALUE_NamesConversion.value();
             }
+            if (removeLeadingTrailingUnderscores == null) {
+                removeLeadingTrailingUnderscores = _SINGLETON_VALUE_RemoveLeadingTrailingUnderscores.value();
+            }
+            if (removeSpecialCharacters == null) {
+                removeSpecialCharacters = _SINGLETON_VALUE_RemoveSpecialCharacters.value();
+            }
             return new SourceGoogleSheets(
+                allowLeadingNumbers,
                 batchSize,
+                combineLetterNumberPairs,
+                combineNumberWordPairs,
                 credentials,
                 namesConversion,
-                spreadsheetId);
+                removeLeadingTrailingUnderscores,
+                removeSpecialCharacters,
+                spreadsheetId,
+                streamNameOverrides);
         }
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_AllowLeadingNumbers =
+                new LazySingletonValue<>(
+                        "allow_leading_numbers",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BatchSize =
                 new LazySingletonValue<>(
@@ -293,9 +743,33 @@ public class SourceGoogleSheets {
                         "1000000",
                         new TypeReference<Optional<Long>>() {});
 
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CombineLetterNumberPairs =
+                new LazySingletonValue<>(
+                        "combine_letter_number_pairs",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CombineNumberWordPairs =
+                new LazySingletonValue<>(
+                        "combine_number_word_pairs",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_NamesConversion =
                 new LazySingletonValue<>(
                         "names_conversion",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_RemoveLeadingTrailingUnderscores =
+                new LazySingletonValue<>(
+                        "remove_leading_trailing_underscores",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_RemoveSpecialCharacters =
+                new LazySingletonValue<>(
+                        "remove_special_characters",
                         "false",
                         new TypeReference<Optional<Boolean>>() {});
 

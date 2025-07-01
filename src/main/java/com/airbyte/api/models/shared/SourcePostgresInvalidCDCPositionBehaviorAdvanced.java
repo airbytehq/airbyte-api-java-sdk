@@ -20,7 +20,7 @@ public enum SourcePostgresInvalidCDCPositionBehaviorAdvanced {
     @JsonValue
     private final String value;
 
-    private SourcePostgresInvalidCDCPositionBehaviorAdvanced(String value) {
+    SourcePostgresInvalidCDCPositionBehaviorAdvanced(String value) {
         this.value = value;
     }
     

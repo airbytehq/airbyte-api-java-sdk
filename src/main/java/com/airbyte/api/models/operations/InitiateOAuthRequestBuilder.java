@@ -3,17 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
 import com.airbyte.api.models.shared.InitiateOauthRequest;
+import com.airbyte.api.operations.InitiateOAuthOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class InitiateOAuthRequestBuilder {
 
     private InitiateOauthRequest request;
-    private final SDKMethodInterfaces.MethodCallInitiateOAuth sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public InitiateOAuthRequestBuilder(SDKMethodInterfaces.MethodCallInitiateOAuth sdk) {
-        this.sdk = sdk;
+    public InitiateOAuthRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public InitiateOAuthRequestBuilder request(InitiateOauthRequest request) {
@@ -23,8 +27,10 @@ public class InitiateOAuthRequestBuilder {
     }
 
     public InitiateOAuthResponse call() throws Exception {
+        
+        RequestOperation<InitiateOauthRequest, InitiateOAuthResponse> operation
+              = new InitiateOAuthOperation( sdkConfiguration);
 
-        return sdk.initiateOAuth(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

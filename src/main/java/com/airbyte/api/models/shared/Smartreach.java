@@ -14,7 +14,7 @@ public enum Smartreach {
     @JsonValue
     private final String value;
 
-    private Smartreach(String value) {
+    Smartreach(String value) {
         this.value = value;
     }
     

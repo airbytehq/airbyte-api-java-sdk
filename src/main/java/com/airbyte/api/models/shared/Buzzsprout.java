@@ -14,7 +14,7 @@ public enum Buzzsprout {
     @JsonValue
     private final String value;
 
-    private Buzzsprout(String value) {
+    Buzzsprout(String value) {
         this.value = value;
     }
     

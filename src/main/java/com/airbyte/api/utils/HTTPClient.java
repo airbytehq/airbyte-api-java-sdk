@@ -15,7 +15,7 @@ public interface HTTPClient {
      * Sends an HTTP request and returns the response.
      * 
      * <p>Note that {@link HttpRequest} is immutable. To modify the request you can use
-     * {@link HttpRequest#newBuilder(HttpRequest, BiPredicate<String, String>)} with 
+     * {@code HttpRequest#newBuilder(HttpRequest, BiPredicate<String, String>)} with 
      * JDK 16 and later (which will copy the request for modification in a builder). 
      * If that method is not available then use {@link Helpers#copy} (which also returns
      * a builder).  
@@ -28,4 +28,25 @@ public interface HTTPClient {
      */    
     HttpResponse<InputStream> send(HttpRequest request)
             throws IOException, InterruptedException, URISyntaxException;
+
+    /**
+     * Controls the debug flag that can be used by clients to perform conditional
+     * debugging actions like logging HTTP requests and responses.
+     * This is currently implemented in SpeakeasyHTTPClient but custom client
+     * implementations are free to use this method similarly if they wish.
+     *
+     * @param enabled Whether to enable debug flag
+     */
+    default void enableDebugLogging(boolean enabled) {
+        // do nothing
+    }
+
+    /**
+     * Returns whether debug logging is enabled.
+     *
+     * @return Whether debug logging is enabled
+     */
+    default boolean isDebugLoggingEnabled() {
+        return false;
+    }
 }

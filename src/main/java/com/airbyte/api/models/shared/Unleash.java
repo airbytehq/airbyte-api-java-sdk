@@ -14,7 +14,7 @@ public enum Unleash {
     @JsonValue
     private final String value;
 
-    private Unleash(String value) {
+    Unleash(String value) {
         this.value = value;
     }
     

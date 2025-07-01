@@ -21,7 +21,7 @@ public enum BaseURLPrefix {
     @JsonValue
     private final String value;
 
-    private BaseURLPrefix(String value) {
+    BaseURLPrefix(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Pypi {
     @JsonValue
     private final String value;
 
-    private Pypi(String value) {
+    Pypi(String value) {
         this.value = value;
     }
     

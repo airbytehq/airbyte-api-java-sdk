@@ -14,7 +14,7 @@ public enum JamfPro {
     @JsonValue
     private final String value;
 
-    private JamfPro(String value) {
+    JamfPro(String value) {
         this.value = value;
     }
     

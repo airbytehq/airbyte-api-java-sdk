@@ -26,7 +26,7 @@ public enum Domain {
     @JsonValue
     private final String value;
 
-    private Domain(String value) {
+    Domain(String value) {
         this.value = value;
     }
     

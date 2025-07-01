@@ -7,41 +7,49 @@ import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
 
 public class APIKey {
 
     /**
-     * Mailchimp API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/mailchimp"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * Kit/ConvertKit API Key
      */
-    @JsonProperty("apikey")
-    private String apikey;
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("api_key")
+    private Optional<String> apiKey;
 
     @JsonProperty("auth_type")
-    private SourceMailchimpSchemasAuthType authType;
+    private SourceConvertkitSchemasAuthType authType;
 
     @JsonCreator
     public APIKey(
-            @JsonProperty("apikey") String apikey) {
-        Utils.checkNotNull(apikey, "apikey");
-        this.apikey = apikey;
+            @JsonProperty("api_key") Optional<String> apiKey) {
+        Utils.checkNotNull(apiKey, "apiKey");
+        this.apiKey = apiKey;
         this.authType = Builder._SINGLETON_VALUE_AuthType.value();
+    }
+    
+    public APIKey() {
+        this(Optional.empty());
     }
 
     /**
-     * Mailchimp API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/mailchimp"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * Kit/ConvertKit API Key
      */
     @JsonIgnore
-    public String apikey() {
-        return apikey;
+    public Optional<String> apiKey() {
+        return apiKey;
     }
 
     @JsonIgnore
-    public SourceMailchimpSchemasAuthType authType() {
+    public SourceConvertkitSchemasAuthType authType() {
         return authType;
     }
 
@@ -50,11 +58,20 @@ public class APIKey {
     }    
 
     /**
-     * Mailchimp API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/mailchimp"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * Kit/ConvertKit API Key
      */
-    public APIKey withApikey(String apikey) {
-        Utils.checkNotNull(apikey, "apikey");
-        this.apikey = apikey;
+    public APIKey withApiKey(String apiKey) {
+        Utils.checkNotNull(apiKey, "apiKey");
+        this.apiKey = Optional.ofNullable(apiKey);
+        return this;
+    }
+
+    /**
+     * Kit/ConvertKit API Key
+     */
+    public APIKey withApiKey(Optional<String> apiKey) {
+        Utils.checkNotNull(apiKey, "apiKey");
+        this.apiKey = apiKey;
         return this;
     }
 
@@ -69,50 +86,68 @@ public class APIKey {
         }
         APIKey other = (APIKey) o;
         return 
-            Objects.deepEquals(this.apikey, other.apikey) &&
+            Objects.deepEquals(this.apiKey, other.apiKey) &&
             Objects.deepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
-            apikey,
+            apiKey,
             authType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(APIKey.class,
-                "apikey", apikey,
+                "apiKey", apiKey,
                 "authType", authType);
     }
     
     public final static class Builder {
  
-        private String apikey;
+        private Optional<String> apiKey;
         
         private Builder() {
           // force use of static builder() method
         }
 
         /**
-         * Mailchimp API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/mailchimp"&gt;docs&lt;/a&gt; for information on how to generate this key.
+         * Kit/ConvertKit API Key
          */
-        public Builder apikey(String apikey) {
-            Utils.checkNotNull(apikey, "apikey");
-            this.apikey = apikey;
+        public Builder apiKey(String apiKey) {
+            Utils.checkNotNull(apiKey, "apiKey");
+            this.apiKey = Optional.ofNullable(apiKey);
+            return this;
+        }
+
+        /**
+         * Kit/ConvertKit API Key
+         */
+        public Builder apiKey(Optional<String> apiKey) {
+            Utils.checkNotNull(apiKey, "apiKey");
+            this.apiKey = apiKey;
             return this;
         }
         
         public APIKey build() {
+            if (apiKey == null) {
+                apiKey = _SINGLETON_VALUE_ApiKey.value();
+            }
             return new APIKey(
-                apikey);
+                apiKey);
         }
 
-        private static final LazySingletonValue<SourceMailchimpSchemasAuthType> _SINGLETON_VALUE_AuthType =
+        private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiKey =
+                new LazySingletonValue<>(
+                        "api_key",
+                        "\"{{ config.get('credentials',{}).get('api_key') or config.get('api_secret') }}\"",
+                        new TypeReference<Optional<String>>() {});
+
+        private static final LazySingletonValue<SourceConvertkitSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
-                        "\"apikey\"",
-                        new TypeReference<SourceMailchimpSchemasAuthType>() {});
+                        "\"api_key\"",
+                        new TypeReference<SourceConvertkitSchemasAuthType>() {});
     }
 }

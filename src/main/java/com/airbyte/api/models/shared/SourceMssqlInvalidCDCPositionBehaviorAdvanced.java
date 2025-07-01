@@ -20,7 +20,7 @@ public enum SourceMssqlInvalidCDCPositionBehaviorAdvanced {
     @JsonValue
     private final String value;
 
-    private SourceMssqlInvalidCDCPositionBehaviorAdvanced(String value) {
+    SourceMssqlInvalidCDCPositionBehaviorAdvanced(String value) {
         this.value = value;
     }
     

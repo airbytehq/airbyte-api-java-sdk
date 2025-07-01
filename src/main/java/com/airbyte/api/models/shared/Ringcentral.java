@@ -14,7 +14,7 @@ public enum Ringcentral {
     @JsonValue
     private final String value;
 
-    private Ringcentral(String value) {
+    Ringcentral(String value) {
         this.value = value;
     }
     

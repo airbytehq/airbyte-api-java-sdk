@@ -14,7 +14,7 @@ public enum SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMet
     @JsonValue
     private final String value;
 
-    private SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod(String value) {
+    SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod(String value) {
         this.value = value;
     }
     

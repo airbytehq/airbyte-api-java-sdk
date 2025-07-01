@@ -21,7 +21,7 @@ public enum ValidationPolicy {
     @JsonValue
     private final String value;
 
-    private ValidationPolicy(String value) {
+    ValidationPolicy(String value) {
         this.value = value;
     }
     

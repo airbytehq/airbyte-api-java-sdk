@@ -14,7 +14,7 @@ public enum Rocketlane {
     @JsonValue
     private final String value;
 
-    private Rocketlane(String value) {
+    Rocketlane(String value) {
         this.value = value;
     }
     

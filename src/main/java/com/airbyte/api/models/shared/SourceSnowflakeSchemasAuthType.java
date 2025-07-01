@@ -14,7 +14,7 @@ public enum SourceSnowflakeSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceSnowflakeSchemasAuthType(String value) {
+    SourceSnowflakeSchemasAuthType(String value) {
         this.value = value;
     }
     

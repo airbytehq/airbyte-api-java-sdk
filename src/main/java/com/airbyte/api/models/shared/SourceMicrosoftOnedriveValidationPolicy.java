@@ -21,7 +21,7 @@ public enum SourceMicrosoftOnedriveValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftOnedriveValidationPolicy(String value) {
+    SourceMicrosoftOnedriveValidationPolicy(String value) {
         this.value = value;
     }
     

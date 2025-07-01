@@ -20,7 +20,7 @@ public enum TimeZone {
     @JsonValue
     private final String value;
 
-    private TimeZone(String value) {
+    TimeZone(String value) {
         this.value = value;
     }
     

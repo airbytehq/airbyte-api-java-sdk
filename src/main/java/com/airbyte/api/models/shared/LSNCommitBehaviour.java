@@ -20,7 +20,7 @@ public enum LSNCommitBehaviour {
     @JsonValue
     private final String value;
 
-    private LSNCommitBehaviour(String value) {
+    LSNCommitBehaviour(String value) {
         this.value = value;
     }
     

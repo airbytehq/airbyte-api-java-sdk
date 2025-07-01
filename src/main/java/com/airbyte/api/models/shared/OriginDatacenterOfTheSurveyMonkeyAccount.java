@@ -21,7 +21,7 @@ public enum OriginDatacenterOfTheSurveyMonkeyAccount {
     @JsonValue
     private final String value;
 
-    private OriginDatacenterOfTheSurveyMonkeyAccount(String value) {
+    OriginDatacenterOfTheSurveyMonkeyAccount(String value) {
         this.value = value;
     }
     

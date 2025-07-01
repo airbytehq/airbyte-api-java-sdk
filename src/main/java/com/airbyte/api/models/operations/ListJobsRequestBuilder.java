@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListJobsOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class ListJobsRequestBuilder {
 
     private ListJobsRequest request;
-    private final SDKMethodInterfaces.MethodCallListJobs sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public ListJobsRequestBuilder(SDKMethodInterfaces.MethodCallListJobs sdk) {
-        this.sdk = sdk;
+    public ListJobsRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public ListJobsRequestBuilder request(ListJobsRequest request) {
@@ -22,8 +26,10 @@ public class ListJobsRequestBuilder {
     }
 
     public ListJobsResponse call() throws Exception {
+        
+        RequestOperation<ListJobsRequest, ListJobsResponse> operation
+              = new ListJobsOperation( sdkConfiguration);
 
-        return sdk.listJobs(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

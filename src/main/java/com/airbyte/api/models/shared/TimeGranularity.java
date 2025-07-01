@@ -22,7 +22,7 @@ public enum TimeGranularity {
     @JsonValue
     private final String value;
 
-    private TimeGranularity(String value) {
+    TimeGranularity(String value) {
         this.value = value;
     }
     

@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
@@ -21,8 +23,15 @@ import java.util.Optional;
 
 public class SourceGoogleSearchConsole {
 
+    /**
+     * Some search analytics streams fail with a 400 error if the specified `aggregationType` is not supported. This is customer implementation dependent and if this error is encountered, enable this setting which will override the existing `aggregationType` to use `auto` which should resolve the stream errors.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("always_use_aggregation_type_auto")
+    private Optional<Boolean> alwaysUseAggregationTypeAuto;
+
     @JsonProperty("authorization")
-    private AuthenticationType authorization;
+    private SourceGoogleSearchConsoleAuthenticationType authorization;
 
     /**
      * You can add your Custom Analytics report by creating one.
@@ -46,6 +55,13 @@ public class SourceGoogleSearchConsole {
     private Optional<LocalDate> endDate;
 
     /**
+     * The number of worker threads to use for the sync. For more details on Google Search Console rate limits, refer to the &lt;a href="https://developers.google.com/webmaster-tools/limits"&gt;docs&lt;/a&gt;.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
+    /**
      * The URLs of the website property attached to your GSC account. Learn more about properties &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("site_urls")
@@ -63,35 +79,49 @@ public class SourceGoogleSearchConsole {
 
     @JsonCreator
     public SourceGoogleSearchConsole(
-            @JsonProperty("authorization") AuthenticationType authorization,
+            @JsonProperty("always_use_aggregation_type_auto") Optional<Boolean> alwaysUseAggregationTypeAuto,
+            @JsonProperty("authorization") SourceGoogleSearchConsoleAuthenticationType authorization,
             @JsonProperty("custom_reports_array") Optional<? extends List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray,
             @JsonProperty("data_state") Optional<? extends DataFreshness> dataState,
             @JsonProperty("end_date") Optional<LocalDate> endDate,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("site_urls") List<String> siteUrls,
             @JsonProperty("start_date") Optional<LocalDate> startDate) {
+        Utils.checkNotNull(alwaysUseAggregationTypeAuto, "alwaysUseAggregationTypeAuto");
         Utils.checkNotNull(authorization, "authorization");
         Utils.checkNotNull(customReportsArray, "customReportsArray");
         Utils.checkNotNull(dataState, "dataState");
         Utils.checkNotNull(endDate, "endDate");
+        Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(siteUrls, "siteUrls");
         Utils.checkNotNull(startDate, "startDate");
+        this.alwaysUseAggregationTypeAuto = alwaysUseAggregationTypeAuto;
         this.authorization = authorization;
         this.customReportsArray = customReportsArray;
         this.dataState = dataState;
         this.endDate = endDate;
+        this.numWorkers = numWorkers;
         this.siteUrls = siteUrls;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceGoogleSearchConsole(
-            AuthenticationType authorization,
+            SourceGoogleSearchConsoleAuthenticationType authorization,
             List<String> siteUrls) {
-        this(authorization, Optional.empty(), Optional.empty(), Optional.empty(), siteUrls, Optional.empty());
+        this(Optional.empty(), authorization, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), siteUrls, Optional.empty());
+    }
+
+    /**
+     * Some search analytics streams fail with a 400 error if the specified `aggregationType` is not supported. This is customer implementation dependent and if this error is encountered, enable this setting which will override the existing `aggregationType` to use `auto` which should resolve the stream errors.
+     */
+    @JsonIgnore
+    public Optional<Boolean> alwaysUseAggregationTypeAuto() {
+        return alwaysUseAggregationTypeAuto;
     }
 
     @JsonIgnore
-    public AuthenticationType authorization() {
+    public SourceGoogleSearchConsoleAuthenticationType authorization() {
         return authorization;
     }
 
@@ -122,6 +152,14 @@ public class SourceGoogleSearchConsole {
     }
 
     /**
+     * The number of worker threads to use for the sync. For more details on Google Search Console rate limits, refer to the &lt;a href="https://developers.google.com/webmaster-tools/limits"&gt;docs&lt;/a&gt;.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
+    /**
      * The URLs of the website property attached to your GSC account. Learn more about properties &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
      */
     @JsonIgnore
@@ -146,7 +184,25 @@ public class SourceGoogleSearchConsole {
         return new Builder();
     }    
 
-    public SourceGoogleSearchConsole withAuthorization(AuthenticationType authorization) {
+    /**
+     * Some search analytics streams fail with a 400 error if the specified `aggregationType` is not supported. This is customer implementation dependent and if this error is encountered, enable this setting which will override the existing `aggregationType` to use `auto` which should resolve the stream errors.
+     */
+    public SourceGoogleSearchConsole withAlwaysUseAggregationTypeAuto(boolean alwaysUseAggregationTypeAuto) {
+        Utils.checkNotNull(alwaysUseAggregationTypeAuto, "alwaysUseAggregationTypeAuto");
+        this.alwaysUseAggregationTypeAuto = Optional.ofNullable(alwaysUseAggregationTypeAuto);
+        return this;
+    }
+
+    /**
+     * Some search analytics streams fail with a 400 error if the specified `aggregationType` is not supported. This is customer implementation dependent and if this error is encountered, enable this setting which will override the existing `aggregationType` to use `auto` which should resolve the stream errors.
+     */
+    public SourceGoogleSearchConsole withAlwaysUseAggregationTypeAuto(Optional<Boolean> alwaysUseAggregationTypeAuto) {
+        Utils.checkNotNull(alwaysUseAggregationTypeAuto, "alwaysUseAggregationTypeAuto");
+        this.alwaysUseAggregationTypeAuto = alwaysUseAggregationTypeAuto;
+        return this;
+    }
+
+    public SourceGoogleSearchConsole withAuthorization(SourceGoogleSearchConsoleAuthenticationType authorization) {
         Utils.checkNotNull(authorization, "authorization");
         this.authorization = authorization;
         return this;
@@ -207,6 +263,24 @@ public class SourceGoogleSearchConsole {
     }
 
     /**
+     * The number of worker threads to use for the sync. For more details on Google Search Console rate limits, refer to the &lt;a href="https://developers.google.com/webmaster-tools/limits"&gt;docs&lt;/a&gt;.
+     */
+    public SourceGoogleSearchConsole withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+    /**
+     * The number of worker threads to use for the sync. For more details on Google Search Console rate limits, refer to the &lt;a href="https://developers.google.com/webmaster-tools/limits"&gt;docs&lt;/a&gt;.
+     */
+    public SourceGoogleSearchConsole withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
+        return this;
+    }
+
+    /**
      * The URLs of the website property attached to your GSC account. Learn more about properties &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
      */
     public SourceGoogleSearchConsole withSiteUrls(List<String> siteUrls) {
@@ -244,10 +318,12 @@ public class SourceGoogleSearchConsole {
         }
         SourceGoogleSearchConsole other = (SourceGoogleSearchConsole) o;
         return 
+            Objects.deepEquals(this.alwaysUseAggregationTypeAuto, other.alwaysUseAggregationTypeAuto) &&
             Objects.deepEquals(this.authorization, other.authorization) &&
             Objects.deepEquals(this.customReportsArray, other.customReportsArray) &&
             Objects.deepEquals(this.dataState, other.dataState) &&
             Objects.deepEquals(this.endDate, other.endDate) &&
+            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
             Objects.deepEquals(this.siteUrls, other.siteUrls) &&
             Objects.deepEquals(this.sourceType, other.sourceType) &&
             Objects.deepEquals(this.startDate, other.startDate);
@@ -256,10 +332,12 @@ public class SourceGoogleSearchConsole {
     @Override
     public int hashCode() {
         return Objects.hash(
+            alwaysUseAggregationTypeAuto,
             authorization,
             customReportsArray,
             dataState,
             endDate,
+            numWorkers,
             siteUrls,
             sourceType,
             startDate);
@@ -268,10 +346,12 @@ public class SourceGoogleSearchConsole {
     @Override
     public String toString() {
         return Utils.toString(SourceGoogleSearchConsole.class,
+                "alwaysUseAggregationTypeAuto", alwaysUseAggregationTypeAuto,
                 "authorization", authorization,
                 "customReportsArray", customReportsArray,
                 "dataState", dataState,
                 "endDate", endDate,
+                "numWorkers", numWorkers,
                 "siteUrls", siteUrls,
                 "sourceType", sourceType,
                 "startDate", startDate);
@@ -279,13 +359,17 @@ public class SourceGoogleSearchConsole {
     
     public final static class Builder {
  
-        private AuthenticationType authorization;
+        private Optional<Boolean> alwaysUseAggregationTypeAuto;
+ 
+        private SourceGoogleSearchConsoleAuthenticationType authorization;
  
         private Optional<? extends List<SourceGoogleSearchConsoleCustomReportConfig>> customReportsArray = Optional.empty();
  
         private Optional<? extends DataFreshness> dataState;
  
         private Optional<LocalDate> endDate = Optional.empty();
+ 
+        private Optional<Long> numWorkers;
  
         private List<String> siteUrls;
  
@@ -295,7 +379,25 @@ public class SourceGoogleSearchConsole {
           // force use of static builder() method
         }
 
-        public Builder authorization(AuthenticationType authorization) {
+        /**
+         * Some search analytics streams fail with a 400 error if the specified `aggregationType` is not supported. This is customer implementation dependent and if this error is encountered, enable this setting which will override the existing `aggregationType` to use `auto` which should resolve the stream errors.
+         */
+        public Builder alwaysUseAggregationTypeAuto(boolean alwaysUseAggregationTypeAuto) {
+            Utils.checkNotNull(alwaysUseAggregationTypeAuto, "alwaysUseAggregationTypeAuto");
+            this.alwaysUseAggregationTypeAuto = Optional.ofNullable(alwaysUseAggregationTypeAuto);
+            return this;
+        }
+
+        /**
+         * Some search analytics streams fail with a 400 error if the specified `aggregationType` is not supported. This is customer implementation dependent and if this error is encountered, enable this setting which will override the existing `aggregationType` to use `auto` which should resolve the stream errors.
+         */
+        public Builder alwaysUseAggregationTypeAuto(Optional<Boolean> alwaysUseAggregationTypeAuto) {
+            Utils.checkNotNull(alwaysUseAggregationTypeAuto, "alwaysUseAggregationTypeAuto");
+            this.alwaysUseAggregationTypeAuto = alwaysUseAggregationTypeAuto;
+            return this;
+        }
+
+        public Builder authorization(SourceGoogleSearchConsoleAuthenticationType authorization) {
             Utils.checkNotNull(authorization, "authorization");
             this.authorization = authorization;
             return this;
@@ -356,6 +458,24 @@ public class SourceGoogleSearchConsole {
         }
 
         /**
+         * The number of worker threads to use for the sync. For more details on Google Search Console rate limits, refer to the &lt;a href="https://developers.google.com/webmaster-tools/limits"&gt;docs&lt;/a&gt;.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync. For more details on Google Search Console rate limits, refer to the &lt;a href="https://developers.google.com/webmaster-tools/limits"&gt;docs&lt;/a&gt;.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
+        /**
          * The URLs of the website property attached to your GSC account. Learn more about properties &lt;a href="https://support.google.com/webmasters/answer/34592?hl=en"&gt;here&lt;/a&gt;.
          */
         public Builder siteUrls(List<String> siteUrls) {
@@ -383,26 +503,46 @@ public class SourceGoogleSearchConsole {
         }
         
         public SourceGoogleSearchConsole build() {
+            if (alwaysUseAggregationTypeAuto == null) {
+                alwaysUseAggregationTypeAuto = _SINGLETON_VALUE_AlwaysUseAggregationTypeAuto.value();
+            }
             if (dataState == null) {
                 dataState = _SINGLETON_VALUE_DataState.value();
+            }
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
             return new SourceGoogleSearchConsole(
+                alwaysUseAggregationTypeAuto,
                 authorization,
                 customReportsArray,
                 dataState,
                 endDate,
+                numWorkers,
                 siteUrls,
                 startDate);
         }
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_AlwaysUseAggregationTypeAuto =
+                new LazySingletonValue<>(
+                        "always_use_aggregation_type_auto",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<? extends DataFreshness>> _SINGLETON_VALUE_DataState =
                 new LazySingletonValue<>(
                         "data_state",
                         "\"final\"",
                         new TypeReference<Optional<? extends DataFreshness>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "40",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<SourceGoogleSearchConsoleGoogleSearchConsole> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Sendpulse {
     @JsonValue
     private final String value;
 
-    private Sendpulse(String value) {
+    Sendpulse(String value) {
         this.value = value;
     }
     

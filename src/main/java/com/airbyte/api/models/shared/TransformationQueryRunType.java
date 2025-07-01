@@ -20,7 +20,7 @@ public enum TransformationQueryRunType {
     @JsonValue
     private final String value;
 
-    private TransformationQueryRunType(String value) {
+    TransformationQueryRunType(String value) {
         this.value = value;
     }
     

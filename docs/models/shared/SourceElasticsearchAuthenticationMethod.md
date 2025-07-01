@@ -1,0 +1,4 @@
+# SourceElasticsearchAuthenticationMethod
+
+The type of authentication to be used
+

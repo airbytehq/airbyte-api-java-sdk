@@ -21,7 +21,7 @@ public enum SourceGcsValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceGcsValidationPolicy(String value) {
+    SourceGcsValidationPolicy(String value) {
         this.value = value;
     }
     

@@ -20,7 +20,7 @@ public enum SourceMysqlInvalidCDCPositionBehaviorAdvanced {
     @JsonValue
     private final String value;
 
-    private SourceMysqlInvalidCDCPositionBehaviorAdvanced(String value) {
+    SourceMysqlInvalidCDCPositionBehaviorAdvanced(String value) {
         this.value = value;
     }
     

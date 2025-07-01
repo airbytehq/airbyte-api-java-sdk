@@ -14,7 +14,7 @@ public enum Pardot {
     @JsonValue
     private final String value;
 
-    private Pardot(String value) {
+    Pardot(String value) {
         this.value = value;
     }
     

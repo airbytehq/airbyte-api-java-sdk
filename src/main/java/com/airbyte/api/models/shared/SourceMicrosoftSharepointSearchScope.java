@@ -21,7 +21,7 @@ public enum SourceMicrosoftSharepointSearchScope {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointSearchScope(String value) {
+    SourceMicrosoftSharepointSearchScope(String value) {
         this.value = value;
     }
     

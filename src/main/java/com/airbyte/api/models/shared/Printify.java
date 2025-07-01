@@ -14,7 +14,7 @@ public enum Printify {
     @JsonValue
     private final String value;
 
-    private Printify(String value) {
+    Printify(String value) {
         this.value = value;
     }
     

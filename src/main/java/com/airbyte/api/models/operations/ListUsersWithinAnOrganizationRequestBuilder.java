@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListUsersWithinAnOrganizationOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class ListUsersWithinAnOrganizationRequestBuilder {
 
     private ListUsersWithinAnOrganizationRequest request;
-    private final SDKMethodInterfaces.MethodCallListUsersWithinAnOrganization sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public ListUsersWithinAnOrganizationRequestBuilder(SDKMethodInterfaces.MethodCallListUsersWithinAnOrganization sdk) {
-        this.sdk = sdk;
+    public ListUsersWithinAnOrganizationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public ListUsersWithinAnOrganizationRequestBuilder request(ListUsersWithinAnOrganizationRequest request) {
@@ -22,8 +26,10 @@ public class ListUsersWithinAnOrganizationRequestBuilder {
     }
 
     public ListUsersWithinAnOrganizationResponse call() throws Exception {
+        
+        RequestOperation<ListUsersWithinAnOrganizationRequest, ListUsersWithinAnOrganizationResponse> operation
+              = new ListUsersWithinAnOrganizationOperation( sdkConfiguration);
 
-        return sdk.listUsersWithinAnOrganization(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

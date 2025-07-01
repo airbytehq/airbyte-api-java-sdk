@@ -3,16 +3,20 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.GetDestinationOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class GetDestinationRequestBuilder {
 
     private GetDestinationRequest request;
-    private final SDKMethodInterfaces.MethodCallGetDestination sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public GetDestinationRequestBuilder(SDKMethodInterfaces.MethodCallGetDestination sdk) {
-        this.sdk = sdk;
+    public GetDestinationRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public GetDestinationRequestBuilder request(GetDestinationRequest request) {
@@ -22,8 +26,10 @@ public class GetDestinationRequestBuilder {
     }
 
     public GetDestinationResponse call() throws Exception {
+        
+        RequestOperation<GetDestinationRequest, GetDestinationResponse> operation
+              = new GetDestinationOperation( sdkConfiguration);
 
-        return sdk.getDestination(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

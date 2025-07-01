@@ -14,7 +14,7 @@ public enum SplitIo {
     @JsonValue
     private final String value;
 
-    private SplitIo(String value) {
+    SplitIo(String value) {
         this.value = value;
     }
     

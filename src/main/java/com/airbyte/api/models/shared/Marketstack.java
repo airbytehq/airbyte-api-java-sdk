@@ -14,7 +14,7 @@ public enum Marketstack {
     @JsonValue
     private final String value;
 
-    private Marketstack(String value) {
+    Marketstack(String value) {
         this.value = value;
     }
     

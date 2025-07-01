@@ -39,7 +39,7 @@ public enum PivotCategory {
     @JsonValue
     private final String value;
 
-    private PivotCategory(String value) {
+    PivotCategory(String value) {
         this.value = value;
     }
     

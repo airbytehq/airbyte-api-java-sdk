@@ -14,7 +14,7 @@ public enum Partnerstack {
     @JsonValue
     private final String value;
 
-    private Partnerstack(String value) {
+    Partnerstack(String value) {
         this.value = value;
     }
     

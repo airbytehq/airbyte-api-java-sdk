@@ -21,10 +21,8 @@ Create a declarative source definition.
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.CreateDeclarativeSourceDefinitionRequest;
 import com.airbyte.api.models.operations.CreateDeclarativeSourceDefinitionResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -40,12 +38,12 @@ public class Application {
                     .build())
             .build();
 
-        CreateDeclarativeSourceDefinitionRequest req = CreateDeclarativeSourceDefinitionRequest.builder()
-                .createDeclarativeSourceDefinitionRequest(com.airbyte.api.models.shared.CreateDeclarativeSourceDefinitionRequest.builder()
+        com.airbyte.api.models.operations.CreateDeclarativeSourceDefinitionRequest req = com.airbyte.api.models.operations.CreateDeclarativeSourceDefinitionRequest.builder()
+                .createDeclarativeSourceDefinitionRequest(CreateDeclarativeSourceDefinitionRequest.builder()
                     .manifest("<value>")
                     .name("<value>")
                     .build())
-                .workspaceId("2d054f48-a68c-4d16-b04d-bb444d47c285")
+                .workspaceId("9f09326e-38fd-40ea-8871-6aaf7655a237")
                 .build();
 
         CreateDeclarativeSourceDefinitionResponse res = sdk.declarativeSourceDefinitions().createDeclarativeSourceDefinition()
@@ -105,8 +103,8 @@ public class Application {
             .build();
 
         DeleteDeclarativeSourceDefinitionRequest req = DeleteDeclarativeSourceDefinitionRequest.builder()
-                .definitionId("26cd06ea-5caa-47b9-98a2-1d217049557d")
-                .workspaceId("f7cdc65f-5255-43d5-a6be-8fee673091f3")
+                .definitionId("0cf3a1f6-1af6-4ae7-ae77-4bd1b32041f4")
+                .workspaceId("5bed2604-75d1-40cf-a858-64e430840198")
                 .build();
 
         DeleteDeclarativeSourceDefinitionResponse res = sdk.declarativeSourceDefinitions().deleteDeclarativeSourceDefinition()
@@ -166,8 +164,8 @@ public class Application {
             .build();
 
         GetDeclarativeSourceDefinitionRequest req = GetDeclarativeSourceDefinitionRequest.builder()
-                .definitionId("a003b7d3-efd4-4d7e-8ea6-469e9fe7871f")
-                .workspaceId("3855d0f6-8cfb-44c2-ac49-0c3965c034bd")
+                .definitionId("ce3288f2-b43c-40d0-ae8e-864c7a844485")
+                .workspaceId("2a50feae-cf51-42e9-b777-b8d52ea2704e")
                 .build();
 
         GetDeclarativeSourceDefinitionResponse res = sdk.declarativeSourceDefinitions().getDeclarativeSourceDefinition()
@@ -227,7 +225,7 @@ public class Application {
             .build();
 
         ListDeclarativeSourceDefinitionsRequest req = ListDeclarativeSourceDefinitionsRequest.builder()
-                .workspaceId("23bc0a4f-72b3-4d91-abe3-3f32d8a49dfc")
+                .workspaceId("76222ecd-532e-4ab1-94e3-b96d1abd686e")
                 .build();
 
         ListDeclarativeSourceDefinitionsResponse res = sdk.declarativeSourceDefinitions().listDeclarativeSourceDefinitions()
@@ -267,10 +265,8 @@ Update declarative source definition details.
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.UpdateDeclarativeSourceDefinitionRequest;
 import com.airbyte.api.models.operations.UpdateDeclarativeSourceDefinitionResponse;
-import com.airbyte.api.models.shared.SchemeBasicAuth;
-import com.airbyte.api.models.shared.Security;
+import com.airbyte.api.models.shared.*;
 import java.lang.Exception;
 
 public class Application {
@@ -286,12 +282,12 @@ public class Application {
                     .build())
             .build();
 
-        UpdateDeclarativeSourceDefinitionRequest req = UpdateDeclarativeSourceDefinitionRequest.builder()
-                .updateDeclarativeSourceDefinitionRequest(com.airbyte.api.models.shared.UpdateDeclarativeSourceDefinitionRequest.builder()
+        com.airbyte.api.models.operations.UpdateDeclarativeSourceDefinitionRequest req = com.airbyte.api.models.operations.UpdateDeclarativeSourceDefinitionRequest.builder()
+                .updateDeclarativeSourceDefinitionRequest(UpdateDeclarativeSourceDefinitionRequest.builder()
                     .manifest("<value>")
                     .build())
-                .definitionId("66066427-c293-4cbf-b72e-b31a72a46545")
-                .workspaceId("87f1ccdb-71b2-401c-8f60-cac1f2a2da80")
+                .definitionId("c97eb9ab-47b5-4609-8d65-0a62f74ca843")
+                .workspaceId("38cb8d27-592a-4438-be38-823abf06a84e")
                 .build();
 
         UpdateDeclarativeSourceDefinitionResponse res = sdk.declarativeSourceDefinitions().updateDeclarativeSourceDefinition()

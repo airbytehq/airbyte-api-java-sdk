@@ -14,7 +14,7 @@ public enum Method {
     @JsonValue
     private final String value;
 
-    private Method(String value) {
+    Method(String value) {
         this.value = value;
     }
     

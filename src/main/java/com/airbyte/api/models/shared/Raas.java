@@ -14,7 +14,7 @@ public enum Raas {
     @JsonValue
     private final String value;
 
-    private Raas(String value) {
+    Raas(String value) {
         this.value = value;
     }
     

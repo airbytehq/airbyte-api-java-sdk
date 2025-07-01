@@ -14,7 +14,7 @@ public enum Countercyclical {
     @JsonValue
     private final String value;
 
-    private Countercyclical(String value) {
+    Countercyclical(String value) {
         this.value = value;
     }
     

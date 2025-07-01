@@ -14,7 +14,7 @@ public enum Ezofficeinventory {
     @JsonValue
     private final String value;
 
-    private Ezofficeinventory(String value) {
+    Ezofficeinventory(String value) {
         this.value = value;
     }
     

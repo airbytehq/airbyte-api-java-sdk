@@ -27,8 +27,9 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
     withSourcesJar()
     withJavadocJar()
 }
@@ -63,6 +64,10 @@ javadoc {
 tasks.withType(Javadoc) {
   failOnError false
   options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 11
 }
 
 sourcesJar {
@@ -103,11 +108,15 @@ publishing {
             // https://github.com/gradle/gradle/issues/18619
             groupId = "com.airbyte"
             artifactId = "api"
-            version = "2.0.0"
+            version = "2.1.0"
 
             from components.java
 
             pom {
+                properties = [
+                    'maven.compiler.source': '11',
+                    'maven.compiler.target': '11',
+                ]
                 name = 'Airbyte Java SDK'
                 description = 'SDK enabling Java developers to easily integrate with the Airbyte API.'
                 url = 'https://github.com/airbytehq/airbyte-api-java-sdk'

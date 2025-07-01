@@ -14,7 +14,7 @@ public enum SourceShopifyAuthMethod {
     @JsonValue
     private final String value;
 
-    private SourceShopifyAuthMethod(String value) {
+    SourceShopifyAuthMethod(String value) {
         this.value = value;
     }
     

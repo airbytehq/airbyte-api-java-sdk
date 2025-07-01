@@ -3,17 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
 import com.airbyte.api.models.shared.TagCreateRequest;
+import com.airbyte.api.operations.CreateTagOperation;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class CreateTagRequestBuilder {
 
     private TagCreateRequest request;
-    private final SDKMethodInterfaces.MethodCallCreateTag sdk;
+    private final SDKConfiguration sdkConfiguration;
 
-    public CreateTagRequestBuilder(SDKMethodInterfaces.MethodCallCreateTag sdk) {
-        this.sdk = sdk;
+    public CreateTagRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CreateTagRequestBuilder request(TagCreateRequest request) {
@@ -23,8 +27,10 @@ public class CreateTagRequestBuilder {
     }
 
     public CreateTagResponse call() throws Exception {
+        
+        RequestOperation<TagCreateRequest, CreateTagResponse> operation
+              = new CreateTagOperation( sdkConfiguration);
 
-        return sdk.createTag(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

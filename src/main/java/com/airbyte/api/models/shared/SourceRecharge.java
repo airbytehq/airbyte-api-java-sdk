@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
@@ -25,6 +26,13 @@ public class SourceRecharge {
      */
     @JsonProperty("access_token")
     private String accessToken;
+
+    /**
+     * Specifies how many days of historical data should be reloaded each time the recharge connector runs.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_window_days")
+    private Optional<Long> lookbackWindowDays;
 
     @JsonProperty("sourceType")
     private Recharge sourceType;
@@ -45,12 +53,15 @@ public class SourceRecharge {
     @JsonCreator
     public SourceRecharge(
             @JsonProperty("access_token") String accessToken,
+            @JsonProperty("lookback_window_days") Optional<Long> lookbackWindowDays,
             @JsonProperty("start_date") OffsetDateTime startDate,
             @JsonProperty("use_orders_deprecated_api") Optional<Boolean> useOrdersDeprecatedApi) {
         Utils.checkNotNull(accessToken, "accessToken");
+        Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(useOrdersDeprecatedApi, "useOrdersDeprecatedApi");
         this.accessToken = accessToken;
+        this.lookbackWindowDays = lookbackWindowDays;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
         this.useOrdersDeprecatedApi = useOrdersDeprecatedApi;
@@ -59,7 +70,7 @@ public class SourceRecharge {
     public SourceRecharge(
             String accessToken,
             OffsetDateTime startDate) {
-        this(accessToken, startDate, Optional.empty());
+        this(accessToken, Optional.empty(), startDate, Optional.empty());
     }
 
     /**
@@ -68,6 +79,14 @@ public class SourceRecharge {
     @JsonIgnore
     public String accessToken() {
         return accessToken;
+    }
+
+    /**
+     * Specifies how many days of historical data should be reloaded each time the recharge connector runs.
+     */
+    @JsonIgnore
+    public Optional<Long> lookbackWindowDays() {
+        return lookbackWindowDays;
     }
 
     @JsonIgnore
@@ -101,6 +120,24 @@ public class SourceRecharge {
     public SourceRecharge withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
         this.accessToken = accessToken;
+        return this;
+    }
+
+    /**
+     * Specifies how many days of historical data should be reloaded each time the recharge connector runs.
+     */
+    public SourceRecharge withLookbackWindowDays(long lookbackWindowDays) {
+        Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
+        this.lookbackWindowDays = Optional.ofNullable(lookbackWindowDays);
+        return this;
+    }
+
+    /**
+     * Specifies how many days of historical data should be reloaded each time the recharge connector runs.
+     */
+    public SourceRecharge withLookbackWindowDays(Optional<Long> lookbackWindowDays) {
+        Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
+        this.lookbackWindowDays = lookbackWindowDays;
         return this;
     }
 
@@ -143,6 +180,7 @@ public class SourceRecharge {
         SourceRecharge other = (SourceRecharge) o;
         return 
             Objects.deepEquals(this.accessToken, other.accessToken) &&
+            Objects.deepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
             Objects.deepEquals(this.sourceType, other.sourceType) &&
             Objects.deepEquals(this.startDate, other.startDate) &&
             Objects.deepEquals(this.useOrdersDeprecatedApi, other.useOrdersDeprecatedApi);
@@ -152,6 +190,7 @@ public class SourceRecharge {
     public int hashCode() {
         return Objects.hash(
             accessToken,
+            lookbackWindowDays,
             sourceType,
             startDate,
             useOrdersDeprecatedApi);
@@ -161,6 +200,7 @@ public class SourceRecharge {
     public String toString() {
         return Utils.toString(SourceRecharge.class,
                 "accessToken", accessToken,
+                "lookbackWindowDays", lookbackWindowDays,
                 "sourceType", sourceType,
                 "startDate", startDate,
                 "useOrdersDeprecatedApi", useOrdersDeprecatedApi);
@@ -169,6 +209,8 @@ public class SourceRecharge {
     public final static class Builder {
  
         private String accessToken;
+ 
+        private Optional<Long> lookbackWindowDays;
  
         private OffsetDateTime startDate;
  
@@ -184,6 +226,24 @@ public class SourceRecharge {
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
             this.accessToken = accessToken;
+            return this;
+        }
+
+        /**
+         * Specifies how many days of historical data should be reloaded each time the recharge connector runs.
+         */
+        public Builder lookbackWindowDays(long lookbackWindowDays) {
+            Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
+            this.lookbackWindowDays = Optional.ofNullable(lookbackWindowDays);
+            return this;
+        }
+
+        /**
+         * Specifies how many days of historical data should be reloaded each time the recharge connector runs.
+         */
+        public Builder lookbackWindowDays(Optional<Long> lookbackWindowDays) {
+            Utils.checkNotNull(lookbackWindowDays, "lookbackWindowDays");
+            this.lookbackWindowDays = lookbackWindowDays;
             return this;
         }
 
@@ -215,14 +275,24 @@ public class SourceRecharge {
         }
         
         public SourceRecharge build() {
+            if (lookbackWindowDays == null) {
+                lookbackWindowDays = _SINGLETON_VALUE_LookbackWindowDays.value();
+            }
             if (useOrdersDeprecatedApi == null) {
                 useOrdersDeprecatedApi = _SINGLETON_VALUE_UseOrdersDeprecatedApi.value();
             }
             return new SourceRecharge(
                 accessToken,
+                lookbackWindowDays,
                 startDate,
                 useOrdersDeprecatedApi);
         }
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowDays =
+                new LazySingletonValue<>(
+                        "lookback_window_days",
+                        "0",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Recharge> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

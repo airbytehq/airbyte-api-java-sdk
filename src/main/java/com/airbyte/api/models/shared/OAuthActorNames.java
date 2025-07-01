@@ -17,6 +17,7 @@ public enum OAuthActorNames {
     BING_ADS("bing-ads"),
     DRIFT("drift"),
     FACEBOOK_MARKETING("facebook-marketing"),
+    FACEBOOK_PAGES("facebook-pages"),
     GCS("gcs"),
     GITHUB("github"),
     GITLAB("gitlab"),
@@ -38,6 +39,7 @@ public enum OAuthActorNames {
     PINTEREST("pinterest"),
     RD_STATION_MARKETING("rd-station-marketing"),
     SALESFORCE("salesforce"),
+    SHAREPOINT_ENTERPRISE("sharepoint-enterprise"),
     SLACK("slack"),
     SMARTSHEETS("smartsheets"),
     SNAPCHAT_MARKETING("snapchat-marketing"),
@@ -53,7 +55,7 @@ public enum OAuthActorNames {
     @JsonValue
     private final String value;
 
-    private OAuthActorNames(String value) {
+    OAuthActorNames(String value) {
         this.value = value;
     }
     

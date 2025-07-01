@@ -14,7 +14,7 @@ public enum OutbrainAmplify {
     @JsonValue
     private final String value;
 
-    private OutbrainAmplify(String value) {
+    OutbrainAmplify(String value) {
         this.value = value;
     }
     

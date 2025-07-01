@@ -22,7 +22,7 @@ public enum ParsingStrategy {
     @JsonValue
     private final String value;
 
-    private ParsingStrategy(String value) {
+    ParsingStrategy(String value) {
         this.value = value;
     }
     

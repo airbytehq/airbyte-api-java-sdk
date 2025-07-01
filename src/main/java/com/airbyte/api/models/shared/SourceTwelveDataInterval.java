@@ -29,7 +29,7 @@ public enum SourceTwelveDataInterval {
     @JsonValue
     private final String value;
 
-    private SourceTwelveDataInterval(String value) {
+    SourceTwelveDataInterval(String value) {
         this.value = value;
     }
     

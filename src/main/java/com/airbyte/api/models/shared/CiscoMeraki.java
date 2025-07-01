@@ -14,7 +14,7 @@ public enum CiscoMeraki {
     @JsonValue
     private final String value;
 
-    private CiscoMeraki(String value) {
+    CiscoMeraki(String value) {
         this.value = value;
     }
     

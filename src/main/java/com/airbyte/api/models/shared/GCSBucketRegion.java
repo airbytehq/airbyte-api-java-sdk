@@ -53,7 +53,7 @@ public enum GCSBucketRegion {
     @JsonValue
     private final String value;
 
-    private GCSBucketRegion(String value) {
+    GCSBucketRegion(String value) {
         this.value = value;
     }
     

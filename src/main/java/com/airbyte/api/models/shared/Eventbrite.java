@@ -14,7 +14,7 @@ public enum Eventbrite {
     @JsonValue
     private final String value;
 
-    private Eventbrite(String value) {
+    Eventbrite(String value) {
         this.value = value;
     }
     

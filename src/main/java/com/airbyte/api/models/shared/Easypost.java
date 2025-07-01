@@ -14,7 +14,7 @@ public enum Easypost {
     @JsonValue
     private final String value;
 
-    private Easypost(String value) {
+    Easypost(String value) {
         this.value = value;
     }
     

@@ -3,6 +3,8 @@
  */
 package com.airbyte.api.utils;
 
+import static com.airbyte.api.utils.Exceptions.rethrow;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -35,6 +37,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.lang.Iterable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -45,6 +48,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.function.BiPredicate;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -80,7 +84,7 @@ public final class Utils {
     }
     
     public static String generateURL(String baseURL, String path)
-            throws IllegalArgumentException, IllegalAccessException {
+            throws IllegalArgumentException {
         if (baseURL != null && baseURL.endsWith("/")) {
             baseURL = baseURL.substring(0, baseURL.length() - 1);
         }
@@ -89,7 +93,7 @@ public final class Utils {
     }
     
     public static <T> String generateURL(Class<T> type, String baseURL, String path, JsonNullable<? extends T> params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws JsonProcessingException, IllegalArgumentException, IllegalAccessException {
+            Globals globals) throws JsonProcessingException, IllegalArgumentException, IllegalAccessException {
         if (params.isPresent() && params.get() != null) {
             return generateURL(type, baseURL, path, params.get(), globals);
         } else {
@@ -98,7 +102,7 @@ public final class Utils {
     }
     
     public static <T> String generateURL(Class<T> type, String baseURL, String path, Optional<? extends T> params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws JsonProcessingException, IllegalArgumentException, IllegalAccessException {
+            Globals globals) throws JsonProcessingException, IllegalArgumentException, IllegalAccessException {
         if (params.isPresent()) {
             return generateURL(type, baseURL, path, params.get(), globals);
         } else {
@@ -107,7 +111,7 @@ public final class Utils {
     }
 
     public static <T> String generateURL(Class<T> type, String baseURL, String path, T params,
-            Map<String, Map<String, Map<String, Object>>> globals)
+            Globals globals)
             throws IllegalArgumentException, IllegalAccessException, JsonProcessingException {
         if (baseURL != null && baseURL.endsWith("/")) {
             baseURL = baseURL.substring(0, baseURL.length() - 1);
@@ -207,7 +211,14 @@ public final class Utils {
                 }
             }
         }
-
+        // include all global params in pathParams if not already present
+        if (globals != null) {
+            globals.pathParamsAsStream()
+                .filter(entry -> !pathParams.containsKey(entry.getKey()))
+                .forEach(entry -> pathParams.put(entry.getKey(), //
+                            pathEncode(entry.getValue(), false)));
+        }
+        
         return baseURL + templateUrl(path, pathParams);
     }
     
@@ -265,7 +276,7 @@ public final class Utils {
     }
     
     public static <T extends Object> List<QueryParameter> getQueryParams(Class<T> type, Optional<? extends T> params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws Exception {
+            Globals globals) throws Exception {
         if (params.isEmpty()) {
             return Collections.emptyList();
         } else {
@@ -274,7 +285,7 @@ public final class Utils {
     }
     
     public static <T extends Object> List<QueryParameter> getQueryParams(Class<T> type, JsonNullable<? extends T> params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws Exception {
+            Globals globals) throws Exception {
         if (!params.isPresent() || params.get() == null) {
             return Collections.emptyList();
         } else {
@@ -283,7 +294,7 @@ public final class Utils {
     }
 
     public static <T extends Object> List<QueryParameter> getQueryParams(Class<T> type, T params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws Exception {
+            Globals globals) throws Exception {
         return QueryParameters.parseQueryParams(type, params, globals);
     }
 
@@ -316,7 +327,7 @@ public final class Utils {
         return sb.toString().replace(DOLLAR_MARKER, "$");
     }
 
-    public static Map<String, List<String>> getHeadersFromMetadata(Object headers, Map<String, Map<String, Map<String, Object>>> globals) throws Exception {
+    public static Map<String, List<String>> getHeadersFromMetadata(Object headers, Globals globals) throws Exception {
         if (headers == null) {
             return Collections.emptyMap();
         }
@@ -441,6 +452,14 @@ public final class Utils {
                 }
             }
         }
+        
+        // include all global headers in result if not already present
+        if (globals != null) {
+            globals.headerParamsAsStream()
+                .filter(entry -> !result.containsKey(entry.getKey()))
+                .forEach(entry -> result.put(entry.getKey(), //
+                            Arrays.asList(entry.getValue())));
+        }
 
         return result;
     }
@@ -467,17 +486,10 @@ public final class Utils {
     }
 
     public static Object populateGlobal(Object value, String fieldName, String paramType,
-            Map<String, Map<String, Map<String, Object>>> globals) {
-        if (value == null &&
-                globals != null &&
-                globals.containsKey("parameters") &&
-                globals.get("parameters").containsKey(paramType)) {
-            Object globalVal = globals.get("parameters").get(paramType).get(fieldName);
-            if (globalVal != null) {
-                value = globalVal;
-            }
-        }
-
+            Globals globals) {
+        if (value == null) {
+            return globals.getParam(paramType, fieldName).orElse(null);
+        } 
         return value;
     }
 
@@ -770,7 +782,12 @@ public final class Utils {
     public static <T> Stream<T> stream(Callable<Optional<T>> first, Function<T, Optional<T>> next) {
         return StreamSupport.stream(iterable(first, next).spliterator(), false);
     }
-    
+
+    public static <T> Stream<T> toStream(Iterable<T> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false);
+    }
+
+
     // need a Function method that throws
     public interface Function<S, T> {
         T apply(S value) throws Exception;
@@ -822,19 +839,7 @@ public final class Utils {
             }
         };
     }
-    
-    static <T> T rethrow(Throwable e) {
-        if (e instanceof RuntimeException) {
-            throw (RuntimeException) e;
-        } else if (e instanceof Error) {
-            throw (Error) e;
-        } else if (e instanceof IOException) {
-            throw new UncheckedIOException((IOException) e);
-        } else {
-           throw new RuntimeException(e);
-        }
-    }
-    
+
     public static boolean statusCodeMatches(int statusCode, String... expectedStatusCodes) {
         return Arrays.stream(expectedStatusCodes)
             .anyMatch(expected -> statusCodeMatchesOne(statusCode, expected));
@@ -1045,12 +1050,21 @@ public final class Utils {
         return readBytes(new File(filename));
     }
     
+    public static String readString(String filename) {
+        return readString(new File(filename));
+    }
+    
     public static byte[] readBytes(File file) {
         try {
             return readBytesAndClose(new FileInputStream(file));
         } catch (FileNotFoundException e) {
             throw new UncheckedIOException(e);
         }
+    }
+    
+    public static String readString(File file) {
+        byte[] bytes = readBytes(file);
+        return new String(bytes, StandardCharsets.UTF_8);
     }
     
     public static byte[] readBytesAndClose(InputStream in) {
@@ -1396,4 +1410,34 @@ public final class Utils {
     public static <T> T valueOrNull(JsonNullable<T> value) {
         return valueOrElse(value, null);
     }
+
+    public static <N> N castLong(long value, Class<N> targetType) {
+        // Handle supported types safely
+        if (targetType == Integer.class) {
+            return targetType.cast((int) value);
+        } else if (targetType == Long.class) {
+            return targetType.cast(value);
+        } else if (targetType == Short.class) {
+            return targetType.cast((short) value);
+        } else if (targetType == BigInteger.class) {
+            return targetType.cast(BigInteger.valueOf(value));
+        } else {
+            throw new IllegalArgumentException("Unsupported number type: " + targetType);
+        }
+    }
+
+    public static <I, O> Iterator<O> transform(Iterator<I> iterator, Function<I, O> mapper) {
+        return new Iterator<>() {
+            @Override
+            public boolean hasNext() {
+                return iterator.hasNext();
+            }
+
+            @Override
+            public O next() {
+                return Exceptions.unchecked(() -> mapper.apply(iterator.next())).get();
+            }
+        };
+    }
+
 }

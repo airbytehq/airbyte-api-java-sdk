@@ -14,7 +14,7 @@ public enum Reddit {
     @JsonValue
     private final String value;
 
-    private Reddit(String value) {
+    Reddit(String value) {
         this.value = value;
     }
     

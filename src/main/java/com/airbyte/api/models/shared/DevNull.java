@@ -14,7 +14,7 @@ public enum DevNull {
     @JsonValue
     private final String value;
 
-    private DevNull(String value) {
+    DevNull(String value) {
         this.value = value;
     }
     

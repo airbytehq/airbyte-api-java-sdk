@@ -67,7 +67,7 @@ public enum Lang {
     @JsonValue
     private final String value;
 
-    private Lang(String value) {
+    Lang(String value) {
         this.value = value;
     }
     

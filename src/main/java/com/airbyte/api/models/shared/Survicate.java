@@ -14,7 +14,7 @@ public enum Survicate {
     @JsonValue
     private final String value;
 
-    private Survicate(String value) {
+    Survicate(String value) {
         this.value = value;
     }
     
