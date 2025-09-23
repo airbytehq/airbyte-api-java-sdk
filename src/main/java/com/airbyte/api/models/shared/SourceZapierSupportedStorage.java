@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceZapierSupportedStorage {
-
     /**
      * Secret key supplied by zapier
      */
     @JsonProperty("secret")
     private String secret;
+
 
     @JsonProperty("sourceType")
     private ZapierSupportedStorage sourceType;
@@ -45,9 +45,10 @@ public class SourceZapierSupportedStorage {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Secret key supplied by zapier
@@ -58,7 +59,6 @@ public class SourceZapierSupportedStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceZapierSupportedStorage {
         }
         SourceZapierSupportedStorage other = (SourceZapierSupportedStorage) o;
         return 
-            Objects.deepEquals(this.secret, other.secret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.secret, other.secret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            secret,
-            sourceType);
+        return Utils.enhancedHash(
+            secret, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceZapierSupportedStorage {
                 "secret", secret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String secret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Secret key supplied by zapier
@@ -103,11 +104,13 @@ public class SourceZapierSupportedStorage {
             this.secret = secret;
             return this;
         }
-        
+
         public SourceZapierSupportedStorage build() {
+
             return new SourceZapierSupportedStorage(
                 secret);
         }
+
 
         private static final LazySingletonValue<ZapierSupportedStorage> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

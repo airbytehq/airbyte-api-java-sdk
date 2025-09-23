@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class IAMRole {
 
+public class IAMRole {
     /**
      * Name of the credentials
      */
@@ -57,9 +56,10 @@ public class IAMRole {
         return roleArn;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Will assume this role to write data to s3
@@ -70,7 +70,6 @@ public class IAMRole {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,15 +80,14 @@ public class IAMRole {
         }
         IAMRole other = (IAMRole) o;
         return 
-            Objects.deepEquals(this.credentialsTitle, other.credentialsTitle) &&
-            Objects.deepEquals(this.roleArn, other.roleArn);
+            Utils.enhancedDeepEquals(this.credentialsTitle, other.credentialsTitle) &&
+            Utils.enhancedDeepEquals(this.roleArn, other.roleArn);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentialsTitle,
-            roleArn);
+        return Utils.enhancedHash(
+            credentialsTitle, roleArn);
     }
     
     @Override
@@ -98,14 +96,16 @@ public class IAMRole {
                 "credentialsTitle", credentialsTitle,
                 "roleArn", roleArn);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String roleArn;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Will assume this role to write data to s3
@@ -115,11 +115,13 @@ public class IAMRole {
             this.roleArn = roleArn;
             return this;
         }
-        
+
         public IAMRole build() {
+
             return new IAMRole(
                 roleArn);
         }
+
 
         private static final LazySingletonValue<Optional<? extends CredentialsTitle>> _SINGLETON_VALUE_CredentialsTitle =
                 new LazySingletonValue<>(

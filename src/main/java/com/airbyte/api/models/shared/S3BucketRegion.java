@@ -52,7 +52,7 @@ public enum S3BucketRegion {
     @JsonValue
     private final String value;
 
-    private S3BucketRegion(String value) {
+    S3BucketRegion(String value) {
         this.value = value;
     }
     

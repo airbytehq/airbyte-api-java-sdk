@@ -7,11 +7,14 @@ import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ScanChangesWithUserDefinedCursor
@@ -19,14 +22,35 @@ import java.util.Objects;
  * <p>Incrementally detects new inserts and updates using the &lt;a href="https://docs.airbyte.com/understanding-airbyte/connections/incremental-append/#user-defined-cursor"&gt;cursor column&lt;/a&gt; chosen when configuring a connection (e.g. created_at, updated_at).
  */
 public class ScanChangesWithUserDefinedCursor {
+    /**
+     * When enabled incremental syncs using a cursor of a temporal types (date or datetime) will include cursor values only up until last midnight (Advanced)
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("exclude_todays_data")
+    private Optional<Boolean> excludeTodaysData;
+
 
     @JsonProperty("method")
     private SourceMssqlSchemasMethod method;
 
     @JsonCreator
-    public ScanChangesWithUserDefinedCursor() {
-        
+    public ScanChangesWithUserDefinedCursor(
+            @JsonProperty("exclude_todays_data") Optional<Boolean> excludeTodaysData) {
+        Utils.checkNotNull(excludeTodaysData, "excludeTodaysData");
+        this.excludeTodaysData = excludeTodaysData;
         this.method = Builder._SINGLETON_VALUE_Method.value();
+    }
+    
+    public ScanChangesWithUserDefinedCursor() {
+        this(Optional.empty());
+    }
+
+    /**
+     * When enabled incremental syncs using a cursor of a temporal types (date or datetime) will include cursor values only up until last midnight (Advanced)
+     */
+    @JsonIgnore
+    public Optional<Boolean> excludeTodaysData() {
+        return excludeTodaysData;
     }
 
     @JsonIgnore
@@ -34,11 +58,30 @@ public class ScanChangesWithUserDefinedCursor {
         return method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
+    /**
+     * When enabled incremental syncs using a cursor of a temporal types (date or datetime) will include cursor values only up until last midnight (Advanced)
+     */
+    public ScanChangesWithUserDefinedCursor withExcludeTodaysData(boolean excludeTodaysData) {
+        Utils.checkNotNull(excludeTodaysData, "excludeTodaysData");
+        this.excludeTodaysData = Optional.ofNullable(excludeTodaysData);
+        return this;
+    }
+
+
+    /**
+     * When enabled incremental syncs using a cursor of a temporal types (date or datetime) will include cursor values only up until last midnight (Advanced)
+     */
+    public ScanChangesWithUserDefinedCursor withExcludeTodaysData(Optional<Boolean> excludeTodaysData) {
+        Utils.checkNotNull(excludeTodaysData, "excludeTodaysData");
+        this.excludeTodaysData = excludeTodaysData;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,31 +92,66 @@ public class ScanChangesWithUserDefinedCursor {
         }
         ScanChangesWithUserDefinedCursor other = (ScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.excludeTodaysData, other.excludeTodaysData) &&
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            method);
+        return Utils.enhancedHash(
+            excludeTodaysData, method);
     }
     
     @Override
     public String toString() {
         return Utils.toString(ScanChangesWithUserDefinedCursor.class,
+                "excludeTodaysData", excludeTodaysData,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
+        private Optional<Boolean> excludeTodaysData;
+
         private Builder() {
           // force use of static builder() method
         }
-        
-        public ScanChangesWithUserDefinedCursor build() {
-            return new ScanChangesWithUserDefinedCursor(
-                );
+
+
+        /**
+         * When enabled incremental syncs using a cursor of a temporal types (date or datetime) will include cursor values only up until last midnight (Advanced)
+         */
+        public Builder excludeTodaysData(boolean excludeTodaysData) {
+            Utils.checkNotNull(excludeTodaysData, "excludeTodaysData");
+            this.excludeTodaysData = Optional.ofNullable(excludeTodaysData);
+            return this;
         }
+
+        /**
+         * When enabled incremental syncs using a cursor of a temporal types (date or datetime) will include cursor values only up until last midnight (Advanced)
+         */
+        public Builder excludeTodaysData(Optional<Boolean> excludeTodaysData) {
+            Utils.checkNotNull(excludeTodaysData, "excludeTodaysData");
+            this.excludeTodaysData = excludeTodaysData;
+            return this;
+        }
+
+        public ScanChangesWithUserDefinedCursor build() {
+            if (excludeTodaysData == null) {
+                excludeTodaysData = _SINGLETON_VALUE_ExcludeTodaysData.value();
+            }
+
+            return new ScanChangesWithUserDefinedCursor(
+                excludeTodaysData);
+        }
+
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_ExcludeTodaysData =
+                new LazySingletonValue<>(
+                        "exclude_todays_data",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<SourceMssqlSchemasMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

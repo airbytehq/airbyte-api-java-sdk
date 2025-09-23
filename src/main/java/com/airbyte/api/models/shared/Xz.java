@@ -15,8 +15,8 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Xz {
 
@@ -59,15 +59,17 @@ public class Xz {
         return compressionLevel;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Xz withCodec(DestinationGcsSchemasFormatCodec codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = Optional.ofNullable(codec);
         return this;
     }
+
 
     public Xz withCodec(Optional<? extends DestinationGcsSchemasFormatCodec> codec) {
         Utils.checkNotNull(codec, "codec");
@@ -84,6 +86,7 @@ public class Xz {
         return this;
     }
 
+
     /**
      * The presets 0-3 are fast presets with medium compression. The presets 4-6 are fairly slow presets with high compression. The default preset is 6. The presets 7-9 are like the preset 6 but use bigger dictionaries and have higher compressor and decompressor memory requirements. Unless the uncompressed size of the file exceeds 8 MiB, 16 MiB, or 32 MiB, it is waste of memory to use the presets 7, 8, or 9, respectively. Read more &lt;a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-"&gt;here&lt;/a&gt; for details.
      */
@@ -93,7 +96,6 @@ public class Xz {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,15 +106,14 @@ public class Xz {
         }
         Xz other = (Xz) o;
         return 
-            Objects.deepEquals(this.codec, other.codec) &&
-            Objects.deepEquals(this.compressionLevel, other.compressionLevel);
+            Utils.enhancedDeepEquals(this.codec, other.codec) &&
+            Utils.enhancedDeepEquals(this.compressionLevel, other.compressionLevel);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            codec,
-            compressionLevel);
+        return Utils.enhancedHash(
+            codec, compressionLevel);
     }
     
     @Override
@@ -121,16 +122,18 @@ public class Xz {
                 "codec", codec,
                 "compressionLevel", compressionLevel);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsSchemasFormatCodec> codec;
- 
+
         private Optional<Long> compressionLevel;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder codec(DestinationGcsSchemasFormatCodec codec) {
             Utils.checkNotNull(codec, "codec");
@@ -143,6 +146,7 @@ public class Xz {
             this.codec = codec;
             return this;
         }
+
 
         /**
          * The presets 0-3 are fast presets with medium compression. The presets 4-6 are fairly slow presets with high compression. The default preset is 6. The presets 7-9 are like the preset 6 but use bigger dictionaries and have higher compressor and decompressor memory requirements. Unless the uncompressed size of the file exceeds 8 MiB, 16 MiB, or 32 MiB, it is waste of memory to use the presets 7, 8, or 9, respectively. Read more &lt;a href="https://commons.apache.org/proper/commons-compress/apidocs/org/apache/commons/compress/compressors/xz/XZCompressorOutputStream.html#XZCompressorOutputStream-java.io.OutputStream-int-"&gt;here&lt;/a&gt; for details.
@@ -161,7 +165,7 @@ public class Xz {
             this.compressionLevel = compressionLevel;
             return this;
         }
-        
+
         public Xz build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
@@ -169,10 +173,11 @@ public class Xz {
             if (compressionLevel == null) {
                 compressionLevel = _SINGLETON_VALUE_CompressionLevel.value();
             }
+
             return new Xz(
-                codec,
-                compressionLevel);
+                codec, compressionLevel);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsSchemasFormatCodec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

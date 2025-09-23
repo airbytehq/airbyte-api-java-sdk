@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * SourcePostgresScanChangesWithUserDefinedCursor
@@ -25,7 +24,6 @@ public class SourcePostgresScanChangesWithUserDefinedCursor {
 
     @JsonCreator
     public SourcePostgresScanChangesWithUserDefinedCursor() {
-        
         this.method = Builder._SINGLETON_VALUE_Method.value();
     }
 
@@ -34,11 +32,11 @@ public class SourcePostgresScanChangesWithUserDefinedCursor {
         return method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +47,12 @@ public class SourcePostgresScanChangesWithUserDefinedCursor {
         }
         SourcePostgresScanChangesWithUserDefinedCursor other = (SourcePostgresScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             method);
     }
     
@@ -63,17 +61,20 @@ public class SourcePostgresScanChangesWithUserDefinedCursor {
         return Utils.toString(SourcePostgresScanChangesWithUserDefinedCursor.class,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourcePostgresScanChangesWithUserDefinedCursor build() {
+
             return new SourcePostgresScanChangesWithUserDefinedCursor(
                 );
         }
+
 
         private static final LazySingletonValue<SourcePostgresSchemasReplicationMethodMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

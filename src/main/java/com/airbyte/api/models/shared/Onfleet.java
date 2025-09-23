@@ -14,7 +14,7 @@ public enum Onfleet {
     @JsonValue
     private final String value;
 
-    private Onfleet(String value) {
+    Onfleet(String value) {
         this.value = value;
     }
     

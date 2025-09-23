@@ -22,7 +22,7 @@ public enum SourceGoogleAnalyticsDataApiGranularity {
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiGranularity(String value) {
+    SourceGoogleAnalyticsDataApiGranularity(String value) {
         this.value = value;
     }
     

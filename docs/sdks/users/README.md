@@ -13,6 +13,7 @@ Organization Admin user can list all users within the same organization. Also pr
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listUsersWithinAnOrganization" method="get" path="/users" -->
 ```java
 package hello.world;
 

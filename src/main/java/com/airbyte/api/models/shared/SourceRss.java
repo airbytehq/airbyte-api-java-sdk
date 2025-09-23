@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceRss {
 
@@ -45,9 +45,10 @@ public class SourceRss {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * RSS Feed URL
@@ -58,7 +59,6 @@ public class SourceRss {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceRss {
         }
         SourceRss other = (SourceRss) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            url);
+        return Utils.enhancedHash(
+            sourceType, url);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceRss {
                 "sourceType", sourceType,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * RSS Feed URL
@@ -103,11 +104,13 @@ public class SourceRss {
             this.url = url;
             return this;
         }
-        
+
         public SourceRss build() {
+
             return new SourceRss(
                 url);
         }
+
 
         private static final LazySingletonValue<Rss> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

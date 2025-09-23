@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class RESTAPIStreams {
 
+public class RESTAPIStreams {
     /**
      * Follow the instructions in the "OAuth 2.0 in Postman - API Client for Integrations" article in the Workday community docs to obtain access token.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private Rest authType;
@@ -72,9 +72,10 @@ public class RESTAPIStreams {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Follow the instructions in the "OAuth 2.0 in Postman - API Client for Integrations" article in the Workday community docs to obtain access token.
@@ -94,6 +95,7 @@ public class RESTAPIStreams {
         return this;
     }
 
+
     /**
      * Rows after this date will be synced, default 2 years ago.
      */
@@ -103,7 +105,6 @@ public class RESTAPIStreams {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,17 +115,15 @@ public class RESTAPIStreams {
         }
         RESTAPIStreams other = (RESTAPIStreams) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, authType, startDate);
     }
     
     @Override
@@ -134,16 +133,18 @@ public class RESTAPIStreams {
                 "authType", authType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Follow the instructions in the "OAuth 2.0 in Postman - API Client for Integrations" article in the Workday community docs to obtain access token.
@@ -153,6 +154,7 @@ public class RESTAPIStreams {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Rows after this date will be synced, default 2 years ago.
@@ -171,12 +173,13 @@ public class RESTAPIStreams {
             this.startDate = startDate;
             return this;
         }
-        
+
         public RESTAPIStreams build() {
+
             return new RESTAPIStreams(
-                accessToken,
-                startDate);
+                accessToken, startDate);
         }
+
 
         private static final LazySingletonValue<Rest> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Workflowmax {
     @JsonValue
     private final String value;
 
-    private Workflowmax(String value) {
+    Workflowmax(String value) {
         this.value = value;
     }
     

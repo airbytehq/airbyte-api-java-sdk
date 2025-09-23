@@ -16,11 +16,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSurveymonkey {
 
+public class SourceSurveymonkey {
     /**
      * The authorization method to use to retrieve data from SurveyMonkey
      */
@@ -33,6 +32,7 @@ public class SourceSurveymonkey {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("origin")
     private Optional<? extends OriginDatacenterOfTheSurveyMonkeyAccount> origin;
+
 
     @JsonProperty("sourceType")
     private SourceSurveymonkeySurveymonkey sourceType;
@@ -70,7 +70,8 @@ public class SourceSurveymonkey {
     public SourceSurveymonkey(
             SurveyMonkeyAuthorizationMethod credentials,
             OffsetDateTime startDate) {
-        this(credentials, Optional.empty(), startDate, Optional.empty());
+        this(credentials, Optional.empty(), startDate,
+            Optional.empty());
     }
 
     /**
@@ -112,9 +113,10 @@ public class SourceSurveymonkey {
         return (Optional<List<String>>) surveyIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The authorization method to use to retrieve data from SurveyMonkey
@@ -133,6 +135,7 @@ public class SourceSurveymonkey {
         this.origin = Optional.ofNullable(origin);
         return this;
     }
+
 
     /**
      * Depending on the originating datacenter of the SurveyMonkey account, the API access URL may be different.
@@ -161,6 +164,7 @@ public class SourceSurveymonkey {
         return this;
     }
 
+
     /**
      * IDs of the surveys from which you'd like to replicate data. If left empty, data from all boards to which you have access will be replicated.
      */
@@ -170,7 +174,6 @@ public class SourceSurveymonkey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -181,21 +184,18 @@ public class SourceSurveymonkey {
         }
         SourceSurveymonkey other = (SourceSurveymonkey) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.origin, other.origin) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.surveyIds, other.surveyIds);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.origin, other.origin) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.surveyIds, other.surveyIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            origin,
-            sourceType,
-            startDate,
-            surveyIds);
+        return Utils.enhancedHash(
+            credentials, origin, sourceType,
+            startDate, surveyIds);
     }
     
     @Override
@@ -207,20 +207,22 @@ public class SourceSurveymonkey {
                 "startDate", startDate,
                 "surveyIds", surveyIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SurveyMonkeyAuthorizationMethod credentials;
- 
+
         private Optional<? extends OriginDatacenterOfTheSurveyMonkeyAccount> origin;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends List<String>> surveyIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The authorization method to use to retrieve data from SurveyMonkey
@@ -230,6 +232,7 @@ public class SourceSurveymonkey {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Depending on the originating datacenter of the SurveyMonkey account, the API access URL may be different.
@@ -249,6 +252,7 @@ public class SourceSurveymonkey {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -257,6 +261,7 @@ public class SourceSurveymonkey {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * IDs of the surveys from which you'd like to replicate data. If left empty, data from all boards to which you have access will be replicated.
@@ -275,17 +280,17 @@ public class SourceSurveymonkey {
             this.surveyIds = surveyIds;
             return this;
         }
-        
+
         public SourceSurveymonkey build() {
             if (origin == null) {
                 origin = _SINGLETON_VALUE_Origin.value();
             }
+
             return new SourceSurveymonkey(
-                credentials,
-                origin,
-                startDate,
+                credentials, origin, startDate,
                 surveyIds);
         }
+
 
         private static final LazySingletonValue<Optional<? extends OriginDatacenterOfTheSurveyMonkeyAccount>> _SINGLETON_VALUE_Origin =
                 new LazySingletonValue<>(

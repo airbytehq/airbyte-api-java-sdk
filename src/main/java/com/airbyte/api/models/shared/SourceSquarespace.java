@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceSquarespace {
-
     /**
      * API key to use. Find it at https://developers.squarespace.com/commerce-apis/authentication-and-permissions
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Squarespace sourceType;
@@ -63,9 +63,10 @@ public class SourceSquarespace {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use. Find it at https://developers.squarespace.com/commerce-apis/authentication-and-permissions
@@ -85,7 +86,6 @@ public class SourceSquarespace {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,17 +96,15 @@ public class SourceSquarespace {
         }
         SourceSquarespace other = (SourceSquarespace) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -116,16 +114,18 @@ public class SourceSquarespace {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use. Find it at https://developers.squarespace.com/commerce-apis/authentication-and-permissions
@@ -136,6 +136,7 @@ public class SourceSquarespace {
             return this;
         }
 
+
         /**
          * Any data before this date will not be replicated.
          */
@@ -144,12 +145,13 @@ public class SourceSquarespace {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSquarespace build() {
+
             return new SourceSquarespace(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Squarespace> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

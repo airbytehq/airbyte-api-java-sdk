@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceRevolutMerchant {
-
     /**
      * Specify the API version to use. This is required for certain API calls. Example: '2024-09-01'.
      */
@@ -34,8 +33,10 @@ public class SourceRevolutMerchant {
     @JsonProperty("secret_api_key")
     private String secretApiKey;
 
+
     @JsonProperty("sourceType")
     private RevolutMerchant sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -91,9 +92,10 @@ public class SourceRevolutMerchant {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Specify the API version to use. This is required for certain API calls. Example: '2024-09-01'.
@@ -128,7 +130,6 @@ public class SourceRevolutMerchant {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -139,21 +140,18 @@ public class SourceRevolutMerchant {
         }
         SourceRevolutMerchant other = (SourceRevolutMerchant) o;
         return 
-            Objects.deepEquals(this.apiVersion, other.apiVersion) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.secretApiKey, other.secretApiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiVersion, other.apiVersion) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.secretApiKey, other.secretApiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiVersion,
-            environment,
-            secretApiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiVersion, environment, secretApiKey,
+            sourceType, startDate);
     }
     
     @Override
@@ -165,20 +163,22 @@ public class SourceRevolutMerchant {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiVersion;
- 
+
         private SourceRevolutMerchantEnvironment environment;
- 
+
         private String secretApiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Specify the API version to use. This is required for certain API calls. Example: '2024-09-01'.
@@ -189,6 +189,7 @@ public class SourceRevolutMerchant {
             return this;
         }
 
+
         /**
          * The base url of your environment. Either sandbox or production
          */
@@ -197,6 +198,7 @@ public class SourceRevolutMerchant {
             this.environment = environment;
             return this;
         }
+
 
         /**
          * Secret API key to use for authenticating with the Revolut Merchant API. Find it in your Revolut Business account under APIs &gt; Merchant API.
@@ -207,19 +209,20 @@ public class SourceRevolutMerchant {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceRevolutMerchant build() {
+
             return new SourceRevolutMerchant(
-                apiVersion,
-                environment,
-                secretApiKey,
+                apiVersion, environment, secretApiKey,
                 startDate);
         }
+
 
         private static final LazySingletonValue<RevolutMerchant> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

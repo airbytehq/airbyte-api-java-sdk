@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZenloop {
 
+public class SourceZenloop {
     /**
      * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;
      */
@@ -30,6 +29,7 @@ public class SourceZenloop {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_from")
     private Optional<String> dateFrom;
+
 
     @JsonProperty("sourceType")
     private Zenloop sourceType;
@@ -67,7 +67,8 @@ public class SourceZenloop {
     
     public SourceZenloop(
             String apiToken) {
-        this(apiToken, Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiToken, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -107,9 +108,10 @@ public class SourceZenloop {
         return surveyId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;
@@ -129,6 +131,7 @@ public class SourceZenloop {
         return this;
     }
 
+
     /**
      * Zenloop date_from. Format: 2021-10-24T03:30:30Z or 2021-10-24. Leave empty if only data from current data should be synced
      */
@@ -146,6 +149,7 @@ public class SourceZenloop {
         this.surveyGroupId = Optional.ofNullable(surveyGroupId);
         return this;
     }
+
 
     /**
      * Zenloop Survey Group ID. Can be found by pulling All Survey Groups via SurveyGroups stream. Leave empty to pull answers from all survey groups
@@ -165,6 +169,7 @@ public class SourceZenloop {
         return this;
     }
 
+
     /**
      * Zenloop Survey ID. Can be found &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;. Leave empty to pull answers from all surveys
      */
@@ -174,7 +179,6 @@ public class SourceZenloop {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -185,21 +189,18 @@ public class SourceZenloop {
         }
         SourceZenloop other = (SourceZenloop) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.dateFrom, other.dateFrom) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.surveyGroupId, other.surveyGroupId) &&
-            Objects.deepEquals(this.surveyId, other.surveyId);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.dateFrom, other.dateFrom) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.surveyGroupId, other.surveyGroupId) &&
+            Utils.enhancedDeepEquals(this.surveyId, other.surveyId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            dateFrom,
-            sourceType,
-            surveyGroupId,
-            surveyId);
+        return Utils.enhancedHash(
+            apiToken, dateFrom, sourceType,
+            surveyGroupId, surveyId);
     }
     
     @Override
@@ -211,20 +212,22 @@ public class SourceZenloop {
                 "surveyGroupId", surveyGroupId,
                 "surveyId", surveyId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private Optional<String> dateFrom = Optional.empty();
- 
+
         private Optional<String> surveyGroupId = Optional.empty();
- 
+
         private Optional<String> surveyId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Zenloop API Token. You can get the API token in settings page &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;
@@ -234,6 +237,7 @@ public class SourceZenloop {
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * Zenloop date_from. Format: 2021-10-24T03:30:30Z or 2021-10-24. Leave empty if only data from current data should be synced
@@ -253,6 +257,7 @@ public class SourceZenloop {
             return this;
         }
 
+
         /**
          * Zenloop Survey Group ID. Can be found by pulling All Survey Groups via SurveyGroups stream. Leave empty to pull answers from all survey groups
          */
@@ -271,6 +276,7 @@ public class SourceZenloop {
             return this;
         }
 
+
         /**
          * Zenloop Survey ID. Can be found &lt;a href="https://app.zenloop.com/settings/api"&gt;here&lt;/a&gt;. Leave empty to pull answers from all surveys
          */
@@ -288,14 +294,14 @@ public class SourceZenloop {
             this.surveyId = surveyId;
             return this;
         }
-        
+
         public SourceZenloop build() {
+
             return new SourceZenloop(
-                apiToken,
-                dateFrom,
-                surveyGroupId,
+                apiToken, dateFrom, surveyGroupId,
                 surveyId);
         }
+
 
         private static final LazySingletonValue<Zenloop> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class ListSourceDefinitionsRequest {
 
@@ -28,9 +28,10 @@ public class ListSourceDefinitionsRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ListSourceDefinitionsRequest withWorkspaceId(String workspaceId) {
         Utils.checkNotNull(workspaceId, "workspaceId");
@@ -38,7 +39,6 @@ public class ListSourceDefinitionsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class ListSourceDefinitionsRequest {
         }
         ListSourceDefinitionsRequest other = (ListSourceDefinitionsRequest) o;
         return 
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             workspaceId);
     }
     
@@ -63,24 +63,28 @@ public class ListSourceDefinitionsRequest {
         return Utils.toString(ListSourceDefinitionsRequest.class,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public ListSourceDefinitionsRequest build() {
+
             return new ListSourceDefinitionsRequest(
                 workspaceId);
         }
+
     }
 }

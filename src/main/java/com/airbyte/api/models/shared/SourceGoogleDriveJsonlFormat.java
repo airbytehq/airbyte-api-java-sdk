@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleDriveJsonlFormat {
 
@@ -25,7 +25,6 @@ public class SourceGoogleDriveJsonlFormat {
 
     @JsonCreator
     public SourceGoogleDriveJsonlFormat() {
-        
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
@@ -35,11 +34,11 @@ public class SourceGoogleDriveJsonlFormat {
         return (Optional<SourceGoogleDriveSchemasStreamsFiletype>) filetype;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class SourceGoogleDriveJsonlFormat {
         }
         SourceGoogleDriveJsonlFormat other = (SourceGoogleDriveJsonlFormat) o;
         return 
-            Objects.deepEquals(this.filetype, other.filetype);
+            Utils.enhancedDeepEquals(this.filetype, other.filetype);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             filetype);
     }
     
@@ -64,17 +63,20 @@ public class SourceGoogleDriveJsonlFormat {
         return Utils.toString(SourceGoogleDriveJsonlFormat.class,
                 "filetype", filetype);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceGoogleDriveJsonlFormat build() {
+
             return new SourceGoogleDriveJsonlFormat(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleDriveSchemasStreamsFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(

@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceRocketChat {
-
     /**
      * Your rocket.chat instance URL.
      */
     @JsonProperty("endpoint")
     private String endpoint;
+
 
     @JsonProperty("sourceType")
     private RocketChat sourceType;
@@ -79,9 +79,10 @@ public class SourceRocketChat {
         return userId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your rocket.chat instance URL.
@@ -110,7 +111,6 @@ public class SourceRocketChat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class SourceRocketChat {
         }
         SourceRocketChat other = (SourceRocketChat) o;
         return 
-            Objects.deepEquals(this.endpoint, other.endpoint) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.token, other.token) &&
-            Objects.deepEquals(this.userId, other.userId);
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.token, other.token) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            endpoint,
-            sourceType,
-            token,
+        return Utils.enhancedHash(
+            endpoint, sourceType, token,
             userId);
     }
     
@@ -144,18 +142,20 @@ public class SourceRocketChat {
                 "token", token,
                 "userId", userId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String endpoint;
- 
+
         private String token;
- 
+
         private String userId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your rocket.chat instance URL.
@@ -166,6 +166,7 @@ public class SourceRocketChat {
             return this;
         }
 
+
         /**
          * Your API Token. See &lt;a href="https://developer.rocket.chat/reference/api/rest-api/endpoints/other-important-endpoints/access-tokens-endpoints"&gt;here&lt;/a&gt;. The token is case sensitive.
          */
@@ -175,6 +176,7 @@ public class SourceRocketChat {
             return this;
         }
 
+
         /**
          * Your User Id.
          */
@@ -183,13 +185,13 @@ public class SourceRocketChat {
             this.userId = userId;
             return this;
         }
-        
+
         public SourceRocketChat build() {
+
             return new SourceRocketChat(
-                endpoint,
-                token,
-                userId);
+                endpoint, token, userId);
         }
+
 
         private static final LazySingletonValue<RocketChat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

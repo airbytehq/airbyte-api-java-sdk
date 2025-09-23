@@ -9,18 +9,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class EncryptionRSA implements Encryption {
 
     @JsonProperty("algorithm")
     private EncryptionMapperAlgorithm algorithm;
 
+
     @JsonProperty("fieldNameSuffix")
     private String fieldNameSuffix;
 
+
     @JsonProperty("publicKey")
     private String publicKey;
+
 
     @JsonProperty("targetField")
     private String targetField;
@@ -62,9 +65,10 @@ public class EncryptionRSA implements Encryption {
         return targetField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EncryptionRSA withAlgorithm(EncryptionMapperAlgorithm algorithm) {
         Utils.checkNotNull(algorithm, "algorithm");
@@ -90,7 +94,6 @@ public class EncryptionRSA implements Encryption {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,18 +104,16 @@ public class EncryptionRSA implements Encryption {
         }
         EncryptionRSA other = (EncryptionRSA) o;
         return 
-            Objects.deepEquals(this.algorithm, other.algorithm) &&
-            Objects.deepEquals(this.fieldNameSuffix, other.fieldNameSuffix) &&
-            Objects.deepEquals(this.publicKey, other.publicKey) &&
-            Objects.deepEquals(this.targetField, other.targetField);
+            Utils.enhancedDeepEquals(this.algorithm, other.algorithm) &&
+            Utils.enhancedDeepEquals(this.fieldNameSuffix, other.fieldNameSuffix) &&
+            Utils.enhancedDeepEquals(this.publicKey, other.publicKey) &&
+            Utils.enhancedDeepEquals(this.targetField, other.targetField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            algorithm,
-            fieldNameSuffix,
-            publicKey,
+        return Utils.enhancedHash(
+            algorithm, fieldNameSuffix, publicKey,
             targetField);
     }
     
@@ -124,20 +125,22 @@ public class EncryptionRSA implements Encryption {
                 "publicKey", publicKey,
                 "targetField", targetField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private EncryptionMapperAlgorithm algorithm;
- 
+
         private String fieldNameSuffix;
- 
+
         private String publicKey;
- 
+
         private String targetField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder algorithm(EncryptionMapperAlgorithm algorithm) {
             Utils.checkNotNull(algorithm, "algorithm");
@@ -145,11 +148,13 @@ public class EncryptionRSA implements Encryption {
             return this;
         }
 
+
         public Builder fieldNameSuffix(String fieldNameSuffix) {
             Utils.checkNotNull(fieldNameSuffix, "fieldNameSuffix");
             this.fieldNameSuffix = fieldNameSuffix;
             return this;
         }
+
 
         public Builder publicKey(String publicKey) {
             Utils.checkNotNull(publicKey, "publicKey");
@@ -157,18 +162,19 @@ public class EncryptionRSA implements Encryption {
             return this;
         }
 
+
         public Builder targetField(String targetField) {
             Utils.checkNotNull(targetField, "targetField");
             this.targetField = targetField;
             return this;
         }
-        
+
         public EncryptionRSA build() {
+
             return new EncryptionRSA(
-                algorithm,
-                fieldNameSuffix,
-                publicKey,
+                algorithm, fieldNameSuffix, publicKey,
                 targetField);
         }
+
     }
 }

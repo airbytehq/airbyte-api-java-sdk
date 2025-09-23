@@ -12,12 +12,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceBrex {
 
     @JsonProperty("sourceType")
     private Brex sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceBrex {
         return userToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceBrex withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -76,7 +78,6 @@ public class SourceBrex {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceBrex {
         }
         SourceBrex other = (SourceBrex) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.userToken, other.userToken);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.userToken, other.userToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            startDate,
-            userToken);
+        return Utils.enhancedHash(
+            sourceType, startDate, userToken);
     }
     
     @Override
@@ -107,22 +106,25 @@ public class SourceBrex {
                 "startDate", startDate,
                 "userToken", userToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private OffsetDateTime startDate;
- 
+
         private String userToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * User token to authenticate API requests. Generate it from your Brex dashboard under Developer &gt; Settings.
@@ -132,12 +134,13 @@ public class SourceBrex {
             this.userToken = userToken;
             return this;
         }
-        
+
         public SourceBrex build() {
+
             return new SourceBrex(
-                startDate,
-                userToken);
+                startDate, userToken);
         }
+
 
         private static final LazySingletonValue<Brex> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

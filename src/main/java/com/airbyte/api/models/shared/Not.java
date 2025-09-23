@@ -10,15 +10,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class Not implements RowFilteringOperation {
-
     /**
      * Conditions to evaluate with the NOT operator.
      */
     @JsonProperty("conditions")
     private List<RowFilteringOperation> conditions;
+
 
     @JsonProperty("type")
     private RowFilteringOperationType type;
@@ -47,9 +47,10 @@ public class Not implements RowFilteringOperation {
         return Utils.discriminatorToString(type);
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Conditions to evaluate with the NOT operator.
@@ -66,7 +67,6 @@ public class Not implements RowFilteringOperation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,15 +77,14 @@ public class Not implements RowFilteringOperation {
         }
         Not other = (Not) o;
         return 
-            Objects.deepEquals(this.conditions, other.conditions) &&
-            Objects.deepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.conditions, other.conditions) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            conditions,
-            type);
+        return Utils.enhancedHash(
+            conditions, type);
     }
     
     @Override
@@ -94,16 +93,18 @@ public class Not implements RowFilteringOperation {
                 "conditions", conditions,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<RowFilteringOperation> conditions;
- 
+
         private RowFilteringOperationType type;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Conditions to evaluate with the NOT operator.
@@ -114,16 +115,18 @@ public class Not implements RowFilteringOperation {
             return this;
         }
 
+
         public Builder type(RowFilteringOperationType type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;
         }
-        
+
         public Not build() {
+
             return new Not(
-                conditions,
-                type);
+                conditions, type);
         }
+
     }
 }

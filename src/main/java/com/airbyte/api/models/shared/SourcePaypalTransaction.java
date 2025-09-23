@@ -16,11 +16,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePaypalTransaction {
 
+public class SourcePaypalTransaction {
     /**
      * The Client ID of your Paypal developer application.
      */
@@ -60,6 +59,7 @@ public class SourcePaypalTransaction {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("refresh_token")
     private Optional<String> refreshToken;
+
 
     @JsonProperty("sourceType")
     private PaypalTransaction sourceType;
@@ -110,7 +110,9 @@ public class SourcePaypalTransaction {
             String clientId,
             String clientSecret,
             OffsetDateTime startDate) {
-        this(clientId, clientSecret, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty());
+        this(clientId, clientSecret, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            startDate, Optional.empty());
     }
 
     /**
@@ -182,9 +184,10 @@ public class SourcePaypalTransaction {
         return timeWindow;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Paypal developer application.
@@ -213,6 +216,7 @@ public class SourcePaypalTransaction {
         return this;
     }
 
+
     /**
      * Start Date parameter for the list dispute endpoint in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. This Start Date must be in range within 180 days before present time, and requires ONLY 3 miliseconds(mandatory). If you don't use this option, it defaults to a start date set 180 days in the past.
      */
@@ -230,6 +234,7 @@ public class SourcePaypalTransaction {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * End Date for data extraction in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. This can be help you select specific range of time, mainly for test purposes  or data integrity tests. When this is not used, now_utc() is used by the streams. This does not apply to Disputes and Product streams.
@@ -249,6 +254,7 @@ public class SourcePaypalTransaction {
         return this;
     }
 
+
     /**
      * Determines whether to use the sandbox or production environment.
      */
@@ -266,6 +272,7 @@ public class SourcePaypalTransaction {
         this.refreshToken = Optional.ofNullable(refreshToken);
         return this;
     }
+
 
     /**
      * The key to refresh the expired access token.
@@ -294,6 +301,7 @@ public class SourcePaypalTransaction {
         return this;
     }
 
+
     /**
      * The number of days per request. Must be a number between 1 and 31.
      */
@@ -303,7 +311,6 @@ public class SourcePaypalTransaction {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -314,29 +321,23 @@ public class SourcePaypalTransaction {
         }
         SourcePaypalTransaction other = (SourcePaypalTransaction) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.disputeStartDate, other.disputeStartDate) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.isSandbox, other.isSandbox) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.timeWindow, other.timeWindow);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.disputeStartDate, other.disputeStartDate) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.timeWindow, other.timeWindow);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            disputeStartDate,
-            endDate,
-            isSandbox,
-            refreshToken,
-            sourceType,
-            startDate,
-            timeWindow);
+        return Utils.enhancedHash(
+            clientId, clientSecret, disputeStartDate,
+            endDate, isSandbox, refreshToken,
+            sourceType, startDate, timeWindow);
     }
     
     @Override
@@ -352,28 +353,30 @@ public class SourcePaypalTransaction {
                 "startDate", startDate,
                 "timeWindow", timeWindow);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<OffsetDateTime> disputeStartDate = Optional.empty();
- 
+
         private Optional<OffsetDateTime> endDate = Optional.empty();
- 
+
         private Optional<Boolean> isSandbox;
- 
+
         private Optional<String> refreshToken = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<Long> timeWindow;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Paypal developer application.
@@ -384,6 +387,7 @@ public class SourcePaypalTransaction {
             return this;
         }
 
+
         /**
          * The Client Secret of your Paypal developer application.
          */
@@ -392,6 +396,7 @@ public class SourcePaypalTransaction {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Start Date parameter for the list dispute endpoint in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. This Start Date must be in range within 180 days before present time, and requires ONLY 3 miliseconds(mandatory). If you don't use this option, it defaults to a start date set 180 days in the past.
@@ -411,6 +416,7 @@ public class SourcePaypalTransaction {
             return this;
         }
 
+
         /**
          * End Date for data extraction in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. This can be help you select specific range of time, mainly for test purposes  or data integrity tests. When this is not used, now_utc() is used by the streams. This does not apply to Disputes and Product streams.
          */
@@ -428,6 +434,7 @@ public class SourcePaypalTransaction {
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * Determines whether to use the sandbox or production environment.
@@ -447,6 +454,7 @@ public class SourcePaypalTransaction {
             return this;
         }
 
+
         /**
          * The key to refresh the expired access token.
          */
@@ -465,6 +473,7 @@ public class SourcePaypalTransaction {
             return this;
         }
 
+
         /**
          * Start Date for data extraction in &lt;a href=\"https://datatracker.ietf.org/doc/html/rfc3339#section-5.6\"&gt;ISO format&lt;/a&gt;. Date must be in range from 3 years till 12 hrs before present time.
          */
@@ -473,6 +482,7 @@ public class SourcePaypalTransaction {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The number of days per request. Must be a number between 1 and 31.
@@ -491,7 +501,7 @@ public class SourcePaypalTransaction {
             this.timeWindow = timeWindow;
             return this;
         }
-        
+
         public SourcePaypalTransaction build() {
             if (isSandbox == null) {
                 isSandbox = _SINGLETON_VALUE_IsSandbox.value();
@@ -499,16 +509,13 @@ public class SourcePaypalTransaction {
             if (timeWindow == null) {
                 timeWindow = _SINGLETON_VALUE_TimeWindow.value();
             }
+
             return new SourcePaypalTransaction(
-                clientId,
-                clientSecret,
-                disputeStartDate,
-                endDate,
-                isSandbox,
-                refreshToken,
-                startDate,
-                timeWindow);
+                clientId, clientSecret, disputeStartDate,
+                endDate, isSandbox, refreshToken,
+                startDate, timeWindow);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IsSandbox =
                 new LazySingletonValue<>(

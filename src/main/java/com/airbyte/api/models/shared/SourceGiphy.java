@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGiphy {
 
+public class SourceGiphy {
     /**
      * Your GIPHY API Key. You can create and find your API key in the GIPHY Developer Dashboard at https://developers.giphy.com/dashboard/.
      */
@@ -53,8 +52,10 @@ public class SourceGiphy {
     @JsonProperty("query_for_stickers")
     private Optional<String> queryForStickers;
 
+
     @JsonProperty("sourceType")
     private Giphy sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -85,7 +86,8 @@ public class SourceGiphy {
     public SourceGiphy(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
@@ -138,9 +140,10 @@ public class SourceGiphy {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your GIPHY API Key. You can create and find your API key in the GIPHY Developer Dashboard at https://developers.giphy.com/dashboard/.
@@ -160,6 +163,7 @@ public class SourceGiphy {
         return this;
     }
 
+
     /**
      * A query for search endpoint
      */
@@ -177,6 +181,7 @@ public class SourceGiphy {
         this.queryForClips = Optional.ofNullable(queryForClips);
         return this;
     }
+
 
     /**
      * Query for clips search endpoint
@@ -196,6 +201,7 @@ public class SourceGiphy {
         return this;
     }
 
+
     /**
      * Query for gif search endpoint
      */
@@ -214,6 +220,7 @@ public class SourceGiphy {
         return this;
     }
 
+
     /**
      * Query for stickers search endpoint
      */
@@ -229,7 +236,6 @@ public class SourceGiphy {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -240,24 +246,20 @@ public class SourceGiphy {
         }
         SourceGiphy other = (SourceGiphy) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.queryForClips, other.queryForClips) &&
-            Objects.deepEquals(this.queryForGif, other.queryForGif) &&
-            Objects.deepEquals(this.queryForStickers, other.queryForStickers) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.queryForClips, other.queryForClips) &&
+            Utils.enhancedDeepEquals(this.queryForGif, other.queryForGif) &&
+            Utils.enhancedDeepEquals(this.queryForStickers, other.queryForStickers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            query,
-            queryForClips,
-            queryForGif,
-            queryForStickers,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, query, queryForClips,
+            queryForGif, queryForStickers, sourceType,
             startDate);
     }
     
@@ -272,24 +274,26 @@ public class SourceGiphy {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> query;
- 
+
         private Optional<String> queryForClips;
- 
+
         private Optional<String> queryForGif;
- 
+
         private Optional<String> queryForStickers;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your GIPHY API Key. You can create and find your API key in the GIPHY Developer Dashboard at https://developers.giphy.com/dashboard/.
@@ -299,6 +303,7 @@ public class SourceGiphy {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * A query for search endpoint
@@ -318,6 +323,7 @@ public class SourceGiphy {
             return this;
         }
 
+
         /**
          * Query for clips search endpoint
          */
@@ -335,6 +341,7 @@ public class SourceGiphy {
             this.queryForClips = queryForClips;
             return this;
         }
+
 
         /**
          * Query for gif search endpoint
@@ -354,6 +361,7 @@ public class SourceGiphy {
             return this;
         }
 
+
         /**
          * Query for stickers search endpoint
          */
@@ -372,12 +380,13 @@ public class SourceGiphy {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGiphy build() {
             if (query == null) {
                 query = _SINGLETON_VALUE_Query.value();
@@ -391,14 +400,12 @@ public class SourceGiphy {
             if (queryForStickers == null) {
                 queryForStickers = _SINGLETON_VALUE_QueryForStickers.value();
             }
+
             return new SourceGiphy(
-                apiKey,
-                query,
-                queryForClips,
-                queryForGif,
-                queryForStickers,
-                startDate);
+                apiKey, query, queryForClips,
+                queryForGif, queryForStickers, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Query =
                 new LazySingletonValue<>(

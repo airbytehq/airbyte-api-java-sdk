@@ -16,16 +16,16 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationRedshift {
 
+public class DestinationRedshift {
     /**
      * Name of the database.
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private Redshift destinationType;
@@ -150,7 +150,10 @@ public class DestinationRedshift {
             String host,
             String password,
             String username) {
-        this(database, Optional.empty(), Optional.empty(), host, Optional.empty(), password, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), Optional.empty(),
+            host, Optional.empty(), password,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -256,9 +259,10 @@ public class DestinationRedshift {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -278,6 +282,7 @@ public class DestinationRedshift {
         return this;
     }
 
+
     /**
      * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
      */
@@ -295,6 +300,7 @@ public class DestinationRedshift {
         this.dropCascade = Optional.ofNullable(dropCascade);
         return this;
     }
+
 
     /**
      * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
@@ -323,6 +329,7 @@ public class DestinationRedshift {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -350,6 +357,7 @@ public class DestinationRedshift {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -367,6 +375,7 @@ public class DestinationRedshift {
         this.rawDataSchema = Optional.ofNullable(rawDataSchema);
         return this;
     }
+
 
     /**
      * The schema to write raw tables into (default: airbyte_internal).
@@ -386,6 +395,7 @@ public class DestinationRedshift {
         return this;
     }
 
+
     /**
      * The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is "public".
      */
@@ -403,6 +413,7 @@ public class DestinationRedshift {
         this.tunnelMethod = Optional.ofNullable(tunnelMethod);
         return this;
     }
+
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -422,6 +433,7 @@ public class DestinationRedshift {
         return this;
     }
 
+
     /**
      * The way data will be uploaded to Redshift.
      */
@@ -440,7 +452,6 @@ public class DestinationRedshift {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -451,36 +462,28 @@ public class DestinationRedshift {
         }
         DestinationRedshift other = (DestinationRedshift) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            Objects.deepEquals(this.dropCascade, other.dropCascade) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.uploadingMethod, other.uploadingMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.dropCascade, other.dropCascade) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.uploadingMethod, other.uploadingMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            disableTypeDedupe,
-            dropCascade,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            rawDataSchema,
-            schema,
-            tunnelMethod,
-            uploadingMethod,
+        return Utils.enhancedHash(
+            database, destinationType, disableTypeDedupe,
+            dropCascade, host, jdbcUrlParams,
+            password, port, rawDataSchema,
+            schema, tunnelMethod, uploadingMethod,
             username);
     }
     
@@ -501,36 +504,38 @@ public class DestinationRedshift {
                 "uploadingMethod", uploadingMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private Optional<Boolean> disableTypeDedupe;
- 
+
         private Optional<Boolean> dropCascade;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private String password;
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> rawDataSchema = Optional.empty();
- 
+
         private Optional<String> schema;
- 
+
         private Optional<? extends DestinationRedshiftSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private Optional<? extends UploadingMethod> uploadingMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -540,6 +545,7 @@ public class DestinationRedshift {
             this.database = database;
             return this;
         }
+
 
         /**
          * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
@@ -559,6 +565,7 @@ public class DestinationRedshift {
             return this;
         }
 
+
         /**
          * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
          */
@@ -577,6 +584,7 @@ public class DestinationRedshift {
             return this;
         }
 
+
         /**
          * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com)
          */
@@ -585,6 +593,7 @@ public class DestinationRedshift {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -604,6 +613,7 @@ public class DestinationRedshift {
             return this;
         }
 
+
         /**
          * Password associated with the username.
          */
@@ -612,6 +622,7 @@ public class DestinationRedshift {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -631,6 +642,7 @@ public class DestinationRedshift {
             return this;
         }
 
+
         /**
          * The schema to write raw tables into (default: airbyte_internal).
          */
@@ -648,6 +660,7 @@ public class DestinationRedshift {
             this.rawDataSchema = rawDataSchema;
             return this;
         }
+
 
         /**
          * The default schema tables are written to if the source does not specify a namespace. Unless specifically configured, the usual value for this field is "public".
@@ -667,6 +680,7 @@ public class DestinationRedshift {
             return this;
         }
 
+
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
@@ -684,6 +698,7 @@ public class DestinationRedshift {
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * The way data will be uploaded to Redshift.
@@ -703,6 +718,7 @@ public class DestinationRedshift {
             return this;
         }
 
+
         /**
          * Username to use to access the database.
          */
@@ -711,7 +727,7 @@ public class DestinationRedshift {
             this.username = username;
             return this;
         }
-        
+
         public DestinationRedshift build() {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
@@ -725,20 +741,14 @@ public class DestinationRedshift {
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
+
             return new DestinationRedshift(
-                database,
-                disableTypeDedupe,
-                dropCascade,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                rawDataSchema,
-                schema,
-                tunnelMethod,
-                uploadingMethod,
-                username);
+                database, disableTypeDedupe, dropCascade,
+                host, jdbcUrlParams, password,
+                port, rawDataSchema, schema,
+                tunnelMethod, uploadingMethod, username);
         }
+
 
         private static final LazySingletonValue<Redshift> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

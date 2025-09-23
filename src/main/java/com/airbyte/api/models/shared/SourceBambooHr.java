@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceBambooHr {
 
+public class SourceBambooHr {
     /**
      * Api key of bamboo hr
      */
@@ -47,8 +46,10 @@ public class SourceBambooHr {
     @JsonProperty("employee_fields")
     private Optional<String> employeeFields;
 
+
     @JsonProperty("sourceType")
     private BambooHr sourceType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -86,7 +87,8 @@ public class SourceBambooHr {
     public SourceBambooHr(
             String apiKey,
             String subdomain) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), subdomain);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), subdomain);
     }
 
     /**
@@ -139,9 +141,10 @@ public class SourceBambooHr {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Api key of bamboo hr
@@ -161,6 +164,7 @@ public class SourceBambooHr {
         return this;
     }
 
+
     /**
      * Comma-separated list of fields to include in custom reports.
      */
@@ -178,6 +182,7 @@ public class SourceBambooHr {
         this.customReportsIncludeDefaultFields = Optional.ofNullable(customReportsIncludeDefaultFields);
         return this;
     }
+
 
     /**
      * If true, the custom reports endpoint will include the default fields defined here: https://documentation.bamboohr.com/docs/list-of-field-names.
@@ -197,6 +202,7 @@ public class SourceBambooHr {
         return this;
     }
 
+
     /**
      * Comma-separated list of fields to include for employees.
      */
@@ -211,6 +217,7 @@ public class SourceBambooHr {
         this.startDate = Optional.ofNullable(startDate);
         return this;
     }
+
 
     public SourceBambooHr withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -227,7 +234,6 @@ public class SourceBambooHr {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -238,24 +244,20 @@ public class SourceBambooHr {
         }
         SourceBambooHr other = (SourceBambooHr) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.customReportsFields, other.customReportsFields) &&
-            Objects.deepEquals(this.customReportsIncludeDefaultFields, other.customReportsIncludeDefaultFields) &&
-            Objects.deepEquals(this.employeeFields, other.employeeFields) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.customReportsFields, other.customReportsFields) &&
+            Utils.enhancedDeepEquals(this.customReportsIncludeDefaultFields, other.customReportsIncludeDefaultFields) &&
+            Utils.enhancedDeepEquals(this.employeeFields, other.employeeFields) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            customReportsFields,
-            customReportsIncludeDefaultFields,
-            employeeFields,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, customReportsFields, customReportsIncludeDefaultFields,
+            employeeFields, sourceType, startDate,
             subdomain);
     }
     
@@ -270,24 +272,26 @@ public class SourceBambooHr {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> customReportsFields = Optional.empty();
- 
+
         private Optional<Boolean> customReportsIncludeDefaultFields;
- 
+
         private Optional<String> employeeFields;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Api key of bamboo hr
@@ -297,6 +301,7 @@ public class SourceBambooHr {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Comma-separated list of fields to include in custom reports.
@@ -316,6 +321,7 @@ public class SourceBambooHr {
             return this;
         }
 
+
         /**
          * If true, the custom reports endpoint will include the default fields defined here: https://documentation.bamboohr.com/docs/list-of-field-names.
          */
@@ -333,6 +339,7 @@ public class SourceBambooHr {
             this.customReportsIncludeDefaultFields = customReportsIncludeDefaultFields;
             return this;
         }
+
 
         /**
          * Comma-separated list of fields to include for employees.
@@ -352,6 +359,7 @@ public class SourceBambooHr {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = Optional.ofNullable(startDate);
@@ -364,6 +372,7 @@ public class SourceBambooHr {
             return this;
         }
 
+
         /**
          * Sub Domain of bamboo hr
          */
@@ -372,7 +381,7 @@ public class SourceBambooHr {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceBambooHr build() {
             if (customReportsIncludeDefaultFields == null) {
                 customReportsIncludeDefaultFields = _SINGLETON_VALUE_CustomReportsIncludeDefaultFields.value();
@@ -380,14 +389,12 @@ public class SourceBambooHr {
             if (employeeFields == null) {
                 employeeFields = _SINGLETON_VALUE_EmployeeFields.value();
             }
+
             return new SourceBambooHr(
-                apiKey,
-                customReportsFields,
-                customReportsIncludeDefaultFields,
-                employeeFields,
-                startDate,
-                subdomain);
+                apiKey, customReportsFields, customReportsIncludeDefaultFields,
+                employeeFields, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CustomReportsIncludeDefaultFields =
                 new LazySingletonValue<>(

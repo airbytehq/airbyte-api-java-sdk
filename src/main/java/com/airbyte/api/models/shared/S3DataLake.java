@@ -14,7 +14,7 @@ public enum S3DataLake {
     @JsonValue
     private final String value;
 
-    private S3DataLake(String value) {
+    S3DataLake(String value) {
         this.value = value;
     }
     

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
 
@@ -62,9 +62,10 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
         return serviceAccountInfo;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The email of the user which has permissions to access the Google Workspace Admin APIs.
@@ -84,7 +85,6 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
         }
         SourceGoogleSearchConsoleServiceAccountKeyAuthentication other = (SourceGoogleSearchConsoleServiceAccountKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            email,
-            serviceAccountInfo);
+        return Utils.enhancedHash(
+            authType, email, serviceAccountInfo);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
                 "email", email,
                 "serviceAccountInfo", serviceAccountInfo);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String email;
- 
+
         private String serviceAccountInfo;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The email of the user which has permissions to access the Google Workspace Admin APIs.
@@ -135,6 +135,7 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
             return this;
         }
 
+
         /**
          * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys"&gt;here&lt;/a&gt;.
          */
@@ -143,12 +144,13 @@ public class SourceGoogleSearchConsoleServiceAccountKeyAuthentication {
             this.serviceAccountInfo = serviceAccountInfo;
             return this;
         }
-        
+
         public SourceGoogleSearchConsoleServiceAccountKeyAuthentication build() {
+
             return new SourceGoogleSearchConsoleServiceAccountKeyAuthentication(
-                email,
-                serviceAccountInfo);
+                email, serviceAccountInfo);
         }
+
 
         private static final LazySingletonValue<SourceGoogleSearchConsoleSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

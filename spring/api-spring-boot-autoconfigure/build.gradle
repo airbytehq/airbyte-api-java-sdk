@@ -1,0 +1,28 @@
+description = 'public-api Spring Boot Auto Configuration'
+
+// Publishing configuration overrides
+ext {
+    publishingConfig = [
+        groupId: rootProject.group,
+        artifactId: 'api-spring-boot-autoconfigure',
+        version: rootProject.version,
+        name: 'Airbyte Java SDK - Spring Boot Auto Configuration',
+        description: 'Spring Boot auto-configuration for the Airbyte Java SDK.',
+    ]
+}
+
+dependencies {
+    api project(':')
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName = 'api-spring-boot-autoconfigure'
+}

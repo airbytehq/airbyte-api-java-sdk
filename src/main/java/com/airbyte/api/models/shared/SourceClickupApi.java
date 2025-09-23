@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceClickupApi {
 
+public class SourceClickupApi {
     /**
      * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.
      */
@@ -31,6 +30,7 @@ public class SourceClickupApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_closed_tasks")
     private Optional<Boolean> includeClosedTasks;
+
 
     @JsonProperty("sourceType")
     private ClickupApi sourceType;
@@ -72,9 +72,10 @@ public class SourceClickupApi {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.
@@ -94,6 +95,7 @@ public class SourceClickupApi {
         return this;
     }
 
+
     /**
      * Include or exclude closed tasks. By default, they are excluded. See &lt;a https://clickup.com/api/clickupreference/operation/GetTasks/#!in=query&amp;path=include_closed&amp;t=request"&gt;here&lt;/a&gt;.
      */
@@ -103,7 +105,6 @@ public class SourceClickupApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -114,17 +115,15 @@ public class SourceClickupApi {
         }
         SourceClickupApi other = (SourceClickupApi) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.includeClosedTasks, other.includeClosedTasks) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.includeClosedTasks, other.includeClosedTasks) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            includeClosedTasks,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, includeClosedTasks, sourceType);
     }
     
     @Override
@@ -134,16 +133,18 @@ public class SourceClickupApi {
                 "includeClosedTasks", includeClosedTasks,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private Optional<Boolean> includeClosedTasks;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Every ClickUp API call required authentication. This field is your personal API token. See &lt;a href="https://clickup.com/api/developer-portal/authentication/#personal-token"&gt;here&lt;/a&gt;.
@@ -153,6 +154,7 @@ public class SourceClickupApi {
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * Include or exclude closed tasks. By default, they are excluded. See &lt;a https://clickup.com/api/clickupreference/operation/GetTasks/#!in=query&amp;path=include_closed&amp;t=request"&gt;here&lt;/a&gt;.
@@ -171,15 +173,16 @@ public class SourceClickupApi {
             this.includeClosedTasks = includeClosedTasks;
             return this;
         }
-        
+
         public SourceClickupApi build() {
             if (includeClosedTasks == null) {
                 includeClosedTasks = _SINGLETON_VALUE_IncludeClosedTasks.value();
             }
+
             return new SourceClickupApi(
-                apiToken,
-                includeClosedTasks);
+                apiToken, includeClosedTasks);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeClosedTasks =
                 new LazySingletonValue<>(

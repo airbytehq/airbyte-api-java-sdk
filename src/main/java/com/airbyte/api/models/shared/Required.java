@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class Required {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -59,9 +59,10 @@ public class Required {
         return (Optional<SourceMysqlSchemasMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public Required withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class Required {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public Required withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class Required {
         return this;
     }
 
+
     public Required withMode(Optional<? extends SourceMysqlSchemasMode> mode) {
         Utils.checkNotNull(mode, "mode");
         this.mode = mode;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class Required {
         }
         Required other = (Required) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            mode);
+        return Utils.enhancedHash(
+            additionalProperties, mode);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class Required {
                 "additionalProperties", additionalProperties,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceMysqlSchemasMode> mode;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class Required {
             return this;
         }
 
+
         public Builder mode(SourceMysqlSchemasMode mode) {
             Utils.checkNotNull(mode, "mode");
             this.mode = Optional.ofNullable(mode);
@@ -155,15 +156,17 @@ public class Required {
             this.mode = mode;
             return this;
         }
-        
+
         public Required build() {
             if (mode == null) {
                 mode = _SINGLETON_VALUE_Mode.value();
             }
+
             return new Required(
                 mode)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMysqlSchemasMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

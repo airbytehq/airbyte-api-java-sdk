@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMixpanel {
 
+public class SourceMixpanel {
     /**
      * A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days. (This value should be non-negative integer)
      */
@@ -84,6 +83,7 @@ public class SourceMixpanel {
     @JsonProperty("select_properties_by_default")
     private Optional<Boolean> selectPropertiesByDefault;
 
+
     @JsonProperty("sourceType")
     private Mixpanel sourceType;
 
@@ -131,7 +131,10 @@ public class SourceMixpanel {
     
     public SourceMixpanel(
             AuthenticationWildcard credentials) {
-        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), credentials, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -220,9 +223,10 @@ public class SourceMixpanel {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days. (This value should be non-negative integer)
@@ -232,6 +236,7 @@ public class SourceMixpanel {
         this.attributionWindow = Optional.ofNullable(attributionWindow);
         return this;
     }
+
 
     /**
      * A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days. (This value should be non-negative integer)
@@ -260,6 +265,7 @@ public class SourceMixpanel {
         return this;
     }
 
+
     /**
      * Defines window size in days, that used to slice through data. You can reduce it, if amount of data in each window is too big for your environment. (This value should be positive integer)
      */
@@ -277,6 +283,7 @@ public class SourceMixpanel {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
@@ -296,6 +303,7 @@ public class SourceMixpanel {
         return this;
     }
 
+
     /**
      * The number of seconds to look back from the last synced timestamp during incremental syncs of the Export stream. This ensures no data is missed due to delays in event recording. Default is 0 seconds. Must be a non-negative integer.
      */
@@ -313,6 +321,7 @@ public class SourceMixpanel {
         this.pageSize = Optional.ofNullable(pageSize);
         return this;
     }
+
 
     /**
      * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
@@ -332,6 +341,7 @@ public class SourceMixpanel {
         return this;
     }
 
+
     /**
      * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
      */
@@ -349,6 +359,7 @@ public class SourceMixpanel {
         this.region = Optional.ofNullable(region);
         return this;
     }
+
 
     /**
      * The region of mixpanel domain instance either US or EU.
@@ -368,6 +379,7 @@ public class SourceMixpanel {
         return this;
     }
 
+
     /**
      * Setting this config parameter to TRUE ensures that new properties on events and engage records are captured. Otherwise new properties will be ignored.
      */
@@ -386,6 +398,7 @@ public class SourceMixpanel {
         return this;
     }
 
+
     /**
      * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
      */
@@ -395,7 +408,6 @@ public class SourceMixpanel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -406,33 +418,26 @@ public class SourceMixpanel {
         }
         SourceMixpanel other = (SourceMixpanel) o;
         return 
-            Objects.deepEquals(this.attributionWindow, other.attributionWindow) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.dateWindowSize, other.dateWindowSize) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.exportLookbackWindow, other.exportLookbackWindow) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.projectTimezone, other.projectTimezone) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.selectPropertiesByDefault, other.selectPropertiesByDefault) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.attributionWindow, other.attributionWindow) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.dateWindowSize, other.dateWindowSize) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.exportLookbackWindow, other.exportLookbackWindow) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.projectTimezone, other.projectTimezone) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.selectPropertiesByDefault, other.selectPropertiesByDefault) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            attributionWindow,
-            credentials,
-            dateWindowSize,
-            endDate,
-            exportLookbackWindow,
-            pageSize,
-            projectTimezone,
-            region,
-            selectPropertiesByDefault,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            attributionWindow, credentials, dateWindowSize,
+            endDate, exportLookbackWindow, pageSize,
+            projectTimezone, region, selectPropertiesByDefault,
+            sourceType, startDate);
     }
     
     @Override
@@ -450,32 +455,34 @@ public class SourceMixpanel {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> attributionWindow;
- 
+
         private AuthenticationWildcard credentials;
- 
+
         private Optional<Long> dateWindowSize;
- 
+
         private Optional<OffsetDateTime> endDate = Optional.empty();
- 
+
         private Optional<Long> exportLookbackWindow;
- 
+
         private Optional<Long> pageSize;
- 
+
         private Optional<String> projectTimezone;
- 
+
         private Optional<? extends SourceMixpanelRegion> region;
- 
+
         private Optional<Boolean> selectPropertiesByDefault;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A period of time for attributing results to ads and the lookback period after those actions occur during which ad results are counted. Default attribution window is 5 days. (This value should be non-negative integer)
@@ -495,6 +502,7 @@ public class SourceMixpanel {
             return this;
         }
 
+
         /**
          * Choose how to authenticate to Mixpanel
          */
@@ -503,6 +511,7 @@ public class SourceMixpanel {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Defines window size in days, that used to slice through data. You can reduce it, if amount of data in each window is too big for your environment. (This value should be positive integer)
@@ -522,6 +531,7 @@ public class SourceMixpanel {
             return this;
         }
 
+
         /**
          * The date in the format YYYY-MM-DD. Any data after this date will not be replicated. Left empty to always sync to most recent date
          */
@@ -539,6 +549,7 @@ public class SourceMixpanel {
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * The number of seconds to look back from the last synced timestamp during incremental syncs of the Export stream. This ensures no data is missed due to delays in event recording. Default is 0 seconds. Must be a non-negative integer.
@@ -558,6 +569,7 @@ public class SourceMixpanel {
             return this;
         }
 
+
         /**
          * The number of records to fetch per request for the engage stream. Default is 1000. If you are experiencing long sync times with this stream, try increasing this value.
          */
@@ -575,6 +587,7 @@ public class SourceMixpanel {
             this.pageSize = pageSize;
             return this;
         }
+
 
         /**
          * Time zone in which integer date times are stored. The project timezone may be found in the project settings in the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel"&gt;Mixpanel console&lt;/a&gt;.
@@ -594,6 +607,7 @@ public class SourceMixpanel {
             return this;
         }
 
+
         /**
          * The region of mixpanel domain instance either US or EU.
          */
@@ -611,6 +625,7 @@ public class SourceMixpanel {
             this.region = region;
             return this;
         }
+
 
         /**
          * Setting this config parameter to TRUE ensures that new properties on events and engage records are captured. Otherwise new properties will be ignored.
@@ -630,6 +645,7 @@ public class SourceMixpanel {
             return this;
         }
 
+
         /**
          * The date in the format YYYY-MM-DD. Any data before this date will not be replicated. If this option is not set, the connector will replicate data from up to one year ago by default.
          */
@@ -647,7 +663,7 @@ public class SourceMixpanel {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMixpanel build() {
             if (attributionWindow == null) {
                 attributionWindow = _SINGLETON_VALUE_AttributionWindow.value();
@@ -670,18 +686,14 @@ public class SourceMixpanel {
             if (selectPropertiesByDefault == null) {
                 selectPropertiesByDefault = _SINGLETON_VALUE_SelectPropertiesByDefault.value();
             }
+
             return new SourceMixpanel(
-                attributionWindow,
-                credentials,
-                dateWindowSize,
-                endDate,
-                exportLookbackWindow,
-                pageSize,
-                projectTimezone,
-                region,
-                selectPropertiesByDefault,
+                attributionWindow, credentials, dateWindowSize,
+                endDate, exportLookbackWindow, pageSize,
+                projectTimezone, region, selectPropertiesByDefault,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_AttributionWindow =
                 new LazySingletonValue<>(

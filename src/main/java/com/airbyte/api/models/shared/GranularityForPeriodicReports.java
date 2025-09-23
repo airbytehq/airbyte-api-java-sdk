@@ -21,7 +21,7 @@ public enum GranularityForPeriodicReports {
     @JsonValue
     private final String value;
 
-    private GranularityForPeriodicReports(String value) {
+    GranularityForPeriodicReports(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Lemlist {
     @JsonValue
     private final String value;
 
-    private Lemlist(String value) {
+    Lemlist(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Rest {
     @JsonValue
     private final String value;
 
-    private Rest(String value) {
+    Rest(String value) {
         this.value = value;
     }
     

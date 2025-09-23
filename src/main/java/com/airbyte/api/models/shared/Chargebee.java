@@ -14,7 +14,7 @@ public enum Chargebee {
     @JsonValue
     private final String value;
 
-    private Chargebee(String value) {
+    Chargebee(String value) {
         this.value = value;
     }
     

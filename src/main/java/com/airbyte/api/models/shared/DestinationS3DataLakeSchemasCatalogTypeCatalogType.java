@@ -14,7 +14,7 @@ public enum DestinationS3DataLakeSchemasCatalogTypeCatalogType {
     @JsonValue
     private final String value;
 
-    private DestinationS3DataLakeSchemasCatalogTypeCatalogType(String value) {
+    DestinationS3DataLakeSchemasCatalogTypeCatalogType(String value) {
         this.value = value;
     }
     

@@ -3,17 +3,23 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
 import com.airbyte.api.models.shared.PermissionCreateRequest;
+import com.airbyte.api.operations.CreatePermission;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class CreatePermissionRequestBuilder {
 
     private PermissionCreateRequest request;
-    private final SDKMethodInterfaces.MethodCallCreatePermission sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public CreatePermissionRequestBuilder(SDKMethodInterfaces.MethodCallCreatePermission sdk) {
-        this.sdk = sdk;
+    public CreatePermissionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CreatePermissionRequestBuilder request(PermissionCreateRequest request) {
@@ -23,8 +29,10 @@ public class CreatePermissionRequestBuilder {
     }
 
     public CreatePermissionResponse call() throws Exception {
+        
+        RequestOperation<PermissionCreateRequest, CreatePermissionResponse> operation
+              = new CreatePermission.Sync(sdkConfiguration, _headers);
 
-        return sdk.createPermission(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

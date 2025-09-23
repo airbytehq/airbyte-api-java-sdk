@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GoogleCredentials {
 
+public class GoogleCredentials {
     /**
      * The Access Token for making authenticated requests. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
      */
@@ -71,7 +70,8 @@ public class GoogleCredentials {
             String clientSecret,
             String developerToken,
             String refreshToken) {
-        this(Optional.empty(), clientId, clientSecret, developerToken, refreshToken);
+        this(Optional.empty(), clientId, clientSecret,
+            developerToken, refreshToken);
     }
 
     /**
@@ -114,9 +114,10 @@ public class GoogleCredentials {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Access Token for making authenticated requests. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
@@ -126,6 +127,7 @@ public class GoogleCredentials {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * The Access Token for making authenticated requests. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
@@ -172,7 +174,6 @@ public class GoogleCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -183,21 +184,18 @@ public class GoogleCredentials {
         }
         GoogleCredentials other = (GoogleCredentials) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.developerToken, other.developerToken) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.developerToken, other.developerToken) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            clientId,
-            clientSecret,
-            developerToken,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, clientId, clientSecret,
+            developerToken, refreshToken);
     }
     
     @Override
@@ -209,22 +207,24 @@ public class GoogleCredentials {
                 "developerToken", developerToken,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String developerToken;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Access Token for making authenticated requests. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
@@ -244,6 +244,7 @@ public class GoogleCredentials {
             return this;
         }
 
+
         /**
          * The Client ID of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
          */
@@ -252,6 +253,7 @@ public class GoogleCredentials {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Google Ads developer application. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
@@ -262,6 +264,7 @@ public class GoogleCredentials {
             return this;
         }
 
+
         /**
          * The Developer Token granted by Google to use their APIs. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
          */
@@ -271,6 +274,7 @@ public class GoogleCredentials {
             return this;
         }
 
+
         /**
          * The token used to obtain a new Access Token. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
          */
@@ -279,14 +283,13 @@ public class GoogleCredentials {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public GoogleCredentials build() {
+
             return new GoogleCredentials(
-                accessToken,
-                clientId,
-                clientSecret,
-                developerToken,
-                refreshToken);
+                accessToken, clientId, clientSecret,
+                developerToken, refreshToken);
         }
+
     }
 }

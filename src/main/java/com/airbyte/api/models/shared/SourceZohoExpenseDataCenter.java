@@ -26,7 +26,7 @@ public enum SourceZohoExpenseDataCenter {
     @JsonValue
     private final String value;
 
-    private SourceZohoExpenseDataCenter(String value) {
+    SourceZohoExpenseDataCenter(String value) {
         this.value = value;
     }
     

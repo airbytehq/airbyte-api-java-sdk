@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursor_method")
@@ -59,9 +59,10 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
         return (Optional<CursorMethod>) cursorMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
         return this;
     }
 
+
     public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor withCursorMethod(Optional<? extends CursorMethod> cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
         this.cursorMethod = cursorMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
         }
         SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor other = (SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.cursorMethod, other.cursorMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.cursorMethod, other.cursorMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            cursorMethod);
+        return Utils.enhancedHash(
+            additionalProperties, cursorMethod);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
                 "additionalProperties", additionalProperties,
                 "cursorMethod", cursorMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends CursorMethod> cursorMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
             return this;
         }
 
+
         public Builder cursorMethod(CursorMethod cursorMethod) {
             Utils.checkNotNull(cursorMethod, "cursorMethod");
             this.cursorMethod = Optional.ofNullable(cursorMethod);
@@ -155,15 +156,17 @@ public class SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor {
             this.cursorMethod = cursorMethod;
             return this;
         }
-        
+
         public SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor build() {
             if (cursorMethod == null) {
                 cursorMethod = _SINGLETON_VALUE_CursorMethod.value();
             }
+
             return new SourceNetsuiteEnterpriseScanChangesWithUserDefinedCursor(
                 cursorMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends CursorMethod>> _SINGLETON_VALUE_CursorMethod =
                 new LazySingletonValue<>(

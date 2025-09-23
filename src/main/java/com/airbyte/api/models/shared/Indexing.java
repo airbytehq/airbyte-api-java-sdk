@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * Indexing
@@ -17,7 +16,6 @@ import java.util.Objects;
  * <p>Astra DB gives developers the APIs, real-time data and ecosystem integrations to put accurate RAG and Gen AI apps with fewer hallucinations in production.
  */
 public class Indexing {
-
     /**
      * The application token authorizes a user to connect to a specific Astra DB database. It is created when the user clicks the Generate Token button on the Overview tab of the Database page in the Astra UI.
      */
@@ -90,9 +88,10 @@ public class Indexing {
         return collection;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The application token authorizes a user to connect to a specific Astra DB database. It is created when the user clicks the Generate Token button on the Overview tab of the Database page in the Astra UI.
@@ -130,7 +129,6 @@ public class Indexing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,18 +139,16 @@ public class Indexing {
         }
         Indexing other = (Indexing) o;
         return 
-            Objects.deepEquals(this.astraDbAppToken, other.astraDbAppToken) &&
-            Objects.deepEquals(this.astraDbEndpoint, other.astraDbEndpoint) &&
-            Objects.deepEquals(this.astraDbKeyspace, other.astraDbKeyspace) &&
-            Objects.deepEquals(this.collection, other.collection);
+            Utils.enhancedDeepEquals(this.astraDbAppToken, other.astraDbAppToken) &&
+            Utils.enhancedDeepEquals(this.astraDbEndpoint, other.astraDbEndpoint) &&
+            Utils.enhancedDeepEquals(this.astraDbKeyspace, other.astraDbKeyspace) &&
+            Utils.enhancedDeepEquals(this.collection, other.collection);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            astraDbAppToken,
-            astraDbEndpoint,
-            astraDbKeyspace,
+        return Utils.enhancedHash(
+            astraDbAppToken, astraDbEndpoint, astraDbKeyspace,
             collection);
     }
     
@@ -164,20 +160,22 @@ public class Indexing {
                 "astraDbKeyspace", astraDbKeyspace,
                 "collection", collection);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String astraDbAppToken;
- 
+
         private String astraDbEndpoint;
- 
+
         private String astraDbKeyspace;
- 
+
         private String collection;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The application token authorizes a user to connect to a specific Astra DB database. It is created when the user clicks the Generate Token button on the Overview tab of the Database page in the Astra UI.
@@ -188,6 +186,7 @@ public class Indexing {
             return this;
         }
 
+
         /**
          * The endpoint specifies which Astra DB database queries are sent to. It can be copied from the Database Details section of the Overview tab of the Database page in the Astra UI.
          */
@@ -196,6 +195,7 @@ public class Indexing {
             this.astraDbEndpoint = astraDbEndpoint;
             return this;
         }
+
 
         /**
          * Keyspaces (or Namespaces) serve as containers for organizing data within a database. You can create a new keyspace uisng the Data Explorer tab in the Astra UI. The keyspace default_keyspace is created for you when you create a Vector Database in Astra DB.
@@ -206,6 +206,7 @@ public class Indexing {
             return this;
         }
 
+
         /**
          * Collections hold data. They are analagous to tables in traditional Cassandra terminology. This tool will create the collection with the provided name automatically if it does not already exist. Alternatively, you can create one thorugh the Data Explorer tab in the Astra UI.
          */
@@ -214,13 +215,13 @@ public class Indexing {
             this.collection = collection;
             return this;
         }
-        
+
         public Indexing build() {
+
             return new Indexing(
-                astraDbAppToken,
-                astraDbEndpoint,
-                astraDbKeyspace,
+                astraDbAppToken, astraDbEndpoint, astraDbKeyspace,
                 collection);
         }
+
     }
 }

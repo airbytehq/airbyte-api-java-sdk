@@ -14,7 +14,7 @@ public enum Railz {
     @JsonValue
     private final String value;
 
-    private Railz(String value) {
+    Railz(String value) {
         this.value = value;
     }
     

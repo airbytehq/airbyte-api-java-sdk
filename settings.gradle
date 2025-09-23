@@ -8,3 +8,9 @@
  */
 
 rootProject.name = 'api'
+
+include 'api-spring-boot-autoconfigure'
+include 'api-spring-boot-starter'
+
+project(':api-spring-boot-autoconfigure').projectDir = file('spring/api-spring-boot-autoconfigure')
+project(':api-spring-boot-starter').projectDir = file('spring/api-spring-boot-starter')

@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFreshcaller {
 
+public class SourceFreshcaller {
     /**
      * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -38,6 +37,7 @@ public class SourceFreshcaller {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("requests_per_minute")
     private Optional<Long> requestsPerMinute;
+
 
     @JsonProperty("sourceType")
     private Freshcaller sourceType;
@@ -79,7 +79,8 @@ public class SourceFreshcaller {
     public SourceFreshcaller(
             String apiKey,
             String domain) {
-        this(apiKey, domain, Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, domain, Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -127,9 +128,10 @@ public class SourceFreshcaller {
         return syncLagMinutes;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -158,6 +160,7 @@ public class SourceFreshcaller {
         return this;
     }
 
+
     /**
      * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
      */
@@ -175,6 +178,7 @@ public class SourceFreshcaller {
         this.startDate = Optional.ofNullable(startDate);
         return this;
     }
+
 
     /**
      * UTC date and time. Any data created after this date will be replicated.
@@ -194,6 +198,7 @@ public class SourceFreshcaller {
         return this;
     }
 
+
     /**
      * Lag in minutes for each sync, i.e., at time T, data for the time range [prev_sync_time, T-30] will be fetched
      */
@@ -203,7 +208,6 @@ public class SourceFreshcaller {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -214,23 +218,19 @@ public class SourceFreshcaller {
         }
         SourceFreshcaller other = (SourceFreshcaller) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.requestsPerMinute, other.requestsPerMinute) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.syncLagMinutes, other.syncLagMinutes);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.requestsPerMinute, other.requestsPerMinute) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.syncLagMinutes, other.syncLagMinutes);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domain,
-            requestsPerMinute,
-            sourceType,
-            startDate,
-            syncLagMinutes);
+        return Utils.enhancedHash(
+            apiKey, domain, requestsPerMinute,
+            sourceType, startDate, syncLagMinutes);
     }
     
     @Override
@@ -243,22 +243,24 @@ public class SourceFreshcaller {
                 "startDate", startDate,
                 "syncLagMinutes", syncLagMinutes);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String domain;
- 
+
         private Optional<Long> requestsPerMinute = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private Optional<Long> syncLagMinutes = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Freshcaller API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/freshcaller"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -269,6 +271,7 @@ public class SourceFreshcaller {
             return this;
         }
 
+
         /**
          * Used to construct Base URL for the Freshcaller APIs
          */
@@ -277,6 +280,7 @@ public class SourceFreshcaller {
             this.domain = domain;
             return this;
         }
+
 
         /**
          * The number of requests per minute that this source allowed to use. There is a rate limit of 50 requests per minute per app per account.
@@ -296,6 +300,7 @@ public class SourceFreshcaller {
             return this;
         }
 
+
         /**
          * UTC date and time. Any data created after this date will be replicated.
          */
@@ -314,6 +319,7 @@ public class SourceFreshcaller {
             return this;
         }
 
+
         /**
          * Lag in minutes for each sync, i.e., at time T, data for the time range [prev_sync_time, T-30] will be fetched
          */
@@ -331,15 +337,14 @@ public class SourceFreshcaller {
             this.syncLagMinutes = syncLagMinutes;
             return this;
         }
-        
+
         public SourceFreshcaller build() {
+
             return new SourceFreshcaller(
-                apiKey,
-                domain,
-                requestsPerMinute,
-                startDate,
-                syncLagMinutes);
+                apiKey, domain, requestsPerMinute,
+                startDate, syncLagMinutes);
         }
+
 
         private static final LazySingletonValue<Freshcaller> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

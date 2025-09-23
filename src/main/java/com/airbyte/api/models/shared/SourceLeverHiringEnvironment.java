@@ -20,7 +20,7 @@ public enum SourceLeverHiringEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceLeverHiringEnvironment(String value) {
+    SourceLeverHiringEnvironment(String value) {
         this.value = value;
     }
     

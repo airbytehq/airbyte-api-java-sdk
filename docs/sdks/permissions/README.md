@@ -17,6 +17,7 @@ Create a permission
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createPermission" method="post" path="/permissions" -->
 ```java
 package hello.world;
 
@@ -77,6 +78,7 @@ Delete a Permission
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deletePermission" method="delete" path="/permissions/{permissionId}" -->
 ```java
 package hello.world;
 
@@ -135,6 +137,7 @@ Get Permission details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getPermission" method="get" path="/permissions/{permissionId}" -->
 ```java
 package hello.world;
 
@@ -195,11 +198,11 @@ List Permissions by user id
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listPermissions" method="get" path="/permissions" -->
 ```java
 package hello.world;
 
 import com.airbyte.api.Airbyte;
-import com.airbyte.api.models.operations.ListPermissionsRequest;
 import com.airbyte.api.models.operations.ListPermissionsResponse;
 import com.airbyte.api.models.shared.SchemeBasicAuth;
 import com.airbyte.api.models.shared.Security;
@@ -218,11 +221,7 @@ public class Application {
                     .build())
             .build();
 
-        ListPermissionsRequest req = ListPermissionsRequest.builder()
-                .build();
-
         ListPermissionsResponse res = sdk.permissions().listPermissions()
-                .request(req)
                 .call();
 
         if (res.permissionsResponse().isPresent()) {
@@ -254,6 +253,7 @@ Update a permission
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updatePermission" method="patch" path="/permissions/{permissionId}" -->
 ```java
 package hello.world;
 
@@ -278,7 +278,7 @@ public class Application {
 
         UpdatePermissionRequest req = UpdatePermissionRequest.builder()
                 .permissionUpdateRequest(PermissionUpdateRequest.builder()
-                    .permissionType(PermissionType.WORKSPACE_OWNER)
+                    .permissionType(PermissionType.ORGANIZATION_READER)
                     .build())
                 .permissionId("<value>")
                 .build();

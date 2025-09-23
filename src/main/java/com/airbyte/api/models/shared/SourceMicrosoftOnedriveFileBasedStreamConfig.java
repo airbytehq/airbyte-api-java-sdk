@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMicrosoftOnedriveFileBasedStreamConfig {
 
+public class SourceMicrosoftOnedriveFileBasedStreamConfig {
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
      */
@@ -97,7 +96,9 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
     public SourceMicrosoftOnedriveFileBasedStreamConfig(
             SourceMicrosoftOnedriveFormat format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(),
+            Optional.empty(), name, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -158,9 +159,10 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         return (Optional<SourceMicrosoftOnedriveValidationPolicy>) validationPolicy;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
@@ -170,6 +172,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         this.daysToSyncIfHistoryIsFull = Optional.ofNullable(daysToSyncIfHistoryIsFull);
         return this;
     }
+
 
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
@@ -198,6 +201,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
      */
@@ -215,6 +219,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         this.inputSchema = Optional.ofNullable(inputSchema);
         return this;
     }
+
 
     /**
      * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
@@ -243,6 +248,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
@@ -261,6 +267,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
      */
@@ -270,7 +277,6 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -281,24 +287,20 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
         }
         SourceMicrosoftOnedriveFileBasedStreamConfig other = (SourceMicrosoftOnedriveFileBasedStreamConfig) o;
         return 
-            Objects.deepEquals(this.daysToSyncIfHistoryIsFull, other.daysToSyncIfHistoryIsFull) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.globs, other.globs) &&
-            Objects.deepEquals(this.inputSchema, other.inputSchema) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.schemaless, other.schemaless) &&
-            Objects.deepEquals(this.validationPolicy, other.validationPolicy);
+            Utils.enhancedDeepEquals(this.daysToSyncIfHistoryIsFull, other.daysToSyncIfHistoryIsFull) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.globs, other.globs) &&
+            Utils.enhancedDeepEquals(this.inputSchema, other.inputSchema) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.schemaless, other.schemaless) &&
+            Utils.enhancedDeepEquals(this.validationPolicy, other.validationPolicy);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            daysToSyncIfHistoryIsFull,
-            format,
-            globs,
-            inputSchema,
-            name,
-            schemaless,
+        return Utils.enhancedHash(
+            daysToSyncIfHistoryIsFull, format, globs,
+            inputSchema, name, schemaless,
             validationPolicy);
     }
     
@@ -313,26 +315,28 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> daysToSyncIfHistoryIsFull;
- 
+
         private SourceMicrosoftOnedriveFormat format;
- 
+
         private Optional<? extends List<String>> globs = Optional.empty();
- 
+
         private Optional<String> inputSchema = Optional.empty();
- 
+
         private String name;
- 
+
         private Optional<Boolean> schemaless;
- 
+
         private Optional<? extends SourceMicrosoftOnedriveValidationPolicy> validationPolicy;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
@@ -352,6 +356,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
          */
@@ -360,6 +365,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             this.format = format;
             return this;
         }
+
 
         /**
          * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
@@ -379,6 +385,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
          */
@@ -397,6 +404,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The name of the stream.
          */
@@ -405,6 +413,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             this.name = name;
             return this;
         }
+
 
         /**
          * When enabled, syncs will not validate or structure records against the stream's schema.
@@ -424,6 +433,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
          */
@@ -441,7 +451,7 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             this.validationPolicy = validationPolicy;
             return this;
         }
-        
+
         public SourceMicrosoftOnedriveFileBasedStreamConfig build() {
             if (daysToSyncIfHistoryIsFull == null) {
                 daysToSyncIfHistoryIsFull = _SINGLETON_VALUE_DaysToSyncIfHistoryIsFull.value();
@@ -452,15 +462,13 @@ public class SourceMicrosoftOnedriveFileBasedStreamConfig {
             if (validationPolicy == null) {
                 validationPolicy = _SINGLETON_VALUE_ValidationPolicy.value();
             }
+
             return new SourceMicrosoftOnedriveFileBasedStreamConfig(
-                daysToSyncIfHistoryIsFull,
-                format,
-                globs,
-                inputSchema,
-                name,
-                schemaless,
+                daysToSyncIfHistoryIsFull, format, globs,
+                inputSchema, name, schemaless,
                 validationPolicy);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_DaysToSyncIfHistoryIsFull =
                 new LazySingletonValue<>(

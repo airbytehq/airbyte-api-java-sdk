@@ -17,8 +17,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceSalesforce {
 
@@ -57,6 +57,7 @@ public class SourceSalesforce {
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private SourceSalesforceSalesforce sourceType;
@@ -116,7 +117,9 @@ public class SourceSalesforce {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(clientId, clientSecret, Optional.empty(), Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty());
+        this(clientId, clientSecret, Optional.empty(),
+            Optional.empty(), refreshToken, Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
@@ -195,9 +198,10 @@ public class SourceSalesforce {
         return (Optional<List<StreamsCriteria>>) streamsCriteria;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
@@ -226,6 +230,7 @@ public class SourceSalesforce {
         return this;
     }
 
+
     /**
      * Toggle to use Bulk API (this might cause empty fields for some streams)
      */
@@ -243,6 +248,7 @@ public class SourceSalesforce {
         this.isSandbox = Optional.ofNullable(isSandbox);
         return this;
     }
+
 
     /**
      * Toggle if you're using a &lt;a href="https://help.salesforce.com/s/articleView?id=sf.deploy_sandboxes_parent.htm&amp;type=5"&gt;Salesforce Sandbox&lt;/a&gt;
@@ -271,6 +277,7 @@ public class SourceSalesforce {
         return this;
     }
 
+
     /**
      * Enter the date (or date-time) in the YYYY-MM-DD or YYYY-MM-DDTHH:mm:ssZ format. Airbyte will replicate the data updated on and after this date. If this field is blank, Airbyte will replicate the data for last two years.
      */
@@ -288,6 +295,7 @@ public class SourceSalesforce {
         this.streamSliceStep = Optional.ofNullable(streamSliceStep);
         return this;
     }
+
 
     /**
      * The size of the time window (ISO8601 duration) to slice requests.
@@ -307,6 +315,7 @@ public class SourceSalesforce {
         return this;
     }
 
+
     /**
      * Add filters to select only required stream based on `SObject` name. Use this field to filter which tables are displayed by this connector. This is useful if your Salesforce account has a large number of tables (&gt;1000), in which case you may find it easier to navigate the UI and speed up the connector's performance if you restrict the tables displayed by this connector.
      */
@@ -316,7 +325,6 @@ public class SourceSalesforce {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -327,30 +335,24 @@ public class SourceSalesforce {
         }
         SourceSalesforce other = (SourceSalesforce) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.forceUseBulkApi, other.forceUseBulkApi) &&
-            Objects.deepEquals(this.isSandbox, other.isSandbox) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streamSliceStep, other.streamSliceStep) &&
-            Objects.deepEquals(this.streamsCriteria, other.streamsCriteria);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.forceUseBulkApi, other.forceUseBulkApi) &&
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streamSliceStep, other.streamSliceStep) &&
+            Utils.enhancedDeepEquals(this.streamsCriteria, other.streamsCriteria);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
-            forceUseBulkApi,
-            isSandbox,
-            refreshToken,
-            sourceType,
-            startDate,
-            streamSliceStep,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
+            forceUseBulkApi, isSandbox, refreshToken,
+            sourceType, startDate, streamSliceStep,
             streamsCriteria);
     }
     
@@ -368,28 +370,30 @@ public class SourceSalesforce {
                 "streamSliceStep", streamSliceStep,
                 "streamsCriteria", streamsCriteria);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<Boolean> forceUseBulkApi;
- 
+
         private Optional<Boolean> isSandbox;
- 
+
         private String refreshToken;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private Optional<String> streamSliceStep;
- 
+
         private Optional<? extends List<StreamsCriteria>> streamsCriteria = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
@@ -400,6 +404,7 @@ public class SourceSalesforce {
             return this;
         }
 
+
         /**
          * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
          */
@@ -408,6 +413,7 @@ public class SourceSalesforce {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Toggle to use Bulk API (this might cause empty fields for some streams)
@@ -427,6 +433,7 @@ public class SourceSalesforce {
             return this;
         }
 
+
         /**
          * Toggle if you're using a &lt;a href="https://help.salesforce.com/s/articleView?id=sf.deploy_sandboxes_parent.htm&amp;type=5"&gt;Salesforce Sandbox&lt;/a&gt;
          */
@@ -445,6 +452,7 @@ public class SourceSalesforce {
             return this;
         }
 
+
         /**
          * Enter your application's &lt;a href="https://developer.salesforce.com/docs/atlas.en-us.mobile_sdk.meta/mobile_sdk/oauth_refresh_token_flow.htm"&gt;Salesforce Refresh Token&lt;/a&gt; used for Airbyte to access your Salesforce account.
          */
@@ -453,6 +461,7 @@ public class SourceSalesforce {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * Enter the date (or date-time) in the YYYY-MM-DD or YYYY-MM-DDTHH:mm:ssZ format. Airbyte will replicate the data updated on and after this date. If this field is blank, Airbyte will replicate the data for last two years.
@@ -472,6 +481,7 @@ public class SourceSalesforce {
             return this;
         }
 
+
         /**
          * The size of the time window (ISO8601 duration) to slice requests.
          */
@@ -490,6 +500,7 @@ public class SourceSalesforce {
             return this;
         }
 
+
         /**
          * Add filters to select only required stream based on `SObject` name. Use this field to filter which tables are displayed by this connector. This is useful if your Salesforce account has a large number of tables (&gt;1000), in which case you may find it easier to navigate the UI and speed up the connector's performance if you restrict the tables displayed by this connector.
          */
@@ -507,7 +518,7 @@ public class SourceSalesforce {
             this.streamsCriteria = streamsCriteria;
             return this;
         }
-        
+
         public SourceSalesforce build() {
             if (forceUseBulkApi == null) {
                 forceUseBulkApi = _SINGLETON_VALUE_ForceUseBulkApi.value();
@@ -518,16 +529,13 @@ public class SourceSalesforce {
             if (streamSliceStep == null) {
                 streamSliceStep = _SINGLETON_VALUE_StreamSliceStep.value();
             }
+
             return new SourceSalesforce(
-                clientId,
-                clientSecret,
-                forceUseBulkApi,
-                isSandbox,
-                refreshToken,
-                startDate,
-                streamSliceStep,
-                streamsCriteria);
+                clientId, clientSecret, forceUseBulkApi,
+                isSandbox, refreshToken, startDate,
+                streamSliceStep, streamsCriteria);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSalesforceAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -12,18 +12,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceFastly {
-
     /**
      * Your Fastly API token. You can generate this token in the Fastly web interface under Account Settings or via the Fastly API. Ensure the token has the appropriate scope for your use case.
      */
     @JsonProperty("fastly_api_token")
     private String fastlyApiToken;
 
+
     @JsonProperty("sourceType")
     private Fastly sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceFastly {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Fastly API token. You can generate this token in the Fastly web interface under Account Settings or via the Fastly API. Ensure the token has the appropriate scope for your use case.
@@ -76,7 +78,6 @@ public class SourceFastly {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceFastly {
         }
         SourceFastly other = (SourceFastly) o;
         return 
-            Objects.deepEquals(this.fastlyApiToken, other.fastlyApiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.fastlyApiToken, other.fastlyApiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            fastlyApiToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            fastlyApiToken, sourceType, startDate);
     }
     
     @Override
@@ -107,16 +106,18 @@ public class SourceFastly {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String fastlyApiToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Fastly API token. You can generate this token in the Fastly web interface under Account Settings or via the Fastly API. Ensure the token has the appropriate scope for your use case.
@@ -127,17 +128,19 @@ public class SourceFastly {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceFastly build() {
+
             return new SourceFastly(
-                fastlyApiToken,
-                startDate);
+                fastlyApiToken, startDate);
         }
+
 
         private static final LazySingletonValue<Fastly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

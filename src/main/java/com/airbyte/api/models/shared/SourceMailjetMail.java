@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMailjetMail {
-
     /**
      * Your API Key. See &lt;a href="https://dev.mailjet.com/email/guides/#authentication"&gt;here&lt;/a&gt;.
      */
@@ -26,6 +25,7 @@ public class SourceMailjetMail {
      */
     @JsonProperty("api_key_secret")
     private String apiKeySecret;
+
 
     @JsonProperty("sourceType")
     private MailjetMail sourceType;
@@ -62,9 +62,10 @@ public class SourceMailjetMail {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Key. See &lt;a href="https://dev.mailjet.com/email/guides/#authentication"&gt;here&lt;/a&gt;.
@@ -84,7 +85,6 @@ public class SourceMailjetMail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceMailjetMail {
         }
         SourceMailjetMail other = (SourceMailjetMail) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiKeySecret, other.apiKeySecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiKeySecret, other.apiKeySecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiKeySecret,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, apiKeySecret, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceMailjetMail {
                 "apiKeySecret", apiKeySecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String apiKeySecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Key. See &lt;a href="https://dev.mailjet.com/email/guides/#authentication"&gt;here&lt;/a&gt;.
@@ -135,6 +135,7 @@ public class SourceMailjetMail {
             return this;
         }
 
+
         /**
          * Your API Secret Key. See &lt;a href="https://dev.mailjet.com/email/guides/#authentication"&gt;here&lt;/a&gt;.
          */
@@ -143,12 +144,13 @@ public class SourceMailjetMail {
             this.apiKeySecret = apiKeySecret;
             return this;
         }
-        
+
         public SourceMailjetMail build() {
+
             return new SourceMailjetMail(
-                apiKey,
-                apiKeySecret);
+                apiKey, apiKeySecret);
         }
+
 
         private static final LazySingletonValue<MailjetMail> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

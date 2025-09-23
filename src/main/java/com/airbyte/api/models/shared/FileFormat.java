@@ -27,7 +27,7 @@ public enum FileFormat {
     @JsonValue
     private final String value;
 
-    private FileFormat(String value) {
+    FileFormat(String value) {
         this.value = value;
     }
     

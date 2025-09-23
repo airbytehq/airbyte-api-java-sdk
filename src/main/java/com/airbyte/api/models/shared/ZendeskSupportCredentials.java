@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ZendeskSupportCredentials {
 
+public class ZendeskSupportCredentials {
     /**
      * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
      */
@@ -60,9 +59,10 @@ public class ZendeskSupportCredentials {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
@@ -72,6 +72,7 @@ public class ZendeskSupportCredentials {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
@@ -91,6 +92,7 @@ public class ZendeskSupportCredentials {
         return this;
     }
 
+
     /**
      * The OAuth client secret. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
      */
@@ -100,7 +102,6 @@ public class ZendeskSupportCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class ZendeskSupportCredentials {
         }
         ZendeskSupportCredentials other = (ZendeskSupportCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class ZendeskSupportCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
@@ -157,6 +159,7 @@ public class ZendeskSupportCredentials {
             return this;
         }
 
+
         /**
          * The OAuth client secret. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
          */
@@ -174,11 +177,12 @@ public class ZendeskSupportCredentials {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public ZendeskSupportCredentials build() {
+
             return new ZendeskSupportCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

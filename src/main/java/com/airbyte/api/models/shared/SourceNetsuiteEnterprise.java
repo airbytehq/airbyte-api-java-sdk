@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNetsuiteEnterprise {
 
+public class SourceNetsuiteEnterprise {
     /**
      * The username which is used to access the database.
      */
@@ -85,6 +84,7 @@ public class SourceNetsuiteEnterprise {
     @JsonProperty("role_id")
     private String roleId;
 
+
     @JsonProperty("sourceType")
     private NetsuiteEnterprise sourceType;
 
@@ -149,7 +149,10 @@ public class SourceNetsuiteEnterprise {
             String roleId,
             SourceNetsuiteEnterpriseSSHTunnelMethod tunnelMethod,
             String username) {
-        this(accountId, authenticationMethod, Optional.empty(), Optional.empty(), Optional.empty(), cursor, host, Optional.empty(), Optional.empty(), roleId, tunnelMethod, username);
+        this(accountId, authenticationMethod, Optional.empty(),
+            Optional.empty(), Optional.empty(), cursor,
+            host, Optional.empty(), Optional.empty(),
+            roleId, tunnelMethod, username);
     }
 
     /**
@@ -253,9 +256,10 @@ public class SourceNetsuiteEnterprise {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The username which is used to access the database.
@@ -284,6 +288,7 @@ public class SourceNetsuiteEnterprise {
         return this;
     }
 
+
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
      */
@@ -302,6 +307,7 @@ public class SourceNetsuiteEnterprise {
         return this;
     }
 
+
     /**
      * How often (in seconds) a stream should checkpoint, when possible.
      */
@@ -319,6 +325,7 @@ public class SourceNetsuiteEnterprise {
         this.concurrency = Optional.ofNullable(concurrency);
         return this;
     }
+
 
     /**
      * Maximum number of concurrent queries to the database.
@@ -356,6 +363,7 @@ public class SourceNetsuiteEnterprise {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -373,6 +381,7 @@ public class SourceNetsuiteEnterprise {
         this.port = Optional.ofNullable(port);
         return this;
     }
+
 
     /**
      * Port of the database.
@@ -410,7 +419,6 @@ public class SourceNetsuiteEnterprise {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -421,36 +429,28 @@ public class SourceNetsuiteEnterprise {
         }
         SourceNetsuiteEnterprise other = (SourceNetsuiteEnterprise) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.authenticationMethod, other.authenticationMethod) &&
-            Objects.deepEquals(this.checkPrivileges, other.checkPrivileges) &&
-            Objects.deepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
-            Objects.deepEquals(this.concurrency, other.concurrency) &&
-            Objects.deepEquals(this.cursor, other.cursor) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.roleId, other.roleId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.authenticationMethod, other.authenticationMethod) &&
+            Utils.enhancedDeepEquals(this.checkPrivileges, other.checkPrivileges) &&
+            Utils.enhancedDeepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
+            Utils.enhancedDeepEquals(this.concurrency, other.concurrency) &&
+            Utils.enhancedDeepEquals(this.cursor, other.cursor) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.roleId, other.roleId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            authenticationMethod,
-            checkPrivileges,
-            checkpointTargetIntervalSeconds,
-            concurrency,
-            cursor,
-            host,
-            jdbcUrlParams,
-            port,
-            roleId,
-            sourceType,
-            tunnelMethod,
+        return Utils.enhancedHash(
+            accountId, authenticationMethod, checkPrivileges,
+            checkpointTargetIntervalSeconds, concurrency, cursor,
+            host, jdbcUrlParams, port,
+            roleId, sourceType, tunnelMethod,
             username);
     }
     
@@ -471,36 +471,38 @@ public class SourceNetsuiteEnterprise {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private SourceNetsuiteEnterpriseAuthenticationMethod authenticationMethod;
- 
+
         private Optional<Boolean> checkPrivileges;
- 
+
         private Optional<Long> checkpointTargetIntervalSeconds;
- 
+
         private Optional<Long> concurrency;
- 
+
         private SourceNetsuiteEnterpriseUpdateMethod cursor;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private String roleId;
- 
+
         private SourceNetsuiteEnterpriseSSHTunnelMethod tunnelMethod;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The username which is used to access the database.
@@ -511,6 +513,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * Configure how to authenticate to Netsuite. Options include username/password or token-based authentication.
          */
@@ -519,6 +522,7 @@ public class SourceNetsuiteEnterprise {
             this.authenticationMethod = authenticationMethod;
             return this;
         }
+
 
         /**
          * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -538,6 +542,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * How often (in seconds) a stream should checkpoint, when possible.
          */
@@ -555,6 +560,7 @@ public class SourceNetsuiteEnterprise {
             this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
             return this;
         }
+
 
         /**
          * Maximum number of concurrent queries to the database.
@@ -574,6 +580,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * Configures how data is extracted from the database.
          */
@@ -583,6 +590,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -591,6 +599,7 @@ public class SourceNetsuiteEnterprise {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -610,6 +619,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * Port of the database.
          */
@@ -628,6 +638,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -636,6 +647,7 @@ public class SourceNetsuiteEnterprise {
             this.roleId = roleId;
             return this;
         }
+
 
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -646,6 +658,7 @@ public class SourceNetsuiteEnterprise {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -654,7 +667,7 @@ public class SourceNetsuiteEnterprise {
             this.username = username;
             return this;
         }
-        
+
         public SourceNetsuiteEnterprise build() {
             if (checkPrivileges == null) {
                 checkPrivileges = _SINGLETON_VALUE_CheckPrivileges.value();
@@ -668,20 +681,14 @@ public class SourceNetsuiteEnterprise {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceNetsuiteEnterprise(
-                accountId,
-                authenticationMethod,
-                checkPrivileges,
-                checkpointTargetIntervalSeconds,
-                concurrency,
-                cursor,
-                host,
-                jdbcUrlParams,
-                port,
-                roleId,
-                tunnelMethod,
-                username);
+                accountId, authenticationMethod, checkPrivileges,
+                checkpointTargetIntervalSeconds, concurrency, cursor,
+                host, jdbcUrlParams, port,
+                roleId, tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CheckPrivileges =
                 new LazySingletonValue<>(

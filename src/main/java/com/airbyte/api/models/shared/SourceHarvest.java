@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceHarvest {
 
+public class SourceHarvest {
     /**
      * Harvest account ID. Required for all Harvest requests in pair with Personal Access Token
      */
@@ -38,6 +37,7 @@ public class SourceHarvest {
      */
     @JsonProperty("replication_start_date")
     private OffsetDateTime replicationStartDate;
+
 
     @JsonProperty("sourceType")
     private Harvest sourceType;
@@ -92,9 +92,10 @@ public class SourceHarvest {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Harvest account ID. Required for all Harvest requests in pair with Personal Access Token
@@ -114,6 +115,7 @@ public class SourceHarvest {
         return this;
     }
 
+
     /**
      * Choose how to authenticate to Harvest.
      */
@@ -132,7 +134,6 @@ public class SourceHarvest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -143,18 +144,16 @@ public class SourceHarvest {
         }
         SourceHarvest other = (SourceHarvest) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.replicationStartDate, other.replicationStartDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.replicationStartDate, other.replicationStartDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            credentials,
-            replicationStartDate,
+        return Utils.enhancedHash(
+            accountId, credentials, replicationStartDate,
             sourceType);
     }
     
@@ -166,18 +165,20 @@ public class SourceHarvest {
                 "replicationStartDate", replicationStartDate,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private Optional<? extends SourceHarvestAuthenticationMechanism> credentials = Optional.empty();
- 
+
         private OffsetDateTime replicationStartDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Harvest account ID. Required for all Harvest requests in pair with Personal Access Token
@@ -187,6 +188,7 @@ public class SourceHarvest {
             this.accountId = accountId;
             return this;
         }
+
 
         /**
          * Choose how to authenticate to Harvest.
@@ -206,6 +208,7 @@ public class SourceHarvest {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -214,13 +217,13 @@ public class SourceHarvest {
             this.replicationStartDate = replicationStartDate;
             return this;
         }
-        
+
         public SourceHarvest build() {
+
             return new SourceHarvest(
-                accountId,
-                credentials,
-                replicationStartDate);
+                accountId, credentials, replicationStartDate);
         }
+
 
         private static final LazySingletonValue<Harvest> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

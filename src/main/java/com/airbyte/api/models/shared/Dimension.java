@@ -19,7 +19,7 @@ public enum Dimension {
     @JsonValue
     private final String value;
 
-    private Dimension(String value) {
+    Dimension(String value) {
         this.value = value;
     }
     

@@ -22,7 +22,7 @@ public enum SourceGoogleDriveParsingStrategy {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveParsingStrategy(String value) {
+    SourceGoogleDriveParsingStrategy(String value) {
         this.value = value;
     }
     

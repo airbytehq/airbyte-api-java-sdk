@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWikipediaPageviews {
-
     /**
      * If you want to filter by access method, use one of desktop, mobile-app or mobile-web. If you are interested in pageviews regardless of access method, use all-access.
      */
@@ -50,6 +49,7 @@ public class SourceWikipediaPageviews {
      */
     @JsonProperty("project")
     private String project;
+
 
     @JsonProperty("sourceType")
     private WikipediaPageviews sourceType;
@@ -147,9 +147,10 @@ public class SourceWikipediaPageviews {
         return start;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * If you want to filter by access method, use one of desktop, mobile-app or mobile-web. If you are interested in pageviews regardless of access method, use all-access.
@@ -214,7 +215,6 @@ public class SourceWikipediaPageviews {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -225,27 +225,22 @@ public class SourceWikipediaPageviews {
         }
         SourceWikipediaPageviews other = (SourceWikipediaPageviews) o;
         return 
-            Objects.deepEquals(this.access, other.access) &&
-            Objects.deepEquals(this.agent, other.agent) &&
-            Objects.deepEquals(this.article, other.article) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.end, other.end) &&
-            Objects.deepEquals(this.project, other.project) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.start, other.start);
+            Utils.enhancedDeepEquals(this.access, other.access) &&
+            Utils.enhancedDeepEquals(this.agent, other.agent) &&
+            Utils.enhancedDeepEquals(this.article, other.article) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.end, other.end) &&
+            Utils.enhancedDeepEquals(this.project, other.project) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.start, other.start);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            access,
-            agent,
-            article,
-            country,
-            end,
-            project,
-            sourceType,
-            start);
+        return Utils.enhancedHash(
+            access, agent, article,
+            country, end, project,
+            sourceType, start);
     }
     
     @Override
@@ -260,26 +255,28 @@ public class SourceWikipediaPageviews {
                 "sourceType", sourceType,
                 "start", start);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String access;
- 
+
         private String agent;
- 
+
         private String article;
- 
+
         private String country;
- 
+
         private String end;
- 
+
         private String project;
- 
+
         private String start;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * If you want to filter by access method, use one of desktop, mobile-app or mobile-web. If you are interested in pageviews regardless of access method, use all-access.
@@ -290,6 +287,7 @@ public class SourceWikipediaPageviews {
             return this;
         }
 
+
         /**
          * If you want to filter by agent type, use one of user, automated or spider. If you are interested in pageviews regardless of agent type, use all-agents.
          */
@@ -298,6 +296,7 @@ public class SourceWikipediaPageviews {
             this.agent = agent;
             return this;
         }
+
 
         /**
          * The title of any article in the specified project. Any spaces should be replaced with underscores. It also should be URI-encoded, so that non-URI-safe characters like %, / or ? are accepted.
@@ -308,6 +307,7 @@ public class SourceWikipediaPageviews {
             return this;
         }
 
+
         /**
          * The ISO 3166-1 alpha-2 code of a country for which to retrieve top articles.
          */
@@ -316,6 +316,7 @@ public class SourceWikipediaPageviews {
             this.country = country;
             return this;
         }
+
 
         /**
          * The date of the last day to include, in YYYYMMDD or YYYYMMDDHH format.
@@ -326,6 +327,7 @@ public class SourceWikipediaPageviews {
             return this;
         }
 
+
         /**
          * If you want to filter by project, use the domain of any Wikimedia project.
          */
@@ -335,6 +337,7 @@ public class SourceWikipediaPageviews {
             return this;
         }
 
+
         /**
          * The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format. Also serves as the date to retrieve data for the top articles.
          */
@@ -343,17 +346,15 @@ public class SourceWikipediaPageviews {
             this.start = start;
             return this;
         }
-        
+
         public SourceWikipediaPageviews build() {
+
             return new SourceWikipediaPageviews(
-                access,
-                agent,
-                article,
-                country,
-                end,
-                project,
+                access, agent, article,
+                country, end, project,
                 start);
         }
+
 
         private static final LazySingletonValue<WikipediaPageviews> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

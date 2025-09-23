@@ -16,18 +16,18 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-public class SourcePinterest {
 
+public class SourcePinterest {
     /**
      * The Pinterest account ID you want to fetch data for. This ID must be provided to filter the data for a specific account.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_id")
     private Optional<String> accountId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -39,6 +39,7 @@ public class SourcePinterest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_reports")
     private Optional<? extends List<ReportConfig>> customReports;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
@@ -79,7 +80,8 @@ public class SourcePinterest {
     }
     
     public SourcePinterest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), JsonNullable.undefined());
     }
 
     /**
@@ -128,9 +130,10 @@ public class SourcePinterest {
         return (JsonNullable<List<Status>>) status;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Pinterest account ID you want to fetch data for. This ID must be provided to filter the data for a specific account.
@@ -140,6 +143,7 @@ public class SourcePinterest {
         this.accountId = Optional.ofNullable(accountId);
         return this;
     }
+
 
     /**
      * The Pinterest account ID you want to fetch data for. This ID must be provided to filter the data for a specific account.
@@ -156,6 +160,7 @@ public class SourcePinterest {
         return this;
     }
 
+
     public SourcePinterest withCredentials(Optional<? extends OAuth20> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
@@ -170,6 +175,7 @@ public class SourcePinterest {
         this.customReports = Optional.ofNullable(customReports);
         return this;
     }
+
 
     /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
@@ -188,6 +194,7 @@ public class SourcePinterest {
         this.startDate = Optional.ofNullable(startDate);
         return this;
     }
+
 
     /**
      * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by api (89 days from today).
@@ -216,7 +223,6 @@ public class SourcePinterest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -227,23 +233,19 @@ public class SourcePinterest {
         }
         SourcePinterest other = (SourcePinterest) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.customReports, other.customReports) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.status, other.status);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.customReports, other.customReports) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.status, other.status);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            credentials,
-            customReports,
-            sourceType,
-            startDate,
-            status);
+        return Utils.enhancedHash(
+            accountId, credentials, customReports,
+            sourceType, startDate, status);
     }
     
     @Override
@@ -256,22 +258,24 @@ public class SourcePinterest {
                 "startDate", startDate,
                 "status", status);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accountId = Optional.empty();
- 
+
         private Optional<? extends OAuth20> credentials = Optional.empty();
- 
+
         private Optional<? extends List<ReportConfig>> customReports = Optional.empty();
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
- 
+
         private JsonNullable<? extends List<Status>> status = JsonNullable.undefined();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Pinterest account ID you want to fetch data for. This ID must be provided to filter the data for a specific account.
@@ -291,6 +295,7 @@ public class SourcePinterest {
             return this;
         }
 
+
         public Builder credentials(OAuth20 credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = Optional.ofNullable(credentials);
@@ -302,6 +307,7 @@ public class SourcePinterest {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
@@ -321,6 +327,7 @@ public class SourcePinterest {
             return this;
         }
 
+
         /**
          * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by api (89 days from today).
          */
@@ -339,6 +346,7 @@ public class SourcePinterest {
             return this;
         }
 
+
         /**
          * For the ads, ad_groups, and campaigns streams, specifying a status will filter out records that do not match the specified ones. If a status is not specified, the source will default to records with a status of either ACTIVE or PAUSED.
          */
@@ -356,15 +364,14 @@ public class SourcePinterest {
             this.status = status;
             return this;
         }
-        
+
         public SourcePinterest build() {
+
             return new SourcePinterest(
-                accountId,
-                credentials,
-                customReports,
-                startDate,
-                status);
+                accountId, credentials, customReports,
+                startDate, status);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourcePinterestPinterest>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

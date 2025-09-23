@@ -30,7 +30,7 @@ public enum FinancialEventsStepSizeInDays {
     @JsonValue
     private final String value;
 
-    private FinancialEventsStepSizeInDays(String value) {
+    FinancialEventsStepSizeInDays(String value) {
         this.value = value;
     }
     

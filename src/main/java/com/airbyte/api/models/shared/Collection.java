@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,7 +22,6 @@ import java.util.Optional;
  * <p>Settings for the Fauna Collection.
  */
 public class Collection {
-
     /**
      * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
      * Enabling deletion mode informs your destination of deleted documents.&lt;br&gt;
@@ -78,9 +76,10 @@ public class Collection {
         return pageSize;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
@@ -105,6 +104,7 @@ public class Collection {
         return this;
     }
 
+
     /**
      * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
      * Choose your page size based on how large the documents are. &lt;br&gt;
@@ -116,7 +116,6 @@ public class Collection {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,15 +126,14 @@ public class Collection {
         }
         Collection other = (Collection) o;
         return 
-            Objects.deepEquals(this.deletions, other.deletions) &&
-            Objects.deepEquals(this.pageSize, other.pageSize);
+            Utils.enhancedDeepEquals(this.deletions, other.deletions) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            deletions,
-            pageSize);
+        return Utils.enhancedHash(
+            deletions, pageSize);
     }
     
     @Override
@@ -144,16 +142,18 @@ public class Collection {
                 "deletions", deletions,
                 "pageSize", pageSize);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DeletionMode deletions;
- 
+
         private Optional<Long> pageSize;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * &lt;b&gt;This only applies to incremental syncs.&lt;/b&gt; &lt;br&gt;
@@ -166,6 +166,7 @@ public class Collection {
             this.deletions = deletions;
             return this;
         }
+
 
         /**
          * The page size used when reading documents from the database. The larger the page size, the faster the connector processes documents. However, if a page is too large, the connector may fail. &lt;br&gt;
@@ -188,15 +189,16 @@ public class Collection {
             this.pageSize = pageSize;
             return this;
         }
-        
+
         public Collection build() {
             if (pageSize == null) {
                 pageSize = _SINGLETON_VALUE_PageSize.value();
             }
+
             return new Collection(
-                deletions,
-                pageSize);
+                deletions, pageSize);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_PageSize =
                 new LazySingletonValue<>(

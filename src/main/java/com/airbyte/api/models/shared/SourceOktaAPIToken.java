@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceOktaAPIToken {
-
     /**
      * An Okta token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("auth_type")
     private SourceOktaSchemasCredentialsAuthType authType;
@@ -45,9 +45,10 @@ public class SourceOktaAPIToken {
         return authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * An Okta token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to generate it.
@@ -58,7 +59,6 @@ public class SourceOktaAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceOktaAPIToken {
         }
         SourceOktaAPIToken other = (SourceOktaAPIToken) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            authType);
+        return Utils.enhancedHash(
+            apiToken, authType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceOktaAPIToken {
                 "apiToken", apiToken,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * An Okta token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to generate it.
@@ -103,11 +104,13 @@ public class SourceOktaAPIToken {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceOktaAPIToken build() {
+
             return new SourceOktaAPIToken(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<SourceOktaSchemasCredentialsAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

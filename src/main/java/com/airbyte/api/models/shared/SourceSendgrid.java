@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceSendgrid {
-
     /**
      * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Sendgrid sourceType;
@@ -63,9 +63,10 @@ public class SourceSendgrid {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
@@ -85,7 +86,6 @@ public class SourceSendgrid {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,17 +96,15 @@ public class SourceSendgrid {
         }
         SourceSendgrid other = (SourceSendgrid) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -116,16 +114,18 @@ public class SourceSendgrid {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Sendgrid API Key, use &lt;a href=\"https://app.sendgrid.com/settings/api_keys/\"&gt;admin&lt;/a&gt; to generate this key.
@@ -136,6 +136,7 @@ public class SourceSendgrid {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -144,12 +145,13 @@ public class SourceSendgrid {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSendgrid build() {
+
             return new SourceSendgrid(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Sendgrid> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

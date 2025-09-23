@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceIp2whois {
 
+public class SourceIp2whois {
     /**
      * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
      */
@@ -31,6 +30,7 @@ public class SourceIp2whois {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     private Optional<String> domain;
+
 
     @JsonProperty("sourceType")
     private Ip2whois sourceType;
@@ -71,9 +71,10 @@ public class SourceIp2whois {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
@@ -83,6 +84,7 @@ public class SourceIp2whois {
         this.apiKey = Optional.ofNullable(apiKey);
         return this;
     }
+
 
     /**
      * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
@@ -102,6 +104,7 @@ public class SourceIp2whois {
         return this;
     }
 
+
     /**
      * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
      */
@@ -111,7 +114,6 @@ public class SourceIp2whois {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +124,15 @@ public class SourceIp2whois {
         }
         SourceIp2whois other = (SourceIp2whois) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domain,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, domain, sourceType);
     }
     
     @Override
@@ -142,16 +142,18 @@ public class SourceIp2whois {
                 "domain", domain,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiKey = Optional.empty();
- 
+
         private Optional<String> domain = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Key. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
@@ -171,6 +173,7 @@ public class SourceIp2whois {
             return this;
         }
 
+
         /**
          * Domain name. See &lt;a href="https://www.ip2whois.com/developers-api"&gt;here&lt;/a&gt;.
          */
@@ -188,12 +191,13 @@ public class SourceIp2whois {
             this.domain = domain;
             return this;
         }
-        
+
         public SourceIp2whois build() {
+
             return new SourceIp2whois(
-                apiKey,
-                domain);
+                apiKey, domain);
         }
+
 
         private static final LazySingletonValue<Ip2whois> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

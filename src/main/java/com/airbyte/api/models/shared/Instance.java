@@ -14,7 +14,7 @@ public enum Instance {
     @JsonValue
     private final String value;
 
-    private Instance(String value) {
+    Instance(String value) {
         this.value = value;
     }
     

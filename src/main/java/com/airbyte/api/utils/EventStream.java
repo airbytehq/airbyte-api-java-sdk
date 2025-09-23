@@ -3,40 +3,79 @@
  */
 package com.airbyte.api.utils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Spliterator;
-import java.util.Spliterators;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 /**
- * Manages the parsing of an InputStream in SSE (Server Sent Events) format.
+ * Provides a convenient way to consume Server-Sent Events (SSE) from a stream.
+ * <p>
+ * Each SSE message's {@code data} field is deserialized into the type {@code T}, 
+ * allowing for easy processing of events as domain objects.
+ * </p>
+ *
+ * <h2>Event Consumption</h2>
+ * <p>Events can be consumed in multiple ways:</p>
  * 
- * @param <T> the type that the SSE {@code data} field is deserialized into
+ * <ul>
+ *   <li><b>Iteration:</b> Use a for-each loop to process each event:</li>
+ * </ul>
+ * <pre>{@code
+ * try (EventStream<MyEvent> eventStream = new EventStream<>(...)) {
+ *     for (MyEvent event : eventStream) {
+ *         handleEvent(event);
+ *     }
+ * }
+ * }</pre>
+ * 
+ * <ul>
+ *   <li><b>Stream API:</b> Consume events as a Java Stream (must be closed after use):</li>
+ * </ul>
+ * <pre>{@code
+ * try (EventStream<MyEvent> eventStream = new EventStream<>(...);
+ *      Stream<MyEvent> stream = eventStream.stream()) {
+ *     stream.forEach(this::handleEvent);
+ * }
+ * }</pre>
+ *
+ * <ul>
+ *   <li><b>Collect to List:</b> Read all remaining events into a list:</li>
+ * </ul>
+ * <pre>{@code
+ * try (EventStream<MyEvent> eventStream = new EventStream<>(...)) {
+ *     List<MyEvent> events = eventStream.toList();
+ * }
+ * }</pre>
+ *
+ * <p>
+ * Events are lazily loaded from the underlying SSE stream. Consumption stops either
+ * when the stream ends or when an optional terminal message is encountered.
+ * </p>
+ *
+ * <p>
+ * <b>Important:</b> This class implements {@link AutoCloseable} and must be used 
+ * within a <em>try-with-resources</em> block to ensure that underlying streams are 
+ * properly closed after consumption, preventing resource leaks.
+ * </p>
+ *
+ * @param <T> the type that SSE {@code data} fields will be deserialized into
  */
-/**
- * @param <T>
- */
-public final class EventStream<T> implements AutoCloseable {
-
-    private final EventStreamReader reader;
+public final class EventStream<T> implements Iterable<T>, AutoCloseable {
+    private final BlockingParser<EventStreamMessage> parser;
     private final TypeReference<T> typeReference;
     private final ObjectMapper mapper;
     private final Optional<String> terminalMessage;
 
     // Internal use only
     public EventStream(InputStream in, TypeReference<T> typeReference, ObjectMapper mapper, Optional<String> terminalMessage) {
-        this.reader = new EventStreamReader(in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8), 8192);
+        this.parser = BlockingParser.forSSE(reader);
         this.typeReference = typeReference;
         this.mapper = mapper;
         this.terminalMessage = terminalMessage;
@@ -47,18 +86,19 @@ public final class EventStream<T> implements AutoCloseable {
      * {@code Optional.empty()}.
      *
      * @return the next message or {@code Optional.empty()} if no more messages
-     * @throws IOException
+     * @throws IOException when parsing the next message.
      */
     public Optional<T> next() throws IOException {
-        return reader.readMessage() //
-                .filter(x -> !terminalMessage.isPresent() || !terminalMessage.get().equals(x.data())) //
+        return parser.next() //
+                .filter(x ->
+                        terminalMessage.map(sentinel -> !sentinel.equals(x.data())).orElse(true))
                 .map(x -> Utils.asType(x, mapper, typeReference));
     }
 
     /**
      * Reads all events and returns them as a {@code List}. This method calls
      * {@code close()}.
-     * 
+     *
      * @return list of events
      */
     public List<T> toList() {
@@ -76,54 +116,72 @@ public final class EventStream<T> implements AutoCloseable {
     }
 
     /**
+     * Returns an {@link Iterator} of {@link T} events, enabling iteration via for-each loops.
+     *
+     * @return events iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new EventIterator<>(this);
+    }
+
+    /**
      * Returns a {@link Stream} of events. Must be closed after use!
-     * 
+     *
      * @return streamed events
      */
     public Stream<T> stream() {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(new Iterator<T>() {
-            Optional<T> next = null;
-
-            public T next() {
-                load();
-                if (!next.isPresent()) {
-                    throw new NoSuchElementException();
-                }
-                T v = next.get();
-                next = null;
-                return v;
-            }
-
-            public boolean hasNext() {
-                load();
-                return next.isPresent();
-            }
-
-            private void load() {
-                if (next == null) {
+        return StreamSupport.stream(
+                        Spliterators.spliteratorUnknownSize(
+                                iterator(),
+                                Spliterator.ORDERED), false)
+                .onClose(() -> {
                     try {
-                        next = EventStream.this.next();
+                        EventStream.this.close();
                     } catch (IOException e) {
                         throw new UncheckedIOException(e);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
                     }
-                }
-            }
-
-        }, Spliterator.ORDERED), false).onClose(() -> {
-            try {
-                EventStream.this.close();
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
+                });
     }
 
     @Override
-    public void close() throws Exception {
-        reader.close();
+    public void close() throws IOException {
+        parser.close();
     }
 
-}
+    static class EventIterator<T> implements Iterator<T> {
+        private final EventStream<T> stream;
+        private Optional<T> next = Optional.empty();
 
+        EventIterator(EventStream<T> stream) {
+            this.stream = stream;
+        }
+
+        public T next() {
+            load();
+            if (next.isEmpty()) {
+                throw new NoSuchElementException();
+            }
+            T v = next.get();
+            next = Optional.empty();
+            return v;
+        }
+
+        public boolean hasNext() {
+            load();
+            return next.isPresent();
+        }
+
+        private void load() {
+            if (next.isEmpty()) {
+                try {
+                    next = stream.next();
+                } catch (IOException e) {
+                    throw new UncheckedIOException(e);
+                }
+            }
+        }
+    }
+}

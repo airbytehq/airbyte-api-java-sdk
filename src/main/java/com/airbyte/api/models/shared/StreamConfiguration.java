@@ -9,11 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,7 +22,6 @@ import java.util.Optional;
  * <p>Configurations for a single stream.
  */
 public class StreamConfiguration {
-
     /**
      * Path to the field that will be used to determine if a record is new or modified since the last sync. This field is REQUIRED if `sync_mode` is `incremental` unless there is a default.
      */
@@ -31,14 +30,36 @@ public class StreamConfiguration {
     private Optional<? extends List<String>> cursorField;
 
     /**
+     * The name of the destination object that this stream will be written to, used for data activation destinations.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("destinationObjectName")
+    private Optional<String> destinationObjectName;
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("includeFiles")
+    private Optional<Boolean> includeFiles;
+
+    /**
      * Mappers that should be applied to the stream before writing to the destination.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mappers")
     private Optional<? extends List<ConfiguredStreamMapper>> mappers;
 
+
     @JsonProperty("name")
     private String name;
+
+    /**
+     * Namespace of the stream.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("namespace")
+    private Optional<String> namespace;
 
     /**
      * Paths to the fields that will be used as primary key. This field is REQUIRED if `destination_sync_mode` is `*_dedup` unless it is already supplied by the source schema.
@@ -54,6 +75,7 @@ public class StreamConfiguration {
     @JsonProperty("selectedFields")
     private Optional<? extends List<SelectedFieldInfo>> selectedFields;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncMode")
     private Optional<? extends ConnectionSyncModeEnum> syncMode;
@@ -61,20 +83,29 @@ public class StreamConfiguration {
     @JsonCreator
     public StreamConfiguration(
             @JsonProperty("cursorField") Optional<? extends List<String>> cursorField,
+            @JsonProperty("destinationObjectName") Optional<String> destinationObjectName,
+            @JsonProperty("includeFiles") Optional<Boolean> includeFiles,
             @JsonProperty("mappers") Optional<? extends List<ConfiguredStreamMapper>> mappers,
             @JsonProperty("name") String name,
+            @JsonProperty("namespace") Optional<String> namespace,
             @JsonProperty("primaryKey") Optional<? extends List<List<String>>> primaryKey,
             @JsonProperty("selectedFields") Optional<? extends List<SelectedFieldInfo>> selectedFields,
             @JsonProperty("syncMode") Optional<? extends ConnectionSyncModeEnum> syncMode) {
         Utils.checkNotNull(cursorField, "cursorField");
+        Utils.checkNotNull(destinationObjectName, "destinationObjectName");
+        Utils.checkNotNull(includeFiles, "includeFiles");
         Utils.checkNotNull(mappers, "mappers");
         Utils.checkNotNull(name, "name");
+        Utils.checkNotNull(namespace, "namespace");
         Utils.checkNotNull(primaryKey, "primaryKey");
         Utils.checkNotNull(selectedFields, "selectedFields");
         Utils.checkNotNull(syncMode, "syncMode");
         this.cursorField = cursorField;
+        this.destinationObjectName = destinationObjectName;
+        this.includeFiles = includeFiles;
         this.mappers = mappers;
         this.name = name;
+        this.namespace = namespace;
         this.primaryKey = primaryKey;
         this.selectedFields = selectedFields;
         this.syncMode = syncMode;
@@ -82,7 +113,9 @@ public class StreamConfiguration {
     
     public StreamConfiguration(
             String name) {
-        this(Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), name, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -92,6 +125,22 @@ public class StreamConfiguration {
     @JsonIgnore
     public Optional<List<String>> cursorField() {
         return (Optional<List<String>>) cursorField;
+    }
+
+    /**
+     * The name of the destination object that this stream will be written to, used for data activation destinations.
+     */
+    @JsonIgnore
+    public Optional<String> destinationObjectName() {
+        return destinationObjectName;
+    }
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    @JsonIgnore
+    public Optional<Boolean> includeFiles() {
+        return includeFiles;
     }
 
     /**
@@ -106,6 +155,14 @@ public class StreamConfiguration {
     @JsonIgnore
     public String name() {
         return name;
+    }
+
+    /**
+     * Namespace of the stream.
+     */
+    @JsonIgnore
+    public Optional<String> namespace() {
+        return namespace;
     }
 
     /**
@@ -132,9 +189,10 @@ public class StreamConfiguration {
         return (Optional<ConnectionSyncModeEnum>) syncMode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Path to the field that will be used to determine if a record is new or modified since the last sync. This field is REQUIRED if `sync_mode` is `incremental` unless there is a default.
@@ -144,6 +202,7 @@ public class StreamConfiguration {
         this.cursorField = Optional.ofNullable(cursorField);
         return this;
     }
+
 
     /**
      * Path to the field that will be used to determine if a record is new or modified since the last sync. This field is REQUIRED if `sync_mode` is `incremental` unless there is a default.
@@ -155,6 +214,44 @@ public class StreamConfiguration {
     }
 
     /**
+     * The name of the destination object that this stream will be written to, used for data activation destinations.
+     */
+    public StreamConfiguration withDestinationObjectName(String destinationObjectName) {
+        Utils.checkNotNull(destinationObjectName, "destinationObjectName");
+        this.destinationObjectName = Optional.ofNullable(destinationObjectName);
+        return this;
+    }
+
+
+    /**
+     * The name of the destination object that this stream will be written to, used for data activation destinations.
+     */
+    public StreamConfiguration withDestinationObjectName(Optional<String> destinationObjectName) {
+        Utils.checkNotNull(destinationObjectName, "destinationObjectName");
+        this.destinationObjectName = destinationObjectName;
+        return this;
+    }
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    public StreamConfiguration withIncludeFiles(boolean includeFiles) {
+        Utils.checkNotNull(includeFiles, "includeFiles");
+        this.includeFiles = Optional.ofNullable(includeFiles);
+        return this;
+    }
+
+
+    /**
+     * Whether to move raw files from the source to the destination during the sync.
+     */
+    public StreamConfiguration withIncludeFiles(Optional<Boolean> includeFiles) {
+        Utils.checkNotNull(includeFiles, "includeFiles");
+        this.includeFiles = includeFiles;
+        return this;
+    }
+
+    /**
      * Mappers that should be applied to the stream before writing to the destination.
      */
     public StreamConfiguration withMappers(List<ConfiguredStreamMapper> mappers) {
@@ -162,6 +259,7 @@ public class StreamConfiguration {
         this.mappers = Optional.ofNullable(mappers);
         return this;
     }
+
 
     /**
      * Mappers that should be applied to the stream before writing to the destination.
@@ -179,6 +277,25 @@ public class StreamConfiguration {
     }
 
     /**
+     * Namespace of the stream.
+     */
+    public StreamConfiguration withNamespace(String namespace) {
+        Utils.checkNotNull(namespace, "namespace");
+        this.namespace = Optional.ofNullable(namespace);
+        return this;
+    }
+
+
+    /**
+     * Namespace of the stream.
+     */
+    public StreamConfiguration withNamespace(Optional<String> namespace) {
+        Utils.checkNotNull(namespace, "namespace");
+        this.namespace = namespace;
+        return this;
+    }
+
+    /**
      * Paths to the fields that will be used as primary key. This field is REQUIRED if `destination_sync_mode` is `*_dedup` unless it is already supplied by the source schema.
      */
     public StreamConfiguration withPrimaryKey(List<List<String>> primaryKey) {
@@ -186,6 +303,7 @@ public class StreamConfiguration {
         this.primaryKey = Optional.ofNullable(primaryKey);
         return this;
     }
+
 
     /**
      * Paths to the fields that will be used as primary key. This field is REQUIRED if `destination_sync_mode` is `*_dedup` unless it is already supplied by the source schema.
@@ -205,6 +323,7 @@ public class StreamConfiguration {
         return this;
     }
 
+
     /**
      * Paths to the fields that will be included in the configured catalog.
      */
@@ -220,13 +339,13 @@ public class StreamConfiguration {
         return this;
     }
 
+
     public StreamConfiguration withSyncMode(Optional<? extends ConnectionSyncModeEnum> syncMode) {
         Utils.checkNotNull(syncMode, "syncMode");
         this.syncMode = syncMode;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -237,53 +356,64 @@ public class StreamConfiguration {
         }
         StreamConfiguration other = (StreamConfiguration) o;
         return 
-            Objects.deepEquals(this.cursorField, other.cursorField) &&
-            Objects.deepEquals(this.mappers, other.mappers) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.primaryKey, other.primaryKey) &&
-            Objects.deepEquals(this.selectedFields, other.selectedFields) &&
-            Objects.deepEquals(this.syncMode, other.syncMode);
+            Utils.enhancedDeepEquals(this.cursorField, other.cursorField) &&
+            Utils.enhancedDeepEquals(this.destinationObjectName, other.destinationObjectName) &&
+            Utils.enhancedDeepEquals(this.includeFiles, other.includeFiles) &&
+            Utils.enhancedDeepEquals(this.mappers, other.mappers) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.namespace, other.namespace) &&
+            Utils.enhancedDeepEquals(this.primaryKey, other.primaryKey) &&
+            Utils.enhancedDeepEquals(this.selectedFields, other.selectedFields) &&
+            Utils.enhancedDeepEquals(this.syncMode, other.syncMode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cursorField,
-            mappers,
-            name,
-            primaryKey,
-            selectedFields,
-            syncMode);
+        return Utils.enhancedHash(
+            cursorField, destinationObjectName, includeFiles,
+            mappers, name, namespace,
+            primaryKey, selectedFields, syncMode);
     }
     
     @Override
     public String toString() {
         return Utils.toString(StreamConfiguration.class,
                 "cursorField", cursorField,
+                "destinationObjectName", destinationObjectName,
+                "includeFiles", includeFiles,
                 "mappers", mappers,
                 "name", name,
+                "namespace", namespace,
                 "primaryKey", primaryKey,
                 "selectedFields", selectedFields,
                 "syncMode", syncMode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> cursorField = Optional.empty();
- 
+
+        private Optional<String> destinationObjectName = Optional.empty();
+
+        private Optional<Boolean> includeFiles = Optional.empty();
+
         private Optional<? extends List<ConfiguredStreamMapper>> mappers = Optional.empty();
- 
+
         private String name;
- 
+
+        private Optional<String> namespace = Optional.empty();
+
         private Optional<? extends List<List<String>>> primaryKey = Optional.empty();
- 
+
         private Optional<? extends List<SelectedFieldInfo>> selectedFields = Optional.empty();
- 
+
         private Optional<? extends ConnectionSyncModeEnum> syncMode = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Path to the field that will be used to determine if a record is new or modified since the last sync. This field is REQUIRED if `sync_mode` is `incremental` unless there is a default.
@@ -303,6 +433,45 @@ public class StreamConfiguration {
             return this;
         }
 
+
+        /**
+         * The name of the destination object that this stream will be written to, used for data activation destinations.
+         */
+        public Builder destinationObjectName(String destinationObjectName) {
+            Utils.checkNotNull(destinationObjectName, "destinationObjectName");
+            this.destinationObjectName = Optional.ofNullable(destinationObjectName);
+            return this;
+        }
+
+        /**
+         * The name of the destination object that this stream will be written to, used for data activation destinations.
+         */
+        public Builder destinationObjectName(Optional<String> destinationObjectName) {
+            Utils.checkNotNull(destinationObjectName, "destinationObjectName");
+            this.destinationObjectName = destinationObjectName;
+            return this;
+        }
+
+
+        /**
+         * Whether to move raw files from the source to the destination during the sync.
+         */
+        public Builder includeFiles(boolean includeFiles) {
+            Utils.checkNotNull(includeFiles, "includeFiles");
+            this.includeFiles = Optional.ofNullable(includeFiles);
+            return this;
+        }
+
+        /**
+         * Whether to move raw files from the source to the destination during the sync.
+         */
+        public Builder includeFiles(Optional<Boolean> includeFiles) {
+            Utils.checkNotNull(includeFiles, "includeFiles");
+            this.includeFiles = includeFiles;
+            return this;
+        }
+
+
         /**
          * Mappers that should be applied to the stream before writing to the destination.
          */
@@ -321,11 +490,32 @@ public class StreamConfiguration {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
+
+
+        /**
+         * Namespace of the stream.
+         */
+        public Builder namespace(String namespace) {
+            Utils.checkNotNull(namespace, "namespace");
+            this.namespace = Optional.ofNullable(namespace);
+            return this;
+        }
+
+        /**
+         * Namespace of the stream.
+         */
+        public Builder namespace(Optional<String> namespace) {
+            Utils.checkNotNull(namespace, "namespace");
+            this.namespace = namespace;
+            return this;
+        }
+
 
         /**
          * Paths to the fields that will be used as primary key. This field is REQUIRED if `destination_sync_mode` is `*_dedup` unless it is already supplied by the source schema.
@@ -345,6 +535,7 @@ public class StreamConfiguration {
             return this;
         }
 
+
         /**
          * Paths to the fields that will be included in the configured catalog.
          */
@@ -363,6 +554,7 @@ public class StreamConfiguration {
             return this;
         }
 
+
         public Builder syncMode(ConnectionSyncModeEnum syncMode) {
             Utils.checkNotNull(syncMode, "syncMode");
             this.syncMode = Optional.ofNullable(syncMode);
@@ -374,15 +566,14 @@ public class StreamConfiguration {
             this.syncMode = syncMode;
             return this;
         }
-        
+
         public StreamConfiguration build() {
+
             return new StreamConfiguration(
-                cursorField,
-                mappers,
-                name,
-                primaryKey,
-                selectedFields,
-                syncMode);
+                cursorField, destinationObjectName, includeFiles,
+                mappers, name, namespace,
+                primaryKey, selectedFields, syncMode);
         }
+
     }
 }

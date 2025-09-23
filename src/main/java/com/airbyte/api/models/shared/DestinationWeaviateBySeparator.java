@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,13 +24,13 @@ import java.util.Optional;
  * <p>Split the text by the list of separators until the chunk size is reached, using the earlier mentioned separators where possible. This is useful for splitting text fields by paragraphs, sentences, words, etc.
  */
 public class DestinationWeaviateBySeparator {
-
     /**
      * Whether to keep the separator in the resulting chunks
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("keep_separator")
     private Optional<Boolean> keepSeparator;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -82,9 +81,10 @@ public class DestinationWeaviateBySeparator {
         return (Optional<List<String>>) separators;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether to keep the separator in the resulting chunks
@@ -94,6 +94,7 @@ public class DestinationWeaviateBySeparator {
         this.keepSeparator = Optional.ofNullable(keepSeparator);
         return this;
     }
+
 
     /**
      * Whether to keep the separator in the resulting chunks
@@ -113,6 +114,7 @@ public class DestinationWeaviateBySeparator {
         return this;
     }
 
+
     /**
      * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
      */
@@ -122,7 +124,6 @@ public class DestinationWeaviateBySeparator {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -133,17 +134,15 @@ public class DestinationWeaviateBySeparator {
         }
         DestinationWeaviateBySeparator other = (DestinationWeaviateBySeparator) o;
         return 
-            Objects.deepEquals(this.keepSeparator, other.keepSeparator) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.separators, other.separators);
+            Utils.enhancedDeepEquals(this.keepSeparator, other.keepSeparator) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.separators, other.separators);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            keepSeparator,
-            mode,
-            separators);
+        return Utils.enhancedHash(
+            keepSeparator, mode, separators);
     }
     
     @Override
@@ -153,16 +152,18 @@ public class DestinationWeaviateBySeparator {
                 "mode", mode,
                 "separators", separators);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> keepSeparator;
- 
+
         private Optional<? extends List<String>> separators = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether to keep the separator in the resulting chunks
@@ -182,6 +183,7 @@ public class DestinationWeaviateBySeparator {
             return this;
         }
 
+
         /**
          * List of separator strings to split text fields by. The separator itself needs to be wrapped in double quotes, e.g. to split by the dot character, use ".". To split by a newline, use "\n".
          */
@@ -199,15 +201,16 @@ public class DestinationWeaviateBySeparator {
             this.separators = separators;
             return this;
         }
-        
+
         public DestinationWeaviateBySeparator build() {
             if (keepSeparator == null) {
                 keepSeparator = _SINGLETON_VALUE_KeepSeparator.value();
             }
+
             return new DestinationWeaviateBySeparator(
-                keepSeparator,
-                separators);
+                keepSeparator, separators);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_KeepSeparator =
                 new LazySingletonValue<>(

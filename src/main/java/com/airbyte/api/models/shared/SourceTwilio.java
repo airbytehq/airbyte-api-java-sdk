@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTwilio {
 
+public class SourceTwilio {
     /**
      * Twilio account SID
      */
@@ -38,6 +37,7 @@ public class SourceTwilio {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
+
 
     @JsonProperty("sourceType")
     private Twilio sourceType;
@@ -69,7 +69,8 @@ public class SourceTwilio {
             String accountSid,
             String authToken,
             OffsetDateTime startDate) {
-        this(accountSid, authToken, Optional.empty(), startDate);
+        this(accountSid, authToken, Optional.empty(),
+            startDate);
     }
 
     /**
@@ -109,9 +110,10 @@ public class SourceTwilio {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Twilio account SID
@@ -140,6 +142,7 @@ public class SourceTwilio {
         return this;
     }
 
+
     /**
      * How far into the past to look for records. (in minutes)
      */
@@ -158,7 +161,6 @@ public class SourceTwilio {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -169,21 +171,18 @@ public class SourceTwilio {
         }
         SourceTwilio other = (SourceTwilio) o;
         return 
-            Objects.deepEquals(this.accountSid, other.accountSid) &&
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountSid, other.accountSid) &&
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountSid,
-            authToken,
-            lookbackWindow,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accountSid, authToken, lookbackWindow,
+            sourceType, startDate);
     }
     
     @Override
@@ -195,20 +194,22 @@ public class SourceTwilio {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountSid;
- 
+
         private String authToken;
- 
+
         private Optional<Long> lookbackWindow;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Twilio account SID
@@ -219,6 +220,7 @@ public class SourceTwilio {
             return this;
         }
 
+
         /**
          * Twilio Auth Token.
          */
@@ -227,6 +229,7 @@ public class SourceTwilio {
             this.authToken = authToken;
             return this;
         }
+
 
         /**
          * How far into the past to look for records. (in minutes)
@@ -246,6 +249,7 @@ public class SourceTwilio {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -254,17 +258,17 @@ public class SourceTwilio {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTwilio build() {
             if (lookbackWindow == null) {
                 lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
             }
+
             return new SourceTwilio(
-                accountSid,
-                authToken,
-                lookbackWindow,
+                accountSid, authToken, lookbackWindow,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindow =
                 new LazySingletonValue<>(

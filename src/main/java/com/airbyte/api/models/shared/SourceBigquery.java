@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceBigquery {
 
+public class SourceBigquery {
     /**
      * The contents of your Service Account Key JSON file. See the &lt;a href="https://docs.airbyte.com/integrations/sources/bigquery#setup-the-bigquery-source-in-airbyte"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -36,6 +35,7 @@ public class SourceBigquery {
      */
     @JsonProperty("project_id")
     private String projectId;
+
 
     @JsonProperty("sourceType")
     private SourceBigqueryBigquery sourceType;
@@ -89,9 +89,10 @@ public class SourceBigquery {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The contents of your Service Account Key JSON file. See the &lt;a href="https://docs.airbyte.com/integrations/sources/bigquery#setup-the-bigquery-source-in-airbyte"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -111,6 +112,7 @@ public class SourceBigquery {
         return this;
     }
 
+
     /**
      * The dataset ID to search for tables and views. If you are only loading data from one dataset, setting this option could result in much faster schema discovery.
      */
@@ -129,7 +131,6 @@ public class SourceBigquery {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +141,16 @@ public class SourceBigquery {
         }
         SourceBigquery other = (SourceBigquery) o;
         return 
-            Objects.deepEquals(this.credentialsJson, other.credentialsJson) &&
-            Objects.deepEquals(this.datasetId, other.datasetId) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentialsJson, other.credentialsJson) &&
+            Utils.enhancedDeepEquals(this.datasetId, other.datasetId) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentialsJson,
-            datasetId,
-            projectId,
+        return Utils.enhancedHash(
+            credentialsJson, datasetId, projectId,
             sourceType);
     }
     
@@ -163,18 +162,20 @@ public class SourceBigquery {
                 "projectId", projectId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String credentialsJson;
- 
+
         private Optional<String> datasetId = Optional.empty();
- 
+
         private String projectId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The contents of your Service Account Key JSON file. See the &lt;a href="https://docs.airbyte.com/integrations/sources/bigquery#setup-the-bigquery-source-in-airbyte"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -184,6 +185,7 @@ public class SourceBigquery {
             this.credentialsJson = credentialsJson;
             return this;
         }
+
 
         /**
          * The dataset ID to search for tables and views. If you are only loading data from one dataset, setting this option could result in much faster schema discovery.
@@ -203,6 +205,7 @@ public class SourceBigquery {
             return this;
         }
 
+
         /**
          * The GCP project ID for the project containing the target BigQuery dataset.
          */
@@ -211,13 +214,13 @@ public class SourceBigquery {
             this.projectId = projectId;
             return this;
         }
-        
+
         public SourceBigquery build() {
+
             return new SourceBigquery(
-                credentialsJson,
-                datasetId,
-                projectId);
+                credentialsJson, datasetId, projectId);
         }
+
 
         private static final LazySingletonValue<SourceBigqueryBigquery> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

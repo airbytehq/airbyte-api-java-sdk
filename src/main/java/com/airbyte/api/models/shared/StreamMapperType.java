@@ -17,7 +17,7 @@ public enum StreamMapperType {
     @JsonValue
     private final String value;
 
-    private StreamMapperType(String value) {
+    StreamMapperType(String value) {
         this.value = value;
     }
     

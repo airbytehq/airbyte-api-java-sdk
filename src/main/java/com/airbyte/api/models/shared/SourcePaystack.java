@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePaystack {
 
+public class SourcePaystack {
     /**
      * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
      */
@@ -32,6 +31,7 @@ public class SourcePaystack {
      */
     @JsonProperty("secret_key")
     private String secretKey;
+
 
     @JsonProperty("sourceType")
     private Paystack sourceType;
@@ -91,9 +91,10 @@ public class SourcePaystack {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
@@ -103,6 +104,7 @@ public class SourcePaystack {
         this.lookbackWindowDays = Optional.ofNullable(lookbackWindowDays);
         return this;
     }
+
 
     /**
      * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
@@ -131,7 +133,6 @@ public class SourcePaystack {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,18 +143,16 @@ public class SourcePaystack {
         }
         SourcePaystack other = (SourcePaystack) o;
         return 
-            Objects.deepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
-            Objects.deepEquals(this.secretKey, other.secretKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
+            Utils.enhancedDeepEquals(this.secretKey, other.secretKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            lookbackWindowDays,
-            secretKey,
-            sourceType,
+        return Utils.enhancedHash(
+            lookbackWindowDays, secretKey, sourceType,
             startDate);
     }
     
@@ -165,18 +164,20 @@ public class SourcePaystack {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> lookbackWindowDays;
- 
+
         private String secretKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * When set, the connector will always reload data from the past N days, where N is the value set here. This is useful if your data is updated after creation.
@@ -196,6 +197,7 @@ public class SourcePaystack {
             return this;
         }
 
+
         /**
          * The Paystack API key (usually starts with 'sk_live_'; find yours &lt;a href="https://dashboard.paystack.com/#/settings/developer"&gt;here&lt;/a&gt;).
          */
@@ -205,6 +207,7 @@ public class SourcePaystack {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -213,16 +216,16 @@ public class SourcePaystack {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePaystack build() {
             if (lookbackWindowDays == null) {
                 lookbackWindowDays = _SINGLETON_VALUE_LookbackWindowDays.value();
             }
+
             return new SourcePaystack(
-                lookbackWindowDays,
-                secretKey,
-                startDate);
+                lookbackWindowDays, secretKey, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowDays =
                 new LazySingletonValue<>(

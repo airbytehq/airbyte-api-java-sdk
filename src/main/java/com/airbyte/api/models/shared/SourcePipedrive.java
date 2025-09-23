@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePipedrive {
-
     /**
      * The Pipedrive API Token.
      */
@@ -26,6 +25,7 @@ public class SourcePipedrive {
      */
     @JsonProperty("replication_start_date")
     private String replicationStartDate;
+
 
     @JsonProperty("sourceType")
     private Pipedrive sourceType;
@@ -62,9 +62,10 @@ public class SourcePipedrive {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Pipedrive API Token.
@@ -84,7 +85,6 @@ public class SourcePipedrive {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourcePipedrive {
         }
         SourcePipedrive other = (SourcePipedrive) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.replicationStartDate, other.replicationStartDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.replicationStartDate, other.replicationStartDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            replicationStartDate,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, replicationStartDate, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourcePipedrive {
                 "replicationStartDate", replicationStartDate,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String replicationStartDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Pipedrive API Token.
@@ -135,6 +135,7 @@ public class SourcePipedrive {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. When specified and not None, then stream will behave as incremental
          */
@@ -143,12 +144,13 @@ public class SourcePipedrive {
             this.replicationStartDate = replicationStartDate;
             return this;
         }
-        
+
         public SourcePipedrive build() {
+
             return new SourcePipedrive(
-                apiToken,
-                replicationStartDate);
+                apiToken, replicationStartDate);
         }
+
 
         private static final LazySingletonValue<Pipedrive> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceShopify {
 
+public class SourceShopify {
     /**
      * Defines what would be a date range per single BULK Job
      */
@@ -70,6 +69,7 @@ public class SourceShopify {
     @JsonProperty("shop")
     private String shop;
 
+
     @JsonProperty("sourceType")
     private SourceShopifyShopify sourceType;
 
@@ -111,7 +111,9 @@ public class SourceShopify {
     
     public SourceShopify(
             String shop) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), shop, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            shop, Optional.empty());
     }
 
     /**
@@ -184,9 +186,10 @@ public class SourceShopify {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Defines what would be a date range per single BULK Job
@@ -196,6 +199,7 @@ public class SourceShopify {
         this.bulkWindowInDays = Optional.ofNullable(bulkWindowInDays);
         return this;
     }
+
 
     /**
      * Defines what would be a date range per single BULK Job
@@ -215,6 +219,7 @@ public class SourceShopify {
         return this;
     }
 
+
     /**
      * The authorization method to use to retrieve data from Shopify
      */
@@ -232,6 +237,7 @@ public class SourceShopify {
         this.fetchTransactionsUserId = Optional.ofNullable(fetchTransactionsUserId);
         return this;
     }
+
 
     /**
      * Defines which API type (REST/BULK) to use to fetch `Transactions` data. If you are a `Shopify Plus` user, leave the default value to speed up the fetch.
@@ -251,6 +257,7 @@ public class SourceShopify {
         return this;
     }
 
+
     /**
      * The threshold, after which the single BULK Job should be checkpointed (min: 15k, max: 1M)
      */
@@ -269,6 +276,7 @@ public class SourceShopify {
         return this;
     }
 
+
     /**
      * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
      */
@@ -286,6 +294,7 @@ public class SourceShopify {
         this.jobTerminationThreshold = Optional.ofNullable(jobTerminationThreshold);
         return this;
     }
+
 
     /**
      * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
@@ -314,6 +323,7 @@ public class SourceShopify {
         return this;
     }
 
+
     /**
      * The date you would like to replicate data from. Format: YYYY-MM-DD. Any data before this date will not be replicated.
      */
@@ -323,7 +333,6 @@ public class SourceShopify {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -334,29 +343,23 @@ public class SourceShopify {
         }
         SourceShopify other = (SourceShopify) o;
         return 
-            Objects.deepEquals(this.bulkWindowInDays, other.bulkWindowInDays) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.fetchTransactionsUserId, other.fetchTransactionsUserId) &&
-            Objects.deepEquals(this.jobCheckpointInterval, other.jobCheckpointInterval) &&
-            Objects.deepEquals(this.jobProductVariantsIncludePresPrices, other.jobProductVariantsIncludePresPrices) &&
-            Objects.deepEquals(this.jobTerminationThreshold, other.jobTerminationThreshold) &&
-            Objects.deepEquals(this.shop, other.shop) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.bulkWindowInDays, other.bulkWindowInDays) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.fetchTransactionsUserId, other.fetchTransactionsUserId) &&
+            Utils.enhancedDeepEquals(this.jobCheckpointInterval, other.jobCheckpointInterval) &&
+            Utils.enhancedDeepEquals(this.jobProductVariantsIncludePresPrices, other.jobProductVariantsIncludePresPrices) &&
+            Utils.enhancedDeepEquals(this.jobTerminationThreshold, other.jobTerminationThreshold) &&
+            Utils.enhancedDeepEquals(this.shop, other.shop) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bulkWindowInDays,
-            credentials,
-            fetchTransactionsUserId,
-            jobCheckpointInterval,
-            jobProductVariantsIncludePresPrices,
-            jobTerminationThreshold,
-            shop,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            bulkWindowInDays, credentials, fetchTransactionsUserId,
+            jobCheckpointInterval, jobProductVariantsIncludePresPrices, jobTerminationThreshold,
+            shop, sourceType, startDate);
     }
     
     @Override
@@ -372,28 +375,30 @@ public class SourceShopify {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> bulkWindowInDays;
- 
+
         private Optional<? extends ShopifyAuthorizationMethod> credentials = Optional.empty();
- 
+
         private Optional<Boolean> fetchTransactionsUserId;
- 
+
         private Optional<Long> jobCheckpointInterval;
- 
+
         private Optional<Boolean> jobProductVariantsIncludePresPrices;
- 
+
         private Optional<Long> jobTerminationThreshold;
- 
+
         private String shop;
- 
+
         private Optional<LocalDate> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Defines what would be a date range per single BULK Job
@@ -413,6 +418,7 @@ public class SourceShopify {
             return this;
         }
 
+
         /**
          * The authorization method to use to retrieve data from Shopify
          */
@@ -430,6 +436,7 @@ public class SourceShopify {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Defines which API type (REST/BULK) to use to fetch `Transactions` data. If you are a `Shopify Plus` user, leave the default value to speed up the fetch.
@@ -449,6 +456,7 @@ public class SourceShopify {
             return this;
         }
 
+
         /**
          * The threshold, after which the single BULK Job should be checkpointed (min: 15k, max: 1M)
          */
@@ -466,6 +474,7 @@ public class SourceShopify {
             this.jobCheckpointInterval = jobCheckpointInterval;
             return this;
         }
+
 
         /**
          * If enabled, the `Product Variants` stream attempts to include `Presentment prices` field (may affect the performance).
@@ -485,6 +494,7 @@ public class SourceShopify {
             return this;
         }
 
+
         /**
          * The max time in seconds, after which the single BULK Job should be `CANCELED` and retried. The bigger the value the longer the BULK Job is allowed to run.
          */
@@ -503,6 +513,7 @@ public class SourceShopify {
             return this;
         }
 
+
         /**
          * The name of your Shopify store found in the URL. For example, if your URL was https://NAME.myshopify.com, then the name would be 'NAME' or 'NAME.myshopify.com'.
          */
@@ -511,6 +522,7 @@ public class SourceShopify {
             this.shop = shop;
             return this;
         }
+
 
         /**
          * The date you would like to replicate data from. Format: YYYY-MM-DD. Any data before this date will not be replicated.
@@ -529,7 +541,7 @@ public class SourceShopify {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceShopify build() {
             if (bulkWindowInDays == null) {
                 bulkWindowInDays = _SINGLETON_VALUE_BulkWindowInDays.value();
@@ -549,16 +561,13 @@ public class SourceShopify {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceShopify(
-                bulkWindowInDays,
-                credentials,
-                fetchTransactionsUserId,
-                jobCheckpointInterval,
-                jobProductVariantsIncludePresPrices,
-                jobTerminationThreshold,
-                shop,
-                startDate);
+                bulkWindowInDays, credentials, fetchTransactionsUserId,
+                jobCheckpointInterval, jobProductVariantsIncludePresPrices, jobTerminationThreshold,
+                shop, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BulkWindowInDays =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceNetsuiteEnterpriseAuthenticationMethod
@@ -40,12 +39,18 @@ public class SourceNetsuiteEnterpriseAuthenticationMethod {
         Utils.checkNotNull(value, "value");
         return new SourceNetsuiteEnterpriseAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<TokenBasedAuthentication>(){}));
     }
+
+    public static SourceNetsuiteEnterpriseAuthenticationMethod of(OAuth2Authentication value) {
+        Utils.checkNotNull(value, "value");
+        return new SourceNetsuiteEnterpriseAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth2Authentication>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code com.airbyte.api.models.shared.SourceNetsuiteEnterprisePasswordAuthentication}</li>
      * <li>{@code com.airbyte.api.models.shared.TokenBasedAuthentication}</li>
+     * <li>{@code com.airbyte.api.models.shared.OAuth2Authentication}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -72,12 +77,12 @@ public class SourceNetsuiteEnterpriseAuthenticationMethod {
             return false;
         }
         SourceNetsuiteEnterpriseAuthenticationMethod other = (SourceNetsuiteEnterpriseAuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -86,6 +91,7 @@ public class SourceNetsuiteEnterpriseAuthenticationMethod {
         public _Deserializer() {
             super(SourceNetsuiteEnterpriseAuthenticationMethod.class, false,
                   TypeReferenceWithShape.of(new TypeReference<TokenBasedAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<OAuth2Authentication>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterprisePasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }

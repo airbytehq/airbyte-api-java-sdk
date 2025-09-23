@@ -13,17 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleSearchConsoleOAuth {
 
+public class SourceGoogleSearchConsoleOAuth {
     /**
      * Access token for making authenticated requests. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     private Optional<String> accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceGoogleSearchConsoleAuthType authType;
@@ -67,7 +67,8 @@ public class SourceGoogleSearchConsoleOAuth {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(Optional.empty(), clientId, clientSecret, refreshToken);
+        this(Optional.empty(), clientId, clientSecret,
+            refreshToken);
     }
 
     /**
@@ -107,9 +108,10 @@ public class SourceGoogleSearchConsoleOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access token for making authenticated requests. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
@@ -119,6 +121,7 @@ public class SourceGoogleSearchConsoleOAuth {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * Access token for making authenticated requests. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
@@ -156,7 +159,6 @@ public class SourceGoogleSearchConsoleOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -167,21 +169,18 @@ public class SourceGoogleSearchConsoleOAuth {
         }
         SourceGoogleSearchConsoleOAuth other = (SourceGoogleSearchConsoleOAuth) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, refreshToken);
     }
     
     @Override
@@ -193,20 +192,22 @@ public class SourceGoogleSearchConsoleOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access token for making authenticated requests. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
@@ -226,6 +227,7 @@ public class SourceGoogleSearchConsoleOAuth {
             return this;
         }
 
+
         /**
          * The client ID of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
          */
@@ -234,6 +236,7 @@ public class SourceGoogleSearchConsoleOAuth {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The client secret of your Google Search Console developer application. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
@@ -244,6 +247,7 @@ public class SourceGoogleSearchConsoleOAuth {
             return this;
         }
 
+
         /**
          * The token for obtaining a new access token. Read more &lt;a href="https://developers.google.com/webmaster-tools/v1/how-tos/authorizing"&gt;here&lt;/a&gt;.
          */
@@ -252,14 +256,14 @@ public class SourceGoogleSearchConsoleOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceGoogleSearchConsoleOAuth build() {
+
             return new SourceGoogleSearchConsoleOAuth(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<SourceGoogleSearchConsoleAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -159,7 +159,7 @@ public enum SourceFacebookMarketingValidEnums {
     @JsonValue
     private final String value;
 
-    private SourceFacebookMarketingValidEnums(String value) {
+    SourceFacebookMarketingValidEnums(String value) {
         this.value = value;
     }
     

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DeleteDestinationRequest {
 
@@ -28,9 +28,10 @@ public class DeleteDestinationRequest {
         return destinationId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeleteDestinationRequest withDestinationId(String destinationId) {
         Utils.checkNotNull(destinationId, "destinationId");
@@ -38,7 +39,6 @@ public class DeleteDestinationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class DeleteDestinationRequest {
         }
         DeleteDestinationRequest other = (DeleteDestinationRequest) o;
         return 
-            Objects.deepEquals(this.destinationId, other.destinationId);
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             destinationId);
     }
     
@@ -63,24 +63,28 @@ public class DeleteDestinationRequest {
         return Utils.toString(DeleteDestinationRequest.class,
                 "destinationId", destinationId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String destinationId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
             this.destinationId = destinationId;
             return this;
         }
-        
+
         public DeleteDestinationRequest build() {
+
             return new DeleteDestinationRequest(
                 destinationId);
         }
+
     }
 }

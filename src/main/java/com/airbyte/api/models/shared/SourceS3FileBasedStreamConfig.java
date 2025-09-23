@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceS3FileBasedStreamConfig {
 
+public class SourceS3FileBasedStreamConfig {
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
      */
@@ -107,7 +106,9 @@ public class SourceS3FileBasedStreamConfig {
     public SourceS3FileBasedStreamConfig(
             SourceS3Format format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(),
+            Optional.empty(), name, Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -176,9 +177,10 @@ public class SourceS3FileBasedStreamConfig {
         return (Optional<SourceS3ValidationPolicy>) validationPolicy;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
@@ -188,6 +190,7 @@ public class SourceS3FileBasedStreamConfig {
         this.daysToSyncIfHistoryIsFull = Optional.ofNullable(daysToSyncIfHistoryIsFull);
         return this;
     }
+
 
     /**
      * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
@@ -216,6 +219,7 @@ public class SourceS3FileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
      */
@@ -233,6 +237,7 @@ public class SourceS3FileBasedStreamConfig {
         this.inputSchema = Optional.ofNullable(inputSchema);
         return this;
     }
+
 
     /**
      * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
@@ -261,6 +266,7 @@ public class SourceS3FileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * The number of resent files which will be used to discover the schema for this stream.
      */
@@ -278,6 +284,7 @@ public class SourceS3FileBasedStreamConfig {
         this.schemaless = Optional.ofNullable(schemaless);
         return this;
     }
+
 
     /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
@@ -297,6 +304,7 @@ public class SourceS3FileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
      */
@@ -306,7 +314,6 @@ public class SourceS3FileBasedStreamConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -317,27 +324,22 @@ public class SourceS3FileBasedStreamConfig {
         }
         SourceS3FileBasedStreamConfig other = (SourceS3FileBasedStreamConfig) o;
         return 
-            Objects.deepEquals(this.daysToSyncIfHistoryIsFull, other.daysToSyncIfHistoryIsFull) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.globs, other.globs) &&
-            Objects.deepEquals(this.inputSchema, other.inputSchema) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.recentNFilesToReadForSchemaDiscovery, other.recentNFilesToReadForSchemaDiscovery) &&
-            Objects.deepEquals(this.schemaless, other.schemaless) &&
-            Objects.deepEquals(this.validationPolicy, other.validationPolicy);
+            Utils.enhancedDeepEquals(this.daysToSyncIfHistoryIsFull, other.daysToSyncIfHistoryIsFull) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.globs, other.globs) &&
+            Utils.enhancedDeepEquals(this.inputSchema, other.inputSchema) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.recentNFilesToReadForSchemaDiscovery, other.recentNFilesToReadForSchemaDiscovery) &&
+            Utils.enhancedDeepEquals(this.schemaless, other.schemaless) &&
+            Utils.enhancedDeepEquals(this.validationPolicy, other.validationPolicy);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            daysToSyncIfHistoryIsFull,
-            format,
-            globs,
-            inputSchema,
-            name,
-            recentNFilesToReadForSchemaDiscovery,
-            schemaless,
-            validationPolicy);
+        return Utils.enhancedHash(
+            daysToSyncIfHistoryIsFull, format, globs,
+            inputSchema, name, recentNFilesToReadForSchemaDiscovery,
+            schemaless, validationPolicy);
     }
     
     @Override
@@ -352,28 +354,30 @@ public class SourceS3FileBasedStreamConfig {
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> daysToSyncIfHistoryIsFull;
- 
+
         private SourceS3Format format;
- 
+
         private Optional<? extends List<String>> globs = Optional.empty();
- 
+
         private Optional<String> inputSchema = Optional.empty();
- 
+
         private String name;
- 
+
         private Optional<Long> recentNFilesToReadForSchemaDiscovery = Optional.empty();
- 
+
         private Optional<Boolean> schemaless;
- 
+
         private Optional<? extends SourceS3ValidationPolicy> validationPolicy;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
@@ -393,6 +397,7 @@ public class SourceS3FileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
          */
@@ -401,6 +406,7 @@ public class SourceS3FileBasedStreamConfig {
             this.format = format;
             return this;
         }
+
 
         /**
          * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
@@ -420,6 +426,7 @@ public class SourceS3FileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
          */
@@ -438,6 +445,7 @@ public class SourceS3FileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The name of the stream.
          */
@@ -446,6 +454,7 @@ public class SourceS3FileBasedStreamConfig {
             this.name = name;
             return this;
         }
+
 
         /**
          * The number of resent files which will be used to discover the schema for this stream.
@@ -465,6 +474,7 @@ public class SourceS3FileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * When enabled, syncs will not validate or structure records against the stream's schema.
          */
@@ -483,6 +493,7 @@ public class SourceS3FileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
          */
@@ -500,7 +511,7 @@ public class SourceS3FileBasedStreamConfig {
             this.validationPolicy = validationPolicy;
             return this;
         }
-        
+
         public SourceS3FileBasedStreamConfig build() {
             if (daysToSyncIfHistoryIsFull == null) {
                 daysToSyncIfHistoryIsFull = _SINGLETON_VALUE_DaysToSyncIfHistoryIsFull.value();
@@ -511,16 +522,13 @@ public class SourceS3FileBasedStreamConfig {
             if (validationPolicy == null) {
                 validationPolicy = _SINGLETON_VALUE_ValidationPolicy.value();
             }
+
             return new SourceS3FileBasedStreamConfig(
-                daysToSyncIfHistoryIsFull,
-                format,
-                globs,
-                inputSchema,
-                name,
-                recentNFilesToReadForSchemaDiscovery,
-                schemaless,
-                validationPolicy);
+                daysToSyncIfHistoryIsFull, format, globs,
+                inputSchema, name, recentNFilesToReadForSchemaDiscovery,
+                schemaless, validationPolicy);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_DaysToSyncIfHistoryIsFull =
                 new LazySingletonValue<>(

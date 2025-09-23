@@ -22,7 +22,7 @@ public enum SourceMicrosoftSharepointParsingStrategy {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointParsingStrategy(String value) {
+    SourceMicrosoftSharepointParsingStrategy(String value) {
         this.value = value;
     }
     

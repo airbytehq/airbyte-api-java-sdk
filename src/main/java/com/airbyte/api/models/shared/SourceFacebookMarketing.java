@@ -18,11 +18,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFacebookMarketing {
 
+public class SourceFacebookMarketing {
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
@@ -105,6 +104,7 @@ public class SourceFacebookMarketing {
     @JsonProperty("page_size")
     private Optional<Long> pageSize;
 
+
     @JsonProperty("sourceType")
     private SourceFacebookMarketingFacebookMarketing sourceType;
 
@@ -162,7 +162,11 @@ public class SourceFacebookMarketing {
     public SourceFacebookMarketing(
             List<String> accountIds,
             SourceFacebookMarketingAuthentication credentials) {
-        this(Optional.empty(), accountIds, Optional.empty(), Optional.empty(), Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), accountIds, Optional.empty(),
+            Optional.empty(), Optional.empty(), credentials,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -278,9 +282,10 @@ public class SourceFacebookMarketing {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
@@ -290,6 +295,7 @@ public class SourceFacebookMarketing {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
@@ -318,6 +324,7 @@ public class SourceFacebookMarketing {
         return this;
     }
 
+
     /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
@@ -336,6 +343,7 @@ public class SourceFacebookMarketing {
         return this;
     }
 
+
     /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
      */
@@ -353,6 +361,7 @@ public class SourceFacebookMarketing {
         this.campaignStatuses = Optional.ofNullable(campaignStatuses);
         return this;
     }
+
 
     /**
      * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
@@ -381,6 +390,7 @@ public class SourceFacebookMarketing {
         return this;
     }
 
+
     /**
      * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
      */
@@ -398,6 +408,7 @@ public class SourceFacebookMarketing {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
@@ -417,6 +428,7 @@ public class SourceFacebookMarketing {
         return this;
     }
 
+
     /**
      * Set to active if you want to fetch the thumbnail_url and store the result in thumbnail_data_url for each Ad Creative.
      */
@@ -434,6 +446,7 @@ public class SourceFacebookMarketing {
         this.insightsJobTimeout = Optional.ofNullable(insightsJobTimeout);
         return this;
     }
+
 
     /**
      * Insights Job Timeout establishes the maximum amount of time (in minutes) of waiting for the report job to complete. When timeout is reached the job is considered failed and we are trying to request smaller amount of data by breaking the job to few smaller ones. If you definitely know that 60 minutes is not enough for your report to be processed then you can decrease the timeout value, so we start breaking job to smaller parts faster.
@@ -453,6 +466,7 @@ public class SourceFacebookMarketing {
         return this;
     }
 
+
     /**
      * The attribution window. Facebook freezes insight data 28 days after it was generated, which means that all data from the past 28 days may have changed since we last emitted it, so you can retrieve refreshed insights from the past by setting this parameter. If you set a custom lookback window value in Facebook account, please provide the same value here.
      */
@@ -470,6 +484,7 @@ public class SourceFacebookMarketing {
         this.pageSize = Optional.ofNullable(pageSize);
         return this;
     }
+
 
     /**
      * Page size used when sending requests to Facebook API to specify number of records per page when response has pagination. Most users do not need to set this field unless they specifically need to tune the connector to address specific issues or use cases.
@@ -489,6 +504,7 @@ public class SourceFacebookMarketing {
         return this;
     }
 
+
     /**
      * The date from which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. If not set then all data will be replicated for usual streams and only last 2 years for insight streams.
      */
@@ -498,7 +514,6 @@ public class SourceFacebookMarketing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -509,39 +524,30 @@ public class SourceFacebookMarketing {
         }
         SourceFacebookMarketing other = (SourceFacebookMarketing) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.accountIds, other.accountIds) &&
-            Objects.deepEquals(this.adStatuses, other.adStatuses) &&
-            Objects.deepEquals(this.adsetStatuses, other.adsetStatuses) &&
-            Objects.deepEquals(this.campaignStatuses, other.campaignStatuses) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.customInsights, other.customInsights) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.fetchThumbnailImages, other.fetchThumbnailImages) &&
-            Objects.deepEquals(this.insightsJobTimeout, other.insightsJobTimeout) &&
-            Objects.deepEquals(this.insightsLookbackWindow, other.insightsLookbackWindow) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.accountIds, other.accountIds) &&
+            Utils.enhancedDeepEquals(this.adStatuses, other.adStatuses) &&
+            Utils.enhancedDeepEquals(this.adsetStatuses, other.adsetStatuses) &&
+            Utils.enhancedDeepEquals(this.campaignStatuses, other.campaignStatuses) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.customInsights, other.customInsights) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.fetchThumbnailImages, other.fetchThumbnailImages) &&
+            Utils.enhancedDeepEquals(this.insightsJobTimeout, other.insightsJobTimeout) &&
+            Utils.enhancedDeepEquals(this.insightsLookbackWindow, other.insightsLookbackWindow) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            accountIds,
-            adStatuses,
-            adsetStatuses,
-            campaignStatuses,
-            credentials,
-            customInsights,
-            endDate,
-            fetchThumbnailImages,
-            insightsJobTimeout,
-            insightsLookbackWindow,
-            pageSize,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, accountIds, adStatuses,
+            adsetStatuses, campaignStatuses, credentials,
+            customInsights, endDate, fetchThumbnailImages,
+            insightsJobTimeout, insightsLookbackWindow, pageSize,
+            sourceType, startDate);
     }
     
     @Override
@@ -562,38 +568,40 @@ public class SourceFacebookMarketing {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private List<String> accountIds;
- 
+
         private Optional<? extends List<ValidAdStatuses>> adStatuses = Optional.empty();
- 
+
         private Optional<? extends List<ValidAdSetStatuses>> adsetStatuses = Optional.empty();
- 
+
         private Optional<? extends List<ValidCampaignStatuses>> campaignStatuses = Optional.empty();
- 
+
         private SourceFacebookMarketingAuthentication credentials;
- 
+
         private Optional<? extends List<InsightConfig>> customInsights = Optional.empty();
- 
+
         private Optional<OffsetDateTime> endDate = Optional.empty();
- 
+
         private Optional<Boolean> fetchThumbnailImages;
- 
+
         private Optional<Long> insightsJobTimeout;
- 
+
         private Optional<Long> insightsLookbackWindow;
- 
+
         private Optional<Long> pageSize;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
@@ -613,6 +621,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * The Facebook Ad account ID(s) to pull data from. The Ad account ID number is in the account dropdown menu or in your browser's address bar of your &lt;a href="https://adsmanager.facebook.com/adsmanager/"&gt;Meta Ads Manager&lt;/a&gt;. See the &lt;a href="https://www.facebook.com/business/help/1492627900875762"&gt;docs&lt;/a&gt; for more information.
          */
@@ -621,6 +630,7 @@ public class SourceFacebookMarketing {
             this.accountIds = accountIds;
             return this;
         }
+
 
         /**
          * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
@@ -640,6 +650,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
          */
@@ -657,6 +668,7 @@ public class SourceFacebookMarketing {
             this.adsetStatuses = adsetStatuses;
             return this;
         }
+
 
         /**
          * Select the statuses you want to be loaded in the stream. If no specific statuses are selected, the API's default behavior applies, and some statuses may be filtered out.
@@ -676,6 +688,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * Credentials for connecting to the Facebook Marketing API
          */
@@ -684,6 +697,7 @@ public class SourceFacebookMarketing {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * A list which contains ad statistics entries, each entry must have a name and can contains fields, breakdowns or action_breakdowns. Click on "add" to fill this field.
@@ -703,6 +717,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * The date until which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
          */
@@ -720,6 +735,7 @@ public class SourceFacebookMarketing {
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * Set to active if you want to fetch the thumbnail_url and store the result in thumbnail_data_url for each Ad Creative.
@@ -739,6 +755,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * Insights Job Timeout establishes the maximum amount of time (in minutes) of waiting for the report job to complete. When timeout is reached the job is considered failed and we are trying to request smaller amount of data by breaking the job to few smaller ones. If you definitely know that 60 minutes is not enough for your report to be processed then you can decrease the timeout value, so we start breaking job to smaller parts faster.
          */
@@ -756,6 +773,7 @@ public class SourceFacebookMarketing {
             this.insightsJobTimeout = insightsJobTimeout;
             return this;
         }
+
 
         /**
          * The attribution window. Facebook freezes insight data 28 days after it was generated, which means that all data from the past 28 days may have changed since we last emitted it, so you can retrieve refreshed insights from the past by setting this parameter. If you set a custom lookback window value in Facebook account, please provide the same value here.
@@ -775,6 +793,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * Page size used when sending requests to Facebook API to specify number of records per page when response has pagination. Most users do not need to set this field unless they specifically need to tune the connector to address specific issues or use cases.
          */
@@ -793,6 +812,7 @@ public class SourceFacebookMarketing {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate data for all incremental streams, in the format YYYY-MM-DDT00:00:00Z. If not set then all data will be replicated for usual streams and only last 2 years for insight streams.
          */
@@ -810,7 +830,7 @@ public class SourceFacebookMarketing {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceFacebookMarketing build() {
             if (fetchThumbnailImages == null) {
                 fetchThumbnailImages = _SINGLETON_VALUE_FetchThumbnailImages.value();
@@ -824,21 +844,15 @@ public class SourceFacebookMarketing {
             if (pageSize == null) {
                 pageSize = _SINGLETON_VALUE_PageSize.value();
             }
+
             return new SourceFacebookMarketing(
-                accessToken,
-                accountIds,
-                adStatuses,
-                adsetStatuses,
-                campaignStatuses,
-                credentials,
-                customInsights,
-                endDate,
-                fetchThumbnailImages,
-                insightsJobTimeout,
-                insightsLookbackWindow,
-                pageSize,
+                accessToken, accountIds, adStatuses,
+                adsetStatuses, campaignStatuses, credentials,
+                customInsights, endDate, fetchThumbnailImages,
+                insightsJobTimeout, insightsLookbackWindow, pageSize,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_FetchThumbnailImages =
                 new LazySingletonValue<>(

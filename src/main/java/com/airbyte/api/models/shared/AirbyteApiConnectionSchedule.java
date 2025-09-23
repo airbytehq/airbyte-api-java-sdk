@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -24,6 +23,7 @@ public class AirbyteApiConnectionSchedule {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cronExpression")
     private Optional<String> cronExpression;
+
 
     @JsonProperty("scheduleType")
     private ScheduleTypeEnum scheduleType;
@@ -53,15 +53,17 @@ public class AirbyteApiConnectionSchedule {
         return scheduleType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AirbyteApiConnectionSchedule withCronExpression(String cronExpression) {
         Utils.checkNotNull(cronExpression, "cronExpression");
         this.cronExpression = Optional.ofNullable(cronExpression);
         return this;
     }
+
 
     public AirbyteApiConnectionSchedule withCronExpression(Optional<String> cronExpression) {
         Utils.checkNotNull(cronExpression, "cronExpression");
@@ -75,7 +77,6 @@ public class AirbyteApiConnectionSchedule {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,15 +87,14 @@ public class AirbyteApiConnectionSchedule {
         }
         AirbyteApiConnectionSchedule other = (AirbyteApiConnectionSchedule) o;
         return 
-            Objects.deepEquals(this.cronExpression, other.cronExpression) &&
-            Objects.deepEquals(this.scheduleType, other.scheduleType);
+            Utils.enhancedDeepEquals(this.cronExpression, other.cronExpression) &&
+            Utils.enhancedDeepEquals(this.scheduleType, other.scheduleType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cronExpression,
-            scheduleType);
+        return Utils.enhancedHash(
+            cronExpression, scheduleType);
     }
     
     @Override
@@ -103,16 +103,18 @@ public class AirbyteApiConnectionSchedule {
                 "cronExpression", cronExpression,
                 "scheduleType", scheduleType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> cronExpression = Optional.empty();
- 
+
         private ScheduleTypeEnum scheduleType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder cronExpression(String cronExpression) {
             Utils.checkNotNull(cronExpression, "cronExpression");
@@ -126,16 +128,18 @@ public class AirbyteApiConnectionSchedule {
             return this;
         }
 
+
         public Builder scheduleType(ScheduleTypeEnum scheduleType) {
             Utils.checkNotNull(scheduleType, "scheduleType");
             this.scheduleType = scheduleType;
             return this;
         }
-        
+
         public AirbyteApiConnectionSchedule build() {
+
             return new AirbyteApiConnectionSchedule(
-                cronExpression,
-                scheduleType);
+                cronExpression, scheduleType);
         }
+
     }
 }

@@ -12,21 +12,19 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
-import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationBigquery {
 
+public class DestinationBigquery {
     /**
-     * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the destination), or soft deletes (i.e. leave a tombstone record in the destination). Defaults to hard deletes.
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("big_query_client_buffer_size_mb")
-    private Optional<Long> bigQueryClientBufferSizeMb;
+    @JsonProperty("cdc_deletion_mode")
+    private Optional<? extends CDCDeletionMode> cdcDeletionMode;
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/bigquery#service-account-key"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
@@ -47,11 +45,12 @@ public class DestinationBigquery {
     @JsonProperty("dataset_location")
     private DatasetLocation datasetLocation;
 
+
     @JsonProperty("destinationType")
     private Bigquery destinationType;
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this connector.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("disable_type_dedupe")
@@ -71,31 +70,23 @@ public class DestinationBigquery {
     private String projectId;
 
     /**
-     * The dataset to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables will be stored in this dataset. Defaults to "airbyte_internal".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("raw_data_dataset")
     private Optional<String> rawDataDataset;
 
-    /**
-     * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("transformation_priority")
-    private Optional<? extends TransformationQueryRunType> transformationPriority;
-
     @JsonCreator
     public DestinationBigquery(
-            @JsonProperty("big_query_client_buffer_size_mb") Optional<Long> bigQueryClientBufferSizeMb,
+            @JsonProperty("cdc_deletion_mode") Optional<? extends CDCDeletionMode> cdcDeletionMode,
             @JsonProperty("credentials_json") Optional<String> credentialsJson,
             @JsonProperty("dataset_id") String datasetId,
             @JsonProperty("dataset_location") DatasetLocation datasetLocation,
             @JsonProperty("disable_type_dedupe") Optional<Boolean> disableTypeDedupe,
             @JsonProperty("loading_method") Optional<? extends LoadingMethod> loadingMethod,
             @JsonProperty("project_id") String projectId,
-            @JsonProperty("raw_data_dataset") Optional<String> rawDataDataset,
-            @JsonProperty("transformation_priority") Optional<? extends TransformationQueryRunType> transformationPriority) {
-        Utils.checkNotNull(bigQueryClientBufferSizeMb, "bigQueryClientBufferSizeMb");
+            @JsonProperty("raw_data_dataset") Optional<String> rawDataDataset) {
+        Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
         Utils.checkNotNull(credentialsJson, "credentialsJson");
         Utils.checkNotNull(datasetId, "datasetId");
         Utils.checkNotNull(datasetLocation, "datasetLocation");
@@ -103,8 +94,7 @@ public class DestinationBigquery {
         Utils.checkNotNull(loadingMethod, "loadingMethod");
         Utils.checkNotNull(projectId, "projectId");
         Utils.checkNotNull(rawDataDataset, "rawDataDataset");
-        Utils.checkNotNull(transformationPriority, "transformationPriority");
-        this.bigQueryClientBufferSizeMb = bigQueryClientBufferSizeMb;
+        this.cdcDeletionMode = cdcDeletionMode;
         this.credentialsJson = credentialsJson;
         this.datasetId = datasetId;
         this.datasetLocation = datasetLocation;
@@ -113,22 +103,24 @@ public class DestinationBigquery {
         this.loadingMethod = loadingMethod;
         this.projectId = projectId;
         this.rawDataDataset = rawDataDataset;
-        this.transformationPriority = transformationPriority;
     }
     
     public DestinationBigquery(
             String datasetId,
             DatasetLocation datasetLocation,
             String projectId) {
-        this(Optional.empty(), Optional.empty(), datasetId, datasetLocation, Optional.empty(), Optional.empty(), projectId, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), datasetId,
+            datasetLocation, Optional.empty(), Optional.empty(),
+            projectId, Optional.empty());
     }
 
     /**
-     * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the destination), or soft deletes (i.e. leave a tombstone record in the destination). Defaults to hard deletes.
      */
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<Long> bigQueryClientBufferSizeMb() {
-        return bigQueryClientBufferSizeMb;
+    public Optional<CDCDeletionMode> cdcDeletionMode() {
+        return (Optional<CDCDeletionMode>) cdcDeletionMode;
     }
 
     /**
@@ -161,7 +153,7 @@ public class DestinationBigquery {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this connector.
      */
     @JsonIgnore
     public Optional<Boolean> disableTypeDedupe() {
@@ -186,41 +178,34 @@ public class DestinationBigquery {
     }
 
     /**
-     * The dataset to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables will be stored in this dataset. Defaults to "airbyte_internal".
      */
     @JsonIgnore
     public Optional<String> rawDataDataset() {
         return rawDataDataset;
     }
 
-    /**
-     * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<TransformationQueryRunType> transformationPriority() {
-        return (Optional<TransformationQueryRunType>) transformationPriority;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public final static Builder builder() {
-        return new Builder();
-    }    
 
     /**
-     * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the destination), or soft deletes (i.e. leave a tombstone record in the destination). Defaults to hard deletes.
      */
-    public DestinationBigquery withBigQueryClientBufferSizeMb(long bigQueryClientBufferSizeMb) {
-        Utils.checkNotNull(bigQueryClientBufferSizeMb, "bigQueryClientBufferSizeMb");
-        this.bigQueryClientBufferSizeMb = Optional.ofNullable(bigQueryClientBufferSizeMb);
+    public DestinationBigquery withCdcDeletionMode(CDCDeletionMode cdcDeletionMode) {
+        Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+        this.cdcDeletionMode = Optional.ofNullable(cdcDeletionMode);
         return this;
     }
 
+
     /**
-     * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
+     * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the destination), or soft deletes (i.e. leave a tombstone record in the destination). Defaults to hard deletes.
      */
-    public DestinationBigquery withBigQueryClientBufferSizeMb(Optional<Long> bigQueryClientBufferSizeMb) {
-        Utils.checkNotNull(bigQueryClientBufferSizeMb, "bigQueryClientBufferSizeMb");
-        this.bigQueryClientBufferSizeMb = bigQueryClientBufferSizeMb;
+    public DestinationBigquery withCdcDeletionMode(Optional<? extends CDCDeletionMode> cdcDeletionMode) {
+        Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+        this.cdcDeletionMode = cdcDeletionMode;
         return this;
     }
 
@@ -232,6 +217,7 @@ public class DestinationBigquery {
         this.credentialsJson = Optional.ofNullable(credentialsJson);
         return this;
     }
+
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/bigquery#service-account-key"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
@@ -261,7 +247,7 @@ public class DestinationBigquery {
     }
 
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this connector.
      */
     public DestinationBigquery withDisableTypeDedupe(boolean disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -269,8 +255,9 @@ public class DestinationBigquery {
         return this;
     }
 
+
     /**
-     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this connector.
      */
     public DestinationBigquery withDisableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
         Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -286,6 +273,7 @@ public class DestinationBigquery {
         this.loadingMethod = Optional.ofNullable(loadingMethod);
         return this;
     }
+
 
     /**
      * The way data will be uploaded to BigQuery.
@@ -306,7 +294,7 @@ public class DestinationBigquery {
     }
 
     /**
-     * The dataset to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables will be stored in this dataset. Defaults to "airbyte_internal".
      */
     public DestinationBigquery withRawDataDataset(String rawDataDataset) {
         Utils.checkNotNull(rawDataDataset, "rawDataDataset");
@@ -314,8 +302,9 @@ public class DestinationBigquery {
         return this;
     }
 
+
     /**
-     * The dataset to write raw tables into (default: airbyte_internal)
+     * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables will be stored in this dataset. Defaults to "airbyte_internal".
      */
     public DestinationBigquery withRawDataDataset(Optional<String> rawDataDataset) {
         Utils.checkNotNull(rawDataDataset, "rawDataDataset");
@@ -323,25 +312,6 @@ public class DestinationBigquery {
         return this;
     }
 
-    /**
-     * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
-     */
-    public DestinationBigquery withTransformationPriority(TransformationQueryRunType transformationPriority) {
-        Utils.checkNotNull(transformationPriority, "transformationPriority");
-        this.transformationPriority = Optional.ofNullable(transformationPriority);
-        return this;
-    }
-
-    /**
-     * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
-     */
-    public DestinationBigquery withTransformationPriority(Optional<? extends TransformationQueryRunType> transformationPriority) {
-        Utils.checkNotNull(transformationPriority, "transformationPriority");
-        this.transformationPriority = transformationPriority;
-        return this;
-    }
-
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -352,37 +322,29 @@ public class DestinationBigquery {
         }
         DestinationBigquery other = (DestinationBigquery) o;
         return 
-            Objects.deepEquals(this.bigQueryClientBufferSizeMb, other.bigQueryClientBufferSizeMb) &&
-            Objects.deepEquals(this.credentialsJson, other.credentialsJson) &&
-            Objects.deepEquals(this.datasetId, other.datasetId) &&
-            Objects.deepEquals(this.datasetLocation, other.datasetLocation) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            Objects.deepEquals(this.loadingMethod, other.loadingMethod) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.rawDataDataset, other.rawDataDataset) &&
-            Objects.deepEquals(this.transformationPriority, other.transformationPriority);
+            Utils.enhancedDeepEquals(this.cdcDeletionMode, other.cdcDeletionMode) &&
+            Utils.enhancedDeepEquals(this.credentialsJson, other.credentialsJson) &&
+            Utils.enhancedDeepEquals(this.datasetId, other.datasetId) &&
+            Utils.enhancedDeepEquals(this.datasetLocation, other.datasetLocation) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.loadingMethod, other.loadingMethod) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.rawDataDataset, other.rawDataDataset);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bigQueryClientBufferSizeMb,
-            credentialsJson,
-            datasetId,
-            datasetLocation,
-            destinationType,
-            disableTypeDedupe,
-            loadingMethod,
-            projectId,
-            rawDataDataset,
-            transformationPriority);
+        return Utils.enhancedHash(
+            cdcDeletionMode, credentialsJson, datasetId,
+            datasetLocation, destinationType, disableTypeDedupe,
+            loadingMethod, projectId, rawDataDataset);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DestinationBigquery.class,
-                "bigQueryClientBufferSizeMb", bigQueryClientBufferSizeMb,
+                "cdcDeletionMode", cdcDeletionMode,
                 "credentialsJson", credentialsJson,
                 "datasetId", datasetId,
                 "datasetLocation", datasetLocation,
@@ -390,51 +352,51 @@ public class DestinationBigquery {
                 "disableTypeDedupe", disableTypeDedupe,
                 "loadingMethod", loadingMethod,
                 "projectId", projectId,
-                "rawDataDataset", rawDataDataset,
-                "transformationPriority", transformationPriority);
+                "rawDataDataset", rawDataDataset);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
-        private Optional<Long> bigQueryClientBufferSizeMb;
- 
+
+        private Optional<? extends CDCDeletionMode> cdcDeletionMode;
+
         private Optional<String> credentialsJson = Optional.empty();
- 
+
         private String datasetId;
- 
+
         private DatasetLocation datasetLocation;
- 
+
         private Optional<Boolean> disableTypeDedupe;
- 
+
         private Optional<? extends LoadingMethod> loadingMethod = Optional.empty();
- 
+
         private String projectId;
- 
+
         private Optional<String> rawDataDataset = Optional.empty();
- 
-        private Optional<? extends TransformationQueryRunType> transformationPriority;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
+         * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the destination), or soft deletes (i.e. leave a tombstone record in the destination). Defaults to hard deletes.
          */
-        public Builder bigQueryClientBufferSizeMb(long bigQueryClientBufferSizeMb) {
-            Utils.checkNotNull(bigQueryClientBufferSizeMb, "bigQueryClientBufferSizeMb");
-            this.bigQueryClientBufferSizeMb = Optional.ofNullable(bigQueryClientBufferSizeMb);
+        public Builder cdcDeletionMode(CDCDeletionMode cdcDeletionMode) {
+            Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+            this.cdcDeletionMode = Optional.ofNullable(cdcDeletionMode);
             return this;
         }
 
         /**
-         * Google BigQuery client's chunk (buffer) size (MIN=1, MAX = 15) for each table. The size that will be written by a single RPC. Written data will be buffered and only flushed upon reaching this size or closing the channel. The default 15MB value is used if not set explicitly. Read more &lt;a href="https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html"&gt;here&lt;/a&gt;.
+         * Whether to execute CDC deletions as hard deletes (i.e. propagate source deletions to the destination), or soft deletes (i.e. leave a tombstone record in the destination). Defaults to hard deletes.
          */
-        public Builder bigQueryClientBufferSizeMb(Optional<Long> bigQueryClientBufferSizeMb) {
-            Utils.checkNotNull(bigQueryClientBufferSizeMb, "bigQueryClientBufferSizeMb");
-            this.bigQueryClientBufferSizeMb = bigQueryClientBufferSizeMb;
+        public Builder cdcDeletionMode(Optional<? extends CDCDeletionMode> cdcDeletionMode) {
+            Utils.checkNotNull(cdcDeletionMode, "cdcDeletionMode");
+            this.cdcDeletionMode = cdcDeletionMode;
             return this;
         }
+
 
         /**
          * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/bigquery#service-account-key"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
@@ -454,6 +416,7 @@ public class DestinationBigquery {
             return this;
         }
 
+
         /**
          * The default BigQuery Dataset ID that tables are replicated to if the source does not specify a namespace. Read more &lt;a href="https://cloud.google.com/bigquery/docs/datasets#create-dataset"&gt;here&lt;/a&gt;.
          */
@@ -462,6 +425,7 @@ public class DestinationBigquery {
             this.datasetId = datasetId;
             return this;
         }
+
 
         /**
          * The location of the dataset. Warning: Changes made after creation will not be applied. Read more &lt;a href="https://cloud.google.com/bigquery/docs/locations"&gt;here&lt;/a&gt;.
@@ -472,8 +436,9 @@ public class DestinationBigquery {
             return this;
         }
 
+
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this connector.
          */
         public Builder disableTypeDedupe(boolean disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
@@ -482,13 +447,14 @@ public class DestinationBigquery {
         }
 
         /**
-         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         * Write the legacy "raw tables" format, to enable backwards compatibility with older versions of this connector.
          */
         public Builder disableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
             Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
             this.disableTypeDedupe = disableTypeDedupe;
             return this;
         }
+
 
         /**
          * The way data will be uploaded to BigQuery.
@@ -508,6 +474,7 @@ public class DestinationBigquery {
             return this;
         }
 
+
         /**
          * The GCP project ID for the project containing the target BigQuery dataset. Read more &lt;a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects"&gt;here&lt;/a&gt;.
          */
@@ -517,8 +484,9 @@ public class DestinationBigquery {
             return this;
         }
 
+
         /**
-         * The dataset to write raw tables into (default: airbyte_internal)
+         * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables will be stored in this dataset. Defaults to "airbyte_internal".
          */
         public Builder rawDataDataset(String rawDataDataset) {
             Utils.checkNotNull(rawDataDataset, "rawDataDataset");
@@ -527,7 +495,7 @@ public class DestinationBigquery {
         }
 
         /**
-         * The dataset to write raw tables into (default: airbyte_internal)
+         * Airbyte will use this dataset for various internal tables. In legacy raw tables mode, the raw tables will be stored in this dataset. Defaults to "airbyte_internal".
          */
         public Builder rawDataDataset(Optional<String> rawDataDataset) {
             Utils.checkNotNull(rawDataDataset, "rawDataDataset");
@@ -535,51 +503,26 @@ public class DestinationBigquery {
             return this;
         }
 
-        /**
-         * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
-         */
-        public Builder transformationPriority(TransformationQueryRunType transformationPriority) {
-            Utils.checkNotNull(transformationPriority, "transformationPriority");
-            this.transformationPriority = Optional.ofNullable(transformationPriority);
-            return this;
-        }
-
-        /**
-         * Interactive run type means that the query is executed as soon as possible, and these queries count towards concurrent rate limit and daily limit. Read more about interactive run type &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#queries"&gt;here&lt;/a&gt;. Batch queries are queued and started as soon as idle resources are available in the BigQuery shared resource pool, which usually occurs within a few minutes. Batch queries don’t count towards your concurrent rate limit. Read more about batch queries &lt;a href="https://cloud.google.com/bigquery/docs/running-queries#batch"&gt;here&lt;/a&gt;. The default "interactive" value is used if not set explicitly.
-         */
-        public Builder transformationPriority(Optional<? extends TransformationQueryRunType> transformationPriority) {
-            Utils.checkNotNull(transformationPriority, "transformationPriority");
-            this.transformationPriority = transformationPriority;
-            return this;
-        }
-        
         public DestinationBigquery build() {
-            if (bigQueryClientBufferSizeMb == null) {
-                bigQueryClientBufferSizeMb = _SINGLETON_VALUE_BigQueryClientBufferSizeMb.value();
+            if (cdcDeletionMode == null) {
+                cdcDeletionMode = _SINGLETON_VALUE_CdcDeletionMode.value();
             }
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
             }
-            if (transformationPriority == null) {
-                transformationPriority = _SINGLETON_VALUE_TransformationPriority.value();
-            }
+
             return new DestinationBigquery(
-                bigQueryClientBufferSizeMb,
-                credentialsJson,
-                datasetId,
-                datasetLocation,
-                disableTypeDedupe,
-                loadingMethod,
-                projectId,
-                rawDataDataset,
-                transformationPriority);
+                cdcDeletionMode, credentialsJson, datasetId,
+                datasetLocation, disableTypeDedupe, loadingMethod,
+                projectId, rawDataDataset);
         }
 
-        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BigQueryClientBufferSizeMb =
+
+        private static final LazySingletonValue<Optional<? extends CDCDeletionMode>> _SINGLETON_VALUE_CdcDeletionMode =
                 new LazySingletonValue<>(
-                        "big_query_client_buffer_size_mb",
-                        "15",
-                        new TypeReference<Optional<Long>>() {});
+                        "cdc_deletion_mode",
+                        "\"Hard delete\"",
+                        new TypeReference<Optional<? extends CDCDeletionMode>>() {});
 
         private static final LazySingletonValue<Bigquery> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
@@ -592,11 +535,5 @@ public class DestinationBigquery {
                         "disable_type_dedupe",
                         "false",
                         new TypeReference<Optional<Boolean>>() {});
-
-        private static final LazySingletonValue<Optional<? extends TransformationQueryRunType>> _SINGLETON_VALUE_TransformationPriority =
-                new LazySingletonValue<>(
-                        "transformation_priority",
-                        "\"interactive\"",
-                        new TypeReference<Optional<? extends TransformationQueryRunType>>() {});
     }
 }

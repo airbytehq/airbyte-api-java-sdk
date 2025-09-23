@@ -14,26 +14,29 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGorgias {
 
+public class SourceGorgias {
     /**
      * Domain name given for gorgias, found as your url prefix for accessing your website
      */
     @JsonProperty("domain_name")
     private String domainName;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Gorgias sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -59,7 +62,8 @@ public class SourceGorgias {
             String domainName,
             OffsetDateTime startDate,
             String username) {
-        this(domainName, Optional.empty(), startDate, username);
+        this(domainName, Optional.empty(), startDate,
+            username);
     }
 
     /**
@@ -90,9 +94,10 @@ public class SourceGorgias {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Domain name given for gorgias, found as your url prefix for accessing your website
@@ -108,6 +113,7 @@ public class SourceGorgias {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceGorgias withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -127,7 +133,6 @@ public class SourceGorgias {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,21 +143,18 @@ public class SourceGorgias {
         }
         SourceGorgias other = (SourceGorgias) o;
         return 
-            Objects.deepEquals(this.domainName, other.domainName) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.domainName, other.domainName) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            domainName,
-            password,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            domainName, password, sourceType,
+            startDate, username);
     }
     
     @Override
@@ -164,20 +166,22 @@ public class SourceGorgias {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String domainName;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Domain name given for gorgias, found as your url prefix for accessing your website
@@ -187,6 +191,7 @@ public class SourceGorgias {
             this.domainName = domainName;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -200,25 +205,27 @@ public class SourceGorgias {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceGorgias build() {
+
             return new SourceGorgias(
-                domainName,
-                password,
-                startDate,
+                domainName, password, startDate,
                 username);
         }
+
 
         private static final LazySingletonValue<Gorgias> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

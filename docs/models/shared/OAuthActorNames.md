@@ -13,6 +13,7 @@
 | `BING_ADS`                  | bing-ads                    |
 | `DRIFT`                     | drift                       |
 | `FACEBOOK_MARKETING`        | facebook-marketing          |
+| `FACEBOOK_PAGES`            | facebook-pages              |
 | `GCS`                       | gcs                         |
 | `GITHUB`                    | github                      |
 | `GITLAB`                    | gitlab                      |
@@ -23,6 +24,7 @@
 | `GOOGLE_SHEETS`             | google-sheets               |
 | `HUBSPOT`                   | hubspot                     |
 | `INSTAGRAM`                 | instagram                   |
+| `INTERCOM`                  | intercom                    |
 | `LEVER_HIRING`              | lever-hiring                |
 | `LINKEDIN_ADS`              | linkedin-ads                |
 | `MAILCHIMP`                 | mailchimp                   |
@@ -34,10 +36,10 @@
 | `PINTEREST`                 | pinterest                   |
 | `RD_STATION_MARKETING`      | rd-station-marketing        |
 | `SALESFORCE`                | salesforce                  |
+| `SHAREPOINT_ENTERPRISE`     | sharepoint-enterprise       |
 | `SLACK`                     | slack                       |
 | `SMARTSHEETS`               | smartsheets                 |
 | `SNAPCHAT_MARKETING`        | snapchat-marketing          |
-| `SNOWFLAKE`                 | snowflake                   |
 | `SURVEYMONKEY`              | surveymonkey                |
 | `TIKTOK_MARKETING`          | tiktok-marketing            |
 | `TRELLO`                    | trello                      |

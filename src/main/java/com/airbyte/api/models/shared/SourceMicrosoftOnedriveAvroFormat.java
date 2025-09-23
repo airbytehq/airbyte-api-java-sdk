@@ -15,17 +15,17 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMicrosoftOnedriveAvroFormat {
 
+public class SourceMicrosoftOnedriveAvroFormat {
     /**
      * Whether to convert double fields to strings. This is recommended if you have decimal numbers with a high degree of precision because there can be a loss precision when handling floating point numbers.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("double_as_string")
     private Optional<Boolean> doubleAsString;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filetype")
@@ -57,9 +57,10 @@ public class SourceMicrosoftOnedriveAvroFormat {
         return (Optional<SourceMicrosoftOnedriveFiletype>) filetype;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether to convert double fields to strings. This is recommended if you have decimal numbers with a high degree of precision because there can be a loss precision when handling floating point numbers.
@@ -70,6 +71,7 @@ public class SourceMicrosoftOnedriveAvroFormat {
         return this;
     }
 
+
     /**
      * Whether to convert double fields to strings. This is recommended if you have decimal numbers with a high degree of precision because there can be a loss precision when handling floating point numbers.
      */
@@ -79,7 +81,6 @@ public class SourceMicrosoftOnedriveAvroFormat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,15 +91,14 @@ public class SourceMicrosoftOnedriveAvroFormat {
         }
         SourceMicrosoftOnedriveAvroFormat other = (SourceMicrosoftOnedriveAvroFormat) o;
         return 
-            Objects.deepEquals(this.doubleAsString, other.doubleAsString) &&
-            Objects.deepEquals(this.filetype, other.filetype);
+            Utils.enhancedDeepEquals(this.doubleAsString, other.doubleAsString) &&
+            Utils.enhancedDeepEquals(this.filetype, other.filetype);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            doubleAsString,
-            filetype);
+        return Utils.enhancedHash(
+            doubleAsString, filetype);
     }
     
     @Override
@@ -107,14 +107,16 @@ public class SourceMicrosoftOnedriveAvroFormat {
                 "doubleAsString", doubleAsString,
                 "filetype", filetype);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> doubleAsString;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether to convert double fields to strings. This is recommended if you have decimal numbers with a high degree of precision because there can be a loss precision when handling floating point numbers.
@@ -133,14 +135,16 @@ public class SourceMicrosoftOnedriveAvroFormat {
             this.doubleAsString = doubleAsString;
             return this;
         }
-        
+
         public SourceMicrosoftOnedriveAvroFormat build() {
             if (doubleAsString == null) {
                 doubleAsString = _SINGLETON_VALUE_DoubleAsString.value();
             }
+
             return new SourceMicrosoftOnedriveAvroFormat(
                 doubleAsString);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DoubleAsString =
                 new LazySingletonValue<>(

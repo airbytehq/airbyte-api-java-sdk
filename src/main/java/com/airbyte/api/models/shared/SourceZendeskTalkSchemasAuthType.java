@@ -14,7 +14,7 @@ public enum SourceZendeskTalkSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceZendeskTalkSchemasAuthType(String value) {
+    SourceZendeskTalkSchemasAuthType(String value) {
         this.value = value;
     }
     

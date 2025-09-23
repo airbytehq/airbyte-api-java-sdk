@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ServiceAccountKeyAuthentication {
 
@@ -51,9 +51,10 @@ public class ServiceAccountKeyAuthentication {
         return serviceAccountInfo;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter your service account key in JSON format. See the &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#service-account'&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -64,7 +65,6 @@ public class ServiceAccountKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class ServiceAccountKeyAuthentication {
         }
         ServiceAccountKeyAuthentication other = (ServiceAccountKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            serviceAccountInfo);
+        return Utils.enhancedHash(
+            authType, serviceAccountInfo);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class ServiceAccountKeyAuthentication {
                 "authType", authType,
                 "serviceAccountInfo", serviceAccountInfo);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String serviceAccountInfo;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter your service account key in JSON format. See the &lt;a href='https://docs.airbyte.com/integrations/destinations/google-sheets#service-account'&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -109,11 +110,13 @@ public class ServiceAccountKeyAuthentication {
             this.serviceAccountInfo = serviceAccountInfo;
             return this;
         }
-        
+
         public ServiceAccountKeyAuthentication build() {
+
             return new ServiceAccountKeyAuthentication(
                 serviceAccountInfo);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGoogleSheetsSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

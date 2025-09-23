@@ -14,7 +14,7 @@ public enum Timeplus {
     @JsonValue
     private final String value;
 
-    private Timeplus(String value) {
+    Timeplus(String value) {
         this.value = value;
     }
     

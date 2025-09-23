@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class S3AmazonWebServices {
 
+public class S3AmazonWebServices {
     /**
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
@@ -31,6 +30,7 @@ public class S3AmazonWebServices {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("aws_secret_access_key")
     private Optional<String> awsSecretAccessKey;
+
 
     @JsonProperty("storage")
     private SourceFileSchemasStorage storage;
@@ -71,9 +71,10 @@ public class S3AmazonWebServices {
         return storage;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
@@ -83,6 +84,7 @@ public class S3AmazonWebServices {
         this.awsAccessKeyId = Optional.ofNullable(awsAccessKeyId);
         return this;
     }
+
 
     /**
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
@@ -102,6 +104,7 @@ public class S3AmazonWebServices {
         return this;
     }
 
+
     /**
      * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
      */
@@ -111,7 +114,6 @@ public class S3AmazonWebServices {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +124,15 @@ public class S3AmazonWebServices {
         }
         S3AmazonWebServices other = (S3AmazonWebServices) o;
         return 
-            Objects.deepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
-            Objects.deepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
-            Objects.deepEquals(this.storage, other.storage);
+            Utils.enhancedDeepEquals(this.awsAccessKeyId, other.awsAccessKeyId) &&
+            Utils.enhancedDeepEquals(this.awsSecretAccessKey, other.awsSecretAccessKey) &&
+            Utils.enhancedDeepEquals(this.storage, other.storage);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsAccessKeyId,
-            awsSecretAccessKey,
-            storage);
+        return Utils.enhancedHash(
+            awsAccessKeyId, awsSecretAccessKey, storage);
     }
     
     @Override
@@ -142,16 +142,18 @@ public class S3AmazonWebServices {
                 "awsSecretAccessKey", awsSecretAccessKey,
                 "storage", storage);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> awsAccessKeyId = Optional.empty();
- 
+
         private Optional<String> awsSecretAccessKey = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
@@ -171,6 +173,7 @@ public class S3AmazonWebServices {
             return this;
         }
 
+
         /**
          * In order to access private Buckets stored on AWS S3, this connector would need credentials with the proper permissions. If accessing publicly available data, this field is not necessary.
          */
@@ -188,12 +191,13 @@ public class S3AmazonWebServices {
             this.awsSecretAccessKey = awsSecretAccessKey;
             return this;
         }
-        
+
         public S3AmazonWebServices build() {
+
             return new S3AmazonWebServices(
-                awsAccessKeyId,
-                awsSecretAccessKey);
+                awsAccessKeyId, awsSecretAccessKey);
         }
+
 
         private static final LazySingletonValue<SourceFileSchemasStorage> _SINGLETON_VALUE_Storage =
                 new LazySingletonValue<>(

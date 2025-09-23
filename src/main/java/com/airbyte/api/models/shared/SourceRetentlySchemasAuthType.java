@@ -14,7 +14,7 @@ public enum SourceRetentlySchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceRetentlySchemasAuthType(String value) {
+    SourceRetentlySchemasAuthType(String value) {
         this.value = value;
     }
     

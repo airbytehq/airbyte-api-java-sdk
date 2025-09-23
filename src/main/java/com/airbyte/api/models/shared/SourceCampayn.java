@@ -11,18 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCampayn {
-
     /**
      * API key to use. Find it in your Campayn account settings. Keep it secure as it grants access to your Campayn data.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Campayn sourceType;
+
 
     @JsonProperty("sub_domain")
     private String subDomain;
@@ -56,9 +57,10 @@ public class SourceCampayn {
         return subDomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use. Find it in your Campayn account settings. Keep it secure as it grants access to your Campayn data.
@@ -75,7 +77,6 @@ public class SourceCampayn {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceCampayn {
         }
         SourceCampayn other = (SourceCampayn) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.subDomain, other.subDomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.subDomain, other.subDomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            subDomain);
+        return Utils.enhancedHash(
+            apiKey, sourceType, subDomain);
     }
     
     @Override
@@ -106,16 +105,18 @@ public class SourceCampayn {
                 "sourceType", sourceType,
                 "subDomain", subDomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String subDomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use. Find it in your Campayn account settings. Keep it secure as it grants access to your Campayn data.
@@ -126,17 +127,19 @@ public class SourceCampayn {
             return this;
         }
 
+
         public Builder subDomain(String subDomain) {
             Utils.checkNotNull(subDomain, "subDomain");
             this.subDomain = subDomain;
             return this;
         }
-        
+
         public SourceCampayn build() {
+
             return new SourceCampayn(
-                apiKey,
-                subDomain);
+                apiKey, subDomain);
         }
+
 
         private static final LazySingletonValue<Campayn> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

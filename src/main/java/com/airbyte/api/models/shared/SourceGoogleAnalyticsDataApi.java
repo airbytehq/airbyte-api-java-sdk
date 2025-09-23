@@ -18,11 +18,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleAnalyticsDataApi {
 
+public class SourceGoogleAnalyticsDataApi {
     /**
      * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
      */
@@ -78,6 +77,7 @@ public class SourceGoogleAnalyticsDataApi {
     @JsonProperty("property_ids")
     private List<String> propertyIds;
 
+
     @JsonProperty("sourceType")
     private SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi sourceType;
 
@@ -122,7 +122,9 @@ public class SourceGoogleAnalyticsDataApi {
     
     public SourceGoogleAnalyticsDataApi(
             List<String> propertyIds) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), propertyIds, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), propertyIds, Optional.empty());
     }
 
     /**
@@ -204,9 +206,10 @@ public class SourceGoogleAnalyticsDataApi {
         return windowInDays;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
@@ -216,6 +219,7 @@ public class SourceGoogleAnalyticsDataApi {
         this.convertConversionsEvent = Optional.ofNullable(convertConversionsEvent);
         return this;
     }
+
 
     /**
      * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
@@ -235,6 +239,7 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
      * Credentials for the service
      */
@@ -252,6 +257,7 @@ public class SourceGoogleAnalyticsDataApi {
         this.customReportsArray = Optional.ofNullable(customReportsArray);
         return this;
     }
+
 
     /**
      * You can add your Custom Analytics report by creating one.
@@ -271,6 +277,7 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
      * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
      */
@@ -288,6 +295,7 @@ public class SourceGoogleAnalyticsDataApi {
         this.dateRangesStartDate = Optional.ofNullable(dateRangesStartDate);
         return this;
     }
+
 
     /**
      * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
@@ -307,6 +315,7 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
      * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
      */
@@ -324,6 +333,7 @@ public class SourceGoogleAnalyticsDataApi {
         this.lookbackWindow = Optional.ofNullable(lookbackWindow);
         return this;
     }
+
 
     /**
      * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
@@ -352,6 +362,7 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
      * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
      */
@@ -361,7 +372,6 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -372,30 +382,24 @@ public class SourceGoogleAnalyticsDataApi {
         }
         SourceGoogleAnalyticsDataApi other = (SourceGoogleAnalyticsDataApi) o;
         return 
-            Objects.deepEquals(this.convertConversionsEvent, other.convertConversionsEvent) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.customReportsArray, other.customReportsArray) &&
-            Objects.deepEquals(this.dateRangesEndDate, other.dateRangesEndDate) &&
-            Objects.deepEquals(this.dateRangesStartDate, other.dateRangesStartDate) &&
-            Objects.deepEquals(this.keepEmptyRows, other.keepEmptyRows) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.propertyIds, other.propertyIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.windowInDays, other.windowInDays);
+            Utils.enhancedDeepEquals(this.convertConversionsEvent, other.convertConversionsEvent) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.customReportsArray, other.customReportsArray) &&
+            Utils.enhancedDeepEquals(this.dateRangesEndDate, other.dateRangesEndDate) &&
+            Utils.enhancedDeepEquals(this.dateRangesStartDate, other.dateRangesStartDate) &&
+            Utils.enhancedDeepEquals(this.keepEmptyRows, other.keepEmptyRows) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.propertyIds, other.propertyIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.windowInDays, other.windowInDays);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            convertConversionsEvent,
-            credentials,
-            customReportsArray,
-            dateRangesEndDate,
-            dateRangesStartDate,
-            keepEmptyRows,
-            lookbackWindow,
-            propertyIds,
-            sourceType,
+        return Utils.enhancedHash(
+            convertConversionsEvent, credentials, customReportsArray,
+            dateRangesEndDate, dateRangesStartDate, keepEmptyRows,
+            lookbackWindow, propertyIds, sourceType,
             windowInDays);
     }
     
@@ -413,30 +417,32 @@ public class SourceGoogleAnalyticsDataApi {
                 "sourceType", sourceType,
                 "windowInDays", windowInDays);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> convertConversionsEvent;
- 
+
         private Optional<? extends SourceGoogleAnalyticsDataApiCredentials> credentials = Optional.empty();
- 
+
         private Optional<? extends List<SourceGoogleAnalyticsDataApiCustomReportConfig>> customReportsArray = Optional.empty();
- 
+
         private Optional<LocalDate> dateRangesEndDate = Optional.empty();
- 
+
         private Optional<LocalDate> dateRangesStartDate = Optional.empty();
- 
+
         private Optional<Boolean> keepEmptyRows;
- 
+
         private Optional<Long> lookbackWindow;
- 
+
         private List<String> propertyIds;
- 
+
         private Optional<Long> windowInDays;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
@@ -456,6 +462,7 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
          * Credentials for the service
          */
@@ -473,6 +480,7 @@ public class SourceGoogleAnalyticsDataApi {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * You can add your Custom Analytics report by creating one.
@@ -492,6 +500,7 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
          * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
          */
@@ -509,6 +518,7 @@ public class SourceGoogleAnalyticsDataApi {
             this.dateRangesEndDate = dateRangesEndDate;
             return this;
         }
+
 
         /**
          * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
@@ -528,6 +538,7 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
          * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
          */
@@ -545,6 +556,7 @@ public class SourceGoogleAnalyticsDataApi {
             this.keepEmptyRows = keepEmptyRows;
             return this;
         }
+
 
         /**
          * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
@@ -564,6 +576,7 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
          * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
          */
@@ -572,6 +585,7 @@ public class SourceGoogleAnalyticsDataApi {
             this.propertyIds = propertyIds;
             return this;
         }
+
 
         /**
          * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
@@ -590,7 +604,7 @@ public class SourceGoogleAnalyticsDataApi {
             this.windowInDays = windowInDays;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApi build() {
             if (convertConversionsEvent == null) {
                 convertConversionsEvent = _SINGLETON_VALUE_ConvertConversionsEvent.value();
@@ -604,17 +618,13 @@ public class SourceGoogleAnalyticsDataApi {
             if (windowInDays == null) {
                 windowInDays = _SINGLETON_VALUE_WindowInDays.value();
             }
+
             return new SourceGoogleAnalyticsDataApi(
-                convertConversionsEvent,
-                credentials,
-                customReportsArray,
-                dateRangesEndDate,
-                dateRangesStartDate,
-                keepEmptyRows,
-                lookbackWindow,
-                propertyIds,
-                windowInDays);
+                convertConversionsEvent, credentials, customReportsArray,
+                dateRangesEndDate, dateRangesStartDate, keepEmptyRows,
+                lookbackWindow, propertyIds, windowInDays);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_ConvertConversionsEvent =
                 new LazySingletonValue<>(

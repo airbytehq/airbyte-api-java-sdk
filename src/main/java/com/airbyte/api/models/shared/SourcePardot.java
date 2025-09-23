@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePardot {
 
+public class SourcePardot {
     /**
      * The Consumer Key that can be found when viewing your app in Salesforce
      */
@@ -57,6 +56,7 @@ public class SourcePardot {
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private Pardot sourceType;
@@ -99,7 +99,9 @@ public class SourcePardot {
             String clientSecret,
             String pardotBusinessUnitId,
             String refreshToken) {
-        this(clientId, clientSecret, Optional.empty(), Optional.empty(), pardotBusinessUnitId, refreshToken, Optional.empty());
+        this(clientId, clientSecret, Optional.empty(),
+            Optional.empty(), pardotBusinessUnitId, refreshToken,
+            Optional.empty());
     }
 
     /**
@@ -163,9 +165,10 @@ public class SourcePardot {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Consumer Key that can be found when viewing your app in Salesforce
@@ -194,6 +197,7 @@ public class SourcePardot {
         return this;
     }
 
+
     /**
      * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
      */
@@ -211,6 +215,7 @@ public class SourcePardot {
         this.pageSize = Optional.ofNullable(pageSize);
         return this;
     }
+
 
     /**
      * The maximum number of records to return per request
@@ -248,6 +253,7 @@ public class SourcePardot {
         return this;
     }
 
+
     /**
      * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
      */
@@ -257,7 +263,6 @@ public class SourcePardot {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -268,27 +273,22 @@ public class SourcePardot {
         }
         SourcePardot other = (SourcePardot) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.isSandbox, other.isSandbox) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.pardotBusinessUnitId, other.pardotBusinessUnitId) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.pardotBusinessUnitId, other.pardotBusinessUnitId) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            isSandbox,
-            pageSize,
-            pardotBusinessUnitId,
-            refreshToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, isSandbox,
+            pageSize, pardotBusinessUnitId, refreshToken,
+            sourceType, startDate);
     }
     
     @Override
@@ -303,26 +303,28 @@ public class SourcePardot {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<Boolean> isSandbox;
- 
+
         private Optional<String> pageSize;
- 
+
         private String pardotBusinessUnitId;
- 
+
         private String refreshToken;
- 
+
         private Optional<OffsetDateTime> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Consumer Key that can be found when viewing your app in Salesforce
@@ -333,6 +335,7 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
          * The Consumer Secret that can be found when viewing your app in Salesforce
          */
@@ -341,6 +344,7 @@ public class SourcePardot {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Whether or not the the app is in a Salesforce sandbox. If you do not know what this, assume it is false.
@@ -360,6 +364,7 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
          * The maximum number of records to return per request
          */
@@ -378,6 +383,7 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
          * Pardot Business ID, can be found at Setup &gt; Pardot &gt; Pardot Account Setup
          */
@@ -387,6 +393,7 @@ public class SourcePardot {
             return this;
         }
 
+
         /**
          * Salesforce Refresh Token used for Airbyte to access your Salesforce account. If you don't know what this is, follow this &lt;a href="https://medium.com/@bpmmendis94/obtain-access-refresh-tokens-from-salesforce-rest-api-a324fe4ccd9b"&gt;guide&lt;/a&gt; to retrieve it.
          */
@@ -395,6 +402,7 @@ public class SourcePardot {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2000-01-01T00:00:00Z. Any data before this date will not be replicated. Defaults to the year Pardot was released.
@@ -413,7 +421,7 @@ public class SourcePardot {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePardot build() {
             if (isSandbox == null) {
                 isSandbox = _SINGLETON_VALUE_IsSandbox.value();
@@ -424,15 +432,13 @@ public class SourcePardot {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourcePardot(
-                clientId,
-                clientSecret,
-                isSandbox,
-                pageSize,
-                pardotBusinessUnitId,
-                refreshToken,
+                clientId, clientSecret, isSandbox,
+                pageSize, pardotBusinessUnitId, refreshToken,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IsSandbox =
                 new LazySingletonValue<>(

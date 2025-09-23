@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Basic {
 
@@ -57,9 +57,10 @@ public class Basic {
         return (Optional<BaseURLPrefix>) urlPrefix;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * You can access our API through the following URLs - Standard API Usage (Use the default API URL - https://api.jotform.com), For EU (Use the EU API URL - https://eu-api.jotform.com), For HIPAA (Use the HIPAA API URL - https://hipaa-api.jotform.com)
@@ -70,6 +71,7 @@ public class Basic {
         return this;
     }
 
+
     /**
      * You can access our API through the following URLs - Standard API Usage (Use the default API URL - https://api.jotform.com), For EU (Use the EU API URL - https://eu-api.jotform.com), For HIPAA (Use the HIPAA API URL - https://hipaa-api.jotform.com)
      */
@@ -79,7 +81,6 @@ public class Basic {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -90,15 +91,14 @@ public class Basic {
         }
         Basic other = (Basic) o;
         return 
-            Objects.deepEquals(this.apiEndpoint, other.apiEndpoint) &&
-            Objects.deepEquals(this.urlPrefix, other.urlPrefix);
+            Utils.enhancedDeepEquals(this.apiEndpoint, other.apiEndpoint) &&
+            Utils.enhancedDeepEquals(this.urlPrefix, other.urlPrefix);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiEndpoint,
-            urlPrefix);
+        return Utils.enhancedHash(
+            apiEndpoint, urlPrefix);
     }
     
     @Override
@@ -107,14 +107,16 @@ public class Basic {
                 "apiEndpoint", apiEndpoint,
                 "urlPrefix", urlPrefix);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends BaseURLPrefix> urlPrefix;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * You can access our API through the following URLs - Standard API Usage (Use the default API URL - https://api.jotform.com), For EU (Use the EU API URL - https://eu-api.jotform.com), For HIPAA (Use the HIPAA API URL - https://hipaa-api.jotform.com)
@@ -133,14 +135,16 @@ public class Basic {
             this.urlPrefix = urlPrefix;
             return this;
         }
-        
+
         public Basic build() {
             if (urlPrefix == null) {
                 urlPrefix = _SINGLETON_VALUE_UrlPrefix.value();
             }
+
             return new Basic(
                 urlPrefix);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceJotformSchemasApiEndpoint>> _SINGLETON_VALUE_ApiEndpoint =
                 new LazySingletonValue<>(

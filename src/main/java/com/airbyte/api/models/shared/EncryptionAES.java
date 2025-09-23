@@ -9,24 +9,29 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class EncryptionAES implements Encryption {
 
     @JsonProperty("algorithm")
     private EncryptionMapperAlgorithm algorithm;
 
+
     @JsonProperty("fieldNameSuffix")
     private String fieldNameSuffix;
+
 
     @JsonProperty("key")
     private String key;
 
+
     @JsonProperty("mode")
     private Mode mode;
 
+
     @JsonProperty("padding")
     private Padding padding;
+
 
     @JsonProperty("targetField")
     private String targetField;
@@ -84,9 +89,10 @@ public class EncryptionAES implements Encryption {
         return targetField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public EncryptionAES withAlgorithm(EncryptionMapperAlgorithm algorithm) {
         Utils.checkNotNull(algorithm, "algorithm");
@@ -124,7 +130,6 @@ public class EncryptionAES implements Encryption {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -135,23 +140,19 @@ public class EncryptionAES implements Encryption {
         }
         EncryptionAES other = (EncryptionAES) o;
         return 
-            Objects.deepEquals(this.algorithm, other.algorithm) &&
-            Objects.deepEquals(this.fieldNameSuffix, other.fieldNameSuffix) &&
-            Objects.deepEquals(this.key, other.key) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.padding, other.padding) &&
-            Objects.deepEquals(this.targetField, other.targetField);
+            Utils.enhancedDeepEquals(this.algorithm, other.algorithm) &&
+            Utils.enhancedDeepEquals(this.fieldNameSuffix, other.fieldNameSuffix) &&
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.padding, other.padding) &&
+            Utils.enhancedDeepEquals(this.targetField, other.targetField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            algorithm,
-            fieldNameSuffix,
-            key,
-            mode,
-            padding,
-            targetField);
+        return Utils.enhancedHash(
+            algorithm, fieldNameSuffix, key,
+            mode, padding, targetField);
     }
     
     @Override
@@ -164,24 +165,26 @@ public class EncryptionAES implements Encryption {
                 "padding", padding,
                 "targetField", targetField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private EncryptionMapperAlgorithm algorithm;
- 
+
         private String fieldNameSuffix;
- 
+
         private String key;
- 
+
         private Mode mode;
- 
+
         private Padding padding;
- 
+
         private String targetField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder algorithm(EncryptionMapperAlgorithm algorithm) {
             Utils.checkNotNull(algorithm, "algorithm");
@@ -189,11 +192,13 @@ public class EncryptionAES implements Encryption {
             return this;
         }
 
+
         public Builder fieldNameSuffix(String fieldNameSuffix) {
             Utils.checkNotNull(fieldNameSuffix, "fieldNameSuffix");
             this.fieldNameSuffix = fieldNameSuffix;
             return this;
         }
+
 
         public Builder key(String key) {
             Utils.checkNotNull(key, "key");
@@ -201,11 +206,13 @@ public class EncryptionAES implements Encryption {
             return this;
         }
 
+
         public Builder mode(Mode mode) {
             Utils.checkNotNull(mode, "mode");
             this.mode = mode;
             return this;
         }
+
 
         public Builder padding(Padding padding) {
             Utils.checkNotNull(padding, "padding");
@@ -213,20 +220,19 @@ public class EncryptionAES implements Encryption {
             return this;
         }
 
+
         public Builder targetField(String targetField) {
             Utils.checkNotNull(targetField, "targetField");
             this.targetField = targetField;
             return this;
         }
-        
+
         public EncryptionAES build() {
+
             return new EncryptionAES(
-                algorithm,
-                fieldNameSuffix,
-                key,
-                mode,
-                padding,
-                targetField);
+                algorithm, fieldNameSuffix, key,
+                mode, padding, targetField);
         }
+
     }
 }

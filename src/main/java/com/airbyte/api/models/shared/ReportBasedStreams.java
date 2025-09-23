@@ -13,12 +13,13 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class ReportBasedStreams {
 
     @JsonProperty("auth_type")
     private Raas authType;
+
 
     @JsonProperty("password")
     private String password;
@@ -28,6 +29,7 @@ public class ReportBasedStreams {
      */
     @JsonProperty("report_ids")
     private List<Object> reportIds;
+
 
     @JsonProperty("username")
     private String username;
@@ -69,9 +71,10 @@ public class ReportBasedStreams {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ReportBasedStreams withPassword(String password) {
         Utils.checkNotNull(password, "password");
@@ -94,7 +97,6 @@ public class ReportBasedStreams {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,18 +107,16 @@ public class ReportBasedStreams {
         }
         ReportBasedStreams other = (ReportBasedStreams) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.reportIds, other.reportIds) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.reportIds, other.reportIds) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            password,
-            reportIds,
+        return Utils.enhancedHash(
+            authType, password, reportIds,
             username);
     }
     
@@ -128,24 +128,27 @@ public class ReportBasedStreams {
                 "reportIds", reportIds,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private List<Object> reportIds;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
             this.password = password;
             return this;
         }
+
 
         /**
          * Report IDs can be found by clicking the three dots on the right side of the report &gt; Web Service &gt; View URLs &gt; in JSON url copy everything between Workday tenant/ and ?format=json.
@@ -156,18 +159,19 @@ public class ReportBasedStreams {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public ReportBasedStreams build() {
+
             return new ReportBasedStreams(
-                password,
-                reportIds,
-                username);
+                password, reportIds, username);
         }
+
 
         private static final LazySingletonValue<Raas> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -15,7 +15,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,7 +24,6 @@ import java.util.Optional;
  * because it is responsible for converting legacy Azure Blob Storage v0 configs into v1 configs using the File-Based CDK.
  */
 public class SourceAzureBlobStorage {
-
     /**
      * The account's name of the Azure Blob Storage.
      */
@@ -50,6 +48,7 @@ public class SourceAzureBlobStorage {
      */
     @JsonProperty("credentials")
     private SourceAzureBlobStorageAuthentication credentials;
+
 
     @JsonProperty("sourceType")
     private SourceAzureBlobStorageAzureBlobStorage sourceType;
@@ -95,7 +94,8 @@ public class SourceAzureBlobStorage {
             String azureBlobStorageContainerName,
             SourceAzureBlobStorageAuthentication credentials,
             List<FileBasedStreamConfig> streams) {
-        this(azureBlobStorageAccountName, azureBlobStorageContainerName, Optional.empty(), credentials, Optional.empty(), streams);
+        this(azureBlobStorageAccountName, azureBlobStorageContainerName, Optional.empty(),
+            credentials, Optional.empty(), streams);
     }
 
     /**
@@ -151,9 +151,10 @@ public class SourceAzureBlobStorage {
         return streams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account's name of the Azure Blob Storage.
@@ -182,6 +183,7 @@ public class SourceAzureBlobStorage {
         return this;
     }
 
+
     /**
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
@@ -209,6 +211,7 @@ public class SourceAzureBlobStorage {
         return this;
     }
 
+
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
@@ -227,7 +230,6 @@ public class SourceAzureBlobStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -238,24 +240,20 @@ public class SourceAzureBlobStorage {
         }
         SourceAzureBlobStorage other = (SourceAzureBlobStorage) o;
         return 
-            Objects.deepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
-            Objects.deepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
-            Objects.deepEquals(this.azureBlobStorageEndpoint, other.azureBlobStorageEndpoint) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streams, other.streams);
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageEndpoint, other.azureBlobStorageEndpoint) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streams, other.streams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            azureBlobStorageAccountName,
-            azureBlobStorageContainerName,
-            azureBlobStorageEndpoint,
-            credentials,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            azureBlobStorageAccountName, azureBlobStorageContainerName, azureBlobStorageEndpoint,
+            credentials, sourceType, startDate,
             streams);
     }
     
@@ -270,24 +268,26 @@ public class SourceAzureBlobStorage {
                 "startDate", startDate,
                 "streams", streams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String azureBlobStorageAccountName;
- 
+
         private String azureBlobStorageContainerName;
- 
+
         private Optional<String> azureBlobStorageEndpoint = Optional.empty();
- 
+
         private SourceAzureBlobStorageAuthentication credentials;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private List<FileBasedStreamConfig> streams;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account's name of the Azure Blob Storage.
@@ -298,6 +298,7 @@ public class SourceAzureBlobStorage {
             return this;
         }
 
+
         /**
          * The name of the Azure blob storage container.
          */
@@ -306,6 +307,7 @@ public class SourceAzureBlobStorage {
             this.azureBlobStorageContainerName = azureBlobStorageContainerName;
             return this;
         }
+
 
         /**
          * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
@@ -325,6 +327,7 @@ public class SourceAzureBlobStorage {
             return this;
         }
 
+
         /**
          * Credentials for connecting to the Azure Blob Storage
          */
@@ -333,6 +336,7 @@ public class SourceAzureBlobStorage {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
@@ -352,6 +356,7 @@ public class SourceAzureBlobStorage {
             return this;
         }
 
+
         /**
          * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
@@ -360,16 +365,14 @@ public class SourceAzureBlobStorage {
             this.streams = streams;
             return this;
         }
-        
+
         public SourceAzureBlobStorage build() {
+
             return new SourceAzureBlobStorage(
-                azureBlobStorageAccountName,
-                azureBlobStorageContainerName,
-                azureBlobStorageEndpoint,
-                credentials,
-                startDate,
-                streams);
+                azureBlobStorageAccountName, azureBlobStorageContainerName, azureBlobStorageEndpoint,
+                credentials, startDate, streams);
         }
+
 
         private static final LazySingletonValue<SourceAzureBlobStorageAzureBlobStorage> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

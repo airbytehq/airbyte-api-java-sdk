@@ -22,7 +22,7 @@ public enum SourceS3ParsingStrategy {
     @JsonValue
     private final String value;
 
-    private SourceS3ParsingStrategy(String value) {
+    SourceS3ParsingStrategy(String value) {
         this.value = value;
     }
     

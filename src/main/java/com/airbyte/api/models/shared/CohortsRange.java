@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class CohortsRange {
 
+public class CohortsRange {
     /**
      * Specifies the end date of the extended reporting date range for a cohort report.
      */
@@ -79,9 +78,10 @@ public class CohortsRange {
         return startOffset;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Specifies the end date of the extended reporting date range for a cohort report.
@@ -110,6 +110,7 @@ public class CohortsRange {
         return this;
     }
 
+
     /**
      * Specifies the start date of the extended reporting date range for a cohort report.
      */
@@ -119,7 +120,6 @@ public class CohortsRange {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -130,17 +130,15 @@ public class CohortsRange {
         }
         CohortsRange other = (CohortsRange) o;
         return 
-            Objects.deepEquals(this.endOffset, other.endOffset) &&
-            Objects.deepEquals(this.granularity, other.granularity) &&
-            Objects.deepEquals(this.startOffset, other.startOffset);
+            Utils.enhancedDeepEquals(this.endOffset, other.endOffset) &&
+            Utils.enhancedDeepEquals(this.granularity, other.granularity) &&
+            Utils.enhancedDeepEquals(this.startOffset, other.startOffset);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            endOffset,
-            granularity,
-            startOffset);
+        return Utils.enhancedHash(
+            endOffset, granularity, startOffset);
     }
     
     @Override
@@ -150,18 +148,20 @@ public class CohortsRange {
                 "granularity", granularity,
                 "startOffset", startOffset);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long endOffset;
- 
+
         private SourceGoogleAnalyticsDataApiGranularity granularity;
- 
+
         private Optional<Long> startOffset = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Specifies the end date of the extended reporting date range for a cohort report.
@@ -172,6 +172,7 @@ public class CohortsRange {
             return this;
         }
 
+
         /**
          * The granularity used to interpret the startOffset and endOffset for the extended reporting date range for a cohort report.
          */
@@ -180,6 +181,7 @@ public class CohortsRange {
             this.granularity = granularity;
             return this;
         }
+
 
         /**
          * Specifies the start date of the extended reporting date range for a cohort report.
@@ -198,12 +200,12 @@ public class CohortsRange {
             this.startOffset = startOffset;
             return this;
         }
-        
+
         public CohortsRange build() {
+
             return new CohortsRange(
-                endOffset,
-                granularity,
-                startOffset);
+                endOffset, granularity, startOffset);
         }
+
     }
 }

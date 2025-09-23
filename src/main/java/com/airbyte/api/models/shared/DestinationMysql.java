@@ -16,16 +16,16 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationMysql {
 
+public class DestinationMysql {
     /**
      * Name of the database.
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private Mysql destinationType;
@@ -130,7 +130,10 @@ public class DestinationMysql {
             String database,
             String host,
             String username) {
-        this(database, Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, Optional.empty(), host,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -219,9 +222,10 @@ public class DestinationMysql {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -240,6 +244,7 @@ public class DestinationMysql {
         this.disableTypeDedupe = Optional.ofNullable(disableTypeDedupe);
         return this;
     }
+
 
     /**
      * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
@@ -268,6 +273,7 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -285,6 +291,7 @@ public class DestinationMysql {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Password associated with the username.
@@ -304,6 +311,7 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -321,6 +329,7 @@ public class DestinationMysql {
         this.rawDataSchema = Optional.ofNullable(rawDataSchema);
         return this;
     }
+
 
     /**
      * The database to write raw tables into
@@ -340,6 +349,7 @@ public class DestinationMysql {
         return this;
     }
 
+
     /**
      * Encrypt data using SSL.
      */
@@ -357,6 +367,7 @@ public class DestinationMysql {
         this.tunnelMethod = Optional.ofNullable(tunnelMethod);
         return this;
     }
+
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -376,7 +387,6 @@ public class DestinationMysql {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -387,33 +397,26 @@ public class DestinationMysql {
         }
         DestinationMysql other = (DestinationMysql) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.rawDataSchema, other.rawDataSchema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            disableTypeDedupe,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            rawDataSchema,
-            ssl,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, destinationType, disableTypeDedupe,
+            host, jdbcUrlParams, password,
+            port, rawDataSchema, ssl,
+            tunnelMethod, username);
     }
     
     @Override
@@ -431,32 +434,34 @@ public class DestinationMysql {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private Optional<Boolean> disableTypeDedupe;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> rawDataSchema = Optional.empty();
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends DestinationMysqlSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -466,6 +471,7 @@ public class DestinationMysql {
             this.database = database;
             return this;
         }
+
 
         /**
          * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
@@ -485,6 +491,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -493,6 +500,7 @@ public class DestinationMysql {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -512,6 +520,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * Password associated with the username.
          */
@@ -529,6 +538,7 @@ public class DestinationMysql {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -548,6 +558,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * The database to write raw tables into
          */
@@ -565,6 +576,7 @@ public class DestinationMysql {
             this.rawDataSchema = rawDataSchema;
             return this;
         }
+
 
         /**
          * Encrypt data using SSL.
@@ -584,6 +596,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
@@ -602,6 +615,7 @@ public class DestinationMysql {
             return this;
         }
 
+
         /**
          * Username to use to access the database.
          */
@@ -610,7 +624,7 @@ public class DestinationMysql {
             this.username = username;
             return this;
         }
-        
+
         public DestinationMysql build() {
             if (disableTypeDedupe == null) {
                 disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
@@ -621,18 +635,14 @@ public class DestinationMysql {
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new DestinationMysql(
-                database,
-                disableTypeDedupe,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                rawDataSchema,
-                ssl,
-                tunnelMethod,
+                database, disableTypeDedupe, host,
+                jdbcUrlParams, password, port,
+                rawDataSchema, ssl, tunnelMethod,
                 username);
         }
+
 
         private static final LazySingletonValue<Mysql> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

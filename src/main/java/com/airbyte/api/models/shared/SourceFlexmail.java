@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceFlexmail {
-
     /**
      * Your Flexmail account ID. You can find it in your Flexmail account settings.
      */
@@ -26,6 +25,7 @@ public class SourceFlexmail {
      */
     @JsonProperty("personal_access_token")
     private String personalAccessToken;
+
 
     @JsonProperty("sourceType")
     private Flexmail sourceType;
@@ -62,9 +62,10 @@ public class SourceFlexmail {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Flexmail account ID. You can find it in your Flexmail account settings.
@@ -84,7 +85,6 @@ public class SourceFlexmail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceFlexmail {
         }
         SourceFlexmail other = (SourceFlexmail) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.personalAccessToken, other.personalAccessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.personalAccessToken, other.personalAccessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            personalAccessToken,
-            sourceType);
+        return Utils.enhancedHash(
+            accountId, personalAccessToken, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceFlexmail {
                 "personalAccessToken", personalAccessToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String personalAccessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Flexmail account ID. You can find it in your Flexmail account settings.
@@ -135,6 +135,7 @@ public class SourceFlexmail {
             return this;
         }
 
+
         /**
          * A personal access token for API authentication. Manage your tokens in Flexmail under Settings &gt; API &gt; Personal access tokens.
          */
@@ -143,12 +144,13 @@ public class SourceFlexmail {
             this.personalAccessToken = personalAccessToken;
             return this;
         }
-        
+
         public SourceFlexmail build() {
+
             return new SourceFlexmail(
-                accountId,
-                personalAccessToken);
+                accountId, personalAccessToken);
         }
+
 
         private static final LazySingletonValue<Flexmail> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWufoo {
-
     /**
      * Your Wufoo API Key. You can find it by logging into your Wufoo account, selecting 'API Information' from the 'More' dropdown on any form, and locating the 16-digit code.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Wufoo sourceType;
@@ -62,9 +62,10 @@ public class SourceWufoo {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Wufoo API Key. You can find it by logging into your Wufoo account, selecting 'API Information' from the 'More' dropdown on any form, and locating the 16-digit code.
@@ -84,7 +85,6 @@ public class SourceWufoo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceWufoo {
         }
         SourceWufoo other = (SourceWufoo) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            subdomain);
+        return Utils.enhancedHash(
+            apiKey, sourceType, subdomain);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceWufoo {
                 "sourceType", sourceType,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Wufoo API Key. You can find it by logging into your Wufoo account, selecting 'API Information' from the 'More' dropdown on any form, and locating the 16-digit code.
@@ -135,6 +135,7 @@ public class SourceWufoo {
             return this;
         }
 
+
         /**
          * Your account subdomain/username for Wufoo.
          */
@@ -143,12 +144,13 @@ public class SourceWufoo {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceWufoo build() {
+
             return new SourceWufoo(
-                apiKey,
-                subdomain);
+                apiKey, subdomain);
         }
+
 
         private static final LazySingletonValue<Wufoo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

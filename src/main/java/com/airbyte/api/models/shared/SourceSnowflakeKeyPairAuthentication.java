@@ -5,23 +5,32 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+
 
 public class SourceSnowflakeKeyPairAuthentication {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    private Optional<? extends SourceSnowflakeSchemasAuthType> authType;
+    private Optional<? extends SourceSnowflakeAuthType> authType;
 
     /**
      * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/sources/snowflake#key-pair-authentication"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -44,13 +53,16 @@ public class SourceSnowflakeKeyPairAuthentication {
 
     @JsonCreator
     public SourceSnowflakeKeyPairAuthentication(
+            @JsonProperty("auth_type") Optional<? extends SourceSnowflakeAuthType> authType,
             @JsonProperty("private_key") String privateKey,
             @JsonProperty("private_key_password") Optional<String> privateKeyPassword,
             @JsonProperty("username") String username) {
+        Utils.checkNotNull(authType, "authType");
         Utils.checkNotNull(privateKey, "privateKey");
         Utils.checkNotNull(privateKeyPassword, "privateKeyPassword");
         Utils.checkNotNull(username, "username");
-        this.authType = Builder._SINGLETON_VALUE_AuthType.value();
+        this.additionalProperties = new HashMap<>();
+        this.authType = authType;
         this.privateKey = privateKey;
         this.privateKeyPassword = privateKeyPassword;
         this.username = username;
@@ -59,13 +71,19 @@ public class SourceSnowflakeKeyPairAuthentication {
     public SourceSnowflakeKeyPairAuthentication(
             String privateKey,
             String username) {
-        this(privateKey, Optional.empty(), username);
+        this(Optional.empty(), privateKey, Optional.empty(),
+            username);
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<SourceSnowflakeSchemasAuthType> authType() {
-        return (Optional<SourceSnowflakeSchemasAuthType>) authType;
+    public Optional<SourceSnowflakeAuthType> authType() {
+        return (Optional<SourceSnowflakeAuthType>) authType;
     }
 
     /**
@@ -92,9 +110,36 @@ public class SourceSnowflakeKeyPairAuthentication {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    @JsonAnySetter
+    public SourceSnowflakeKeyPairAuthentication withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public SourceSnowflakeKeyPairAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public SourceSnowflakeKeyPairAuthentication withAuthType(SourceSnowflakeAuthType authType) {
+        Utils.checkNotNull(authType, "authType");
+        this.authType = Optional.ofNullable(authType);
+        return this;
+    }
+
+
+    public SourceSnowflakeKeyPairAuthentication withAuthType(Optional<? extends SourceSnowflakeAuthType> authType) {
+        Utils.checkNotNull(authType, "authType");
+        this.authType = authType;
+        return this;
+    }
 
     /**
      * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/sources/snowflake#key-pair-authentication"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -114,6 +159,7 @@ public class SourceSnowflakeKeyPairAuthentication {
         return this;
     }
 
+
     /**
      * Passphrase for private key
      */
@@ -132,7 +178,6 @@ public class SourceSnowflakeKeyPairAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -143,41 +188,76 @@ public class SourceSnowflakeKeyPairAuthentication {
         }
         SourceSnowflakeKeyPairAuthentication other = (SourceSnowflakeKeyPairAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.privateKey, other.privateKey) &&
-            Objects.deepEquals(this.privateKeyPassword, other.privateKeyPassword) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey) &&
+            Utils.enhancedDeepEquals(this.privateKeyPassword, other.privateKeyPassword) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            privateKey,
-            privateKeyPassword,
-            username);
+        return Utils.enhancedHash(
+            additionalProperties, authType, privateKey,
+            privateKeyPassword, username);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceSnowflakeKeyPairAuthentication.class,
+                "additionalProperties", additionalProperties,
                 "authType", authType,
                 "privateKey", privateKey,
                 "privateKeyPassword", privateKeyPassword,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends SourceSnowflakeAuthType> authType;
+
         private String privateKey;
- 
+
         private Optional<String> privateKeyPassword = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
+        }
+
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder authType(SourceSnowflakeAuthType authType) {
+            Utils.checkNotNull(authType, "authType");
+            this.authType = Optional.ofNullable(authType);
+            return this;
+        }
+
+        public Builder authType(Optional<? extends SourceSnowflakeAuthType> authType) {
+            Utils.checkNotNull(authType, "authType");
+            this.authType = authType;
+            return this;
+        }
+
 
         /**
          * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/sources/snowflake#key-pair-authentication"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -187,6 +267,7 @@ public class SourceSnowflakeKeyPairAuthentication {
             this.privateKey = privateKey;
             return this;
         }
+
 
         /**
          * Passphrase for private key
@@ -206,6 +287,7 @@ public class SourceSnowflakeKeyPairAuthentication {
             return this;
         }
 
+
         /**
          * The username you created to allow Airbyte to access the database.
          */
@@ -214,18 +296,23 @@ public class SourceSnowflakeKeyPairAuthentication {
             this.username = username;
             return this;
         }
-        
+
         public SourceSnowflakeKeyPairAuthentication build() {
+            if (authType == null) {
+                authType = _SINGLETON_VALUE_AuthType.value();
+            }
+
             return new SourceSnowflakeKeyPairAuthentication(
-                privateKey,
-                privateKeyPassword,
-                username);
+                authType, privateKey, privateKeyPassword,
+                username)
+                .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceSnowflakeSchemasAuthType>> _SINGLETON_VALUE_AuthType =
+
+        private static final LazySingletonValue<Optional<? extends SourceSnowflakeAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"Key Pair Authentication\"",
-                        new TypeReference<Optional<? extends SourceSnowflakeSchemasAuthType>>() {});
+                        new TypeReference<Optional<? extends SourceSnowflakeAuthType>>() {});
     }
 }

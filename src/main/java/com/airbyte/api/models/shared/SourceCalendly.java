@@ -7,23 +7,35 @@ import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+import java.util.Optional;
+
 
 public class SourceCalendly {
-
     /**
      * Go to Integrations → API &amp; Webhooks to obtain your bearer token. https://calendly.com/integrations/api_webhooks
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("lookback_days")
+    private Optional<Double> lookbackDays;
+
+
     @JsonProperty("sourceType")
     private Calendly sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -31,12 +43,21 @@ public class SourceCalendly {
     @JsonCreator
     public SourceCalendly(
             @JsonProperty("api_key") String apiKey,
+            @JsonProperty("lookback_days") Optional<Double> lookbackDays,
             @JsonProperty("start_date") OffsetDateTime startDate) {
         Utils.checkNotNull(apiKey, "apiKey");
+        Utils.checkNotNull(lookbackDays, "lookbackDays");
         Utils.checkNotNull(startDate, "startDate");
         this.apiKey = apiKey;
+        this.lookbackDays = lookbackDays;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
+    }
+    
+    public SourceCalendly(
+            String apiKey,
+            OffsetDateTime startDate) {
+        this(apiKey, Optional.empty(), startDate);
     }
 
     /**
@@ -45,6 +66,14 @@ public class SourceCalendly {
     @JsonIgnore
     public String apiKey() {
         return apiKey;
+    }
+
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    @JsonIgnore
+    public Optional<Double> lookbackDays() {
+        return lookbackDays;
     }
 
     @JsonIgnore
@@ -57,9 +86,10 @@ public class SourceCalendly {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Go to Integrations → API &amp; Webhooks to obtain your bearer token. https://calendly.com/integrations/api_webhooks
@@ -70,13 +100,31 @@ public class SourceCalendly {
         return this;
     }
 
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    public SourceCalendly withLookbackDays(double lookbackDays) {
+        Utils.checkNotNull(lookbackDays, "lookbackDays");
+        this.lookbackDays = Optional.ofNullable(lookbackDays);
+        return this;
+    }
+
+
+    /**
+     * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+     */
+    public SourceCalendly withLookbackDays(Optional<Double> lookbackDays) {
+        Utils.checkNotNull(lookbackDays, "lookbackDays");
+        this.lookbackDays = lookbackDays;
+        return this;
+    }
+
     public SourceCalendly withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
         this.startDate = startDate;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,16 +135,16 @@ public class SourceCalendly {
         }
         SourceCalendly other = (SourceCalendly) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.lookbackDays, other.lookbackDays) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, lookbackDays, sourceType,
             startDate);
     }
     
@@ -104,19 +152,24 @@ public class SourceCalendly {
     public String toString() {
         return Utils.toString(SourceCalendly.class,
                 "apiKey", apiKey,
+                "lookbackDays", lookbackDays,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
+        private Optional<Double> lookbackDays;
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Go to Integrations → API &amp; Webhooks to obtain your bearer token. https://calendly.com/integrations/api_webhooks
@@ -127,17 +180,47 @@ public class SourceCalendly {
             return this;
         }
 
+
+        /**
+         * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+         */
+        public Builder lookbackDays(double lookbackDays) {
+            Utils.checkNotNull(lookbackDays, "lookbackDays");
+            this.lookbackDays = Optional.ofNullable(lookbackDays);
+            return this;
+        }
+
+        /**
+         * Number of days to be subtracted from the last cutoff date before starting to sync the `scheduled_events` stream.
+         */
+        public Builder lookbackDays(Optional<Double> lookbackDays) {
+            Utils.checkNotNull(lookbackDays, "lookbackDays");
+            this.lookbackDays = lookbackDays;
+            return this;
+        }
+
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCalendly build() {
+            if (lookbackDays == null) {
+                lookbackDays = _SINGLETON_VALUE_LookbackDays.value();
+            }
+
             return new SourceCalendly(
-                apiKey,
-                startDate);
+                apiKey, lookbackDays, startDate);
         }
+
+
+        private static final LazySingletonValue<Optional<Double>> _SINGLETON_VALUE_LookbackDays =
+                new LazySingletonValue<>(
+                        "lookback_days",
+                        "0",
+                        new TypeReference<Optional<Double>>() {});
 
         private static final LazySingletonValue<Calendly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceLooker {
 
+public class SourceLooker {
     /**
      * The Client ID is first part of an API3 key that is specific to each Looker user. See the &lt;a href="https://docs.airbyte.com/integrations/sources/looker"&gt;docs&lt;/a&gt; for more information on how to generate this key.
      */
@@ -45,6 +44,7 @@ public class SourceLooker {
     @JsonProperty("run_look_ids")
     private Optional<? extends List<String>> runLookIds;
 
+
     @JsonProperty("sourceType")
     private Looker sourceType;
 
@@ -69,7 +69,8 @@ public class SourceLooker {
             String clientId,
             String clientSecret,
             String domain) {
-        this(clientId, clientSecret, domain, Optional.empty());
+        this(clientId, clientSecret, domain,
+            Optional.empty());
     }
 
     /**
@@ -110,9 +111,10 @@ public class SourceLooker {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID is first part of an API3 key that is specific to each Looker user. See the &lt;a href="https://docs.airbyte.com/integrations/sources/looker"&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -150,6 +152,7 @@ public class SourceLooker {
         return this;
     }
 
+
     /**
      * The IDs of any Looks to run
      */
@@ -159,7 +162,6 @@ public class SourceLooker {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,21 +172,18 @@ public class SourceLooker {
         }
         SourceLooker other = (SourceLooker) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.runLookIds, other.runLookIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.runLookIds, other.runLookIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            domain,
-            runLookIds,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientSecret, domain,
+            runLookIds, sourceType);
     }
     
     @Override
@@ -196,20 +195,22 @@ public class SourceLooker {
                 "runLookIds", runLookIds,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String domain;
- 
+
         private Optional<? extends List<String>> runLookIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID is first part of an API3 key that is specific to each Looker user. See the &lt;a href="https://docs.airbyte.com/integrations/sources/looker"&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -220,6 +221,7 @@ public class SourceLooker {
             return this;
         }
 
+
         /**
          * The Client Secret is second part of an API3 key.
          */
@@ -229,6 +231,7 @@ public class SourceLooker {
             return this;
         }
 
+
         /**
          * Domain for your Looker account, e.g. airbyte.cloud.looker.com,looker.[clientname].com,IP address
          */
@@ -237,6 +240,7 @@ public class SourceLooker {
             this.domain = domain;
             return this;
         }
+
 
         /**
          * The IDs of any Looks to run
@@ -255,14 +259,14 @@ public class SourceLooker {
             this.runLookIds = runLookIds;
             return this;
         }
-        
+
         public SourceLooker build() {
+
             return new SourceLooker(
-                clientId,
-                clientSecret,
-                domain,
+                clientId, clientSecret, domain,
                 runLookIds);
         }
+
 
         private static final LazySingletonValue<Looker> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

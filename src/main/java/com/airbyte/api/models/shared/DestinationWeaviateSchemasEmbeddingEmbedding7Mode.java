@@ -14,7 +14,7 @@ public enum DestinationWeaviateSchemasEmbeddingEmbedding7Mode {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateSchemasEmbeddingEmbedding7Mode(String value) {
+    DestinationWeaviateSchemasEmbeddingEmbedding7Mode(String value) {
         this.value = value;
     }
     

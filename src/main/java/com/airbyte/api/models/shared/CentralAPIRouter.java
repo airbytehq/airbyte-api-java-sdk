@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CentralAPIRouter {
 
@@ -79,9 +79,10 @@ public class CentralAPIRouter {
         return userSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * You can determine a site provisioning site Id by hitting https://site.com/store/sitemonitor.aspx and reading the response param PSID
@@ -110,7 +111,6 @@ public class CentralAPIRouter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class CentralAPIRouter {
         }
         CentralAPIRouter other = (CentralAPIRouter) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.siteId, other.siteId) &&
-            Objects.deepEquals(this.userName, other.userName) &&
-            Objects.deepEquals(this.userSecret, other.userSecret);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.siteId, other.siteId) &&
+            Utils.enhancedDeepEquals(this.userName, other.userName) &&
+            Utils.enhancedDeepEquals(this.userSecret, other.userSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            siteId,
-            userName,
+        return Utils.enhancedHash(
+            authType, siteId, userName,
             userSecret);
     }
     
@@ -144,18 +142,20 @@ public class CentralAPIRouter {
                 "userName", userName,
                 "userSecret", userSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String siteId;
- 
+
         private String userName;
- 
+
         private String userSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * You can determine a site provisioning site Id by hitting https://site.com/store/sitemonitor.aspx and reading the response param PSID
@@ -166,6 +166,7 @@ public class CentralAPIRouter {
             return this;
         }
 
+
         /**
          * Enter your application's User Name
          */
@@ -175,6 +176,7 @@ public class CentralAPIRouter {
             return this;
         }
 
+
         /**
          * Enter your application's User Secret
          */
@@ -183,13 +185,13 @@ public class CentralAPIRouter {
             this.userSecret = userSecret;
             return this;
         }
-        
+
         public CentralAPIRouter build() {
+
             return new CentralAPIRouter(
-                siteId,
-                userName,
-                userSecret);
+                siteId, userName, userSecret);
         }
+
 
         private static final LazySingletonValue<SourceCartAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

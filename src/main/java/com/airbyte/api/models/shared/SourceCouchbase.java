@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCouchbase {
 
+public class SourceCouchbase {
     /**
      * The name of the bucket to sync data from
      */
@@ -36,6 +35,7 @@ public class SourceCouchbase {
      */
     @JsonProperty("password")
     private String password;
+
 
     @JsonProperty("sourceType")
     private Couchbase sourceType;
@@ -78,7 +78,8 @@ public class SourceCouchbase {
             String connectionString,
             String password,
             String username) {
-        this(bucket, connectionString, password, Optional.empty(), username);
+        this(bucket, connectionString, password,
+            Optional.empty(), username);
     }
 
     /**
@@ -126,9 +127,10 @@ public class SourceCouchbase {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the bucket to sync data from
@@ -166,6 +168,7 @@ public class SourceCouchbase {
         return this;
     }
 
+
     /**
      * The date from which you'd like to replicate data for incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If not set, all data will be replicated.
      */
@@ -184,7 +187,6 @@ public class SourceCouchbase {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,23 +197,19 @@ public class SourceCouchbase {
         }
         SourceCouchbase other = (SourceCouchbase) o;
         return 
-            Objects.deepEquals(this.bucket, other.bucket) &&
-            Objects.deepEquals(this.connectionString, other.connectionString) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.bucket, other.bucket) &&
+            Utils.enhancedDeepEquals(this.connectionString, other.connectionString) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bucket,
-            connectionString,
-            password,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            bucket, connectionString, password,
+            sourceType, startDate, username);
     }
     
     @Override
@@ -224,22 +222,24 @@ public class SourceCouchbase {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String bucket;
- 
+
         private String connectionString;
- 
+
         private String password;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the bucket to sync data from
@@ -250,6 +250,7 @@ public class SourceCouchbase {
             return this;
         }
 
+
         /**
          * The connection string for the Couchbase server (e.g., couchbase://localhost or couchbases://example.com)
          */
@@ -259,6 +260,7 @@ public class SourceCouchbase {
             return this;
         }
 
+
         /**
          * The password to use for authentication
          */
@@ -267,6 +269,7 @@ public class SourceCouchbase {
             this.password = password;
             return this;
         }
+
 
         /**
          * The date from which you'd like to replicate data for incremental streams, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. If not set, all data will be replicated.
@@ -286,6 +289,7 @@ public class SourceCouchbase {
             return this;
         }
 
+
         /**
          * The username to use for authentication
          */
@@ -294,15 +298,14 @@ public class SourceCouchbase {
             this.username = username;
             return this;
         }
-        
+
         public SourceCouchbase build() {
+
             return new SourceCouchbase(
-                bucket,
-                connectionString,
-                password,
-                startDate,
-                username);
+                bucket, connectionString, password,
+                startDate, username);
         }
+
 
         private static final LazySingletonValue<Couchbase> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

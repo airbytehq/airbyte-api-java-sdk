@@ -14,7 +14,7 @@ public enum Harness {
     @JsonValue
     private final String value;
 
-    private Harness(String value) {
+    Harness(String value) {
         this.value = value;
     }
     

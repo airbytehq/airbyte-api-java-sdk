@@ -21,7 +21,7 @@ public enum SourceSftpBulkValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkValidationPolicy(String value) {
+    SourceSftpBulkValidationPolicy(String value) {
         this.value = value;
     }
     

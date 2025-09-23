@@ -3,33 +3,33 @@
  */
 package com.airbyte.api;
 
-import com.airbyte.api.models.errors.SDKError;
+import static com.airbyte.api.operations.Operations.RequestlessOperation;
+
 import com.airbyte.api.models.operations.GetHealthCheckRequestBuilder;
 import com.airbyte.api.models.operations.GetHealthCheckResponse;
-import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
-import com.airbyte.api.utils.HTTPClient;
-import com.airbyte.api.utils.HTTPRequest;
-import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
-import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
-import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
-import com.airbyte.api.utils.Utils;
-import java.io.InputStream;
+import com.airbyte.api.operations.GetHealthCheck;
+import com.airbyte.api.utils.Headers;
 import java.lang.Exception;
-import java.lang.String;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.List;
-import java.util.Optional;
 
-public class Health implements
-            MethodCallGetHealthCheck {
 
+public class Health {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncHealth asyncSDK;
 
     Health(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncHealth(this, sdkConfiguration);
     }
 
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncHealth async() {
+        return asyncSDK;
+    }
 
     /**
      * Health Check
@@ -37,7 +37,7 @@ public class Health implements
      * @return The call builder
      */
     public GetHealthCheckRequestBuilder getHealthCheck() {
-        return new GetHealthCheckRequestBuilder(this);
+        return new GetHealthCheckRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -47,98 +47,9 @@ public class Health implements
      * @throws Exception if the API call fails
      */
     public GetHealthCheckResponse getHealthCheckDirect() throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/health");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "*/*")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        Optional<SecuritySource> _hookSecuritySource = Optional.empty();
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "getHealthCheck", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "getHealthCheck",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "getHealthCheck",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "getHealthCheck",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        GetHealthCheckResponse.Builder _resBuilder = 
-            GetHealthCheckResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        GetHealthCheckResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            // no content 
-            return _res;
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestlessOperation<GetHealthCheckResponse> operation
+            = new GetHealthCheck.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest());
     }
 
 }

@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceLokalise {
-
     /**
      * Lokalise API Key with read-access. Available at Profile settings &gt; API tokens. See &lt;a href="https://docs.lokalise.com/en/articles/1929556-api-tokens"&gt;here&lt;/a&gt;.
      */
@@ -26,6 +25,7 @@ public class SourceLokalise {
      */
     @JsonProperty("project_id")
     private String projectId;
+
 
     @JsonProperty("sourceType")
     private Lokalise sourceType;
@@ -62,9 +62,10 @@ public class SourceLokalise {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Lokalise API Key with read-access. Available at Profile settings &gt; API tokens. See &lt;a href="https://docs.lokalise.com/en/articles/1929556-api-tokens"&gt;here&lt;/a&gt;.
@@ -84,7 +85,6 @@ public class SourceLokalise {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceLokalise {
         }
         SourceLokalise other = (SourceLokalise) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            projectId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, projectId, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceLokalise {
                 "projectId", projectId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String projectId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Lokalise API Key with read-access. Available at Profile settings &gt; API tokens. See &lt;a href="https://docs.lokalise.com/en/articles/1929556-api-tokens"&gt;here&lt;/a&gt;.
@@ -135,6 +135,7 @@ public class SourceLokalise {
             return this;
         }
 
+
         /**
          * Lokalise project ID. Available at Project Settings &gt; General.
          */
@@ -143,12 +144,13 @@ public class SourceLokalise {
             this.projectId = projectId;
             return this;
         }
-        
+
         public SourceLokalise build() {
+
             return new SourceLokalise(
-                apiKey,
-                projectId);
+                apiKey, projectId);
         }
+
 
         private static final LazySingletonValue<Lokalise> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

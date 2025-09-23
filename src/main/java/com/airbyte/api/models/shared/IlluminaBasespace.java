@@ -14,7 +14,7 @@ public enum IlluminaBasespace {
     @JsonValue
     private final String value;
 
-    private IlluminaBasespace(String value) {
+    IlluminaBasespace(String value) {
         this.value = value;
     }
     

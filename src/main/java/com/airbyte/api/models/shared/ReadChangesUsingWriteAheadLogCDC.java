@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -67,6 +66,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lsn_commit_behaviour")
     private Optional<? extends LSNCommitBehaviour> lsnCommitBehaviour;
+
 
     @JsonProperty("method")
     private SourcePostgresMethod method;
@@ -133,7 +133,9 @@ public class ReadChangesUsingWriteAheadLogCDC {
     public ReadChangesUsingWriteAheadLogCDC(
             String publication,
             String replicationSlot) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), publication, Optional.empty(), replicationSlot);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            publication, Optional.empty(), replicationSlot);
     }
 
     @JsonAnyGetter
@@ -221,9 +223,10 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return replicationSlot;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public ReadChangesUsingWriteAheadLogCDC withAdditionalProperty(String key, Object value) {
@@ -231,8 +234,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public ReadChangesUsingWriteAheadLogCDC withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -247,6 +249,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         this.heartbeatActionQuery = Optional.ofNullable(heartbeatActionQuery);
         return this;
     }
+
 
     /**
      * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
@@ -266,6 +269,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
      */
@@ -283,6 +287,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         this.initialWaitingSeconds = Optional.ofNullable(initialWaitingSeconds);
         return this;
     }
+
 
     /**
      * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
@@ -302,6 +307,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
      * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
      */
@@ -320,6 +326,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
      * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
      */
@@ -337,6 +344,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         this.plugin = Optional.ofNullable(plugin);
         return this;
     }
+
 
     /**
      * A logical decoding plugin installed on the PostgreSQL server.
@@ -365,6 +373,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
+
     /**
      * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
      */
@@ -383,7 +392,6 @@ public class ReadChangesUsingWriteAheadLogCDC {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -394,33 +402,26 @@ public class ReadChangesUsingWriteAheadLogCDC {
         }
         ReadChangesUsingWriteAheadLogCDC other = (ReadChangesUsingWriteAheadLogCDC) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.heartbeatActionQuery, other.heartbeatActionQuery) &&
-            Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
-            Objects.deepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
-            Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
-            Objects.deepEquals(this.lsnCommitBehaviour, other.lsnCommitBehaviour) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.plugin, other.plugin) &&
-            Objects.deepEquals(this.publication, other.publication) &&
-            Objects.deepEquals(this.queueSize, other.queueSize) &&
-            Objects.deepEquals(this.replicationSlot, other.replicationSlot);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.heartbeatActionQuery, other.heartbeatActionQuery) &&
+            Utils.enhancedDeepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
+            Utils.enhancedDeepEquals(this.initialWaitingSeconds, other.initialWaitingSeconds) &&
+            Utils.enhancedDeepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
+            Utils.enhancedDeepEquals(this.lsnCommitBehaviour, other.lsnCommitBehaviour) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.plugin, other.plugin) &&
+            Utils.enhancedDeepEquals(this.publication, other.publication) &&
+            Utils.enhancedDeepEquals(this.queueSize, other.queueSize) &&
+            Utils.enhancedDeepEquals(this.replicationSlot, other.replicationSlot);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            heartbeatActionQuery,
-            initialLoadTimeoutHours,
-            initialWaitingSeconds,
-            invalidCdcCursorPositionBehavior,
-            lsnCommitBehaviour,
-            method,
-            plugin,
-            publication,
-            queueSize,
-            replicationSlot);
+        return Utils.enhancedHash(
+            additionalProperties, heartbeatActionQuery, initialLoadTimeoutHours,
+            initialWaitingSeconds, invalidCdcCursorPositionBehavior, lsnCommitBehaviour,
+            method, plugin, publication,
+            queueSize, replicationSlot);
     }
     
     @Override
@@ -438,29 +439,30 @@ public class ReadChangesUsingWriteAheadLogCDC {
                 "queueSize", queueSize,
                 "replicationSlot", replicationSlot);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> heartbeatActionQuery;
- 
+
         private Optional<Long> initialLoadTimeoutHours;
- 
+
         private Optional<Long> initialWaitingSeconds;
- 
+
         private Optional<? extends SourcePostgresInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
- 
+
         private Optional<? extends LSNCommitBehaviour> lsnCommitBehaviour;
- 
+
         private Optional<? extends Plugin> plugin;
- 
+
         private String publication;
- 
+
         private Optional<Long> queueSize;
- 
+
         private String replicationSlot;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -481,6 +483,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
          * Specifies a query that the connector executes on the source database when the connector sends a heartbeat message. Please see the &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-wal-disk-consumption-and-heartbeat-action-query"&gt;setup guide&lt;/a&gt; for how and when to configure this setting.
          */
@@ -498,6 +501,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             this.heartbeatActionQuery = heartbeatActionQuery;
             return this;
         }
+
 
         /**
          * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
@@ -517,6 +521,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
          * The amount of time the connector will wait when it launches to determine if there is new data to sync or not. Defaults to 1200 seconds. Valid range: 120 seconds to 2400 seconds. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres/postgres-troubleshooting#advanced-setting-up-initial-cdc-waiting-time"&gt;initial waiting time&lt;/a&gt;.
          */
@@ -534,6 +539,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             this.initialWaitingSeconds = initialWaitingSeconds;
             return this;
         }
+
 
         /**
          * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value into the WAL. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
@@ -553,6 +559,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
          * Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
          */
@@ -570,6 +577,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             this.lsnCommitBehaviour = lsnCommitBehaviour;
             return this;
         }
+
 
         /**
          * A logical decoding plugin installed on the PostgreSQL server.
@@ -589,6 +597,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
          * A Postgres publication used for consuming changes. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-4-create-publications-and-replication-identities-for-tables"&gt;publications and replication identities&lt;/a&gt;.
          */
@@ -597,6 +606,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             this.publication = publication;
             return this;
         }
+
 
         /**
          * The size of the internal queue. This may interfere with memory consumption and efficiency of the connector, please be careful.
@@ -616,6 +626,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             return this;
         }
 
+
         /**
          * A plugin logical replication slot. Read about &lt;a href="https://docs.airbyte.com/integrations/sources/postgres#step-3-create-replication-slot"&gt;replication slots&lt;/a&gt;.
          */
@@ -624,7 +635,7 @@ public class ReadChangesUsingWriteAheadLogCDC {
             this.replicationSlot = replicationSlot;
             return this;
         }
-        
+
         public ReadChangesUsingWriteAheadLogCDC build() {
             if (heartbeatActionQuery == null) {
                 heartbeatActionQuery = _SINGLETON_VALUE_HeartbeatActionQuery.value();
@@ -647,18 +658,14 @@ public class ReadChangesUsingWriteAheadLogCDC {
             if (queueSize == null) {
                 queueSize = _SINGLETON_VALUE_QueueSize.value();
             }
+
             return new ReadChangesUsingWriteAheadLogCDC(
-                heartbeatActionQuery,
-                initialLoadTimeoutHours,
-                initialWaitingSeconds,
-                invalidCdcCursorPositionBehavior,
-                lsnCommitBehaviour,
-                plugin,
-                publication,
-                queueSize,
-                replicationSlot)
+                heartbeatActionQuery, initialLoadTimeoutHours, initialWaitingSeconds,
+                invalidCdcCursorPositionBehavior, lsnCommitBehaviour, plugin,
+                publication, queueSize, replicationSlot)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_HeartbeatActionQuery =
                 new LazySingletonValue<>(

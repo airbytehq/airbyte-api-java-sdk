@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OAuth20WithPrivateKey {
 
@@ -96,9 +96,10 @@ public class OAuth20WithPrivateKey {
         return scope;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your OAuth application.
@@ -136,7 +137,6 @@ public class OAuth20WithPrivateKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -147,21 +147,18 @@ public class OAuth20WithPrivateKey {
         }
         OAuth20WithPrivateKey other = (OAuth20WithPrivateKey) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.keyId, other.keyId) &&
-            Objects.deepEquals(this.privateKey, other.privateKey) &&
-            Objects.deepEquals(this.scope, other.scope);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.keyId, other.keyId) &&
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey) &&
+            Utils.enhancedDeepEquals(this.scope, other.scope);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            keyId,
-            privateKey,
-            scope);
+        return Utils.enhancedHash(
+            authType, clientId, keyId,
+            privateKey, scope);
     }
     
     @Override
@@ -173,20 +170,22 @@ public class OAuth20WithPrivateKey {
                 "privateKey", privateKey,
                 "scope", scope);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String keyId;
- 
+
         private String privateKey;
- 
+
         private String scope;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your OAuth application.
@@ -197,6 +196,7 @@ public class OAuth20WithPrivateKey {
             return this;
         }
 
+
         /**
          * The key ID (kid).
          */
@@ -205,6 +205,7 @@ public class OAuth20WithPrivateKey {
             this.keyId = keyId;
             return this;
         }
+
 
         /**
          * The private key in PEM format
@@ -215,6 +216,7 @@ public class OAuth20WithPrivateKey {
             return this;
         }
 
+
         /**
          * The OAuth scope.
          */
@@ -223,14 +225,14 @@ public class OAuth20WithPrivateKey {
             this.scope = scope;
             return this;
         }
-        
+
         public OAuth20WithPrivateKey build() {
+
             return new OAuth20WithPrivateKey(
-                clientId,
-                keyId,
-                privateKey,
+                clientId, keyId, privateKey,
                 scope);
         }
+
 
         private static final LazySingletonValue<SourceOktaSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

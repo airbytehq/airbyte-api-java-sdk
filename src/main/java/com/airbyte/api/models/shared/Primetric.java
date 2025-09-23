@@ -14,7 +14,7 @@ public enum Primetric {
     @JsonValue
     private final String value;
 
-    private Primetric(String value) {
+    Primetric(String value) {
         this.value = value;
     }
     

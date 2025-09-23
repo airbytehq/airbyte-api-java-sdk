@@ -48,7 +48,7 @@ public enum SourceGnewsCountry {
     @JsonValue
     private final String value;
 
-    private SourceGnewsCountry(String value) {
+    SourceGnewsCountry(String value) {
         this.value = value;
     }
     

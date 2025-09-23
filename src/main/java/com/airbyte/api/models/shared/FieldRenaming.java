@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class FieldRenaming {
-
     /**
      * The new name for the field after renaming.
      */
@@ -51,9 +50,10 @@ public class FieldRenaming {
         return originalFieldName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The new name for the field after renaming.
@@ -73,7 +73,6 @@ public class FieldRenaming {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -84,15 +83,14 @@ public class FieldRenaming {
         }
         FieldRenaming other = (FieldRenaming) o;
         return 
-            Objects.deepEquals(this.newFieldName, other.newFieldName) &&
-            Objects.deepEquals(this.originalFieldName, other.originalFieldName);
+            Utils.enhancedDeepEquals(this.newFieldName, other.newFieldName) &&
+            Utils.enhancedDeepEquals(this.originalFieldName, other.originalFieldName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            newFieldName,
-            originalFieldName);
+        return Utils.enhancedHash(
+            newFieldName, originalFieldName);
     }
     
     @Override
@@ -101,16 +99,18 @@ public class FieldRenaming {
                 "newFieldName", newFieldName,
                 "originalFieldName", originalFieldName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String newFieldName;
- 
+
         private String originalFieldName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The new name for the field after renaming.
@@ -121,6 +121,7 @@ public class FieldRenaming {
             return this;
         }
 
+
         /**
          * The current name of the field to rename.
          */
@@ -129,11 +130,12 @@ public class FieldRenaming {
             this.originalFieldName = originalFieldName;
             return this;
         }
-        
+
         public FieldRenaming build() {
+
             return new FieldRenaming(
-                newFieldName,
-                originalFieldName);
+                newFieldName, originalFieldName);
         }
+
     }
 }

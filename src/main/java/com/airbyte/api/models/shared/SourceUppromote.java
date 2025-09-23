@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceUppromote {
-
     /**
      * For developing your own custom integration with UpPromote, you can create an API key. This is available from Professional plan.  Simply go to Settings &gt; Integration &gt; API &gt; Create API Key.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Uppromote sourceType;
@@ -63,9 +63,10 @@ public class SourceUppromote {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * For developing your own custom integration with UpPromote, you can create an API key. This is available from Professional plan.  Simply go to Settings &gt; Integration &gt; API &gt; Create API Key.
@@ -85,7 +86,6 @@ public class SourceUppromote {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,17 +96,15 @@ public class SourceUppromote {
         }
         SourceUppromote other = (SourceUppromote) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -116,16 +114,18 @@ public class SourceUppromote {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * For developing your own custom integration with UpPromote, you can create an API key. This is available from Professional plan.  Simply go to Settings &gt; Integration &gt; API &gt; Create API Key.
@@ -136,6 +136,7 @@ public class SourceUppromote {
             return this;
         }
 
+
         /**
          * Data before this date will not be fetched.
          */
@@ -144,12 +145,13 @@ public class SourceUppromote {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceUppromote build() {
+
             return new SourceUppromote(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Uppromote> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

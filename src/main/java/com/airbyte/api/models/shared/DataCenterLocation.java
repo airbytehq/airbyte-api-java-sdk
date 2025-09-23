@@ -24,7 +24,7 @@ public enum DataCenterLocation {
     @JsonValue
     private final String value;
 
-    private DataCenterLocation(String value) {
+    DataCenterLocation(String value) {
         this.value = value;
     }
     

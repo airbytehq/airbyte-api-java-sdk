@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class CustomReportConfig {
 
+public class CustomReportConfig {
     /**
      * The name of the custom report, this name would be used as stream name
      */
@@ -64,7 +63,8 @@ public class CustomReportConfig {
             String name,
             List<String> reportColumns,
             ReportingDataObject reportingObject) {
-        this(name, Optional.empty(), reportColumns, reportingObject);
+        this(name, Optional.empty(), reportColumns,
+            reportingObject);
     }
 
     /**
@@ -99,9 +99,10 @@ public class CustomReportConfig {
         return reportingObject;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the custom report, this name would be used as stream name
@@ -120,6 +121,7 @@ public class CustomReportConfig {
         this.reportAggregation = Optional.ofNullable(reportAggregation);
         return this;
     }
+
 
     /**
      * A list of available aggregations.
@@ -148,7 +150,6 @@ public class CustomReportConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -159,18 +160,16 @@ public class CustomReportConfig {
         }
         CustomReportConfig other = (CustomReportConfig) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.reportAggregation, other.reportAggregation) &&
-            Objects.deepEquals(this.reportColumns, other.reportColumns) &&
-            Objects.deepEquals(this.reportingObject, other.reportingObject);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.reportAggregation, other.reportAggregation) &&
+            Utils.enhancedDeepEquals(this.reportColumns, other.reportColumns) &&
+            Utils.enhancedDeepEquals(this.reportingObject, other.reportingObject);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            reportAggregation,
-            reportColumns,
+        return Utils.enhancedHash(
+            name, reportAggregation, reportColumns,
             reportingObject);
     }
     
@@ -182,20 +181,22 @@ public class CustomReportConfig {
                 "reportColumns", reportColumns,
                 "reportingObject", reportingObject);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String name;
- 
+
         private Optional<String> reportAggregation;
- 
+
         private List<String> reportColumns;
- 
+
         private ReportingDataObject reportingObject;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the custom report, this name would be used as stream name
@@ -205,6 +206,7 @@ public class CustomReportConfig {
             this.name = name;
             return this;
         }
+
 
         /**
          * A list of available aggregations.
@@ -224,6 +226,7 @@ public class CustomReportConfig {
             return this;
         }
 
+
         /**
          * A list of available report object columns. You can find it in description of reporting object that you want to add to custom report.
          */
@@ -233,6 +236,7 @@ public class CustomReportConfig {
             return this;
         }
 
+
         /**
          * The name of the the object derives from the ReportRequest object. You can find it in Bing Ads Api docs - Reporting API - Reporting Data Objects.
          */
@@ -241,17 +245,17 @@ public class CustomReportConfig {
             this.reportingObject = reportingObject;
             return this;
         }
-        
+
         public CustomReportConfig build() {
             if (reportAggregation == null) {
                 reportAggregation = _SINGLETON_VALUE_ReportAggregation.value();
             }
+
             return new CustomReportConfig(
-                name,
-                reportAggregation,
-                reportColumns,
+                name, reportAggregation, reportColumns,
                 reportingObject);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ReportAggregation =
                 new LazySingletonValue<>(

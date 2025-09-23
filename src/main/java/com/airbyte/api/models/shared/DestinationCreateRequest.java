@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationCreateRequest {
 
+public class DestinationCreateRequest {
     /**
      * The values required to configure the destination.
      */
@@ -42,6 +41,7 @@ public class DestinationCreateRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resourceAllocation")
     private Optional<? extends ScopedResourceRequirements> resourceAllocation;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -69,7 +69,8 @@ public class DestinationCreateRequest {
             DestinationConfiguration configuration,
             String name,
             String workspaceId) {
-        this(configuration, Optional.empty(), name, Optional.empty(), workspaceId);
+        this(configuration, Optional.empty(), name,
+            Optional.empty(), workspaceId);
     }
 
     /**
@@ -110,9 +111,10 @@ public class DestinationCreateRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the destination.
@@ -131,6 +133,7 @@ public class DestinationCreateRequest {
         this.definitionId = Optional.ofNullable(definitionId);
         return this;
     }
+
 
     /**
      * The UUID of the connector definition. One of configuration.destinationType or definitionId must be provided.
@@ -159,6 +162,7 @@ public class DestinationCreateRequest {
         return this;
     }
 
+
     /**
      * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
      */
@@ -174,7 +178,6 @@ public class DestinationCreateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -185,21 +188,18 @@ public class DestinationCreateRequest {
         }
         DestinationCreateRequest other = (DestinationCreateRequest) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.definitionId, other.definitionId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.definitionId, other.definitionId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            definitionId,
-            name,
-            resourceAllocation,
-            workspaceId);
+        return Utils.enhancedHash(
+            configuration, definitionId, name,
+            resourceAllocation, workspaceId);
     }
     
     @Override
@@ -211,22 +211,24 @@ public class DestinationCreateRequest {
                 "resourceAllocation", resourceAllocation,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationConfiguration configuration;
- 
+
         private Optional<String> definitionId = Optional.empty();
- 
+
         private String name;
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the destination.
@@ -236,6 +238,7 @@ public class DestinationCreateRequest {
             this.configuration = configuration;
             return this;
         }
+
 
         /**
          * The UUID of the connector definition. One of configuration.destinationType or definitionId must be provided.
@@ -255,6 +258,7 @@ public class DestinationCreateRequest {
             return this;
         }
 
+
         /**
          * Name of the destination e.g. dev-mysql-instance.
          */
@@ -263,6 +267,7 @@ public class DestinationCreateRequest {
             this.name = name;
             return this;
         }
+
 
         /**
          * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
@@ -282,19 +287,19 @@ public class DestinationCreateRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public DestinationCreateRequest build() {
+
             return new DestinationCreateRequest(
-                configuration,
-                definitionId,
-                name,
-                resourceAllocation,
-                workspaceId);
+                configuration, definitionId, name,
+                resourceAllocation, workspaceId);
         }
+
     }
 }

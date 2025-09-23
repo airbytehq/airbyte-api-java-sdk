@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class SourceS3ReplicateRecords {
 
     @JsonCreator
     public SourceS3ReplicateRecords() {
-        
         this.deliveryType = Builder._SINGLETON_VALUE_DeliveryType.value();
     }
 
@@ -40,11 +38,11 @@ public class SourceS3ReplicateRecords {
         return (Optional<SourceS3DeliveryType>) deliveryType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class SourceS3ReplicateRecords {
         }
         SourceS3ReplicateRecords other = (SourceS3ReplicateRecords) o;
         return 
-            Objects.deepEquals(this.deliveryType, other.deliveryType);
+            Utils.enhancedDeepEquals(this.deliveryType, other.deliveryType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             deliveryType);
     }
     
@@ -69,17 +67,20 @@ public class SourceS3ReplicateRecords {
         return Utils.toString(SourceS3ReplicateRecords.class,
                 "deliveryType", deliveryType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceS3ReplicateRecords build() {
+
             return new SourceS3ReplicateRecords(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceS3DeliveryType>> _SINGLETON_VALUE_DeliveryType =
                 new LazySingletonValue<>(

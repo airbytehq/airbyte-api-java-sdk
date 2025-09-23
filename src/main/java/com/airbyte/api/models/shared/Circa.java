@@ -14,7 +14,7 @@ public enum Circa {
     @JsonValue
     private final String value;
 
-    private Circa(String value) {
+    Circa(String value) {
         this.value = value;
     }
     

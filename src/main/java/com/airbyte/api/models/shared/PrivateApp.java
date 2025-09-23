@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class PrivateApp {
-
     /**
      * HubSpot Access token. See the &lt;a href="https://developers.hubspot.com/docs/api/private-apps"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
      */
@@ -51,9 +50,10 @@ public class PrivateApp {
         return credentialsTitle;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HubSpot Access token. See the &lt;a href="https://developers.hubspot.com/docs/api/private-apps"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
@@ -64,7 +64,6 @@ public class PrivateApp {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +74,14 @@ public class PrivateApp {
         }
         PrivateApp other = (PrivateApp) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.credentialsTitle, other.credentialsTitle);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.credentialsTitle, other.credentialsTitle);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            credentialsTitle);
+        return Utils.enhancedHash(
+            accessToken, credentialsTitle);
     }
     
     @Override
@@ -92,14 +90,16 @@ public class PrivateApp {
                 "accessToken", accessToken,
                 "credentialsTitle", credentialsTitle);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HubSpot Access token. See the &lt;a href="https://developers.hubspot.com/docs/api/private-apps"&gt;Hubspot docs&lt;/a&gt; if you need help finding this token.
@@ -109,11 +109,13 @@ public class PrivateApp {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public PrivateApp build() {
+
             return new PrivateApp(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<SourceHubspotSchemasAuthType> _SINGLETON_VALUE_CredentialsTitle =
                 new LazySingletonValue<>(

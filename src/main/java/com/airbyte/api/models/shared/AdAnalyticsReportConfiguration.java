@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * AdAnalyticsReportConfiguration
@@ -17,7 +16,6 @@ import java.util.Objects;
  * <p>Config for custom ad Analytics Report
  */
 public class AdAnalyticsReportConfiguration {
-
     /**
      * The name for the custom report.
      */
@@ -73,9 +71,10 @@ public class AdAnalyticsReportConfiguration {
         return timeGranularity;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name for the custom report.
@@ -104,7 +103,6 @@ public class AdAnalyticsReportConfiguration {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,17 +113,15 @@ public class AdAnalyticsReportConfiguration {
         }
         AdAnalyticsReportConfiguration other = (AdAnalyticsReportConfiguration) o;
         return 
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.pivotBy, other.pivotBy) &&
-            Objects.deepEquals(this.timeGranularity, other.timeGranularity);
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.pivotBy, other.pivotBy) &&
+            Utils.enhancedDeepEquals(this.timeGranularity, other.timeGranularity);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            name,
-            pivotBy,
-            timeGranularity);
+        return Utils.enhancedHash(
+            name, pivotBy, timeGranularity);
     }
     
     @Override
@@ -135,18 +131,20 @@ public class AdAnalyticsReportConfiguration {
                 "pivotBy", pivotBy,
                 "timeGranularity", timeGranularity);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String name;
- 
+
         private PivotCategory pivotBy;
- 
+
         private TimeGranularity timeGranularity;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name for the custom report.
@@ -157,6 +155,7 @@ public class AdAnalyticsReportConfiguration {
             return this;
         }
 
+
         /**
          * Choose a category to pivot your analytics report around. This selection will organize your data based on the chosen attribute, allowing you to analyze trends and performance from different perspectives.
          */
@@ -166,6 +165,7 @@ public class AdAnalyticsReportConfiguration {
             return this;
         }
 
+
         /**
          * Choose how to group the data in your report by time. The options are:&lt;br&gt;- 'ALL': A single result summarizing the entire time range.&lt;br&gt;- 'DAILY': Group results by each day.&lt;br&gt;- 'MONTHLY': Group results by each month.&lt;br&gt;- 'YEARLY': Group results by each year.&lt;br&gt;Selecting a time grouping helps you analyze trends and patterns over different time periods.
          */
@@ -174,12 +174,12 @@ public class AdAnalyticsReportConfiguration {
             this.timeGranularity = timeGranularity;
             return this;
         }
-        
+
         public AdAnalyticsReportConfiguration build() {
+
             return new AdAnalyticsReportConfiguration(
-                name,
-                pivotBy,
-                timeGranularity);
+                name, pivotBy, timeGranularity);
         }
+
     }
 }

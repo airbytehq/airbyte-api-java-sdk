@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,7 +22,6 @@ import java.util.Optional;
  * <p>Use the Azure-hosted OpenAI API to embed text. This option is using the text-embedding-ada-002 model with 1536 embedding dimensions.
  */
 public class DestinationPgvectorAzureOpenAI {
-
     /**
      * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
      */
@@ -35,6 +33,7 @@ public class DestinationPgvectorAzureOpenAI {
      */
     @JsonProperty("deployment")
     private String deployment;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -90,9 +89,10 @@ public class DestinationPgvectorAzureOpenAI {
         return openaiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
@@ -121,7 +121,6 @@ public class DestinationPgvectorAzureOpenAI {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -132,18 +131,16 @@ public class DestinationPgvectorAzureOpenAI {
         }
         DestinationPgvectorAzureOpenAI other = (DestinationPgvectorAzureOpenAI) o;
         return 
-            Objects.deepEquals(this.apiBase, other.apiBase) &&
-            Objects.deepEquals(this.deployment, other.deployment) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.openaiKey, other.openaiKey);
+            Utils.enhancedDeepEquals(this.apiBase, other.apiBase) &&
+            Utils.enhancedDeepEquals(this.deployment, other.deployment) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.openaiKey, other.openaiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiBase,
-            deployment,
-            mode,
+        return Utils.enhancedHash(
+            apiBase, deployment, mode,
             openaiKey);
     }
     
@@ -155,18 +152,20 @@ public class DestinationPgvectorAzureOpenAI {
                 "mode", mode,
                 "openaiKey", openaiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiBase;
- 
+
         private String deployment;
- 
+
         private String openaiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The base URL for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
@@ -177,6 +176,7 @@ public class DestinationPgvectorAzureOpenAI {
             return this;
         }
 
+
         /**
          * The deployment for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
          */
@@ -186,6 +186,7 @@ public class DestinationPgvectorAzureOpenAI {
             return this;
         }
 
+
         /**
          * The API key for your Azure OpenAI resource.  You can find this in the Azure portal under your Azure OpenAI resource
          */
@@ -194,13 +195,13 @@ public class DestinationPgvectorAzureOpenAI {
             this.openaiKey = openaiKey;
             return this;
         }
-        
+
         public DestinationPgvectorAzureOpenAI build() {
+
             return new DestinationPgvectorAzureOpenAI(
-                apiBase,
-                deployment,
-                openaiKey);
+                apiBase, deployment, openaiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationPgvectorSchemasEmbeddingEmbeddingMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

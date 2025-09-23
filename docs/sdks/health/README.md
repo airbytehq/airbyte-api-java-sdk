@@ -13,6 +13,7 @@ Health Check
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getHealthCheck" method="get" path="/health" -->
 ```java
 package hello.world;
 

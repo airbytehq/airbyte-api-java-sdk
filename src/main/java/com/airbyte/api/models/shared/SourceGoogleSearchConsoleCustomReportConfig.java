@@ -10,10 +10,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceGoogleSearchConsoleCustomReportConfig {
-
     /**
      * A list of available dimensions. Please note, that for technical reasons `date` is the default dimension which will be included in your query whether you specify it or not. Primary key will consist of your custom dimensions and the default dimension along with `site_url` and `search_type`.
      */
@@ -52,9 +51,10 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A list of available dimensions. Please note, that for technical reasons `date` is the default dimension which will be included in your query whether you specify it or not. Primary key will consist of your custom dimensions and the default dimension along with `site_url` and `search_type`.
@@ -74,7 +74,6 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,15 +84,14 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
         }
         SourceGoogleSearchConsoleCustomReportConfig other = (SourceGoogleSearchConsoleCustomReportConfig) o;
         return 
-            Objects.deepEquals(this.dimensions, other.dimensions) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.dimensions, other.dimensions) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dimensions,
-            name);
+        return Utils.enhancedHash(
+            dimensions, name);
     }
     
     @Override
@@ -102,16 +100,18 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
                 "dimensions", dimensions,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<SourceGoogleSearchConsoleValidEnums> dimensions;
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A list of available dimensions. Please note, that for technical reasons `date` is the default dimension which will be included in your query whether you specify it or not. Primary key will consist of your custom dimensions and the default dimension along with `site_url` and `search_type`.
@@ -122,6 +122,7 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
             return this;
         }
 
+
         /**
          * The name of the custom report, this name would be used as stream name
          */
@@ -130,11 +131,12 @@ public class SourceGoogleSearchConsoleCustomReportConfig {
             this.name = name;
             return this;
         }
-        
+
         public SourceGoogleSearchConsoleCustomReportConfig build() {
+
             return new SourceGoogleSearchConsoleCustomReportConfig(
-                dimensions,
-                name);
+                dimensions, name);
         }
+
     }
 }

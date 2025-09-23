@@ -14,7 +14,7 @@ public enum Gmail {
     @JsonValue
     private final String value;
 
-    private Gmail(String value) {
+    Gmail(String value) {
         this.value = value;
     }
     

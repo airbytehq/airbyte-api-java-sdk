@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -27,8 +26,10 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
     @JsonProperty("field_name")
     private String fieldName;
 
+
     @JsonProperty("filter")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("filter_type")
@@ -61,9 +62,10 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
         return (Optional<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>) filterType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasFilter withFieldName(String fieldName) {
         Utils.checkNotNull(fieldName, "fieldName");
@@ -77,7 +79,6 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,17 +89,15 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
         }
         SourceGoogleAnalyticsDataApiSchemasFilter other = (SourceGoogleAnalyticsDataApiSchemasFilter) o;
         return 
-            Objects.deepEquals(this.fieldName, other.fieldName) &&
-            Objects.deepEquals(this.filter, other.filter) &&
-            Objects.deepEquals(this.filterType, other.filterType);
+            Utils.enhancedDeepEquals(this.fieldName, other.fieldName) &&
+            Utils.enhancedDeepEquals(this.filter, other.filter) &&
+            Utils.enhancedDeepEquals(this.filterType, other.filterType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            fieldName,
-            filter,
-            filterType);
+        return Utils.enhancedHash(
+            fieldName, filter, filterType);
     }
     
     @Override
@@ -108,16 +107,18 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
                 "filter", filter,
                 "filterType", filterType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String fieldName;
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder fieldName(String fieldName) {
             Utils.checkNotNull(fieldName, "fieldName");
@@ -125,17 +126,19 @@ public class SourceGoogleAnalyticsDataApiSchemasFilter {
             return this;
         }
 
+
         public Builder filter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterFilter filter) {
             Utils.checkNotNull(filter, "filter");
             this.filter = filter;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasFilter build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasFilter(
-                fieldName,
-                filter);
+                fieldName, filter);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterType>> _SINGLETON_VALUE_FilterType =
                 new LazySingletonValue<>(

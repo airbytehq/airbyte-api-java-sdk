@@ -14,7 +14,7 @@ public enum SonarCloud {
     @JsonValue
     private final String value;
 
-    private SonarCloud(String value) {
+    SonarCloud(String value) {
         this.value = value;
     }
     

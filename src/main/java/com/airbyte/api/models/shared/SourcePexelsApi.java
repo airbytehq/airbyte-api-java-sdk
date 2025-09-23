@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePexelsApi {
 
+public class SourcePexelsApi {
     /**
      * API key is required to access pexels api, For getting your's goto https://www.pexels.com/api/documentation and create account for free.
      */
@@ -58,6 +57,7 @@ public class SourcePexelsApi {
     @JsonProperty("size")
     private Optional<String> size;
 
+
     @JsonProperty("sourceType")
     private PexelsApi sourceType;
 
@@ -87,7 +87,8 @@ public class SourcePexelsApi {
     public SourcePexelsApi(
             String apiKey,
             String query) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), query, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), query, Optional.empty());
     }
 
     /**
@@ -143,9 +144,10 @@ public class SourcePexelsApi {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key is required to access pexels api, For getting your's goto https://www.pexels.com/api/documentation and create account for free.
@@ -165,6 +167,7 @@ public class SourcePexelsApi {
         return this;
     }
 
+
     /**
      * Optional, Desired photo color. Supported colors red, orange, yellow, green, turquoise, blue, violet, pink, brown, black, gray, white or any hexidecimal color code.
      */
@@ -183,6 +186,7 @@ public class SourcePexelsApi {
         return this;
     }
 
+
     /**
      * Optional, The locale of the search you are performing. The current supported locales are 'en-US' 'pt-BR' 'es-ES' 'ca-ES' 'de-DE' 'it-IT' 'fr-FR' 'sv-SE' 'id-ID' 'pl-PL' 'ja-JP' 'zh-TW' 'zh-CN' 'ko-KR' 'th-TH' 'nl-NL' 'hu-HU' 'vi-VN' 'cs-CZ' 'da-DK' 'fi-FI' 'uk-UA' 'el-GR' 'ro-RO' 'nb-NO' 'sk-SK' 'tr-TR' 'ru-RU'.
      */
@@ -200,6 +204,7 @@ public class SourcePexelsApi {
         this.orientation = Optional.ofNullable(orientation);
         return this;
     }
+
 
     /**
      * Optional, Desired photo orientation. The current supported orientations are landscape, portrait or square
@@ -228,6 +233,7 @@ public class SourcePexelsApi {
         return this;
     }
 
+
     /**
      * Optional, Minimum photo size. The current supported sizes are large(24MP), medium(12MP) or small(4MP).
      */
@@ -237,7 +243,6 @@ public class SourcePexelsApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -248,24 +253,20 @@ public class SourcePexelsApi {
         }
         SourcePexelsApi other = (SourcePexelsApi) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.color, other.color) &&
-            Objects.deepEquals(this.locale, other.locale) &&
-            Objects.deepEquals(this.orientation, other.orientation) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.size, other.size) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.color, other.color) &&
+            Utils.enhancedDeepEquals(this.locale, other.locale) &&
+            Utils.enhancedDeepEquals(this.orientation, other.orientation) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.size, other.size) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            color,
-            locale,
-            orientation,
-            query,
-            size,
+        return Utils.enhancedHash(
+            apiKey, color, locale,
+            orientation, query, size,
             sourceType);
     }
     
@@ -280,24 +281,26 @@ public class SourcePexelsApi {
                 "size", size,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> color = Optional.empty();
- 
+
         private Optional<String> locale = Optional.empty();
- 
+
         private Optional<String> orientation = Optional.empty();
- 
+
         private String query;
- 
+
         private Optional<String> size = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key is required to access pexels api, For getting your's goto https://www.pexels.com/api/documentation and create account for free.
@@ -307,6 +310,7 @@ public class SourcePexelsApi {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Optional, Desired photo color. Supported colors red, orange, yellow, green, turquoise, blue, violet, pink, brown, black, gray, white or any hexidecimal color code.
@@ -326,6 +330,7 @@ public class SourcePexelsApi {
             return this;
         }
 
+
         /**
          * Optional, The locale of the search you are performing. The current supported locales are 'en-US' 'pt-BR' 'es-ES' 'ca-ES' 'de-DE' 'it-IT' 'fr-FR' 'sv-SE' 'id-ID' 'pl-PL' 'ja-JP' 'zh-TW' 'zh-CN' 'ko-KR' 'th-TH' 'nl-NL' 'hu-HU' 'vi-VN' 'cs-CZ' 'da-DK' 'fi-FI' 'uk-UA' 'el-GR' 'ro-RO' 'nb-NO' 'sk-SK' 'tr-TR' 'ru-RU'.
          */
@@ -343,6 +348,7 @@ public class SourcePexelsApi {
             this.locale = locale;
             return this;
         }
+
 
         /**
          * Optional, Desired photo orientation. The current supported orientations are landscape, portrait or square
@@ -362,6 +368,7 @@ public class SourcePexelsApi {
             return this;
         }
 
+
         /**
          * Optional, the search query, Example Ocean, Tigers, Pears, etc.
          */
@@ -370,6 +377,7 @@ public class SourcePexelsApi {
             this.query = query;
             return this;
         }
+
 
         /**
          * Optional, Minimum photo size. The current supported sizes are large(24MP), medium(12MP) or small(4MP).
@@ -388,16 +396,14 @@ public class SourcePexelsApi {
             this.size = size;
             return this;
         }
-        
+
         public SourcePexelsApi build() {
+
             return new SourcePexelsApi(
-                apiKey,
-                color,
-                locale,
-                orientation,
-                query,
-                size);
+                apiKey, color, locale,
+                orientation, query, size);
         }
+
 
         private static final LazySingletonValue<PexelsApi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

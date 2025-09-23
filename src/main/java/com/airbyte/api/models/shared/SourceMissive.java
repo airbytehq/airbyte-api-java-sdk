@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceMissive {
 
@@ -37,8 +37,10 @@ public class SourceMissive {
     @JsonProperty("limit")
     private Optional<String> limit;
 
+
     @JsonProperty("sourceType")
     private Missive sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -63,7 +65,8 @@ public class SourceMissive {
     public SourceMissive(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate);
     }
 
     @JsonIgnore
@@ -98,9 +101,10 @@ public class SourceMissive {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMissive withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -116,6 +120,7 @@ public class SourceMissive {
         this.kind = Optional.ofNullable(kind);
         return this;
     }
+
 
     /**
      * Kind parameter for `contact_groups` stream
@@ -135,6 +140,7 @@ public class SourceMissive {
         return this;
     }
 
+
     /**
      * Max records per page limit
      */
@@ -150,7 +156,6 @@ public class SourceMissive {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,21 +166,18 @@ public class SourceMissive {
         }
         SourceMissive other = (SourceMissive) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.kind, other.kind) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.kind, other.kind) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            kind,
-            limit,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, kind, limit,
+            sourceType, startDate);
     }
     
     @Override
@@ -187,26 +189,29 @@ public class SourceMissive {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends Kind> kind;
- 
+
         private Optional<String> limit;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Kind parameter for `contact_groups` stream
@@ -226,6 +231,7 @@ public class SourceMissive {
             return this;
         }
 
+
         /**
          * Max records per page limit
          */
@@ -244,12 +250,13 @@ public class SourceMissive {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMissive build() {
             if (kind == null) {
                 kind = _SINGLETON_VALUE_Kind.value();
@@ -257,12 +264,12 @@ public class SourceMissive {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
             }
+
             return new SourceMissive(
-                apiKey,
-                kind,
-                limit,
+                apiKey, kind, limit,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Kind>> _SINGLETON_VALUE_Kind =
                 new LazySingletonValue<>(

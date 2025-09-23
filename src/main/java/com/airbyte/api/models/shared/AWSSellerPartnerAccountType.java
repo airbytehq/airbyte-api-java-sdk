@@ -20,7 +20,7 @@ public enum AWSSellerPartnerAccountType {
     @JsonValue
     private final String value;
 
-    private AWSSellerPartnerAccountType(String value) {
+    AWSSellerPartnerAccountType(String value) {
         this.value = value;
     }
     

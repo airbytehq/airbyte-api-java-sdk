@@ -21,7 +21,7 @@ public enum SourceKlarnaRegion {
     @JsonValue
     private final String value;
 
-    private SourceKlarnaRegion(String value) {
+    SourceKlarnaRegion(String value) {
         this.value = value;
     }
     

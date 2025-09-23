@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class EncryptedTrustServerCertificate {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -59,9 +59,10 @@ public class EncryptedTrustServerCertificate {
         return (Optional<DestinationMssqlName>) name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public EncryptedTrustServerCertificate withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class EncryptedTrustServerCertificate {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public EncryptedTrustServerCertificate withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class EncryptedTrustServerCertificate {
         return this;
     }
 
+
     public EncryptedTrustServerCertificate withName(Optional<? extends DestinationMssqlName> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class EncryptedTrustServerCertificate {
         }
         EncryptedTrustServerCertificate other = (EncryptedTrustServerCertificate) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            name);
+        return Utils.enhancedHash(
+            additionalProperties, name);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class EncryptedTrustServerCertificate {
                 "additionalProperties", additionalProperties,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationMssqlName> name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class EncryptedTrustServerCertificate {
             return this;
         }
 
+
         public Builder name(DestinationMssqlName name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -155,15 +156,17 @@ public class EncryptedTrustServerCertificate {
             this.name = name;
             return this;
         }
-        
+
         public EncryptedTrustServerCertificate build() {
             if (name == null) {
                 name = _SINGLETON_VALUE_Name.value();
             }
+
             return new EncryptedTrustServerCertificate(
                 name)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMssqlName>> _SINGLETON_VALUE_Name =
                 new LazySingletonValue<>(

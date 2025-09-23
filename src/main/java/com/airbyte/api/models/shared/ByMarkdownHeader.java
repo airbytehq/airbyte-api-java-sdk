@@ -15,7 +15,6 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -62,9 +61,10 @@ public class ByMarkdownHeader {
         return splitLevel;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
@@ -75,6 +75,7 @@ public class ByMarkdownHeader {
         return this;
     }
 
+
     /**
      * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
      */
@@ -84,7 +85,6 @@ public class ByMarkdownHeader {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,15 +95,14 @@ public class ByMarkdownHeader {
         }
         ByMarkdownHeader other = (ByMarkdownHeader) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.splitLevel, other.splitLevel);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.splitLevel, other.splitLevel);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            splitLevel);
+        return Utils.enhancedHash(
+            mode, splitLevel);
     }
     
     @Override
@@ -112,14 +111,16 @@ public class ByMarkdownHeader {
                 "mode", mode,
                 "splitLevel", splitLevel);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> splitLevel;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Level of markdown headers to split text fields by. Headings down to the specified level will be used as split points
@@ -138,14 +139,16 @@ public class ByMarkdownHeader {
             this.splitLevel = splitLevel;
             return this;
         }
-        
+
         public ByMarkdownHeader build() {
             if (splitLevel == null) {
                 splitLevel = _SINGLETON_VALUE_SplitLevel.value();
             }
+
             return new ByMarkdownHeader(
                 splitLevel);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationAstraSchemasProcessingTextSplitterMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

@@ -3,17 +3,23 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
 import com.airbyte.api.models.shared.ConnectionCreateRequest;
+import com.airbyte.api.operations.CreateConnection;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class CreateConnectionRequestBuilder {
 
     private ConnectionCreateRequest request;
-    private final SDKMethodInterfaces.MethodCallCreateConnection sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public CreateConnectionRequestBuilder(SDKMethodInterfaces.MethodCallCreateConnection sdk) {
-        this.sdk = sdk;
+    public CreateConnectionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CreateConnectionRequestBuilder request(ConnectionCreateRequest request) {
@@ -23,8 +29,10 @@ public class CreateConnectionRequestBuilder {
     }
 
     public CreateConnectionResponse call() throws Exception {
+        
+        RequestOperation<ConnectionCreateRequest, CreateConnectionResponse> operation
+              = new CreateConnection.Sync(sdkConfiguration, _headers);
 
-        return sdk.createConnection(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

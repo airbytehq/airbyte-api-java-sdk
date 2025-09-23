@@ -21,7 +21,7 @@ public enum SourceGoogleDriveValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveValidationPolicy(String value) {
+    SourceGoogleDriveValidationPolicy(String value) {
         this.value = value;
     }
     

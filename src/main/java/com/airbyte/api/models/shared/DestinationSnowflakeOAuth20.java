@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationSnowflakeOAuth20 {
 
+public class DestinationSnowflakeOAuth20 {
     /**
      * Enter you application's Access Token
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -69,7 +69,8 @@ public class DestinationSnowflakeOAuth20 {
     public DestinationSnowflakeOAuth20(
             String accessToken,
             String refreshToken) {
-        this(accessToken, Optional.empty(), Optional.empty(), refreshToken);
+        this(accessToken, Optional.empty(), Optional.empty(),
+            refreshToken);
     }
 
     /**
@@ -110,9 +111,10 @@ public class DestinationSnowflakeOAuth20 {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter you application's Access Token
@@ -132,6 +134,7 @@ public class DestinationSnowflakeOAuth20 {
         return this;
     }
 
+
     /**
      * Enter your application's Client ID
      */
@@ -149,6 +152,7 @@ public class DestinationSnowflakeOAuth20 {
         this.clientSecret = Optional.ofNullable(clientSecret);
         return this;
     }
+
 
     /**
      * Enter your application's Client secret
@@ -168,7 +172,6 @@ public class DestinationSnowflakeOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -179,21 +182,18 @@ public class DestinationSnowflakeOAuth20 {
         }
         DestinationSnowflakeOAuth20 other = (DestinationSnowflakeOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken);
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, refreshToken);
     }
     
     @Override
@@ -205,20 +205,22 @@ public class DestinationSnowflakeOAuth20 {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter you application's Access Token
@@ -228,6 +230,7 @@ public class DestinationSnowflakeOAuth20 {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Enter your application's Client ID
@@ -247,6 +250,7 @@ public class DestinationSnowflakeOAuth20 {
             return this;
         }
 
+
         /**
          * Enter your application's Client secret
          */
@@ -265,6 +269,7 @@ public class DestinationSnowflakeOAuth20 {
             return this;
         }
 
+
         /**
          * Enter your application's Refresh Token
          */
@@ -273,14 +278,14 @@ public class DestinationSnowflakeOAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public DestinationSnowflakeOAuth20 build() {
+
             return new DestinationSnowflakeOAuth20(
-                accessToken,
-                clientId,
-                clientSecret,
+                accessToken, clientId, clientSecret,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasCredentialsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

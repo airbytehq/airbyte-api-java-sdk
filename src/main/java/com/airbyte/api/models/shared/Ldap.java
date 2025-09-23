@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Ldap {
 
@@ -68,9 +68,10 @@ public class Ldap {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter the password associated with the username.
@@ -90,7 +91,6 @@ public class Ldap {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,17 +101,15 @@ public class Ldap {
         }
         Ldap other = (Ldap) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            password,
-            username);
+        return Utils.enhancedHash(
+            authType, password, username);
     }
     
     @Override
@@ -121,16 +119,18 @@ public class Ldap {
                 "password", password,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter the password associated with the username.
@@ -141,6 +141,7 @@ public class Ldap {
             return this;
         }
 
+
         /**
          * Username to use to access the database.
          */
@@ -149,12 +150,13 @@ public class Ldap {
             this.username = username;
             return this;
         }
-        
+
         public Ldap build() {
+
             return new Ldap(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationTeradataSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

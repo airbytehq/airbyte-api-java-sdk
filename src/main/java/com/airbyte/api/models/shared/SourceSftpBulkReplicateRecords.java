@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class SourceSftpBulkReplicateRecords {
 
     @JsonCreator
     public SourceSftpBulkReplicateRecords() {
-        
         this.deliveryType = Builder._SINGLETON_VALUE_DeliveryType.value();
     }
 
@@ -40,11 +38,11 @@ public class SourceSftpBulkReplicateRecords {
         return (Optional<SourceSftpBulkDeliveryType>) deliveryType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class SourceSftpBulkReplicateRecords {
         }
         SourceSftpBulkReplicateRecords other = (SourceSftpBulkReplicateRecords) o;
         return 
-            Objects.deepEquals(this.deliveryType, other.deliveryType);
+            Utils.enhancedDeepEquals(this.deliveryType, other.deliveryType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             deliveryType);
     }
     
@@ -69,17 +67,20 @@ public class SourceSftpBulkReplicateRecords {
         return Utils.toString(SourceSftpBulkReplicateRecords.class,
                 "deliveryType", deliveryType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceSftpBulkReplicateRecords build() {
+
             return new SourceSftpBulkReplicateRecords(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSftpBulkDeliveryType>> _SINGLETON_VALUE_DeliveryType =
                 new LazySingletonValue<>(

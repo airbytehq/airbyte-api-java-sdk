@@ -11,21 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWorkday {
-
     /**
      * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
      */
     @JsonProperty("credentials")
     private SourceWorkdayAuthentication credentials;
 
+
     @JsonProperty("host")
     private String host;
 
+
     @JsonProperty("sourceType")
     private Workday sourceType;
+
 
     @JsonProperty("tenant_id")
     private String tenantId;
@@ -67,9 +69,10 @@ public class SourceWorkday {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
@@ -92,7 +95,6 @@ public class SourceWorkday {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,18 +105,16 @@ public class SourceWorkday {
         }
         SourceWorkday other = (SourceWorkday) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            host,
-            sourceType,
+        return Utils.enhancedHash(
+            credentials, host, sourceType,
             tenantId);
     }
     
@@ -126,18 +126,20 @@ public class SourceWorkday {
                 "sourceType", sourceType,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceWorkdayAuthentication credentials;
- 
+
         private String host;
- 
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
@@ -148,24 +150,26 @@ public class SourceWorkday {
             return this;
         }
 
+
         public Builder host(String host) {
             Utils.checkNotNull(host, "host");
             this.host = host;
             return this;
         }
 
+
         public Builder tenantId(String tenantId) {
             Utils.checkNotNull(tenantId, "tenantId");
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public SourceWorkday build() {
+
             return new SourceWorkday(
-                credentials,
-                host,
-                tenantId);
+                credentials, host, tenantId);
         }
+
 
         private static final LazySingletonValue<Workday> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

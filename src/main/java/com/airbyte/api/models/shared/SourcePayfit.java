@@ -11,15 +11,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePayfit {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("company_id")
     private String companyId;
+
 
     @JsonProperty("sourceType")
     private Payfit sourceType;
@@ -50,9 +52,10 @@ public class SourcePayfit {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourcePayfit withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -66,7 +69,6 @@ public class SourcePayfit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -77,17 +79,15 @@ public class SourcePayfit {
         }
         SourcePayfit other = (SourcePayfit) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.companyId, other.companyId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.companyId, other.companyId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            companyId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, companyId, sourceType);
     }
     
     @Override
@@ -97,16 +97,18 @@ public class SourcePayfit {
                 "companyId", companyId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String companyId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -114,17 +116,19 @@ public class SourcePayfit {
             return this;
         }
 
+
         public Builder companyId(String companyId) {
             Utils.checkNotNull(companyId, "companyId");
             this.companyId = companyId;
             return this;
         }
-        
+
         public SourcePayfit build() {
+
             return new SourcePayfit(
-                apiKey,
-                companyId);
+                apiKey, companyId);
         }
+
 
         private static final LazySingletonValue<Payfit> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

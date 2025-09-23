@@ -15,13 +15,14 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZohoInventory {
 
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -33,11 +34,14 @@ public class SourceZohoInventory {
     @JsonProperty("domain")
     private Optional<? extends Domain> domain;
 
+
     @JsonProperty("refresh_token")
     private String refreshToken;
 
+
     @JsonProperty("sourceType")
     private ZohoInventory sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -67,7 +71,8 @@ public class SourceZohoInventory {
             String clientSecret,
             String refreshToken,
             OffsetDateTime startDate) {
-        this(clientId, clientSecret, Optional.empty(), refreshToken, startDate);
+        this(clientId, clientSecret, Optional.empty(),
+            refreshToken, startDate);
     }
 
     @JsonIgnore
@@ -104,9 +109,10 @@ public class SourceZohoInventory {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoInventory withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -129,6 +135,7 @@ public class SourceZohoInventory {
         return this;
     }
 
+
     /**
      * The domain suffix for the Zoho Inventory API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
      */
@@ -150,7 +157,6 @@ public class SourceZohoInventory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,23 +167,19 @@ public class SourceZohoInventory {
         }
         SourceZohoInventory other = (SourceZohoInventory) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            domain,
-            refreshToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, domain,
+            refreshToken, sourceType, startDate);
     }
     
     @Override
@@ -190,22 +192,24 @@ public class SourceZohoInventory {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<? extends Domain> domain;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -213,11 +217,13 @@ public class SourceZohoInventory {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The domain suffix for the Zoho Inventory API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
@@ -237,29 +243,30 @@ public class SourceZohoInventory {
             return this;
         }
 
+
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceZohoInventory build() {
             if (domain == null) {
                 domain = _SINGLETON_VALUE_Domain.value();
             }
+
             return new SourceZohoInventory(
-                clientId,
-                clientSecret,
-                domain,
-                refreshToken,
-                startDate);
+                clientId, clientSecret, domain,
+                refreshToken, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Domain>> _SINGLETON_VALUE_Domain =
                 new LazySingletonValue<>(

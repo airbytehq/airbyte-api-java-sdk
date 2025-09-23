@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Cohorts {
 
@@ -72,9 +72,10 @@ public class Cohorts {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Cohorts withDateRange(DateRange dateRange) {
         Utils.checkNotNull(dateRange, "dateRange");
@@ -100,6 +101,7 @@ public class Cohorts {
         return this;
     }
 
+
     /**
      * Assigns a name to this cohort. If not set, cohorts are named by their zero based index cohort_0, cohort_1, etc.
      */
@@ -109,7 +111,6 @@ public class Cohorts {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,17 +121,15 @@ public class Cohorts {
         }
         Cohorts other = (Cohorts) o;
         return 
-            Objects.deepEquals(this.dateRange, other.dateRange) &&
-            Objects.deepEquals(this.dimension, other.dimension) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.dateRange, other.dateRange) &&
+            Utils.enhancedDeepEquals(this.dimension, other.dimension) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dateRange,
-            dimension,
-            name);
+        return Utils.enhancedHash(
+            dateRange, dimension, name);
     }
     
     @Override
@@ -140,24 +139,27 @@ public class Cohorts {
                 "dimension", dimension,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DateRange dateRange;
- 
+
         private Dimension dimension;
- 
+
         private Optional<String> name = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder dateRange(DateRange dateRange) {
             Utils.checkNotNull(dateRange, "dateRange");
             this.dateRange = dateRange;
             return this;
         }
+
 
         /**
          * Dimension used by the cohort. Required and only supports `firstSessionDate`
@@ -167,6 +169,7 @@ public class Cohorts {
             this.dimension = dimension;
             return this;
         }
+
 
         /**
          * Assigns a name to this cohort. If not set, cohorts are named by their zero based index cohort_0, cohort_1, etc.
@@ -185,12 +188,12 @@ public class Cohorts {
             this.name = name;
             return this;
         }
-        
+
         public Cohorts build() {
+
             return new Cohorts(
-                dateRange,
-                dimension,
-                name);
+                dateRange, dimension, name);
         }
+
     }
 }

@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceUnleash {
 
+public class SourceUnleash {
     /**
      * Your API Token (Server-Side SDK [Client]). See &lt;a href="https://docs.getunleash.io/how-to/how-to-create-api-tokens/"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
@@ -44,6 +43,7 @@ public class SourceUnleash {
     @JsonProperty("project_name")
     private Optional<String> projectName;
 
+
     @JsonProperty("sourceType")
     private Unleash sourceType;
 
@@ -67,7 +67,8 @@ public class SourceUnleash {
     public SourceUnleash(
             String apiToken,
             String apiUrl) {
-        this(apiToken, apiUrl, Optional.empty(), Optional.empty());
+        this(apiToken, apiUrl, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -107,9 +108,10 @@ public class SourceUnleash {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Token (Server-Side SDK [Client]). See &lt;a href="https://docs.getunleash.io/how-to/how-to-create-api-tokens/"&gt;here&lt;/a&gt;. The token is case sensitive.
@@ -138,6 +140,7 @@ public class SourceUnleash {
         return this;
     }
 
+
     /**
      * Use this if you want to filter the API call for only one given project (can be used in addition to the "Feature Name Prefix" field). See &lt;a href="https://docs.getunleash.io/reference/api/legacy/unleash/client/features#filter-feature-toggles"&gt;here&lt;/a&gt;
      */
@@ -156,6 +159,7 @@ public class SourceUnleash {
         return this;
     }
 
+
     /**
      * Use this if you want to filter the API call for only one given project (can be used in addition to the "Feature Name Prefix" field). See &lt;a href="https://docs.getunleash.io/reference/api/legacy/unleash/client/features#filter-feature-toggles"&gt;here&lt;/a&gt;
      */
@@ -165,7 +169,6 @@ public class SourceUnleash {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -176,21 +179,18 @@ public class SourceUnleash {
         }
         SourceUnleash other = (SourceUnleash) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.nameprefix, other.nameprefix) &&
-            Objects.deepEquals(this.projectName, other.projectName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.nameprefix, other.nameprefix) &&
+            Utils.enhancedDeepEquals(this.projectName, other.projectName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            apiUrl,
-            nameprefix,
-            projectName,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, apiUrl, nameprefix,
+            projectName, sourceType);
     }
     
     @Override
@@ -202,20 +202,22 @@ public class SourceUnleash {
                 "projectName", projectName,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String apiUrl;
- 
+
         private Optional<String> nameprefix = Optional.empty();
- 
+
         private Optional<String> projectName = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Token (Server-Side SDK [Client]). See &lt;a href="https://docs.getunleash.io/how-to/how-to-create-api-tokens/"&gt;here&lt;/a&gt;. The token is case sensitive.
@@ -226,6 +228,7 @@ public class SourceUnleash {
             return this;
         }
 
+
         /**
          * Your API URL. No trailing slash. ex: https://unleash.host.com/api
          */
@@ -234,6 +237,7 @@ public class SourceUnleash {
             this.apiUrl = apiUrl;
             return this;
         }
+
 
         /**
          * Use this if you want to filter the API call for only one given project (can be used in addition to the "Feature Name Prefix" field). See &lt;a href="https://docs.getunleash.io/reference/api/legacy/unleash/client/features#filter-feature-toggles"&gt;here&lt;/a&gt;
@@ -253,6 +257,7 @@ public class SourceUnleash {
             return this;
         }
 
+
         /**
          * Use this if you want to filter the API call for only one given project (can be used in addition to the "Feature Name Prefix" field). See &lt;a href="https://docs.getunleash.io/reference/api/legacy/unleash/client/features#filter-feature-toggles"&gt;here&lt;/a&gt;
          */
@@ -270,14 +275,14 @@ public class SourceUnleash {
             this.projectName = projectName;
             return this;
         }
-        
+
         public SourceUnleash build() {
+
             return new SourceUnleash(
-                apiToken,
-                apiUrl,
-                nameprefix,
+                apiToken, apiUrl, nameprefix,
                 projectName);
         }
+
 
         private static final LazySingletonValue<Unleash> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

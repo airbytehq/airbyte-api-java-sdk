@@ -15,16 +15,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceQualaroo {
 
+public class SourceQualaroo {
     /**
      * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
     @JsonProperty("key")
     private String key;
+
 
     @JsonProperty("sourceType")
     private Qualaroo sourceType;
@@ -69,7 +69,8 @@ public class SourceQualaroo {
             String key,
             String startDate,
             String token) {
-        this(key, startDate, Optional.empty(), token);
+        this(key, startDate, Optional.empty(),
+            token);
     }
 
     /**
@@ -110,9 +111,10 @@ public class SourceQualaroo {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
@@ -141,6 +143,7 @@ public class SourceQualaroo {
         return this;
     }
 
+
     /**
      * IDs of the surveys from which you'd like to replicate data. If left empty, data from all surveys to which you have access will be replicated.
      */
@@ -159,7 +162,6 @@ public class SourceQualaroo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,21 +172,18 @@ public class SourceQualaroo {
         }
         SourceQualaroo other = (SourceQualaroo) o;
         return 
-            Objects.deepEquals(this.key, other.key) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.surveyIds, other.surveyIds) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.surveyIds, other.surveyIds) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            key,
-            sourceType,
-            startDate,
-            surveyIds,
-            token);
+        return Utils.enhancedHash(
+            key, sourceType, startDate,
+            surveyIds, token);
     }
     
     @Override
@@ -196,20 +195,22 @@ public class SourceQualaroo {
                 "surveyIds", surveyIds,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String key;
- 
+
         private String startDate;
- 
+
         private Optional<? extends List<String>> surveyIds = Optional.empty();
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
@@ -220,6 +221,7 @@ public class SourceQualaroo {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -228,6 +230,7 @@ public class SourceQualaroo {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * IDs of the surveys from which you'd like to replicate data. If left empty, data from all surveys to which you have access will be replicated.
@@ -247,6 +250,7 @@ public class SourceQualaroo {
             return this;
         }
 
+
         /**
          * A Qualaroo token. See the &lt;a href="https://help.qualaroo.com/hc/en-us/articles/201969438-The-REST-Reporting-API"&gt;docs&lt;/a&gt; for instructions on how to generate it.
          */
@@ -255,14 +259,14 @@ public class SourceQualaroo {
             this.token = token;
             return this;
         }
-        
+
         public SourceQualaroo build() {
+
             return new SourceQualaroo(
-                key,
-                startDate,
-                surveyIds,
+                key, startDate, surveyIds,
                 token);
         }
+
 
         private static final LazySingletonValue<Qualaroo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

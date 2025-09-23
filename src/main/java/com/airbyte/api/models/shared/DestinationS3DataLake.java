@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,7 +21,6 @@ import java.util.Optional;
  * <p>Defines the configurations required to connect to an Iceberg catalog, including warehouse location, main branch name, and catalog type specifics.
  */
 public class DestinationS3DataLake {
-
     /**
      * The AWS Access Key ID with permissions for S3 and Glue operations.
      */
@@ -35,6 +33,7 @@ public class DestinationS3DataLake {
      */
     @JsonProperty("catalog_type")
     private CatalogType catalogType;
+
 
     @JsonProperty("destinationType")
     private S3DataLake destinationType;
@@ -112,7 +111,9 @@ public class DestinationS3DataLake {
             String s3BucketName,
             DestinationS3DataLakeS3BucketRegion s3BucketRegion,
             String warehouseLocation) {
-        this(Optional.empty(), catalogType, Optional.empty(), s3BucketName, s3BucketRegion, Optional.empty(), Optional.empty(), warehouseLocation);
+        this(Optional.empty(), catalogType, Optional.empty(),
+            s3BucketName, s3BucketRegion, Optional.empty(),
+            Optional.empty(), warehouseLocation);
     }
 
     /**
@@ -184,9 +185,10 @@ public class DestinationS3DataLake {
         return warehouseLocation;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The AWS Access Key ID with permissions for S3 and Glue operations.
@@ -196,6 +198,7 @@ public class DestinationS3DataLake {
         this.accessKeyId = Optional.ofNullable(accessKeyId);
         return this;
     }
+
 
     /**
      * The AWS Access Key ID with permissions for S3 and Glue operations.
@@ -223,6 +226,7 @@ public class DestinationS3DataLake {
         this.mainBranchName = Optional.ofNullable(mainBranchName);
         return this;
     }
+
 
     /**
      * The primary or default branch name in the catalog. Most query engines will use "main" by default. See &lt;a href="https://iceberg.apache.org/docs/latest/branching/"&gt;Iceberg documentation&lt;/a&gt; for more information.
@@ -260,6 +264,7 @@ public class DestinationS3DataLake {
         return this;
     }
 
+
     /**
      * Your S3 endpoint url. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/s3.html#:~:text=Service%20endpoints-,Amazon%20S3%20endpoints,-When%20you%20use"&gt;here&lt;/a&gt;
      */
@@ -277,6 +282,7 @@ public class DestinationS3DataLake {
         this.secretAccessKey = Optional.ofNullable(secretAccessKey);
         return this;
     }
+
 
     /**
      * The AWS Secret Access Key paired with the Access Key ID for AWS authentication.
@@ -296,7 +302,6 @@ public class DestinationS3DataLake {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -307,29 +312,23 @@ public class DestinationS3DataLake {
         }
         DestinationS3DataLake other = (DestinationS3DataLake) o;
         return 
-            Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            Objects.deepEquals(this.catalogType, other.catalogType) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.mainBranchName, other.mainBranchName) &&
-            Objects.deepEquals(this.s3BucketName, other.s3BucketName) &&
-            Objects.deepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
-            Objects.deepEquals(this.s3Endpoint, other.s3Endpoint) &&
-            Objects.deepEquals(this.secretAccessKey, other.secretAccessKey) &&
-            Objects.deepEquals(this.warehouseLocation, other.warehouseLocation);
+            Utils.enhancedDeepEquals(this.accessKeyId, other.accessKeyId) &&
+            Utils.enhancedDeepEquals(this.catalogType, other.catalogType) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.mainBranchName, other.mainBranchName) &&
+            Utils.enhancedDeepEquals(this.s3BucketName, other.s3BucketName) &&
+            Utils.enhancedDeepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
+            Utils.enhancedDeepEquals(this.s3Endpoint, other.s3Endpoint) &&
+            Utils.enhancedDeepEquals(this.secretAccessKey, other.secretAccessKey) &&
+            Utils.enhancedDeepEquals(this.warehouseLocation, other.warehouseLocation);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKeyId,
-            catalogType,
-            destinationType,
-            mainBranchName,
-            s3BucketName,
-            s3BucketRegion,
-            s3Endpoint,
-            secretAccessKey,
-            warehouseLocation);
+        return Utils.enhancedHash(
+            accessKeyId, catalogType, destinationType,
+            mainBranchName, s3BucketName, s3BucketRegion,
+            s3Endpoint, secretAccessKey, warehouseLocation);
     }
     
     @Override
@@ -345,28 +344,30 @@ public class DestinationS3DataLake {
                 "secretAccessKey", secretAccessKey,
                 "warehouseLocation", warehouseLocation);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessKeyId = Optional.empty();
- 
+
         private CatalogType catalogType;
- 
+
         private Optional<String> mainBranchName;
- 
+
         private String s3BucketName;
- 
+
         private DestinationS3DataLakeS3BucketRegion s3BucketRegion;
- 
+
         private Optional<String> s3Endpoint = Optional.empty();
- 
+
         private Optional<String> secretAccessKey = Optional.empty();
- 
+
         private String warehouseLocation;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The AWS Access Key ID with permissions for S3 and Glue operations.
@@ -386,6 +387,7 @@ public class DestinationS3DataLake {
             return this;
         }
 
+
         /**
          * Specifies the type of Iceberg catalog (e.g., NESSIE, GLUE, REST) and its associated configuration.
          */
@@ -394,6 +396,7 @@ public class DestinationS3DataLake {
             this.catalogType = catalogType;
             return this;
         }
+
 
         /**
          * The primary or default branch name in the catalog. Most query engines will use "main" by default. See &lt;a href="https://iceberg.apache.org/docs/latest/branching/"&gt;Iceberg documentation&lt;/a&gt; for more information.
@@ -413,6 +416,7 @@ public class DestinationS3DataLake {
             return this;
         }
 
+
         /**
          * The name of the S3 bucket that will host the Iceberg data.
          */
@@ -422,6 +426,7 @@ public class DestinationS3DataLake {
             return this;
         }
 
+
         /**
          * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
          */
@@ -430,6 +435,7 @@ public class DestinationS3DataLake {
             this.s3BucketRegion = s3BucketRegion;
             return this;
         }
+
 
         /**
          * Your S3 endpoint url. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/s3.html#:~:text=Service%20endpoints-,Amazon%20S3%20endpoints,-When%20you%20use"&gt;here&lt;/a&gt;
@@ -449,6 +455,7 @@ public class DestinationS3DataLake {
             return this;
         }
 
+
         /**
          * The AWS Secret Access Key paired with the Access Key ID for AWS authentication.
          */
@@ -467,6 +474,7 @@ public class DestinationS3DataLake {
             return this;
         }
 
+
         /**
          * The root location of the data warehouse used by the Iceberg catalog. Typically includes a bucket name and path within that bucket. For AWS Glue and Nessie, must include the storage protocol (such as "s3://" for Amazon S3).
          */
@@ -475,21 +483,18 @@ public class DestinationS3DataLake {
             this.warehouseLocation = warehouseLocation;
             return this;
         }
-        
+
         public DestinationS3DataLake build() {
             if (mainBranchName == null) {
                 mainBranchName = _SINGLETON_VALUE_MainBranchName.value();
             }
+
             return new DestinationS3DataLake(
-                accessKeyId,
-                catalogType,
-                mainBranchName,
-                s3BucketName,
-                s3BucketRegion,
-                s3Endpoint,
-                secretAccessKey,
-                warehouseLocation);
+                accessKeyId, catalogType, mainBranchName,
+                s3BucketName, s3BucketRegion, s3Endpoint,
+                secretAccessKey, warehouseLocation);
         }
+
 
         private static final LazySingletonValue<S3DataLake> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

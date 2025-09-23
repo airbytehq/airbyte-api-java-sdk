@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSapHanaEnterprise {
 
+public class SourceSapHanaEnterprise {
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
      */
@@ -91,6 +90,7 @@ public class SourceSapHanaEnterprise {
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
 
+
     @JsonProperty("sourceType")
     private SapHanaEnterprise sourceType;
 
@@ -153,7 +153,10 @@ public class SourceSapHanaEnterprise {
             String host,
             SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod,
             String username) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), cursor, encryption, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), tunnelMethod, username);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            cursor, encryption, host,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), tunnelMethod, username);
     }
 
     /**
@@ -260,9 +263,10 @@ public class SourceSapHanaEnterprise {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -272,6 +276,7 @@ public class SourceSapHanaEnterprise {
         this.checkPrivileges = Optional.ofNullable(checkPrivileges);
         return this;
     }
+
 
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -291,6 +296,7 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
      * How often (in seconds) a stream should checkpoint, when possible.
      */
@@ -308,6 +314,7 @@ public class SourceSapHanaEnterprise {
         this.concurrency = Optional.ofNullable(concurrency);
         return this;
     }
+
 
     /**
      * Maximum number of concurrent queries to the database.
@@ -354,6 +361,7 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -371,6 +379,7 @@ public class SourceSapHanaEnterprise {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with the username.
@@ -392,6 +401,7 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
      * Port of the database.
      * SapHana Corporations recommends the following port numbers:
@@ -411,6 +421,7 @@ public class SourceSapHanaEnterprise {
         this.schemas = Optional.ofNullable(schemas);
         return this;
     }
+
 
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
@@ -439,7 +450,6 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -450,36 +460,28 @@ public class SourceSapHanaEnterprise {
         }
         SourceSapHanaEnterprise other = (SourceSapHanaEnterprise) o;
         return 
-            Objects.deepEquals(this.checkPrivileges, other.checkPrivileges) &&
-            Objects.deepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
-            Objects.deepEquals(this.concurrency, other.concurrency) &&
-            Objects.deepEquals(this.cursor, other.cursor) &&
-            Objects.deepEquals(this.encryption, other.encryption) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.checkPrivileges, other.checkPrivileges) &&
+            Utils.enhancedDeepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
+            Utils.enhancedDeepEquals(this.concurrency, other.concurrency) &&
+            Utils.enhancedDeepEquals(this.cursor, other.cursor) &&
+            Utils.enhancedDeepEquals(this.encryption, other.encryption) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            checkPrivileges,
-            checkpointTargetIntervalSeconds,
-            concurrency,
-            cursor,
-            encryption,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            schemas,
-            sourceType,
-            tunnelMethod,
+        return Utils.enhancedHash(
+            checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+            cursor, encryption, host,
+            jdbcUrlParams, password, port,
+            schemas, sourceType, tunnelMethod,
             username);
     }
     
@@ -500,36 +502,38 @@ public class SourceSapHanaEnterprise {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> checkPrivileges;
- 
+
         private Optional<Long> checkpointTargetIntervalSeconds;
- 
+
         private Optional<Long> concurrency;
- 
+
         private SourceSapHanaEnterpriseUpdateMethod cursor;
- 
+
         private SourceSapHanaEnterpriseEncryption encryption;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -549,6 +553,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * How often (in seconds) a stream should checkpoint, when possible.
          */
@@ -566,6 +571,7 @@ public class SourceSapHanaEnterprise {
             this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
             return this;
         }
+
 
         /**
          * Maximum number of concurrent queries to the database.
@@ -585,6 +591,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * Configures how data is extracted from the database.
          */
@@ -593,6 +600,7 @@ public class SourceSapHanaEnterprise {
             this.cursor = cursor;
             return this;
         }
+
 
         /**
          * The encryption method with is used when communicating with the database.
@@ -603,6 +611,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -611,6 +620,7 @@ public class SourceSapHanaEnterprise {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -630,6 +640,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * The password associated with the username.
          */
@@ -647,6 +658,7 @@ public class SourceSapHanaEnterprise {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -670,6 +682,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * The list of schemas to sync from. Defaults to user. Case sensitive.
          */
@@ -688,6 +701,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
@@ -697,6 +711,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -705,7 +720,7 @@ public class SourceSapHanaEnterprise {
             this.username = username;
             return this;
         }
-        
+
         public SourceSapHanaEnterprise build() {
             if (checkPrivileges == null) {
                 checkPrivileges = _SINGLETON_VALUE_CheckPrivileges.value();
@@ -719,20 +734,14 @@ public class SourceSapHanaEnterprise {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceSapHanaEnterprise(
-                checkPrivileges,
-                checkpointTargetIntervalSeconds,
-                concurrency,
-                cursor,
-                encryption,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                schemas,
-                tunnelMethod,
-                username);
+                checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+                cursor, encryption, host,
+                jdbcUrlParams, password, port,
+                schemas, tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CheckPrivileges =
                 new LazySingletonValue<>(

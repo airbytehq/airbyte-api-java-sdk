@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -58,9 +57,10 @@ public class DestinationTeradataVerifyFull {
         return sslCaCertificate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-full.
@@ -72,7 +72,6 @@ public class DestinationTeradataVerifyFull {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -83,15 +82,14 @@ public class DestinationTeradataVerifyFull {
         }
         DestinationTeradataVerifyFull other = (DestinationTeradataVerifyFull) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.sslCaCertificate, other.sslCaCertificate);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.sslCaCertificate, other.sslCaCertificate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            sslCaCertificate);
+        return Utils.enhancedHash(
+            mode, sslCaCertificate);
     }
     
     @Override
@@ -100,14 +98,16 @@ public class DestinationTeradataVerifyFull {
                 "mode", mode,
                 "sslCaCertificate", sslCaCertificate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sslCaCertificate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Specifies the file name of a PEM file that contains Certificate Authority (CA) certificates for use with SSLMODE=verify-full.
@@ -118,11 +118,13 @@ public class DestinationTeradataVerifyFull {
             this.sslCaCertificate = sslCaCertificate;
             return this;
         }
-        
+
         public DestinationTeradataVerifyFull build() {
+
             return new DestinationTeradataVerifyFull(
                 sslCaCertificate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationTeradataSchemasSSLModeSSLModes6Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

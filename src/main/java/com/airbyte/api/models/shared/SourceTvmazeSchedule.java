@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTvmazeSchedule {
 
+public class SourceTvmazeSchedule {
     /**
      * Country code for domestic TV schedule retrieval.
      */
@@ -30,6 +29,7 @@ public class SourceTvmazeSchedule {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<String> endDate;
+
 
     @JsonProperty("sourceType")
     private TvmazeSchedule sourceType;
@@ -69,7 +69,8 @@ public class SourceTvmazeSchedule {
     public SourceTvmazeSchedule(
             String domesticScheduleCountryCode,
             String startDate) {
-        this(domesticScheduleCountryCode, Optional.empty(), startDate, Optional.empty());
+        this(domesticScheduleCountryCode, Optional.empty(), startDate,
+            Optional.empty());
     }
 
     /**
@@ -111,9 +112,10 @@ public class SourceTvmazeSchedule {
         return webScheduleCountryCode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Country code for domestic TV schedule retrieval.
@@ -132,6 +134,7 @@ public class SourceTvmazeSchedule {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * End date for TV schedule retrieval. May be in the future. Optional.
@@ -162,6 +165,7 @@ public class SourceTvmazeSchedule {
         return this;
     }
 
+
     /**
      * ISO 3166-1 country code for web TV schedule retrieval. Leave blank for
      * all countries plus global web channels (e.g. Netflix). Alternatively,
@@ -173,7 +177,6 @@ public class SourceTvmazeSchedule {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -184,21 +187,18 @@ public class SourceTvmazeSchedule {
         }
         SourceTvmazeSchedule other = (SourceTvmazeSchedule) o;
         return 
-            Objects.deepEquals(this.domesticScheduleCountryCode, other.domesticScheduleCountryCode) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.webScheduleCountryCode, other.webScheduleCountryCode);
+            Utils.enhancedDeepEquals(this.domesticScheduleCountryCode, other.domesticScheduleCountryCode) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.webScheduleCountryCode, other.webScheduleCountryCode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            domesticScheduleCountryCode,
-            endDate,
-            sourceType,
-            startDate,
-            webScheduleCountryCode);
+        return Utils.enhancedHash(
+            domesticScheduleCountryCode, endDate, sourceType,
+            startDate, webScheduleCountryCode);
     }
     
     @Override
@@ -210,20 +210,22 @@ public class SourceTvmazeSchedule {
                 "startDate", startDate,
                 "webScheduleCountryCode", webScheduleCountryCode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String domesticScheduleCountryCode;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private String startDate;
- 
+
         private Optional<String> webScheduleCountryCode = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Country code for domestic TV schedule retrieval.
@@ -233,6 +235,7 @@ public class SourceTvmazeSchedule {
             this.domesticScheduleCountryCode = domesticScheduleCountryCode;
             return this;
         }
+
 
         /**
          * End date for TV schedule retrieval. May be in the future. Optional.
@@ -252,6 +255,7 @@ public class SourceTvmazeSchedule {
             return this;
         }
 
+
         /**
          * Start date for TV schedule retrieval. May be in the future.
          */
@@ -260,6 +264,7 @@ public class SourceTvmazeSchedule {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * ISO 3166-1 country code for web TV schedule retrieval. Leave blank for
@@ -282,14 +287,14 @@ public class SourceTvmazeSchedule {
             this.webScheduleCountryCode = webScheduleCountryCode;
             return this;
         }
-        
+
         public SourceTvmazeSchedule build() {
+
             return new SourceTvmazeSchedule(
-                domesticScheduleCountryCode,
-                endDate,
-                startDate,
+                domesticScheduleCountryCode, endDate, startDate,
                 webScheduleCountryCode);
         }
+
 
         private static final LazySingletonValue<TvmazeSchedule> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

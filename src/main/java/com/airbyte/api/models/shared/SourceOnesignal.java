@@ -13,10 +13,9 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceOnesignal {
-
     /**
      * Applications keys, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys"&gt;docs&lt;/a&gt; for more information on how to obtain this data
      */
@@ -28,6 +27,7 @@ public class SourceOnesignal {
      */
     @JsonProperty("outcome_names")
     private String outcomeNames;
+
 
     @JsonProperty("sourceType")
     private Onesignal sourceType;
@@ -98,9 +98,10 @@ public class SourceOnesignal {
         return userAuthKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Applications keys, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys"&gt;docs&lt;/a&gt; for more information on how to obtain this data
@@ -138,7 +139,6 @@ public class SourceOnesignal {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,21 +149,18 @@ public class SourceOnesignal {
         }
         SourceOnesignal other = (SourceOnesignal) o;
         return 
-            Objects.deepEquals(this.applications, other.applications) &&
-            Objects.deepEquals(this.outcomeNames, other.outcomeNames) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.userAuthKey, other.userAuthKey);
+            Utils.enhancedDeepEquals(this.applications, other.applications) &&
+            Utils.enhancedDeepEquals(this.outcomeNames, other.outcomeNames) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.userAuthKey, other.userAuthKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            applications,
-            outcomeNames,
-            sourceType,
-            startDate,
-            userAuthKey);
+        return Utils.enhancedHash(
+            applications, outcomeNames, sourceType,
+            startDate, userAuthKey);
     }
     
     @Override
@@ -175,20 +172,22 @@ public class SourceOnesignal {
                 "startDate", startDate,
                 "userAuthKey", userAuthKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<Applications> applications;
- 
+
         private String outcomeNames;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String userAuthKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Applications keys, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys"&gt;docs&lt;/a&gt; for more information on how to obtain this data
@@ -199,6 +198,7 @@ public class SourceOnesignal {
             return this;
         }
 
+
         /**
          * Comma-separated list of names and the value (sum/count) for the returned outcome data. See the &lt;a href="https://documentation.onesignal.com/reference/view-outcomes"&gt;docs&lt;/a&gt; for more details
          */
@@ -207,6 +207,7 @@ public class SourceOnesignal {
             this.outcomeNames = outcomeNames;
             return this;
         }
+
 
         /**
          * The date from which you'd like to replicate data for OneSignal API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
@@ -217,6 +218,7 @@ public class SourceOnesignal {
             return this;
         }
 
+
         /**
          * OneSignal User Auth Key, see the &lt;a href="https://documentation.onesignal.com/docs/accounts-and-keys#user-auth-key"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
          */
@@ -225,14 +227,14 @@ public class SourceOnesignal {
             this.userAuthKey = userAuthKey;
             return this;
         }
-        
+
         public SourceOnesignal build() {
+
             return new SourceOnesignal(
-                applications,
-                outcomeNames,
-                startDate,
+                applications, outcomeNames, startDate,
                 userAuthKey);
         }
+
 
         private static final LazySingletonValue<Onesignal> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

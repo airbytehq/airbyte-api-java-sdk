@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceYoutubeAnalytics {
 
     @JsonProperty("credentials")
     private AuthenticateViaOAuth20 credentials;
+
 
     @JsonProperty("sourceType")
     private SourceYoutubeAnalyticsYoutubeAnalytics sourceType;
@@ -39,9 +40,10 @@ public class SourceYoutubeAnalytics {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceYoutubeAnalytics withCredentials(AuthenticateViaOAuth20 credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -49,7 +51,6 @@ public class SourceYoutubeAnalytics {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class SourceYoutubeAnalytics {
         }
         SourceYoutubeAnalytics other = (SourceYoutubeAnalytics) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, sourceType);
     }
     
     @Override
@@ -77,25 +77,29 @@ public class SourceYoutubeAnalytics {
                 "credentials", credentials,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private AuthenticateViaOAuth20 credentials;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(AuthenticateViaOAuth20 credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
-        
+
         public SourceYoutubeAnalytics build() {
+
             return new SourceYoutubeAnalytics(
                 credentials);
         }
+
 
         private static final LazySingletonValue<SourceYoutubeAnalyticsYoutubeAnalytics> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

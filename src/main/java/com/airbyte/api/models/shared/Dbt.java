@@ -14,7 +14,7 @@ public enum Dbt {
     @JsonValue
     private final String value;
 
-    private Dbt(String value) {
+    Dbt(String value) {
         this.value = value;
     }
     

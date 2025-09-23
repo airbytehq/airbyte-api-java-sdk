@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleWebfonts {
 
+public class SourceGoogleWebfonts {
     /**
      * Optional, Available params- json, media, proto
      */
@@ -45,6 +44,7 @@ public class SourceGoogleWebfonts {
     @JsonProperty("sort")
     private Optional<String> sort;
 
+
     @JsonProperty("sourceType")
     private GoogleWebfonts sourceType;
 
@@ -67,7 +67,8 @@ public class SourceGoogleWebfonts {
     
     public SourceGoogleWebfonts(
             String apiKey) {
-        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty());
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -107,9 +108,10 @@ public class SourceGoogleWebfonts {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Optional, Available params- json, media, proto
@@ -119,6 +121,7 @@ public class SourceGoogleWebfonts {
         this.alt = Optional.ofNullable(alt);
         return this;
     }
+
 
     /**
      * Optional, Available params- json, media, proto
@@ -147,6 +150,7 @@ public class SourceGoogleWebfonts {
         return this;
     }
 
+
     /**
      * Optional, boolean type
      */
@@ -165,6 +169,7 @@ public class SourceGoogleWebfonts {
         return this;
     }
 
+
     /**
      * Optional, to find how to sort
      */
@@ -174,7 +179,6 @@ public class SourceGoogleWebfonts {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -185,21 +189,18 @@ public class SourceGoogleWebfonts {
         }
         SourceGoogleWebfonts other = (SourceGoogleWebfonts) o;
         return 
-            Objects.deepEquals(this.alt, other.alt) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.prettyPrint, other.prettyPrint) &&
-            Objects.deepEquals(this.sort, other.sort) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.alt, other.alt) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.prettyPrint, other.prettyPrint) &&
+            Utils.enhancedDeepEquals(this.sort, other.sort) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            alt,
-            apiKey,
-            prettyPrint,
-            sort,
-            sourceType);
+        return Utils.enhancedHash(
+            alt, apiKey, prettyPrint,
+            sort, sourceType);
     }
     
     @Override
@@ -211,20 +212,22 @@ public class SourceGoogleWebfonts {
                 "sort", sort,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> alt = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private Optional<String> prettyPrint = Optional.empty();
- 
+
         private Optional<String> sort = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Optional, Available params- json, media, proto
@@ -244,6 +247,7 @@ public class SourceGoogleWebfonts {
             return this;
         }
 
+
         /**
          * API key is required to access google apis, For getting your's goto google console and generate api key for Webfonts
          */
@@ -252,6 +256,7 @@ public class SourceGoogleWebfonts {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Optional, boolean type
@@ -271,6 +276,7 @@ public class SourceGoogleWebfonts {
             return this;
         }
 
+
         /**
          * Optional, to find how to sort
          */
@@ -288,14 +294,14 @@ public class SourceGoogleWebfonts {
             this.sort = sort;
             return this;
         }
-        
+
         public SourceGoogleWebfonts build() {
+
             return new SourceGoogleWebfonts(
-                alt,
-                apiKey,
-                prettyPrint,
+                alt, apiKey, prettyPrint,
                 sort);
         }
+
 
         private static final LazySingletonValue<GoogleWebfonts> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

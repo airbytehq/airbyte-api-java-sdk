@@ -11,18 +11,16 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
-import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceJira {
 
+public class SourceJira {
     /**
      * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key. API Token is used for Authorization to your account by BasicAuth.
      */
@@ -40,13 +38,6 @@ public class SourceJira {
      */
     @JsonProperty("email")
     private String email;
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("enable_experimental_streams")
-    private Optional<Boolean> enableExperimentalStreams;
 
     /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
@@ -69,6 +60,7 @@ public class SourceJira {
     @JsonProperty("projects")
     private Optional<? extends List<String>> projects;
 
+
     @JsonProperty("sourceType")
     private Jira sourceType;
 
@@ -84,7 +76,6 @@ public class SourceJira {
             @JsonProperty("api_token") String apiToken,
             @JsonProperty("domain") String domain,
             @JsonProperty("email") String email,
-            @JsonProperty("enable_experimental_streams") Optional<Boolean> enableExperimentalStreams,
             @JsonProperty("lookback_window_minutes") Optional<Long> lookbackWindowMinutes,
             @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("projects") Optional<? extends List<String>> projects,
@@ -92,7 +83,6 @@ public class SourceJira {
         Utils.checkNotNull(apiToken, "apiToken");
         Utils.checkNotNull(domain, "domain");
         Utils.checkNotNull(email, "email");
-        Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
         Utils.checkNotNull(lookbackWindowMinutes, "lookbackWindowMinutes");
         Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(projects, "projects");
@@ -100,7 +90,6 @@ public class SourceJira {
         this.apiToken = apiToken;
         this.domain = domain;
         this.email = email;
-        this.enableExperimentalStreams = enableExperimentalStreams;
         this.lookbackWindowMinutes = lookbackWindowMinutes;
         this.numWorkers = numWorkers;
         this.projects = projects;
@@ -112,7 +101,9 @@ public class SourceJira {
             String apiToken,
             String domain,
             String email) {
-        this(apiToken, domain, email, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiToken, domain, email,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -137,14 +128,6 @@ public class SourceJira {
     @JsonIgnore
     public String email() {
         return email;
-    }
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    @JsonIgnore
-    public Optional<Boolean> enableExperimentalStreams() {
-        return enableExperimentalStreams;
     }
 
     /**
@@ -185,9 +168,10 @@ public class SourceJira {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key. API Token is used for Authorization to your account by BasicAuth.
@@ -217,24 +201,6 @@ public class SourceJira {
     }
 
     /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    public SourceJira withEnableExperimentalStreams(boolean enableExperimentalStreams) {
-        Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-        this.enableExperimentalStreams = Optional.ofNullable(enableExperimentalStreams);
-        return this;
-    }
-
-    /**
-     * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-     */
-    public SourceJira withEnableExperimentalStreams(Optional<Boolean> enableExperimentalStreams) {
-        Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-        this.enableExperimentalStreams = enableExperimentalStreams;
-        return this;
-    }
-
-    /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
      */
     public SourceJira withLookbackWindowMinutes(long lookbackWindowMinutes) {
@@ -242,6 +208,7 @@ public class SourceJira {
         this.lookbackWindowMinutes = Optional.ofNullable(lookbackWindowMinutes);
         return this;
     }
+
 
     /**
      * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
@@ -261,6 +228,7 @@ public class SourceJira {
         return this;
     }
 
+
     /**
      * The number of worker threads to use for the sync.
      */
@@ -278,6 +246,7 @@ public class SourceJira {
         this.projects = Optional.ofNullable(projects);
         return this;
     }
+
 
     /**
      * List of Jira project keys to replicate data for, or leave it empty if you want to replicate data for all projects.
@@ -297,6 +266,7 @@ public class SourceJira {
         return this;
     }
 
+
     /**
      * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. Or leave it empty if you want to replicate all data. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
      */
@@ -306,7 +276,6 @@ public class SourceJira {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -317,29 +286,22 @@ public class SourceJira {
         }
         SourceJira other = (SourceJira) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.enableExperimentalStreams, other.enableExperimentalStreams) &&
-            Objects.deepEquals(this.lookbackWindowMinutes, other.lookbackWindowMinutes) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.projects, other.projects) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.lookbackWindowMinutes, other.lookbackWindowMinutes) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.projects, other.projects) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            domain,
-            email,
-            enableExperimentalStreams,
-            lookbackWindowMinutes,
-            numWorkers,
-            projects,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiToken, domain, email,
+            lookbackWindowMinutes, numWorkers, projects,
+            sourceType, startDate);
     }
     
     @Override
@@ -348,35 +310,34 @@ public class SourceJira {
                 "apiToken", apiToken,
                 "domain", domain,
                 "email", email,
-                "enableExperimentalStreams", enableExperimentalStreams,
                 "lookbackWindowMinutes", lookbackWindowMinutes,
                 "numWorkers", numWorkers,
                 "projects", projects,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String domain;
- 
+
         private String email;
- 
-        private Optional<Boolean> enableExperimentalStreams;
- 
+
         private Optional<Long> lookbackWindowMinutes;
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<? extends List<String>> projects = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Jira API Token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/jira"&gt;docs&lt;/a&gt; for more information on how to generate this key. API Token is used for Authorization to your account by BasicAuth.
@@ -387,6 +348,7 @@ public class SourceJira {
             return this;
         }
 
+
         /**
          * The Domain for your Jira account, e.g. airbyteio.atlassian.net, airbyteio.jira.com, jira.your-domain.com
          */
@@ -395,6 +357,7 @@ public class SourceJira {
             this.domain = domain;
             return this;
         }
+
 
         /**
          * The user email for your Jira account which you used to generate the API token. This field is used for Authorization to your account by BasicAuth.
@@ -405,23 +368,6 @@ public class SourceJira {
             return this;
         }
 
-        /**
-         * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-         */
-        public Builder enableExperimentalStreams(boolean enableExperimentalStreams) {
-            Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-            this.enableExperimentalStreams = Optional.ofNullable(enableExperimentalStreams);
-            return this;
-        }
-
-        /**
-         * Allow the use of experimental streams which rely on undocumented Jira API endpoints. See https://docs.airbyte.com/integrations/sources/jira#experimental-tables for more info.
-         */
-        public Builder enableExperimentalStreams(Optional<Boolean> enableExperimentalStreams) {
-            Utils.checkNotNull(enableExperimentalStreams, "enableExperimentalStreams");
-            this.enableExperimentalStreams = enableExperimentalStreams;
-            return this;
-        }
 
         /**
          * When set to N, the connector will always refresh resources created within the past N minutes. By default, updated objects that are not newly created are not incrementally synced.
@@ -441,6 +387,7 @@ public class SourceJira {
             return this;
         }
 
+
         /**
          * The number of worker threads to use for the sync.
          */
@@ -458,6 +405,7 @@ public class SourceJira {
             this.numWorkers = numWorkers;
             return this;
         }
+
 
         /**
          * List of Jira project keys to replicate data for, or leave it empty if you want to replicate data for all projects.
@@ -477,6 +425,7 @@ public class SourceJira {
             return this;
         }
 
+
         /**
          * The date from which you want to replicate data from Jira, use the format YYYY-MM-DDT00:00:00Z. Note that this field only applies to certain streams, and only data generated on or after the start date will be replicated. Or leave it empty if you want to replicate all data. For more information, refer to the &lt;a href="https://docs.airbyte.com/integrations/sources/jira/"&gt;documentation&lt;/a&gt;.
          */
@@ -494,33 +443,21 @@ public class SourceJira {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceJira build() {
-            if (enableExperimentalStreams == null) {
-                enableExperimentalStreams = _SINGLETON_VALUE_EnableExperimentalStreams.value();
-            }
             if (lookbackWindowMinutes == null) {
                 lookbackWindowMinutes = _SINGLETON_VALUE_LookbackWindowMinutes.value();
             }
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
+
             return new SourceJira(
-                apiToken,
-                domain,
-                email,
-                enableExperimentalStreams,
-                lookbackWindowMinutes,
-                numWorkers,
-                projects,
+                apiToken, domain, email,
+                lookbackWindowMinutes, numWorkers, projects,
                 startDate);
         }
 
-        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_EnableExperimentalStreams =
-                new LazySingletonValue<>(
-                        "enable_experimental_streams",
-                        "false",
-                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowMinutes =
                 new LazySingletonValue<>(

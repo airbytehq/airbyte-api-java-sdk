@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceTimely {
-
     /**
      * The Account ID for your Timely account
      */
@@ -27,6 +26,7 @@ public class SourceTimely {
      */
     @JsonProperty("bearer_token")
     private String bearerToken;
+
 
     @JsonProperty("sourceType")
     private Timely sourceType;
@@ -80,9 +80,10 @@ public class SourceTimely {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Account ID for your Timely account
@@ -111,7 +112,6 @@ public class SourceTimely {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +122,16 @@ public class SourceTimely {
         }
         SourceTimely other = (SourceTimely) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.bearerToken, other.bearerToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.bearerToken, other.bearerToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            bearerToken,
-            sourceType,
+        return Utils.enhancedHash(
+            accountId, bearerToken, sourceType,
             startDate);
     }
     
@@ -145,18 +143,20 @@ public class SourceTimely {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String bearerToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Account ID for your Timely account
@@ -167,6 +167,7 @@ public class SourceTimely {
             return this;
         }
 
+
         /**
          * The Bearer Token for your Timely account
          */
@@ -176,6 +177,7 @@ public class SourceTimely {
             return this;
         }
 
+
         /**
          * Earliest date from which you want to pull data from.
          */
@@ -184,13 +186,13 @@ public class SourceTimely {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceTimely build() {
+
             return new SourceTimely(
-                accountId,
-                bearerToken,
-                startDate);
+                accountId, bearerToken, startDate);
         }
+
 
         private static final LazySingletonValue<Timely> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

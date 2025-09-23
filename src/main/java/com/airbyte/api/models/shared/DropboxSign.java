@@ -14,7 +14,7 @@ public enum DropboxSign {
     @JsonValue
     private final String value;
 
-    private DropboxSign(String value) {
+    DropboxSign(String value) {
         this.value = value;
     }
     

@@ -12,18 +12,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceProductboard {
-
     /**
      * Your Productboard access token. See https://developer.productboard.com/reference/authentication for steps to generate one.
      */
     @JsonProperty("access_token")
     private String accessToken;
 
+
     @JsonProperty("sourceType")
     private Productboard sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceProductboard {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Productboard access token. See https://developer.productboard.com/reference/authentication for steps to generate one.
@@ -76,7 +78,6 @@ public class SourceProductboard {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceProductboard {
         }
         SourceProductboard other = (SourceProductboard) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, sourceType, startDate);
     }
     
     @Override
@@ -107,16 +106,18 @@ public class SourceProductboard {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Productboard access token. See https://developer.productboard.com/reference/authentication for steps to generate one.
@@ -127,17 +128,19 @@ public class SourceProductboard {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceProductboard build() {
+
             return new SourceProductboard(
-                accessToken,
-                startDate);
+                accessToken, startDate);
         }
+
 
         private static final LazySingletonValue<Productboard> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

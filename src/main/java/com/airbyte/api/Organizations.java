@@ -3,35 +3,66 @@
  */
 package com.airbyte.api;
 
-import com.airbyte.api.models.errors.SDKError;
+import static com.airbyte.api.operations.Operations.RequestOperation;
+import static com.airbyte.api.operations.Operations.RequestlessOperation;
+
+import com.airbyte.api.models.operations.CreateOrUpdateOrganizationOAuthCredentialsRequest;
+import com.airbyte.api.models.operations.CreateOrUpdateOrganizationOAuthCredentialsRequestBuilder;
+import com.airbyte.api.models.operations.CreateOrUpdateOrganizationOAuthCredentialsResponse;
 import com.airbyte.api.models.operations.ListOrganizationsForUserRequestBuilder;
 import com.airbyte.api.models.operations.ListOrganizationsForUserResponse;
-import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
-import com.airbyte.api.models.shared.OrganizationsResponse;
-import com.airbyte.api.utils.HTTPClient;
-import com.airbyte.api.utils.HTTPRequest;
-import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
-import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
-import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
-import com.airbyte.api.utils.Utils;
-import com.fasterxml.jackson.core.type.TypeReference;
-import java.io.InputStream;
+import com.airbyte.api.operations.CreateOrUpdateOrganizationOAuthCredentials;
+import com.airbyte.api.operations.ListOrganizationsForUser;
+import com.airbyte.api.utils.Headers;
 import java.lang.Exception;
-import java.lang.String;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.List;
-import java.util.Optional;
 
-public class Organizations implements
-            MethodCallListOrganizationsForUser {
 
+public class Organizations {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncOrganizations asyncSDK;
 
     Organizations(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncOrganizations(this, sdkConfiguration);
     }
 
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncOrganizations async() {
+        return asyncSDK;
+    }
+
+    /**
+     * Create OAuth override credentials for an organization and source type.
+     * 
+     * <p>Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
+     * 
+     * @return The call builder
+     */
+    public CreateOrUpdateOrganizationOAuthCredentialsRequestBuilder createOrUpdateOrganizationOAuthCredentials() {
+        return new CreateOrUpdateOrganizationOAuthCredentialsRequestBuilder(sdkConfiguration);
+    }
+
+    /**
+     * Create OAuth override credentials for an organization and source type.
+     * 
+     * <p>Create/update a set of OAuth credentials to override the Airbyte-provided OAuth credentials used for source/destination OAuth.
+     * In order to determine what the credential configuration needs to be, please see the connector specification of the relevant source/destination.
+     * 
+     * @param request The request object containing all the parameters for the API call.
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public CreateOrUpdateOrganizationOAuthCredentialsResponse createOrUpdateOrganizationOAuthCredentials(CreateOrUpdateOrganizationOAuthCredentialsRequest request) throws Exception {
+        RequestOperation<CreateOrUpdateOrganizationOAuthCredentialsRequest, CreateOrUpdateOrganizationOAuthCredentialsResponse> operation
+              = new CreateOrUpdateOrganizationOAuthCredentials.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
+    }
 
     /**
      * List all organizations for a user
@@ -41,7 +72,7 @@ public class Organizations implements
      * @return The call builder
      */
     public ListOrganizationsForUserRequestBuilder listOrganizationsForUser() {
-        return new ListOrganizationsForUserRequestBuilder(this);
+        return new ListOrganizationsForUserRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -53,112 +84,9 @@ public class Organizations implements
      * @throws Exception if the API call fails
      */
     public ListOrganizationsForUserResponse listOrganizationsForUserDirect() throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/organizations");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "listOrganizationsForUser", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "listOrganizationsForUser",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "listOrganizationsForUser",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "listOrganizationsForUser",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        ListOrganizationsForUserResponse.Builder _resBuilder = 
-            ListOrganizationsForUserResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        ListOrganizationsForUserResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                OrganizationsResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<OrganizationsResponse>() {});
-                _res.withOrganizationsResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+        RequestlessOperation<ListOrganizationsForUserResponse> operation
+            = new ListOrganizationsForUser.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest());
     }
 
 }

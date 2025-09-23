@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOracle {
 
+public class SourceOracle {
     /**
      * Connect data that will be used for DB connection
      */
@@ -71,6 +70,7 @@ public class SourceOracle {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
+
 
     @JsonProperty("sourceType")
     private SourceOracleOracle sourceType;
@@ -123,7 +123,9 @@ public class SourceOracle {
     public SourceOracle(
             String host,
             String username) {
-        this(Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(Optional.empty(), Optional.empty(), host,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -210,9 +212,10 @@ public class SourceOracle {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Connect data that will be used for DB connection
@@ -222,6 +225,7 @@ public class SourceOracle {
         this.connectionData = Optional.ofNullable(connectionData);
         return this;
     }
+
 
     /**
      * Connect data that will be used for DB connection
@@ -240,6 +244,7 @@ public class SourceOracle {
         this.encryption = Optional.ofNullable(encryption);
         return this;
     }
+
 
     /**
      * The encryption method with is used when communicating with the database.
@@ -268,6 +273,7 @@ public class SourceOracle {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -285,6 +291,7 @@ public class SourceOracle {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with the username.
@@ -307,6 +314,7 @@ public class SourceOracle {
         return this;
     }
 
+
     /**
      * Port of the database.
      * Oracle Corporations recommends the following port numbers:
@@ -328,6 +336,7 @@ public class SourceOracle {
         return this;
     }
 
+
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
      */
@@ -345,6 +354,7 @@ public class SourceOracle {
         this.tunnelMethod = Optional.ofNullable(tunnelMethod);
         return this;
     }
+
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -364,7 +374,6 @@ public class SourceOracle {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -375,30 +384,24 @@ public class SourceOracle {
         }
         SourceOracle other = (SourceOracle) o;
         return 
-            Objects.deepEquals(this.connectionData, other.connectionData) &&
-            Objects.deepEquals(this.encryption, other.encryption) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.connectionData, other.connectionData) &&
+            Utils.enhancedDeepEquals(this.encryption, other.encryption) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionData,
-            encryption,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            schemas,
-            sourceType,
-            tunnelMethod,
+        return Utils.enhancedHash(
+            connectionData, encryption, host,
+            jdbcUrlParams, password, port,
+            schemas, sourceType, tunnelMethod,
             username);
     }
     
@@ -416,30 +419,32 @@ public class SourceOracle {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends ConnectBy> connectionData = Optional.empty();
- 
+
         private Optional<? extends SourceOracleEncryption> encryption = Optional.empty();
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private Optional<? extends SourceOracleSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Connect data that will be used for DB connection
@@ -459,6 +464,7 @@ public class SourceOracle {
             return this;
         }
 
+
         /**
          * The encryption method with is used when communicating with the database.
          */
@@ -477,6 +483,7 @@ public class SourceOracle {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -485,6 +492,7 @@ public class SourceOracle {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -504,6 +512,7 @@ public class SourceOracle {
             return this;
         }
 
+
         /**
          * The password associated with the username.
          */
@@ -521,6 +530,7 @@ public class SourceOracle {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -546,6 +556,7 @@ public class SourceOracle {
             return this;
         }
 
+
         /**
          * The list of schemas to sync from. Defaults to user. Case sensitive.
          */
@@ -563,6 +574,7 @@ public class SourceOracle {
             this.schemas = schemas;
             return this;
         }
+
 
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -582,6 +594,7 @@ public class SourceOracle {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -590,22 +603,18 @@ public class SourceOracle {
             this.username = username;
             return this;
         }
-        
+
         public SourceOracle build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceOracle(
-                connectionData,
-                encryption,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                schemas,
-                tunnelMethod,
-                username);
+                connectionData, encryption, host,
+                jdbcUrlParams, password, port,
+                schemas, tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(

@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public class SourceSenseforce {
-
     /**
      * Your API access token. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt;. The toke is case sensitive.
      */
@@ -33,6 +32,7 @@ public class SourceSenseforce {
      */
     @JsonProperty("dataset_id")
     private String datasetId;
+
 
     @JsonProperty("sourceType")
     private Senseforce sourceType;
@@ -97,9 +97,10 @@ public class SourceSenseforce {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API access token. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt;. The toke is case sensitive.
@@ -137,7 +138,6 @@ public class SourceSenseforce {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -148,21 +148,18 @@ public class SourceSenseforce {
         }
         SourceSenseforce other = (SourceSenseforce) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.backendUrl, other.backendUrl) &&
-            Objects.deepEquals(this.datasetId, other.datasetId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.backendUrl, other.backendUrl) &&
+            Utils.enhancedDeepEquals(this.datasetId, other.datasetId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            backendUrl,
-            datasetId,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, backendUrl, datasetId,
+            sourceType, startDate);
     }
     
     @Override
@@ -174,20 +171,22 @@ public class SourceSenseforce {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String backendUrl;
- 
+
         private String datasetId;
- 
+
         private LocalDate startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API access token. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt;. The toke is case sensitive.
@@ -198,6 +197,7 @@ public class SourceSenseforce {
             return this;
         }
 
+
         /**
          * Your Senseforce API backend URL. This is the URL shown during the Login screen. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt; for more details. (Note: Most Senseforce backend APIs have the term 'galaxy' in their ULR)
          */
@@ -206,6 +206,7 @@ public class SourceSenseforce {
             this.backendUrl = backendUrl;
             return this;
         }
+
 
         /**
          * The ID of the dataset you want to synchronize. The ID can be found in the URL when opening the dataset. See &lt;a href="https://manual.senseforce.io/manual/sf-platform/public-api/get-your-access-token/"&gt;here&lt;/a&gt; for more details. (Note: As the Senseforce API only allows to synchronize a specific dataset, each dataset you  want to synchronize needs to be implemented as a separate airbyte source).
@@ -216,6 +217,7 @@ public class SourceSenseforce {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25. Only data with "Timestamp" after this date will be replicated. Important note: This start date must be set to the first day of where your dataset provides data.  If your dataset has data from 2020-10-10 10:21:10, set the start_date to 2020-10-10 or later
          */
@@ -224,14 +226,14 @@ public class SourceSenseforce {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSenseforce build() {
+
             return new SourceSenseforce(
-                accessToken,
-                backendUrl,
-                datasetId,
+                accessToken, backendUrl, datasetId,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Senseforce> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

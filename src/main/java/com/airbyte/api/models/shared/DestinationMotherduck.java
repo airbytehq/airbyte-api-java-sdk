@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationMotherduck {
 
@@ -89,9 +89,10 @@ public class DestinationMotherduck {
         return schema;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Path to a .duckdb file or 'md:&lt;DATABASE_NAME&gt;' to connect to a MotherDuck database. If 'md:' is specified without a database name, the default MotherDuck database name ('my_db') will be used.
@@ -101,6 +102,7 @@ public class DestinationMotherduck {
         this.destinationPath = Optional.ofNullable(destinationPath);
         return this;
     }
+
 
     /**
      * Path to a .duckdb file or 'md:&lt;DATABASE_NAME&gt;' to connect to a MotherDuck database. If 'md:' is specified without a database name, the default MotherDuck database name ('my_db') will be used.
@@ -129,6 +131,7 @@ public class DestinationMotherduck {
         return this;
     }
 
+
     /**
      * Database schema name, defaults to 'main' if not specified.
      */
@@ -138,7 +141,6 @@ public class DestinationMotherduck {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +151,16 @@ public class DestinationMotherduck {
         }
         DestinationMotherduck other = (DestinationMotherduck) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.destinationPath, other.destinationPath) &&
-            Objects.deepEquals(this.motherduckApiKey, other.motherduckApiKey) &&
-            Objects.deepEquals(this.schema, other.schema);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.destinationPath, other.destinationPath) &&
+            Utils.enhancedDeepEquals(this.motherduckApiKey, other.motherduckApiKey) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            destinationPath,
-            motherduckApiKey,
+        return Utils.enhancedHash(
+            destinationType, destinationPath, motherduckApiKey,
             schema);
     }
     
@@ -172,18 +172,20 @@ public class DestinationMotherduck {
                 "motherduckApiKey", motherduckApiKey,
                 "schema", schema);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> destinationPath;
- 
+
         private String motherduckApiKey;
- 
+
         private Optional<String> schema = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Path to a .duckdb file or 'md:&lt;DATABASE_NAME&gt;' to connect to a MotherDuck database. If 'md:' is specified without a database name, the default MotherDuck database name ('my_db') will be used.
@@ -203,6 +205,7 @@ public class DestinationMotherduck {
             return this;
         }
 
+
         /**
          * API access token to use for authentication to a MotherDuck database.
          */
@@ -211,6 +214,7 @@ public class DestinationMotherduck {
             this.motherduckApiKey = motherduckApiKey;
             return this;
         }
+
 
         /**
          * Database schema name, defaults to 'main' if not specified.
@@ -229,16 +233,16 @@ public class DestinationMotherduck {
             this.schema = schema;
             return this;
         }
-        
+
         public DestinationMotherduck build() {
             if (destinationPath == null) {
                 destinationPath = _SINGLETON_VALUE_DestinationPath.value();
             }
+
             return new DestinationMotherduck(
-                destinationPath,
-                motherduckApiKey,
-                schema);
+                destinationPath, motherduckApiKey, schema);
         }
+
 
         private static final LazySingletonValue<Motherduck> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

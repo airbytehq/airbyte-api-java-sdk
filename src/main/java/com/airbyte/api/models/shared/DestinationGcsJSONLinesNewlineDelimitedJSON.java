@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationGcsJSONLinesNewlineDelimitedJSON {
 
+public class DestinationGcsJSONLinesNewlineDelimitedJSON {
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression")
     private Optional<? extends DestinationGcsCompression> compression;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -59,9 +59,10 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
         return (Optional<DestinationGcsSchemasFormatFormatType>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
@@ -71,6 +72,7 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
         this.compression = Optional.ofNullable(compression);
         return this;
     }
+
 
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
@@ -87,13 +89,13 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
         return this;
     }
 
+
     public DestinationGcsJSONLinesNewlineDelimitedJSON withFormatType(Optional<? extends DestinationGcsSchemasFormatFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,15 +106,14 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
         }
         DestinationGcsJSONLinesNewlineDelimitedJSON other = (DestinationGcsJSONLinesNewlineDelimitedJSON) o;
         return 
-            Objects.deepEquals(this.compression, other.compression) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.compression, other.compression) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            compression,
-            formatType);
+        return Utils.enhancedHash(
+            compression, formatType);
     }
     
     @Override
@@ -121,16 +122,18 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
                 "compression", compression,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsCompression> compression = Optional.empty();
- 
+
         private Optional<? extends DestinationGcsSchemasFormatFormatType> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
@@ -150,6 +153,7 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
             return this;
         }
 
+
         public Builder formatType(DestinationGcsSchemasFormatFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
             this.formatType = Optional.ofNullable(formatType);
@@ -161,15 +165,16 @@ public class DestinationGcsJSONLinesNewlineDelimitedJSON {
             this.formatType = formatType;
             return this;
         }
-        
+
         public DestinationGcsJSONLinesNewlineDelimitedJSON build() {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new DestinationGcsJSONLinesNewlineDelimitedJSON(
-                compression,
-                formatType);
+                compression, formatType);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsSchemasFormatFormatType>> _SINGLETON_VALUE_FormatType =
                 new LazySingletonValue<>(

@@ -21,8 +21,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3ParquetColumnarStorage {
 
@@ -56,6 +56,7 @@ public class DestinationS3ParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dictionary_page_size_kb")
     private Optional<Long> dictionaryPageSizeKb;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -102,7 +103,9 @@ public class DestinationS3ParquetColumnarStorage {
     }
     
     public DestinationS3ParquetColumnarStorage() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -165,9 +168,10 @@ public class DestinationS3ParquetColumnarStorage {
         return pageSizeKb;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3ParquetColumnarStorage withAdditionalProperty(String key, Object value) {
@@ -175,8 +179,7 @@ public class DestinationS3ParquetColumnarStorage {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3ParquetColumnarStorage withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -191,6 +194,7 @@ public class DestinationS3ParquetColumnarStorage {
         this.blockSizeMb = Optional.ofNullable(blockSizeMb);
         return this;
     }
+
 
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
@@ -210,6 +214,7 @@ public class DestinationS3ParquetColumnarStorage {
         return this;
     }
 
+
     /**
      * The compression algorithm used to compress data pages.
      */
@@ -227,6 +232,7 @@ public class DestinationS3ParquetColumnarStorage {
         this.dictionaryEncoding = Optional.ofNullable(dictionaryEncoding);
         return this;
     }
+
 
     /**
      * Default: true.
@@ -246,6 +252,7 @@ public class DestinationS3ParquetColumnarStorage {
         return this;
     }
 
+
     /**
      * There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.
      */
@@ -261,6 +268,7 @@ public class DestinationS3ParquetColumnarStorage {
         return this;
     }
 
+
     public DestinationS3ParquetColumnarStorage withFormatType(Optional<? extends DestinationS3SchemasFormatOutputFormatFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
@@ -275,6 +283,7 @@ public class DestinationS3ParquetColumnarStorage {
         this.maxPaddingSizeMb = Optional.ofNullable(maxPaddingSizeMb);
         return this;
     }
+
 
     /**
      * Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.
@@ -294,6 +303,7 @@ public class DestinationS3ParquetColumnarStorage {
         return this;
     }
 
+
     /**
      * The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.
      */
@@ -303,7 +313,6 @@ public class DestinationS3ParquetColumnarStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -314,27 +323,22 @@ public class DestinationS3ParquetColumnarStorage {
         }
         DestinationS3ParquetColumnarStorage other = (DestinationS3ParquetColumnarStorage) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.blockSizeMb, other.blockSizeMb) &&
-            Objects.deepEquals(this.compressionCodec, other.compressionCodec) &&
-            Objects.deepEquals(this.dictionaryEncoding, other.dictionaryEncoding) &&
-            Objects.deepEquals(this.dictionaryPageSizeKb, other.dictionaryPageSizeKb) &&
-            Objects.deepEquals(this.formatType, other.formatType) &&
-            Objects.deepEquals(this.maxPaddingSizeMb, other.maxPaddingSizeMb) &&
-            Objects.deepEquals(this.pageSizeKb, other.pageSizeKb);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.blockSizeMb, other.blockSizeMb) &&
+            Utils.enhancedDeepEquals(this.compressionCodec, other.compressionCodec) &&
+            Utils.enhancedDeepEquals(this.dictionaryEncoding, other.dictionaryEncoding) &&
+            Utils.enhancedDeepEquals(this.dictionaryPageSizeKb, other.dictionaryPageSizeKb) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType) &&
+            Utils.enhancedDeepEquals(this.maxPaddingSizeMb, other.maxPaddingSizeMb) &&
+            Utils.enhancedDeepEquals(this.pageSizeKb, other.pageSizeKb);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            blockSizeMb,
-            compressionCodec,
-            dictionaryEncoding,
-            dictionaryPageSizeKb,
-            formatType,
-            maxPaddingSizeMb,
-            pageSizeKb);
+        return Utils.enhancedHash(
+            additionalProperties, blockSizeMb, compressionCodec,
+            dictionaryEncoding, dictionaryPageSizeKb, formatType,
+            maxPaddingSizeMb, pageSizeKb);
     }
     
     @Override
@@ -349,25 +353,26 @@ public class DestinationS3ParquetColumnarStorage {
                 "maxPaddingSizeMb", maxPaddingSizeMb,
                 "pageSizeKb", pageSizeKb);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<Long> blockSizeMb;
- 
+
         private Optional<? extends DestinationS3SchemasCompressionCodec> compressionCodec;
- 
+
         private Optional<Boolean> dictionaryEncoding = Optional.empty();
- 
+
         private Optional<Long> dictionaryPageSizeKb;
- 
+
         private Optional<? extends DestinationS3SchemasFormatOutputFormatFormatType> formatType;
- 
+
         private Optional<Long> maxPaddingSizeMb;
- 
+
         private Optional<Long> pageSizeKb;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -388,6 +393,7 @@ public class DestinationS3ParquetColumnarStorage {
             return this;
         }
 
+
         /**
          * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
          */
@@ -405,6 +411,7 @@ public class DestinationS3ParquetColumnarStorage {
             this.blockSizeMb = blockSizeMb;
             return this;
         }
+
 
         /**
          * The compression algorithm used to compress data pages.
@@ -424,6 +431,7 @@ public class DestinationS3ParquetColumnarStorage {
             return this;
         }
 
+
         /**
          * Default: true.
          */
@@ -441,6 +449,7 @@ public class DestinationS3ParquetColumnarStorage {
             this.dictionaryEncoding = dictionaryEncoding;
             return this;
         }
+
 
         /**
          * There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.
@@ -460,6 +469,7 @@ public class DestinationS3ParquetColumnarStorage {
             return this;
         }
 
+
         public Builder formatType(DestinationS3SchemasFormatOutputFormatFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
             this.formatType = Optional.ofNullable(formatType);
@@ -471,6 +481,7 @@ public class DestinationS3ParquetColumnarStorage {
             this.formatType = formatType;
             return this;
         }
+
 
         /**
          * Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.
@@ -490,6 +501,7 @@ public class DestinationS3ParquetColumnarStorage {
             return this;
         }
 
+
         /**
          * The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.
          */
@@ -507,7 +519,7 @@ public class DestinationS3ParquetColumnarStorage {
             this.pageSizeKb = pageSizeKb;
             return this;
         }
-        
+
         public DestinationS3ParquetColumnarStorage build() {
             if (blockSizeMb == null) {
                 blockSizeMb = _SINGLETON_VALUE_BlockSizeMb.value();
@@ -527,16 +539,14 @@ public class DestinationS3ParquetColumnarStorage {
             if (pageSizeKb == null) {
                 pageSizeKb = _SINGLETON_VALUE_PageSizeKb.value();
             }
+
             return new DestinationS3ParquetColumnarStorage(
-                blockSizeMb,
-                compressionCodec,
-                dictionaryEncoding,
-                dictionaryPageSizeKb,
-                formatType,
-                maxPaddingSizeMb,
+                blockSizeMb, compressionCodec, dictionaryEncoding,
+                dictionaryPageSizeKb, formatType, maxPaddingSizeMb,
                 pageSizeKb)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BlockSizeMb =
                 new LazySingletonValue<>(

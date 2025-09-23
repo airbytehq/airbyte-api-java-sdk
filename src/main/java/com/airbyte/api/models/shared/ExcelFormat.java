@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ExcelFormat {
 
@@ -25,7 +25,6 @@ public class ExcelFormat {
 
     @JsonCreator
     public ExcelFormat() {
-        
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
@@ -35,11 +34,11 @@ public class ExcelFormat {
         return (Optional<SourceGcsSchemasStreamsFormatFormat6Filetype>) filetype;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class ExcelFormat {
         }
         ExcelFormat other = (ExcelFormat) o;
         return 
-            Objects.deepEquals(this.filetype, other.filetype);
+            Utils.enhancedDeepEquals(this.filetype, other.filetype);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             filetype);
     }
     
@@ -64,17 +63,20 @@ public class ExcelFormat {
         return Utils.toString(ExcelFormat.class,
                 "filetype", filetype);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public ExcelFormat build() {
+
             return new ExcelFormat(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGcsSchemasStreamsFormatFormat6Filetype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(

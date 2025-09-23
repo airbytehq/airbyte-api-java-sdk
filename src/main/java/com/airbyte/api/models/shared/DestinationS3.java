@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationS3 {
 
+public class DestinationS3 {
     /**
      * The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_key_id")
     private Optional<String> accessKeyId;
+
 
     @JsonProperty("destinationType")
     private S3 destinationType;
@@ -128,7 +128,10 @@ public class DestinationS3 {
             DestinationS3OutputFormat format,
             String s3BucketName,
             String s3BucketPath) {
-        this(Optional.empty(), Optional.empty(), format, Optional.empty(), s3BucketName, s3BucketPath, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), format,
+            Optional.empty(), s3BucketName, s3BucketPath,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -217,9 +220,10 @@ public class DestinationS3 {
         return secretAccessKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;.
@@ -229,6 +233,7 @@ public class DestinationS3 {
         this.accessKeyId = Optional.ofNullable(accessKeyId);
         return this;
     }
+
 
     /**
      * The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;.
@@ -247,6 +252,7 @@ public class DestinationS3 {
         this.fileNamePattern = Optional.ofNullable(fileNamePattern);
         return this;
     }
+
 
     /**
      * Pattern to match file names in the bucket directory. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html"&gt;here&lt;/a&gt;
@@ -274,6 +280,7 @@ public class DestinationS3 {
         this.roleArn = Optional.ofNullable(roleArn);
         return this;
     }
+
 
     /**
      * The ARN of the AWS role to assume. Only usable in Airbyte Cloud.
@@ -311,6 +318,7 @@ public class DestinationS3 {
         return this;
     }
 
+
     /**
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
@@ -328,6 +336,7 @@ public class DestinationS3 {
         this.s3Endpoint = Optional.ofNullable(s3Endpoint);
         return this;
     }
+
 
     /**
      * Your S3 endpoint url. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/s3.html#:~:text=Service%20endpoints-,Amazon%20S3%20endpoints,-When%20you%20use"&gt;here&lt;/a&gt;
@@ -347,6 +356,7 @@ public class DestinationS3 {
         return this;
     }
 
+
     /**
      * Format string on how data will be organized inside the bucket directory. Read more &lt;a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=The%20full%20path%20of%20the%20output%20data%20with%20the%20default%20S3%20path%20format"&gt;here&lt;/a&gt;
      */
@@ -365,6 +375,7 @@ public class DestinationS3 {
         return this;
     }
 
+
     /**
      * The corresponding secret to the access key ID. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;
      */
@@ -374,7 +385,6 @@ public class DestinationS3 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -385,33 +395,26 @@ public class DestinationS3 {
         }
         DestinationS3 other = (DestinationS3) o;
         return 
-            Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.fileNamePattern, other.fileNamePattern) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.roleArn, other.roleArn) &&
-            Objects.deepEquals(this.s3BucketName, other.s3BucketName) &&
-            Objects.deepEquals(this.s3BucketPath, other.s3BucketPath) &&
-            Objects.deepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
-            Objects.deepEquals(this.s3Endpoint, other.s3Endpoint) &&
-            Objects.deepEquals(this.s3PathFormat, other.s3PathFormat) &&
-            Objects.deepEquals(this.secretAccessKey, other.secretAccessKey);
+            Utils.enhancedDeepEquals(this.accessKeyId, other.accessKeyId) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.fileNamePattern, other.fileNamePattern) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.roleArn, other.roleArn) &&
+            Utils.enhancedDeepEquals(this.s3BucketName, other.s3BucketName) &&
+            Utils.enhancedDeepEquals(this.s3BucketPath, other.s3BucketPath) &&
+            Utils.enhancedDeepEquals(this.s3BucketRegion, other.s3BucketRegion) &&
+            Utils.enhancedDeepEquals(this.s3Endpoint, other.s3Endpoint) &&
+            Utils.enhancedDeepEquals(this.s3PathFormat, other.s3PathFormat) &&
+            Utils.enhancedDeepEquals(this.secretAccessKey, other.secretAccessKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKeyId,
-            destinationType,
-            fileNamePattern,
-            format,
-            roleArn,
-            s3BucketName,
-            s3BucketPath,
-            s3BucketRegion,
-            s3Endpoint,
-            s3PathFormat,
-            secretAccessKey);
+        return Utils.enhancedHash(
+            accessKeyId, destinationType, fileNamePattern,
+            format, roleArn, s3BucketName,
+            s3BucketPath, s3BucketRegion, s3Endpoint,
+            s3PathFormat, secretAccessKey);
     }
     
     @Override
@@ -429,32 +432,34 @@ public class DestinationS3 {
                 "s3PathFormat", s3PathFormat,
                 "secretAccessKey", secretAccessKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessKeyId = Optional.empty();
- 
+
         private Optional<String> fileNamePattern = Optional.empty();
- 
+
         private DestinationS3OutputFormat format;
- 
+
         private Optional<String> roleArn = Optional.empty();
- 
+
         private String s3BucketName;
- 
+
         private String s3BucketPath;
- 
+
         private Optional<? extends DestinationS3S3BucketRegion> s3BucketRegion;
- 
+
         private Optional<String> s3Endpoint = Optional.empty();
- 
+
         private Optional<String> s3PathFormat = Optional.empty();
- 
+
         private Optional<String> secretAccessKey = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The access key ID to access the S3 bucket. Airbyte requires Read and Write permissions to the given bucket. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;.
@@ -474,6 +479,7 @@ public class DestinationS3 {
             return this;
         }
 
+
         /**
          * Pattern to match file names in the bucket directory. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html"&gt;here&lt;/a&gt;
          */
@@ -492,6 +498,7 @@ public class DestinationS3 {
             return this;
         }
 
+
         /**
          * Format of the data output. See &lt;a href="https://docs.airbyte.com/integrations/destinations/s3/#supported-output-schema"&gt;here&lt;/a&gt; for more details
          */
@@ -500,6 +507,7 @@ public class DestinationS3 {
             this.format = format;
             return this;
         }
+
 
         /**
          * The ARN of the AWS role to assume. Only usable in Airbyte Cloud.
@@ -519,6 +527,7 @@ public class DestinationS3 {
             return this;
         }
 
+
         /**
          * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
          */
@@ -528,6 +537,7 @@ public class DestinationS3 {
             return this;
         }
 
+
         /**
          * Directory under the S3 bucket where data will be written. Read more &lt;a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=to%20format%20the-,bucket%20path,-%3A"&gt;here&lt;/a&gt;
          */
@@ -536,6 +546,7 @@ public class DestinationS3 {
             this.s3BucketPath = s3BucketPath;
             return this;
         }
+
 
         /**
          * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
@@ -555,6 +566,7 @@ public class DestinationS3 {
             return this;
         }
 
+
         /**
          * Your S3 endpoint url. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/s3.html#:~:text=Service%20endpoints-,Amazon%20S3%20endpoints,-When%20you%20use"&gt;here&lt;/a&gt;
          */
@@ -572,6 +584,7 @@ public class DestinationS3 {
             this.s3Endpoint = s3Endpoint;
             return this;
         }
+
 
         /**
          * Format string on how data will be organized inside the bucket directory. Read more &lt;a href="https://docs.airbyte.com/integrations/destinations/s3#:~:text=The%20full%20path%20of%20the%20output%20data%20with%20the%20default%20S3%20path%20format"&gt;here&lt;/a&gt;
@@ -591,6 +604,7 @@ public class DestinationS3 {
             return this;
         }
 
+
         /**
          * The corresponding secret to the access key ID. Read more &lt;a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys"&gt;here&lt;/a&gt;
          */
@@ -608,23 +622,19 @@ public class DestinationS3 {
             this.secretAccessKey = secretAccessKey;
             return this;
         }
-        
+
         public DestinationS3 build() {
             if (s3BucketRegion == null) {
                 s3BucketRegion = _SINGLETON_VALUE_S3BucketRegion.value();
             }
+
             return new DestinationS3(
-                accessKeyId,
-                fileNamePattern,
-                format,
-                roleArn,
-                s3BucketName,
-                s3BucketPath,
-                s3BucketRegion,
-                s3Endpoint,
-                s3PathFormat,
+                accessKeyId, fileNamePattern, format,
+                roleArn, s3BucketName, s3BucketPath,
+                s3BucketRegion, s3Endpoint, s3PathFormat,
                 secretAccessKey);
         }
+
 
         private static final LazySingletonValue<S3> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

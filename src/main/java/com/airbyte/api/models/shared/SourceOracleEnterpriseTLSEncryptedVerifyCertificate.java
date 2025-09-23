@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
@@ -77,9 +77,10 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
         return sslCertificate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseTLSEncryptedVerifyCertificate withAdditionalProperty(String key, Object value) {
@@ -87,8 +88,7 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseTLSEncryptedVerifyCertificate withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -100,6 +100,7 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
         this.encryptionMethod = Optional.ofNullable(encryptionMethod);
         return this;
     }
+
 
     public SourceOracleEnterpriseTLSEncryptedVerifyCertificate withEncryptionMethod(Optional<? extends SourceOracleEnterpriseSchemasEncryptionEncryptionMethod> encryptionMethod) {
         Utils.checkNotNull(encryptionMethod, "encryptionMethod");
@@ -116,7 +117,6 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,17 +127,15 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
         }
         SourceOracleEnterpriseTLSEncryptedVerifyCertificate other = (SourceOracleEnterpriseTLSEncryptedVerifyCertificate) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod) &&
-            Objects.deepEquals(this.sslCertificate, other.sslCertificate);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod) &&
+            Utils.enhancedDeepEquals(this.sslCertificate, other.sslCertificate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            encryptionMethod,
-            sslCertificate);
+        return Utils.enhancedHash(
+            additionalProperties, encryptionMethod, sslCertificate);
     }
     
     @Override
@@ -147,15 +145,16 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
                 "encryptionMethod", encryptionMethod,
                 "sslCertificate", sslCertificate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseSchemasEncryptionEncryptionMethod> encryptionMethod;
- 
+
         private String sslCertificate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -176,6 +175,7 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
             return this;
         }
 
+
         public Builder encryptionMethod(SourceOracleEnterpriseSchemasEncryptionEncryptionMethod encryptionMethod) {
             Utils.checkNotNull(encryptionMethod, "encryptionMethod");
             this.encryptionMethod = Optional.ofNullable(encryptionMethod);
@@ -188,6 +188,7 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
             return this;
         }
 
+
         /**
          * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
          */
@@ -196,16 +197,17 @@ public class SourceOracleEnterpriseTLSEncryptedVerifyCertificate {
             this.sslCertificate = sslCertificate;
             return this;
         }
-        
+
         public SourceOracleEnterpriseTLSEncryptedVerifyCertificate build() {
             if (encryptionMethod == null) {
                 encryptionMethod = _SINGLETON_VALUE_EncryptionMethod.value();
             }
+
             return new SourceOracleEnterpriseTLSEncryptedVerifyCertificate(
-                encryptionMethod,
-                sslCertificate)
+                encryptionMethod, sslCertificate)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseSchemasEncryptionEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListSourcesRequest {
 
+public class ListSourcesRequest {
     /**
      * Include deleted sources in the returned results.
      */
@@ -61,7 +60,8 @@ public class ListSourcesRequest {
     }
     
     public ListSourcesRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -97,9 +97,10 @@ public class ListSourcesRequest {
         return (Optional<List<String>>) workspaceIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Include deleted sources in the returned results.
@@ -109,6 +110,7 @@ public class ListSourcesRequest {
         this.includeDeleted = Optional.ofNullable(includeDeleted);
         return this;
     }
+
 
     /**
      * Include deleted sources in the returned results.
@@ -128,6 +130,7 @@ public class ListSourcesRequest {
         return this;
     }
 
+
     /**
      * Set the limit on the number of sources returned. The default is 20.
      */
@@ -145,6 +148,7 @@ public class ListSourcesRequest {
         this.offset = Optional.ofNullable(offset);
         return this;
     }
+
 
     /**
      * Set the offset to start at when returning sources. The default is 0
@@ -164,6 +168,7 @@ public class ListSourcesRequest {
         return this;
     }
 
+
     /**
      * The UUIDs of the workspaces you wish to list sources for. Empty list will retrieve all allowed workspaces.
      */
@@ -173,7 +178,6 @@ public class ListSourcesRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -184,18 +188,16 @@ public class ListSourcesRequest {
         }
         ListSourcesRequest other = (ListSourcesRequest) o;
         return 
-            Objects.deepEquals(this.includeDeleted, other.includeDeleted) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.offset, other.offset) &&
-            Objects.deepEquals(this.workspaceIds, other.workspaceIds);
+            Utils.enhancedDeepEquals(this.includeDeleted, other.includeDeleted) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.offset, other.offset) &&
+            Utils.enhancedDeepEquals(this.workspaceIds, other.workspaceIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            includeDeleted,
-            limit,
-            offset,
+        return Utils.enhancedHash(
+            includeDeleted, limit, offset,
             workspaceIds);
     }
     
@@ -207,20 +209,22 @@ public class ListSourcesRequest {
                 "offset", offset,
                 "workspaceIds", workspaceIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> includeDeleted;
- 
+
         private Optional<Integer> limit;
- 
+
         private Optional<Integer> offset;
- 
+
         private Optional<? extends List<String>> workspaceIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Include deleted sources in the returned results.
@@ -240,6 +244,7 @@ public class ListSourcesRequest {
             return this;
         }
 
+
         /**
          * Set the limit on the number of sources returned. The default is 20.
          */
@@ -257,6 +262,7 @@ public class ListSourcesRequest {
             this.limit = limit;
             return this;
         }
+
 
         /**
          * Set the offset to start at when returning sources. The default is 0
@@ -276,6 +282,7 @@ public class ListSourcesRequest {
             return this;
         }
 
+
         /**
          * The UUIDs of the workspaces you wish to list sources for. Empty list will retrieve all allowed workspaces.
          */
@@ -293,7 +300,7 @@ public class ListSourcesRequest {
             this.workspaceIds = workspaceIds;
             return this;
         }
-        
+
         public ListSourcesRequest build() {
             if (includeDeleted == null) {
                 includeDeleted = _SINGLETON_VALUE_IncludeDeleted.value();
@@ -304,12 +311,12 @@ public class ListSourcesRequest {
             if (offset == null) {
                 offset = _SINGLETON_VALUE_Offset.value();
             }
+
             return new ListSourcesRequest(
-                includeDeleted,
-                limit,
-                offset,
+                includeDeleted, limit, offset,
                 workspaceIds);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeDeleted =
                 new LazySingletonValue<>(

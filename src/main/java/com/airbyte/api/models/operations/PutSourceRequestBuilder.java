@@ -3,16 +3,22 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.PutSource;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class PutSourceRequestBuilder {
 
     private PutSourceRequest request;
-    private final SDKMethodInterfaces.MethodCallPutSource sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public PutSourceRequestBuilder(SDKMethodInterfaces.MethodCallPutSource sdk) {
-        this.sdk = sdk;
+    public PutSourceRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public PutSourceRequestBuilder request(PutSourceRequest request) {
@@ -22,8 +28,10 @@ public class PutSourceRequestBuilder {
     }
 
     public PutSourceResponse call() throws Exception {
+        
+        RequestOperation<PutSourceRequest, PutSourceResponse> operation
+              = new PutSource.Sync(sdkConfiguration, _headers);
 
-        return sdk.putSource(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceUsCensus {
 
+public class SourceUsCensus {
     /**
      * Your API Key. Get your key &lt;a href="https://api.census.gov/data/key_signup.html"&gt;here&lt;/a&gt;.
      */
@@ -36,6 +35,7 @@ public class SourceUsCensus {
      */
     @JsonProperty("query_path")
     private String queryPath;
+
 
     @JsonProperty("sourceType")
     private UsCensus sourceType;
@@ -89,9 +89,10 @@ public class SourceUsCensus {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Key. Get your key &lt;a href="https://api.census.gov/data/key_signup.html"&gt;here&lt;/a&gt;.
@@ -111,6 +112,7 @@ public class SourceUsCensus {
         return this;
     }
 
+
     /**
      * The query parameters portion of the GET request, without the api key
      */
@@ -129,7 +131,6 @@ public class SourceUsCensus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +141,16 @@ public class SourceUsCensus {
         }
         SourceUsCensus other = (SourceUsCensus) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.queryParams, other.queryParams) &&
-            Objects.deepEquals(this.queryPath, other.queryPath) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.queryParams, other.queryParams) &&
+            Utils.enhancedDeepEquals(this.queryPath, other.queryPath) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            queryParams,
-            queryPath,
+        return Utils.enhancedHash(
+            apiKey, queryParams, queryPath,
             sourceType);
     }
     
@@ -163,18 +162,20 @@ public class SourceUsCensus {
                 "queryPath", queryPath,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> queryParams = Optional.empty();
- 
+
         private String queryPath;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Key. Get your key &lt;a href="https://api.census.gov/data/key_signup.html"&gt;here&lt;/a&gt;.
@@ -184,6 +185,7 @@ public class SourceUsCensus {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The query parameters portion of the GET request, without the api key
@@ -203,6 +205,7 @@ public class SourceUsCensus {
             return this;
         }
 
+
         /**
          * The path portion of the GET request
          */
@@ -211,13 +214,13 @@ public class SourceUsCensus {
             this.queryPath = queryPath;
             return this;
         }
-        
+
         public SourceUsCensus build() {
+
             return new SourceUsCensus(
-                apiKey,
-                queryParams,
-                queryPath);
+                apiKey, queryParams, queryPath);
         }
+
 
         private static final LazySingletonValue<UsCensus> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

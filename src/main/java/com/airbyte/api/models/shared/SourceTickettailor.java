@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceTickettailor {
-
     /**
      * API key to use. Find it at https://www.getdrip.com/user/edit
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Tickettailor sourceType;
@@ -45,9 +45,10 @@ public class SourceTickettailor {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use. Find it at https://www.getdrip.com/user/edit
@@ -58,7 +59,6 @@ public class SourceTickettailor {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceTickettailor {
         }
         SourceTickettailor other = (SourceTickettailor) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceTickettailor {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use. Find it at https://www.getdrip.com/user/edit
@@ -103,11 +104,13 @@ public class SourceTickettailor {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceTickettailor build() {
+
             return new SourceTickettailor(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Tickettailor> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

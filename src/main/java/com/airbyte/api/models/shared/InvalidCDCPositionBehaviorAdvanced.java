@@ -20,7 +20,7 @@ public enum InvalidCDCPositionBehaviorAdvanced {
     @JsonValue
     private final String value;
 
-    private InvalidCDCPositionBehaviorAdvanced(String value) {
+    InvalidCDCPositionBehaviorAdvanced(String value) {
         this.value = value;
     }
     

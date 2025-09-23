@@ -20,7 +20,7 @@ public enum CaptureModeAdvanced {
     @JsonValue
     private final String value;
 
-    private CaptureModeAdvanced(String value) {
+    CaptureModeAdvanced(String value) {
         this.value = value;
     }
     

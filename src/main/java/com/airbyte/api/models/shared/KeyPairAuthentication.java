@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class KeyPairAuthentication {
 
@@ -74,9 +74,10 @@ public class KeyPairAuthentication {
         return privateKeyPassword;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/snowflake"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -96,6 +97,7 @@ public class KeyPairAuthentication {
         return this;
     }
 
+
     /**
      * Passphrase for private key
      */
@@ -105,7 +107,6 @@ public class KeyPairAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -116,17 +117,15 @@ public class KeyPairAuthentication {
         }
         KeyPairAuthentication other = (KeyPairAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.privateKey, other.privateKey) &&
-            Objects.deepEquals(this.privateKeyPassword, other.privateKeyPassword);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey) &&
+            Utils.enhancedDeepEquals(this.privateKeyPassword, other.privateKeyPassword);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            privateKey,
-            privateKeyPassword);
+        return Utils.enhancedHash(
+            authType, privateKey, privateKeyPassword);
     }
     
     @Override
@@ -136,16 +135,18 @@ public class KeyPairAuthentication {
                 "privateKey", privateKey,
                 "privateKeyPassword", privateKeyPassword);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String privateKey;
- 
+
         private Optional<String> privateKeyPassword = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * RSA Private key to use for Snowflake connection. See the &lt;a href="https://docs.airbyte.com/integrations/destinations/snowflake"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -155,6 +156,7 @@ public class KeyPairAuthentication {
             this.privateKey = privateKey;
             return this;
         }
+
 
         /**
          * Passphrase for private key
@@ -173,12 +175,13 @@ public class KeyPairAuthentication {
             this.privateKeyPassword = privateKeyPassword;
             return this;
         }
-        
+
         public KeyPairAuthentication build() {
+
             return new KeyPairAuthentication(
-                privateKey,
-                privateKeyPassword);
+                privateKey, privateKeyPassword);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationSnowflakeAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

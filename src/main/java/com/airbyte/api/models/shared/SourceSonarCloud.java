@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSonarCloud {
 
+public class SourceSonarCloud {
     /**
      * Comma-separated list of component keys.
      */
@@ -39,6 +38,7 @@ public class SourceSonarCloud {
      */
     @JsonProperty("organization")
     private String organization;
+
 
     @JsonProperty("sourceType")
     private SonarCloud sourceType;
@@ -80,7 +80,8 @@ public class SourceSonarCloud {
             List<Object> componentKeys,
             String organization,
             String userToken) {
-        this(componentKeys, Optional.empty(), organization, Optional.empty(), userToken);
+        this(componentKeys, Optional.empty(), organization,
+            Optional.empty(), userToken);
     }
 
     /**
@@ -128,9 +129,10 @@ public class SourceSonarCloud {
         return userToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Comma-separated list of component keys.
@@ -149,6 +151,7 @@ public class SourceSonarCloud {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * To retrieve issues created before the given date (inclusive).
@@ -177,6 +180,7 @@ public class SourceSonarCloud {
         return this;
     }
 
+
     /**
      * To retrieve issues created after the given date (inclusive).
      */
@@ -195,7 +199,6 @@ public class SourceSonarCloud {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -206,23 +209,19 @@ public class SourceSonarCloud {
         }
         SourceSonarCloud other = (SourceSonarCloud) o;
         return 
-            Objects.deepEquals(this.componentKeys, other.componentKeys) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.organization, other.organization) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.userToken, other.userToken);
+            Utils.enhancedDeepEquals(this.componentKeys, other.componentKeys) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.organization, other.organization) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.userToken, other.userToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            componentKeys,
-            endDate,
-            organization,
-            sourceType,
-            startDate,
-            userToken);
+        return Utils.enhancedHash(
+            componentKeys, endDate, organization,
+            sourceType, startDate, userToken);
     }
     
     @Override
@@ -235,22 +234,24 @@ public class SourceSonarCloud {
                 "startDate", startDate,
                 "userToken", userToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<Object> componentKeys;
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private String organization;
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
- 
+
         private String userToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Comma-separated list of component keys.
@@ -260,6 +261,7 @@ public class SourceSonarCloud {
             this.componentKeys = componentKeys;
             return this;
         }
+
 
         /**
          * To retrieve issues created before the given date (inclusive).
@@ -279,6 +281,7 @@ public class SourceSonarCloud {
             return this;
         }
 
+
         /**
          * Organization key. See &lt;a href="https://docs.sonarcloud.io/appendices/project-information/#project-and-organization-keys"&gt;here&lt;/a&gt;.
          */
@@ -287,6 +290,7 @@ public class SourceSonarCloud {
             this.organization = organization;
             return this;
         }
+
 
         /**
          * To retrieve issues created after the given date (inclusive).
@@ -306,6 +310,7 @@ public class SourceSonarCloud {
             return this;
         }
 
+
         /**
          * Your User Token. See &lt;a href="https://docs.sonarcloud.io/advanced-setup/user-accounts/"&gt;here&lt;/a&gt;. The token is case sensitive.
          */
@@ -314,15 +319,14 @@ public class SourceSonarCloud {
             this.userToken = userToken;
             return this;
         }
-        
+
         public SourceSonarCloud build() {
+
             return new SourceSonarCloud(
-                componentKeys,
-                endDate,
-                organization,
-                startDate,
-                userToken);
+                componentKeys, endDate, organization,
+                startDate, userToken);
         }
+
 
         private static final LazySingletonValue<SonarCloud> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

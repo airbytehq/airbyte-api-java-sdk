@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFaker {
 
+public class SourceFaker {
     /**
      * Should the updated_at values for every record be new each sync?  Setting this to false will case the source to stop emitting records after COUNT records have been emitted.
      */
@@ -55,6 +54,7 @@ public class SourceFaker {
     @JsonProperty("seed")
     private Optional<Long> seed;
 
+
     @JsonProperty("sourceType")
     private Faker sourceType;
 
@@ -79,7 +79,8 @@ public class SourceFaker {
     }
     
     public SourceFaker() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -127,9 +128,10 @@ public class SourceFaker {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Should the updated_at values for every record be new each sync?  Setting this to false will case the source to stop emitting records after COUNT records have been emitted.
@@ -139,6 +141,7 @@ public class SourceFaker {
         this.alwaysUpdated = Optional.ofNullable(alwaysUpdated);
         return this;
     }
+
 
     /**
      * Should the updated_at values for every record be new each sync?  Setting this to false will case the source to stop emitting records after COUNT records have been emitted.
@@ -158,6 +161,7 @@ public class SourceFaker {
         return this;
     }
 
+
     /**
      * How many users should be generated in total. The purchases table will be scaled to match, with 10 purchases created per 10 users. This setting does not apply to the products stream.
      */
@@ -175,6 +179,7 @@ public class SourceFaker {
         this.parallelism = Optional.ofNullable(parallelism);
         return this;
     }
+
 
     /**
      * How many parallel workers should we use to generate fake data?  Choose a value equal to the number of CPUs you will allocate to this source.
@@ -194,6 +199,7 @@ public class SourceFaker {
         return this;
     }
 
+
     /**
      * How many fake records will be in each page (stream slice), before a state message is emitted?
      */
@@ -212,6 +218,7 @@ public class SourceFaker {
         return this;
     }
 
+
     /**
      * Manually control the faker random seed to return the same values on subsequent runs (leave -1 for random)
      */
@@ -221,7 +228,6 @@ public class SourceFaker {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -232,23 +238,19 @@ public class SourceFaker {
         }
         SourceFaker other = (SourceFaker) o;
         return 
-            Objects.deepEquals(this.alwaysUpdated, other.alwaysUpdated) &&
-            Objects.deepEquals(this.count, other.count) &&
-            Objects.deepEquals(this.parallelism, other.parallelism) &&
-            Objects.deepEquals(this.recordsPerSlice, other.recordsPerSlice) &&
-            Objects.deepEquals(this.seed, other.seed) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.alwaysUpdated, other.alwaysUpdated) &&
+            Utils.enhancedDeepEquals(this.count, other.count) &&
+            Utils.enhancedDeepEquals(this.parallelism, other.parallelism) &&
+            Utils.enhancedDeepEquals(this.recordsPerSlice, other.recordsPerSlice) &&
+            Utils.enhancedDeepEquals(this.seed, other.seed) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            alwaysUpdated,
-            count,
-            parallelism,
-            recordsPerSlice,
-            seed,
-            sourceType);
+        return Utils.enhancedHash(
+            alwaysUpdated, count, parallelism,
+            recordsPerSlice, seed, sourceType);
     }
     
     @Override
@@ -261,22 +263,24 @@ public class SourceFaker {
                 "seed", seed,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> alwaysUpdated;
- 
+
         private Optional<Long> count;
- 
+
         private Optional<Long> parallelism;
- 
+
         private Optional<Long> recordsPerSlice;
- 
+
         private Optional<Long> seed;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Should the updated_at values for every record be new each sync?  Setting this to false will case the source to stop emitting records after COUNT records have been emitted.
@@ -296,6 +300,7 @@ public class SourceFaker {
             return this;
         }
 
+
         /**
          * How many users should be generated in total. The purchases table will be scaled to match, with 10 purchases created per 10 users. This setting does not apply to the products stream.
          */
@@ -313,6 +318,7 @@ public class SourceFaker {
             this.count = count;
             return this;
         }
+
 
         /**
          * How many parallel workers should we use to generate fake data?  Choose a value equal to the number of CPUs you will allocate to this source.
@@ -332,6 +338,7 @@ public class SourceFaker {
             return this;
         }
 
+
         /**
          * How many fake records will be in each page (stream slice), before a state message is emitted?
          */
@@ -350,6 +357,7 @@ public class SourceFaker {
             return this;
         }
 
+
         /**
          * Manually control the faker random seed to return the same values on subsequent runs (leave -1 for random)
          */
@@ -367,7 +375,7 @@ public class SourceFaker {
             this.seed = seed;
             return this;
         }
-        
+
         public SourceFaker build() {
             if (alwaysUpdated == null) {
                 alwaysUpdated = _SINGLETON_VALUE_AlwaysUpdated.value();
@@ -384,13 +392,12 @@ public class SourceFaker {
             if (seed == null) {
                 seed = _SINGLETON_VALUE_Seed.value();
             }
+
             return new SourceFaker(
-                alwaysUpdated,
-                count,
-                parallelism,
-                recordsPerSlice,
-                seed);
+                alwaysUpdated, count, parallelism,
+                recordsPerSlice, seed);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_AlwaysUpdated =
                 new LazySingletonValue<>(

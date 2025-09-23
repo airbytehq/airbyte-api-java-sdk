@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePosthog {
 
+public class SourcePosthog {
     /**
      * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
@@ -39,6 +38,7 @@ public class SourcePosthog {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("events_time_step")
     private Optional<Long> eventsTimeStep;
+
 
     @JsonProperty("sourceType")
     private Posthog sourceType;
@@ -69,7 +69,8 @@ public class SourcePosthog {
     public SourcePosthog(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate);
     }
 
     /**
@@ -109,9 +110,10 @@ public class SourcePosthog {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.
@@ -131,6 +133,7 @@ public class SourcePosthog {
         return this;
     }
 
+
     /**
      * Base PostHog url. Defaults to PostHog Cloud (https://app.posthog.com).
      */
@@ -148,6 +151,7 @@ public class SourcePosthog {
         this.eventsTimeStep = Optional.ofNullable(eventsTimeStep);
         return this;
     }
+
 
     /**
      * Set lower value in case of failing long running sync of events stream.
@@ -167,7 +171,6 @@ public class SourcePosthog {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -178,21 +181,18 @@ public class SourcePosthog {
         }
         SourcePosthog other = (SourcePosthog) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.eventsTimeStep, other.eventsTimeStep) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.eventsTimeStep, other.eventsTimeStep) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            baseUrl,
-            eventsTimeStep,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, baseUrl, eventsTimeStep,
+            sourceType, startDate);
     }
     
     @Override
@@ -204,20 +204,22 @@ public class SourcePosthog {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> baseUrl;
- 
+
         private Optional<Long> eventsTimeStep;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/posthog"&gt;docs&lt;/a&gt; for information on how to generate this key.
@@ -227,6 +229,7 @@ public class SourcePosthog {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Base PostHog url. Defaults to PostHog Cloud (https://app.posthog.com).
@@ -246,6 +249,7 @@ public class SourcePosthog {
             return this;
         }
 
+
         /**
          * Set lower value in case of failing long running sync of events stream.
          */
@@ -264,6 +268,7 @@ public class SourcePosthog {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate the data. Any data before this date will not be replicated.
          */
@@ -272,7 +277,7 @@ public class SourcePosthog {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePosthog build() {
             if (baseUrl == null) {
                 baseUrl = _SINGLETON_VALUE_BaseUrl.value();
@@ -280,12 +285,12 @@ public class SourcePosthog {
             if (eventsTimeStep == null) {
                 eventsTimeStep = _SINGLETON_VALUE_EventsTimeStep.value();
             }
+
             return new SourcePosthog(
-                apiKey,
-                baseUrl,
-                eventsTimeStep,
+                apiKey, baseUrl, eventsTimeStep,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_BaseUrl =
                 new LazySingletonValue<>(

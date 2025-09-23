@@ -21,7 +21,7 @@ public enum DistanceMetric {
     @JsonValue
     private final String value;
 
-    private DistanceMetric(String value) {
+    DistanceMetric(String value) {
         this.value = value;
     }
     

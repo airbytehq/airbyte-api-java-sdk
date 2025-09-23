@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWeatherstack {
-
     /**
      * API access key used to retrieve data from the Weatherstack API.(https://weatherstack.com/product)
      */
@@ -32,6 +31,7 @@ public class SourceWeatherstack {
      */
     @JsonProperty("query")
     private String query;
+
 
     @JsonProperty("sourceType")
     private Weatherstack sourceType;
@@ -79,9 +79,10 @@ public class SourceWeatherstack {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API access key used to retrieve data from the Weatherstack API.(https://weatherstack.com/product)
@@ -110,7 +111,6 @@ public class SourceWeatherstack {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class SourceWeatherstack {
         }
         SourceWeatherstack other = (SourceWeatherstack) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.historicalDate, other.historicalDate) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.historicalDate, other.historicalDate) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            historicalDate,
-            query,
+        return Utils.enhancedHash(
+            accessKey, historicalDate, query,
             sourceType);
     }
     
@@ -144,18 +142,20 @@ public class SourceWeatherstack {
                 "query", query,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private String historicalDate;
- 
+
         private String query;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API access key used to retrieve data from the Weatherstack API.(https://weatherstack.com/product)
@@ -166,6 +166,7 @@ public class SourceWeatherstack {
             return this;
         }
 
+
         /**
          * This is required for enabling the Historical date API with format- (YYYY-MM-DD). * Note, only supported by paid accounts
          */
@@ -175,6 +176,7 @@ public class SourceWeatherstack {
             return this;
         }
 
+
         /**
          * A location to query such as city, IP, latitudeLongitude, or zipcode. Multiple locations with semicolon seperated if using a professional plan or higher. For more info- (https://weatherstack.com/documentation#query_parameter)
          */
@@ -183,13 +185,13 @@ public class SourceWeatherstack {
             this.query = query;
             return this;
         }
-        
+
         public SourceWeatherstack build() {
+
             return new SourceWeatherstack(
-                accessKey,
-                historicalDate,
-                query);
+                accessKey, historicalDate, query);
         }
+
 
         private static final LazySingletonValue<Weatherstack> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

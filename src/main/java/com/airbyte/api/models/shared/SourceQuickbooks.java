@@ -16,16 +16,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceQuickbooks {
 
+public class SourceQuickbooks {
     /**
      * Access token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -61,6 +61,7 @@ public class SourceQuickbooks {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sandbox")
     private Optional<Boolean> sandbox;
+
 
     @JsonProperty("sourceType")
     private Quickbooks sourceType;
@@ -115,7 +116,9 @@ public class SourceQuickbooks {
             String refreshToken,
             OffsetDateTime startDate,
             OffsetDateTime tokenExpiryDate) {
-        this(accessToken, clientId, clientSecret, realmId, refreshToken, Optional.empty(), startDate, tokenExpiryDate);
+        this(accessToken, clientId, clientSecret,
+            realmId, refreshToken, Optional.empty(),
+            startDate, tokenExpiryDate);
     }
 
     /**
@@ -193,9 +196,10 @@ public class SourceQuickbooks {
         return tokenExpiryDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access token for making authenticated requests.
@@ -251,6 +255,7 @@ public class SourceQuickbooks {
         return this;
     }
 
+
     /**
      * Determines whether to use the sandbox or production environment.
      */
@@ -278,7 +283,6 @@ public class SourceQuickbooks {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -289,30 +293,24 @@ public class SourceQuickbooks {
         }
         SourceQuickbooks other = (SourceQuickbooks) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.realmId, other.realmId) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sandbox, other.sandbox) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.realmId, other.realmId) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sandbox, other.sandbox) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.tokenExpiryDate, other.tokenExpiryDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
-            clientSecret,
-            realmId,
-            refreshToken,
-            sandbox,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
+            clientSecret, realmId, refreshToken,
+            sandbox, sourceType, startDate,
             tokenExpiryDate);
     }
     
@@ -330,28 +328,30 @@ public class SourceQuickbooks {
                 "startDate", startDate,
                 "tokenExpiryDate", tokenExpiryDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String realmId;
- 
+
         private String refreshToken;
- 
+
         private Optional<Boolean> sandbox;
- 
+
         private OffsetDateTime startDate;
- 
+
         private OffsetDateTime tokenExpiryDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access token for making authenticated requests.
@@ -362,6 +362,7 @@ public class SourceQuickbooks {
             return this;
         }
 
+
         /**
          * Identifies which app is making the request. Obtain this value from the Keys tab on the app profile via My Apps on the developer site. There are two versions of this key: development and production.
          */
@@ -370,6 +371,7 @@ public class SourceQuickbooks {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * Obtain this value from the Keys tab on the app profile via My Apps on the developer site. There are two versions of this key: development and production.
@@ -380,6 +382,7 @@ public class SourceQuickbooks {
             return this;
         }
 
+
         /**
          * Labeled Company ID. The Make API Calls panel is populated with the realm id and the current access token.
          */
@@ -389,6 +392,7 @@ public class SourceQuickbooks {
             return this;
         }
 
+
         /**
          * A token used when refreshing the access token.
          */
@@ -397,6 +401,7 @@ public class SourceQuickbooks {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * Determines whether to use the sandbox or production environment.
@@ -416,6 +421,7 @@ public class SourceQuickbooks {
             return this;
         }
 
+
         /**
          * The default value to use if no bookmark exists for an endpoint (rfc3339 date string). E.g, 2021-03-20T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -425,6 +431,7 @@ public class SourceQuickbooks {
             return this;
         }
 
+
         /**
          * The date-time when the access token should be refreshed.
          */
@@ -433,21 +440,18 @@ public class SourceQuickbooks {
             this.tokenExpiryDate = tokenExpiryDate;
             return this;
         }
-        
+
         public SourceQuickbooks build() {
             if (sandbox == null) {
                 sandbox = _SINGLETON_VALUE_Sandbox.value();
             }
+
             return new SourceQuickbooks(
-                accessToken,
-                clientId,
-                clientSecret,
-                realmId,
-                refreshToken,
-                sandbox,
-                startDate,
-                tokenExpiryDate);
+                accessToken, clientId, clientSecret,
+                realmId, refreshToken, sandbox,
+                startDate, tokenExpiryDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceQuickbooksAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

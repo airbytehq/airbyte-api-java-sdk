@@ -18,8 +18,8 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -39,6 +39,7 @@ public class MongoDBAtlasReplicaSet {
     @JsonProperty("auth_source")
     private Optional<String> authSource;
 
+
     @JsonProperty("cluster_type")
     private SourceMongodbV2SchemasClusterType clusterType;
 
@@ -49,10 +50,10 @@ public class MongoDBAtlasReplicaSet {
     private String connectionString;
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
-    @JsonProperty("database")
-    private String database;
+    @JsonProperty("databases")
+    private List<String> databases;
 
     /**
      * The password associated with this username.
@@ -77,13 +78,13 @@ public class MongoDBAtlasReplicaSet {
     public MongoDBAtlasReplicaSet(
             @JsonProperty("auth_source") Optional<String> authSource,
             @JsonProperty("connection_string") String connectionString,
-            @JsonProperty("database") String database,
+            @JsonProperty("databases") List<String> databases,
             @JsonProperty("password") String password,
             @JsonProperty("schema_enforced") Optional<Boolean> schemaEnforced,
             @JsonProperty("username") String username) {
         Utils.checkNotNull(authSource, "authSource");
         Utils.checkNotNull(connectionString, "connectionString");
-        Utils.checkNotNull(database, "database");
+        Utils.checkNotNull(databases, "databases");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(schemaEnforced, "schemaEnforced");
         Utils.checkNotNull(username, "username");
@@ -91,7 +92,7 @@ public class MongoDBAtlasReplicaSet {
         this.authSource = authSource;
         this.clusterType = Builder._SINGLETON_VALUE_ClusterType.value();
         this.connectionString = connectionString;
-        this.database = database;
+        this.databases = databases;
         this.password = password;
         this.schemaEnforced = schemaEnforced;
         this.username = username;
@@ -99,10 +100,11 @@ public class MongoDBAtlasReplicaSet {
     
     public MongoDBAtlasReplicaSet(
             String connectionString,
-            String database,
+            List<String> databases,
             String password,
             String username) {
-        this(Optional.empty(), connectionString, database, password, Optional.empty(), username);
+        this(Optional.empty(), connectionString, databases,
+            password, Optional.empty(), username);
     }
 
     @JsonAnyGetter
@@ -132,11 +134,11 @@ public class MongoDBAtlasReplicaSet {
     }
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
     @JsonIgnore
-    public String database() {
-        return database;
+    public List<String> databases() {
+        return databases;
     }
 
     /**
@@ -163,9 +165,10 @@ public class MongoDBAtlasReplicaSet {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public MongoDBAtlasReplicaSet withAdditionalProperty(String key, Object value) {
@@ -173,8 +176,7 @@ public class MongoDBAtlasReplicaSet {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public MongoDBAtlasReplicaSet withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -189,6 +191,7 @@ public class MongoDBAtlasReplicaSet {
         this.authSource = Optional.ofNullable(authSource);
         return this;
     }
+
 
     /**
      * The authentication source where the user information is stored.  See https://www.mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.authSource for more details.
@@ -209,11 +212,11 @@ public class MongoDBAtlasReplicaSet {
     }
 
     /**
-     * The name of the MongoDB database that contains the collection(s) to replicate.
+     * The names of the MongoDB databases that contain the collection(s) to replicate.
      */
-    public MongoDBAtlasReplicaSet withDatabase(String database) {
-        Utils.checkNotNull(database, "database");
-        this.database = database;
+    public MongoDBAtlasReplicaSet withDatabases(List<String> databases) {
+        Utils.checkNotNull(databases, "databases");
+        this.databases = databases;
         return this;
     }
 
@@ -235,6 +238,7 @@ public class MongoDBAtlasReplicaSet {
         return this;
     }
 
+
     /**
      * When enabled, syncs will validate and structure records against the stream's schema.
      */
@@ -253,7 +257,6 @@ public class MongoDBAtlasReplicaSet {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -264,27 +267,22 @@ public class MongoDBAtlasReplicaSet {
         }
         MongoDBAtlasReplicaSet other = (MongoDBAtlasReplicaSet) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authSource, other.authSource) &&
-            Objects.deepEquals(this.clusterType, other.clusterType) &&
-            Objects.deepEquals(this.connectionString, other.connectionString) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.schemaEnforced, other.schemaEnforced) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authSource, other.authSource) &&
+            Utils.enhancedDeepEquals(this.clusterType, other.clusterType) &&
+            Utils.enhancedDeepEquals(this.connectionString, other.connectionString) &&
+            Utils.enhancedDeepEquals(this.databases, other.databases) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.schemaEnforced, other.schemaEnforced) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authSource,
-            clusterType,
-            connectionString,
-            database,
-            password,
-            schemaEnforced,
-            username);
+        return Utils.enhancedHash(
+            additionalProperties, authSource, clusterType,
+            connectionString, databases, password,
+            schemaEnforced, username);
     }
     
     @Override
@@ -294,28 +292,29 @@ public class MongoDBAtlasReplicaSet {
                 "authSource", authSource,
                 "clusterType", clusterType,
                 "connectionString", connectionString,
-                "database", database,
+                "databases", databases,
                 "password", password,
                 "schemaEnforced", schemaEnforced,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> authSource;
- 
+
         private String connectionString;
- 
-        private String database;
- 
+
+        private List<String> databases;
+
         private String password;
- 
+
         private Optional<Boolean> schemaEnforced;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -336,6 +335,7 @@ public class MongoDBAtlasReplicaSet {
             return this;
         }
 
+
         /**
          * The authentication source where the user information is stored.  See https://www.mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.authSource for more details.
          */
@@ -354,6 +354,7 @@ public class MongoDBAtlasReplicaSet {
             return this;
         }
 
+
         /**
          * The connection string of the cluster that you want to replicate.
          */
@@ -363,14 +364,16 @@ public class MongoDBAtlasReplicaSet {
             return this;
         }
 
+
         /**
-         * The name of the MongoDB database that contains the collection(s) to replicate.
+         * The names of the MongoDB databases that contain the collection(s) to replicate.
          */
-        public Builder database(String database) {
-            Utils.checkNotNull(database, "database");
-            this.database = database;
+        public Builder databases(List<String> databases) {
+            Utils.checkNotNull(databases, "databases");
+            this.databases = databases;
             return this;
         }
+
 
         /**
          * The password associated with this username.
@@ -380,6 +383,7 @@ public class MongoDBAtlasReplicaSet {
             this.password = password;
             return this;
         }
+
 
         /**
          * When enabled, syncs will validate and structure records against the stream's schema.
@@ -399,6 +403,7 @@ public class MongoDBAtlasReplicaSet {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -407,7 +412,7 @@ public class MongoDBAtlasReplicaSet {
             this.username = username;
             return this;
         }
-        
+
         public MongoDBAtlasReplicaSet build() {
             if (authSource == null) {
                 authSource = _SINGLETON_VALUE_AuthSource.value();
@@ -415,15 +420,13 @@ public class MongoDBAtlasReplicaSet {
             if (schemaEnforced == null) {
                 schemaEnforced = _SINGLETON_VALUE_SchemaEnforced.value();
             }
+
             return new MongoDBAtlasReplicaSet(
-                authSource,
-                connectionString,
-                database,
-                password,
-                schemaEnforced,
-                username)
+                authSource, connectionString, databases,
+                password, schemaEnforced, username)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_AuthSource =
                 new LazySingletonValue<>(

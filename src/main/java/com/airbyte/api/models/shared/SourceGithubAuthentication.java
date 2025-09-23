@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGithubAuthentication
@@ -31,9 +30,9 @@ public class SourceGithubAuthentication {
         this.value = value;
     }
 
-    public static SourceGithubAuthentication of(OAuth value) {
+    public static SourceGithubAuthentication of(SourceGithubOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGithubAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth>(){}));
+        return new SourceGithubAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGithubOAuth>(){}));
     }
 
     public static SourceGithubAuthentication of(SourceGithubPersonalAccessToken value) {
@@ -44,7 +43,7 @@ public class SourceGithubAuthentication {
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.OAuth}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceGithubOAuth}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceGithubPersonalAccessToken}</li>
      * </ul>
      * 
@@ -72,12 +71,12 @@ public class SourceGithubAuthentication {
             return false;
         }
         SourceGithubAuthentication other = (SourceGithubAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,7 +84,7 @@ public class SourceGithubAuthentication {
 
         public _Deserializer() {
             super(SourceGithubAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<OAuth>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGithubOAuth>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGithubPersonalAccessToken>() {}, JsonShape.DEFAULT));
         }
     }

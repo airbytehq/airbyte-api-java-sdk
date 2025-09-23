@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationWeaviateProcessingConfigModel {
 
+public class DestinationWeaviateProcessingConfigModel {
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
      */
@@ -86,7 +85,8 @@ public class DestinationWeaviateProcessingConfigModel {
     
     public DestinationWeaviateProcessingConfigModel(
             long chunkSize) {
-        this(Optional.empty(), chunkSize, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), chunkSize, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -141,9 +141,10 @@ public class DestinationWeaviateProcessingConfigModel {
         return (Optional<DestinationWeaviateTextSplitter>) textSplitter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
@@ -153,6 +154,7 @@ public class DestinationWeaviateProcessingConfigModel {
         this.chunkOverlap = Optional.ofNullable(chunkOverlap);
         return this;
     }
+
 
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
@@ -181,6 +183,7 @@ public class DestinationWeaviateProcessingConfigModel {
         return this;
     }
 
+
     /**
      * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
      */
@@ -198,6 +201,7 @@ public class DestinationWeaviateProcessingConfigModel {
         this.metadataFields = Optional.ofNullable(metadataFields);
         return this;
     }
+
 
     /**
      * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
@@ -217,6 +221,7 @@ public class DestinationWeaviateProcessingConfigModel {
         return this;
     }
 
+
     /**
      * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
      */
@@ -235,6 +240,7 @@ public class DestinationWeaviateProcessingConfigModel {
         return this;
     }
 
+
     /**
      * Split text fields into chunks based on the specified method.
      */
@@ -244,7 +250,6 @@ public class DestinationWeaviateProcessingConfigModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -255,23 +260,19 @@ public class DestinationWeaviateProcessingConfigModel {
         }
         DestinationWeaviateProcessingConfigModel other = (DestinationWeaviateProcessingConfigModel) o;
         return 
-            Objects.deepEquals(this.chunkOverlap, other.chunkOverlap) &&
-            Objects.deepEquals(this.chunkSize, other.chunkSize) &&
-            Objects.deepEquals(this.fieldNameMappings, other.fieldNameMappings) &&
-            Objects.deepEquals(this.metadataFields, other.metadataFields) &&
-            Objects.deepEquals(this.textFields, other.textFields) &&
-            Objects.deepEquals(this.textSplitter, other.textSplitter);
+            Utils.enhancedDeepEquals(this.chunkOverlap, other.chunkOverlap) &&
+            Utils.enhancedDeepEquals(this.chunkSize, other.chunkSize) &&
+            Utils.enhancedDeepEquals(this.fieldNameMappings, other.fieldNameMappings) &&
+            Utils.enhancedDeepEquals(this.metadataFields, other.metadataFields) &&
+            Utils.enhancedDeepEquals(this.textFields, other.textFields) &&
+            Utils.enhancedDeepEquals(this.textSplitter, other.textSplitter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            chunkOverlap,
-            chunkSize,
-            fieldNameMappings,
-            metadataFields,
-            textFields,
-            textSplitter);
+        return Utils.enhancedHash(
+            chunkOverlap, chunkSize, fieldNameMappings,
+            metadataFields, textFields, textSplitter);
     }
     
     @Override
@@ -284,24 +285,26 @@ public class DestinationWeaviateProcessingConfigModel {
                 "textFields", textFields,
                 "textSplitter", textSplitter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> chunkOverlap;
- 
+
         private Long chunkSize;
- 
+
         private Optional<? extends List<DestinationWeaviateFieldNameMappingConfigModel>> fieldNameMappings = Optional.empty();
- 
+
         private Optional<? extends List<String>> metadataFields = Optional.empty();
- 
+
         private Optional<? extends List<String>> textFields = Optional.empty();
- 
+
         private Optional<? extends DestinationWeaviateTextSplitter> textSplitter = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
@@ -321,6 +324,7 @@ public class DestinationWeaviateProcessingConfigModel {
             return this;
         }
 
+
         /**
          * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
          */
@@ -329,6 +333,7 @@ public class DestinationWeaviateProcessingConfigModel {
             this.chunkSize = chunkSize;
             return this;
         }
+
 
         /**
          * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
@@ -348,6 +353,7 @@ public class DestinationWeaviateProcessingConfigModel {
             return this;
         }
 
+
         /**
          * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
          */
@@ -365,6 +371,7 @@ public class DestinationWeaviateProcessingConfigModel {
             this.metadataFields = metadataFields;
             return this;
         }
+
 
         /**
          * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
@@ -384,6 +391,7 @@ public class DestinationWeaviateProcessingConfigModel {
             return this;
         }
 
+
         /**
          * Split text fields into chunks based on the specified method.
          */
@@ -401,19 +409,17 @@ public class DestinationWeaviateProcessingConfigModel {
             this.textSplitter = textSplitter;
             return this;
         }
-        
+
         public DestinationWeaviateProcessingConfigModel build() {
             if (chunkOverlap == null) {
                 chunkOverlap = _SINGLETON_VALUE_ChunkOverlap.value();
             }
+
             return new DestinationWeaviateProcessingConfigModel(
-                chunkOverlap,
-                chunkSize,
-                fieldNameMappings,
-                metadataFields,
-                textFields,
-                textSplitter);
+                chunkOverlap, chunkSize, fieldNameMappings,
+                metadataFields, textFields, textSplitter);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_ChunkOverlap =
                 new LazySingletonValue<>(

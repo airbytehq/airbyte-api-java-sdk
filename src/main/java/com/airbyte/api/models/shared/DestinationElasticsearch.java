@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationElasticsearch {
 
+public class DestinationElasticsearch {
     /**
      * The type of authentication to be used
      */
@@ -34,6 +33,7 @@ public class DestinationElasticsearch {
     @JsonProperty("ca_certificate")
     private Optional<String> caCertificate;
 
+
     @JsonProperty("destinationType")
     private Elasticsearch destinationType;
 
@@ -42,6 +42,13 @@ public class DestinationElasticsearch {
      */
     @JsonProperty("endpoint")
     private String endpoint;
+
+    /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("pathPrefix")
+    private Optional<String> pathPrefix;
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -62,24 +69,28 @@ public class DestinationElasticsearch {
             @JsonProperty("authenticationMethod") Optional<? extends AuthenticationMethod> authenticationMethod,
             @JsonProperty("ca_certificate") Optional<String> caCertificate,
             @JsonProperty("endpoint") String endpoint,
+            @JsonProperty("pathPrefix") Optional<String> pathPrefix,
             @JsonProperty("tunnel_method") Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod,
             @JsonProperty("upsert") Optional<Boolean> upsert) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
         Utils.checkNotNull(caCertificate, "caCertificate");
         Utils.checkNotNull(endpoint, "endpoint");
+        Utils.checkNotNull(pathPrefix, "pathPrefix");
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         Utils.checkNotNull(upsert, "upsert");
         this.authenticationMethod = authenticationMethod;
         this.caCertificate = caCertificate;
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
         this.endpoint = endpoint;
+        this.pathPrefix = pathPrefix;
         this.tunnelMethod = tunnelMethod;
         this.upsert = upsert;
     }
     
     public DestinationElasticsearch(
             String endpoint) {
-        this(Optional.empty(), Optional.empty(), endpoint, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), endpoint,
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -113,6 +124,14 @@ public class DestinationElasticsearch {
     }
 
     /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    @JsonIgnore
+    public Optional<String> pathPrefix() {
+        return pathPrefix;
+    }
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     @SuppressWarnings("unchecked")
@@ -129,9 +148,10 @@ public class DestinationElasticsearch {
         return upsert;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The type of authentication to be used
@@ -141,6 +161,7 @@ public class DestinationElasticsearch {
         this.authenticationMethod = Optional.ofNullable(authenticationMethod);
         return this;
     }
+
 
     /**
      * The type of authentication to be used
@@ -159,6 +180,7 @@ public class DestinationElasticsearch {
         this.caCertificate = Optional.ofNullable(caCertificate);
         return this;
     }
+
 
     /**
      * CA certificate
@@ -179,6 +201,25 @@ public class DestinationElasticsearch {
     }
 
     /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    public DestinationElasticsearch withPathPrefix(String pathPrefix) {
+        Utils.checkNotNull(pathPrefix, "pathPrefix");
+        this.pathPrefix = Optional.ofNullable(pathPrefix);
+        return this;
+    }
+
+
+    /**
+     * The Path Prefix of the Elasticsearch server
+     */
+    public DestinationElasticsearch withPathPrefix(Optional<String> pathPrefix) {
+        Utils.checkNotNull(pathPrefix, "pathPrefix");
+        this.pathPrefix = pathPrefix;
+        return this;
+    }
+
+    /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
     public DestinationElasticsearch withTunnelMethod(DestinationElasticsearchSSHTunnelMethod tunnelMethod) {
@@ -186,6 +227,7 @@ public class DestinationElasticsearch {
         this.tunnelMethod = Optional.ofNullable(tunnelMethod);
         return this;
     }
+
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -205,6 +247,7 @@ public class DestinationElasticsearch {
         return this;
     }
 
+
     /**
      * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
      */
@@ -214,7 +257,6 @@ public class DestinationElasticsearch {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -225,22 +267,20 @@ public class DestinationElasticsearch {
         }
         DestinationElasticsearch other = (DestinationElasticsearch) o;
         return 
-            Objects.deepEquals(this.authenticationMethod, other.authenticationMethod) &&
-            Objects.deepEquals(this.caCertificate, other.caCertificate) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.endpoint, other.endpoint) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.upsert, other.upsert);
+            Utils.enhancedDeepEquals(this.authenticationMethod, other.authenticationMethod) &&
+            Utils.enhancedDeepEquals(this.caCertificate, other.caCertificate) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint) &&
+            Utils.enhancedDeepEquals(this.pathPrefix, other.pathPrefix) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.upsert, other.upsert);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authenticationMethod,
-            caCertificate,
-            destinationType,
-            endpoint,
-            tunnelMethod,
+        return Utils.enhancedHash(
+            authenticationMethod, caCertificate, destinationType,
+            endpoint, pathPrefix, tunnelMethod,
             upsert);
     }
     
@@ -251,25 +291,30 @@ public class DestinationElasticsearch {
                 "caCertificate", caCertificate,
                 "destinationType", destinationType,
                 "endpoint", endpoint,
+                "pathPrefix", pathPrefix,
                 "tunnelMethod", tunnelMethod,
                 "upsert", upsert);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends AuthenticationMethod> authenticationMethod = Optional.empty();
- 
+
         private Optional<String> caCertificate = Optional.empty();
- 
+
         private String endpoint;
- 
+
+        private Optional<String> pathPrefix = Optional.empty();
+
         private Optional<? extends DestinationElasticsearchSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private Optional<Boolean> upsert;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The type of authentication to be used
@@ -289,6 +334,7 @@ public class DestinationElasticsearch {
             return this;
         }
 
+
         /**
          * CA certificate
          */
@@ -307,6 +353,7 @@ public class DestinationElasticsearch {
             return this;
         }
 
+
         /**
          * The full url of the Elasticsearch server
          */
@@ -315,6 +362,26 @@ public class DestinationElasticsearch {
             this.endpoint = endpoint;
             return this;
         }
+
+
+        /**
+         * The Path Prefix of the Elasticsearch server
+         */
+        public Builder pathPrefix(String pathPrefix) {
+            Utils.checkNotNull(pathPrefix, "pathPrefix");
+            this.pathPrefix = Optional.ofNullable(pathPrefix);
+            return this;
+        }
+
+        /**
+         * The Path Prefix of the Elasticsearch server
+         */
+        public Builder pathPrefix(Optional<String> pathPrefix) {
+            Utils.checkNotNull(pathPrefix, "pathPrefix");
+            this.pathPrefix = pathPrefix;
+            return this;
+        }
+
 
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -334,6 +401,7 @@ public class DestinationElasticsearch {
             return this;
         }
 
+
         /**
          * If a primary key identifier is defined in the source, an upsert will be performed using the primary key value as the elasticsearch doc id. Does not support composite primary keys.
          */
@@ -351,18 +419,17 @@ public class DestinationElasticsearch {
             this.upsert = upsert;
             return this;
         }
-        
+
         public DestinationElasticsearch build() {
             if (upsert == null) {
                 upsert = _SINGLETON_VALUE_Upsert.value();
             }
+
             return new DestinationElasticsearch(
-                authenticationMethod,
-                caCertificate,
-                endpoint,
-                tunnelMethod,
-                upsert);
+                authenticationMethod, caCertificate, endpoint,
+                pathPrefix, tunnelMethod, upsert);
         }
+
 
         private static final LazySingletonValue<Elasticsearch> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

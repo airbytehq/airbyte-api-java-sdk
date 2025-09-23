@@ -14,22 +14,24 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSigmaComputing {
 
+public class SourceSigmaComputing {
     /**
      * The base url of your sigma organization
      */
     @JsonProperty("base_url")
     private String baseUrl;
 
+
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -47,6 +49,7 @@ public class SourceSigmaComputing {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("oauth_token_expiry_date")
     private Optional<OffsetDateTime> oauthTokenExpiryDate;
+
 
     @JsonProperty("sourceType")
     private SigmaComputing sourceType;
@@ -79,7 +82,8 @@ public class SourceSigmaComputing {
             String clientId,
             String clientRefreshToken,
             String clientSecret) {
-        this(baseUrl, clientId, clientRefreshToken, clientSecret, Optional.empty(), Optional.empty());
+        this(baseUrl, clientId, clientRefreshToken,
+            clientSecret, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -126,9 +130,10 @@ public class SourceSigmaComputing {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The base url of your sigma organization
@@ -166,6 +171,7 @@ public class SourceSigmaComputing {
         return this;
     }
 
+
     /**
      * The current access token. This field might be overridden by the connector based on the token refresh endpoint response.
      */
@@ -184,6 +190,7 @@ public class SourceSigmaComputing {
         return this;
     }
 
+
     /**
      * The date the current access token expires in. This field might be overridden by the connector based on the token refresh endpoint response.
      */
@@ -193,7 +200,6 @@ public class SourceSigmaComputing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -204,24 +210,20 @@ public class SourceSigmaComputing {
         }
         SourceSigmaComputing other = (SourceSigmaComputing) o;
         return 
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.oauthAccessToken, other.oauthAccessToken) &&
-            Objects.deepEquals(this.oauthTokenExpiryDate, other.oauthTokenExpiryDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.oauthAccessToken, other.oauthAccessToken) &&
+            Utils.enhancedDeepEquals(this.oauthTokenExpiryDate, other.oauthTokenExpiryDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            baseUrl,
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            oauthAccessToken,
-            oauthTokenExpiryDate,
+        return Utils.enhancedHash(
+            baseUrl, clientId, clientRefreshToken,
+            clientSecret, oauthAccessToken, oauthTokenExpiryDate,
             sourceType);
     }
     
@@ -236,24 +238,26 @@ public class SourceSigmaComputing {
                 "oauthTokenExpiryDate", oauthTokenExpiryDate,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String baseUrl;
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> oauthAccessToken = Optional.empty();
- 
+
         private Optional<OffsetDateTime> oauthTokenExpiryDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The base url of your sigma organization
@@ -264,11 +268,13 @@ public class SourceSigmaComputing {
             return this;
         }
 
+
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
             this.clientId = clientId;
             return this;
         }
+
 
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
@@ -276,11 +282,13 @@ public class SourceSigmaComputing {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The current access token. This field might be overridden by the connector based on the token refresh endpoint response.
@@ -300,6 +308,7 @@ public class SourceSigmaComputing {
             return this;
         }
 
+
         /**
          * The date the current access token expires in. This field might be overridden by the connector based on the token refresh endpoint response.
          */
@@ -317,16 +326,14 @@ public class SourceSigmaComputing {
             this.oauthTokenExpiryDate = oauthTokenExpiryDate;
             return this;
         }
-        
+
         public SourceSigmaComputing build() {
+
             return new SourceSigmaComputing(
-                baseUrl,
-                clientId,
-                clientRefreshToken,
-                clientSecret,
-                oauthAccessToken,
-                oauthTokenExpiryDate);
+                baseUrl, clientId, clientRefreshToken,
+                clientSecret, oauthAccessToken, oauthTokenExpiryDate);
         }
+
 
         private static final LazySingletonValue<SigmaComputing> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

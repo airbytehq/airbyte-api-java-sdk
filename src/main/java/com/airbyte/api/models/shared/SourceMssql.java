@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMssql {
 
+public class SourceMssql {
     /**
      * The name of the database.
      */
@@ -65,6 +64,7 @@ public class SourceMssql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
+
 
     @JsonProperty("sourceType")
     private SourceMssqlMssql sourceType;
@@ -130,7 +130,10 @@ public class SourceMssql {
             String password,
             long port,
             String username) {
-        this(database, host, Optional.empty(), password, port, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(),
+            password, port, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -222,9 +225,10 @@ public class SourceMssql {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the database.
@@ -252,6 +256,7 @@ public class SourceMssql {
         this.jdbcUrlParams = Optional.ofNullable(jdbcUrlParams);
         return this;
     }
+
 
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -289,6 +294,7 @@ public class SourceMssql {
         return this;
     }
 
+
     /**
      * Configures how data is extracted from the database.
      */
@@ -306,6 +312,7 @@ public class SourceMssql {
         this.schemas = Optional.ofNullable(schemas);
         return this;
     }
+
 
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
@@ -325,6 +332,7 @@ public class SourceMssql {
         return this;
     }
 
+
     /**
      * The encryption method which is used when communicating with the database.
      */
@@ -342,6 +350,7 @@ public class SourceMssql {
         this.tunnelMethod = Optional.ofNullable(tunnelMethod);
         return this;
     }
+
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -361,7 +370,6 @@ public class SourceMssql {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -372,33 +380,26 @@ public class SourceMssql {
         }
         SourceMssql other = (SourceMssql) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.replicationMethod, other.replicationMethod) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.sslMethod, other.sslMethod) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.replicationMethod, other.replicationMethod) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.sslMethod, other.sslMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            replicationMethod,
-            schemas,
-            sourceType,
-            sslMethod,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, host, jdbcUrlParams,
+            password, port, replicationMethod,
+            schemas, sourceType, sslMethod,
+            tunnelMethod, username);
     }
     
     @Override
@@ -416,32 +417,34 @@ public class SourceMssql {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private String password;
- 
+
         private Long port;
- 
+
         private Optional<? extends UpdateMethod> replicationMethod = Optional.empty();
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private Optional<? extends SourceMssqlSSLMethod> sslMethod = Optional.empty();
- 
+
         private Optional<? extends SourceMssqlSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the database.
@@ -452,6 +455,7 @@ public class SourceMssql {
             return this;
         }
 
+
         /**
          * The hostname of the database.
          */
@@ -460,6 +464,7 @@ public class SourceMssql {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -479,6 +484,7 @@ public class SourceMssql {
             return this;
         }
 
+
         /**
          * The password associated with the username.
          */
@@ -488,6 +494,7 @@ public class SourceMssql {
             return this;
         }
 
+
         /**
          * The port of the database.
          */
@@ -496,6 +503,7 @@ public class SourceMssql {
             this.port = port;
             return this;
         }
+
 
         /**
          * Configures how data is extracted from the database.
@@ -515,6 +523,7 @@ public class SourceMssql {
             return this;
         }
 
+
         /**
          * The list of schemas to sync from. Defaults to user. Case sensitive.
          */
@@ -532,6 +541,7 @@ public class SourceMssql {
             this.schemas = schemas;
             return this;
         }
+
 
         /**
          * The encryption method which is used when communicating with the database.
@@ -551,6 +561,7 @@ public class SourceMssql {
             return this;
         }
 
+
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
@@ -569,6 +580,7 @@ public class SourceMssql {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -577,20 +589,16 @@ public class SourceMssql {
             this.username = username;
             return this;
         }
-        
+
         public SourceMssql build() {
+
             return new SourceMssql(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                replicationMethod,
-                schemas,
-                sslMethod,
-                tunnelMethod,
+                database, host, jdbcUrlParams,
+                password, port, replicationMethod,
+                schemas, sslMethod, tunnelMethod,
                 username);
         }
+
 
         private static final LazySingletonValue<SourceMssqlMssql> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

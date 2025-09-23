@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAwsCloudtrail {
 
+public class SourceAwsCloudtrail {
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
      */
@@ -39,9 +38,11 @@ public class SourceAwsCloudtrail {
     @JsonProperty("aws_secret_key")
     private String awsSecretKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookup_attributes_filter")
     private Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter;
+
 
     @JsonProperty("sourceType")
     private AwsCloudtrail sourceType;
@@ -76,7 +77,8 @@ public class SourceAwsCloudtrail {
     public SourceAwsCloudtrail(
             String awsKeyId,
             String awsSecretKey) {
-        this(awsKeyId, Optional.empty(), awsSecretKey, Optional.empty(), Optional.empty());
+        this(awsKeyId, Optional.empty(), awsSecretKey,
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -122,9 +124,10 @@ public class SourceAwsCloudtrail {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -143,6 +146,7 @@ public class SourceAwsCloudtrail {
         this.awsRegionName = Optional.ofNullable(awsRegionName);
         return this;
     }
+
 
     /**
      * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
@@ -168,6 +172,7 @@ public class SourceAwsCloudtrail {
         return this;
     }
 
+
     public SourceAwsCloudtrail withLookupAttributesFilter(Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter) {
         Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
         this.lookupAttributesFilter = lookupAttributesFilter;
@@ -183,6 +188,7 @@ public class SourceAwsCloudtrail {
         return this;
     }
 
+
     /**
      * The date you would like to replicate data. Data in AWS CloudTrail is available for last 90 days only. Format: YYYY-MM-DD.
      */
@@ -192,7 +198,6 @@ public class SourceAwsCloudtrail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -203,23 +208,19 @@ public class SourceAwsCloudtrail {
         }
         SourceAwsCloudtrail other = (SourceAwsCloudtrail) o;
         return 
-            Objects.deepEquals(this.awsKeyId, other.awsKeyId) &&
-            Objects.deepEquals(this.awsRegionName, other.awsRegionName) &&
-            Objects.deepEquals(this.awsSecretKey, other.awsSecretKey) &&
-            Objects.deepEquals(this.lookupAttributesFilter, other.lookupAttributesFilter) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.awsKeyId, other.awsKeyId) &&
+            Utils.enhancedDeepEquals(this.awsRegionName, other.awsRegionName) &&
+            Utils.enhancedDeepEquals(this.awsSecretKey, other.awsSecretKey) &&
+            Utils.enhancedDeepEquals(this.lookupAttributesFilter, other.lookupAttributesFilter) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsKeyId,
-            awsRegionName,
-            awsSecretKey,
-            lookupAttributesFilter,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            awsKeyId, awsRegionName, awsSecretKey,
+            lookupAttributesFilter, sourceType, startDate);
     }
     
     @Override
@@ -232,22 +233,24 @@ public class SourceAwsCloudtrail {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String awsKeyId;
- 
+
         private Optional<String> awsRegionName;
- 
+
         private String awsSecretKey;
- 
+
         private Optional<? extends FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody> lookupAttributesFilter = Optional.empty();
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
@@ -257,6 +260,7 @@ public class SourceAwsCloudtrail {
             this.awsKeyId = awsKeyId;
             return this;
         }
+
 
         /**
          * The default AWS Region to use, for example, us-west-1 or us-west-2. When specifying a Region inline during client initialization, this property is named region_name.
@@ -276,6 +280,7 @@ public class SourceAwsCloudtrail {
             return this;
         }
 
+
         /**
          * AWS CloudTrail Access Key ID. See the &lt;a href="https://docs.airbyte.com/integrations/sources/aws-cloudtrail"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
          */
@@ -284,6 +289,7 @@ public class SourceAwsCloudtrail {
             this.awsSecretKey = awsSecretKey;
             return this;
         }
+
 
         public Builder lookupAttributesFilter(FilterAppliedWhileFetchingRecordsBasedOnAttributeKeyAndAttributeValueWhichWillBeAppendedOnTheRequestBody lookupAttributesFilter) {
             Utils.checkNotNull(lookupAttributesFilter, "lookupAttributesFilter");
@@ -296,6 +302,7 @@ public class SourceAwsCloudtrail {
             this.lookupAttributesFilter = lookupAttributesFilter;
             return this;
         }
+
 
         /**
          * The date you would like to replicate data. Data in AWS CloudTrail is available for last 90 days only. Format: YYYY-MM-DD.
@@ -314,18 +321,17 @@ public class SourceAwsCloudtrail {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAwsCloudtrail build() {
             if (awsRegionName == null) {
                 awsRegionName = _SINGLETON_VALUE_AwsRegionName.value();
             }
+
             return new SourceAwsCloudtrail(
-                awsKeyId,
-                awsRegionName,
-                awsSecretKey,
-                lookupAttributesFilter,
-                startDate);
+                awsKeyId, awsRegionName, awsSecretKey,
+                lookupAttributesFilter, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_AwsRegionName =
                 new LazySingletonValue<>(

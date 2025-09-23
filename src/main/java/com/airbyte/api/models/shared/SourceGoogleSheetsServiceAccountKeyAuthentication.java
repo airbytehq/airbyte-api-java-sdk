@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleSheetsServiceAccountKeyAuthentication {
 
@@ -45,9 +45,10 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
         return serviceAccountInfo;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
@@ -58,7 +59,6 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
         }
         SourceGoogleSheetsServiceAccountKeyAuthentication other = (SourceGoogleSheetsServiceAccountKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.serviceAccountInfo, other.serviceAccountInfo);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            serviceAccountInfo);
+        return Utils.enhancedHash(
+            authType, serviceAccountInfo);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
                 "authType", authType,
                 "serviceAccountInfo", serviceAccountInfo);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String serviceAccountInfo;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The JSON key of the service account to use for authorization. Read more &lt;a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys"&gt;here&lt;/a&gt;.
@@ -103,11 +104,13 @@ public class SourceGoogleSheetsServiceAccountKeyAuthentication {
             this.serviceAccountInfo = serviceAccountInfo;
             return this;
         }
-        
+
         public SourceGoogleSheetsServiceAccountKeyAuthentication build() {
+
             return new SourceGoogleSheetsServiceAccountKeyAuthentication(
                 serviceAccountInfo);
         }
+
 
         private static final LazySingletonValue<SourceGoogleSheetsSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

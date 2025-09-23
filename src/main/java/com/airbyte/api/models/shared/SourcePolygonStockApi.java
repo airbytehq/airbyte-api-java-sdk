@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePolygonStockApi {
 
+public class SourcePolygonStockApi {
     /**
      * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.
      */
@@ -58,6 +57,7 @@ public class SourcePolygonStockApi {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sort")
     private Optional<String> sort;
+
 
     @JsonProperty("sourceType")
     private PolygonStockApi sourceType;
@@ -119,7 +119,9 @@ public class SourcePolygonStockApi {
             LocalDate startDate,
             String stocksTicker,
             String timespan) {
-        this(Optional.empty(), apiKey, endDate, Optional.empty(), multiplier, Optional.empty(), startDate, stocksTicker, timespan);
+        this(Optional.empty(), apiKey, endDate,
+            Optional.empty(), multiplier, Optional.empty(),
+            startDate, stocksTicker, timespan);
     }
 
     /**
@@ -199,9 +201,10 @@ public class SourcePolygonStockApi {
         return timespan;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.
@@ -211,6 +214,7 @@ public class SourcePolygonStockApi {
         this.adjusted = Optional.ofNullable(adjusted);
         return this;
     }
+
 
     /**
      * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.
@@ -248,6 +252,7 @@ public class SourcePolygonStockApi {
         return this;
     }
 
+
     /**
      * The target date for the aggregate window.
      */
@@ -274,6 +279,7 @@ public class SourcePolygonStockApi {
         this.sort = Optional.ofNullable(sort);
         return this;
     }
+
 
     /**
      * Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).
@@ -311,7 +317,6 @@ public class SourcePolygonStockApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -322,30 +327,24 @@ public class SourcePolygonStockApi {
         }
         SourcePolygonStockApi other = (SourcePolygonStockApi) o;
         return 
-            Objects.deepEquals(this.adjusted, other.adjusted) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.multiplier, other.multiplier) &&
-            Objects.deepEquals(this.sort, other.sort) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.stocksTicker, other.stocksTicker) &&
-            Objects.deepEquals(this.timespan, other.timespan);
+            Utils.enhancedDeepEquals(this.adjusted, other.adjusted) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.multiplier, other.multiplier) &&
+            Utils.enhancedDeepEquals(this.sort, other.sort) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.stocksTicker, other.stocksTicker) &&
+            Utils.enhancedDeepEquals(this.timespan, other.timespan);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            adjusted,
-            apiKey,
-            endDate,
-            limit,
-            multiplier,
-            sort,
-            sourceType,
-            startDate,
-            stocksTicker,
+        return Utils.enhancedHash(
+            adjusted, apiKey, endDate,
+            limit, multiplier, sort,
+            sourceType, startDate, stocksTicker,
             timespan);
     }
     
@@ -363,30 +362,32 @@ public class SourcePolygonStockApi {
                 "stocksTicker", stocksTicker,
                 "timespan", timespan);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> adjusted = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private LocalDate endDate;
- 
+
         private Optional<Long> limit = Optional.empty();
- 
+
         private Long multiplier;
- 
+
         private Optional<String> sort = Optional.empty();
- 
+
         private LocalDate startDate;
- 
+
         private String stocksTicker;
- 
+
         private String timespan;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Determines whether or not the results are adjusted for splits. By default, results are adjusted and set to true. Set this to false to get results that are NOT adjusted for splits.
@@ -406,6 +407,7 @@ public class SourcePolygonStockApi {
             return this;
         }
 
+
         /**
          * Your API ACCESS Key
          */
@@ -415,6 +417,7 @@ public class SourcePolygonStockApi {
             return this;
         }
 
+
         /**
          * The target date for the aggregate window.
          */
@@ -423,6 +426,7 @@ public class SourcePolygonStockApi {
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * The target date for the aggregate window.
@@ -442,6 +446,7 @@ public class SourcePolygonStockApi {
             return this;
         }
 
+
         /**
          * The size of the timespan multiplier.
          */
@@ -450,6 +455,7 @@ public class SourcePolygonStockApi {
             this.multiplier = multiplier;
             return this;
         }
+
 
         /**
          * Sort the results by timestamp. asc will return results in ascending order (oldest at the top), desc will return results in descending order (newest at the top).
@@ -469,6 +475,7 @@ public class SourcePolygonStockApi {
             return this;
         }
 
+
         /**
          * The beginning date for the aggregate window.
          */
@@ -477,6 +484,7 @@ public class SourcePolygonStockApi {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The exchange symbol that this item is traded under.
@@ -487,6 +495,7 @@ public class SourcePolygonStockApi {
             return this;
         }
 
+
         /**
          * The size of the time window.
          */
@@ -495,19 +504,15 @@ public class SourcePolygonStockApi {
             this.timespan = timespan;
             return this;
         }
-        
+
         public SourcePolygonStockApi build() {
+
             return new SourcePolygonStockApi(
-                adjusted,
-                apiKey,
-                endDate,
-                limit,
-                multiplier,
-                sort,
-                startDate,
-                stocksTicker,
-                timespan);
+                adjusted, apiKey, endDate,
+                limit, multiplier, sort,
+                startDate, stocksTicker, timespan);
         }
+
 
         private static final LazySingletonValue<PolygonStockApi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

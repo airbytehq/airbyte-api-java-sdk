@@ -3,16 +3,22 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListSources;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class ListSourcesRequestBuilder {
 
     private ListSourcesRequest request;
-    private final SDKMethodInterfaces.MethodCallListSources sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public ListSourcesRequestBuilder(SDKMethodInterfaces.MethodCallListSources sdk) {
-        this.sdk = sdk;
+    public ListSourcesRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public ListSourcesRequestBuilder request(ListSourcesRequest request) {
@@ -22,8 +28,10 @@ public class ListSourcesRequestBuilder {
     }
 
     public ListSourcesResponse call() throws Exception {
+        
+        RequestOperation<ListSourcesRequest, ListSourcesResponse> operation
+              = new ListSources.Sync(sdkConfiguration, _headers);
 
-        return sdk.listSources(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

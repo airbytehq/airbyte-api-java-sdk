@@ -16,11 +16,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationGcsParquetColumnarStorage {
 
+public class DestinationGcsParquetColumnarStorage {
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
      */
@@ -48,6 +47,7 @@ public class DestinationGcsParquetColumnarStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dictionary_page_size_kb")
     private Optional<Long> dictionaryPageSizeKb;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -93,7 +93,9 @@ public class DestinationGcsParquetColumnarStorage {
     }
     
     public DestinationGcsParquetColumnarStorage() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -151,9 +153,10 @@ public class DestinationGcsParquetColumnarStorage {
         return pageSizeKb;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
@@ -163,6 +166,7 @@ public class DestinationGcsParquetColumnarStorage {
         this.blockSizeMb = Optional.ofNullable(blockSizeMb);
         return this;
     }
+
 
     /**
      * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
@@ -182,6 +186,7 @@ public class DestinationGcsParquetColumnarStorage {
         return this;
     }
 
+
     /**
      * The compression algorithm used to compress data pages.
      */
@@ -199,6 +204,7 @@ public class DestinationGcsParquetColumnarStorage {
         this.dictionaryEncoding = Optional.ofNullable(dictionaryEncoding);
         return this;
     }
+
 
     /**
      * Default: true.
@@ -218,6 +224,7 @@ public class DestinationGcsParquetColumnarStorage {
         return this;
     }
 
+
     /**
      * There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.
      */
@@ -233,6 +240,7 @@ public class DestinationGcsParquetColumnarStorage {
         return this;
     }
 
+
     public DestinationGcsParquetColumnarStorage withFormatType(Optional<? extends DestinationGcsSchemasFormatOutputFormatFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
@@ -247,6 +255,7 @@ public class DestinationGcsParquetColumnarStorage {
         this.maxPaddingSizeMb = Optional.ofNullable(maxPaddingSizeMb);
         return this;
     }
+
 
     /**
      * Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.
@@ -266,6 +275,7 @@ public class DestinationGcsParquetColumnarStorage {
         return this;
     }
 
+
     /**
      * The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.
      */
@@ -275,7 +285,6 @@ public class DestinationGcsParquetColumnarStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -286,24 +295,20 @@ public class DestinationGcsParquetColumnarStorage {
         }
         DestinationGcsParquetColumnarStorage other = (DestinationGcsParquetColumnarStorage) o;
         return 
-            Objects.deepEquals(this.blockSizeMb, other.blockSizeMb) &&
-            Objects.deepEquals(this.compressionCodec, other.compressionCodec) &&
-            Objects.deepEquals(this.dictionaryEncoding, other.dictionaryEncoding) &&
-            Objects.deepEquals(this.dictionaryPageSizeKb, other.dictionaryPageSizeKb) &&
-            Objects.deepEquals(this.formatType, other.formatType) &&
-            Objects.deepEquals(this.maxPaddingSizeMb, other.maxPaddingSizeMb) &&
-            Objects.deepEquals(this.pageSizeKb, other.pageSizeKb);
+            Utils.enhancedDeepEquals(this.blockSizeMb, other.blockSizeMb) &&
+            Utils.enhancedDeepEquals(this.compressionCodec, other.compressionCodec) &&
+            Utils.enhancedDeepEquals(this.dictionaryEncoding, other.dictionaryEncoding) &&
+            Utils.enhancedDeepEquals(this.dictionaryPageSizeKb, other.dictionaryPageSizeKb) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType) &&
+            Utils.enhancedDeepEquals(this.maxPaddingSizeMb, other.maxPaddingSizeMb) &&
+            Utils.enhancedDeepEquals(this.pageSizeKb, other.pageSizeKb);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            blockSizeMb,
-            compressionCodec,
-            dictionaryEncoding,
-            dictionaryPageSizeKb,
-            formatType,
-            maxPaddingSizeMb,
+        return Utils.enhancedHash(
+            blockSizeMb, compressionCodec, dictionaryEncoding,
+            dictionaryPageSizeKb, formatType, maxPaddingSizeMb,
             pageSizeKb);
     }
     
@@ -318,26 +323,28 @@ public class DestinationGcsParquetColumnarStorage {
                 "maxPaddingSizeMb", maxPaddingSizeMb,
                 "pageSizeKb", pageSizeKb);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> blockSizeMb;
- 
+
         private Optional<? extends DestinationGcsCompressionCodec> compressionCodec;
- 
+
         private Optional<Boolean> dictionaryEncoding;
- 
+
         private Optional<Long> dictionaryPageSizeKb;
- 
+
         private Optional<? extends DestinationGcsSchemasFormatOutputFormatFormatType> formatType;
- 
+
         private Optional<Long> maxPaddingSizeMb;
- 
+
         private Optional<Long> pageSizeKb;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * This is the size of a row group being buffered in memory. It limits the memory usage when writing. Larger values will improve the IO when reading, but consume more memory when writing. Default: 128 MB.
@@ -357,6 +364,7 @@ public class DestinationGcsParquetColumnarStorage {
             return this;
         }
 
+
         /**
          * The compression algorithm used to compress data pages.
          */
@@ -374,6 +382,7 @@ public class DestinationGcsParquetColumnarStorage {
             this.compressionCodec = compressionCodec;
             return this;
         }
+
 
         /**
          * Default: true.
@@ -393,6 +402,7 @@ public class DestinationGcsParquetColumnarStorage {
             return this;
         }
 
+
         /**
          * There is one dictionary page per column per row group when dictionary encoding is used. The dictionary page size works like the page size but for dictionary. Default: 1024 KB.
          */
@@ -411,6 +421,7 @@ public class DestinationGcsParquetColumnarStorage {
             return this;
         }
 
+
         public Builder formatType(DestinationGcsSchemasFormatOutputFormatFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
             this.formatType = Optional.ofNullable(formatType);
@@ -422,6 +433,7 @@ public class DestinationGcsParquetColumnarStorage {
             this.formatType = formatType;
             return this;
         }
+
 
         /**
          * Maximum size allowed as padding to align row groups. This is also the minimum size of a row group. Default: 8 MB.
@@ -441,6 +453,7 @@ public class DestinationGcsParquetColumnarStorage {
             return this;
         }
 
+
         /**
          * The page size is for compression. A block is composed of pages. A page is the smallest unit that must be read fully to access a single record. If this value is too small, the compression will deteriorate. Default: 1024 KB.
          */
@@ -458,7 +471,7 @@ public class DestinationGcsParquetColumnarStorage {
             this.pageSizeKb = pageSizeKb;
             return this;
         }
-        
+
         public DestinationGcsParquetColumnarStorage build() {
             if (blockSizeMb == null) {
                 blockSizeMb = _SINGLETON_VALUE_BlockSizeMb.value();
@@ -481,15 +494,13 @@ public class DestinationGcsParquetColumnarStorage {
             if (pageSizeKb == null) {
                 pageSizeKb = _SINGLETON_VALUE_PageSizeKb.value();
             }
+
             return new DestinationGcsParquetColumnarStorage(
-                blockSizeMb,
-                compressionCodec,
-                dictionaryEncoding,
-                dictionaryPageSizeKb,
-                formatType,
-                maxPaddingSizeMb,
+                blockSizeMb, compressionCodec, dictionaryEncoding,
+                dictionaryPageSizeKb, formatType, maxPaddingSizeMb,
                 pageSizeKb);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BlockSizeMb =
                 new LazySingletonValue<>(

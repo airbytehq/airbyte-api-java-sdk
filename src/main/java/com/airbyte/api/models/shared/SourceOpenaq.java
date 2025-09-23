@@ -13,7 +13,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
+
 
 public class SourceOpenaq {
 
@@ -25,6 +25,7 @@ public class SourceOpenaq {
      */
     @JsonProperty("country_ids")
     private List<Object> countryIds;
+
 
     @JsonProperty("sourceType")
     private Openaq sourceType;
@@ -58,9 +59,10 @@ public class SourceOpenaq {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceOpenaq withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -77,7 +79,6 @@ public class SourceOpenaq {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,17 +89,15 @@ public class SourceOpenaq {
         }
         SourceOpenaq other = (SourceOpenaq) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.countryIds, other.countryIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.countryIds, other.countryIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            countryIds,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, countryIds, sourceType);
     }
     
     @Override
@@ -108,22 +107,25 @@ public class SourceOpenaq {
                 "countryIds", countryIds,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private List<Object> countryIds;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The list of IDs of countries (comma separated) you need the data for, check more: https://docs.openaq.org/resources/countries
@@ -133,12 +135,13 @@ public class SourceOpenaq {
             this.countryIds = countryIds;
             return this;
         }
-        
+
         public SourceOpenaq build() {
+
             return new SourceOpenaq(
-                apiKey,
-                countryIds);
+                apiKey, countryIds);
         }
+
 
         private static final LazySingletonValue<Openaq> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

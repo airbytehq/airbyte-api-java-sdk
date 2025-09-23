@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,6 +31,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursor_method")
@@ -97,9 +97,10 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return (Optional<SourceSapHanaEnterpriseInvalidCDCPositionBehaviorAdvanced>) invalidCdcCursorPositionBehavior;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC withAdditionalProperty(String key, Object value) {
@@ -107,8 +108,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -120,6 +120,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         this.cursorMethod = Optional.ofNullable(cursorMethod);
         return this;
     }
+
 
     public SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC withCursorMethod(Optional<? extends SourceSapHanaEnterpriseSchemasCursorMethod> cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
@@ -135,6 +136,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         this.initialLoadTimeoutHours = Optional.ofNullable(initialLoadTimeoutHours);
         return this;
     }
+
 
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC events.
@@ -154,6 +156,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
+
     /**
      * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
      */
@@ -163,7 +166,6 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,18 +176,16 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
         }
         SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC other = (SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.cursorMethod, other.cursorMethod) &&
-            Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
-            Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.cursorMethod, other.cursorMethod) &&
+            Utils.enhancedDeepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
+            Utils.enhancedDeepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            cursorMethod,
-            initialLoadTimeoutHours,
+        return Utils.enhancedHash(
+            additionalProperties, cursorMethod, initialLoadTimeoutHours,
             invalidCdcCursorPositionBehavior);
     }
     
@@ -197,17 +197,18 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
                 "initialLoadTimeoutHours", initialLoadTimeoutHours,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceSapHanaEnterpriseSchemasCursorMethod> cursorMethod;
- 
+
         private Optional<Long> initialLoadTimeoutHours;
- 
+
         private Optional<? extends SourceSapHanaEnterpriseInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -228,6 +229,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         public Builder cursorMethod(SourceSapHanaEnterpriseSchemasCursorMethod cursorMethod) {
             Utils.checkNotNull(cursorMethod, "cursorMethod");
             this.cursorMethod = Optional.ofNullable(cursorMethod);
@@ -239,6 +241,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
             this.cursorMethod = cursorMethod;
             return this;
         }
+
 
         /**
          * The amount of time an initial load is allowed to continue for before catching up on CDC events.
@@ -258,6 +261,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         /**
          * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
          */
@@ -275,7 +279,7 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
             this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
             return this;
         }
-        
+
         public SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC build() {
             if (cursorMethod == null) {
                 cursorMethod = _SINGLETON_VALUE_CursorMethod.value();
@@ -286,12 +290,12 @@ public class SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC {
             if (invalidCdcCursorPositionBehavior == null) {
                 invalidCdcCursorPositionBehavior = _SINGLETON_VALUE_InvalidCdcCursorPositionBehavior.value();
             }
+
             return new SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC(
-                cursorMethod,
-                initialLoadTimeoutHours,
-                invalidCdcCursorPositionBehavior)
+                cursorMethod, initialLoadTimeoutHours, invalidCdcCursorPositionBehavior)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseSchemasCursorMethod>> _SINGLETON_VALUE_CursorMethod =
                 new LazySingletonValue<>(

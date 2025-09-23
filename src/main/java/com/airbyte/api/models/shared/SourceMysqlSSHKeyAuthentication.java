@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -44,6 +43,7 @@ public class SourceMysqlSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     private String tunnelHost;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -86,7 +86,8 @@ public class SourceMysqlSSHKeyAuthentication {
             String sshKey,
             String tunnelHost,
             String tunnelUser) {
-        this(sshKey, tunnelHost, Optional.empty(), Optional.empty(), tunnelUser);
+        this(sshKey, tunnelHost, Optional.empty(),
+            Optional.empty(), tunnelUser);
     }
 
     @JsonAnyGetter
@@ -132,9 +133,10 @@ public class SourceMysqlSSHKeyAuthentication {
         return tunnelUser;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceMysqlSSHKeyAuthentication withAdditionalProperty(String key, Object value) {
@@ -142,8 +144,7 @@ public class SourceMysqlSSHKeyAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceMysqlSSHKeyAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -174,6 +175,7 @@ public class SourceMysqlSSHKeyAuthentication {
         return this;
     }
 
+
     public SourceMysqlSSHKeyAuthentication withTunnelMethod(Optional<? extends SourceMysqlSchemasTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         this.tunnelMethod = tunnelMethod;
@@ -188,6 +190,7 @@ public class SourceMysqlSSHKeyAuthentication {
         this.tunnelPort = Optional.ofNullable(tunnelPort);
         return this;
     }
+
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -207,7 +210,6 @@ public class SourceMysqlSSHKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +220,19 @@ public class SourceMysqlSSHKeyAuthentication {
         }
         SourceMysqlSSHKeyAuthentication other = (SourceMysqlSSHKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.sshKey, other.sshKey) &&
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.sshKey, other.sshKey) &&
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            sshKey,
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser);
+        return Utils.enhancedHash(
+            additionalProperties, sshKey, tunnelHost,
+            tunnelMethod, tunnelPort, tunnelUser);
     }
     
     @Override
@@ -247,21 +245,22 @@ public class SourceMysqlSSHKeyAuthentication {
                 "tunnelPort", tunnelPort,
                 "tunnelUser", tunnelUser);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String sshKey;
- 
+
         private String tunnelHost;
- 
+
         private Optional<? extends SourceMysqlSchemasTunnelMethod> tunnelMethod;
- 
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -282,6 +281,7 @@ public class SourceMysqlSSHKeyAuthentication {
             return this;
         }
 
+
         /**
          * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
          */
@@ -291,6 +291,7 @@ public class SourceMysqlSSHKeyAuthentication {
             return this;
         }
 
+
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
          */
@@ -299,6 +300,7 @@ public class SourceMysqlSSHKeyAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
 
         public Builder tunnelMethod(SourceMysqlSchemasTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -311,6 +313,7 @@ public class SourceMysqlSSHKeyAuthentication {
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -330,6 +333,7 @@ public class SourceMysqlSSHKeyAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host
          */
@@ -338,7 +342,7 @@ public class SourceMysqlSSHKeyAuthentication {
             this.tunnelUser = tunnelUser;
             return this;
         }
-        
+
         public SourceMysqlSSHKeyAuthentication build() {
             if (tunnelMethod == null) {
                 tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
@@ -346,14 +350,13 @@ public class SourceMysqlSSHKeyAuthentication {
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new SourceMysqlSSHKeyAuthentication(
-                sshKey,
-                tunnelHost,
-                tunnelMethod,
-                tunnelPort,
-                tunnelUser)
+                sshKey, tunnelHost, tunnelMethod,
+                tunnelPort, tunnelUser)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMysqlSchemasTunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

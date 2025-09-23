@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZendeskSupport {
 
+public class SourceZendeskSupport {
     /**
      * Zendesk allows two authentication methods. We recommend using `OAuth2.0` for Airbyte Cloud users and `API token` for Airbyte Open Source users.
      */
@@ -34,6 +33,7 @@ public class SourceZendeskSupport {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("num_workers")
     private Optional<Long> numWorkers;
+
 
     @JsonProperty("sourceType")
     private SourceZendeskSupportZendeskSupport sourceType;
@@ -70,7 +70,8 @@ public class SourceZendeskSupport {
     
     public SourceZendeskSupport(
             String subdomain) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), subdomain);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            subdomain);
     }
 
     /**
@@ -111,9 +112,10 @@ public class SourceZendeskSupport {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Zendesk allows two authentication methods. We recommend using `OAuth2.0` for Airbyte Cloud users and `API token` for Airbyte Open Source users.
@@ -123,6 +125,7 @@ public class SourceZendeskSupport {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Zendesk allows two authentication methods. We recommend using `OAuth2.0` for Airbyte Cloud users and `API token` for Airbyte Open Source users.
@@ -142,6 +145,7 @@ public class SourceZendeskSupport {
         return this;
     }
 
+
     /**
      * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Zendesk Support plan. More info about the rate limit plan tiers can be found on Zendesk's API &lt;a href="https://developer.zendesk.com/api-reference/introduction/rate-limits/#zendesk-support-plan-limits"&gt;docs&lt;/a&gt;.
      */
@@ -159,6 +163,7 @@ public class SourceZendeskSupport {
         this.startDate = Optional.ofNullable(startDate);
         return this;
     }
+
 
     /**
      * The UTC date and time from which you'd like to replicate data, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
@@ -178,7 +183,6 @@ public class SourceZendeskSupport {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -189,21 +193,18 @@ public class SourceZendeskSupport {
         }
         SourceZendeskSupport other = (SourceZendeskSupport) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            numWorkers,
-            sourceType,
-            startDate,
-            subdomain);
+        return Utils.enhancedHash(
+            credentials, numWorkers, sourceType,
+            startDate, subdomain);
     }
     
     @Override
@@ -215,20 +216,22 @@ public class SourceZendeskSupport {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceZendeskSupportAuthentication> credentials = Optional.empty();
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Zendesk allows two authentication methods. We recommend using `OAuth2.0` for Airbyte Cloud users and `API token` for Airbyte Open Source users.
@@ -248,6 +251,7 @@ public class SourceZendeskSupport {
             return this;
         }
 
+
         /**
          * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Zendesk Support plan. More info about the rate limit plan tiers can be found on Zendesk's API &lt;a href="https://developer.zendesk.com/api-reference/introduction/rate-limits/#zendesk-support-plan-limits"&gt;docs&lt;/a&gt;.
          */
@@ -265,6 +269,7 @@ public class SourceZendeskSupport {
             this.numWorkers = numWorkers;
             return this;
         }
+
 
         /**
          * The UTC date and time from which you'd like to replicate data, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
@@ -284,6 +289,7 @@ public class SourceZendeskSupport {
             return this;
         }
 
+
         /**
          * This is your unique Zendesk subdomain that can be found in your account URL. For example, in https://MY_SUBDOMAIN.zendesk.com/, MY_SUBDOMAIN is the value of your subdomain.
          */
@@ -292,17 +298,17 @@ public class SourceZendeskSupport {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceZendeskSupport build() {
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
+
             return new SourceZendeskSupport(
-                credentials,
-                numWorkers,
-                startDate,
+                credentials, numWorkers, startDate,
                 subdomain);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
                 new LazySingletonValue<>(

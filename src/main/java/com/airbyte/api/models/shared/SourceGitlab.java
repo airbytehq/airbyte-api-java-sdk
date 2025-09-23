@@ -16,17 +16,17 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGitlab {
 
+public class SourceGitlab {
     /**
      * Please enter your basic URL from GitLab instance.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     private Optional<String> apiUrl;
+
 
     @JsonProperty("credentials")
     private SourceGitlabAuthorizationMethod credentials;
@@ -44,6 +44,7 @@ public class SourceGitlab {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("projects_list")
     private Optional<? extends List<String>> projectsList;
+
 
     @JsonProperty("sourceType")
     private SourceGitlabGitlab sourceType;
@@ -77,7 +78,8 @@ public class SourceGitlab {
     
     public SourceGitlab(
             SourceGitlabAuthorizationMethod credentials) {
-        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), credentials, Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -124,9 +126,10 @@ public class SourceGitlab {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Please enter your basic URL from GitLab instance.
@@ -136,6 +139,7 @@ public class SourceGitlab {
         this.apiUrl = Optional.ofNullable(apiUrl);
         return this;
     }
+
 
     /**
      * Please enter your basic URL from GitLab instance.
@@ -161,6 +165,7 @@ public class SourceGitlab {
         return this;
     }
 
+
     /**
      * List of groups. e.g. airbyte.io.
      */
@@ -178,6 +183,7 @@ public class SourceGitlab {
         this.projectsList = Optional.ofNullable(projectsList);
         return this;
     }
+
 
     /**
      * Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
@@ -197,6 +203,7 @@ public class SourceGitlab {
         return this;
     }
 
+
     /**
      * The date from which you'd like to replicate data for GitLab API, in the format YYYY-MM-DDT00:00:00Z. Optional. If not set, all data will be replicated. All data generated after this date will be replicated.
      */
@@ -206,7 +213,6 @@ public class SourceGitlab {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -217,23 +223,19 @@ public class SourceGitlab {
         }
         SourceGitlab other = (SourceGitlab) o;
         return 
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.groupsList, other.groupsList) &&
-            Objects.deepEquals(this.projectsList, other.projectsList) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.groupsList, other.groupsList) &&
+            Utils.enhancedDeepEquals(this.projectsList, other.projectsList) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiUrl,
-            credentials,
-            groupsList,
-            projectsList,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiUrl, credentials, groupsList,
+            projectsList, sourceType, startDate);
     }
     
     @Override
@@ -246,22 +248,24 @@ public class SourceGitlab {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiUrl;
- 
+
         private SourceGitlabAuthorizationMethod credentials;
- 
+
         private Optional<? extends List<String>> groupsList = Optional.empty();
- 
+
         private Optional<? extends List<String>> projectsList = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Please enter your basic URL from GitLab instance.
@@ -281,11 +285,13 @@ public class SourceGitlab {
             return this;
         }
 
+
         public Builder credentials(SourceGitlabAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * List of groups. e.g. airbyte.io.
@@ -305,6 +311,7 @@ public class SourceGitlab {
             return this;
         }
 
+
         /**
          * Space-delimited list of projects. e.g. airbyte.io/documentation meltano/tap-gitlab.
          */
@@ -323,6 +330,7 @@ public class SourceGitlab {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate data for GitLab API, in the format YYYY-MM-DDT00:00:00Z. Optional. If not set, all data will be replicated. All data generated after this date will be replicated.
          */
@@ -340,18 +348,17 @@ public class SourceGitlab {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGitlab build() {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
             }
+
             return new SourceGitlab(
-                apiUrl,
-                credentials,
-                groupsList,
-                projectsList,
-                startDate);
+                apiUrl, credentials, groupsList,
+                projectsList, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiUrl =
                 new LazySingletonValue<>(

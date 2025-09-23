@@ -14,7 +14,7 @@ public enum SourcePostgresSchemasReplicationMethodMethod {
     @JsonValue
     private final String value;
 
-    private SourcePostgresSchemasReplicationMethodMethod(String value) {
+    SourcePostgresSchemasReplicationMethodMethod(String value) {
         this.value = value;
     }
     

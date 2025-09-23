@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class RestCatalog {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("catalog_type")
@@ -99,9 +99,10 @@ public class RestCatalog {
         return serverUri;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public RestCatalog withAdditionalProperty(String key, Object value) {
@@ -109,8 +110,7 @@ public class RestCatalog {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public RestCatalog withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -122,6 +122,7 @@ public class RestCatalog {
         this.catalogType = Optional.ofNullable(catalogType);
         return this;
     }
+
 
     public RestCatalog withCatalogType(Optional<? extends DestinationS3DataLakeSchemasCatalogType> catalogType) {
         Utils.checkNotNull(catalogType, "catalogType");
@@ -149,7 +150,6 @@ public class RestCatalog {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -160,18 +160,16 @@ public class RestCatalog {
         }
         RestCatalog other = (RestCatalog) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.catalogType, other.catalogType) &&
-            Objects.deepEquals(this.namespace, other.namespace) &&
-            Objects.deepEquals(this.serverUri, other.serverUri);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.catalogType, other.catalogType) &&
+            Utils.enhancedDeepEquals(this.namespace, other.namespace) &&
+            Utils.enhancedDeepEquals(this.serverUri, other.serverUri);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            catalogType,
-            namespace,
+        return Utils.enhancedHash(
+            additionalProperties, catalogType, namespace,
             serverUri);
     }
     
@@ -183,17 +181,18 @@ public class RestCatalog {
                 "namespace", namespace,
                 "serverUri", serverUri);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3DataLakeSchemasCatalogType> catalogType;
- 
+
         private String namespace;
- 
+
         private String serverUri;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -214,6 +213,7 @@ public class RestCatalog {
             return this;
         }
 
+
         public Builder catalogType(DestinationS3DataLakeSchemasCatalogType catalogType) {
             Utils.checkNotNull(catalogType, "catalogType");
             this.catalogType = Optional.ofNullable(catalogType);
@@ -226,6 +226,7 @@ public class RestCatalog {
             return this;
         }
 
+
         /**
          * The namespace to be used in the Table identifier. 
          *            This will ONLY be used if the `Destination Namespace` setting for the connection is set to
@@ -237,6 +238,7 @@ public class RestCatalog {
             return this;
         }
 
+
         /**
          * The base URL of the Rest server used to connect to the Rest catalog.
          */
@@ -245,17 +247,17 @@ public class RestCatalog {
             this.serverUri = serverUri;
             return this;
         }
-        
+
         public RestCatalog build() {
             if (catalogType == null) {
                 catalogType = _SINGLETON_VALUE_CatalogType.value();
             }
+
             return new RestCatalog(
-                catalogType,
-                namespace,
-                serverUri)
+                catalogType, namespace, serverUri)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3DataLakeSchemasCatalogType>> _SINGLETON_VALUE_CatalogType =
                 new LazySingletonValue<>(

@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                      | Value                     |
-| ------------------------- | ------------------------- |
-| `PASSWORD_AUTHENTICATION` | password_authentication   |
+| Name                    | Value                   |
+| ----------------------- | ----------------------- |
+| `OAUTH2_AUTHENTICATION` | oauth2_authentication   |

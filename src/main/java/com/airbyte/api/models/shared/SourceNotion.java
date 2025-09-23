@@ -15,17 +15,17 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceNotion {
 
+public class SourceNotion {
     /**
      * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceNotionAuthenticationMethod> credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
@@ -76,9 +76,10 @@ public class SourceNotion {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
@@ -88,6 +89,7 @@ public class SourceNotion {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
@@ -107,6 +109,7 @@ public class SourceNotion {
         return this;
     }
 
+
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
      */
@@ -116,7 +119,6 @@ public class SourceNotion {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,17 +129,15 @@ public class SourceNotion {
         }
         SourceNotion other = (SourceNotion) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate);
     }
     
     @Override
@@ -147,16 +147,18 @@ public class SourceNotion {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceNotionAuthenticationMethod> credentials = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
@@ -176,6 +178,7 @@ public class SourceNotion {
             return this;
         }
 
+
         /**
          * UTC date and time in the format YYYY-MM-DDTHH:MM:SS.000Z. During incremental sync, any data generated before this date will not be replicated. If left blank, the start date will be set to 2 years before the present date.
          */
@@ -193,12 +196,13 @@ public class SourceNotion {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNotion build() {
+
             return new SourceNotion(
-                credentials,
-                startDate);
+                credentials, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceNotionNotion>> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

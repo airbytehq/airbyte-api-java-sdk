@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationAzureBlobStorage {
 
+public class DestinationAzureBlobStorage {
     /**
      * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
      */
@@ -51,6 +50,7 @@ public class DestinationAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("azure_blob_storage_spill_size")
     private Optional<Long> azureBlobStorageSpillSize;
+
 
     @JsonProperty("destinationType")
     private DestinationAzureBlobStorageAzureBlobStorage destinationType;
@@ -98,7 +98,9 @@ public class DestinationAzureBlobStorage {
             String azureBlobStorageAccountName,
             String azureBlobStorageContainerName,
             OutputFormat format) {
-        this(Optional.empty(), azureBlobStorageAccountName, azureBlobStorageContainerName, Optional.empty(), Optional.empty(), format, Optional.empty());
+        this(Optional.empty(), azureBlobStorageAccountName, azureBlobStorageContainerName,
+            Optional.empty(), Optional.empty(), format,
+            Optional.empty());
     }
 
     /**
@@ -162,9 +164,10 @@ public class DestinationAzureBlobStorage {
         return sharedAccessSignature;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
@@ -174,6 +177,7 @@ public class DestinationAzureBlobStorage {
         this.azureBlobStorageAccountKey = Optional.ofNullable(azureBlobStorageAccountKey);
         return this;
     }
+
 
     /**
      * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
@@ -211,6 +215,7 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
+
     /**
      * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
      */
@@ -228,6 +233,7 @@ public class DestinationAzureBlobStorage {
         this.azureBlobStorageSpillSize = Optional.ofNullable(azureBlobStorageSpillSize);
         return this;
     }
+
 
     /**
      * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
@@ -256,6 +262,7 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
+
     /**
      * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
      */
@@ -265,7 +272,6 @@ public class DestinationAzureBlobStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -276,27 +282,22 @@ public class DestinationAzureBlobStorage {
         }
         DestinationAzureBlobStorage other = (DestinationAzureBlobStorage) o;
         return 
-            Objects.deepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
-            Objects.deepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
-            Objects.deepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
-            Objects.deepEquals(this.azureBlobStorageEndpointDomainName, other.azureBlobStorageEndpointDomainName) &&
-            Objects.deepEquals(this.azureBlobStorageSpillSize, other.azureBlobStorageSpillSize) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.sharedAccessSignature, other.sharedAccessSignature);
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountKey, other.azureBlobStorageAccountKey) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageAccountName, other.azureBlobStorageAccountName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageContainerName, other.azureBlobStorageContainerName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageEndpointDomainName, other.azureBlobStorageEndpointDomainName) &&
+            Utils.enhancedDeepEquals(this.azureBlobStorageSpillSize, other.azureBlobStorageSpillSize) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.sharedAccessSignature, other.sharedAccessSignature);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            azureBlobStorageAccountKey,
-            azureBlobStorageAccountName,
-            azureBlobStorageContainerName,
-            azureBlobStorageEndpointDomainName,
-            azureBlobStorageSpillSize,
-            destinationType,
-            format,
-            sharedAccessSignature);
+        return Utils.enhancedHash(
+            azureBlobStorageAccountKey, azureBlobStorageAccountName, azureBlobStorageContainerName,
+            azureBlobStorageEndpointDomainName, azureBlobStorageSpillSize, destinationType,
+            format, sharedAccessSignature);
     }
     
     @Override
@@ -311,26 +312,28 @@ public class DestinationAzureBlobStorage {
                 "format", format,
                 "sharedAccessSignature", sharedAccessSignature);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> azureBlobStorageAccountKey = Optional.empty();
- 
+
         private String azureBlobStorageAccountName;
- 
+
         private String azureBlobStorageContainerName;
- 
+
         private Optional<String> azureBlobStorageEndpointDomainName = Optional.empty();
- 
+
         private Optional<Long> azureBlobStorageSpillSize;
- 
+
         private OutputFormat format;
- 
+
         private Optional<String> sharedAccessSignature = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Azure blob storage account key. If you set this value, you must not set the Shared Access Signature.
@@ -350,6 +353,7 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
          * The name of the Azure Blob Storage Account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#storage-accounts"&gt;here&lt;/a&gt;.
          */
@@ -359,6 +363,7 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
          * The name of the Azure Blob Storage Container. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/blobs/storage-blobs-introduction#containers"&gt;here&lt;/a&gt;.
          */
@@ -367,6 +372,7 @@ public class DestinationAzureBlobStorage {
             this.azureBlobStorageContainerName = azureBlobStorageContainerName;
             return this;
         }
+
 
         /**
          * This is Azure Blob Storage endpoint domain name. Leave default value (or leave it empty if run container from command line) to use Microsoft native from example.
@@ -386,6 +392,7 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
          * The amount of megabytes after which the connector should spill the records in a new blob object. Make sure to configure size greater than individual records. Enter 0 if not applicable.
          */
@@ -404,6 +411,7 @@ public class DestinationAzureBlobStorage {
             return this;
         }
 
+
         /**
          * Format of the data output.
          */
@@ -412,6 +420,7 @@ public class DestinationAzureBlobStorage {
             this.format = format;
             return this;
         }
+
 
         /**
          * A shared access signature (SAS) provides secure delegated access to resources in your storage account. Read more &lt;a href="https://learn.microsoft.com/en-gb/azure/storage/common/storage-sas-overview?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&amp;bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json"&gt;here&lt;/a&gt;. If you set this value, you must not set the account key.
@@ -430,20 +439,18 @@ public class DestinationAzureBlobStorage {
             this.sharedAccessSignature = sharedAccessSignature;
             return this;
         }
-        
+
         public DestinationAzureBlobStorage build() {
             if (azureBlobStorageSpillSize == null) {
                 azureBlobStorageSpillSize = _SINGLETON_VALUE_AzureBlobStorageSpillSize.value();
             }
+
             return new DestinationAzureBlobStorage(
-                azureBlobStorageAccountKey,
-                azureBlobStorageAccountName,
-                azureBlobStorageContainerName,
-                azureBlobStorageEndpointDomainName,
-                azureBlobStorageSpillSize,
-                format,
+                azureBlobStorageAccountKey, azureBlobStorageAccountName, azureBlobStorageContainerName,
+                azureBlobStorageEndpointDomainName, azureBlobStorageSpillSize, format,
                 sharedAccessSignature);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_AzureBlobStorageSpillSize =
                 new LazySingletonValue<>(

@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZendeskSupportOAuth20 {
 
@@ -46,6 +46,7 @@ public class SourceZendeskSupportOAuth20 {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
     private Optional<String> clientSecret;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -106,9 +107,10 @@ public class SourceZendeskSupportOAuth20 {
         return (Optional<SourceZendeskSupportCredentials>) credentials;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceZendeskSupportOAuth20 withAdditionalProperty(String key, Object value) {
@@ -116,8 +118,7 @@ public class SourceZendeskSupportOAuth20 {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceZendeskSupportOAuth20 withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -142,6 +143,7 @@ public class SourceZendeskSupportOAuth20 {
         return this;
     }
 
+
     /**
      * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
      */
@@ -160,6 +162,7 @@ public class SourceZendeskSupportOAuth20 {
         return this;
     }
 
+
     /**
      * The OAuth client secret. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
      */
@@ -169,7 +172,6 @@ public class SourceZendeskSupportOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -180,21 +182,18 @@ public class SourceZendeskSupportOAuth20 {
         }
         SourceZendeskSupportOAuth20 other = (SourceZendeskSupportOAuth20) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.credentials, other.credentials);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            accessToken,
-            clientId,
-            clientSecret,
-            credentials);
+        return Utils.enhancedHash(
+            additionalProperties, accessToken, clientId,
+            clientSecret, credentials);
     }
     
     @Override
@@ -206,17 +205,18 @@ public class SourceZendeskSupportOAuth20 {
                 "clientSecret", clientSecret,
                 "credentials", credentials);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String accessToken;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -237,6 +237,7 @@ public class SourceZendeskSupportOAuth20 {
             return this;
         }
 
+
         /**
          * The OAuth access token. See the &lt;a href="https://developer.zendesk.com/documentation/ticketing/working-with-oauth/creating-and-using-oauth-tokens-with-the-api/"&gt;Zendesk docs&lt;/a&gt; for more information on generating this token.
          */
@@ -245,6 +246,7 @@ public class SourceZendeskSupportOAuth20 {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * The OAuth client's ID. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
@@ -264,6 +266,7 @@ public class SourceZendeskSupportOAuth20 {
             return this;
         }
 
+
         /**
          * The OAuth client secret. See &lt;a href="https://docs.searchunify.com/Content/Content-Sources/Zendesk-Authentication-OAuth-Client-ID-Secret.htm#:~:text=Get%20Client%20ID%20and%20Client%20Secret&amp;text=Go%20to%20OAuth%20Clients%20and,will%20be%20displayed%20only%20once."&gt;this guide&lt;/a&gt; for more information.
          */
@@ -281,14 +284,14 @@ public class SourceZendeskSupportOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceZendeskSupportOAuth20 build() {
+
             return new SourceZendeskSupportOAuth20(
-                accessToken,
-                clientId,
-                clientSecret)
+                accessToken, clientId, clientSecret)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZendeskSupportCredentials>> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(

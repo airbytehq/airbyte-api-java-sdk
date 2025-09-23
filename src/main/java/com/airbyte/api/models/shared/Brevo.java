@@ -14,7 +14,7 @@ public enum Brevo {
     @JsonValue
     private final String value;
 
-    private Brevo(String value) {
+    Brevo(String value) {
         this.value = value;
     }
     

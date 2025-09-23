@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * SourceOracleUnencrypted
@@ -25,7 +24,6 @@ public class SourceOracleUnencrypted {
 
     @JsonCreator
     public SourceOracleUnencrypted() {
-        
         this.encryptionMethod = Builder._SINGLETON_VALUE_EncryptionMethod.value();
     }
 
@@ -34,11 +32,11 @@ public class SourceOracleUnencrypted {
         return encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +47,12 @@ public class SourceOracleUnencrypted {
         }
         SourceOracleUnencrypted other = (SourceOracleUnencrypted) o;
         return 
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             encryptionMethod);
     }
     
@@ -63,17 +61,20 @@ public class SourceOracleUnencrypted {
         return Utils.toString(SourceOracleUnencrypted.class,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceOracleUnencrypted build() {
+
             return new SourceOracleUnencrypted(
                 );
         }
+
 
         private static final LazySingletonValue<SourceOracleEncryptionMethod> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

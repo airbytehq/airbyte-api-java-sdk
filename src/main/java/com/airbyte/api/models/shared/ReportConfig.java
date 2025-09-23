@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,7 +24,6 @@ import java.util.Optional;
  * <p>Config for custom report
  */
 public class ReportConfig {
-
     /**
      * List of types of attribution for the conversion report
      */
@@ -131,7 +129,10 @@ public class ReportConfig {
     public ReportConfig(
             List<SourcePinterestSchemasValidEnums> columns,
             String name) {
-        this(Optional.empty(), Optional.empty(), columns, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), columns,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), name, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -221,9 +222,10 @@ public class ReportConfig {
         return (Optional<ViewWindowDays>) viewWindowDays;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * List of types of attribution for the conversion report
@@ -233,6 +235,7 @@ public class ReportConfig {
         this.attributionTypes = Optional.ofNullable(attributionTypes);
         return this;
     }
+
 
     /**
      * List of types of attribution for the conversion report
@@ -251,6 +254,7 @@ public class ReportConfig {
         this.clickWindowDays = Optional.ofNullable(clickWindowDays);
         return this;
     }
+
 
     /**
      * Number of days to use as the conversion attribution window for a pin click action.
@@ -279,6 +283,7 @@ public class ReportConfig {
         return this;
     }
 
+
     /**
      * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event..
      */
@@ -296,6 +301,7 @@ public class ReportConfig {
         this.engagementWindowDays = Optional.ofNullable(engagementWindowDays);
         return this;
     }
+
 
     /**
      * Number of days to use as the conversion attribution window for an engagement action.
@@ -315,6 +321,7 @@ public class ReportConfig {
         return this;
     }
 
+
     /**
      * Chosen granularity for API
      */
@@ -332,6 +339,7 @@ public class ReportConfig {
         this.level = Optional.ofNullable(level);
         return this;
     }
+
 
     /**
      * Chosen level for API
@@ -360,6 +368,7 @@ public class ReportConfig {
         return this;
     }
 
+
     /**
      * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by report api (913 days from today).
      */
@@ -378,6 +387,7 @@ public class ReportConfig {
         return this;
     }
 
+
     /**
      * Number of days to use as the conversion attribution window for a view action.
      */
@@ -387,7 +397,6 @@ public class ReportConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -398,30 +407,24 @@ public class ReportConfig {
         }
         ReportConfig other = (ReportConfig) o;
         return 
-            Objects.deepEquals(this.attributionTypes, other.attributionTypes) &&
-            Objects.deepEquals(this.clickWindowDays, other.clickWindowDays) &&
-            Objects.deepEquals(this.columns, other.columns) &&
-            Objects.deepEquals(this.conversionReportTime, other.conversionReportTime) &&
-            Objects.deepEquals(this.engagementWindowDays, other.engagementWindowDays) &&
-            Objects.deepEquals(this.granularity, other.granularity) &&
-            Objects.deepEquals(this.level, other.level) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.viewWindowDays, other.viewWindowDays);
+            Utils.enhancedDeepEquals(this.attributionTypes, other.attributionTypes) &&
+            Utils.enhancedDeepEquals(this.clickWindowDays, other.clickWindowDays) &&
+            Utils.enhancedDeepEquals(this.columns, other.columns) &&
+            Utils.enhancedDeepEquals(this.conversionReportTime, other.conversionReportTime) &&
+            Utils.enhancedDeepEquals(this.engagementWindowDays, other.engagementWindowDays) &&
+            Utils.enhancedDeepEquals(this.granularity, other.granularity) &&
+            Utils.enhancedDeepEquals(this.level, other.level) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.viewWindowDays, other.viewWindowDays);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            attributionTypes,
-            clickWindowDays,
-            columns,
-            conversionReportTime,
-            engagementWindowDays,
-            granularity,
-            level,
-            name,
-            startDate,
+        return Utils.enhancedHash(
+            attributionTypes, clickWindowDays, columns,
+            conversionReportTime, engagementWindowDays, granularity,
+            level, name, startDate,
             viewWindowDays);
     }
     
@@ -439,32 +442,34 @@ public class ReportConfig {
                 "startDate", startDate,
                 "viewWindowDays", viewWindowDays);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<SourcePinterestValidEnums>> attributionTypes = Optional.empty();
- 
+
         private Optional<? extends ClickWindowDays> clickWindowDays;
- 
+
         private List<SourcePinterestSchemasValidEnums> columns;
- 
+
         private Optional<? extends ConversionReportTime> conversionReportTime;
- 
+
         private Optional<? extends EngagementWindowDays> engagementWindowDays;
- 
+
         private Optional<? extends Granularity> granularity;
- 
+
         private Optional<? extends SourcePinterestLevel> level;
- 
+
         private String name;
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
- 
+
         private Optional<? extends ViewWindowDays> viewWindowDays;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * List of types of attribution for the conversion report
@@ -484,6 +489,7 @@ public class ReportConfig {
             return this;
         }
 
+
         /**
          * Number of days to use as the conversion attribution window for a pin click action.
          */
@@ -502,6 +508,7 @@ public class ReportConfig {
             return this;
         }
 
+
         /**
          * A list of chosen columns
          */
@@ -510,6 +517,7 @@ public class ReportConfig {
             this.columns = columns;
             return this;
         }
+
 
         /**
          * The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event..
@@ -529,6 +537,7 @@ public class ReportConfig {
             return this;
         }
 
+
         /**
          * Number of days to use as the conversion attribution window for an engagement action.
          */
@@ -546,6 +555,7 @@ public class ReportConfig {
             this.engagementWindowDays = engagementWindowDays;
             return this;
         }
+
 
         /**
          * Chosen granularity for API
@@ -565,6 +575,7 @@ public class ReportConfig {
             return this;
         }
 
+
         /**
          * Chosen level for API
          */
@@ -583,6 +594,7 @@ public class ReportConfig {
             return this;
         }
 
+
         /**
          * The name value of report
          */
@@ -591,6 +603,7 @@ public class ReportConfig {
             this.name = name;
             return this;
         }
+
 
         /**
          * A date in the format YYYY-MM-DD. If you have not set a date, it would be defaulted to latest allowed date by report api (913 days from today).
@@ -610,6 +623,7 @@ public class ReportConfig {
             return this;
         }
 
+
         /**
          * Number of days to use as the conversion attribution window for a view action.
          */
@@ -627,7 +641,7 @@ public class ReportConfig {
             this.viewWindowDays = viewWindowDays;
             return this;
         }
-        
+
         public ReportConfig build() {
             if (clickWindowDays == null) {
                 clickWindowDays = _SINGLETON_VALUE_ClickWindowDays.value();
@@ -647,18 +661,14 @@ public class ReportConfig {
             if (viewWindowDays == null) {
                 viewWindowDays = _SINGLETON_VALUE_ViewWindowDays.value();
             }
+
             return new ReportConfig(
-                attributionTypes,
-                clickWindowDays,
-                columns,
-                conversionReportTime,
-                engagementWindowDays,
-                granularity,
-                level,
-                name,
-                startDate,
+                attributionTypes, clickWindowDays, columns,
+                conversionReportTime, engagementWindowDays, granularity,
+                level, name, startDate,
                 viewWindowDays);
         }
+
 
         private static final LazySingletonValue<Optional<? extends ClickWindowDays>> _SINGLETON_VALUE_ClickWindowDays =
                 new LazySingletonValue<>(

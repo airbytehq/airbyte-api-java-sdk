@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = AuthenticationType._Deserializer.class)
 public class AuthenticationType {
@@ -26,21 +25,21 @@ public class AuthenticationType {
         this.value = value;
     }
 
-    public static AuthenticationType of(SourceGoogleSearchConsoleOAuth value) {
+    public static AuthenticationType of(SourceConvertkitOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new AuthenticationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSearchConsoleOAuth>(){}));
+        return new AuthenticationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceConvertkitOAuth20>(){}));
     }
 
-    public static AuthenticationType of(SourceGoogleSearchConsoleServiceAccountKeyAuthentication value) {
+    public static AuthenticationType of(APIKey value) {
         Utils.checkNotNull(value, "value");
-        return new AuthenticationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleSearchConsoleServiceAccountKeyAuthentication>(){}));
+        return new AuthenticationType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<APIKey>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.SourceGoogleSearchConsoleOAuth}</li>
-     * <li>{@code com.airbyte.api.models.shared.SourceGoogleSearchConsoleServiceAccountKeyAuthentication}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceConvertkitOAuth20}</li>
+     * <li>{@code com.airbyte.api.models.shared.APIKey}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -67,12 +66,12 @@ public class AuthenticationType {
             return false;
         }
         AuthenticationType other = (AuthenticationType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class AuthenticationType {
 
         public _Deserializer() {
             super(AuthenticationType.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleSearchConsoleOAuth>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleSearchConsoleServiceAccountKeyAuthentication>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceConvertkitOAuth20>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<APIKey>() {}, JsonShape.DEFAULT));
         }
     }
     

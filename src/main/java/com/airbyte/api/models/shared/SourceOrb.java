@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOrb {
 
+public class SourceOrb {
     /**
      * Orb API Key, issued from the Orb admin console.
      */
@@ -55,6 +54,7 @@ public class SourceOrb {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("plan_id")
     private Optional<String> planId;
+
 
     @JsonProperty("sourceType")
     private Orb sourceType;
@@ -111,7 +111,9 @@ public class SourceOrb {
     public SourceOrb(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate,
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -185,9 +187,10 @@ public class SourceOrb {
         return subscriptionUsageGroupingKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Orb API Key, issued from the Orb admin console.
@@ -207,6 +210,7 @@ public class SourceOrb {
         return this;
     }
 
+
     /**
      * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at after this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
      */
@@ -224,6 +228,7 @@ public class SourceOrb {
         this.lookbackWindowDays = Optional.ofNullable(lookbackWindowDays);
         return this;
     }
+
 
     /**
      * When set to N, the connector will always refresh resources created within the past N days. By default, updated objects that are not newly created are not incrementally synced.
@@ -243,6 +248,7 @@ public class SourceOrb {
         return this;
     }
 
+
     /**
      * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
      */
@@ -260,6 +266,7 @@ public class SourceOrb {
         this.planId = Optional.ofNullable(planId);
         return this;
     }
+
 
     /**
      * Orb Plan ID to filter subscriptions that should have usage fetched.
@@ -288,6 +295,7 @@ public class SourceOrb {
         return this;
     }
 
+
     /**
      * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
      */
@@ -306,6 +314,7 @@ public class SourceOrb {
         return this;
     }
 
+
     /**
      * Property key name to group subscription usage by.
      */
@@ -315,7 +324,6 @@ public class SourceOrb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -326,29 +334,23 @@ public class SourceOrb {
         }
         SourceOrb other = (SourceOrb) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
-            Objects.deepEquals(this.numericEventPropertiesKeys, other.numericEventPropertiesKeys) &&
-            Objects.deepEquals(this.planId, other.planId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.stringEventPropertiesKeys, other.stringEventPropertiesKeys) &&
-            Objects.deepEquals(this.subscriptionUsageGroupingKey, other.subscriptionUsageGroupingKey);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.lookbackWindowDays, other.lookbackWindowDays) &&
+            Utils.enhancedDeepEquals(this.numericEventPropertiesKeys, other.numericEventPropertiesKeys) &&
+            Utils.enhancedDeepEquals(this.planId, other.planId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.stringEventPropertiesKeys, other.stringEventPropertiesKeys) &&
+            Utils.enhancedDeepEquals(this.subscriptionUsageGroupingKey, other.subscriptionUsageGroupingKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            lookbackWindowDays,
-            numericEventPropertiesKeys,
-            planId,
-            sourceType,
-            startDate,
-            stringEventPropertiesKeys,
-            subscriptionUsageGroupingKey);
+        return Utils.enhancedHash(
+            apiKey, endDate, lookbackWindowDays,
+            numericEventPropertiesKeys, planId, sourceType,
+            startDate, stringEventPropertiesKeys, subscriptionUsageGroupingKey);
     }
     
     @Override
@@ -364,28 +366,30 @@ public class SourceOrb {
                 "stringEventPropertiesKeys", stringEventPropertiesKeys,
                 "subscriptionUsageGroupingKey", subscriptionUsageGroupingKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<Long> lookbackWindowDays;
- 
+
         private Optional<? extends List<String>> numericEventPropertiesKeys = Optional.empty();
- 
+
         private Optional<String> planId = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends List<String>> stringEventPropertiesKeys = Optional.empty();
- 
+
         private Optional<String> subscriptionUsageGroupingKey = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Orb API Key, issued from the Orb admin console.
@@ -395,6 +399,7 @@ public class SourceOrb {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at after this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
@@ -414,6 +419,7 @@ public class SourceOrb {
             return this;
         }
 
+
         /**
          * When set to N, the connector will always refresh resources created within the past N days. By default, updated objects that are not newly created are not incrementally synced.
          */
@@ -431,6 +437,7 @@ public class SourceOrb {
             this.lookbackWindowDays = lookbackWindowDays;
             return this;
         }
+
 
         /**
          * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
@@ -450,6 +457,7 @@ public class SourceOrb {
             return this;
         }
 
+
         /**
          * Orb Plan ID to filter subscriptions that should have usage fetched.
          */
@@ -468,6 +476,7 @@ public class SourceOrb {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2022-03-01T00:00:00Z. Any data with created_at before this data will not be synced. For Subscription Usage, this becomes the `timeframe_start` API parameter.
          */
@@ -476,6 +485,7 @@ public class SourceOrb {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Property key names to extract from all events, in order to enrich ledger entries corresponding to an event deduction.
@@ -495,6 +505,7 @@ public class SourceOrb {
             return this;
         }
 
+
         /**
          * Property key name to group subscription usage by.
          */
@@ -512,21 +523,18 @@ public class SourceOrb {
             this.subscriptionUsageGroupingKey = subscriptionUsageGroupingKey;
             return this;
         }
-        
+
         public SourceOrb build() {
             if (lookbackWindowDays == null) {
                 lookbackWindowDays = _SINGLETON_VALUE_LookbackWindowDays.value();
             }
+
             return new SourceOrb(
-                apiKey,
-                endDate,
-                lookbackWindowDays,
-                numericEventPropertiesKeys,
-                planId,
-                startDate,
-                stringEventPropertiesKeys,
-                subscriptionUsageGroupingKey);
+                apiKey, endDate, lookbackWindowDays,
+                numericEventPropertiesKeys, planId, startDate,
+                stringEventPropertiesKeys, subscriptionUsageGroupingKey);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindowDays =
                 new LazySingletonValue<>(

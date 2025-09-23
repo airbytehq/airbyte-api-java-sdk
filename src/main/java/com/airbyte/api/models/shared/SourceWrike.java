@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceWrike {
 
+public class SourceWrike {
     /**
      * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("sourceType")
     private Wrike sourceType;
@@ -89,9 +89,10 @@ public class SourceWrike {
         return wrikeInstance;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
@@ -111,6 +112,7 @@ public class SourceWrike {
         return this;
     }
 
+
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
      */
@@ -129,6 +131,7 @@ public class SourceWrike {
         return this;
     }
 
+
     /**
      * Wrike's instance such as `app-us2.wrike.com`
      */
@@ -138,7 +141,6 @@ public class SourceWrike {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +151,16 @@ public class SourceWrike {
         }
         SourceWrike other = (SourceWrike) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.wrikeInstance, other.wrikeInstance);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.wrikeInstance, other.wrikeInstance);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            accessToken, sourceType, startDate,
             wrikeInstance);
     }
     
@@ -172,18 +172,20 @@ public class SourceWrike {
                 "startDate", startDate,
                 "wrikeInstance", wrikeInstance);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> startDate = Optional.empty();
- 
+
         private Optional<String> wrikeInstance;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
@@ -193,6 +195,7 @@ public class SourceWrike {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
@@ -212,6 +215,7 @@ public class SourceWrike {
             return this;
         }
 
+
         /**
          * Wrike's instance such as `app-us2.wrike.com`
          */
@@ -229,16 +233,16 @@ public class SourceWrike {
             this.wrikeInstance = wrikeInstance;
             return this;
         }
-        
+
         public SourceWrike build() {
             if (wrikeInstance == null) {
                 wrikeInstance = _SINGLETON_VALUE_WrikeInstance.value();
             }
+
             return new SourceWrike(
-                accessToken,
-                startDate,
-                wrikeInstance);
+                accessToken, startDate, wrikeInstance);
         }
+
 
         private static final LazySingletonValue<Wrike> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

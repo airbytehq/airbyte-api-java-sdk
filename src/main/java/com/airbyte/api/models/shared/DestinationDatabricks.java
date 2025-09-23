@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationDatabricks {
 
+public class DestinationDatabricks {
     /**
      * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
      */
@@ -37,6 +36,7 @@ public class DestinationDatabricks {
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private Databricks destinationType;
@@ -118,7 +118,9 @@ public class DestinationDatabricks {
             String database,
             String hostname,
             String httpPath) {
-        this(Optional.empty(), authentication, database, hostname, httpPath, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), authentication, database,
+            hostname, httpPath, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -198,9 +200,10 @@ public class DestinationDatabricks {
         return schema;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
@@ -210,6 +213,7 @@ public class DestinationDatabricks {
         this.acceptTerms = Optional.ofNullable(acceptTerms);
         return this;
     }
+
 
     /**
      * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
@@ -265,6 +269,7 @@ public class DestinationDatabricks {
         return this;
     }
 
+
     /**
      * Databricks Cluster Port.
      */
@@ -282,6 +287,7 @@ public class DestinationDatabricks {
         this.purgeStagingData = Optional.ofNullable(purgeStagingData);
         return this;
     }
+
 
     /**
      * Default to 'true'. Switch it to 'false' for debugging purpose.
@@ -301,6 +307,7 @@ public class DestinationDatabricks {
         return this;
     }
 
+
     /**
      * The schema to write raw tables into (default: airbyte_internal)
      */
@@ -319,6 +326,7 @@ public class DestinationDatabricks {
         return this;
     }
 
+
     /**
      * The default schema tables are written. If not specified otherwise, the "default" will be used.
      */
@@ -328,7 +336,6 @@ public class DestinationDatabricks {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -339,30 +346,24 @@ public class DestinationDatabricks {
         }
         DestinationDatabricks other = (DestinationDatabricks) o;
         return 
-            Objects.deepEquals(this.acceptTerms, other.acceptTerms) &&
-            Objects.deepEquals(this.authentication, other.authentication) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.hostname, other.hostname) &&
-            Objects.deepEquals(this.httpPath, other.httpPath) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.purgeStagingData, other.purgeStagingData) &&
-            Objects.deepEquals(this.rawSchemaOverride, other.rawSchemaOverride) &&
-            Objects.deepEquals(this.schema, other.schema);
+            Utils.enhancedDeepEquals(this.acceptTerms, other.acceptTerms) &&
+            Utils.enhancedDeepEquals(this.authentication, other.authentication) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.hostname, other.hostname) &&
+            Utils.enhancedDeepEquals(this.httpPath, other.httpPath) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.purgeStagingData, other.purgeStagingData) &&
+            Utils.enhancedDeepEquals(this.rawSchemaOverride, other.rawSchemaOverride) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            acceptTerms,
-            authentication,
-            database,
-            destinationType,
-            hostname,
-            httpPath,
-            port,
-            purgeStagingData,
-            rawSchemaOverride,
+        return Utils.enhancedHash(
+            acceptTerms, authentication, database,
+            destinationType, hostname, httpPath,
+            port, purgeStagingData, rawSchemaOverride,
             schema);
     }
     
@@ -380,30 +381,32 @@ public class DestinationDatabricks {
                 "rawSchemaOverride", rawSchemaOverride,
                 "schema", schema);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> acceptTerms;
- 
+
         private Authentication authentication;
- 
+
         private String database;
- 
+
         private String hostname;
- 
+
         private String httpPath;
- 
+
         private Optional<String> port;
- 
+
         private Optional<Boolean> purgeStagingData;
- 
+
         private Optional<String> rawSchemaOverride;
- 
+
         private Optional<String> schema;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * You must agree to the Databricks JDBC Driver &lt;a href="https://databricks.com/jdbc-odbc-driver-license"&gt;Terms &amp; Conditions&lt;/a&gt; to use this connector.
@@ -423,6 +426,7 @@ public class DestinationDatabricks {
             return this;
         }
 
+
         /**
          * Authentication mechanism for Staging files and running queries
          */
@@ -431,6 +435,7 @@ public class DestinationDatabricks {
             this.authentication = authentication;
             return this;
         }
+
 
         /**
          * The name of the unity catalog for the database
@@ -441,6 +446,7 @@ public class DestinationDatabricks {
             return this;
         }
 
+
         /**
          * Databricks Cluster Server Hostname.
          */
@@ -450,6 +456,7 @@ public class DestinationDatabricks {
             return this;
         }
 
+
         /**
          * Databricks Cluster HTTP Path.
          */
@@ -458,6 +465,7 @@ public class DestinationDatabricks {
             this.httpPath = httpPath;
             return this;
         }
+
 
         /**
          * Databricks Cluster Port.
@@ -477,6 +485,7 @@ public class DestinationDatabricks {
             return this;
         }
 
+
         /**
          * Default to 'true'. Switch it to 'false' for debugging purpose.
          */
@@ -494,6 +503,7 @@ public class DestinationDatabricks {
             this.purgeStagingData = purgeStagingData;
             return this;
         }
+
 
         /**
          * The schema to write raw tables into (default: airbyte_internal)
@@ -513,6 +523,7 @@ public class DestinationDatabricks {
             return this;
         }
 
+
         /**
          * The default schema tables are written. If not specified otherwise, the "default" will be used.
          */
@@ -530,7 +541,7 @@ public class DestinationDatabricks {
             this.schema = schema;
             return this;
         }
-        
+
         public DestinationDatabricks build() {
             if (acceptTerms == null) {
                 acceptTerms = _SINGLETON_VALUE_AcceptTerms.value();
@@ -547,17 +558,13 @@ public class DestinationDatabricks {
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
+
             return new DestinationDatabricks(
-                acceptTerms,
-                authentication,
-                database,
-                hostname,
-                httpPath,
-                port,
-                purgeStagingData,
-                rawSchemaOverride,
-                schema);
+                acceptTerms, authentication, database,
+                hostname, httpPath, port,
+                purgeStagingData, rawSchemaOverride, schema);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_AcceptTerms =
                 new LazySingletonValue<>(

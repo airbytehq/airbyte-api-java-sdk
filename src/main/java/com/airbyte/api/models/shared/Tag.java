@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * Tag
@@ -21,11 +20,14 @@ public class Tag {
     @JsonProperty("color")
     private String color;
 
+
     @JsonProperty("name")
     private String name;
 
+
     @JsonProperty("tagId")
     private String tagId;
+
 
     @JsonProperty("workspaceId")
     private String workspaceId;
@@ -66,9 +68,10 @@ public class Tag {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Tag withColor(String color) {
         Utils.checkNotNull(color, "color");
@@ -94,7 +97,6 @@ public class Tag {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -105,18 +107,16 @@ public class Tag {
         }
         Tag other = (Tag) o;
         return 
-            Objects.deepEquals(this.color, other.color) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.tagId, other.tagId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.color, other.color) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.tagId, other.tagId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            color,
-            name,
-            tagId,
+        return Utils.enhancedHash(
+            color, name, tagId,
             workspaceId);
     }
     
@@ -128,20 +128,22 @@ public class Tag {
                 "tagId", tagId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String color;
- 
+
         private String name;
- 
+
         private String tagId;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder color(String color) {
             Utils.checkNotNull(color, "color");
@@ -149,11 +151,13 @@ public class Tag {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
+
 
         public Builder tagId(String tagId) {
             Utils.checkNotNull(tagId, "tagId");
@@ -161,18 +165,19 @@ public class Tag {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public Tag build() {
+
             return new Tag(
-                color,
-                name,
-                tagId,
+                color, name, tagId,
                 workspaceId);
         }
+
     }
 }

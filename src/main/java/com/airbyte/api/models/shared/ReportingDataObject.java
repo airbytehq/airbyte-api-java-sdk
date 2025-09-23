@@ -52,7 +52,7 @@ public enum ReportingDataObject {
     @JsonValue
     private final String value;
 
-    private ReportingDataObject(String value) {
+    ReportingDataObject(String value) {
         this.value = value;
     }
     

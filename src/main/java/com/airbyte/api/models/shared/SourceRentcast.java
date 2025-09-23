@@ -15,17 +15,17 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceRentcast {
 
+public class SourceRentcast {
     /**
      * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("address")
     private Optional<String> address;
+
 
     @JsonProperty("api_key")
     private String apiKey;
@@ -99,6 +99,7 @@ public class SourceRentcast {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("radius")
     private Optional<String> radius;
+
 
     @JsonProperty("sourceType")
     private Rentcast sourceType;
@@ -176,7 +177,11 @@ public class SourceRentcast {
     
     public SourceRentcast(
             String apiKey) {
-        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -301,9 +306,10 @@ public class SourceRentcast {
         return zipcode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
@@ -313,6 +319,7 @@ public class SourceRentcast {
         this.address = Optional.ofNullable(address);
         return this;
     }
+
 
     /**
      * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
@@ -338,6 +345,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
      */
@@ -355,6 +363,7 @@ public class SourceRentcast {
         this.bedrooms = Optional.ofNullable(bedrooms);
         return this;
     }
+
 
     /**
      * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
@@ -374,6 +383,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
      */
@@ -391,6 +401,7 @@ public class SourceRentcast {
         this.dataType = Optional.ofNullable(dataType);
         return this;
     }
+
 
     /**
      * The type of aggregate market data to return. Defaults to "All" if not provided : All , Sale , Rental
@@ -410,6 +421,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
      */
@@ -427,6 +439,7 @@ public class SourceRentcast {
         this.historyRange = Optional.ofNullable(historyRange);
         return this;
     }
+
 
     /**
      * The time range for historical record entries, in months. Defaults to 12 if not provided
@@ -446,6 +459,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
      */
@@ -463,6 +477,7 @@ public class SourceRentcast {
         this.longitude = Optional.ofNullable(longitude);
         return this;
     }
+
 
     /**
      * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
@@ -482,6 +497,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
      */
@@ -499,6 +515,7 @@ public class SourceRentcast {
         this.radius = Optional.ofNullable(radius);
         return this;
     }
+
 
     /**
      * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
@@ -518,6 +535,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
      */
@@ -535,6 +553,7 @@ public class SourceRentcast {
         this.status = Optional.ofNullable(status);
         return this;
     }
+
 
     /**
      * The current listing status, used to search for listings matching this criteria : Active or Inactive
@@ -554,6 +573,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The 5-digit zip code, used to search for listings in a specific zip code
      */
@@ -563,7 +583,6 @@ public class SourceRentcast {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -574,42 +593,32 @@ public class SourceRentcast {
         }
         SourceRentcast other = (SourceRentcast) o;
         return 
-            Objects.deepEquals(this.address, other.address) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.bathRooms, other.bathRooms) &&
-            Objects.deepEquals(this.bedrooms, other.bedrooms) &&
-            Objects.deepEquals(this.city, other.city) &&
-            Objects.deepEquals(this.dataType, other.dataType) &&
-            Objects.deepEquals(this.daysOld, other.daysOld) &&
-            Objects.deepEquals(this.historyRange, other.historyRange) &&
-            Objects.deepEquals(this.latitude, other.latitude) &&
-            Objects.deepEquals(this.longitude, other.longitude) &&
-            Objects.deepEquals(this.propertyType, other.propertyType) &&
-            Objects.deepEquals(this.radius, other.radius) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.state, other.state) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.zipcode, other.zipcode);
+            Utils.enhancedDeepEquals(this.address, other.address) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.bathRooms, other.bathRooms) &&
+            Utils.enhancedDeepEquals(this.bedrooms, other.bedrooms) &&
+            Utils.enhancedDeepEquals(this.city, other.city) &&
+            Utils.enhancedDeepEquals(this.dataType, other.dataType) &&
+            Utils.enhancedDeepEquals(this.daysOld, other.daysOld) &&
+            Utils.enhancedDeepEquals(this.historyRange, other.historyRange) &&
+            Utils.enhancedDeepEquals(this.latitude, other.latitude) &&
+            Utils.enhancedDeepEquals(this.longitude, other.longitude) &&
+            Utils.enhancedDeepEquals(this.propertyType, other.propertyType) &&
+            Utils.enhancedDeepEquals(this.radius, other.radius) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.state, other.state) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.zipcode, other.zipcode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            address,
-            apiKey,
-            bathRooms,
-            bedrooms,
-            city,
-            dataType,
-            daysOld,
-            historyRange,
-            latitude,
-            longitude,
-            propertyType,
-            radius,
-            sourceType,
-            state,
-            status,
+        return Utils.enhancedHash(
+            address, apiKey, bathRooms,
+            bedrooms, city, dataType,
+            daysOld, historyRange, latitude,
+            longitude, propertyType, radius,
+            sourceType, state, status,
             zipcode);
     }
     
@@ -633,42 +642,44 @@ public class SourceRentcast {
                 "status", status,
                 "zipcode", zipcode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> address = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private Optional<Long> bathRooms = Optional.empty();
- 
+
         private Optional<Double> bedrooms = Optional.empty();
- 
+
         private Optional<String> city = Optional.empty();
- 
+
         private Optional<String> dataType = Optional.empty();
- 
+
         private Optional<String> daysOld = Optional.empty();
- 
+
         private Optional<String> historyRange = Optional.empty();
- 
+
         private Optional<String> latitude = Optional.empty();
- 
+
         private Optional<String> longitude = Optional.empty();
- 
+
         private Optional<String> propertyType = Optional.empty();
- 
+
         private Optional<String> radius = Optional.empty();
- 
+
         private Optional<String> state = Optional.empty();
- 
+
         private Optional<String> status = Optional.empty();
- 
+
         private Optional<String> zipcode = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
@@ -688,11 +699,13 @@ public class SourceRentcast {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
@@ -712,6 +725,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
          */
@@ -729,6 +743,7 @@ public class SourceRentcast {
             this.bedrooms = bedrooms;
             return this;
         }
+
 
         /**
          * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
@@ -748,6 +763,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The type of aggregate market data to return. Defaults to "All" if not provided : All , Sale , Rental
          */
@@ -765,6 +781,7 @@ public class SourceRentcast {
             this.dataType = dataType;
             return this;
         }
+
 
         /**
          * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
@@ -784,6 +801,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The time range for historical record entries, in months. Defaults to 12 if not provided
          */
@@ -801,6 +819,7 @@ public class SourceRentcast {
             this.historyRange = historyRange;
             return this;
         }
+
 
         /**
          * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
@@ -820,6 +839,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
          */
@@ -837,6 +857,7 @@ public class SourceRentcast {
             this.longitude = longitude;
             return this;
         }
+
 
         /**
          * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
@@ -856,6 +877,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
          */
@@ -873,6 +895,7 @@ public class SourceRentcast {
             this.radius = radius;
             return this;
         }
+
 
         /**
          * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
@@ -892,6 +915,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The current listing status, used to search for listings matching this criteria : Active or Inactive
          */
@@ -910,6 +934,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The 5-digit zip code, used to search for listings in a specific zip code
          */
@@ -927,25 +952,17 @@ public class SourceRentcast {
             this.zipcode = zipcode;
             return this;
         }
-        
+
         public SourceRentcast build() {
+
             return new SourceRentcast(
-                address,
-                apiKey,
-                bathRooms,
-                bedrooms,
-                city,
-                dataType,
-                daysOld,
-                historyRange,
-                latitude,
-                longitude,
-                propertyType,
-                radius,
-                state,
-                status,
-                zipcode);
+                address, apiKey, bathRooms,
+                bedrooms, city, dataType,
+                daysOld, historyRange, latitude,
+                longitude, propertyType, radius,
+                state, status, zipcode);
         }
+
 
         private static final LazySingletonValue<Rentcast> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

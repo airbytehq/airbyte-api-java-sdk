@@ -3,16 +3,22 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.PatchSource;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
 import java.lang.Exception;
 
 public class PatchSourceRequestBuilder {
 
     private PatchSourceRequest request;
-    private final SDKMethodInterfaces.MethodCallPatchSource sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public PatchSourceRequestBuilder(SDKMethodInterfaces.MethodCallPatchSource sdk) {
-        this.sdk = sdk;
+    public PatchSourceRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public PatchSourceRequestBuilder request(PatchSourceRequest request) {
@@ -22,8 +28,10 @@ public class PatchSourceRequestBuilder {
     }
 
     public PatchSourceResponse call() throws Exception {
+        
+        RequestOperation<PatchSourceRequest, PatchSourceResponse> operation
+              = new PatchSource.Sync(sdkConfiguration, _headers);
 
-        return sdk.patchSource(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

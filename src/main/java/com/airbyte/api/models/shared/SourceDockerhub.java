@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceDockerhub {
-
     /**
      * Username of DockerHub person or organization (for https://hub.docker.com/v2/repositories/USERNAME/ API call)
      */
     @JsonProperty("docker_username")
     private String dockerUsername;
+
 
     @JsonProperty("sourceType")
     private Dockerhub sourceType;
@@ -45,9 +45,10 @@ public class SourceDockerhub {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Username of DockerHub person or organization (for https://hub.docker.com/v2/repositories/USERNAME/ API call)
@@ -58,7 +59,6 @@ public class SourceDockerhub {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceDockerhub {
         }
         SourceDockerhub other = (SourceDockerhub) o;
         return 
-            Objects.deepEquals(this.dockerUsername, other.dockerUsername) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.dockerUsername, other.dockerUsername) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dockerUsername,
-            sourceType);
+        return Utils.enhancedHash(
+            dockerUsername, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceDockerhub {
                 "dockerUsername", dockerUsername,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String dockerUsername;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Username of DockerHub person or organization (for https://hub.docker.com/v2/repositories/USERNAME/ API call)
@@ -103,11 +104,13 @@ public class SourceDockerhub {
             this.dockerUsername = dockerUsername;
             return this;
         }
-        
+
         public SourceDockerhub build() {
+
             return new SourceDockerhub(
                 dockerUsername);
         }
+
 
         private static final LazySingletonValue<Dockerhub> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

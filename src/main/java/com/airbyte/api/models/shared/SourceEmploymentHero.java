@@ -16,8 +16,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceEmploymentHero {
 
@@ -37,6 +37,7 @@ public class SourceEmploymentHero {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("organization_configids")
     private Optional<? extends List<Object>> organizationConfigids;
+
 
     @JsonProperty("sourceType")
     private EmploymentHero sourceType;
@@ -88,9 +89,10 @@ public class SourceEmploymentHero {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceEmploymentHero withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -106,6 +108,7 @@ public class SourceEmploymentHero {
         this.employeesConfigids = Optional.ofNullable(employeesConfigids);
         return this;
     }
+
 
     /**
      * Employees IDs in the given organisation found in `employees` stream for passing to sub-streams
@@ -125,6 +128,7 @@ public class SourceEmploymentHero {
         return this;
     }
 
+
     /**
      * Organization ID which could be found as result of `organizations` stream to be used in other substreams
      */
@@ -134,7 +138,6 @@ public class SourceEmploymentHero {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -145,18 +148,16 @@ public class SourceEmploymentHero {
         }
         SourceEmploymentHero other = (SourceEmploymentHero) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.employeesConfigids, other.employeesConfigids) &&
-            Objects.deepEquals(this.organizationConfigids, other.organizationConfigids) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.employeesConfigids, other.employeesConfigids) &&
+            Utils.enhancedDeepEquals(this.organizationConfigids, other.organizationConfigids) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            employeesConfigids,
-            organizationConfigids,
+        return Utils.enhancedHash(
+            apiKey, employeesConfigids, organizationConfigids,
             sourceType);
     }
     
@@ -168,24 +169,27 @@ public class SourceEmploymentHero {
                 "organizationConfigids", organizationConfigids,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends List<Object>> employeesConfigids = Optional.empty();
- 
+
         private Optional<? extends List<Object>> organizationConfigids = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Employees IDs in the given organisation found in `employees` stream for passing to sub-streams
@@ -205,6 +209,7 @@ public class SourceEmploymentHero {
             return this;
         }
 
+
         /**
          * Organization ID which could be found as result of `organizations` stream to be used in other substreams
          */
@@ -222,13 +227,13 @@ public class SourceEmploymentHero {
             this.organizationConfigids = organizationConfigids;
             return this;
         }
-        
+
         public SourceEmploymentHero build() {
+
             return new SourceEmploymentHero(
-                apiKey,
-                employeesConfigids,
-                organizationConfigids);
+                apiKey, employeesConfigids, organizationConfigids);
         }
+
 
         private static final LazySingletonValue<EmploymentHero> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

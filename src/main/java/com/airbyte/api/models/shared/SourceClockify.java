@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceClockify {
 
+public class SourceClockify {
     /**
      * You can get your api access_key &lt;a href="https://app.clockify.me/user/settings"&gt;here&lt;/a&gt; This API is Case Sensitive.
      */
@@ -30,6 +29,7 @@ public class SourceClockify {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     private Optional<String> apiUrl;
+
 
     @JsonProperty("sourceType")
     private Clockify sourceType;
@@ -89,9 +89,10 @@ public class SourceClockify {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * You can get your api access_key &lt;a href="https://app.clockify.me/user/settings"&gt;here&lt;/a&gt; This API is Case Sensitive.
@@ -111,6 +112,7 @@ public class SourceClockify {
         return this;
     }
 
+
     /**
      * The URL for the Clockify API. This should only need to be modified if connecting to an enterprise version of Clockify.
      */
@@ -129,7 +131,6 @@ public class SourceClockify {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +141,16 @@ public class SourceClockify {
         }
         SourceClockify other = (SourceClockify) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiUrl,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, apiUrl, sourceType,
             workspaceId);
     }
     
@@ -163,18 +162,20 @@ public class SourceClockify {
                 "sourceType", sourceType,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> apiUrl;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * You can get your api access_key &lt;a href="https://app.clockify.me/user/settings"&gt;here&lt;/a&gt; This API is Case Sensitive.
@@ -184,6 +185,7 @@ public class SourceClockify {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The URL for the Clockify API. This should only need to be modified if connecting to an enterprise version of Clockify.
@@ -203,6 +205,7 @@ public class SourceClockify {
             return this;
         }
 
+
         /**
          * WorkSpace Id
          */
@@ -211,16 +214,16 @@ public class SourceClockify {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public SourceClockify build() {
             if (apiUrl == null) {
                 apiUrl = _SINGLETON_VALUE_ApiUrl.value();
             }
+
             return new SourceClockify(
-                apiKey,
-                apiUrl,
-                workspaceId);
+                apiKey, apiUrl, workspaceId);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiUrl =
                 new LazySingletonValue<>(

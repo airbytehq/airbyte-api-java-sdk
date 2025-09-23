@@ -5,13 +5,21 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * BatchedStandardInserts
@@ -20,25 +28,68 @@ import java.util.Objects;
  */
 public class BatchedStandardInserts {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("method")
-    private Method method;
+    private Optional<? extends Method> method;
 
     @JsonCreator
-    public BatchedStandardInserts() {
-        
-        this.method = Builder._SINGLETON_VALUE_Method.value();
+    public BatchedStandardInserts(
+            @JsonProperty("method") Optional<? extends Method> method) {
+        Utils.checkNotNull(method, "method");
+        this.additionalProperties = new HashMap<>();
+        this.method = method;
     }
-
-    @JsonIgnore
-    public Method method() {
-        return method;
-    }
-
-    public final static Builder builder() {
-        return new Builder();
-    }    
-
     
+    public BatchedStandardInserts() {
+        this(Optional.empty());
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<Method> method() {
+        return (Optional<Method>) method;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    @JsonAnySetter
+    public BatchedStandardInserts withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public BatchedStandardInserts withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public BatchedStandardInserts withMethod(Method method) {
+        Utils.checkNotNull(method, "method");
+        this.method = Optional.ofNullable(method);
+        return this;
+    }
+
+
+    public BatchedStandardInserts withMethod(Optional<? extends Method> method) {
+        Utils.checkNotNull(method, "method");
+        this.method = method;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,36 +100,78 @@ public class BatchedStandardInserts {
         }
         BatchedStandardInserts other = (BatchedStandardInserts) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            method);
+        return Utils.enhancedHash(
+            additionalProperties, method);
     }
     
     @Override
     public String toString() {
         return Utils.toString(BatchedStandardInserts.class,
+                "additionalProperties", additionalProperties,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends Method> method;
+
         private Builder() {
           // force use of static builder() method
         }
-        
-        public BatchedStandardInserts build() {
-            return new BatchedStandardInserts(
-                );
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
         }
 
-        private static final LazySingletonValue<Method> _SINGLETON_VALUE_Method =
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder method(Method method) {
+            Utils.checkNotNull(method, "method");
+            this.method = Optional.ofNullable(method);
+            return this;
+        }
+
+        public Builder method(Optional<? extends Method> method) {
+            Utils.checkNotNull(method, "method");
+            this.method = method;
+            return this;
+        }
+
+        public BatchedStandardInserts build() {
+            if (method == null) {
+                method = _SINGLETON_VALUE_Method.value();
+            }
+
+            return new BatchedStandardInserts(
+                method)
+                .withAdditionalProperties(additionalProperties);
+        }
+
+
+        private static final LazySingletonValue<Optional<? extends Method>> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(
                         "method",
                         "\"Standard\"",
-                        new TypeReference<Method>() {});
+                        new TypeReference<Optional<? extends Method>>() {});
     }
 }

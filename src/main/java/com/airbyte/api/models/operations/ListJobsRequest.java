@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListJobsRequest {
 
+public class ListJobsRequest {
     /**
      * Filter the Jobs by connectionId.
      */
@@ -126,7 +125,10 @@ public class ListJobsRequest {
     }
     
     public ListJobsRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -220,9 +222,10 @@ public class ListJobsRequest {
         return (Optional<List<String>>) workspaceIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Filter the Jobs by connectionId.
@@ -232,6 +235,7 @@ public class ListJobsRequest {
         this.connectionId = Optional.ofNullable(connectionId);
         return this;
     }
+
 
     /**
      * Filter the Jobs by connectionId.
@@ -251,6 +255,7 @@ public class ListJobsRequest {
         return this;
     }
 
+
     /**
      * The end date to filter by
      */
@@ -268,6 +273,7 @@ public class ListJobsRequest {
         this.createdAtStart = Optional.ofNullable(createdAtStart);
         return this;
     }
+
 
     /**
      * The start date to filter by
@@ -287,6 +293,7 @@ public class ListJobsRequest {
         return this;
     }
 
+
     /**
      * Filter the Jobs by jobType.
      */
@@ -304,6 +311,7 @@ public class ListJobsRequest {
         this.limit = Optional.ofNullable(limit);
         return this;
     }
+
 
     /**
      * Set the limit on the number of Jobs returned. The default is 20 Jobs.
@@ -323,6 +331,7 @@ public class ListJobsRequest {
         return this;
     }
 
+
     /**
      * Set the offset to start at when returning Jobs. The default is 0.
      */
@@ -340,6 +349,7 @@ public class ListJobsRequest {
         this.orderBy = Optional.ofNullable(orderBy);
         return this;
     }
+
 
     /**
      * The field and method to use for ordering
@@ -359,6 +369,7 @@ public class ListJobsRequest {
         return this;
     }
 
+
     /**
      * The Job status you want to filter by
      */
@@ -376,6 +387,7 @@ public class ListJobsRequest {
         this.updatedAtEnd = Optional.ofNullable(updatedAtEnd);
         return this;
     }
+
 
     /**
      * The end date to filter by
@@ -395,6 +407,7 @@ public class ListJobsRequest {
         return this;
     }
 
+
     /**
      * The start date to filter by
      */
@@ -413,6 +426,7 @@ public class ListJobsRequest {
         return this;
     }
 
+
     /**
      * The UUIDs of the workspaces you wish to list jobs for. Empty list will retrieve all allowed workspaces.
      */
@@ -422,7 +436,6 @@ public class ListJobsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -433,33 +446,26 @@ public class ListJobsRequest {
         }
         ListJobsRequest other = (ListJobsRequest) o;
         return 
-            Objects.deepEquals(this.connectionId, other.connectionId) &&
-            Objects.deepEquals(this.createdAtEnd, other.createdAtEnd) &&
-            Objects.deepEquals(this.createdAtStart, other.createdAtStart) &&
-            Objects.deepEquals(this.jobType, other.jobType) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.offset, other.offset) &&
-            Objects.deepEquals(this.orderBy, other.orderBy) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.updatedAtEnd, other.updatedAtEnd) &&
-            Objects.deepEquals(this.updatedAtStart, other.updatedAtStart) &&
-            Objects.deepEquals(this.workspaceIds, other.workspaceIds);
+            Utils.enhancedDeepEquals(this.connectionId, other.connectionId) &&
+            Utils.enhancedDeepEquals(this.createdAtEnd, other.createdAtEnd) &&
+            Utils.enhancedDeepEquals(this.createdAtStart, other.createdAtStart) &&
+            Utils.enhancedDeepEquals(this.jobType, other.jobType) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.offset, other.offset) &&
+            Utils.enhancedDeepEquals(this.orderBy, other.orderBy) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.updatedAtEnd, other.updatedAtEnd) &&
+            Utils.enhancedDeepEquals(this.updatedAtStart, other.updatedAtStart) &&
+            Utils.enhancedDeepEquals(this.workspaceIds, other.workspaceIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionId,
-            createdAtEnd,
-            createdAtStart,
-            jobType,
-            limit,
-            offset,
-            orderBy,
-            status,
-            updatedAtEnd,
-            updatedAtStart,
-            workspaceIds);
+        return Utils.enhancedHash(
+            connectionId, createdAtEnd, createdAtStart,
+            jobType, limit, offset,
+            orderBy, status, updatedAtEnd,
+            updatedAtStart, workspaceIds);
     }
     
     @Override
@@ -477,34 +483,36 @@ public class ListJobsRequest {
                 "updatedAtStart", updatedAtStart,
                 "workspaceIds", workspaceIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> connectionId = Optional.empty();
- 
+
         private Optional<OffsetDateTime> createdAtEnd = Optional.empty();
- 
+
         private Optional<OffsetDateTime> createdAtStart = Optional.empty();
- 
+
         private Optional<? extends JobTypeEnum> jobType = Optional.empty();
- 
+
         private Optional<Integer> limit;
- 
+
         private Optional<Integer> offset;
- 
+
         private Optional<String> orderBy = Optional.empty();
- 
+
         private Optional<? extends JobStatusEnum> status = Optional.empty();
- 
+
         private Optional<OffsetDateTime> updatedAtEnd = Optional.empty();
- 
+
         private Optional<OffsetDateTime> updatedAtStart = Optional.empty();
- 
+
         private Optional<? extends List<String>> workspaceIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Filter the Jobs by connectionId.
@@ -524,6 +532,7 @@ public class ListJobsRequest {
             return this;
         }
 
+
         /**
          * The end date to filter by
          */
@@ -541,6 +550,7 @@ public class ListJobsRequest {
             this.createdAtEnd = createdAtEnd;
             return this;
         }
+
 
         /**
          * The start date to filter by
@@ -560,6 +570,7 @@ public class ListJobsRequest {
             return this;
         }
 
+
         /**
          * Filter the Jobs by jobType.
          */
@@ -577,6 +588,7 @@ public class ListJobsRequest {
             this.jobType = jobType;
             return this;
         }
+
 
         /**
          * Set the limit on the number of Jobs returned. The default is 20 Jobs.
@@ -596,6 +608,7 @@ public class ListJobsRequest {
             return this;
         }
 
+
         /**
          * Set the offset to start at when returning Jobs. The default is 0.
          */
@@ -613,6 +626,7 @@ public class ListJobsRequest {
             this.offset = offset;
             return this;
         }
+
 
         /**
          * The field and method to use for ordering
@@ -632,6 +646,7 @@ public class ListJobsRequest {
             return this;
         }
 
+
         /**
          * The Job status you want to filter by
          */
@@ -649,6 +664,7 @@ public class ListJobsRequest {
             this.status = status;
             return this;
         }
+
 
         /**
          * The end date to filter by
@@ -668,6 +684,7 @@ public class ListJobsRequest {
             return this;
         }
 
+
         /**
          * The start date to filter by
          */
@@ -686,6 +703,7 @@ public class ListJobsRequest {
             return this;
         }
 
+
         /**
          * The UUIDs of the workspaces you wish to list jobs for. Empty list will retrieve all allowed workspaces.
          */
@@ -703,7 +721,7 @@ public class ListJobsRequest {
             this.workspaceIds = workspaceIds;
             return this;
         }
-        
+
         public ListJobsRequest build() {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
@@ -711,19 +729,14 @@ public class ListJobsRequest {
             if (offset == null) {
                 offset = _SINGLETON_VALUE_Offset.value();
             }
+
             return new ListJobsRequest(
-                connectionId,
-                createdAtEnd,
-                createdAtStart,
-                jobType,
-                limit,
-                offset,
-                orderBy,
-                status,
-                updatedAtEnd,
-                updatedAtStart,
-                workspaceIds);
+                connectionId, createdAtEnd, createdAtStart,
+                jobType, limit, offset,
+                orderBy, status, updatedAtEnd,
+                updatedAtStart, workspaceIds);
         }
+
 
         private static final LazySingletonValue<Optional<Integer>> _SINGLETON_VALUE_Limit =
                 new LazySingletonValue<>(

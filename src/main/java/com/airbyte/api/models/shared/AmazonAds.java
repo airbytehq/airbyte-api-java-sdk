@@ -11,11 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AmazonAds {
 
+public class AmazonAds {
     /**
      * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
      */
@@ -60,9 +59,10 @@ public class AmazonAds {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
@@ -72,6 +72,7 @@ public class AmazonAds {
         this.clientId = Optional.ofNullable(clientId);
         return this;
     }
+
 
     /**
      * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
@@ -91,6 +92,7 @@ public class AmazonAds {
         return this;
     }
 
+
     /**
      * The client secret of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
      */
@@ -100,7 +102,6 @@ public class AmazonAds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +112,14 @@ public class AmazonAds {
         }
         AmazonAds other = (AmazonAds) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,16 +128,18 @@ public class AmazonAds {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
@@ -157,6 +159,7 @@ public class AmazonAds {
             return this;
         }
 
+
         /**
          * The client secret of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
          */
@@ -174,11 +177,12 @@ public class AmazonAds {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public AmazonAds build() {
+
             return new AmazonAds(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

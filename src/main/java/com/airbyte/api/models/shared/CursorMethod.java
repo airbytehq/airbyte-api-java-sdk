@@ -14,7 +14,7 @@ public enum CursorMethod {
     @JsonValue
     private final String value;
 
-    private CursorMethod(String value) {
+    CursorMethod(String value) {
         this.value = value;
     }
     

@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceClockodo {
 
+public class SourceClockodo {
     /**
      * API key to use. Find it in the 'Personal data' section of your Clockodo account.
      */
@@ -40,8 +39,10 @@ public class SourceClockodo {
     @JsonProperty("external_application")
     private Optional<String> externalApplication;
 
+
     @JsonProperty("sourceType")
     private Clockodo sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -77,7 +78,8 @@ public class SourceClockodo {
             String emailAddress,
             OffsetDateTime startDate,
             List<Object> years) {
-        this(apiKey, emailAddress, Optional.empty(), startDate, years);
+        this(apiKey, emailAddress, Optional.empty(),
+            startDate, years);
     }
 
     /**
@@ -122,9 +124,10 @@ public class SourceClockodo {
         return years;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use. Find it in the 'Personal data' section of your Clockodo account.
@@ -153,6 +156,7 @@ public class SourceClockodo {
         return this;
     }
 
+
     /**
      * Identification of the calling application, including the email address of a technical contact person. Format: [name of application or company];[email address].
      */
@@ -177,7 +181,6 @@ public class SourceClockodo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -188,23 +191,19 @@ public class SourceClockodo {
         }
         SourceClockodo other = (SourceClockodo) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.emailAddress, other.emailAddress) &&
-            Objects.deepEquals(this.externalApplication, other.externalApplication) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.years, other.years);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.emailAddress, other.emailAddress) &&
+            Utils.enhancedDeepEquals(this.externalApplication, other.externalApplication) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.years, other.years);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            emailAddress,
-            externalApplication,
-            sourceType,
-            startDate,
-            years);
+        return Utils.enhancedHash(
+            apiKey, emailAddress, externalApplication,
+            sourceType, startDate, years);
     }
     
     @Override
@@ -217,22 +216,24 @@ public class SourceClockodo {
                 "startDate", startDate,
                 "years", years);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String emailAddress;
- 
+
         private Optional<String> externalApplication;
- 
+
         private OffsetDateTime startDate;
- 
+
         private List<Object> years;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use. Find it in the 'Personal data' section of your Clockodo account.
@@ -243,6 +244,7 @@ public class SourceClockodo {
             return this;
         }
 
+
         /**
          * Your Clockodo account email address. Find it in your Clockodo account settings.
          */
@@ -251,6 +253,7 @@ public class SourceClockodo {
             this.emailAddress = emailAddress;
             return this;
         }
+
 
         /**
          * Identification of the calling application, including the email address of a technical contact person. Format: [name of application or company];[email address].
@@ -270,11 +273,13 @@ public class SourceClockodo {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * 2024, 2025
@@ -284,18 +289,17 @@ public class SourceClockodo {
             this.years = years;
             return this;
         }
-        
+
         public SourceClockodo build() {
             if (externalApplication == null) {
                 externalApplication = _SINGLETON_VALUE_ExternalApplication.value();
             }
+
             return new SourceClockodo(
-                apiKey,
-                emailAddress,
-                externalApplication,
-                startDate,
-                years);
+                apiKey, emailAddress, externalApplication,
+                startDate, years);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ExternalApplication =
                 new LazySingletonValue<>(

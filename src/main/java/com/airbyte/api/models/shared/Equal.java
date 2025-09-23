@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Equal implements RowFilteringOperation {
-
     /**
      * The value to compare the field against.
      */
@@ -24,6 +23,7 @@ public class Equal implements RowFilteringOperation {
      */
     @JsonProperty("fieldName")
     private String fieldName;
+
 
     @JsonProperty("type")
     private RowFilteringOperationType type;
@@ -63,9 +63,10 @@ public class Equal implements RowFilteringOperation {
         return Utils.discriminatorToString(type);
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The value to compare the field against.
@@ -91,7 +92,6 @@ public class Equal implements RowFilteringOperation {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -102,17 +102,15 @@ public class Equal implements RowFilteringOperation {
         }
         Equal other = (Equal) o;
         return 
-            Objects.deepEquals(this.comparisonValue, other.comparisonValue) &&
-            Objects.deepEquals(this.fieldName, other.fieldName) &&
-            Objects.deepEquals(this.type, other.type);
+            Utils.enhancedDeepEquals(this.comparisonValue, other.comparisonValue) &&
+            Utils.enhancedDeepEquals(this.fieldName, other.fieldName) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            comparisonValue,
-            fieldName,
-            type);
+        return Utils.enhancedHash(
+            comparisonValue, fieldName, type);
     }
     
     @Override
@@ -122,18 +120,20 @@ public class Equal implements RowFilteringOperation {
                 "fieldName", fieldName,
                 "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String comparisonValue;
- 
+
         private String fieldName;
- 
+
         private RowFilteringOperationType type;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The value to compare the field against.
@@ -144,6 +144,7 @@ public class Equal implements RowFilteringOperation {
             return this;
         }
 
+
         /**
          * The name of the field to apply the operation on.
          */
@@ -153,17 +154,18 @@ public class Equal implements RowFilteringOperation {
             return this;
         }
 
+
         public Builder type(RowFilteringOperationType type) {
             Utils.checkNotNull(type, "type");
             this.type = type;
             return this;
         }
-        
+
         public Equal build() {
+
             return new Equal(
-                comparisonValue,
-                fieldName,
-                type);
+                comparisonValue, fieldName, type);
         }
+
     }
 }

@@ -14,7 +14,7 @@ public enum SolarwindsServiceDesk {
     @JsonValue
     private final String value;
 
-    private SolarwindsServiceDesk(String value) {
+    SolarwindsServiceDesk(String value) {
         this.value = value;
     }
     

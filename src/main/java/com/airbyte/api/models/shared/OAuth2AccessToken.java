@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OAuth2AccessToken {
-
     /**
      * Also called &lt;a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing"&gt;API Access Token &lt;/a&gt; The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceAuth0SchemasAuthenticationMethod authType;
@@ -45,9 +45,10 @@ public class OAuth2AccessToken {
         return authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Also called &lt;a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing"&gt;API Access Token &lt;/a&gt; The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.
@@ -58,7 +59,6 @@ public class OAuth2AccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class OAuth2AccessToken {
         }
         OAuth2AccessToken other = (OAuth2AccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType);
+        return Utils.enhancedHash(
+            accessToken, authType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class OAuth2AccessToken {
                 "accessToken", accessToken,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Also called &lt;a href="https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-testing"&gt;API Access Token &lt;/a&gt; The access token used to call the Auth0 Management API Token. It's a JWT that contains specific grant permissions knowns as scopes.
@@ -103,11 +104,13 @@ public class OAuth2AccessToken {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public OAuth2AccessToken build() {
+
             return new OAuth2AccessToken(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<SourceAuth0SchemasAuthenticationMethod> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

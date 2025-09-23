@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
+
 
 public class SourcePrestashop {
-
     /**
      * Your PrestaShop access key. See &lt;a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
      */
     @JsonProperty("access_key")
     private String accessKey;
+
 
     @JsonProperty("sourceType")
     private Prestashop sourceType;
@@ -80,9 +80,10 @@ public class SourcePrestashop {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your PrestaShop access key. See &lt;a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
@@ -111,7 +112,6 @@ public class SourcePrestashop {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +122,16 @@ public class SourcePrestashop {
         }
         SourcePrestashop other = (SourcePrestashop) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            accessKey, sourceType, startDate,
             url);
     }
     
@@ -145,18 +143,20 @@ public class SourcePrestashop {
                 "startDate", startDate,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private LocalDate startDate;
- 
+
         private String url;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your PrestaShop access key. See &lt;a href="https://devdocs.prestashop.com/1.7/webservice/tutorials/creating-access/#create-an-access-key"&gt; the docs &lt;/a&gt; for info on how to obtain this.
@@ -167,6 +167,7 @@ public class SourcePrestashop {
             return this;
         }
 
+
         /**
          * The Start date in the format YYYY-MM-DD.
          */
@@ -176,6 +177,7 @@ public class SourcePrestashop {
             return this;
         }
 
+
         /**
          * Shop URL without trailing slash.
          */
@@ -184,13 +186,13 @@ public class SourcePrestashop {
             this.url = url;
             return this;
         }
-        
+
         public SourcePrestashop build() {
+
             return new SourcePrestashop(
-                accessKey,
-                startDate,
-                url);
+                accessKey, startDate, url);
         }
+
 
         private static final LazySingletonValue<Prestashop> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGnews {
 
+public class SourceGnews {
     /**
      * API Key
      */
@@ -46,6 +45,7 @@ public class SourceGnews {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("in")
     private Optional<? extends List<In>> in;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("language")
@@ -93,6 +93,7 @@ public class SourceGnews {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sortby")
     private Optional<? extends SourceGnewsSortBy> sortby;
+
 
     @JsonProperty("sourceType")
     private Gnews sourceType;
@@ -178,7 +179,10 @@ public class SourceGnews {
     public SourceGnews(
             String apiKey,
             String query) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), query, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            query, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -319,9 +323,10 @@ public class SourceGnews {
         return (Optional<TopHeadlinesTopic>) topHeadlinesTopic;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -341,6 +346,7 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
      * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
      */
@@ -358,6 +364,7 @@ public class SourceGnews {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
@@ -377,6 +384,7 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
      * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
      */
@@ -392,6 +400,7 @@ public class SourceGnews {
         return this;
     }
 
+
     public SourceGnews withLanguage(Optional<? extends SourceGnewsLanguage> language) {
         Utils.checkNotNull(language, "language");
         this.language = language;
@@ -406,6 +415,7 @@ public class SourceGnews {
         this.nullable = Optional.ofNullable(nullable);
         return this;
     }
+
 
     /**
      * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
@@ -457,6 +467,7 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
      * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
      *   - publishedAt = sort by publication date, the articles with the most recent
@@ -478,6 +489,7 @@ public class SourceGnews {
         this.startDate = Optional.ofNullable(startDate);
         return this;
     }
+
 
     /**
      * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
@@ -516,6 +528,7 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
      * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
      *   quotation marks are used to search for articles with the exact same keyword
@@ -553,6 +566,7 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
      * This parameter allows you to change the category for the request.
      */
@@ -562,7 +576,6 @@ public class SourceGnews {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -573,35 +586,27 @@ public class SourceGnews {
         }
         SourceGnews other = (SourceGnews) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.in, other.in) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.nullable, other.nullable) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sortby, other.sortby) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.topHeadlinesQuery, other.topHeadlinesQuery) &&
-            Objects.deepEquals(this.topHeadlinesTopic, other.topHeadlinesTopic);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.in, other.in) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.nullable, other.nullable) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sortby, other.sortby) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.topHeadlinesQuery, other.topHeadlinesQuery) &&
+            Utils.enhancedDeepEquals(this.topHeadlinesTopic, other.topHeadlinesTopic);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            country,
-            endDate,
-            in,
-            language,
-            nullable,
-            query,
-            sortby,
-            sourceType,
-            startDate,
-            topHeadlinesQuery,
-            topHeadlinesTopic);
+        return Utils.enhancedHash(
+            apiKey, country, endDate,
+            in, language, nullable,
+            query, sortby, sourceType,
+            startDate, topHeadlinesQuery, topHeadlinesTopic);
     }
     
     @Override
@@ -620,34 +625,36 @@ public class SourceGnews {
                 "topHeadlinesQuery", topHeadlinesQuery,
                 "topHeadlinesTopic", topHeadlinesTopic);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends SourceGnewsCountry> country = Optional.empty();
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<? extends List<In>> in = Optional.empty();
- 
+
         private Optional<? extends SourceGnewsLanguage> language = Optional.empty();
- 
+
         private Optional<? extends List<Nullable>> nullable = Optional.empty();
- 
+
         private String query;
- 
+
         private Optional<? extends SourceGnewsSortBy> sortby = Optional.empty();
- 
+
         private Optional<String> startDate = Optional.empty();
- 
+
         private Optional<String> topHeadlinesQuery = Optional.empty();
- 
+
         private Optional<? extends TopHeadlinesTopic> topHeadlinesTopic = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -657,6 +664,7 @@ public class SourceGnews {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
@@ -676,6 +684,7 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
          * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
          */
@@ -693,6 +702,7 @@ public class SourceGnews {
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
@@ -712,6 +722,7 @@ public class SourceGnews {
             return this;
         }
 
+
         public Builder language(SourceGnewsLanguage language) {
             Utils.checkNotNull(language, "language");
             this.language = Optional.ofNullable(language);
@@ -723,6 +734,7 @@ public class SourceGnews {
             this.language = language;
             return this;
         }
+
 
         /**
          * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
@@ -741,6 +753,7 @@ public class SourceGnews {
             this.nullable = nullable;
             return this;
         }
+
 
         /**
          * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
@@ -770,6 +783,7 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
          * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
          *   - publishedAt = sort by publication date, the articles with the most recent
@@ -796,6 +810,7 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
          * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
          */
@@ -813,6 +828,7 @@ public class SourceGnews {
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
@@ -870,6 +886,7 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
          * This parameter allows you to change the category for the request.
          */
@@ -887,21 +904,16 @@ public class SourceGnews {
             this.topHeadlinesTopic = topHeadlinesTopic;
             return this;
         }
-        
+
         public SourceGnews build() {
+
             return new SourceGnews(
-                apiKey,
-                country,
-                endDate,
-                in,
-                language,
-                nullable,
-                query,
-                sortby,
-                startDate,
-                topHeadlinesQuery,
-                topHeadlinesTopic);
+                apiKey, country, endDate,
+                in, language, nullable,
+                query, sortby, startDate,
+                topHeadlinesQuery, topHeadlinesTopic);
         }
+
 
         private static final LazySingletonValue<Gnews> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

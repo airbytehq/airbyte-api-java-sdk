@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceOutreach {
-
     /**
      * The Client ID of your Outreach developer application.
      */
@@ -39,6 +38,7 @@ public class SourceOutreach {
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private Outreach sourceType;
@@ -114,9 +114,10 @@ public class SourceOutreach {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Outreach developer application.
@@ -163,7 +164,6 @@ public class SourceOutreach {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,23 +174,19 @@ public class SourceOutreach {
         }
         SourceOutreach other = (SourceOutreach) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.redirectUri, other.redirectUri) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.redirectUri, other.redirectUri) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            redirectUri,
-            refreshToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, redirectUri,
+            refreshToken, sourceType, startDate);
     }
     
     @Override
@@ -203,22 +199,24 @@ public class SourceOutreach {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String redirectUri;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Outreach developer application.
@@ -229,6 +227,7 @@ public class SourceOutreach {
             return this;
         }
 
+
         /**
          * The Client Secret of your Outreach developer application.
          */
@@ -237,6 +236,7 @@ public class SourceOutreach {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * A Redirect URI is the location where the authorization server sends the user once the app has been successfully authorized and granted an authorization code or access token.
@@ -247,6 +247,7 @@ public class SourceOutreach {
             return this;
         }
 
+
         /**
          * The token for obtaining the new access token.
          */
@@ -256,6 +257,7 @@ public class SourceOutreach {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate data for Outreach API, in the format YYYY-MM-DDT00:00:00.000Z. All data generated after this date will be replicated.
          */
@@ -264,15 +266,14 @@ public class SourceOutreach {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceOutreach build() {
+
             return new SourceOutreach(
-                clientId,
-                clientSecret,
-                redirectUri,
-                refreshToken,
-                startDate);
+                clientId, clientSecret, redirectUri,
+                refreshToken, startDate);
         }
+
 
         private static final LazySingletonValue<Outreach> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,22 +14,26 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceFreshbooks {
 
     @JsonProperty("account_id")
     private String accountId;
 
+
     @JsonProperty("business_uuid")
     private String businessUuid;
+
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -48,8 +52,10 @@ public class SourceFreshbooks {
     @JsonProperty("oauth_token_expiry_date")
     private Optional<OffsetDateTime> oauthTokenExpiryDate;
 
+
     @JsonProperty("redirect_uri")
     private String redirectUri;
+
 
     @JsonProperty("sourceType")
     private Freshbooks sourceType;
@@ -90,7 +96,9 @@ public class SourceFreshbooks {
             String clientRefreshToken,
             String clientSecret,
             String redirectUri) {
-        this(accountId, businessUuid, clientId, clientRefreshToken, clientSecret, Optional.empty(), Optional.empty(), redirectUri);
+        this(accountId, businessUuid, clientId,
+            clientRefreshToken, clientSecret, Optional.empty(),
+            Optional.empty(), redirectUri);
     }
 
     @JsonIgnore
@@ -144,9 +152,10 @@ public class SourceFreshbooks {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceFreshbooks withAccountId(String accountId) {
         Utils.checkNotNull(accountId, "accountId");
@@ -187,6 +196,7 @@ public class SourceFreshbooks {
         return this;
     }
 
+
     /**
      * The current access token. This field might be overridden by the connector based on the token refresh endpoint response.
      */
@@ -205,6 +215,7 @@ public class SourceFreshbooks {
         return this;
     }
 
+
     /**
      * The date the current access token expires in. This field might be overridden by the connector based on the token refresh endpoint response.
      */
@@ -220,7 +231,6 @@ public class SourceFreshbooks {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -231,29 +241,23 @@ public class SourceFreshbooks {
         }
         SourceFreshbooks other = (SourceFreshbooks) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.businessUuid, other.businessUuid) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.oauthAccessToken, other.oauthAccessToken) &&
-            Objects.deepEquals(this.oauthTokenExpiryDate, other.oauthTokenExpiryDate) &&
-            Objects.deepEquals(this.redirectUri, other.redirectUri) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.businessUuid, other.businessUuid) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.oauthAccessToken, other.oauthAccessToken) &&
+            Utils.enhancedDeepEquals(this.oauthTokenExpiryDate, other.oauthTokenExpiryDate) &&
+            Utils.enhancedDeepEquals(this.redirectUri, other.redirectUri) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            businessUuid,
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            oauthAccessToken,
-            oauthTokenExpiryDate,
-            redirectUri,
-            sourceType);
+        return Utils.enhancedHash(
+            accountId, businessUuid, clientId,
+            clientRefreshToken, clientSecret, oauthAccessToken,
+            oauthTokenExpiryDate, redirectUri, sourceType);
     }
     
     @Override
@@ -269,28 +273,30 @@ public class SourceFreshbooks {
                 "redirectUri", redirectUri,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String businessUuid;
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> oauthAccessToken = Optional.empty();
- 
+
         private Optional<OffsetDateTime> oauthTokenExpiryDate = Optional.empty();
- 
+
         private String redirectUri;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder accountId(String accountId) {
             Utils.checkNotNull(accountId, "accountId");
@@ -298,11 +304,13 @@ public class SourceFreshbooks {
             return this;
         }
 
+
         public Builder businessUuid(String businessUuid) {
             Utils.checkNotNull(businessUuid, "businessUuid");
             this.businessUuid = businessUuid;
             return this;
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -310,17 +318,20 @@ public class SourceFreshbooks {
             return this;
         }
 
+
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The current access token. This field might be overridden by the connector based on the token refresh endpoint response.
@@ -340,6 +351,7 @@ public class SourceFreshbooks {
             return this;
         }
 
+
         /**
          * The date the current access token expires in. This field might be overridden by the connector based on the token refresh endpoint response.
          */
@@ -358,23 +370,21 @@ public class SourceFreshbooks {
             return this;
         }
 
+
         public Builder redirectUri(String redirectUri) {
             Utils.checkNotNull(redirectUri, "redirectUri");
             this.redirectUri = redirectUri;
             return this;
         }
-        
+
         public SourceFreshbooks build() {
+
             return new SourceFreshbooks(
-                accountId,
-                businessUuid,
-                clientId,
-                clientRefreshToken,
-                clientSecret,
-                oauthAccessToken,
-                oauthTokenExpiryDate,
-                redirectUri);
+                accountId, businessUuid, clientId,
+                clientRefreshToken, clientSecret, oauthAccessToken,
+                oauthTokenExpiryDate, redirectUri);
         }
+
 
         private static final LazySingletonValue<Freshbooks> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

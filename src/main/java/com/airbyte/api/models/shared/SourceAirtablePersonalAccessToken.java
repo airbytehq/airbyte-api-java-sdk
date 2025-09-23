@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAirtablePersonalAccessToken {
 
+public class SourceAirtablePersonalAccessToken {
     /**
      * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -51,9 +51,10 @@ public class SourceAirtablePersonalAccessToken {
         return (Optional<SourceAirtableAuthMethod>) authMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
@@ -64,7 +65,6 @@ public class SourceAirtablePersonalAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class SourceAirtablePersonalAccessToken {
         }
         SourceAirtablePersonalAccessToken other = (SourceAirtablePersonalAccessToken) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.authMethod, other.authMethod);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            authMethod);
+        return Utils.enhancedHash(
+            apiKey, authMethod);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class SourceAirtablePersonalAccessToken {
                 "apiKey", apiKey,
                 "authMethod", authMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Personal Access Token for the Airtable account. See the &lt;a href="https://airtable.com/developers/web/guides/personal-access-tokens"&gt;Support Guide&lt;/a&gt; for more information on how to obtain this token.
@@ -109,11 +110,13 @@ public class SourceAirtablePersonalAccessToken {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceAirtablePersonalAccessToken build() {
+
             return new SourceAirtablePersonalAccessToken(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAirtableAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

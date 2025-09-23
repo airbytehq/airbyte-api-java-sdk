@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceEverhour {
-
     /**
      * Everhour API Key. See the &lt;a href="https://everhour.docs.apiary.io/#introduction/authentication"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Everhour sourceType;
@@ -45,9 +45,10 @@ public class SourceEverhour {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Everhour API Key. See the &lt;a href="https://everhour.docs.apiary.io/#introduction/authentication"&gt;docs&lt;/a&gt; for information on how to generate this key.
@@ -58,7 +59,6 @@ public class SourceEverhour {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceEverhour {
         }
         SourceEverhour other = (SourceEverhour) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceEverhour {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Everhour API Key. See the &lt;a href="https://everhour.docs.apiary.io/#introduction/authentication"&gt;docs&lt;/a&gt; for information on how to generate this key.
@@ -103,11 +104,13 @@ public class SourceEverhour {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceEverhour build() {
+
             return new SourceEverhour(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Everhour> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

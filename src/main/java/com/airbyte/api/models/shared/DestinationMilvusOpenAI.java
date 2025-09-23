@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -27,6 +26,7 @@ public class DestinationMilvusOpenAI {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
     private Optional<? extends DestinationMilvusMode> mode;
+
 
     @JsonProperty("openai_key")
     private String openaiKey;
@@ -50,9 +50,10 @@ public class DestinationMilvusOpenAI {
         return openaiKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DestinationMilvusOpenAI withOpenaiKey(String openaiKey) {
         Utils.checkNotNull(openaiKey, "openaiKey");
@@ -60,7 +61,6 @@ public class DestinationMilvusOpenAI {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,15 +71,14 @@ public class DestinationMilvusOpenAI {
         }
         DestinationMilvusOpenAI other = (DestinationMilvusOpenAI) o;
         return 
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.openaiKey, other.openaiKey);
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.openaiKey, other.openaiKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            mode,
-            openaiKey);
+        return Utils.enhancedHash(
+            mode, openaiKey);
     }
     
     @Override
@@ -88,25 +87,29 @@ public class DestinationMilvusOpenAI {
                 "mode", mode,
                 "openaiKey", openaiKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String openaiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder openaiKey(String openaiKey) {
             Utils.checkNotNull(openaiKey, "openaiKey");
             this.openaiKey = openaiKey;
             return this;
         }
-        
+
         public DestinationMilvusOpenAI build() {
+
             return new DestinationMilvusOpenAI(
                 openaiKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMilvusMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

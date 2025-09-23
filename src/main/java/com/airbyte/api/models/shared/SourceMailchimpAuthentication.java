@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceMailchimpAuthentication._Deserializer.class)
 public class SourceMailchimpAuthentication {
@@ -31,16 +30,16 @@ public class SourceMailchimpAuthentication {
         return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailchimpOAuth20>(){}));
     }
 
-    public static SourceMailchimpAuthentication of(APIKey value) {
+    public static SourceMailchimpAuthentication of(SourceMailchimpAPIKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<APIKey>(){}));
+        return new SourceMailchimpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMailchimpAPIKey>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
      * <li>{@code com.airbyte.api.models.shared.SourceMailchimpOAuth20}</li>
-     * <li>{@code com.airbyte.api.models.shared.APIKey}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceMailchimpAPIKey}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -67,12 +66,12 @@ public class SourceMailchimpAuthentication {
             return false;
         }
         SourceMailchimpAuthentication other = (SourceMailchimpAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -81,7 +80,7 @@ public class SourceMailchimpAuthentication {
         public _Deserializer() {
             super(SourceMailchimpAuthentication.class, false,
                   TypeReferenceWithShape.of(new TypeReference<SourceMailchimpOAuth20>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<APIKey>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMailchimpAPIKey>() {}, JsonShape.DEFAULT));
         }
     }
     

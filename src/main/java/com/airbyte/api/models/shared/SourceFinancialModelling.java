@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceFinancialModelling {
 
@@ -44,8 +44,10 @@ public class SourceFinancialModelling {
     @JsonProperty("marketcapmorethan")
     private Optional<String> marketcapmorethan;
 
+
     @JsonProperty("sourceType")
     private FinancialModelling sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -83,7 +85,8 @@ public class SourceFinancialModelling {
     public SourceFinancialModelling(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), startDate, Optional.empty());
     }
 
     @JsonIgnore
@@ -134,9 +137,10 @@ public class SourceFinancialModelling {
         return (Optional<TimeFrame>) timeFrame;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceFinancialModelling withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -152,6 +156,7 @@ public class SourceFinancialModelling {
         this.exchange = Optional.ofNullable(exchange);
         return this;
     }
+
 
     /**
      * The stock exchange : AMEX, AMS, AQS, ASX, ATH, BER, BME, BRU, BSE, BUD, BUE, BVC, CAI, CBOE, CNQ, CPH, DFM, DOH, DUS, DXE, EGX, EURONEXT, HAM, HEL, HKSE, ICE, IOB, IST, JKT, JNB, JPX, KLS, KOE, KSC, KUW, LSE, MCX, MEX, MIL, MUN, NASDAQ, NEO, NSE, NYSE, NZE, OEM, OQX, OSL, OTC, PNK, PRA, RIS, SAO, SAU, SES, SET, SGO, SHH, SHZ, SIX, STO, STU, TAI, TLV, TSX, TSXV, TWO, VIE, VSE, WSE, XETRA
@@ -171,6 +176,7 @@ public class SourceFinancialModelling {
         return this;
     }
 
+
     /**
      * Used in screener to filter out stocks with a market cap lower than the give marketcap
      */
@@ -188,6 +194,7 @@ public class SourceFinancialModelling {
         this.marketcapmorethan = Optional.ofNullable(marketcapmorethan);
         return this;
     }
+
 
     /**
      * Used in screener to filter out stocks with a market cap more than the give marketcap
@@ -213,6 +220,7 @@ public class SourceFinancialModelling {
         return this;
     }
 
+
     /**
      * For example 1min, 5min, 15min, 30min, 1hour, 4hour
      */
@@ -222,7 +230,6 @@ public class SourceFinancialModelling {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -233,24 +240,20 @@ public class SourceFinancialModelling {
         }
         SourceFinancialModelling other = (SourceFinancialModelling) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.exchange, other.exchange) &&
-            Objects.deepEquals(this.marketcaplowerthan, other.marketcaplowerthan) &&
-            Objects.deepEquals(this.marketcapmorethan, other.marketcapmorethan) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.timeFrame, other.timeFrame);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.exchange, other.exchange) &&
+            Utils.enhancedDeepEquals(this.marketcaplowerthan, other.marketcaplowerthan) &&
+            Utils.enhancedDeepEquals(this.marketcapmorethan, other.marketcapmorethan) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.timeFrame, other.timeFrame);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            exchange,
-            marketcaplowerthan,
-            marketcapmorethan,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, exchange, marketcaplowerthan,
+            marketcapmorethan, sourceType, startDate,
             timeFrame);
     }
     
@@ -265,30 +268,33 @@ public class SourceFinancialModelling {
                 "startDate", startDate,
                 "timeFrame", timeFrame);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> exchange;
- 
+
         private Optional<String> marketcaplowerthan = Optional.empty();
- 
+
         private Optional<String> marketcapmorethan = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends TimeFrame> timeFrame;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The stock exchange : AMEX, AMS, AQS, ASX, ATH, BER, BME, BRU, BSE, BUD, BUE, BVC, CAI, CBOE, CNQ, CPH, DFM, DOH, DUS, DXE, EGX, EURONEXT, HAM, HEL, HKSE, ICE, IOB, IST, JKT, JNB, JPX, KLS, KOE, KSC, KUW, LSE, MCX, MEX, MIL, MUN, NASDAQ, NEO, NSE, NYSE, NZE, OEM, OQX, OSL, OTC, PNK, PRA, RIS, SAO, SAU, SES, SET, SGO, SHH, SHZ, SIX, STO, STU, TAI, TLV, TSX, TSXV, TWO, VIE, VSE, WSE, XETRA
@@ -308,6 +314,7 @@ public class SourceFinancialModelling {
             return this;
         }
 
+
         /**
          * Used in screener to filter out stocks with a market cap lower than the give marketcap
          */
@@ -325,6 +332,7 @@ public class SourceFinancialModelling {
             this.marketcaplowerthan = marketcaplowerthan;
             return this;
         }
+
 
         /**
          * Used in screener to filter out stocks with a market cap more than the give marketcap
@@ -344,11 +352,13 @@ public class SourceFinancialModelling {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * For example 1min, 5min, 15min, 30min, 1hour, 4hour
@@ -367,7 +377,7 @@ public class SourceFinancialModelling {
             this.timeFrame = timeFrame;
             return this;
         }
-        
+
         public SourceFinancialModelling build() {
             if (exchange == null) {
                 exchange = _SINGLETON_VALUE_Exchange.value();
@@ -375,14 +385,12 @@ public class SourceFinancialModelling {
             if (timeFrame == null) {
                 timeFrame = _SINGLETON_VALUE_TimeFrame.value();
             }
+
             return new SourceFinancialModelling(
-                apiKey,
-                exchange,
-                marketcaplowerthan,
-                marketcapmorethan,
-                startDate,
-                timeFrame);
+                apiKey, exchange, marketcaplowerthan,
+                marketcapmorethan, startDate, timeFrame);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Exchange =
                 new LazySingletonValue<>(

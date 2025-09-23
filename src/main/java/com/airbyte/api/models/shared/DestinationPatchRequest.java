@@ -12,17 +12,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationPatchRequest {
 
+public class DestinationPatchRequest {
     /**
      * The values required to configure the destination.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("configuration")
     private Optional<? extends DestinationConfiguration> configuration;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -75,9 +75,10 @@ public class DestinationPatchRequest {
         return (Optional<ScopedResourceRequirements>) resourceAllocation;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the destination.
@@ -87,6 +88,7 @@ public class DestinationPatchRequest {
         this.configuration = Optional.ofNullable(configuration);
         return this;
     }
+
 
     /**
      * The values required to configure the destination.
@@ -103,6 +105,7 @@ public class DestinationPatchRequest {
         return this;
     }
 
+
     public DestinationPatchRequest withName(Optional<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
@@ -118,6 +121,7 @@ public class DestinationPatchRequest {
         return this;
     }
 
+
     /**
      * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
      */
@@ -127,7 +131,6 @@ public class DestinationPatchRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,17 +141,15 @@ public class DestinationPatchRequest {
         }
         DestinationPatchRequest other = (DestinationPatchRequest) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            name,
-            resourceAllocation);
+        return Utils.enhancedHash(
+            configuration, name, resourceAllocation);
     }
     
     @Override
@@ -158,18 +159,20 @@ public class DestinationPatchRequest {
                 "name", name,
                 "resourceAllocation", resourceAllocation);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationConfiguration> configuration = Optional.empty();
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the destination.
@@ -189,6 +192,7 @@ public class DestinationPatchRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -200,6 +204,7 @@ public class DestinationPatchRequest {
             this.name = name;
             return this;
         }
+
 
         /**
          * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
@@ -218,12 +223,12 @@ public class DestinationPatchRequest {
             this.resourceAllocation = resourceAllocation;
             return this;
         }
-        
+
         public DestinationPatchRequest build() {
+
             return new DestinationPatchRequest(
-                configuration,
-                name,
-                resourceAllocation);
+                configuration, name, resourceAllocation);
         }
+
     }
 }

@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,7 +24,6 @@ import java.util.Optional;
  * <p>Configuration to connect to the Vectara instance
  */
 public class DestinationVectara {
-
     /**
      * The Name of Corpus to load data into
      */
@@ -37,6 +35,7 @@ public class DestinationVectara {
      */
     @JsonProperty("customer_id")
     private String customerId;
+
 
     @JsonProperty("destinationType")
     private Vectara destinationType;
@@ -105,7 +104,9 @@ public class DestinationVectara {
             String corpusName,
             String customerId,
             OAuth20Credentials oauth2) {
-        this(corpusName, customerId, Optional.empty(), oauth2, Optional.empty(), Optional.empty(), Optional.empty());
+        this(corpusName, customerId, Optional.empty(),
+            oauth2, Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -171,9 +172,10 @@ public class DestinationVectara {
         return titleField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Name of Corpus to load data into
@@ -202,6 +204,7 @@ public class DestinationVectara {
         return this;
     }
 
+
     /**
      * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
      */
@@ -229,6 +232,7 @@ public class DestinationVectara {
         return this;
     }
 
+
     /**
      * Parallelize indexing into Vectara with multiple threads
      */
@@ -246,6 +250,7 @@ public class DestinationVectara {
         this.textFields = Optional.ofNullable(textFields);
         return this;
     }
+
 
     /**
      * List of fields in the record that should be in the section of the document. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
@@ -265,6 +270,7 @@ public class DestinationVectara {
         return this;
     }
 
+
     /**
      * A field that will be used to populate the `title` of each document. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
      */
@@ -274,7 +280,6 @@ public class DestinationVectara {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -285,27 +290,22 @@ public class DestinationVectara {
         }
         DestinationVectara other = (DestinationVectara) o;
         return 
-            Objects.deepEquals(this.corpusName, other.corpusName) &&
-            Objects.deepEquals(this.customerId, other.customerId) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.metadataFields, other.metadataFields) &&
-            Objects.deepEquals(this.oauth2, other.oauth2) &&
-            Objects.deepEquals(this.parallelize, other.parallelize) &&
-            Objects.deepEquals(this.textFields, other.textFields) &&
-            Objects.deepEquals(this.titleField, other.titleField);
+            Utils.enhancedDeepEquals(this.corpusName, other.corpusName) &&
+            Utils.enhancedDeepEquals(this.customerId, other.customerId) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.metadataFields, other.metadataFields) &&
+            Utils.enhancedDeepEquals(this.oauth2, other.oauth2) &&
+            Utils.enhancedDeepEquals(this.parallelize, other.parallelize) &&
+            Utils.enhancedDeepEquals(this.textFields, other.textFields) &&
+            Utils.enhancedDeepEquals(this.titleField, other.titleField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            corpusName,
-            customerId,
-            destinationType,
-            metadataFields,
-            oauth2,
-            parallelize,
-            textFields,
-            titleField);
+        return Utils.enhancedHash(
+            corpusName, customerId, destinationType,
+            metadataFields, oauth2, parallelize,
+            textFields, titleField);
     }
     
     @Override
@@ -320,26 +320,28 @@ public class DestinationVectara {
                 "textFields", textFields,
                 "titleField", titleField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String corpusName;
- 
+
         private String customerId;
- 
+
         private Optional<? extends List<String>> metadataFields = Optional.empty();
- 
+
         private OAuth20Credentials oauth2;
- 
+
         private Optional<Boolean> parallelize;
- 
+
         private Optional<? extends List<String>> textFields = Optional.empty();
- 
+
         private Optional<String> titleField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Name of Corpus to load data into
@@ -350,6 +352,7 @@ public class DestinationVectara {
             return this;
         }
 
+
         /**
          * Your customer id as it is in the authenticaion url
          */
@@ -358,6 +361,7 @@ public class DestinationVectara {
             this.customerId = customerId;
             return this;
         }
+
 
         /**
          * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
@@ -377,6 +381,7 @@ public class DestinationVectara {
             return this;
         }
 
+
         /**
          * OAuth2.0 credentials used to authenticate admin actions (creating/deleting corpora)
          */
@@ -385,6 +390,7 @@ public class DestinationVectara {
             this.oauth2 = oauth2;
             return this;
         }
+
 
         /**
          * Parallelize indexing into Vectara with multiple threads
@@ -404,6 +410,7 @@ public class DestinationVectara {
             return this;
         }
 
+
         /**
          * List of fields in the record that should be in the section of the document. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
          */
@@ -422,6 +429,7 @@ public class DestinationVectara {
             return this;
         }
 
+
         /**
          * A field that will be used to populate the `title` of each document. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
          */
@@ -439,7 +447,7 @@ public class DestinationVectara {
             this.titleField = titleField;
             return this;
         }
-        
+
         public DestinationVectara build() {
             if (parallelize == null) {
                 parallelize = _SINGLETON_VALUE_Parallelize.value();
@@ -447,15 +455,13 @@ public class DestinationVectara {
             if (titleField == null) {
                 titleField = _SINGLETON_VALUE_TitleField.value();
             }
+
             return new DestinationVectara(
-                corpusName,
-                customerId,
-                metadataFields,
-                oauth2,
-                parallelize,
-                textFields,
+                corpusName, customerId, metadataFields,
+                oauth2, parallelize, textFields,
                 titleField);
         }
+
 
         private static final LazySingletonValue<Vectara> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

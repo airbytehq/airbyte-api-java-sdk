@@ -11,12 +11,20 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Boolean;
+import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
+
 public class SourceRecurly {
+    /**
+     * Days in length for each API call to get data from the accounts stream. Smaller values will result in more API calls but better concurrency.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("accounts_step_days")
+    private Optional<Long> accountsStepDays;
 
     /**
      * Recurly API Key. See the  &lt;a href="https://docs.airbyte.com/integrations/sources/recurly"&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -38,26 +46,59 @@ public class SourceRecurly {
     @JsonProperty("end_time")
     private Optional<String> endTime;
 
+    /**
+     * Set to true for sandbox accounts (400 requests/min, all types). Defaults to false for production accounts (1,000 GET requests/min).
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("is_sandbox")
+    private Optional<Boolean> isSandbox;
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
+
     @JsonProperty("sourceType")
     private Recurly sourceType;
 
     @JsonCreator
     public SourceRecurly(
+            @JsonProperty("accounts_step_days") Optional<Long> accountsStepDays,
             @JsonProperty("api_key") String apiKey,
             @JsonProperty("begin_time") Optional<String> beginTime,
-            @JsonProperty("end_time") Optional<String> endTime) {
+            @JsonProperty("end_time") Optional<String> endTime,
+            @JsonProperty("is_sandbox") Optional<Boolean> isSandbox,
+            @JsonProperty("num_workers") Optional<Long> numWorkers) {
+        Utils.checkNotNull(accountsStepDays, "accountsStepDays");
         Utils.checkNotNull(apiKey, "apiKey");
         Utils.checkNotNull(beginTime, "beginTime");
         Utils.checkNotNull(endTime, "endTime");
+        Utils.checkNotNull(isSandbox, "isSandbox");
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.accountsStepDays = accountsStepDays;
         this.apiKey = apiKey;
         this.beginTime = beginTime;
         this.endTime = endTime;
+        this.isSandbox = isSandbox;
+        this.numWorkers = numWorkers;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
     }
     
     public SourceRecurly(
             String apiKey) {
-        this(apiKey, Optional.empty(), Optional.empty());
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * Days in length for each API call to get data from the accounts stream. Smaller values will result in more API calls but better concurrency.
+     */
+    @JsonIgnore
+    public Optional<Long> accountsStepDays() {
+        return accountsStepDays;
     }
 
     /**
@@ -84,14 +125,50 @@ public class SourceRecurly {
         return endTime;
     }
 
+    /**
+     * Set to true for sandbox accounts (400 requests/min, all types). Defaults to false for production accounts (1,000 GET requests/min).
+     */
+    @JsonIgnore
+    public Optional<Boolean> isSandbox() {
+        return isSandbox;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
     @JsonIgnore
     public Recurly sourceType() {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    /**
+     * Days in length for each API call to get data from the accounts stream. Smaller values will result in more API calls but better concurrency.
+     */
+    public SourceRecurly withAccountsStepDays(long accountsStepDays) {
+        Utils.checkNotNull(accountsStepDays, "accountsStepDays");
+        this.accountsStepDays = Optional.ofNullable(accountsStepDays);
+        return this;
+    }
+
+
+    /**
+     * Days in length for each API call to get data from the accounts stream. Smaller values will result in more API calls but better concurrency.
+     */
+    public SourceRecurly withAccountsStepDays(Optional<Long> accountsStepDays) {
+        Utils.checkNotNull(accountsStepDays, "accountsStepDays");
+        this.accountsStepDays = accountsStepDays;
+        return this;
+    }
 
     /**
      * Recurly API Key. See the  &lt;a href="https://docs.airbyte.com/integrations/sources/recurly"&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -111,6 +188,7 @@ public class SourceRecurly {
         return this;
     }
 
+
     /**
      * ISO8601 timestamp from which the replication from Recurly API will start from.
      */
@@ -129,6 +207,7 @@ public class SourceRecurly {
         return this;
     }
 
+
     /**
      * ISO8601 timestamp to which the replication from Recurly API will stop. Records after that date won't be imported.
      */
@@ -138,7 +217,44 @@ public class SourceRecurly {
         return this;
     }
 
-    
+    /**
+     * Set to true for sandbox accounts (400 requests/min, all types). Defaults to false for production accounts (1,000 GET requests/min).
+     */
+    public SourceRecurly withIsSandbox(boolean isSandbox) {
+        Utils.checkNotNull(isSandbox, "isSandbox");
+        this.isSandbox = Optional.ofNullable(isSandbox);
+        return this;
+    }
+
+
+    /**
+     * Set to true for sandbox accounts (400 requests/min, all types). Defaults to false for production accounts (1,000 GET requests/min).
+     */
+    public SourceRecurly withIsSandbox(Optional<Boolean> isSandbox) {
+        Utils.checkNotNull(isSandbox, "isSandbox");
+        this.isSandbox = isSandbox;
+        return this;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceRecurly withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceRecurly withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,41 +265,73 @@ public class SourceRecurly {
         }
         SourceRecurly other = (SourceRecurly) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.beginTime, other.beginTime) &&
-            Objects.deepEquals(this.endTime, other.endTime) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountsStepDays, other.accountsStepDays) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.beginTime, other.beginTime) &&
+            Utils.enhancedDeepEquals(this.endTime, other.endTime) &&
+            Utils.enhancedDeepEquals(this.isSandbox, other.isSandbox) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            beginTime,
-            endTime,
+        return Utils.enhancedHash(
+            accountsStepDays, apiKey, beginTime,
+            endTime, isSandbox, numWorkers,
             sourceType);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceRecurly.class,
+                "accountsStepDays", accountsStepDays,
                 "apiKey", apiKey,
                 "beginTime", beginTime,
                 "endTime", endTime,
+                "isSandbox", isSandbox,
+                "numWorkers", numWorkers,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Optional<Long> accountsStepDays;
+
         private String apiKey;
- 
+
         private Optional<String> beginTime = Optional.empty();
- 
+
         private Optional<String> endTime = Optional.empty();
-        
+
+        private Optional<Boolean> isSandbox;
+
+        private Optional<Long> numWorkers;
+
         private Builder() {
           // force use of static builder() method
         }
+
+
+        /**
+         * Days in length for each API call to get data from the accounts stream. Smaller values will result in more API calls but better concurrency.
+         */
+        public Builder accountsStepDays(long accountsStepDays) {
+            Utils.checkNotNull(accountsStepDays, "accountsStepDays");
+            this.accountsStepDays = Optional.ofNullable(accountsStepDays);
+            return this;
+        }
+
+        /**
+         * Days in length for each API call to get data from the accounts stream. Smaller values will result in more API calls but better concurrency.
+         */
+        public Builder accountsStepDays(Optional<Long> accountsStepDays) {
+            Utils.checkNotNull(accountsStepDays, "accountsStepDays");
+            this.accountsStepDays = accountsStepDays;
+            return this;
+        }
+
 
         /**
          * Recurly API Key. See the  &lt;a href="https://docs.airbyte.com/integrations/sources/recurly"&gt;docs&lt;/a&gt; for more information on how to generate this key.
@@ -193,6 +341,7 @@ public class SourceRecurly {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * ISO8601 timestamp from which the replication from Recurly API will start from.
@@ -212,6 +361,7 @@ public class SourceRecurly {
             return this;
         }
 
+
         /**
          * ISO8601 timestamp to which the replication from Recurly API will stop. Records after that date won't be imported.
          */
@@ -229,13 +379,79 @@ public class SourceRecurly {
             this.endTime = endTime;
             return this;
         }
-        
-        public SourceRecurly build() {
-            return new SourceRecurly(
-                apiKey,
-                beginTime,
-                endTime);
+
+
+        /**
+         * Set to true for sandbox accounts (400 requests/min, all types). Defaults to false for production accounts (1,000 GET requests/min).
+         */
+        public Builder isSandbox(boolean isSandbox) {
+            Utils.checkNotNull(isSandbox, "isSandbox");
+            this.isSandbox = Optional.ofNullable(isSandbox);
+            return this;
         }
+
+        /**
+         * Set to true for sandbox accounts (400 requests/min, all types). Defaults to false for production accounts (1,000 GET requests/min).
+         */
+        public Builder isSandbox(Optional<Boolean> isSandbox) {
+            Utils.checkNotNull(isSandbox, "isSandbox");
+            this.isSandbox = isSandbox;
+            return this;
+        }
+
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
+        public SourceRecurly build() {
+            if (accountsStepDays == null) {
+                accountsStepDays = _SINGLETON_VALUE_AccountsStepDays.value();
+            }
+            if (isSandbox == null) {
+                isSandbox = _SINGLETON_VALUE_IsSandbox.value();
+            }
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }
+
+            return new SourceRecurly(
+                accountsStepDays, apiKey, beginTime,
+                endTime, isSandbox, numWorkers);
+        }
+
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_AccountsStepDays =
+                new LazySingletonValue<>(
+                        "accounts_step_days",
+                        "30",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IsSandbox =
+                new LazySingletonValue<>(
+                        "is_sandbox",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "10",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Recurly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

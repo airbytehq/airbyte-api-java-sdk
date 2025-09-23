@@ -16,17 +16,17 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationRedis {
 
+public class DestinationRedis {
     /**
      * Redis cache type to store data in.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cache_type")
     private Optional<? extends CacheType> cacheType;
+
 
     @JsonProperty("destinationType")
     private Redis destinationType;
@@ -111,7 +111,9 @@ public class DestinationRedis {
     public DestinationRedis(
             String host,
             String username) {
-        this(Optional.empty(), host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(Optional.empty(), host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), username);
     }
 
     /**
@@ -187,9 +189,10 @@ public class DestinationRedis {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Redis cache type to store data in.
@@ -199,6 +202,7 @@ public class DestinationRedis {
         this.cacheType = Optional.ofNullable(cacheType);
         return this;
     }
+
 
     /**
      * Redis cache type to store data in.
@@ -227,6 +231,7 @@ public class DestinationRedis {
         return this;
     }
 
+
     /**
      * Password associated with Redis.
      */
@@ -245,6 +250,7 @@ public class DestinationRedis {
         return this;
     }
 
+
     /**
      * Port of Redis.
      */
@@ -262,6 +268,7 @@ public class DestinationRedis {
         this.ssl = Optional.ofNullable(ssl);
         return this;
     }
+
 
     /**
      * Indicates whether SSL encryption protocol will be used to connect to Redis. It is recommended to use SSL connection if possible.
@@ -282,6 +289,7 @@ public class DestinationRedis {
         return this;
     }
 
+
     /**
      * SSL connection modes. 
      *   &lt;li&gt;&lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Always require encryption and verifies the identity of the source database server
@@ -301,6 +309,7 @@ public class DestinationRedis {
         return this;
     }
 
+
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
@@ -319,7 +328,6 @@ public class DestinationRedis {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -330,29 +338,23 @@ public class DestinationRedis {
         }
         DestinationRedis other = (DestinationRedis) o;
         return 
-            Objects.deepEquals(this.cacheType, other.cacheType) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.sslMode, other.sslMode) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.cacheType, other.cacheType) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cacheType,
-            destinationType,
-            host,
-            password,
-            port,
-            ssl,
-            sslMode,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            cacheType, destinationType, host,
+            password, port, ssl,
+            sslMode, tunnelMethod, username);
     }
     
     @Override
@@ -368,28 +370,30 @@ public class DestinationRedis {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends CacheType> cacheType;
- 
+
         private String host;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends DestinationRedisSSLModes> sslMode = Optional.empty();
- 
+
         private Optional<? extends DestinationRedisSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Redis cache type to store data in.
@@ -409,6 +413,7 @@ public class DestinationRedis {
             return this;
         }
 
+
         /**
          * Redis host to connect to.
          */
@@ -417,6 +422,7 @@ public class DestinationRedis {
             this.host = host;
             return this;
         }
+
 
         /**
          * Password associated with Redis.
@@ -436,6 +442,7 @@ public class DestinationRedis {
             return this;
         }
 
+
         /**
          * Port of Redis.
          */
@@ -454,6 +461,7 @@ public class DestinationRedis {
             return this;
         }
 
+
         /**
          * Indicates whether SSL encryption protocol will be used to connect to Redis. It is recommended to use SSL connection if possible.
          */
@@ -471,6 +479,7 @@ public class DestinationRedis {
             this.ssl = ssl;
             return this;
         }
+
 
         /**
          * SSL connection modes. 
@@ -492,6 +501,7 @@ public class DestinationRedis {
             return this;
         }
 
+
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
@@ -510,6 +520,7 @@ public class DestinationRedis {
             return this;
         }
 
+
         /**
          * Username associated with Redis.
          */
@@ -518,7 +529,7 @@ public class DestinationRedis {
             this.username = username;
             return this;
         }
-        
+
         public DestinationRedis build() {
             if (cacheType == null) {
                 cacheType = _SINGLETON_VALUE_CacheType.value();
@@ -529,16 +540,13 @@ public class DestinationRedis {
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new DestinationRedis(
-                cacheType,
-                host,
-                password,
-                port,
-                ssl,
-                sslMode,
-                tunnelMethod,
-                username);
+                cacheType, host, password,
+                port, ssl, sslMode,
+                tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<? extends CacheType>> _SINGLETON_VALUE_CacheType =
                 new LazySingletonValue<>(

@@ -12,12 +12,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceSalesloft {
 
     @JsonProperty("credentials")
     private SourceSalesloftCredentials credentials;
+
 
     @JsonProperty("sourceType")
     private Salesloft sourceType;
@@ -57,9 +58,10 @@ public class SourceSalesloft {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceSalesloft withCredentials(SourceSalesloftCredentials credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -76,7 +78,6 @@ public class SourceSalesloft {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceSalesloft {
         }
         SourceSalesloft other = (SourceSalesloft) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate);
     }
     
     @Override
@@ -107,22 +106,25 @@ public class SourceSalesloft {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceSalesloftCredentials credentials;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceSalesloftCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * The date from which you'd like to replicate data for Salesloft API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
@@ -132,12 +134,13 @@ public class SourceSalesloft {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSalesloft build() {
+
             return new SourceSalesloft(
-                credentials,
-                startDate);
+                credentials, startDate);
         }
+
 
         private static final LazySingletonValue<Salesloft> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

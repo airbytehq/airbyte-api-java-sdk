@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceFreshservice {
-
     /**
      * Freshservice API Key. See &lt;a href="https://api.freshservice.com/#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
@@ -27,6 +26,7 @@ public class SourceFreshservice {
      */
     @JsonProperty("domain_name")
     private String domainName;
+
 
     @JsonProperty("sourceType")
     private Freshservice sourceType;
@@ -80,9 +80,10 @@ public class SourceFreshservice {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Freshservice API Key. See &lt;a href="https://api.freshservice.com/#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
@@ -111,7 +112,6 @@ public class SourceFreshservice {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +122,16 @@ public class SourceFreshservice {
         }
         SourceFreshservice other = (SourceFreshservice) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domainName, other.domainName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domainName, other.domainName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domainName,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, domainName, sourceType,
             startDate);
     }
     
@@ -145,18 +143,20 @@ public class SourceFreshservice {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String domainName;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Freshservice API Key. See &lt;a href="https://api.freshservice.com/#authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
@@ -167,6 +167,7 @@ public class SourceFreshservice {
             return this;
         }
 
+
         /**
          * The name of your Freshservice domain
          */
@@ -176,6 +177,7 @@ public class SourceFreshservice {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2020-10-01T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -184,13 +186,13 @@ public class SourceFreshservice {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceFreshservice build() {
+
             return new SourceFreshservice(
-                apiKey,
-                domainName,
-                startDate);
+                apiKey, domainName, startDate);
         }
+
 
         private static final LazySingletonValue<Freshservice> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

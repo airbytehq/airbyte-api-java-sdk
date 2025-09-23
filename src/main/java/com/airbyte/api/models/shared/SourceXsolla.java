@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceXsolla {
-
     /**
      * Go to Xsolla Dashboard and from company setting get the api_key
      */
@@ -27,6 +26,7 @@ public class SourceXsolla {
      */
     @JsonProperty("project_id")
     private double projectId;
+
 
     @JsonProperty("sourceType")
     private Xsolla sourceType;
@@ -63,9 +63,10 @@ public class SourceXsolla {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Go to Xsolla Dashboard and from company setting get the api_key
@@ -85,7 +86,6 @@ public class SourceXsolla {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -96,17 +96,15 @@ public class SourceXsolla {
         }
         SourceXsolla other = (SourceXsolla) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            projectId,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, projectId, sourceType);
     }
     
     @Override
@@ -116,16 +114,18 @@ public class SourceXsolla {
                 "projectId", projectId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Double projectId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Go to Xsolla Dashboard and from company setting get the api_key
@@ -136,6 +136,7 @@ public class SourceXsolla {
             return this;
         }
 
+
         /**
          * You can find this parameter in your Publisher Account next to the name of the project . Example: 44056
          */
@@ -144,12 +145,13 @@ public class SourceXsolla {
             this.projectId = projectId;
             return this;
         }
-        
+
         public SourceXsolla build() {
+
             return new SourceXsolla(
-                apiKey,
-                projectId);
+                apiKey, projectId);
         }
+
 
         private static final LazySingletonValue<Xsolla> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

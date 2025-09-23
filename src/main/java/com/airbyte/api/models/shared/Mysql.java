@@ -14,7 +14,7 @@ public enum Mysql {
     @JsonValue
     private final String value;
 
-    private Mysql(String value) {
+    Mysql(String value) {
         this.value = value;
     }
     

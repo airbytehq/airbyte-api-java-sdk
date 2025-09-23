@@ -14,7 +14,7 @@ public enum ServiceNow {
     @JsonValue
     private final String value;
 
-    private ServiceNow(String value) {
+    ServiceNow(String value) {
         this.value = value;
     }
     

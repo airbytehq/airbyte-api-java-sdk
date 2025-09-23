@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleDirectory {
 
+public class SourceGoogleDirectory {
     /**
      * Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceGoogleDirectoryGoogleCredentials> credentials;
+
 
     @JsonProperty("sourceType")
     private GoogleDirectory sourceType;
@@ -55,9 +55,10 @@ public class SourceGoogleDirectory {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
@@ -68,6 +69,7 @@ public class SourceGoogleDirectory {
         return this;
     }
 
+
     /**
      * Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
      */
@@ -77,7 +79,6 @@ public class SourceGoogleDirectory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,15 +89,14 @@ public class SourceGoogleDirectory {
         }
         SourceGoogleDirectory other = (SourceGoogleDirectory) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, sourceType);
     }
     
     @Override
@@ -105,14 +105,16 @@ public class SourceGoogleDirectory {
                 "credentials", credentials,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceGoogleDirectoryGoogleCredentials> credentials = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Google APIs use the OAuth 2.0 protocol for authentication and authorization. The Source supports &lt;a href="https://developers.google.com/identity/protocols/oauth2#webserver" target="_blank"&gt;Web server application&lt;/a&gt; and &lt;a href="https://developers.google.com/identity/protocols/oauth2#serviceaccount" target="_blank"&gt;Service accounts&lt;/a&gt; scenarios.
@@ -131,11 +133,13 @@ public class SourceGoogleDirectory {
             this.credentials = credentials;
             return this;
         }
-        
+
         public SourceGoogleDirectory build() {
+
             return new SourceGoogleDirectory(
                 credentials);
         }
+
 
         private static final LazySingletonValue<GoogleDirectory> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

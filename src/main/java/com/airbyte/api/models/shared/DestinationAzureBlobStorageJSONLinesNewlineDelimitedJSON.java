@@ -19,17 +19,19 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     private Optional<? extends DestinationAzureBlobStorageFlattening> flattening;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -67,9 +69,10 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
         return (Optional<DestinationAzureBlobStorageFormatType>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON withAdditionalProperty(String key, Object value) {
@@ -77,8 +80,7 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -90,6 +92,7 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
         this.flattening = Optional.ofNullable(flattening);
         return this;
     }
+
 
     public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON withFlattening(Optional<? extends DestinationAzureBlobStorageFlattening> flattening) {
         Utils.checkNotNull(flattening, "flattening");
@@ -103,13 +106,13 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
         return this;
     }
 
+
     public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON withFormatType(Optional<? extends DestinationAzureBlobStorageFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -120,17 +123,15 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
         }
         DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON other = (DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.flattening, other.flattening) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.flattening, other.flattening) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            flattening,
-            formatType);
+        return Utils.enhancedHash(
+            additionalProperties, flattening, formatType);
     }
     
     @Override
@@ -140,15 +141,16 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
                 "flattening", flattening,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationAzureBlobStorageFlattening> flattening;
- 
+
         private Optional<? extends DestinationAzureBlobStorageFormatType> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -169,6 +171,7 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
             return this;
         }
 
+
         public Builder flattening(DestinationAzureBlobStorageFlattening flattening) {
             Utils.checkNotNull(flattening, "flattening");
             this.flattening = Optional.ofNullable(flattening);
@@ -181,6 +184,7 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
             return this;
         }
 
+
         public Builder formatType(DestinationAzureBlobStorageFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
             this.formatType = Optional.ofNullable(formatType);
@@ -192,7 +196,7 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
             this.formatType = formatType;
             return this;
         }
-        
+
         public DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON build() {
             if (flattening == null) {
                 flattening = _SINGLETON_VALUE_Flattening.value();
@@ -200,11 +204,12 @@ public class DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new DestinationAzureBlobStorageJSONLinesNewlineDelimitedJSON(
-                flattening,
-                formatType)
+                flattening, formatType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationAzureBlobStorageFlattening>> _SINGLETON_VALUE_Flattening =
                 new LazySingletonValue<>(

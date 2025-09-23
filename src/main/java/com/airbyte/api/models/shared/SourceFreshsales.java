@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceFreshsales {
-
     /**
      * Freshsales API Key. See &lt;a href="https://crmsupport.freshworks.com/support/solutions/articles/50000002503-how-to-find-my-api-key-"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
@@ -26,6 +25,7 @@ public class SourceFreshsales {
      */
     @JsonProperty("domain_name")
     private String domainName;
+
 
     @JsonProperty("sourceType")
     private Freshsales sourceType;
@@ -62,9 +62,10 @@ public class SourceFreshsales {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Freshsales API Key. See &lt;a href="https://crmsupport.freshworks.com/support/solutions/articles/50000002503-how-to-find-my-api-key-"&gt;here&lt;/a&gt;. The key is case sensitive.
@@ -84,7 +85,6 @@ public class SourceFreshsales {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceFreshsales {
         }
         SourceFreshsales other = (SourceFreshsales) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domainName, other.domainName) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domainName, other.domainName) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domainName,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, domainName, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceFreshsales {
                 "domainName", domainName,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String domainName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Freshsales API Key. See &lt;a href="https://crmsupport.freshworks.com/support/solutions/articles/50000002503-how-to-find-my-api-key-"&gt;here&lt;/a&gt;. The key is case sensitive.
@@ -135,6 +135,7 @@ public class SourceFreshsales {
             return this;
         }
 
+
         /**
          * The Name of your Freshsales domain
          */
@@ -143,12 +144,13 @@ public class SourceFreshsales {
             this.domainName = domainName;
             return this;
         }
-        
+
         public SourceFreshsales build() {
+
             return new SourceFreshsales(
-                apiKey,
-                domainName);
+                apiKey, domainName);
         }
+
 
         private static final LazySingletonValue<Freshsales> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

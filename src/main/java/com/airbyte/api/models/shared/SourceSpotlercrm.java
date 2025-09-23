@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSpotlercrm {
-
     /**
      * Access Token to authenticate API requests. Generate it by logging into your CRM system, navigating to Settings / Integrations / API V4, and clicking 'generate new key'.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("sourceType")
     private Spotlercrm sourceType;
@@ -45,9 +45,10 @@ public class SourceSpotlercrm {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token to authenticate API requests. Generate it by logging into your CRM system, navigating to Settings / Integrations / API V4, and clicking 'generate new key'.
@@ -58,7 +59,6 @@ public class SourceSpotlercrm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceSpotlercrm {
         }
         SourceSpotlercrm other = (SourceSpotlercrm) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType);
+        return Utils.enhancedHash(
+            accessToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceSpotlercrm {
                 "accessToken", accessToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token to authenticate API requests. Generate it by logging into your CRM system, navigating to Settings / Integrations / API V4, and clicking 'generate new key'.
@@ -103,11 +104,13 @@ public class SourceSpotlercrm {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceSpotlercrm build() {
+
             return new SourceSpotlercrm(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Spotlercrm> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

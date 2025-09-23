@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationMssqlV2 {
 
+public class DestinationMssqlV2 {
     /**
      * The name of the MSSQL database.
      */
     @JsonProperty("database")
     private String database;
+
 
     @JsonProperty("destinationType")
     private MssqlV2 destinationType;
@@ -118,7 +118,9 @@ public class DestinationMssqlV2 {
             long port,
             DestinationMssqlV2SSLMethod sslMethod,
             String user) {
-        this(database, host, Optional.empty(), loadType, Optional.empty(), port, Optional.empty(), sslMethod, user);
+        this(database, host, Optional.empty(),
+            loadType, Optional.empty(), port,
+            Optional.empty(), sslMethod, user);
     }
 
     /**
@@ -198,9 +200,10 @@ public class DestinationMssqlV2 {
         return user;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The name of the MSSQL database.
@@ -229,6 +232,7 @@ public class DestinationMssqlV2 {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -255,6 +259,7 @@ public class DestinationMssqlV2 {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with this username.
@@ -283,6 +288,7 @@ public class DestinationMssqlV2 {
         return this;
     }
 
+
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
      */
@@ -310,7 +316,6 @@ public class DestinationMssqlV2 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -321,30 +326,24 @@ public class DestinationMssqlV2 {
         }
         DestinationMssqlV2 other = (DestinationMssqlV2) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.loadType, other.loadType) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.sslMethod, other.sslMethod) &&
-            Objects.deepEquals(this.user, other.user);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.loadType, other.loadType) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.sslMethod, other.sslMethod) &&
+            Utils.enhancedDeepEquals(this.user, other.user);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            destinationType,
-            host,
-            jdbcUrlParams,
-            loadType,
-            password,
-            port,
-            schema,
-            sslMethod,
+        return Utils.enhancedHash(
+            database, destinationType, host,
+            jdbcUrlParams, loadType, password,
+            port, schema, sslMethod,
             user);
     }
     
@@ -362,30 +361,32 @@ public class DestinationMssqlV2 {
                 "sslMethod", sslMethod,
                 "user", user);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private DestinationMssqlV2LoadType loadType;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Long port;
- 
+
         private Optional<String> schema;
- 
+
         private DestinationMssqlV2SSLMethod sslMethod;
- 
+
         private String user;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The name of the MSSQL database.
@@ -396,6 +397,7 @@ public class DestinationMssqlV2 {
             return this;
         }
 
+
         /**
          * The host name of the MSSQL database.
          */
@@ -404,6 +406,7 @@ public class DestinationMssqlV2 {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -423,6 +426,7 @@ public class DestinationMssqlV2 {
             return this;
         }
 
+
         /**
          * Specifies the type of load mechanism (e.g., BULK, INSERT) and its associated configuration.
          */
@@ -431,6 +435,7 @@ public class DestinationMssqlV2 {
             this.loadType = loadType;
             return this;
         }
+
 
         /**
          * The password associated with this username.
@@ -450,6 +455,7 @@ public class DestinationMssqlV2 {
             return this;
         }
 
+
         /**
          * The port of the MSSQL database.
          */
@@ -458,6 +464,7 @@ public class DestinationMssqlV2 {
             this.port = port;
             return this;
         }
+
 
         /**
          * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
@@ -477,6 +484,7 @@ public class DestinationMssqlV2 {
             return this;
         }
 
+
         /**
          * The encryption method which is used to communicate with the database.
          */
@@ -486,6 +494,7 @@ public class DestinationMssqlV2 {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -494,22 +503,18 @@ public class DestinationMssqlV2 {
             this.user = user;
             return this;
         }
-        
+
         public DestinationMssqlV2 build() {
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
+
             return new DestinationMssqlV2(
-                database,
-                host,
-                jdbcUrlParams,
-                loadType,
-                password,
-                port,
-                schema,
-                sslMethod,
-                user);
+                database, host, jdbcUrlParams,
+                loadType, password, port,
+                schema, sslMethod, user);
         }
+
 
         private static final LazySingletonValue<MssqlV2> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

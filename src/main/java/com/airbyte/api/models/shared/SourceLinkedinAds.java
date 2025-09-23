@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceLinkedinAds {
 
+public class SourceLinkedinAds {
     /**
      * Specify the account IDs to pull data from, separated by a space. Leave this field empty if you want to pull the data from all accounts accessible by the authenticated user. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn docs&lt;/a&gt; to locate these IDs.
      */
@@ -29,9 +28,11 @@ public class SourceLinkedinAds {
     @JsonProperty("account_ids")
     private Optional<? extends List<Long>> accountIds;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ad_analytics_reports")
     private Optional<? extends List<AdAnalyticsReportConfiguration>> adAnalyticsReports;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -43,6 +44,14 @@ public class SourceLinkedinAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
+
+    /**
+     * The number of workers to use for the connector. This is used to limit the number of concurrent requests to the LinkedIn Ads API. If not set, the default is 3 workers.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
 
     @JsonProperty("sourceType")
     private SourceLinkedinAdsLinkedinAds sourceType;
@@ -59,23 +68,27 @@ public class SourceLinkedinAds {
             @JsonProperty("ad_analytics_reports") Optional<? extends List<AdAnalyticsReportConfiguration>> adAnalyticsReports,
             @JsonProperty("credentials") Optional<? extends SourceLinkedinAdsAuthentication> credentials,
             @JsonProperty("lookback_window") Optional<Long> lookbackWindow,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("start_date") LocalDate startDate) {
         Utils.checkNotNull(accountIds, "accountIds");
         Utils.checkNotNull(adAnalyticsReports, "adAnalyticsReports");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(startDate, "startDate");
         this.accountIds = accountIds;
         this.adAnalyticsReports = adAnalyticsReports;
         this.credentials = credentials;
         this.lookbackWindow = lookbackWindow;
+        this.numWorkers = numWorkers;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceLinkedinAds(
             LocalDate startDate) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
@@ -107,6 +120,14 @@ public class SourceLinkedinAds {
         return lookbackWindow;
     }
 
+    /**
+     * The number of workers to use for the connector. This is used to limit the number of concurrent requests to the LinkedIn Ads API. If not set, the default is 3 workers.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
     @JsonIgnore
     public SourceLinkedinAdsLinkedinAds sourceType() {
         return sourceType;
@@ -120,9 +141,10 @@ public class SourceLinkedinAds {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Specify the account IDs to pull data from, separated by a space. Leave this field empty if you want to pull the data from all accounts accessible by the authenticated user. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn docs&lt;/a&gt; to locate these IDs.
@@ -132,6 +154,7 @@ public class SourceLinkedinAds {
         this.accountIds = Optional.ofNullable(accountIds);
         return this;
     }
+
 
     /**
      * Specify the account IDs to pull data from, separated by a space. Leave this field empty if you want to pull the data from all accounts accessible by the authenticated user. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn docs&lt;/a&gt; to locate these IDs.
@@ -148,6 +171,7 @@ public class SourceLinkedinAds {
         return this;
     }
 
+
     public SourceLinkedinAds withAdAnalyticsReports(Optional<? extends List<AdAnalyticsReportConfiguration>> adAnalyticsReports) {
         Utils.checkNotNull(adAnalyticsReports, "adAnalyticsReports");
         this.adAnalyticsReports = adAnalyticsReports;
@@ -159,6 +183,7 @@ public class SourceLinkedinAds {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceLinkedinAds withCredentials(Optional<? extends SourceLinkedinAdsAuthentication> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -175,12 +200,32 @@ public class SourceLinkedinAds {
         return this;
     }
 
+
     /**
      * How far into the past to look for records. (in days)
      */
     public SourceLinkedinAds withLookbackWindow(Optional<Long> lookbackWindow) {
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
         this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+
+    /**
+     * The number of workers to use for the connector. This is used to limit the number of concurrent requests to the LinkedIn Ads API. If not set, the default is 3 workers.
+     */
+    public SourceLinkedinAds withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+
+    /**
+     * The number of workers to use for the connector. This is used to limit the number of concurrent requests to the LinkedIn Ads API. If not set, the default is 3 workers.
+     */
+    public SourceLinkedinAds withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
         return this;
     }
 
@@ -193,7 +238,6 @@ public class SourceLinkedinAds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -204,22 +248,20 @@ public class SourceLinkedinAds {
         }
         SourceLinkedinAds other = (SourceLinkedinAds) o;
         return 
-            Objects.deepEquals(this.accountIds, other.accountIds) &&
-            Objects.deepEquals(this.adAnalyticsReports, other.adAnalyticsReports) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountIds, other.accountIds) &&
+            Utils.enhancedDeepEquals(this.adAnalyticsReports, other.adAnalyticsReports) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountIds,
-            adAnalyticsReports,
-            credentials,
-            lookbackWindow,
-            sourceType,
+        return Utils.enhancedHash(
+            accountIds, adAnalyticsReports, credentials,
+            lookbackWindow, numWorkers, sourceType,
             startDate);
     }
     
@@ -230,25 +272,30 @@ public class SourceLinkedinAds {
                 "adAnalyticsReports", adAnalyticsReports,
                 "credentials", credentials,
                 "lookbackWindow", lookbackWindow,
+                "numWorkers", numWorkers,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<Long>> accountIds = Optional.empty();
- 
+
         private Optional<? extends List<AdAnalyticsReportConfiguration>> adAnalyticsReports = Optional.empty();
- 
+
         private Optional<? extends SourceLinkedinAdsAuthentication> credentials = Optional.empty();
- 
+
         private Optional<Long> lookbackWindow;
- 
+
+        private Optional<Long> numWorkers;
+
         private LocalDate startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Specify the account IDs to pull data from, separated by a space. Leave this field empty if you want to pull the data from all accounts accessible by the authenticated user. See the &lt;a href="https://www.linkedin.com/help/linkedin/answer/a424270/find-linkedin-ads-account-details?lang=en"&gt;LinkedIn docs&lt;/a&gt; to locate these IDs.
@@ -268,6 +315,7 @@ public class SourceLinkedinAds {
             return this;
         }
 
+
         public Builder adAnalyticsReports(List<AdAnalyticsReportConfiguration> adAnalyticsReports) {
             Utils.checkNotNull(adAnalyticsReports, "adAnalyticsReports");
             this.adAnalyticsReports = Optional.ofNullable(adAnalyticsReports);
@@ -280,6 +328,7 @@ public class SourceLinkedinAds {
             return this;
         }
 
+
         public Builder credentials(SourceLinkedinAdsAuthentication credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = Optional.ofNullable(credentials);
@@ -291,6 +340,7 @@ public class SourceLinkedinAds {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * How far into the past to look for records. (in days)
@@ -310,6 +360,26 @@ public class SourceLinkedinAds {
             return this;
         }
 
+
+        /**
+         * The number of workers to use for the connector. This is used to limit the number of concurrent requests to the LinkedIn Ads API. If not set, the default is 3 workers.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of workers to use for the connector. This is used to limit the number of concurrent requests to the LinkedIn Ads API. If not set, the default is 3 workers.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
+
         /**
          * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated.
          */
@@ -318,23 +388,31 @@ public class SourceLinkedinAds {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceLinkedinAds build() {
             if (lookbackWindow == null) {
                 lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
             }
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }
+
             return new SourceLinkedinAds(
-                accountIds,
-                adAnalyticsReports,
-                credentials,
-                lookbackWindow,
-                startDate);
+                accountIds, adAnalyticsReports, credentials,
+                lookbackWindow, numWorkers, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_LookbackWindow =
                 new LazySingletonValue<>(
                         "lookback_window",
                         "0",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "3",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<SourceLinkedinAdsLinkedinAds> _SINGLETON_VALUE_SourceType =

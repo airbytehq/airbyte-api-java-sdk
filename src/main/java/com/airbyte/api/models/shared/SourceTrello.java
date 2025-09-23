@@ -16,11 +16,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTrello {
 
+public class SourceTrello {
     /**
      * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
      */
@@ -33,6 +32,7 @@ public class SourceTrello {
      */
     @JsonProperty("key")
     private String key;
+
 
     @JsonProperty("sourceType")
     private Trello sourceType;
@@ -70,7 +70,8 @@ public class SourceTrello {
             String key,
             OffsetDateTime startDate,
             String token) {
-        this(Optional.empty(), key, startDate, token);
+        this(Optional.empty(), key, startDate,
+            token);
     }
 
     /**
@@ -111,9 +112,10 @@ public class SourceTrello {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
@@ -123,6 +125,7 @@ public class SourceTrello {
         this.boardIds = Optional.ofNullable(boardIds);
         return this;
     }
+
 
     /**
      * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
@@ -160,7 +163,6 @@ public class SourceTrello {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -171,21 +173,18 @@ public class SourceTrello {
         }
         SourceTrello other = (SourceTrello) o;
         return 
-            Objects.deepEquals(this.boardIds, other.boardIds) &&
-            Objects.deepEquals(this.key, other.key) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.boardIds, other.boardIds) &&
+            Utils.enhancedDeepEquals(this.key, other.key) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            boardIds,
-            key,
-            sourceType,
-            startDate,
-            token);
+        return Utils.enhancedHash(
+            boardIds, key, sourceType,
+            startDate, token);
     }
     
     @Override
@@ -197,20 +196,22 @@ public class SourceTrello {
                 "startDate", startDate,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> boardIds = Optional.empty();
- 
+
         private String key;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * IDs of the boards to replicate data from. If left empty, data from all boards to which you have access will be replicated. Please note that this is not the 8-character ID in the board's shortLink (URL of the board). Rather, what is required here is the 24-character ID usually returned by the API
@@ -230,6 +231,7 @@ public class SourceTrello {
             return this;
         }
 
+
         /**
          * Trello API key. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
          */
@@ -238,6 +240,7 @@ public class SourceTrello {
             this.key = key;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
@@ -248,6 +251,7 @@ public class SourceTrello {
             return this;
         }
 
+
         /**
          * Trello API token. See the &lt;a href="https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#using-basic-oauth"&gt;docs&lt;/a&gt; for instructions on how to generate it.
          */
@@ -256,14 +260,14 @@ public class SourceTrello {
             this.token = token;
             return this;
         }
-        
+
         public SourceTrello build() {
+
             return new SourceTrello(
-                boardIds,
-                key,
-                startDate,
+                boardIds, key, startDate,
                 token);
         }
+
 
         private static final LazySingletonValue<Trello> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

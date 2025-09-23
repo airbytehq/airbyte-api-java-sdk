@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSlackAPIToken {
-
     /**
      * A Slack bot token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; for instructions on how to generate it.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("option_title")
     private SourceSlackSchemasOptionTitle optionTitle;
@@ -45,9 +45,10 @@ public class SourceSlackAPIToken {
         return optionTitle;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A Slack bot token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; for instructions on how to generate it.
@@ -58,7 +59,6 @@ public class SourceSlackAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceSlackAPIToken {
         }
         SourceSlackAPIToken other = (SourceSlackAPIToken) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.optionTitle, other.optionTitle);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.optionTitle, other.optionTitle);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            optionTitle);
+        return Utils.enhancedHash(
+            apiToken, optionTitle);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceSlackAPIToken {
                 "apiToken", apiToken,
                 "optionTitle", optionTitle);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A Slack bot token. See the &lt;a href="https://docs.airbyte.com/integrations/sources/slack"&gt;docs&lt;/a&gt; for instructions on how to generate it.
@@ -103,11 +104,13 @@ public class SourceSlackAPIToken {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceSlackAPIToken build() {
+
             return new SourceSlackAPIToken(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<SourceSlackSchemasOptionTitle> _SINGLETON_VALUE_OptionTitle =
                 new LazySingletonValue<>(

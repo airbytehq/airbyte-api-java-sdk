@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ProjectSecret {
 
+public class ProjectSecret {
     /**
      * Mixpanel project secret. See the &lt;a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret"&gt;docs&lt;/a&gt; for more information on how to obtain this.
      */
     @JsonProperty("api_secret")
     private String apiSecret;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("option_title")
@@ -51,9 +51,10 @@ public class ProjectSecret {
         return (Optional<SourceMixpanelSchemasOptionTitle>) optionTitle;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Mixpanel project secret. See the &lt;a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret"&gt;docs&lt;/a&gt; for more information on how to obtain this.
@@ -64,7 +65,6 @@ public class ProjectSecret {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class ProjectSecret {
         }
         ProjectSecret other = (ProjectSecret) o;
         return 
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.optionTitle, other.optionTitle);
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.optionTitle, other.optionTitle);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiSecret,
-            optionTitle);
+        return Utils.enhancedHash(
+            apiSecret, optionTitle);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class ProjectSecret {
                 "apiSecret", apiSecret,
                 "optionTitle", optionTitle);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Mixpanel project secret. See the &lt;a href="https://developer.mixpanel.com/reference/project-secret#managing-a-projects-secret"&gt;docs&lt;/a&gt; for more information on how to obtain this.
@@ -109,11 +110,13 @@ public class ProjectSecret {
             this.apiSecret = apiSecret;
             return this;
         }
-        
+
         public ProjectSecret build() {
+
             return new ProjectSecret(
                 apiSecret);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMixpanelSchemasOptionTitle>> _SINGLETON_VALUE_OptionTitle =
                 new LazySingletonValue<>(

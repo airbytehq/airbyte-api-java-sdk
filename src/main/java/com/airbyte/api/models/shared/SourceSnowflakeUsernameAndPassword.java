@@ -5,18 +5,32 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+import java.lang.SuppressWarnings;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 
 public class SourceSnowflakeUsernameAndPassword {
 
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
+
+
+    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
-    private SourceSnowflakeSchemasCredentialsAuthType authType;
+    private Optional<? extends SourceSnowflakeSchemasAuthType> authType;
 
     /**
      * The password associated with the username.
@@ -32,18 +46,33 @@ public class SourceSnowflakeUsernameAndPassword {
 
     @JsonCreator
     public SourceSnowflakeUsernameAndPassword(
+            @JsonProperty("auth_type") Optional<? extends SourceSnowflakeSchemasAuthType> authType,
             @JsonProperty("password") String password,
             @JsonProperty("username") String username) {
+        Utils.checkNotNull(authType, "authType");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(username, "username");
-        this.authType = Builder._SINGLETON_VALUE_AuthType.value();
+        this.additionalProperties = new HashMap<>();
+        this.authType = authType;
         this.password = password;
         this.username = username;
     }
+    
+    public SourceSnowflakeUsernameAndPassword(
+            String password,
+            String username) {
+        this(Optional.empty(), password, username);
+    }
 
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
+    }
+
+    @SuppressWarnings("unchecked")
     @JsonIgnore
-    public SourceSnowflakeSchemasCredentialsAuthType authType() {
-        return authType;
+    public Optional<SourceSnowflakeSchemasAuthType> authType() {
+        return (Optional<SourceSnowflakeSchemasAuthType>) authType;
     }
 
     /**
@@ -62,9 +91,36 @@ public class SourceSnowflakeUsernameAndPassword {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    @JsonAnySetter
+    public SourceSnowflakeUsernameAndPassword withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public SourceSnowflakeUsernameAndPassword withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
+        return this;
+    }
+
+    public SourceSnowflakeUsernameAndPassword withAuthType(SourceSnowflakeSchemasAuthType authType) {
+        Utils.checkNotNull(authType, "authType");
+        this.authType = Optional.ofNullable(authType);
+        return this;
+    }
+
+
+    public SourceSnowflakeUsernameAndPassword withAuthType(Optional<? extends SourceSnowflakeSchemasAuthType> authType) {
+        Utils.checkNotNull(authType, "authType");
+        this.authType = authType;
+        return this;
+    }
 
     /**
      * The password associated with the username.
@@ -84,7 +140,6 @@ public class SourceSnowflakeUsernameAndPassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,36 +150,72 @@ public class SourceSnowflakeUsernameAndPassword {
         }
         SourceSnowflakeUsernameAndPassword other = (SourceSnowflakeUsernameAndPassword) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            password,
+        return Utils.enhancedHash(
+            additionalProperties, authType, password,
             username);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceSnowflakeUsernameAndPassword.class,
+                "additionalProperties", additionalProperties,
                 "authType", authType,
                 "password", password,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private Optional<? extends SourceSnowflakeSchemasAuthType> authType;
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
+            return this;
+        }
+
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
+        public Builder authType(SourceSnowflakeSchemasAuthType authType) {
+            Utils.checkNotNull(authType, "authType");
+            this.authType = Optional.ofNullable(authType);
+            return this;
+        }
+
+        public Builder authType(Optional<? extends SourceSnowflakeSchemasAuthType> authType) {
+            Utils.checkNotNull(authType, "authType");
+            this.authType = authType;
+            return this;
+        }
+
 
         /**
          * The password associated with the username.
@@ -135,6 +226,7 @@ public class SourceSnowflakeUsernameAndPassword {
             return this;
         }
 
+
         /**
          * The username you created to allow Airbyte to access the database.
          */
@@ -143,17 +235,22 @@ public class SourceSnowflakeUsernameAndPassword {
             this.username = username;
             return this;
         }
-        
+
         public SourceSnowflakeUsernameAndPassword build() {
+            if (authType == null) {
+                authType = _SINGLETON_VALUE_AuthType.value();
+            }
+
             return new SourceSnowflakeUsernameAndPassword(
-                password,
-                username);
+                authType, password, username)
+                .withAdditionalProperties(additionalProperties);
         }
 
-        private static final LazySingletonValue<SourceSnowflakeSchemasCredentialsAuthType> _SINGLETON_VALUE_AuthType =
+
+        private static final LazySingletonValue<Optional<? extends SourceSnowflakeSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
                         "auth_type",
                         "\"username/password\"",
-                        new TypeReference<SourceSnowflakeSchemasCredentialsAuthType>() {});
+                        new TypeReference<Optional<? extends SourceSnowflakeSchemasAuthType>>() {});
     }
 }

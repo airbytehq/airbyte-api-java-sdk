@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication {
 
@@ -51,9 +51,10 @@ public class SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication {
         return credentialsJson;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
@@ -64,7 +65,6 @@ public class SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication {
         }
         SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication other = (SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.credentialsJson, other.credentialsJson);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.credentialsJson, other.credentialsJson);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            credentialsJson);
+        return Utils.enhancedHash(
+            authType, credentialsJson);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication {
                 "authType", authType,
                 "credentialsJson", credentialsJson);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String credentialsJson;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The JSON key linked to the service account used for authorization. For steps on obtaining this key, refer to &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api/#setup-guide"&gt;the setup guide&lt;/a&gt;.
@@ -109,11 +110,13 @@ public class SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication {
             this.credentialsJson = credentialsJson;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication build() {
+
             return new SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication(
                 credentialsJson);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleAnalyticsDataApiSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

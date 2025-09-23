@@ -22,7 +22,7 @@ public enum SourceMicrosoftOnedriveParsingStrategy {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftOnedriveParsingStrategy(String value) {
+    SourceMicrosoftOnedriveParsingStrategy(String value) {
         this.value = value;
     }
     

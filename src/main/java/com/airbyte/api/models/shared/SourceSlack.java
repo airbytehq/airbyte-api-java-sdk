@@ -18,17 +18,23 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSlack {
 
+public class SourceSlack {
     /**
      * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("channel_filter")
     private Optional<? extends List<String>> channelFilter;
+
+    /**
+     * The size (in days) of the date window that will be used while syncing data from the channel messages stream. A smaller window will allow for greater parallelization when syncing records, but can lead to rate limiting errors.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("channel_messages_window_size")
+    private Optional<Long> channelMessagesWindowSize;
 
     /**
      * Choose how to authenticate into Slack
@@ -58,6 +64,14 @@ public class SourceSlack {
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
+
     @JsonProperty("sourceType")
     private SourceSlackSlack sourceType;
 
@@ -70,29 +84,37 @@ public class SourceSlack {
     @JsonCreator
     public SourceSlack(
             @JsonProperty("channel_filter") Optional<? extends List<String>> channelFilter,
+            @JsonProperty("channel_messages_window_size") Optional<Long> channelMessagesWindowSize,
             @JsonProperty("credentials") Optional<? extends SourceSlackAuthenticationMechanism> credentials,
             @JsonProperty("include_private_channels") Optional<Boolean> includePrivateChannels,
             @JsonProperty("join_channels") Optional<Boolean> joinChannels,
             @JsonProperty("lookback_window") Optional<Long> lookbackWindow,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("start_date") OffsetDateTime startDate) {
         Utils.checkNotNull(channelFilter, "channelFilter");
+        Utils.checkNotNull(channelMessagesWindowSize, "channelMessagesWindowSize");
         Utils.checkNotNull(credentials, "credentials");
         Utils.checkNotNull(includePrivateChannels, "includePrivateChannels");
         Utils.checkNotNull(joinChannels, "joinChannels");
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
+        Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(startDate, "startDate");
         this.channelFilter = channelFilter;
+        this.channelMessagesWindowSize = channelMessagesWindowSize;
         this.credentials = credentials;
         this.includePrivateChannels = includePrivateChannels;
         this.joinChannels = joinChannels;
         this.lookbackWindow = lookbackWindow;
+        this.numWorkers = numWorkers;
         this.sourceType = Builder._SINGLETON_VALUE_SourceType.value();
         this.startDate = startDate;
     }
     
     public SourceSlack(
             OffsetDateTime startDate) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), startDate);
     }
 
     /**
@@ -102,6 +124,14 @@ public class SourceSlack {
     @JsonIgnore
     public Optional<List<String>> channelFilter() {
         return (Optional<List<String>>) channelFilter;
+    }
+
+    /**
+     * The size (in days) of the date window that will be used while syncing data from the channel messages stream. A smaller window will allow for greater parallelization when syncing records, but can lead to rate limiting errors.
+     */
+    @JsonIgnore
+    public Optional<Long> channelMessagesWindowSize() {
+        return channelMessagesWindowSize;
     }
 
     /**
@@ -137,6 +167,14 @@ public class SourceSlack {
         return lookbackWindow;
     }
 
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
     @JsonIgnore
     public SourceSlackSlack sourceType() {
         return sourceType;
@@ -150,9 +188,10 @@ public class SourceSlack {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.
@@ -162,6 +201,7 @@ public class SourceSlack {
         this.channelFilter = Optional.ofNullable(channelFilter);
         return this;
     }
+
 
     /**
      * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.
@@ -173,6 +213,25 @@ public class SourceSlack {
     }
 
     /**
+     * The size (in days) of the date window that will be used while syncing data from the channel messages stream. A smaller window will allow for greater parallelization when syncing records, but can lead to rate limiting errors.
+     */
+    public SourceSlack withChannelMessagesWindowSize(long channelMessagesWindowSize) {
+        Utils.checkNotNull(channelMessagesWindowSize, "channelMessagesWindowSize");
+        this.channelMessagesWindowSize = Optional.ofNullable(channelMessagesWindowSize);
+        return this;
+    }
+
+
+    /**
+     * The size (in days) of the date window that will be used while syncing data from the channel messages stream. A smaller window will allow for greater parallelization when syncing records, but can lead to rate limiting errors.
+     */
+    public SourceSlack withChannelMessagesWindowSize(Optional<Long> channelMessagesWindowSize) {
+        Utils.checkNotNull(channelMessagesWindowSize, "channelMessagesWindowSize");
+        this.channelMessagesWindowSize = channelMessagesWindowSize;
+        return this;
+    }
+
+    /**
      * Choose how to authenticate into Slack
      */
     public SourceSlack withCredentials(SourceSlackAuthenticationMechanism credentials) {
@@ -180,6 +239,7 @@ public class SourceSlack {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Choose how to authenticate into Slack
@@ -199,6 +259,7 @@ public class SourceSlack {
         return this;
     }
 
+
     /**
      * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels.
      */
@@ -216,6 +277,7 @@ public class SourceSlack {
         this.joinChannels = Optional.ofNullable(joinChannels);
         return this;
     }
+
 
     /**
      * Whether to join all channels or to sync data only from channels the bot is already in.  If false, you'll need to manually add the bot to all the channels from which you'd like to sync messages.
@@ -235,12 +297,32 @@ public class SourceSlack {
         return this;
     }
 
+
     /**
      * How far into the past to look for messages in threads, default is 0 days
      */
     public SourceSlack withLookbackWindow(Optional<Long> lookbackWindow) {
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
         this.lookbackWindow = lookbackWindow;
+        return this;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceSlack withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceSlack withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
         return this;
     }
 
@@ -253,7 +335,6 @@ public class SourceSlack {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -264,56 +345,62 @@ public class SourceSlack {
         }
         SourceSlack other = (SourceSlack) o;
         return 
-            Objects.deepEquals(this.channelFilter, other.channelFilter) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.includePrivateChannels, other.includePrivateChannels) &&
-            Objects.deepEquals(this.joinChannels, other.joinChannels) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.channelFilter, other.channelFilter) &&
+            Utils.enhancedDeepEquals(this.channelMessagesWindowSize, other.channelMessagesWindowSize) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.includePrivateChannels, other.includePrivateChannels) &&
+            Utils.enhancedDeepEquals(this.joinChannels, other.joinChannels) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            channelFilter,
-            credentials,
-            includePrivateChannels,
-            joinChannels,
-            lookbackWindow,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            channelFilter, channelMessagesWindowSize, credentials,
+            includePrivateChannels, joinChannels, lookbackWindow,
+            numWorkers, sourceType, startDate);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceSlack.class,
                 "channelFilter", channelFilter,
+                "channelMessagesWindowSize", channelMessagesWindowSize,
                 "credentials", credentials,
                 "includePrivateChannels", includePrivateChannels,
                 "joinChannels", joinChannels,
                 "lookbackWindow", lookbackWindow,
+                "numWorkers", numWorkers,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> channelFilter = Optional.empty();
- 
+
+        private Optional<Long> channelMessagesWindowSize;
+
         private Optional<? extends SourceSlackAuthenticationMechanism> credentials = Optional.empty();
- 
+
         private Optional<Boolean> includePrivateChannels;
- 
+
         private Optional<Boolean> joinChannels;
- 
+
         private Optional<Long> lookbackWindow;
- 
+
+        private Optional<Long> numWorkers;
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A channel name list (without leading '#' char) which limit the channels from which you'd like to sync. Empty list means no filter.
@@ -333,6 +420,26 @@ public class SourceSlack {
             return this;
         }
 
+
+        /**
+         * The size (in days) of the date window that will be used while syncing data from the channel messages stream. A smaller window will allow for greater parallelization when syncing records, but can lead to rate limiting errors.
+         */
+        public Builder channelMessagesWindowSize(long channelMessagesWindowSize) {
+            Utils.checkNotNull(channelMessagesWindowSize, "channelMessagesWindowSize");
+            this.channelMessagesWindowSize = Optional.ofNullable(channelMessagesWindowSize);
+            return this;
+        }
+
+        /**
+         * The size (in days) of the date window that will be used while syncing data from the channel messages stream. A smaller window will allow for greater parallelization when syncing records, but can lead to rate limiting errors.
+         */
+        public Builder channelMessagesWindowSize(Optional<Long> channelMessagesWindowSize) {
+            Utils.checkNotNull(channelMessagesWindowSize, "channelMessagesWindowSize");
+            this.channelMessagesWindowSize = channelMessagesWindowSize;
+            return this;
+        }
+
+
         /**
          * Choose how to authenticate into Slack
          */
@@ -350,6 +457,7 @@ public class SourceSlack {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Whether to read information from private channels that the bot is already in.  If false, only public channels will be read.  If true, the bot must be manually added to private channels.
@@ -369,6 +477,7 @@ public class SourceSlack {
             return this;
         }
 
+
         /**
          * Whether to join all channels or to sync data only from channels the bot is already in.  If false, you'll need to manually add the bot to all the channels from which you'd like to sync messages.
          */
@@ -386,6 +495,7 @@ public class SourceSlack {
             this.joinChannels = joinChannels;
             return this;
         }
+
 
         /**
          * How far into the past to look for messages in threads, default is 0 days
@@ -405,6 +515,26 @@ public class SourceSlack {
             return this;
         }
 
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
          */
@@ -413,8 +543,11 @@ public class SourceSlack {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSlack build() {
+            if (channelMessagesWindowSize == null) {
+                channelMessagesWindowSize = _SINGLETON_VALUE_ChannelMessagesWindowSize.value();
+            }
             if (includePrivateChannels == null) {
                 includePrivateChannels = _SINGLETON_VALUE_IncludePrivateChannels.value();
             }
@@ -424,14 +557,22 @@ public class SourceSlack {
             if (lookbackWindow == null) {
                 lookbackWindow = _SINGLETON_VALUE_LookbackWindow.value();
             }
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }
+
             return new SourceSlack(
-                channelFilter,
-                credentials,
-                includePrivateChannels,
-                joinChannels,
-                lookbackWindow,
-                startDate);
+                channelFilter, channelMessagesWindowSize, credentials,
+                includePrivateChannels, joinChannels, lookbackWindow,
+                numWorkers, startDate);
         }
+
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_ChannelMessagesWindowSize =
+                new LazySingletonValue<>(
+                        "channel_messages_window_size",
+                        "100",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludePrivateChannels =
                 new LazySingletonValue<>(
@@ -449,6 +590,12 @@ public class SourceSlack {
                 new LazySingletonValue<>(
                         "lookback_window",
                         "0",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "2",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<SourceSlackSlack> _SINGLETON_VALUE_SourceType =

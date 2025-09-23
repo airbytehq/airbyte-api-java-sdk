@@ -17,6 +17,7 @@ Create a connection
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createConnection" method="post" path="/connections" -->
 ```java
 package hello.world;
 
@@ -42,6 +43,7 @@ public class Application {
                 .destinationId("e478de0d-a3a0-475c-b019-25f7dd29e281")
                 .sourceId("95e66a59-8045-4307-9678-63bc3c9b8c93")
                 .name("Postgres-to-Bigquery")
+                .namespaceFormat("${SOURCE_NAMESPACE}")
                 .build();
 
         CreateConnectionResponse res = sdk.connections().createConnection()
@@ -77,6 +79,7 @@ Delete a Connection
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteConnection" method="delete" path="/connections/{connectionId}" -->
 ```java
 package hello.world;
 
@@ -135,6 +138,7 @@ Get Connection details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getConnection" method="get" path="/connections/{connectionId}" -->
 ```java
 package hello.world;
 
@@ -195,6 +199,7 @@ List connections
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listConnections" method="get" path="/connections" -->
 ```java
 package hello.world;
 
@@ -254,6 +259,7 @@ Update Connection details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="patchConnection" method="patch" path="/connections/{connectionId}" -->
 ```java
 package hello.world;
 
@@ -279,6 +285,7 @@ public class Application {
         PatchConnectionRequest req = PatchConnectionRequest.builder()
                 .connectionPatchRequest(ConnectionPatchRequest.builder()
                     .name("Postgres-to-Bigquery")
+                    .namespaceFormat("${SOURCE_NAMESPACE}")
                     .build())
                 .connectionId("<value>")
                 .build();

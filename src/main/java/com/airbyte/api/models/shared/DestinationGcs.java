@@ -14,16 +14,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationGcs {
 
+public class DestinationGcs {
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("credential")
     private DestinationGcsAuthentication credential;
+
 
     @JsonProperty("destinationType")
     private DestinationGcsGcs destinationType;
@@ -78,7 +78,8 @@ public class DestinationGcs {
             DestinationGcsOutputFormat format,
             String gcsBucketName,
             String gcsBucketPath) {
-        this(credential, format, gcsBucketName, gcsBucketPath, Optional.empty());
+        this(credential, format, gcsBucketName,
+            gcsBucketPath, Optional.empty());
     }
 
     /**
@@ -127,9 +128,10 @@ public class DestinationGcs {
         return (Optional<GCSBucketRegion>) gcsBucketRegion;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
@@ -176,6 +178,7 @@ public class DestinationGcs {
         return this;
     }
 
+
     /**
      * Select a Region of the GCS Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/locations"&gt;here&lt;/a&gt;.
      */
@@ -185,7 +188,6 @@ public class DestinationGcs {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -196,23 +198,19 @@ public class DestinationGcs {
         }
         DestinationGcs other = (DestinationGcs) o;
         return 
-            Objects.deepEquals(this.credential, other.credential) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.gcsBucketName, other.gcsBucketName) &&
-            Objects.deepEquals(this.gcsBucketPath, other.gcsBucketPath) &&
-            Objects.deepEquals(this.gcsBucketRegion, other.gcsBucketRegion);
+            Utils.enhancedDeepEquals(this.credential, other.credential) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.gcsBucketName, other.gcsBucketName) &&
+            Utils.enhancedDeepEquals(this.gcsBucketPath, other.gcsBucketPath) &&
+            Utils.enhancedDeepEquals(this.gcsBucketRegion, other.gcsBucketRegion);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credential,
-            destinationType,
-            format,
-            gcsBucketName,
-            gcsBucketPath,
-            gcsBucketRegion);
+        return Utils.enhancedHash(
+            credential, destinationType, format,
+            gcsBucketName, gcsBucketPath, gcsBucketRegion);
     }
     
     @Override
@@ -225,22 +223,24 @@ public class DestinationGcs {
                 "gcsBucketPath", gcsBucketPath,
                 "gcsBucketRegion", gcsBucketRegion);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationGcsAuthentication credential;
- 
+
         private DestinationGcsOutputFormat format;
- 
+
         private String gcsBucketName;
- 
+
         private String gcsBucketPath;
- 
+
         private Optional<? extends GCSBucketRegion> gcsBucketRegion;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * An HMAC key is a type of credential and can be associated with a service account or a user account in Cloud Storage. Read more &lt;a href="https://cloud.google.com/storage/docs/authentication/hmackeys"&gt;here&lt;/a&gt;.
@@ -251,6 +251,7 @@ public class DestinationGcs {
             return this;
         }
 
+
         /**
          * Output data format. One of the following formats must be selected - &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro"&gt;AVRO&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas"&gt;PARQUET&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table"&gt;CSV&lt;/a&gt; format, or &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table"&gt;JSONL&lt;/a&gt; format.
          */
@@ -259,6 +260,7 @@ public class DestinationGcs {
             this.format = format;
             return this;
         }
+
 
         /**
          * You can find the bucket name in the App Engine Admin console Application Settings page, under the label Google Cloud Storage Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/naming-buckets"&gt;here&lt;/a&gt;.
@@ -269,6 +271,7 @@ public class DestinationGcs {
             return this;
         }
 
+
         /**
          * GCS Bucket Path string Subdirectory under the above bucket to sync the data into.
          */
@@ -277,6 +280,7 @@ public class DestinationGcs {
             this.gcsBucketPath = gcsBucketPath;
             return this;
         }
+
 
         /**
          * Select a Region of the GCS Bucket. Read more &lt;a href="https://cloud.google.com/storage/docs/locations"&gt;here&lt;/a&gt;.
@@ -295,18 +299,17 @@ public class DestinationGcs {
             this.gcsBucketRegion = gcsBucketRegion;
             return this;
         }
-        
+
         public DestinationGcs build() {
             if (gcsBucketRegion == null) {
                 gcsBucketRegion = _SINGLETON_VALUE_GcsBucketRegion.value();
             }
+
             return new DestinationGcs(
-                credential,
-                format,
-                gcsBucketName,
-                gcsBucketPath,
-                gcsBucketRegion);
+                credential, format, gcsBucketName,
+                gcsBucketPath, gcsBucketRegion);
         }
+
 
         private static final LazySingletonValue<DestinationGcsGcs> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

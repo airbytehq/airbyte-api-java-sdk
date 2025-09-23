@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationPubsub {
 
+public class DestinationPubsub {
     /**
      * Number of ms before the buffer is flushed
      */
@@ -53,6 +52,7 @@ public class DestinationPubsub {
      */
     @JsonProperty("credentials_json")
     private String credentialsJson;
+
 
     @JsonProperty("destinationType")
     private Pubsub destinationType;
@@ -109,7 +109,9 @@ public class DestinationPubsub {
             String credentialsJson,
             String projectId,
             String topicId) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), credentialsJson, Optional.empty(), projectId, topicId);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), credentialsJson, Optional.empty(),
+            projectId, topicId);
     }
 
     /**
@@ -181,9 +183,10 @@ public class DestinationPubsub {
         return topicId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Number of ms before the buffer is flushed
@@ -193,6 +196,7 @@ public class DestinationPubsub {
         this.batchingDelayThreshold = Optional.ofNullable(batchingDelayThreshold);
         return this;
     }
+
 
     /**
      * Number of ms before the buffer is flushed
@@ -212,6 +216,7 @@ public class DestinationPubsub {
         return this;
     }
 
+
     /**
      * Number of messages before the buffer is flushed
      */
@@ -230,6 +235,7 @@ public class DestinationPubsub {
         return this;
     }
 
+
     /**
      * If TRUE messages will be buffered instead of sending them one by one
      */
@@ -247,6 +253,7 @@ public class DestinationPubsub {
         this.batchingRequestBytesThreshold = Optional.ofNullable(batchingRequestBytesThreshold);
         return this;
     }
+
 
     /**
      * Number of bytes before the buffer is flushed
@@ -275,6 +282,7 @@ public class DestinationPubsub {
         return this;
     }
 
+
     /**
      * If TRUE PubSub publisher will have &lt;a href="https://cloud.google.com/pubsub/docs/ordering"&gt;message ordering&lt;/a&gt; enabled. Every message will have an ordering key of stream
      */
@@ -302,7 +310,6 @@ public class DestinationPubsub {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -313,29 +320,23 @@ public class DestinationPubsub {
         }
         DestinationPubsub other = (DestinationPubsub) o;
         return 
-            Objects.deepEquals(this.batchingDelayThreshold, other.batchingDelayThreshold) &&
-            Objects.deepEquals(this.batchingElementCountThreshold, other.batchingElementCountThreshold) &&
-            Objects.deepEquals(this.batchingEnabled, other.batchingEnabled) &&
-            Objects.deepEquals(this.batchingRequestBytesThreshold, other.batchingRequestBytesThreshold) &&
-            Objects.deepEquals(this.credentialsJson, other.credentialsJson) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.orderingEnabled, other.orderingEnabled) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.topicId, other.topicId);
+            Utils.enhancedDeepEquals(this.batchingDelayThreshold, other.batchingDelayThreshold) &&
+            Utils.enhancedDeepEquals(this.batchingElementCountThreshold, other.batchingElementCountThreshold) &&
+            Utils.enhancedDeepEquals(this.batchingEnabled, other.batchingEnabled) &&
+            Utils.enhancedDeepEquals(this.batchingRequestBytesThreshold, other.batchingRequestBytesThreshold) &&
+            Utils.enhancedDeepEquals(this.credentialsJson, other.credentialsJson) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.orderingEnabled, other.orderingEnabled) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.topicId, other.topicId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            batchingDelayThreshold,
-            batchingElementCountThreshold,
-            batchingEnabled,
-            batchingRequestBytesThreshold,
-            credentialsJson,
-            destinationType,
-            orderingEnabled,
-            projectId,
-            topicId);
+        return Utils.enhancedHash(
+            batchingDelayThreshold, batchingElementCountThreshold, batchingEnabled,
+            batchingRequestBytesThreshold, credentialsJson, destinationType,
+            orderingEnabled, projectId, topicId);
     }
     
     @Override
@@ -351,28 +352,30 @@ public class DestinationPubsub {
                 "projectId", projectId,
                 "topicId", topicId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> batchingDelayThreshold;
- 
+
         private Optional<Long> batchingElementCountThreshold;
- 
+
         private Optional<Boolean> batchingEnabled;
- 
+
         private Optional<Long> batchingRequestBytesThreshold;
- 
+
         private String credentialsJson;
- 
+
         private Optional<Boolean> orderingEnabled;
- 
+
         private String projectId;
- 
+
         private String topicId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Number of ms before the buffer is flushed
@@ -392,6 +395,7 @@ public class DestinationPubsub {
             return this;
         }
 
+
         /**
          * Number of messages before the buffer is flushed
          */
@@ -409,6 +413,7 @@ public class DestinationPubsub {
             this.batchingElementCountThreshold = batchingElementCountThreshold;
             return this;
         }
+
 
         /**
          * If TRUE messages will be buffered instead of sending them one by one
@@ -428,6 +433,7 @@ public class DestinationPubsub {
             return this;
         }
 
+
         /**
          * Number of bytes before the buffer is flushed
          */
@@ -446,6 +452,7 @@ public class DestinationPubsub {
             return this;
         }
 
+
         /**
          * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/pubsub"&gt;docs&lt;/a&gt; if you need help generating this key.
          */
@@ -454,6 +461,7 @@ public class DestinationPubsub {
             this.credentialsJson = credentialsJson;
             return this;
         }
+
 
         /**
          * If TRUE PubSub publisher will have &lt;a href="https://cloud.google.com/pubsub/docs/ordering"&gt;message ordering&lt;/a&gt; enabled. Every message will have an ordering key of stream
@@ -473,6 +481,7 @@ public class DestinationPubsub {
             return this;
         }
 
+
         /**
          * The GCP project ID for the project containing the target PubSub.
          */
@@ -482,6 +491,7 @@ public class DestinationPubsub {
             return this;
         }
 
+
         /**
          * The PubSub topic ID in the given GCP project ID.
          */
@@ -490,7 +500,7 @@ public class DestinationPubsub {
             this.topicId = topicId;
             return this;
         }
-        
+
         public DestinationPubsub build() {
             if (batchingDelayThreshold == null) {
                 batchingDelayThreshold = _SINGLETON_VALUE_BatchingDelayThreshold.value();
@@ -507,16 +517,13 @@ public class DestinationPubsub {
             if (orderingEnabled == null) {
                 orderingEnabled = _SINGLETON_VALUE_OrderingEnabled.value();
             }
+
             return new DestinationPubsub(
-                batchingDelayThreshold,
-                batchingElementCountThreshold,
-                batchingEnabled,
-                batchingRequestBytesThreshold,
-                credentialsJson,
-                orderingEnabled,
-                projectId,
-                topicId);
+                batchingDelayThreshold, batchingElementCountThreshold, batchingEnabled,
+                batchingRequestBytesThreshold, credentialsJson, orderingEnabled,
+                projectId, topicId);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BatchingDelayThreshold =
                 new LazySingletonValue<>(

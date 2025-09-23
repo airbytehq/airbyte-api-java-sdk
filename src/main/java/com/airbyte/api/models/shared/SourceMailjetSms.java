@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMailjetSms {
 
+public class SourceMailjetSms {
     /**
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<Long> endDate;
+
 
     @JsonProperty("sourceType")
     private MailjetSms sourceType;
@@ -90,9 +90,10 @@ public class SourceMailjetSms {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
@@ -102,6 +103,7 @@ public class SourceMailjetSms {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
@@ -121,6 +123,7 @@ public class SourceMailjetSms {
         return this;
     }
 
+
     /**
      * Retrieve SMS messages created after the specified timestamp. Required format - Unix timestamp.
      */
@@ -139,7 +142,6 @@ public class SourceMailjetSms {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -150,18 +152,16 @@ public class SourceMailjetSms {
         }
         SourceMailjetSms other = (SourceMailjetSms) o;
         return 
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            endDate,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            endDate, sourceType, startDate,
             token);
     }
     
@@ -173,18 +173,20 @@ public class SourceMailjetSms {
                 "startDate", startDate,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> endDate = Optional.empty();
- 
+
         private Optional<Long> startDate = Optional.empty();
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Retrieve SMS messages created before the specified timestamp. Required format - Unix timestamp.
@@ -204,6 +206,7 @@ public class SourceMailjetSms {
             return this;
         }
 
+
         /**
          * Retrieve SMS messages created after the specified timestamp. Required format - Unix timestamp.
          */
@@ -222,6 +225,7 @@ public class SourceMailjetSms {
             return this;
         }
 
+
         /**
          * Your access token. See &lt;a href="https://dev.mailjet.com/sms/reference/overview/authentication"&gt;here&lt;/a&gt;.
          */
@@ -230,13 +234,13 @@ public class SourceMailjetSms {
             this.token = token;
             return this;
         }
-        
+
         public SourceMailjetSms build() {
+
             return new SourceMailjetSms(
-                endDate,
-                startDate,
-                token);
+                endDate, startDate, token);
         }
+
 
         private static final LazySingletonValue<MailjetSms> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

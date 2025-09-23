@@ -22,7 +22,7 @@ public enum SourceSftpBulkParsingStrategy {
     @JsonValue
     private final String value;
 
-    private SourceSftpBulkParsingStrategy(String value) {
+    SourceSftpBulkParsingStrategy(String value) {
         this.value = value;
     }
     

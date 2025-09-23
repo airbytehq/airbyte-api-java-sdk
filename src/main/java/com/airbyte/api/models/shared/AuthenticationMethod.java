@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * AuthenticationMethod
@@ -31,9 +30,9 @@ public class AuthenticationMethod {
         this.value = value;
     }
 
-    public static AuthenticationMethod of(None value) {
+    public static AuthenticationMethod of(DestinationElasticsearchNone value) {
         Utils.checkNotNull(value, "value");
-        return new AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<None>(){}));
+        return new AuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationElasticsearchNone>(){}));
     }
 
     public static AuthenticationMethod of(ApiKeySecret value) {
@@ -49,7 +48,7 @@ public class AuthenticationMethod {
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.None}</li>
+     * <li>{@code com.airbyte.api.models.shared.DestinationElasticsearchNone}</li>
      * <li>{@code com.airbyte.api.models.shared.ApiKeySecret}</li>
      * <li>{@code com.airbyte.api.models.shared.UsernamePassword}</li>
      * </ul>
@@ -78,12 +77,12 @@ public class AuthenticationMethod {
             return false;
         }
         AuthenticationMethod other = (AuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -93,7 +92,7 @@ public class AuthenticationMethod {
             super(AuthenticationMethod.class, false,
                   TypeReferenceWithShape.of(new TypeReference<UsernamePassword>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<ApiKeySecret>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<None>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearchNone>() {}, JsonShape.DEFAULT));
         }
     }
     

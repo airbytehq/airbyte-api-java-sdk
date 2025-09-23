@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SingleStoreAccessToken {
-
     /**
      * Access Token for making authenticated requests.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceCartSchemasAuthType authType;
@@ -62,9 +62,10 @@ public class SingleStoreAccessToken {
         return storeName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests.
@@ -84,7 +85,6 @@ public class SingleStoreAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SingleStoreAccessToken {
         }
         SingleStoreAccessToken other = (SingleStoreAccessToken) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.storeName, other.storeName);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.storeName, other.storeName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            storeName);
+        return Utils.enhancedHash(
+            accessToken, authType, storeName);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SingleStoreAccessToken {
                 "authType", authType,
                 "storeName", storeName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String storeName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests.
@@ -135,6 +135,7 @@ public class SingleStoreAccessToken {
             return this;
         }
 
+
         /**
          * The name of Cart.com Online Store. All API URLs start with https://[mystorename.com]/api/v1/, where [mystorename.com] is the domain name of your store.
          */
@@ -143,12 +144,13 @@ public class SingleStoreAccessToken {
             this.storeName = storeName;
             return this;
         }
-        
+
         public SingleStoreAccessToken build() {
+
             return new SingleStoreAccessToken(
-                accessToken,
-                storeName);
+                accessToken, storeName);
         }
+
 
         private static final LazySingletonValue<SourceCartSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

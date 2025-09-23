@@ -3,26 +3,38 @@ generation:
   sdkClassName: airbyte
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
     securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 java:
-  version: 2.0.0
+  version: 2.1.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: api
+  asyncMode: enabled
+  baseErrorName: AirbyteException
   clientServerStatusCodesAsErrors: true
   companyEmail: info@airbyte.com
   companyName: Airbyte
   companyURL: www.airbyte.com
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
+  enableStreamingUploads: false
   flattenGlobalSecurity: false
+  generateSpringBootStarter: true
   githubURL: github.com/airbytehq/airbyte-api-java-sdk
   groupID: com.airbyte
   imports:
@@ -34,11 +46,13 @@ java:
       shared: models/shared
       webhooks: models/webhooks
   inputModelSuffix: input
+  languageVersion: 11
   license:
     name: The MIT License (MIT)
     shortName: MIT
     url: https://mit-license.org/
   maxMethodParams: 0
+  nullFriendlyParameters: false
   outputModelSuffix: output
   projectName: public-api
   templateVersion: v2

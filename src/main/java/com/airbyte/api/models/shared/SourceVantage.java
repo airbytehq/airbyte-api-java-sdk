@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceVantage {
-
     /**
      * Your API Access token. See &lt;a href="https://vantage.readme.io/reference/authentication"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("sourceType")
     private Vantage sourceType;
@@ -45,9 +45,10 @@ public class SourceVantage {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Access token. See &lt;a href="https://vantage.readme.io/reference/authentication"&gt;here&lt;/a&gt;.
@@ -58,7 +59,6 @@ public class SourceVantage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceVantage {
         }
         SourceVantage other = (SourceVantage) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType);
+        return Utils.enhancedHash(
+            accessToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceVantage {
                 "accessToken", accessToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Access token. See &lt;a href="https://vantage.readme.io/reference/authentication"&gt;here&lt;/a&gt;.
@@ -103,11 +104,13 @@ public class SourceVantage {
             this.accessToken = accessToken;
             return this;
         }
-        
+
         public SourceVantage build() {
+
             return new SourceVantage(
                 accessToken);
         }
+
 
         private static final LazySingletonValue<Vantage> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

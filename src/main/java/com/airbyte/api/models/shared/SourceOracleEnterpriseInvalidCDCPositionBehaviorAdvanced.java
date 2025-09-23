@@ -20,7 +20,7 @@ public enum SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced {
     @JsonValue
     private final String value;
 
-    private SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced(String value) {
+    SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced(String value) {
         this.value = value;
     }
     

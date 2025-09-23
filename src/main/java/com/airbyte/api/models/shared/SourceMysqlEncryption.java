@@ -14,12 +14,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMysqlEncryption
  * 
- * <p>The encryption method with is used when communicating with the database.
+ * <p>The encryption method which is used when communicating with the database.
  */
 @JsonDeserialize(using = SourceMysqlEncryption._Deserializer.class)
 public class SourceMysqlEncryption {
@@ -84,12 +83,12 @@ public class SourceMysqlEncryption {
             return false;
         }
         SourceMysqlEncryption other = (SourceMysqlEncryption) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")

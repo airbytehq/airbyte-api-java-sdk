@@ -20,7 +20,7 @@ public enum DefinitionOfConversionCountInReports {
     @JsonValue
     private final String value;
 
-    private DefinitionOfConversionCountInReports(String value) {
+    DefinitionOfConversionCountInReports(String value) {
         this.value = value;
     }
     

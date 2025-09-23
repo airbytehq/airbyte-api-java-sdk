@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceToggl {
-
     /**
      * Your API Token. See &lt;a href="https://developers.track.toggl.com/docs/authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
      */
@@ -33,6 +32,7 @@ public class SourceToggl {
      */
     @JsonProperty("organization_id")
     private long organizationId;
+
 
     @JsonProperty("sourceType")
     private Toggl sourceType;
@@ -114,9 +114,10 @@ public class SourceToggl {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Token. See &lt;a href="https://developers.track.toggl.com/docs/authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
@@ -163,7 +164,6 @@ public class SourceToggl {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,23 +174,19 @@ public class SourceToggl {
         }
         SourceToggl other = (SourceToggl) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            endDate,
-            organizationId,
-            sourceType,
-            startDate,
-            workspaceId);
+        return Utils.enhancedHash(
+            apiToken, endDate, organizationId,
+            sourceType, startDate, workspaceId);
     }
     
     @Override
@@ -203,22 +199,24 @@ public class SourceToggl {
                 "startDate", startDate,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String endDate;
- 
+
         private Long organizationId;
- 
+
         private String startDate;
- 
+
         private Long workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Token. See &lt;a href="https://developers.track.toggl.com/docs/authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
@@ -229,6 +227,7 @@ public class SourceToggl {
             return this;
         }
 
+
         /**
          * To retrieve time entries created before the given date (inclusive).
          */
@@ -237,6 +236,7 @@ public class SourceToggl {
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * Your organization id. See &lt;a href="https://developers.track.toggl.com/docs/organization"&gt;here&lt;/a&gt;.
@@ -247,6 +247,7 @@ public class SourceToggl {
             return this;
         }
 
+
         /**
          * To retrieve time entries created after the given date (inclusive).
          */
@@ -256,6 +257,7 @@ public class SourceToggl {
             return this;
         }
 
+
         /**
          * Your workspace id. See &lt;a href="https://developers.track.toggl.com/docs/workspaces"&gt;here&lt;/a&gt;.
          */
@@ -264,15 +266,14 @@ public class SourceToggl {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public SourceToggl build() {
+
             return new SourceToggl(
-                apiToken,
-                endDate,
-                organizationId,
-                startDate,
-                workspaceId);
+                apiToken, endDate, organizationId,
+                startDate, workspaceId);
         }
+
 
         private static final LazySingletonValue<Toggl> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

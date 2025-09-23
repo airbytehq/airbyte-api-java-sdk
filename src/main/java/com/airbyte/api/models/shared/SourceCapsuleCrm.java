@@ -12,21 +12,23 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceCapsuleCrm {
-
     /**
      * Bearer token to authenticate API requests. Generate it from the 'My Preferences' &gt; 'API Authentication Tokens' page in your Capsule account.
      */
     @JsonProperty("bearer_token")
     private String bearerToken;
 
+
     @JsonProperty("entity")
     private Entity entity;
 
+
     @JsonProperty("sourceType")
     private CapsuleCrm sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -68,9 +70,10 @@ public class SourceCapsuleCrm {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Bearer token to authenticate API requests. Generate it from the 'My Preferences' &gt; 'API Authentication Tokens' page in your Capsule account.
@@ -93,7 +96,6 @@ public class SourceCapsuleCrm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,18 +106,16 @@ public class SourceCapsuleCrm {
         }
         SourceCapsuleCrm other = (SourceCapsuleCrm) o;
         return 
-            Objects.deepEquals(this.bearerToken, other.bearerToken) &&
-            Objects.deepEquals(this.entity, other.entity) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.bearerToken, other.bearerToken) &&
+            Utils.enhancedDeepEquals(this.entity, other.entity) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            bearerToken,
-            entity,
-            sourceType,
+        return Utils.enhancedHash(
+            bearerToken, entity, sourceType,
             startDate);
     }
     
@@ -127,18 +127,20 @@ public class SourceCapsuleCrm {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String bearerToken;
- 
+
         private Entity entity;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Bearer token to authenticate API requests. Generate it from the 'My Preferences' &gt; 'API Authentication Tokens' page in your Capsule account.
@@ -149,24 +151,26 @@ public class SourceCapsuleCrm {
             return this;
         }
 
+
         public Builder entity(Entity entity) {
             Utils.checkNotNull(entity, "entity");
             this.entity = entity;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCapsuleCrm build() {
+
             return new SourceCapsuleCrm(
-                bearerToken,
-                entity,
-                startDate);
+                bearerToken, entity, startDate);
         }
+
 
         private static final LazySingletonValue<CapsuleCrm> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

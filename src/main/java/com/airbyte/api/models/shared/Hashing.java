@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Hashing {
-
     /**
      * The suffix to append to the field name after hashing.
      */
@@ -68,9 +67,10 @@ public class Hashing {
         return targetField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The suffix to append to the field name after hashing.
@@ -99,7 +99,6 @@ public class Hashing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -110,17 +109,15 @@ public class Hashing {
         }
         Hashing other = (Hashing) o;
         return 
-            Objects.deepEquals(this.fieldNameSuffix, other.fieldNameSuffix) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.targetField, other.targetField);
+            Utils.enhancedDeepEquals(this.fieldNameSuffix, other.fieldNameSuffix) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.targetField, other.targetField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            fieldNameSuffix,
-            method,
-            targetField);
+        return Utils.enhancedHash(
+            fieldNameSuffix, method, targetField);
     }
     
     @Override
@@ -130,18 +127,20 @@ public class Hashing {
                 "method", method,
                 "targetField", targetField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String fieldNameSuffix;
- 
+
         private HashingMethod method;
- 
+
         private String targetField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The suffix to append to the field name after hashing.
@@ -152,6 +151,7 @@ public class Hashing {
             return this;
         }
 
+
         /**
          * The hashing algorithm to use.
          */
@@ -161,6 +161,7 @@ public class Hashing {
             return this;
         }
 
+
         /**
          * The name of the field to be hashed.
          */
@@ -169,12 +170,12 @@ public class Hashing {
             this.targetField = targetField;
             return this;
         }
-        
+
         public Hashing build() {
+
             return new Hashing(
-                fieldNameSuffix,
-                method,
-                targetField);
+                fieldNameSuffix, method, targetField);
         }
+
     }
 }

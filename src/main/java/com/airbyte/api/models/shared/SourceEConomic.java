@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceEConomic {
-
     /**
      * Token that identifies the grant issued by an agreement, allowing your app to access data. Obtain it from your e-conomic account settings.
      */
@@ -26,6 +25,7 @@ public class SourceEConomic {
      */
     @JsonProperty("app_secret_token")
     private String appSecretToken;
+
 
     @JsonProperty("sourceType")
     private EConomic sourceType;
@@ -62,9 +62,10 @@ public class SourceEConomic {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Token that identifies the grant issued by an agreement, allowing your app to access data. Obtain it from your e-conomic account settings.
@@ -84,7 +85,6 @@ public class SourceEConomic {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceEConomic {
         }
         SourceEConomic other = (SourceEConomic) o;
         return 
-            Objects.deepEquals(this.agreementGrantToken, other.agreementGrantToken) &&
-            Objects.deepEquals(this.appSecretToken, other.appSecretToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.agreementGrantToken, other.agreementGrantToken) &&
+            Utils.enhancedDeepEquals(this.appSecretToken, other.appSecretToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            agreementGrantToken,
-            appSecretToken,
-            sourceType);
+        return Utils.enhancedHash(
+            agreementGrantToken, appSecretToken, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceEConomic {
                 "appSecretToken", appSecretToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String agreementGrantToken;
- 
+
         private String appSecretToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Token that identifies the grant issued by an agreement, allowing your app to access data. Obtain it from your e-conomic account settings.
@@ -135,6 +135,7 @@ public class SourceEConomic {
             return this;
         }
 
+
         /**
          * Your private token that identifies your app. Find it in your e-conomic account settings.
          */
@@ -143,12 +144,13 @@ public class SourceEConomic {
             this.appSecretToken = appSecretToken;
             return this;
         }
-        
+
         public SourceEConomic build() {
+
             return new SourceEConomic(
-                agreementGrantToken,
-                appSecretToken);
+                agreementGrantToken, appSecretToken);
         }
+
 
         private static final LazySingletonValue<EConomic> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

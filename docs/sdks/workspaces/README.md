@@ -19,6 +19,7 @@ In order to determine what the credential configuration needs to be, please see 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createOrUpdateWorkspaceOAuthCredentials" method="put" path="/workspaces/{workspaceId}/oauthCredentials" -->
 ```java
 package hello.world;
 
@@ -45,9 +46,9 @@ public class Application {
         CreateOrUpdateWorkspaceOAuthCredentialsRequest req = CreateOrUpdateWorkspaceOAuthCredentialsRequest.builder()
                 .workspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest.builder()
                     .actorType(ActorTypeEnum.DESTINATION)
-                    .configuration(OAuthCredentialsConfiguration.of(Map.ofEntries(
-                        Map.entry("user", "charles"))))
-                    .name(OAuthActorNames.AIRTABLE)
+                    .configuration(Map.ofEntries(
+                    ))
+                    .name(OAuthActorNames.TRELLO)
                     .build())
                 .workspaceId("<value>")
                 .build();
@@ -83,6 +84,7 @@ Create a workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createWorkspace" method="post" path="/workspaces" -->
 ```java
 package hello.world;
 
@@ -141,6 +143,7 @@ Delete a Workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteWorkspace" method="delete" path="/workspaces/{workspaceId}" -->
 ```java
 package hello.world;
 
@@ -199,6 +202,7 @@ Get Workspace details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getWorkspace" method="get" path="/workspaces/{workspaceId}" -->
 ```java
 package hello.world;
 
@@ -259,6 +263,7 @@ List workspaces
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listWorkspaces" method="get" path="/workspaces" -->
 ```java
 package hello.world;
 
@@ -318,6 +323,7 @@ Update a workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="updateWorkspace" method="patch" path="/workspaces/{workspaceId}" -->
 ```java
 package hello.world;
 

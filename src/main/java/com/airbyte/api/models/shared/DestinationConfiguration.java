@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationConfiguration
@@ -61,14 +60,14 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationClickhouse>(){}));
     }
 
-    public static DestinationConfiguration of(DestinationCobra value) {
-        Utils.checkNotNull(value, "value");
-        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationCobra>(){}));
-    }
-
     public static DestinationConfiguration of(DestinationConvex value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationConvex>(){}));
+    }
+
+    public static DestinationConfiguration of(DestinationCustomerIo value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationCustomerIo>(){}));
     }
 
     public static DestinationConfiguration of(DestinationDatabricks value) {
@@ -114,6 +113,11 @@ public class DestinationConfiguration {
     public static DestinationConfiguration of(DestinationGcs value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcs>(){}));
+    }
+
+    public static DestinationConfiguration of(DestinationHubspot value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationHubspot>(){}));
     }
 
     public static DestinationConfiguration of(DestinationMilvus value) {
@@ -196,6 +200,11 @@ public class DestinationConfiguration {
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3DataLake>(){}));
     }
 
+    public static DestinationConfiguration of(DestinationSalesforce value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSalesforce>(){}));
+    }
+
     public static DestinationConfiguration of(DestinationSftpJson value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSftpJson>(){}));
@@ -209,6 +218,11 @@ public class DestinationConfiguration {
     public static DestinationConfiguration of(DestinationSnowflakeCortex value) {
         Utils.checkNotNull(value, "value");
         return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSnowflakeCortex>(){}));
+    }
+
+    public static DestinationConfiguration of(DestinationSurrealdb value) {
+        Utils.checkNotNull(value, "value");
+        return new DestinationConfiguration(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationSurrealdb>(){}));
     }
 
     public static DestinationConfiguration of(DestinationTeradata value) {
@@ -250,8 +264,8 @@ public class DestinationConfiguration {
      * <li>{@code com.airbyte.api.models.shared.DestinationAzureBlobStorage}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationBigquery}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationClickhouse}</li>
-     * <li>{@code com.airbyte.api.models.shared.DestinationCobra}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationConvex}</li>
+     * <li>{@code com.airbyte.api.models.shared.DestinationCustomerIo}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationDatabricks}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationDeepset}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationDevNull}</li>
@@ -261,6 +275,7 @@ public class DestinationConfiguration {
      * <li>{@code com.airbyte.api.models.shared.DestinationFirebolt}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationFirestore}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationGcs}</li>
+     * <li>{@code com.airbyte.api.models.shared.DestinationHubspot}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationMilvus}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationMongodb}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationMotherduck}</li>
@@ -277,9 +292,11 @@ public class DestinationConfiguration {
      * <li>{@code com.airbyte.api.models.shared.DestinationRedshift}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationS3}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationS3DataLake}</li>
+     * <li>{@code com.airbyte.api.models.shared.DestinationSalesforce}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationSftpJson}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationSnowflake}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationSnowflakeCortex}</li>
+     * <li>{@code com.airbyte.api.models.shared.DestinationSurrealdb}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationTeradata}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationTimeplus}</li>
      * <li>{@code com.airbyte.api.models.shared.DestinationTypesense}</li>
@@ -312,12 +329,12 @@ public class DestinationConfiguration {
             return false;
         }
         DestinationConfiguration other = (DestinationConfiguration) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value()); 
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -327,45 +344,48 @@ public class DestinationConfiguration {
             super(DestinationConfiguration.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationPostgres>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationAwsDatalake>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflake>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationRedshift>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflake>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrick>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradata>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMssql>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMysql>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationOracle>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationBigquery>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationClickhouse>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationDatabricks>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMssqlV2>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMssql>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationClickhouse>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationBigquery>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedis>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationPubsub>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationS3DataLake>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationCobra>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedis>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationAzureBlobStorage>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationVectara>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationTeradata>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationFirebolt>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationTypesense>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationDynamodb>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSftpJson>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationGcs>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSalesforce>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationElasticsearch>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortex>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSftpJson>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationDynamodb>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationGcs>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSurrealdb>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationAstra>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMongodb>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPinecone>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviate>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvus>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationQdrant>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationSnowflakeCortex>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationPgvector>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationDeepset>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationAstra>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationMilvus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviate>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPinecone>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationDuckdb>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationMotherduck>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationTimeplus>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationGoogleSheets>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationCustomerIo>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationConvex>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationGoogleSheets>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationFirestore>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationHubspot>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationDevNull>() {}, JsonShape.DEFAULT));
         }
     }

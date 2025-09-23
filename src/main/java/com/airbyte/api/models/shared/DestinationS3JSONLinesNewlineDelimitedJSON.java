@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationS3JSONLinesNewlineDelimitedJSON {
 
@@ -34,9 +34,11 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
     @JsonProperty("compression")
     private Optional<? extends DestinationS3SchemasCompression> compression;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     private Optional<? extends DestinationS3SchemasFlattening> flattening;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -86,9 +88,10 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         return (Optional<DestinationS3SchemasFormatType>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public DestinationS3JSONLinesNewlineDelimitedJSON withAdditionalProperty(String key, Object value) {
@@ -96,8 +99,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public DestinationS3JSONLinesNewlineDelimitedJSON withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -112,6 +114,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         this.compression = Optional.ofNullable(compression);
         return this;
     }
+
 
     /**
      * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
@@ -128,6 +131,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         return this;
     }
 
+
     public DestinationS3JSONLinesNewlineDelimitedJSON withFlattening(Optional<? extends DestinationS3SchemasFlattening> flattening) {
         Utils.checkNotNull(flattening, "flattening");
         this.flattening = flattening;
@@ -140,13 +144,13 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         return this;
     }
 
+
     public DestinationS3JSONLinesNewlineDelimitedJSON withFormatType(Optional<? extends DestinationS3SchemasFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -157,18 +161,16 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
         }
         DestinationS3JSONLinesNewlineDelimitedJSON other = (DestinationS3JSONLinesNewlineDelimitedJSON) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.compression, other.compression) &&
-            Objects.deepEquals(this.flattening, other.flattening) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.compression, other.compression) &&
+            Utils.enhancedDeepEquals(this.flattening, other.flattening) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            compression,
-            flattening,
+        return Utils.enhancedHash(
+            additionalProperties, compression, flattening,
             formatType);
     }
     
@@ -180,17 +182,18 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
                 "flattening", flattening,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationS3SchemasCompression> compression = Optional.empty();
- 
+
         private Optional<? extends DestinationS3SchemasFlattening> flattening;
- 
+
         private Optional<? extends DestinationS3SchemasFormatType> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -211,6 +214,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
             return this;
         }
 
+
         /**
          * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
          */
@@ -229,6 +233,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
             return this;
         }
 
+
         public Builder flattening(DestinationS3SchemasFlattening flattening) {
             Utils.checkNotNull(flattening, "flattening");
             this.flattening = Optional.ofNullable(flattening);
@@ -241,6 +246,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
             return this;
         }
 
+
         public Builder formatType(DestinationS3SchemasFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
             this.formatType = Optional.ofNullable(formatType);
@@ -252,7 +258,7 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
             this.formatType = formatType;
             return this;
         }
-        
+
         public DestinationS3JSONLinesNewlineDelimitedJSON build() {
             if (flattening == null) {
                 flattening = _SINGLETON_VALUE_Flattening.value();
@@ -260,12 +266,12 @@ public class DestinationS3JSONLinesNewlineDelimitedJSON {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new DestinationS3JSONLinesNewlineDelimitedJSON(
-                compression,
-                flattening,
-                formatType)
+                compression, flattening, formatType)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3SchemasFlattening>> _SINGLETON_VALUE_Flattening =
                 new LazySingletonValue<>(

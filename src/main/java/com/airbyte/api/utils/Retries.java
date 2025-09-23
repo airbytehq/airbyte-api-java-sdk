@@ -31,33 +31,7 @@ public class Retries {
         this.retryConfig = retryConfig;
         this.statusCodes = statusCodes;
     }
-
-    @SuppressWarnings("serial")
-    public static final class NonRetryableException extends Exception {
-        private final Exception exception;
-
-        public NonRetryableException(Exception exception) {
-            super(exception);
-            this.exception = exception;
-        }
-        
-        public Exception exception() {
-            return exception;
-        } 
-    }
-
-    @SuppressWarnings("serial")
-    public static final class RetryableException extends Exception {
-        private final HttpResponse<InputStream> response;
-
-        public RetryableException(HttpResponse<InputStream> response) {
-            this.response = response;
-        }
-        
-        public HttpResponse<InputStream> response() {
-            return response;
-        }
-    }
+    
 
     public HttpResponse<InputStream> run() throws Exception {
 
@@ -130,7 +104,7 @@ public class Retries {
             try {
                 return getResponse(retryConnectError, retryReadTimeoutError);
             } catch(NonRetryableException e) {
-                throw e.exception();
+                throw Exceptions.coerceException(e.exception());
             } catch(IOException | RetryableException e) {
                 long nowMs = System.currentTimeMillis();
                 if (nowMs - startMs > backoff.maxElapsedTimeMs()) {

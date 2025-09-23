@@ -5,6 +5,7 @@ package com.airbyte.api.models.errors;
 
 import java.net.http.HttpResponse;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import com.airbyte.api.utils.Utils;
 
 /**
@@ -23,6 +24,7 @@ public class SDKError extends Exception {
             int code,
             String message,
             byte[] body) {
+        super(message);
         Utils.checkNotNull(rawResponse, "rawResponse");
         Utils.checkNotNull(message, "message");
         Utils.checkNotNull(body, "body");
@@ -60,10 +62,12 @@ public class SDKError extends Exception {
     @Override
     public String toString() {
         return Utils.toString(SDKError.class,
-                "rawResponse", rawResponse,
+                "requestMethod", rawResponse.request().method(),
+                "requestUri", rawResponse.request().uri(),
                 "code", code,
+                "responseHeaders", rawResponse.headers().map(), 
                 "message", message,
-                "body", body);
+                "body", bodyAsString());
     }
 
     public HttpResponse<InputStream> rawResponse() {
@@ -80,5 +84,9 @@ public class SDKError extends Exception {
 
     public byte[] body() {
         return this.body;
+    }
+
+    public String bodyAsString() {
+    	return new String(body(), StandardCharsets.UTF_8);
     }
 }

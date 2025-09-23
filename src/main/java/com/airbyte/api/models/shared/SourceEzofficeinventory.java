@@ -12,15 +12,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceEzofficeinventory {
-
     /**
      * Your EZOfficeInventory Access Token. API Access is disabled by default. Enable API Access in Settings &gt; Integrations &gt; API Integration and click on Update to generate a new access token
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Ezofficeinventory sourceType;
@@ -80,9 +80,10 @@ public class SourceEzofficeinventory {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your EZOfficeInventory Access Token. API Access is disabled by default. Enable API Access in Settings &gt; Integrations &gt; API Integration and click on Update to generate a new access token
@@ -111,7 +112,6 @@ public class SourceEzofficeinventory {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,18 +122,16 @@ public class SourceEzofficeinventory {
         }
         SourceEzofficeinventory other = (SourceEzofficeinventory) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate,
             subdomain);
     }
     
@@ -145,18 +143,20 @@ public class SourceEzofficeinventory {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your EZOfficeInventory Access Token. API Access is disabled by default. Enable API Access in Settings &gt; Integrations &gt; API Integration and click on Update to generate a new access token
@@ -167,6 +167,7 @@ public class SourceEzofficeinventory {
             return this;
         }
 
+
         /**
          * Earliest date you want to sync historical streams (inventory_histories, asset_histories, asset_stock_histories) from
          */
@@ -176,6 +177,7 @@ public class SourceEzofficeinventory {
             return this;
         }
 
+
         /**
          * The company name used in signup, also visible in the URL when logged in.
          */
@@ -184,13 +186,13 @@ public class SourceEzofficeinventory {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceEzofficeinventory build() {
+
             return new SourceEzofficeinventory(
-                apiKey,
-                startDate,
-                subdomain);
+                apiKey, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<Ezofficeinventory> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

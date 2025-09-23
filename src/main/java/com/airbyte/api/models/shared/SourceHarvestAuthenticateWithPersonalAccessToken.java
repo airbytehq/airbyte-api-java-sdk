@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceHarvestAuthenticateWithPersonalAccessToken {
 
@@ -32,6 +32,7 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -65,9 +66,10 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
         return (Optional<SourceHarvestSchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceHarvestAuthenticateWithPersonalAccessToken withAdditionalProperty(String key, Object value) {
@@ -75,8 +77,7 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceHarvestAuthenticateWithPersonalAccessToken withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -92,7 +93,6 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,17 +103,15 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
         }
         SourceHarvestAuthenticateWithPersonalAccessToken other = (SourceHarvestAuthenticateWithPersonalAccessToken) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            apiToken,
-            authType);
+        return Utils.enhancedHash(
+            additionalProperties, apiToken, authType);
     }
     
     @Override
@@ -123,13 +121,14 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
                 "apiToken", apiToken,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -150,6 +149,7 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
             return this;
         }
 
+
         /**
          * Log into Harvest and then create new &lt;a href="https://id.getharvest.com/developers"&gt; personal access token&lt;/a&gt;.
          */
@@ -158,12 +158,14 @@ public class SourceHarvestAuthenticateWithPersonalAccessToken {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceHarvestAuthenticateWithPersonalAccessToken build() {
+
             return new SourceHarvestAuthenticateWithPersonalAccessToken(
                 apiToken)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceHarvestSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

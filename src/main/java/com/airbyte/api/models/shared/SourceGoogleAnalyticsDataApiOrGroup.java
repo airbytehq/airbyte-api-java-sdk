@@ -12,7 +12,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * SourceGoogleAnalyticsDataApiOrGroup
@@ -23,6 +22,7 @@ public class SourceGoogleAnalyticsDataApiOrGroup {
 
     @JsonProperty("expressions")
     private List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterExpression> expressions;
+
 
     @JsonProperty("filter_type")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilterType filterType;
@@ -45,9 +45,10 @@ public class SourceGoogleAnalyticsDataApiOrGroup {
         return filterType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiOrGroup withExpressions(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterExpression> expressions) {
         Utils.checkNotNull(expressions, "expressions");
@@ -55,7 +56,6 @@ public class SourceGoogleAnalyticsDataApiOrGroup {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +66,14 @@ public class SourceGoogleAnalyticsDataApiOrGroup {
         }
         SourceGoogleAnalyticsDataApiOrGroup other = (SourceGoogleAnalyticsDataApiOrGroup) o;
         return 
-            Objects.deepEquals(this.expressions, other.expressions) &&
-            Objects.deepEquals(this.filterType, other.filterType);
+            Utils.enhancedDeepEquals(this.expressions, other.expressions) &&
+            Utils.enhancedDeepEquals(this.filterType, other.filterType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            expressions,
-            filterType);
+        return Utils.enhancedHash(
+            expressions, filterType);
     }
     
     @Override
@@ -83,25 +82,29 @@ public class SourceGoogleAnalyticsDataApiOrGroup {
                 "expressions", expressions,
                 "filterType", filterType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterExpression> expressions;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder expressions(List<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterExpression> expressions) {
             Utils.checkNotNull(expressions, "expressions");
             this.expressions = expressions;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiOrGroup build() {
+
             return new SourceGoogleAnalyticsDataApiOrGroup(
                 expressions);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilterFilterType> _SINGLETON_VALUE_FilterType =
                 new LazySingletonValue<>(

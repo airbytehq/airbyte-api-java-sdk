@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class UsernameAndPassword {
 
@@ -51,9 +51,10 @@ public class UsernameAndPassword {
         return password;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter the password associated with the username.
@@ -64,7 +65,6 @@ public class UsernameAndPassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class UsernameAndPassword {
         }
         UsernameAndPassword other = (UsernameAndPassword) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.password, other.password);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.password, other.password);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            password);
+        return Utils.enhancedHash(
+            authType, password);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class UsernameAndPassword {
                 "authType", authType,
                 "password", password);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter the password associated with the username.
@@ -109,11 +110,13 @@ public class UsernameAndPassword {
             this.password = password;
             return this;
         }
-        
+
         public UsernameAndPassword build() {
+
             return new UsernameAndPassword(
                 password);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationSnowflakeSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

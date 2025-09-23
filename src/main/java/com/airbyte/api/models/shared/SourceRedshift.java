@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceRedshift {
 
+public class SourceRedshift {
     /**
      * Name of the database.
      */
@@ -59,6 +58,7 @@ public class SourceRedshift {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
+
 
     @JsonProperty("sourceType")
     private SourceRedshiftRedshift sourceType;
@@ -100,7 +100,9 @@ public class SourceRedshift {
             String host,
             String password,
             String username) {
-        this(database, host, Optional.empty(), password, Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(),
+            password, Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -165,9 +167,10 @@ public class SourceRedshift {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -196,6 +199,7 @@ public class SourceRedshift {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -223,6 +227,7 @@ public class SourceRedshift {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -240,6 +245,7 @@ public class SourceRedshift {
         this.schemas = Optional.ofNullable(schemas);
         return this;
     }
+
 
     /**
      * The list of schemas to sync from. Specify one or more explicitly or keep empty to process all schemas. Schema names are case sensitive.
@@ -259,7 +265,6 @@ public class SourceRedshift {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -270,27 +275,22 @@ public class SourceRedshift {
         }
         SourceRedshift other = (SourceRedshift) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            schemas,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            database, host, jdbcUrlParams,
+            password, port, schemas,
+            sourceType, username);
     }
     
     @Override
@@ -305,26 +305,28 @@ public class SourceRedshift {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private String password;
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -335,6 +337,7 @@ public class SourceRedshift {
             return this;
         }
 
+
         /**
          * Host Endpoint of the Redshift Cluster (must include the cluster-id, region and end with .redshift.amazonaws.com).
          */
@@ -343,6 +346,7 @@ public class SourceRedshift {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -362,6 +366,7 @@ public class SourceRedshift {
             return this;
         }
 
+
         /**
          * Password associated with the username.
          */
@@ -370,6 +375,7 @@ public class SourceRedshift {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -389,6 +395,7 @@ public class SourceRedshift {
             return this;
         }
 
+
         /**
          * The list of schemas to sync from. Specify one or more explicitly or keep empty to process all schemas. Schema names are case sensitive.
          */
@@ -407,6 +414,7 @@ public class SourceRedshift {
             return this;
         }
 
+
         /**
          * Username to use to access the database.
          */
@@ -415,20 +423,18 @@ public class SourceRedshift {
             this.username = username;
             return this;
         }
-        
+
         public SourceRedshift build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceRedshift(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                schemas,
+                database, host, jdbcUrlParams,
+                password, port, schemas,
                 username);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(

@@ -18,11 +18,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAmazonSellerPartner {
 
+public class SourceAmazonSellerPartner {
     /**
      * Type of the Account you're going to authorize the Airbyte application by
      */
@@ -36,6 +35,7 @@ public class SourceAmazonSellerPartner {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("app_id")
     private Optional<String> appId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -71,6 +71,20 @@ public class SourceAmazonSellerPartner {
      */
     @JsonProperty("lwa_client_secret")
     private String lwaClientSecret;
+
+    /**
+     * The maximum number of concurrent asynchronous job requests that can be active at a time.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("max_async_job_count")
+    private Optional<Long> maxAsyncJobCount;
+
+    /**
+     * The number of workers to use for the connector when syncing concurrently.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
 
     /**
      * For syncs spanning a large date range, this option is used to request data in a smaller fixed window to improve sync reliability. This time window can be configured granularly by day.
@@ -113,6 +127,7 @@ public class SourceAmazonSellerPartner {
     @JsonProperty("report_options_list")
     private Optional<? extends List<ReportOptions>> reportOptionsList;
 
+
     @JsonProperty("sourceType")
     private SourceAmazonSellerPartnerAmazonSellerPartner sourceType;
 
@@ -131,6 +146,8 @@ public class SourceAmazonSellerPartner {
             @JsonProperty("financial_events_step") Optional<? extends FinancialEventsStepSizeInDays> financialEventsStep,
             @JsonProperty("lwa_app_id") String lwaAppId,
             @JsonProperty("lwa_client_secret") String lwaClientSecret,
+            @JsonProperty("max_async_job_count") Optional<Long> maxAsyncJobCount,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("period_in_days") Optional<Long> periodInDays,
             @JsonProperty("refresh_token") String refreshToken,
             @JsonProperty("region") Optional<? extends AWSRegion> region,
@@ -144,6 +161,8 @@ public class SourceAmazonSellerPartner {
         Utils.checkNotNull(financialEventsStep, "financialEventsStep");
         Utils.checkNotNull(lwaAppId, "lwaAppId");
         Utils.checkNotNull(lwaClientSecret, "lwaClientSecret");
+        Utils.checkNotNull(maxAsyncJobCount, "maxAsyncJobCount");
+        Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(periodInDays, "periodInDays");
         Utils.checkNotNull(refreshToken, "refreshToken");
         Utils.checkNotNull(region, "region");
@@ -158,6 +177,8 @@ public class SourceAmazonSellerPartner {
         this.financialEventsStep = financialEventsStep;
         this.lwaAppId = lwaAppId;
         this.lwaClientSecret = lwaClientSecret;
+        this.maxAsyncJobCount = maxAsyncJobCount;
+        this.numWorkers = numWorkers;
         this.periodInDays = periodInDays;
         this.refreshToken = refreshToken;
         this.region = region;
@@ -172,7 +193,11 @@ public class SourceAmazonSellerPartner {
             String lwaAppId,
             String lwaClientSecret,
             String refreshToken) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), lwaAppId, lwaClientSecret, Optional.empty(), refreshToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), lwaAppId, lwaClientSecret,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            refreshToken, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -238,6 +263,22 @@ public class SourceAmazonSellerPartner {
     }
 
     /**
+     * The maximum number of concurrent asynchronous job requests that can be active at a time.
+     */
+    @JsonIgnore
+    public Optional<Long> maxAsyncJobCount() {
+        return maxAsyncJobCount;
+    }
+
+    /**
+     * The number of workers to use for the connector when syncing concurrently.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
+    /**
      * For syncs spanning a large date range, this option is used to request data in a smaller fixed window to improve sync reliability. This time window can be configured granularly by day.
      */
     @JsonIgnore
@@ -300,9 +341,10 @@ public class SourceAmazonSellerPartner {
         return waitToAvoidFatalErrors;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Type of the Account you're going to authorize the Airbyte application by
@@ -312,6 +354,7 @@ public class SourceAmazonSellerPartner {
         this.accountType = Optional.ofNullable(accountType);
         return this;
     }
+
 
     /**
      * Type of the Account you're going to authorize the Airbyte application by
@@ -331,6 +374,7 @@ public class SourceAmazonSellerPartner {
         return this;
     }
 
+
     /**
      * Your Amazon Application ID.
      */
@@ -348,6 +392,7 @@ public class SourceAmazonSellerPartner {
         this.awsEnvironment = Optional.ofNullable(awsEnvironment);
         return this;
     }
+
 
     /**
      * Select the AWS Environment.
@@ -371,6 +416,7 @@ public class SourceAmazonSellerPartner {
         this.financialEventsStep = Optional.ofNullable(financialEventsStep);
         return this;
     }
+
 
     /**
      * The time window size (in days) for fetching financial events data in chunks. Options are 1 day, 7 days, 14 days, 30 days, 60 days, and 190 days, based on API limitations.
@@ -405,6 +451,44 @@ public class SourceAmazonSellerPartner {
     }
 
     /**
+     * The maximum number of concurrent asynchronous job requests that can be active at a time.
+     */
+    public SourceAmazonSellerPartner withMaxAsyncJobCount(long maxAsyncJobCount) {
+        Utils.checkNotNull(maxAsyncJobCount, "maxAsyncJobCount");
+        this.maxAsyncJobCount = Optional.ofNullable(maxAsyncJobCount);
+        return this;
+    }
+
+
+    /**
+     * The maximum number of concurrent asynchronous job requests that can be active at a time.
+     */
+    public SourceAmazonSellerPartner withMaxAsyncJobCount(Optional<Long> maxAsyncJobCount) {
+        Utils.checkNotNull(maxAsyncJobCount, "maxAsyncJobCount");
+        this.maxAsyncJobCount = maxAsyncJobCount;
+        return this;
+    }
+
+    /**
+     * The number of workers to use for the connector when syncing concurrently.
+     */
+    public SourceAmazonSellerPartner withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+
+    /**
+     * The number of workers to use for the connector when syncing concurrently.
+     */
+    public SourceAmazonSellerPartner withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
+        return this;
+    }
+
+    /**
      * For syncs spanning a large date range, this option is used to request data in a smaller fixed window to improve sync reliability. This time window can be configured granularly by day.
      */
     public SourceAmazonSellerPartner withPeriodInDays(long periodInDays) {
@@ -412,6 +496,7 @@ public class SourceAmazonSellerPartner {
         this.periodInDays = Optional.ofNullable(periodInDays);
         return this;
     }
+
 
     /**
      * For syncs spanning a large date range, this option is used to request data in a smaller fixed window to improve sync reliability. This time window can be configured granularly by day.
@@ -440,6 +525,7 @@ public class SourceAmazonSellerPartner {
         return this;
     }
 
+
     /**
      * Select the AWS Region.
      */
@@ -457,6 +543,7 @@ public class SourceAmazonSellerPartner {
         this.replicationEndDate = Optional.ofNullable(replicationEndDate);
         return this;
     }
+
 
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
@@ -476,6 +563,7 @@ public class SourceAmazonSellerPartner {
         return this;
     }
 
+
     /**
      * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
      */
@@ -493,6 +581,7 @@ public class SourceAmazonSellerPartner {
         this.reportOptionsList = Optional.ofNullable(reportOptionsList);
         return this;
     }
+
 
     /**
      * Additional information passed to reports. This varies by report type.
@@ -512,6 +601,7 @@ public class SourceAmazonSellerPartner {
         return this;
     }
 
+
     /**
      * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
      */
@@ -521,7 +611,6 @@ public class SourceAmazonSellerPartner {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -532,41 +621,34 @@ public class SourceAmazonSellerPartner {
         }
         SourceAmazonSellerPartner other = (SourceAmazonSellerPartner) o;
         return 
-            Objects.deepEquals(this.accountType, other.accountType) &&
-            Objects.deepEquals(this.appId, other.appId) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.awsEnvironment, other.awsEnvironment) &&
-            Objects.deepEquals(this.financialEventsStep, other.financialEventsStep) &&
-            Objects.deepEquals(this.lwaAppId, other.lwaAppId) &&
-            Objects.deepEquals(this.lwaClientSecret, other.lwaClientSecret) &&
-            Objects.deepEquals(this.periodInDays, other.periodInDays) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.replicationEndDate, other.replicationEndDate) &&
-            Objects.deepEquals(this.replicationStartDate, other.replicationStartDate) &&
-            Objects.deepEquals(this.reportOptionsList, other.reportOptionsList) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.waitToAvoidFatalErrors, other.waitToAvoidFatalErrors);
+            Utils.enhancedDeepEquals(this.accountType, other.accountType) &&
+            Utils.enhancedDeepEquals(this.appId, other.appId) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.awsEnvironment, other.awsEnvironment) &&
+            Utils.enhancedDeepEquals(this.financialEventsStep, other.financialEventsStep) &&
+            Utils.enhancedDeepEquals(this.lwaAppId, other.lwaAppId) &&
+            Utils.enhancedDeepEquals(this.lwaClientSecret, other.lwaClientSecret) &&
+            Utils.enhancedDeepEquals(this.maxAsyncJobCount, other.maxAsyncJobCount) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.periodInDays, other.periodInDays) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.replicationEndDate, other.replicationEndDate) &&
+            Utils.enhancedDeepEquals(this.replicationStartDate, other.replicationStartDate) &&
+            Utils.enhancedDeepEquals(this.reportOptionsList, other.reportOptionsList) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.waitToAvoidFatalErrors, other.waitToAvoidFatalErrors);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountType,
-            appId,
-            authType,
-            awsEnvironment,
-            financialEventsStep,
-            lwaAppId,
-            lwaClientSecret,
-            periodInDays,
-            refreshToken,
-            region,
-            replicationEndDate,
-            replicationStartDate,
-            reportOptionsList,
-            sourceType,
-            waitToAvoidFatalErrors);
+        return Utils.enhancedHash(
+            accountType, appId, authType,
+            awsEnvironment, financialEventsStep, lwaAppId,
+            lwaClientSecret, maxAsyncJobCount, numWorkers,
+            periodInDays, refreshToken, region,
+            replicationEndDate, replicationStartDate, reportOptionsList,
+            sourceType, waitToAvoidFatalErrors);
     }
     
     @Override
@@ -579,6 +661,8 @@ public class SourceAmazonSellerPartner {
                 "financialEventsStep", financialEventsStep,
                 "lwaAppId", lwaAppId,
                 "lwaClientSecret", lwaClientSecret,
+                "maxAsyncJobCount", maxAsyncJobCount,
+                "numWorkers", numWorkers,
                 "periodInDays", periodInDays,
                 "refreshToken", refreshToken,
                 "region", region,
@@ -588,38 +672,44 @@ public class SourceAmazonSellerPartner {
                 "sourceType", sourceType,
                 "waitToAvoidFatalErrors", waitToAvoidFatalErrors);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends AWSSellerPartnerAccountType> accountType;
- 
+
         private Optional<String> appId = Optional.empty();
- 
+
         private Optional<? extends AWSEnvironment> awsEnvironment;
- 
+
         private Optional<? extends FinancialEventsStepSizeInDays> financialEventsStep;
- 
+
         private String lwaAppId;
- 
+
         private String lwaClientSecret;
- 
+
+        private Optional<Long> maxAsyncJobCount;
+
+        private Optional<Long> numWorkers;
+
         private Optional<Long> periodInDays;
- 
+
         private String refreshToken;
- 
+
         private Optional<? extends AWSRegion> region;
- 
+
         private Optional<OffsetDateTime> replicationEndDate = Optional.empty();
- 
+
         private Optional<OffsetDateTime> replicationStartDate = Optional.empty();
- 
+
         private Optional<? extends List<ReportOptions>> reportOptionsList = Optional.empty();
- 
+
         private Optional<Boolean> waitToAvoidFatalErrors;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Type of the Account you're going to authorize the Airbyte application by
@@ -639,6 +729,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Your Amazon Application ID.
          */
@@ -657,6 +748,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Select the AWS Environment.
          */
@@ -674,6 +766,7 @@ public class SourceAmazonSellerPartner {
             this.awsEnvironment = awsEnvironment;
             return this;
         }
+
 
         /**
          * The time window size (in days) for fetching financial events data in chunks. Options are 1 day, 7 days, 14 days, 30 days, 60 days, and 190 days, based on API limitations.
@@ -703,6 +796,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Your Login with Amazon Client ID.
          */
@@ -712,6 +806,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Your Login with Amazon Client Secret.
          */
@@ -720,6 +815,45 @@ public class SourceAmazonSellerPartner {
             this.lwaClientSecret = lwaClientSecret;
             return this;
         }
+
+
+        /**
+         * The maximum number of concurrent asynchronous job requests that can be active at a time.
+         */
+        public Builder maxAsyncJobCount(long maxAsyncJobCount) {
+            Utils.checkNotNull(maxAsyncJobCount, "maxAsyncJobCount");
+            this.maxAsyncJobCount = Optional.ofNullable(maxAsyncJobCount);
+            return this;
+        }
+
+        /**
+         * The maximum number of concurrent asynchronous job requests that can be active at a time.
+         */
+        public Builder maxAsyncJobCount(Optional<Long> maxAsyncJobCount) {
+            Utils.checkNotNull(maxAsyncJobCount, "maxAsyncJobCount");
+            this.maxAsyncJobCount = maxAsyncJobCount;
+            return this;
+        }
+
+
+        /**
+         * The number of workers to use for the connector when syncing concurrently.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of workers to use for the connector when syncing concurrently.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
 
         /**
          * For syncs spanning a large date range, this option is used to request data in a smaller fixed window to improve sync reliability. This time window can be configured granularly by day.
@@ -739,6 +873,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * The Refresh Token obtained via OAuth flow authorization.
          */
@@ -747,6 +882,7 @@ public class SourceAmazonSellerPartner {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * Select the AWS Region.
@@ -766,6 +902,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data after this date will not be replicated.
          */
@@ -783,6 +920,7 @@ public class SourceAmazonSellerPartner {
             this.replicationEndDate = replicationEndDate;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. If start date is not provided or older than 2 years ago from today, the date 2 years ago from today will be used.
@@ -802,6 +940,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * Additional information passed to reports. This varies by report type.
          */
@@ -820,6 +959,7 @@ public class SourceAmazonSellerPartner {
             return this;
         }
 
+
         /**
          * For report based streams with known amount of requests per time period, this option will use waiting time between requests to avoid fatal statuses in reports. See &lt;a href="https://docs.airbyte.com/integrations/sources/amazon-seller-partner#limitations--troubleshooting" target="_blank"&gt;Troubleshooting&lt;/a&gt; section for more details
          */
@@ -837,7 +977,7 @@ public class SourceAmazonSellerPartner {
             this.waitToAvoidFatalErrors = waitToAvoidFatalErrors;
             return this;
         }
-        
+
         public SourceAmazonSellerPartner build() {
             if (accountType == null) {
                 accountType = _SINGLETON_VALUE_AccountType.value();
@@ -848,6 +988,12 @@ public class SourceAmazonSellerPartner {
             if (financialEventsStep == null) {
                 financialEventsStep = _SINGLETON_VALUE_FinancialEventsStep.value();
             }
+            if (maxAsyncJobCount == null) {
+                maxAsyncJobCount = _SINGLETON_VALUE_MaxAsyncJobCount.value();
+            }
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }
             if (periodInDays == null) {
                 periodInDays = _SINGLETON_VALUE_PeriodInDays.value();
             }
@@ -857,21 +1003,15 @@ public class SourceAmazonSellerPartner {
             if (waitToAvoidFatalErrors == null) {
                 waitToAvoidFatalErrors = _SINGLETON_VALUE_WaitToAvoidFatalErrors.value();
             }
+
             return new SourceAmazonSellerPartner(
-                accountType,
-                appId,
-                awsEnvironment,
-                financialEventsStep,
-                lwaAppId,
-                lwaClientSecret,
-                periodInDays,
-                refreshToken,
-                region,
-                replicationEndDate,
-                replicationStartDate,
-                reportOptionsList,
-                waitToAvoidFatalErrors);
+                accountType, appId, awsEnvironment,
+                financialEventsStep, lwaAppId, lwaClientSecret,
+                maxAsyncJobCount, numWorkers, periodInDays,
+                refreshToken, region, replicationEndDate,
+                replicationStartDate, reportOptionsList, waitToAvoidFatalErrors);
         }
+
 
         private static final LazySingletonValue<Optional<? extends AWSSellerPartnerAccountType>> _SINGLETON_VALUE_AccountType =
                 new LazySingletonValue<>(
@@ -896,6 +1036,18 @@ public class SourceAmazonSellerPartner {
                         "financial_events_step",
                         "\"180\"",
                         new TypeReference<Optional<? extends FinancialEventsStepSizeInDays>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_MaxAsyncJobCount =
+                new LazySingletonValue<>(
+                        "max_async_job_count",
+                        "2",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "2",
+                        new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_PeriodInDays =
                 new LazySingletonValue<>(

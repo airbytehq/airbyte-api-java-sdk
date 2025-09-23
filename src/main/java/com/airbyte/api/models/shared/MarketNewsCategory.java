@@ -22,7 +22,7 @@ public enum MarketNewsCategory {
     @JsonValue
     private final String value;
 
-    private MarketNewsCategory(String value) {
+    MarketNewsCategory(String value) {
         this.value = value;
     }
     

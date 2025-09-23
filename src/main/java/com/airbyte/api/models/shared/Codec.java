@@ -14,7 +14,7 @@ public enum Codec {
     @JsonValue
     private final String value;
 
-    private Codec(String value) {
+    Codec(String value) {
         this.value = value;
     }
     

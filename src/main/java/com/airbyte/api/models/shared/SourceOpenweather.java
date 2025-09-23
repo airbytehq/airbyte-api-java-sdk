@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOpenweather {
 
+public class SourceOpenweather {
     /**
      * API KEY
      */
@@ -51,6 +50,7 @@ public class SourceOpenweather {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("only_current")
     private Optional<Boolean> onlyCurrent;
+
 
     @JsonProperty("sourceType")
     private Openweather sourceType;
@@ -89,7 +89,8 @@ public class SourceOpenweather {
             String appid,
             String lat,
             String lon) {
-        this(appid, Optional.empty(), lat, lon, Optional.empty(), Optional.empty());
+        this(appid, Optional.empty(), lat,
+            lon, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -147,9 +148,10 @@ public class SourceOpenweather {
         return (Optional<Units>) units;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API KEY
@@ -168,6 +170,7 @@ public class SourceOpenweather {
         this.lang = Optional.ofNullable(lang);
         return this;
     }
+
 
     /**
      * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
@@ -205,6 +208,7 @@ public class SourceOpenweather {
         return this;
     }
 
+
     /**
      * True for particular day
      */
@@ -223,6 +227,7 @@ public class SourceOpenweather {
         return this;
     }
 
+
     /**
      * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
      */
@@ -232,7 +237,6 @@ public class SourceOpenweather {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -243,24 +247,20 @@ public class SourceOpenweather {
         }
         SourceOpenweather other = (SourceOpenweather) o;
         return 
-            Objects.deepEquals(this.appid, other.appid) &&
-            Objects.deepEquals(this.lang, other.lang) &&
-            Objects.deepEquals(this.lat, other.lat) &&
-            Objects.deepEquals(this.lon, other.lon) &&
-            Objects.deepEquals(this.onlyCurrent, other.onlyCurrent) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.units, other.units);
+            Utils.enhancedDeepEquals(this.appid, other.appid) &&
+            Utils.enhancedDeepEquals(this.lang, other.lang) &&
+            Utils.enhancedDeepEquals(this.lat, other.lat) &&
+            Utils.enhancedDeepEquals(this.lon, other.lon) &&
+            Utils.enhancedDeepEquals(this.onlyCurrent, other.onlyCurrent) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.units, other.units);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appid,
-            lang,
-            lat,
-            lon,
-            onlyCurrent,
-            sourceType,
+        return Utils.enhancedHash(
+            appid, lang, lat,
+            lon, onlyCurrent, sourceType,
             units);
     }
     
@@ -275,24 +275,26 @@ public class SourceOpenweather {
                 "sourceType", sourceType,
                 "units", units);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String appid;
- 
+
         private Optional<? extends Lang> lang = Optional.empty();
- 
+
         private String lat;
- 
+
         private String lon;
- 
+
         private Optional<Boolean> onlyCurrent = Optional.empty();
- 
+
         private Optional<? extends Units> units = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API KEY
@@ -302,6 +304,7 @@ public class SourceOpenweather {
             this.appid = appid;
             return this;
         }
+
 
         /**
          * You can use lang parameter to get the output in your language. The contents of the description field will be translated. See &lt;a href="https://openweathermap.org/api/one-call-api#multi"&gt;here&lt;/a&gt; for the list of supported languages.
@@ -321,6 +324,7 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
          * Latitude, decimal (-90; 90). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
          */
@@ -330,6 +334,7 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
          * Longitude, decimal (-180; 180). If you need the geocoder to automatic convert city names and zip-codes to geo coordinates and the other way around, please use the OpenWeather Geocoding API
          */
@@ -338,6 +343,7 @@ public class SourceOpenweather {
             this.lon = lon;
             return this;
         }
+
 
         /**
          * True for particular day
@@ -357,6 +363,7 @@ public class SourceOpenweather {
             return this;
         }
 
+
         /**
          * Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default.
          */
@@ -374,16 +381,14 @@ public class SourceOpenweather {
             this.units = units;
             return this;
         }
-        
+
         public SourceOpenweather build() {
+
             return new SourceOpenweather(
-                appid,
-                lang,
-                lat,
-                lon,
-                onlyCurrent,
-                units);
+                appid, lang, lat,
+                lon, onlyCurrent, units);
         }
+
 
         private static final LazySingletonValue<Openweather> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

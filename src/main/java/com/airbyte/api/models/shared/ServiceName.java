@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -27,6 +26,7 @@ public class ServiceName {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")
     private Optional<? extends ConnectionType> connectionType;
+
 
     @JsonProperty("service_name")
     private String serviceName;
@@ -50,9 +50,10 @@ public class ServiceName {
         return serviceName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ServiceName withServiceName(String serviceName) {
         Utils.checkNotNull(serviceName, "serviceName");
@@ -60,7 +61,6 @@ public class ServiceName {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,15 +71,14 @@ public class ServiceName {
         }
         ServiceName other = (ServiceName) o;
         return 
-            Objects.deepEquals(this.connectionType, other.connectionType) &&
-            Objects.deepEquals(this.serviceName, other.serviceName);
+            Utils.enhancedDeepEquals(this.connectionType, other.connectionType) &&
+            Utils.enhancedDeepEquals(this.serviceName, other.serviceName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionType,
-            serviceName);
+        return Utils.enhancedHash(
+            connectionType, serviceName);
     }
     
     @Override
@@ -88,25 +87,29 @@ public class ServiceName {
                 "connectionType", connectionType,
                 "serviceName", serviceName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String serviceName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder serviceName(String serviceName) {
             Utils.checkNotNull(serviceName, "serviceName");
             this.serviceName = serviceName;
             return this;
         }
-        
+
         public ServiceName build() {
+
             return new ServiceName(
                 serviceName);
         }
+
 
         private static final LazySingletonValue<Optional<? extends ConnectionType>> _SINGLETON_VALUE_ConnectionType =
                 new LazySingletonValue<>(

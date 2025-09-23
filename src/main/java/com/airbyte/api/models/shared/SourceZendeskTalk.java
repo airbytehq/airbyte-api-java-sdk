@@ -15,17 +15,17 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZendeskTalk {
 
+public class SourceZendeskTalk {
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceZendeskTalkAuthentication> credentials;
+
 
     @JsonProperty("sourceType")
     private SourceZendeskTalkZendeskTalk sourceType;
@@ -92,9 +92,10 @@ public class SourceZendeskTalk {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
@@ -104,6 +105,7 @@ public class SourceZendeskTalk {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
@@ -132,7 +134,6 @@ public class SourceZendeskTalk {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -143,18 +144,16 @@ public class SourceZendeskTalk {
         }
         SourceZendeskTalk other = (SourceZendeskTalk) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate,
             subdomain);
     }
     
@@ -166,18 +165,20 @@ public class SourceZendeskTalk {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceZendeskTalkAuthentication> credentials = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Zendesk service provides two authentication methods. Choose between: `OAuth2.0` or `API token`.
@@ -197,6 +198,7 @@ public class SourceZendeskTalk {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate data for Zendesk Talk API, in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated.
          */
@@ -206,6 +208,7 @@ public class SourceZendeskTalk {
             return this;
         }
 
+
         /**
          * This is your Zendesk subdomain that can be found in your account URL. For example, in https://{MY_SUBDOMAIN}.zendesk.com/, where MY_SUBDOMAIN is the value of your subdomain.
          */
@@ -214,13 +217,13 @@ public class SourceZendeskTalk {
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceZendeskTalk build() {
+
             return new SourceZendeskTalk(
-                credentials,
-                startDate,
-                subdomain);
+                credentials, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<SourceZendeskTalkZendeskTalk> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

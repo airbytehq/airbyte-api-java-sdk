@@ -21,7 +21,7 @@ public enum SourceS3ValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceS3ValidationPolicy(String value) {
+    SourceS3ValidationPolicy(String value) {
         this.value = value;
     }
     

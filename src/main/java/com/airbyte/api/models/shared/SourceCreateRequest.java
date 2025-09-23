@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCreateRequest {
 
+public class SourceCreateRequest {
     /**
      * The values required to configure the source.
      */
@@ -50,6 +49,7 @@ public class SourceCreateRequest {
     @JsonProperty("secretId")
     private Optional<String> secretId;
 
+
     @JsonProperty("workspaceId")
     private String workspaceId;
 
@@ -79,7 +79,8 @@ public class SourceCreateRequest {
             SourceConfiguration configuration,
             String name,
             String workspaceId) {
-        this(configuration, Optional.empty(), name, Optional.empty(), Optional.empty(), workspaceId);
+        this(configuration, Optional.empty(), name,
+            Optional.empty(), Optional.empty(), workspaceId);
     }
 
     /**
@@ -128,9 +129,10 @@ public class SourceCreateRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the source.
@@ -149,6 +151,7 @@ public class SourceCreateRequest {
         this.definitionId = Optional.ofNullable(definitionId);
         return this;
     }
+
 
     /**
      * The UUID of the connector definition. One of configuration.sourceType or definitionId must be provided.
@@ -177,6 +180,7 @@ public class SourceCreateRequest {
         return this;
     }
 
+
     /**
      * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
      */
@@ -195,6 +199,7 @@ public class SourceCreateRequest {
         return this;
     }
 
+
     /**
      * Optional secretID obtained through the  OAuth redirect flow.
      */
@@ -210,7 +215,6 @@ public class SourceCreateRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -221,23 +225,19 @@ public class SourceCreateRequest {
         }
         SourceCreateRequest other = (SourceCreateRequest) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.definitionId, other.definitionId) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation) &&
-            Objects.deepEquals(this.secretId, other.secretId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.definitionId, other.definitionId) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation) &&
+            Utils.enhancedDeepEquals(this.secretId, other.secretId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            definitionId,
-            name,
-            resourceAllocation,
-            secretId,
-            workspaceId);
+        return Utils.enhancedHash(
+            configuration, definitionId, name,
+            resourceAllocation, secretId, workspaceId);
     }
     
     @Override
@@ -250,24 +250,26 @@ public class SourceCreateRequest {
                 "secretId", secretId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceConfiguration configuration;
- 
+
         private Optional<String> definitionId = Optional.empty();
- 
+
         private String name;
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
- 
+
         private Optional<String> secretId = Optional.empty();
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the source.
@@ -277,6 +279,7 @@ public class SourceCreateRequest {
             this.configuration = configuration;
             return this;
         }
+
 
         /**
          * The UUID of the connector definition. One of configuration.sourceType or definitionId must be provided.
@@ -296,6 +299,7 @@ public class SourceCreateRequest {
             return this;
         }
 
+
         /**
          * Name of the source e.g. dev-mysql-instance.
          */
@@ -304,6 +308,7 @@ public class SourceCreateRequest {
             this.name = name;
             return this;
         }
+
 
         /**
          * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
@@ -323,6 +328,7 @@ public class SourceCreateRequest {
             return this;
         }
 
+
         /**
          * Optional secretID obtained through the  OAuth redirect flow.
          */
@@ -341,20 +347,19 @@ public class SourceCreateRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public SourceCreateRequest build() {
+
             return new SourceCreateRequest(
-                configuration,
-                definitionId,
-                name,
-                resourceAllocation,
-                secretId,
-                workspaceId);
+                configuration, definitionId, name,
+                resourceAllocation, secretId, workspaceId);
         }
+
     }
 }

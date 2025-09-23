@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,12 +21,12 @@ import java.util.Optional;
  * <p>The authorization method to use to retrieve data from SurveyMonkey
  */
 public class SurveyMonkeyAuthorizationMethod {
-
     /**
      * Access Token for making authenticated requests. See the &lt;a href="https://docs.airbyte.io/integrations/sources/surveymonkey"&gt;docs&lt;/a&gt; for information on how to generate this key.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_method")
     private SourceSurveymonkeyAuthMethod authMethod;
@@ -94,9 +93,10 @@ public class SurveyMonkeyAuthorizationMethod {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Access Token for making authenticated requests. See the &lt;a href="https://docs.airbyte.io/integrations/sources/surveymonkey"&gt;docs&lt;/a&gt; for information on how to generate this key.
@@ -116,6 +116,7 @@ public class SurveyMonkeyAuthorizationMethod {
         return this;
     }
 
+
     /**
      * The Client ID of the SurveyMonkey developer application.
      */
@@ -134,6 +135,7 @@ public class SurveyMonkeyAuthorizationMethod {
         return this;
     }
 
+
     /**
      * The Client Secret of the SurveyMonkey developer application.
      */
@@ -143,7 +145,6 @@ public class SurveyMonkeyAuthorizationMethod {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -154,18 +155,16 @@ public class SurveyMonkeyAuthorizationMethod {
         }
         SurveyMonkeyAuthorizationMethod other = (SurveyMonkeyAuthorizationMethod) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authMethod,
-            clientId,
+        return Utils.enhancedHash(
+            accessToken, authMethod, clientId,
             clientSecret);
     }
     
@@ -177,18 +176,20 @@ public class SurveyMonkeyAuthorizationMethod {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Access Token for making authenticated requests. See the &lt;a href="https://docs.airbyte.io/integrations/sources/surveymonkey"&gt;docs&lt;/a&gt; for information on how to generate this key.
@@ -198,6 +199,7 @@ public class SurveyMonkeyAuthorizationMethod {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * The Client ID of the SurveyMonkey developer application.
@@ -217,6 +219,7 @@ public class SurveyMonkeyAuthorizationMethod {
             return this;
         }
 
+
         /**
          * The Client Secret of the SurveyMonkey developer application.
          */
@@ -234,13 +237,13 @@ public class SurveyMonkeyAuthorizationMethod {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SurveyMonkeyAuthorizationMethod build() {
+
             return new SurveyMonkeyAuthorizationMethod(
-                accessToken,
-                clientId,
-                clientSecret);
+                accessToken, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<SourceSurveymonkeyAuthMethod> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePlaid {
 
+public class SourcePlaid {
     /**
      * The end-user's Link access token.
      */
@@ -42,6 +41,7 @@ public class SourcePlaid {
      */
     @JsonProperty("plaid_env")
     private PlaidEnvironment plaidEnv;
+
 
     @JsonProperty("sourceType")
     private Plaid sourceType;
@@ -78,7 +78,8 @@ public class SourcePlaid {
             String apiKey,
             String clientId,
             PlaidEnvironment plaidEnv) {
-        this(accessToken, apiKey, clientId, plaidEnv, Optional.empty());
+        this(accessToken, apiKey, clientId,
+            plaidEnv, Optional.empty());
     }
 
     /**
@@ -126,9 +127,10 @@ public class SourcePlaid {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The end-user's Link access token.
@@ -175,6 +177,7 @@ public class SourcePlaid {
         return this;
     }
 
+
     /**
      * The date from which you'd like to replicate data for Plaid in the format YYYY-MM-DD. All data generated after this date will be replicated.
      */
@@ -184,7 +187,6 @@ public class SourcePlaid {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,23 +197,19 @@ public class SourcePlaid {
         }
         SourcePlaid other = (SourcePlaid) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.plaidEnv, other.plaidEnv) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.plaidEnv, other.plaidEnv) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            apiKey,
-            clientId,
-            plaidEnv,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, apiKey, clientId,
+            plaidEnv, sourceType, startDate);
     }
     
     @Override
@@ -224,22 +222,24 @@ public class SourcePlaid {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private String apiKey;
- 
+
         private String clientId;
- 
+
         private PlaidEnvironment plaidEnv;
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The end-user's Link access token.
@@ -250,6 +250,7 @@ public class SourcePlaid {
             return this;
         }
 
+
         /**
          * The Plaid API key to use to hit the API.
          */
@@ -258,6 +259,7 @@ public class SourcePlaid {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The Plaid client id.
@@ -268,6 +270,7 @@ public class SourcePlaid {
             return this;
         }
 
+
         /**
          * The Plaid environment.
          */
@@ -276,6 +279,7 @@ public class SourcePlaid {
             this.plaidEnv = plaidEnv;
             return this;
         }
+
 
         /**
          * The date from which you'd like to replicate data for Plaid in the format YYYY-MM-DD. All data generated after this date will be replicated.
@@ -294,15 +298,14 @@ public class SourcePlaid {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePlaid build() {
+
             return new SourcePlaid(
-                accessToken,
-                apiKey,
-                clientId,
-                plaidEnv,
-                startDate);
+                accessToken, apiKey, clientId,
+                plaidEnv, startDate);
         }
+
 
         private static final LazySingletonValue<Plaid> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

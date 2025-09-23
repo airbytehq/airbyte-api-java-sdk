@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -38,6 +37,7 @@ public class NessieCatalog {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     private Optional<String> accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("catalog_type")
@@ -77,7 +77,8 @@ public class NessieCatalog {
     public NessieCatalog(
             String namespace,
             String serverUri) {
-        this(Optional.empty(), Optional.empty(), namespace, serverUri);
+        this(Optional.empty(), Optional.empty(), namespace,
+            serverUri);
     }
 
     @JsonAnyGetter
@@ -117,9 +118,10 @@ public class NessieCatalog {
         return serverUri;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public NessieCatalog withAdditionalProperty(String key, Object value) {
@@ -127,8 +129,7 @@ public class NessieCatalog {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public NessieCatalog withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -144,6 +145,7 @@ public class NessieCatalog {
         return this;
     }
 
+
     /**
      * Optional token for authentication with the Nessie server.
      */
@@ -158,6 +160,7 @@ public class NessieCatalog {
         this.catalogType = Optional.ofNullable(catalogType);
         return this;
     }
+
 
     public NessieCatalog withCatalogType(Optional<? extends DestinationS3DataLakeSchemasCatalogTypeCatalogType> catalogType) {
         Utils.checkNotNull(catalogType, "catalogType");
@@ -185,7 +188,6 @@ public class NessieCatalog {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -196,21 +198,18 @@ public class NessieCatalog {
         }
         NessieCatalog other = (NessieCatalog) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.catalogType, other.catalogType) &&
-            Objects.deepEquals(this.namespace, other.namespace) &&
-            Objects.deepEquals(this.serverUri, other.serverUri);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.catalogType, other.catalogType) &&
+            Utils.enhancedDeepEquals(this.namespace, other.namespace) &&
+            Utils.enhancedDeepEquals(this.serverUri, other.serverUri);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            accessToken,
-            catalogType,
-            namespace,
-            serverUri);
+        return Utils.enhancedHash(
+            additionalProperties, accessToken, catalogType,
+            namespace, serverUri);
     }
     
     @Override
@@ -222,19 +221,20 @@ public class NessieCatalog {
                 "namespace", namespace,
                 "serverUri", serverUri);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private Optional<? extends DestinationS3DataLakeSchemasCatalogTypeCatalogType> catalogType;
- 
+
         private String namespace;
- 
+
         private String serverUri;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -255,6 +255,7 @@ public class NessieCatalog {
             return this;
         }
 
+
         /**
          * Optional token for authentication with the Nessie server.
          */
@@ -273,6 +274,7 @@ public class NessieCatalog {
             return this;
         }
 
+
         public Builder catalogType(DestinationS3DataLakeSchemasCatalogTypeCatalogType catalogType) {
             Utils.checkNotNull(catalogType, "catalogType");
             this.catalogType = Optional.ofNullable(catalogType);
@@ -285,6 +287,7 @@ public class NessieCatalog {
             return this;
         }
 
+
         /**
          * The Nessie namespace to be used in the Table identifier. 
          *            This will ONLY be used if the `Destination Namespace` setting for the connection is set to
@@ -296,6 +299,7 @@ public class NessieCatalog {
             return this;
         }
 
+
         /**
          * The base URL of the Nessie server used to connect to the Nessie catalog.
          */
@@ -304,18 +308,18 @@ public class NessieCatalog {
             this.serverUri = serverUri;
             return this;
         }
-        
+
         public NessieCatalog build() {
             if (catalogType == null) {
                 catalogType = _SINGLETON_VALUE_CatalogType.value();
             }
+
             return new NessieCatalog(
-                accessToken,
-                catalogType,
-                namespace,
+                accessToken, catalogType, namespace,
                 serverUri)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationS3DataLakeSchemasCatalogTypeCatalogType>> _SINGLETON_VALUE_CatalogType =
                 new LazySingletonValue<>(

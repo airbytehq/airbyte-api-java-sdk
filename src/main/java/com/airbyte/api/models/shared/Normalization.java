@@ -20,7 +20,7 @@ public enum Normalization {
     @JsonValue
     private final String value;
 
-    private Normalization(String value) {
+    Normalization(String value) {
         this.value = value;
     }
     

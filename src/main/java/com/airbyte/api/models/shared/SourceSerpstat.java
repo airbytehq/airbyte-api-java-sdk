@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSerpstat {
 
+public class SourceSerpstat {
     /**
      * Serpstat API key can be found here: https://serpstat.com/users/profile/
      */
@@ -91,6 +90,7 @@ public class SourceSerpstat {
     @JsonProperty("sort_value")
     private Optional<String> sortValue;
 
+
     @JsonProperty("sourceType")
     private Serpstat sourceType;
 
@@ -131,7 +131,10 @@ public class SourceSerpstat {
     
     public SourceSerpstat(
             String apiKey) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -220,9 +223,10 @@ public class SourceSerpstat {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Serpstat API key can be found here: https://serpstat.com/users/profile/
@@ -242,6 +246,7 @@ public class SourceSerpstat {
         return this;
     }
 
+
     /**
      * The domain name to get data for (ex. serpstat.com)
      */
@@ -259,6 +264,7 @@ public class SourceSerpstat {
         this.domains = Optional.ofNullable(domains);
         return this;
     }
+
 
     /**
      * The list of domains that will be used in streams that support batch operations
@@ -278,6 +284,7 @@ public class SourceSerpstat {
         return this;
     }
 
+
     /**
      * The field name by which the results should be filtered. Filtering the results will result in fewer API credits spent. Each stream has different filtering options. See https://serpstat.com/api/ for more details.
      */
@@ -295,6 +302,7 @@ public class SourceSerpstat {
         this.filterValue = Optional.ofNullable(filterValue);
         return this;
     }
+
 
     /**
      * The value of the field to filter by. Each stream has different filtering options. See https://serpstat.com/api/ for more details.
@@ -314,6 +322,7 @@ public class SourceSerpstat {
         return this;
     }
 
+
     /**
      * The number of data rows per page to be returned. Each data row can contain multiple data points. The max value is 1000. Reducing the size of the page will result in fewer API credits spent.
      */
@@ -331,6 +340,7 @@ public class SourceSerpstat {
         this.pagesToFetch = Optional.ofNullable(pagesToFetch);
         return this;
     }
+
 
     /**
      * The number of pages that should be fetched. All results will be obtained if left blank. Reducing the number of pages will result in fewer API credits spent.
@@ -350,6 +360,7 @@ public class SourceSerpstat {
         return this;
     }
 
+
     /**
      * The ID of a region to get data from in the form of a two-letter country code prepended with the g_ prefix. See the list of supported region IDs here: https://serpstat.com/api/664-request-parameters-v4/.
      */
@@ -367,6 +378,7 @@ public class SourceSerpstat {
         this.sortBy = Optional.ofNullable(sortBy);
         return this;
     }
+
 
     /**
      * The field name by which the results should be sorted. Each stream has different sorting options. See https://serpstat.com/api/ for more details.
@@ -386,6 +398,7 @@ public class SourceSerpstat {
         return this;
     }
 
+
     /**
      * The value of the field to sort by. Each stream has different sorting options. See https://serpstat.com/api/ for more details.
      */
@@ -395,7 +408,6 @@ public class SourceSerpstat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -406,33 +418,26 @@ public class SourceSerpstat {
         }
         SourceSerpstat other = (SourceSerpstat) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.domains, other.domains) &&
-            Objects.deepEquals(this.filterBy, other.filterBy) &&
-            Objects.deepEquals(this.filterValue, other.filterValue) &&
-            Objects.deepEquals(this.pageSize, other.pageSize) &&
-            Objects.deepEquals(this.pagesToFetch, other.pagesToFetch) &&
-            Objects.deepEquals(this.regionId, other.regionId) &&
-            Objects.deepEquals(this.sortBy, other.sortBy) &&
-            Objects.deepEquals(this.sortValue, other.sortValue) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.domains, other.domains) &&
+            Utils.enhancedDeepEquals(this.filterBy, other.filterBy) &&
+            Utils.enhancedDeepEquals(this.filterValue, other.filterValue) &&
+            Utils.enhancedDeepEquals(this.pageSize, other.pageSize) &&
+            Utils.enhancedDeepEquals(this.pagesToFetch, other.pagesToFetch) &&
+            Utils.enhancedDeepEquals(this.regionId, other.regionId) &&
+            Utils.enhancedDeepEquals(this.sortBy, other.sortBy) &&
+            Utils.enhancedDeepEquals(this.sortValue, other.sortValue) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            domain,
-            domains,
-            filterBy,
-            filterValue,
-            pageSize,
-            pagesToFetch,
-            regionId,
-            sortBy,
-            sortValue,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, domain, domains,
+            filterBy, filterValue, pageSize,
+            pagesToFetch, regionId, sortBy,
+            sortValue, sourceType);
     }
     
     @Override
@@ -450,32 +455,34 @@ public class SourceSerpstat {
                 "sortValue", sortValue,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> domain;
- 
+
         private Optional<? extends List<Object>> domains = Optional.empty();
- 
+
         private Optional<String> filterBy = Optional.empty();
- 
+
         private Optional<String> filterValue = Optional.empty();
- 
+
         private Optional<Long> pageSize;
- 
+
         private Optional<Long> pagesToFetch;
- 
+
         private Optional<String> regionId;
- 
+
         private Optional<String> sortBy = Optional.empty();
- 
+
         private Optional<String> sortValue = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Serpstat API key can be found here: https://serpstat.com/users/profile/
@@ -485,6 +492,7 @@ public class SourceSerpstat {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The domain name to get data for (ex. serpstat.com)
@@ -504,6 +512,7 @@ public class SourceSerpstat {
             return this;
         }
 
+
         /**
          * The list of domains that will be used in streams that support batch operations
          */
@@ -521,6 +530,7 @@ public class SourceSerpstat {
             this.domains = domains;
             return this;
         }
+
 
         /**
          * The field name by which the results should be filtered. Filtering the results will result in fewer API credits spent. Each stream has different filtering options. See https://serpstat.com/api/ for more details.
@@ -540,6 +550,7 @@ public class SourceSerpstat {
             return this;
         }
 
+
         /**
          * The value of the field to filter by. Each stream has different filtering options. See https://serpstat.com/api/ for more details.
          */
@@ -557,6 +568,7 @@ public class SourceSerpstat {
             this.filterValue = filterValue;
             return this;
         }
+
 
         /**
          * The number of data rows per page to be returned. Each data row can contain multiple data points. The max value is 1000. Reducing the size of the page will result in fewer API credits spent.
@@ -576,6 +588,7 @@ public class SourceSerpstat {
             return this;
         }
 
+
         /**
          * The number of pages that should be fetched. All results will be obtained if left blank. Reducing the number of pages will result in fewer API credits spent.
          */
@@ -593,6 +606,7 @@ public class SourceSerpstat {
             this.pagesToFetch = pagesToFetch;
             return this;
         }
+
 
         /**
          * The ID of a region to get data from in the form of a two-letter country code prepended with the g_ prefix. See the list of supported region IDs here: https://serpstat.com/api/664-request-parameters-v4/.
@@ -612,6 +626,7 @@ public class SourceSerpstat {
             return this;
         }
 
+
         /**
          * The field name by which the results should be sorted. Each stream has different sorting options. See https://serpstat.com/api/ for more details.
          */
@@ -630,6 +645,7 @@ public class SourceSerpstat {
             return this;
         }
 
+
         /**
          * The value of the field to sort by. Each stream has different sorting options. See https://serpstat.com/api/ for more details.
          */
@@ -647,7 +663,7 @@ public class SourceSerpstat {
             this.sortValue = sortValue;
             return this;
         }
-        
+
         public SourceSerpstat build() {
             if (domain == null) {
                 domain = _SINGLETON_VALUE_Domain.value();
@@ -661,18 +677,14 @@ public class SourceSerpstat {
             if (regionId == null) {
                 regionId = _SINGLETON_VALUE_RegionId.value();
             }
+
             return new SourceSerpstat(
-                apiKey,
-                domain,
-                domains,
-                filterBy,
-                filterValue,
-                pageSize,
-                pagesToFetch,
-                regionId,
-                sortBy,
+                apiKey, domain, domains,
+                filterBy, filterValue, pageSize,
+                pagesToFetch, regionId, sortBy,
                 sortValue);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Domain =
                 new LazySingletonValue<>(

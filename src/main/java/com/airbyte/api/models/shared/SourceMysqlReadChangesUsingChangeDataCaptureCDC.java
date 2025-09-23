@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -46,6 +45,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("invalid_cdc_cursor_position_behavior")
     private Optional<? extends SourceMysqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("method")
@@ -76,7 +76,8 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
     }
     
     public SourceMysqlReadChangesUsingChangeDataCaptureCDC() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -115,9 +116,10 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         return serverTimezone;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceMysqlReadChangesUsingChangeDataCaptureCDC withAdditionalProperty(String key, Object value) {
@@ -125,8 +127,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceMysqlReadChangesUsingChangeDataCaptureCDC withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -141,6 +142,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         this.initialLoadTimeoutHours = Optional.ofNullable(initialLoadTimeoutHours);
         return this;
     }
+
 
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
@@ -160,6 +162,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
+
     /**
      * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
      */
@@ -174,6 +177,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         this.method = Optional.ofNullable(method);
         return this;
     }
+
 
     public SourceMysqlReadChangesUsingChangeDataCaptureCDC withMethod(Optional<? extends SourceMysqlSchemasMethod> method) {
         Utils.checkNotNull(method, "method");
@@ -190,6 +194,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
+
     /**
      * Enter the configured MySQL server timezone. This should only be done if the configured timezone in your MySQL instance does not conform to IANNA standard.
      */
@@ -199,7 +204,6 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -210,21 +214,18 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
         }
         SourceMysqlReadChangesUsingChangeDataCaptureCDC other = (SourceMysqlReadChangesUsingChangeDataCaptureCDC) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
-            Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
-            Objects.deepEquals(this.method, other.method) &&
-            Objects.deepEquals(this.serverTimezone, other.serverTimezone);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
+            Utils.enhancedDeepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior) &&
+            Utils.enhancedDeepEquals(this.method, other.method) &&
+            Utils.enhancedDeepEquals(this.serverTimezone, other.serverTimezone);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            initialLoadTimeoutHours,
-            invalidCdcCursorPositionBehavior,
-            method,
-            serverTimezone);
+        return Utils.enhancedHash(
+            additionalProperties, initialLoadTimeoutHours, invalidCdcCursorPositionBehavior,
+            method, serverTimezone);
     }
     
     @Override
@@ -236,19 +237,20 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
                 "method", method,
                 "serverTimezone", serverTimezone);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<Long> initialLoadTimeoutHours;
- 
+
         private Optional<? extends SourceMysqlInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
- 
+
         private Optional<? extends SourceMysqlSchemasMethod> method;
- 
+
         private Optional<String> serverTimezone = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -269,6 +271,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         /**
          * The amount of time an initial load is allowed to continue for before catching up on CDC logs.
          */
@@ -286,6 +289,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
             this.initialLoadTimeoutHours = initialLoadTimeoutHours;
             return this;
         }
+
 
         /**
          * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
@@ -305,6 +309,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         public Builder method(SourceMysqlSchemasMethod method) {
             Utils.checkNotNull(method, "method");
             this.method = Optional.ofNullable(method);
@@ -316,6 +321,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
             this.method = method;
             return this;
         }
+
 
         /**
          * Enter the configured MySQL server timezone. This should only be done if the configured timezone in your MySQL instance does not conform to IANNA standard.
@@ -334,7 +340,7 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
             this.serverTimezone = serverTimezone;
             return this;
         }
-        
+
         public SourceMysqlReadChangesUsingChangeDataCaptureCDC build() {
             if (initialLoadTimeoutHours == null) {
                 initialLoadTimeoutHours = _SINGLETON_VALUE_InitialLoadTimeoutHours.value();
@@ -345,13 +351,13 @@ public class SourceMysqlReadChangesUsingChangeDataCaptureCDC {
             if (method == null) {
                 method = _SINGLETON_VALUE_Method.value();
             }
+
             return new SourceMysqlReadChangesUsingChangeDataCaptureCDC(
-                initialLoadTimeoutHours,
-                invalidCdcCursorPositionBehavior,
-                method,
+                initialLoadTimeoutHours, invalidCdcCursorPositionBehavior, method,
                 serverTimezone)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_InitialLoadTimeoutHours =
                 new LazySingletonValue<>(

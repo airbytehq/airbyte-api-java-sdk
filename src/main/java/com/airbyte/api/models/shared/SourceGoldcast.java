@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoldcast {
-
     /**
      * Your API Access Key. See &lt;a href="https://help.goldcast.io/hc/en-us/articles/22931655725723-How-To-Create-an-API-Token-in-Goldcast"&gt;here&lt;/a&gt;. The key is case sensitive.
      */
     @JsonProperty("access_key")
     private String accessKey;
+
 
     @JsonProperty("sourceType")
     private Goldcast sourceType;
@@ -45,9 +45,10 @@ public class SourceGoldcast {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Access Key. See &lt;a href="https://help.goldcast.io/hc/en-us/articles/22931655725723-How-To-Create-an-API-Token-in-Goldcast"&gt;here&lt;/a&gt;. The key is case sensitive.
@@ -58,7 +59,6 @@ public class SourceGoldcast {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceGoldcast {
         }
         SourceGoldcast other = (SourceGoldcast) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            sourceType);
+        return Utils.enhancedHash(
+            accessKey, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceGoldcast {
                 "accessKey", accessKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Access Key. See &lt;a href="https://help.goldcast.io/hc/en-us/articles/22931655725723-How-To-Create-an-API-Token-in-Goldcast"&gt;here&lt;/a&gt;. The key is case sensitive.
@@ -103,11 +104,13 @@ public class SourceGoldcast {
             this.accessKey = accessKey;
             return this;
         }
-        
+
         public SourceGoldcast build() {
+
             return new SourceGoldcast(
                 accessKey);
         }
+
 
         private static final LazySingletonValue<Goldcast> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

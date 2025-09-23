@@ -22,7 +22,7 @@ public enum SourceGcsParsingStrategy {
     @JsonValue
     private final String value;
 
-    private SourceGcsParsingStrategy(String value) {
+    SourceGcsParsingStrategy(String value) {
         this.value = value;
     }
     

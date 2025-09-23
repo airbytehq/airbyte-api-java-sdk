@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceLinnworks {
-
     /**
      * Linnworks Application ID
      */
@@ -28,6 +27,7 @@ public class SourceLinnworks {
     @JsonProperty("application_secret")
     private String applicationSecret;
 
+
     @JsonProperty("sourceType")
     private Linnworks sourceType;
 
@@ -36,6 +36,7 @@ public class SourceLinnworks {
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("token")
     private String token;
@@ -91,9 +92,10 @@ public class SourceLinnworks {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Linnworks Application ID
@@ -128,7 +130,6 @@ public class SourceLinnworks {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -139,21 +140,18 @@ public class SourceLinnworks {
         }
         SourceLinnworks other = (SourceLinnworks) o;
         return 
-            Objects.deepEquals(this.applicationId, other.applicationId) &&
-            Objects.deepEquals(this.applicationSecret, other.applicationSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.applicationId, other.applicationId) &&
+            Utils.enhancedDeepEquals(this.applicationSecret, other.applicationSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            applicationId,
-            applicationSecret,
-            sourceType,
-            startDate,
-            token);
+        return Utils.enhancedHash(
+            applicationId, applicationSecret, sourceType,
+            startDate, token);
     }
     
     @Override
@@ -165,20 +163,22 @@ public class SourceLinnworks {
                 "startDate", startDate,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String applicationId;
- 
+
         private String applicationSecret;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Linnworks Application ID
@@ -189,6 +189,7 @@ public class SourceLinnworks {
             return this;
         }
 
+
         /**
          * Linnworks Application Secret
          */
@@ -197,6 +198,7 @@ public class SourceLinnworks {
             this.applicationSecret = applicationSecret;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
@@ -207,19 +209,20 @@ public class SourceLinnworks {
             return this;
         }
 
+
         public Builder token(String token) {
             Utils.checkNotNull(token, "token");
             this.token = token;
             return this;
         }
-        
+
         public SourceLinnworks build() {
+
             return new SourceLinnworks(
-                applicationId,
-                applicationSecret,
-                startDate,
+                applicationId, applicationSecret, startDate,
                 token);
         }
+
 
         private static final LazySingletonValue<Linnworks> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

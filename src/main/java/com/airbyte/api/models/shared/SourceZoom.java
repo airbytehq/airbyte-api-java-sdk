@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceZoom {
 
+public class SourceZoom {
     /**
      * The account ID for your Zoom account. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
      */
     @JsonProperty("account_id")
     private String accountId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authorization_endpoint")
@@ -39,6 +39,7 @@ public class SourceZoom {
      */
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("sourceType")
     private Zoom sourceType;
@@ -64,7 +65,8 @@ public class SourceZoom {
             String accountId,
             String clientId,
             String clientSecret) {
-        this(accountId, Optional.empty(), clientId, clientSecret);
+        this(accountId, Optional.empty(), clientId,
+            clientSecret);
     }
 
     /**
@@ -101,9 +103,10 @@ public class SourceZoom {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account ID for your Zoom account. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
@@ -119,6 +122,7 @@ public class SourceZoom {
         this.authorizationEndpoint = Optional.ofNullable(authorizationEndpoint);
         return this;
     }
+
 
     public SourceZoom withAuthorizationEndpoint(Optional<String> authorizationEndpoint) {
         Utils.checkNotNull(authorizationEndpoint, "authorizationEndpoint");
@@ -144,7 +148,6 @@ public class SourceZoom {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,21 +158,18 @@ public class SourceZoom {
         }
         SourceZoom other = (SourceZoom) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.authorizationEndpoint, other.authorizationEndpoint) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.authorizationEndpoint, other.authorizationEndpoint) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            authorizationEndpoint,
-            clientId,
-            clientSecret,
-            sourceType);
+        return Utils.enhancedHash(
+            accountId, authorizationEndpoint, clientId,
+            clientSecret, sourceType);
     }
     
     @Override
@@ -181,20 +181,22 @@ public class SourceZoom {
                 "clientSecret", clientSecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private Optional<String> authorizationEndpoint;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account ID for your Zoom account. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
@@ -204,6 +206,7 @@ public class SourceZoom {
             this.accountId = accountId;
             return this;
         }
+
 
         public Builder authorizationEndpoint(String authorizationEndpoint) {
             Utils.checkNotNull(authorizationEndpoint, "authorizationEndpoint");
@@ -217,6 +220,7 @@ public class SourceZoom {
             return this;
         }
 
+
         /**
          * The client ID for your Zoom app. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
          */
@@ -226,6 +230,7 @@ public class SourceZoom {
             return this;
         }
 
+
         /**
          * The client secret for your Zoom app. You can find this in the Zoom Marketplace under the "Manage" tab for your app.
          */
@@ -234,17 +239,17 @@ public class SourceZoom {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceZoom build() {
             if (authorizationEndpoint == null) {
                 authorizationEndpoint = _SINGLETON_VALUE_AuthorizationEndpoint.value();
             }
+
             return new SourceZoom(
-                accountId,
-                authorizationEndpoint,
-                clientId,
+                accountId, authorizationEndpoint, clientId,
                 clientSecret);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_AuthorizationEndpoint =
                 new LazySingletonValue<>(

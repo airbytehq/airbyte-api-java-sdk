@@ -14,7 +14,7 @@ public enum DestinationPgvectorSchemasProcessingTextSplitterMode {
     @JsonValue
     private final String value;
 
-    private DestinationPgvectorSchemasProcessingTextSplitterMode(String value) {
+    DestinationPgvectorSchemasProcessingTextSplitterMode(String value) {
         this.value = value;
     }
     

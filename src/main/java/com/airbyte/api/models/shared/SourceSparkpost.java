@@ -15,20 +15,23 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceSparkpost {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_prefix")
     private Optional<? extends APIEndpointPrefix> apiPrefix;
 
+
     @JsonProperty("sourceType")
     private Sparkpost sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -74,9 +77,10 @@ public class SourceSparkpost {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceSparkpost withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -90,6 +94,7 @@ public class SourceSparkpost {
         return this;
     }
 
+
     public SourceSparkpost withApiPrefix(Optional<? extends APIEndpointPrefix> apiPrefix) {
         Utils.checkNotNull(apiPrefix, "apiPrefix");
         this.apiPrefix = apiPrefix;
@@ -102,7 +107,6 @@ public class SourceSparkpost {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,18 +117,16 @@ public class SourceSparkpost {
         }
         SourceSparkpost other = (SourceSparkpost) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiPrefix, other.apiPrefix) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiPrefix, other.apiPrefix) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiPrefix,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, apiPrefix, sourceType,
             startDate);
     }
     
@@ -136,24 +138,27 @@ public class SourceSparkpost {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends APIEndpointPrefix> apiPrefix;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder apiPrefix(APIEndpointPrefix apiPrefix) {
             Utils.checkNotNull(apiPrefix, "apiPrefix");
@@ -167,21 +172,22 @@ public class SourceSparkpost {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSparkpost build() {
             if (apiPrefix == null) {
                 apiPrefix = _SINGLETON_VALUE_ApiPrefix.value();
             }
+
             return new SourceSparkpost(
-                apiKey,
-                apiPrefix,
-                startDate);
+                apiKey, apiPrefix, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends APIEndpointPrefix>> _SINGLETON_VALUE_ApiPrefix =
                 new LazySingletonValue<>(

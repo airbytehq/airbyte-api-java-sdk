@@ -17,11 +17,10 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleAds {
 
+public class SourceGoogleAds {
     /**
      * A conversion window is the number of days after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;Google's documentation&lt;/a&gt;.
      */
@@ -29,8 +28,10 @@ public class SourceGoogleAds {
     @JsonProperty("conversion_window_days")
     private Optional<Long> conversionWindowDays;
 
+
     @JsonProperty("credentials")
     private GoogleCredentials credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("custom_queries_array")
@@ -56,6 +57,7 @@ public class SourceGoogleAds {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<LocalDate> endDate;
+
 
     @JsonProperty("sourceType")
     private SourceGoogleAdsGoogleAds sourceType;
@@ -95,7 +97,9 @@ public class SourceGoogleAds {
     
     public SourceGoogleAds(
             GoogleCredentials credentials) {
-        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), credentials, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -155,9 +159,10 @@ public class SourceGoogleAds {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A conversion window is the number of days after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;Google's documentation&lt;/a&gt;.
@@ -167,6 +172,7 @@ public class SourceGoogleAds {
         this.conversionWindowDays = Optional.ofNullable(conversionWindowDays);
         return this;
     }
+
 
     /**
      * A conversion window is the number of days after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;Google's documentation&lt;/a&gt;.
@@ -189,6 +195,7 @@ public class SourceGoogleAds {
         return this;
     }
 
+
     public SourceGoogleAds withCustomQueriesArray(Optional<? extends List<CustomQueriesArray>> customQueriesArray) {
         Utils.checkNotNull(customQueriesArray, "customQueriesArray");
         this.customQueriesArray = customQueriesArray;
@@ -203,6 +210,7 @@ public class SourceGoogleAds {
         this.customerId = Optional.ofNullable(customerId);
         return this;
     }
+
 
     /**
      * Comma-separated list of (client) customer IDs. Each customer ID must be specified as a 10-digit number without dashes. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
@@ -222,6 +230,7 @@ public class SourceGoogleAds {
         return this;
     }
 
+
     /**
      * A list of customer statuses to filter on. For detailed info about what each status mean refer to Google Ads &lt;a href="https://developers.google.com/google-ads/api/reference/rpc/v15/CustomerStatusEnum.CustomerStatus"&gt;documentation&lt;/a&gt;.
      */
@@ -239,6 +248,7 @@ public class SourceGoogleAds {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * UTC date in the format YYYY-MM-DD. Any data after this date will not be replicated. (Default value of today is used if not set)
@@ -258,6 +268,7 @@ public class SourceGoogleAds {
         return this;
     }
 
+
     /**
      * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. (Default value of two years ago is used if not set)
      */
@@ -267,7 +278,6 @@ public class SourceGoogleAds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -278,27 +288,22 @@ public class SourceGoogleAds {
         }
         SourceGoogleAds other = (SourceGoogleAds) o;
         return 
-            Objects.deepEquals(this.conversionWindowDays, other.conversionWindowDays) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.customQueriesArray, other.customQueriesArray) &&
-            Objects.deepEquals(this.customerId, other.customerId) &&
-            Objects.deepEquals(this.customerStatusFilter, other.customerStatusFilter) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.conversionWindowDays, other.conversionWindowDays) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.customQueriesArray, other.customQueriesArray) &&
+            Utils.enhancedDeepEquals(this.customerId, other.customerId) &&
+            Utils.enhancedDeepEquals(this.customerStatusFilter, other.customerStatusFilter) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            conversionWindowDays,
-            credentials,
-            customQueriesArray,
-            customerId,
-            customerStatusFilter,
-            endDate,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            conversionWindowDays, credentials, customQueriesArray,
+            customerId, customerStatusFilter, endDate,
+            sourceType, startDate);
     }
     
     @Override
@@ -313,26 +318,28 @@ public class SourceGoogleAds {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> conversionWindowDays;
- 
+
         private GoogleCredentials credentials;
- 
+
         private Optional<? extends List<CustomQueriesArray>> customQueriesArray = Optional.empty();
- 
+
         private Optional<String> customerId = Optional.empty();
- 
+
         private Optional<? extends List<CustomerStatus>> customerStatusFilter = Optional.empty();
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A conversion window is the number of days after an ad interaction (such as an ad click or video view) during which a conversion, such as a purchase, is recorded in Google Ads. For more information, see &lt;a href="https://support.google.com/google-ads/answer/3123169?hl=en"&gt;Google's documentation&lt;/a&gt;.
@@ -352,11 +359,13 @@ public class SourceGoogleAds {
             return this;
         }
 
+
         public Builder credentials(GoogleCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         public Builder customQueriesArray(List<CustomQueriesArray> customQueriesArray) {
             Utils.checkNotNull(customQueriesArray, "customQueriesArray");
@@ -369,6 +378,7 @@ public class SourceGoogleAds {
             this.customQueriesArray = customQueriesArray;
             return this;
         }
+
 
         /**
          * Comma-separated list of (client) customer IDs. Each customer ID must be specified as a 10-digit number without dashes. For detailed instructions on finding this value, refer to our &lt;a href="https://docs.airbyte.com/integrations/sources/google-ads#setup-guide"&gt;documentation&lt;/a&gt;.
@@ -388,6 +398,7 @@ public class SourceGoogleAds {
             return this;
         }
 
+
         /**
          * A list of customer statuses to filter on. For detailed info about what each status mean refer to Google Ads &lt;a href="https://developers.google.com/google-ads/api/reference/rpc/v15/CustomerStatusEnum.CustomerStatus"&gt;documentation&lt;/a&gt;.
          */
@@ -405,6 +416,7 @@ public class SourceGoogleAds {
             this.customerStatusFilter = customerStatusFilter;
             return this;
         }
+
 
         /**
          * UTC date in the format YYYY-MM-DD. Any data after this date will not be replicated. (Default value of today is used if not set)
@@ -424,6 +436,7 @@ public class SourceGoogleAds {
             return this;
         }
 
+
         /**
          * UTC date in the format YYYY-MM-DD. Any data before this date will not be replicated. (Default value of two years ago is used if not set)
          */
@@ -441,20 +454,18 @@ public class SourceGoogleAds {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGoogleAds build() {
             if (conversionWindowDays == null) {
                 conversionWindowDays = _SINGLETON_VALUE_ConversionWindowDays.value();
             }
+
             return new SourceGoogleAds(
-                conversionWindowDays,
-                credentials,
-                customQueriesArray,
-                customerId,
-                customerStatusFilter,
-                endDate,
+                conversionWindowDays, credentials, customQueriesArray,
+                customerId, customerStatusFilter, endDate,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_ConversionWindowDays =
                 new LazySingletonValue<>(

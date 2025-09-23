@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationAwsDatalake {
 
+public class DestinationAwsDatalake {
     /**
      * target aws account id
      */
@@ -45,6 +44,7 @@ public class DestinationAwsDatalake {
      */
     @JsonProperty("credentials")
     private AuthenticationMode credentials;
+
 
     @JsonProperty("destinationType")
     private AwsDatalake destinationType;
@@ -149,7 +149,10 @@ public class DestinationAwsDatalake {
             String bucketName,
             AuthenticationMode credentials,
             String lakeformationDatabaseName) {
-        this(Optional.empty(), bucketName, Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), lakeformationDatabaseName, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), bucketName, Optional.empty(),
+            credentials, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), lakeformationDatabaseName,
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -256,9 +259,10 @@ public class DestinationAwsDatalake {
         return (Optional<S3BucketRegion>) region;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * target aws account id
@@ -268,6 +272,7 @@ public class DestinationAwsDatalake {
         this.awsAccountId = Optional.ofNullable(awsAccountId);
         return this;
     }
+
 
     /**
      * target aws account id
@@ -296,6 +301,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * S3 prefix
      */
@@ -323,6 +329,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * Format of the data output.
      */
@@ -340,6 +347,7 @@ public class DestinationAwsDatalake {
         this.glueCatalogFloatAsDecimal = Optional.ofNullable(glueCatalogFloatAsDecimal);
         return this;
     }
+
 
     /**
      * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
@@ -359,6 +367,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * Add a default tag key to databases created by this destination
      */
@@ -376,6 +385,7 @@ public class DestinationAwsDatalake {
         this.lakeformationDatabaseDefaultTagValues = Optional.ofNullable(lakeformationDatabaseDefaultTagValues);
         return this;
     }
+
 
     /**
      * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
@@ -404,6 +414,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * Whether to create tables as LF governed tables.
      */
@@ -421,6 +432,7 @@ public class DestinationAwsDatalake {
         this.partitioning = Optional.ofNullable(partitioning);
         return this;
     }
+
 
     /**
      * Partition data by cursor fields when a cursor field is a date
@@ -440,6 +452,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
      */
@@ -449,7 +462,6 @@ public class DestinationAwsDatalake {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -460,36 +472,28 @@ public class DestinationAwsDatalake {
         }
         DestinationAwsDatalake other = (DestinationAwsDatalake) o;
         return 
-            Objects.deepEquals(this.awsAccountId, other.awsAccountId) &&
-            Objects.deepEquals(this.bucketName, other.bucketName) &&
-            Objects.deepEquals(this.bucketPrefix, other.bucketPrefix) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.glueCatalogFloatAsDecimal, other.glueCatalogFloatAsDecimal) &&
-            Objects.deepEquals(this.lakeformationDatabaseDefaultTagKey, other.lakeformationDatabaseDefaultTagKey) &&
-            Objects.deepEquals(this.lakeformationDatabaseDefaultTagValues, other.lakeformationDatabaseDefaultTagValues) &&
-            Objects.deepEquals(this.lakeformationDatabaseName, other.lakeformationDatabaseName) &&
-            Objects.deepEquals(this.lakeformationGovernedTables, other.lakeformationGovernedTables) &&
-            Objects.deepEquals(this.partitioning, other.partitioning) &&
-            Objects.deepEquals(this.region, other.region);
+            Utils.enhancedDeepEquals(this.awsAccountId, other.awsAccountId) &&
+            Utils.enhancedDeepEquals(this.bucketName, other.bucketName) &&
+            Utils.enhancedDeepEquals(this.bucketPrefix, other.bucketPrefix) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.glueCatalogFloatAsDecimal, other.glueCatalogFloatAsDecimal) &&
+            Utils.enhancedDeepEquals(this.lakeformationDatabaseDefaultTagKey, other.lakeformationDatabaseDefaultTagKey) &&
+            Utils.enhancedDeepEquals(this.lakeformationDatabaseDefaultTagValues, other.lakeformationDatabaseDefaultTagValues) &&
+            Utils.enhancedDeepEquals(this.lakeformationDatabaseName, other.lakeformationDatabaseName) &&
+            Utils.enhancedDeepEquals(this.lakeformationGovernedTables, other.lakeformationGovernedTables) &&
+            Utils.enhancedDeepEquals(this.partitioning, other.partitioning) &&
+            Utils.enhancedDeepEquals(this.region, other.region);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsAccountId,
-            bucketName,
-            bucketPrefix,
-            credentials,
-            destinationType,
-            format,
-            glueCatalogFloatAsDecimal,
-            lakeformationDatabaseDefaultTagKey,
-            lakeformationDatabaseDefaultTagValues,
-            lakeformationDatabaseName,
-            lakeformationGovernedTables,
-            partitioning,
+        return Utils.enhancedHash(
+            awsAccountId, bucketName, bucketPrefix,
+            credentials, destinationType, format,
+            glueCatalogFloatAsDecimal, lakeformationDatabaseDefaultTagKey, lakeformationDatabaseDefaultTagValues,
+            lakeformationDatabaseName, lakeformationGovernedTables, partitioning,
             region);
     }
     
@@ -510,36 +514,38 @@ public class DestinationAwsDatalake {
                 "partitioning", partitioning,
                 "region", region);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> awsAccountId = Optional.empty();
- 
+
         private String bucketName;
- 
+
         private Optional<String> bucketPrefix = Optional.empty();
- 
+
         private AuthenticationMode credentials;
- 
+
         private Optional<? extends OutputFormatWildcard> format = Optional.empty();
- 
+
         private Optional<Boolean> glueCatalogFloatAsDecimal;
- 
+
         private Optional<String> lakeformationDatabaseDefaultTagKey = Optional.empty();
- 
+
         private Optional<String> lakeformationDatabaseDefaultTagValues = Optional.empty();
- 
+
         private String lakeformationDatabaseName;
- 
+
         private Optional<Boolean> lakeformationGovernedTables;
- 
+
         private Optional<? extends ChooseHowToPartitionData> partitioning;
- 
+
         private Optional<? extends S3BucketRegion> region;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * target aws account id
@@ -559,6 +565,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
          */
@@ -567,6 +574,7 @@ public class DestinationAwsDatalake {
             this.bucketName = bucketName;
             return this;
         }
+
 
         /**
          * S3 prefix
@@ -586,6 +594,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * Choose How to Authenticate to AWS.
          */
@@ -594,6 +603,7 @@ public class DestinationAwsDatalake {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Format of the data output.
@@ -613,6 +623,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
          */
@@ -630,6 +641,7 @@ public class DestinationAwsDatalake {
             this.glueCatalogFloatAsDecimal = glueCatalogFloatAsDecimal;
             return this;
         }
+
 
         /**
          * Add a default tag key to databases created by this destination
@@ -649,6 +661,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
          */
@@ -667,6 +680,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * The default database this destination will use to create tables in per stream. Can be changed per connection by customizing the namespace.
          */
@@ -675,6 +689,7 @@ public class DestinationAwsDatalake {
             this.lakeformationDatabaseName = lakeformationDatabaseName;
             return this;
         }
+
 
         /**
          * Whether to create tables as LF governed tables.
@@ -694,6 +709,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * Partition data by cursor fields when a cursor field is a date
          */
@@ -712,6 +728,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
          */
@@ -729,7 +746,7 @@ public class DestinationAwsDatalake {
             this.region = region;
             return this;
         }
-        
+
         public DestinationAwsDatalake build() {
             if (glueCatalogFloatAsDecimal == null) {
                 glueCatalogFloatAsDecimal = _SINGLETON_VALUE_GlueCatalogFloatAsDecimal.value();
@@ -743,20 +760,14 @@ public class DestinationAwsDatalake {
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+
             return new DestinationAwsDatalake(
-                awsAccountId,
-                bucketName,
-                bucketPrefix,
-                credentials,
-                format,
-                glueCatalogFloatAsDecimal,
-                lakeformationDatabaseDefaultTagKey,
-                lakeformationDatabaseDefaultTagValues,
-                lakeformationDatabaseName,
-                lakeformationGovernedTables,
-                partitioning,
-                region);
+                awsAccountId, bucketName, bucketPrefix,
+                credentials, format, glueCatalogFloatAsDecimal,
+                lakeformationDatabaseDefaultTagKey, lakeformationDatabaseDefaultTagValues, lakeformationDatabaseName,
+                lakeformationGovernedTables, partitioning, region);
         }
+
 
         private static final LazySingletonValue<AwsDatalake> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

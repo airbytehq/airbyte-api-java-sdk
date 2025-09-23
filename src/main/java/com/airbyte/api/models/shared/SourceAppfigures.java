@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAppfigures {
 
@@ -37,8 +37,10 @@ public class SourceAppfigures {
     @JsonProperty("search_store")
     private Optional<String> searchStore;
 
+
     @JsonProperty("sourceType")
     private Appfigures sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -63,7 +65,8 @@ public class SourceAppfigures {
     public SourceAppfigures(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), startDate);
+        this(apiKey, Optional.empty(), Optional.empty(),
+            startDate);
     }
 
     @JsonIgnore
@@ -98,9 +101,10 @@ public class SourceAppfigures {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceAppfigures withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -116,6 +120,7 @@ public class SourceAppfigures {
         this.groupBy = Optional.ofNullable(groupBy);
         return this;
     }
+
 
     /**
      * Category term for grouping the search results
@@ -135,6 +140,7 @@ public class SourceAppfigures {
         return this;
     }
 
+
     /**
      * The store which needs to be searched in streams
      */
@@ -150,7 +156,6 @@ public class SourceAppfigures {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,21 +166,18 @@ public class SourceAppfigures {
         }
         SourceAppfigures other = (SourceAppfigures) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.groupBy, other.groupBy) &&
-            Objects.deepEquals(this.searchStore, other.searchStore) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.groupBy, other.groupBy) &&
+            Utils.enhancedDeepEquals(this.searchStore, other.searchStore) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            groupBy,
-            searchStore,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, groupBy, searchStore,
+            sourceType, startDate);
     }
     
     @Override
@@ -187,26 +189,29 @@ public class SourceAppfigures {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends GroupBy> groupBy;
- 
+
         private Optional<String> searchStore;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Category term for grouping the search results
@@ -226,6 +231,7 @@ public class SourceAppfigures {
             return this;
         }
 
+
         /**
          * The store which needs to be searched in streams
          */
@@ -244,12 +250,13 @@ public class SourceAppfigures {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAppfigures build() {
             if (groupBy == null) {
                 groupBy = _SINGLETON_VALUE_GroupBy.value();
@@ -257,12 +264,12 @@ public class SourceAppfigures {
             if (searchStore == null) {
                 searchStore = _SINGLETON_VALUE_SearchStore.value();
             }
+
             return new SourceAppfigures(
-                apiKey,
-                groupBy,
-                searchStore,
+                apiKey, groupBy, searchStore,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends GroupBy>> _SINGLETON_VALUE_GroupBy =
                 new LazySingletonValue<>(

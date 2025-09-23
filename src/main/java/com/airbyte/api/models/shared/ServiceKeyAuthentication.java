@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -108,9 +107,10 @@ public class ServiceKeyAuthentication {
         return userPrincipalName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID of your Microsoft developer application
@@ -148,7 +148,6 @@ public class ServiceKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -159,21 +158,18 @@ public class ServiceKeyAuthentication {
         }
         ServiceKeyAuthentication other = (ServiceKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.tenantId, other.tenantId) &&
-            Objects.deepEquals(this.userPrincipalName, other.userPrincipalName);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId) &&
+            Utils.enhancedDeepEquals(this.userPrincipalName, other.userPrincipalName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
-            tenantId,
-            userPrincipalName);
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
+            tenantId, userPrincipalName);
     }
     
     @Override
@@ -185,20 +181,22 @@ public class ServiceKeyAuthentication {
                 "tenantId", tenantId,
                 "userPrincipalName", userPrincipalName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String tenantId;
- 
+
         private String userPrincipalName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID of your Microsoft developer application
@@ -209,6 +207,7 @@ public class ServiceKeyAuthentication {
             return this;
         }
 
+
         /**
          * Client Secret of your Microsoft developer application
          */
@@ -217,6 +216,7 @@ public class ServiceKeyAuthentication {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Tenant ID of the Microsoft OneDrive user
@@ -227,6 +227,7 @@ public class ServiceKeyAuthentication {
             return this;
         }
 
+
         /**
          * Special characters such as a period, comma, space, and the at sign (@) are converted to underscores (_). More details: https://learn.microsoft.com/en-us/sharepoint/list-onedrive-urls
          */
@@ -235,14 +236,14 @@ public class ServiceKeyAuthentication {
             this.userPrincipalName = userPrincipalName;
             return this;
         }
-        
+
         public ServiceKeyAuthentication build() {
+
             return new ServiceKeyAuthentication(
-                clientId,
-                clientSecret,
-                tenantId,
+                clientId, clientSecret, tenantId,
                 userPrincipalName);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMicrosoftOnedriveSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

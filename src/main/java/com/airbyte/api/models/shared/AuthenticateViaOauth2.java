@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaOauth2 {
 
@@ -102,9 +102,10 @@ public class AuthenticateViaOauth2 {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID of your Microsoft developer application
@@ -142,7 +143,6 @@ public class AuthenticateViaOauth2 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -153,21 +153,18 @@ public class AuthenticateViaOauth2 {
         }
         AuthenticateViaOauth2 other = (AuthenticateViaOauth2) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken,
-            tenantId);
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
+            refreshToken, tenantId);
     }
     
     @Override
@@ -179,20 +176,22 @@ public class AuthenticateViaOauth2 {
                 "refreshToken", refreshToken,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private String tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID of your Microsoft developer application
@@ -203,6 +202,7 @@ public class AuthenticateViaOauth2 {
             return this;
         }
 
+
         /**
          * Client Secret of your Microsoft developer application
          */
@@ -211,6 +211,7 @@ public class AuthenticateViaOauth2 {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Refresh Token of your Microsoft developer application
@@ -221,6 +222,7 @@ public class AuthenticateViaOauth2 {
             return this;
         }
 
+
         /**
          * Tenant ID of the Microsoft Azure Application user
          */
@@ -229,14 +231,14 @@ public class AuthenticateViaOauth2 {
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public AuthenticateViaOauth2 build() {
+
             return new AuthenticateViaOauth2(
-                clientId,
-                clientSecret,
-                refreshToken,
+                clientId, clientSecret, refreshToken,
                 tenantId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAzureBlobStorageAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

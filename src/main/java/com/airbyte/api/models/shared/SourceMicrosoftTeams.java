@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMicrosoftTeams {
 
+public class SourceMicrosoftTeams {
     /**
      * Choose how to authenticate to Microsoft
      */
@@ -31,6 +30,7 @@ public class SourceMicrosoftTeams {
      */
     @JsonProperty("period")
     private String period;
+
 
     @JsonProperty("sourceType")
     private SourceMicrosoftTeamsMicrosoftTeams sourceType;
@@ -73,9 +73,10 @@ public class SourceMicrosoftTeams {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose how to authenticate to Microsoft
@@ -85,6 +86,7 @@ public class SourceMicrosoftTeams {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Choose how to authenticate to Microsoft
@@ -104,7 +106,6 @@ public class SourceMicrosoftTeams {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -115,17 +116,15 @@ public class SourceMicrosoftTeams {
         }
         SourceMicrosoftTeams other = (SourceMicrosoftTeams) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.period, other.period) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.period, other.period) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            period,
-            sourceType);
+        return Utils.enhancedHash(
+            credentials, period, sourceType);
     }
     
     @Override
@@ -135,16 +134,18 @@ public class SourceMicrosoftTeams {
                 "period", period,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceMicrosoftTeamsAuthenticationMechanism> credentials = Optional.empty();
- 
+
         private String period;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose how to authenticate to Microsoft
@@ -164,6 +165,7 @@ public class SourceMicrosoftTeams {
             return this;
         }
 
+
         /**
          * Specifies the length of time over which the Team Device Report stream is aggregated. The supported values are: D7, D30, D90, and D180.
          */
@@ -172,12 +174,13 @@ public class SourceMicrosoftTeams {
             this.period = period;
             return this;
         }
-        
+
         public SourceMicrosoftTeams build() {
+
             return new SourceMicrosoftTeams(
-                credentials,
-                period);
+                credentials, period);
         }
+
 
         private static final LazySingletonValue<SourceMicrosoftTeamsMicrosoftTeams> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

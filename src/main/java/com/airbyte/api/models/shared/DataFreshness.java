@@ -20,7 +20,7 @@ public enum DataFreshness {
     @JsonValue
     private final String value;
 
-    private DataFreshness(String value) {
+    DataFreshness(String value) {
         this.value = value;
     }
     

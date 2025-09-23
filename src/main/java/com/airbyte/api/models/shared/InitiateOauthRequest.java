@@ -13,7 +13,6 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,7 +21,6 @@ import java.util.Optional;
  * <p>POST body for initiating OAuth via the public API
  */
 public class InitiateOauthRequest {
-
     /**
      * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
@@ -35,6 +33,7 @@ public class InitiateOauthRequest {
      */
     @JsonProperty("redirectUrl")
     private String redirectUrl;
+
 
     @JsonProperty("sourceType")
     private OAuthActorNames sourceType;
@@ -65,7 +64,8 @@ public class InitiateOauthRequest {
             String redirectUrl,
             OAuthActorNames sourceType,
             String workspaceId) {
-        this(Optional.empty(), redirectUrl, sourceType, workspaceId);
+        this(Optional.empty(), redirectUrl, sourceType,
+            workspaceId);
     }
 
     /**
@@ -98,9 +98,10 @@ public class InitiateOauthRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
@@ -110,6 +111,7 @@ public class InitiateOauthRequest {
         this.oAuthInputConfiguration = Optional.ofNullable(oAuthInputConfiguration);
         return this;
     }
+
 
     /**
      * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
@@ -144,7 +146,6 @@ public class InitiateOauthRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,18 +156,16 @@ public class InitiateOauthRequest {
         }
         InitiateOauthRequest other = (InitiateOauthRequest) o;
         return 
-            Objects.deepEquals(this.oAuthInputConfiguration, other.oAuthInputConfiguration) &&
-            Objects.deepEquals(this.redirectUrl, other.redirectUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.oAuthInputConfiguration, other.oAuthInputConfiguration) &&
+            Utils.enhancedDeepEquals(this.redirectUrl, other.redirectUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            oAuthInputConfiguration,
-            redirectUrl,
-            sourceType,
+        return Utils.enhancedHash(
+            oAuthInputConfiguration, redirectUrl, sourceType,
             workspaceId);
     }
     
@@ -178,20 +177,22 @@ public class InitiateOauthRequest {
                 "sourceType", sourceType,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends Object> oAuthInputConfiguration = Optional.empty();
- 
+
         private String redirectUrl;
- 
+
         private OAuthActorNames sourceType;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
@@ -211,6 +212,7 @@ public class InitiateOauthRequest {
             return this;
         }
 
+
         /**
          * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
          */
@@ -220,11 +222,13 @@ public class InitiateOauthRequest {
             return this;
         }
 
+
         public Builder sourceType(OAuthActorNames sourceType) {
             Utils.checkNotNull(sourceType, "sourceType");
             this.sourceType = sourceType;
             return this;
         }
+
 
         /**
          * The workspace to create the secret and eventually the full source.
@@ -234,13 +238,13 @@ public class InitiateOauthRequest {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public InitiateOauthRequest build() {
+
             return new InitiateOauthRequest(
-                oAuthInputConfiguration,
-                redirectUrl,
-                sourceType,
+                oAuthInputConfiguration, redirectUrl, sourceType,
                 workspaceId);
         }
+
     }
 }

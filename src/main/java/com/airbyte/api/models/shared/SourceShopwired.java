@@ -12,10 +12,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceShopwired {
-
     /**
      * Your API Key, which acts as the username for Basic Authentication. You can find it in your ShopWired account under API settings.
      */
@@ -28,8 +27,10 @@ public class SourceShopwired {
     @JsonProperty("api_secret")
     private String apiSecret;
 
+
     @JsonProperty("sourceType")
     private Shopwired sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -74,9 +75,10 @@ public class SourceShopwired {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Key, which acts as the username for Basic Authentication. You can find it in your ShopWired account under API settings.
@@ -102,7 +104,6 @@ public class SourceShopwired {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,18 +114,16 @@ public class SourceShopwired {
         }
         SourceShopwired other = (SourceShopwired) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiSecret,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, apiSecret, sourceType,
             startDate);
     }
     
@@ -136,18 +135,20 @@ public class SourceShopwired {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String apiSecret;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Key, which acts as the username for Basic Authentication. You can find it in your ShopWired account under API settings.
@@ -158,6 +159,7 @@ public class SourceShopwired {
             return this;
         }
 
+
         /**
          * Your API Secret, which acts as the password for Basic Authentication. You can find it in your ShopWired account under API settings.
          */
@@ -167,18 +169,19 @@ public class SourceShopwired {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceShopwired build() {
+
             return new SourceShopwired(
-                apiKey,
-                apiSecret,
-                startDate);
+                apiKey, apiSecret, startDate);
         }
+
 
         private static final LazySingletonValue<Shopwired> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

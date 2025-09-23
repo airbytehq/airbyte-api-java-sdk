@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * SourceOracleTLSEncryptedVerifyCertificate
@@ -50,9 +49,10 @@ public class SourceOracleTLSEncryptedVerifyCertificate {
         return sslCertificate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
@@ -63,7 +63,6 @@ public class SourceOracleTLSEncryptedVerifyCertificate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -74,15 +73,14 @@ public class SourceOracleTLSEncryptedVerifyCertificate {
         }
         SourceOracleTLSEncryptedVerifyCertificate other = (SourceOracleTLSEncryptedVerifyCertificate) o;
         return 
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod) &&
-            Objects.deepEquals(this.sslCertificate, other.sslCertificate);
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod) &&
+            Utils.enhancedDeepEquals(this.sslCertificate, other.sslCertificate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            encryptionMethod,
-            sslCertificate);
+        return Utils.enhancedHash(
+            encryptionMethod, sslCertificate);
     }
     
     @Override
@@ -91,14 +89,16 @@ public class SourceOracleTLSEncryptedVerifyCertificate {
                 "encryptionMethod", encryptionMethod,
                 "sslCertificate", sslCertificate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sslCertificate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
@@ -108,11 +108,13 @@ public class SourceOracleTLSEncryptedVerifyCertificate {
             this.sslCertificate = sslCertificate;
             return this;
         }
-        
+
         public SourceOracleTLSEncryptedVerifyCertificate build() {
+
             return new SourceOracleTLSEncryptedVerifyCertificate(
                 sslCertificate);
         }
+
 
         private static final LazySingletonValue<SourceOracleSchemasEncryptionEncryptionMethod> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

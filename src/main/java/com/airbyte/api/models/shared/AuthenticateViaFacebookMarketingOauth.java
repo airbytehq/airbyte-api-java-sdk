@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AuthenticateViaFacebookMarketingOauth {
 
+public class AuthenticateViaFacebookMarketingOauth {
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("access_token")
     private Optional<String> accessToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -92,9 +92,10 @@ public class AuthenticateViaFacebookMarketingOauth {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
@@ -104,6 +105,7 @@ public class AuthenticateViaFacebookMarketingOauth {
         this.accessToken = Optional.ofNullable(accessToken);
         return this;
     }
+
 
     /**
      * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
@@ -132,7 +134,6 @@ public class AuthenticateViaFacebookMarketingOauth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -143,18 +144,16 @@ public class AuthenticateViaFacebookMarketingOauth {
         }
         AuthenticateViaFacebookMarketingOauth other = (AuthenticateViaFacebookMarketingOauth) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
             clientSecret);
     }
     
@@ -166,18 +165,20 @@ public class AuthenticateViaFacebookMarketingOauth {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> accessToken = Optional.empty();
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The value of the generated access token. From your App’s Dashboard, click on "Marketing API" then "Tools". Select permissions &lt;b&gt;ads_management, ads_read, read_insights, business_management&lt;/b&gt;. Then click on "Get token". See the &lt;a href="https://docs.airbyte.com/integrations/sources/facebook-marketing"&gt;docs&lt;/a&gt; for more information.
@@ -197,6 +198,7 @@ public class AuthenticateViaFacebookMarketingOauth {
             return this;
         }
 
+
         /**
          * Client ID for the Facebook Marketing API
          */
@@ -206,6 +208,7 @@ public class AuthenticateViaFacebookMarketingOauth {
             return this;
         }
 
+
         /**
          * Client Secret for the Facebook Marketing API
          */
@@ -214,13 +217,13 @@ public class AuthenticateViaFacebookMarketingOauth {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public AuthenticateViaFacebookMarketingOauth build() {
+
             return new AuthenticateViaFacebookMarketingOauth(
-                accessToken,
-                clientId,
-                clientSecret);
+                accessToken, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceFacebookMarketingAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

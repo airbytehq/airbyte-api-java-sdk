@@ -14,7 +14,7 @@ public enum DestinationAzureBlobStorageFormatType {
     @JsonValue
     private final String value;
 
-    private DestinationAzureBlobStorageFormatType(String value) {
+    DestinationAzureBlobStorageFormatType(String value) {
         this.value = value;
     }
     

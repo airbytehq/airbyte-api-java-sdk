@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class OAuth2ConfidentialApplication {
-
     /**
      * The audience for the token, which is your API. You can find this in the Identifier field on your  &lt;a href="https://manage.auth0.com/#/apis"&gt;API's settings tab&lt;/a&gt;
      */
     @JsonProperty("audience")
     private String audience;
+
 
     @JsonProperty("auth_type")
     private SourceAuth0SchemasCredentialsAuthenticationMethod authType;
@@ -79,9 +79,10 @@ public class OAuth2ConfidentialApplication {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The audience for the token, which is your API. You can find this in the Identifier field on your  &lt;a href="https://manage.auth0.com/#/apis"&gt;API's settings tab&lt;/a&gt;
@@ -110,7 +111,6 @@ public class OAuth2ConfidentialApplication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +121,16 @@ public class OAuth2ConfidentialApplication {
         }
         OAuth2ConfidentialApplication other = (OAuth2ConfidentialApplication) o;
         return 
-            Objects.deepEquals(this.audience, other.audience) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.audience, other.audience) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            audience,
-            authType,
-            clientId,
+        return Utils.enhancedHash(
+            audience, authType, clientId,
             clientSecret);
     }
     
@@ -144,18 +142,20 @@ public class OAuth2ConfidentialApplication {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String audience;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The audience for the token, which is your API. You can find this in the Identifier field on your  &lt;a href="https://manage.auth0.com/#/apis"&gt;API's settings tab&lt;/a&gt;
@@ -166,6 +166,7 @@ public class OAuth2ConfidentialApplication {
             return this;
         }
 
+
         /**
          * Your application's Client ID. You can find this value on the &lt;a href="https://manage.auth0.com/#/applications"&gt;application's settings tab&lt;/a&gt; after you login the admin portal.
          */
@@ -175,6 +176,7 @@ public class OAuth2ConfidentialApplication {
             return this;
         }
 
+
         /**
          * Your application's Client Secret. You can find this value on the &lt;a href="https://manage.auth0.com/#/applications"&gt;application's settings tab&lt;/a&gt; after you login the admin portal.
          */
@@ -183,13 +185,13 @@ public class OAuth2ConfidentialApplication {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public OAuth2ConfidentialApplication build() {
+
             return new OAuth2ConfidentialApplication(
-                audience,
-                clientId,
-                clientSecret);
+                audience, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<SourceAuth0SchemasCredentialsAuthenticationMethod> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

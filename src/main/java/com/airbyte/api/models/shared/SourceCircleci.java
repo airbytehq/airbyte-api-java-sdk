@@ -17,8 +17,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceCircleci {
 
@@ -44,8 +44,10 @@ public class SourceCircleci {
     @JsonProperty("project_id")
     private String projectId;
 
+
     @JsonProperty("sourceType")
     private Circleci sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -85,7 +87,8 @@ public class SourceCircleci {
             String orgId,
             String projectId,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), orgId, projectId, startDate, Optional.empty());
+        this(apiKey, Optional.empty(), orgId,
+            projectId, startDate, Optional.empty());
     }
 
     @JsonIgnore
@@ -136,9 +139,10 @@ public class SourceCircleci {
         return (Optional<List<Object>>) workflowId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCircleci withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -154,6 +158,7 @@ public class SourceCircleci {
         this.jobNumber = Optional.ofNullable(jobNumber);
         return this;
     }
+
 
     /**
      * Job Number of the workflow for `jobs` stream, Auto fetches from `workflow_jobs` stream, if not configured
@@ -197,6 +202,7 @@ public class SourceCircleci {
         return this;
     }
 
+
     /**
      * Workflow ID of a project pipeline, Could be seen in the URL of pipeline build, Example `https://app.circleci.com/pipelines/circleci/55555xxxxxx/7yyyyyyyyxxxxx/2/workflows/WORKFLOW_ID`
      */
@@ -206,7 +212,6 @@ public class SourceCircleci {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -217,24 +222,20 @@ public class SourceCircleci {
         }
         SourceCircleci other = (SourceCircleci) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.jobNumber, other.jobNumber) &&
-            Objects.deepEquals(this.orgId, other.orgId) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.workflowId, other.workflowId);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.jobNumber, other.jobNumber) &&
+            Utils.enhancedDeepEquals(this.orgId, other.orgId) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.workflowId, other.workflowId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            jobNumber,
-            orgId,
-            projectId,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, jobNumber, orgId,
+            projectId, sourceType, startDate,
             workflowId);
     }
     
@@ -249,30 +250,33 @@ public class SourceCircleci {
                 "startDate", startDate,
                 "workflowId", workflowId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> jobNumber;
- 
+
         private String orgId;
- 
+
         private String projectId;
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends List<Object>> workflowId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Job Number of the workflow for `jobs` stream, Auto fetches from `workflow_jobs` stream, if not configured
@@ -292,6 +296,7 @@ public class SourceCircleci {
             return this;
         }
 
+
         /**
          * The org ID found in `https://app.circleci.com/settings/organization/circleci/xxxxx/overview`
          */
@@ -300,6 +305,7 @@ public class SourceCircleci {
             this.orgId = orgId;
             return this;
         }
+
 
         /**
          * Project ID found in the project settings, Visit `https://app.circleci.com/settings/project/circleci/ORG_SLUG/YYYYY`
@@ -310,11 +316,13 @@ public class SourceCircleci {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Workflow ID of a project pipeline, Could be seen in the URL of pipeline build, Example `https://app.circleci.com/pipelines/circleci/55555xxxxxx/7yyyyyyyyxxxxx/2/workflows/WORKFLOW_ID`
@@ -333,19 +341,17 @@ public class SourceCircleci {
             this.workflowId = workflowId;
             return this;
         }
-        
+
         public SourceCircleci build() {
             if (jobNumber == null) {
                 jobNumber = _SINGLETON_VALUE_JobNumber.value();
             }
+
             return new SourceCircleci(
-                apiKey,
-                jobNumber,
-                orgId,
-                projectId,
-                startDate,
-                workflowId);
+                apiKey, jobNumber, orgId,
+                projectId, startDate, workflowId);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_JobNumber =
                 new LazySingletonValue<>(

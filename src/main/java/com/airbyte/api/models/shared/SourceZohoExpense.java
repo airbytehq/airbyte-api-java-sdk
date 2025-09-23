@@ -14,13 +14,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZohoExpense {
 
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -32,8 +33,10 @@ public class SourceZohoExpense {
     @JsonProperty("data_center")
     private Optional<? extends SourceZohoExpenseDataCenter> dataCenter;
 
+
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private ZohoExpense sourceType;
@@ -59,7 +62,8 @@ public class SourceZohoExpense {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(clientId, clientSecret, Optional.empty(), refreshToken);
+        this(clientId, clientSecret, Optional.empty(),
+            refreshToken);
     }
 
     @JsonIgnore
@@ -91,9 +95,10 @@ public class SourceZohoExpense {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoExpense withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -116,6 +121,7 @@ public class SourceZohoExpense {
         return this;
     }
 
+
     /**
      * The domain suffix for the Zoho Expense API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
      */
@@ -131,7 +137,6 @@ public class SourceZohoExpense {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,21 +147,18 @@ public class SourceZohoExpense {
         }
         SourceZohoExpense other = (SourceZohoExpense) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.dataCenter, other.dataCenter) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.dataCenter, other.dataCenter) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            dataCenter,
-            refreshToken,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientSecret, dataCenter,
+            refreshToken, sourceType);
     }
     
     @Override
@@ -168,20 +170,22 @@ public class SourceZohoExpense {
                 "refreshToken", refreshToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<? extends SourceZohoExpenseDataCenter> dataCenter;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -189,11 +193,13 @@ public class SourceZohoExpense {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The domain suffix for the Zoho Expense API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
@@ -213,22 +219,23 @@ public class SourceZohoExpense {
             return this;
         }
 
+
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceZohoExpense build() {
             if (dataCenter == null) {
                 dataCenter = _SINGLETON_VALUE_DataCenter.value();
             }
+
             return new SourceZohoExpense(
-                clientId,
-                clientSecret,
-                dataCenter,
+                clientId, clientSecret, dataCenter,
                 refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZohoExpenseDataCenter>> _SINGLETON_VALUE_DataCenter =
                 new LazySingletonValue<>(

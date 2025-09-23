@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceConfigcat {
-
     /**
      * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
      */
     @JsonProperty("password")
     private String password;
+
 
     @JsonProperty("sourceType")
     private Configcat sourceType;
@@ -62,9 +62,10 @@ public class SourceConfigcat {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
@@ -84,7 +85,6 @@ public class SourceConfigcat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceConfigcat {
         }
         SourceConfigcat other = (SourceConfigcat) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            password, sourceType, username);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceConfigcat {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Basic auth password. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
@@ -135,6 +135,7 @@ public class SourceConfigcat {
             return this;
         }
 
+
         /**
          * Basic auth user name. See &lt;a href="https://api.configcat.com/docs/#section/Authentication"&gt;here&lt;/a&gt;.
          */
@@ -143,12 +144,13 @@ public class SourceConfigcat {
             this.username = username;
             return this;
         }
-        
+
         public SourceConfigcat build() {
+
             return new SourceConfigcat(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<Configcat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

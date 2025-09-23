@@ -21,7 +21,7 @@ public enum SourceMicrosoftSharepointValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointValidationPolicy(String value) {
+    SourceMicrosoftSharepointValidationPolicy(String value) {
         this.value = value;
     }
     

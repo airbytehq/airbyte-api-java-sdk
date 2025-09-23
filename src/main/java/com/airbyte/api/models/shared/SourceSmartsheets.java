@@ -16,8 +16,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceSmartsheets {
 
@@ -37,6 +37,7 @@ public class SourceSmartsheets {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata_fields")
     private Optional<? extends List<Validenums>> metadataFields;
+
 
     @JsonProperty("sourceType")
     private SourceSmartsheetsSmartsheets sourceType;
@@ -67,7 +68,8 @@ public class SourceSmartsheets {
     public SourceSmartsheets(
             SourceSmartsheetsAuthorizationMethod credentials,
             String spreadsheetId) {
-        this(credentials, Optional.empty(), Optional.empty(), spreadsheetId);
+        this(credentials, Optional.empty(), Optional.empty(),
+            spreadsheetId);
     }
 
     @JsonIgnore
@@ -105,9 +107,10 @@ public class SourceSmartsheets {
         return spreadsheetId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceSmartsheets withCredentials(SourceSmartsheetsAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -123,6 +126,7 @@ public class SourceSmartsheets {
         this.isReport = Optional.ofNullable(isReport);
         return this;
     }
+
 
     /**
      * If true, the source will treat the provided sheet_id as a report. If false, the source will treat the provided sheet_id as a sheet.
@@ -142,6 +146,7 @@ public class SourceSmartsheets {
         return this;
     }
 
+
     /**
      * A List of available columns which metadata can be pulled from.
      */
@@ -160,7 +165,6 @@ public class SourceSmartsheets {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -171,21 +175,18 @@ public class SourceSmartsheets {
         }
         SourceSmartsheets other = (SourceSmartsheets) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.isReport, other.isReport) &&
-            Objects.deepEquals(this.metadataFields, other.metadataFields) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.spreadsheetId, other.spreadsheetId);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.isReport, other.isReport) &&
+            Utils.enhancedDeepEquals(this.metadataFields, other.metadataFields) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.spreadsheetId, other.spreadsheetId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            isReport,
-            metadataFields,
-            sourceType,
-            spreadsheetId);
+        return Utils.enhancedHash(
+            credentials, isReport, metadataFields,
+            sourceType, spreadsheetId);
     }
     
     @Override
@@ -197,26 +198,29 @@ public class SourceSmartsheets {
                 "sourceType", sourceType,
                 "spreadsheetId", spreadsheetId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceSmartsheetsAuthorizationMethod credentials;
- 
+
         private Optional<Boolean> isReport;
- 
+
         private Optional<? extends List<Validenums>> metadataFields = Optional.empty();
- 
+
         private String spreadsheetId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceSmartsheetsAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * If true, the source will treat the provided sheet_id as a report. If false, the source will treat the provided sheet_id as a sheet.
@@ -236,6 +240,7 @@ public class SourceSmartsheets {
             return this;
         }
 
+
         /**
          * A List of available columns which metadata can be pulled from.
          */
@@ -254,6 +259,7 @@ public class SourceSmartsheets {
             return this;
         }
 
+
         /**
          * The spreadsheet ID. Find it by opening the spreadsheet then navigating to File &gt; Properties
          */
@@ -262,17 +268,17 @@ public class SourceSmartsheets {
             this.spreadsheetId = spreadsheetId;
             return this;
         }
-        
+
         public SourceSmartsheets build() {
             if (isReport == null) {
                 isReport = _SINGLETON_VALUE_IsReport.value();
             }
+
             return new SourceSmartsheets(
-                credentials,
-                isReport,
-                metadataFields,
+                credentials, isReport, metadataFields,
                 spreadsheetId);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IsReport =
                 new LazySingletonValue<>(

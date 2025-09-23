@@ -17,17 +17,17 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceBingAds {
 
+public class SourceBingAds {
     /**
      * Predicates that will be used to sync data by specific accounts.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("account_names")
     private Optional<? extends List<AccountNames>> accountNames;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_method")
@@ -79,6 +79,7 @@ public class SourceBingAds {
     @JsonProperty("reports_start_date")
     private Optional<LocalDate> reportsStartDate;
 
+
     @JsonProperty("sourceType")
     private SourceBingAdsBingAds sourceType;
 
@@ -126,7 +127,9 @@ public class SourceBingAds {
             String clientId,
             String developerToken,
             String refreshToken) {
-        this(Optional.empty(), clientId, Optional.empty(), Optional.empty(), developerToken, Optional.empty(), refreshToken, Optional.empty(), Optional.empty());
+        this(Optional.empty(), clientId, Optional.empty(),
+            Optional.empty(), developerToken, Optional.empty(),
+            refreshToken, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -214,9 +217,10 @@ public class SourceBingAds {
         return tenantId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Predicates that will be used to sync data by specific accounts.
@@ -226,6 +230,7 @@ public class SourceBingAds {
         this.accountNames = Optional.ofNullable(accountNames);
         return this;
     }
+
 
     /**
      * Predicates that will be used to sync data by specific accounts.
@@ -254,6 +259,7 @@ public class SourceBingAds {
         return this;
     }
 
+
     /**
      * The Client Secret of your Microsoft Advertising developer application.
      */
@@ -271,6 +277,7 @@ public class SourceBingAds {
         this.customReports = Optional.ofNullable(customReports);
         return this;
     }
+
 
     /**
      * You can add your Custom Bing Ads report by creating one.
@@ -299,6 +306,7 @@ public class SourceBingAds {
         return this;
     }
 
+
     /**
      * Also known as attribution or conversion window. How far into the past to look for records (in days). If your conversion window has an hours/minutes granularity, round it up to the number of days exceeding. Used only for performance report streams in incremental mode without specified Reports Start Date.
      */
@@ -326,6 +334,7 @@ public class SourceBingAds {
         return this;
     }
 
+
     /**
      * The start date from which to begin replicating report data. Any data generated before this date will not be replicated in reports. This is a UTC date in YYYY-MM-DD format. If not set, data from previous and current calendar year will be replicated.
      */
@@ -344,6 +353,7 @@ public class SourceBingAds {
         return this;
     }
 
+
     /**
      * The Tenant ID of your Microsoft Advertising developer application. Set this to "common" unless you know you need a different value.
      */
@@ -353,7 +363,6 @@ public class SourceBingAds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -364,33 +373,26 @@ public class SourceBingAds {
         }
         SourceBingAds other = (SourceBingAds) o;
         return 
-            Objects.deepEquals(this.accountNames, other.accountNames) &&
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.customReports, other.customReports) &&
-            Objects.deepEquals(this.developerToken, other.developerToken) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.reportsStartDate, other.reportsStartDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tenantId, other.tenantId);
+            Utils.enhancedDeepEquals(this.accountNames, other.accountNames) &&
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.customReports, other.customReports) &&
+            Utils.enhancedDeepEquals(this.developerToken, other.developerToken) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.reportsStartDate, other.reportsStartDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountNames,
-            authMethod,
-            clientId,
-            clientSecret,
-            customReports,
-            developerToken,
-            lookbackWindow,
-            refreshToken,
-            reportsStartDate,
-            sourceType,
-            tenantId);
+        return Utils.enhancedHash(
+            accountNames, authMethod, clientId,
+            clientSecret, customReports, developerToken,
+            lookbackWindow, refreshToken, reportsStartDate,
+            sourceType, tenantId);
     }
     
     @Override
@@ -408,30 +410,32 @@ public class SourceBingAds {
                 "sourceType", sourceType,
                 "tenantId", tenantId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<AccountNames>> accountNames = Optional.empty();
- 
+
         private String clientId;
- 
+
         private Optional<String> clientSecret;
- 
+
         private Optional<? extends List<CustomReportConfig>> customReports = Optional.empty();
- 
+
         private String developerToken;
- 
+
         private Optional<Long> lookbackWindow;
- 
+
         private String refreshToken;
- 
+
         private Optional<LocalDate> reportsStartDate = Optional.empty();
- 
+
         private Optional<String> tenantId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Predicates that will be used to sync data by specific accounts.
@@ -451,6 +455,7 @@ public class SourceBingAds {
             return this;
         }
 
+
         /**
          * The Client ID of your Microsoft Advertising developer application.
          */
@@ -459,6 +464,7 @@ public class SourceBingAds {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Microsoft Advertising developer application.
@@ -478,6 +484,7 @@ public class SourceBingAds {
             return this;
         }
 
+
         /**
          * You can add your Custom Bing Ads report by creating one.
          */
@@ -496,6 +503,7 @@ public class SourceBingAds {
             return this;
         }
 
+
         /**
          * Developer token associated with user. See more info &lt;a href="https://docs.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token"&gt; in the docs&lt;/a&gt;.
          */
@@ -504,6 +512,7 @@ public class SourceBingAds {
             this.developerToken = developerToken;
             return this;
         }
+
 
         /**
          * Also known as attribution or conversion window. How far into the past to look for records (in days). If your conversion window has an hours/minutes granularity, round it up to the number of days exceeding. Used only for performance report streams in incremental mode without specified Reports Start Date.
@@ -523,6 +532,7 @@ public class SourceBingAds {
             return this;
         }
 
+
         /**
          * Refresh Token to renew the expired Access Token.
          */
@@ -531,6 +541,7 @@ public class SourceBingAds {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * The start date from which to begin replicating report data. Any data generated before this date will not be replicated in reports. This is a UTC date in YYYY-MM-DD format. If not set, data from previous and current calendar year will be replicated.
@@ -550,6 +561,7 @@ public class SourceBingAds {
             return this;
         }
 
+
         /**
          * The Tenant ID of your Microsoft Advertising developer application. Set this to "common" unless you know you need a different value.
          */
@@ -567,7 +579,7 @@ public class SourceBingAds {
             this.tenantId = tenantId;
             return this;
         }
-        
+
         public SourceBingAds build() {
             if (clientSecret == null) {
                 clientSecret = _SINGLETON_VALUE_ClientSecret.value();
@@ -578,17 +590,13 @@ public class SourceBingAds {
             if (tenantId == null) {
                 tenantId = _SINGLETON_VALUE_TenantId.value();
             }
+
             return new SourceBingAds(
-                accountNames,
-                clientId,
-                clientSecret,
-                customReports,
-                developerToken,
-                lookbackWindow,
-                refreshToken,
-                reportsStartDate,
-                tenantId);
+                accountNames, clientId, clientSecret,
+                customReports, developerToken, lookbackWindow,
+                refreshToken, reportsStartDate, tenantId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends AuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

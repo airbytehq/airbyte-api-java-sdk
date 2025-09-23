@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class RowFiltering {
 
@@ -28,9 +28,10 @@ public class RowFiltering {
         return conditions;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public RowFiltering withConditions(RowFilteringOperation conditions) {
         Utils.checkNotNull(conditions, "conditions");
@@ -38,7 +39,6 @@ public class RowFiltering {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class RowFiltering {
         }
         RowFiltering other = (RowFiltering) o;
         return 
-            Objects.deepEquals(this.conditions, other.conditions);
+            Utils.enhancedDeepEquals(this.conditions, other.conditions);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             conditions);
     }
     
@@ -63,24 +63,28 @@ public class RowFiltering {
         return Utils.toString(RowFiltering.class,
                 "conditions", conditions);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private RowFilteringOperation conditions;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder conditions(RowFilteringOperation conditions) {
             Utils.checkNotNull(conditions, "conditions");
             this.conditions = conditions;
             return this;
         }
-        
+
         public RowFiltering build() {
+
             return new RowFiltering(
                 conditions);
         }
+
     }
 }

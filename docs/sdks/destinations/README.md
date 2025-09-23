@@ -18,6 +18,7 @@ Creates a destination given a name, workspace id, and a json blob containing the
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="createDestination" method="post" path="/destinations" -->
 ```java
 package hello.world;
 
@@ -40,10 +41,8 @@ public class Application {
             .build();
 
         DestinationCreateRequest req = DestinationCreateRequest.builder()
-                .configuration(DestinationConfiguration.of(DestinationOracle.builder()
-                    .host("instructive-mainstream.com")
-                    .sid("<id>")
-                    .username("Robert.Legros98")
+                .configuration(DestinationConfiguration.of(DestinationElasticsearch.builder()
+                    .endpoint("<value>")
                     .build()))
                 .name("Postgres")
                 .workspaceId("2155ae5a-de39-4808-af6a-16fe7b8b4ed2")
@@ -82,6 +81,7 @@ Delete a Destination
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteDestination" method="delete" path="/destinations/{destinationId}" -->
 ```java
 package hello.world;
 
@@ -140,6 +140,7 @@ Get Destination details
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getDestination" method="get" path="/destinations/{destinationId}" -->
 ```java
 package hello.world;
 
@@ -200,6 +201,7 @@ List destinations
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listDestinations" method="get" path="/destinations" -->
 ```java
 package hello.world;
 
@@ -259,6 +261,7 @@ Update a Destination
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="patchDestination" method="patch" path="/destinations/{destinationId}" -->
 ```java
 package hello.world;
 
@@ -284,9 +287,8 @@ public class Application {
         PatchDestinationRequest req = PatchDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPatchRequest(DestinationPatchRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationDeepset.builder()
-                        .apiKey("<value>")
-                        .workspace("<value>")
+                    .configuration(DestinationConfiguration.of(DestinationDuckdb.builder()
+                        .destinationPath("/local/destination.duckdb")
                         .build()))
                     .name("My Destination")
                     .build())
@@ -325,6 +327,7 @@ Update a Destination and fully overwrite it
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="putDestination" method="put" path="/destinations/{destinationId}" -->
 ```java
 package hello.world;
 
@@ -350,10 +353,11 @@ public class Application {
         PutDestinationRequest req = PutDestinationRequest.builder()
                 .destinationId("<value>")
                 .destinationPutRequest(DestinationPutRequest.builder()
-                    .configuration(DestinationConfiguration.of(DestinationClickhouse.builder()
-                        .database("<value>")
-                        .host("urban-receptor.org")
-                        .username("Kaylie_Terry")
+                    .configuration(DestinationConfiguration.of(DestinationSftpJson.builder()
+                        .destinationPath("/json_data")
+                        .host("slight-consistency.info")
+                        .password("TRmq8ozhIC5jwDd")
+                        .username("Easton_Wilderman")
                         .build()))
                     .name("My Destination")
                     .build())

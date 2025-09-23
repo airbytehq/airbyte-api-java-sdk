@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("method")
@@ -59,9 +59,10 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
         return (Optional<SourceMysqlMethod>) method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceMysqlScanChangesWithUserDefinedCursor withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceMysqlScanChangesWithUserDefinedCursor withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
         return this;
     }
 
+
     public SourceMysqlScanChangesWithUserDefinedCursor withMethod(Optional<? extends SourceMysqlMethod> method) {
         Utils.checkNotNull(method, "method");
         this.method = method;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
         }
         SourceMysqlScanChangesWithUserDefinedCursor other = (SourceMysqlScanChangesWithUserDefinedCursor) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            method);
+        return Utils.enhancedHash(
+            additionalProperties, method);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
                 "additionalProperties", additionalProperties,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceMysqlMethod> method;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
             return this;
         }
 
+
         public Builder method(SourceMysqlMethod method) {
             Utils.checkNotNull(method, "method");
             this.method = Optional.ofNullable(method);
@@ -155,15 +156,17 @@ public class SourceMysqlScanChangesWithUserDefinedCursor {
             this.method = method;
             return this;
         }
-        
+
         public SourceMysqlScanChangesWithUserDefinedCursor build() {
             if (method == null) {
                 method = _SINGLETON_VALUE_Method.value();
             }
+
             return new SourceMysqlScanChangesWithUserDefinedCursor(
                 method)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMysqlMethod>> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

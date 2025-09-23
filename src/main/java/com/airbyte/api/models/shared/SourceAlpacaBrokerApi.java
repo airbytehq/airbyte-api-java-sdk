@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAlpacaBrokerApi {
 
+public class SourceAlpacaBrokerApi {
     /**
      * The trading environment, either 'live', 'paper' or 'broker-api.sandbox'.
      */
@@ -41,8 +40,10 @@ public class SourceAlpacaBrokerApi {
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private AlpacaBrokerApi sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -76,7 +77,8 @@ public class SourceAlpacaBrokerApi {
     public SourceAlpacaBrokerApi(
             OffsetDateTime startDate,
             String username) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), startDate, username);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            startDate, username);
     }
 
     /**
@@ -122,9 +124,10 @@ public class SourceAlpacaBrokerApi {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The trading environment, either 'live', 'paper' or 'broker-api.sandbox'.
@@ -134,6 +137,7 @@ public class SourceAlpacaBrokerApi {
         this.environment = Optional.ofNullable(environment);
         return this;
     }
+
 
     /**
      * The trading environment, either 'live', 'paper' or 'broker-api.sandbox'.
@@ -153,6 +157,7 @@ public class SourceAlpacaBrokerApi {
         return this;
     }
 
+
     /**
      * Limit for each response objects
      */
@@ -170,6 +175,7 @@ public class SourceAlpacaBrokerApi {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Your Alpaca API Secret Key. You can find this in the Alpaca developer web console under your account settings.
@@ -195,7 +201,6 @@ public class SourceAlpacaBrokerApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -206,23 +211,19 @@ public class SourceAlpacaBrokerApi {
         }
         SourceAlpacaBrokerApi other = (SourceAlpacaBrokerApi) o;
         return 
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            environment,
-            limit,
-            password,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            environment, limit, password,
+            sourceType, startDate, username);
     }
     
     @Override
@@ -235,22 +236,24 @@ public class SourceAlpacaBrokerApi {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceAlpacaBrokerApiEnvironment> environment;
- 
+
         private Optional<String> limit;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The trading environment, either 'live', 'paper' or 'broker-api.sandbox'.
@@ -270,6 +273,7 @@ public class SourceAlpacaBrokerApi {
             return this;
         }
 
+
         /**
          * Limit for each response objects
          */
@@ -287,6 +291,7 @@ public class SourceAlpacaBrokerApi {
             this.limit = limit;
             return this;
         }
+
 
         /**
          * Your Alpaca API Secret Key. You can find this in the Alpaca developer web console under your account settings.
@@ -306,11 +311,13 @@ public class SourceAlpacaBrokerApi {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * API Key ID for the alpaca market
@@ -320,7 +327,7 @@ public class SourceAlpacaBrokerApi {
             this.username = username;
             return this;
         }
-        
+
         public SourceAlpacaBrokerApi build() {
             if (environment == null) {
                 environment = _SINGLETON_VALUE_Environment.value();
@@ -328,13 +335,12 @@ public class SourceAlpacaBrokerApi {
             if (limit == null) {
                 limit = _SINGLETON_VALUE_Limit.value();
             }
+
             return new SourceAlpacaBrokerApi(
-                environment,
-                limit,
-                password,
-                startDate,
-                username);
+                environment, limit, password,
+                startDate, username);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAlpacaBrokerApiEnvironment>> _SINGLETON_VALUE_Environment =
                 new LazySingletonValue<>(

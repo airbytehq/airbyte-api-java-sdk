@@ -16,7 +16,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,12 +25,12 @@ import java.util.Optional;
  * that are needed when users configure a file-based source.
  */
 public class SourceGoogleDrive {
-
     /**
      * Credentials for connecting to the Google Drive API
      */
     @JsonProperty("credentials")
     private SourceGoogleDriveAuthentication credentials;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("delivery_method")
@@ -42,6 +41,7 @@ public class SourceGoogleDrive {
      */
     @JsonProperty("folder_url")
     private String folderUrl;
+
 
     @JsonProperty("sourceType")
     private SourceGoogleDriveGoogleDrive sourceType;
@@ -83,7 +83,8 @@ public class SourceGoogleDrive {
             SourceGoogleDriveAuthentication credentials,
             String folderUrl,
             List<SourceGoogleDriveFileBasedStreamConfig> streams) {
-        this(credentials, Optional.empty(), folderUrl, Optional.empty(), streams);
+        this(credentials, Optional.empty(), folderUrl,
+            Optional.empty(), streams);
     }
 
     /**
@@ -129,9 +130,10 @@ public class SourceGoogleDrive {
         return streams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Credentials for connecting to the Google Drive API
@@ -147,6 +149,7 @@ public class SourceGoogleDrive {
         this.deliveryMethod = Optional.ofNullable(deliveryMethod);
         return this;
     }
+
 
     public SourceGoogleDrive withDeliveryMethod(Optional<? extends DeliveryMethod> deliveryMethod) {
         Utils.checkNotNull(deliveryMethod, "deliveryMethod");
@@ -172,6 +175,7 @@ public class SourceGoogleDrive {
         return this;
     }
 
+
     /**
      * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
      */
@@ -190,7 +194,6 @@ public class SourceGoogleDrive {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -201,23 +204,19 @@ public class SourceGoogleDrive {
         }
         SourceGoogleDrive other = (SourceGoogleDrive) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.deliveryMethod, other.deliveryMethod) &&
-            Objects.deepEquals(this.folderUrl, other.folderUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.streams, other.streams);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.deliveryMethod, other.deliveryMethod) &&
+            Utils.enhancedDeepEquals(this.folderUrl, other.folderUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.streams, other.streams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            deliveryMethod,
-            folderUrl,
-            sourceType,
-            startDate,
-            streams);
+        return Utils.enhancedHash(
+            credentials, deliveryMethod, folderUrl,
+            sourceType, startDate, streams);
     }
     
     @Override
@@ -230,22 +229,24 @@ public class SourceGoogleDrive {
                 "startDate", startDate,
                 "streams", streams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private SourceGoogleDriveAuthentication credentials;
- 
+
         private Optional<? extends DeliveryMethod> deliveryMethod = Optional.empty();
- 
+
         private String folderUrl;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private List<SourceGoogleDriveFileBasedStreamConfig> streams;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Credentials for connecting to the Google Drive API
@@ -255,6 +256,7 @@ public class SourceGoogleDrive {
             this.credentials = credentials;
             return this;
         }
+
 
         public Builder deliveryMethod(DeliveryMethod deliveryMethod) {
             Utils.checkNotNull(deliveryMethod, "deliveryMethod");
@@ -268,6 +270,7 @@ public class SourceGoogleDrive {
             return this;
         }
 
+
         /**
          * URL for the folder you want to sync. Using individual streams and glob patterns, it's possible to only sync a subset of all files located in the folder.
          */
@@ -276,6 +279,7 @@ public class SourceGoogleDrive {
             this.folderUrl = folderUrl;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00.000000Z. Any file modified before this date will not be replicated.
@@ -295,6 +299,7 @@ public class SourceGoogleDrive {
             return this;
         }
 
+
         /**
          * Each instance of this configuration defines a &lt;a href="https://docs.airbyte.com/cloud/core-concepts#stream"&gt;stream&lt;/a&gt;. Use this to define which files belong in the stream, their format, and how they should be parsed and validated. When sending data to warehouse destination such as Snowflake or BigQuery, each stream is a separate table.
          */
@@ -303,15 +308,14 @@ public class SourceGoogleDrive {
             this.streams = streams;
             return this;
         }
-        
+
         public SourceGoogleDrive build() {
+
             return new SourceGoogleDrive(
-                credentials,
-                deliveryMethod,
-                folderUrl,
-                startDate,
-                streams);
+                credentials, deliveryMethod, folderUrl,
+                startDate, streams);
         }
+
 
         private static final LazySingletonValue<SourceGoogleDriveGoogleDrive> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

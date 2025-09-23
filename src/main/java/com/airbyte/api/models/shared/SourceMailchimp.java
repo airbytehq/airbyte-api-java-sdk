@@ -15,14 +15,15 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceMailchimp {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceMailchimpAuthentication> credentials;
+
 
     @JsonProperty("sourceType")
     private SourceMailchimpMailchimp sourceType;
@@ -68,15 +69,17 @@ public class SourceMailchimp {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMailchimp withCredentials(SourceMailchimpAuthentication credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceMailchimp withCredentials(Optional<? extends SourceMailchimpAuthentication> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -93,6 +96,7 @@ public class SourceMailchimp {
         return this;
     }
 
+
     /**
      * The date from which you want to start syncing data for Incremental streams. Only records that have been created or modified since this date will be synced. If left blank, all data will by synced.
      */
@@ -102,7 +106,6 @@ public class SourceMailchimp {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +116,15 @@ public class SourceMailchimp {
         }
         SourceMailchimp other = (SourceMailchimp) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate);
     }
     
     @Override
@@ -133,16 +134,18 @@ public class SourceMailchimp {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceMailchimpAuthentication> credentials = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceMailchimpAuthentication credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -155,6 +158,7 @@ public class SourceMailchimp {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * The date from which you want to start syncing data for Incremental streams. Only records that have been created or modified since this date will be synced. If left blank, all data will by synced.
@@ -173,12 +177,13 @@ public class SourceMailchimp {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMailchimp build() {
+
             return new SourceMailchimp(
-                credentials,
-                startDate);
+                credentials, startDate);
         }
+
 
         private static final LazySingletonValue<SourceMailchimpMailchimp> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

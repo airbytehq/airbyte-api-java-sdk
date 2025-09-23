@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -23,7 +22,6 @@ import java.util.Optional;
  * <p>Verify-full SSL mode.
  */
 public class DestinationRedisVerifyFull {
-
     /**
      * CA certificate
      */
@@ -48,6 +46,7 @@ public class DestinationRedisVerifyFull {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key_password")
     private Optional<String> clientKeyPassword;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -74,7 +73,8 @@ public class DestinationRedisVerifyFull {
             String caCertificate,
             String clientCertificate,
             String clientKey) {
-        this(caCertificate, clientCertificate, clientKey, Optional.empty());
+        this(caCertificate, clientCertificate, clientKey,
+            Optional.empty());
     }
 
     /**
@@ -115,9 +115,10 @@ public class DestinationRedisVerifyFull {
         return (Optional<DestinationRedisSchemasMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * CA certificate
@@ -155,6 +156,7 @@ public class DestinationRedisVerifyFull {
         return this;
     }
 
+
     /**
      * Password for keystorage. If you do not add it - the password will be generated automatically.
      */
@@ -164,7 +166,6 @@ public class DestinationRedisVerifyFull {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -175,21 +176,18 @@ public class DestinationRedisVerifyFull {
         }
         DestinationRedisVerifyFull other = (DestinationRedisVerifyFull) o;
         return 
-            Objects.deepEquals(this.caCertificate, other.caCertificate) &&
-            Objects.deepEquals(this.clientCertificate, other.clientCertificate) &&
-            Objects.deepEquals(this.clientKey, other.clientKey) &&
-            Objects.deepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.caCertificate, other.caCertificate) &&
+            Utils.enhancedDeepEquals(this.clientCertificate, other.clientCertificate) &&
+            Utils.enhancedDeepEquals(this.clientKey, other.clientKey) &&
+            Utils.enhancedDeepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            caCertificate,
-            clientCertificate,
-            clientKey,
-            clientKeyPassword,
-            mode);
+        return Utils.enhancedHash(
+            caCertificate, clientCertificate, clientKey,
+            clientKeyPassword, mode);
     }
     
     @Override
@@ -201,20 +199,22 @@ public class DestinationRedisVerifyFull {
                 "clientKeyPassword", clientKeyPassword,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String caCertificate;
- 
+
         private String clientCertificate;
- 
+
         private String clientKey;
- 
+
         private Optional<String> clientKeyPassword = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * CA certificate
@@ -225,6 +225,7 @@ public class DestinationRedisVerifyFull {
             return this;
         }
 
+
         /**
          * Client certificate
          */
@@ -234,6 +235,7 @@ public class DestinationRedisVerifyFull {
             return this;
         }
 
+
         /**
          * Client key
          */
@@ -242,6 +244,7 @@ public class DestinationRedisVerifyFull {
             this.clientKey = clientKey;
             return this;
         }
+
 
         /**
          * Password for keystorage. If you do not add it - the password will be generated automatically.
@@ -260,14 +263,14 @@ public class DestinationRedisVerifyFull {
             this.clientKeyPassword = clientKeyPassword;
             return this;
         }
-        
+
         public DestinationRedisVerifyFull build() {
+
             return new DestinationRedisVerifyFull(
-                caCertificate,
-                clientCertificate,
-                clientKey,
+                caCertificate, clientCertificate, clientKey,
                 clientKeyPassword);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationRedisSchemasMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -56,9 +55,10 @@ public class TLSEncryptedVerifyCertificate {
         return sslCertificate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
@@ -69,7 +69,6 @@ public class TLSEncryptedVerifyCertificate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +79,14 @@ public class TLSEncryptedVerifyCertificate {
         }
         TLSEncryptedVerifyCertificate other = (TLSEncryptedVerifyCertificate) o;
         return 
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod) &&
-            Objects.deepEquals(this.sslCertificate, other.sslCertificate);
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod) &&
+            Utils.enhancedDeepEquals(this.sslCertificate, other.sslCertificate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            encryptionMethod,
-            sslCertificate);
+        return Utils.enhancedHash(
+            encryptionMethod, sslCertificate);
     }
     
     @Override
@@ -97,14 +95,16 @@ public class TLSEncryptedVerifyCertificate {
                 "encryptionMethod", encryptionMethod,
                 "sslCertificate", sslCertificate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String sslCertificate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Privacy Enhanced Mail (PEM) files are concatenated certificate containers frequently used in certificate installations.
@@ -114,11 +114,13 @@ public class TLSEncryptedVerifyCertificate {
             this.sslCertificate = sslCertificate;
             return this;
         }
-        
+
         public TLSEncryptedVerifyCertificate build() {
+
             return new TLSEncryptedVerifyCertificate(
                 sslCertificate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationOracleSchemasEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

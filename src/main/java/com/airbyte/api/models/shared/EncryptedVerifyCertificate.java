@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -38,6 +37,7 @@ public class EncryptedVerifyCertificate {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hostNameInCertificate")
     private Optional<String> hostNameInCertificate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
@@ -75,7 +75,8 @@ public class EncryptedVerifyCertificate {
     }
     
     public EncryptedVerifyCertificate() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -113,9 +114,10 @@ public class EncryptedVerifyCertificate {
         return trustStorePassword;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public EncryptedVerifyCertificate withAdditionalProperty(String key, Object value) {
@@ -123,8 +125,7 @@ public class EncryptedVerifyCertificate {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public EncryptedVerifyCertificate withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -139,6 +140,7 @@ public class EncryptedVerifyCertificate {
         this.hostNameInCertificate = Optional.ofNullable(hostNameInCertificate);
         return this;
     }
+
 
     /**
      * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
@@ -155,6 +157,7 @@ public class EncryptedVerifyCertificate {
         return this;
     }
 
+
     public EncryptedVerifyCertificate withName(Optional<? extends DestinationMssqlSchemasName> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
@@ -169,6 +172,7 @@ public class EncryptedVerifyCertificate {
         this.trustStoreName = Optional.ofNullable(trustStoreName);
         return this;
     }
+
 
     /**
      * Specifies the name of the trust store.
@@ -188,6 +192,7 @@ public class EncryptedVerifyCertificate {
         return this;
     }
 
+
     /**
      * Specifies the password of the trust store.
      */
@@ -197,7 +202,6 @@ public class EncryptedVerifyCertificate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -208,21 +212,18 @@ public class EncryptedVerifyCertificate {
         }
         EncryptedVerifyCertificate other = (EncryptedVerifyCertificate) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.hostNameInCertificate, other.hostNameInCertificate) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.trustStoreName, other.trustStoreName) &&
-            Objects.deepEquals(this.trustStorePassword, other.trustStorePassword);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.hostNameInCertificate, other.hostNameInCertificate) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.trustStoreName, other.trustStoreName) &&
+            Utils.enhancedDeepEquals(this.trustStorePassword, other.trustStorePassword);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            hostNameInCertificate,
-            name,
-            trustStoreName,
-            trustStorePassword);
+        return Utils.enhancedHash(
+            additionalProperties, hostNameInCertificate, name,
+            trustStoreName, trustStorePassword);
     }
     
     @Override
@@ -234,19 +235,20 @@ public class EncryptedVerifyCertificate {
                 "trustStoreName", trustStoreName,
                 "trustStorePassword", trustStorePassword);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<String> hostNameInCertificate = Optional.empty();
- 
+
         private Optional<? extends DestinationMssqlSchemasName> name;
- 
+
         private Optional<String> trustStoreName = Optional.empty();
- 
+
         private Optional<String> trustStorePassword = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -267,6 +269,7 @@ public class EncryptedVerifyCertificate {
             return this;
         }
 
+
         /**
          * Specifies the host name of the server. The value of this property must match the subject property of the certificate.
          */
@@ -285,6 +288,7 @@ public class EncryptedVerifyCertificate {
             return this;
         }
 
+
         public Builder name(DestinationMssqlSchemasName name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -296,6 +300,7 @@ public class EncryptedVerifyCertificate {
             this.name = name;
             return this;
         }
+
 
         /**
          * Specifies the name of the trust store.
@@ -315,6 +320,7 @@ public class EncryptedVerifyCertificate {
             return this;
         }
 
+
         /**
          * Specifies the password of the trust store.
          */
@@ -332,18 +338,18 @@ public class EncryptedVerifyCertificate {
             this.trustStorePassword = trustStorePassword;
             return this;
         }
-        
+
         public EncryptedVerifyCertificate build() {
             if (name == null) {
                 name = _SINGLETON_VALUE_Name.value();
             }
+
             return new EncryptedVerifyCertificate(
-                hostNameInCertificate,
-                name,
-                trustStoreName,
+                hostNameInCertificate, name, trustStoreName,
                 trustStorePassword)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationMssqlSchemasName>> _SINGLETON_VALUE_Name =
                 new LazySingletonValue<>(

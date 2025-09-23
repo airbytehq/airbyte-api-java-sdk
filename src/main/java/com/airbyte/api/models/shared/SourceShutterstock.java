@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceShutterstock {
 
+public class SourceShutterstock {
     /**
      * Your OAuth 2.0 token for accessing the Shutterstock API. Obtain this token from your Shutterstock developer account.
      */
@@ -53,8 +52,10 @@ public class SourceShutterstock {
     @JsonProperty("query_for_video_search")
     private Optional<String> queryForVideoSearch;
 
+
     @JsonProperty("sourceType")
     private Shutterstock sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -85,7 +86,8 @@ public class SourceShutterstock {
     public SourceShutterstock(
             String apiToken,
             OffsetDateTime startDate) {
-        this(apiToken, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(apiToken, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
@@ -138,9 +140,10 @@ public class SourceShutterstock {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your OAuth 2.0 token for accessing the Shutterstock API. Obtain this token from your Shutterstock developer account.
@@ -160,6 +163,7 @@ public class SourceShutterstock {
         return this;
     }
 
+
     /**
      * The query for image search
      */
@@ -177,6 +181,7 @@ public class SourceShutterstock {
         this.queryForCatalogSearch = Optional.ofNullable(queryForCatalogSearch);
         return this;
     }
+
 
     /**
      * The query for catalog search
@@ -196,6 +201,7 @@ public class SourceShutterstock {
         return this;
     }
 
+
     /**
      * The query for image search
      */
@@ -214,6 +220,7 @@ public class SourceShutterstock {
         return this;
     }
 
+
     /**
      * The Query for `videos_search` stream
      */
@@ -229,7 +236,6 @@ public class SourceShutterstock {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -240,24 +246,20 @@ public class SourceShutterstock {
         }
         SourceShutterstock other = (SourceShutterstock) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.queryForAudioSearch, other.queryForAudioSearch) &&
-            Objects.deepEquals(this.queryForCatalogSearch, other.queryForCatalogSearch) &&
-            Objects.deepEquals(this.queryForImageSearch, other.queryForImageSearch) &&
-            Objects.deepEquals(this.queryForVideoSearch, other.queryForVideoSearch) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.queryForAudioSearch, other.queryForAudioSearch) &&
+            Utils.enhancedDeepEquals(this.queryForCatalogSearch, other.queryForCatalogSearch) &&
+            Utils.enhancedDeepEquals(this.queryForImageSearch, other.queryForImageSearch) &&
+            Utils.enhancedDeepEquals(this.queryForVideoSearch, other.queryForVideoSearch) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            queryForAudioSearch,
-            queryForCatalogSearch,
-            queryForImageSearch,
-            queryForVideoSearch,
-            sourceType,
+        return Utils.enhancedHash(
+            apiToken, queryForAudioSearch, queryForCatalogSearch,
+            queryForImageSearch, queryForVideoSearch, sourceType,
             startDate);
     }
     
@@ -272,24 +274,26 @@ public class SourceShutterstock {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private Optional<String> queryForAudioSearch;
- 
+
         private Optional<String> queryForCatalogSearch;
- 
+
         private Optional<String> queryForImageSearch;
- 
+
         private Optional<String> queryForVideoSearch;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your OAuth 2.0 token for accessing the Shutterstock API. Obtain this token from your Shutterstock developer account.
@@ -299,6 +303,7 @@ public class SourceShutterstock {
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * The query for image search
@@ -318,6 +323,7 @@ public class SourceShutterstock {
             return this;
         }
 
+
         /**
          * The query for catalog search
          */
@@ -335,6 +341,7 @@ public class SourceShutterstock {
             this.queryForCatalogSearch = queryForCatalogSearch;
             return this;
         }
+
 
         /**
          * The query for image search
@@ -354,6 +361,7 @@ public class SourceShutterstock {
             return this;
         }
 
+
         /**
          * The Query for `videos_search` stream
          */
@@ -372,12 +380,13 @@ public class SourceShutterstock {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceShutterstock build() {
             if (queryForAudioSearch == null) {
                 queryForAudioSearch = _SINGLETON_VALUE_QueryForAudioSearch.value();
@@ -391,14 +400,12 @@ public class SourceShutterstock {
             if (queryForVideoSearch == null) {
                 queryForVideoSearch = _SINGLETON_VALUE_QueryForVideoSearch.value();
             }
+
             return new SourceShutterstock(
-                apiToken,
-                queryForAudioSearch,
-                queryForCatalogSearch,
-                queryForImageSearch,
-                queryForVideoSearch,
-                startDate);
+                apiToken, queryForAudioSearch, queryForCatalogSearch,
+                queryForImageSearch, queryForVideoSearch, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_QueryForAudioSearch =
                 new LazySingletonValue<>(

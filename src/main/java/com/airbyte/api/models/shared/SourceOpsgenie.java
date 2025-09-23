@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOpsgenie {
 
+public class SourceOpsgenie {
     /**
      * API token used to access the Opsgenie platform
      */
@@ -30,6 +29,7 @@ public class SourceOpsgenie {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("endpoint")
     private Optional<String> endpoint;
+
 
     @JsonProperty("sourceType")
     private Opsgenie sourceType;
@@ -89,9 +89,10 @@ public class SourceOpsgenie {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API token used to access the Opsgenie platform
@@ -111,6 +112,7 @@ public class SourceOpsgenie {
         return this;
     }
 
+
     /**
      * Service endpoint to use for API calls.
      */
@@ -129,6 +131,7 @@ public class SourceOpsgenie {
         return this;
     }
 
+
     /**
      * The date from which you'd like to replicate data from Opsgenie in the format of YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only in the following incremental streams: issues.
      */
@@ -138,7 +141,6 @@ public class SourceOpsgenie {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +151,16 @@ public class SourceOpsgenie {
         }
         SourceOpsgenie other = (SourceOpsgenie) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.endpoint, other.endpoint) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.endpoint, other.endpoint) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            endpoint,
-            sourceType,
+        return Utils.enhancedHash(
+            apiToken, endpoint, sourceType,
             startDate);
     }
     
@@ -172,18 +172,20 @@ public class SourceOpsgenie {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private Optional<String> endpoint;
- 
+
         private Optional<String> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API token used to access the Opsgenie platform
@@ -193,6 +195,7 @@ public class SourceOpsgenie {
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * Service endpoint to use for API calls.
@@ -212,6 +215,7 @@ public class SourceOpsgenie {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate data from Opsgenie in the format of YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only in the following incremental streams: issues.
          */
@@ -229,16 +233,16 @@ public class SourceOpsgenie {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceOpsgenie build() {
             if (endpoint == null) {
                 endpoint = _SINGLETON_VALUE_Endpoint.value();
             }
+
             return new SourceOpsgenie(
-                apiToken,
-                endpoint,
-                startDate);
+                apiToken, endpoint, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Endpoint =
                 new LazySingletonValue<>(

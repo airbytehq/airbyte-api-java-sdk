@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class AzBlobAzureBlobStorage {
 
+public class AzBlobAzureBlobStorage {
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.
      */
@@ -31,6 +30,7 @@ public class AzBlobAzureBlobStorage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("shared_key")
     private Optional<String> sharedKey;
+
 
     @JsonProperty("storage")
     private SourceFileSchemasProviderStorage storage;
@@ -89,9 +89,10 @@ public class AzBlobAzureBlobStorage {
         return storageAccount;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.
@@ -101,6 +102,7 @@ public class AzBlobAzureBlobStorage {
         this.sasToken = Optional.ofNullable(sasToken);
         return this;
     }
+
 
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.
@@ -120,6 +122,7 @@ public class AzBlobAzureBlobStorage {
         return this;
     }
 
+
     /**
      * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a storage account shared key (aka account key or access key). If accessing publicly available data, this field is not necessary.
      */
@@ -138,7 +141,6 @@ public class AzBlobAzureBlobStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +151,16 @@ public class AzBlobAzureBlobStorage {
         }
         AzBlobAzureBlobStorage other = (AzBlobAzureBlobStorage) o;
         return 
-            Objects.deepEquals(this.sasToken, other.sasToken) &&
-            Objects.deepEquals(this.sharedKey, other.sharedKey) &&
-            Objects.deepEquals(this.storage, other.storage) &&
-            Objects.deepEquals(this.storageAccount, other.storageAccount);
+            Utils.enhancedDeepEquals(this.sasToken, other.sasToken) &&
+            Utils.enhancedDeepEquals(this.sharedKey, other.sharedKey) &&
+            Utils.enhancedDeepEquals(this.storage, other.storage) &&
+            Utils.enhancedDeepEquals(this.storageAccount, other.storageAccount);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sasToken,
-            sharedKey,
-            storage,
+        return Utils.enhancedHash(
+            sasToken, sharedKey, storage,
             storageAccount);
     }
     
@@ -172,18 +172,20 @@ public class AzBlobAzureBlobStorage {
                 "storage", storage,
                 "storageAccount", storageAccount);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> sasToken = Optional.empty();
- 
+
         private Optional<String> sharedKey = Optional.empty();
- 
+
         private String storageAccount;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a SAS (Shared Access Signature) token. If accessing publicly available data, this field is not necessary.
@@ -203,6 +205,7 @@ public class AzBlobAzureBlobStorage {
             return this;
         }
 
+
         /**
          * To access Azure Blob Storage, this connector would need credentials with the proper permissions. One option is a storage account shared key (aka account key or access key). If accessing publicly available data, this field is not necessary.
          */
@@ -221,6 +224,7 @@ public class AzBlobAzureBlobStorage {
             return this;
         }
 
+
         /**
          * The globally unique name of the storage account that the desired blob sits within. See &lt;a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview" target="_blank"&gt;here&lt;/a&gt; for more details.
          */
@@ -229,13 +233,13 @@ public class AzBlobAzureBlobStorage {
             this.storageAccount = storageAccount;
             return this;
         }
-        
+
         public AzBlobAzureBlobStorage build() {
+
             return new AzBlobAzureBlobStorage(
-                sasToken,
-                sharedKey,
-                storageAccount);
+                sasToken, sharedKey, storageAccount);
         }
+
 
         private static final LazySingletonValue<SourceFileSchemasProviderStorage> _SINGLETON_VALUE_Storage =
                 new LazySingletonValue<>(

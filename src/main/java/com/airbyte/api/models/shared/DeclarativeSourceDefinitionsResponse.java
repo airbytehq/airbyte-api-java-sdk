@@ -12,17 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DeclarativeSourceDefinitionsResponse {
 
     @JsonProperty("data")
     private List<DeclarativeSourceDefinitionResponse> data;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("next")
     private Optional<String> next;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("previous")
@@ -61,9 +63,10 @@ public class DeclarativeSourceDefinitionsResponse {
         return previous;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeclarativeSourceDefinitionsResponse withData(List<DeclarativeSourceDefinitionResponse> data) {
         Utils.checkNotNull(data, "data");
@@ -77,6 +80,7 @@ public class DeclarativeSourceDefinitionsResponse {
         return this;
     }
 
+
     public DeclarativeSourceDefinitionsResponse withNext(Optional<String> next) {
         Utils.checkNotNull(next, "next");
         this.next = next;
@@ -89,13 +93,13 @@ public class DeclarativeSourceDefinitionsResponse {
         return this;
     }
 
+
     public DeclarativeSourceDefinitionsResponse withPrevious(Optional<String> previous) {
         Utils.checkNotNull(previous, "previous");
         this.previous = previous;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -106,17 +110,15 @@ public class DeclarativeSourceDefinitionsResponse {
         }
         DeclarativeSourceDefinitionsResponse other = (DeclarativeSourceDefinitionsResponse) o;
         return 
-            Objects.deepEquals(this.data, other.data) &&
-            Objects.deepEquals(this.next, other.next) &&
-            Objects.deepEquals(this.previous, other.previous);
+            Utils.enhancedDeepEquals(this.data, other.data) &&
+            Utils.enhancedDeepEquals(this.next, other.next) &&
+            Utils.enhancedDeepEquals(this.previous, other.previous);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            data,
-            next,
-            previous);
+        return Utils.enhancedHash(
+            data, next, previous);
     }
     
     @Override
@@ -126,24 +128,27 @@ public class DeclarativeSourceDefinitionsResponse {
                 "next", next,
                 "previous", previous);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<DeclarativeSourceDefinitionResponse> data;
- 
+
         private Optional<String> next = Optional.empty();
- 
+
         private Optional<String> previous = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder data(List<DeclarativeSourceDefinitionResponse> data) {
             Utils.checkNotNull(data, "data");
             this.data = data;
             return this;
         }
+
 
         public Builder next(String next) {
             Utils.checkNotNull(next, "next");
@@ -157,6 +162,7 @@ public class DeclarativeSourceDefinitionsResponse {
             return this;
         }
 
+
         public Builder previous(String previous) {
             Utils.checkNotNull(previous, "previous");
             this.previous = Optional.ofNullable(previous);
@@ -168,12 +174,12 @@ public class DeclarativeSourceDefinitionsResponse {
             this.previous = previous;
             return this;
         }
-        
+
         public DeclarativeSourceDefinitionsResponse build() {
+
             return new DeclarativeSourceDefinitionsResponse(
-                data,
-                next,
-                previous);
+                data, next, previous);
         }
+
     }
 }

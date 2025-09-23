@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAlphaVantage {
 
+public class SourceAlphaVantage {
     /**
      * Whether to return adjusted data. Only applicable to intraday endpoints.
      */
@@ -46,6 +45,7 @@ public class SourceAlphaVantage {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("outputsize")
     private Optional<? extends OutputSize> outputsize;
+
 
     @JsonProperty("sourceType")
     private AlphaVantage sourceType;
@@ -79,7 +79,8 @@ public class SourceAlphaVantage {
     public SourceAlphaVantage(
             String apiKey,
             String symbol) {
-        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty(), symbol);
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty(), symbol);
     }
 
     /**
@@ -129,9 +130,10 @@ public class SourceAlphaVantage {
         return symbol;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Whether to return adjusted data. Only applicable to intraday endpoints.
@@ -141,6 +143,7 @@ public class SourceAlphaVantage {
         this.adjusted = Optional.ofNullable(adjusted);
         return this;
     }
+
 
     /**
      * Whether to return adjusted data. Only applicable to intraday endpoints.
@@ -169,6 +172,7 @@ public class SourceAlphaVantage {
         return this;
     }
 
+
     /**
      * Time-series data point interval. Required for intraday endpoints.
      */
@@ -186,6 +190,7 @@ public class SourceAlphaVantage {
         this.outputsize = Optional.ofNullable(outputsize);
         return this;
     }
+
 
     /**
      * Whether to return full or compact data (the last 100 data points).
@@ -205,7 +210,6 @@ public class SourceAlphaVantage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -216,23 +220,19 @@ public class SourceAlphaVantage {
         }
         SourceAlphaVantage other = (SourceAlphaVantage) o;
         return 
-            Objects.deepEquals(this.adjusted, other.adjusted) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.interval, other.interval) &&
-            Objects.deepEquals(this.outputsize, other.outputsize) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.symbol, other.symbol);
+            Utils.enhancedDeepEquals(this.adjusted, other.adjusted) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.interval, other.interval) &&
+            Utils.enhancedDeepEquals(this.outputsize, other.outputsize) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.symbol, other.symbol);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            adjusted,
-            apiKey,
-            interval,
-            outputsize,
-            sourceType,
-            symbol);
+        return Utils.enhancedHash(
+            adjusted, apiKey, interval,
+            outputsize, sourceType, symbol);
     }
     
     @Override
@@ -245,22 +245,24 @@ public class SourceAlphaVantage {
                 "sourceType", sourceType,
                 "symbol", symbol);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> adjusted;
- 
+
         private String apiKey;
- 
+
         private Optional<? extends Interval> interval;
- 
+
         private Optional<? extends OutputSize> outputsize;
- 
+
         private String symbol;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Whether to return adjusted data. Only applicable to intraday endpoints.
@@ -280,6 +282,7 @@ public class SourceAlphaVantage {
             return this;
         }
 
+
         /**
          * API Key
          */
@@ -288,6 +291,7 @@ public class SourceAlphaVantage {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Time-series data point interval. Required for intraday endpoints.
@@ -307,6 +311,7 @@ public class SourceAlphaVantage {
             return this;
         }
 
+
         /**
          * Whether to return full or compact data (the last 100 data points).
          */
@@ -325,6 +330,7 @@ public class SourceAlphaVantage {
             return this;
         }
 
+
         /**
          * Stock symbol (with exchange code)
          */
@@ -333,7 +339,7 @@ public class SourceAlphaVantage {
             this.symbol = symbol;
             return this;
         }
-        
+
         public SourceAlphaVantage build() {
             if (adjusted == null) {
                 adjusted = _SINGLETON_VALUE_Adjusted.value();
@@ -344,13 +350,12 @@ public class SourceAlphaVantage {
             if (outputsize == null) {
                 outputsize = _SINGLETON_VALUE_Outputsize.value();
             }
+
             return new SourceAlphaVantage(
-                adjusted,
-                apiKey,
-                interval,
-                outputsize,
-                symbol);
+                adjusted, apiKey, interval,
+                outputsize, symbol);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_Adjusted =
                 new LazySingletonValue<>(

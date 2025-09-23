@@ -15,8 +15,8 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Deflate {
 
@@ -59,15 +59,17 @@ public class Deflate {
         return compressionLevel;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Deflate withCodec(DestinationGcsCodec codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = Optional.ofNullable(codec);
         return this;
     }
+
 
     public Deflate withCodec(Optional<? extends DestinationGcsCodec> codec) {
         Utils.checkNotNull(codec, "codec");
@@ -84,6 +86,7 @@ public class Deflate {
         return this;
     }
 
+
     /**
      * 0: no compression &amp; fastest, 9: best compression &amp; slowest.
      */
@@ -93,7 +96,6 @@ public class Deflate {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,15 +106,14 @@ public class Deflate {
         }
         Deflate other = (Deflate) o;
         return 
-            Objects.deepEquals(this.codec, other.codec) &&
-            Objects.deepEquals(this.compressionLevel, other.compressionLevel);
+            Utils.enhancedDeepEquals(this.codec, other.codec) &&
+            Utils.enhancedDeepEquals(this.compressionLevel, other.compressionLevel);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            codec,
-            compressionLevel);
+        return Utils.enhancedHash(
+            codec, compressionLevel);
     }
     
     @Override
@@ -121,16 +122,18 @@ public class Deflate {
                 "codec", codec,
                 "compressionLevel", compressionLevel);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsCodec> codec;
- 
+
         private Optional<Long> compressionLevel;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder codec(DestinationGcsCodec codec) {
             Utils.checkNotNull(codec, "codec");
@@ -143,6 +146,7 @@ public class Deflate {
             this.codec = codec;
             return this;
         }
+
 
         /**
          * 0: no compression &amp; fastest, 9: best compression &amp; slowest.
@@ -161,7 +165,7 @@ public class Deflate {
             this.compressionLevel = compressionLevel;
             return this;
         }
-        
+
         public Deflate build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
@@ -169,10 +173,11 @@ public class Deflate {
             if (compressionLevel == null) {
                 compressionLevel = _SINGLETON_VALUE_CompressionLevel.value();
             }
+
             return new Deflate(
-                codec,
-                compressionLevel);
+                codec, compressionLevel);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsCodec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

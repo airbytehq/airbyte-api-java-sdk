@@ -14,7 +14,7 @@ public enum SourceNotionNotion {
     @JsonValue
     private final String value;
 
-    private SourceNotionNotion(String value) {
+    SourceNotionNotion(String value) {
         this.value = value;
     }
     

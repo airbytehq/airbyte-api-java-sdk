@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePhyllo {
 
+public class SourcePhyllo {
     /**
      * Your Client ID for the Phyllo API. You can find this in the Phyllo Developer Dashboard under API credentials.
      */
@@ -39,8 +38,10 @@ public class SourcePhyllo {
     @JsonProperty("environment")
     private Optional<? extends SourcePhylloEnvironment> environment;
 
+
     @JsonProperty("sourceType")
     private Phyllo sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -66,7 +67,8 @@ public class SourcePhyllo {
             String clientId,
             String clientSecret,
             OffsetDateTime startDate) {
-        this(clientId, clientSecret, Optional.empty(), startDate);
+        this(clientId, clientSecret, Optional.empty(),
+            startDate);
     }
 
     /**
@@ -104,9 +106,10 @@ public class SourcePhyllo {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Client ID for the Phyllo API. You can find this in the Phyllo Developer Dashboard under API credentials.
@@ -135,6 +138,7 @@ public class SourcePhyllo {
         return this;
     }
 
+
     /**
      * The environment for the API (e.g., 'api.sandbox', 'api.staging', 'api')
      */
@@ -150,7 +154,6 @@ public class SourcePhyllo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -161,21 +164,18 @@ public class SourcePhyllo {
         }
         SourcePhyllo other = (SourcePhyllo) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.environment, other.environment) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.environment, other.environment) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            environment,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, environment,
+            sourceType, startDate);
     }
     
     @Override
@@ -187,20 +187,22 @@ public class SourcePhyllo {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<? extends SourcePhylloEnvironment> environment;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Client ID for the Phyllo API. You can find this in the Phyllo Developer Dashboard under API credentials.
@@ -211,6 +213,7 @@ public class SourcePhyllo {
             return this;
         }
 
+
         /**
          * Your Client Secret for the Phyllo API. You can find this in the Phyllo Developer Dashboard under API credentials.
          */
@@ -219,6 +222,7 @@ public class SourcePhyllo {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The environment for the API (e.g., 'api.sandbox', 'api.staging', 'api')
@@ -238,22 +242,23 @@ public class SourcePhyllo {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePhyllo build() {
             if (environment == null) {
                 environment = _SINGLETON_VALUE_Environment.value();
             }
+
             return new SourcePhyllo(
-                clientId,
-                clientSecret,
-                environment,
+                clientId, clientSecret, environment,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourcePhylloEnvironment>> _SINGLETON_VALUE_Environment =
                 new LazySingletonValue<>(

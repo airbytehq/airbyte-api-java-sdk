@@ -20,7 +20,7 @@ public enum TheTargetedActionResourceForTheFetch {
     @JsonValue
     private final String value;
 
-    private TheTargetedActionResourceForTheFetch(String value) {
+    TheTargetedActionResourceForTheFetch(String value) {
         this.value = value;
     }
     

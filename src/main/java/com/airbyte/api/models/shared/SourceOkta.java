@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceOkta {
 
@@ -30,6 +30,7 @@ public class SourceOkta {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
     private Optional<String> domain;
+
 
     @JsonProperty("sourceType")
     private Okta sourceType;
@@ -86,15 +87,17 @@ public class SourceOkta {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceOkta withCredentials(SourceOktaAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceOkta withCredentials(Optional<? extends SourceOktaAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -110,6 +113,7 @@ public class SourceOkta {
         this.domain = Optional.ofNullable(domain);
         return this;
     }
+
 
     /**
      * The Okta domain. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to find it.
@@ -129,6 +133,7 @@ public class SourceOkta {
         return this;
     }
 
+
     /**
      * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
      */
@@ -138,7 +143,6 @@ public class SourceOkta {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +153,16 @@ public class SourceOkta {
         }
         SourceOkta other = (SourceOkta) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            domain,
-            sourceType,
+        return Utils.enhancedHash(
+            credentials, domain, sourceType,
             startDate);
     }
     
@@ -172,18 +174,20 @@ public class SourceOkta {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceOktaAuthorizationMethod> credentials = Optional.empty();
- 
+
         private Optional<String> domain = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceOktaAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -196,6 +200,7 @@ public class SourceOkta {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * The Okta domain. See the &lt;a href="https://docs.airbyte.com/integrations/sources/okta"&gt;docs&lt;/a&gt; for instructions on how to find it.
@@ -215,6 +220,7 @@ public class SourceOkta {
             return this;
         }
 
+
         /**
          * UTC date and time in the format YYYY-MM-DDTHH:MM:SSZ. Any data before this date will not be replicated.
          */
@@ -232,13 +238,13 @@ public class SourceOkta {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceOkta build() {
+
             return new SourceOkta(
-                credentials,
-                domain,
-                startDate);
+                credentials, domain, startDate);
         }
+
 
         private static final LazySingletonValue<Okta> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

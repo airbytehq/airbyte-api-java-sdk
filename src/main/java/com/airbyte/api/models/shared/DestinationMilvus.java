@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -55,6 +54,7 @@ public class DestinationMilvus {
     @JsonProperty("omit_raw_text")
     private Optional<Boolean> omitRawText;
 
+
     @JsonProperty("processing")
     private DestinationMilvusProcessingConfigModel processing;
 
@@ -79,7 +79,8 @@ public class DestinationMilvus {
             DestinationMilvusEmbedding embedding,
             DestinationMilvusIndexing indexing,
             DestinationMilvusProcessingConfigModel processing) {
-        this(embedding, indexing, Optional.empty(), processing);
+        this(embedding, indexing, Optional.empty(),
+            processing);
     }
 
     @JsonIgnore
@@ -116,9 +117,10 @@ public class DestinationMilvus {
         return processing;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Embedding configuration
@@ -147,6 +149,7 @@ public class DestinationMilvus {
         return this;
     }
 
+
     /**
      * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
      */
@@ -162,7 +165,6 @@ public class DestinationMilvus {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -173,21 +175,18 @@ public class DestinationMilvus {
         }
         DestinationMilvus other = (DestinationMilvus) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.embedding, other.embedding) &&
-            Objects.deepEquals(this.indexing, other.indexing) &&
-            Objects.deepEquals(this.omitRawText, other.omitRawText) &&
-            Objects.deepEquals(this.processing, other.processing);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.embedding, other.embedding) &&
+            Utils.enhancedDeepEquals(this.indexing, other.indexing) &&
+            Utils.enhancedDeepEquals(this.omitRawText, other.omitRawText) &&
+            Utils.enhancedDeepEquals(this.processing, other.processing);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            embedding,
-            indexing,
-            omitRawText,
-            processing);
+        return Utils.enhancedHash(
+            destinationType, embedding, indexing,
+            omitRawText, processing);
     }
     
     @Override
@@ -199,20 +198,22 @@ public class DestinationMilvus {
                 "omitRawText", omitRawText,
                 "processing", processing);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationMilvusEmbedding embedding;
- 
+
         private DestinationMilvusIndexing indexing;
- 
+
         private Optional<Boolean> omitRawText;
- 
+
         private DestinationMilvusProcessingConfigModel processing;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Embedding configuration
@@ -223,6 +224,7 @@ public class DestinationMilvus {
             return this;
         }
 
+
         /**
          * Indexing configuration
          */
@@ -231,6 +233,7 @@ public class DestinationMilvus {
             this.indexing = indexing;
             return this;
         }
+
 
         /**
          * Do not store the text that gets embedded along with the vector and the metadata in the destination. If set to true, only the vector and the metadata will be stored - in this case raw text for LLM use cases needs to be retrieved from another source.
@@ -250,22 +253,23 @@ public class DestinationMilvus {
             return this;
         }
 
+
         public Builder processing(DestinationMilvusProcessingConfigModel processing) {
             Utils.checkNotNull(processing, "processing");
             this.processing = processing;
             return this;
         }
-        
+
         public DestinationMilvus build() {
             if (omitRawText == null) {
                 omitRawText = _SINGLETON_VALUE_OmitRawText.value();
             }
+
             return new DestinationMilvus(
-                embedding,
-                indexing,
-                omitRawText,
+                embedding, indexing, omitRawText,
                 processing);
         }
+
 
         private static final LazySingletonValue<Milvus> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

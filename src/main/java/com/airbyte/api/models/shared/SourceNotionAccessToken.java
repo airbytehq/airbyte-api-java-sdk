@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceNotionAccessToken {
 
@@ -45,9 +45,10 @@ public class SourceNotionAccessToken {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Access Token for your private Notion integration. See the &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-1-create-an-integration-in-notion'&gt;docs&lt;/a&gt; for more information on how to obtain this token.
@@ -58,7 +59,6 @@ public class SourceNotionAccessToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceNotionAccessToken {
         }
         SourceNotionAccessToken other = (SourceNotionAccessToken) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            token);
+        return Utils.enhancedHash(
+            authType, token);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceNotionAccessToken {
                 "authType", authType,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String token;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Access Token for your private Notion integration. See the &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-1-create-an-integration-in-notion'&gt;docs&lt;/a&gt; for more information on how to obtain this token.
@@ -103,11 +104,13 @@ public class SourceNotionAccessToken {
             this.token = token;
             return this;
         }
-        
+
         public SourceNotionAccessToken build() {
+
             return new SourceNotionAccessToken(
                 token);
         }
+
 
         private static final LazySingletonValue<SourceNotionSchemasAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

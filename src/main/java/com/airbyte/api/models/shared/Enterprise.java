@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Enterprise {
 
@@ -51,9 +51,10 @@ public class Enterprise {
         return enterpriseUrl;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Upgrade to Enterprise to make your API url your-domain.com/API or subdomain.jotform.com/API instead of api.jotform.com
@@ -64,7 +65,6 @@ public class Enterprise {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class Enterprise {
         }
         Enterprise other = (Enterprise) o;
         return 
-            Objects.deepEquals(this.apiEndpoint, other.apiEndpoint) &&
-            Objects.deepEquals(this.enterpriseUrl, other.enterpriseUrl);
+            Utils.enhancedDeepEquals(this.apiEndpoint, other.apiEndpoint) &&
+            Utils.enhancedDeepEquals(this.enterpriseUrl, other.enterpriseUrl);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiEndpoint,
-            enterpriseUrl);
+        return Utils.enhancedHash(
+            apiEndpoint, enterpriseUrl);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class Enterprise {
                 "apiEndpoint", apiEndpoint,
                 "enterpriseUrl", enterpriseUrl);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String enterpriseUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Upgrade to Enterprise to make your API url your-domain.com/API or subdomain.jotform.com/API instead of api.jotform.com
@@ -109,11 +110,13 @@ public class Enterprise {
             this.enterpriseUrl = enterpriseUrl;
             return this;
         }
-        
+
         public Enterprise build() {
+
             return new Enterprise(
                 enterpriseUrl);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceJotformApiEndpoint>> _SINGLETON_VALUE_ApiEndpoint =
                 new LazySingletonValue<>(

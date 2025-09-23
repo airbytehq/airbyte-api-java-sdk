@@ -13,17 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationFirestore {
 
+public class DestinationFirestore {
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials_json")
     private Optional<String> credentialsJson;
+
 
     @JsonProperty("destinationType")
     private Firestore destinationType;
@@ -71,9 +71,10 @@ public class DestinationFirestore {
         return projectId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
@@ -83,6 +84,7 @@ public class DestinationFirestore {
         this.credentialsJson = Optional.ofNullable(credentialsJson);
         return this;
     }
+
 
     /**
      * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
@@ -102,7 +104,6 @@ public class DestinationFirestore {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +114,15 @@ public class DestinationFirestore {
         }
         DestinationFirestore other = (DestinationFirestore) o;
         return 
-            Objects.deepEquals(this.credentialsJson, other.credentialsJson) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.projectId, other.projectId);
+            Utils.enhancedDeepEquals(this.credentialsJson, other.credentialsJson) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentialsJson,
-            destinationType,
-            projectId);
+        return Utils.enhancedHash(
+            credentialsJson, destinationType, projectId);
     }
     
     @Override
@@ -133,16 +132,18 @@ public class DestinationFirestore {
                 "destinationType", destinationType,
                 "projectId", projectId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> credentialsJson = Optional.empty();
- 
+
         private String projectId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The contents of the JSON service account key. Check out the &lt;a href="https://docs.airbyte.com/integrations/destinations/firestore"&gt;docs&lt;/a&gt; if you need help generating this key. Default credentials will be used if this field is left empty.
@@ -162,6 +163,7 @@ public class DestinationFirestore {
             return this;
         }
 
+
         /**
          * The GCP project ID for the project containing the target BigQuery dataset.
          */
@@ -170,12 +172,13 @@ public class DestinationFirestore {
             this.projectId = projectId;
             return this;
         }
-        
+
         public DestinationFirestore build() {
+
             return new DestinationFirestore(
-                credentialsJson,
-                projectId);
+                credentialsJson, projectId);
         }
+
 
         private static final LazySingletonValue<Firestore> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

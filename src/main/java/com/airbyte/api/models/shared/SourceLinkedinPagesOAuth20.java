@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceLinkedinPagesOAuth20 {
 
@@ -85,9 +85,10 @@ public class SourceLinkedinPagesOAuth20 {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The client ID of the LinkedIn developer application.
@@ -116,7 +117,6 @@ public class SourceLinkedinPagesOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +127,16 @@ public class SourceLinkedinPagesOAuth20 {
         }
         SourceLinkedinPagesOAuth20 other = (SourceLinkedinPagesOAuth20) o;
         return 
-            Objects.deepEquals(this.authMethod, other.authMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authMethod, other.authMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authMethod,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authMethod, clientId, clientSecret,
             refreshToken);
     }
     
@@ -150,18 +148,20 @@ public class SourceLinkedinPagesOAuth20 {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The client ID of the LinkedIn developer application.
@@ -172,6 +172,7 @@ public class SourceLinkedinPagesOAuth20 {
             return this;
         }
 
+
         /**
          * The client secret of the LinkedIn developer application.
          */
@@ -181,6 +182,7 @@ public class SourceLinkedinPagesOAuth20 {
             return this;
         }
 
+
         /**
          * The token value generated using the LinkedIn Developers OAuth Token Tools. See the &lt;a href="https://docs.airbyte.com/integrations/sources/linkedin-pages/"&gt;docs&lt;/a&gt; to obtain yours.
          */
@@ -189,13 +191,13 @@ public class SourceLinkedinPagesOAuth20 {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceLinkedinPagesOAuth20 build() {
+
             return new SourceLinkedinPagesOAuth20(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceLinkedinPagesAuthMethod>> _SINGLETON_VALUE_AuthMethod =
                 new LazySingletonValue<>(

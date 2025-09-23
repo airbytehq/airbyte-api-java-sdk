@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMailersend {
 
+public class SourceMailersend {
     /**
      * Your API Token. See &lt;a href="https://www.mailersend.com/help/managing-api-tokens"&gt;here&lt;/a&gt;.
      */
@@ -30,6 +29,7 @@ public class SourceMailersend {
      */
     @JsonProperty("domain_id")
     private String domainId;
+
 
     @JsonProperty("sourceType")
     private Mailersend sourceType;
@@ -90,9 +90,10 @@ public class SourceMailersend {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your API Token. See &lt;a href="https://www.mailersend.com/help/managing-api-tokens"&gt;here&lt;/a&gt;.
@@ -121,6 +122,7 @@ public class SourceMailersend {
         return this;
     }
 
+
     /**
      * Timestamp is assumed to be UTC.
      */
@@ -130,7 +132,6 @@ public class SourceMailersend {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,18 +142,16 @@ public class SourceMailersend {
         }
         SourceMailersend other = (SourceMailersend) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.domainId, other.domainId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.domainId, other.domainId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            domainId,
-            sourceType,
+        return Utils.enhancedHash(
+            apiToken, domainId, sourceType,
             startDate);
     }
     
@@ -164,18 +163,20 @@ public class SourceMailersend {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private String domainId;
- 
+
         private Optional<Double> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your API Token. See &lt;a href="https://www.mailersend.com/help/managing-api-tokens"&gt;here&lt;/a&gt;.
@@ -186,6 +187,7 @@ public class SourceMailersend {
             return this;
         }
 
+
         /**
          * The domain entity in mailersend
          */
@@ -194,6 +196,7 @@ public class SourceMailersend {
             this.domainId = domainId;
             return this;
         }
+
 
         /**
          * Timestamp is assumed to be UTC.
@@ -212,13 +215,13 @@ public class SourceMailersend {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMailersend build() {
+
             return new SourceMailersend(
-                apiToken,
-                domainId,
-                startDate);
+                apiToken, domainId, startDate);
         }
+
 
         private static final LazySingletonValue<Mailersend> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

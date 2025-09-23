@@ -24,7 +24,7 @@ public enum SourceGnewsSortBy {
     @JsonValue
     private final String value;
 
-    private SourceGnewsSortBy(String value) {
+    SourceGnewsSortBy(String value) {
         this.value = value;
     }
     

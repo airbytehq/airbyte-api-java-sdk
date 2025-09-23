@@ -16,11 +16,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMysql {
 
+public class SourceMysql {
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
      */
@@ -34,13 +33,6 @@ public class SourceMysql {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("checkpoint_target_interval_seconds")
     private Optional<Long> checkpointTargetIntervalSeconds;
-
-    /**
-     * Maximum number of concurrent queries to the database.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("concurrency")
-    private Optional<Long> concurrency;
 
     /**
      * The database name.
@@ -62,6 +54,13 @@ public class SourceMysql {
     private Optional<String> jdbcUrlParams;
 
     /**
+     * Maximum number of concurrent queries to the database. Leave empty to let Airbyte optimize performance.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("max_db_connections")
+    private Optional<Long> maxDbConnections;
+
+    /**
      * The password associated with the username.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -81,11 +80,12 @@ public class SourceMysql {
     @JsonProperty("replication_method")
     private SourceMysqlUpdateMethod replicationMethod;
 
+
     @JsonProperty("sourceType")
     private SourceMysqlMysql sourceType;
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
@@ -108,10 +108,10 @@ public class SourceMysql {
     public SourceMysql(
             @JsonProperty("check_privileges") Optional<Boolean> checkPrivileges,
             @JsonProperty("checkpoint_target_interval_seconds") Optional<Long> checkpointTargetIntervalSeconds,
-            @JsonProperty("concurrency") Optional<Long> concurrency,
             @JsonProperty("database") String database,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
+            @JsonProperty("max_db_connections") Optional<Long> maxDbConnections,
             @JsonProperty("password") Optional<String> password,
             @JsonProperty("port") Optional<Long> port,
             @JsonProperty("replication_method") SourceMysqlUpdateMethod replicationMethod,
@@ -120,10 +120,10 @@ public class SourceMysql {
             @JsonProperty("username") String username) {
         Utils.checkNotNull(checkPrivileges, "checkPrivileges");
         Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
-        Utils.checkNotNull(concurrency, "concurrency");
         Utils.checkNotNull(database, "database");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
+        Utils.checkNotNull(maxDbConnections, "maxDbConnections");
         Utils.checkNotNull(password, "password");
         Utils.checkNotNull(port, "port");
         Utils.checkNotNull(replicationMethod, "replicationMethod");
@@ -132,10 +132,10 @@ public class SourceMysql {
         Utils.checkNotNull(username, "username");
         this.checkPrivileges = checkPrivileges;
         this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
-        this.concurrency = concurrency;
         this.database = database;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
+        this.maxDbConnections = maxDbConnections;
         this.password = password;
         this.port = port;
         this.replicationMethod = replicationMethod;
@@ -150,7 +150,10 @@ public class SourceMysql {
             String host,
             SourceMysqlUpdateMethod replicationMethod,
             String username) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), database, host, Optional.empty(), Optional.empty(), Optional.empty(), replicationMethod, Optional.empty(), Optional.empty(), username);
+        this(Optional.empty(), Optional.empty(), database,
+            host, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), replicationMethod,
+            Optional.empty(), Optional.empty(), username);
     }
 
     /**
@@ -167,14 +170,6 @@ public class SourceMysql {
     @JsonIgnore
     public Optional<Long> checkpointTargetIntervalSeconds() {
         return checkpointTargetIntervalSeconds;
-    }
-
-    /**
-     * Maximum number of concurrent queries to the database.
-     */
-    @JsonIgnore
-    public Optional<Long> concurrency() {
-        return concurrency;
     }
 
     /**
@@ -199,6 +194,14 @@ public class SourceMysql {
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
         return jdbcUrlParams;
+    }
+
+    /**
+     * Maximum number of concurrent queries to the database. Leave empty to let Airbyte optimize performance.
+     */
+    @JsonIgnore
+    public Optional<Long> maxDbConnections() {
+        return maxDbConnections;
     }
 
     /**
@@ -231,7 +234,7 @@ public class SourceMysql {
     }
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -256,9 +259,10 @@ public class SourceMysql {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -268,6 +272,7 @@ public class SourceMysql {
         this.checkPrivileges = Optional.ofNullable(checkPrivileges);
         return this;
     }
+
 
     /**
      * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -287,30 +292,13 @@ public class SourceMysql {
         return this;
     }
 
+
     /**
      * How often (in seconds) a stream should checkpoint, when possible.
      */
     public SourceMysql withCheckpointTargetIntervalSeconds(Optional<Long> checkpointTargetIntervalSeconds) {
         Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
         this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
-        return this;
-    }
-
-    /**
-     * Maximum number of concurrent queries to the database.
-     */
-    public SourceMysql withConcurrency(long concurrency) {
-        Utils.checkNotNull(concurrency, "concurrency");
-        this.concurrency = Optional.ofNullable(concurrency);
-        return this;
-    }
-
-    /**
-     * Maximum number of concurrent queries to the database.
-     */
-    public SourceMysql withConcurrency(Optional<Long> concurrency) {
-        Utils.checkNotNull(concurrency, "concurrency");
-        this.concurrency = concurrency;
         return this;
     }
 
@@ -341,12 +329,32 @@ public class SourceMysql {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceMysql withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         this.jdbcUrlParams = jdbcUrlParams;
+        return this;
+    }
+
+    /**
+     * Maximum number of concurrent queries to the database. Leave empty to let Airbyte optimize performance.
+     */
+    public SourceMysql withMaxDbConnections(long maxDbConnections) {
+        Utils.checkNotNull(maxDbConnections, "maxDbConnections");
+        this.maxDbConnections = Optional.ofNullable(maxDbConnections);
+        return this;
+    }
+
+
+    /**
+     * Maximum number of concurrent queries to the database. Leave empty to let Airbyte optimize performance.
+     */
+    public SourceMysql withMaxDbConnections(Optional<Long> maxDbConnections) {
+        Utils.checkNotNull(maxDbConnections, "maxDbConnections");
+        this.maxDbConnections = maxDbConnections;
         return this;
     }
 
@@ -358,6 +366,7 @@ public class SourceMysql {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * The password associated with the username.
@@ -376,6 +385,7 @@ public class SourceMysql {
         this.port = Optional.ofNullable(port);
         return this;
     }
+
 
     /**
      * Port of the database.
@@ -396,7 +406,7 @@ public class SourceMysql {
     }
 
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     public SourceMysql withSslMode(SourceMysqlEncryption sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -404,8 +414,9 @@ public class SourceMysql {
         return this;
     }
 
+
     /**
-     * The encryption method with is used when communicating with the database.
+     * The encryption method which is used when communicating with the database.
      */
     public SourceMysql withSslMode(Optional<? extends SourceMysqlEncryption> sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -421,6 +432,7 @@ public class SourceMysql {
         this.tunnelMethod = Optional.ofNullable(tunnelMethod);
         return this;
     }
+
 
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -440,7 +452,6 @@ public class SourceMysql {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -451,36 +462,28 @@ public class SourceMysql {
         }
         SourceMysql other = (SourceMysql) o;
         return 
-            Objects.deepEquals(this.checkPrivileges, other.checkPrivileges) &&
-            Objects.deepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
-            Objects.deepEquals(this.concurrency, other.concurrency) &&
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.replicationMethod, other.replicationMethod) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.sslMode, other.sslMode) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.checkPrivileges, other.checkPrivileges) &&
+            Utils.enhancedDeepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.maxDbConnections, other.maxDbConnections) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.replicationMethod, other.replicationMethod) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            checkPrivileges,
-            checkpointTargetIntervalSeconds,
-            concurrency,
-            database,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            replicationMethod,
-            sourceType,
-            sslMode,
-            tunnelMethod,
+        return Utils.enhancedHash(
+            checkPrivileges, checkpointTargetIntervalSeconds, database,
+            host, jdbcUrlParams, maxDbConnections,
+            password, port, replicationMethod,
+            sourceType, sslMode, tunnelMethod,
             username);
     }
     
@@ -489,10 +492,10 @@ public class SourceMysql {
         return Utils.toString(SourceMysql.class,
                 "checkPrivileges", checkPrivileges,
                 "checkpointTargetIntervalSeconds", checkpointTargetIntervalSeconds,
-                "concurrency", concurrency,
                 "database", database,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
+                "maxDbConnections", maxDbConnections,
                 "password", password,
                 "port", port,
                 "replicationMethod", replicationMethod,
@@ -501,36 +504,38 @@ public class SourceMysql {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> checkPrivileges;
- 
+
         private Optional<Long> checkpointTargetIntervalSeconds;
- 
-        private Optional<Long> concurrency;
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
+        private Optional<Long> maxDbConnections = Optional.empty();
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private SourceMysqlUpdateMethod replicationMethod;
- 
+
         private Optional<? extends SourceMysqlEncryption> sslMode = Optional.empty();
- 
+
         private Optional<? extends SourceMysqlSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
@@ -550,6 +555,7 @@ public class SourceMysql {
             return this;
         }
 
+
         /**
          * How often (in seconds) a stream should checkpoint, when possible.
          */
@@ -568,23 +574,6 @@ public class SourceMysql {
             return this;
         }
 
-        /**
-         * Maximum number of concurrent queries to the database.
-         */
-        public Builder concurrency(long concurrency) {
-            Utils.checkNotNull(concurrency, "concurrency");
-            this.concurrency = Optional.ofNullable(concurrency);
-            return this;
-        }
-
-        /**
-         * Maximum number of concurrent queries to the database.
-         */
-        public Builder concurrency(Optional<Long> concurrency) {
-            Utils.checkNotNull(concurrency, "concurrency");
-            this.concurrency = concurrency;
-            return this;
-        }
 
         /**
          * The database name.
@@ -595,6 +584,7 @@ public class SourceMysql {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -603,6 +593,7 @@ public class SourceMysql {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -622,6 +613,26 @@ public class SourceMysql {
             return this;
         }
 
+
+        /**
+         * Maximum number of concurrent queries to the database. Leave empty to let Airbyte optimize performance.
+         */
+        public Builder maxDbConnections(long maxDbConnections) {
+            Utils.checkNotNull(maxDbConnections, "maxDbConnections");
+            this.maxDbConnections = Optional.ofNullable(maxDbConnections);
+            return this;
+        }
+
+        /**
+         * Maximum number of concurrent queries to the database. Leave empty to let Airbyte optimize performance.
+         */
+        public Builder maxDbConnections(Optional<Long> maxDbConnections) {
+            Utils.checkNotNull(maxDbConnections, "maxDbConnections");
+            this.maxDbConnections = maxDbConnections;
+            return this;
+        }
+
+
         /**
          * The password associated with the username.
          */
@@ -639,6 +650,7 @@ public class SourceMysql {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -658,6 +670,7 @@ public class SourceMysql {
             return this;
         }
 
+
         /**
          * Configures how data is extracted from the database.
          */
@@ -667,8 +680,9 @@ public class SourceMysql {
             return this;
         }
 
+
         /**
-         * The encryption method with is used when communicating with the database.
+         * The encryption method which is used when communicating with the database.
          */
         public Builder sslMode(SourceMysqlEncryption sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -677,13 +691,14 @@ public class SourceMysql {
         }
 
         /**
-         * The encryption method with is used when communicating with the database.
+         * The encryption method which is used when communicating with the database.
          */
         public Builder sslMode(Optional<? extends SourceMysqlEncryption> sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
             this.sslMode = sslMode;
             return this;
         }
+
 
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
@@ -703,6 +718,7 @@ public class SourceMysql {
             return this;
         }
 
+
         /**
          * The username which is used to access the database.
          */
@@ -711,7 +727,7 @@ public class SourceMysql {
             this.username = username;
             return this;
         }
-        
+
         public SourceMysql build() {
             if (checkPrivileges == null) {
                 checkPrivileges = _SINGLETON_VALUE_CheckPrivileges.value();
@@ -719,26 +735,17 @@ public class SourceMysql {
             if (checkpointTargetIntervalSeconds == null) {
                 checkpointTargetIntervalSeconds = _SINGLETON_VALUE_CheckpointTargetIntervalSeconds.value();
             }
-            if (concurrency == null) {
-                concurrency = _SINGLETON_VALUE_Concurrency.value();
-            }
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceMysql(
-                checkPrivileges,
-                checkpointTargetIntervalSeconds,
-                concurrency,
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                replicationMethod,
-                sslMode,
-                tunnelMethod,
-                username);
+                checkPrivileges, checkpointTargetIntervalSeconds, database,
+                host, jdbcUrlParams, maxDbConnections,
+                password, port, replicationMethod,
+                sslMode, tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CheckPrivileges =
                 new LazySingletonValue<>(
@@ -750,12 +757,6 @@ public class SourceMysql {
                 new LazySingletonValue<>(
                         "checkpoint_target_interval_seconds",
                         "300",
-                        new TypeReference<Optional<Long>>() {});
-
-        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Concurrency =
-                new LazySingletonValue<>(
-                        "concurrency",
-                        "1",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =

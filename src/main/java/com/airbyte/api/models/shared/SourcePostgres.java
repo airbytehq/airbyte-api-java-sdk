@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePostgres {
 
+public class SourcePostgres {
     /**
      * Name of the database.
      */
@@ -67,6 +66,7 @@ public class SourcePostgres {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
+
 
     @JsonProperty("sourceType")
     private SourcePostgresPostgres sourceType;
@@ -131,7 +131,10 @@ public class SourcePostgres {
             String database,
             String host,
             String username) {
-        this(database, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), username);
+        this(database, host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            username);
     }
 
     /**
@@ -224,9 +227,10 @@ public class SourcePostgres {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Name of the database.
@@ -255,6 +259,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
      */
@@ -272,6 +277,7 @@ public class SourcePostgres {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Password associated with the username.
@@ -291,6 +297,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * Port of the database.
      */
@@ -309,6 +316,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * Configures how data is extracted from the database.
      */
@@ -326,6 +334,7 @@ public class SourcePostgres {
         this.schemas = Optional.ofNullable(schemas);
         return this;
     }
+
 
     /**
      * The list of schemas (case sensitive) to sync from. Defaults to public.
@@ -346,6 +355,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * SSL connection modes. 
      *   Read more &lt;a href="https://jdbc.postgresql.org/documentation/head/ssl-client.html"&gt; in the docs&lt;/a&gt;.
@@ -365,6 +375,7 @@ public class SourcePostgres {
         return this;
     }
 
+
     /**
      * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
      */
@@ -383,7 +394,6 @@ public class SourcePostgres {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -394,33 +404,26 @@ public class SourcePostgres {
         }
         SourcePostgres other = (SourcePostgres) o;
         return 
-            Objects.deepEquals(this.database, other.database) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.replicationMethod, other.replicationMethod) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.sslMode, other.sslMode) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.replicationMethod, other.replicationMethod) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            database,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            replicationMethod,
-            schemas,
-            sourceType,
-            sslMode,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            database, host, jdbcUrlParams,
+            password, port, replicationMethod,
+            schemas, sourceType, sslMode,
+            tunnelMethod, username);
     }
     
     @Override
@@ -438,32 +441,34 @@ public class SourcePostgres {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String database;
- 
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends SourcePostgresUpdateMethod> replicationMethod = Optional.empty();
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private Optional<? extends SourcePostgresSSLModes> sslMode = Optional.empty();
- 
+
         private Optional<? extends SourcePostgresSSHTunnelMethod> tunnelMethod = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Name of the database.
@@ -474,6 +479,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * Hostname of the database.
          */
@@ -482,6 +488,7 @@ public class SourcePostgres {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (Eg. key1=value1&amp;key2=value2&amp;key3=value3). For more information read about &lt;a href="https://jdbc.postgresql.org/documentation/head/connect.html"&gt;JDBC URL parameters&lt;/a&gt;.
@@ -501,6 +508,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * Password associated with the username.
          */
@@ -518,6 +526,7 @@ public class SourcePostgres {
             this.password = password;
             return this;
         }
+
 
         /**
          * Port of the database.
@@ -537,6 +546,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * Configures how data is extracted from the database.
          */
@@ -555,6 +565,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * The list of schemas (case sensitive) to sync from. Defaults to public.
          */
@@ -572,6 +583,7 @@ public class SourcePostgres {
             this.schemas = schemas;
             return this;
         }
+
 
         /**
          * SSL connection modes. 
@@ -593,6 +605,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
          */
@@ -611,6 +624,7 @@ public class SourcePostgres {
             return this;
         }
 
+
         /**
          * Username to access the database.
          */
@@ -619,23 +633,19 @@ public class SourcePostgres {
             this.username = username;
             return this;
         }
-        
+
         public SourcePostgres build() {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourcePostgres(
-                database,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                replicationMethod,
-                schemas,
-                sslMode,
-                tunnelMethod,
+                database, host, jdbcUrlParams,
+                password, port, replicationMethod,
+                schemas, sslMode, tunnelMethod,
                 username);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_Port =
                 new LazySingletonValue<>(

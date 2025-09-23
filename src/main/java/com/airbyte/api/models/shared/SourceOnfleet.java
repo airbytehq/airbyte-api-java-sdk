@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOnfleet {
 
+public class SourceOnfleet {
     /**
      * API key to use for authenticating requests. You can create and manage your API keys in the API section of the Onfleet dashboard.
      */
@@ -30,6 +29,7 @@ public class SourceOnfleet {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonProperty("sourceType")
     private Onfleet sourceType;
@@ -71,9 +71,10 @@ public class SourceOnfleet {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API key to use for authenticating requests. You can create and manage your API keys in the API section of the Onfleet dashboard.
@@ -93,6 +94,7 @@ public class SourceOnfleet {
         return this;
     }
 
+
     /**
      * Placeholder for basic HTTP auth password - should be set to empty string
      */
@@ -102,7 +104,6 @@ public class SourceOnfleet {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +114,15 @@ public class SourceOnfleet {
         }
         SourceOnfleet other = (SourceOnfleet) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            password,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, password, sourceType);
     }
     
     @Override
@@ -133,16 +132,18 @@ public class SourceOnfleet {
                 "password", password,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API key to use for authenticating requests. You can create and manage your API keys in the API section of the Onfleet dashboard.
@@ -152,6 +153,7 @@ public class SourceOnfleet {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Placeholder for basic HTTP auth password - should be set to empty string
@@ -170,15 +172,16 @@ public class SourceOnfleet {
             this.password = password;
             return this;
         }
-        
+
         public SourceOnfleet build() {
             if (password == null) {
                 password = _SINGLETON_VALUE_Password.value();
             }
+
             return new SourceOnfleet(
-                apiKey,
-                password);
+                apiKey, password);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Password =
                 new LazySingletonValue<>(

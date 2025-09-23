@@ -14,7 +14,7 @@ public enum SourceSapHanaEnterpriseSchemasCursorMethod {
     @JsonValue
     private final String value;
 
-    private SourceSapHanaEnterpriseSchemasCursorMethod(String value) {
+    SourceSapHanaEnterpriseSchemasCursorMethod(String value) {
         this.value = value;
     }
     

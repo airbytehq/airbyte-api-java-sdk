@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaPrivateKey {
 
@@ -51,9 +51,10 @@ public class AuthenticateViaPrivateKey {
         return privateKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Private key
@@ -64,7 +65,6 @@ public class AuthenticateViaPrivateKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -75,15 +75,14 @@ public class AuthenticateViaPrivateKey {
         }
         AuthenticateViaPrivateKey other = (AuthenticateViaPrivateKey) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.privateKey, other.privateKey);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            privateKey);
+        return Utils.enhancedHash(
+            authType, privateKey);
     }
     
     @Override
@@ -92,14 +91,16 @@ public class AuthenticateViaPrivateKey {
                 "authType", authType,
                 "privateKey", privateKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String privateKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Private key
@@ -109,11 +110,13 @@ public class AuthenticateViaPrivateKey {
             this.privateKey = privateKey;
             return this;
         }
-        
+
         public AuthenticateViaPrivateKey build() {
+
             return new AuthenticateViaPrivateKey(
                 privateKey);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSftpBulkSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

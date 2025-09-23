@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ConnectionPatchRequest {
 
+public class ConnectionPatchRequest {
     /**
      * A list of configured stream options for a connection.
      */
@@ -30,7 +29,7 @@ public class ConnectionPatchRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("dataResidency")
@@ -79,9 +78,11 @@ public class ConnectionPatchRequest {
     @JsonProperty("schedule")
     private Optional<? extends AirbyteApiConnectionSchedule> schedule;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
     private Optional<? extends ConnectionStatusEnum> status;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tags")
@@ -122,7 +123,10 @@ public class ConnectionPatchRequest {
     }
     
     public ConnectionPatchRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -136,7 +140,7 @@ public class ConnectionPatchRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     @JsonIgnore
@@ -207,9 +211,10 @@ public class ConnectionPatchRequest {
         return (Optional<List<Tag>>) tags;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A list of configured stream options for a connection.
@@ -219,6 +224,7 @@ public class ConnectionPatchRequest {
         this.configurations = Optional.ofNullable(configurations);
         return this;
     }
+
 
     /**
      * A list of configured stream options for a connection.
@@ -231,7 +237,7 @@ public class ConnectionPatchRequest {
 
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     public ConnectionPatchRequest withDataResidency(String dataResidency) {
@@ -240,9 +246,10 @@ public class ConnectionPatchRequest {
         return this;
     }
 
+
     /**
      * 
-     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+     * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
      */
     @Deprecated
     public ConnectionPatchRequest withDataResidency(Optional<String> dataResidency) {
@@ -259,6 +266,7 @@ public class ConnectionPatchRequest {
         this.name = Optional.ofNullable(name);
         return this;
     }
+
 
     /**
      * Optional name of the connection
@@ -278,6 +286,7 @@ public class ConnectionPatchRequest {
         return this;
     }
 
+
     /**
      * Define the location where the data will be stored in the destination
      */
@@ -295,6 +304,7 @@ public class ConnectionPatchRequest {
         this.namespaceFormat = Optional.ofNullable(namespaceFormat);
         return this;
     }
+
 
     /**
      * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
@@ -314,6 +324,7 @@ public class ConnectionPatchRequest {
         return this;
     }
 
+
     /**
      * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
      */
@@ -331,6 +342,7 @@ public class ConnectionPatchRequest {
         this.prefix = Optional.ofNullable(prefix);
         return this;
     }
+
 
     /**
      * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
@@ -350,6 +362,7 @@ public class ConnectionPatchRequest {
         return this;
     }
 
+
     /**
      * schedule for when the the connection should run, per the schedule type
      */
@@ -365,6 +378,7 @@ public class ConnectionPatchRequest {
         return this;
     }
 
+
     public ConnectionPatchRequest withStatus(Optional<? extends ConnectionStatusEnum> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
@@ -377,13 +391,13 @@ public class ConnectionPatchRequest {
         return this;
     }
 
+
     public ConnectionPatchRequest withTags(Optional<? extends List<Tag>> tags) {
         Utils.checkNotNull(tags, "tags");
         this.tags = tags;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -394,30 +408,24 @@ public class ConnectionPatchRequest {
         }
         ConnectionPatchRequest other = (ConnectionPatchRequest) o;
         return 
-            Objects.deepEquals(this.configurations, other.configurations) &&
-            Objects.deepEquals(this.dataResidency, other.dataResidency) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
-            Objects.deepEquals(this.namespaceFormat, other.namespaceFormat) &&
-            Objects.deepEquals(this.nonBreakingSchemaUpdatesBehavior, other.nonBreakingSchemaUpdatesBehavior) &&
-            Objects.deepEquals(this.prefix, other.prefix) &&
-            Objects.deepEquals(this.schedule, other.schedule) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.tags, other.tags);
+            Utils.enhancedDeepEquals(this.configurations, other.configurations) &&
+            Utils.enhancedDeepEquals(this.dataResidency, other.dataResidency) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.namespaceDefinition, other.namespaceDefinition) &&
+            Utils.enhancedDeepEquals(this.namespaceFormat, other.namespaceFormat) &&
+            Utils.enhancedDeepEquals(this.nonBreakingSchemaUpdatesBehavior, other.nonBreakingSchemaUpdatesBehavior) &&
+            Utils.enhancedDeepEquals(this.prefix, other.prefix) &&
+            Utils.enhancedDeepEquals(this.schedule, other.schedule) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.tags, other.tags);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configurations,
-            dataResidency,
-            name,
-            namespaceDefinition,
-            namespaceFormat,
-            nonBreakingSchemaUpdatesBehavior,
-            prefix,
-            schedule,
-            status,
+        return Utils.enhancedHash(
+            configurations, dataResidency, name,
+            namespaceDefinition, namespaceFormat, nonBreakingSchemaUpdatesBehavior,
+            prefix, schedule, status,
             tags);
     }
     
@@ -435,33 +443,35 @@ public class ConnectionPatchRequest {
                 "status", status,
                 "tags", tags);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends StreamConfigurationsInput> configurations = Optional.empty();
- 
+
         @Deprecated
         private Optional<String> dataResidency = Optional.empty();
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private Optional<? extends NamespaceDefinitionEnumNoDefault> namespaceDefinition = Optional.empty();
- 
+
         private Optional<String> namespaceFormat;
- 
+
         private Optional<? extends NonBreakingSchemaUpdatesBehaviorEnumNoDefault> nonBreakingSchemaUpdatesBehavior = Optional.empty();
- 
+
         private Optional<String> prefix = Optional.empty();
- 
+
         private Optional<? extends AirbyteApiConnectionSchedule> schedule = Optional.empty();
- 
+
         private Optional<? extends ConnectionStatusEnum> status = Optional.empty();
- 
+
         private Optional<? extends List<Tag>> tags = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * A list of configured stream options for a connection.
@@ -481,9 +491,10 @@ public class ConnectionPatchRequest {
             return this;
         }
 
+
         /**
          * 
-         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
          */
         @Deprecated
         public Builder dataResidency(String dataResidency) {
@@ -494,7 +505,7 @@ public class ConnectionPatchRequest {
 
         /**
          * 
-         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. This will be supported on Cloud until May 31, at which time all connections will use the dataResidency of their associated workspace..
+         * @deprecated field: We no longer support modifying dataResidency on Community and Enterprise connections. All connections will use the dataResidency of their associated workspace..
          */
         @Deprecated
         public Builder dataResidency(Optional<String> dataResidency) {
@@ -502,6 +513,7 @@ public class ConnectionPatchRequest {
             this.dataResidency = dataResidency;
             return this;
         }
+
 
         /**
          * Optional name of the connection
@@ -521,6 +533,7 @@ public class ConnectionPatchRequest {
             return this;
         }
 
+
         /**
          * Define the location where the data will be stored in the destination
          */
@@ -538,6 +551,7 @@ public class ConnectionPatchRequest {
             this.namespaceDefinition = namespaceDefinition;
             return this;
         }
+
 
         /**
          * Used when namespaceDefinition is 'custom_format'. If blank then behaves like namespaceDefinition = 'destination'. If "${SOURCE_NAMESPACE}" then behaves like namespaceDefinition = 'source'.
@@ -557,6 +571,7 @@ public class ConnectionPatchRequest {
             return this;
         }
 
+
         /**
          * Set how Airbyte handles syncs when it detects a non-breaking schema change in the source
          */
@@ -574,6 +589,7 @@ public class ConnectionPatchRequest {
             this.nonBreakingSchemaUpdatesBehavior = nonBreakingSchemaUpdatesBehavior;
             return this;
         }
+
 
         /**
          * Prefix that will be prepended to the name of each stream when it is written to the destination (ex. “airbyte_” causes “projects” =&gt; “airbyte_projects”).
@@ -593,6 +609,7 @@ public class ConnectionPatchRequest {
             return this;
         }
 
+
         /**
          * schedule for when the the connection should run, per the schedule type
          */
@@ -611,6 +628,7 @@ public class ConnectionPatchRequest {
             return this;
         }
 
+
         public Builder status(ConnectionStatusEnum status) {
             Utils.checkNotNull(status, "status");
             this.status = Optional.ofNullable(status);
@@ -623,6 +641,7 @@ public class ConnectionPatchRequest {
             return this;
         }
 
+
         public Builder tags(List<Tag> tags) {
             Utils.checkNotNull(tags, "tags");
             this.tags = Optional.ofNullable(tags);
@@ -634,23 +653,19 @@ public class ConnectionPatchRequest {
             this.tags = tags;
             return this;
         }
-        
+
         public ConnectionPatchRequest build() {
             if (namespaceFormat == null) {
                 namespaceFormat = _SINGLETON_VALUE_NamespaceFormat.value();
             }
+
             return new ConnectionPatchRequest(
-                configurations,
-                dataResidency,
-                name,
-                namespaceDefinition,
-                namespaceFormat,
-                nonBreakingSchemaUpdatesBehavior,
-                prefix,
-                schedule,
-                status,
+                configurations, dataResidency, name,
+                namespaceDefinition, namespaceFormat, nonBreakingSchemaUpdatesBehavior,
+                prefix, schedule, status,
                 tags);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_NamespaceFormat =
                 new LazySingletonValue<>(

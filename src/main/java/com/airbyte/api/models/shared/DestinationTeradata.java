@@ -15,13 +15,27 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationTeradata {
 
     @JsonProperty("destinationType")
     private Teradata destinationType;
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("disable_type_dedupe")
+    private Optional<Boolean> disableTypeDedupe;
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("drop_cascade")
+    private Optional<Boolean> dropCascade;
 
     /**
      * Hostname of the database.
@@ -36,6 +50,7 @@ public class DestinationTeradata {
     @JsonProperty("jdbc_url_params")
     private Optional<String> jdbcUrlParams;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logmech")
     private Optional<? extends AuthorizationMechanism> logmech;
@@ -46,6 +61,13 @@ public class DestinationTeradata {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query_band")
     private Optional<String> queryBand;
+
+    /**
+     * The database to write raw tables into
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_data_schema")
+    private Optional<String> rawDataSchema;
 
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
@@ -77,25 +99,34 @@ public class DestinationTeradata {
 
     @JsonCreator
     public DestinationTeradata(
+            @JsonProperty("disable_type_dedupe") Optional<Boolean> disableTypeDedupe,
+            @JsonProperty("drop_cascade") Optional<Boolean> dropCascade,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
             @JsonProperty("logmech") Optional<? extends AuthorizationMechanism> logmech,
             @JsonProperty("query_band") Optional<String> queryBand,
+            @JsonProperty("raw_data_schema") Optional<String> rawDataSchema,
             @JsonProperty("schema") Optional<String> schema,
             @JsonProperty("ssl") Optional<Boolean> ssl,
             @JsonProperty("ssl_mode") Optional<? extends DestinationTeradataSSLModes> sslMode) {
+        Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        Utils.checkNotNull(dropCascade, "dropCascade");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(logmech, "logmech");
         Utils.checkNotNull(queryBand, "queryBand");
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
         Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(ssl, "ssl");
         Utils.checkNotNull(sslMode, "sslMode");
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
+        this.disableTypeDedupe = disableTypeDedupe;
+        this.dropCascade = dropCascade;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.logmech = logmech;
         this.queryBand = queryBand;
+        this.rawDataSchema = rawDataSchema;
         this.schema = schema;
         this.ssl = ssl;
         this.sslMode = sslMode;
@@ -103,12 +134,31 @@ public class DestinationTeradata {
     
     public DestinationTeradata(
             String host) {
-        this(host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), host,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonIgnore
     public Teradata destinationType() {
         return destinationType;
+    }
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     */
+    @JsonIgnore
+    public Optional<Boolean> disableTypeDedupe() {
+        return disableTypeDedupe;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    @JsonIgnore
+    public Optional<Boolean> dropCascade() {
+        return dropCascade;
     }
 
     /**
@@ -139,6 +189,14 @@ public class DestinationTeradata {
     @JsonIgnore
     public Optional<String> queryBand() {
         return queryBand;
+    }
+
+    /**
+     * The database to write raw tables into
+     */
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return rawDataSchema;
     }
 
     /**
@@ -173,9 +231,48 @@ public class DestinationTeradata {
         return (Optional<DestinationTeradataSSLModes>) sslMode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     */
+    public DestinationTeradata withDisableTypeDedupe(boolean disableTypeDedupe) {
+        Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        this.disableTypeDedupe = Optional.ofNullable(disableTypeDedupe);
+        return this;
+    }
+
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+     */
+    public DestinationTeradata withDisableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
+        Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        this.disableTypeDedupe = disableTypeDedupe;
+        return this;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    public DestinationTeradata withDropCascade(boolean dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = Optional.ofNullable(dropCascade);
+        return this;
+    }
+
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+     */
+    public DestinationTeradata withDropCascade(Optional<Boolean> dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = dropCascade;
+        return this;
+    }
 
     /**
      * Hostname of the database.
@@ -195,6 +292,7 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
      * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
      */
@@ -209,6 +307,7 @@ public class DestinationTeradata {
         this.logmech = Optional.ofNullable(logmech);
         return this;
     }
+
 
     public DestinationTeradata withLogmech(Optional<? extends AuthorizationMechanism> logmech) {
         Utils.checkNotNull(logmech, "logmech");
@@ -225,12 +324,32 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
      * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
      */
     public DestinationTeradata withQueryBand(Optional<String> queryBand) {
         Utils.checkNotNull(queryBand, "queryBand");
         this.queryBand = queryBand;
+        return this;
+    }
+
+    /**
+     * The database to write raw tables into
+     */
+    public DestinationTeradata withRawDataSchema(String rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+        return this;
+    }
+
+
+    /**
+     * The database to write raw tables into
+     */
+    public DestinationTeradata withRawDataSchema(Optional<String> rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = rawDataSchema;
         return this;
     }
 
@@ -242,6 +361,7 @@ public class DestinationTeradata {
         this.schema = Optional.ofNullable(schema);
         return this;
     }
+
 
     /**
      * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
@@ -260,6 +380,7 @@ public class DestinationTeradata {
         this.ssl = Optional.ofNullable(ssl);
         return this;
     }
+
 
     /**
      * Encrypt data using SSL. When activating SSL, please select one of the SSL modes.
@@ -286,6 +407,7 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
      * SSL connection modes. 
      *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
@@ -302,7 +424,6 @@ public class DestinationTeradata {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -313,61 +434,109 @@ public class DestinationTeradata {
         }
         DestinationTeradata other = (DestinationTeradata) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.logmech, other.logmech) &&
-            Objects.deepEquals(this.queryBand, other.queryBand) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.sslMode, other.sslMode);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.dropCascade, other.dropCascade) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.logmech, other.logmech) &&
+            Utils.enhancedDeepEquals(this.queryBand, other.queryBand) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            host,
-            jdbcUrlParams,
-            logmech,
-            queryBand,
-            schema,
-            ssl,
-            sslMode);
+        return Utils.enhancedHash(
+            destinationType, disableTypeDedupe, dropCascade,
+            host, jdbcUrlParams, logmech,
+            queryBand, rawDataSchema, schema,
+            ssl, sslMode);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DestinationTeradata.class,
                 "destinationType", destinationType,
+                "disableTypeDedupe", disableTypeDedupe,
+                "dropCascade", dropCascade,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "logmech", logmech,
                 "queryBand", queryBand,
+                "rawDataSchema", rawDataSchema,
                 "schema", schema,
                 "ssl", ssl,
                 "sslMode", sslMode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Optional<Boolean> disableTypeDedupe;
+
+        private Optional<Boolean> dropCascade;
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<? extends AuthorizationMechanism> logmech = Optional.empty();
- 
+
         private Optional<String> queryBand = Optional.empty();
- 
+
+        private Optional<String> rawDataSchema = Optional.empty();
+
         private Optional<String> schema;
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends DestinationTeradataSSLModes> sslMode = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+
+        /**
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         */
+        public Builder disableTypeDedupe(boolean disableTypeDedupe) {
+            Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+            this.disableTypeDedupe = Optional.ofNullable(disableTypeDedupe);
+            return this;
+        }
+
+        /**
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there are no guarantees that other metadata columns will remain the same in future versions
+         */
+        public Builder disableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
+            Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+            this.disableTypeDedupe = disableTypeDedupe;
+            return this;
+        }
+
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         */
+        public Builder dropCascade(boolean dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = Optional.ofNullable(dropCascade);
+            return this;
+        }
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.). Use with caution. This option is intended for usecases which can easily rebuild the dependent objects.
+         */
+        public Builder dropCascade(Optional<Boolean> dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = dropCascade;
+            return this;
+        }
+
 
         /**
          * Hostname of the database.
@@ -377,6 +546,7 @@ public class DestinationTeradata {
             this.host = host;
             return this;
         }
+
 
         /**
          * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
@@ -396,6 +566,7 @@ public class DestinationTeradata {
             return this;
         }
 
+
         public Builder logmech(AuthorizationMechanism logmech) {
             Utils.checkNotNull(logmech, "logmech");
             this.logmech = Optional.ofNullable(logmech);
@@ -407,6 +578,7 @@ public class DestinationTeradata {
             this.logmech = logmech;
             return this;
         }
+
 
         /**
          * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
@@ -426,6 +598,26 @@ public class DestinationTeradata {
             return this;
         }
 
+
+        /**
+         * The database to write raw tables into
+         */
+        public Builder rawDataSchema(String rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+            return this;
+        }
+
+        /**
+         * The database to write raw tables into
+         */
+        public Builder rawDataSchema(Optional<String> rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = rawDataSchema;
+            return this;
+        }
+
+
         /**
          * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
          */
@@ -444,6 +636,7 @@ public class DestinationTeradata {
             return this;
         }
 
+
         /**
          * Encrypt data using SSL. When activating SSL, please select one of the SSL modes.
          */
@@ -461,6 +654,7 @@ public class DestinationTeradata {
             this.ssl = ssl;
             return this;
         }
+
 
         /**
          * SSL connection modes. 
@@ -493,29 +687,46 @@ public class DestinationTeradata {
             this.sslMode = sslMode;
             return this;
         }
-        
+
         public DestinationTeradata build() {
+            if (disableTypeDedupe == null) {
+                disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
+            }
+            if (dropCascade == null) {
+                dropCascade = _SINGLETON_VALUE_DropCascade.value();
+            }
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new DestinationTeradata(
-                host,
-                jdbcUrlParams,
-                logmech,
-                queryBand,
-                schema,
-                ssl,
+                disableTypeDedupe, dropCascade, host,
+                jdbcUrlParams, logmech, queryBand,
+                rawDataSchema, schema, ssl,
                 sslMode);
         }
+
 
         private static final LazySingletonValue<Teradata> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
                         "destinationType",
                         "\"teradata\"",
                         new TypeReference<Teradata>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
+                new LazySingletonValue<>(
+                        "disable_type_dedupe",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DropCascade =
+                new LazySingletonValue<>(
+                        "drop_cascade",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Schema =
                 new LazySingletonValue<>(

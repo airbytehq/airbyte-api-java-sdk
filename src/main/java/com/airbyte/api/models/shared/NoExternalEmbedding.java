@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class NoExternalEmbedding {
 
     @JsonCreator
     public NoExternalEmbedding() {
-        
         this.mode = Builder._SINGLETON_VALUE_Mode.value();
     }
 
@@ -40,11 +38,11 @@ public class NoExternalEmbedding {
         return (Optional<DestinationWeaviateMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class NoExternalEmbedding {
         }
         NoExternalEmbedding other = (NoExternalEmbedding) o;
         return 
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             mode);
     }
     
@@ -69,17 +67,20 @@ public class NoExternalEmbedding {
         return Utils.toString(NoExternalEmbedding.class,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public NoExternalEmbedding build() {
+
             return new NoExternalEmbedding(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationWeaviateMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum ZohoExpense {
     @JsonValue
     private final String value;
 
-    private ZohoExpense(String value) {
+    ZohoExpense(String value) {
         this.value = value;
     }
     

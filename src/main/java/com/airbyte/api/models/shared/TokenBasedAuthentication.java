@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class TokenBasedAuthentication {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("authentication_method")
@@ -85,7 +85,8 @@ public class TokenBasedAuthentication {
             String clientSecret,
             String tokenId,
             String tokenSecret) {
-        this(Optional.empty(), clientId, clientSecret, tokenId, tokenSecret);
+        this(Optional.empty(), clientId, clientSecret,
+            tokenId, tokenSecret);
     }
 
     @JsonAnyGetter
@@ -131,9 +132,10 @@ public class TokenBasedAuthentication {
         return tokenSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public TokenBasedAuthentication withAdditionalProperty(String key, Object value) {
@@ -141,8 +143,7 @@ public class TokenBasedAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public TokenBasedAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -154,6 +155,7 @@ public class TokenBasedAuthentication {
         this.authenticationMethod = Optional.ofNullable(authenticationMethod);
         return this;
     }
+
 
     public TokenBasedAuthentication withAuthenticationMethod(Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod> authenticationMethod) {
         Utils.checkNotNull(authenticationMethod, "authenticationMethod");
@@ -197,7 +199,6 @@ public class TokenBasedAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -208,23 +209,19 @@ public class TokenBasedAuthentication {
         }
         TokenBasedAuthentication other = (TokenBasedAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authenticationMethod, other.authenticationMethod) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.tokenId, other.tokenId) &&
-            Objects.deepEquals(this.tokenSecret, other.tokenSecret);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authenticationMethod, other.authenticationMethod) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.tokenId, other.tokenId) &&
+            Utils.enhancedDeepEquals(this.tokenSecret, other.tokenSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authenticationMethod,
-            clientId,
-            clientSecret,
-            tokenId,
-            tokenSecret);
+        return Utils.enhancedHash(
+            additionalProperties, authenticationMethod, clientId,
+            clientSecret, tokenId, tokenSecret);
     }
     
     @Override
@@ -237,21 +234,22 @@ public class TokenBasedAuthentication {
                 "tokenId", tokenId,
                 "tokenSecret", tokenSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod> authenticationMethod;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String tokenId;
- 
+
         private String tokenSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -272,6 +270,7 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         public Builder authenticationMethod(SourceNetsuiteEnterpriseSchemasAuthenticationMethod authenticationMethod) {
             Utils.checkNotNull(authenticationMethod, "authenticationMethod");
             this.authenticationMethod = Optional.ofNullable(authenticationMethod);
@@ -284,6 +283,7 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
          * The consumer key used for token-based authentication. This is generated in NetSuite when creating an integration record.
          */
@@ -292,6 +292,7 @@ public class TokenBasedAuthentication {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The consumer secret used for token-based authentication. This is generated in NetSuite when creating an integration record.
@@ -302,6 +303,7 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
          * The token ID used for token-based authentication. This is generated in NetSuite when creating a token-based role.
          */
@@ -311,6 +313,7 @@ public class TokenBasedAuthentication {
             return this;
         }
 
+
         /**
          * The token secret used for token-based authentication. This is generated in NetSuite when creating a token-based role.Ensure to keep this value secure.
          */
@@ -319,19 +322,18 @@ public class TokenBasedAuthentication {
             this.tokenSecret = tokenSecret;
             return this;
         }
-        
+
         public TokenBasedAuthentication build() {
             if (authenticationMethod == null) {
                 authenticationMethod = _SINGLETON_VALUE_AuthenticationMethod.value();
             }
+
             return new TokenBasedAuthentication(
-                authenticationMethod,
-                clientId,
-                clientSecret,
-                tokenId,
-                tokenSecret)
+                authenticationMethod, clientId, clientSecret,
+                tokenId, tokenSecret)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceNetsuiteEnterpriseSchemasAuthenticationMethod>> _SINGLETON_VALUE_AuthenticationMethod =
                 new LazySingletonValue<>(

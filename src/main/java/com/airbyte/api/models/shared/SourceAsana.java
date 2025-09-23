@@ -17,11 +17,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAsana {
 
+public class SourceAsana {
     /**
      * Choose how to authenticate to Github
      */
@@ -42,6 +41,7 @@ public class SourceAsana {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("organization_export_ids")
     private Optional<? extends List<Object>> organizationExportIds;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceType")
@@ -97,9 +97,10 @@ public class SourceAsana {
         return (Optional<SourceAsanaAsana>) sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Choose how to authenticate to Github
@@ -109,6 +110,7 @@ public class SourceAsana {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Choose how to authenticate to Github
@@ -128,6 +130,7 @@ public class SourceAsana {
         return this;
     }
 
+
     /**
      * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
      */
@@ -146,6 +149,7 @@ public class SourceAsana {
         return this;
     }
 
+
     /**
      * Globally unique identifiers for the organization exports
      */
@@ -155,7 +159,6 @@ public class SourceAsana {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -166,18 +169,16 @@ public class SourceAsana {
         }
         SourceAsana other = (SourceAsana) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.organizationExportIds, other.organizationExportIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.organizationExportIds, other.organizationExportIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            numWorkers,
-            organizationExportIds,
+        return Utils.enhancedHash(
+            credentials, numWorkers, organizationExportIds,
             sourceType);
     }
     
@@ -189,18 +190,20 @@ public class SourceAsana {
                 "organizationExportIds", organizationExportIds,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends AuthenticationMechanism> credentials = Optional.empty();
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<? extends List<Object>> organizationExportIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Choose how to authenticate to Github
@@ -220,6 +223,7 @@ public class SourceAsana {
             return this;
         }
 
+
         /**
          * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Asana pricing plan. More info about the rate limit tiers can be found on Asana's API &lt;a href="https://developers.asana.com/docs/rate-limits"&gt;docs&lt;/a&gt;.
          */
@@ -238,6 +242,7 @@ public class SourceAsana {
             return this;
         }
 
+
         /**
          * Globally unique identifiers for the organization exports
          */
@@ -255,16 +260,16 @@ public class SourceAsana {
             this.organizationExportIds = organizationExportIds;
             return this;
         }
-        
+
         public SourceAsana build() {
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
             }
+
             return new SourceAsana(
-                credentials,
-                numWorkers,
-                organizationExportIds);
+                credentials, numWorkers, organizationExportIds);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
                 new LazySingletonValue<>(

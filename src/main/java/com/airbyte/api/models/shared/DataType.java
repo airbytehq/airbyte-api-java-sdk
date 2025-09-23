@@ -20,7 +20,7 @@ public enum DataType {
     @JsonValue
     private final String value;
 
-    private DataType(String value) {
+    DataType(String value) {
         this.value = value;
     }
     

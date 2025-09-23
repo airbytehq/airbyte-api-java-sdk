@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAssemblyai {
 
+public class SourceAssemblyai {
     /**
      * Your AssemblyAI API key. You can find it in the AssemblyAI dashboard at https://www.assemblyai.com/app/api-keys.
      */
@@ -33,8 +32,10 @@ public class SourceAssemblyai {
     @JsonProperty("request_id")
     private Optional<String> requestId;
 
+
     @JsonProperty("sourceType")
     private Assemblyai sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -66,7 +67,8 @@ public class SourceAssemblyai {
     public SourceAssemblyai(
             String apiKey,
             OffsetDateTime startDate) {
-        this(apiKey, Optional.empty(), startDate, Optional.empty());
+        this(apiKey, Optional.empty(), startDate,
+            Optional.empty());
     }
 
     /**
@@ -104,9 +106,10 @@ public class SourceAssemblyai {
         return (Optional<SubtitleFormat>) subtitleFormat;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your AssemblyAI API key. You can find it in the AssemblyAI dashboard at https://www.assemblyai.com/app/api-keys.
@@ -125,6 +128,7 @@ public class SourceAssemblyai {
         this.requestId = Optional.ofNullable(requestId);
         return this;
     }
+
 
     /**
      * The request ID for LeMur responses
@@ -150,6 +154,7 @@ public class SourceAssemblyai {
         return this;
     }
 
+
     /**
      * The subtitle format for transcript_subtitle stream
      */
@@ -159,7 +164,6 @@ public class SourceAssemblyai {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -170,21 +174,18 @@ public class SourceAssemblyai {
         }
         SourceAssemblyai other = (SourceAssemblyai) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.requestId, other.requestId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subtitleFormat, other.subtitleFormat);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.requestId, other.requestId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subtitleFormat, other.subtitleFormat);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            requestId,
-            sourceType,
-            startDate,
-            subtitleFormat);
+        return Utils.enhancedHash(
+            apiKey, requestId, sourceType,
+            startDate, subtitleFormat);
     }
     
     @Override
@@ -196,20 +197,22 @@ public class SourceAssemblyai {
                 "startDate", startDate,
                 "subtitleFormat", subtitleFormat);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> requestId = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<? extends SubtitleFormat> subtitleFormat;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your AssemblyAI API key. You can find it in the AssemblyAI dashboard at https://www.assemblyai.com/app/api-keys.
@@ -219,6 +222,7 @@ public class SourceAssemblyai {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The request ID for LeMur responses
@@ -238,11 +242,13 @@ public class SourceAssemblyai {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The subtitle format for transcript_subtitle stream
@@ -261,17 +267,17 @@ public class SourceAssemblyai {
             this.subtitleFormat = subtitleFormat;
             return this;
         }
-        
+
         public SourceAssemblyai build() {
             if (subtitleFormat == null) {
                 subtitleFormat = _SINGLETON_VALUE_SubtitleFormat.value();
             }
+
             return new SourceAssemblyai(
-                apiKey,
-                requestId,
-                startDate,
+                apiKey, requestId, startDate,
                 subtitleFormat);
         }
+
 
         private static final LazySingletonValue<Assemblyai> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

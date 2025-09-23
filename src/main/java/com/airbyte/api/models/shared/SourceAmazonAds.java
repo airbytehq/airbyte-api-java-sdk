@@ -17,8 +17,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAmazonAds {
 
@@ -53,6 +53,13 @@ public class SourceAmazonAds {
     private Optional<? extends List<String>> marketplaceIds;
 
     /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("num_workers")
+    private Optional<Long> numWorkers;
+
+    /**
      * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -72,6 +79,7 @@ public class SourceAmazonAds {
     @JsonProperty("region")
     private Optional<? extends Region> region;
 
+
     @JsonProperty("sourceType")
     private SourceAmazonAdsAmazonAds sourceType;
 
@@ -88,6 +96,7 @@ public class SourceAmazonAds {
             @JsonProperty("client_secret") String clientSecret,
             @JsonProperty("look_back_window") Optional<Long> lookBackWindow,
             @JsonProperty("marketplace_ids") Optional<? extends List<String>> marketplaceIds,
+            @JsonProperty("num_workers") Optional<Long> numWorkers,
             @JsonProperty("profiles") Optional<? extends List<Long>> profiles,
             @JsonProperty("refresh_token") String refreshToken,
             @JsonProperty("region") Optional<? extends Region> region,
@@ -96,6 +105,7 @@ public class SourceAmazonAds {
         Utils.checkNotNull(clientSecret, "clientSecret");
         Utils.checkNotNull(lookBackWindow, "lookBackWindow");
         Utils.checkNotNull(marketplaceIds, "marketplaceIds");
+        Utils.checkNotNull(numWorkers, "numWorkers");
         Utils.checkNotNull(profiles, "profiles");
         Utils.checkNotNull(refreshToken, "refreshToken");
         Utils.checkNotNull(region, "region");
@@ -105,6 +115,7 @@ public class SourceAmazonAds {
         this.clientSecret = clientSecret;
         this.lookBackWindow = lookBackWindow;
         this.marketplaceIds = marketplaceIds;
+        this.numWorkers = numWorkers;
         this.profiles = profiles;
         this.refreshToken = refreshToken;
         this.region = region;
@@ -116,7 +127,9 @@ public class SourceAmazonAds {
             String clientId,
             String clientSecret,
             String refreshToken) {
-        this(clientId, clientSecret, Optional.empty(), Optional.empty(), Optional.empty(), refreshToken, Optional.empty(), Optional.empty());
+        this(clientId, clientSecret, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            refreshToken, Optional.empty(), Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
@@ -159,6 +172,14 @@ public class SourceAmazonAds {
     }
 
     /**
+     * The number of worker threads to use for the sync.
+     */
+    @JsonIgnore
+    public Optional<Long> numWorkers() {
+        return numWorkers;
+    }
+
+    /**
      * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     @SuppressWarnings("unchecked")
@@ -197,9 +218,10 @@ public class SourceAmazonAds {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
@@ -228,6 +250,7 @@ public class SourceAmazonAds {
         return this;
     }
 
+
     /**
      * The amount of days to go back in time to get the updated data from Amazon Ads
      */
@@ -246,12 +269,32 @@ public class SourceAmazonAds {
         return this;
     }
 
+
     /**
      * Marketplace IDs you want to fetch data for. Note: If Profile IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
      */
     public SourceAmazonAds withMarketplaceIds(Optional<? extends List<String>> marketplaceIds) {
         Utils.checkNotNull(marketplaceIds, "marketplaceIds");
         this.marketplaceIds = marketplaceIds;
+        return this;
+    }
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceAmazonAds withNumWorkers(long numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = Optional.ofNullable(numWorkers);
+        return this;
+    }
+
+
+    /**
+     * The number of worker threads to use for the sync.
+     */
+    public SourceAmazonAds withNumWorkers(Optional<Long> numWorkers) {
+        Utils.checkNotNull(numWorkers, "numWorkers");
+        this.numWorkers = numWorkers;
         return this;
     }
 
@@ -263,6 +306,7 @@ public class SourceAmazonAds {
         this.profiles = Optional.ofNullable(profiles);
         return this;
     }
+
 
     /**
      * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
@@ -291,6 +335,7 @@ public class SourceAmazonAds {
         return this;
     }
 
+
     /**
      * Region to pull data from (EU/NA/FE). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints"&gt;docs&lt;/a&gt; for more details.
      */
@@ -309,6 +354,7 @@ public class SourceAmazonAds {
         return this;
     }
 
+
     /**
      * The Start date for collecting reports, should not be more than 60 days in the past. In YYYY-MM-DD format
      */
@@ -318,7 +364,6 @@ public class SourceAmazonAds {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -329,31 +374,26 @@ public class SourceAmazonAds {
         }
         SourceAmazonAds other = (SourceAmazonAds) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.lookBackWindow, other.lookBackWindow) &&
-            Objects.deepEquals(this.marketplaceIds, other.marketplaceIds) &&
-            Objects.deepEquals(this.profiles, other.profiles) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.lookBackWindow, other.lookBackWindow) &&
+            Utils.enhancedDeepEquals(this.marketplaceIds, other.marketplaceIds) &&
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.profiles, other.profiles) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
-            lookBackWindow,
-            marketplaceIds,
-            profiles,
-            refreshToken,
-            region,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
+            lookBackWindow, marketplaceIds, numWorkers,
+            profiles, refreshToken, region,
+            sourceType, startDate);
     }
     
     @Override
@@ -364,34 +404,39 @@ public class SourceAmazonAds {
                 "clientSecret", clientSecret,
                 "lookBackWindow", lookBackWindow,
                 "marketplaceIds", marketplaceIds,
+                "numWorkers", numWorkers,
                 "profiles", profiles,
                 "refreshToken", refreshToken,
                 "region", region,
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<Long> lookBackWindow;
- 
+
         private Optional<? extends List<String>> marketplaceIds = Optional.empty();
- 
+
+        private Optional<Long> numWorkers;
+
         private Optional<? extends List<Long>> profiles = Optional.empty();
- 
+
         private String refreshToken;
- 
+
         private Optional<? extends Region> region;
- 
+
         private Optional<LocalDate> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The client ID of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
@@ -402,6 +447,7 @@ public class SourceAmazonAds {
             return this;
         }
 
+
         /**
          * The client secret of your Amazon Ads developer application. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens#retrieve-your-client-id-and-client-secret"&gt;docs&lt;/a&gt; for more information.
          */
@@ -410,6 +456,7 @@ public class SourceAmazonAds {
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The amount of days to go back in time to get the updated data from Amazon Ads
@@ -429,6 +476,7 @@ public class SourceAmazonAds {
             return this;
         }
 
+
         /**
          * Marketplace IDs you want to fetch data for. Note: If Profile IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
          */
@@ -446,6 +494,26 @@ public class SourceAmazonAds {
             this.marketplaceIds = marketplaceIds;
             return this;
         }
+
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(long numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = Optional.ofNullable(numWorkers);
+            return this;
+        }
+
+        /**
+         * The number of worker threads to use for the sync.
+         */
+        public Builder numWorkers(Optional<Long> numWorkers) {
+            Utils.checkNotNull(numWorkers, "numWorkers");
+            this.numWorkers = numWorkers;
+            return this;
+        }
+
 
         /**
          * Profile IDs you want to fetch data for. The Amazon Ads source connector supports only profiles with seller and vendor type, profiles with agency type will be ignored. See &lt;a href="https://advertising.amazon.com/API/docs/en-us/concepts/authorization/profiles"&gt;docs&lt;/a&gt; for more details. Note: If Marketplace IDs are also selected, profiles will be selected if they match the Profile ID OR the Marketplace ID.
@@ -465,6 +533,7 @@ public class SourceAmazonAds {
             return this;
         }
 
+
         /**
          * Amazon Ads refresh token. See the &lt;a href="https://advertising.amazon.com/API/docs/en-us/get-started/generate-api-tokens"&gt;docs&lt;/a&gt; for more information on how to obtain this token.
          */
@@ -473,6 +542,7 @@ public class SourceAmazonAds {
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * Region to pull data from (EU/NA/FE). See &lt;a href="https://advertising.amazon.com/API/docs/en-us/info/api-overview#api-endpoints"&gt;docs&lt;/a&gt; for more details.
@@ -492,6 +562,7 @@ public class SourceAmazonAds {
             return this;
         }
 
+
         /**
          * The Start date for collecting reports, should not be more than 60 days in the past. In YYYY-MM-DD format
          */
@@ -509,24 +580,24 @@ public class SourceAmazonAds {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAmazonAds build() {
             if (lookBackWindow == null) {
                 lookBackWindow = _SINGLETON_VALUE_LookBackWindow.value();
             }
+            if (numWorkers == null) {
+                numWorkers = _SINGLETON_VALUE_NumWorkers.value();
+            }
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+
             return new SourceAmazonAds(
-                clientId,
-                clientSecret,
-                lookBackWindow,
-                marketplaceIds,
-                profiles,
-                refreshToken,
-                region,
-                startDate);
+                clientId, clientSecret, lookBackWindow,
+                marketplaceIds, numWorkers, profiles,
+                refreshToken, region, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceAmazonAdsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(
@@ -538,6 +609,12 @@ public class SourceAmazonAds {
                 new LazySingletonValue<>(
                         "look_back_window",
                         "3",
+                        new TypeReference<Optional<Long>>() {});
+
+        private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
+                new LazySingletonValue<>(
+                        "num_workers",
+                        "10",
                         new TypeReference<Optional<Long>>() {});
 
         private static final LazySingletonValue<Optional<? extends Region>> _SINGLETON_VALUE_Region =

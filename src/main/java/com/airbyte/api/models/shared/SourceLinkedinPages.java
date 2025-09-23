@@ -15,8 +15,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceLinkedinPages {
 
@@ -29,6 +29,7 @@ public class SourceLinkedinPages {
      */
     @JsonProperty("org_id")
     private String orgId;
+
 
     @JsonProperty("sourceType")
     private LinkedinPages sourceType;
@@ -66,7 +67,8 @@ public class SourceLinkedinPages {
     
     public SourceLinkedinPages(
             String orgId) {
-        this(Optional.empty(), orgId, Optional.empty(), Optional.empty());
+        this(Optional.empty(), orgId, Optional.empty(),
+            Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
@@ -105,15 +107,17 @@ public class SourceLinkedinPages {
         return (Optional<TimeGranularityType>) timeGranularityType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceLinkedinPages withCredentials(SourceLinkedinPagesAuthentication credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceLinkedinPages withCredentials(Optional<? extends SourceLinkedinPagesAuthentication> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -139,6 +143,7 @@ public class SourceLinkedinPages {
         return this;
     }
 
+
     /**
      * Start date for getting metrics per time period. Must be atmost 12 months before the request date (UTC) and atleast 2 days prior to the request date (UTC). See https://bit.ly/linkedin-pages-date-rules &lbrace;&lbrace; "\n" &rbrace;&rbrace; &lbrace;&lbrace; response.errorDetails &rbrace;&rbrace;
      */
@@ -157,6 +162,7 @@ public class SourceLinkedinPages {
         return this;
     }
 
+
     /**
      * Granularity of the statistics for metrics per time period. Must be either "DAY" or "MONTH"
      */
@@ -166,7 +172,6 @@ public class SourceLinkedinPages {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -177,21 +182,18 @@ public class SourceLinkedinPages {
         }
         SourceLinkedinPages other = (SourceLinkedinPages) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.orgId, other.orgId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.timeGranularityType, other.timeGranularityType);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.orgId, other.orgId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.timeGranularityType, other.timeGranularityType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            orgId,
-            sourceType,
-            startDate,
-            timeGranularityType);
+        return Utils.enhancedHash(
+            credentials, orgId, sourceType,
+            startDate, timeGranularityType);
     }
     
     @Override
@@ -203,20 +205,22 @@ public class SourceLinkedinPages {
                 "startDate", startDate,
                 "timeGranularityType", timeGranularityType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceLinkedinPagesAuthentication> credentials = Optional.empty();
- 
+
         private String orgId;
- 
+
         private Optional<OffsetDateTime> startDate;
- 
+
         private Optional<? extends TimeGranularityType> timeGranularityType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceLinkedinPagesAuthentication credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -230,6 +234,7 @@ public class SourceLinkedinPages {
             return this;
         }
 
+
         /**
          * Specify the Organization ID
          */
@@ -238,6 +243,7 @@ public class SourceLinkedinPages {
             this.orgId = orgId;
             return this;
         }
+
 
         /**
          * Start date for getting metrics per time period. Must be atmost 12 months before the request date (UTC) and atleast 2 days prior to the request date (UTC). See https://bit.ly/linkedin-pages-date-rules &lbrace;&lbrace; "\n" &rbrace;&rbrace; &lbrace;&lbrace; response.errorDetails &rbrace;&rbrace;
@@ -257,6 +263,7 @@ public class SourceLinkedinPages {
             return this;
         }
 
+
         /**
          * Granularity of the statistics for metrics per time period. Must be either "DAY" or "MONTH"
          */
@@ -274,7 +281,7 @@ public class SourceLinkedinPages {
             this.timeGranularityType = timeGranularityType;
             return this;
         }
-        
+
         public SourceLinkedinPages build() {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
@@ -282,12 +289,12 @@ public class SourceLinkedinPages {
             if (timeGranularityType == null) {
                 timeGranularityType = _SINGLETON_VALUE_TimeGranularityType.value();
             }
+
             return new SourceLinkedinPages(
-                credentials,
-                orgId,
-                startDate,
+                credentials, orgId, startDate,
                 timeGranularityType);
         }
+
 
         private static final LazySingletonValue<LinkedinPages> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
