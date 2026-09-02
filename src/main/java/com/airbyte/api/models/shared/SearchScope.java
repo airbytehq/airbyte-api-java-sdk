@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * SearchScope
  * 
- * <p>Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to search both.
+ * <p>Specifies the location(s) to search for files. Valid options are 'ACCESSIBLE_DRIVES' to search in
+ * the selected OneDrive drive, 'SHARED_ITEMS' for shared items the user has access to, and 'ALL' to
+ * search both.
  */
 public enum SearchScope {
     ACCESSIBLE_DRIVES("ACCESSIBLE_DRIVES"),
@@ -21,7 +23,7 @@ public enum SearchScope {
     @JsonValue
     private final String value;
 
-    private SearchScope(String value) {
+    SearchScope(String value) {
         this.value = value;
     }
     

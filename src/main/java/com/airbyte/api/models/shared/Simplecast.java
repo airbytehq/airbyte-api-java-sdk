@@ -14,7 +14,7 @@ public enum Simplecast {
     @JsonValue
     private final String value;
 
-    private Simplecast(String value) {
+    Simplecast(String value) {
         this.value = value;
     }
     

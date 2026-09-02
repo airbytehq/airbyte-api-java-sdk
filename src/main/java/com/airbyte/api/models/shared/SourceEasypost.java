@@ -12,12 +12,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceEasypost {
 
     @JsonProperty("sourceType")
     private Easypost sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceEasypost {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceEasypost withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -76,7 +78,6 @@ public class SourceEasypost {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceEasypost {
         }
         SourceEasypost other = (SourceEasypost) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            sourceType, startDate, username);
     }
     
     @Override
@@ -107,22 +106,25 @@ public class SourceEasypost {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * The API Key from your easypost settings
@@ -132,12 +134,13 @@ public class SourceEasypost {
             this.username = username;
             return this;
         }
-        
+
         public SourceEasypost build() {
+
             return new SourceEasypost(
-                startDate,
-                username);
+                startDate, username);
         }
+
 
         private static final LazySingletonValue<Easypost> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

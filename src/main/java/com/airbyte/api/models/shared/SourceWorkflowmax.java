@@ -12,21 +12,23 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceWorkflowmax {
-
     /**
      * The account id for workflowmax
      */
     @JsonProperty("account_id")
     private String accountId;
 
+
     @JsonProperty("api_key_2")
     private String apiKey2;
 
+
     @JsonProperty("sourceType")
     private Workflowmax sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -68,9 +70,10 @@ public class SourceWorkflowmax {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The account id for workflowmax
@@ -93,7 +96,6 @@ public class SourceWorkflowmax {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,18 +106,16 @@ public class SourceWorkflowmax {
         }
         SourceWorkflowmax other = (SourceWorkflowmax) o;
         return 
-            Objects.deepEquals(this.accountId, other.accountId) &&
-            Objects.deepEquals(this.apiKey2, other.apiKey2) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountId, other.accountId) &&
+            Utils.enhancedDeepEquals(this.apiKey2, other.apiKey2) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountId,
-            apiKey2,
-            sourceType,
+        return Utils.enhancedHash(
+            accountId, apiKey2, sourceType,
             startDate);
     }
     
@@ -127,18 +127,20 @@ public class SourceWorkflowmax {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountId;
- 
+
         private String apiKey2;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The account id for workflowmax
@@ -149,24 +151,26 @@ public class SourceWorkflowmax {
             return this;
         }
 
+
         public Builder apiKey2(String apiKey2) {
             Utils.checkNotNull(apiKey2, "apiKey2");
             this.apiKey2 = apiKey2;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceWorkflowmax build() {
+
             return new SourceWorkflowmax(
-                accountId,
-                apiKey2,
-                startDate);
+                accountId, apiKey2, startDate);
         }
+
 
         private static final LazySingletonValue<Workflowmax> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceOveit {
-
     /**
      * Oveit's login Email
      */
@@ -26,6 +25,7 @@ public class SourceOveit {
      */
     @JsonProperty("password")
     private String password;
+
 
     @JsonProperty("sourceType")
     private Oveit sourceType;
@@ -62,9 +62,10 @@ public class SourceOveit {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Oveit's login Email
@@ -84,7 +85,6 @@ public class SourceOveit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceOveit {
         }
         SourceOveit other = (SourceOveit) o;
         return 
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            email,
-            password,
-            sourceType);
+        return Utils.enhancedHash(
+            email, password, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceOveit {
                 "password", password,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String email;
- 
+
         private String password;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Oveit's login Email
@@ -135,6 +135,7 @@ public class SourceOveit {
             return this;
         }
 
+
         /**
          * Oveit's login Password
          */
@@ -143,12 +144,13 @@ public class SourceOveit {
             this.password = password;
             return this;
         }
-        
+
         public SourceOveit build() {
+
             return new SourceOveit(
-                email,
-                password);
+                email, password);
         }
+
 
         private static final LazySingletonValue<Oveit> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

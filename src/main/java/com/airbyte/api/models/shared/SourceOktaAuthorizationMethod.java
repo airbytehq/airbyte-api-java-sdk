@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceOktaAuthorizationMethod._Deserializer.class)
 public class SourceOktaAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceOktaAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,17 +27,17 @@ public class SourceOktaAuthorizationMethod {
 
     public static SourceOktaAuthorizationMethod of(SourceOktaOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOktaOAuth20>(){}));
+        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOktaAuthorizationMethod of(OAuth20WithPrivateKey value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<OAuth20WithPrivateKey>(){}));
+        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOktaAuthorizationMethod of(SourceOktaAPIToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOktaAPIToken>(){}));
+        return new SourceOktaAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -62,7 +61,7 @@ public class SourceOktaAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -73,12 +72,12 @@ public class SourceOktaAuthorizationMethod {
             return false;
         }
         SourceOktaAuthorizationMethod other = (SourceOktaAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -86,8 +85,8 @@ public class SourceOktaAuthorizationMethod {
 
         public _Deserializer() {
             super(SourceOktaAuthorizationMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<OAuth20WithPrivateKey>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceOktaOAuth20>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<OAuth20WithPrivateKey>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceOktaAPIToken>() {}, JsonShape.DEFAULT));
         }
     }
@@ -97,6 +96,6 @@ public class SourceOktaAuthorizationMethod {
         return Utils.toString(SourceOktaAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

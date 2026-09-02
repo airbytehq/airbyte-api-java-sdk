@@ -14,16 +14,18 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGmail {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -34,6 +36,7 @@ public class SourceGmail {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("include_spam_and_trash")
     private Optional<Boolean> includeSpamAndTrash;
+
 
     @JsonProperty("sourceType")
     private Gmail sourceType;
@@ -59,7 +62,8 @@ public class SourceGmail {
             String clientId,
             String clientRefreshToken,
             String clientSecret) {
-        this(clientId, clientRefreshToken, clientSecret, Optional.empty());
+        this(clientId, clientRefreshToken, clientSecret,
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -90,9 +94,10 @@ public class SourceGmail {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGmail withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -121,6 +126,7 @@ public class SourceGmail {
         return this;
     }
 
+
     /**
      * Include drafts/messages from SPAM and TRASH in the results. Defaults to false.
      */
@@ -130,7 +136,6 @@ public class SourceGmail {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,21 +146,18 @@ public class SourceGmail {
         }
         SourceGmail other = (SourceGmail) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.includeSpamAndTrash, other.includeSpamAndTrash) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.includeSpamAndTrash, other.includeSpamAndTrash) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            includeSpamAndTrash,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientRefreshToken, clientSecret,
+            includeSpamAndTrash, sourceType);
     }
     
     @Override
@@ -167,20 +169,22 @@ public class SourceGmail {
                 "includeSpamAndTrash", includeSpamAndTrash,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private Optional<Boolean> includeSpamAndTrash;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -188,17 +192,20 @@ public class SourceGmail {
             return this;
         }
 
+
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * Include drafts/messages from SPAM and TRASH in the results. Defaults to false.
@@ -217,17 +224,17 @@ public class SourceGmail {
             this.includeSpamAndTrash = includeSpamAndTrash;
             return this;
         }
-        
+
         public SourceGmail build() {
             if (includeSpamAndTrash == null) {
                 includeSpamAndTrash = _SINGLETON_VALUE_IncludeSpamAndTrash.value();
             }
+
             return new SourceGmail(
-                clientId,
-                clientRefreshToken,
-                clientSecret,
+                clientId, clientRefreshToken, clientSecret,
                 includeSpamAndTrash);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeSpamAndTrash =
                 new LazySingletonValue<>(

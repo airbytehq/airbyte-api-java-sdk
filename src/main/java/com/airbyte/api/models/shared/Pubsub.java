@@ -14,7 +14,7 @@ public enum Pubsub {
     @JsonValue
     private final String value;
 
-    private Pubsub(String value) {
+    Pubsub(String value) {
         this.value = value;
     }
     

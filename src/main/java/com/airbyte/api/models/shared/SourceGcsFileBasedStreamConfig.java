@@ -17,33 +17,37 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGcsFileBasedStreamConfig {
 
+public class SourceGcsFileBasedStreamConfig {
     /**
-     * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
+     * When the state history of the file store is full, syncs will only read files that were last modified
+     * in the provided day range.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("days_to_sync_if_history_is_full")
     private Optional<Long> daysToSyncIfHistoryIsFull;
 
     /**
-     * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+     * The configuration options that are used to alter how to read incoming files that deviate from the
+     * standard formatting.
      */
     @JsonProperty("format")
     private SourceGcsFormat format;
 
     /**
-     * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
+     * The pattern used to specify which files should be selected from the file system. For more
+     * information on glob pattern matching look <a
+     * href="https://en.wikipedia.org/wiki/Glob_(programming)">here</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("globs")
     private Optional<? extends List<String>> globs;
 
     /**
-     * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
+     * The schema that will be used to validate records extracted from the file. This will override the
+     * stream schema that is auto-detected from incoming files.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("input_schema")
@@ -70,7 +74,8 @@ public class SourceGcsFileBasedStreamConfig {
     private Optional<Boolean> schemaless;
 
     /**
-     * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+     * The name of the validation policy that dictates sync behavior when a record does not adhere to the
+     * stream schema.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("validation_policy")
@@ -107,11 +112,14 @@ public class SourceGcsFileBasedStreamConfig {
     public SourceGcsFileBasedStreamConfig(
             SourceGcsFormat format,
             String name) {
-        this(Optional.empty(), format, Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), format, Optional.empty(),
+            Optional.empty(), name, Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
-     * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
+     * When the state history of the file store is full, syncs will only read files that were last modified
+     * in the provided day range.
      */
     @JsonIgnore
     public Optional<Long> daysToSyncIfHistoryIsFull() {
@@ -119,7 +127,8 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+     * The configuration options that are used to alter how to read incoming files that deviate from the
+     * standard formatting.
      */
     @JsonIgnore
     public SourceGcsFormat format() {
@@ -127,7 +136,9 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
+     * The pattern used to specify which files should be selected from the file system. For more
+     * information on glob pattern matching look <a
+     * href="https://en.wikipedia.org/wiki/Glob_(programming)">here</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -136,7 +147,8 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
+     * The schema that will be used to validate records extracted from the file. This will override the
+     * stream schema that is auto-detected from incoming files.
      */
     @JsonIgnore
     public Optional<String> inputSchema() {
@@ -168,7 +180,8 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+     * The name of the validation policy that dictates sync behavior when a record does not adhere to the
+     * stream schema.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -176,12 +189,14 @@ public class SourceGcsFileBasedStreamConfig {
         return (Optional<SourceGcsValidationPolicy>) validationPolicy;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
+     * When the state history of the file store is full, syncs will only read files that were last modified
+     * in the provided day range.
      */
     public SourceGcsFileBasedStreamConfig withDaysToSyncIfHistoryIsFull(long daysToSyncIfHistoryIsFull) {
         Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
@@ -189,8 +204,10 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
+
     /**
-     * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
+     * When the state history of the file store is full, syncs will only read files that were last modified
+     * in the provided day range.
      */
     public SourceGcsFileBasedStreamConfig withDaysToSyncIfHistoryIsFull(Optional<Long> daysToSyncIfHistoryIsFull) {
         Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
@@ -199,7 +216,8 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+     * The configuration options that are used to alter how to read incoming files that deviate from the
+     * standard formatting.
      */
     public SourceGcsFileBasedStreamConfig withFormat(SourceGcsFormat format) {
         Utils.checkNotNull(format, "format");
@@ -208,7 +226,9 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
+     * The pattern used to specify which files should be selected from the file system. For more
+     * information on glob pattern matching look <a
+     * href="https://en.wikipedia.org/wiki/Glob_(programming)">here</a>.
      */
     public SourceGcsFileBasedStreamConfig withGlobs(List<String> globs) {
         Utils.checkNotNull(globs, "globs");
@@ -216,8 +236,11 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
+
     /**
-     * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
+     * The pattern used to specify which files should be selected from the file system. For more
+     * information on glob pattern matching look <a
+     * href="https://en.wikipedia.org/wiki/Glob_(programming)">here</a>.
      */
     public SourceGcsFileBasedStreamConfig withGlobs(Optional<? extends List<String>> globs) {
         Utils.checkNotNull(globs, "globs");
@@ -226,7 +249,8 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
+     * The schema that will be used to validate records extracted from the file. This will override the
+     * stream schema that is auto-detected from incoming files.
      */
     public SourceGcsFileBasedStreamConfig withInputSchema(String inputSchema) {
         Utils.checkNotNull(inputSchema, "inputSchema");
@@ -234,8 +258,10 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
+
     /**
-     * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
+     * The schema that will be used to validate records extracted from the file. This will override the
+     * stream schema that is auto-detected from incoming files.
      */
     public SourceGcsFileBasedStreamConfig withInputSchema(Optional<String> inputSchema) {
         Utils.checkNotNull(inputSchema, "inputSchema");
@@ -261,6 +287,7 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * The number of resent files which will be used to discover the schema for this stream.
      */
@@ -279,6 +306,7 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
+
     /**
      * When enabled, syncs will not validate or structure records against the stream's schema.
      */
@@ -289,7 +317,8 @@ public class SourceGcsFileBasedStreamConfig {
     }
 
     /**
-     * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+     * The name of the validation policy that dictates sync behavior when a record does not adhere to the
+     * stream schema.
      */
     public SourceGcsFileBasedStreamConfig withValidationPolicy(SourceGcsValidationPolicy validationPolicy) {
         Utils.checkNotNull(validationPolicy, "validationPolicy");
@@ -297,8 +326,10 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
+
     /**
-     * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+     * The name of the validation policy that dictates sync behavior when a record does not adhere to the
+     * stream schema.
      */
     public SourceGcsFileBasedStreamConfig withValidationPolicy(Optional<? extends SourceGcsValidationPolicy> validationPolicy) {
         Utils.checkNotNull(validationPolicy, "validationPolicy");
@@ -306,7 +337,6 @@ public class SourceGcsFileBasedStreamConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -317,27 +347,22 @@ public class SourceGcsFileBasedStreamConfig {
         }
         SourceGcsFileBasedStreamConfig other = (SourceGcsFileBasedStreamConfig) o;
         return 
-            Objects.deepEquals(this.daysToSyncIfHistoryIsFull, other.daysToSyncIfHistoryIsFull) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.globs, other.globs) &&
-            Objects.deepEquals(this.inputSchema, other.inputSchema) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.recentNFilesToReadForSchemaDiscovery, other.recentNFilesToReadForSchemaDiscovery) &&
-            Objects.deepEquals(this.schemaless, other.schemaless) &&
-            Objects.deepEquals(this.validationPolicy, other.validationPolicy);
+            Utils.enhancedDeepEquals(this.daysToSyncIfHistoryIsFull, other.daysToSyncIfHistoryIsFull) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.globs, other.globs) &&
+            Utils.enhancedDeepEquals(this.inputSchema, other.inputSchema) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.recentNFilesToReadForSchemaDiscovery, other.recentNFilesToReadForSchemaDiscovery) &&
+            Utils.enhancedDeepEquals(this.schemaless, other.schemaless) &&
+            Utils.enhancedDeepEquals(this.validationPolicy, other.validationPolicy);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            daysToSyncIfHistoryIsFull,
-            format,
-            globs,
-            inputSchema,
-            name,
-            recentNFilesToReadForSchemaDiscovery,
-            schemaless,
-            validationPolicy);
+        return Utils.enhancedHash(
+            daysToSyncIfHistoryIsFull, format, globs,
+            inputSchema, name, recentNFilesToReadForSchemaDiscovery,
+            schemaless, validationPolicy);
     }
     
     @Override
@@ -352,31 +377,34 @@ public class SourceGcsFileBasedStreamConfig {
                 "schemaless", schemaless,
                 "validationPolicy", validationPolicy);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> daysToSyncIfHistoryIsFull;
- 
+
         private SourceGcsFormat format;
- 
+
         private Optional<? extends List<String>> globs = Optional.empty();
- 
+
         private Optional<String> inputSchema = Optional.empty();
- 
+
         private String name;
- 
+
         private Optional<Long> recentNFilesToReadForSchemaDiscovery = Optional.empty();
- 
+
         private Optional<Boolean> schemaless;
- 
+
         private Optional<? extends SourceGcsValidationPolicy> validationPolicy;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
+         * When the state history of the file store is full, syncs will only read files that were last modified
+         * in the provided day range.
          */
         public Builder daysToSyncIfHistoryIsFull(long daysToSyncIfHistoryIsFull) {
             Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
@@ -385,7 +413,8 @@ public class SourceGcsFileBasedStreamConfig {
         }
 
         /**
-         * When the state history of the file store is full, syncs will only read files that were last modified in the provided day range.
+         * When the state history of the file store is full, syncs will only read files that were last modified
+         * in the provided day range.
          */
         public Builder daysToSyncIfHistoryIsFull(Optional<Long> daysToSyncIfHistoryIsFull) {
             Utils.checkNotNull(daysToSyncIfHistoryIsFull, "daysToSyncIfHistoryIsFull");
@@ -393,8 +422,10 @@ public class SourceGcsFileBasedStreamConfig {
             return this;
         }
 
+
         /**
-         * The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+         * The configuration options that are used to alter how to read incoming files that deviate from the
+         * standard formatting.
          */
         public Builder format(SourceGcsFormat format) {
             Utils.checkNotNull(format, "format");
@@ -402,8 +433,11 @@ public class SourceGcsFileBasedStreamConfig {
             return this;
         }
 
+
         /**
-         * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
+         * The pattern used to specify which files should be selected from the file system. For more
+         * information on glob pattern matching look <a
+         * href="https://en.wikipedia.org/wiki/Glob_(programming)">here</a>.
          */
         public Builder globs(List<String> globs) {
             Utils.checkNotNull(globs, "globs");
@@ -412,7 +446,9 @@ public class SourceGcsFileBasedStreamConfig {
         }
 
         /**
-         * The pattern used to specify which files should be selected from the file system. For more information on glob pattern matching look &lt;a href="https://en.wikipedia.org/wiki/Glob_(programming)"&gt;here&lt;/a&gt;.
+         * The pattern used to specify which files should be selected from the file system. For more
+         * information on glob pattern matching look <a
+         * href="https://en.wikipedia.org/wiki/Glob_(programming)">here</a>.
          */
         public Builder globs(Optional<? extends List<String>> globs) {
             Utils.checkNotNull(globs, "globs");
@@ -420,8 +456,10 @@ public class SourceGcsFileBasedStreamConfig {
             return this;
         }
 
+
         /**
-         * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
+         * The schema that will be used to validate records extracted from the file. This will override the
+         * stream schema that is auto-detected from incoming files.
          */
         public Builder inputSchema(String inputSchema) {
             Utils.checkNotNull(inputSchema, "inputSchema");
@@ -430,13 +468,15 @@ public class SourceGcsFileBasedStreamConfig {
         }
 
         /**
-         * The schema that will be used to validate records extracted from the file. This will override the stream schema that is auto-detected from incoming files.
+         * The schema that will be used to validate records extracted from the file. This will override the
+         * stream schema that is auto-detected from incoming files.
          */
         public Builder inputSchema(Optional<String> inputSchema) {
             Utils.checkNotNull(inputSchema, "inputSchema");
             this.inputSchema = inputSchema;
             return this;
         }
+
 
         /**
          * The name of the stream.
@@ -446,6 +486,7 @@ public class SourceGcsFileBasedStreamConfig {
             this.name = name;
             return this;
         }
+
 
         /**
          * The number of resent files which will be used to discover the schema for this stream.
@@ -465,6 +506,7 @@ public class SourceGcsFileBasedStreamConfig {
             return this;
         }
 
+
         /**
          * When enabled, syncs will not validate or structure records against the stream's schema.
          */
@@ -483,8 +525,10 @@ public class SourceGcsFileBasedStreamConfig {
             return this;
         }
 
+
         /**
-         * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+         * The name of the validation policy that dictates sync behavior when a record does not adhere to the
+         * stream schema.
          */
         public Builder validationPolicy(SourceGcsValidationPolicy validationPolicy) {
             Utils.checkNotNull(validationPolicy, "validationPolicy");
@@ -493,14 +537,15 @@ public class SourceGcsFileBasedStreamConfig {
         }
 
         /**
-         * The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+         * The name of the validation policy that dictates sync behavior when a record does not adhere to the
+         * stream schema.
          */
         public Builder validationPolicy(Optional<? extends SourceGcsValidationPolicy> validationPolicy) {
             Utils.checkNotNull(validationPolicy, "validationPolicy");
             this.validationPolicy = validationPolicy;
             return this;
         }
-        
+
         public SourceGcsFileBasedStreamConfig build() {
             if (daysToSyncIfHistoryIsFull == null) {
                 daysToSyncIfHistoryIsFull = _SINGLETON_VALUE_DaysToSyncIfHistoryIsFull.value();
@@ -511,16 +556,13 @@ public class SourceGcsFileBasedStreamConfig {
             if (validationPolicy == null) {
                 validationPolicy = _SINGLETON_VALUE_ValidationPolicy.value();
             }
+
             return new SourceGcsFileBasedStreamConfig(
-                daysToSyncIfHistoryIsFull,
-                format,
-                globs,
-                inputSchema,
-                name,
-                recentNFilesToReadForSchemaDiscovery,
-                schemaless,
-                validationPolicy);
+                daysToSyncIfHistoryIsFull, format, globs,
+                inputSchema, name, recentNFilesToReadForSchemaDiscovery,
+                schemaless, validationPolicy);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_DaysToSyncIfHistoryIsFull =
                 new LazySingletonValue<>(

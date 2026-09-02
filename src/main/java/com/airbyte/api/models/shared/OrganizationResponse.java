@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * OrganizationResponse
@@ -21,8 +20,10 @@ public class OrganizationResponse {
     @JsonProperty("email")
     private String email;
 
+
     @JsonProperty("organizationId")
     private String organizationId;
+
 
     @JsonProperty("organizationName")
     private String organizationName;
@@ -55,9 +56,10 @@ public class OrganizationResponse {
         return organizationName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public OrganizationResponse withEmail(String email) {
         Utils.checkNotNull(email, "email");
@@ -77,7 +79,6 @@ public class OrganizationResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -88,17 +89,15 @@ public class OrganizationResponse {
         }
         OrganizationResponse other = (OrganizationResponse) o;
         return 
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.organizationName, other.organizationName);
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.organizationName, other.organizationName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            email,
-            organizationId,
-            organizationName);
+        return Utils.enhancedHash(
+            email, organizationId, organizationName);
     }
     
     @Override
@@ -108,18 +107,20 @@ public class OrganizationResponse {
                 "organizationId", organizationId,
                 "organizationName", organizationName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String email;
- 
+
         private String organizationId;
- 
+
         private String organizationName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder email(String email) {
             Utils.checkNotNull(email, "email");
@@ -127,23 +128,25 @@ public class OrganizationResponse {
             return this;
         }
 
+
         public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;
         }
 
+
         public Builder organizationName(String organizationName) {
             Utils.checkNotNull(organizationName, "organizationName");
             this.organizationName = organizationName;
             return this;
         }
-        
+
         public OrganizationResponse build() {
+
             return new OrganizationResponse(
-                email,
-                organizationId,
-                organizationName);
+                email, organizationId, organizationName);
         }
+
     }
 }

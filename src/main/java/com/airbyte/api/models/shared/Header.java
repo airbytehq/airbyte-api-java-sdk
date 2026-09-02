@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class Header {
 
     @JsonProperty("header_key")
     private String headerKey;
+
 
     @JsonProperty("value")
     private String value;
@@ -39,9 +40,10 @@ public class Header {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Header withHeaderKey(String headerKey) {
         Utils.checkNotNull(headerKey, "headerKey");
@@ -55,7 +57,6 @@ public class Header {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class Header {
         }
         Header other = (Header) o;
         return 
-            Objects.deepEquals(this.headerKey, other.headerKey) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.headerKey, other.headerKey) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            headerKey,
-            value);
+        return Utils.enhancedHash(
+            headerKey, value);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class Header {
                 "headerKey", headerKey,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String headerKey;
- 
+
         private String value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder headerKey(String headerKey) {
             Utils.checkNotNull(headerKey, "headerKey");
@@ -100,16 +102,18 @@ public class Header {
             return this;
         }
 
+
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public Header build() {
+
             return new Header(
-                headerKey,
-                value);
+                headerKey, value);
         }
+
     }
 }

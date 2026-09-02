@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceFauna {
 
+public class SourceFauna {
     /**
      * Settings for the Fauna Collection.
      */
@@ -28,7 +27,9 @@ public class SourceFauna {
     private Optional<? extends Collection> collection;
 
     /**
-     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
+     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a
+     * href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the
+     * docs&lt;/a&gt;.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("domain")
@@ -53,6 +54,7 @@ public class SourceFauna {
      */
     @JsonProperty("secret")
     private String secret;
+
 
     @JsonProperty("sourceType")
     private Fauna sourceType;
@@ -79,7 +81,8 @@ public class SourceFauna {
     
     public SourceFauna(
             String secret) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), secret);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), secret);
     }
 
     /**
@@ -92,7 +95,9 @@ public class SourceFauna {
     }
 
     /**
-     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
+     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a
+     * href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the
+     * docs&lt;/a&gt;.
      */
     @JsonIgnore
     public Optional<String> domain() {
@@ -128,9 +133,10 @@ public class SourceFauna {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Settings for the Fauna Collection.
@@ -140,6 +146,7 @@ public class SourceFauna {
         this.collection = Optional.ofNullable(collection);
         return this;
     }
+
 
     /**
      * Settings for the Fauna Collection.
@@ -151,7 +158,9 @@ public class SourceFauna {
     }
 
     /**
-     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
+     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a
+     * href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the
+     * docs&lt;/a&gt;.
      */
     public SourceFauna withDomain(String domain) {
         Utils.checkNotNull(domain, "domain");
@@ -159,8 +168,11 @@ public class SourceFauna {
         return this;
     }
 
+
     /**
-     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
+     * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a
+     * href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the
+     * docs&lt;/a&gt;.
      */
     public SourceFauna withDomain(Optional<String> domain) {
         Utils.checkNotNull(domain, "domain");
@@ -176,6 +188,7 @@ public class SourceFauna {
         this.port = Optional.ofNullable(port);
         return this;
     }
+
 
     /**
      * Endpoint port.
@@ -195,6 +208,7 @@ public class SourceFauna {
         return this;
     }
 
+
     /**
      * URL scheme.
      */
@@ -213,7 +227,6 @@ public class SourceFauna {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -224,23 +237,19 @@ public class SourceFauna {
         }
         SourceFauna other = (SourceFauna) o;
         return 
-            Objects.deepEquals(this.collection, other.collection) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.scheme, other.scheme) &&
-            Objects.deepEquals(this.secret, other.secret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.collection, other.collection) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.scheme, other.scheme) &&
+            Utils.enhancedDeepEquals(this.secret, other.secret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            collection,
-            domain,
-            port,
-            scheme,
-            secret,
-            sourceType);
+        return Utils.enhancedHash(
+            collection, domain, port,
+            scheme, secret, sourceType);
     }
     
     @Override
@@ -253,22 +262,24 @@ public class SourceFauna {
                 "secret", secret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends Collection> collection = Optional.empty();
- 
+
         private Optional<String> domain;
- 
+
         private Optional<Long> port;
- 
+
         private Optional<String> scheme;
- 
+
         private String secret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Settings for the Fauna Collection.
@@ -288,8 +299,11 @@ public class SourceFauna {
             return this;
         }
 
+
         /**
-         * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
+         * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a
+         * href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the
+         * docs&lt;/a&gt;.
          */
         public Builder domain(String domain) {
             Utils.checkNotNull(domain, "domain");
@@ -298,13 +312,16 @@ public class SourceFauna {
         }
 
         /**
-         * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the docs&lt;/a&gt;.
+         * Domain of Fauna to query. Defaults db.fauna.com. See &lt;a
+         * href=https://docs.fauna.com/fauna/current/learn/understanding/region_groups#how-to-use-region-groups&gt;the
+         * docs&lt;/a&gt;.
          */
         public Builder domain(Optional<String> domain) {
             Utils.checkNotNull(domain, "domain");
             this.domain = domain;
             return this;
         }
+
 
         /**
          * Endpoint port.
@@ -324,6 +341,7 @@ public class SourceFauna {
             return this;
         }
 
+
         /**
          * URL scheme.
          */
@@ -342,6 +360,7 @@ public class SourceFauna {
             return this;
         }
 
+
         /**
          * Fauna secret, used when authenticating with the database.
          */
@@ -350,7 +369,7 @@ public class SourceFauna {
             this.secret = secret;
             return this;
         }
-        
+
         public SourceFauna build() {
             if (domain == null) {
                 domain = _SINGLETON_VALUE_Domain.value();
@@ -361,13 +380,12 @@ public class SourceFauna {
             if (scheme == null) {
                 scheme = _SINGLETON_VALUE_Scheme.value();
             }
+
             return new SourceFauna(
-                collection,
-                domain,
-                port,
-                scheme,
-                secret);
+                collection, domain, port,
+                scheme, secret);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Domain =
                 new LazySingletonValue<>(

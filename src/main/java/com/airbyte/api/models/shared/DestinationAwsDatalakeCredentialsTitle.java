@@ -19,7 +19,7 @@ public enum DestinationAwsDatalakeCredentialsTitle {
     @JsonValue
     private final String value;
 
-    private DestinationAwsDatalakeCredentialsTitle(String value) {
+    DestinationAwsDatalakeCredentialsTitle(String value) {
         this.value = value;
     }
     

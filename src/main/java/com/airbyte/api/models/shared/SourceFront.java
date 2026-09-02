@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceFront {
 
@@ -29,8 +29,10 @@ public class SourceFront {
     @JsonProperty("page_limit")
     private Optional<String> pageLimit;
 
+
     @JsonProperty("sourceType")
     private Front sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -78,9 +80,10 @@ public class SourceFront {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceFront withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -97,6 +100,7 @@ public class SourceFront {
         return this;
     }
 
+
     /**
      * Page limit for the responses
      */
@@ -112,7 +116,6 @@ public class SourceFront {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,18 +126,16 @@ public class SourceFront {
         }
         SourceFront other = (SourceFront) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.pageLimit, other.pageLimit) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.pageLimit, other.pageLimit) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            pageLimit,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, pageLimit, sourceType,
             startDate);
     }
     
@@ -146,24 +147,27 @@ public class SourceFront {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> pageLimit;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Page limit for the responses
@@ -183,21 +187,22 @@ public class SourceFront {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceFront build() {
             if (pageLimit == null) {
                 pageLimit = _SINGLETON_VALUE_PageLimit.value();
             }
+
             return new SourceFront(
-                apiKey,
-                pageLimit,
-                startDate);
+                apiKey, pageLimit, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_PageLimit =
                 new LazySingletonValue<>(

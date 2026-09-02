@@ -34,7 +34,7 @@ public enum DestinationSnowflakeCortexLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationSnowflakeCortexLanguage(String value) {
+    DestinationSnowflakeCortexLanguage(String value) {
         this.value = value;
     }
     

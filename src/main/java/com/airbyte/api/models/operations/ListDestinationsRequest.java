@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListDestinationsRequest {
 
+public class ListDestinationsRequest {
     /**
      * Include deleted destinations in the returned results.
      */
@@ -39,7 +38,8 @@ public class ListDestinationsRequest {
     private Optional<Integer> offset;
 
     /**
-     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed
+     * workspaces.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
     private Optional<? extends List<String>> workspaceIds;
@@ -61,7 +61,8 @@ public class ListDestinationsRequest {
     }
     
     public ListDestinationsRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -89,7 +90,8 @@ public class ListDestinationsRequest {
     }
 
     /**
-     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed
+     * workspaces.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -97,9 +99,10 @@ public class ListDestinationsRequest {
         return (Optional<List<String>>) workspaceIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Include deleted destinations in the returned results.
@@ -109,6 +112,7 @@ public class ListDestinationsRequest {
         this.includeDeleted = Optional.ofNullable(includeDeleted);
         return this;
     }
+
 
     /**
      * Include deleted destinations in the returned results.
@@ -128,6 +132,7 @@ public class ListDestinationsRequest {
         return this;
     }
 
+
     /**
      * Set the limit on the number of destinations returned. The default is 20.
      */
@@ -146,6 +151,7 @@ public class ListDestinationsRequest {
         return this;
     }
 
+
     /**
      * Set the offset to start at when returning destinations. The default is 0
      */
@@ -156,7 +162,8 @@ public class ListDestinationsRequest {
     }
 
     /**
-     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed
+     * workspaces.
      */
     public ListDestinationsRequest withWorkspaceIds(List<String> workspaceIds) {
         Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -164,8 +171,10 @@ public class ListDestinationsRequest {
         return this;
     }
 
+
     /**
-     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed
+     * workspaces.
      */
     public ListDestinationsRequest withWorkspaceIds(Optional<? extends List<String>> workspaceIds) {
         Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -173,7 +182,6 @@ public class ListDestinationsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -184,18 +192,16 @@ public class ListDestinationsRequest {
         }
         ListDestinationsRequest other = (ListDestinationsRequest) o;
         return 
-            Objects.deepEquals(this.includeDeleted, other.includeDeleted) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.offset, other.offset) &&
-            Objects.deepEquals(this.workspaceIds, other.workspaceIds);
+            Utils.enhancedDeepEquals(this.includeDeleted, other.includeDeleted) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.offset, other.offset) &&
+            Utils.enhancedDeepEquals(this.workspaceIds, other.workspaceIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            includeDeleted,
-            limit,
-            offset,
+        return Utils.enhancedHash(
+            includeDeleted, limit, offset,
             workspaceIds);
     }
     
@@ -207,20 +213,22 @@ public class ListDestinationsRequest {
                 "offset", offset,
                 "workspaceIds", workspaceIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> includeDeleted;
- 
+
         private Optional<Integer> limit;
- 
+
         private Optional<Integer> offset;
- 
+
         private Optional<? extends List<String>> workspaceIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Include deleted destinations in the returned results.
@@ -240,6 +248,7 @@ public class ListDestinationsRequest {
             return this;
         }
 
+
         /**
          * Set the limit on the number of destinations returned. The default is 20.
          */
@@ -257,6 +266,7 @@ public class ListDestinationsRequest {
             this.limit = limit;
             return this;
         }
+
 
         /**
          * Set the offset to start at when returning destinations. The default is 0
@@ -276,8 +286,10 @@ public class ListDestinationsRequest {
             return this;
         }
 
+
         /**
-         * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed workspaces.
+         * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed
+         * workspaces.
          */
         public Builder workspaceIds(List<String> workspaceIds) {
             Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -286,14 +298,15 @@ public class ListDestinationsRequest {
         }
 
         /**
-         * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed workspaces.
+         * The UUIDs of the workspaces you wish to list destinations for. Empty list will retrieve all allowed
+         * workspaces.
          */
         public Builder workspaceIds(Optional<? extends List<String>> workspaceIds) {
             Utils.checkNotNull(workspaceIds, "workspaceIds");
             this.workspaceIds = workspaceIds;
             return this;
         }
-        
+
         public ListDestinationsRequest build() {
             if (includeDeleted == null) {
                 includeDeleted = _SINGLETON_VALUE_IncludeDeleted.value();
@@ -304,12 +317,12 @@ public class ListDestinationsRequest {
             if (offset == null) {
                 offset = _SINGLETON_VALUE_Offset.value();
             }
+
             return new ListDestinationsRequest(
-                includeDeleted,
-                limit,
-                offset,
+                includeDeleted, limit, offset,
                 workspaceIds);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeDeleted =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceOracleEnterpriseUpdateMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceOracleEnterpriseUpdateMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceOracleEnterpriseUpdateMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceOracleEnterpriseUpdateMethod {
 
     public static SourceOracleEnterpriseUpdateMethod of(SourceOracleEnterpriseScanChangesWithUserDefinedCursor value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterpriseScanChangesWithUserDefinedCursor>(){}));
+        return new SourceOracleEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceOracleEnterpriseUpdateMethod of(SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC value) {
         Utils.checkNotNull(value, "value");
-        return new SourceOracleEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC>(){}));
+        return new SourceOracleEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceOracleEnterpriseUpdateMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceOracleEnterpriseUpdateMethod {
             return false;
         }
         SourceOracleEnterpriseUpdateMethod other = (SourceOracleEnterpriseUpdateMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceOracleEnterpriseUpdateMethod {
 
         public _Deserializer() {
             super(SourceOracleEnterpriseUpdateMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceOracleEnterpriseUpdateMethod {
         return Utils.toString(SourceOracleEnterpriseUpdateMethod.class,
                 "value", value);
     }
- 
+
 }
 

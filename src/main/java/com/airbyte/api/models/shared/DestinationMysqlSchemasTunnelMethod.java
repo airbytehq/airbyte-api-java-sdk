@@ -19,7 +19,7 @@ public enum DestinationMysqlSchemasTunnelMethod {
     @JsonValue
     private final String value;
 
-    private DestinationMysqlSchemasTunnelMethod(String value) {
+    DestinationMysqlSchemasTunnelMethod(String value) {
         this.value = value;
     }
     

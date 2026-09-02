@@ -14,13 +14,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOutbrainAmplify {
 
+public class SourceOutbrainAmplify {
     /**
-     * The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The definition of conversion count in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("conversion_count")
@@ -47,11 +48,14 @@ public class SourceOutbrainAmplify {
     private Optional<? extends GranularityForGeoLocationRegion> geoLocationBreakdown;
 
     /**
-     * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The granularity used for periodic data in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("report_granularity")
     private Optional<? extends GranularityForPeriodicReports> reportGranularity;
+
 
     @JsonProperty("sourceType")
     private OutbrainAmplify sourceType;
@@ -88,11 +92,14 @@ public class SourceOutbrainAmplify {
     public SourceOutbrainAmplify(
             SourceOutbrainAmplifyAuthenticationMethod credentials,
             String startDate) {
-        this(Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), startDate);
+        this(Optional.empty(), credentials, Optional.empty(),
+            Optional.empty(), Optional.empty(), startDate);
     }
 
     /**
-     * The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The definition of conversion count in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -126,7 +133,9 @@ public class SourceOutbrainAmplify {
     }
 
     /**
-     * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The granularity used for periodic data in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -147,12 +156,15 @@ public class SourceOutbrainAmplify {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The definition of conversion count in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     public SourceOutbrainAmplify withConversionCount(DefinitionOfConversionCountInReports conversionCount) {
         Utils.checkNotNull(conversionCount, "conversionCount");
@@ -160,8 +172,11 @@ public class SourceOutbrainAmplify {
         return this;
     }
 
+
     /**
-     * The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The definition of conversion count in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     public SourceOutbrainAmplify withConversionCount(Optional<? extends DefinitionOfConversionCountInReports> conversionCount) {
         Utils.checkNotNull(conversionCount, "conversionCount");
@@ -187,6 +202,7 @@ public class SourceOutbrainAmplify {
         return this;
     }
 
+
     /**
      * Date in the format YYYY-MM-DD.
      */
@@ -205,6 +221,7 @@ public class SourceOutbrainAmplify {
         return this;
     }
 
+
     /**
      * The granularity used for geo location data in reports.
      */
@@ -215,7 +232,9 @@ public class SourceOutbrainAmplify {
     }
 
     /**
-     * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The granularity used for periodic data in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     public SourceOutbrainAmplify withReportGranularity(GranularityForPeriodicReports reportGranularity) {
         Utils.checkNotNull(reportGranularity, "reportGranularity");
@@ -223,8 +242,11 @@ public class SourceOutbrainAmplify {
         return this;
     }
 
+
     /**
-     * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+     * The granularity used for periodic data in reports. See <a
+     * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+     * docs</a>.
      */
     public SourceOutbrainAmplify withReportGranularity(Optional<? extends GranularityForPeriodicReports> reportGranularity) {
         Utils.checkNotNull(reportGranularity, "reportGranularity");
@@ -241,7 +263,6 @@ public class SourceOutbrainAmplify {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -252,24 +273,20 @@ public class SourceOutbrainAmplify {
         }
         SourceOutbrainAmplify other = (SourceOutbrainAmplify) o;
         return 
-            Objects.deepEquals(this.conversionCount, other.conversionCount) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.geoLocationBreakdown, other.geoLocationBreakdown) &&
-            Objects.deepEquals(this.reportGranularity, other.reportGranularity) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.conversionCount, other.conversionCount) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.geoLocationBreakdown, other.geoLocationBreakdown) &&
+            Utils.enhancedDeepEquals(this.reportGranularity, other.reportGranularity) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            conversionCount,
-            credentials,
-            endDate,
-            geoLocationBreakdown,
-            reportGranularity,
-            sourceType,
+        return Utils.enhancedHash(
+            conversionCount, credentials, endDate,
+            geoLocationBreakdown, reportGranularity, sourceType,
             startDate);
     }
     
@@ -284,27 +301,31 @@ public class SourceOutbrainAmplify {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DefinitionOfConversionCountInReports> conversionCount = Optional.empty();
- 
+
         private SourceOutbrainAmplifyAuthenticationMethod credentials;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<? extends GranularityForGeoLocationRegion> geoLocationBreakdown = Optional.empty();
- 
+
         private Optional<? extends GranularityForPeriodicReports> reportGranularity = Optional.empty();
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+         * The definition of conversion count in reports. See <a
+         * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+         * docs</a>.
          */
         public Builder conversionCount(DefinitionOfConversionCountInReports conversionCount) {
             Utils.checkNotNull(conversionCount, "conversionCount");
@@ -313,13 +334,16 @@ public class SourceOutbrainAmplify {
         }
 
         /**
-         * The definition of conversion count in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+         * The definition of conversion count in reports. See <a
+         * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+         * docs</a>.
          */
         public Builder conversionCount(Optional<? extends DefinitionOfConversionCountInReports> conversionCount) {
             Utils.checkNotNull(conversionCount, "conversionCount");
             this.conversionCount = conversionCount;
             return this;
         }
+
 
         /**
          * Credentials for making authenticated requests requires either username/password or access_token.
@@ -329,6 +353,7 @@ public class SourceOutbrainAmplify {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Date in the format YYYY-MM-DD.
@@ -348,6 +373,7 @@ public class SourceOutbrainAmplify {
             return this;
         }
 
+
         /**
          * The granularity used for geo location data in reports.
          */
@@ -366,8 +392,11 @@ public class SourceOutbrainAmplify {
             return this;
         }
 
+
         /**
-         * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+         * The granularity used for periodic data in reports. See <a
+         * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+         * docs</a>.
          */
         public Builder reportGranularity(GranularityForPeriodicReports reportGranularity) {
             Utils.checkNotNull(reportGranularity, "reportGranularity");
@@ -376,13 +405,16 @@ public class SourceOutbrainAmplify {
         }
 
         /**
-         * The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+         * The granularity used for periodic data in reports. See <a
+         * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+         * docs</a>.
          */
         public Builder reportGranularity(Optional<? extends GranularityForPeriodicReports> reportGranularity) {
             Utils.checkNotNull(reportGranularity, "reportGranularity");
             this.reportGranularity = reportGranularity;
             return this;
         }
+
 
         /**
          * Date in the format YYYY-MM-DD eg. 2017-01-25. Any data before this date will not be replicated.
@@ -392,16 +424,14 @@ public class SourceOutbrainAmplify {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceOutbrainAmplify build() {
+
             return new SourceOutbrainAmplify(
-                conversionCount,
-                credentials,
-                endDate,
-                geoLocationBreakdown,
-                reportGranularity,
-                startDate);
+                conversionCount, credentials, endDate,
+                geoLocationBreakdown, reportGranularity, startDate);
         }
+
 
         private static final LazySingletonValue<OutbrainAmplify> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

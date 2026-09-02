@@ -14,7 +14,7 @@ public enum YandexMetrica {
     @JsonValue
     private final String value;
 
-    private YandexMetrica(String value) {
+    YandexMetrica(String value) {
         this.value = value;
     }
     

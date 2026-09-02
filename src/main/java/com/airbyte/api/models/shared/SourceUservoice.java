@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceUservoice {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Uservoice sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("subdomain")
     private String subdomain;
@@ -62,9 +65,10 @@ public class SourceUservoice {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceUservoice withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -84,7 +88,6 @@ public class SourceUservoice {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,18 +98,16 @@ public class SourceUservoice {
         }
         SourceUservoice other = (SourceUservoice) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate,
             subdomain);
     }
     
@@ -118,18 +119,20 @@ public class SourceUservoice {
                 "startDate", startDate,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -137,24 +140,26 @@ public class SourceUservoice {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder subdomain(String subdomain) {
             Utils.checkNotNull(subdomain, "subdomain");
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceUservoice build() {
+
             return new SourceUservoice(
-                apiKey,
-                startDate,
-                subdomain);
+                apiKey, startDate, subdomain);
         }
+
 
         private static final LazySingletonValue<Uservoice> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

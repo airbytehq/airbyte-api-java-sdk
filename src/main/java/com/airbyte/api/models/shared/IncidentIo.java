@@ -14,7 +14,7 @@ public enum IncidentIo {
     @JsonValue
     private final String value;
 
-    private IncidentIo(String value) {
+    IncidentIo(String value) {
         this.value = value;
     }
     

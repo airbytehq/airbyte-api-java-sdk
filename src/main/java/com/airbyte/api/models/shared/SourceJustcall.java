@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceJustcall {
 
     @JsonProperty("api_key_2")
     private String apiKey2;
 
+
     @JsonProperty("sourceType")
     private Justcall sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -51,9 +53,10 @@ public class SourceJustcall {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceJustcall withApiKey2(String apiKey2) {
         Utils.checkNotNull(apiKey2, "apiKey2");
@@ -67,7 +70,6 @@ public class SourceJustcall {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,17 +80,15 @@ public class SourceJustcall {
         }
         SourceJustcall other = (SourceJustcall) o;
         return 
-            Objects.deepEquals(this.apiKey2, other.apiKey2) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey2, other.apiKey2) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey2,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey2, sourceType, startDate);
     }
     
     @Override
@@ -98,16 +98,18 @@ public class SourceJustcall {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey2;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey2(String apiKey2) {
             Utils.checkNotNull(apiKey2, "apiKey2");
@@ -115,17 +117,19 @@ public class SourceJustcall {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceJustcall build() {
+
             return new SourceJustcall(
-                apiKey2,
-                startDate);
+                apiKey2, startDate);
         }
+
 
         private static final LazySingletonValue<Justcall> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

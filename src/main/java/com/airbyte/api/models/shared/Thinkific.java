@@ -14,7 +14,7 @@ public enum Thinkific {
     @JsonValue
     private final String value;
 
-    private Thinkific(String value) {
+    Thinkific(String value) {
         this.value = value;
     }
     

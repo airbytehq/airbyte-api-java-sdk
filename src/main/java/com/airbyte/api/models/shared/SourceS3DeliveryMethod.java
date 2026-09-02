@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceS3DeliveryMethod._Deserializer.class)
 public class SourceS3DeliveryMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceS3DeliveryMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceS3DeliveryMethod {
 
     public static SourceS3DeliveryMethod of(SourceS3ReplicateRecords value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3ReplicateRecords>(){}));
+        return new SourceS3DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceS3DeliveryMethod of(SourceS3CopyRawFiles value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3CopyRawFiles>(){}));
+        return new SourceS3DeliveryMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceS3DeliveryMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceS3DeliveryMethod {
             return false;
         }
         SourceS3DeliveryMethod other = (SourceS3DeliveryMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class SourceS3DeliveryMethod {
 
         public _Deserializer() {
             super(SourceS3DeliveryMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3CopyRawFiles>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceS3ReplicateRecords>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3ReplicateRecords>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceS3CopyRawFiles>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class SourceS3DeliveryMethod {
         return Utils.toString(SourceS3DeliveryMethod.class,
                 "value", value);
     }
- 
+
 }
 

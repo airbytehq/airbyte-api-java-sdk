@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceFileSchemasProviderStorageProvider8Storage
  * 
- * <p>WARNING: Note that the local storage URL available for reading must start with the local mount "/local/" at the moment until we implement more advanced docker mounting options.
+ * <p>WARNING: Note that the local storage URL available for reading must start with the local mount
+ * "/local/" at the moment until we implement more advanced docker mounting options.
  */
 public enum SourceFileSchemasProviderStorageProvider8Storage {
     LOCAL("local");
@@ -19,7 +20,7 @@ public enum SourceFileSchemasProviderStorageProvider8Storage {
     @JsonValue
     private final String value;
 
-    private SourceFileSchemasProviderStorageProvider8Storage(String value) {
+    SourceFileSchemasProviderStorageProvider8Storage(String value) {
         this.value = value;
     }
     

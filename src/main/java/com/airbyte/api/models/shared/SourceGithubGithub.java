@@ -14,7 +14,7 @@ public enum SourceGithubGithub {
     @JsonValue
     private final String value;
 
-    private SourceGithubGithub(String value) {
+    SourceGithubGithub(String value) {
         this.value = value;
     }
     

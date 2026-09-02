@@ -1,5 +1,13 @@
 # DestinationOracleEncryptionMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationOracleEncryptionMethod;
+
+DestinationOracleEncryptionMethod value = DestinationOracleEncryptionMethod.CLIENT_NNE;
+```
+
 
 ## Values
 

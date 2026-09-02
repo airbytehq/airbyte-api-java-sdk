@@ -2,6 +2,14 @@
 
 The compression algorithm used to compress data pages.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationS3SchemasCompressionCodec;
+
+DestinationS3SchemasCompressionCodec value = DestinationS3SchemasCompressionCodec.UNCOMPRESSED;
+```
+
 
 ## Values
 

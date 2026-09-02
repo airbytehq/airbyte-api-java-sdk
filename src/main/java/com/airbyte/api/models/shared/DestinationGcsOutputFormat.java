@@ -14,18 +14,25 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationGcsOutputFormat
  * 
- * <p>Output data format. One of the following formats must be selected - &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro"&gt;AVRO&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas"&gt;PARQUET&lt;/a&gt; format, &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table"&gt;CSV&lt;/a&gt; format, or &lt;a href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table"&gt;JSONL&lt;/a&gt; format.
+ * <p>Output data format. One of the following formats must be selected - <a
+ * href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-avro#advantages_of_avro">AVRO</a>
+ * format, <a
+ * href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet#parquet_schemas">PARQUET</a>
+ * format, <a
+ * href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table">CSV</a>
+ * format, or <a
+ * href="https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-json#loading_json_data_into_a_new_table">JSONL</a>
+ * format.
  */
 @JsonDeserialize(using = DestinationGcsOutputFormat._Deserializer.class)
 public class DestinationGcsOutputFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationGcsOutputFormat(TypedObject value) {
         this.value = value;
@@ -33,22 +40,22 @@ public class DestinationGcsOutputFormat {
 
     public static DestinationGcsOutputFormat of(AvroApacheAvro value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AvroApacheAvro>(){}));
+        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationGcsOutputFormat of(DestinationGcsCSVCommaSeparatedValues value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcsCSVCommaSeparatedValues>(){}));
+        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationGcsOutputFormat of(DestinationGcsJSONLinesNewlineDelimitedJSON value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcsJSONLinesNewlineDelimitedJSON>(){}));
+        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationGcsOutputFormat of(DestinationGcsParquetColumnarStorage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcsParquetColumnarStorage>(){}));
+        return new DestinationGcsOutputFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -73,7 +80,7 @@ public class DestinationGcsOutputFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -84,12 +91,12 @@ public class DestinationGcsOutputFormat {
             return false;
         }
         DestinationGcsOutputFormat other = (DestinationGcsOutputFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -97,10 +104,10 @@ public class DestinationGcsOutputFormat {
 
         public _Deserializer() {
             super(DestinationGcsOutputFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsParquetColumnarStorage>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<AvroApacheAvro>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationGcsCSVCommaSeparatedValues>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationGcsJSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<AvroApacheAvro>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsParquetColumnarStorage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -109,6 +116,6 @@ public class DestinationGcsOutputFormat {
         return Utils.toString(DestinationGcsOutputFormat.class,
                 "value", value);
     }
- 
+
 }
 

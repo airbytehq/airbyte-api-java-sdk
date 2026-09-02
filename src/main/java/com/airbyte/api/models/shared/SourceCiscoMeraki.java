@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceCiscoMeraki {
-
     /**
-     * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right corner, and generating the API key. Save this key securely as it represents your admin credentials.
+     * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at
+     * https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right
+     * corner, and generating the API key. Save this key securely as it represents your admin credentials.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private CiscoMeraki sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +43,9 @@ public class SourceCiscoMeraki {
     }
 
     /**
-     * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right corner, and generating the API key. Save this key securely as it represents your admin credentials.
+     * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at
+     * https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right
+     * corner, and generating the API key. Save this key securely as it represents your admin credentials.
      */
     @JsonIgnore
     public String apiKey() {
@@ -57,12 +62,15 @@ public class SourceCiscoMeraki {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right corner, and generating the API key. Save this key securely as it represents your admin credentials.
+     * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at
+     * https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right
+     * corner, and generating the API key. Save this key securely as it represents your admin credentials.
      */
     public SourceCiscoMeraki withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -76,7 +84,6 @@ public class SourceCiscoMeraki {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +94,15 @@ public class SourceCiscoMeraki {
         }
         SourceCiscoMeraki other = (SourceCiscoMeraki) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +112,23 @@ public class SourceCiscoMeraki {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right corner, and generating the API key. Save this key securely as it represents your admin credentials.
+         * Your Meraki API key. Obtain it by logging into your Meraki Dashboard at
+         * https://dashboard.meraki.com/, navigating to 'My Profile' via the avatar icon in the top right
+         * corner, and generating the API key. Save this key securely as it represents your admin credentials.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -127,17 +136,19 @@ public class SourceCiscoMeraki {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCiscoMeraki build() {
+
             return new SourceCiscoMeraki(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<CiscoMeraki> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

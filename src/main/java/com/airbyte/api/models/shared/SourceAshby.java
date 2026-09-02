@@ -11,21 +11,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceAshby {
-
     /**
-     * The Ashby API Key, see &lt;a href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
+     * The Ashby API Key, see &lt;a
+     * href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Ashby sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private String startDate;
@@ -42,7 +44,8 @@ public class SourceAshby {
     }
 
     /**
-     * The Ashby API Key, see &lt;a href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
+     * The Ashby API Key, see &lt;a
+     * href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
      */
     @JsonIgnore
     public String apiKey() {
@@ -55,19 +58,22 @@ public class SourceAshby {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public String startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Ashby API Key, see &lt;a href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
+     * The Ashby API Key, see &lt;a
+     * href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
      */
     public SourceAshby withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -76,7 +82,8 @@ public class SourceAshby {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceAshby withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -84,7 +91,6 @@ public class SourceAshby {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +101,15 @@ public class SourceAshby {
         }
         SourceAshby other = (SourceAshby) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -115,19 +119,22 @@ public class SourceAshby {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Ashby API Key, see &lt;a href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
+         * The Ashby API Key, see &lt;a
+         * href=\"https://developers.ashbyhq.com/reference/authentication\"&gt;doc&lt;/a&gt; here.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -135,20 +142,23 @@ public class SourceAshby {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAshby build() {
+
             return new SourceAshby(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Ashby> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

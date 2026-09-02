@@ -14,7 +14,7 @@ public enum SourceHubspotHubspot {
     @JsonValue
     private final String value;
 
-    private SourceHubspotHubspot(String value) {
+    SourceHubspotHubspot(String value) {
         this.value = value;
     }
     

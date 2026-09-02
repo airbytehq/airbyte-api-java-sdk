@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * PivotCategory
  * 
- * <p>Choose a category to pivot your analytics report around. This selection will organize your data based on the chosen attribute, allowing you to analyze trends and performance from different perspectives.
+ * <p>Choose a category to pivot your analytics report around. This selection will organize your data
+ * based on the chosen attribute, allowing you to analyze trends and performance from different
+ * perspectives.
  */
 public enum PivotCategory {
     COMPANY("COMPANY"),
@@ -39,7 +41,7 @@ public enum PivotCategory {
     @JsonValue
     private final String value;
 
-    private PivotCategory(String value) {
+    PivotCategory(String value) {
         this.value = value;
     }
     

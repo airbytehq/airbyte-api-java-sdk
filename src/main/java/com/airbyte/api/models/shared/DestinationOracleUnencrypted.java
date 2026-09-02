@@ -14,7 +14,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -30,7 +29,6 @@ public class DestinationOracleUnencrypted {
 
     @JsonCreator
     public DestinationOracleUnencrypted() {
-        
         this.encryptionMethod = Builder._SINGLETON_VALUE_EncryptionMethod.value();
     }
 
@@ -40,11 +38,11 @@ public class DestinationOracleUnencrypted {
         return (Optional<EncryptionMethod>) encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -55,12 +53,12 @@ public class DestinationOracleUnencrypted {
         }
         DestinationOracleUnencrypted other = (DestinationOracleUnencrypted) o;
         return 
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             encryptionMethod);
     }
     
@@ -69,17 +67,20 @@ public class DestinationOracleUnencrypted {
         return Utils.toString(DestinationOracleUnencrypted.class,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public DestinationOracleUnencrypted build() {
+
             return new DestinationOracleUnencrypted(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends EncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

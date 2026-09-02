@@ -14,7 +14,7 @@ public enum DestinationS3SchemasFormatType {
     @JsonValue
     private final String value;
 
-    private DestinationS3SchemasFormatType(String value) {
+    DestinationS3SchemasFormatType(String value) {
         this.value = value;
     }
     

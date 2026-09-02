@@ -23,7 +23,7 @@ public enum ViewAttributionWindow {
     @JsonValue
     private final String value;
 
-    private ViewAttributionWindow(String value) {
+    ViewAttributionWindow(String value) {
         this.value = value;
     }
     

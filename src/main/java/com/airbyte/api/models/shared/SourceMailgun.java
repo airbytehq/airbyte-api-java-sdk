@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMailgun {
 
+public class SourceMailgun {
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
      */
@@ -33,11 +32,13 @@ public class SourceMailgun {
     @JsonProperty("private_key")
     private String privateKey;
 
+
     @JsonProperty("sourceType")
     private Mailgun sourceType;
 
     /**
-     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
+     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be
+     * replicated. If omitted, defaults to 3 days ago.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -85,16 +86,18 @@ public class SourceMailgun {
     }
 
     /**
-     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
+     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be
+     * replicated. If omitted, defaults to 3 days ago.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
@@ -104,6 +107,7 @@ public class SourceMailgun {
         this.domainRegion = Optional.ofNullable(domainRegion);
         return this;
     }
+
 
     /**
      * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
@@ -124,7 +128,8 @@ public class SourceMailgun {
     }
 
     /**
-     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
+     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be
+     * replicated. If omitted, defaults to 3 days ago.
      */
     public SourceMailgun withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -132,8 +137,10 @@ public class SourceMailgun {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
+     * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be
+     * replicated. If omitted, defaults to 3 days ago.
      */
     public SourceMailgun withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -141,7 +148,6 @@ public class SourceMailgun {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -152,18 +158,16 @@ public class SourceMailgun {
         }
         SourceMailgun other = (SourceMailgun) o;
         return 
-            Objects.deepEquals(this.domainRegion, other.domainRegion) &&
-            Objects.deepEquals(this.privateKey, other.privateKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.domainRegion, other.domainRegion) &&
+            Utils.enhancedDeepEquals(this.privateKey, other.privateKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            domainRegion,
-            privateKey,
-            sourceType,
+        return Utils.enhancedHash(
+            domainRegion, privateKey, sourceType,
             startDate);
     }
     
@@ -175,18 +179,20 @@ public class SourceMailgun {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DomainRegionCode> domainRegion;
- 
+
         private String privateKey;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Domain region code. 'EU' or 'US' are possible values. The default is 'US'.
@@ -206,6 +212,7 @@ public class SourceMailgun {
             return this;
         }
 
+
         /**
          * Primary account API key to access your Mailgun data.
          */
@@ -215,8 +222,10 @@ public class SourceMailgun {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
+         * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be
+         * replicated. If omitted, defaults to 3 days ago.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -225,23 +234,24 @@ public class SourceMailgun {
         }
 
         /**
-         * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be replicated. If omitted, defaults to 3 days ago.
+         * UTC date and time in the format 2020-10-01 00:00:00. Any data before this date will not be
+         * replicated. If omitted, defaults to 3 days ago.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMailgun build() {
             if (domainRegion == null) {
                 domainRegion = _SINGLETON_VALUE_DomainRegion.value();
             }
+
             return new SourceMailgun(
-                domainRegion,
-                privateKey,
-                startDate);
+                domainRegion, privateKey, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DomainRegionCode>> _SINGLETON_VALUE_DomainRegion =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum PexelsApi {
     @JsonValue
     private final String value;
 
-    private PexelsApi(String value) {
+    PexelsApi(String value) {
         this.value = value;
     }
     

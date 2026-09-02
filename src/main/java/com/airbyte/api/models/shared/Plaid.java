@@ -14,7 +14,7 @@ public enum Plaid {
     @JsonValue
     private final String value;
 
-    private Plaid(String value) {
+    Plaid(String value) {
         this.value = value;
     }
     

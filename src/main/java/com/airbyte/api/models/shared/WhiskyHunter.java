@@ -14,7 +14,7 @@ public enum WhiskyHunter {
     @JsonValue
     private final String value;
 
-    private WhiskyHunter(String value) {
+    WhiskyHunter(String value) {
         this.value = value;
     }
     

@@ -8,18 +8,13 @@ import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 
-/**
- * TunnelMethod
- * 
- * <p>No ssh tunnel needed to connect to database
- */
 public enum TunnelMethod {
     NO_TUNNEL("NO_TUNNEL");
 
     @JsonValue
     private final String value;
 
-    private TunnelMethod(String value) {
+    TunnelMethod(String value) {
         this.value = value;
     }
     

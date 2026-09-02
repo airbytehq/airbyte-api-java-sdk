@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceTypeformAuthorizationMethod._Deserializer.class)
 public class SourceTypeformAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceTypeformAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceTypeformAuthorizationMethod {
 
     public static SourceTypeformAuthorizationMethod of(SourceTypeformOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceTypeformAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTypeformOAuth20>(){}));
+        return new SourceTypeformAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceTypeformAuthorizationMethod of(SourceTypeformPrivateToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceTypeformAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTypeformPrivateToken>(){}));
+        return new SourceTypeformAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceTypeformAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceTypeformAuthorizationMethod {
             return false;
         }
         SourceTypeformAuthorizationMethod other = (SourceTypeformAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceTypeformAuthorizationMethod {
         return Utils.toString(SourceTypeformAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

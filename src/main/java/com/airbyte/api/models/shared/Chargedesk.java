@@ -14,7 +14,7 @@ public enum Chargedesk {
     @JsonValue
     private final String value;
 
-    private Chargedesk(String value) {
+    Chargedesk(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceOracleConnectionType {
     @JsonValue
     private final String value;
 
-    private SourceOracleConnectionType(String value) {
+    SourceOracleConnectionType(String value) {
         this.value = value;
     }
     

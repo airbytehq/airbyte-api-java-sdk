@@ -11,12 +11,13 @@ import java.util.Optional;
 public enum ConnectionStatusEnum {
     ACTIVE("active"),
     INACTIVE("inactive"),
-    DEPRECATED("deprecated");
+    DEPRECATED("deprecated"),
+    LOCKED("locked");
 
     @JsonValue
     private final String value;
 
-    private ConnectionStatusEnum(String value) {
+    ConnectionStatusEnum(String value) {
         this.value = value;
     }
     

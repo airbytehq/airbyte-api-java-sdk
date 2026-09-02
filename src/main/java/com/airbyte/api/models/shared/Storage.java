@@ -14,7 +14,7 @@ public enum Storage {
     @JsonValue
     private final String value;
 
-    private Storage(String value) {
+    Storage(String value) {
         this.value = value;
     }
     

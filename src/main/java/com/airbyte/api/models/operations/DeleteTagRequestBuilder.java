@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.DeleteTag;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class DeleteTagRequestBuilder {
 
     private DeleteTagRequest request;
-    private final SDKMethodInterfaces.MethodCallDeleteTag sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public DeleteTagRequestBuilder(SDKMethodInterfaces.MethodCallDeleteTag sdk) {
-        this.sdk = sdk;
+    public DeleteTagRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public DeleteTagRequestBuilder request(DeleteTagRequest request) {
@@ -21,9 +26,11 @@ public class DeleteTagRequestBuilder {
         return this;
     }
 
-    public DeleteTagResponse call() throws Exception {
+    public DeleteTagResponse call() {
+        
+        RequestOperation<DeleteTagRequest, DeleteTagResponse> operation
+              = new DeleteTag.Sync(sdkConfiguration, _headers);
 
-        return sdk.deleteTag(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

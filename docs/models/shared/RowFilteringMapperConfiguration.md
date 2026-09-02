@@ -1,0 +1,8 @@
+# RowFilteringMapperConfiguration
+
+
+## Fields
+
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `conditions`                                                          | [RowFilteringOperation](../../models/shared/RowFilteringOperation.md) | :heavy_check_mark:                                                    | N/A                                                                   |

@@ -2,6 +2,14 @@
 
 Select the AWS Region.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.AWSRegion;
+
+AWSRegion value = AWSRegion.AE;
+```
+
 
 ## Values
 

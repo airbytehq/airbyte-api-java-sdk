@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class GetPermissionRequest {
 
@@ -28,9 +28,10 @@ public class GetPermissionRequest {
         return permissionId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public GetPermissionRequest withPermissionId(String permissionId) {
         Utils.checkNotNull(permissionId, "permissionId");
@@ -38,7 +39,6 @@ public class GetPermissionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class GetPermissionRequest {
         }
         GetPermissionRequest other = (GetPermissionRequest) o;
         return 
-            Objects.deepEquals(this.permissionId, other.permissionId);
+            Utils.enhancedDeepEquals(this.permissionId, other.permissionId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             permissionId);
     }
     
@@ -63,24 +63,28 @@ public class GetPermissionRequest {
         return Utils.toString(GetPermissionRequest.class,
                 "permissionId", permissionId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String permissionId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder permissionId(String permissionId) {
             Utils.checkNotNull(permissionId, "permissionId");
             this.permissionId = permissionId;
             return this;
         }
-        
+
         public GetPermissionRequest build() {
+
             return new GetPermissionRequest(
                 permissionId);
         }
+
     }
 }

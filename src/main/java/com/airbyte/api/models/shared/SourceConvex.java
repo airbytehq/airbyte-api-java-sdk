@@ -11,18 +11,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceConvex {
-
     /**
      * API access key used to retrieve data from Convex.
      */
     @JsonProperty("access_key")
     private String accessKey;
 
+
     @JsonProperty("deployment_url")
     private String deploymentUrl;
+
 
     @JsonProperty("sourceType")
     private SourceConvexConvex sourceType;
@@ -56,9 +57,10 @@ public class SourceConvex {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API access key used to retrieve data from Convex.
@@ -75,7 +77,6 @@ public class SourceConvex {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceConvex {
         }
         SourceConvex other = (SourceConvex) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.deploymentUrl, other.deploymentUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.deploymentUrl, other.deploymentUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            deploymentUrl,
-            sourceType);
+        return Utils.enhancedHash(
+            accessKey, deploymentUrl, sourceType);
     }
     
     @Override
@@ -106,16 +105,18 @@ public class SourceConvex {
                 "deploymentUrl", deploymentUrl,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private String deploymentUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API access key used to retrieve data from Convex.
@@ -126,17 +127,19 @@ public class SourceConvex {
             return this;
         }
 
+
         public Builder deploymentUrl(String deploymentUrl) {
             Utils.checkNotNull(deploymentUrl, "deploymentUrl");
             this.deploymentUrl = deploymentUrl;
             return this;
         }
-        
+
         public SourceConvex build() {
+
             return new SourceConvex(
-                accessKey,
-                deploymentUrl);
+                accessKey, deploymentUrl);
         }
+
 
         private static final LazySingletonValue<SourceConvexConvex> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

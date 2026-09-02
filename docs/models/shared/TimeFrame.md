@@ -2,6 +2,14 @@
 
 For example 1min, 5min, 15min, 30min, 1hour, 4hour
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.TimeFrame;
+
+TimeFrame value = TimeFrame.ONEMIN;
+```
+
 
 ## Values
 

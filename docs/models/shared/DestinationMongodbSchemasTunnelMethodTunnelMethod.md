@@ -2,6 +2,14 @@
 
 Connect through a jump server tunnel host using username and password authentication
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationMongodbSchemasTunnelMethodTunnelMethod;
+
+DestinationMongodbSchemasTunnelMethodTunnelMethod value = DestinationMongodbSchemasTunnelMethodTunnelMethod.SSH_PASSWORD_AUTH;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum SourceAmazonAdsAuthType {
     @JsonValue
     private final String value;
 
-    private SourceAmazonAdsAuthType(String value) {
+    SourceAmazonAdsAuthType(String value) {
         this.value = value;
     }
     

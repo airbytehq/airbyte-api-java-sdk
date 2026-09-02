@@ -14,7 +14,7 @@ public enum DestinationS3Codec {
     @JsonValue
     private final String value;
 
-    private DestinationS3Codec(String value) {
+    DestinationS3Codec(String value) {
         this.value = value;
     }
     

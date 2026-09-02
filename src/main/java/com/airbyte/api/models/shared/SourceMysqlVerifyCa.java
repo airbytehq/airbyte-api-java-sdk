@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -39,25 +38,29 @@ public class SourceMysqlVerifyCa {
     private String caCertificate;
 
     /**
-     * Client certificate (this is not a required field, but if you want to use it, you will need to add the Client key as well)
+     * Client certificate (this is not a required field, but if you want to use it, you will need to add
+     * the Client key as well)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_certificate")
     private Optional<String> clientCertificate;
 
     /**
-     * Client key (this is not a required field, but if you want to use it, you will need to add the Client certificate as well)
+     * Client key (this is not a required field, but if you want to use it, you will need to add the Client
+     * certificate as well)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key")
     private Optional<String> clientKey;
 
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_key_password")
     private Optional<String> clientKeyPassword;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -85,7 +88,8 @@ public class SourceMysqlVerifyCa {
     
     public SourceMysqlVerifyCa(
             String caCertificate) {
-        this(caCertificate, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(caCertificate, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     @JsonAnyGetter
@@ -102,7 +106,8 @@ public class SourceMysqlVerifyCa {
     }
 
     /**
-     * Client certificate (this is not a required field, but if you want to use it, you will need to add the Client key as well)
+     * Client certificate (this is not a required field, but if you want to use it, you will need to add
+     * the Client key as well)
      */
     @JsonIgnore
     public Optional<String> clientCertificate() {
@@ -110,7 +115,8 @@ public class SourceMysqlVerifyCa {
     }
 
     /**
-     * Client key (this is not a required field, but if you want to use it, you will need to add the Client certificate as well)
+     * Client key (this is not a required field, but if you want to use it, you will need to add the Client
+     * certificate as well)
      */
     @JsonIgnore
     public Optional<String> clientKey() {
@@ -118,7 +124,8 @@ public class SourceMysqlVerifyCa {
     }
 
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     @JsonIgnore
     public Optional<String> clientKeyPassword() {
@@ -131,9 +138,10 @@ public class SourceMysqlVerifyCa {
         return (Optional<SourceMysqlSchemasSslModeMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceMysqlVerifyCa withAdditionalProperty(String key, Object value) {
@@ -141,8 +149,7 @@ public class SourceMysqlVerifyCa {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceMysqlVerifyCa withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -159,7 +166,8 @@ public class SourceMysqlVerifyCa {
     }
 
     /**
-     * Client certificate (this is not a required field, but if you want to use it, you will need to add the Client key as well)
+     * Client certificate (this is not a required field, but if you want to use it, you will need to add
+     * the Client key as well)
      */
     public SourceMysqlVerifyCa withClientCertificate(String clientCertificate) {
         Utils.checkNotNull(clientCertificate, "clientCertificate");
@@ -167,8 +175,10 @@ public class SourceMysqlVerifyCa {
         return this;
     }
 
+
     /**
-     * Client certificate (this is not a required field, but if you want to use it, you will need to add the Client key as well)
+     * Client certificate (this is not a required field, but if you want to use it, you will need to add
+     * the Client key as well)
      */
     public SourceMysqlVerifyCa withClientCertificate(Optional<String> clientCertificate) {
         Utils.checkNotNull(clientCertificate, "clientCertificate");
@@ -177,7 +187,8 @@ public class SourceMysqlVerifyCa {
     }
 
     /**
-     * Client key (this is not a required field, but if you want to use it, you will need to add the Client certificate as well)
+     * Client key (this is not a required field, but if you want to use it, you will need to add the Client
+     * certificate as well)
      */
     public SourceMysqlVerifyCa withClientKey(String clientKey) {
         Utils.checkNotNull(clientKey, "clientKey");
@@ -185,8 +196,10 @@ public class SourceMysqlVerifyCa {
         return this;
     }
 
+
     /**
-     * Client key (this is not a required field, but if you want to use it, you will need to add the Client certificate as well)
+     * Client key (this is not a required field, but if you want to use it, you will need to add the Client
+     * certificate as well)
      */
     public SourceMysqlVerifyCa withClientKey(Optional<String> clientKey) {
         Utils.checkNotNull(clientKey, "clientKey");
@@ -195,7 +208,8 @@ public class SourceMysqlVerifyCa {
     }
 
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     public SourceMysqlVerifyCa withClientKeyPassword(String clientKeyPassword) {
         Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
@@ -203,8 +217,10 @@ public class SourceMysqlVerifyCa {
         return this;
     }
 
+
     /**
-     * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+     * Password for keystorage. This field is optional. If you do not add it - the password will be
+     * generated automatically.
      */
     public SourceMysqlVerifyCa withClientKeyPassword(Optional<String> clientKeyPassword) {
         Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
@@ -218,13 +234,13 @@ public class SourceMysqlVerifyCa {
         return this;
     }
 
+
     public SourceMysqlVerifyCa withMode(Optional<? extends SourceMysqlSchemasSslModeMode> mode) {
         Utils.checkNotNull(mode, "mode");
         this.mode = mode;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -235,23 +251,19 @@ public class SourceMysqlVerifyCa {
         }
         SourceMysqlVerifyCa other = (SourceMysqlVerifyCa) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.caCertificate, other.caCertificate) &&
-            Objects.deepEquals(this.clientCertificate, other.clientCertificate) &&
-            Objects.deepEquals(this.clientKey, other.clientKey) &&
-            Objects.deepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.caCertificate, other.caCertificate) &&
+            Utils.enhancedDeepEquals(this.clientCertificate, other.clientCertificate) &&
+            Utils.enhancedDeepEquals(this.clientKey, other.clientKey) &&
+            Utils.enhancedDeepEquals(this.clientKeyPassword, other.clientKeyPassword) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            caCertificate,
-            clientCertificate,
-            clientKey,
-            clientKeyPassword,
-            mode);
+        return Utils.enhancedHash(
+            additionalProperties, caCertificate, clientCertificate,
+            clientKey, clientKeyPassword, mode);
     }
     
     @Override
@@ -264,21 +276,22 @@ public class SourceMysqlVerifyCa {
                 "clientKeyPassword", clientKeyPassword,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String caCertificate;
- 
+
         private Optional<String> clientCertificate = Optional.empty();
- 
+
         private Optional<String> clientKey = Optional.empty();
- 
+
         private Optional<String> clientKeyPassword = Optional.empty();
- 
+
         private Optional<? extends SourceMysqlSchemasSslModeMode> mode;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -299,6 +312,7 @@ public class SourceMysqlVerifyCa {
             return this;
         }
 
+
         /**
          * CA certificate
          */
@@ -308,8 +322,10 @@ public class SourceMysqlVerifyCa {
             return this;
         }
 
+
         /**
-         * Client certificate (this is not a required field, but if you want to use it, you will need to add the Client key as well)
+         * Client certificate (this is not a required field, but if you want to use it, you will need to add
+         * the Client key as well)
          */
         public Builder clientCertificate(String clientCertificate) {
             Utils.checkNotNull(clientCertificate, "clientCertificate");
@@ -318,7 +334,8 @@ public class SourceMysqlVerifyCa {
         }
 
         /**
-         * Client certificate (this is not a required field, but if you want to use it, you will need to add the Client key as well)
+         * Client certificate (this is not a required field, but if you want to use it, you will need to add
+         * the Client key as well)
          */
         public Builder clientCertificate(Optional<String> clientCertificate) {
             Utils.checkNotNull(clientCertificate, "clientCertificate");
@@ -326,8 +343,10 @@ public class SourceMysqlVerifyCa {
             return this;
         }
 
+
         /**
-         * Client key (this is not a required field, but if you want to use it, you will need to add the Client certificate as well)
+         * Client key (this is not a required field, but if you want to use it, you will need to add the Client
+         * certificate as well)
          */
         public Builder clientKey(String clientKey) {
             Utils.checkNotNull(clientKey, "clientKey");
@@ -336,7 +355,8 @@ public class SourceMysqlVerifyCa {
         }
 
         /**
-         * Client key (this is not a required field, but if you want to use it, you will need to add the Client certificate as well)
+         * Client key (this is not a required field, but if you want to use it, you will need to add the Client
+         * certificate as well)
          */
         public Builder clientKey(Optional<String> clientKey) {
             Utils.checkNotNull(clientKey, "clientKey");
@@ -344,8 +364,10 @@ public class SourceMysqlVerifyCa {
             return this;
         }
 
+
         /**
-         * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+         * Password for keystorage. This field is optional. If you do not add it - the password will be
+         * generated automatically.
          */
         public Builder clientKeyPassword(String clientKeyPassword) {
             Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
@@ -354,13 +376,15 @@ public class SourceMysqlVerifyCa {
         }
 
         /**
-         * Password for keystorage. This field is optional. If you do not add it - the password will be generated automatically.
+         * Password for keystorage. This field is optional. If you do not add it - the password will be
+         * generated automatically.
          */
         public Builder clientKeyPassword(Optional<String> clientKeyPassword) {
             Utils.checkNotNull(clientKeyPassword, "clientKeyPassword");
             this.clientKeyPassword = clientKeyPassword;
             return this;
         }
+
 
         public Builder mode(SourceMysqlSchemasSslModeMode mode) {
             Utils.checkNotNull(mode, "mode");
@@ -373,19 +397,18 @@ public class SourceMysqlVerifyCa {
             this.mode = mode;
             return this;
         }
-        
+
         public SourceMysqlVerifyCa build() {
             if (mode == null) {
                 mode = _SINGLETON_VALUE_Mode.value();
             }
+
             return new SourceMysqlVerifyCa(
-                caCertificate,
-                clientCertificate,
-                clientKey,
-                clientKeyPassword,
-                mode)
+                caCertificate, clientCertificate, clientKey,
+                clientKeyPassword, mode)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMysqlSchemasSslModeMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

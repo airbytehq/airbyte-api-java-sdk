@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,6 +24,7 @@ public class WebhookNotificationConfig {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("enabled")
     private Optional<Boolean> enabled;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("url")
@@ -54,15 +54,17 @@ public class WebhookNotificationConfig {
         return url;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public WebhookNotificationConfig withEnabled(boolean enabled) {
         Utils.checkNotNull(enabled, "enabled");
         this.enabled = Optional.ofNullable(enabled);
         return this;
     }
+
 
     public WebhookNotificationConfig withEnabled(Optional<Boolean> enabled) {
         Utils.checkNotNull(enabled, "enabled");
@@ -76,13 +78,13 @@ public class WebhookNotificationConfig {
         return this;
     }
 
+
     public WebhookNotificationConfig withUrl(Optional<String> url) {
         Utils.checkNotNull(url, "url");
         this.url = url;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -93,15 +95,14 @@ public class WebhookNotificationConfig {
         }
         WebhookNotificationConfig other = (WebhookNotificationConfig) o;
         return 
-            Objects.deepEquals(this.enabled, other.enabled) &&
-            Objects.deepEquals(this.url, other.url);
+            Utils.enhancedDeepEquals(this.enabled, other.enabled) &&
+            Utils.enhancedDeepEquals(this.url, other.url);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            enabled,
-            url);
+        return Utils.enhancedHash(
+            enabled, url);
     }
     
     @Override
@@ -110,16 +111,18 @@ public class WebhookNotificationConfig {
                 "enabled", enabled,
                 "url", url);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> enabled = Optional.empty();
- 
+
         private Optional<String> url = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder enabled(boolean enabled) {
             Utils.checkNotNull(enabled, "enabled");
@@ -133,6 +136,7 @@ public class WebhookNotificationConfig {
             return this;
         }
 
+
         public Builder url(String url) {
             Utils.checkNotNull(url, "url");
             this.url = Optional.ofNullable(url);
@@ -144,11 +148,12 @@ public class WebhookNotificationConfig {
             this.url = url;
             return this;
         }
-        
+
         public WebhookNotificationConfig build() {
+
             return new WebhookNotificationConfig(
-                enabled,
-                url);
+                enabled, url);
         }
+
     }
 }

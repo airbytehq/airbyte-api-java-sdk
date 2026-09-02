@@ -3,6 +3,14 @@
 The number of days of data for market chart.
 
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Days;
+
+Days value = Days.ONE;
+```
+
 
 ## Values
 

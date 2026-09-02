@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceInsightly {
 
@@ -23,7 +23,9 @@ public class SourceInsightly {
     private Insightly sourceType;
 
     /**
-     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
+     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z.
+     * All data generated after this date will be replicated. Note that it will be used only for
+     * incremental streams.
      */
     @JsonInclude(Include.ALWAYS)
     @JsonProperty("start_date")
@@ -57,7 +59,9 @@ public class SourceInsightly {
     }
 
     /**
-     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
+     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z.
+     * All data generated after this date will be replicated. Note that it will be used only for
+     * incremental streams.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
@@ -72,12 +76,15 @@ public class SourceInsightly {
         return token;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
+     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z.
+     * All data generated after this date will be replicated. Note that it will be used only for
+     * incremental streams.
      */
     public SourceInsightly withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -85,8 +92,11 @@ public class SourceInsightly {
         return this;
     }
 
+
     /**
-     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
+     * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z.
+     * All data generated after this date will be replicated. Note that it will be used only for
+     * incremental streams.
      */
     public SourceInsightly withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -103,6 +113,7 @@ public class SourceInsightly {
         return this;
     }
 
+
     /**
      * Your Insightly API token.
      */
@@ -112,7 +123,6 @@ public class SourceInsightly {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,17 +133,15 @@ public class SourceInsightly {
         }
         SourceInsightly other = (SourceInsightly) o;
         return 
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.token, other.token);
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.token, other.token);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourceType,
-            startDate,
-            token);
+        return Utils.enhancedHash(
+            sourceType, startDate, token);
     }
     
     @Override
@@ -143,19 +151,23 @@ public class SourceInsightly {
                 "startDate", startDate,
                 "token", token);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private Optional<String> token = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
+         * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z.
+         * All data generated after this date will be replicated. Note that it will be used only for
+         * incremental streams.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -164,13 +176,16 @@ public class SourceInsightly {
         }
 
         /**
-         * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z. All data generated after this date will be replicated. Note that it will be used only for incremental streams.
+         * The date from which you'd like to replicate data for Insightly in the format YYYY-MM-DDT00:00:00Z.
+         * All data generated after this date will be replicated. Note that it will be used only for
+         * incremental streams.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Your Insightly API token.
@@ -189,12 +204,13 @@ public class SourceInsightly {
             this.token = token;
             return this;
         }
-        
+
         public SourceInsightly build() {
+
             return new SourceInsightly(
-                startDate,
-                token);
+                startDate, token);
         }
+
 
         private static final LazySingletonValue<Insightly> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

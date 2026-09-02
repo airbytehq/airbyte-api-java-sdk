@@ -14,7 +14,7 @@ public enum Smartengage {
     @JsonValue
     private final String value;
 
-    private Smartengage(String value) {
+    Smartengage(String value) {
         this.value = value;
     }
     

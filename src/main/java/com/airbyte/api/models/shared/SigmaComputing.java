@@ -14,7 +14,7 @@ public enum SigmaComputing {
     @JsonValue
     private final String value;
 
-    private SigmaComputing(String value) {
+    SigmaComputing(String value) {
         this.value = value;
     }
     

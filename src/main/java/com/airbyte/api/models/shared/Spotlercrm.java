@@ -14,7 +14,7 @@ public enum Spotlercrm {
     @JsonValue
     private final String value;
 
-    private Spotlercrm(String value) {
+    Spotlercrm(String value) {
         this.value = value;
     }
     

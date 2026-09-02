@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceDixa {
 
+public class SourceDixa {
     /**
      * Dixa API token
      */
@@ -32,6 +31,7 @@ public class SourceDixa {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("batch_size")
     private Optional<Long> batchSize;
+
 
     @JsonProperty("sourceType")
     private Dixa sourceType;
@@ -91,9 +91,10 @@ public class SourceDixa {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Dixa API token
@@ -113,6 +114,7 @@ public class SourceDixa {
         return this;
     }
 
+
     /**
      * Number of days to batch into one request. Max 31.
      */
@@ -131,7 +133,6 @@ public class SourceDixa {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -142,18 +143,16 @@ public class SourceDixa {
         }
         SourceDixa other = (SourceDixa) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.batchSize, other.batchSize) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.batchSize, other.batchSize) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            batchSize,
-            sourceType,
+        return Utils.enhancedHash(
+            apiToken, batchSize, sourceType,
             startDate);
     }
     
@@ -165,18 +164,20 @@ public class SourceDixa {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
- 
+
         private Optional<Long> batchSize;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Dixa API token
@@ -186,6 +187,7 @@ public class SourceDixa {
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * Number of days to batch into one request. Max 31.
@@ -205,6 +207,7 @@ public class SourceDixa {
             return this;
         }
 
+
         /**
          * The connector pulls records updated from this date onwards.
          */
@@ -213,16 +216,16 @@ public class SourceDixa {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceDixa build() {
             if (batchSize == null) {
                 batchSize = _SINGLETON_VALUE_BatchSize.value();
             }
+
             return new SourceDixa(
-                apiToken,
-                batchSize,
-                startDate);
+                apiToken, batchSize, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BatchSize =
                 new LazySingletonValue<>(

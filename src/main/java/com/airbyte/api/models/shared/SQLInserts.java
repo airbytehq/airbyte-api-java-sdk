@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SQLInserts {
 
@@ -20,7 +20,6 @@ public class SQLInserts {
 
     @JsonCreator
     public SQLInserts() {
-        
         this.method = Builder._SINGLETON_VALUE_Method.value();
     }
 
@@ -29,11 +28,11 @@ public class SQLInserts {
         return method;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -44,12 +43,12 @@ public class SQLInserts {
         }
         SQLInserts other = (SQLInserts) o;
         return 
-            Objects.deepEquals(this.method, other.method);
+            Utils.enhancedDeepEquals(this.method, other.method);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             method);
     }
     
@@ -58,17 +57,20 @@ public class SQLInserts {
         return Utils.toString(SQLInserts.class,
                 "method", method);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SQLInserts build() {
+
             return new SQLInserts(
                 );
         }
+
 
         private static final LazySingletonValue<DestinationFireboltMethod> _SINGLETON_VALUE_Method =
                 new LazySingletonValue<>(

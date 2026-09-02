@@ -1,6 +1,12 @@
 # DestinationClickhouseSchemasTunnelMethod
 
-Connect through a jump server tunnel host using username and password authentication
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationClickhouseSchemasTunnelMethod;
+
+DestinationClickhouseSchemasTunnelMethod value = DestinationClickhouseSchemasTunnelMethod.SSH_PASSWORD_AUTH;
+```
 
 
 ## Values

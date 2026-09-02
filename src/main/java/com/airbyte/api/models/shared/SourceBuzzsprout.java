@@ -12,7 +12,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceBuzzsprout {
 
@@ -25,8 +25,10 @@ public class SourceBuzzsprout {
     @JsonProperty("podcast_id")
     private String podcastId;
 
+
     @JsonProperty("sourceType")
     private Buzzsprout sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -68,9 +70,10 @@ public class SourceBuzzsprout {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceBuzzsprout withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -93,7 +96,6 @@ public class SourceBuzzsprout {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,18 +106,16 @@ public class SourceBuzzsprout {
         }
         SourceBuzzsprout other = (SourceBuzzsprout) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.podcastId, other.podcastId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.podcastId, other.podcastId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            podcastId,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, podcastId, sourceType,
             startDate);
     }
     
@@ -127,24 +127,27 @@ public class SourceBuzzsprout {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String podcastId;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Podcast ID found in `https://www.buzzsprout.com/my/profile/api`
@@ -155,18 +158,19 @@ public class SourceBuzzsprout {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceBuzzsprout build() {
+
             return new SourceBuzzsprout(
-                apiKey,
-                podcastId,
-                startDate);
+                apiKey, podcastId, startDate);
         }
+
 
         private static final LazySingletonValue<Buzzsprout> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

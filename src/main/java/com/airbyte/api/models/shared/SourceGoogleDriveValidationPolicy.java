@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceGoogleDriveValidationPolicy
  * 
- * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+ * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the
+ * stream schema.
  */
 public enum SourceGoogleDriveValidationPolicy {
     EMIT_RECORD("Emit Record"),
@@ -21,7 +22,7 @@ public enum SourceGoogleDriveValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceGoogleDriveValidationPolicy(String value) {
+    SourceGoogleDriveValidationPolicy(String value) {
         this.value = value;
     }
     

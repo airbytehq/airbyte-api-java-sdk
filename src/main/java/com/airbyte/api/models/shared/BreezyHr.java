@@ -14,7 +14,7 @@ public enum BreezyHr {
     @JsonValue
     private final String value;
 
-    private BreezyHr(String value) {
+    BreezyHr(String value) {
         this.value = value;
     }
     

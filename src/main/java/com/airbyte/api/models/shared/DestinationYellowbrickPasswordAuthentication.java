@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationYellowbrickPasswordAuthentication {
 
+public class DestinationYellowbrickPasswordAuthentication {
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
      */
@@ -71,7 +70,8 @@ public class DestinationYellowbrickPasswordAuthentication {
             String tunnelHost,
             String tunnelUser,
             String tunnelUserPassword) {
-        this(tunnelHost, Optional.empty(), tunnelUser, tunnelUserPassword);
+        this(tunnelHost, Optional.empty(), tunnelUser,
+            tunnelUserPassword);
     }
 
     /**
@@ -114,9 +114,10 @@ public class DestinationYellowbrickPasswordAuthentication {
         return tunnelUserPassword;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -135,6 +136,7 @@ public class DestinationYellowbrickPasswordAuthentication {
         this.tunnelPort = Optional.ofNullable(tunnelPort);
         return this;
     }
+
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -163,7 +165,6 @@ public class DestinationYellowbrickPasswordAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -174,21 +175,18 @@ public class DestinationYellowbrickPasswordAuthentication {
         }
         DestinationYellowbrickPasswordAuthentication other = (DestinationYellowbrickPasswordAuthentication) o;
         return 
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser) &&
-            Objects.deepEquals(this.tunnelUserPassword, other.tunnelUserPassword);
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser) &&
+            Utils.enhancedDeepEquals(this.tunnelUserPassword, other.tunnelUserPassword);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser,
-            tunnelUserPassword);
+        return Utils.enhancedHash(
+            tunnelHost, tunnelMethod, tunnelPort,
+            tunnelUser, tunnelUserPassword);
     }
     
     @Override
@@ -200,20 +198,22 @@ public class DestinationYellowbrickPasswordAuthentication {
                 "tunnelUser", tunnelUser,
                 "tunnelUserPassword", tunnelUserPassword);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String tunnelHost;
- 
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
- 
+
         private String tunnelUserPassword;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -223,6 +223,7 @@ public class DestinationYellowbrickPasswordAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -242,6 +243,7 @@ public class DestinationYellowbrickPasswordAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host
          */
@@ -251,6 +253,7 @@ public class DestinationYellowbrickPasswordAuthentication {
             return this;
         }
 
+
         /**
          * OS-level password for logging into the jump server host
          */
@@ -259,17 +262,17 @@ public class DestinationYellowbrickPasswordAuthentication {
             this.tunnelUserPassword = tunnelUserPassword;
             return this;
         }
-        
+
         public DestinationYellowbrickPasswordAuthentication build() {
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new DestinationYellowbrickPasswordAuthentication(
-                tunnelHost,
-                tunnelPort,
-                tunnelUser,
+                tunnelHost, tunnelPort, tunnelUser,
                 tunnelUserPassword);
         }
+
 
         private static final LazySingletonValue<DestinationYellowbrickSchemasTunnelMethodTunnelMethod> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

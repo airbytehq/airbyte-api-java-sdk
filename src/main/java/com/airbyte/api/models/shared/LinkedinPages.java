@@ -14,7 +14,7 @@ public enum LinkedinPages {
     @JsonValue
     private final String value;
 
-    private LinkedinPages(String value) {
+    LinkedinPages(String value) {
         this.value = value;
     }
     

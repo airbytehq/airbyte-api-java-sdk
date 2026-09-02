@@ -15,37 +15,42 @@ import java.lang.Double;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceRentcast {
 
+public class SourceRentcast {
     /**
-     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
+     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data
+     * for a specific property, or together with the radius parameter to search for listings in a specific
+     * area
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("address")
     private Optional<String> address;
 
+
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
+     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to
+     * indicate partial bathrooms
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bath_rooms")
     private Optional<Long> bathRooms;
 
     /**
-     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
+     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a
+     * studio layout
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("bedrooms")
     private Optional<Double> bedrooms;
 
     /**
-     * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
+     * The name of the city, used to search for listings in a specific city. This parameter is
+     * case-sensitive
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("city")
@@ -59,7 +64,9 @@ public class SourceRentcast {
     private Optional<String> dataType;
 
     /**
-     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
+     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The
+     * maximum number of days since a property was last sold, with a minimum of 1. Used to search for
+     * properties that were sold within the specified date range
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("days_old")
@@ -73,38 +80,44 @@ public class SourceRentcast {
     private Optional<String> historyRange;
 
     /**
-     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("latitude")
     private Optional<String> latitude;
 
     /**
-     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("longitude")
     private Optional<String> longitude;
 
     /**
-     * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
+     * The type of the property, used to search for listings matching this criteria : Single Family , Condo
+     * , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("property_type")
     private Optional<String> propertyType;
 
     /**
-     * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
+     * The radius of the search area in miles, with a maximum of 100. Use in combination with the
+     * latitude/longitude or address parameters to search for listings in a specific area
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("radius")
     private Optional<String> radius;
 
+
     @JsonProperty("sourceType")
     private Rentcast sourceType;
 
     /**
-     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
+     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter
+     * is case-sensitive
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("state")
@@ -176,11 +189,17 @@ public class SourceRentcast {
     
     public SourceRentcast(
             String apiKey) {
-        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
-     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
+     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data
+     * for a specific property, or together with the radius parameter to search for listings in a specific
+     * area
      */
     @JsonIgnore
     public Optional<String> address() {
@@ -193,7 +212,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
+     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to
+     * indicate partial bathrooms
      */
     @JsonIgnore
     public Optional<Long> bathRooms() {
@@ -201,7 +221,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
+     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a
+     * studio layout
      */
     @JsonIgnore
     public Optional<Double> bedrooms() {
@@ -209,7 +230,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
+     * The name of the city, used to search for listings in a specific city. This parameter is
+     * case-sensitive
      */
     @JsonIgnore
     public Optional<String> city() {
@@ -225,7 +247,9 @@ public class SourceRentcast {
     }
 
     /**
-     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
+     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The
+     * maximum number of days since a property was last sold, with a minimum of 1. Used to search for
+     * properties that were sold within the specified date range
      */
     @JsonIgnore
     public Optional<String> daysOld() {
@@ -241,7 +265,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     @JsonIgnore
     public Optional<String> latitude() {
@@ -249,7 +274,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     @JsonIgnore
     public Optional<String> longitude() {
@@ -257,7 +283,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
+     * The type of the property, used to search for listings matching this criteria : Single Family , Condo
+     * , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
      */
     @JsonIgnore
     public Optional<String> propertyType() {
@@ -265,7 +292,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
+     * The radius of the search area in miles, with a maximum of 100. Use in combination with the
+     * latitude/longitude or address parameters to search for listings in a specific area
      */
     @JsonIgnore
     public Optional<String> radius() {
@@ -278,7 +306,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
+     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter
+     * is case-sensitive
      */
     @JsonIgnore
     public Optional<String> state() {
@@ -301,12 +330,15 @@ public class SourceRentcast {
         return zipcode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
+     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data
+     * for a specific property, or together with the radius parameter to search for listings in a specific
+     * area
      */
     public SourceRentcast withAddress(String address) {
         Utils.checkNotNull(address, "address");
@@ -314,8 +346,11 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
+     * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data
+     * for a specific property, or together with the radius parameter to search for listings in a specific
+     * area
      */
     public SourceRentcast withAddress(Optional<String> address) {
         Utils.checkNotNull(address, "address");
@@ -330,7 +365,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
+     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to
+     * indicate partial bathrooms
      */
     public SourceRentcast withBathRooms(long bathRooms) {
         Utils.checkNotNull(bathRooms, "bathRooms");
@@ -338,8 +374,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
+     * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to
+     * indicate partial bathrooms
      */
     public SourceRentcast withBathRooms(Optional<Long> bathRooms) {
         Utils.checkNotNull(bathRooms, "bathRooms");
@@ -348,7 +386,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
+     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a
+     * studio layout
      */
     public SourceRentcast withBedrooms(double bedrooms) {
         Utils.checkNotNull(bedrooms, "bedrooms");
@@ -356,8 +395,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
+     * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a
+     * studio layout
      */
     public SourceRentcast withBedrooms(Optional<Double> bedrooms) {
         Utils.checkNotNull(bedrooms, "bedrooms");
@@ -366,7 +407,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
+     * The name of the city, used to search for listings in a specific city. This parameter is
+     * case-sensitive
      */
     public SourceRentcast withCity(String city) {
         Utils.checkNotNull(city, "city");
@@ -374,8 +416,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
+     * The name of the city, used to search for listings in a specific city. This parameter is
+     * case-sensitive
      */
     public SourceRentcast withCity(Optional<String> city) {
         Utils.checkNotNull(city, "city");
@@ -392,6 +436,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The type of aggregate market data to return. Defaults to "All" if not provided : All , Sale , Rental
      */
@@ -402,7 +447,9 @@ public class SourceRentcast {
     }
 
     /**
-     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
+     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The
+     * maximum number of days since a property was last sold, with a minimum of 1. Used to search for
+     * properties that were sold within the specified date range
      */
     public SourceRentcast withDaysOld(String daysOld) {
         Utils.checkNotNull(daysOld, "daysOld");
@@ -410,8 +457,11 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
+     * The maximum number of days since a property was listed on the market, with a minimum of 1 or The
+     * maximum number of days since a property was last sold, with a minimum of 1. Used to search for
+     * properties that were sold within the specified date range
      */
     public SourceRentcast withDaysOld(Optional<String> daysOld) {
         Utils.checkNotNull(daysOld, "daysOld");
@@ -428,6 +478,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The time range for historical record entries, in months. Defaults to 12 if not provided
      */
@@ -438,7 +489,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     public SourceRentcast withLatitude(String latitude) {
         Utils.checkNotNull(latitude, "latitude");
@@ -446,8 +498,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The latitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     public SourceRentcast withLatitude(Optional<String> latitude) {
         Utils.checkNotNull(latitude, "latitude");
@@ -456,7 +510,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     public SourceRentcast withLongitude(String longitude) {
         Utils.checkNotNull(longitude, "longitude");
@@ -464,8 +519,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+     * The longitude of the search area. Use the latitude/longitude and radius parameters to search for
+     * listings in a specific area
      */
     public SourceRentcast withLongitude(Optional<String> longitude) {
         Utils.checkNotNull(longitude, "longitude");
@@ -474,7 +531,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
+     * The type of the property, used to search for listings matching this criteria : Single Family , Condo
+     * , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
      */
     public SourceRentcast withPropertyType(String propertyType) {
         Utils.checkNotNull(propertyType, "propertyType");
@@ -482,8 +540,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
+     * The type of the property, used to search for listings matching this criteria : Single Family , Condo
+     * , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
      */
     public SourceRentcast withPropertyType(Optional<String> propertyType) {
         Utils.checkNotNull(propertyType, "propertyType");
@@ -492,7 +552,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
+     * The radius of the search area in miles, with a maximum of 100. Use in combination with the
+     * latitude/longitude or address parameters to search for listings in a specific area
      */
     public SourceRentcast withRadius(String radius) {
         Utils.checkNotNull(radius, "radius");
@@ -500,8 +561,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
+     * The radius of the search area in miles, with a maximum of 100. Use in combination with the
+     * latitude/longitude or address parameters to search for listings in a specific area
      */
     public SourceRentcast withRadius(Optional<String> radius) {
         Utils.checkNotNull(radius, "radius");
@@ -510,7 +573,8 @@ public class SourceRentcast {
     }
 
     /**
-     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
+     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter
+     * is case-sensitive
      */
     public SourceRentcast withState(String state) {
         Utils.checkNotNull(state, "state");
@@ -518,8 +582,10 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
-     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
+     * The 2-character state abbreviation, used to search for listings in a specific state. This parameter
+     * is case-sensitive
      */
     public SourceRentcast withState(Optional<String> state) {
         Utils.checkNotNull(state, "state");
@@ -535,6 +601,7 @@ public class SourceRentcast {
         this.status = Optional.ofNullable(status);
         return this;
     }
+
 
     /**
      * The current listing status, used to search for listings matching this criteria : Active or Inactive
@@ -554,6 +621,7 @@ public class SourceRentcast {
         return this;
     }
 
+
     /**
      * The 5-digit zip code, used to search for listings in a specific zip code
      */
@@ -563,7 +631,6 @@ public class SourceRentcast {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -574,42 +641,32 @@ public class SourceRentcast {
         }
         SourceRentcast other = (SourceRentcast) o;
         return 
-            Objects.deepEquals(this.address, other.address) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.bathRooms, other.bathRooms) &&
-            Objects.deepEquals(this.bedrooms, other.bedrooms) &&
-            Objects.deepEquals(this.city, other.city) &&
-            Objects.deepEquals(this.dataType, other.dataType) &&
-            Objects.deepEquals(this.daysOld, other.daysOld) &&
-            Objects.deepEquals(this.historyRange, other.historyRange) &&
-            Objects.deepEquals(this.latitude, other.latitude) &&
-            Objects.deepEquals(this.longitude, other.longitude) &&
-            Objects.deepEquals(this.propertyType, other.propertyType) &&
-            Objects.deepEquals(this.radius, other.radius) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.state, other.state) &&
-            Objects.deepEquals(this.status, other.status) &&
-            Objects.deepEquals(this.zipcode, other.zipcode);
+            Utils.enhancedDeepEquals(this.address, other.address) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.bathRooms, other.bathRooms) &&
+            Utils.enhancedDeepEquals(this.bedrooms, other.bedrooms) &&
+            Utils.enhancedDeepEquals(this.city, other.city) &&
+            Utils.enhancedDeepEquals(this.dataType, other.dataType) &&
+            Utils.enhancedDeepEquals(this.daysOld, other.daysOld) &&
+            Utils.enhancedDeepEquals(this.historyRange, other.historyRange) &&
+            Utils.enhancedDeepEquals(this.latitude, other.latitude) &&
+            Utils.enhancedDeepEquals(this.longitude, other.longitude) &&
+            Utils.enhancedDeepEquals(this.propertyType, other.propertyType) &&
+            Utils.enhancedDeepEquals(this.radius, other.radius) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.state, other.state) &&
+            Utils.enhancedDeepEquals(this.status, other.status) &&
+            Utils.enhancedDeepEquals(this.zipcode, other.zipcode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            address,
-            apiKey,
-            bathRooms,
-            bedrooms,
-            city,
-            dataType,
-            daysOld,
-            historyRange,
-            latitude,
-            longitude,
-            propertyType,
-            radius,
-            sourceType,
-            state,
-            status,
+        return Utils.enhancedHash(
+            address, apiKey, bathRooms,
+            bedrooms, city, dataType,
+            daysOld, historyRange, latitude,
+            longitude, propertyType, radius,
+            sourceType, state, status,
             zipcode);
     }
     
@@ -633,45 +690,49 @@ public class SourceRentcast {
                 "status", status,
                 "zipcode", zipcode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> address = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private Optional<Long> bathRooms = Optional.empty();
- 
+
         private Optional<Double> bedrooms = Optional.empty();
- 
+
         private Optional<String> city = Optional.empty();
- 
+
         private Optional<String> dataType = Optional.empty();
- 
+
         private Optional<String> daysOld = Optional.empty();
- 
+
         private Optional<String> historyRange = Optional.empty();
- 
+
         private Optional<String> latitude = Optional.empty();
- 
+
         private Optional<String> longitude = Optional.empty();
- 
+
         private Optional<String> propertyType = Optional.empty();
- 
+
         private Optional<String> radius = Optional.empty();
- 
+
         private Optional<String> state = Optional.empty();
- 
+
         private Optional<String> status = Optional.empty();
- 
+
         private Optional<String> zipcode = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
+         * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data
+         * for a specific property, or together with the radius parameter to search for listings in a specific
+         * area
          */
         public Builder address(String address) {
             Utils.checkNotNull(address, "address");
@@ -680,7 +741,9 @@ public class SourceRentcast {
         }
 
         /**
-         * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data for a specific property, or together with the radius parameter to search for listings in a specific area
+         * The full address of the property, in the format of Street, City, State, Zip. Used to retrieve data
+         * for a specific property, or together with the radius parameter to search for listings in a specific
+         * area
          */
         public Builder address(Optional<String> address) {
             Utils.checkNotNull(address, "address");
@@ -688,14 +751,17 @@ public class SourceRentcast {
             return this;
         }
 
+
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
 
+
         /**
-         * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
+         * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to
+         * indicate partial bathrooms
          */
         public Builder bathRooms(long bathRooms) {
             Utils.checkNotNull(bathRooms, "bathRooms");
@@ -704,7 +770,8 @@ public class SourceRentcast {
         }
 
         /**
-         * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms
+         * The number of bathrooms, used to search for listings matching this criteria. Supports fractions to
+         * indicate partial bathrooms
          */
         public Builder bathRooms(Optional<Long> bathRooms) {
             Utils.checkNotNull(bathRooms, "bathRooms");
@@ -712,8 +779,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
+         * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a
+         * studio layout
          */
         public Builder bedrooms(double bedrooms) {
             Utils.checkNotNull(bedrooms, "bedrooms");
@@ -722,7 +791,8 @@ public class SourceRentcast {
         }
 
         /**
-         * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a studio layout
+         * The number of bedrooms, used to search for listings matching this criteria. Use 0 to indicate a
+         * studio layout
          */
         public Builder bedrooms(Optional<Double> bedrooms) {
             Utils.checkNotNull(bedrooms, "bedrooms");
@@ -730,8 +800,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
+         * The name of the city, used to search for listings in a specific city. This parameter is
+         * case-sensitive
          */
         public Builder city(String city) {
             Utils.checkNotNull(city, "city");
@@ -740,13 +812,15 @@ public class SourceRentcast {
         }
 
         /**
-         * The name of the city, used to search for listings in a specific city. This parameter is case-sensitive
+         * The name of the city, used to search for listings in a specific city. This parameter is
+         * case-sensitive
          */
         public Builder city(Optional<String> city) {
             Utils.checkNotNull(city, "city");
             this.city = city;
             return this;
         }
+
 
         /**
          * The type of aggregate market data to return. Defaults to "All" if not provided : All , Sale , Rental
@@ -766,8 +840,11 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
+         * The maximum number of days since a property was listed on the market, with a minimum of 1 or The
+         * maximum number of days since a property was last sold, with a minimum of 1. Used to search for
+         * properties that were sold within the specified date range
          */
         public Builder daysOld(String daysOld) {
             Utils.checkNotNull(daysOld, "daysOld");
@@ -776,13 +853,16 @@ public class SourceRentcast {
         }
 
         /**
-         * The maximum number of days since a property was listed on the market, with a minimum of 1 or The maximum number of days since a property was last sold, with a minimum of 1. Used to search for properties that were sold within the specified date range
+         * The maximum number of days since a property was listed on the market, with a minimum of 1 or The
+         * maximum number of days since a property was last sold, with a minimum of 1. Used to search for
+         * properties that were sold within the specified date range
          */
         public Builder daysOld(Optional<String> daysOld) {
             Utils.checkNotNull(daysOld, "daysOld");
             this.daysOld = daysOld;
             return this;
         }
+
 
         /**
          * The time range for historical record entries, in months. Defaults to 12 if not provided
@@ -802,8 +882,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+         * The latitude of the search area. Use the latitude/longitude and radius parameters to search for
+         * listings in a specific area
          */
         public Builder latitude(String latitude) {
             Utils.checkNotNull(latitude, "latitude");
@@ -812,7 +894,8 @@ public class SourceRentcast {
         }
 
         /**
-         * The latitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+         * The latitude of the search area. Use the latitude/longitude and radius parameters to search for
+         * listings in a specific area
          */
         public Builder latitude(Optional<String> latitude) {
             Utils.checkNotNull(latitude, "latitude");
@@ -820,8 +903,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+         * The longitude of the search area. Use the latitude/longitude and radius parameters to search for
+         * listings in a specific area
          */
         public Builder longitude(String longitude) {
             Utils.checkNotNull(longitude, "longitude");
@@ -830,7 +915,8 @@ public class SourceRentcast {
         }
 
         /**
-         * The longitude of the search area. Use the latitude/longitude and radius parameters to search for listings in a specific area
+         * The longitude of the search area. Use the latitude/longitude and radius parameters to search for
+         * listings in a specific area
          */
         public Builder longitude(Optional<String> longitude) {
             Utils.checkNotNull(longitude, "longitude");
@@ -838,8 +924,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
+         * The type of the property, used to search for listings matching this criteria : Single Family , Condo
+         * , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
          */
         public Builder propertyType(String propertyType) {
             Utils.checkNotNull(propertyType, "propertyType");
@@ -848,7 +936,8 @@ public class SourceRentcast {
         }
 
         /**
-         * The type of the property, used to search for listings matching this criteria : Single Family , Condo , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
+         * The type of the property, used to search for listings matching this criteria : Single Family , Condo
+         * , Townhouse , Manufactured ,  Multi-Family , Apartment , Land ,
          */
         public Builder propertyType(Optional<String> propertyType) {
             Utils.checkNotNull(propertyType, "propertyType");
@@ -856,8 +945,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
+         * The radius of the search area in miles, with a maximum of 100. Use in combination with the
+         * latitude/longitude or address parameters to search for listings in a specific area
          */
         public Builder radius(String radius) {
             Utils.checkNotNull(radius, "radius");
@@ -866,7 +957,8 @@ public class SourceRentcast {
         }
 
         /**
-         * The radius of the search area in miles, with a maximum of 100. Use in combination with the latitude/longitude or address parameters to search for listings in a specific area
+         * The radius of the search area in miles, with a maximum of 100. Use in combination with the
+         * latitude/longitude or address parameters to search for listings in a specific area
          */
         public Builder radius(Optional<String> radius) {
             Utils.checkNotNull(radius, "radius");
@@ -874,8 +966,10 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
-         * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
+         * The 2-character state abbreviation, used to search for listings in a specific state. This parameter
+         * is case-sensitive
          */
         public Builder state(String state) {
             Utils.checkNotNull(state, "state");
@@ -884,13 +978,15 @@ public class SourceRentcast {
         }
 
         /**
-         * The 2-character state abbreviation, used to search for listings in a specific state. This parameter is case-sensitive
+         * The 2-character state abbreviation, used to search for listings in a specific state. This parameter
+         * is case-sensitive
          */
         public Builder state(Optional<String> state) {
             Utils.checkNotNull(state, "state");
             this.state = state;
             return this;
         }
+
 
         /**
          * The current listing status, used to search for listings matching this criteria : Active or Inactive
@@ -910,6 +1006,7 @@ public class SourceRentcast {
             return this;
         }
 
+
         /**
          * The 5-digit zip code, used to search for listings in a specific zip code
          */
@@ -927,25 +1024,17 @@ public class SourceRentcast {
             this.zipcode = zipcode;
             return this;
         }
-        
+
         public SourceRentcast build() {
+
             return new SourceRentcast(
-                address,
-                apiKey,
-                bathRooms,
-                bedrooms,
-                city,
-                dataType,
-                daysOld,
-                historyRange,
-                latitude,
-                longitude,
-                propertyType,
-                radius,
-                state,
-                status,
-                zipcode);
+                address, apiKey, bathRooms,
+                bedrooms, city, dataType,
+                daysOld, historyRange, latitude,
+                longitude, propertyType, radius,
+                state, status, zipcode);
         }
+
 
         private static final LazySingletonValue<Rentcast> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

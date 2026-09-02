@@ -20,7 +20,7 @@ public enum SourceRevolutMerchantEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceRevolutMerchantEnvironment(String value) {
+    SourceRevolutMerchantEnvironment(String value) {
         this.value = value;
     }
     

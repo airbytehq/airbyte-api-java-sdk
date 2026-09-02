@@ -1,5 +1,13 @@
 # SourceZohoAnalyticsMetadataApiDataCenter
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZohoAnalyticsMetadataApiDataCenter;
+
+SourceZohoAnalyticsMetadataApiDataCenter value = SourceZohoAnalyticsMetadataApiDataCenter.COM;
+```
+
 
 ## Values
 

@@ -14,24 +14,26 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationGcsCSVCommaSeparatedValues {
 
+public class DestinationGcsCSVCommaSeparatedValues {
     /**
-     * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+     * Whether the output files should be compressed. If compression is selected, the output filename will
+     * have an extra extension (GZIP: ".csv.gz").
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression")
     private Optional<? extends Compression> compression;
 
     /**
-     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+     * for details.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("flattening")
     private Optional<? extends Normalization> flattening;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -55,7 +57,8 @@ public class DestinationGcsCSVCommaSeparatedValues {
     }
 
     /**
-     * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+     * Whether the output files should be compressed. If compression is selected, the output filename will
+     * have an extra extension (GZIP: ".csv.gz").
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -64,7 +67,8 @@ public class DestinationGcsCSVCommaSeparatedValues {
     }
 
     /**
-     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+     * for details.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -78,12 +82,14 @@ public class DestinationGcsCSVCommaSeparatedValues {
         return (Optional<DestinationGcsSchemasFormatType>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+     * Whether the output files should be compressed. If compression is selected, the output filename will
+     * have an extra extension (GZIP: ".csv.gz").
      */
     public DestinationGcsCSVCommaSeparatedValues withCompression(Compression compression) {
         Utils.checkNotNull(compression, "compression");
@@ -91,8 +97,10 @@ public class DestinationGcsCSVCommaSeparatedValues {
         return this;
     }
 
+
     /**
-     * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+     * Whether the output files should be compressed. If compression is selected, the output filename will
+     * have an extra extension (GZIP: ".csv.gz").
      */
     public DestinationGcsCSVCommaSeparatedValues withCompression(Optional<? extends Compression> compression) {
         Utils.checkNotNull(compression, "compression");
@@ -101,7 +109,8 @@ public class DestinationGcsCSVCommaSeparatedValues {
     }
 
     /**
-     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+     * for details.
      */
     public DestinationGcsCSVCommaSeparatedValues withFlattening(Normalization flattening) {
         Utils.checkNotNull(flattening, "flattening");
@@ -109,8 +118,10 @@ public class DestinationGcsCSVCommaSeparatedValues {
         return this;
     }
 
+
     /**
-     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+     * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+     * for details.
      */
     public DestinationGcsCSVCommaSeparatedValues withFlattening(Optional<? extends Normalization> flattening) {
         Utils.checkNotNull(flattening, "flattening");
@@ -124,13 +135,13 @@ public class DestinationGcsCSVCommaSeparatedValues {
         return this;
     }
 
+
     public DestinationGcsCSVCommaSeparatedValues withFormatType(Optional<? extends DestinationGcsSchemasFormatType> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,17 +152,15 @@ public class DestinationGcsCSVCommaSeparatedValues {
         }
         DestinationGcsCSVCommaSeparatedValues other = (DestinationGcsCSVCommaSeparatedValues) o;
         return 
-            Objects.deepEquals(this.compression, other.compression) &&
-            Objects.deepEquals(this.flattening, other.flattening) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.compression, other.compression) &&
+            Utils.enhancedDeepEquals(this.flattening, other.flattening) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            compression,
-            flattening,
-            formatType);
+        return Utils.enhancedHash(
+            compression, flattening, formatType);
     }
     
     @Override
@@ -161,21 +170,24 @@ public class DestinationGcsCSVCommaSeparatedValues {
                 "flattening", flattening,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends Compression> compression = Optional.empty();
- 
+
         private Optional<? extends Normalization> flattening;
- 
+
         private Optional<? extends DestinationGcsSchemasFormatType> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+         * Whether the output files should be compressed. If compression is selected, the output filename will
+         * have an extra extension (GZIP: ".csv.gz").
          */
         public Builder compression(Compression compression) {
             Utils.checkNotNull(compression, "compression");
@@ -184,7 +196,8 @@ public class DestinationGcsCSVCommaSeparatedValues {
         }
 
         /**
-         * Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+         * Whether the output files should be compressed. If compression is selected, the output filename will
+         * have an extra extension (GZIP: ".csv.gz").
          */
         public Builder compression(Optional<? extends Compression> compression) {
             Utils.checkNotNull(compression, "compression");
@@ -192,8 +205,10 @@ public class DestinationGcsCSVCommaSeparatedValues {
             return this;
         }
 
+
         /**
-         * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+         * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+         * for details.
          */
         public Builder flattening(Normalization flattening) {
             Utils.checkNotNull(flattening, "flattening");
@@ -202,13 +217,15 @@ public class DestinationGcsCSVCommaSeparatedValues {
         }
 
         /**
-         * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs for details.
+         * Whether the input JSON data should be normalized (flattened) in the output CSV. Please refer to docs
+         * for details.
          */
         public Builder flattening(Optional<? extends Normalization> flattening) {
             Utils.checkNotNull(flattening, "flattening");
             this.flattening = flattening;
             return this;
         }
+
 
         public Builder formatType(DestinationGcsSchemasFormatType formatType) {
             Utils.checkNotNull(formatType, "formatType");
@@ -221,7 +238,7 @@ public class DestinationGcsCSVCommaSeparatedValues {
             this.formatType = formatType;
             return this;
         }
-        
+
         public DestinationGcsCSVCommaSeparatedValues build() {
             if (flattening == null) {
                 flattening = _SINGLETON_VALUE_Flattening.value();
@@ -229,11 +246,11 @@ public class DestinationGcsCSVCommaSeparatedValues {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new DestinationGcsCSVCommaSeparatedValues(
-                compression,
-                flattening,
-                formatType);
+                compression, flattening, formatType);
         }
+
 
         private static final LazySingletonValue<Optional<? extends Normalization>> _SINGLETON_VALUE_Flattening =
                 new LazySingletonValue<>(

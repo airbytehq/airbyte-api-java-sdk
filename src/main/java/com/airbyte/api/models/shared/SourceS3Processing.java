@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceS3Processing
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceS3Processing {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceS3Processing(TypedObject value) {
         this.value = value;
@@ -33,7 +32,7 @@ public class SourceS3Processing {
 
     public static SourceS3Processing of(SourceS3Local value) {
         Utils.checkNotNull(value, "value");
-        return new SourceS3Processing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceS3Local>(){}));
+        return new SourceS3Processing(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -55,7 +54,7 @@ public class SourceS3Processing {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -66,12 +65,12 @@ public class SourceS3Processing {
             return false;
         }
         SourceS3Processing other = (SourceS3Processing) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -88,6 +87,6 @@ public class SourceS3Processing {
         return Utils.toString(SourceS3Processing.class,
                 "value", value);
     }
- 
+
 }
 

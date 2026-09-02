@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceSecoda {
-
     /**
-     * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Access Key. See <a href="https://docs.secoda.co/secoda-api/authentication">here</a>. The
+     * key is case sensitive.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Secoda sourceType;
@@ -33,7 +34,8 @@ public class SourceSecoda {
     }
 
     /**
-     * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Access Key. See <a href="https://docs.secoda.co/secoda-api/authentication">here</a>. The
+     * key is case sensitive.
      */
     @JsonIgnore
     public String apiKey() {
@@ -45,12 +47,14 @@ public class SourceSecoda {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Access Key. See <a href="https://docs.secoda.co/secoda-api/authentication">here</a>. The
+     * key is case sensitive.
      */
     public SourceSecoda withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -58,7 +62,6 @@ public class SourceSecoda {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +72,14 @@ public class SourceSecoda {
         }
         SourceSecoda other = (SourceSecoda) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, sourceType);
     }
     
     @Override
@@ -86,28 +88,33 @@ public class SourceSecoda {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Access Key. See &lt;a href="https://docs.secoda.co/secoda-api/authentication"&gt;here&lt;/a&gt;. The key is case sensitive.
+         * Your API Access Key. See <a href="https://docs.secoda.co/secoda-api/authentication">here</a>. The
+         * key is case sensitive.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceSecoda build() {
+
             return new SourceSecoda(
                 apiKey);
         }
+
 
         private static final LazySingletonValue<Secoda> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

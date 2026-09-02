@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMailtrap {
-
     /**
      * API token to use. Find it at https://mailtrap.io/account
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private Mailtrap sourceType;
@@ -45,9 +45,10 @@ public class SourceMailtrap {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API token to use. Find it at https://mailtrap.io/account
@@ -58,7 +59,6 @@ public class SourceMailtrap {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceMailtrap {
         }
         SourceMailtrap other = (SourceMailtrap) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceMailtrap {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API token to use. Find it at https://mailtrap.io/account
@@ -103,11 +104,13 @@ public class SourceMailtrap {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceMailtrap build() {
+
             return new SourceMailtrap(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<Mailtrap> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Height {
     @JsonValue
     private final String value;
 
-    private Height(String value) {
+    Height(String value) {
         this.value = value;
     }
     

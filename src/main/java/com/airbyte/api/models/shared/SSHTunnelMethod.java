@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SSHTunnelMethod._Deserializer.class)
 public class SSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SSHTunnelMethod {
 
     public static SSHTunnelMethod of(NoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NoTunnel>(){}));
+        return new SSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSHTunnelMethod of(SSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SSHKeyAuthentication>(){}));
+        return new SSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SSHTunnelMethod of(PasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PasswordAuthentication>(){}));
+        return new SSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SSHTunnelMethod {
             return false;
         }
         SSHTunnelMethod other = (SSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SSHTunnelMethod {
 
         public _Deserializer() {
             super(SSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<PasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<NoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<NoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<PasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SSHTunnelMethod {
         return Utils.toString(SSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

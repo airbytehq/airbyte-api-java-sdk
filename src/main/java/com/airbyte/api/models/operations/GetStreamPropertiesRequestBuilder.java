@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.GetStreamProperties;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class GetStreamPropertiesRequestBuilder {
 
     private GetStreamPropertiesRequest request;
-    private final SDKMethodInterfaces.MethodCallGetStreamProperties sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public GetStreamPropertiesRequestBuilder(SDKMethodInterfaces.MethodCallGetStreamProperties sdk) {
-        this.sdk = sdk;
+    public GetStreamPropertiesRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public GetStreamPropertiesRequestBuilder request(GetStreamPropertiesRequest request) {
@@ -21,9 +26,11 @@ public class GetStreamPropertiesRequestBuilder {
         return this;
     }
 
-    public GetStreamPropertiesResponse call() throws Exception {
+    public GetStreamPropertiesResponse call() {
+        
+        RequestOperation<GetStreamPropertiesRequest, GetStreamPropertiesResponse> operation
+              = new GetStreamProperties.Sync(sdkConfiguration, _headers);
 
-        return sdk.getStreamProperties(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

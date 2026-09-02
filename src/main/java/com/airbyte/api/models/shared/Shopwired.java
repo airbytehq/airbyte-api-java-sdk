@@ -14,7 +14,7 @@ public enum Shopwired {
     @JsonValue
     private final String value;
 
-    private Shopwired(String value) {
+    Shopwired(String value) {
         this.value = value;
     }
     

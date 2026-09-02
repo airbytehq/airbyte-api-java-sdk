@@ -14,7 +14,7 @@ public enum Formbricks {
     @JsonValue
     private final String value;
 
-    private Formbricks(String value) {
+    Formbricks(String value) {
         this.value = value;
     }
     

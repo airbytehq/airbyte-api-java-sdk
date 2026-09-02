@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWorkramp {
-
     /**
      * The id of the Academy
      */
@@ -26,6 +25,7 @@ public class SourceWorkramp {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Workramp sourceType;
@@ -62,9 +62,10 @@ public class SourceWorkramp {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The id of the Academy
@@ -84,7 +85,6 @@ public class SourceWorkramp {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceWorkramp {
         }
         SourceWorkramp other = (SourceWorkramp) o;
         return 
-            Objects.deepEquals(this.academyId, other.academyId) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.academyId, other.academyId) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            academyId,
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            academyId, apiKey, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceWorkramp {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String academyId;
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The id of the Academy
@@ -135,6 +135,7 @@ public class SourceWorkramp {
             return this;
         }
 
+
         /**
          * The API Token for Workramp
          */
@@ -143,12 +144,13 @@ public class SourceWorkramp {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceWorkramp build() {
+
             return new SourceWorkramp(
-                academyId,
-                apiKey);
+                academyId, apiKey);
         }
+
 
         private static final LazySingletonValue<Workramp> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

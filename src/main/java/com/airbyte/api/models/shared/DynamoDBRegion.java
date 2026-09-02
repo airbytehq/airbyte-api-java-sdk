@@ -52,7 +52,7 @@ public enum DynamoDBRegion {
     @JsonValue
     private final String value;
 
-    private DynamoDBRegion(String value) {
+    DynamoDBRegion(String value) {
         this.value = value;
     }
     

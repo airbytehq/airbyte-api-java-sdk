@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationS3Compression
  * 
- * <p>Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".jsonl.gz").
+ * <p>Whether the output files should be compressed. If compression is selected, the output filename will
+ * have an extra extension (GZIP: ".jsonl.gz").
  */
 @JsonDeserialize(using = DestinationS3Compression._Deserializer.class)
 public class DestinationS3Compression {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationS3Compression(TypedObject value) {
         this.value = value;
@@ -33,12 +33,12 @@ public class DestinationS3Compression {
 
     public static DestinationS3Compression of(DestinationS3NoCompression value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3NoCompression>(){}));
+        return new DestinationS3Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationS3Compression of(DestinationS3GZIP value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationS3Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationS3GZIP>(){}));
+        return new DestinationS3Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class DestinationS3Compression {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +72,12 @@ public class DestinationS3Compression {
             return false;
         }
         DestinationS3Compression other = (DestinationS3Compression) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +85,8 @@ public class DestinationS3Compression {
 
         public _Deserializer() {
             super(DestinationS3Compression.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3GZIP>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationS3NoCompression>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3NoCompression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationS3GZIP>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +95,6 @@ public class DestinationS3Compression {
         return Utils.toString(DestinationS3Compression.class,
                 "value", value);
     }
- 
+
 }
 

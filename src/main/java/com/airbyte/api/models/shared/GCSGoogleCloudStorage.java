@@ -13,17 +13,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GCSGoogleCloudStorage {
 
+public class GCSGoogleCloudStorage {
     /**
-     * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on Google Cloud, this connector would need a service
+     * account json credentials with the proper permissions as described <a
+     * href="https://cloud.google.com/iam/docs/service-accounts">here</a>. Please generate the
+     * credentials.json file and copy/paste its content to this field (expecting JSON formats). If
+     * accessing publicly available data, this field is not necessary.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("service_account_json")
     private Optional<String> serviceAccountJson;
+
 
     @JsonProperty("storage")
     private SourceFileStorage storage;
@@ -41,7 +45,11 @@ public class GCSGoogleCloudStorage {
     }
 
     /**
-     * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on Google Cloud, this connector would need a service
+     * account json credentials with the proper permissions as described <a
+     * href="https://cloud.google.com/iam/docs/service-accounts">here</a>. Please generate the
+     * credentials.json file and copy/paste its content to this field (expecting JSON formats). If
+     * accessing publicly available data, this field is not necessary.
      */
     @JsonIgnore
     public Optional<String> serviceAccountJson() {
@@ -53,12 +61,17 @@ public class GCSGoogleCloudStorage {
         return storage;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on Google Cloud, this connector would need a service
+     * account json credentials with the proper permissions as described <a
+     * href="https://cloud.google.com/iam/docs/service-accounts">here</a>. Please generate the
+     * credentials.json file and copy/paste its content to this field (expecting JSON formats). If
+     * accessing publicly available data, this field is not necessary.
      */
     public GCSGoogleCloudStorage withServiceAccountJson(String serviceAccountJson) {
         Utils.checkNotNull(serviceAccountJson, "serviceAccountJson");
@@ -66,8 +79,13 @@ public class GCSGoogleCloudStorage {
         return this;
     }
 
+
     /**
-     * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+     * In order to access private Buckets stored on Google Cloud, this connector would need a service
+     * account json credentials with the proper permissions as described <a
+     * href="https://cloud.google.com/iam/docs/service-accounts">here</a>. Please generate the
+     * credentials.json file and copy/paste its content to this field (expecting JSON formats). If
+     * accessing publicly available data, this field is not necessary.
      */
     public GCSGoogleCloudStorage withServiceAccountJson(Optional<String> serviceAccountJson) {
         Utils.checkNotNull(serviceAccountJson, "serviceAccountJson");
@@ -75,7 +93,6 @@ public class GCSGoogleCloudStorage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,15 +103,14 @@ public class GCSGoogleCloudStorage {
         }
         GCSGoogleCloudStorage other = (GCSGoogleCloudStorage) o;
         return 
-            Objects.deepEquals(this.serviceAccountJson, other.serviceAccountJson) &&
-            Objects.deepEquals(this.storage, other.storage);
+            Utils.enhancedDeepEquals(this.serviceAccountJson, other.serviceAccountJson) &&
+            Utils.enhancedDeepEquals(this.storage, other.storage);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            serviceAccountJson,
-            storage);
+        return Utils.enhancedHash(
+            serviceAccountJson, storage);
     }
     
     @Override
@@ -103,17 +119,23 @@ public class GCSGoogleCloudStorage {
                 "serviceAccountJson", serviceAccountJson,
                 "storage", storage);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> serviceAccountJson = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+         * In order to access private Buckets stored on Google Cloud, this connector would need a service
+         * account json credentials with the proper permissions as described <a
+         * href="https://cloud.google.com/iam/docs/service-accounts">here</a>. Please generate the
+         * credentials.json file and copy/paste its content to this field (expecting JSON formats). If
+         * accessing publicly available data, this field is not necessary.
          */
         public Builder serviceAccountJson(String serviceAccountJson) {
             Utils.checkNotNull(serviceAccountJson, "serviceAccountJson");
@@ -122,18 +144,24 @@ public class GCSGoogleCloudStorage {
         }
 
         /**
-         * In order to access private Buckets stored on Google Cloud, this connector would need a service account json credentials with the proper permissions as described &lt;a href="https://cloud.google.com/iam/docs/service-accounts" target="_blank"&gt;here&lt;/a&gt;. Please generate the credentials.json file and copy/paste its content to this field (expecting JSON formats). If accessing publicly available data, this field is not necessary.
+         * In order to access private Buckets stored on Google Cloud, this connector would need a service
+         * account json credentials with the proper permissions as described <a
+         * href="https://cloud.google.com/iam/docs/service-accounts">here</a>. Please generate the
+         * credentials.json file and copy/paste its content to this field (expecting JSON formats). If
+         * accessing publicly available data, this field is not necessary.
          */
         public Builder serviceAccountJson(Optional<String> serviceAccountJson) {
             Utils.checkNotNull(serviceAccountJson, "serviceAccountJson");
             this.serviceAccountJson = serviceAccountJson;
             return this;
         }
-        
+
         public GCSGoogleCloudStorage build() {
+
             return new GCSGoogleCloudStorage(
                 serviceAccountJson);
         }
+
 
         private static final LazySingletonValue<SourceFileStorage> _SINGLETON_VALUE_Storage =
                 new LazySingletonValue<>(

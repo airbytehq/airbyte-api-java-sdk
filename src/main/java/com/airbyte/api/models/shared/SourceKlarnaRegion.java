@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceKlarnaRegion
  * 
- * <p>Base url region (For playground eu https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
+ * <p>Base url region (For playground eu
+ * https://docs.klarna.com/klarna-payments/api/payments-api/#tag/API-URLs). Supported 'eu', 'na', 'oc'
  */
 public enum SourceKlarnaRegion {
     EU("eu"),
@@ -21,7 +22,7 @@ public enum SourceKlarnaRegion {
     @JsonValue
     private final String value;
 
-    private SourceKlarnaRegion(String value) {
+    SourceKlarnaRegion(String value) {
         this.value = value;
     }
     

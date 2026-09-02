@@ -14,7 +14,7 @@ public enum Hoorayhr {
     @JsonValue
     private final String value;
 
-    private Hoorayhr(String value) {
+    Hoorayhr(String value) {
         this.value = value;
     }
     

@@ -15,22 +15,26 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceCoinmarketcap {
 
+public class SourceCoinmarketcap {
     /**
-     * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
+     * Your API Key. See <a
+     * href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication">here</a>. The token is
+     * case sensitive.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
+     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical:
+     * Intervals of historic market data like OHLCV data or data for use in charting libraries. See <a
+     * href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview">here</a>.
      */
     @JsonProperty("data_type")
     private DataType dataType;
+
 
     @JsonProperty("sourceType")
     private Coinmarketcap sourceType;
@@ -63,7 +67,9 @@ public class SourceCoinmarketcap {
     }
 
     /**
-     * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
+     * Your API Key. See <a
+     * href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication">here</a>. The token is
+     * case sensitive.
      */
     @JsonIgnore
     public String apiKey() {
@@ -71,7 +77,9 @@ public class SourceCoinmarketcap {
     }
 
     /**
-     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
+     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical:
+     * Intervals of historic market data like OHLCV data or data for use in charting libraries. See <a
+     * href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview">here</a>.
      */
     @JsonIgnore
     public DataType dataType() {
@@ -92,12 +100,15 @@ public class SourceCoinmarketcap {
         return (Optional<List<String>>) symbols;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
+     * Your API Key. See <a
+     * href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication">here</a>. The token is
+     * case sensitive.
      */
     public SourceCoinmarketcap withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -106,7 +117,9 @@ public class SourceCoinmarketcap {
     }
 
     /**
-     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
+     * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical:
+     * Intervals of historic market data like OHLCV data or data for use in charting libraries. See <a
+     * href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview">here</a>.
      */
     public SourceCoinmarketcap withDataType(DataType dataType) {
         Utils.checkNotNull(dataType, "dataType");
@@ -123,6 +136,7 @@ public class SourceCoinmarketcap {
         return this;
     }
 
+
     /**
      * Cryptocurrency symbols. (only used for quotes stream)
      */
@@ -132,7 +146,6 @@ public class SourceCoinmarketcap {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -143,18 +156,16 @@ public class SourceCoinmarketcap {
         }
         SourceCoinmarketcap other = (SourceCoinmarketcap) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.dataType, other.dataType) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.symbols, other.symbols);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.dataType, other.dataType) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.symbols, other.symbols);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            dataType,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, dataType, sourceType,
             symbols);
     }
     
@@ -166,21 +177,25 @@ public class SourceCoinmarketcap {
                 "sourceType", sourceType,
                 "symbols", symbols);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private DataType dataType;
- 
+
         private Optional<? extends List<String>> symbols = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Key. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication"&gt;here&lt;/a&gt;. The token is case sensitive.
+         * Your API Key. See <a
+         * href="https://coinmarketcap.com/api/documentation/v1/#section/Authentication">here</a>. The token is
+         * case sensitive.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -188,14 +203,18 @@ public class SourceCoinmarketcap {
             return this;
         }
 
+
         /**
-         * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
+         * /latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical:
+         * Intervals of historic market data like OHLCV data or data for use in charting libraries. See <a
+         * href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview">here</a>.
          */
         public Builder dataType(DataType dataType) {
             Utils.checkNotNull(dataType, "dataType");
             this.dataType = dataType;
             return this;
         }
+
 
         /**
          * Cryptocurrency symbols. (only used for quotes stream)
@@ -214,13 +233,13 @@ public class SourceCoinmarketcap {
             this.symbols = symbols;
             return this;
         }
-        
+
         public SourceCoinmarketcap build() {
+
             return new SourceCoinmarketcap(
-                apiKey,
-                dataType,
-                symbols);
+                apiKey, dataType, symbols);
         }
+
 
         private static final LazySingletonValue<Coinmarketcap> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

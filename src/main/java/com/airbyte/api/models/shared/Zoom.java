@@ -14,7 +14,7 @@ public enum Zoom {
     @JsonValue
     private final String value;
 
-    private Zoom(String value) {
+    Zoom(String value) {
         this.value = value;
     }
     

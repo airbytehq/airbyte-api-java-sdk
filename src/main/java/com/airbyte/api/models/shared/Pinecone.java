@@ -14,7 +14,7 @@ public enum Pinecone {
     @JsonValue
     private final String value;
 
-    private Pinecone(String value) {
+    Pinecone(String value) {
         this.value = value;
     }
     

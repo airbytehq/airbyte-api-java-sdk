@@ -12,33 +12,39 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceMarketo {
-
     /**
-     * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * The Client ID of your Marketo developer application. See <a
+     * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+     * obtain this.
      */
     @JsonProperty("client_id")
     private String clientId;
 
     /**
-     * The Client Secret of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * The Client Secret of your Marketo developer application. See <a
+     * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+     * obtain this.
      */
     @JsonProperty("client_secret")
     private String clientSecret;
 
     /**
-     * Your Marketo Base URL. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * Your Marketo Base URL. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs
+     * </a> for info on how to obtain this.
      */
     @JsonProperty("domain_url")
     private String domainUrl;
+
 
     @JsonProperty("sourceType")
     private Marketo sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -61,7 +67,9 @@ public class SourceMarketo {
     }
 
     /**
-     * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * The Client ID of your Marketo developer application. See <a
+     * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+     * obtain this.
      */
     @JsonIgnore
     public String clientId() {
@@ -69,7 +77,9 @@ public class SourceMarketo {
     }
 
     /**
-     * The Client Secret of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * The Client Secret of your Marketo developer application. See <a
+     * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+     * obtain this.
      */
     @JsonIgnore
     public String clientSecret() {
@@ -77,7 +87,8 @@ public class SourceMarketo {
     }
 
     /**
-     * Your Marketo Base URL. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * Your Marketo Base URL. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs
+     * </a> for info on how to obtain this.
      */
     @JsonIgnore
     public String domainUrl() {
@@ -90,19 +101,23 @@ public class SourceMarketo {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * The Client ID of your Marketo developer application. See <a
+     * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+     * obtain this.
      */
     public SourceMarketo withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -111,7 +126,9 @@ public class SourceMarketo {
     }
 
     /**
-     * The Client Secret of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * The Client Secret of your Marketo developer application. See <a
+     * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+     * obtain this.
      */
     public SourceMarketo withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -120,7 +137,8 @@ public class SourceMarketo {
     }
 
     /**
-     * Your Marketo Base URL. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+     * Your Marketo Base URL. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs
+     * </a> for info on how to obtain this.
      */
     public SourceMarketo withDomainUrl(String domainUrl) {
         Utils.checkNotNull(domainUrl, "domainUrl");
@@ -129,7 +147,8 @@ public class SourceMarketo {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceMarketo withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -137,7 +156,6 @@ public class SourceMarketo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -148,21 +166,18 @@ public class SourceMarketo {
         }
         SourceMarketo other = (SourceMarketo) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.domainUrl, other.domainUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.domainUrl, other.domainUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            domainUrl,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, domainUrl,
+            sourceType, startDate);
     }
     
     @Override
@@ -174,23 +189,27 @@ public class SourceMarketo {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String domainUrl;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Client ID of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+         * The Client ID of your Marketo developer application. See <a
+         * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+         * obtain this.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -198,8 +217,11 @@ public class SourceMarketo {
             return this;
         }
 
+
         /**
-         * The Client Secret of your Marketo developer application. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+         * The Client Secret of your Marketo developer application. See <a
+         * href="https://docs.airbyte.com/integrations/sources/marketo"> the docs </a> for info on how to
+         * obtain this.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -207,8 +229,10 @@ public class SourceMarketo {
             return this;
         }
 
+
         /**
-         * Your Marketo Base URL. See &lt;a href="https://docs.airbyte.com/integrations/sources/marketo"&gt; the docs &lt;/a&gt; for info on how to obtain this.
+         * Your Marketo Base URL. See <a href="https://docs.airbyte.com/integrations/sources/marketo"> the docs
+         * </a> for info on how to obtain this.
          */
         public Builder domainUrl(String domainUrl) {
             Utils.checkNotNull(domainUrl, "domainUrl");
@@ -216,22 +240,24 @@ public class SourceMarketo {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceMarketo build() {
+
             return new SourceMarketo(
-                clientId,
-                clientSecret,
-                domainUrl,
+                clientId, clientSecret, domainUrl,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Marketo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

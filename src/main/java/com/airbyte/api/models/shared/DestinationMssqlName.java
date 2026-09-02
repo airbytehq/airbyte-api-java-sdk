@@ -14,7 +14,7 @@ public enum DestinationMssqlName {
     @JsonValue
     private final String value;
 
-    private DestinationMssqlName(String value) {
+    DestinationMssqlName(String value) {
         this.value = value;
     }
     

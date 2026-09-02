@@ -13,7 +13,7 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,19 +22,37 @@ import java.util.Optional;
  * <p>POST body for initiating OAuth via the public API
  */
 public class InitiateOauthRequest {
-
     /**
-     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
+     * The values required to configure OAuth flows. The schema for this must match the
+     * `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("oAuthInputConfiguration")
     private Optional<? extends Object> oAuthInputConfiguration;
 
     /**
-     * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
+     * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter
+     * after authentication is complete.
      */
     @JsonProperty("redirectUrl")
     private String redirectUrl;
+
+    /**
+     * Optional OAuth optional_scopes to request, overriding the connector's default optional_scopes. Only
+     * applied when requestedScopes is also provided.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("requestedOptionalScopes")
+    private Optional<? extends List<String>> requestedOptionalScopes;
+
+    /**
+     * Optional OAuth scopes to request, overriding the connector's default scopes. Only supported for
+     * connectors that define scopes as an array.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("requestedScopes")
+    private Optional<? extends List<String>> requestedScopes;
+
 
     @JsonProperty("sourceType")
     private OAuthActorNames sourceType;
@@ -49,14 +67,20 @@ public class InitiateOauthRequest {
     public InitiateOauthRequest(
             @JsonProperty("oAuthInputConfiguration") Optional<? extends Object> oAuthInputConfiguration,
             @JsonProperty("redirectUrl") String redirectUrl,
+            @JsonProperty("requestedOptionalScopes") Optional<? extends List<String>> requestedOptionalScopes,
+            @JsonProperty("requestedScopes") Optional<? extends List<String>> requestedScopes,
             @JsonProperty("sourceType") OAuthActorNames sourceType,
             @JsonProperty("workspaceId") String workspaceId) {
         Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
         Utils.checkNotNull(redirectUrl, "redirectUrl");
+        Utils.checkNotNull(requestedOptionalScopes, "requestedOptionalScopes");
+        Utils.checkNotNull(requestedScopes, "requestedScopes");
         Utils.checkNotNull(sourceType, "sourceType");
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.oAuthInputConfiguration = oAuthInputConfiguration;
         this.redirectUrl = redirectUrl;
+        this.requestedOptionalScopes = requestedOptionalScopes;
+        this.requestedScopes = requestedScopes;
         this.sourceType = sourceType;
         this.workspaceId = workspaceId;
     }
@@ -65,11 +89,13 @@ public class InitiateOauthRequest {
             String redirectUrl,
             OAuthActorNames sourceType,
             String workspaceId) {
-        this(Optional.empty(), redirectUrl, sourceType, workspaceId);
+        this(Optional.empty(), redirectUrl, Optional.empty(),
+            Optional.empty(), sourceType, workspaceId);
     }
 
     /**
-     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
+     * The values required to configure OAuth flows. The schema for this must match the
+     * `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -78,11 +104,32 @@ public class InitiateOauthRequest {
     }
 
     /**
-     * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
+     * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter
+     * after authentication is complete.
      */
     @JsonIgnore
     public String redirectUrl() {
         return redirectUrl;
+    }
+
+    /**
+     * Optional OAuth optional_scopes to request, overriding the connector's default optional_scopes. Only
+     * applied when requestedScopes is also provided.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<String>> requestedOptionalScopes() {
+        return (Optional<List<String>>) requestedOptionalScopes;
+    }
+
+    /**
+     * Optional OAuth scopes to request, overriding the connector's default scopes. Only supported for
+     * connectors that define scopes as an array.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<String>> requestedScopes() {
+        return (Optional<List<String>>) requestedScopes;
     }
 
     @JsonIgnore
@@ -98,12 +145,14 @@ public class InitiateOauthRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
+     * The values required to configure OAuth flows. The schema for this must match the
+     * `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
     public InitiateOauthRequest withOAuthInputConfiguration(Object oAuthInputConfiguration) {
         Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
@@ -111,8 +160,10 @@ public class InitiateOauthRequest {
         return this;
     }
 
+
     /**
-     * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
+     * The values required to configure OAuth flows. The schema for this must match the
+     * `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
      */
     public InitiateOauthRequest withOAuthInputConfiguration(Optional<? extends Object> oAuthInputConfiguration) {
         Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
@@ -121,11 +172,54 @@ public class InitiateOauthRequest {
     }
 
     /**
-     * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
+     * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter
+     * after authentication is complete.
      */
     public InitiateOauthRequest withRedirectUrl(String redirectUrl) {
         Utils.checkNotNull(redirectUrl, "redirectUrl");
         this.redirectUrl = redirectUrl;
+        return this;
+    }
+
+    /**
+     * Optional OAuth optional_scopes to request, overriding the connector's default optional_scopes. Only
+     * applied when requestedScopes is also provided.
+     */
+    public InitiateOauthRequest withRequestedOptionalScopes(List<String> requestedOptionalScopes) {
+        Utils.checkNotNull(requestedOptionalScopes, "requestedOptionalScopes");
+        this.requestedOptionalScopes = Optional.ofNullable(requestedOptionalScopes);
+        return this;
+    }
+
+
+    /**
+     * Optional OAuth optional_scopes to request, overriding the connector's default optional_scopes. Only
+     * applied when requestedScopes is also provided.
+     */
+    public InitiateOauthRequest withRequestedOptionalScopes(Optional<? extends List<String>> requestedOptionalScopes) {
+        Utils.checkNotNull(requestedOptionalScopes, "requestedOptionalScopes");
+        this.requestedOptionalScopes = requestedOptionalScopes;
+        return this;
+    }
+
+    /**
+     * Optional OAuth scopes to request, overriding the connector's default scopes. Only supported for
+     * connectors that define scopes as an array.
+     */
+    public InitiateOauthRequest withRequestedScopes(List<String> requestedScopes) {
+        Utils.checkNotNull(requestedScopes, "requestedScopes");
+        this.requestedScopes = Optional.ofNullable(requestedScopes);
+        return this;
+    }
+
+
+    /**
+     * Optional OAuth scopes to request, overriding the connector's default scopes. Only supported for
+     * connectors that define scopes as an array.
+     */
+    public InitiateOauthRequest withRequestedScopes(Optional<? extends List<String>> requestedScopes) {
+        Utils.checkNotNull(requestedScopes, "requestedScopes");
+        this.requestedScopes = requestedScopes;
         return this;
     }
 
@@ -144,7 +238,6 @@ public class InitiateOauthRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,19 +248,19 @@ public class InitiateOauthRequest {
         }
         InitiateOauthRequest other = (InitiateOauthRequest) o;
         return 
-            Objects.deepEquals(this.oAuthInputConfiguration, other.oAuthInputConfiguration) &&
-            Objects.deepEquals(this.redirectUrl, other.redirectUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.oAuthInputConfiguration, other.oAuthInputConfiguration) &&
+            Utils.enhancedDeepEquals(this.redirectUrl, other.redirectUrl) &&
+            Utils.enhancedDeepEquals(this.requestedOptionalScopes, other.requestedOptionalScopes) &&
+            Utils.enhancedDeepEquals(this.requestedScopes, other.requestedScopes) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            oAuthInputConfiguration,
-            redirectUrl,
-            sourceType,
-            workspaceId);
+        return Utils.enhancedHash(
+            oAuthInputConfiguration, redirectUrl, requestedOptionalScopes,
+            requestedScopes, sourceType, workspaceId);
     }
     
     @Override
@@ -175,26 +268,35 @@ public class InitiateOauthRequest {
         return Utils.toString(InitiateOauthRequest.class,
                 "oAuthInputConfiguration", oAuthInputConfiguration,
                 "redirectUrl", redirectUrl,
+                "requestedOptionalScopes", requestedOptionalScopes,
+                "requestedScopes", requestedScopes,
                 "sourceType", sourceType,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends Object> oAuthInputConfiguration = Optional.empty();
- 
+
         private String redirectUrl;
- 
+
+        private Optional<? extends List<String>> requestedOptionalScopes = Optional.empty();
+
+        private Optional<? extends List<String>> requestedScopes = Optional.empty();
+
         private OAuthActorNames sourceType;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
+         * The values required to configure OAuth flows. The schema for this must match the
+         * `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
          */
         public Builder oAuthInputConfiguration(Object oAuthInputConfiguration) {
             Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
@@ -203,7 +305,8 @@ public class InitiateOauthRequest {
         }
 
         /**
-         * The values required to configure OAuth flows. The schema for this must match the `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
+         * The values required to configure OAuth flows. The schema for this must match the
+         * `OAuthConfigSpecification.oauthUserInputFromConnectorConfigSpecification` schema.
          */
         public Builder oAuthInputConfiguration(Optional<? extends Object> oAuthInputConfiguration) {
             Utils.checkNotNull(oAuthInputConfiguration, "oAuthInputConfiguration");
@@ -211,8 +314,10 @@ public class InitiateOauthRequest {
             return this;
         }
 
+
         /**
-         * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter after authentication is complete.
+         * The URL to redirect the user to with the OAuth secret stored in the secret_id query string parameter
+         * after authentication is complete.
          */
         public Builder redirectUrl(String redirectUrl) {
             Utils.checkNotNull(redirectUrl, "redirectUrl");
@@ -220,11 +325,55 @@ public class InitiateOauthRequest {
             return this;
         }
 
+
+        /**
+         * Optional OAuth optional_scopes to request, overriding the connector's default optional_scopes. Only
+         * applied when requestedScopes is also provided.
+         */
+        public Builder requestedOptionalScopes(List<String> requestedOptionalScopes) {
+            Utils.checkNotNull(requestedOptionalScopes, "requestedOptionalScopes");
+            this.requestedOptionalScopes = Optional.ofNullable(requestedOptionalScopes);
+            return this;
+        }
+
+        /**
+         * Optional OAuth optional_scopes to request, overriding the connector's default optional_scopes. Only
+         * applied when requestedScopes is also provided.
+         */
+        public Builder requestedOptionalScopes(Optional<? extends List<String>> requestedOptionalScopes) {
+            Utils.checkNotNull(requestedOptionalScopes, "requestedOptionalScopes");
+            this.requestedOptionalScopes = requestedOptionalScopes;
+            return this;
+        }
+
+
+        /**
+         * Optional OAuth scopes to request, overriding the connector's default scopes. Only supported for
+         * connectors that define scopes as an array.
+         */
+        public Builder requestedScopes(List<String> requestedScopes) {
+            Utils.checkNotNull(requestedScopes, "requestedScopes");
+            this.requestedScopes = Optional.ofNullable(requestedScopes);
+            return this;
+        }
+
+        /**
+         * Optional OAuth scopes to request, overriding the connector's default scopes. Only supported for
+         * connectors that define scopes as an array.
+         */
+        public Builder requestedScopes(Optional<? extends List<String>> requestedScopes) {
+            Utils.checkNotNull(requestedScopes, "requestedScopes");
+            this.requestedScopes = requestedScopes;
+            return this;
+        }
+
+
         public Builder sourceType(OAuthActorNames sourceType) {
             Utils.checkNotNull(sourceType, "sourceType");
             this.sourceType = sourceType;
             return this;
         }
+
 
         /**
          * The workspace to create the secret and eventually the full source.
@@ -234,13 +383,13 @@ public class InitiateOauthRequest {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public InitiateOauthRequest build() {
+
             return new InitiateOauthRequest(
-                oAuthInputConfiguration,
-                redirectUrl,
-                sourceType,
-                workspaceId);
+                oAuthInputConfiguration, redirectUrl, requestedOptionalScopes,
+                requestedScopes, sourceType, workspaceId);
         }
+
     }
 }

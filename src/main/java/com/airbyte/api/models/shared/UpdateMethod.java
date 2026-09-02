@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * UpdateMethod
@@ -25,27 +24,27 @@ import java.util.Objects;
 public class UpdateMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private UpdateMethod(TypedObject value) {
         this.value = value;
     }
 
-    public static UpdateMethod of(ReadChangesUsingChangeDataCaptureCDC value) {
-        Utils.checkNotNull(value, "value");
-        return new UpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ReadChangesUsingChangeDataCaptureCDC>(){}));
-    }
-
     public static UpdateMethod of(ScanChangesWithUserDefinedCursor value) {
         Utils.checkNotNull(value, "value");
-        return new UpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ScanChangesWithUserDefinedCursor>(){}));
+        return new UpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static UpdateMethod of(ReadChangesUsingChangeDataCaptureCDC value) {
+        Utils.checkNotNull(value, "value");
+        return new UpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code com.airbyte.api.models.shared.ReadChangesUsingChangeDataCaptureCDC}</li>
      * <li>{@code com.airbyte.api.models.shared.ScanChangesWithUserDefinedCursor}</li>
+     * <li>{@code com.airbyte.api.models.shared.ReadChangesUsingChangeDataCaptureCDC}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -61,7 +60,7 @@ public class UpdateMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class UpdateMethod {
             return false;
         }
         UpdateMethod other = (UpdateMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class UpdateMethod {
 
         public _Deserializer() {
             super(UpdateMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<ScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class UpdateMethod {
         return Utils.toString(UpdateMethod.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * CatalogType
  * 
- * <p>Specifies the type of Iceberg catalog (e.g., NESSIE, GLUE, REST) and its associated configuration.
+ * <p>Specifies the type of Iceberg catalog (e.g., NESSIE, GLUE, REST, POLARIS) and its associated
+ * configuration.
  */
 @JsonDeserialize(using = CatalogType._Deserializer.class)
 public class CatalogType {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private CatalogType(TypedObject value) {
         this.value = value;
@@ -33,17 +33,22 @@ public class CatalogType {
 
     public static CatalogType of(NessieCatalog value) {
         Utils.checkNotNull(value, "value");
-        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NessieCatalog>(){}));
+        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CatalogType of(GlueCatalog value) {
         Utils.checkNotNull(value, "value");
-        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GlueCatalog>(){}));
+        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static CatalogType of(RestCatalog value) {
         Utils.checkNotNull(value, "value");
-        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<RestCatalog>(){}));
+        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static CatalogType of(PolarisCatalog value) {
+        Utils.checkNotNull(value, "value");
+        return new CatalogType(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -52,6 +57,7 @@ public class CatalogType {
      * <li>{@code com.airbyte.api.models.shared.NessieCatalog}</li>
      * <li>{@code com.airbyte.api.models.shared.GlueCatalog}</li>
      * <li>{@code com.airbyte.api.models.shared.RestCatalog}</li>
+     * <li>{@code com.airbyte.api.models.shared.PolarisCatalog}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -67,7 +73,7 @@ public class CatalogType {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +84,12 @@ public class CatalogType {
             return false;
         }
         CatalogType other = (CatalogType) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +97,10 @@ public class CatalogType {
 
         public _Deserializer() {
             super(CatalogType.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<GlueCatalog>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<NessieCatalog>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<RestCatalog>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<GlueCatalog>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<RestCatalog>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<PolarisCatalog>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +109,6 @@ public class CatalogType {
         return Utils.toString(CatalogType.class,
                 "value", value);
     }
- 
+
 }
 

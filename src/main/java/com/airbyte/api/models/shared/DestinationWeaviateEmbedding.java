@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationWeaviateEmbedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationWeaviateEmbedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationWeaviateEmbedding(TypedObject value) {
         this.value = value;
@@ -33,37 +32,37 @@ public class DestinationWeaviateEmbedding {
 
     public static DestinationWeaviateEmbedding of(NoExternalEmbedding value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<NoExternalEmbedding>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateEmbedding of(DestinationWeaviateAzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateAzureOpenAI>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateEmbedding of(DestinationWeaviateOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateOpenAI>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateEmbedding of(DestinationWeaviateCohere value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateCohere>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateEmbedding of(FromField value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<FromField>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateEmbedding of(DestinationWeaviateFake value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateFake>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationWeaviateEmbedding of(DestinationWeaviateOpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationWeaviateOpenAICompatible>(){}));
+        return new DestinationWeaviateEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -91,7 +90,7 @@ public class DestinationWeaviateEmbedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -102,12 +101,12 @@ public class DestinationWeaviateEmbedding {
             return false;
         }
         DestinationWeaviateEmbedding other = (DestinationWeaviateEmbedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -115,13 +114,13 @@ public class DestinationWeaviateEmbedding {
 
         public _Deserializer() {
             super(DestinationWeaviateEmbedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateOpenAICompatible>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<NoExternalEmbedding>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateAzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<FromField>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateCohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateCohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<FromField>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateFake>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<NoExternalEmbedding>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationWeaviateOpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -130,6 +129,6 @@ public class DestinationWeaviateEmbedding {
         return Utils.toString(DestinationWeaviateEmbedding.class,
                 "value", value);
     }
- 
+
 }
 

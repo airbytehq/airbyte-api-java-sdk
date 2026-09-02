@@ -14,7 +14,7 @@ public enum Hubplanner {
     @JsonValue
     private final String value;
 
-    private Hubplanner(String value) {
+    Hubplanner(String value) {
         this.value = value;
     }
     

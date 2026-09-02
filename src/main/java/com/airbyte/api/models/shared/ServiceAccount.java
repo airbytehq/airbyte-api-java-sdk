@@ -15,8 +15,8 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ServiceAccount {
 
@@ -25,19 +25,25 @@ public class ServiceAccount {
     private Optional<? extends SourceMixpanelOptionTitle> optionTitle;
 
     /**
-     * Your project ID number. See the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Your project ID number. See the <a
+     * href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id">docs</a>
+     * for more information on how to obtain this.
      */
     @JsonProperty("project_id")
     private long projectId;
 
     /**
-     * Mixpanel Service Account Secret. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Mixpanel Service Account Secret. See the <a
+     * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+     * how to obtain this.
      */
     @JsonProperty("secret")
     private String secret;
 
     /**
-     * Mixpanel Service Account Username. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Mixpanel Service Account Username. See the <a
+     * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+     * how to obtain this.
      */
     @JsonProperty("username")
     private String username;
@@ -63,7 +69,9 @@ public class ServiceAccount {
     }
 
     /**
-     * Your project ID number. See the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Your project ID number. See the <a
+     * href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id">docs</a>
+     * for more information on how to obtain this.
      */
     @JsonIgnore
     public long projectId() {
@@ -71,7 +79,9 @@ public class ServiceAccount {
     }
 
     /**
-     * Mixpanel Service Account Secret. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Mixpanel Service Account Secret. See the <a
+     * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+     * how to obtain this.
      */
     @JsonIgnore
     public String secret() {
@@ -79,19 +89,24 @@ public class ServiceAccount {
     }
 
     /**
-     * Mixpanel Service Account Username. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Mixpanel Service Account Username. See the <a
+     * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+     * how to obtain this.
      */
     @JsonIgnore
     public String username() {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your project ID number. See the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Your project ID number. See the <a
+     * href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id">docs</a>
+     * for more information on how to obtain this.
      */
     public ServiceAccount withProjectId(long projectId) {
         Utils.checkNotNull(projectId, "projectId");
@@ -100,7 +115,9 @@ public class ServiceAccount {
     }
 
     /**
-     * Mixpanel Service Account Secret. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Mixpanel Service Account Secret. See the <a
+     * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+     * how to obtain this.
      */
     public ServiceAccount withSecret(String secret) {
         Utils.checkNotNull(secret, "secret");
@@ -109,7 +126,9 @@ public class ServiceAccount {
     }
 
     /**
-     * Mixpanel Service Account Username. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+     * Mixpanel Service Account Username. See the <a
+     * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+     * how to obtain this.
      */
     public ServiceAccount withUsername(String username) {
         Utils.checkNotNull(username, "username");
@@ -117,7 +136,6 @@ public class ServiceAccount {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -128,18 +146,16 @@ public class ServiceAccount {
         }
         ServiceAccount other = (ServiceAccount) o;
         return 
-            Objects.deepEquals(this.optionTitle, other.optionTitle) &&
-            Objects.deepEquals(this.projectId, other.projectId) &&
-            Objects.deepEquals(this.secret, other.secret) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.optionTitle, other.optionTitle) &&
+            Utils.enhancedDeepEquals(this.projectId, other.projectId) &&
+            Utils.enhancedDeepEquals(this.secret, other.secret) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            optionTitle,
-            projectId,
-            secret,
+        return Utils.enhancedHash(
+            optionTitle, projectId, secret,
             username);
     }
     
@@ -151,21 +167,25 @@ public class ServiceAccount {
                 "secret", secret,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long projectId;
- 
+
         private String secret;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your project ID number. See the &lt;a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+         * Your project ID number. See the <a
+         * href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id">docs</a>
+         * for more information on how to obtain this.
          */
         public Builder projectId(long projectId) {
             Utils.checkNotNull(projectId, "projectId");
@@ -173,8 +193,11 @@ public class ServiceAccount {
             return this;
         }
 
+
         /**
-         * Mixpanel Service Account Secret. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+         * Mixpanel Service Account Secret. See the <a
+         * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+         * how to obtain this.
          */
         public Builder secret(String secret) {
             Utils.checkNotNull(secret, "secret");
@@ -182,21 +205,24 @@ public class ServiceAccount {
             return this;
         }
 
+
         /**
-         * Mixpanel Service Account Username. See the &lt;a href="https://developer.mixpanel.com/reference/service-accounts"&gt;docs&lt;/a&gt; for more information on how to obtain this.
+         * Mixpanel Service Account Username. See the <a
+         * href="https://developer.mixpanel.com/reference/service-accounts">docs</a> for more information on
+         * how to obtain this.
          */
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public ServiceAccount build() {
+
             return new ServiceAccount(
-                projectId,
-                secret,
-                username);
+                projectId, secret, username);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceMixpanelOptionTitle>> _SINGLETON_VALUE_OptionTitle =
                 new LazySingletonValue<>(

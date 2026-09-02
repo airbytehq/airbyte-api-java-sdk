@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class SourceSapHanaEnterpriseUnencrypted {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
@@ -59,9 +59,10 @@ public class SourceSapHanaEnterpriseUnencrypted {
         return (Optional<SourceSapHanaEnterpriseEncryptionMethod>) encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterpriseUnencrypted withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class SourceSapHanaEnterpriseUnencrypted {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterpriseUnencrypted withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class SourceSapHanaEnterpriseUnencrypted {
         return this;
     }
 
+
     public SourceSapHanaEnterpriseUnencrypted withEncryptionMethod(Optional<? extends SourceSapHanaEnterpriseEncryptionMethod> encryptionMethod) {
         Utils.checkNotNull(encryptionMethod, "encryptionMethod");
         this.encryptionMethod = encryptionMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class SourceSapHanaEnterpriseUnencrypted {
         }
         SourceSapHanaEnterpriseUnencrypted other = (SourceSapHanaEnterpriseUnencrypted) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            encryptionMethod);
+        return Utils.enhancedHash(
+            additionalProperties, encryptionMethod);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class SourceSapHanaEnterpriseUnencrypted {
                 "additionalProperties", additionalProperties,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceSapHanaEnterpriseEncryptionMethod> encryptionMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class SourceSapHanaEnterpriseUnencrypted {
             return this;
         }
 
+
         public Builder encryptionMethod(SourceSapHanaEnterpriseEncryptionMethod encryptionMethod) {
             Utils.checkNotNull(encryptionMethod, "encryptionMethod");
             this.encryptionMethod = Optional.ofNullable(encryptionMethod);
@@ -155,15 +156,17 @@ public class SourceSapHanaEnterpriseUnencrypted {
             this.encryptionMethod = encryptionMethod;
             return this;
         }
-        
+
         public SourceSapHanaEnterpriseUnencrypted build() {
             if (encryptionMethod == null) {
                 encryptionMethod = _SINGLETON_VALUE_EncryptionMethod.value();
             }
+
             return new SourceSapHanaEnterpriseUnencrypted(
                 encryptionMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

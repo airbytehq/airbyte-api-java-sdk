@@ -1,5 +1,13 @@
 # SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValueType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValueType;
+
+SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValueType value = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValueType.INT64_VALUE;
+```
+
 
 ## Values
 

@@ -9,12 +9,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CustomQueriesArray {
-
     /**
-     * A custom defined GAQL query for building the report. Avoid including the segments.date field; wherever possible, Airbyte will automatically include it for incremental syncs. For more information, refer to &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;Google's documentation&lt;/a&gt;.
+     * A custom defined GAQL query for building the report. Avoid including the segments.date field;
+     * wherever possible, Airbyte will automatically include it for incremental syncs. For more
+     * information, refer to <a
+     * href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder">Google's
+     * documentation</a>.
      */
     @JsonProperty("query")
     private String query;
@@ -36,7 +39,11 @@ public class CustomQueriesArray {
     }
 
     /**
-     * A custom defined GAQL query for building the report. Avoid including the segments.date field; wherever possible, Airbyte will automatically include it for incremental syncs. For more information, refer to &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;Google's documentation&lt;/a&gt;.
+     * A custom defined GAQL query for building the report. Avoid including the segments.date field;
+     * wherever possible, Airbyte will automatically include it for incremental syncs. For more
+     * information, refer to <a
+     * href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder">Google's
+     * documentation</a>.
      */
     @JsonIgnore
     public String query() {
@@ -51,12 +58,17 @@ public class CustomQueriesArray {
         return tableName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * A custom defined GAQL query for building the report. Avoid including the segments.date field; wherever possible, Airbyte will automatically include it for incremental syncs. For more information, refer to &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;Google's documentation&lt;/a&gt;.
+     * A custom defined GAQL query for building the report. Avoid including the segments.date field;
+     * wherever possible, Airbyte will automatically include it for incremental syncs. For more
+     * information, refer to <a
+     * href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder">Google's
+     * documentation</a>.
      */
     public CustomQueriesArray withQuery(String query) {
         Utils.checkNotNull(query, "query");
@@ -73,7 +85,6 @@ public class CustomQueriesArray {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -84,15 +95,14 @@ public class CustomQueriesArray {
         }
         CustomQueriesArray other = (CustomQueriesArray) o;
         return 
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.tableName, other.tableName);
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.tableName, other.tableName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            query,
-            tableName);
+        return Utils.enhancedHash(
+            query, tableName);
     }
     
     @Override
@@ -101,25 +111,32 @@ public class CustomQueriesArray {
                 "query", query,
                 "tableName", tableName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String query;
- 
+
         private String tableName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * A custom defined GAQL query for building the report. Avoid including the segments.date field; wherever possible, Airbyte will automatically include it for incremental syncs. For more information, refer to &lt;a href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder"&gt;Google's documentation&lt;/a&gt;.
+         * A custom defined GAQL query for building the report. Avoid including the segments.date field;
+         * wherever possible, Airbyte will automatically include it for incremental syncs. For more
+         * information, refer to <a
+         * href="https://developers.google.com/google-ads/api/fields/v11/overview_query_builder">Google's
+         * documentation</a>.
          */
         public Builder query(String query) {
             Utils.checkNotNull(query, "query");
             this.query = query;
             return this;
         }
+
 
         /**
          * The table name in your destination database for the chosen query.
@@ -129,11 +146,12 @@ public class CustomQueriesArray {
             this.tableName = tableName;
             return this;
         }
-        
+
         public CustomQueriesArray build() {
+
             return new CustomQueriesArray(
-                query,
-                tableName);
+                query, tableName);
         }
+
     }
 }

@@ -14,7 +14,7 @@ public enum Trello {
     @JsonValue
     private final String value;
 
-    private Trello(String value) {
+    Trello(String value) {
         this.value = value;
     }
     

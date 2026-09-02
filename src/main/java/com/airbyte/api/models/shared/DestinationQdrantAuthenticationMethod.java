@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationQdrantAuthenticationMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationQdrantAuthenticationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationQdrantAuthenticationMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class DestinationQdrantAuthenticationMethod {
 
     public static DestinationQdrantAuthenticationMethod of(ApiKeyAuth value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ApiKeyAuth>(){}));
+        return new DestinationQdrantAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantAuthenticationMethod of(DestinationQdrantNoAuth value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantNoAuth>(){}));
+        return new DestinationQdrantAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class DestinationQdrantAuthenticationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class DestinationQdrantAuthenticationMethod {
             return false;
         }
         DestinationQdrantAuthenticationMethod other = (DestinationQdrantAuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class DestinationQdrantAuthenticationMethod {
         return Utils.toString(DestinationQdrantAuthenticationMethod.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,7 +14,7 @@ public enum DestinationMilvusMode {
     @JsonValue
     private final String value;
 
-    private DestinationMilvusMode(String value) {
+    DestinationMilvusMode(String value) {
         this.value = value;
     }
     

@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaAccessKeys {
 
@@ -32,6 +32,7 @@ public class AuthenticateViaAccessKeys {
      */
     @JsonProperty("access_key_id")
     private String accessKeyId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -82,9 +83,10 @@ public class AuthenticateViaAccessKeys {
         return secretAccessKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public AuthenticateViaAccessKeys withAdditionalProperty(String key, Object value) {
@@ -92,8 +94,7 @@ public class AuthenticateViaAccessKeys {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public AuthenticateViaAccessKeys withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -118,7 +119,6 @@ public class AuthenticateViaAccessKeys {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,18 +129,16 @@ public class AuthenticateViaAccessKeys {
         }
         AuthenticateViaAccessKeys other = (AuthenticateViaAccessKeys) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.secretAccessKey, other.secretAccessKey);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.accessKeyId, other.accessKeyId) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.secretAccessKey, other.secretAccessKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            accessKeyId,
-            authType,
+        return Utils.enhancedHash(
+            additionalProperties, accessKeyId, authType,
             secretAccessKey);
     }
     
@@ -152,15 +150,16 @@ public class AuthenticateViaAccessKeys {
                 "authType", authType,
                 "secretAccessKey", secretAccessKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String accessKeyId;
- 
+
         private String secretAccessKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -181,6 +180,7 @@ public class AuthenticateViaAccessKeys {
             return this;
         }
 
+
         /**
          * The access key id to access Dynamodb. Airbyte requires read permissions to the database
          */
@@ -190,6 +190,7 @@ public class AuthenticateViaAccessKeys {
             return this;
         }
 
+
         /**
          * The corresponding secret to the access key id.
          */
@@ -198,13 +199,14 @@ public class AuthenticateViaAccessKeys {
             this.secretAccessKey = secretAccessKey;
             return this;
         }
-        
+
         public AuthenticateViaAccessKeys build() {
+
             return new AuthenticateViaAccessKeys(
-                accessKeyId,
-                secretAccessKey)
+                accessKeyId, secretAccessKey)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceDynamodbAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -14,7 +14,7 @@ public enum Factorial {
     @JsonValue
     private final String value;
 
-    private Factorial(String value) {
+    Factorial(String value) {
         this.value = value;
     }
     

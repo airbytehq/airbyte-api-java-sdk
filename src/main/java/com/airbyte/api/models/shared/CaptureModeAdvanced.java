@@ -11,7 +11,13 @@ import java.util.Optional;
 /**
  * CaptureModeAdvanced
  * 
- * <p>Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current value of the document will be read. If 'Post Image' is chosen, then the version of the document immediately after an update will be read. WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not set on your Mongo instance : https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
+ * <p>Determines how Airbyte looks up the value of an updated document. If 'Lookup' is chosen, the current
+ * value of the document will be read. If 'Post Image' is chosen, then the version of the document
+ * immediately after an update will be read.
+ * 
+ * <p>WARNING : Severe data loss will occur if this option is chosen and the appropriate settings are not
+ * set on your Mongo instance :
+ * https://www.mongodb.com/docs/manual/changeStreams/#change-streams-with-document-pre-and-post-images.
  */
 public enum CaptureModeAdvanced {
     LOOKUP("Lookup"),
@@ -20,7 +26,7 @@ public enum CaptureModeAdvanced {
     @JsonValue
     private final String value;
 
-    private CaptureModeAdvanced(String value) {
+    CaptureModeAdvanced(String value) {
         this.value = value;
     }
     

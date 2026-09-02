@@ -14,7 +14,7 @@ public enum Keka {
     @JsonValue
     private final String value;
 
-    private Keka(String value) {
+    Keka(String value) {
         this.value = value;
     }
     

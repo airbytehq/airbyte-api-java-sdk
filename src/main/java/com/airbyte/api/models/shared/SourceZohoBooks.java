@@ -12,15 +12,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceZohoBooks {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("refresh_token")
     private String refreshToken;
@@ -31,8 +33,10 @@ public class SourceZohoBooks {
     @JsonProperty("region")
     private SourceZohoBooksRegion region;
 
+
     @JsonProperty("sourceType")
     private ZohoBooks sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -90,9 +94,10 @@ public class SourceZohoBooks {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoBooks withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -127,7 +132,6 @@ public class SourceZohoBooks {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,23 +142,19 @@ public class SourceZohoBooks {
         }
         SourceZohoBooks other = (SourceZohoBooks) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            refreshToken,
-            region,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, refreshToken,
+            region, sourceType, startDate);
     }
     
     @Override
@@ -167,22 +167,24 @@ public class SourceZohoBooks {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private SourceZohoBooksRegion region;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -190,17 +192,20 @@ public class SourceZohoBooks {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
 
+
         public Builder refreshToken(String refreshToken) {
             Utils.checkNotNull(refreshToken, "refreshToken");
             this.refreshToken = refreshToken;
             return this;
         }
+
 
         /**
          * The region code for the Zoho Books API, such as 'com', 'eu', 'in', etc.
@@ -211,20 +216,20 @@ public class SourceZohoBooks {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceZohoBooks build() {
+
             return new SourceZohoBooks(
-                clientId,
-                clientSecret,
-                refreshToken,
-                region,
-                startDate);
+                clientId, clientSecret, refreshToken,
+                region, startDate);
         }
+
 
         private static final LazySingletonValue<ZohoBooks> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

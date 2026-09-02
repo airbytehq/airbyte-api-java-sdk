@@ -14,7 +14,7 @@ public enum AlpacaBrokerApi {
     @JsonValue
     private final String value;
 
-    private AlpacaBrokerApi(String value) {
+    AlpacaBrokerApi(String value) {
         this.value = value;
     }
     

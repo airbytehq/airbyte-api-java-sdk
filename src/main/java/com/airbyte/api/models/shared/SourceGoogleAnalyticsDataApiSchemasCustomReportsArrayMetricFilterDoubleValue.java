@@ -12,12 +12,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Double;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDoubleValue {
 
     @JsonProperty("value")
     private double value;
+
 
     @JsonProperty("value_type")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterValueType valueType;
@@ -40,9 +41,10 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDo
         return valueType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDoubleValue withValue(double value) {
         Utils.checkNotNull(value, "value");
@@ -50,7 +52,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDo
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -61,15 +62,14 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDo
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDoubleValue other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDoubleValue) o;
         return 
-            Objects.deepEquals(this.value, other.value) &&
-            Objects.deepEquals(this.valueType, other.valueType);
+            Utils.enhancedDeepEquals(this.value, other.value) &&
+            Utils.enhancedDeepEquals(this.valueType, other.valueType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            value,
-            valueType);
+        return Utils.enhancedHash(
+            value, valueType);
     }
     
     @Override
@@ -78,25 +78,29 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDo
                 "value", value,
                 "valueType", valueType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Double value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder value(double value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDoubleValue build() {
+
             return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterDoubleValue(
                 value);
         }
+
 
         private static final LazySingletonValue<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter4FilterValueType> _SINGLETON_VALUE_ValueType =
                 new LazySingletonValue<>(

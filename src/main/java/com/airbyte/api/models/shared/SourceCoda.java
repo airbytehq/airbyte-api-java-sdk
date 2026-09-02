@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCoda {
-
     /**
      * Bearer token
      */
     @JsonProperty("auth_token")
     private String authToken;
+
 
     @JsonProperty("sourceType")
     private Coda sourceType;
@@ -45,9 +45,10 @@ public class SourceCoda {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Bearer token
@@ -58,7 +59,6 @@ public class SourceCoda {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceCoda {
         }
         SourceCoda other = (SourceCoda) o;
         return 
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authToken,
-            sourceType);
+        return Utils.enhancedHash(
+            authToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceCoda {
                 "authToken", authToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Bearer token
@@ -103,11 +104,13 @@ public class SourceCoda {
             this.authToken = authToken;
             return this;
         }
-        
+
         public SourceCoda build() {
+
             return new SourceCoda(
                 authToken);
         }
+
 
         private static final LazySingletonValue<Coda> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

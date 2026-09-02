@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceBabelforce {
 
+public class SourceBabelforce {
     /**
      * The Babelforce access key ID
      */
@@ -33,14 +32,16 @@ public class SourceBabelforce {
     private String accessToken;
 
     /**
-     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_created_from")
     private Optional<Long> dateCreatedFrom;
 
     /**
-     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_created_to")
@@ -52,6 +53,7 @@ public class SourceBabelforce {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
     private Optional<? extends SourceBabelforceRegion> region;
+
 
     @JsonProperty("sourceType")
     private Babelforce sourceType;
@@ -79,7 +81,8 @@ public class SourceBabelforce {
     public SourceBabelforce(
             String accessKeyId,
             String accessToken) {
-        this(accessKeyId, accessToken, Optional.empty(), Optional.empty(), Optional.empty());
+        this(accessKeyId, accessToken, Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -99,7 +102,8 @@ public class SourceBabelforce {
     }
 
     /**
-     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     @JsonIgnore
     public Optional<Long> dateCreatedFrom() {
@@ -107,7 +111,8 @@ public class SourceBabelforce {
     }
 
     /**
-     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     @JsonIgnore
     public Optional<Long> dateCreatedTo() {
@@ -128,9 +133,10 @@ public class SourceBabelforce {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Babelforce access key ID
@@ -151,7 +157,8 @@ public class SourceBabelforce {
     }
 
     /**
-     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     public SourceBabelforce withDateCreatedFrom(long dateCreatedFrom) {
         Utils.checkNotNull(dateCreatedFrom, "dateCreatedFrom");
@@ -159,8 +166,10 @@ public class SourceBabelforce {
         return this;
     }
 
+
     /**
-     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     public SourceBabelforce withDateCreatedFrom(Optional<Long> dateCreatedFrom) {
         Utils.checkNotNull(dateCreatedFrom, "dateCreatedFrom");
@@ -169,7 +178,8 @@ public class SourceBabelforce {
     }
 
     /**
-     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     public SourceBabelforce withDateCreatedTo(long dateCreatedTo) {
         Utils.checkNotNull(dateCreatedTo, "dateCreatedTo");
@@ -177,8 +187,10 @@ public class SourceBabelforce {
         return this;
     }
 
+
     /**
-     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+     * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which
+     * corresponds to 2022-05-01 00:00:00.
      */
     public SourceBabelforce withDateCreatedTo(Optional<Long> dateCreatedTo) {
         Utils.checkNotNull(dateCreatedTo, "dateCreatedTo");
@@ -195,6 +207,7 @@ public class SourceBabelforce {
         return this;
     }
 
+
     /**
      * Babelforce region
      */
@@ -204,7 +217,6 @@ public class SourceBabelforce {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -215,23 +227,19 @@ public class SourceBabelforce {
         }
         SourceBabelforce other = (SourceBabelforce) o;
         return 
-            Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.dateCreatedFrom, other.dateCreatedFrom) &&
-            Objects.deepEquals(this.dateCreatedTo, other.dateCreatedTo) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accessKeyId, other.accessKeyId) &&
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.dateCreatedFrom, other.dateCreatedFrom) &&
+            Utils.enhancedDeepEquals(this.dateCreatedTo, other.dateCreatedTo) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKeyId,
-            accessToken,
-            dateCreatedFrom,
-            dateCreatedTo,
-            region,
-            sourceType);
+        return Utils.enhancedHash(
+            accessKeyId, accessToken, dateCreatedFrom,
+            dateCreatedTo, region, sourceType);
     }
     
     @Override
@@ -244,22 +252,24 @@ public class SourceBabelforce {
                 "region", region,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKeyId;
- 
+
         private String accessToken;
- 
+
         private Optional<Long> dateCreatedFrom = Optional.empty();
- 
+
         private Optional<Long> dateCreatedTo = Optional.empty();
- 
+
         private Optional<? extends SourceBabelforceRegion> region;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Babelforce access key ID
@@ -270,6 +280,7 @@ public class SourceBabelforce {
             return this;
         }
 
+
         /**
          * The Babelforce access token
          */
@@ -279,8 +290,10 @@ public class SourceBabelforce {
             return this;
         }
 
+
         /**
-         * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+         * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which
+         * corresponds to 2022-05-01 00:00:00.
          */
         public Builder dateCreatedFrom(long dateCreatedFrom) {
             Utils.checkNotNull(dateCreatedFrom, "dateCreatedFrom");
@@ -289,7 +302,8 @@ public class SourceBabelforce {
         }
 
         /**
-         * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+         * Timestamp in Unix the replication from Babelforce API will start from. For example 1651363200 which
+         * corresponds to 2022-05-01 00:00:00.
          */
         public Builder dateCreatedFrom(Optional<Long> dateCreatedFrom) {
             Utils.checkNotNull(dateCreatedFrom, "dateCreatedFrom");
@@ -297,8 +311,10 @@ public class SourceBabelforce {
             return this;
         }
 
+
         /**
-         * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+         * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which
+         * corresponds to 2022-05-01 00:00:00.
          */
         public Builder dateCreatedTo(long dateCreatedTo) {
             Utils.checkNotNull(dateCreatedTo, "dateCreatedTo");
@@ -307,13 +323,15 @@ public class SourceBabelforce {
         }
 
         /**
-         * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which corresponds to 2022-05-01 00:00:00.
+         * Timestamp in Unix the replication from Babelforce will be up to. For example 1651363200 which
+         * corresponds to 2022-05-01 00:00:00.
          */
         public Builder dateCreatedTo(Optional<Long> dateCreatedTo) {
             Utils.checkNotNull(dateCreatedTo, "dateCreatedTo");
             this.dateCreatedTo = dateCreatedTo;
             return this;
         }
+
 
         /**
          * Babelforce region
@@ -332,18 +350,17 @@ public class SourceBabelforce {
             this.region = region;
             return this;
         }
-        
+
         public SourceBabelforce build() {
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+
             return new SourceBabelforce(
-                accessKeyId,
-                accessToken,
-                dateCreatedFrom,
-                dateCreatedTo,
-                region);
+                accessKeyId, accessToken, dateCreatedFrom,
+                dateCreatedTo, region);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceBabelforceRegion>> _SINGLETON_VALUE_Region =
                 new LazySingletonValue<>(

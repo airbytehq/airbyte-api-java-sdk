@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleTasks {
 
@@ -29,8 +29,10 @@ public class SourceGoogleTasks {
     @JsonProperty("records_limit")
     private Optional<String> recordsLimit;
 
+
     @JsonProperty("sourceType")
     private GoogleTasks sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -78,9 +80,10 @@ public class SourceGoogleTasks {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleTasks withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -97,6 +100,7 @@ public class SourceGoogleTasks {
         return this;
     }
 
+
     /**
      * The maximum number of records to be returned per request
      */
@@ -112,7 +116,6 @@ public class SourceGoogleTasks {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -123,18 +126,16 @@ public class SourceGoogleTasks {
         }
         SourceGoogleTasks other = (SourceGoogleTasks) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.recordsLimit, other.recordsLimit) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.recordsLimit, other.recordsLimit) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            recordsLimit,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, recordsLimit, sourceType,
             startDate);
     }
     
@@ -146,24 +147,27 @@ public class SourceGoogleTasks {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> recordsLimit;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The maximum number of records to be returned per request
@@ -183,21 +187,22 @@ public class SourceGoogleTasks {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGoogleTasks build() {
             if (recordsLimit == null) {
                 recordsLimit = _SINGLETON_VALUE_RecordsLimit.value();
             }
+
             return new SourceGoogleTasks(
-                apiKey,
-                recordsLimit,
-                startDate);
+                apiKey, recordsLimit, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_RecordsLimit =
                 new LazySingletonValue<>(

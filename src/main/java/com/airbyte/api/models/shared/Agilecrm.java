@@ -14,7 +14,7 @@ public enum Agilecrm {
     @JsonValue
     private final String value;
 
-    private Agilecrm(String value) {
+    Agilecrm(String value) {
         this.value = value;
     }
     

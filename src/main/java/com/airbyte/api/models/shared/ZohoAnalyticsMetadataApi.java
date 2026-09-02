@@ -14,7 +14,7 @@ public enum ZohoAnalyticsMetadataApi {
     @JsonValue
     private final String value;
 
-    private ZohoAnalyticsMetadataApi(String value) {
+    ZohoAnalyticsMetadataApi(String value) {
         this.value = value;
     }
     

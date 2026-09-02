@@ -11,7 +11,7 @@ import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DeclarativeSourceDefinitionResponse {
 
@@ -24,8 +24,10 @@ public class DeclarativeSourceDefinitionResponse {
     @JsonProperty("manifest")
     private Object manifest;
 
+
     @JsonProperty("name")
     private String name;
+
 
     @JsonProperty("version")
     private long version;
@@ -69,9 +71,10 @@ public class DeclarativeSourceDefinitionResponse {
         return version;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeclarativeSourceDefinitionResponse withId(String id) {
         Utils.checkNotNull(id, "id");
@@ -100,7 +103,6 @@ public class DeclarativeSourceDefinitionResponse {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,18 +113,16 @@ public class DeclarativeSourceDefinitionResponse {
         }
         DeclarativeSourceDefinitionResponse other = (DeclarativeSourceDefinitionResponse) o;
         return 
-            Objects.deepEquals(this.id, other.id) &&
-            Objects.deepEquals(this.manifest, other.manifest) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.version, other.version);
+            Utils.enhancedDeepEquals(this.id, other.id) &&
+            Utils.enhancedDeepEquals(this.manifest, other.manifest) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.version, other.version);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            id,
-            manifest,
-            name,
+        return Utils.enhancedHash(
+            id, manifest, name,
             version);
     }
     
@@ -134,26 +134,29 @@ public class DeclarativeSourceDefinitionResponse {
                 "name", name,
                 "version", version);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String id;
- 
+
         private Object manifest;
- 
+
         private String name;
- 
+
         private Long version;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder id(String id) {
             Utils.checkNotNull(id, "id");
             this.id = id;
             return this;
         }
+
 
         /**
          * Low code CDK manifest JSON object
@@ -164,24 +167,26 @@ public class DeclarativeSourceDefinitionResponse {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
 
+
         public Builder version(long version) {
             Utils.checkNotNull(version, "version");
             this.version = version;
             return this;
         }
-        
+
         public DeclarativeSourceDefinitionResponse build() {
+
             return new DeclarativeSourceDefinitionResponse(
-                id,
-                manifest,
-                name,
+                id, manifest, name,
                 version);
         }
+
     }
 }

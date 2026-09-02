@@ -1,5 +1,13 @@
 # Entity
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Entity;
+
+Entity value = Entity.PARTIES;
+```
+
 
 ## Values
 

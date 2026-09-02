@@ -14,7 +14,7 @@ public enum Duckdb {
     @JsonValue
     private final String value;
 
-    private Duckdb(String value) {
+    Duckdb(String value) {
         this.value = value;
     }
     

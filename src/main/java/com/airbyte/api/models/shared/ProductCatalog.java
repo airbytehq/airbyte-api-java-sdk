@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * ProductCatalog
  * 
- * <p>Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+ * <p>Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+ * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+ * section. If left blank, the product catalog version will be set to 2.0.
  */
 public enum ProductCatalog {
     ONE_DOT0("1.0"),
@@ -20,7 +22,7 @@ public enum ProductCatalog {
     @JsonValue
     private final String value;
 
-    private ProductCatalog(String value) {
+    ProductCatalog(String value) {
         this.value = value;
     }
     

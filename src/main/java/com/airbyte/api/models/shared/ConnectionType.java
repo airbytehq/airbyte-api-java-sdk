@@ -14,7 +14,7 @@ public enum ConnectionType {
     @JsonValue
     private final String value;
 
-    private ConnectionType(String value) {
+    ConnectionType(String value) {
         this.value = value;
     }
     

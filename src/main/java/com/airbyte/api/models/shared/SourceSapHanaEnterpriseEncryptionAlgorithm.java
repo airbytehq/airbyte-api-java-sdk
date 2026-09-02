@@ -21,7 +21,7 @@ public enum SourceSapHanaEnterpriseEncryptionAlgorithm {
     @JsonValue
     private final String value;
 
-    private SourceSapHanaEnterpriseEncryptionAlgorithm(String value) {
+    SourceSapHanaEnterpriseEncryptionAlgorithm(String value) {
         this.value = value;
     }
     

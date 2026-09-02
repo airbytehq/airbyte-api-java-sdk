@@ -13,11 +13,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleAnalyticsDataApiCustomReportConfig {
 
+public class SourceGoogleAnalyticsDataApiCustomReportConfig {
     /**
      * Cohort reports creates a time series of user retention for the cohort.
      */
@@ -83,7 +82,8 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             List<String> dimensions,
             List<String> metrics,
             String name) {
-        this(Optional.empty(), Optional.empty(), dimensions, Optional.empty(), metrics, name);
+        this(Optional.empty(), Optional.empty(), dimensions,
+            Optional.empty(), metrics, name);
     }
 
     /**
@@ -137,9 +137,10 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Cohort reports creates a time series of user retention for the cohort.
@@ -149,6 +150,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         this.cohortSpec = Optional.ofNullable(cohortSpec);
         return this;
     }
+
 
     /**
      * Cohort reports creates a time series of user retention for the cohort.
@@ -167,6 +169,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         this.dimensionFilter = Optional.ofNullable(dimensionFilter);
         return this;
     }
+
 
     /**
      * Dimensions filter
@@ -195,6 +198,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         return this;
     }
 
+
     /**
      * Metrics filter
      */
@@ -222,7 +226,6 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -233,23 +236,19 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
         }
         SourceGoogleAnalyticsDataApiCustomReportConfig other = (SourceGoogleAnalyticsDataApiCustomReportConfig) o;
         return 
-            Objects.deepEquals(this.cohortSpec, other.cohortSpec) &&
-            Objects.deepEquals(this.dimensionFilter, other.dimensionFilter) &&
-            Objects.deepEquals(this.dimensions, other.dimensions) &&
-            Objects.deepEquals(this.metricFilter, other.metricFilter) &&
-            Objects.deepEquals(this.metrics, other.metrics) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.cohortSpec, other.cohortSpec) &&
+            Utils.enhancedDeepEquals(this.dimensionFilter, other.dimensionFilter) &&
+            Utils.enhancedDeepEquals(this.dimensions, other.dimensions) &&
+            Utils.enhancedDeepEquals(this.metricFilter, other.metricFilter) &&
+            Utils.enhancedDeepEquals(this.metrics, other.metrics) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            cohortSpec,
-            dimensionFilter,
-            dimensions,
-            metricFilter,
-            metrics,
-            name);
+        return Utils.enhancedHash(
+            cohortSpec, dimensionFilter, dimensions,
+            metricFilter, metrics, name);
     }
     
     @Override
@@ -262,24 +261,26 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
                 "metrics", metrics,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends CohortReports> cohortSpec = Optional.empty();
- 
+
         private Optional<? extends DimensionsFilter> dimensionFilter = Optional.empty();
- 
+
         private List<String> dimensions;
- 
+
         private Optional<? extends MetricsFilter> metricFilter = Optional.empty();
- 
+
         private List<String> metrics;
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Cohort reports creates a time series of user retention for the cohort.
@@ -299,6 +300,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             return this;
         }
 
+
         /**
          * Dimensions filter
          */
@@ -317,6 +319,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             return this;
         }
 
+
         /**
          * A list of dimensions.
          */
@@ -325,6 +328,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             this.dimensions = dimensions;
             return this;
         }
+
 
         /**
          * Metrics filter
@@ -344,6 +348,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             return this;
         }
 
+
         /**
          * A list of metrics.
          */
@@ -353,6 +358,7 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             return this;
         }
 
+
         /**
          * The name of the custom report, this name would be used as stream name.
          */
@@ -361,15 +367,13 @@ public class SourceGoogleAnalyticsDataApiCustomReportConfig {
             this.name = name;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiCustomReportConfig build() {
+
             return new SourceGoogleAnalyticsDataApiCustomReportConfig(
-                cohortSpec,
-                dimensionFilter,
-                dimensions,
-                metricFilter,
-                metrics,
-                name);
+                cohortSpec, dimensionFilter, dimensions,
+                metricFilter, metrics, name);
         }
+
     }
 }

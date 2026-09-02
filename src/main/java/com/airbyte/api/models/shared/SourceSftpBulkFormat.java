@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceSftpBulkFormat
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = SourceSftpBulkFormat._Deserializer.class)
 public class SourceSftpBulkFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSftpBulkFormat(TypedObject value) {
         this.value = value;
@@ -33,32 +33,32 @@ public class SourceSftpBulkFormat {
 
     public static SourceSftpBulkFormat of(SourceSftpBulkAvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkAvroFormat>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpBulkFormat of(SourceSftpBulkCSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkCSVFormat>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpBulkFormat of(SourceSftpBulkJsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkJsonlFormat>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpBulkFormat of(SourceSftpBulkParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkParquetFormat>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpBulkFormat of(SourceSftpBulkUnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkUnstructuredDocumentFormat>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpBulkFormat of(SourceSftpBulkExcelFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpBulkExcelFormat>(){}));
+        return new SourceSftpBulkFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -85,7 +85,7 @@ public class SourceSftpBulkFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +96,12 @@ public class SourceSftpBulkFormat {
             return false;
         }
         SourceSftpBulkFormat other = (SourceSftpBulkFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +109,12 @@ public class SourceSftpBulkFormat {
 
         public _Deserializer() {
             super(SourceSftpBulkFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkCSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkAvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkExcelFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkJsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkCSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkJsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpBulkExcelFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +123,6 @@ public class SourceSftpBulkFormat {
         return Utils.toString(SourceSftpBulkFormat.class,
                 "value", value);
     }
- 
+
 }
 

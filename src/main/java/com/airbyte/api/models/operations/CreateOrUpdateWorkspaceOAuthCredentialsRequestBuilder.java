@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.CreateOrUpdateWorkspaceOAuthCredentials;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder {
 
     private CreateOrUpdateWorkspaceOAuthCredentialsRequest request;
-    private final SDKMethodInterfaces.MethodCallCreateOrUpdateWorkspaceOAuthCredentials sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder(SDKMethodInterfaces.MethodCallCreateOrUpdateWorkspaceOAuthCredentials sdk) {
-        this.sdk = sdk;
+    public CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder request(CreateOrUpdateWorkspaceOAuthCredentialsRequest request) {
@@ -21,9 +26,11 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequestBuilder {
         return this;
     }
 
-    public CreateOrUpdateWorkspaceOAuthCredentialsResponse call() throws Exception {
+    public CreateOrUpdateWorkspaceOAuthCredentialsResponse call() {
+        
+        RequestOperation<CreateOrUpdateWorkspaceOAuthCredentialsRequest, CreateOrUpdateWorkspaceOAuthCredentialsResponse> operation
+              = new CreateOrUpdateWorkspaceOAuthCredentials.Sync(sdkConfiguration, _headers);
 
-        return sdk.createOrUpdateWorkspaceOAuthCredentials(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

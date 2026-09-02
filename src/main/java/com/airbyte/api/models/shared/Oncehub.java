@@ -14,7 +14,7 @@ public enum Oncehub {
     @JsonValue
     private final String value;
 
-    private Oncehub(String value) {
+    Oncehub(String value) {
         this.value = value;
     }
     

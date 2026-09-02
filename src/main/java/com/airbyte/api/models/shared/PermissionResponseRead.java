@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * PermissionResponseRead
@@ -32,6 +31,7 @@ public class PermissionResponseRead {
      */
     @JsonProperty("scope")
     private PermissionScope scope;
+
 
     @JsonProperty("scopeId")
     private String scopeId;
@@ -95,9 +95,10 @@ public class PermissionResponseRead {
         return userId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PermissionResponseRead withPermissionId(String permissionId) {
         Utils.checkNotNull(permissionId, "permissionId");
@@ -138,7 +139,6 @@ public class PermissionResponseRead {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,21 +149,18 @@ public class PermissionResponseRead {
         }
         PermissionResponseRead other = (PermissionResponseRead) o;
         return 
-            Objects.deepEquals(this.permissionId, other.permissionId) &&
-            Objects.deepEquals(this.permissionType, other.permissionType) &&
-            Objects.deepEquals(this.scope, other.scope) &&
-            Objects.deepEquals(this.scopeId, other.scopeId) &&
-            Objects.deepEquals(this.userId, other.userId);
+            Utils.enhancedDeepEquals(this.permissionId, other.permissionId) &&
+            Utils.enhancedDeepEquals(this.permissionType, other.permissionType) &&
+            Utils.enhancedDeepEquals(this.scope, other.scope) &&
+            Utils.enhancedDeepEquals(this.scopeId, other.scopeId) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            permissionId,
-            permissionType,
-            scope,
-            scopeId,
-            userId);
+        return Utils.enhancedHash(
+            permissionId, permissionType, scope,
+            scopeId, userId);
     }
     
     @Override
@@ -175,28 +172,31 @@ public class PermissionResponseRead {
                 "scopeId", scopeId,
                 "userId", userId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String permissionId;
- 
+
         private PermissionType permissionType;
- 
+
         private PermissionScope scope;
- 
+
         private String scopeId;
- 
+
         private String userId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder permissionId(String permissionId) {
             Utils.checkNotNull(permissionId, "permissionId");
             this.permissionId = permissionId;
             return this;
         }
+
 
         /**
          * Describes what actions/endpoints the permission entitles to
@@ -207,6 +207,7 @@ public class PermissionResponseRead {
             return this;
         }
 
+
         /**
          * Scope of a single permission, e.g. workspace, organization
          */
@@ -216,11 +217,13 @@ public class PermissionResponseRead {
             return this;
         }
 
+
         public Builder scopeId(String scopeId) {
             Utils.checkNotNull(scopeId, "scopeId");
             this.scopeId = scopeId;
             return this;
         }
+
 
         /**
          * Internal Airbyte user ID
@@ -230,14 +233,13 @@ public class PermissionResponseRead {
             this.userId = userId;
             return this;
         }
-        
+
         public PermissionResponseRead build() {
+
             return new PermissionResponseRead(
-                permissionId,
-                permissionType,
-                scope,
-                scopeId,
-                userId);
+                permissionId, permissionType, scope,
+                scopeId, userId);
         }
+
     }
 }

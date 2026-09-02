@@ -14,7 +14,7 @@ public enum Perigon {
     @JsonValue
     private final String value;
 
-    private Perigon(String value) {
+    Perigon(String value) {
         this.value = value;
     }
     

@@ -16,8 +16,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceNewsdata {
 
@@ -59,6 +59,7 @@ public class SourceNewsdata {
     @JsonProperty("language")
     private Optional<? extends List<SourceNewsdataLanguage>> language;
 
+
     @JsonProperty("sourceType")
     private Newsdata sourceType;
 
@@ -87,7 +88,8 @@ public class SourceNewsdata {
     
     public SourceNewsdata(
             String apiKey) {
-        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
@@ -145,15 +147,17 @@ public class SourceNewsdata {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceNewsdata withOneOf(Object oneOf) {
         Utils.checkNotNull(oneOf, "oneOf");
         this.oneOf = Optional.ofNullable(oneOf);
         return this;
     }
+
 
     public SourceNewsdata withOneOf(Optional<? extends Object> oneOf) {
         Utils.checkNotNull(oneOf, "oneOf");
@@ -179,6 +183,7 @@ public class SourceNewsdata {
         return this;
     }
 
+
     /**
      * Categories (maximum 5) to restrict the search to.
      */
@@ -196,6 +201,7 @@ public class SourceNewsdata {
         this.country = Optional.ofNullable(country);
         return this;
     }
+
 
     /**
      * 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to.
@@ -215,6 +221,7 @@ public class SourceNewsdata {
         return this;
     }
 
+
     /**
      * Domains (maximum 5) to restrict the search to. Use the sources stream to find top sources id.
      */
@@ -233,6 +240,7 @@ public class SourceNewsdata {
         return this;
     }
 
+
     /**
      * Languages (maximum 5) to restrict the search to.
      */
@@ -242,7 +250,6 @@ public class SourceNewsdata {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -253,24 +260,20 @@ public class SourceNewsdata {
         }
         SourceNewsdata other = (SourceNewsdata) o;
         return 
-            Objects.deepEquals(this.oneOf, other.oneOf) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.category, other.category) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.domain, other.domain) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.oneOf, other.oneOf) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.category, other.category) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.domain, other.domain) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            oneOf,
-            apiKey,
-            category,
-            country,
-            domain,
-            language,
+        return Utils.enhancedHash(
+            oneOf, apiKey, category,
+            country, domain, language,
             sourceType);
     }
     
@@ -285,24 +288,26 @@ public class SourceNewsdata {
                 "language", language,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends Object> oneOf = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private Optional<? extends List<SourceNewsdataCategory>> category = Optional.empty();
- 
+
         private Optional<? extends List<SourceNewsdataCountry>> country = Optional.empty();
- 
+
         private Optional<? extends List<String>> domain = Optional.empty();
- 
+
         private Optional<? extends List<SourceNewsdataLanguage>> language = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder oneOf(Object oneOf) {
             Utils.checkNotNull(oneOf, "oneOf");
@@ -316,6 +321,7 @@ public class SourceNewsdata {
             return this;
         }
 
+
         /**
          * API Key
          */
@@ -324,6 +330,7 @@ public class SourceNewsdata {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Categories (maximum 5) to restrict the search to.
@@ -343,6 +350,7 @@ public class SourceNewsdata {
             return this;
         }
 
+
         /**
          * 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to.
          */
@@ -360,6 +368,7 @@ public class SourceNewsdata {
             this.country = country;
             return this;
         }
+
 
         /**
          * Domains (maximum 5) to restrict the search to. Use the sources stream to find top sources id.
@@ -379,6 +388,7 @@ public class SourceNewsdata {
             return this;
         }
 
+
         /**
          * Languages (maximum 5) to restrict the search to.
          */
@@ -396,16 +406,14 @@ public class SourceNewsdata {
             this.language = language;
             return this;
         }
-        
+
         public SourceNewsdata build() {
+
             return new SourceNewsdata(
-                oneOf,
-                apiKey,
-                category,
-                country,
-                domain,
-                language);
+                oneOf, apiKey, category,
+                country, domain, language);
         }
+
 
         private static final LazySingletonValue<Newsdata> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

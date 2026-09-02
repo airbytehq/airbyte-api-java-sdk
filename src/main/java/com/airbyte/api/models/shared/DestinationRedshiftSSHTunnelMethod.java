@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationRedshiftSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationRedshiftSSHTunnelMethod._Deserializer.class)
 public class DestinationRedshiftSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationRedshiftSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationRedshiftSSHTunnelMethod {
 
     public static DestinationRedshiftSSHTunnelMethod of(DestinationRedshiftNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedshiftSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedshiftNoTunnel>(){}));
+        return new DestinationRedshiftSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationRedshiftSSHTunnelMethod of(DestinationRedshiftSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedshiftSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedshiftSSHKeyAuthentication>(){}));
+        return new DestinationRedshiftSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationRedshiftSSHTunnelMethod of(DestinationRedshiftPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationRedshiftSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationRedshiftPasswordAuthentication>(){}));
+        return new DestinationRedshiftSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationRedshiftSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationRedshiftSSHTunnelMethod {
             return false;
         }
         DestinationRedshiftSSHTunnelMethod other = (DestinationRedshiftSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationRedshiftSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationRedshiftSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedshiftPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedshiftNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationRedshiftSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationRedshiftNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationRedshiftPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationRedshiftSSHTunnelMethod {
         return Utils.toString(DestinationRedshiftSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

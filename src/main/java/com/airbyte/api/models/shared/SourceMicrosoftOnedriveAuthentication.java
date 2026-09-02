@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMicrosoftOnedriveAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceMicrosoftOnedriveAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMicrosoftOnedriveAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceMicrosoftOnedriveAuthentication {
 
     public static SourceMicrosoftOnedriveAuthentication of(AuthenticateViaMicrosoftOAuth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AuthenticateViaMicrosoftOAuth>(){}));
+        return new SourceMicrosoftOnedriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftOnedriveAuthentication of(ServiceKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ServiceKeyAuthentication>(){}));
+        return new SourceMicrosoftOnedriveAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceMicrosoftOnedriveAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceMicrosoftOnedriveAuthentication {
             return false;
         }
         SourceMicrosoftOnedriveAuthentication other = (SourceMicrosoftOnedriveAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceMicrosoftOnedriveAuthentication {
 
         public _Deserializer() {
             super(SourceMicrosoftOnedriveAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ServiceKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<AuthenticateViaMicrosoftOAuth>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<AuthenticateViaMicrosoftOAuth>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ServiceKeyAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceMicrosoftOnedriveAuthentication {
         return Utils.toString(SourceMicrosoftOnedriveAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

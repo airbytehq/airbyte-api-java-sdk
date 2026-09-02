@@ -14,7 +14,7 @@ public enum Shippo {
     @JsonValue
     private final String value;
 
-    private Shippo(String value) {
+    Shippo(String value) {
         this.value = value;
     }
     

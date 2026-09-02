@@ -1,5 +1,13 @@
 # SourceMicrosoftOnedriveSchemasStreamsHeaderDefinitionType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceMicrosoftOnedriveSchemasStreamsHeaderDefinitionType;
+
+SourceMicrosoftOnedriveSchemasStreamsHeaderDefinitionType value = SourceMicrosoftOnedriveSchemasStreamsHeaderDefinitionType.USER_PROVIDED;
+```
+
 
 ## Values
 

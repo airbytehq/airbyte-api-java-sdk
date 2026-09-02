@@ -14,7 +14,7 @@ public enum SourceTrustpilotAuthType {
     @JsonValue
     private final String value;
 
-    private SourceTrustpilotAuthType(String value) {
+    SourceTrustpilotAuthType(String value) {
         this.value = value;
     }
     

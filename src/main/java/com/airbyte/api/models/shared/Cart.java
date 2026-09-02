@@ -14,7 +14,7 @@ public enum Cart {
     @JsonValue
     private final String value;
 
-    private Cart(String value) {
+    Cart(String value) {
         this.value = value;
     }
     

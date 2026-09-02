@@ -16,8 +16,8 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Zstandard {
 
@@ -26,7 +26,8 @@ public class Zstandard {
     private Optional<? extends DestinationGcsSchemasFormatOutputFormatCodec> codec;
 
     /**
-     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival
+     * purposes, and levels above 18 use a lot of memory.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_level")
@@ -63,7 +64,8 @@ public class Zstandard {
     }
 
     /**
-     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival
+     * purposes, and levels above 18 use a lot of memory.
      */
     @JsonIgnore
     public Optional<Long> compressionLevel() {
@@ -78,15 +80,17 @@ public class Zstandard {
         return includeChecksum;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Zstandard withCodec(DestinationGcsSchemasFormatOutputFormatCodec codec) {
         Utils.checkNotNull(codec, "codec");
         this.codec = Optional.ofNullable(codec);
         return this;
     }
+
 
     public Zstandard withCodec(Optional<? extends DestinationGcsSchemasFormatOutputFormatCodec> codec) {
         Utils.checkNotNull(codec, "codec");
@@ -95,7 +99,8 @@ public class Zstandard {
     }
 
     /**
-     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival
+     * purposes, and levels above 18 use a lot of memory.
      */
     public Zstandard withCompressionLevel(long compressionLevel) {
         Utils.checkNotNull(compressionLevel, "compressionLevel");
@@ -103,8 +108,10 @@ public class Zstandard {
         return this;
     }
 
+
     /**
-     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+     * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival
+     * purposes, and levels above 18 use a lot of memory.
      */
     public Zstandard withCompressionLevel(Optional<Long> compressionLevel) {
         Utils.checkNotNull(compressionLevel, "compressionLevel");
@@ -121,6 +128,7 @@ public class Zstandard {
         return this;
     }
 
+
     /**
      * If true, include a checksum with each data block.
      */
@@ -130,7 +138,6 @@ public class Zstandard {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,17 +148,15 @@ public class Zstandard {
         }
         Zstandard other = (Zstandard) o;
         return 
-            Objects.deepEquals(this.codec, other.codec) &&
-            Objects.deepEquals(this.compressionLevel, other.compressionLevel) &&
-            Objects.deepEquals(this.includeChecksum, other.includeChecksum);
+            Utils.enhancedDeepEquals(this.codec, other.codec) &&
+            Utils.enhancedDeepEquals(this.compressionLevel, other.compressionLevel) &&
+            Utils.enhancedDeepEquals(this.includeChecksum, other.includeChecksum);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            codec,
-            compressionLevel,
-            includeChecksum);
+        return Utils.enhancedHash(
+            codec, compressionLevel, includeChecksum);
     }
     
     @Override
@@ -161,18 +166,20 @@ public class Zstandard {
                 "compressionLevel", compressionLevel,
                 "includeChecksum", includeChecksum);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationGcsSchemasFormatOutputFormatCodec> codec;
- 
+
         private Optional<Long> compressionLevel;
- 
+
         private Optional<Boolean> includeChecksum;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder codec(DestinationGcsSchemasFormatOutputFormatCodec codec) {
             Utils.checkNotNull(codec, "codec");
@@ -186,8 +193,10 @@ public class Zstandard {
             return this;
         }
 
+
         /**
-         * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+         * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival
+         * purposes, and levels above 18 use a lot of memory.
          */
         public Builder compressionLevel(long compressionLevel) {
             Utils.checkNotNull(compressionLevel, "compressionLevel");
@@ -196,13 +205,15 @@ public class Zstandard {
         }
 
         /**
-         * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival purposes, and levels above 18 use a lot of memory.
+         * Negative levels are 'fast' modes akin to lz4 or snappy, levels above 9 are generally for archival
+         * purposes, and levels above 18 use a lot of memory.
          */
         public Builder compressionLevel(Optional<Long> compressionLevel) {
             Utils.checkNotNull(compressionLevel, "compressionLevel");
             this.compressionLevel = compressionLevel;
             return this;
         }
+
 
         /**
          * If true, include a checksum with each data block.
@@ -221,7 +232,7 @@ public class Zstandard {
             this.includeChecksum = includeChecksum;
             return this;
         }
-        
+
         public Zstandard build() {
             if (codec == null) {
                 codec = _SINGLETON_VALUE_Codec.value();
@@ -232,11 +243,11 @@ public class Zstandard {
             if (includeChecksum == null) {
                 includeChecksum = _SINGLETON_VALUE_IncludeChecksum.value();
             }
+
             return new Zstandard(
-                codec,
-                compressionLevel,
-                includeChecksum);
+                codec, compressionLevel, includeChecksum);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGcsSchemasFormatOutputFormatCodec>> _SINGLETON_VALUE_Codec =
                 new LazySingletonValue<>(

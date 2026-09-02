@@ -14,7 +14,7 @@ public enum Tmdb {
     @JsonValue
     private final String value;
 
-    private Tmdb(String value) {
+    Tmdb(String value) {
         this.value = value;
     }
     

@@ -5,143 +5,187 @@ package com.airbyte.api.models.shared;
 
 import com.airbyte.api.utils.LazySingletonValue;
 import com.airbyte.api.utils.Utils;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
+import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+
 
 public class OAuth {
 
-    /**
-     * OAuth access token
-     */
-    @JsonProperty("access_token")
-    private String accessToken;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties;
 
     /**
-     * OAuth Client Id
+     * The Client ID of your HubSpot developer application. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this ID.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
-    private Optional<String> clientId;
+    private String clientId;
 
     /**
-     * OAuth Client secret
+     * The client secret for your HubSpot developer application. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this secret.
      */
-    @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
-    private Optional<String> clientSecret;
+    private String clientSecret;
+
+    /**
+     * Refresh token to renew an expired access token. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this token.
+     */
+    @JsonProperty("refresh_token")
+    private String refreshToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("option_title")
-    private Optional<? extends OptionTitle> optionTitle;
+    @JsonProperty("type")
+    private Optional<? extends Type> type;
 
     @JsonCreator
     public OAuth(
-            @JsonProperty("access_token") String accessToken,
-            @JsonProperty("client_id") Optional<String> clientId,
-            @JsonProperty("client_secret") Optional<String> clientSecret) {
-        Utils.checkNotNull(accessToken, "accessToken");
+            @JsonProperty("client_id") String clientId,
+            @JsonProperty("client_secret") String clientSecret,
+            @JsonProperty("refresh_token") String refreshToken,
+            @JsonProperty("type") Optional<? extends Type> type) {
         Utils.checkNotNull(clientId, "clientId");
         Utils.checkNotNull(clientSecret, "clientSecret");
-        this.accessToken = accessToken;
+        Utils.checkNotNull(refreshToken, "refreshToken");
+        Utils.checkNotNull(type, "type");
+        this.additionalProperties = new HashMap<>();
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.optionTitle = Builder._SINGLETON_VALUE_OptionTitle.value();
+        this.refreshToken = refreshToken;
+        this.type = type;
     }
     
     public OAuth(
-            String accessToken) {
-        this(accessToken, Optional.empty(), Optional.empty());
+            String clientId,
+            String clientSecret,
+            String refreshToken) {
+        this(clientId, clientSecret, refreshToken,
+            Optional.empty());
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> additionalProperties() {
+        return additionalProperties;
     }
 
     /**
-     * OAuth access token
+     * The Client ID of your HubSpot developer application. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this ID.
      */
     @JsonIgnore
-    public String accessToken() {
-        return accessToken;
-    }
-
-    /**
-     * OAuth Client Id
-     */
-    @JsonIgnore
-    public Optional<String> clientId() {
+    public String clientId() {
         return clientId;
     }
 
     /**
-     * OAuth Client secret
+     * The client secret for your HubSpot developer application. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this secret.
      */
     @JsonIgnore
-    public Optional<String> clientSecret() {
+    public String clientSecret() {
         return clientSecret;
+    }
+
+    /**
+     * Refresh token to renew an expired access token. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this token.
+     */
+    @JsonIgnore
+    public String refreshToken() {
+        return refreshToken;
     }
 
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<OptionTitle> optionTitle() {
-        return (Optional<OptionTitle>) optionTitle;
+    public Optional<Type> type() {
+        return (Optional<Type>) type;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    /**
-     * OAuth access token
-     */
-    public OAuth withAccessToken(String accessToken) {
-        Utils.checkNotNull(accessToken, "accessToken");
-        this.accessToken = accessToken;
+
+    @JsonAnySetter
+    public OAuth withAdditionalProperty(String key, Object value) {
+        // note that value can be null because of the way JsonAnySetter works
+        Utils.checkNotNull(key, "key");
+        additionalProperties.put(key, value); 
+        return this;
+    }
+    public OAuth withAdditionalProperties(Map<String, Object> additionalProperties) {
+        Utils.checkNotNull(additionalProperties, "additionalProperties");
+        this.additionalProperties = additionalProperties;
         return this;
     }
 
     /**
-     * OAuth Client Id
+     * The Client ID of your HubSpot developer application. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this ID.
      */
     public OAuth withClientId(String clientId) {
-        Utils.checkNotNull(clientId, "clientId");
-        this.clientId = Optional.ofNullable(clientId);
-        return this;
-    }
-
-    /**
-     * OAuth Client Id
-     */
-    public OAuth withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
         this.clientId = clientId;
         return this;
     }
 
     /**
-     * OAuth Client secret
+     * The client secret for your HubSpot developer application. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this secret.
      */
     public OAuth withClientSecret(String clientSecret) {
-        Utils.checkNotNull(clientSecret, "clientSecret");
-        this.clientSecret = Optional.ofNullable(clientSecret);
-        return this;
-    }
-
-    /**
-     * OAuth Client secret
-     */
-    public OAuth withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
         this.clientSecret = clientSecret;
         return this;
     }
 
-    
+    /**
+     * Refresh token to renew an expired access token. See the &lt;a
+     * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+     * docs&lt;/a&gt; if you need help finding this token.
+     */
+    public OAuth withRefreshToken(String refreshToken) {
+        Utils.checkNotNull(refreshToken, "refreshToken");
+        this.refreshToken = refreshToken;
+        return this;
+    }
+
+    public OAuth withType(Type type) {
+        Utils.checkNotNull(type, "type");
+        this.type = Optional.ofNullable(type);
+        return this;
+    }
+
+
+    public OAuth withType(Optional<? extends Type> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -152,98 +196,128 @@ public class OAuth {
         }
         OAuth other = (OAuth) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.optionTitle, other.optionTitle);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            clientId,
-            clientSecret,
-            optionTitle);
+        return Utils.enhancedHash(
+            additionalProperties, clientId, clientSecret,
+            refreshToken, type);
     }
     
     @Override
     public String toString() {
         return Utils.toString(OAuth.class,
-                "accessToken", accessToken,
+                "additionalProperties", additionalProperties,
                 "clientId", clientId,
                 "clientSecret", clientSecret,
-                "optionTitle", optionTitle);
+                "refreshToken", refreshToken,
+                "type", type);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
-        private String accessToken;
- 
-        private Optional<String> clientId = Optional.empty();
- 
-        private Optional<String> clientSecret = Optional.empty();
-        
+
+        private Map<String, Object> additionalProperties = new HashMap<>();
+
+        private String clientId;
+
+        private String clientSecret;
+
+        private String refreshToken;
+
+        private Optional<? extends Type> type;
+
         private Builder() {
           // force use of static builder() method
         }
 
-        /**
-         * OAuth access token
-         */
-        public Builder accessToken(String accessToken) {
-            Utils.checkNotNull(accessToken, "accessToken");
-            this.accessToken = accessToken;
+        public Builder additionalProperty(String key, Object value) {
+            Utils.checkNotNull(key, "key");
+            // we could be strict about null values (force the user
+            // to pass `JsonNullable.of(null)`) but likely to be a bit 
+            // annoying for additional properties building so we'll 
+            // relax preconditions.
+            this.additionalProperties.put(key, value);
             return this;
         }
 
+        public Builder additionalProperties(Map<String, Object> additionalProperties) {
+            Utils.checkNotNull(additionalProperties, "additionalProperties");
+            this.additionalProperties = additionalProperties;
+            return this;
+        }
+
+
         /**
-         * OAuth Client Id
+         * The Client ID of your HubSpot developer application. See the &lt;a
+         * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+         * docs&lt;/a&gt; if you need help finding this ID.
          */
         public Builder clientId(String clientId) {
-            Utils.checkNotNull(clientId, "clientId");
-            this.clientId = Optional.ofNullable(clientId);
-            return this;
-        }
-
-        /**
-         * OAuth Client Id
-         */
-        public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
             this.clientId = clientId;
             return this;
         }
 
-        /**
-         * OAuth Client secret
-         */
-        public Builder clientSecret(String clientSecret) {
-            Utils.checkNotNull(clientSecret, "clientSecret");
-            this.clientSecret = Optional.ofNullable(clientSecret);
-            return this;
-        }
 
         /**
-         * OAuth Client secret
+         * The client secret for your HubSpot developer application. See the &lt;a
+         * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+         * docs&lt;/a&gt; if you need help finding this secret.
          */
-        public Builder clientSecret(Optional<String> clientSecret) {
+        public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
-        public OAuth build() {
-            return new OAuth(
-                accessToken,
-                clientId,
-                clientSecret);
+
+
+        /**
+         * Refresh token to renew an expired access token. See the &lt;a
+         * href=\"https://legacydocs.hubspot.com/docs/methods/oauth2/oauth2-quickstart\"&gt;Hubspot
+         * docs&lt;/a&gt; if you need help finding this token.
+         */
+        public Builder refreshToken(String refreshToken) {
+            Utils.checkNotNull(refreshToken, "refreshToken");
+            this.refreshToken = refreshToken;
+            return this;
         }
 
-        private static final LazySingletonValue<Optional<? extends OptionTitle>> _SINGLETON_VALUE_OptionTitle =
+
+        public Builder type(Type type) {
+            Utils.checkNotNull(type, "type");
+            this.type = Optional.ofNullable(type);
+            return this;
+        }
+
+        public Builder type(Optional<? extends Type> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
+
+        public OAuth build() {
+            if (type == null) {
+                type = _SINGLETON_VALUE_Type.value();
+            }
+
+            return new OAuth(
+                clientId, clientSecret, refreshToken,
+                type)
+                .withAdditionalProperties(additionalProperties);
+        }
+
+
+        private static final LazySingletonValue<Optional<? extends Type>> _SINGLETON_VALUE_Type =
                 new LazySingletonValue<>(
-                        "option_title",
-                        "\"OAuth Credentials\"",
-                        new TypeReference<Optional<? extends OptionTitle>>() {});
+                        "type",
+                        "\"OAuth\"",
+                        new TypeReference<Optional<? extends Type>>() {});
     }
 }

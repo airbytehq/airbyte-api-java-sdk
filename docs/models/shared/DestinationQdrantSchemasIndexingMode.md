@@ -1,5 +1,13 @@
 # DestinationQdrantSchemasIndexingMode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationQdrantSchemasIndexingMode;
+
+DestinationQdrantSchemasIndexingMode value = DestinationQdrantSchemasIndexingMode.API_KEY_AUTH;
+```
+
 
 ## Values
 

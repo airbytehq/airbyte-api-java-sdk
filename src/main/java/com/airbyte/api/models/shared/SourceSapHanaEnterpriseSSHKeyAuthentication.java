@@ -20,7 +20,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -34,7 +33,8 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
     private Map<String, Object> additionalProperties;
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonProperty("ssh_key")
     private String sshKey;
@@ -44,6 +44,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
      */
     @JsonProperty("tunnel_host")
     private String tunnelHost;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tunnel_method")
@@ -86,7 +87,8 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             String sshKey,
             String tunnelHost,
             String tunnelUser) {
-        this(sshKey, tunnelHost, Optional.empty(), Optional.empty(), tunnelUser);
+        this(sshKey, tunnelHost, Optional.empty(),
+            Optional.empty(), tunnelUser);
     }
 
     @JsonAnyGetter
@@ -95,7 +97,8 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
     }
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     @JsonIgnore
     public String sshKey() {
@@ -132,9 +135,10 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
         return tunnelUser;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceSapHanaEnterpriseSSHKeyAuthentication withAdditionalProperty(String key, Object value) {
@@ -142,8 +146,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceSapHanaEnterpriseSSHKeyAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -151,7 +154,8 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
     }
 
     /**
-     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+     * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+     * -f myuser_rsa )
      */
     public SourceSapHanaEnterpriseSSHKeyAuthentication withSshKey(String sshKey) {
         Utils.checkNotNull(sshKey, "sshKey");
@@ -174,6 +178,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
         return this;
     }
 
+
     public SourceSapHanaEnterpriseSSHKeyAuthentication withTunnelMethod(Optional<? extends SourceSapHanaEnterpriseSchemasTunnelMethod> tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
         this.tunnelMethod = tunnelMethod;
@@ -188,6 +193,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
         this.tunnelPort = Optional.ofNullable(tunnelPort);
         return this;
     }
+
 
     /**
      * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -207,7 +213,6 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -218,23 +223,19 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
         }
         SourceSapHanaEnterpriseSSHKeyAuthentication other = (SourceSapHanaEnterpriseSSHKeyAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.sshKey, other.sshKey) &&
-            Objects.deepEquals(this.tunnelHost, other.tunnelHost) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.tunnelPort, other.tunnelPort) &&
-            Objects.deepEquals(this.tunnelUser, other.tunnelUser);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.sshKey, other.sshKey) &&
+            Utils.enhancedDeepEquals(this.tunnelHost, other.tunnelHost) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.tunnelPort, other.tunnelPort) &&
+            Utils.enhancedDeepEquals(this.tunnelUser, other.tunnelUser);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            sshKey,
-            tunnelHost,
-            tunnelMethod,
-            tunnelPort,
-            tunnelUser);
+        return Utils.enhancedHash(
+            additionalProperties, sshKey, tunnelHost,
+            tunnelMethod, tunnelPort, tunnelUser);
     }
     
     @Override
@@ -247,21 +248,22 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
                 "tunnelPort", tunnelPort,
                 "tunnelUser", tunnelUser);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String sshKey;
- 
+
         private String tunnelHost;
- 
+
         private Optional<? extends SourceSapHanaEnterpriseSchemasTunnelMethod> tunnelMethod;
- 
+
         private Optional<Long> tunnelPort;
- 
+
         private String tunnelUser;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -282,14 +284,17 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             return this;
         }
 
+
         /**
-         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM -f myuser_rsa )
+         * OS-level user account ssh key credentials in RSA PEM format ( created with ssh-keygen -t rsa -m PEM
+         * -f myuser_rsa )
          */
         public Builder sshKey(String sshKey) {
             Utils.checkNotNull(sshKey, "sshKey");
             this.sshKey = sshKey;
             return this;
         }
+
 
         /**
          * Hostname of the jump server host that allows inbound ssh tunnel.
@@ -299,6 +304,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             this.tunnelHost = tunnelHost;
             return this;
         }
+
 
         public Builder tunnelMethod(SourceSapHanaEnterpriseSchemasTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -311,6 +317,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * Port on the proxy/jump server that accepts inbound ssh connections.
@@ -330,6 +337,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             return this;
         }
 
+
         /**
          * OS-level username for logging into the jump server host
          */
@@ -338,7 +346,7 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             this.tunnelUser = tunnelUser;
             return this;
         }
-        
+
         public SourceSapHanaEnterpriseSSHKeyAuthentication build() {
             if (tunnelMethod == null) {
                 tunnelMethod = _SINGLETON_VALUE_TunnelMethod.value();
@@ -346,14 +354,13 @@ public class SourceSapHanaEnterpriseSSHKeyAuthentication {
             if (tunnelPort == null) {
                 tunnelPort = _SINGLETON_VALUE_TunnelPort.value();
             }
+
             return new SourceSapHanaEnterpriseSSHKeyAuthentication(
-                sshKey,
-                tunnelHost,
-                tunnelMethod,
-                tunnelPort,
-                tunnelUser)
+                sshKey, tunnelHost, tunnelMethod,
+                tunnelPort, tunnelUser)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSapHanaEnterpriseSchemasTunnelMethod>> _SINGLETON_VALUE_TunnelMethod =
                 new LazySingletonValue<>(

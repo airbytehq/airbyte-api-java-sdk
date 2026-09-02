@@ -11,21 +11,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleCalendar {
 
     @JsonProperty("calendarid")
     private String calendarid;
 
+
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_refresh_token_2")
     private String clientRefreshToken2;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("sourceType")
     private GoogleCalendar sourceType;
@@ -72,9 +76,10 @@ public class SourceGoogleCalendar {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleCalendar withCalendarid(String calendarid) {
         Utils.checkNotNull(calendarid, "calendarid");
@@ -100,7 +105,6 @@ public class SourceGoogleCalendar {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,21 +115,18 @@ public class SourceGoogleCalendar {
         }
         SourceGoogleCalendar other = (SourceGoogleCalendar) o;
         return 
-            Objects.deepEquals(this.calendarid, other.calendarid) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken2, other.clientRefreshToken2) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.calendarid, other.calendarid) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken2, other.clientRefreshToken2) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            calendarid,
-            clientId,
-            clientRefreshToken2,
-            clientSecret,
-            sourceType);
+        return Utils.enhancedHash(
+            calendarid, clientId, clientRefreshToken2,
+            clientSecret, sourceType);
     }
     
     @Override
@@ -137,20 +138,22 @@ public class SourceGoogleCalendar {
                 "clientSecret", clientSecret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String calendarid;
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken2;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder calendarid(String calendarid) {
             Utils.checkNotNull(calendarid, "calendarid");
@@ -158,11 +161,13 @@ public class SourceGoogleCalendar {
             return this;
         }
 
+
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
             this.clientId = clientId;
             return this;
         }
+
 
         public Builder clientRefreshToken2(String clientRefreshToken2) {
             Utils.checkNotNull(clientRefreshToken2, "clientRefreshToken2");
@@ -170,19 +175,20 @@ public class SourceGoogleCalendar {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceGoogleCalendar build() {
+
             return new SourceGoogleCalendar(
-                calendarid,
-                clientId,
-                clientRefreshToken2,
+                calendarid, clientId, clientRefreshToken2,
                 clientSecret);
         }
+
 
         private static final LazySingletonValue<GoogleCalendar> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

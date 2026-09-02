@@ -14,7 +14,7 @@ public enum Callrail {
     @JsonValue
     private final String value;
 
-    private Callrail(String value) {
+    Callrail(String value) {
         this.value = value;
     }
     

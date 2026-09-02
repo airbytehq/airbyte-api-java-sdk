@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGuru {
 
@@ -30,8 +30,10 @@ public class SourceGuru {
     @JsonProperty("search_cards_query")
     private Optional<String> searchCardsQuery;
 
+
     @JsonProperty("sourceType")
     private Guru sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -42,6 +44,7 @@ public class SourceGuru {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("team_id")
     private Optional<String> teamId;
+
 
     @JsonProperty("username")
     private String username;
@@ -69,7 +72,8 @@ public class SourceGuru {
     public SourceGuru(
             OffsetDateTime startDate,
             String username) {
-        this(Optional.empty(), Optional.empty(), startDate, Optional.empty(), username);
+        this(Optional.empty(), Optional.empty(), startDate,
+            Optional.empty(), username);
     }
 
     @JsonIgnore
@@ -108,15 +112,17 @@ public class SourceGuru {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGuru withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceGuru withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -132,6 +138,7 @@ public class SourceGuru {
         this.searchCardsQuery = Optional.ofNullable(searchCardsQuery);
         return this;
     }
+
 
     /**
      * Query for searching cards
@@ -157,6 +164,7 @@ public class SourceGuru {
         return this;
     }
 
+
     /**
      * Team ID received through response of /teams streams, make sure about access to the team
      */
@@ -172,7 +180,6 @@ public class SourceGuru {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -183,23 +190,19 @@ public class SourceGuru {
         }
         SourceGuru other = (SourceGuru) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.searchCardsQuery, other.searchCardsQuery) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.teamId, other.teamId) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.searchCardsQuery, other.searchCardsQuery) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.teamId, other.teamId) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            searchCardsQuery,
-            sourceType,
-            startDate,
-            teamId,
-            username);
+        return Utils.enhancedHash(
+            password, searchCardsQuery, sourceType,
+            startDate, teamId, username);
     }
     
     @Override
@@ -212,22 +215,24 @@ public class SourceGuru {
                 "teamId", teamId,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<String> searchCardsQuery = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private Optional<String> teamId = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -240,6 +245,7 @@ public class SourceGuru {
             this.password = password;
             return this;
         }
+
 
         /**
          * Query for searching cards
@@ -259,11 +265,13 @@ public class SourceGuru {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Team ID received through response of /teams streams, make sure about access to the team
@@ -283,20 +291,20 @@ public class SourceGuru {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceGuru build() {
+
             return new SourceGuru(
-                password,
-                searchCardsQuery,
-                startDate,
-                teamId,
-                username);
+                password, searchCardsQuery, startDate,
+                teamId, username);
         }
+
 
         private static final LazySingletonValue<Guru> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

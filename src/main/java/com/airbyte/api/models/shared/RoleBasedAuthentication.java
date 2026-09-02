@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class RoleBasedAuthentication {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -33,7 +34,6 @@ public class RoleBasedAuthentication {
 
     @JsonCreator
     public RoleBasedAuthentication() {
-        
         this.additionalProperties = new HashMap<>();
         this.authType = Builder._SINGLETON_VALUE_AuthType.value();
     }
@@ -49,9 +49,10 @@ public class RoleBasedAuthentication {
         return (Optional<SourceDynamodbSchemasAuthType>) authType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public RoleBasedAuthentication withAdditionalProperty(String key, Object value) {
@@ -59,15 +60,13 @@ public class RoleBasedAuthentication {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public RoleBasedAuthentication withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -78,15 +77,14 @@ public class RoleBasedAuthentication {
         }
         RoleBasedAuthentication other = (RoleBasedAuthentication) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.authType, other.authType);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            authType);
+        return Utils.enhancedHash(
+            additionalProperties, authType);
     }
     
     @Override
@@ -95,11 +93,12 @@ public class RoleBasedAuthentication {
                 "additionalProperties", additionalProperties,
                 "authType", authType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -119,12 +118,14 @@ public class RoleBasedAuthentication {
             this.additionalProperties = additionalProperties;
             return this;
         }
-        
+
         public RoleBasedAuthentication build() {
+
             return new RoleBasedAuthentication(
                 )
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceDynamodbSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

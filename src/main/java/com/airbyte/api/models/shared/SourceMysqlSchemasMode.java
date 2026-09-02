@@ -14,7 +14,7 @@ public enum SourceMysqlSchemasMode {
     @JsonValue
     private final String value;
 
-    private SourceMysqlSchemasMode(String value) {
+    SourceMysqlSchemasMode(String value) {
         this.value = value;
     }
     

@@ -14,26 +14,29 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePicqer {
 
+public class SourcePicqer {
     /**
      * The organization name which is used to login to picqer
      */
     @JsonProperty("organization_name")
     private String organizationName;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
 
+
     @JsonProperty("sourceType")
     private Picqer sourceType;
 
+
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -59,7 +62,8 @@ public class SourcePicqer {
             String organizationName,
             OffsetDateTime startDate,
             String username) {
-        this(organizationName, Optional.empty(), startDate, username);
+        this(organizationName, Optional.empty(), startDate,
+            username);
     }
 
     /**
@@ -90,9 +94,10 @@ public class SourcePicqer {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The organization name which is used to login to picqer
@@ -108,6 +113,7 @@ public class SourcePicqer {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourcePicqer withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -127,7 +133,6 @@ public class SourcePicqer {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -138,21 +143,18 @@ public class SourcePicqer {
         }
         SourcePicqer other = (SourcePicqer) o;
         return 
-            Objects.deepEquals(this.organizationName, other.organizationName) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.organizationName, other.organizationName) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            organizationName,
-            password,
-            sourceType,
-            startDate,
-            username);
+        return Utils.enhancedHash(
+            organizationName, password, sourceType,
+            startDate, username);
     }
     
     @Override
@@ -164,20 +166,22 @@ public class SourcePicqer {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String organizationName;
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The organization name which is used to login to picqer
@@ -187,6 +191,7 @@ public class SourcePicqer {
             this.organizationName = organizationName;
             return this;
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -200,25 +205,27 @@ public class SourcePicqer {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourcePicqer build() {
+
             return new SourcePicqer(
-                organizationName,
-                password,
-                startDate,
+                organizationName, password, startDate,
                 username);
         }
+
 
         private static final LazySingletonValue<Picqer> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

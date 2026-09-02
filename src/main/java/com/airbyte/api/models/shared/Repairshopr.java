@@ -14,7 +14,7 @@ public enum Repairshopr {
     @JsonValue
     private final String value;
 
-    private Repairshopr(String value) {
+    Repairshopr(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # SourceMssqlSchemasSslMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceMssqlSchemasSslMethod;
+
+SourceMssqlSchemasSslMethod value = SourceMssqlSchemasSslMethod.ENCRYPTED_TRUST_SERVER_CERTIFICATE;
+```
+
 
 ## Values
 
