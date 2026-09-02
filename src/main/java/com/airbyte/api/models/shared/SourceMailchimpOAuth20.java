@@ -13,16 +13,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceMailchimpOAuth20 {
 
+public class SourceMailchimpOAuth20 {
     /**
      * An access token generated using the above client ID and secret.
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("auth_type")
     private SourceMailchimpAuthType authType;
@@ -89,9 +89,10 @@ public class SourceMailchimpOAuth20 {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * An access token generated using the above client ID and secret.
@@ -111,6 +112,7 @@ public class SourceMailchimpOAuth20 {
         return this;
     }
 
+
     /**
      * The Client ID of your OAuth application.
      */
@@ -129,6 +131,7 @@ public class SourceMailchimpOAuth20 {
         return this;
     }
 
+
     /**
      * The Client Secret of your OAuth application.
      */
@@ -138,7 +141,6 @@ public class SourceMailchimpOAuth20 {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +151,16 @@ public class SourceMailchimpOAuth20 {
         }
         SourceMailchimpOAuth20 other = (SourceMailchimpOAuth20) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            authType,
-            clientId,
+        return Utils.enhancedHash(
+            accessToken, authType, clientId,
             clientSecret);
     }
     
@@ -172,18 +172,20 @@ public class SourceMailchimpOAuth20 {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * An access token generated using the above client ID and secret.
@@ -193,6 +195,7 @@ public class SourceMailchimpOAuth20 {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * The Client ID of your OAuth application.
@@ -212,6 +215,7 @@ public class SourceMailchimpOAuth20 {
             return this;
         }
 
+
         /**
          * The Client Secret of your OAuth application.
          */
@@ -229,13 +233,13 @@ public class SourceMailchimpOAuth20 {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public SourceMailchimpOAuth20 build() {
+
             return new SourceMailchimpOAuth20(
-                accessToken,
-                clientId,
-                clientSecret);
+                accessToken, clientId, clientSecret);
         }
+
 
         private static final LazySingletonValue<SourceMailchimpAuthType> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

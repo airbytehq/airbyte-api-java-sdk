@@ -12,18 +12,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceEventbrite {
-
     /**
      * The private token to use for authenticating API requests.
      */
     @JsonProperty("private_token")
     private String privateToken;
 
+
     @JsonProperty("sourceType")
     private Eventbrite sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceEventbrite {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The private token to use for authenticating API requests.
@@ -76,7 +78,6 @@ public class SourceEventbrite {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceEventbrite {
         }
         SourceEventbrite other = (SourceEventbrite) o;
         return 
-            Objects.deepEquals(this.privateToken, other.privateToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.privateToken, other.privateToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            privateToken,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            privateToken, sourceType, startDate);
     }
     
     @Override
@@ -107,16 +106,18 @@ public class SourceEventbrite {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String privateToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The private token to use for authenticating API requests.
@@ -127,17 +128,19 @@ public class SourceEventbrite {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceEventbrite build() {
+
             return new SourceEventbrite(
-                privateToken,
-                startDate);
+                privateToken, startDate);
         }
+
 
         private static final LazySingletonValue<Eventbrite> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * OutputFormatWildcard
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class OutputFormatWildcard {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private OutputFormatWildcard(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class OutputFormatWildcard {
 
     public static OutputFormatWildcard of(JSONLinesNewlineDelimitedJSON value) {
         Utils.checkNotNull(value, "value");
-        return new OutputFormatWildcard(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JSONLinesNewlineDelimitedJSON>(){}));
+        return new OutputFormatWildcard(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static OutputFormatWildcard of(ParquetColumnarStorage value) {
         Utils.checkNotNull(value, "value");
-        return new OutputFormatWildcard(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParquetColumnarStorage>(){}));
+        return new OutputFormatWildcard(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class OutputFormatWildcard {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class OutputFormatWildcard {
             return false;
         }
         OutputFormatWildcard other = (OutputFormatWildcard) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class OutputFormatWildcard {
 
         public _Deserializer() {
             super(OutputFormatWildcard.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ParquetColumnarStorage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<JSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<JSONLinesNewlineDelimitedJSON>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ParquetColumnarStorage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class OutputFormatWildcard {
         return Utils.toString(OutputFormatWildcard.class,
                 "value", value);
     }
- 
+
 }
 

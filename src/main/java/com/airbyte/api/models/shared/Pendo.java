@@ -14,7 +14,7 @@ public enum Pendo {
     @JsonValue
     private final String value;
 
-    private Pendo(String value) {
+    Pendo(String value) {
         this.value = value;
     }
     

@@ -2,6 +2,14 @@
 
 An enumeration.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ValidActionBreakdowns;
+
+ValidActionBreakdowns value = ValidActionBreakdowns.ACTION_CANVAS_COMPONENT_NAME;
+```
+
 
 ## Values
 

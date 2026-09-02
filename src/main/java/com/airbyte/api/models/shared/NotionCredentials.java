@@ -11,20 +11,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class NotionCredentials {
 
+public class NotionCredentials {
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
 
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -45,7 +48,9 @@ public class NotionCredentials {
     }
 
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public Optional<String> clientId() {
@@ -53,19 +58,24 @@ public class NotionCredentials {
     }
 
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     @JsonIgnore
     public Optional<String> clientSecret() {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public NotionCredentials withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -73,8 +83,11 @@ public class NotionCredentials {
         return this;
     }
 
+
     /**
-     * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client ID of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public NotionCredentials withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -83,7 +96,9 @@ public class NotionCredentials {
     }
 
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public NotionCredentials withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -91,8 +106,11 @@ public class NotionCredentials {
         return this;
     }
 
+
     /**
-     * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+     * The Client Secret of your Notion integration. See our &lt;a
+     * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+     * for more information.
      */
     public NotionCredentials withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -100,7 +118,6 @@ public class NotionCredentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +128,14 @@ public class NotionCredentials {
         }
         NotionCredentials other = (NotionCredentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,19 +144,23 @@ public class NotionCredentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Client ID of your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -149,7 +169,9 @@ public class NotionCredentials {
         }
 
         /**
-         * The Client ID of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Client ID of your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -157,8 +179,11 @@ public class NotionCredentials {
             return this;
         }
 
+
         /**
-         * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Client Secret of your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -167,18 +192,21 @@ public class NotionCredentials {
         }
 
         /**
-         * The Client Secret of your Notion integration. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt; for more information.
+         * The Client Secret of your Notion integration. See our &lt;a
+         * href='https://docs.airbyte.com/integrations/sources/notion#step-2-set-permissions-and-acquire-authorization-credentials'&gt;docs&lt;/a&gt;
+         * for more information.
          */
         public Builder clientSecret(Optional<String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public NotionCredentials build() {
+
             return new NotionCredentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

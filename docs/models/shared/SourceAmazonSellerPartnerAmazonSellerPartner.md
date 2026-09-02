@@ -1,5 +1,13 @@
 # SourceAmazonSellerPartnerAmazonSellerPartner
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceAmazonSellerPartnerAmazonSellerPartner;
+
+SourceAmazonSellerPartnerAmazonSellerPartner value = SourceAmazonSellerPartnerAmazonSellerPartner.AMAZON_SELLER_PARTNER;
+```
+
 
 ## Values
 

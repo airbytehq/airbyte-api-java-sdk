@@ -14,18 +14,19 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceNotionAuthenticationMethod
  * 
- * <p>Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more information.
+ * <p>Choose either OAuth (recommended for Airbyte Cloud) or Access Token. See our &lt;a
+ * href='https://docs.airbyte.com/integrations/sources/notion#setup-guide'&gt;docs&lt;/a&gt; for more
+ * information.
  */
 @JsonDeserialize(using = SourceNotionAuthenticationMethod._Deserializer.class)
 public class SourceNotionAuthenticationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceNotionAuthenticationMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +34,12 @@ public class SourceNotionAuthenticationMethod {
 
     public static SourceNotionAuthenticationMethod of(SourceNotionOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceNotionAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNotionOAuth20>(){}));
+        return new SourceNotionAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceNotionAuthenticationMethod of(SourceNotionAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceNotionAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNotionAccessToken>(){}));
+        return new SourceNotionAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +62,7 @@ public class SourceNotionAuthenticationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +73,12 @@ public class SourceNotionAuthenticationMethod {
             return false;
         }
         SourceNotionAuthenticationMethod other = (SourceNotionAuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +96,6 @@ public class SourceNotionAuthenticationMethod {
         return Utils.toString(SourceNotionAuthenticationMethod.class,
                 "value", value);
     }
- 
+
 }
 

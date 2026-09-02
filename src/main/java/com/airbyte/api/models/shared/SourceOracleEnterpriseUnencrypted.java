@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -31,6 +30,7 @@ public class SourceOracleEnterpriseUnencrypted {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
@@ -59,9 +59,10 @@ public class SourceOracleEnterpriseUnencrypted {
         return (Optional<SourceOracleEnterpriseEncryptionMethod>) encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseUnencrypted withAdditionalProperty(String key, Object value) {
@@ -69,8 +70,7 @@ public class SourceOracleEnterpriseUnencrypted {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseUnencrypted withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -83,13 +83,13 @@ public class SourceOracleEnterpriseUnencrypted {
         return this;
     }
 
+
     public SourceOracleEnterpriseUnencrypted withEncryptionMethod(Optional<? extends SourceOracleEnterpriseEncryptionMethod> encryptionMethod) {
         Utils.checkNotNull(encryptionMethod, "encryptionMethod");
         this.encryptionMethod = encryptionMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -100,15 +100,14 @@ public class SourceOracleEnterpriseUnencrypted {
         }
         SourceOracleEnterpriseUnencrypted other = (SourceOracleEnterpriseUnencrypted) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            encryptionMethod);
+        return Utils.enhancedHash(
+            additionalProperties, encryptionMethod);
     }
     
     @Override
@@ -117,13 +116,14 @@ public class SourceOracleEnterpriseUnencrypted {
                 "additionalProperties", additionalProperties,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseEncryptionMethod> encryptionMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -144,6 +144,7 @@ public class SourceOracleEnterpriseUnencrypted {
             return this;
         }
 
+
         public Builder encryptionMethod(SourceOracleEnterpriseEncryptionMethod encryptionMethod) {
             Utils.checkNotNull(encryptionMethod, "encryptionMethod");
             this.encryptionMethod = Optional.ofNullable(encryptionMethod);
@@ -155,15 +156,17 @@ public class SourceOracleEnterpriseUnencrypted {
             this.encryptionMethod = encryptionMethod;
             return this;
         }
-        
+
         public SourceOracleEnterpriseUnencrypted build() {
             if (encryptionMethod == null) {
                 encryptionMethod = _SINGLETON_VALUE_EncryptionMethod.value();
             }
+
             return new SourceOracleEnterpriseUnencrypted(
                 encryptionMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseEncryptionMethod>> _SINGLETON_VALUE_EncryptionMethod =
                 new LazySingletonValue<>(

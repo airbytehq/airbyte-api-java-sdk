@@ -10,16 +10,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GetSourceRequest {
 
+public class GetSourceRequest {
     /**
      * Rather than return *** for secret properties include the secret coordinate information
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeSecretCoordinates")
     private Optional<Boolean> includeSecretCoordinates;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sourceId")
     private String sourceId;
@@ -52,9 +52,10 @@ public class GetSourceRequest {
         return sourceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Rather than return *** for secret properties include the secret coordinate information
@@ -64,6 +65,7 @@ public class GetSourceRequest {
         this.includeSecretCoordinates = Optional.ofNullable(includeSecretCoordinates);
         return this;
     }
+
 
     /**
      * Rather than return *** for secret properties include the secret coordinate information
@@ -80,7 +82,6 @@ public class GetSourceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -91,15 +92,14 @@ public class GetSourceRequest {
         }
         GetSourceRequest other = (GetSourceRequest) o;
         return 
-            Objects.deepEquals(this.includeSecretCoordinates, other.includeSecretCoordinates) &&
-            Objects.deepEquals(this.sourceId, other.sourceId);
+            Utils.enhancedDeepEquals(this.includeSecretCoordinates, other.includeSecretCoordinates) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            includeSecretCoordinates,
-            sourceId);
+        return Utils.enhancedHash(
+            includeSecretCoordinates, sourceId);
     }
     
     @Override
@@ -108,16 +108,18 @@ public class GetSourceRequest {
                 "includeSecretCoordinates", includeSecretCoordinates,
                 "sourceId", sourceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> includeSecretCoordinates = Optional.empty();
- 
+
         private String sourceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Rather than return *** for secret properties include the secret coordinate information
@@ -137,16 +139,18 @@ public class GetSourceRequest {
             return this;
         }
 
+
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
-        
+
         public GetSourceRequest build() {
+
             return new GetSourceRequest(
-                includeSecretCoordinates,
-                sourceId);
+                includeSecretCoordinates, sourceId);
         }
+
     }
 }

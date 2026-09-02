@@ -14,14 +14,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceChargedesk {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonProperty("sourceType")
     private Chargedesk sourceType;
@@ -32,6 +33,7 @@ public class SourceChargedesk {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<Long> startDate;
+
 
     @JsonProperty("username")
     private String username;
@@ -78,15 +80,17 @@ public class SourceChargedesk {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceChargedesk withPassword(String password) {
         Utils.checkNotNull(password, "password");
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     public SourceChargedesk withPassword(Optional<String> password) {
         Utils.checkNotNull(password, "password");
@@ -103,6 +107,7 @@ public class SourceChargedesk {
         return this;
     }
 
+
     /**
      * Date from when the sync should start in epoch Unix timestamp
      */
@@ -118,7 +123,6 @@ public class SourceChargedesk {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,18 +133,16 @@ public class SourceChargedesk {
         }
         SourceChargedesk other = (SourceChargedesk) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            password, sourceType, startDate,
             username);
     }
     
@@ -152,18 +154,20 @@ public class SourceChargedesk {
                 "startDate", startDate,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> startDate = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
@@ -176,6 +180,7 @@ public class SourceChargedesk {
             this.password = password;
             return this;
         }
+
 
         /**
          * Date from when the sync should start in epoch Unix timestamp
@@ -195,18 +200,19 @@ public class SourceChargedesk {
             return this;
         }
 
+
         public Builder username(String username) {
             Utils.checkNotNull(username, "username");
             this.username = username;
             return this;
         }
-        
+
         public SourceChargedesk build() {
+
             return new SourceChargedesk(
-                password,
-                startDate,
-                username);
+                password, startDate, username);
         }
+
 
         private static final LazySingletonValue<Chargedesk> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

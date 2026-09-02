@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListPermissionsRequest {
 
+public class ListPermissionsRequest {
     /**
-     * This is required if you want to read someone else's permissions, and you should have organization admin or a higher role.
+     * This is required if you want to read someone else's permissions, and you should have organization
+     * admin or a higher role.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=organizationId")
     private Optional<String> organizationId;
@@ -41,7 +41,8 @@ public class ListPermissionsRequest {
     }
 
     /**
-     * This is required if you want to read someone else's permissions, and you should have organization admin or a higher role.
+     * This is required if you want to read someone else's permissions, and you should have organization
+     * admin or a higher role.
      */
     @JsonIgnore
     public Optional<String> organizationId() {
@@ -56,12 +57,14 @@ public class ListPermissionsRequest {
         return userId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * This is required if you want to read someone else's permissions, and you should have organization admin or a higher role.
+     * This is required if you want to read someone else's permissions, and you should have organization
+     * admin or a higher role.
      */
     public ListPermissionsRequest withOrganizationId(String organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
@@ -69,8 +72,10 @@ public class ListPermissionsRequest {
         return this;
     }
 
+
     /**
-     * This is required if you want to read someone else's permissions, and you should have organization admin or a higher role.
+     * This is required if you want to read someone else's permissions, and you should have organization
+     * admin or a higher role.
      */
     public ListPermissionsRequest withOrganizationId(Optional<String> organizationId) {
         Utils.checkNotNull(organizationId, "organizationId");
@@ -87,6 +92,7 @@ public class ListPermissionsRequest {
         return this;
     }
 
+
     /**
      * User Id in permission.
      */
@@ -96,7 +102,6 @@ public class ListPermissionsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,15 +112,14 @@ public class ListPermissionsRequest {
         }
         ListPermissionsRequest other = (ListPermissionsRequest) o;
         return 
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.userId, other.userId);
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            organizationId,
-            userId);
+        return Utils.enhancedHash(
+            organizationId, userId);
     }
     
     @Override
@@ -124,19 +128,22 @@ public class ListPermissionsRequest {
                 "organizationId", organizationId,
                 "userId", userId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> organizationId = Optional.empty();
- 
+
         private Optional<String> userId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * This is required if you want to read someone else's permissions, and you should have organization admin or a higher role.
+         * This is required if you want to read someone else's permissions, and you should have organization
+         * admin or a higher role.
          */
         public Builder organizationId(String organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
@@ -145,13 +152,15 @@ public class ListPermissionsRequest {
         }
 
         /**
-         * This is required if you want to read someone else's permissions, and you should have organization admin or a higher role.
+         * This is required if you want to read someone else's permissions, and you should have organization
+         * admin or a higher role.
          */
         public Builder organizationId(Optional<String> organizationId) {
             Utils.checkNotNull(organizationId, "organizationId");
             this.organizationId = organizationId;
             return this;
         }
+
 
         /**
          * User Id in permission.
@@ -170,11 +179,12 @@ public class ListPermissionsRequest {
             this.userId = userId;
             return this;
         }
-        
+
         public ListPermissionsRequest build() {
+
             return new ListPermissionsRequest(
-                organizationId,
-                userId);
+                organizationId, userId);
         }
+
     }
 }

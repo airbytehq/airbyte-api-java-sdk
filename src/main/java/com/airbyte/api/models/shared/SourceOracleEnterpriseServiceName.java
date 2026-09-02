@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,9 +31,11 @@ public class SourceOracleEnterpriseServiceName {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("connection_type")
     private Optional<? extends SourceOracleEnterpriseConnectionType> connectionType;
+
 
     @JsonProperty("service_name")
     private String serviceName;
@@ -71,9 +72,10 @@ public class SourceOracleEnterpriseServiceName {
         return serviceName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseServiceName withAdditionalProperty(String key, Object value) {
@@ -81,8 +83,7 @@ public class SourceOracleEnterpriseServiceName {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseServiceName withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -94,6 +95,7 @@ public class SourceOracleEnterpriseServiceName {
         this.connectionType = Optional.ofNullable(connectionType);
         return this;
     }
+
 
     public SourceOracleEnterpriseServiceName withConnectionType(Optional<? extends SourceOracleEnterpriseConnectionType> connectionType) {
         Utils.checkNotNull(connectionType, "connectionType");
@@ -107,7 +109,6 @@ public class SourceOracleEnterpriseServiceName {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -118,17 +119,15 @@ public class SourceOracleEnterpriseServiceName {
         }
         SourceOracleEnterpriseServiceName other = (SourceOracleEnterpriseServiceName) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.connectionType, other.connectionType) &&
-            Objects.deepEquals(this.serviceName, other.serviceName);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.connectionType, other.connectionType) &&
+            Utils.enhancedDeepEquals(this.serviceName, other.serviceName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            connectionType,
-            serviceName);
+        return Utils.enhancedHash(
+            additionalProperties, connectionType, serviceName);
     }
     
     @Override
@@ -138,15 +137,16 @@ public class SourceOracleEnterpriseServiceName {
                 "connectionType", connectionType,
                 "serviceName", serviceName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseConnectionType> connectionType;
- 
+
         private String serviceName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -167,6 +167,7 @@ public class SourceOracleEnterpriseServiceName {
             return this;
         }
 
+
         public Builder connectionType(SourceOracleEnterpriseConnectionType connectionType) {
             Utils.checkNotNull(connectionType, "connectionType");
             this.connectionType = Optional.ofNullable(connectionType);
@@ -179,21 +180,23 @@ public class SourceOracleEnterpriseServiceName {
             return this;
         }
 
+
         public Builder serviceName(String serviceName) {
             Utils.checkNotNull(serviceName, "serviceName");
             this.serviceName = serviceName;
             return this;
         }
-        
+
         public SourceOracleEnterpriseServiceName build() {
             if (connectionType == null) {
                 connectionType = _SINGLETON_VALUE_ConnectionType.value();
             }
+
             return new SourceOracleEnterpriseServiceName(
-                connectionType,
-                serviceName)
+                connectionType, serviceName)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseConnectionType>> _SINGLETON_VALUE_ConnectionType =
                 new LazySingletonValue<>(

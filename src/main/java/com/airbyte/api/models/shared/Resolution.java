@@ -16,7 +16,7 @@ public enum Resolution {
     @JsonValue
     private final String value;
 
-    private Resolution(String value) {
+    Resolution(String value) {
         this.value = value;
     }
     

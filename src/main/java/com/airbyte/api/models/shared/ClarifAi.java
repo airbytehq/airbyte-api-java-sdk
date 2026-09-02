@@ -14,7 +14,7 @@ public enum ClarifAi {
     @JsonValue
     private final String value;
 
-    private ClarifAi(String value) {
+    ClarifAi(String value) {
         this.value = value;
     }
     

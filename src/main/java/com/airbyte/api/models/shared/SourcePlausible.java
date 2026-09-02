@@ -13,29 +13,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePlausible {
 
+public class SourcePlausible {
     /**
-     * Plausible API Key. See the &lt;a href="https://plausible.io/docs/stats-api"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * Plausible API Key. See the <a href="https://plausible.io/docs/stats-api">docs</a> for information on
+     * how to generate this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * The API URL of your plausible instance. Change this if you self-host plausible. The default is https://plausible.io/api/v1/stats
+     * The API URL of your plausible instance. Change this if you self-host plausible. The default is
+     * https://plausible.io/api/v1/stats
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("api_url")
     private Optional<String> apiUrl;
 
     /**
-     * The domain of the site you want to retrieve data for. Enter the name of your site as configured on Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your Plausible site settings.
+     * The domain of the site you want to retrieve data for. Enter the name of your site as configured on
+     * Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your
+     * Plausible site settings.
      */
     @JsonProperty("site_id")
     private String siteId;
+
 
     @JsonProperty("sourceType")
     private Plausible sourceType;
@@ -67,11 +71,13 @@ public class SourcePlausible {
     public SourcePlausible(
             String apiKey,
             String siteId) {
-        this(apiKey, Optional.empty(), siteId, Optional.empty());
+        this(apiKey, Optional.empty(), siteId,
+            Optional.empty());
     }
 
     /**
-     * Plausible API Key. See the &lt;a href="https://plausible.io/docs/stats-api"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * Plausible API Key. See the <a href="https://plausible.io/docs/stats-api">docs</a> for information on
+     * how to generate this key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -79,7 +85,8 @@ public class SourcePlausible {
     }
 
     /**
-     * The API URL of your plausible instance. Change this if you self-host plausible. The default is https://plausible.io/api/v1/stats
+     * The API URL of your plausible instance. Change this if you self-host plausible. The default is
+     * https://plausible.io/api/v1/stats
      */
     @JsonIgnore
     public Optional<String> apiUrl() {
@@ -87,7 +94,9 @@ public class SourcePlausible {
     }
 
     /**
-     * The domain of the site you want to retrieve data for. Enter the name of your site as configured on Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your Plausible site settings.
+     * The domain of the site you want to retrieve data for. Enter the name of your site as configured on
+     * Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your
+     * Plausible site settings.
      */
     @JsonIgnore
     public String siteId() {
@@ -107,12 +116,14 @@ public class SourcePlausible {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Plausible API Key. See the &lt;a href="https://plausible.io/docs/stats-api"&gt;docs&lt;/a&gt; for information on how to generate this key.
+     * Plausible API Key. See the <a href="https://plausible.io/docs/stats-api">docs</a> for information on
+     * how to generate this key.
      */
     public SourcePlausible withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -121,7 +132,8 @@ public class SourcePlausible {
     }
 
     /**
-     * The API URL of your plausible instance. Change this if you self-host plausible. The default is https://plausible.io/api/v1/stats
+     * The API URL of your plausible instance. Change this if you self-host plausible. The default is
+     * https://plausible.io/api/v1/stats
      */
     public SourcePlausible withApiUrl(String apiUrl) {
         Utils.checkNotNull(apiUrl, "apiUrl");
@@ -129,8 +141,10 @@ public class SourcePlausible {
         return this;
     }
 
+
     /**
-     * The API URL of your plausible instance. Change this if you self-host plausible. The default is https://plausible.io/api/v1/stats
+     * The API URL of your plausible instance. Change this if you self-host plausible. The default is
+     * https://plausible.io/api/v1/stats
      */
     public SourcePlausible withApiUrl(Optional<String> apiUrl) {
         Utils.checkNotNull(apiUrl, "apiUrl");
@@ -139,7 +153,9 @@ public class SourcePlausible {
     }
 
     /**
-     * The domain of the site you want to retrieve data for. Enter the name of your site as configured on Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your Plausible site settings.
+     * The domain of the site you want to retrieve data for. Enter the name of your site as configured on
+     * Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your
+     * Plausible site settings.
      */
     public SourcePlausible withSiteId(String siteId) {
         Utils.checkNotNull(siteId, "siteId");
@@ -156,6 +172,7 @@ public class SourcePlausible {
         return this;
     }
 
+
     /**
      * Start date for data to retrieve, in ISO-8601 format.
      */
@@ -165,7 +182,6 @@ public class SourcePlausible {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -176,21 +192,18 @@ public class SourcePlausible {
         }
         SourcePlausible other = (SourcePlausible) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiUrl, other.apiUrl) &&
-            Objects.deepEquals(this.siteId, other.siteId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiUrl, other.apiUrl) &&
+            Utils.enhancedDeepEquals(this.siteId, other.siteId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiUrl,
-            siteId,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, apiUrl, siteId,
+            sourceType, startDate);
     }
     
     @Override
@@ -202,23 +215,26 @@ public class SourcePlausible {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> apiUrl = Optional.empty();
- 
+
         private String siteId;
- 
+
         private Optional<String> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Plausible API Key. See the &lt;a href="https://plausible.io/docs/stats-api"&gt;docs&lt;/a&gt; for information on how to generate this key.
+         * Plausible API Key. See the <a href="https://plausible.io/docs/stats-api">docs</a> for information on
+         * how to generate this key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -226,8 +242,10 @@ public class SourcePlausible {
             return this;
         }
 
+
         /**
-         * The API URL of your plausible instance. Change this if you self-host plausible. The default is https://plausible.io/api/v1/stats
+         * The API URL of your plausible instance. Change this if you self-host plausible. The default is
+         * https://plausible.io/api/v1/stats
          */
         public Builder apiUrl(String apiUrl) {
             Utils.checkNotNull(apiUrl, "apiUrl");
@@ -236,7 +254,8 @@ public class SourcePlausible {
         }
 
         /**
-         * The API URL of your plausible instance. Change this if you self-host plausible. The default is https://plausible.io/api/v1/stats
+         * The API URL of your plausible instance. Change this if you self-host plausible. The default is
+         * https://plausible.io/api/v1/stats
          */
         public Builder apiUrl(Optional<String> apiUrl) {
             Utils.checkNotNull(apiUrl, "apiUrl");
@@ -244,14 +263,18 @@ public class SourcePlausible {
             return this;
         }
 
+
         /**
-         * The domain of the site you want to retrieve data for. Enter the name of your site as configured on Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your Plausible site settings.
+         * The domain of the site you want to retrieve data for. Enter the name of your site as configured on
+         * Plausible, i.e., excluding "https://" and "www". Can be retrieved from the 'domain' field in your
+         * Plausible site settings.
          */
         public Builder siteId(String siteId) {
             Utils.checkNotNull(siteId, "siteId");
             this.siteId = siteId;
             return this;
         }
+
 
         /**
          * Start date for data to retrieve, in ISO-8601 format.
@@ -270,14 +293,14 @@ public class SourcePlausible {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourcePlausible build() {
+
             return new SourcePlausible(
-                apiKey,
-                apiUrl,
-                siteId,
+                apiKey, apiUrl, siteId,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Plausible> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

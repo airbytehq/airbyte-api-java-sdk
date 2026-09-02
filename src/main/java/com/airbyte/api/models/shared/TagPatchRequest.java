@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class TagPatchRequest {
 
     @JsonProperty("color")
     private String color;
+
 
     @JsonProperty("name")
     private String name;
@@ -39,9 +40,10 @@ public class TagPatchRequest {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public TagPatchRequest withColor(String color) {
         Utils.checkNotNull(color, "color");
@@ -55,7 +57,6 @@ public class TagPatchRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class TagPatchRequest {
         }
         TagPatchRequest other = (TagPatchRequest) o;
         return 
-            Objects.deepEquals(this.color, other.color) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.color, other.color) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            color,
-            name);
+        return Utils.enhancedHash(
+            color, name);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class TagPatchRequest {
                 "color", color,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String color;
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder color(String color) {
             Utils.checkNotNull(color, "color");
@@ -100,16 +102,18 @@ public class TagPatchRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
-        
+
         public TagPatchRequest build() {
+
             return new TagPatchRequest(
-                color,
-                name);
+                color, name);
         }
+
     }
 }

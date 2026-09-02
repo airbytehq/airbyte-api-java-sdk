@@ -14,7 +14,7 @@ public enum DestinationWeaviateMode {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateMode(String value) {
+    DestinationWeaviateMode(String value) {
         this.value = value;
     }
     

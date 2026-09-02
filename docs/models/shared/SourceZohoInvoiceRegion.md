@@ -1,5 +1,13 @@
 # SourceZohoInvoiceRegion
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZohoInvoiceRegion;
+
+SourceZohoInvoiceRegion value = SourceZohoInvoiceRegion.COM;
+```
+
 
 ## Values
 

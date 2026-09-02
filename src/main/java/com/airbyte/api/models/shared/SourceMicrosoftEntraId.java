@@ -11,21 +11,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMicrosoftEntraId {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_secret")
     private String clientSecret;
+
 
     @JsonProperty("sourceType")
     private MicrosoftEntraId sourceType;
 
+
     @JsonProperty("tenant_id")
     private String tenantId;
+
 
     @JsonProperty("user_id")
     private String userId;
@@ -72,9 +76,10 @@ public class SourceMicrosoftEntraId {
         return userId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceMicrosoftEntraId withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -100,7 +105,6 @@ public class SourceMicrosoftEntraId {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,21 +115,18 @@ public class SourceMicrosoftEntraId {
         }
         SourceMicrosoftEntraId other = (SourceMicrosoftEntraId) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tenantId, other.tenantId) &&
-            Objects.deepEquals(this.userId, other.userId);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId) &&
+            Utils.enhancedDeepEquals(this.userId, other.userId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            sourceType,
-            tenantId,
-            userId);
+        return Utils.enhancedHash(
+            clientId, clientSecret, sourceType,
+            tenantId, userId);
     }
     
     @Override
@@ -137,20 +138,22 @@ public class SourceMicrosoftEntraId {
                 "tenantId", tenantId,
                 "userId", userId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String tenantId;
- 
+
         private String userId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -158,11 +161,13 @@ public class SourceMicrosoftEntraId {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         public Builder tenantId(String tenantId) {
             Utils.checkNotNull(tenantId, "tenantId");
@@ -170,19 +175,20 @@ public class SourceMicrosoftEntraId {
             return this;
         }
 
+
         public Builder userId(String userId) {
             Utils.checkNotNull(userId, "userId");
             this.userId = userId;
             return this;
         }
-        
+
         public SourceMicrosoftEntraId build() {
+
             return new SourceMicrosoftEntraId(
-                clientId,
-                clientSecret,
-                tenantId,
+                clientId, clientSecret, tenantId,
                 userId);
         }
+
 
         private static final LazySingletonValue<MicrosoftEntraId> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

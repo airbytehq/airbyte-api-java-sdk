@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.DeleteSourceDefinition;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class DeleteSourceDefinitionRequestBuilder {
 
     private DeleteSourceDefinitionRequest request;
-    private final SDKMethodInterfaces.MethodCallDeleteSourceDefinition sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public DeleteSourceDefinitionRequestBuilder(SDKMethodInterfaces.MethodCallDeleteSourceDefinition sdk) {
-        this.sdk = sdk;
+    public DeleteSourceDefinitionRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public DeleteSourceDefinitionRequestBuilder request(DeleteSourceDefinitionRequest request) {
@@ -21,9 +26,11 @@ public class DeleteSourceDefinitionRequestBuilder {
         return this;
     }
 
-    public DeleteSourceDefinitionResponse call() throws Exception {
+    public DeleteSourceDefinitionResponse call() {
+        
+        RequestOperation<DeleteSourceDefinitionRequest, DeleteSourceDefinitionResponse> operation
+              = new DeleteSourceDefinition.Sync(sdkConfiguration, _headers);
 
-        return sdk.deleteSourceDefinition(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

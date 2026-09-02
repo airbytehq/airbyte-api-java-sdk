@@ -15,13 +15,31 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationTeradata {
 
     @JsonProperty("destinationType")
     private Teradata destinationType;
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("disable_type_dedupe")
+    private Optional<Boolean> disableTypeDedupe;
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("drop_cascade")
+    private Optional<Boolean> dropCascade;
 
     /**
      * Hostname of the database.
@@ -30,25 +48,37 @@ public class DestinationTeradata {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
     private Optional<String> jdbcUrlParams;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logmech")
     private Optional<? extends AuthorizationMechanism> logmech;
 
     /**
-     * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
+     * Defines the custom session query band using name-value pairs. For example,
+     * 'org=Finance;report=Fin123;'
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query_band")
     private Optional<String> queryBand;
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The database to write raw tables into
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("raw_data_schema")
+    private Optional<String> rawDataSchema;
+
+    /**
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("schema")
@@ -62,14 +92,21 @@ public class DestinationTeradata {
     private Optional<Boolean> ssl;
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+     * does not support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+     * does not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the destination database server
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+     * in the docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ssl_mode")
@@ -77,25 +114,34 @@ public class DestinationTeradata {
 
     @JsonCreator
     public DestinationTeradata(
+            @JsonProperty("disable_type_dedupe") Optional<Boolean> disableTypeDedupe,
+            @JsonProperty("drop_cascade") Optional<Boolean> dropCascade,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
             @JsonProperty("logmech") Optional<? extends AuthorizationMechanism> logmech,
             @JsonProperty("query_band") Optional<String> queryBand,
+            @JsonProperty("raw_data_schema") Optional<String> rawDataSchema,
             @JsonProperty("schema") Optional<String> schema,
             @JsonProperty("ssl") Optional<Boolean> ssl,
             @JsonProperty("ssl_mode") Optional<? extends DestinationTeradataSSLModes> sslMode) {
+        Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        Utils.checkNotNull(dropCascade, "dropCascade");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(logmech, "logmech");
         Utils.checkNotNull(queryBand, "queryBand");
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
         Utils.checkNotNull(schema, "schema");
         Utils.checkNotNull(ssl, "ssl");
         Utils.checkNotNull(sslMode, "sslMode");
         this.destinationType = Builder._SINGLETON_VALUE_DestinationType.value();
+        this.disableTypeDedupe = disableTypeDedupe;
+        this.dropCascade = dropCascade;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.logmech = logmech;
         this.queryBand = queryBand;
+        this.rawDataSchema = rawDataSchema;
         this.schema = schema;
         this.ssl = ssl;
         this.sslMode = sslMode;
@@ -103,12 +149,35 @@ public class DestinationTeradata {
     
     public DestinationTeradata(
             String host) {
-        this(host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), host,
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonIgnore
     public Teradata destinationType() {
         return destinationType;
+    }
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
+     */
+    @JsonIgnore
+    public Optional<Boolean> disableTypeDedupe() {
+        return disableTypeDedupe;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
+     */
+    @JsonIgnore
+    public Optional<Boolean> dropCascade() {
+        return dropCascade;
     }
 
     /**
@@ -120,7 +189,9 @@ public class DestinationTeradata {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -134,7 +205,8 @@ public class DestinationTeradata {
     }
 
     /**
-     * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
+     * Defines the custom session query band using name-value pairs. For example,
+     * 'org=Finance;report=Fin123;'
      */
     @JsonIgnore
     public Optional<String> queryBand() {
@@ -142,7 +214,16 @@ public class DestinationTeradata {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The database to write raw tables into
+     */
+    @JsonIgnore
+    public Optional<String> rawDataSchema() {
+        return rawDataSchema;
+    }
+
+    /**
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     @JsonIgnore
     public Optional<String> schema() {
@@ -158,14 +239,21 @@ public class DestinationTeradata {
     }
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+     * does not support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+     * does not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the destination database server
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+     * in the docs</a>.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -173,9 +261,56 @@ public class DestinationTeradata {
         return (Optional<DestinationTeradataSSLModes>) sslMode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
+     */
+    public DestinationTeradata withDisableTypeDedupe(boolean disableTypeDedupe) {
+        Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        this.disableTypeDedupe = Optional.ofNullable(disableTypeDedupe);
+        return this;
+    }
+
+
+    /**
+     * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+     * are no guarantees that other metadata columns will remain the same in future versions
+     */
+    public DestinationTeradata withDisableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
+        Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+        this.disableTypeDedupe = disableTypeDedupe;
+        return this;
+    }
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
+     */
+    public DestinationTeradata withDropCascade(boolean dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = Optional.ofNullable(dropCascade);
+        return this;
+    }
+
+
+    /**
+     * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+     * 
+     * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+     * objects.
+     */
+    public DestinationTeradata withDropCascade(Optional<Boolean> dropCascade) {
+        Utils.checkNotNull(dropCascade, "dropCascade");
+        this.dropCascade = dropCascade;
+        return this;
+    }
 
     /**
      * Hostname of the database.
@@ -187,7 +322,9 @@ public class DestinationTeradata {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationTeradata withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -195,8 +332,11 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public DestinationTeradata withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -210,6 +350,7 @@ public class DestinationTeradata {
         return this;
     }
 
+
     public DestinationTeradata withLogmech(Optional<? extends AuthorizationMechanism> logmech) {
         Utils.checkNotNull(logmech, "logmech");
         this.logmech = logmech;
@@ -217,7 +358,8 @@ public class DestinationTeradata {
     }
 
     /**
-     * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
+     * Defines the custom session query band using name-value pairs. For example,
+     * 'org=Finance;report=Fin123;'
      */
     public DestinationTeradata withQueryBand(String queryBand) {
         Utils.checkNotNull(queryBand, "queryBand");
@@ -225,8 +367,10 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
-     * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
+     * Defines the custom session query band using name-value pairs. For example,
+     * 'org=Finance;report=Fin123;'
      */
     public DestinationTeradata withQueryBand(Optional<String> queryBand) {
         Utils.checkNotNull(queryBand, "queryBand");
@@ -235,7 +379,27 @@ public class DestinationTeradata {
     }
 
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The database to write raw tables into
+     */
+    public DestinationTeradata withRawDataSchema(String rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+        return this;
+    }
+
+
+    /**
+     * The database to write raw tables into
+     */
+    public DestinationTeradata withRawDataSchema(Optional<String> rawDataSchema) {
+        Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+        this.rawDataSchema = rawDataSchema;
+        return this;
+    }
+
+    /**
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationTeradata withSchema(String schema) {
         Utils.checkNotNull(schema, "schema");
@@ -243,8 +407,10 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
-     * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+     * The default schema tables are written to if the source does not specify a namespace. The usual value
+     * for this field is "public".
      */
     public DestinationTeradata withSchema(Optional<String> schema) {
         Utils.checkNotNull(schema, "schema");
@@ -261,6 +427,7 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
      * Encrypt data using SSL. When activating SSL, please select one of the SSL modes.
      */
@@ -271,14 +438,21 @@ public class DestinationTeradata {
     }
 
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+     * does not support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+     * does not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the destination database server
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+     * in the docs</a>.
      */
     public DestinationTeradata withSslMode(DestinationTeradataSSLModes sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -286,15 +460,23 @@ public class DestinationTeradata {
         return this;
     }
 
+
     /**
-     * SSL connection modes. 
-     *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-     *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
-     *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
-     *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
-     *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
-     *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
-     *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+     * SSL connection modes.
+     * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+     * destination database
+     * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+     * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+     * does not support encryption
+     * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+     * does not support encryption, connection will fail
+     * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+     * database server has a valid SSL certificate
+     * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+     * to verify the identity of the destination database server
+     * See more information - <a
+     * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+     * in the docs</a>.
      */
     public DestinationTeradata withSslMode(Optional<? extends DestinationTeradataSSLModes> sslMode) {
         Utils.checkNotNull(sslMode, "sslMode");
@@ -302,7 +484,6 @@ public class DestinationTeradata {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -313,61 +494,117 @@ public class DestinationTeradata {
         }
         DestinationTeradata other = (DestinationTeradata) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.logmech, other.logmech) &&
-            Objects.deepEquals(this.queryBand, other.queryBand) &&
-            Objects.deepEquals(this.schema, other.schema) &&
-            Objects.deepEquals(this.ssl, other.ssl) &&
-            Objects.deepEquals(this.sslMode, other.sslMode);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.disableTypeDedupe, other.disableTypeDedupe) &&
+            Utils.enhancedDeepEquals(this.dropCascade, other.dropCascade) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.logmech, other.logmech) &&
+            Utils.enhancedDeepEquals(this.queryBand, other.queryBand) &&
+            Utils.enhancedDeepEquals(this.rawDataSchema, other.rawDataSchema) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema) &&
+            Utils.enhancedDeepEquals(this.ssl, other.ssl) &&
+            Utils.enhancedDeepEquals(this.sslMode, other.sslMode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            host,
-            jdbcUrlParams,
-            logmech,
-            queryBand,
-            schema,
-            ssl,
-            sslMode);
+        return Utils.enhancedHash(
+            destinationType, disableTypeDedupe, dropCascade,
+            host, jdbcUrlParams, logmech,
+            queryBand, rawDataSchema, schema,
+            ssl, sslMode);
     }
     
     @Override
     public String toString() {
         return Utils.toString(DestinationTeradata.class,
                 "destinationType", destinationType,
+                "disableTypeDedupe", disableTypeDedupe,
+                "dropCascade", dropCascade,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "logmech", logmech,
                 "queryBand", queryBand,
+                "rawDataSchema", rawDataSchema,
                 "schema", schema,
                 "ssl", ssl,
                 "sslMode", sslMode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
+        private Optional<Boolean> disableTypeDedupe;
+
+        private Optional<Boolean> dropCascade;
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<? extends AuthorizationMechanism> logmech = Optional.empty();
- 
+
         private Optional<String> queryBand = Optional.empty();
- 
+
+        private Optional<String> rawDataSchema = Optional.empty();
+
         private Optional<String> schema;
- 
+
         private Optional<Boolean> ssl;
- 
+
         private Optional<? extends DestinationTeradataSSLModes> sslMode = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
+
+        /**
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+         * are no guarantees that other metadata columns will remain the same in future versions
+         */
+        public Builder disableTypeDedupe(boolean disableTypeDedupe) {
+            Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+            this.disableTypeDedupe = Optional.ofNullable(disableTypeDedupe);
+            return this;
+        }
+
+        /**
+         * Disable Writing Final Tables. WARNING! The data format in _airbyte_data is likely stable but there
+         * are no guarantees that other metadata columns will remain the same in future versions
+         */
+        public Builder disableTypeDedupe(Optional<Boolean> disableTypeDedupe) {
+            Utils.checkNotNull(disableTypeDedupe, "disableTypeDedupe");
+            this.disableTypeDedupe = disableTypeDedupe;
+            return this;
+        }
+
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+         * 
+         * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+         * objects.
+         */
+        public Builder dropCascade(boolean dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = Optional.ofNullable(dropCascade);
+            return this;
+        }
+
+        /**
+         * Drop tables with CASCADE. WARNING! This will delete all data in all dependent objects (views, etc.).
+         * 
+         * <p>Use with caution. This option is intended for usecases which can easily rebuild the dependent
+         * objects.
+         */
+        public Builder dropCascade(Optional<Boolean> dropCascade) {
+            Utils.checkNotNull(dropCascade, "dropCascade");
+            this.dropCascade = dropCascade;
+            return this;
+        }
+
 
         /**
          * Hostname of the database.
@@ -378,8 +615,11 @@ public class DestinationTeradata {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -388,13 +628,16 @@ public class DestinationTeradata {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         public Builder logmech(AuthorizationMechanism logmech) {
             Utils.checkNotNull(logmech, "logmech");
@@ -408,8 +651,10 @@ public class DestinationTeradata {
             return this;
         }
 
+
         /**
-         * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
+         * Defines the custom session query band using name-value pairs. For example,
+         * 'org=Finance;report=Fin123;'
          */
         public Builder queryBand(String queryBand) {
             Utils.checkNotNull(queryBand, "queryBand");
@@ -418,7 +663,8 @@ public class DestinationTeradata {
         }
 
         /**
-         * Defines the custom session query band using name-value pairs. For example, 'org=Finance;report=Fin123;'
+         * Defines the custom session query band using name-value pairs. For example,
+         * 'org=Finance;report=Fin123;'
          */
         public Builder queryBand(Optional<String> queryBand) {
             Utils.checkNotNull(queryBand, "queryBand");
@@ -426,8 +672,29 @@ public class DestinationTeradata {
             return this;
         }
 
+
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The database to write raw tables into
+         */
+        public Builder rawDataSchema(String rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = Optional.ofNullable(rawDataSchema);
+            return this;
+        }
+
+        /**
+         * The database to write raw tables into
+         */
+        public Builder rawDataSchema(Optional<String> rawDataSchema) {
+            Utils.checkNotNull(rawDataSchema, "rawDataSchema");
+            this.rawDataSchema = rawDataSchema;
+            return this;
+        }
+
+
+        /**
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(String schema) {
             Utils.checkNotNull(schema, "schema");
@@ -436,13 +703,15 @@ public class DestinationTeradata {
         }
 
         /**
-         * The default schema tables are written to if the source does not specify a namespace. The usual value for this field is "public".
+         * The default schema tables are written to if the source does not specify a namespace. The usual value
+         * for this field is "public".
          */
         public Builder schema(Optional<String> schema) {
             Utils.checkNotNull(schema, "schema");
             this.schema = schema;
             return this;
         }
+
 
         /**
          * Encrypt data using SSL. When activating SSL, please select one of the SSL modes.
@@ -462,15 +731,23 @@ public class DestinationTeradata {
             return this;
         }
 
+
         /**
-         * SSL connection modes. 
-         *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-         *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
-         *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
-         *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
-         *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
-         *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
-         *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+         * destination database
+         * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+         * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+         * does not support encryption
+         * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+         * does not support encryption, connection will fail
+         * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+         * database server has a valid SSL certificate
+         * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+         * to verify the identity of the destination database server
+         * See more information - <a
+         * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+         * in the docs</a>.
          */
         public Builder sslMode(DestinationTeradataSSLModes sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
@@ -479,43 +756,67 @@ public class DestinationTeradata {
         }
 
         /**
-         * SSL connection modes. 
-         *  &lt;b&gt;disable&lt;/b&gt; - Chose this mode to disable encryption of communication between Airbyte and destination database
-         *  &lt;b&gt;allow&lt;/b&gt; - Chose this mode to enable encryption only when required by the destination database
-         *  &lt;b&gt;prefer&lt;/b&gt; - Chose this mode to allow unencrypted connection only if the destination database does not support encryption
-         *  &lt;b&gt;require&lt;/b&gt; - Chose this mode to always require encryption. If the destination database server does not support encryption, connection will fail
-         *   &lt;b&gt;verify-ca&lt;/b&gt; - Chose this mode to always require encryption and to verify that the destination database server has a valid SSL certificate
-         *   &lt;b&gt;verify-full&lt;/b&gt; - This is the most secure mode. Chose this mode to always require encryption and to verify the identity of the destination database server
-         *  See more information - &lt;a href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE"&gt; in the docs&lt;/a&gt;.
+         * SSL connection modes.
+         * <b>disable</b> - Chose this mode to disable encryption of communication between Airbyte and
+         * destination database
+         * <b>allow</b> - Chose this mode to enable encryption only when required by the destination database
+         * <b>prefer</b> - Chose this mode to allow unencrypted connection only if the destination database
+         * does not support encryption
+         * <b>require</b> - Chose this mode to always require encryption. If the destination database server
+         * does not support encryption, connection will fail
+         * <b>verify-ca</b> - Chose this mode to always require encryption and to verify that the destination
+         * database server has a valid SSL certificate
+         * <b>verify-full</b> - This is the most secure mode. Chose this mode to always require encryption and
+         * to verify the identity of the destination database server
+         * See more information - <a
+         * href="https://teradata-docs.s3.amazonaws.com/doc/connectivity/jdbc/reference/current/jdbcug_chapter_2.html#URL_SSLMODE">
+         * in the docs</a>.
          */
         public Builder sslMode(Optional<? extends DestinationTeradataSSLModes> sslMode) {
             Utils.checkNotNull(sslMode, "sslMode");
             this.sslMode = sslMode;
             return this;
         }
-        
+
         public DestinationTeradata build() {
+            if (disableTypeDedupe == null) {
+                disableTypeDedupe = _SINGLETON_VALUE_DisableTypeDedupe.value();
+            }
+            if (dropCascade == null) {
+                dropCascade = _SINGLETON_VALUE_DropCascade.value();
+            }
             if (schema == null) {
                 schema = _SINGLETON_VALUE_Schema.value();
             }
             if (ssl == null) {
                 ssl = _SINGLETON_VALUE_Ssl.value();
             }
+
             return new DestinationTeradata(
-                host,
-                jdbcUrlParams,
-                logmech,
-                queryBand,
-                schema,
-                ssl,
+                disableTypeDedupe, dropCascade, host,
+                jdbcUrlParams, logmech, queryBand,
+                rawDataSchema, schema, ssl,
                 sslMode);
         }
+
 
         private static final LazySingletonValue<Teradata> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(
                         "destinationType",
                         "\"teradata\"",
                         new TypeReference<Teradata>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DisableTypeDedupe =
+                new LazySingletonValue<>(
+                        "disable_type_dedupe",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
+
+        private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_DropCascade =
+                new LazySingletonValue<>(
+                        "drop_cascade",
+                        "false",
+                        new TypeReference<Optional<Boolean>>() {});
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Schema =
                 new LazySingletonValue<>(

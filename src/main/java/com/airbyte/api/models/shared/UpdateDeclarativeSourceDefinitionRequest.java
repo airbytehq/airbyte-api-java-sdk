@@ -6,41 +6,24 @@ package com.airbyte.api.models.shared;
 import com.airbyte.api.utils.Utils;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
-import java.util.Optional;
+
 
 public class UpdateDeclarativeSourceDefinitionRequest {
-
     /**
      * Low code CDK manifest JSON object
      */
     @JsonProperty("manifest")
     private Object manifest;
 
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("version")
-    private Optional<Long> version;
-
     @JsonCreator
     public UpdateDeclarativeSourceDefinitionRequest(
-            @JsonProperty("manifest") Object manifest,
-            @JsonProperty("version") Optional<Long> version) {
+            @JsonProperty("manifest") Object manifest) {
         Utils.checkNotNull(manifest, "manifest");
-        Utils.checkNotNull(version, "version");
         this.manifest = manifest;
-        this.version = version;
-    }
-    
-    public UpdateDeclarativeSourceDefinitionRequest(
-            Object manifest) {
-        this(manifest, Optional.empty());
     }
 
     /**
@@ -51,14 +34,10 @@ public class UpdateDeclarativeSourceDefinitionRequest {
         return manifest;
     }
 
-    @JsonIgnore
-    public Optional<Long> version() {
-        return version;
+    public static Builder builder() {
+        return new Builder();
     }
 
-    public final static Builder builder() {
-        return new Builder();
-    }    
 
     /**
      * Low code CDK manifest JSON object
@@ -69,19 +48,6 @@ public class UpdateDeclarativeSourceDefinitionRequest {
         return this;
     }
 
-    public UpdateDeclarativeSourceDefinitionRequest withVersion(long version) {
-        Utils.checkNotNull(version, "version");
-        this.version = Optional.ofNullable(version);
-        return this;
-    }
-
-    public UpdateDeclarativeSourceDefinitionRequest withVersion(Optional<Long> version) {
-        Utils.checkNotNull(version, "version");
-        this.version = version;
-        return this;
-    }
-
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -92,33 +58,30 @@ public class UpdateDeclarativeSourceDefinitionRequest {
         }
         UpdateDeclarativeSourceDefinitionRequest other = (UpdateDeclarativeSourceDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.manifest, other.manifest) &&
-            Objects.deepEquals(this.version, other.version);
+            Utils.enhancedDeepEquals(this.manifest, other.manifest);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            manifest,
-            version);
+        return Utils.enhancedHash(
+            manifest);
     }
     
     @Override
     public String toString() {
         return Utils.toString(UpdateDeclarativeSourceDefinitionRequest.class,
-                "manifest", manifest,
-                "version", version);
+                "manifest", manifest);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Object manifest;
- 
-        private Optional<Long> version = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Low code CDK manifest JSON object
@@ -129,22 +92,11 @@ public class UpdateDeclarativeSourceDefinitionRequest {
             return this;
         }
 
-        public Builder version(long version) {
-            Utils.checkNotNull(version, "version");
-            this.version = Optional.ofNullable(version);
-            return this;
+        public UpdateDeclarativeSourceDefinitionRequest build() {
+
+            return new UpdateDeclarativeSourceDefinitionRequest(
+                manifest);
         }
 
-        public Builder version(Optional<Long> version) {
-            Utils.checkNotNull(version, "version");
-            this.version = version;
-            return this;
-        }
-        
-        public UpdateDeclarativeSourceDefinitionRequest build() {
-            return new UpdateDeclarativeSourceDefinitionRequest(
-                manifest,
-                version);
-        }
     }
 }

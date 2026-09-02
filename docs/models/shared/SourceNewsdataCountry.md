@@ -1,5 +1,13 @@
 # SourceNewsdataCountry
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceNewsdataCountry;
+
+SourceNewsdataCountry value = SourceNewsdataCountry.AR;
+```
+
 
 ## Values
 

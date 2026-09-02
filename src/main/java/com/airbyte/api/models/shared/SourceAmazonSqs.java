@@ -15,11 +15,10 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAmazonSqs {
 
+public class SourceAmazonSqs {
     /**
      * The Access Key ID of the AWS IAM Role to use for pulling messages
      */
@@ -66,11 +65,13 @@ public class SourceAmazonSqs {
     @JsonProperty("secret_key")
     private String secretKey;
 
+
     @JsonProperty("sourceType")
     private AmazonSqs sourceType;
 
     /**
-     * Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+     * Note - Different targets have different attribute enum requirements, please refer actions sections
+     * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("target")
@@ -119,7 +120,9 @@ public class SourceAmazonSqs {
             String accessKey,
             String queueUrl,
             String secretKey) {
-        this(accessKey, Optional.empty(), Optional.empty(), Optional.empty(), queueUrl, Optional.empty(), secretKey, Optional.empty(), Optional.empty());
+        this(accessKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), queueUrl, Optional.empty(),
+            secretKey, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -185,7 +188,8 @@ public class SourceAmazonSqs {
     }
 
     /**
-     * Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+     * Note - Different targets have different attribute enum requirements, please refer actions sections
+     * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -201,9 +205,10 @@ public class SourceAmazonSqs {
         return visibilityTimeout;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Access Key ID of the AWS IAM Role to use for pulling messages
@@ -223,6 +228,7 @@ public class SourceAmazonSqs {
         return this;
     }
 
+
     /**
      * Comma separated list of Mesage Attribute names to return
      */
@@ -241,6 +247,7 @@ public class SourceAmazonSqs {
         return this;
     }
 
+
     /**
      * Max amount of messages to get in one batch (10 max)
      */
@@ -258,6 +265,7 @@ public class SourceAmazonSqs {
         this.maxWaitTime = Optional.ofNullable(maxWaitTime);
         return this;
     }
+
 
     /**
      * Max amount of time in seconds to wait for messages in a single poll (20 max)
@@ -286,6 +294,7 @@ public class SourceAmazonSqs {
         return this;
     }
 
+
     /**
      * AWS Region of the SQS Queue
      */
@@ -305,7 +314,8 @@ public class SourceAmazonSqs {
     }
 
     /**
-     * Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+     * Note - Different targets have different attribute enum requirements, please refer actions sections
+     * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
      */
     public SourceAmazonSqs withTarget(TheTargetedActionResourceForTheFetch target) {
         Utils.checkNotNull(target, "target");
@@ -313,8 +323,10 @@ public class SourceAmazonSqs {
         return this;
     }
 
+
     /**
-     * Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+     * Note - Different targets have different attribute enum requirements, please refer actions sections
+     * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
      */
     public SourceAmazonSqs withTarget(Optional<? extends TheTargetedActionResourceForTheFetch> target) {
         Utils.checkNotNull(target, "target");
@@ -331,6 +343,7 @@ public class SourceAmazonSqs {
         return this;
     }
 
+
     /**
      * Modify the Visibility Timeout of the individual message from the Queue's default (seconds).
      */
@@ -340,7 +353,6 @@ public class SourceAmazonSqs {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -351,30 +363,24 @@ public class SourceAmazonSqs {
         }
         SourceAmazonSqs other = (SourceAmazonSqs) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.attributesToReturn, other.attributesToReturn) &&
-            Objects.deepEquals(this.maxBatchSize, other.maxBatchSize) &&
-            Objects.deepEquals(this.maxWaitTime, other.maxWaitTime) &&
-            Objects.deepEquals(this.queueUrl, other.queueUrl) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.secretKey, other.secretKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.target, other.target) &&
-            Objects.deepEquals(this.visibilityTimeout, other.visibilityTimeout);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.attributesToReturn, other.attributesToReturn) &&
+            Utils.enhancedDeepEquals(this.maxBatchSize, other.maxBatchSize) &&
+            Utils.enhancedDeepEquals(this.maxWaitTime, other.maxWaitTime) &&
+            Utils.enhancedDeepEquals(this.queueUrl, other.queueUrl) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.secretKey, other.secretKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.target, other.target) &&
+            Utils.enhancedDeepEquals(this.visibilityTimeout, other.visibilityTimeout);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            attributesToReturn,
-            maxBatchSize,
-            maxWaitTime,
-            queueUrl,
-            region,
-            secretKey,
-            sourceType,
-            target,
+        return Utils.enhancedHash(
+            accessKey, attributesToReturn, maxBatchSize,
+            maxWaitTime, queueUrl, region,
+            secretKey, sourceType, target,
             visibilityTimeout);
     }
     
@@ -392,30 +398,32 @@ public class SourceAmazonSqs {
                 "target", target,
                 "visibilityTimeout", visibilityTimeout);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private Optional<String> attributesToReturn;
- 
+
         private Optional<Long> maxBatchSize;
- 
+
         private Optional<Long> maxWaitTime;
- 
+
         private String queueUrl;
- 
+
         private Optional<? extends SourceAmazonSqsAWSRegion> region;
- 
+
         private String secretKey;
- 
+
         private Optional<? extends TheTargetedActionResourceForTheFetch> target;
- 
+
         private Optional<Long> visibilityTimeout;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Access Key ID of the AWS IAM Role to use for pulling messages
@@ -425,6 +433,7 @@ public class SourceAmazonSqs {
             this.accessKey = accessKey;
             return this;
         }
+
 
         /**
          * Comma separated list of Mesage Attribute names to return
@@ -444,6 +453,7 @@ public class SourceAmazonSqs {
             return this;
         }
 
+
         /**
          * Max amount of messages to get in one batch (10 max)
          */
@@ -461,6 +471,7 @@ public class SourceAmazonSqs {
             this.maxBatchSize = maxBatchSize;
             return this;
         }
+
 
         /**
          * Max amount of time in seconds to wait for messages in a single poll (20 max)
@@ -480,6 +491,7 @@ public class SourceAmazonSqs {
             return this;
         }
 
+
         /**
          * URL of the SQS Queue
          */
@@ -488,6 +500,7 @@ public class SourceAmazonSqs {
             this.queueUrl = queueUrl;
             return this;
         }
+
 
         /**
          * AWS Region of the SQS Queue
@@ -507,6 +520,7 @@ public class SourceAmazonSqs {
             return this;
         }
 
+
         /**
          * The Secret Key of the AWS IAM Role to use for pulling messages
          */
@@ -516,8 +530,10 @@ public class SourceAmazonSqs {
             return this;
         }
 
+
         /**
-         * Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+         * Note - Different targets have different attribute enum requirements, please refer actions sections
+         * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
          */
         public Builder target(TheTargetedActionResourceForTheFetch target) {
             Utils.checkNotNull(target, "target");
@@ -526,13 +542,15 @@ public class SourceAmazonSqs {
         }
 
         /**
-         * Note - Different targets have different attribute enum requirements, please refer actions sections in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
+         * Note - Different targets have different attribute enum requirements, please refer actions sections
+         * in https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/Welcome.html
          */
         public Builder target(Optional<? extends TheTargetedActionResourceForTheFetch> target) {
             Utils.checkNotNull(target, "target");
             this.target = target;
             return this;
         }
+
 
         /**
          * Modify the Visibility Timeout of the individual message from the Queue's default (seconds).
@@ -551,7 +569,7 @@ public class SourceAmazonSqs {
             this.visibilityTimeout = visibilityTimeout;
             return this;
         }
-        
+
         public SourceAmazonSqs build() {
             if (attributesToReturn == null) {
                 attributesToReturn = _SINGLETON_VALUE_AttributesToReturn.value();
@@ -571,17 +589,13 @@ public class SourceAmazonSqs {
             if (visibilityTimeout == null) {
                 visibilityTimeout = _SINGLETON_VALUE_VisibilityTimeout.value();
             }
+
             return new SourceAmazonSqs(
-                accessKey,
-                attributesToReturn,
-                maxBatchSize,
-                maxWaitTime,
-                queueUrl,
-                region,
-                secretKey,
-                target,
-                visibilityTimeout);
+                accessKey, attributesToReturn, maxBatchSize,
+                maxWaitTime, queueUrl, region,
+                secretKey, target, visibilityTimeout);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_AttributesToReturn =
                 new LazySingletonValue<>(

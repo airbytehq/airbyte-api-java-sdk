@@ -15,16 +15,15 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * FromField
  * 
- * <p>Use a field in the record as the embedding. This is useful if you already have an embedding for your data and want to store it in the vector store.
+ * <p>Use a field in the record as the embedding. This is useful if you already have an embedding for your
+ * data and want to store it in the vector store.
  */
 public class FromField {
-
     /**
      * The number of dimensions the embedding model is generating
      */
@@ -36,6 +35,7 @@ public class FromField {
      */
     @JsonProperty("field_name")
     private String fieldName;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -74,9 +74,10 @@ public class FromField {
         return (Optional<DestinationWeaviateSchemasEmbeddingEmbedding5Mode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The number of dimensions the embedding model is generating
@@ -96,7 +97,6 @@ public class FromField {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -107,17 +107,15 @@ public class FromField {
         }
         FromField other = (FromField) o;
         return 
-            Objects.deepEquals(this.dimensions, other.dimensions) &&
-            Objects.deepEquals(this.fieldName, other.fieldName) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.dimensions, other.dimensions) &&
+            Utils.enhancedDeepEquals(this.fieldName, other.fieldName) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dimensions,
-            fieldName,
-            mode);
+        return Utils.enhancedHash(
+            dimensions, fieldName, mode);
     }
     
     @Override
@@ -127,16 +125,18 @@ public class FromField {
                 "fieldName", fieldName,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long dimensions;
- 
+
         private String fieldName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The number of dimensions the embedding model is generating
@@ -147,6 +147,7 @@ public class FromField {
             return this;
         }
 
+
         /**
          * Name of the field in the record that contains the embedding
          */
@@ -155,12 +156,13 @@ public class FromField {
             this.fieldName = fieldName;
             return this;
         }
-        
+
         public FromField build() {
+
             return new FromField(
-                dimensions,
-                fieldName);
+                dimensions, fieldName);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationWeaviateSchemasEmbeddingEmbedding5Mode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

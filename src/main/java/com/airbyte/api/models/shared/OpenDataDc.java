@@ -14,7 +14,7 @@ public enum OpenDataDc {
     @JsonValue
     private final String value;
 
-    private OpenDataDc(String value) {
+    OpenDataDc(String value) {
         this.value = value;
     }
     

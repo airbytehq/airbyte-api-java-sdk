@@ -18,13 +18,13 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGoogleAnalyticsDataApi {
 
+public class SourceGoogleAnalyticsDataApi {
     /**
-     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
+     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for
+     * preventing data rounding when the API returns float values for any `conversions:*` fields.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("convert_conversions_event")
@@ -45,44 +45,66 @@ public class SourceGoogleAnalyticsDataApi {
     private Optional<? extends List<SourceGoogleAnalyticsDataApiCustomReportConfig>> customReportsArray;
 
     /**
-     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
+     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this
+     * date will not be included in the report. Not applied to custom Cohort reports.
+     * 
+     * <p>When no date is provided or the date is in the future, the date from today is used.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_ranges_end_date")
     private Optional<LocalDate> dateRangesEndDate;
 
     /**
-     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
+     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before
+     * this date will not be included in the report. Not applied to custom Cohort reports.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("date_ranges_start_date")
     private Optional<LocalDate> dateRangesStartDate;
 
     /**
-     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
+     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be
+     * returned if they are not separately removed by a filter. More information is available in <a
+     * href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body">the
+     * documentation</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("keep_empty_rows")
     private Optional<Boolean> keepEmptyRows;
 
     /**
-     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency,
+     * we should specify how many days in the past we should refresh the data in every run. So if you set
+     * it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lookback_window")
     private Optional<Long> lookbackWindow;
 
     /**
-     * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
+     * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google
+     * Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events
+     * associated with your property.
+     * 
+     * <p>Refer to the &lt;a
+     * href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google
+     * Analytics documentation&lt;/a&gt; to locate your property ID.
      */
     @JsonProperty("property_ids")
     private List<String> propertyIds;
+
 
     @JsonProperty("sourceType")
     private SourceGoogleAnalyticsDataApiGoogleAnalyticsDataApi sourceType;
 
     /**
-     * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
+     * The interval in days for each data request made to the Google Analytics API. A larger value speeds
+     * up data sync, but increases the chance of data sampling, which may result in inaccuracies. We
+     * recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy.
+     * 
+     * <p>Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is
+     * available in <a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api">the
+     * documentation</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("window_in_days")
@@ -122,11 +144,14 @@ public class SourceGoogleAnalyticsDataApi {
     
     public SourceGoogleAnalyticsDataApi(
             List<String> propertyIds) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), propertyIds, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), propertyIds, Optional.empty());
     }
 
     /**
-     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
+     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for
+     * preventing data rounding when the API returns float values for any `conversions:*` fields.
      */
     @JsonIgnore
     public Optional<Boolean> convertConversionsEvent() {
@@ -152,7 +177,10 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
+     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this
+     * date will not be included in the report. Not applied to custom Cohort reports.
+     * 
+     * <p>When no date is provided or the date is in the future, the date from today is used.
      */
     @JsonIgnore
     public Optional<LocalDate> dateRangesEndDate() {
@@ -160,7 +188,8 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
+     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before
+     * this date will not be included in the report. Not applied to custom Cohort reports.
      */
     @JsonIgnore
     public Optional<LocalDate> dateRangesStartDate() {
@@ -168,7 +197,10 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
+     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be
+     * returned if they are not separately removed by a filter. More information is available in <a
+     * href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body">the
+     * documentation</a>.
      */
     @JsonIgnore
     public Optional<Boolean> keepEmptyRows() {
@@ -176,7 +208,9 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency,
+     * we should specify how many days in the past we should refresh the data in every run. So if you set
+     * it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
      */
     @JsonIgnore
     public Optional<Long> lookbackWindow() {
@@ -184,7 +218,13 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
+     * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google
+     * Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events
+     * associated with your property.
+     * 
+     * <p>Refer to the &lt;a
+     * href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google
+     * Analytics documentation&lt;/a&gt; to locate your property ID.
      */
     @JsonIgnore
     public List<String> propertyIds() {
@@ -197,19 +237,27 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
+     * The interval in days for each data request made to the Google Analytics API. A larger value speeds
+     * up data sync, but increases the chance of data sampling, which may result in inaccuracies. We
+     * recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy.
+     * 
+     * <p>Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is
+     * available in <a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api">the
+     * documentation</a>.
      */
     @JsonIgnore
     public Optional<Long> windowInDays() {
         return windowInDays;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
+     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for
+     * preventing data rounding when the API returns float values for any `conversions:*` fields.
      */
     public SourceGoogleAnalyticsDataApi withConvertConversionsEvent(boolean convertConversionsEvent) {
         Utils.checkNotNull(convertConversionsEvent, "convertConversionsEvent");
@@ -217,8 +265,10 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
-     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
+     * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for
+     * preventing data rounding when the API returns float values for any `conversions:*` fields.
      */
     public SourceGoogleAnalyticsDataApi withConvertConversionsEvent(Optional<Boolean> convertConversionsEvent) {
         Utils.checkNotNull(convertConversionsEvent, "convertConversionsEvent");
@@ -234,6 +284,7 @@ public class SourceGoogleAnalyticsDataApi {
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     /**
      * Credentials for the service
@@ -253,6 +304,7 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
      * You can add your Custom Analytics report by creating one.
      */
@@ -263,7 +315,10 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
+     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this
+     * date will not be included in the report. Not applied to custom Cohort reports.
+     * 
+     * <p>When no date is provided or the date is in the future, the date from today is used.
      */
     public SourceGoogleAnalyticsDataApi withDateRangesEndDate(LocalDate dateRangesEndDate) {
         Utils.checkNotNull(dateRangesEndDate, "dateRangesEndDate");
@@ -271,8 +326,12 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
-     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
+     * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this
+     * date will not be included in the report. Not applied to custom Cohort reports.
+     * 
+     * <p>When no date is provided or the date is in the future, the date from today is used.
      */
     public SourceGoogleAnalyticsDataApi withDateRangesEndDate(Optional<LocalDate> dateRangesEndDate) {
         Utils.checkNotNull(dateRangesEndDate, "dateRangesEndDate");
@@ -281,7 +340,8 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
+     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before
+     * this date will not be included in the report. Not applied to custom Cohort reports.
      */
     public SourceGoogleAnalyticsDataApi withDateRangesStartDate(LocalDate dateRangesStartDate) {
         Utils.checkNotNull(dateRangesStartDate, "dateRangesStartDate");
@@ -289,8 +349,10 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
-     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
+     * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before
+     * this date will not be included in the report. Not applied to custom Cohort reports.
      */
     public SourceGoogleAnalyticsDataApi withDateRangesStartDate(Optional<LocalDate> dateRangesStartDate) {
         Utils.checkNotNull(dateRangesStartDate, "dateRangesStartDate");
@@ -299,7 +361,10 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
+     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be
+     * returned if they are not separately removed by a filter. More information is available in <a
+     * href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body">the
+     * documentation</a>.
      */
     public SourceGoogleAnalyticsDataApi withKeepEmptyRows(boolean keepEmptyRows) {
         Utils.checkNotNull(keepEmptyRows, "keepEmptyRows");
@@ -307,8 +372,12 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
-     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
+     * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be
+     * returned if they are not separately removed by a filter. More information is available in <a
+     * href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body">the
+     * documentation</a>.
      */
     public SourceGoogleAnalyticsDataApi withKeepEmptyRows(Optional<Boolean> keepEmptyRows) {
         Utils.checkNotNull(keepEmptyRows, "keepEmptyRows");
@@ -317,7 +386,9 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency,
+     * we should specify how many days in the past we should refresh the data in every run. So if you set
+     * it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
      */
     public SourceGoogleAnalyticsDataApi withLookbackWindow(long lookbackWindow) {
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -325,8 +396,11 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
-     * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+     * Since attribution changes after the event date, and Google Analytics has a data processing latency,
+     * we should specify how many days in the past we should refresh the data in every run. So if you set
+     * it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
      */
     public SourceGoogleAnalyticsDataApi withLookbackWindow(Optional<Long> lookbackWindow) {
         Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -335,7 +409,13 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
+     * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google
+     * Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events
+     * associated with your property.
+     * 
+     * <p>Refer to the &lt;a
+     * href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google
+     * Analytics documentation&lt;/a&gt; to locate your property ID.
      */
     public SourceGoogleAnalyticsDataApi withPropertyIds(List<String> propertyIds) {
         Utils.checkNotNull(propertyIds, "propertyIds");
@@ -344,7 +424,13 @@ public class SourceGoogleAnalyticsDataApi {
     }
 
     /**
-     * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
+     * The interval in days for each data request made to the Google Analytics API. A larger value speeds
+     * up data sync, but increases the chance of data sampling, which may result in inaccuracies. We
+     * recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy.
+     * 
+     * <p>Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is
+     * available in <a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api">the
+     * documentation</a>.
      */
     public SourceGoogleAnalyticsDataApi withWindowInDays(long windowInDays) {
         Utils.checkNotNull(windowInDays, "windowInDays");
@@ -352,8 +438,15 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
+
     /**
-     * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
+     * The interval in days for each data request made to the Google Analytics API. A larger value speeds
+     * up data sync, but increases the chance of data sampling, which may result in inaccuracies. We
+     * recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy.
+     * 
+     * <p>Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is
+     * available in <a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api">the
+     * documentation</a>.
      */
     public SourceGoogleAnalyticsDataApi withWindowInDays(Optional<Long> windowInDays) {
         Utils.checkNotNull(windowInDays, "windowInDays");
@@ -361,7 +454,6 @@ public class SourceGoogleAnalyticsDataApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -372,30 +464,24 @@ public class SourceGoogleAnalyticsDataApi {
         }
         SourceGoogleAnalyticsDataApi other = (SourceGoogleAnalyticsDataApi) o;
         return 
-            Objects.deepEquals(this.convertConversionsEvent, other.convertConversionsEvent) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.customReportsArray, other.customReportsArray) &&
-            Objects.deepEquals(this.dateRangesEndDate, other.dateRangesEndDate) &&
-            Objects.deepEquals(this.dateRangesStartDate, other.dateRangesStartDate) &&
-            Objects.deepEquals(this.keepEmptyRows, other.keepEmptyRows) &&
-            Objects.deepEquals(this.lookbackWindow, other.lookbackWindow) &&
-            Objects.deepEquals(this.propertyIds, other.propertyIds) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.windowInDays, other.windowInDays);
+            Utils.enhancedDeepEquals(this.convertConversionsEvent, other.convertConversionsEvent) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.customReportsArray, other.customReportsArray) &&
+            Utils.enhancedDeepEquals(this.dateRangesEndDate, other.dateRangesEndDate) &&
+            Utils.enhancedDeepEquals(this.dateRangesStartDate, other.dateRangesStartDate) &&
+            Utils.enhancedDeepEquals(this.keepEmptyRows, other.keepEmptyRows) &&
+            Utils.enhancedDeepEquals(this.lookbackWindow, other.lookbackWindow) &&
+            Utils.enhancedDeepEquals(this.propertyIds, other.propertyIds) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.windowInDays, other.windowInDays);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            convertConversionsEvent,
-            credentials,
-            customReportsArray,
-            dateRangesEndDate,
-            dateRangesStartDate,
-            keepEmptyRows,
-            lookbackWindow,
-            propertyIds,
-            sourceType,
+        return Utils.enhancedHash(
+            convertConversionsEvent, credentials, customReportsArray,
+            dateRangesEndDate, dateRangesStartDate, keepEmptyRows,
+            lookbackWindow, propertyIds, sourceType,
             windowInDays);
     }
     
@@ -413,33 +499,36 @@ public class SourceGoogleAnalyticsDataApi {
                 "sourceType", sourceType,
                 "windowInDays", windowInDays);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> convertConversionsEvent;
- 
+
         private Optional<? extends SourceGoogleAnalyticsDataApiCredentials> credentials = Optional.empty();
- 
+
         private Optional<? extends List<SourceGoogleAnalyticsDataApiCustomReportConfig>> customReportsArray = Optional.empty();
- 
+
         private Optional<LocalDate> dateRangesEndDate = Optional.empty();
- 
+
         private Optional<LocalDate> dateRangesStartDate = Optional.empty();
- 
+
         private Optional<Boolean> keepEmptyRows;
- 
+
         private Optional<Long> lookbackWindow;
- 
+
         private List<String> propertyIds;
- 
+
         private Optional<Long> windowInDays;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
+         * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for
+         * preventing data rounding when the API returns float values for any `conversions:*` fields.
          */
         public Builder convertConversionsEvent(boolean convertConversionsEvent) {
             Utils.checkNotNull(convertConversionsEvent, "convertConversionsEvent");
@@ -448,13 +537,15 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
-         * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for preventing data rounding when the API returns float values for any `conversions:*` fields.
+         * Enables conversion of `conversions:*` event metrics from integers to floats. This is beneficial for
+         * preventing data rounding when the API returns float values for any `conversions:*` fields.
          */
         public Builder convertConversionsEvent(Optional<Boolean> convertConversionsEvent) {
             Utils.checkNotNull(convertConversionsEvent, "convertConversionsEvent");
             this.convertConversionsEvent = convertConversionsEvent;
             return this;
         }
+
 
         /**
          * Credentials for the service
@@ -474,6 +565,7 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
          * You can add your Custom Analytics report by creating one.
          */
@@ -492,8 +584,12 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
-         * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
+         * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this
+         * date will not be included in the report. Not applied to custom Cohort reports.
+         * 
+         * <p>When no date is provided or the date is in the future, the date from today is used.
          */
         public Builder dateRangesEndDate(LocalDate dateRangesEndDate) {
             Utils.checkNotNull(dateRangesEndDate, "dateRangesEndDate");
@@ -502,7 +598,10 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
-         * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this date will not be included in the report. Not applied to custom Cohort reports. When no date is provided or the date is in the future, the date from today is used.
+         * The end date from which to replicate report data in the format YYYY-MM-DD. Data generated after this
+         * date will not be included in the report. Not applied to custom Cohort reports.
+         * 
+         * <p>When no date is provided or the date is in the future, the date from today is used.
          */
         public Builder dateRangesEndDate(Optional<LocalDate> dateRangesEndDate) {
             Utils.checkNotNull(dateRangesEndDate, "dateRangesEndDate");
@@ -510,8 +609,10 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
-         * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
+         * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before
+         * this date will not be included in the report. Not applied to custom Cohort reports.
          */
         public Builder dateRangesStartDate(LocalDate dateRangesStartDate) {
             Utils.checkNotNull(dateRangesStartDate, "dateRangesStartDate");
@@ -520,7 +621,8 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
-         * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before this date will not be included in the report. Not applied to custom Cohort reports.
+         * The start date from which to replicate report data in the format YYYY-MM-DD. Data generated before
+         * this date will not be included in the report. Not applied to custom Cohort reports.
          */
         public Builder dateRangesStartDate(Optional<LocalDate> dateRangesStartDate) {
             Utils.checkNotNull(dateRangesStartDate, "dateRangesStartDate");
@@ -528,8 +630,12 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
-         * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
+         * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be
+         * returned if they are not separately removed by a filter. More information is available in <a
+         * href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body">the
+         * documentation</a>.
          */
         public Builder keepEmptyRows(boolean keepEmptyRows) {
             Utils.checkNotNull(keepEmptyRows, "keepEmptyRows");
@@ -538,7 +644,10 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
-         * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter. More information is available in &lt;a href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body"&gt;the documentation&lt;/a&gt;.
+         * If false, each row with all metrics equal to 0 will not be returned. If true, these rows will be
+         * returned if they are not separately removed by a filter. More information is available in <a
+         * href="https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport#request-body">the
+         * documentation</a>.
          */
         public Builder keepEmptyRows(Optional<Boolean> keepEmptyRows) {
             Utils.checkNotNull(keepEmptyRows, "keepEmptyRows");
@@ -546,8 +655,11 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
-         * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+         * Since attribution changes after the event date, and Google Analytics has a data processing latency,
+         * we should specify how many days in the past we should refresh the data in every run. So if you set
+         * it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
          */
         public Builder lookbackWindow(long lookbackWindow) {
             Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -556,7 +668,9 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
-         * Since attribution changes after the event date, and Google Analytics has a data processing latency, we should specify how many days in the past we should refresh the data in every run. So if you set it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
+         * Since attribution changes after the event date, and Google Analytics has a data processing latency,
+         * we should specify how many days in the past we should refresh the data in every run. So if you set
+         * it at 5 days, in every sync it will fetch the last bookmark date minus 5 days.
          */
         public Builder lookbackWindow(Optional<Long> lookbackWindow) {
             Utils.checkNotNull(lookbackWindow, "lookbackWindow");
@@ -564,8 +678,15 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
-         * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events associated with your property. Refer to the &lt;a href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google Analytics documentation&lt;/a&gt; to locate your property ID.
+         * A list of your Property IDs. The Property ID is a unique number assigned to each property in Google
+         * Analytics, found in your GA4 property URL. This ID allows the connector to track the specific events
+         * associated with your property.
+         * 
+         * <p>Refer to the &lt;a
+         * href='https://developers.google.com/analytics/devguides/reporting/data/v1/property-id#what_is_my_property_id'&gt;Google
+         * Analytics documentation&lt;/a&gt; to locate your property ID.
          */
         public Builder propertyIds(List<String> propertyIds) {
             Utils.checkNotNull(propertyIds, "propertyIds");
@@ -573,8 +694,15 @@ public class SourceGoogleAnalyticsDataApi {
             return this;
         }
 
+
         /**
-         * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
+         * The interval in days for each data request made to the Google Analytics API. A larger value speeds
+         * up data sync, but increases the chance of data sampling, which may result in inaccuracies. We
+         * recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy.
+         * 
+         * <p>Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is
+         * available in <a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api">the
+         * documentation</a>.
          */
         public Builder windowInDays(long windowInDays) {
             Utils.checkNotNull(windowInDays, "windowInDays");
@@ -583,14 +711,20 @@ public class SourceGoogleAnalyticsDataApi {
         }
 
         /**
-         * The interval in days for each data request made to the Google Analytics API. A larger value speeds up data sync, but increases the chance of data sampling, which may result in inaccuracies. We recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy. Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is available in &lt;a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api"&gt;the documentation&lt;/a&gt;.
+         * The interval in days for each data request made to the Google Analytics API. A larger value speeds
+         * up data sync, but increases the chance of data sampling, which may result in inaccuracies. We
+         * recommend a value of 1 to minimize sampling, unless speed is an absolute priority over accuracy.
+         * 
+         * <p>Acceptable values range from 1 to 364. Does not apply to custom Cohort reports. More information is
+         * available in <a href="https://docs.airbyte.com/integrations/sources/google-analytics-data-api">the
+         * documentation</a>.
          */
         public Builder windowInDays(Optional<Long> windowInDays) {
             Utils.checkNotNull(windowInDays, "windowInDays");
             this.windowInDays = windowInDays;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApi build() {
             if (convertConversionsEvent == null) {
                 convertConversionsEvent = _SINGLETON_VALUE_ConvertConversionsEvent.value();
@@ -604,17 +738,13 @@ public class SourceGoogleAnalyticsDataApi {
             if (windowInDays == null) {
                 windowInDays = _SINGLETON_VALUE_WindowInDays.value();
             }
+
             return new SourceGoogleAnalyticsDataApi(
-                convertConversionsEvent,
-                credentials,
-                customReportsArray,
-                dateRangesEndDate,
-                dateRangesStartDate,
-                keepEmptyRows,
-                lookbackWindow,
-                propertyIds,
-                windowInDays);
+                convertConversionsEvent, credentials, customReportsArray,
+                dateRangesEndDate, dateRangesStartDate, keepEmptyRows,
+                lookbackWindow, propertyIds, windowInDays);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_ConvertConversionsEvent =
                 new LazySingletonValue<>(

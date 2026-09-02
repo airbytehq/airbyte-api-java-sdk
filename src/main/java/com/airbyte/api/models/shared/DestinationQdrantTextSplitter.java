@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationQdrantTextSplitter
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationQdrantTextSplitter {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationQdrantTextSplitter(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class DestinationQdrantTextSplitter {
 
     public static DestinationQdrantTextSplitter of(DestinationQdrantBySeparator value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantBySeparator>(){}));
+        return new DestinationQdrantTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantTextSplitter of(DestinationQdrantByMarkdownHeader value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantByMarkdownHeader>(){}));
+        return new DestinationQdrantTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationQdrantTextSplitter of(DestinationQdrantByProgrammingLanguage value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationQdrantTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationQdrantByProgrammingLanguage>(){}));
+        return new DestinationQdrantTextSplitter(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class DestinationQdrantTextSplitter {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class DestinationQdrantTextSplitter {
             return false;
         }
         DestinationQdrantTextSplitter other = (DestinationQdrantTextSplitter) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -92,8 +91,8 @@ public class DestinationQdrantTextSplitter {
         public _Deserializer() {
             super(DestinationQdrantTextSplitter.class, false,
                   TypeReferenceWithShape.of(new TypeReference<DestinationQdrantBySeparator>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantByProgrammingLanguage>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantByMarkdownHeader>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantByMarkdownHeader>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationQdrantByProgrammingLanguage>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class DestinationQdrantTextSplitter {
         return Utils.toString(DestinationQdrantTextSplitter.class,
                 "value", value);
     }
- 
+
 }
 

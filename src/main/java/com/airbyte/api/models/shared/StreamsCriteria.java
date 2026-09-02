@@ -14,14 +14,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class StreamsCriteria {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("criteria")
     private Optional<? extends SearchCriteria> criteria;
+
 
     @JsonProperty("value")
     private String value;
@@ -52,15 +53,17 @@ public class StreamsCriteria {
         return value;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StreamsCriteria withCriteria(SearchCriteria criteria) {
         Utils.checkNotNull(criteria, "criteria");
         this.criteria = Optional.ofNullable(criteria);
         return this;
     }
+
 
     public StreamsCriteria withCriteria(Optional<? extends SearchCriteria> criteria) {
         Utils.checkNotNull(criteria, "criteria");
@@ -74,7 +77,6 @@ public class StreamsCriteria {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,15 +87,14 @@ public class StreamsCriteria {
         }
         StreamsCriteria other = (StreamsCriteria) o;
         return 
-            Objects.deepEquals(this.criteria, other.criteria) &&
-            Objects.deepEquals(this.value, other.value);
+            Utils.enhancedDeepEquals(this.criteria, other.criteria) &&
+            Utils.enhancedDeepEquals(this.value, other.value);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            criteria,
-            value);
+        return Utils.enhancedHash(
+            criteria, value);
     }
     
     @Override
@@ -102,16 +103,18 @@ public class StreamsCriteria {
                 "criteria", criteria,
                 "value", value);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SearchCriteria> criteria;
- 
+
         private String value;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder criteria(SearchCriteria criteria) {
             Utils.checkNotNull(criteria, "criteria");
@@ -125,20 +128,22 @@ public class StreamsCriteria {
             return this;
         }
 
+
         public Builder value(String value) {
             Utils.checkNotNull(value, "value");
             this.value = value;
             return this;
         }
-        
+
         public StreamsCriteria build() {
             if (criteria == null) {
                 criteria = _SINGLETON_VALUE_Criteria.value();
             }
+
             return new StreamsCriteria(
-                criteria,
-                value);
+                criteria, value);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SearchCriteria>> _SINGLETON_VALUE_Criteria =
                 new LazySingletonValue<>(

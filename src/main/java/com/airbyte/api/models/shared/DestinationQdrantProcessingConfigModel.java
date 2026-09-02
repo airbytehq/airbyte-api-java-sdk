@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationQdrantProcessingConfigModel {
 
+public class DestinationQdrantProcessingConfigModel {
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
      */
@@ -29,27 +28,46 @@ public class DestinationQdrantProcessingConfigModel {
     private Optional<Long> chunkOverlap;
 
     /**
-     * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
+     * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if
+     * your LLM)
      */
     @JsonProperty("chunk_size")
     private long chunkSize;
 
     /**
-     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
+     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already
+     * flattened via dot notation.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("field_name_mappings")
     private Optional<? extends List<DestinationQdrantFieldNameMappingConfigModel>> fieldNameMappings;
 
     /**
-     * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
+     * List of fields in the record that should be stored as metadata. The field list is applied to all
+     * streams in the same way and non-existing fields are ignored. If none are defined, all fields are
+     * considered metadata fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array. When specifying
+     * nested paths, all matching values are flattened into an array set to a field named by the path.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("metadata_fields")
     private Optional<? extends List<String>> metadataFields;
 
     /**
-     * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
+     * List of fields in the record that should be used to calculate the embedding. The field list is
+     * applied to all streams in the same way and non-existing fields are ignored. If none are defined, all
+     * fields are considered text fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("text_fields")
@@ -86,7 +104,8 @@ public class DestinationQdrantProcessingConfigModel {
     
     public DestinationQdrantProcessingConfigModel(
             long chunkSize) {
-        this(Optional.empty(), chunkSize, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), chunkSize, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -98,7 +117,8 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
+     * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if
+     * your LLM)
      */
     @JsonIgnore
     public long chunkSize() {
@@ -106,7 +126,8 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
+     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already
+     * flattened via dot notation.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -115,7 +136,16 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
+     * List of fields in the record that should be stored as metadata. The field list is applied to all
+     * streams in the same way and non-existing fields are ignored. If none are defined, all fields are
+     * considered metadata fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array. When specifying
+     * nested paths, all matching values are flattened into an array set to a field named by the path.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -124,7 +154,15 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
+     * List of fields in the record that should be used to calculate the embedding. The field list is
+     * applied to all streams in the same way and non-existing fields are ignored. If none are defined, all
+     * fields are considered text fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -141,9 +179,10 @@ public class DestinationQdrantProcessingConfigModel {
         return (Optional<DestinationQdrantTextSplitter>) textSplitter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
@@ -153,6 +192,7 @@ public class DestinationQdrantProcessingConfigModel {
         this.chunkOverlap = Optional.ofNullable(chunkOverlap);
         return this;
     }
+
 
     /**
      * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
@@ -164,7 +204,8 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
+     * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if
+     * your LLM)
      */
     public DestinationQdrantProcessingConfigModel withChunkSize(long chunkSize) {
         Utils.checkNotNull(chunkSize, "chunkSize");
@@ -173,7 +214,8 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
+     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already
+     * flattened via dot notation.
      */
     public DestinationQdrantProcessingConfigModel withFieldNameMappings(List<DestinationQdrantFieldNameMappingConfigModel> fieldNameMappings) {
         Utils.checkNotNull(fieldNameMappings, "fieldNameMappings");
@@ -181,8 +223,10 @@ public class DestinationQdrantProcessingConfigModel {
         return this;
     }
 
+
     /**
-     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
+     * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already
+     * flattened via dot notation.
      */
     public DestinationQdrantProcessingConfigModel withFieldNameMappings(Optional<? extends List<DestinationQdrantFieldNameMappingConfigModel>> fieldNameMappings) {
         Utils.checkNotNull(fieldNameMappings, "fieldNameMappings");
@@ -191,7 +235,16 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
+     * List of fields in the record that should be stored as metadata. The field list is applied to all
+     * streams in the same way and non-existing fields are ignored. If none are defined, all fields are
+     * considered metadata fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array. When specifying
+     * nested paths, all matching values are flattened into an array set to a field named by the path.
      */
     public DestinationQdrantProcessingConfigModel withMetadataFields(List<String> metadataFields) {
         Utils.checkNotNull(metadataFields, "metadataFields");
@@ -199,8 +252,18 @@ public class DestinationQdrantProcessingConfigModel {
         return this;
     }
 
+
     /**
-     * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
+     * List of fields in the record that should be stored as metadata. The field list is applied to all
+     * streams in the same way and non-existing fields are ignored. If none are defined, all fields are
+     * considered metadata fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array. When specifying
+     * nested paths, all matching values are flattened into an array set to a field named by the path.
      */
     public DestinationQdrantProcessingConfigModel withMetadataFields(Optional<? extends List<String>> metadataFields) {
         Utils.checkNotNull(metadataFields, "metadataFields");
@@ -209,7 +272,15 @@ public class DestinationQdrantProcessingConfigModel {
     }
 
     /**
-     * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
+     * List of fields in the record that should be used to calculate the embedding. The field list is
+     * applied to all streams in the same way and non-existing fields are ignored. If none are defined, all
+     * fields are considered text fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array.
      */
     public DestinationQdrantProcessingConfigModel withTextFields(List<String> textFields) {
         Utils.checkNotNull(textFields, "textFields");
@@ -217,8 +288,17 @@ public class DestinationQdrantProcessingConfigModel {
         return this;
     }
 
+
     /**
-     * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
+     * List of fields in the record that should be used to calculate the embedding. The field list is
+     * applied to all streams in the same way and non-existing fields are ignored. If none are defined, all
+     * fields are considered text fields.
+     * 
+     * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+     * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+     * to access all fields in an object, e.g.
+     * 
+     * <p>`users.*.name` will access all `names` fields in all entries of the `users` array.
      */
     public DestinationQdrantProcessingConfigModel withTextFields(Optional<? extends List<String>> textFields) {
         Utils.checkNotNull(textFields, "textFields");
@@ -235,6 +315,7 @@ public class DestinationQdrantProcessingConfigModel {
         return this;
     }
 
+
     /**
      * Split text fields into chunks based on the specified method.
      */
@@ -244,7 +325,6 @@ public class DestinationQdrantProcessingConfigModel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -255,23 +335,19 @@ public class DestinationQdrantProcessingConfigModel {
         }
         DestinationQdrantProcessingConfigModel other = (DestinationQdrantProcessingConfigModel) o;
         return 
-            Objects.deepEquals(this.chunkOverlap, other.chunkOverlap) &&
-            Objects.deepEquals(this.chunkSize, other.chunkSize) &&
-            Objects.deepEquals(this.fieldNameMappings, other.fieldNameMappings) &&
-            Objects.deepEquals(this.metadataFields, other.metadataFields) &&
-            Objects.deepEquals(this.textFields, other.textFields) &&
-            Objects.deepEquals(this.textSplitter, other.textSplitter);
+            Utils.enhancedDeepEquals(this.chunkOverlap, other.chunkOverlap) &&
+            Utils.enhancedDeepEquals(this.chunkSize, other.chunkSize) &&
+            Utils.enhancedDeepEquals(this.fieldNameMappings, other.fieldNameMappings) &&
+            Utils.enhancedDeepEquals(this.metadataFields, other.metadataFields) &&
+            Utils.enhancedDeepEquals(this.textFields, other.textFields) &&
+            Utils.enhancedDeepEquals(this.textSplitter, other.textSplitter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            chunkOverlap,
-            chunkSize,
-            fieldNameMappings,
-            metadataFields,
-            textFields,
-            textSplitter);
+        return Utils.enhancedHash(
+            chunkOverlap, chunkSize, fieldNameMappings,
+            metadataFields, textFields, textSplitter);
     }
     
     @Override
@@ -284,24 +360,26 @@ public class DestinationQdrantProcessingConfigModel {
                 "textFields", textFields,
                 "textSplitter", textSplitter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> chunkOverlap;
- 
+
         private Long chunkSize;
- 
+
         private Optional<? extends List<DestinationQdrantFieldNameMappingConfigModel>> fieldNameMappings = Optional.empty();
- 
+
         private Optional<? extends List<String>> metadataFields = Optional.empty();
- 
+
         private Optional<? extends List<String>> textFields = Optional.empty();
- 
+
         private Optional<? extends DestinationQdrantTextSplitter> textSplitter = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Size of overlap between chunks in tokens to store in vector store to better capture relevant context
@@ -321,8 +399,10 @@ public class DestinationQdrantProcessingConfigModel {
             return this;
         }
 
+
         /**
-         * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if your LLM)
+         * Size of chunks in tokens to store in vector store (make sure it is not too big for the context if
+         * your LLM)
          */
         public Builder chunkSize(long chunkSize) {
             Utils.checkNotNull(chunkSize, "chunkSize");
@@ -330,8 +410,10 @@ public class DestinationQdrantProcessingConfigModel {
             return this;
         }
 
+
         /**
-         * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
+         * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already
+         * flattened via dot notation.
          */
         public Builder fieldNameMappings(List<DestinationQdrantFieldNameMappingConfigModel> fieldNameMappings) {
             Utils.checkNotNull(fieldNameMappings, "fieldNameMappings");
@@ -340,7 +422,8 @@ public class DestinationQdrantProcessingConfigModel {
         }
 
         /**
-         * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already flattened via dot notation.
+         * List of fields to rename. Not applicable for nested fields, but can be used to rename fields already
+         * flattened via dot notation.
          */
         public Builder fieldNameMappings(Optional<? extends List<DestinationQdrantFieldNameMappingConfigModel>> fieldNameMappings) {
             Utils.checkNotNull(fieldNameMappings, "fieldNameMappings");
@@ -348,8 +431,18 @@ public class DestinationQdrantProcessingConfigModel {
             return this;
         }
 
+
         /**
-         * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
+         * List of fields in the record that should be stored as metadata. The field list is applied to all
+         * streams in the same way and non-existing fields are ignored. If none are defined, all fields are
+         * considered metadata fields.
+         * 
+         * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+         * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+         * to access all fields in an object, e.g.
+         * 
+         * <p>`users.*.name` will access all `names` fields in all entries of the `users` array. When specifying
+         * nested paths, all matching values are flattened into an array set to a field named by the path.
          */
         public Builder metadataFields(List<String> metadataFields) {
             Utils.checkNotNull(metadataFields, "metadataFields");
@@ -358,7 +451,16 @@ public class DestinationQdrantProcessingConfigModel {
         }
 
         /**
-         * List of fields in the record that should be stored as metadata. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered metadata fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array. When specifying nested paths, all matching values are flattened into an array set to a field named by the path.
+         * List of fields in the record that should be stored as metadata. The field list is applied to all
+         * streams in the same way and non-existing fields are ignored. If none are defined, all fields are
+         * considered metadata fields.
+         * 
+         * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+         * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+         * to access all fields in an object, e.g.
+         * 
+         * <p>`users.*.name` will access all `names` fields in all entries of the `users` array. When specifying
+         * nested paths, all matching values are flattened into an array set to a field named by the path.
          */
         public Builder metadataFields(Optional<? extends List<String>> metadataFields) {
             Utils.checkNotNull(metadataFields, "metadataFields");
@@ -366,8 +468,17 @@ public class DestinationQdrantProcessingConfigModel {
             return this;
         }
 
+
         /**
-         * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
+         * List of fields in the record that should be used to calculate the embedding. The field list is
+         * applied to all streams in the same way and non-existing fields are ignored. If none are defined, all
+         * fields are considered text fields.
+         * 
+         * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+         * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+         * to access all fields in an object, e.g.
+         * 
+         * <p>`users.*.name` will access all `names` fields in all entries of the `users` array.
          */
         public Builder textFields(List<String> textFields) {
             Utils.checkNotNull(textFields, "textFields");
@@ -376,13 +487,22 @@ public class DestinationQdrantProcessingConfigModel {
         }
 
         /**
-         * List of fields in the record that should be used to calculate the embedding. The field list is applied to all streams in the same way and non-existing fields are ignored. If none are defined, all fields are considered text fields. When specifying text fields, you can access nested fields in the record by using dot notation, e.g. `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards to access all fields in an object, e.g. `users.*.name` will access all `names` fields in all entries of the `users` array.
+         * List of fields in the record that should be used to calculate the embedding. The field list is
+         * applied to all streams in the same way and non-existing fields are ignored. If none are defined, all
+         * fields are considered text fields.
+         * 
+         * <p>When specifying text fields, you can access nested fields in the record by using dot notation, e.g.
+         * `user.name` will access the `name` field in the `user` object. It's also possible to use wildcards
+         * to access all fields in an object, e.g.
+         * 
+         * <p>`users.*.name` will access all `names` fields in all entries of the `users` array.
          */
         public Builder textFields(Optional<? extends List<String>> textFields) {
             Utils.checkNotNull(textFields, "textFields");
             this.textFields = textFields;
             return this;
         }
+
 
         /**
          * Split text fields into chunks based on the specified method.
@@ -401,19 +521,17 @@ public class DestinationQdrantProcessingConfigModel {
             this.textSplitter = textSplitter;
             return this;
         }
-        
+
         public DestinationQdrantProcessingConfigModel build() {
             if (chunkOverlap == null) {
                 chunkOverlap = _SINGLETON_VALUE_ChunkOverlap.value();
             }
+
             return new DestinationQdrantProcessingConfigModel(
-                chunkOverlap,
-                chunkSize,
-                fieldNameMappings,
-                metadataFields,
-                textFields,
-                textSplitter);
+                chunkOverlap, chunkSize, fieldNameMappings,
+                metadataFields, textFields, textSplitter);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_ChunkOverlap =
                 new LazySingletonValue<>(

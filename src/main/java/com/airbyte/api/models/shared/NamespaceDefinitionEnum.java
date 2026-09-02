@@ -21,7 +21,7 @@ public enum NamespaceDefinitionEnum {
     @JsonValue
     private final String value;
 
-    private NamespaceDefinitionEnum(String value) {
+    NamespaceDefinitionEnum(String value) {
         this.value = value;
     }
     

@@ -12,18 +12,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceGologin {
-
     /**
      * API Key found at `https://app.gologin.com/personalArea/TokenApi`
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Gologin sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -57,9 +58,10 @@ public class SourceGologin {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key found at `https://app.gologin.com/personalArea/TokenApi`
@@ -76,7 +78,6 @@ public class SourceGologin {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +88,15 @@ public class SourceGologin {
         }
         SourceGologin other = (SourceGologin) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -107,16 +106,18 @@ public class SourceGologin {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key found at `https://app.gologin.com/personalArea/TokenApi`
@@ -127,17 +128,19 @@ public class SourceGologin {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGologin build() {
+
             return new SourceGologin(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Gologin> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

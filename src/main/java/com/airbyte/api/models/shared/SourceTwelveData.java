@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceTwelveData {
 
@@ -37,11 +37,13 @@ public class SourceTwelveData {
     private Optional<String> exchange;
 
     /**
-     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
+     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h,
+     * 1day, 1week, 1month
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("interval")
     private Optional<? extends SourceTwelveDataInterval> interval;
+
 
     @JsonProperty("sourceType")
     private TwelveData sourceType;
@@ -75,7 +77,8 @@ public class SourceTwelveData {
     
     public SourceTwelveData(
             String apiKey) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     @JsonIgnore
@@ -100,7 +103,8 @@ public class SourceTwelveData {
     }
 
     /**
-     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
+     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h,
+     * 1day, 1week, 1month
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -121,9 +125,10 @@ public class SourceTwelveData {
         return symbol;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceTwelveData withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -139,6 +144,7 @@ public class SourceTwelveData {
         this.country = Optional.ofNullable(country);
         return this;
     }
+
 
     /**
      * Where instrument is traded
@@ -158,6 +164,7 @@ public class SourceTwelveData {
         return this;
     }
 
+
     /**
      * Where instrument is traded
      */
@@ -168,7 +175,8 @@ public class SourceTwelveData {
     }
 
     /**
-     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
+     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h,
+     * 1day, 1week, 1month
      */
     public SourceTwelveData withInterval(SourceTwelveDataInterval interval) {
         Utils.checkNotNull(interval, "interval");
@@ -176,8 +184,10 @@ public class SourceTwelveData {
         return this;
     }
 
+
     /**
-     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
+     * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h,
+     * 1day, 1week, 1month
      */
     public SourceTwelveData withInterval(Optional<? extends SourceTwelveDataInterval> interval) {
         Utils.checkNotNull(interval, "interval");
@@ -194,6 +204,7 @@ public class SourceTwelveData {
         return this;
     }
 
+
     /**
      * Ticker of the instrument
      */
@@ -203,7 +214,6 @@ public class SourceTwelveData {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -214,23 +224,19 @@ public class SourceTwelveData {
         }
         SourceTwelveData other = (SourceTwelveData) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.exchange, other.exchange) &&
-            Objects.deepEquals(this.interval, other.interval) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.symbol, other.symbol);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.exchange, other.exchange) &&
+            Utils.enhancedDeepEquals(this.interval, other.interval) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.symbol, other.symbol);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            country,
-            exchange,
-            interval,
-            sourceType,
-            symbol);
+        return Utils.enhancedHash(
+            apiKey, country, exchange,
+            interval, sourceType, symbol);
     }
     
     @Override
@@ -243,28 +249,31 @@ public class SourceTwelveData {
                 "sourceType", sourceType,
                 "symbol", symbol);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> country = Optional.empty();
- 
+
         private Optional<String> exchange = Optional.empty();
- 
+
         private Optional<? extends SourceTwelveDataInterval> interval;
- 
+
         private Optional<String> symbol = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Where instrument is traded
@@ -284,6 +293,7 @@ public class SourceTwelveData {
             return this;
         }
 
+
         /**
          * Where instrument is traded
          */
@@ -302,8 +312,10 @@ public class SourceTwelveData {
             return this;
         }
 
+
         /**
-         * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
+         * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h,
+         * 1day, 1week, 1month
          */
         public Builder interval(SourceTwelveDataInterval interval) {
             Utils.checkNotNull(interval, "interval");
@@ -312,13 +324,15 @@ public class SourceTwelveData {
         }
 
         /**
-         * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
+         * Between two consecutive points in time series Supports: 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h,
+         * 1day, 1week, 1month
          */
         public Builder interval(Optional<? extends SourceTwelveDataInterval> interval) {
             Utils.checkNotNull(interval, "interval");
             this.interval = interval;
             return this;
         }
+
 
         /**
          * Ticker of the instrument
@@ -337,18 +351,17 @@ public class SourceTwelveData {
             this.symbol = symbol;
             return this;
         }
-        
+
         public SourceTwelveData build() {
             if (interval == null) {
                 interval = _SINGLETON_VALUE_Interval.value();
             }
+
             return new SourceTwelveData(
-                apiKey,
-                country,
-                exchange,
-                interval,
-                symbol);
+                apiKey, country, exchange,
+                interval, symbol);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceTwelveDataInterval>> _SINGLETON_VALUE_Interval =
                 new LazySingletonValue<>(

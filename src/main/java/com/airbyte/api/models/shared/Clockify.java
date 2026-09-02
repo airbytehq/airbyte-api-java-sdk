@@ -14,7 +14,7 @@ public enum Clockify {
     @JsonValue
     private final String value;
 
-    private Clockify(String value) {
+    Clockify(String value) {
         this.value = value;
     }
     

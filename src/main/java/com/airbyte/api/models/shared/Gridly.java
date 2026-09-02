@@ -14,7 +14,7 @@ public enum Gridly {
     @JsonValue
     private final String value;
 
-    private Gridly(String value) {
+    Gridly(String value) {
         this.value = value;
     }
     

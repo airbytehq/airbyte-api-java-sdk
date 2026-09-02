@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGocardless {
 
+public class SourceGocardless {
     /**
      * Gocardless API TOKEN
      */
@@ -33,11 +32,12 @@ public class SourceGocardless {
     private Optional<? extends GoCardlessAPIEnvironment> gocardlessEnvironment;
 
     /**
-     * GoCardless version. This is a date. You can find the latest here: 
+     * GoCardless version. This is a date. You can find the latest here:
      * https://developer.gocardless.com/api-reference/#api-usage-making-requests
      */
     @JsonProperty("gocardless_version")
     private String gocardlessVersion;
+
 
     @JsonProperty("sourceType")
     private Gocardless sourceType;
@@ -70,7 +70,8 @@ public class SourceGocardless {
             String accessToken,
             String gocardlessVersion,
             String startDate) {
-        this(accessToken, Optional.empty(), gocardlessVersion, startDate);
+        this(accessToken, Optional.empty(), gocardlessVersion,
+            startDate);
     }
 
     /**
@@ -91,7 +92,7 @@ public class SourceGocardless {
     }
 
     /**
-     * GoCardless version. This is a date. You can find the latest here: 
+     * GoCardless version. This is a date. You can find the latest here:
      * https://developer.gocardless.com/api-reference/#api-usage-making-requests
      */
     @JsonIgnore
@@ -113,9 +114,10 @@ public class SourceGocardless {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Gocardless API TOKEN
@@ -135,6 +137,7 @@ public class SourceGocardless {
         return this;
     }
 
+
     /**
      * Environment you are trying to connect to.
      */
@@ -145,7 +148,7 @@ public class SourceGocardless {
     }
 
     /**
-     * GoCardless version. This is a date. You can find the latest here: 
+     * GoCardless version. This is a date. You can find the latest here:
      * https://developer.gocardless.com/api-reference/#api-usage-making-requests
      */
     public SourceGocardless withGocardlessVersion(String gocardlessVersion) {
@@ -164,7 +167,6 @@ public class SourceGocardless {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -175,21 +177,18 @@ public class SourceGocardless {
         }
         SourceGocardless other = (SourceGocardless) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.gocardlessEnvironment, other.gocardlessEnvironment) &&
-            Objects.deepEquals(this.gocardlessVersion, other.gocardlessVersion) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.gocardlessEnvironment, other.gocardlessEnvironment) &&
+            Utils.enhancedDeepEquals(this.gocardlessVersion, other.gocardlessVersion) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            gocardlessEnvironment,
-            gocardlessVersion,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessToken, gocardlessEnvironment, gocardlessVersion,
+            sourceType, startDate);
     }
     
     @Override
@@ -201,20 +200,22 @@ public class SourceGocardless {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<? extends GoCardlessAPIEnvironment> gocardlessEnvironment;
- 
+
         private String gocardlessVersion;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Gocardless API TOKEN
@@ -224,6 +225,7 @@ public class SourceGocardless {
             this.accessToken = accessToken;
             return this;
         }
+
 
         /**
          * Environment you are trying to connect to.
@@ -243,8 +245,9 @@ public class SourceGocardless {
             return this;
         }
 
+
         /**
-         * GoCardless version. This is a date. You can find the latest here: 
+         * GoCardless version. This is a date. You can find the latest here:
          * https://developer.gocardless.com/api-reference/#api-usage-making-requests
          */
         public Builder gocardlessVersion(String gocardlessVersion) {
@@ -252,6 +255,7 @@ public class SourceGocardless {
             this.gocardlessVersion = gocardlessVersion;
             return this;
         }
+
 
         /**
          * UTC date and time in the format 2017-01-25T00:00:00Z. Any data
@@ -262,17 +266,17 @@ public class SourceGocardless {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceGocardless build() {
             if (gocardlessEnvironment == null) {
                 gocardlessEnvironment = _SINGLETON_VALUE_GocardlessEnvironment.value();
             }
+
             return new SourceGocardless(
-                accessToken,
-                gocardlessEnvironment,
-                gocardlessVersion,
+                accessToken, gocardlessEnvironment, gocardlessVersion,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends GoCardlessAPIEnvironment>> _SINGLETON_VALUE_GocardlessEnvironment =
                 new LazySingletonValue<>(

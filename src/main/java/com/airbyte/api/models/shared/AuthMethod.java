@@ -14,7 +14,7 @@ public enum AuthMethod {
     @JsonValue
     private final String value;
 
-    private AuthMethod(String value) {
+    AuthMethod(String value) {
         this.value = value;
     }
     

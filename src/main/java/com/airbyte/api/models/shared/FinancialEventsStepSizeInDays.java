@@ -11,10 +11,15 @@ import java.util.Optional;
 /**
  * FinancialEventsStepSizeInDays
  * 
- * <p>The time window size (in days) for fetching financial events data in chunks. Options are 1 day, 7 days, 14 days, 30 days, 60 days, and 190 days, based on API limitations.
+ * <p>The time window size (in days) for fetching financial events data in chunks. Options are 1 day, 7
+ * days, 14 days, 30 days, 60 days, and 190 days, based on API limitations.
  * 
- * <p>- **Smaller step sizes (e.g., 1 day)** are better for large data volumes. They fetch smaller chunks per request, reducing the risk of timeouts or overwhelming the API, though more requests may slow syncing and increase the chance of hitting rate limits.
- * - **Larger step sizes (e.g., 14 days)** are better for smaller data volumes. They fetch more data per request, speeding up syncing and reducing the number of API calls, which minimizes strain on rate limits.
+ * <p>- **Smaller step sizes (e.g., 1 day)** are better for large data volumes. They fetch smaller chunks
+ * per request, reducing the risk of timeouts or overwhelming the API, though more requests may slow
+ * syncing and increase the chance of hitting rate limits.
+ * - **Larger step sizes (e.g., 14 days)** are better for smaller data volumes. They fetch more data
+ * per request, speeding up syncing and reducing the number of API calls, which minimizes strain on
+ * rate limits.
  * 
  * <p>Select a step size that matches your data volume to optimize syncing speed and API performance.
  */
@@ -30,7 +35,7 @@ public enum FinancialEventsStepSizeInDays {
     @JsonValue
     private final String value;
 
-    private FinancialEventsStepSizeInDays(String value) {
+    FinancialEventsStepSizeInDays(String value) {
         this.value = value;
     }
     

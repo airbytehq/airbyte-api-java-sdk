@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DestinationConvex {
-
     /**
      * API access key used to send data to a Convex deployment.
      */
@@ -26,6 +25,7 @@ public class DestinationConvex {
      */
     @JsonProperty("deployment_url")
     private String deploymentUrl;
+
 
     @JsonProperty("destinationType")
     private Convex destinationType;
@@ -62,9 +62,10 @@ public class DestinationConvex {
         return destinationType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API access key used to send data to a Convex deployment.
@@ -84,7 +85,6 @@ public class DestinationConvex {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class DestinationConvex {
         }
         DestinationConvex other = (DestinationConvex) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.deploymentUrl, other.deploymentUrl) &&
-            Objects.deepEquals(this.destinationType, other.destinationType);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.deploymentUrl, other.deploymentUrl) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            deploymentUrl,
-            destinationType);
+        return Utils.enhancedHash(
+            accessKey, deploymentUrl, destinationType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class DestinationConvex {
                 "deploymentUrl", deploymentUrl,
                 "destinationType", destinationType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private String deploymentUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API access key used to send data to a Convex deployment.
@@ -135,6 +135,7 @@ public class DestinationConvex {
             return this;
         }
 
+
         /**
          * URL of the Convex deployment that is the destination
          */
@@ -143,12 +144,13 @@ public class DestinationConvex {
             this.deploymentUrl = deploymentUrl;
             return this;
         }
-        
+
         public DestinationConvex build() {
+
             return new DestinationConvex(
-                accessKey,
-                deploymentUrl);
+                accessKey, deploymentUrl);
         }
+
 
         private static final LazySingletonValue<Convex> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

@@ -3,66 +3,64 @@
  */
 package com.airbyte.api.models.shared;
 
-import com.airbyte.api.utils.OneOfDeserializer;
-import com.airbyte.api.utils.TypedObject;
-import com.airbyte.api.utils.Utils.JsonShape;
-import com.airbyte.api.utils.Utils.TypeReferenceWithShape;
 import com.airbyte.api.utils.Utils;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceWorkdayAuthentication
  * 
- * <p>Report Based Streams and REST API Streams use different methods of Authentication. Choose streams type you want to sync and provide needed credentials for them.
+ * <p>Credentials for connecting to the Workday (RAAS) API.
  */
-@JsonDeserialize(using = SourceWorkdayAuthentication._Deserializer.class)
 public class SourceWorkdayAuthentication {
 
-    @JsonValue
-    private TypedObject value;
-    
-    private SourceWorkdayAuthentication(TypedObject value) {
-        this.value = value;
+    @JsonProperty("password")
+    private String password;
+
+
+    @JsonProperty("username")
+    private String username;
+
+    @JsonCreator
+    public SourceWorkdayAuthentication(
+            @JsonProperty("password") String password,
+            @JsonProperty("username") String username) {
+        Utils.checkNotNull(password, "password");
+        Utils.checkNotNull(username, "username");
+        this.password = password;
+        this.username = username;
     }
 
-    public static SourceWorkdayAuthentication of(ReportBasedStreams value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceWorkdayAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ReportBasedStreams>(){}));
+    @JsonIgnore
+    public String password() {
+        return password;
     }
 
-    public static SourceWorkdayAuthentication of(RESTAPIStreams value) {
-        Utils.checkNotNull(value, "value");
-        return new SourceWorkdayAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<RESTAPIStreams>(){}));
+    @JsonIgnore
+    public String username() {
+        return username;
     }
-    
-    /**
-     * Returns an instance of one of these types:
-     * <ul>
-     * <li>{@code com.airbyte.api.models.shared.ReportBasedStreams}</li>
-     * <li>{@code com.airbyte.api.models.shared.RESTAPIStreams}</li>
-     * </ul>
-     * 
-     * <p>Use {@code instanceof} to determine what type is returned. For example:
-     * 
-     * <pre>
-     * if (obj.value() instanceof String) {
-     *     String answer = (String) obj.value();
-     *     System.out.println("answer=" + answer);
-     * }
-     * </pre>
-     * 
-     * @return value of oneOf type
-     **/ 
-    public java.lang.Object value() {
-        return value.value();
-    }    
-    
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+
+    public SourceWorkdayAuthentication withPassword(String password) {
+        Utils.checkNotNull(password, "password");
+        this.password = password;
+        return this;
+    }
+
+    public SourceWorkdayAuthentication withUsername(String username) {
+        Utils.checkNotNull(username, "username");
+        this.username = username;
+        return this;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -72,29 +70,54 @@ public class SourceWorkdayAuthentication {
             return false;
         }
         SourceWorkdayAuthentication other = (SourceWorkdayAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return 
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
-    }
-    
-    @SuppressWarnings("serial")
-    public static final class _Deserializer extends OneOfDeserializer<SourceWorkdayAuthentication> {
-
-        public _Deserializer() {
-            super(SourceWorkdayAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<ReportBasedStreams>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<RESTAPIStreams>() {}, JsonShape.DEFAULT));
-        }
+        return Utils.enhancedHash(
+            password, username);
     }
     
     @Override
     public String toString() {
         return Utils.toString(SourceWorkdayAuthentication.class,
-                "value", value);
+                "password", password,
+                "username", username);
     }
- 
-}
 
+    @SuppressWarnings("UnusedReturnValue")
+    public final static class Builder {
+
+        private String password;
+
+        private String username;
+
+        private Builder() {
+          // force use of static builder() method
+        }
+
+
+        public Builder password(String password) {
+            Utils.checkNotNull(password, "password");
+            this.password = password;
+            return this;
+        }
+
+
+        public Builder username(String username) {
+            Utils.checkNotNull(username, "username");
+            this.username = username;
+            return this;
+        }
+
+        public SourceWorkdayAuthentication build() {
+
+            return new SourceWorkdayAuthentication(
+                password, username);
+        }
+
+    }
+}

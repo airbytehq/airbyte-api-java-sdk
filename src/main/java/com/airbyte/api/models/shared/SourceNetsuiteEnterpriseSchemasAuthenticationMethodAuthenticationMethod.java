@@ -9,12 +9,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 public enum SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod {
-    PASSWORD_AUTHENTICATION("password_authentication");
+    OAUTH2_AUTHENTICATION("oauth2_authentication");
 
     @JsonValue
     private final String value;
 
-    private SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod(String value) {
+    SourceNetsuiteEnterpriseSchemasAuthenticationMethodAuthenticationMethod(String value) {
         this.value = value;
     }
     

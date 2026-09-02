@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceMicrosoftSharepointValidationPolicy
  * 
- * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the stream schema.
+ * <p>The name of the validation policy that dictates sync behavior when a record does not adhere to the
+ * stream schema.
  */
 public enum SourceMicrosoftSharepointValidationPolicy {
     EMIT_RECORD("Emit Record"),
@@ -21,7 +22,7 @@ public enum SourceMicrosoftSharepointValidationPolicy {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointValidationPolicy(String value) {
+    SourceMicrosoftSharepointValidationPolicy(String value) {
         this.value = value;
     }
     

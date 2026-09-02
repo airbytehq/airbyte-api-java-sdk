@@ -14,7 +14,7 @@ public enum DestinationQdrantSchemasProcessingMode {
     @JsonValue
     private final String value;
 
-    private DestinationQdrantSchemasProcessingMode(String value) {
+    DestinationQdrantSchemasProcessingMode(String value) {
         this.value = value;
     }
     

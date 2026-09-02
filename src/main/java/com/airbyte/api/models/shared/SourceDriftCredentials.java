@@ -14,7 +14,7 @@ public enum SourceDriftCredentials {
     @JsonValue
     private final String value;
 
-    private SourceDriftCredentials(String value) {
+    SourceDriftCredentials(String value) {
         this.value = value;
     }
     

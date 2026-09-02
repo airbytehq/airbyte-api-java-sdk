@@ -1,5 +1,13 @@
 # SourceTrustpilotAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceTrustpilotAuthType;
+
+SourceTrustpilotAuthType value = SourceTrustpilotAuthType.OAUTH20;
+```
+
 
 ## Values
 

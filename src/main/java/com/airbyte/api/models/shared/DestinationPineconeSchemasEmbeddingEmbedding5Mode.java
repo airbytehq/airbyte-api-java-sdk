@@ -14,7 +14,7 @@ public enum DestinationPineconeSchemasEmbeddingEmbedding5Mode {
     @JsonValue
     private final String value;
 
-    private DestinationPineconeSchemasEmbeddingEmbedding5Mode(String value) {
+    DestinationPineconeSchemasEmbeddingEmbedding5Mode(String value) {
         this.value = value;
     }
     

@@ -1,0 +1,9 @@
+# DestinationSalesforceNone
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `additionalProperties`                                                                                 | Map\<String, *Object*>                                                                                 | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `storageType`                                                                                          | [Optional\<DestinationSalesforceStorageType>](../../models/shared/DestinationSalesforceStorageType.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |

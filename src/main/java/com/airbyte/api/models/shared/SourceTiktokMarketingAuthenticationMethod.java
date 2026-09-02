@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceTiktokMarketingAuthenticationMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceTiktokMarketingAuthenticationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceTiktokMarketingAuthenticationMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceTiktokMarketingAuthenticationMethod {
 
     public static SourceTiktokMarketingAuthenticationMethod of(SourceTiktokMarketingOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceTiktokMarketingAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceTiktokMarketingOAuth20>(){}));
+        return new SourceTiktokMarketingAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceTiktokMarketingAuthenticationMethod of(SandboxAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceTiktokMarketingAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SandboxAccessToken>(){}));
+        return new SourceTiktokMarketingAuthenticationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceTiktokMarketingAuthenticationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceTiktokMarketingAuthenticationMethod {
             return false;
         }
         SourceTiktokMarketingAuthenticationMethod other = (SourceTiktokMarketingAuthenticationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceTiktokMarketingAuthenticationMethod {
         return Utils.toString(SourceTiktokMarketingAuthenticationMethod.class,
                 "value", value);
     }
- 
+
 }
 

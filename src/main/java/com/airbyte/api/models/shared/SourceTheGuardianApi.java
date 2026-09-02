@@ -13,49 +13,60 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceTheGuardianApi {
 
+public class SourceTheGuardianApi {
     /**
-     * Your API Key. See &lt;a href="https://open-platform.theguardian.com/access/"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Key. See <a href="https://open-platform.theguardian.com/access/">here</a>. The key is case
+     * sensitive.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
+     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the
+     * end_date will not be shown. Default is set to the current date (today) for incremental syncs.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<String> endDate;
 
     /**
-     * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
+     * (Optional) The query (q) parameter filters the results to only those that include that search term.
+     * The q parameter supports AND, OR and NOT operators.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query")
     private Optional<String> query;
 
     /**
-     * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
+     * (Optional) Use this to filter the results by a particular section. See <a
+     * href="https://content.guardianapis.com/sections?api-key=test">here</a> for a list of all sections,
+     * and <a href="https://open-platform.theguardian.com/documentation/section">here</a> for the sections
+     * endpoint documentation.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("section")
     private Optional<String> section;
 
+
     @JsonProperty("sourceType")
     private TheGuardianApi sourceType;
 
     /**
-     * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will not be shown.
+     * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will
+     * not be shown.
      */
     @JsonProperty("start_date")
     private String startDate;
 
     /**
-     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
+     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this
+     * parameter to filter results by showing only the ones matching the entered tag. See <a
+     * href="https://content.guardianapis.com/tags?api-key=test">here</a> for a list of all tags, and <a
+     * href="https://open-platform.theguardian.com/documentation/tag">here</a> for the tags endpoint
+     * documentation.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("tag")
@@ -87,11 +98,13 @@ public class SourceTheGuardianApi {
     public SourceTheGuardianApi(
             String apiKey,
             String startDate) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), startDate, Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), startDate, Optional.empty());
     }
 
     /**
-     * Your API Key. See &lt;a href="https://open-platform.theguardian.com/access/"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Key. See <a href="https://open-platform.theguardian.com/access/">here</a>. The key is case
+     * sensitive.
      */
     @JsonIgnore
     public String apiKey() {
@@ -99,7 +112,8 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
+     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the
+     * end_date will not be shown. Default is set to the current date (today) for incremental syncs.
      */
     @JsonIgnore
     public Optional<String> endDate() {
@@ -107,7 +121,8 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
+     * (Optional) The query (q) parameter filters the results to only those that include that search term.
+     * The q parameter supports AND, OR and NOT operators.
      */
     @JsonIgnore
     public Optional<String> query() {
@@ -115,7 +130,10 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
+     * (Optional) Use this to filter the results by a particular section. See <a
+     * href="https://content.guardianapis.com/sections?api-key=test">here</a> for a list of all sections,
+     * and <a href="https://open-platform.theguardian.com/documentation/section">here</a> for the sections
+     * endpoint documentation.
      */
     @JsonIgnore
     public Optional<String> section() {
@@ -128,7 +146,8 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will not be shown.
+     * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will
+     * not be shown.
      */
     @JsonIgnore
     public String startDate() {
@@ -136,19 +155,25 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
+     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this
+     * parameter to filter results by showing only the ones matching the entered tag. See <a
+     * href="https://content.guardianapis.com/tags?api-key=test">here</a> for a list of all tags, and <a
+     * href="https://open-platform.theguardian.com/documentation/tag">here</a> for the tags endpoint
+     * documentation.
      */
     @JsonIgnore
     public Optional<String> tag() {
         return tag;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Key. See &lt;a href="https://open-platform.theguardian.com/access/"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Key. See <a href="https://open-platform.theguardian.com/access/">here</a>. The key is case
+     * sensitive.
      */
     public SourceTheGuardianApi withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -157,7 +182,8 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
+     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the
+     * end_date will not be shown. Default is set to the current date (today) for incremental syncs.
      */
     public SourceTheGuardianApi withEndDate(String endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -165,8 +191,10 @@ public class SourceTheGuardianApi {
         return this;
     }
 
+
     /**
-     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
+     * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the
+     * end_date will not be shown. Default is set to the current date (today) for incremental syncs.
      */
     public SourceTheGuardianApi withEndDate(Optional<String> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -175,7 +203,8 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
+     * (Optional) The query (q) parameter filters the results to only those that include that search term.
+     * The q parameter supports AND, OR and NOT operators.
      */
     public SourceTheGuardianApi withQuery(String query) {
         Utils.checkNotNull(query, "query");
@@ -183,8 +212,10 @@ public class SourceTheGuardianApi {
         return this;
     }
 
+
     /**
-     * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
+     * (Optional) The query (q) parameter filters the results to only those that include that search term.
+     * The q parameter supports AND, OR and NOT operators.
      */
     public SourceTheGuardianApi withQuery(Optional<String> query) {
         Utils.checkNotNull(query, "query");
@@ -193,7 +224,10 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
+     * (Optional) Use this to filter the results by a particular section. See <a
+     * href="https://content.guardianapis.com/sections?api-key=test">here</a> for a list of all sections,
+     * and <a href="https://open-platform.theguardian.com/documentation/section">here</a> for the sections
+     * endpoint documentation.
      */
     public SourceTheGuardianApi withSection(String section) {
         Utils.checkNotNull(section, "section");
@@ -201,8 +235,12 @@ public class SourceTheGuardianApi {
         return this;
     }
 
+
     /**
-     * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
+     * (Optional) Use this to filter the results by a particular section. See <a
+     * href="https://content.guardianapis.com/sections?api-key=test">here</a> for a list of all sections,
+     * and <a href="https://open-platform.theguardian.com/documentation/section">here</a> for the sections
+     * endpoint documentation.
      */
     public SourceTheGuardianApi withSection(Optional<String> section) {
         Utils.checkNotNull(section, "section");
@@ -211,7 +249,8 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will not be shown.
+     * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will
+     * not be shown.
      */
     public SourceTheGuardianApi withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -220,7 +259,11 @@ public class SourceTheGuardianApi {
     }
 
     /**
-     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
+     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this
+     * parameter to filter results by showing only the ones matching the entered tag. See <a
+     * href="https://content.guardianapis.com/tags?api-key=test">here</a> for a list of all tags, and <a
+     * href="https://open-platform.theguardian.com/documentation/tag">here</a> for the tags endpoint
+     * documentation.
      */
     public SourceTheGuardianApi withTag(String tag) {
         Utils.checkNotNull(tag, "tag");
@@ -228,8 +271,13 @@ public class SourceTheGuardianApi {
         return this;
     }
 
+
     /**
-     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
+     * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this
+     * parameter to filter results by showing only the ones matching the entered tag. See <a
+     * href="https://content.guardianapis.com/tags?api-key=test">here</a> for a list of all tags, and <a
+     * href="https://open-platform.theguardian.com/documentation/tag">here</a> for the tags endpoint
+     * documentation.
      */
     public SourceTheGuardianApi withTag(Optional<String> tag) {
         Utils.checkNotNull(tag, "tag");
@@ -237,7 +285,6 @@ public class SourceTheGuardianApi {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -248,24 +295,20 @@ public class SourceTheGuardianApi {
         }
         SourceTheGuardianApi other = (SourceTheGuardianApi) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.section, other.section) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.tag, other.tag);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.section, other.section) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.tag, other.tag);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            query,
-            section,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            apiKey, endDate, query,
+            section, sourceType, startDate,
             tag);
     }
     
@@ -280,27 +323,30 @@ public class SourceTheGuardianApi {
                 "startDate", startDate,
                 "tag", tag);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<String> query = Optional.empty();
- 
+
         private Optional<String> section = Optional.empty();
- 
+
         private String startDate;
- 
+
         private Optional<String> tag = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Key. See &lt;a href="https://open-platform.theguardian.com/access/"&gt;here&lt;/a&gt;. The key is case sensitive.
+         * Your API Key. See <a href="https://open-platform.theguardian.com/access/">here</a>. The key is case
+         * sensitive.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -308,8 +354,10 @@ public class SourceTheGuardianApi {
             return this;
         }
 
+
         /**
-         * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
+         * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the
+         * end_date will not be shown. Default is set to the current date (today) for incremental syncs.
          */
         public Builder endDate(String endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -318,7 +366,8 @@ public class SourceTheGuardianApi {
         }
 
         /**
-         * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the end_date will not be shown. Default is set to the current date (today) for incremental syncs.
+         * (Optional) Use this to set the maximum date (YYYY-MM-DD) of the results. Results newer than the
+         * end_date will not be shown. Default is set to the current date (today) for incremental syncs.
          */
         public Builder endDate(Optional<String> endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -326,8 +375,10 @@ public class SourceTheGuardianApi {
             return this;
         }
 
+
         /**
-         * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
+         * (Optional) The query (q) parameter filters the results to only those that include that search term.
+         * The q parameter supports AND, OR and NOT operators.
          */
         public Builder query(String query) {
             Utils.checkNotNull(query, "query");
@@ -336,7 +387,8 @@ public class SourceTheGuardianApi {
         }
 
         /**
-         * (Optional) The query (q) parameter filters the results to only those that include that search term. The q parameter supports AND, OR and NOT operators.
+         * (Optional) The query (q) parameter filters the results to only those that include that search term.
+         * The q parameter supports AND, OR and NOT operators.
          */
         public Builder query(Optional<String> query) {
             Utils.checkNotNull(query, "query");
@@ -344,8 +396,12 @@ public class SourceTheGuardianApi {
             return this;
         }
 
+
         /**
-         * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
+         * (Optional) Use this to filter the results by a particular section. See <a
+         * href="https://content.guardianapis.com/sections?api-key=test">here</a> for a list of all sections,
+         * and <a href="https://open-platform.theguardian.com/documentation/section">here</a> for the sections
+         * endpoint documentation.
          */
         public Builder section(String section) {
             Utils.checkNotNull(section, "section");
@@ -354,7 +410,10 @@ public class SourceTheGuardianApi {
         }
 
         /**
-         * (Optional) Use this to filter the results by a particular section. See &lt;a href="https://content.guardianapis.com/sections?api-key=test"&gt;here&lt;/a&gt; for a list of all sections, and &lt;a href="https://open-platform.theguardian.com/documentation/section"&gt;here&lt;/a&gt; for the sections endpoint documentation.
+         * (Optional) Use this to filter the results by a particular section. See <a
+         * href="https://content.guardianapis.com/sections?api-key=test">here</a> for a list of all sections,
+         * and <a href="https://open-platform.theguardian.com/documentation/section">here</a> for the sections
+         * endpoint documentation.
          */
         public Builder section(Optional<String> section) {
             Utils.checkNotNull(section, "section");
@@ -362,8 +421,10 @@ public class SourceTheGuardianApi {
             return this;
         }
 
+
         /**
-         * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will not be shown.
+         * Use this to set the minimum date (YYYY-MM-DD) of the results. Results older than the start_date will
+         * not be shown.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -371,8 +432,13 @@ public class SourceTheGuardianApi {
             return this;
         }
 
+
         /**
-         * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
+         * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this
+         * parameter to filter results by showing only the ones matching the entered tag. See <a
+         * href="https://content.guardianapis.com/tags?api-key=test">here</a> for a list of all tags, and <a
+         * href="https://open-platform.theguardian.com/documentation/tag">here</a> for the tags endpoint
+         * documentation.
          */
         public Builder tag(String tag) {
             Utils.checkNotNull(tag, "tag");
@@ -381,23 +447,25 @@ public class SourceTheGuardianApi {
         }
 
         /**
-         * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this parameter to filter results by showing only the ones matching the entered tag. See &lt;a href="https://content.guardianapis.com/tags?api-key=test"&gt;here&lt;/a&gt; for a list of all tags, and &lt;a href="https://open-platform.theguardian.com/documentation/tag"&gt;here&lt;/a&gt; for the tags endpoint documentation.
+         * (Optional) A tag is a piece of data that is used by The Guardian to categorise content. Use this
+         * parameter to filter results by showing only the ones matching the entered tag. See <a
+         * href="https://content.guardianapis.com/tags?api-key=test">here</a> for a list of all tags, and <a
+         * href="https://open-platform.theguardian.com/documentation/tag">here</a> for the tags endpoint
+         * documentation.
          */
         public Builder tag(Optional<String> tag) {
             Utils.checkNotNull(tag, "tag");
             this.tag = tag;
             return this;
         }
-        
+
         public SourceTheGuardianApi build() {
+
             return new SourceTheGuardianApi(
-                apiKey,
-                endDate,
-                query,
-                section,
-                startDate,
-                tag);
+                apiKey, endDate, query,
+                section, startDate, tag);
         }
+
 
         private static final LazySingletonValue<TheGuardianApi> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

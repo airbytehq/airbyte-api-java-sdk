@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceNetsuiteEnterpriseSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = SourceNetsuiteEnterpriseSSHTunnelMethod._Deserializer.class)
 public class SourceNetsuiteEnterpriseSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class SourceNetsuiteEnterpriseSSHTunnelMethod {
 
     public static SourceNetsuiteEnterpriseSSHTunnelMethod of(SourceNetsuiteEnterpriseNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNetsuiteEnterpriseNoTunnel>(){}));
+        return new SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceNetsuiteEnterpriseSSHTunnelMethod of(SourceNetsuiteEnterpriseSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNetsuiteEnterpriseSSHKeyAuthentication>(){}));
+        return new SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceNetsuiteEnterpriseSSHTunnelMethod of(SourceNetsuiteEnterpriseSchemasPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceNetsuiteEnterpriseSchemasPasswordAuthentication>(){}));
+        return new SourceNetsuiteEnterpriseSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class SourceNetsuiteEnterpriseSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class SourceNetsuiteEnterpriseSSHTunnelMethod {
             return false;
         }
         SourceNetsuiteEnterpriseSSHTunnelMethod other = (SourceNetsuiteEnterpriseSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class SourceNetsuiteEnterpriseSSHTunnelMethod {
 
         public _Deserializer() {
             super(SourceNetsuiteEnterpriseSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterpriseSchemasPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterpriseNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterpriseSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterpriseNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceNetsuiteEnterpriseSchemasPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class SourceNetsuiteEnterpriseSSHTunnelMethod {
         return Utils.toString(SourceNetsuiteEnterpriseSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

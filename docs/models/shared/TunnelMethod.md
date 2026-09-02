@@ -1,6 +1,12 @@
 # TunnelMethod
 
-No ssh tunnel needed to connect to database
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.TunnelMethod;
+
+TunnelMethod value = TunnelMethod.NO_TUNNEL;
+```
 
 
 ## Values

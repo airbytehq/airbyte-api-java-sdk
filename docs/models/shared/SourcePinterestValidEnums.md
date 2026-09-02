@@ -2,6 +2,14 @@
 
 An enumeration.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourcePinterestValidEnums;
+
+SourcePinterestValidEnums value = SourcePinterestValidEnums.INDIVIDUAL;
+```
+
 
 ## Values
 

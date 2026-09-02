@@ -14,7 +14,7 @@ public enum Netsuite {
     @JsonValue
     private final String value;
 
-    private Netsuite(String value) {
+    Netsuite(String value) {
         this.value = value;
     }
     

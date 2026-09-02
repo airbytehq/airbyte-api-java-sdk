@@ -14,7 +14,7 @@ public enum Convex {
     @JsonValue
     private final String value;
 
-    private Convex(String value) {
+    Convex(String value) {
         this.value = value;
     }
     

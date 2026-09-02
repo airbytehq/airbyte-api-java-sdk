@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * LoadingMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class LoadingMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private LoadingMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class LoadingMethod {
 
     public static LoadingMethod of(BatchedStandardInserts value) {
         Utils.checkNotNull(value, "value");
-        return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<BatchedStandardInserts>(){}));
+        return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static LoadingMethod of(GCSStaging value) {
         Utils.checkNotNull(value, "value");
-        return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GCSStaging>(){}));
+        return new LoadingMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class LoadingMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class LoadingMethod {
             return false;
         }
         LoadingMethod other = (LoadingMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class LoadingMethod {
 
         public _Deserializer() {
             super(LoadingMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<GCSStaging>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<BatchedStandardInserts>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<BatchedStandardInserts>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<GCSStaging>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class LoadingMethod {
         return Utils.toString(LoadingMethod.class,
                 "value", value);
     }
- 
+
 }
 

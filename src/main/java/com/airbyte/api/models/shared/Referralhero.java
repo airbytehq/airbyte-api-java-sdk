@@ -14,7 +14,7 @@ public enum Referralhero {
     @JsonValue
     private final String value;
 
-    private Referralhero(String value) {
+    Referralhero(String value) {
         this.value = value;
     }
     

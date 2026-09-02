@@ -20,18 +20,20 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC
  * 
- * <p>&lt;i&gt;Recommended&lt;/i&gt; - Incrementally reads new inserts, updates, and deletes using Oracle's &lt;a href="https://docs.airbyte.com/integrations/enterprise-connectors/source-oracle#getting-started"&gt; change data capture feature&lt;/a&gt;. This must be enabled on your database.
+ * <p><i>Recommended</i> - Incrementally reads new inserts, updates, and deletes using Oracle's <a
+ * href="https://docs.airbyte.com/integrations/enterprise-connectors/source-oracle#getting-started">
+ * change data capture feature</a>. This must be enabled on your database.
  */
 public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
 
     @JsonIgnore
     private Map<String, Object> additionalProperties;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("cursor_method")
@@ -52,7 +54,10 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
     private Optional<Long> initialLoadTimeoutHours;
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in
+     * the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before
+     * being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger
+     * a refresh but could lead to higher cloud costs and data loss.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("invalid_cdc_cursor_position_behavior")
@@ -76,7 +81,8 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
     }
     
     public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @JsonAnyGetter
@@ -107,7 +113,10 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
     }
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in
+     * the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before
+     * being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger
+     * a refresh but could lead to higher cloud costs and data loss.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -115,9 +124,10 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return (Optional<SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced>) invalidCdcCursorPositionBehavior;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC withAdditionalProperty(String key, Object value) {
@@ -125,8 +135,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -138,6 +147,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         this.cursorMethod = Optional.ofNullable(cursorMethod);
         return this;
     }
+
 
     public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC withCursorMethod(Optional<? extends SourceOracleEnterpriseSchemasCursorMethod> cursorMethod) {
         Utils.checkNotNull(cursorMethod, "cursorMethod");
@@ -153,6 +163,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         this.debeziumShutdownTimeoutSeconds = Optional.ofNullable(debeziumShutdownTimeoutSeconds);
         return this;
     }
+
 
     /**
      * The amount of time to allow the Debezium Engine to shut down, in seconds.
@@ -172,6 +183,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
+
     /**
      * The amount of time an initial load is allowed to continue for before catching up on CDC events.
      */
@@ -182,7 +194,10 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
     }
 
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in
+     * the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before
+     * being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger
+     * a refresh but could lead to higher cloud costs and data loss.
      */
     public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC withInvalidCdcCursorPositionBehavior(SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced invalidCdcCursorPositionBehavior) {
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -190,8 +205,12 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
+
     /**
-     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+     * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in
+     * the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before
+     * being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger
+     * a refresh but could lead to higher cloud costs and data loss.
      */
     public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC withInvalidCdcCursorPositionBehavior(Optional<? extends SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior) {
         Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -199,7 +218,6 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -210,21 +228,18 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         }
         SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC other = (SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.cursorMethod, other.cursorMethod) &&
-            Objects.deepEquals(this.debeziumShutdownTimeoutSeconds, other.debeziumShutdownTimeoutSeconds) &&
-            Objects.deepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
-            Objects.deepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.cursorMethod, other.cursorMethod) &&
+            Utils.enhancedDeepEquals(this.debeziumShutdownTimeoutSeconds, other.debeziumShutdownTimeoutSeconds) &&
+            Utils.enhancedDeepEquals(this.initialLoadTimeoutHours, other.initialLoadTimeoutHours) &&
+            Utils.enhancedDeepEquals(this.invalidCdcCursorPositionBehavior, other.invalidCdcCursorPositionBehavior);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            cursorMethod,
-            debeziumShutdownTimeoutSeconds,
-            initialLoadTimeoutHours,
-            invalidCdcCursorPositionBehavior);
+        return Utils.enhancedHash(
+            additionalProperties, cursorMethod, debeziumShutdownTimeoutSeconds,
+            initialLoadTimeoutHours, invalidCdcCursorPositionBehavior);
     }
     
     @Override
@@ -236,19 +251,20 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
                 "initialLoadTimeoutHours", initialLoadTimeoutHours,
                 "invalidCdcCursorPositionBehavior", invalidCdcCursorPositionBehavior);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseSchemasCursorMethod> cursorMethod;
- 
+
         private Optional<Long> debeziumShutdownTimeoutSeconds;
- 
+
         private Optional<Long> initialLoadTimeoutHours;
- 
+
         private Optional<? extends SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -269,6 +285,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         public Builder cursorMethod(SourceOracleEnterpriseSchemasCursorMethod cursorMethod) {
             Utils.checkNotNull(cursorMethod, "cursorMethod");
             this.cursorMethod = Optional.ofNullable(cursorMethod);
@@ -280,6 +297,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
             this.cursorMethod = cursorMethod;
             return this;
         }
+
 
         /**
          * The amount of time to allow the Debezium Engine to shut down, in seconds.
@@ -299,6 +317,7 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         /**
          * The amount of time an initial load is allowed to continue for before catching up on CDC events.
          */
@@ -317,8 +336,12 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
             return this;
         }
 
+
         /**
-         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in
+         * the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before
+         * being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger
+         * a refresh but could lead to higher cloud costs and data loss.
          */
         public Builder invalidCdcCursorPositionBehavior(SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced invalidCdcCursorPositionBehavior) {
             Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
@@ -327,14 +350,17 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
         }
 
         /**
-         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger a refresh but could lead to higher cloud costs and data loss.
+         * Determines whether Airbyte should fail or re-sync data in case of an stale/invalid cursor value in
+         * the mined logs. If 'Fail sync' is chosen, a user will have to manually reset the connection before
+         * being able to continue syncing data. If 'Re-sync data' is chosen, Airbyte will automatically trigger
+         * a refresh but could lead to higher cloud costs and data loss.
          */
         public Builder invalidCdcCursorPositionBehavior(Optional<? extends SourceOracleEnterpriseInvalidCDCPositionBehaviorAdvanced> invalidCdcCursorPositionBehavior) {
             Utils.checkNotNull(invalidCdcCursorPositionBehavior, "invalidCdcCursorPositionBehavior");
             this.invalidCdcCursorPositionBehavior = invalidCdcCursorPositionBehavior;
             return this;
         }
-        
+
         public SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC build() {
             if (cursorMethod == null) {
                 cursorMethod = _SINGLETON_VALUE_CursorMethod.value();
@@ -348,13 +374,13 @@ public class SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC {
             if (invalidCdcCursorPositionBehavior == null) {
                 invalidCdcCursorPositionBehavior = _SINGLETON_VALUE_InvalidCdcCursorPositionBehavior.value();
             }
+
             return new SourceOracleEnterpriseReadChangesUsingChangeDataCaptureCDC(
-                cursorMethod,
-                debeziumShutdownTimeoutSeconds,
-                initialLoadTimeoutHours,
+                cursorMethod, debeziumShutdownTimeoutSeconds, initialLoadTimeoutHours,
                 invalidCdcCursorPositionBehavior)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseSchemasCursorMethod>> _SINGLETON_VALUE_CursorMethod =
                 new LazySingletonValue<>(

@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * Format
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = Format._Deserializer.class)
 public class Format {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Format(TypedObject value) {
         this.value = value;
@@ -33,27 +33,32 @@ public class Format {
 
     public static Format of(AvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AvroFormat>(){}));
+        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Format of(CSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<CSVFormat>(){}));
+        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Format of(JsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<JsonlFormat>(){}));
+        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Format of(ParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ParquetFormat>(){}));
+        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Format of(UnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<UnstructuredDocumentFormat>(){}));
+        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
+    }
+
+    public static Format of(ExcelFormat value) {
+        Utils.checkNotNull(value, "value");
+        return new Format(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -64,6 +69,7 @@ public class Format {
      * <li>{@code com.airbyte.api.models.shared.JsonlFormat}</li>
      * <li>{@code com.airbyte.api.models.shared.ParquetFormat}</li>
      * <li>{@code com.airbyte.api.models.shared.UnstructuredDocumentFormat}</li>
+     * <li>{@code com.airbyte.api.models.shared.ExcelFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -79,7 +85,7 @@ public class Format {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +96,12 @@ public class Format {
             return false;
         }
         Format other = (Format) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +109,12 @@ public class Format {
 
         public _Deserializer() {
             super(Format.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<CSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<UnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<AvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<JsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<CSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<JsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<UnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<ExcelFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +123,6 @@ public class Format {
         return Utils.toString(Format.class,
                 "value", value);
     }
- 
+
 }
 

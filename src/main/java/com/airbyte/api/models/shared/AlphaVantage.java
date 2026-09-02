@@ -14,7 +14,7 @@ public enum AlphaVantage {
     @JsonValue
     private final String value;
 
-    private AlphaVantage(String value) {
+    AlphaVantage(String value) {
         this.value = value;
     }
     

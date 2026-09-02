@@ -14,7 +14,7 @@ public enum Productive {
     @JsonValue
     private final String value;
 
-    private Productive(String value) {
+    Productive(String value) {
         this.value = value;
     }
     

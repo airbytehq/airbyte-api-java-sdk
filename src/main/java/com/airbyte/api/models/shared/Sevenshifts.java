@@ -14,7 +14,7 @@ public enum Sevenshifts {
     @JsonValue
     private final String value;
 
-    private Sevenshifts(String value) {
+    Sevenshifts(String value) {
         this.value = value;
     }
     

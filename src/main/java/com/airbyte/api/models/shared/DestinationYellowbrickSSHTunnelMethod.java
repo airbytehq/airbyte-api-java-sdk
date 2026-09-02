@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationYellowbrickSSHTunnelMethod
  * 
- * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+ * <p>Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+ * authentication to use.
  */
 @JsonDeserialize(using = DestinationYellowbrickSSHTunnelMethod._Deserializer.class)
 public class DestinationYellowbrickSSHTunnelMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationYellowbrickSSHTunnelMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +33,17 @@ public class DestinationYellowbrickSSHTunnelMethod {
 
     public static DestinationYellowbrickSSHTunnelMethod of(DestinationYellowbrickNoTunnel value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationYellowbrickSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationYellowbrickNoTunnel>(){}));
+        return new DestinationYellowbrickSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationYellowbrickSSHTunnelMethod of(DestinationYellowbrickSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationYellowbrickSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationYellowbrickSSHKeyAuthentication>(){}));
+        return new DestinationYellowbrickSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationYellowbrickSSHTunnelMethod of(DestinationYellowbrickPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationYellowbrickSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationYellowbrickPasswordAuthentication>(){}));
+        return new DestinationYellowbrickSSHTunnelMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +67,7 @@ public class DestinationYellowbrickSSHTunnelMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +78,12 @@ public class DestinationYellowbrickSSHTunnelMethod {
             return false;
         }
         DestinationYellowbrickSSHTunnelMethod other = (DestinationYellowbrickSSHTunnelMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +91,9 @@ public class DestinationYellowbrickSSHTunnelMethod {
 
         public _Deserializer() {
             super(DestinationYellowbrickSSHTunnelMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrickPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrickNoTunnel>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrickSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrickNoTunnel>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationYellowbrickPasswordAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +102,6 @@ public class DestinationYellowbrickSSHTunnelMethod {
         return Utils.toString(DestinationYellowbrickSSHTunnelMethod.class,
                 "value", value);
     }
- 
+
 }
 

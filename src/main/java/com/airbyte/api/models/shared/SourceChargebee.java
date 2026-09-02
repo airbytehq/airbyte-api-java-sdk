@@ -16,20 +16,24 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceChargebee {
 
+public class SourceChargebee {
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's API &lt;a href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's
+     * API <a
+     * href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-">docs</a>.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("num_workers")
     private Optional<Long> numWorkers;
 
     /**
-     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+     * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+     * section. If left blank, the product catalog version will be set to 2.0.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("product_catalog")
@@ -42,16 +46,20 @@ public class SourceChargebee {
     private String site;
 
     /**
-     * Chargebee API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/chargebee"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Chargebee API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/chargebee">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonProperty("site_api_key")
     private String siteApiKey;
+
 
     @JsonProperty("sourceType")
     private Chargebee sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -80,11 +88,15 @@ public class SourceChargebee {
             String site,
             String siteApiKey,
             OffsetDateTime startDate) {
-        this(Optional.empty(), Optional.empty(), site, siteApiKey, startDate);
+        this(Optional.empty(), Optional.empty(), site,
+            siteApiKey, startDate);
     }
 
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's API &lt;a href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's
+     * API <a
+     * href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-">docs</a>.
      */
     @JsonIgnore
     public Optional<Long> numWorkers() {
@@ -92,7 +104,9 @@ public class SourceChargebee {
     }
 
     /**
-     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+     * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+     * section. If left blank, the product catalog version will be set to 2.0.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -109,7 +123,9 @@ public class SourceChargebee {
     }
 
     /**
-     * Chargebee API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/chargebee"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Chargebee API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/chargebee">docs</a> for more information on how
+     * to obtain this key.
      */
     @JsonIgnore
     public String siteApiKey() {
@@ -122,19 +138,24 @@ public class SourceChargebee {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's API &lt;a href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's
+     * API <a
+     * href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-">docs</a>.
      */
     public SourceChargebee withNumWorkers(long numWorkers) {
         Utils.checkNotNull(numWorkers, "numWorkers");
@@ -142,8 +163,12 @@ public class SourceChargebee {
         return this;
     }
 
+
     /**
-     * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's API &lt;a href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-"&gt;docs&lt;/a&gt;.
+     * The number of worker threads to use for the sync. The performance upper boundary is based on the
+     * limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's
+     * API <a
+     * href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-">docs</a>.
      */
     public SourceChargebee withNumWorkers(Optional<Long> numWorkers) {
         Utils.checkNotNull(numWorkers, "numWorkers");
@@ -152,7 +177,9 @@ public class SourceChargebee {
     }
 
     /**
-     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+     * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+     * section. If left blank, the product catalog version will be set to 2.0.
      */
     public SourceChargebee withProductCatalog(ProductCatalog productCatalog) {
         Utils.checkNotNull(productCatalog, "productCatalog");
@@ -160,8 +187,11 @@ public class SourceChargebee {
         return this;
     }
 
+
     /**
-     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+     * Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+     * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+     * section. If left blank, the product catalog version will be set to 2.0.
      */
     public SourceChargebee withProductCatalog(Optional<? extends ProductCatalog> productCatalog) {
         Utils.checkNotNull(productCatalog, "productCatalog");
@@ -179,7 +209,9 @@ public class SourceChargebee {
     }
 
     /**
-     * Chargebee API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/chargebee"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+     * Chargebee API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/chargebee">docs</a> for more information on how
+     * to obtain this key.
      */
     public SourceChargebee withSiteApiKey(String siteApiKey) {
         Utils.checkNotNull(siteApiKey, "siteApiKey");
@@ -188,7 +220,8 @@ public class SourceChargebee {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be
+     * replicated.
      */
     public SourceChargebee withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -196,7 +229,6 @@ public class SourceChargebee {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -207,23 +239,19 @@ public class SourceChargebee {
         }
         SourceChargebee other = (SourceChargebee) o;
         return 
-            Objects.deepEquals(this.numWorkers, other.numWorkers) &&
-            Objects.deepEquals(this.productCatalog, other.productCatalog) &&
-            Objects.deepEquals(this.site, other.site) &&
-            Objects.deepEquals(this.siteApiKey, other.siteApiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.numWorkers, other.numWorkers) &&
+            Utils.enhancedDeepEquals(this.productCatalog, other.productCatalog) &&
+            Utils.enhancedDeepEquals(this.site, other.site) &&
+            Utils.enhancedDeepEquals(this.siteApiKey, other.siteApiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            numWorkers,
-            productCatalog,
-            site,
-            siteApiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            numWorkers, productCatalog, site,
+            siteApiKey, sourceType, startDate);
     }
     
     @Override
@@ -236,25 +264,30 @@ public class SourceChargebee {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Long> numWorkers;
- 
+
         private Optional<? extends ProductCatalog> productCatalog;
- 
+
         private String site;
- 
+
         private String siteApiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's API &lt;a href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-"&gt;docs&lt;/a&gt;.
+         * The number of worker threads to use for the sync. The performance upper boundary is based on the
+         * limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's
+         * API <a
+         * href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-">docs</a>.
          */
         public Builder numWorkers(long numWorkers) {
             Utils.checkNotNull(numWorkers, "numWorkers");
@@ -263,7 +296,10 @@ public class SourceChargebee {
         }
 
         /**
-         * The number of worker threads to use for the sync. The performance upper boundary is based on the limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's API &lt;a href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-"&gt;docs&lt;/a&gt;.
+         * The number of worker threads to use for the sync. The performance upper boundary is based on the
+         * limit of your Chargebee plan. More info about the rate limit plan tiers can be found on Chargebee's
+         * API <a
+         * href="https://support.chargebee.com/support/solutions/articles/243576-what-are-the-chargebee-api-limits-">docs</a>.
          */
         public Builder numWorkers(Optional<Long> numWorkers) {
             Utils.checkNotNull(numWorkers, "numWorkers");
@@ -271,8 +307,11 @@ public class SourceChargebee {
             return this;
         }
 
+
         /**
-         * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+         * Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+         * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+         * section. If left blank, the product catalog version will be set to 2.0.
          */
         public Builder productCatalog(ProductCatalog productCatalog) {
             Utils.checkNotNull(productCatalog, "productCatalog");
@@ -281,13 +320,16 @@ public class SourceChargebee {
         }
 
         /**
-         * Product Catalog version of your Chargebee site. Instructions on how to find your version you may find &lt;a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2"&gt;here&lt;/a&gt; under `API Version` section. If left blank, the product catalog version will be set to 2.0.
+         * Product Catalog version of your Chargebee site. Instructions on how to find your version you may
+         * find <a href="https://apidocs.chargebee.com/docs/api?prod_cat_ver=2">here</a> under `API Version`
+         * section. If left blank, the product catalog version will be set to 2.0.
          */
         public Builder productCatalog(Optional<? extends ProductCatalog> productCatalog) {
             Utils.checkNotNull(productCatalog, "productCatalog");
             this.productCatalog = productCatalog;
             return this;
         }
+
 
         /**
          * The site prefix for your Chargebee instance.
@@ -298,8 +340,11 @@ public class SourceChargebee {
             return this;
         }
 
+
         /**
-         * Chargebee API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/chargebee"&gt;docs&lt;/a&gt; for more information on how to obtain this key.
+         * Chargebee API Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/chargebee">docs</a> for more information on how
+         * to obtain this key.
          */
         public Builder siteApiKey(String siteApiKey) {
             Utils.checkNotNull(siteApiKey, "siteApiKey");
@@ -307,15 +352,17 @@ public class SourceChargebee {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00.000Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceChargebee build() {
             if (numWorkers == null) {
                 numWorkers = _SINGLETON_VALUE_NumWorkers.value();
@@ -323,13 +370,12 @@ public class SourceChargebee {
             if (productCatalog == null) {
                 productCatalog = _SINGLETON_VALUE_ProductCatalog.value();
             }
+
             return new SourceChargebee(
-                numWorkers,
-                productCatalog,
-                site,
-                siteApiKey,
-                startDate);
+                numWorkers, productCatalog, site,
+                siteApiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_NumWorkers =
                 new LazySingletonValue<>(

@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGcsFormat
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = SourceGcsFormat._Deserializer.class)
 public class SourceGcsFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGcsFormat(TypedObject value) {
         this.value = value;
@@ -33,32 +33,32 @@ public class SourceGcsFormat {
 
     public static SourceGcsFormat of(SourceGcsAvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsAvroFormat>(){}));
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGcsFormat of(SourceGcsCSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsCSVFormat>(){}));
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGcsFormat of(SourceGcsJsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsJsonlFormat>(){}));
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGcsFormat of(SourceGcsParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsParquetFormat>(){}));
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGcsFormat of(SourceGcsUnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGcsUnstructuredDocumentFormat>(){}));
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
-    public static SourceGcsFormat of(ExcelFormat value) {
+    public static SourceGcsFormat of(SourceGcsExcelFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<ExcelFormat>(){}));
+        return new SourceGcsFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -69,7 +69,7 @@ public class SourceGcsFormat {
      * <li>{@code com.airbyte.api.models.shared.SourceGcsJsonlFormat}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceGcsParquetFormat}</li>
      * <li>{@code com.airbyte.api.models.shared.SourceGcsUnstructuredDocumentFormat}</li>
-     * <li>{@code com.airbyte.api.models.shared.ExcelFormat}</li>
+     * <li>{@code com.airbyte.api.models.shared.SourceGcsExcelFormat}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -85,7 +85,7 @@ public class SourceGcsFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -96,12 +96,12 @@ public class SourceGcsFormat {
             return false;
         }
         SourceGcsFormat other = (SourceGcsFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -109,12 +109,12 @@ public class SourceGcsFormat {
 
         public _Deserializer() {
             super(SourceGcsFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGcsCSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGcsUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGcsParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceGcsAvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<ExcelFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGcsJsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcsCSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcsJsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcsParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcsUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGcsExcelFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -123,6 +123,6 @@ public class SourceGcsFormat {
         return Utils.toString(SourceGcsFormat.class,
                 "value", value);
     }
- 
+
 }
 

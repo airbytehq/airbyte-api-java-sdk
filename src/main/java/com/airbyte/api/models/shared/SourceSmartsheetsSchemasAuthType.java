@@ -14,7 +14,7 @@ public enum SourceSmartsheetsSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceSmartsheetsSchemasAuthType(String value) {
+    SourceSmartsheetsSchemasAuthType(String value) {
         this.value = value;
     }
     

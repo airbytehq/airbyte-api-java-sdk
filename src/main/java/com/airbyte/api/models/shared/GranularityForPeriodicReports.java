@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * GranularityForPeriodicReports
  * 
- * <p>The granularity used for periodic data in reports. See &lt;a href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown"&gt;the docs&lt;/a&gt;.
+ * <p>The granularity used for periodic data in reports. See <a
+ * href="https://amplifyv01.docs.apiary.io/#reference/performance-reporting/periodic/retrieve-performance-statistics-for-all-marketer-campaigns-by-periodic-breakdown">the
+ * docs</a>.
  */
 public enum GranularityForPeriodicReports {
     DAILY("daily"),
@@ -21,7 +23,7 @@ public enum GranularityForPeriodicReports {
     @JsonValue
     private final String value;
 
-    private GranularityForPeriodicReports(String value) {
+    GranularityForPeriodicReports(String value) {
         this.value = value;
     }
     

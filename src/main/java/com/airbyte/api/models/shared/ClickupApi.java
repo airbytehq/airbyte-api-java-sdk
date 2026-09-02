@@ -14,7 +14,7 @@ public enum ClickupApi {
     @JsonValue
     private final String value;
 
-    private ClickupApi(String value) {
+    ClickupApi(String value) {
         this.value = value;
     }
     

@@ -1,5 +1,13 @@
 # SourceOktaSchemasCredentialsAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceOktaSchemasCredentialsAuthType;
+
+SourceOktaSchemasCredentialsAuthType value = SourceOktaSchemasCredentialsAuthType.API_TOKEN;
+```
+
 
 ## Values
 

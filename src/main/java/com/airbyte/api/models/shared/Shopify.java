@@ -12,8 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class Shopify {
 
@@ -38,9 +38,10 @@ public class Shopify {
         return (Optional<ShopifyCredentials>) credentials;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public Shopify withCredentials(ShopifyCredentials credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -48,13 +49,13 @@ public class Shopify {
         return this;
     }
 
+
     public Shopify withCredentials(Optional<? extends ShopifyCredentials> credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = credentials;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -65,12 +66,12 @@ public class Shopify {
         }
         Shopify other = (Shopify) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             credentials);
     }
     
@@ -79,14 +80,16 @@ public class Shopify {
         return Utils.toString(Shopify.class,
                 "credentials", credentials);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends ShopifyCredentials> credentials = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(ShopifyCredentials credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -99,10 +102,12 @@ public class Shopify {
             this.credentials = credentials;
             return this;
         }
-        
+
         public Shopify build() {
+
             return new Shopify(
                 credentials);
         }
+
     }
 }

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * BaseURL
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class BaseURL {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private BaseURL(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class BaseURL {
 
     public static BaseURL of(EUBasedAccount value) {
         Utils.checkNotNull(value, "value");
-        return new BaseURL(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<EUBasedAccount>(){}));
+        return new BaseURL(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static BaseURL of(GlobalAccount value) {
         Utils.checkNotNull(value, "value");
-        return new BaseURL(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<GlobalAccount>(){}));
+        return new BaseURL(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class BaseURL {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class BaseURL {
             return false;
         }
         BaseURL other = (BaseURL) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class BaseURL {
 
         public _Deserializer() {
             super(BaseURL.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<GlobalAccount>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<EUBasedAccount>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<EUBasedAccount>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<GlobalAccount>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class BaseURL {
         return Utils.toString(BaseURL.class,
                 "value", value);
     }
- 
+
 }
 

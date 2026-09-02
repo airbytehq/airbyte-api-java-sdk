@@ -1,5 +1,13 @@
 # DestinationSnowflakeAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationSnowflakeAuthType;
+
+DestinationSnowflakeAuthType value = DestinationSnowflakeAuthType.KEY_PAIR_AUTHENTICATION;
+```
+
 
 ## Values
 

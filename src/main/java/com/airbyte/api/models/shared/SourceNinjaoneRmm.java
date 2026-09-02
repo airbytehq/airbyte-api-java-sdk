@@ -12,18 +12,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceNinjaoneRmm {
-
     /**
-     * Token could be generated natively by authorize section of NinjaOne swagger documentation `https://app.ninjarmm.com/apidocs/?links.active=authorization`
+     * Token could be generated natively by authorize section of NinjaOne swagger documentation
+     * `https://app.ninjarmm.com/apidocs/?links.active=authorization`
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private NinjaoneRmm sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -40,7 +42,8 @@ public class SourceNinjaoneRmm {
     }
 
     /**
-     * Token could be generated natively by authorize section of NinjaOne swagger documentation `https://app.ninjarmm.com/apidocs/?links.active=authorization`
+     * Token could be generated natively by authorize section of NinjaOne swagger documentation
+     * `https://app.ninjarmm.com/apidocs/?links.active=authorization`
      */
     @JsonIgnore
     public String apiKey() {
@@ -57,12 +60,14 @@ public class SourceNinjaoneRmm {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Token could be generated natively by authorize section of NinjaOne swagger documentation `https://app.ninjarmm.com/apidocs/?links.active=authorization`
+     * Token could be generated natively by authorize section of NinjaOne swagger documentation
+     * `https://app.ninjarmm.com/apidocs/?links.active=authorization`
      */
     public SourceNinjaoneRmm withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -76,7 +81,6 @@ public class SourceNinjaoneRmm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -87,17 +91,15 @@ public class SourceNinjaoneRmm {
         }
         SourceNinjaoneRmm other = (SourceNinjaoneRmm) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, sourceType, startDate);
     }
     
     @Override
@@ -107,19 +109,22 @@ public class SourceNinjaoneRmm {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Token could be generated natively by authorize section of NinjaOne swagger documentation `https://app.ninjarmm.com/apidocs/?links.active=authorization`
+         * Token could be generated natively by authorize section of NinjaOne swagger documentation
+         * `https://app.ninjarmm.com/apidocs/?links.active=authorization`
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -127,17 +132,19 @@ public class SourceNinjaoneRmm {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNinjaoneRmm build() {
+
             return new SourceNinjaoneRmm(
-                apiKey,
-                startDate);
+                apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<NinjaoneRmm> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

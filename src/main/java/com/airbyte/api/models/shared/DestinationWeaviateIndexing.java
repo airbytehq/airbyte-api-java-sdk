@@ -16,7 +16,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -25,7 +24,6 @@ import java.util.Optional;
  * <p>Indexing configuration
  */
 public class DestinationWeaviateIndexing {
-
     /**
      * Additional HTTP headers to send with every request.
      */
@@ -101,7 +99,9 @@ public class DestinationWeaviateIndexing {
     public DestinationWeaviateIndexing(
             DestinationWeaviateAuthentication auth,
             String host) {
-        this(Optional.empty(), auth, Optional.empty(), Optional.empty(), host, Optional.empty(), Optional.empty());
+        this(Optional.empty(), auth, Optional.empty(),
+            Optional.empty(), host, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -162,9 +162,10 @@ public class DestinationWeaviateIndexing {
         return textField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Additional HTTP headers to send with every request.
@@ -174,6 +175,7 @@ public class DestinationWeaviateIndexing {
         this.additionalHeaders = Optional.ofNullable(additionalHeaders);
         return this;
     }
+
 
     /**
      * Additional HTTP headers to send with every request.
@@ -202,6 +204,7 @@ public class DestinationWeaviateIndexing {
         return this;
     }
 
+
     /**
      * The number of records to send to Weaviate in each batch
      */
@@ -219,6 +222,7 @@ public class DestinationWeaviateIndexing {
         this.defaultVectorizer = Optional.ofNullable(defaultVectorizer);
         return this;
     }
+
 
     /**
      * The vectorizer to use if new classes need to be created
@@ -247,6 +251,7 @@ public class DestinationWeaviateIndexing {
         return this;
     }
 
+
     /**
      * The tenant ID to use for multi tenancy
      */
@@ -265,6 +270,7 @@ public class DestinationWeaviateIndexing {
         return this;
     }
 
+
     /**
      * The field in the object that contains the embedded text
      */
@@ -274,7 +280,6 @@ public class DestinationWeaviateIndexing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -285,24 +290,20 @@ public class DestinationWeaviateIndexing {
         }
         DestinationWeaviateIndexing other = (DestinationWeaviateIndexing) o;
         return 
-            Objects.deepEquals(this.additionalHeaders, other.additionalHeaders) &&
-            Objects.deepEquals(this.auth, other.auth) &&
-            Objects.deepEquals(this.batchSize, other.batchSize) &&
-            Objects.deepEquals(this.defaultVectorizer, other.defaultVectorizer) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.tenantId, other.tenantId) &&
-            Objects.deepEquals(this.textField, other.textField);
+            Utils.enhancedDeepEquals(this.additionalHeaders, other.additionalHeaders) &&
+            Utils.enhancedDeepEquals(this.auth, other.auth) &&
+            Utils.enhancedDeepEquals(this.batchSize, other.batchSize) &&
+            Utils.enhancedDeepEquals(this.defaultVectorizer, other.defaultVectorizer) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.tenantId, other.tenantId) &&
+            Utils.enhancedDeepEquals(this.textField, other.textField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalHeaders,
-            auth,
-            batchSize,
-            defaultVectorizer,
-            host,
-            tenantId,
+        return Utils.enhancedHash(
+            additionalHeaders, auth, batchSize,
+            defaultVectorizer, host, tenantId,
             textField);
     }
     
@@ -317,26 +318,28 @@ public class DestinationWeaviateIndexing {
                 "tenantId", tenantId,
                 "textField", textField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<Header>> additionalHeaders = Optional.empty();
- 
+
         private DestinationWeaviateAuthentication auth;
- 
+
         private Optional<Long> batchSize;
- 
+
         private Optional<? extends DefaultVectorizer> defaultVectorizer;
- 
+
         private String host;
- 
+
         private Optional<String> tenantId;
- 
+
         private Optional<String> textField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Additional HTTP headers to send with every request.
@@ -356,6 +359,7 @@ public class DestinationWeaviateIndexing {
             return this;
         }
 
+
         /**
          * Authentication method
          */
@@ -364,6 +368,7 @@ public class DestinationWeaviateIndexing {
             this.auth = auth;
             return this;
         }
+
 
         /**
          * The number of records to send to Weaviate in each batch
@@ -383,6 +388,7 @@ public class DestinationWeaviateIndexing {
             return this;
         }
 
+
         /**
          * The vectorizer to use if new classes need to be created
          */
@@ -401,6 +407,7 @@ public class DestinationWeaviateIndexing {
             return this;
         }
 
+
         /**
          * The public endpoint of the Weaviate cluster.
          */
@@ -409,6 +416,7 @@ public class DestinationWeaviateIndexing {
             this.host = host;
             return this;
         }
+
 
         /**
          * The tenant ID to use for multi tenancy
@@ -428,6 +436,7 @@ public class DestinationWeaviateIndexing {
             return this;
         }
 
+
         /**
          * The field in the object that contains the embedded text
          */
@@ -445,7 +454,7 @@ public class DestinationWeaviateIndexing {
             this.textField = textField;
             return this;
         }
-        
+
         public DestinationWeaviateIndexing build() {
             if (batchSize == null) {
                 batchSize = _SINGLETON_VALUE_BatchSize.value();
@@ -459,15 +468,13 @@ public class DestinationWeaviateIndexing {
             if (textField == null) {
                 textField = _SINGLETON_VALUE_TextField.value();
             }
+
             return new DestinationWeaviateIndexing(
-                additionalHeaders,
-                auth,
-                batchSize,
-                defaultVectorizer,
-                host,
-                tenantId,
+                additionalHeaders, auth, batchSize,
+                defaultVectorizer, host, tenantId,
                 textField);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_BatchSize =
                 new LazySingletonValue<>(

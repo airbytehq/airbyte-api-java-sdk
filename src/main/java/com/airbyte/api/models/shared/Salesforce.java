@@ -11,20 +11,21 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class Salesforce {
 
+public class Salesforce {
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_id")
     private Optional<String> clientId;
 
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a>
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("client_secret")
@@ -45,7 +46,8 @@ public class Salesforce {
     }
 
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>
      */
     @JsonIgnore
     public Optional<String> clientId() {
@@ -53,19 +55,22 @@ public class Salesforce {
     }
 
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a>
      */
     @JsonIgnore
     public Optional<String> clientSecret() {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>
      */
     public Salesforce withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -73,8 +78,10 @@ public class Salesforce {
         return this;
     }
 
+
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>
      */
     public Salesforce withClientId(Optional<String> clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -83,7 +90,8 @@ public class Salesforce {
     }
 
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a>
      */
     public Salesforce withClientSecret(String clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -91,8 +99,10 @@ public class Salesforce {
         return this;
     }
 
+
     /**
-     * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
+     * Enter your Salesforce developer application's <a
+     * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a>
      */
     public Salesforce withClientSecret(Optional<String> clientSecret) {
         Utils.checkNotNull(clientSecret, "clientSecret");
@@ -100,7 +110,6 @@ public class Salesforce {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -111,15 +120,14 @@ public class Salesforce {
         }
         Salesforce other = (Salesforce) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -128,19 +136,22 @@ public class Salesforce {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> clientId = Optional.empty();
- 
+
         private Optional<String> clientSecret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
+         * Enter your Salesforce developer application's <a
+         * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>
          */
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -149,7 +160,8 @@ public class Salesforce {
         }
 
         /**
-         * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client ID&lt;/a&gt;
+         * Enter your Salesforce developer application's <a
+         * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client ID</a>
          */
         public Builder clientId(Optional<String> clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -157,8 +169,10 @@ public class Salesforce {
             return this;
         }
 
+
         /**
-         * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
+         * Enter your Salesforce developer application's <a
+         * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a>
          */
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
@@ -167,18 +181,20 @@ public class Salesforce {
         }
 
         /**
-         * Enter your Salesforce developer application's &lt;a href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG"&gt;Client secret&lt;/a&gt;
+         * Enter your Salesforce developer application's <a
+         * href="https://developer.salesforce.com/forums/?id=9062I000000DLgbQAG">Client secret</a>
          */
         public Builder clientSecret(Optional<String> clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public Salesforce build() {
+
             return new Salesforce(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

@@ -13,19 +13,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceImagga {
 
+public class SourceImagga {
     /**
-     * Your Imagga API key, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+     * Your Imagga API key, available in your Imagga dashboard. Could be found at
+     * `https://imagga.com/profile/dashboard`
      */
     @JsonProperty("api_key")
     private String apiKey;
 
     /**
-     * Your Imagga API secret, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+     * Your Imagga API secret, available in your Imagga dashboard. Could be found at
+     * `https://imagga.com/profile/dashboard`
      */
     @JsonProperty("api_secret")
     private String apiSecret;
@@ -36,6 +37,7 @@ public class SourceImagga {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("img_for_detection")
     private Optional<String> imgForDetection;
+
 
     @JsonProperty("sourceType")
     private Imagga sourceType;
@@ -61,7 +63,8 @@ public class SourceImagga {
     }
 
     /**
-     * Your Imagga API key, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+     * Your Imagga API key, available in your Imagga dashboard. Could be found at
+     * `https://imagga.com/profile/dashboard`
      */
     @JsonIgnore
     public String apiKey() {
@@ -69,7 +72,8 @@ public class SourceImagga {
     }
 
     /**
-     * Your Imagga API secret, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+     * Your Imagga API secret, available in your Imagga dashboard. Could be found at
+     * `https://imagga.com/profile/dashboard`
      */
     @JsonIgnore
     public String apiSecret() {
@@ -89,12 +93,14 @@ public class SourceImagga {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your Imagga API key, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+     * Your Imagga API key, available in your Imagga dashboard. Could be found at
+     * `https://imagga.com/profile/dashboard`
      */
     public SourceImagga withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -103,7 +109,8 @@ public class SourceImagga {
     }
 
     /**
-     * Your Imagga API secret, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+     * Your Imagga API secret, available in your Imagga dashboard. Could be found at
+     * `https://imagga.com/profile/dashboard`
      */
     public SourceImagga withApiSecret(String apiSecret) {
         Utils.checkNotNull(apiSecret, "apiSecret");
@@ -120,6 +127,7 @@ public class SourceImagga {
         return this;
     }
 
+
     /**
      * An image for detection endpoints
      */
@@ -129,7 +137,6 @@ public class SourceImagga {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +147,16 @@ public class SourceImagga {
         }
         SourceImagga other = (SourceImagga) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.imgForDetection, other.imgForDetection) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.imgForDetection, other.imgForDetection) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiSecret,
-            imgForDetection,
+        return Utils.enhancedHash(
+            apiKey, apiSecret, imgForDetection,
             sourceType);
     }
     
@@ -163,21 +168,24 @@ public class SourceImagga {
                 "imgForDetection", imgForDetection,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String apiSecret;
- 
+
         private Optional<String> imgForDetection;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your Imagga API key, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+         * Your Imagga API key, available in your Imagga dashboard. Could be found at
+         * `https://imagga.com/profile/dashboard`
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -185,14 +193,17 @@ public class SourceImagga {
             return this;
         }
 
+
         /**
-         * Your Imagga API secret, available in your Imagga dashboard. Could be found at `https://imagga.com/profile/dashboard`
+         * Your Imagga API secret, available in your Imagga dashboard. Could be found at
+         * `https://imagga.com/profile/dashboard`
          */
         public Builder apiSecret(String apiSecret) {
             Utils.checkNotNull(apiSecret, "apiSecret");
             this.apiSecret = apiSecret;
             return this;
         }
+
 
         /**
          * An image for detection endpoints
@@ -211,16 +222,16 @@ public class SourceImagga {
             this.imgForDetection = imgForDetection;
             return this;
         }
-        
+
         public SourceImagga build() {
             if (imgForDetection == null) {
                 imgForDetection = _SINGLETON_VALUE_ImgForDetection.value();
             }
+
             return new SourceImagga(
-                apiKey,
-                apiSecret,
-                imgForDetection);
+                apiKey, apiSecret, imgForDetection);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ImgForDetection =
                 new LazySingletonValue<>(

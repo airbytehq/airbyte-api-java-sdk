@@ -19,13 +19,14 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceOracleEnterpriseNativeNetworkEncryptionNNE
  * 
- * <p>The native network encryption gives you the ability to encrypt database connections, without the configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different ports.
+ * <p>The native network encryption gives you the ability to encrypt database connections, without the
+ * configuration overhead of TCP/IP and SSL/TLS and without the need to open and listen on different
+ * ports.
  */
 public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
 
@@ -38,6 +39,7 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_algorithm")
     private Optional<? extends SourceOracleEnterpriseEncryptionAlgorithm> encryptionAlgorithm;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("encryption_method")
@@ -78,9 +80,10 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
         return (Optional<SourceOracleEnterpriseSchemasEncryptionMethod>) encryptionMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceOracleEnterpriseNativeNetworkEncryptionNNE withAdditionalProperty(String key, Object value) {
@@ -88,8 +91,7 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceOracleEnterpriseNativeNetworkEncryptionNNE withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -104,6 +106,7 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
         this.encryptionAlgorithm = Optional.ofNullable(encryptionAlgorithm);
         return this;
     }
+
 
     /**
      * This parameter defines what encryption algorithm is used.
@@ -120,13 +123,13 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
         return this;
     }
 
+
     public SourceOracleEnterpriseNativeNetworkEncryptionNNE withEncryptionMethod(Optional<? extends SourceOracleEnterpriseSchemasEncryptionMethod> encryptionMethod) {
         Utils.checkNotNull(encryptionMethod, "encryptionMethod");
         this.encryptionMethod = encryptionMethod;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -137,17 +140,15 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
         }
         SourceOracleEnterpriseNativeNetworkEncryptionNNE other = (SourceOracleEnterpriseNativeNetworkEncryptionNNE) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.encryptionAlgorithm, other.encryptionAlgorithm) &&
-            Objects.deepEquals(this.encryptionMethod, other.encryptionMethod);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.encryptionAlgorithm, other.encryptionAlgorithm) &&
+            Utils.enhancedDeepEquals(this.encryptionMethod, other.encryptionMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            encryptionAlgorithm,
-            encryptionMethod);
+        return Utils.enhancedHash(
+            additionalProperties, encryptionAlgorithm, encryptionMethod);
     }
     
     @Override
@@ -157,15 +158,16 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
                 "encryptionAlgorithm", encryptionAlgorithm,
                 "encryptionMethod", encryptionMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends SourceOracleEnterpriseEncryptionAlgorithm> encryptionAlgorithm;
- 
+
         private Optional<? extends SourceOracleEnterpriseSchemasEncryptionMethod> encryptionMethod;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -186,6 +188,7 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
             return this;
         }
 
+
         /**
          * This parameter defines what encryption algorithm is used.
          */
@@ -204,6 +207,7 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
             return this;
         }
 
+
         public Builder encryptionMethod(SourceOracleEnterpriseSchemasEncryptionMethod encryptionMethod) {
             Utils.checkNotNull(encryptionMethod, "encryptionMethod");
             this.encryptionMethod = Optional.ofNullable(encryptionMethod);
@@ -215,7 +219,7 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
             this.encryptionMethod = encryptionMethod;
             return this;
         }
-        
+
         public SourceOracleEnterpriseNativeNetworkEncryptionNNE build() {
             if (encryptionAlgorithm == null) {
                 encryptionAlgorithm = _SINGLETON_VALUE_EncryptionAlgorithm.value();
@@ -223,11 +227,12 @@ public class SourceOracleEnterpriseNativeNetworkEncryptionNNE {
             if (encryptionMethod == null) {
                 encryptionMethod = _SINGLETON_VALUE_EncryptionMethod.value();
             }
+
             return new SourceOracleEnterpriseNativeNetworkEncryptionNNE(
-                encryptionAlgorithm,
-                encryptionMethod)
+                encryptionAlgorithm, encryptionMethod)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceOracleEnterpriseEncryptionAlgorithm>> _SINGLETON_VALUE_EncryptionAlgorithm =
                 new LazySingletonValue<>(

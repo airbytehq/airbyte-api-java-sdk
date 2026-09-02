@@ -14,7 +14,7 @@ public enum AmazonSqs {
     @JsonValue
     private final String value;
 
-    private AmazonSqs(String value) {
+    AmazonSqs(String value) {
         this.value = value;
     }
     

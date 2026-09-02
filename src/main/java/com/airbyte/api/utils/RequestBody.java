@@ -7,8 +7,11 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +32,7 @@ public final class RequestBody {
     }
 
     public static SerializedBody serialize(Object request, String requestField, String serializationMethod,
-            boolean nullable) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException,
+                                           boolean nullable) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException,
             UnsupportedOperationException, IOException {
         if (request == null) {
             return null;
@@ -40,6 +43,14 @@ public final class RequestBody {
         }
 
         if (Types.getType(request.getClass()) != Types.OBJECT) {
+            return serializeContentType(requestField, SERIALIZATION_METHOD_TO_CONTENT_TYPE.get(serializationMethod),
+                    request);
+        }
+
+        // If no requestField specified, the request object IS the body — serialize it directly
+        // without attempting any field lookup. This is the case when an operation has no
+        // parameters alongside the body (i.e. IsRequestBody=true at the callsite).
+        if (requestField == null || requestField.isEmpty()) {
             return serializeContentType(requestField, SERIALIZATION_METHOD_TO_CONTENT_TYPE.get(serializationMethod),
                     request);
         }
@@ -73,10 +84,10 @@ public final class RequestBody {
 
     private static SerializedBody serializeContentType(String fieldName, String contentType, Object value)
             throws IllegalArgumentException, IllegalAccessException, UnsupportedOperationException, IOException {
-        Pattern jsonPattern = Pattern.compile("(application|text)\\/.*?\\+*json.*");
-        Pattern multipartPattern = Pattern.compile("multipart\\/.*");
-        Pattern formPattern = Pattern.compile("application\\/x-www-form-urlencoded.*");
-        Pattern textPattern = Pattern.compile("text\\/plain");
+        Pattern jsonPattern = Pattern.compile("^(application|text)\\/([^+]+\\+)*json.*");
+        Pattern multipartPattern = Pattern.compile("^multipart\\/.*");
+        Pattern formPattern = Pattern.compile("^application\\/x-www-form-urlencoded.*");
+        Pattern textPattern = Pattern.compile("^text\\/plain");
 
         final SerializedBody body;
 
@@ -98,6 +109,8 @@ public final class RequestBody {
                 body = new SerializedBody(contentType, BodyPublishers.ofString((String) value));
             } else if (value instanceof byte[]) {
                 body = new SerializedBody(contentType, BodyPublishers.ofByteArray((byte[]) value));
+            } else if (value instanceof HttpRequest.BodyPublisher) {
+                body = new SerializedBody(contentType, (HttpRequest.BodyPublisher) value);
             } else {
                 throw new RuntimeException("Unsupported content type " + contentType + " for field " + fieldName);
             }
@@ -128,7 +141,16 @@ public final class RequestBody {
             }
 
             if (metadata.file) {
-                serializeMultipartFile(metadata.name, builder, val);
+                if (val instanceof List || val.getClass().isArray()) {
+                    // Handle file arrays
+                    List<?> arr = Utils.toList(val);
+                    for (Object item : arr) {
+                        serializeMultipartFile(metadata.name + "[]", builder, item);
+                    }
+                } else {
+                    // Handle single file
+                    serializeMultipartFile(metadata.name, builder, val);
+                }
             } else if (metadata.json) {
                 ObjectMapper mapper = JSON.getMapper();
                 String json = mapper.writeValueAsString(val);
@@ -156,7 +178,7 @@ public final class RequestBody {
         }
 
         String fileName = "";
-        byte[] content = null;
+        Object content = null;
 
         Field[] fields = file.getClass().getDeclaredFields();
 
@@ -174,7 +196,7 @@ public final class RequestBody {
             }
 
             if (metadata.content) {
-                content = (byte[]) val;
+                content = val;
             } else {
                 fileName = Utils.valToString(val);
             }
@@ -183,9 +205,22 @@ public final class RequestBody {
         if (fileName.isBlank() || content == null) {
             throw new RuntimeException("Invalid multipart file");
         }
-        byte[] cont = content;
-        builder.addPart(fieldName, () -> new ByteArrayInputStream(cont), fileName,
-                Optional.of("application/octet-stream"));
+        
+        // Detect content type based on file extension
+        String contentType = "application/octet-stream"; // default fallback
+        try {
+            String detectedType = Files.probeContentType(Path.of(fileName));
+            if (detectedType != null && !detectedType.isEmpty()) {
+                contentType = detectedType;
+            }
+        } catch (Exception e) {
+            // If detection fails, use the default fallback
+        }
+        if (content instanceof byte[]) {
+            builder.addPart(fieldName, (byte[]) content, fileName,  contentType);
+        } else {
+            builder.addPart(fieldName, (Blob) content, fileName,  contentType);
+        }
     }
 
     public static SerializedBody serializeFormData(Object value)
@@ -227,6 +262,13 @@ public final class RequestBody {
                 } else {
                     switch (Types.getType(val.getClass())) {
                     case OBJECT: {
+                        // Check if it's an enum wrapper first
+                        Optional<?> unwrappedEnumValue = Reflections.getUnwrappedEnumValue(val.getClass(), val);
+                        if (unwrappedEnumValue.isPresent()) {
+                            params.add(new NameValue(metadata.name, Utils.valToString(unwrappedEnumValue.get())));
+                            break;
+                        }
+                        
                         if (!Utils.allowIntrospection(val.getClass())) {
                             params.add(new NameValue(metadata.name, String.valueOf(val)));
                         } else {

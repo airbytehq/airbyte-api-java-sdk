@@ -3,16 +3,21 @@
  */
 package com.airbyte.api.models.operations;
 
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
+import com.airbyte.api.SDKConfiguration;
+import com.airbyte.api.operations.ListWorkspaces;
+import com.airbyte.api.utils.Headers;
 import com.airbyte.api.utils.Utils;
-import java.lang.Exception;
 
 public class ListWorkspacesRequestBuilder {
 
     private ListWorkspacesRequest request;
-    private final SDKMethodInterfaces.MethodCallListWorkspaces sdk;
+    private final SDKConfiguration sdkConfiguration;
+    private final Headers _headers = new Headers(); 
 
-    public ListWorkspacesRequestBuilder(SDKMethodInterfaces.MethodCallListWorkspaces sdk) {
-        this.sdk = sdk;
+    public ListWorkspacesRequestBuilder(SDKConfiguration sdkConfiguration) {
+        this.sdkConfiguration = sdkConfiguration;
     }
 
     public ListWorkspacesRequestBuilder request(ListWorkspacesRequest request) {
@@ -21,9 +26,11 @@ public class ListWorkspacesRequestBuilder {
         return this;
     }
 
-    public ListWorkspacesResponse call() throws Exception {
+    public ListWorkspacesResponse call() {
+        
+        RequestOperation<ListWorkspacesRequest, ListWorkspacesResponse> operation
+              = new ListWorkspaces.Sync(sdkConfiguration, _headers);
 
-        return sdk.listWorkspaces(
-            request);
+        return operation.handleResponse(operation.doRequest(request));
     }
 }

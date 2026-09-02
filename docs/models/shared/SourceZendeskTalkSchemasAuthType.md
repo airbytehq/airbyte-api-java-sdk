@@ -1,5 +1,13 @@
 # SourceZendeskTalkSchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZendeskTalkSchemasAuthType;
+
+SourceZendeskTalkSchemasAuthType value = SourceZendeskTalkSchemasAuthType.API_TOKEN;
+```
+
 
 ## Values
 

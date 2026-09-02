@@ -3,7 +3,8 @@
  */
 package com.airbyte.api;
 
-import com.airbyte.api.models.errors.SDKError;
+import static com.airbyte.api.operations.Operations.RequestOperation;
+
 import com.airbyte.api.models.operations.CreateSourceRequestBuilder;
 import com.airbyte.api.models.operations.CreateSourceResponse;
 import com.airbyte.api.models.operations.DeleteSourceRequest;
@@ -23,198 +24,78 @@ import com.airbyte.api.models.operations.PatchSourceResponse;
 import com.airbyte.api.models.operations.PutSourceRequest;
 import com.airbyte.api.models.operations.PutSourceRequestBuilder;
 import com.airbyte.api.models.operations.PutSourceResponse;
-import com.airbyte.api.models.operations.SDKMethodInterfaces.*;
 import com.airbyte.api.models.shared.InitiateOauthRequest;
 import com.airbyte.api.models.shared.SourceCreateRequest;
-import com.airbyte.api.models.shared.SourceResponse;
-import com.airbyte.api.models.shared.SourcesResponse;
-import com.airbyte.api.utils.HTTPClient;
-import com.airbyte.api.utils.HTTPRequest;
-import com.airbyte.api.utils.Hook.AfterErrorContextImpl;
-import com.airbyte.api.utils.Hook.AfterSuccessContextImpl;
-import com.airbyte.api.utils.Hook.BeforeRequestContextImpl;
-import com.airbyte.api.utils.SerializedBody;
-import com.airbyte.api.utils.Utils.JsonShape;
-import com.airbyte.api.utils.Utils;
-import com.fasterxml.jackson.core.type.TypeReference;
-import java.io.InputStream;
-import java.lang.Exception;
-import java.lang.Object;
-import java.lang.String;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.List;
+import com.airbyte.api.operations.CreateSource;
+import com.airbyte.api.operations.DeleteSource;
+import com.airbyte.api.operations.GetSource;
+import com.airbyte.api.operations.InitiateOAuth;
+import com.airbyte.api.operations.ListSources;
+import com.airbyte.api.operations.PatchSource;
+import com.airbyte.api.operations.PutSource;
+import com.airbyte.api.utils.Headers;
 import java.util.Optional;
 
-public class Sources implements
-            MethodCallCreateSource,
-            MethodCallDeleteSource,
-            MethodCallGetSource,
-            MethodCallInitiateOAuth,
-            MethodCallListSources,
-            MethodCallPatchSource,
-            MethodCallPutSource {
 
+public class Sources {
+    private static final Headers _headers = Headers.EMPTY;
     private final SDKConfiguration sdkConfiguration;
+    private final AsyncSources asyncSDK;
 
     Sources(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.asyncSDK = new AsyncSources(this, sdkConfiguration);
     }
 
+    /**
+     * Switches to the async SDK.
+     * 
+     * @return The async SDK
+     */
+    public AsyncSources async() {
+        return asyncSDK;
+    }
 
     /**
      * Create a source
      * 
-     * <p>Creates a source given a name, workspace id, and a json blob containing the configuration for the source.
+     * <p>Creates a source given a name, workspace id, and a json blob containing the configuration for the
+     * source.
      * 
      * @return The call builder
      */
     public CreateSourceRequestBuilder createSource() {
-        return new CreateSourceRequestBuilder(this);
+        return new CreateSourceRequestBuilder(sdkConfiguration);
     }
 
     /**
      * Create a source
      * 
-     * <p>Creates a source given a name, workspace id, and a json blob containing the configuration for the source.
+     * <p>Creates a source given a name, workspace id, and a json blob containing the configuration for the
+     * source.
      * 
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateSourceResponse createSourceDirect() throws Exception {
+    public CreateSourceResponse createSourceDirect() {
         return createSource(Optional.empty());
     }
-    
+
     /**
      * Create a source
      * 
-     * <p>Creates a source given a name, workspace id, and a json blob containing the configuration for the source.
+     * <p>Creates a source given a name, workspace id, and a json blob containing the configuration for the
+     * source.
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public CreateSourceResponse createSource(
-            Optional<? extends SourceCreateRequest> request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/sources");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<Optional<? extends SourceCreateRequest>>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "createSource", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "createSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "createSource",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "createSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        CreateSourceResponse.Builder _resBuilder = 
-            CreateSourceResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        CreateSourceResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                SourceResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<SourceResponse>() {});
-                _res.withSourceResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public CreateSourceResponse createSource(Optional<? extends SourceCreateRequest> request) {
+        RequestOperation<Optional<? extends SourceCreateRequest>, CreateSourceResponse> operation
+              = new CreateSource.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
-
-
 
     /**
      * Delete a Source
@@ -222,118 +103,21 @@ public class Sources implements
      * @return The call builder
      */
     public DeleteSourceRequestBuilder deleteSource() {
-        return new DeleteSourceRequestBuilder(this);
+        return new DeleteSourceRequestBuilder(sdkConfiguration);
     }
 
     /**
      * Delete a Source
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public DeleteSourceResponse deleteSource(
-            DeleteSourceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                DeleteSourceRequest.class,
-                _baseUrl,
-                "/sources/{sourceId}",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "DELETE");
-        _req.addHeader("Accept", "*/*")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "deleteSource", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "deleteSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "deleteSource",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "deleteSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        DeleteSourceResponse.Builder _resBuilder = 
-            DeleteSourceResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        DeleteSourceResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "204")) {
-            // no content 
-            return _res;
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public DeleteSourceResponse deleteSource(DeleteSourceRequest request) {
+        RequestOperation<DeleteSourceRequest, DeleteSourceResponse> operation
+              = new DeleteSource.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
-
-
 
     /**
      * Get Source details
@@ -341,148 +125,38 @@ public class Sources implements
      * @return The call builder
      */
     public GetSourceRequestBuilder getSource() {
-        return new GetSourceRequestBuilder(this);
+        return new GetSourceRequestBuilder(sdkConfiguration);
     }
 
     /**
      * Get Source details
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public GetSourceResponse getSource(
-            GetSourceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                GetSourceRequest.class,
-                _baseUrl,
-                "/sources/{sourceId}",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                GetSourceRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "getSource", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "getSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "getSource",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "getSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        GetSourceResponse.Builder _resBuilder = 
-            GetSourceResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        GetSourceResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                SourceResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<SourceResponse>() {});
-                _res.withSourceResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public GetSourceResponse getSource(GetSourceRequest request) {
+        RequestOperation<GetSourceRequest, GetSourceResponse> operation
+              = new GetSource.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
-
-
 
     /**
      * Initiate OAuth for a source
      * 
      * <p>Given a source ID, workspace ID, and redirect URL, initiates OAuth for the source.
      * 
-     * <p>This returns a fully formed URL for performing user authentication against the relevant source identity provider (IdP). Once authentication has been completed, the IdP will redirect to an Airbyte endpoint which will save the access and refresh tokens off as a secret and return the secret ID to the redirect URL specified in the `secret_id` query string parameter.
+     * <p>This returns a fully formed URL for performing user authentication against the relevant source
+     * identity provider (IdP). Once authentication has been completed, the IdP will redirect to an Airbyte
+     * endpoint which will save the access and refresh tokens off as a secret and return the secret ID to
+     * the redirect URL specified in the `secret_id` query string parameter.
      * 
      * <p>That secret ID can be used to create a source with credentials in place of actual tokens.
      * 
      * @return The call builder
      */
     public InitiateOAuthRequestBuilder initiateOAuth() {
-        return new InitiateOAuthRequestBuilder(this);
+        return new InitiateOAuthRequestBuilder(sdkConfiguration);
     }
 
     /**
@@ -490,127 +164,22 @@ public class Sources implements
      * 
      * <p>Given a source ID, workspace ID, and redirect URL, initiates OAuth for the source.
      * 
-     * <p>This returns a fully formed URL for performing user authentication against the relevant source identity provider (IdP). Once authentication has been completed, the IdP will redirect to an Airbyte endpoint which will save the access and refresh tokens off as a secret and return the secret ID to the redirect URL specified in the `secret_id` query string parameter.
+     * <p>This returns a fully formed URL for performing user authentication against the relevant source
+     * identity provider (IdP). Once authentication has been completed, the IdP will redirect to an Airbyte
+     * endpoint which will save the access and refresh tokens off as a secret and return the secret ID to
+     * the redirect URL specified in the `secret_id` query string parameter.
      * 
      * <p>That secret ID can be used to create a source with credentials in place of actual tokens.
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public InitiateOAuthResponse initiateOAuth(
-            InitiateOauthRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/sources/initiateOAuth");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "POST");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<InitiateOauthRequest>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "request",
-                "json",
-                false);
-        if (_serializedRequestBody == null) {
-            throw new Exception("Request body is required");
-        }
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "*/*")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "initiateOAuth", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "initiateOAuth",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "initiateOAuth",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "initiateOAuth",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        InitiateOAuthResponse.Builder _resBuilder = 
-            InitiateOAuthResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        InitiateOAuthResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            // no content 
-            return _res;
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "400", "403", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public InitiateOAuthResponse initiateOAuth(InitiateOauthRequest request) {
+        RequestOperation<InitiateOauthRequest, InitiateOAuthResponse> operation
+              = new InitiateOAuth.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
-
-
 
     /**
      * List sources
@@ -618,132 +187,21 @@ public class Sources implements
      * @return The call builder
      */
     public ListSourcesRequestBuilder listSources() {
-        return new ListSourcesRequestBuilder(this);
+        return new ListSourcesRequestBuilder(sdkConfiguration);
     }
 
     /**
      * List sources
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public ListSourcesResponse listSources(
-            ListSourcesRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                _baseUrl,
-                "/sources");
-        
-        HTTPRequest _req = new HTTPRequest(_url, "GET");
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-
-        _req.addQueryParams(Utils.getQueryParams(
-                ListSourcesRequest.class,
-                request, 
-                null));
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "listSources", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "listSources",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "listSources",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "listSources",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        ListSourcesResponse.Builder _resBuilder = 
-            ListSourcesResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        ListSourcesResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                SourcesResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<SourcesResponse>() {});
-                _res.withSourcesResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public ListSourcesResponse listSources(ListSourcesRequest request) {
+        RequestOperation<ListSourcesRequest, ListSourcesResponse> operation
+              = new ListSources.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
-
-
 
     /**
      * Update a Source
@@ -751,139 +209,21 @@ public class Sources implements
      * @return The call builder
      */
     public PatchSourceRequestBuilder patchSource() {
-        return new PatchSourceRequestBuilder(this);
+        return new PatchSourceRequestBuilder(sdkConfiguration);
     }
 
     /**
      * Update a Source
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public PatchSourceResponse patchSource(
-            PatchSourceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                PatchSourceRequest.class,
-                _baseUrl,
-                "/sources/{sourceId}",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "PATCH");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<PatchSourceRequest>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "sourcePatchRequest",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "patchSource", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "patchSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "patchSource",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "patchSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PatchSourceResponse.Builder _resBuilder = 
-            PatchSourceResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PatchSourceResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                SourceResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<SourceResponse>() {});
-                _res.withSourceResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public PatchSourceResponse patchSource(PatchSourceRequest request) {
+        RequestOperation<PatchSourceRequest, PatchSourceResponse> operation
+              = new PatchSource.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
-
-
 
     /**
      * Update a Source and fully overwrite it
@@ -891,136 +231,20 @@ public class Sources implements
      * @return The call builder
      */
     public PutSourceRequestBuilder putSource() {
-        return new PutSourceRequestBuilder(this);
+        return new PutSourceRequestBuilder(sdkConfiguration);
     }
 
     /**
      * Update a Source and fully overwrite it
      * 
-     * @param request The request object containing all of the parameters for the API call.
+     * @param request The request object containing all the parameters for the API call.
      * @return The response from the API call
-     * @throws Exception if the API call fails
+     * @throws RuntimeException subclass if the API call fails
      */
-    public PutSourceResponse putSource(
-            PutSourceRequest request) throws Exception {
-        String _baseUrl = this.sdkConfiguration.serverUrl;
-        String _url = Utils.generateURL(
-                PutSourceRequest.class,
-                _baseUrl,
-                "/sources/{sourceId}",
-                request, null);
-        
-        HTTPRequest _req = new HTTPRequest(_url, "PUT");
-        Object _convertedRequest = Utils.convertToShape(
-                request, 
-                JsonShape.DEFAULT,
-                new TypeReference<PutSourceRequest>() {});
-        SerializedBody _serializedRequestBody = Utils.serializeRequestBody(
-                _convertedRequest, 
-                "sourcePutRequest",
-                "json",
-                false);
-        _req.setBody(Optional.ofNullable(_serializedRequestBody));
-        _req.addHeader("Accept", "application/json")
-            .addHeader("user-agent", 
-                SDKConfiguration.USER_AGENT);
-        
-        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
-        Utils.configureSecurity(_req,  
-                this.sdkConfiguration.securitySource.getSecurity());
-        HTTPClient _client = this.sdkConfiguration.defaultClient;
-        HttpRequest _r = 
-            sdkConfiguration.hooks()
-               .beforeRequest(
-                  new BeforeRequestContextImpl(
-                      _baseUrl,
-                      "putSource", 
-                      Optional.of(List.of()), 
-                      _hookSecuritySource),
-                  _req.build());
-        HttpResponse<InputStream> _httpRes;
-        try {
-            _httpRes = _client.send(_r);
-            if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX", "5XX")) {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "putSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource),
-                        Optional.of(_httpRes),
-                        Optional.empty());
-            } else {
-                _httpRes = sdkConfiguration.hooks()
-                    .afterSuccess(
-                        new AfterSuccessContextImpl(
-                            _baseUrl,
-                            "putSource",
-                            Optional.of(List.of()), 
-                            _hookSecuritySource),
-                         _httpRes);
-            }
-        } catch (Exception _e) {
-            _httpRes = sdkConfiguration.hooks()
-                    .afterError(
-                        new AfterErrorContextImpl(
-                            _baseUrl,
-                            "putSource",
-                            Optional.of(List.of()),
-                            _hookSecuritySource), 
-                        Optional.empty(),
-                        Optional.of(_e));
-        }
-        String _contentType = _httpRes
-            .headers()
-            .firstValue("Content-Type")
-            .orElse("application/octet-stream");
-        PutSourceResponse.Builder _resBuilder = 
-            PutSourceResponse
-                .builder()
-                .contentType(_contentType)
-                .statusCode(_httpRes.statusCode())
-                .rawResponse(_httpRes);
-
-        PutSourceResponse _res = _resBuilder.build();
-        
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
-            if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                SourceResponse _out = Utils.mapper().readValue(
-                    Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<SourceResponse>() {});
-                _res.withSourceResponse(Optional.ofNullable(_out));
-                return _res;
-            } else {
-                throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "Unexpected content-type received: " + _contentType, 
-                    Utils.extractByteArrayFromBody(_httpRes));
-            }
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "403", "404", "4XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
-            // no content 
-            throw new SDKError(
-                    _httpRes, 
-                    _httpRes.statusCode(), 
-                    "API error occurred", 
-                    Utils.extractByteArrayFromBody(_httpRes));
-        }
-        throw new SDKError(
-            _httpRes, 
-            _httpRes.statusCode(), 
-            "Unexpected status code received: " + _httpRes.statusCode(), 
-            Utils.extractByteArrayFromBody(_httpRes));
+    public PutSourceResponse putSource(PutSourceRequest request) {
+        RequestOperation<PutSourceRequest, PutSourceResponse> operation
+              = new PutSource.Sync(sdkConfiguration, _headers);
+        return operation.handleResponse(operation.doRequest(request));
     }
 
 }

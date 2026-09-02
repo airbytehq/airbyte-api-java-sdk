@@ -14,7 +14,7 @@ public enum Onepagecrm {
     @JsonValue
     private final String value;
 
-    private Onepagecrm(String value) {
+    Onepagecrm(String value) {
         this.value = value;
     }
     

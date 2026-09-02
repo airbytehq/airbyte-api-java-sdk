@@ -1,5 +1,13 @@
 # ServiceDetails
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.ServiceDetails;
+
+ServiceDetails value = ServiceDetails.ESCALATION_POLICIES;
+```
+
 
 ## Values
 

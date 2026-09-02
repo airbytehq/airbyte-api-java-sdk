@@ -14,7 +14,7 @@ public enum DestinationYellowbrickSchemasSSLModeSSLModes5Mode {
     @JsonValue
     private final String value;
 
-    private DestinationYellowbrickSchemasSSLModeSSLModes5Mode(String value) {
+    DestinationYellowbrickSchemasSSLModeSSLModes5Mode(String value) {
         this.value = value;
     }
     

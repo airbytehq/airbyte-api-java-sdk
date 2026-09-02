@@ -14,7 +14,7 @@ public enum OptionTitle {
     @JsonValue
     private final String value;
 
-    private OptionTitle(String value) {
+    OptionTitle(String value) {
         this.value = value;
     }
     

@@ -10,12 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceId")
     private String workspaceId;
@@ -40,9 +41,10 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public CreateOrUpdateWorkspaceOAuthCredentialsRequest withWorkspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest) {
         Utils.checkNotNull(workspaceOAuthCredentialsRequest, "workspaceOAuthCredentialsRequest");
@@ -56,7 +58,6 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,15 +68,14 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
         }
         CreateOrUpdateWorkspaceOAuthCredentialsRequest other = (CreateOrUpdateWorkspaceOAuthCredentialsRequest) o;
         return 
-            Objects.deepEquals(this.workspaceOAuthCredentialsRequest, other.workspaceOAuthCredentialsRequest) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.workspaceOAuthCredentialsRequest, other.workspaceOAuthCredentialsRequest) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            workspaceOAuthCredentialsRequest,
-            workspaceId);
+        return Utils.enhancedHash(
+            workspaceOAuthCredentialsRequest, workspaceId);
     }
     
     @Override
@@ -84,16 +84,18 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
                 "workspaceOAuthCredentialsRequest", workspaceOAuthCredentialsRequest,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest;
- 
+
         private String workspaceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder workspaceOAuthCredentialsRequest(WorkspaceOAuthCredentialsRequest workspaceOAuthCredentialsRequest) {
             Utils.checkNotNull(workspaceOAuthCredentialsRequest, "workspaceOAuthCredentialsRequest");
@@ -101,16 +103,18 @@ public class CreateOrUpdateWorkspaceOAuthCredentialsRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public CreateOrUpdateWorkspaceOAuthCredentialsRequest build() {
+
             return new CreateOrUpdateWorkspaceOAuthCredentialsRequest(
-                workspaceOAuthCredentialsRequest,
-                workspaceId);
+                workspaceOAuthCredentialsRequest, workspaceId);
         }
+
     }
 }

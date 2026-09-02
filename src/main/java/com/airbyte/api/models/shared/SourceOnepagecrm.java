@@ -13,17 +13,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceOnepagecrm {
 
+public class SourceOnepagecrm {
     /**
      * Enter your API Key of your API app
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("password")
     private Optional<String> password;
+
 
     @JsonProperty("sourceType")
     private Onepagecrm sourceType;
@@ -71,9 +71,10 @@ public class SourceOnepagecrm {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Enter your API Key of your API app
@@ -83,6 +84,7 @@ public class SourceOnepagecrm {
         this.password = Optional.ofNullable(password);
         return this;
     }
+
 
     /**
      * Enter your API Key of your API app
@@ -102,7 +104,6 @@ public class SourceOnepagecrm {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +114,15 @@ public class SourceOnepagecrm {
         }
         SourceOnepagecrm other = (SourceOnepagecrm) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            sourceType,
-            username);
+        return Utils.enhancedHash(
+            password, sourceType, username);
     }
     
     @Override
@@ -133,16 +132,18 @@ public class SourceOnepagecrm {
                 "sourceType", sourceType,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Enter your API Key of your API app
@@ -162,6 +163,7 @@ public class SourceOnepagecrm {
             return this;
         }
 
+
         /**
          * Enter the user ID of your API app
          */
@@ -170,12 +172,13 @@ public class SourceOnepagecrm {
             this.username = username;
             return this;
         }
-        
+
         public SourceOnepagecrm build() {
+
             return new SourceOnepagecrm(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<Onepagecrm> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

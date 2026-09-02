@@ -12,22 +12,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationPutRequest {
 
+public class DestinationPutRequest {
     /**
      * The values required to configure the destination.
      */
     @JsonProperty("configuration")
     private DestinationConfiguration configuration;
 
+
     @JsonProperty("name")
     private String name;
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resourceAllocation")
@@ -66,7 +71,12 @@ public class DestinationPutRequest {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -74,9 +84,10 @@ public class DestinationPutRequest {
         return (Optional<ScopedResourceRequirements>) resourceAllocation;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the destination.
@@ -94,7 +105,12 @@ public class DestinationPutRequest {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public DestinationPutRequest withResourceAllocation(ScopedResourceRequirements resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -102,8 +118,14 @@ public class DestinationPutRequest {
         return this;
     }
 
+
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public DestinationPutRequest withResourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -111,7 +133,6 @@ public class DestinationPutRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -122,17 +143,15 @@ public class DestinationPutRequest {
         }
         DestinationPutRequest other = (DestinationPutRequest) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            name,
-            resourceAllocation);
+        return Utils.enhancedHash(
+            configuration, name, resourceAllocation);
     }
     
     @Override
@@ -142,18 +161,20 @@ public class DestinationPutRequest {
                 "name", name,
                 "resourceAllocation", resourceAllocation);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationConfiguration configuration;
- 
+
         private String name;
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the destination.
@@ -164,14 +185,21 @@ public class DestinationPutRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
 
+
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(ScopedResourceRequirements resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -180,19 +208,24 @@ public class DestinationPutRequest {
         }
 
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
             this.resourceAllocation = resourceAllocation;
             return this;
         }
-        
+
         public DestinationPutRequest build() {
+
             return new DestinationPutRequest(
-                configuration,
-                name,
-                resourceAllocation);
+                configuration, name, resourceAllocation);
         }
+
     }
 }

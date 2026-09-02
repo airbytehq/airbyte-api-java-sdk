@@ -15,19 +15,21 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceExchangeRates {
 
+public class SourceExchangeRates {
     /**
-     * Your API Key. See &lt;a href="https://apilayer.com/marketplace/exchangerates_data-api"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Key. See <a href="https://apilayer.com/marketplace/exchangerates_data-api">here</a>. The
+     * key is case sensitive.
      */
     @JsonProperty("access_key")
     private String accessKey;
 
     /**
-     * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
+     * ISO reference currency. See <a
+     * href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">here</a>.
+     * Free plan doesn't support Source Currency Switching, default base currency is EUR
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("base")
@@ -39,6 +41,7 @@ public class SourceExchangeRates {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("ignore_weekends")
     private Optional<Boolean> ignoreWeekends;
+
 
     @JsonProperty("sourceType")
     private ExchangeRates sourceType;
@@ -69,11 +72,13 @@ public class SourceExchangeRates {
     public SourceExchangeRates(
             String accessKey,
             LocalDate startDate) {
-        this(accessKey, Optional.empty(), Optional.empty(), startDate);
+        this(accessKey, Optional.empty(), Optional.empty(),
+            startDate);
     }
 
     /**
-     * Your API Key. See &lt;a href="https://apilayer.com/marketplace/exchangerates_data-api"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Key. See <a href="https://apilayer.com/marketplace/exchangerates_data-api">here</a>. The
+     * key is case sensitive.
      */
     @JsonIgnore
     public String accessKey() {
@@ -81,7 +86,9 @@ public class SourceExchangeRates {
     }
 
     /**
-     * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
+     * ISO reference currency. See <a
+     * href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">here</a>.
+     * Free plan doesn't support Source Currency Switching, default base currency is EUR
      */
     @JsonIgnore
     public Optional<String> base() {
@@ -109,12 +116,14 @@ public class SourceExchangeRates {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Your API Key. See &lt;a href="https://apilayer.com/marketplace/exchangerates_data-api"&gt;here&lt;/a&gt;. The key is case sensitive.
+     * Your API Key. See <a href="https://apilayer.com/marketplace/exchangerates_data-api">here</a>. The
+     * key is case sensitive.
      */
     public SourceExchangeRates withAccessKey(String accessKey) {
         Utils.checkNotNull(accessKey, "accessKey");
@@ -123,7 +132,9 @@ public class SourceExchangeRates {
     }
 
     /**
-     * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
+     * ISO reference currency. See <a
+     * href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">here</a>.
+     * Free plan doesn't support Source Currency Switching, default base currency is EUR
      */
     public SourceExchangeRates withBase(String base) {
         Utils.checkNotNull(base, "base");
@@ -131,8 +142,11 @@ public class SourceExchangeRates {
         return this;
     }
 
+
     /**
-     * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
+     * ISO reference currency. See <a
+     * href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">here</a>.
+     * Free plan doesn't support Source Currency Switching, default base currency is EUR
      */
     public SourceExchangeRates withBase(Optional<String> base) {
         Utils.checkNotNull(base, "base");
@@ -148,6 +162,7 @@ public class SourceExchangeRates {
         this.ignoreWeekends = Optional.ofNullable(ignoreWeekends);
         return this;
     }
+
 
     /**
      * Ignore weekends? (Exchanges don't run on weekends)
@@ -167,7 +182,6 @@ public class SourceExchangeRates {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -178,21 +192,18 @@ public class SourceExchangeRates {
         }
         SourceExchangeRates other = (SourceExchangeRates) o;
         return 
-            Objects.deepEquals(this.accessKey, other.accessKey) &&
-            Objects.deepEquals(this.base, other.base) &&
-            Objects.deepEquals(this.ignoreWeekends, other.ignoreWeekends) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accessKey, other.accessKey) &&
+            Utils.enhancedDeepEquals(this.base, other.base) &&
+            Utils.enhancedDeepEquals(this.ignoreWeekends, other.ignoreWeekends) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKey,
-            base,
-            ignoreWeekends,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            accessKey, base, ignoreWeekends,
+            sourceType, startDate);
     }
     
     @Override
@@ -204,23 +215,26 @@ public class SourceExchangeRates {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKey;
- 
+
         private Optional<String> base = Optional.empty();
- 
+
         private Optional<Boolean> ignoreWeekends;
- 
+
         private LocalDate startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Your API Key. See &lt;a href="https://apilayer.com/marketplace/exchangerates_data-api"&gt;here&lt;/a&gt;. The key is case sensitive.
+         * Your API Key. See <a href="https://apilayer.com/marketplace/exchangerates_data-api">here</a>. The
+         * key is case sensitive.
          */
         public Builder accessKey(String accessKey) {
             Utils.checkNotNull(accessKey, "accessKey");
@@ -228,8 +242,11 @@ public class SourceExchangeRates {
             return this;
         }
 
+
         /**
-         * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
+         * ISO reference currency. See <a
+         * href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">here</a>.
+         * Free plan doesn't support Source Currency Switching, default base currency is EUR
          */
         public Builder base(String base) {
             Utils.checkNotNull(base, "base");
@@ -238,13 +255,16 @@ public class SourceExchangeRates {
         }
 
         /**
-         * ISO reference currency. See &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"&gt;here&lt;/a&gt;. Free plan doesn't support Source Currency Switching, default base currency is EUR
+         * ISO reference currency. See <a
+         * href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">here</a>.
+         * Free plan doesn't support Source Currency Switching, default base currency is EUR
          */
         public Builder base(Optional<String> base) {
             Utils.checkNotNull(base, "base");
             this.base = base;
             return this;
         }
+
 
         /**
          * Ignore weekends? (Exchanges don't run on weekends)
@@ -264,6 +284,7 @@ public class SourceExchangeRates {
             return this;
         }
 
+
         /**
          * Start getting data from that date.
          */
@@ -272,17 +293,17 @@ public class SourceExchangeRates {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceExchangeRates build() {
             if (ignoreWeekends == null) {
                 ignoreWeekends = _SINGLETON_VALUE_IgnoreWeekends.value();
             }
+
             return new SourceExchangeRates(
-                accessKey,
-                base,
-                ignoreWeekends,
+                accessKey, base, ignoreWeekends,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IgnoreWeekends =
                 new LazySingletonValue<>(

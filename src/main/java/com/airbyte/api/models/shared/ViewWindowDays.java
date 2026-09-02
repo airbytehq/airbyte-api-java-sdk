@@ -23,7 +23,7 @@ public enum ViewWindowDays {
     @JsonValue
     private final long value;
 
-    private ViewWindowDays(long value) {
+    ViewWindowDays(long value) {
         this.value = value;
     }
     

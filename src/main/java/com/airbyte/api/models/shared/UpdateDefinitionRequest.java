@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class UpdateDefinitionRequest {
 
     @JsonProperty("dockerImageTag")
     private String dockerImageTag;
+
 
     @JsonProperty("name")
     private String name;
@@ -39,9 +40,10 @@ public class UpdateDefinitionRequest {
         return name;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public UpdateDefinitionRequest withDockerImageTag(String dockerImageTag) {
         Utils.checkNotNull(dockerImageTag, "dockerImageTag");
@@ -55,7 +57,6 @@ public class UpdateDefinitionRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class UpdateDefinitionRequest {
         }
         UpdateDefinitionRequest other = (UpdateDefinitionRequest) o;
         return 
-            Objects.deepEquals(this.dockerImageTag, other.dockerImageTag) &&
-            Objects.deepEquals(this.name, other.name);
+            Utils.enhancedDeepEquals(this.dockerImageTag, other.dockerImageTag) &&
+            Utils.enhancedDeepEquals(this.name, other.name);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            dockerImageTag,
-            name);
+        return Utils.enhancedHash(
+            dockerImageTag, name);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class UpdateDefinitionRequest {
                 "dockerImageTag", dockerImageTag,
                 "name", name);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String dockerImageTag;
- 
+
         private String name;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder dockerImageTag(String dockerImageTag) {
             Utils.checkNotNull(dockerImageTag, "dockerImageTag");
@@ -100,16 +102,18 @@ public class UpdateDefinitionRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = name;
             return this;
         }
-        
+
         public UpdateDefinitionRequest build() {
+
             return new UpdateDefinitionRequest(
-                dockerImageTag,
-                name);
+                dockerImageTag, name);
         }
+
     }
 }

@@ -17,13 +17,15 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSapHanaEnterprise {
 
+public class SourceSapHanaEnterprise {
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("check_privileges")
@@ -50,10 +52,26 @@ public class SourceSapHanaEnterprise {
     private SourceSapHanaEnterpriseUpdateMethod cursor;
 
     /**
+     * The name of the tenant database to connect to. This is required for multi-tenant SAP HANA systems.
+     * For single-tenant systems, this can be left empty.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("database")
+    private Optional<String> database;
+
+    /**
      * The encryption method with is used when communicating with the database.
      */
     @JsonProperty("encryption")
     private SourceSapHanaEnterpriseEncryption encryption;
+
+    /**
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("filters")
+    private Optional<? extends List<SourceSapHanaEnterpriseTableFilter>> filters;
 
     /**
      * Hostname of the database.
@@ -62,7 +80,9 @@ public class SourceSapHanaEnterprise {
     private String host;
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("jdbc_url_params")
@@ -77,8 +97,8 @@ public class SourceSapHanaEnterprise {
 
     /**
      * Port of the database.
-     * SapHana Corporations recommends the following port numbers:
-     * 443 - Default listening port for SAP HANA cloud client connections to the listener.
+     * SAP recommends the following port numbers:
+     * 443 - Default listening port for SAP HANA Cloud client connections to the listener.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("port")
@@ -91,11 +111,13 @@ public class SourceSapHanaEnterprise {
     @JsonProperty("schemas")
     private Optional<? extends List<String>> schemas;
 
+
     @JsonProperty("sourceType")
     private SapHanaEnterprise sourceType;
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonProperty("tunnel_method")
     private SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod;
@@ -112,7 +134,9 @@ public class SourceSapHanaEnterprise {
             @JsonProperty("checkpoint_target_interval_seconds") Optional<Long> checkpointTargetIntervalSeconds,
             @JsonProperty("concurrency") Optional<Long> concurrency,
             @JsonProperty("cursor") SourceSapHanaEnterpriseUpdateMethod cursor,
+            @JsonProperty("database") Optional<String> database,
             @JsonProperty("encryption") SourceSapHanaEnterpriseEncryption encryption,
+            @JsonProperty("filters") Optional<? extends List<SourceSapHanaEnterpriseTableFilter>> filters,
             @JsonProperty("host") String host,
             @JsonProperty("jdbc_url_params") Optional<String> jdbcUrlParams,
             @JsonProperty("password") Optional<String> password,
@@ -124,7 +148,9 @@ public class SourceSapHanaEnterprise {
         Utils.checkNotNull(checkpointTargetIntervalSeconds, "checkpointTargetIntervalSeconds");
         Utils.checkNotNull(concurrency, "concurrency");
         Utils.checkNotNull(cursor, "cursor");
+        Utils.checkNotNull(database, "database");
         Utils.checkNotNull(encryption, "encryption");
+        Utils.checkNotNull(filters, "filters");
         Utils.checkNotNull(host, "host");
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
         Utils.checkNotNull(password, "password");
@@ -136,7 +162,9 @@ public class SourceSapHanaEnterprise {
         this.checkpointTargetIntervalSeconds = checkpointTargetIntervalSeconds;
         this.concurrency = concurrency;
         this.cursor = cursor;
+        this.database = database;
         this.encryption = encryption;
+        this.filters = filters;
         this.host = host;
         this.jdbcUrlParams = jdbcUrlParams;
         this.password = password;
@@ -153,11 +181,18 @@ public class SourceSapHanaEnterprise {
             String host,
             SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod,
             String username) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), cursor, encryption, host, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), tunnelMethod, username);
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            cursor, Optional.empty(), encryption,
+            Optional.empty(), host, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            tunnelMethod, username);
     }
 
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     @JsonIgnore
     public Optional<Boolean> checkPrivileges() {
@@ -189,11 +224,30 @@ public class SourceSapHanaEnterprise {
     }
 
     /**
+     * The name of the tenant database to connect to. This is required for multi-tenant SAP HANA systems.
+     * For single-tenant systems, this can be left empty.
+     */
+    @JsonIgnore
+    public Optional<String> database() {
+        return database;
+    }
+
+    /**
      * The encryption method with is used when communicating with the database.
      */
     @JsonIgnore
     public SourceSapHanaEnterpriseEncryption encryption() {
         return encryption;
+    }
+
+    /**
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<SourceSapHanaEnterpriseTableFilter>> filters() {
+        return (Optional<List<SourceSapHanaEnterpriseTableFilter>>) filters;
     }
 
     /**
@@ -205,7 +259,9 @@ public class SourceSapHanaEnterprise {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     @JsonIgnore
     public Optional<String> jdbcUrlParams() {
@@ -222,8 +278,8 @@ public class SourceSapHanaEnterprise {
 
     /**
      * Port of the database.
-     * SapHana Corporations recommends the following port numbers:
-     * 443 - Default listening port for SAP HANA cloud client connections to the listener.
+     * SAP recommends the following port numbers:
+     * 443 - Default listening port for SAP HANA Cloud client connections to the listener.
      */
     @JsonIgnore
     public Optional<Long> port() {
@@ -245,7 +301,8 @@ public class SourceSapHanaEnterprise {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     @JsonIgnore
     public SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod() {
@@ -260,12 +317,16 @@ public class SourceSapHanaEnterprise {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     public SourceSapHanaEnterprise withCheckPrivileges(boolean checkPrivileges) {
         Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -273,8 +334,12 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
-     * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+     * When this feature is enabled, during schema discovery the connector will query each table or view
+     * individually to check access privileges and inaccessible tables, views, or columns therein will be
+     * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+     * might be advisable to disable this feature.
      */
     public SourceSapHanaEnterprise withCheckPrivileges(Optional<Boolean> checkPrivileges) {
         Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -290,6 +355,7 @@ public class SourceSapHanaEnterprise {
         this.checkpointTargetIntervalSeconds = Optional.ofNullable(checkpointTargetIntervalSeconds);
         return this;
     }
+
 
     /**
      * How often (in seconds) a stream should checkpoint, when possible.
@@ -308,6 +374,7 @@ public class SourceSapHanaEnterprise {
         this.concurrency = Optional.ofNullable(concurrency);
         return this;
     }
+
 
     /**
      * Maximum number of concurrent queries to the database.
@@ -328,11 +395,53 @@ public class SourceSapHanaEnterprise {
     }
 
     /**
+     * The name of the tenant database to connect to. This is required for multi-tenant SAP HANA systems.
+     * For single-tenant systems, this can be left empty.
+     */
+    public SourceSapHanaEnterprise withDatabase(String database) {
+        Utils.checkNotNull(database, "database");
+        this.database = Optional.ofNullable(database);
+        return this;
+    }
+
+
+    /**
+     * The name of the tenant database to connect to. This is required for multi-tenant SAP HANA systems.
+     * For single-tenant systems, this can be left empty.
+     */
+    public SourceSapHanaEnterprise withDatabase(Optional<String> database) {
+        Utils.checkNotNull(database, "database");
+        this.database = database;
+        return this;
+    }
+
+    /**
      * The encryption method with is used when communicating with the database.
      */
     public SourceSapHanaEnterprise withEncryption(SourceSapHanaEnterpriseEncryption encryption) {
         Utils.checkNotNull(encryption, "encryption");
         this.encryption = encryption;
+        return this;
+    }
+
+    /**
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    public SourceSapHanaEnterprise withFilters(List<SourceSapHanaEnterpriseTableFilter> filters) {
+        Utils.checkNotNull(filters, "filters");
+        this.filters = Optional.ofNullable(filters);
+        return this;
+    }
+
+
+    /**
+     * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+     * tables in that schema will be synced.
+     */
+    public SourceSapHanaEnterprise withFilters(Optional<? extends List<SourceSapHanaEnterpriseTableFilter>> filters) {
+        Utils.checkNotNull(filters, "filters");
+        this.filters = filters;
         return this;
     }
 
@@ -346,7 +455,9 @@ public class SourceSapHanaEnterprise {
     }
 
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceSapHanaEnterprise withJdbcUrlParams(String jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -354,8 +465,11 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
-     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+     * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+     * 'key=value' pairs separated by the symbol '&amp;'. (example:
+     * key1=value1&amp;key2=value2&amp;key3=value3).
      */
     public SourceSapHanaEnterprise withJdbcUrlParams(Optional<String> jdbcUrlParams) {
         Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -372,6 +486,7 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
      * The password associated with the username.
      */
@@ -383,8 +498,8 @@ public class SourceSapHanaEnterprise {
 
     /**
      * Port of the database.
-     * SapHana Corporations recommends the following port numbers:
-     * 443 - Default listening port for SAP HANA cloud client connections to the listener.
+     * SAP recommends the following port numbers:
+     * 443 - Default listening port for SAP HANA Cloud client connections to the listener.
      */
     public SourceSapHanaEnterprise withPort(long port) {
         Utils.checkNotNull(port, "port");
@@ -392,10 +507,11 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
      * Port of the database.
-     * SapHana Corporations recommends the following port numbers:
-     * 443 - Default listening port for SAP HANA cloud client connections to the listener.
+     * SAP recommends the following port numbers:
+     * 443 - Default listening port for SAP HANA Cloud client connections to the listener.
      */
     public SourceSapHanaEnterprise withPort(Optional<Long> port) {
         Utils.checkNotNull(port, "port");
@@ -412,6 +528,7 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
+
     /**
      * The list of schemas to sync from. Defaults to user. Case sensitive.
      */
@@ -422,7 +539,8 @@ public class SourceSapHanaEnterprise {
     }
 
     /**
-     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+     * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+     * authentication to use.
      */
     public SourceSapHanaEnterprise withTunnelMethod(SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod) {
         Utils.checkNotNull(tunnelMethod, "tunnelMethod");
@@ -439,7 +557,6 @@ public class SourceSapHanaEnterprise {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -450,37 +567,31 @@ public class SourceSapHanaEnterprise {
         }
         SourceSapHanaEnterprise other = (SourceSapHanaEnterprise) o;
         return 
-            Objects.deepEquals(this.checkPrivileges, other.checkPrivileges) &&
-            Objects.deepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
-            Objects.deepEquals(this.concurrency, other.concurrency) &&
-            Objects.deepEquals(this.cursor, other.cursor) &&
-            Objects.deepEquals(this.encryption, other.encryption) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.port, other.port) &&
-            Objects.deepEquals(this.schemas, other.schemas) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.tunnelMethod, other.tunnelMethod) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.checkPrivileges, other.checkPrivileges) &&
+            Utils.enhancedDeepEquals(this.checkpointTargetIntervalSeconds, other.checkpointTargetIntervalSeconds) &&
+            Utils.enhancedDeepEquals(this.concurrency, other.concurrency) &&
+            Utils.enhancedDeepEquals(this.cursor, other.cursor) &&
+            Utils.enhancedDeepEquals(this.database, other.database) &&
+            Utils.enhancedDeepEquals(this.encryption, other.encryption) &&
+            Utils.enhancedDeepEquals(this.filters, other.filters) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.jdbcUrlParams, other.jdbcUrlParams) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.port, other.port) &&
+            Utils.enhancedDeepEquals(this.schemas, other.schemas) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.tunnelMethod, other.tunnelMethod) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            checkPrivileges,
-            checkpointTargetIntervalSeconds,
-            concurrency,
-            cursor,
-            encryption,
-            host,
-            jdbcUrlParams,
-            password,
-            port,
-            schemas,
-            sourceType,
-            tunnelMethod,
-            username);
+        return Utils.enhancedHash(
+            checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+            cursor, database, encryption,
+            filters, host, jdbcUrlParams,
+            password, port, schemas,
+            sourceType, tunnelMethod, username);
     }
     
     @Override
@@ -490,7 +601,9 @@ public class SourceSapHanaEnterprise {
                 "checkpointTargetIntervalSeconds", checkpointTargetIntervalSeconds,
                 "concurrency", concurrency,
                 "cursor", cursor,
+                "database", database,
                 "encryption", encryption,
+                "filters", filters,
                 "host", host,
                 "jdbcUrlParams", jdbcUrlParams,
                 "password", password,
@@ -500,39 +613,48 @@ public class SourceSapHanaEnterprise {
                 "tunnelMethod", tunnelMethod,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> checkPrivileges;
- 
+
         private Optional<Long> checkpointTargetIntervalSeconds;
- 
+
         private Optional<Long> concurrency;
- 
+
         private SourceSapHanaEnterpriseUpdateMethod cursor;
- 
+
+        private Optional<String> database = Optional.empty();
+
         private SourceSapHanaEnterpriseEncryption encryption;
- 
+
+        private Optional<? extends List<SourceSapHanaEnterpriseTableFilter>> filters = Optional.empty();
+
         private String host;
- 
+
         private Optional<String> jdbcUrlParams = Optional.empty();
- 
+
         private Optional<String> password = Optional.empty();
- 
+
         private Optional<Long> port;
- 
+
         private Optional<? extends List<String>> schemas = Optional.empty();
- 
+
         private SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+         * When this feature is enabled, during schema discovery the connector will query each table or view
+         * individually to check access privileges and inaccessible tables, views, or columns therein will be
+         * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+         * might be advisable to disable this feature.
          */
         public Builder checkPrivileges(boolean checkPrivileges) {
             Utils.checkNotNull(checkPrivileges, "checkPrivileges");
@@ -541,13 +663,17 @@ public class SourceSapHanaEnterprise {
         }
 
         /**
-         * When this feature is enabled, during schema discovery the connector will query each table or view individually to check access privileges and inaccessible tables, views, or columns therein will be removed. In large schemas, this might cause schema discovery to take too long, in which case it might be advisable to disable this feature.
+         * When this feature is enabled, during schema discovery the connector will query each table or view
+         * individually to check access privileges and inaccessible tables, views, or columns therein will be
+         * removed. In large schemas, this might cause schema discovery to take too long, in which case it
+         * might be advisable to disable this feature.
          */
         public Builder checkPrivileges(Optional<Boolean> checkPrivileges) {
             Utils.checkNotNull(checkPrivileges, "checkPrivileges");
             this.checkPrivileges = checkPrivileges;
             return this;
         }
+
 
         /**
          * How often (in seconds) a stream should checkpoint, when possible.
@@ -567,6 +693,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * Maximum number of concurrent queries to the database.
          */
@@ -585,6 +712,7 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * Configures how data is extracted from the database.
          */
@@ -593,6 +721,28 @@ public class SourceSapHanaEnterprise {
             this.cursor = cursor;
             return this;
         }
+
+
+        /**
+         * The name of the tenant database to connect to. This is required for multi-tenant SAP HANA systems.
+         * For single-tenant systems, this can be left empty.
+         */
+        public Builder database(String database) {
+            Utils.checkNotNull(database, "database");
+            this.database = Optional.ofNullable(database);
+            return this;
+        }
+
+        /**
+         * The name of the tenant database to connect to. This is required for multi-tenant SAP HANA systems.
+         * For single-tenant systems, this can be left empty.
+         */
+        public Builder database(Optional<String> database) {
+            Utils.checkNotNull(database, "database");
+            this.database = database;
+            return this;
+        }
+
 
         /**
          * The encryption method with is used when communicating with the database.
@@ -603,6 +753,28 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
+        /**
+         * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+         * tables in that schema will be synced.
+         */
+        public Builder filters(List<SourceSapHanaEnterpriseTableFilter> filters) {
+            Utils.checkNotNull(filters, "filters");
+            this.filters = Optional.ofNullable(filters);
+            return this;
+        }
+
+        /**
+         * Inclusion filters for table selection per schema. If no filters are specified for a schema, all
+         * tables in that schema will be synced.
+         */
+        public Builder filters(Optional<? extends List<SourceSapHanaEnterpriseTableFilter>> filters) {
+            Utils.checkNotNull(filters, "filters");
+            this.filters = filters;
+            return this;
+        }
+
+
         /**
          * Hostname of the database.
          */
@@ -612,8 +784,11 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(String jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
@@ -622,13 +797,16 @@ public class SourceSapHanaEnterprise {
         }
 
         /**
-         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as 'key=value' pairs separated by the symbol '&amp;'. (example: key1=value1&amp;key2=value2&amp;key3=value3).
+         * Additional properties to pass to the JDBC URL string when connecting to the database formatted as
+         * 'key=value' pairs separated by the symbol '&amp;'. (example:
+         * key1=value1&amp;key2=value2&amp;key3=value3).
          */
         public Builder jdbcUrlParams(Optional<String> jdbcUrlParams) {
             Utils.checkNotNull(jdbcUrlParams, "jdbcUrlParams");
             this.jdbcUrlParams = jdbcUrlParams;
             return this;
         }
+
 
         /**
          * The password associated with the username.
@@ -648,10 +826,11 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
          * Port of the database.
-         * SapHana Corporations recommends the following port numbers:
-         * 443 - Default listening port for SAP HANA cloud client connections to the listener.
+         * SAP recommends the following port numbers:
+         * 443 - Default listening port for SAP HANA Cloud client connections to the listener.
          */
         public Builder port(long port) {
             Utils.checkNotNull(port, "port");
@@ -661,14 +840,15 @@ public class SourceSapHanaEnterprise {
 
         /**
          * Port of the database.
-         * SapHana Corporations recommends the following port numbers:
-         * 443 - Default listening port for SAP HANA cloud client connections to the listener.
+         * SAP recommends the following port numbers:
+         * 443 - Default listening port for SAP HANA Cloud client connections to the listener.
          */
         public Builder port(Optional<Long> port) {
             Utils.checkNotNull(port, "port");
             this.port = port;
             return this;
         }
+
 
         /**
          * The list of schemas to sync from. Defaults to user. Case sensitive.
@@ -688,14 +868,17 @@ public class SourceSapHanaEnterprise {
             return this;
         }
 
+
         /**
-         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of authentication to use.
+         * Whether to initiate an SSH tunnel before connecting to the database, and if so, which kind of
+         * authentication to use.
          */
         public Builder tunnelMethod(SourceSapHanaEnterpriseSSHTunnelMethod tunnelMethod) {
             Utils.checkNotNull(tunnelMethod, "tunnelMethod");
             this.tunnelMethod = tunnelMethod;
             return this;
         }
+
 
         /**
          * The username which is used to access the database.
@@ -705,7 +888,7 @@ public class SourceSapHanaEnterprise {
             this.username = username;
             return this;
         }
-        
+
         public SourceSapHanaEnterprise build() {
             if (checkPrivileges == null) {
                 checkPrivileges = _SINGLETON_VALUE_CheckPrivileges.value();
@@ -719,20 +902,15 @@ public class SourceSapHanaEnterprise {
             if (port == null) {
                 port = _SINGLETON_VALUE_Port.value();
             }
+
             return new SourceSapHanaEnterprise(
-                checkPrivileges,
-                checkpointTargetIntervalSeconds,
-                concurrency,
-                cursor,
-                encryption,
-                host,
-                jdbcUrlParams,
-                password,
-                port,
-                schemas,
-                tunnelMethod,
-                username);
+                checkPrivileges, checkpointTargetIntervalSeconds, concurrency,
+                cursor, database, encryption,
+                filters, host, jdbcUrlParams,
+                password, port, schemas,
+                tunnelMethod, username);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_CheckPrivileges =
                 new LazySingletonValue<>(

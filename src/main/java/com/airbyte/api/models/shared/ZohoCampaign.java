@@ -14,7 +14,7 @@ public enum ZohoCampaign {
     @JsonValue
     private final String value;
 
-    private ZohoCampaign(String value) {
+    ZohoCampaign(String value) {
         this.value = value;
     }
     

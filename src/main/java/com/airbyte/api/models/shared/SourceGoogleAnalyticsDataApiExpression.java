@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceGoogleAnalyticsDataApiExpression {
 
     @JsonProperty("field_name")
     private String fieldName;
+
 
     @JsonProperty("filter")
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter;
@@ -39,9 +40,10 @@ public class SourceGoogleAnalyticsDataApiExpression {
         return filter;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceGoogleAnalyticsDataApiExpression withFieldName(String fieldName) {
         Utils.checkNotNull(fieldName, "fieldName");
@@ -55,7 +57,6 @@ public class SourceGoogleAnalyticsDataApiExpression {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +67,14 @@ public class SourceGoogleAnalyticsDataApiExpression {
         }
         SourceGoogleAnalyticsDataApiExpression other = (SourceGoogleAnalyticsDataApiExpression) o;
         return 
-            Objects.deepEquals(this.fieldName, other.fieldName) &&
-            Objects.deepEquals(this.filter, other.filter);
+            Utils.enhancedDeepEquals(this.fieldName, other.fieldName) &&
+            Utils.enhancedDeepEquals(this.filter, other.filter);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            fieldName,
-            filter);
+        return Utils.enhancedHash(
+            fieldName, filter);
     }
     
     @Override
@@ -83,16 +83,18 @@ public class SourceGoogleAnalyticsDataApiExpression {
                 "fieldName", fieldName,
                 "filter", filter);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String fieldName;
- 
+
         private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder fieldName(String fieldName) {
             Utils.checkNotNull(fieldName, "fieldName");
@@ -100,16 +102,18 @@ public class SourceGoogleAnalyticsDataApiExpression {
             return this;
         }
 
+
         public Builder filter(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilterFilter filter) {
             Utils.checkNotNull(filter, "filter");
             this.filter = filter;
             return this;
         }
-        
+
         public SourceGoogleAnalyticsDataApiExpression build() {
+
             return new SourceGoogleAnalyticsDataApiExpression(
-                fieldName,
-                filter);
+                fieldName, filter);
         }
+
     }
 }

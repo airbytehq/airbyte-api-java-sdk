@@ -15,7 +15,7 @@ public enum Flattening {
     @JsonValue
     private final String value;
 
-    private Flattening(String value) {
+    Flattening(String value) {
         this.value = value;
     }
     

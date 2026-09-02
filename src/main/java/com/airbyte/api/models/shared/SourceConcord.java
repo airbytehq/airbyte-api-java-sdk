@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceConcord {
 
@@ -23,6 +23,7 @@ public class SourceConcord {
      */
     @JsonProperty("env")
     private SourceConcordEnvironment env;
+
 
     @JsonProperty("sourceType")
     private Concord sourceType;
@@ -56,9 +57,10 @@ public class SourceConcord {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceConcord withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -75,7 +77,6 @@ public class SourceConcord {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -86,17 +87,15 @@ public class SourceConcord {
         }
         SourceConcord other = (SourceConcord) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.env, other.env) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.env, other.env) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            env,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, env, sourceType);
     }
     
     @Override
@@ -106,22 +105,25 @@ public class SourceConcord {
                 "env", env,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private SourceConcordEnvironment env;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The environment from where you want to access the API.
@@ -131,12 +133,13 @@ public class SourceConcord {
             this.env = env;
             return this;
         }
-        
+
         public SourceConcord build() {
+
             return new SourceConcord(
-                apiKey,
-                env);
+                apiKey, env);
         }
+
 
         private static final LazySingletonValue<Concord> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

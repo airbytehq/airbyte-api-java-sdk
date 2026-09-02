@@ -1,5 +1,13 @@
 # SourceGnewsLanguage
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceGnewsLanguage;
+
+SourceGnewsLanguage value = SourceGnewsLanguage.AR;
+```
+
 
 ## Values
 

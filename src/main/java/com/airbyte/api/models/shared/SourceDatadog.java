@@ -16,11 +16,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceDatadog {
 
+public class SourceDatadog {
     /**
      * Datadog API key
      */
@@ -34,7 +33,10 @@ public class SourceDatadog {
     private String applicationKey;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated. An empty value will represent the current datetime for each  execution. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated.
+     * An empty value will represent the current datetime for each  execution.
+     * 
+     * <p>This just applies to Incremental syncs.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
@@ -68,11 +70,13 @@ public class SourceDatadog {
     @JsonProperty("site")
     private Optional<? extends Site> site;
 
+
     @JsonProperty("sourceType")
     private Datadog sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This just applies to Incremental syncs.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -110,7 +114,9 @@ public class SourceDatadog {
     public SourceDatadog(
             String apiKey,
             String applicationKey) {
-        this(apiKey, applicationKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, applicationKey, Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -130,7 +136,10 @@ public class SourceDatadog {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated. An empty value will represent the current datetime for each  execution. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated.
+     * An empty value will represent the current datetime for each  execution.
+     * 
+     * <p>This just applies to Incremental syncs.
      */
     @JsonIgnore
     public Optional<String> endDate() {
@@ -177,16 +186,18 @@ public class SourceDatadog {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This just applies to Incremental syncs.
      */
     @JsonIgnore
     public Optional<String> startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Datadog API key
@@ -207,7 +218,10 @@ public class SourceDatadog {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated. An empty value will represent the current datetime for each  execution. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated.
+     * An empty value will represent the current datetime for each  execution.
+     * 
+     * <p>This just applies to Incremental syncs.
      */
     public SourceDatadog withEndDate(String endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -215,8 +229,12 @@ public class SourceDatadog {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated. An empty value will represent the current datetime for each  execution. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated.
+     * An empty value will represent the current datetime for each  execution.
+     * 
+     * <p>This just applies to Incremental syncs.
      */
     public SourceDatadog withEndDate(Optional<String> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -232,6 +250,7 @@ public class SourceDatadog {
         this.maxRecordsPerRequest = Optional.ofNullable(maxRecordsPerRequest);
         return this;
     }
+
 
     /**
      * Maximum number of records to collect per request.
@@ -251,6 +270,7 @@ public class SourceDatadog {
         return this;
     }
 
+
     /**
      * List of queries to be run and used as inputs.
      */
@@ -268,6 +288,7 @@ public class SourceDatadog {
         this.query = Optional.ofNullable(query);
         return this;
     }
+
 
     /**
      * The search query. This just applies to Incremental syncs. If empty, it'll collect all logs.
@@ -287,6 +308,7 @@ public class SourceDatadog {
         return this;
     }
 
+
     /**
      * The site where Datadog data resides in.
      */
@@ -297,7 +319,8 @@ public class SourceDatadog {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This just applies to Incremental syncs.
      */
     public SourceDatadog withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -305,8 +328,10 @@ public class SourceDatadog {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This just applies to Incremental syncs.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated. This just applies to Incremental syncs.
      */
     public SourceDatadog withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -314,7 +339,6 @@ public class SourceDatadog {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -325,29 +349,23 @@ public class SourceDatadog {
         }
         SourceDatadog other = (SourceDatadog) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.applicationKey, other.applicationKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.maxRecordsPerRequest, other.maxRecordsPerRequest) &&
-            Objects.deepEquals(this.queries, other.queries) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.site, other.site) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.applicationKey, other.applicationKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.maxRecordsPerRequest, other.maxRecordsPerRequest) &&
+            Utils.enhancedDeepEquals(this.queries, other.queries) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.site, other.site) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            applicationKey,
-            endDate,
-            maxRecordsPerRequest,
-            queries,
-            query,
-            site,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, applicationKey, endDate,
+            maxRecordsPerRequest, queries, query,
+            site, sourceType, startDate);
     }
     
     @Override
@@ -363,28 +381,30 @@ public class SourceDatadog {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String applicationKey;
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<Long> maxRecordsPerRequest;
- 
+
         private Optional<? extends List<Queries>> queries = Optional.empty();
- 
+
         private Optional<String> query = Optional.empty();
- 
+
         private Optional<? extends Site> site;
- 
+
         private Optional<String> startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Datadog API key
@@ -395,6 +415,7 @@ public class SourceDatadog {
             return this;
         }
 
+
         /**
          * Datadog application key
          */
@@ -404,8 +425,12 @@ public class SourceDatadog {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated. An empty value will represent the current datetime for each  execution. This just applies to Incremental syncs.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated.
+         * An empty value will represent the current datetime for each  execution.
+         * 
+         * <p>This just applies to Incremental syncs.
          */
         public Builder endDate(String endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -414,13 +439,17 @@ public class SourceDatadog {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated. An empty value will represent the current datetime for each  execution. This just applies to Incremental syncs.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Data after this date will  not be replicated.
+         * An empty value will represent the current datetime for each  execution.
+         * 
+         * <p>This just applies to Incremental syncs.
          */
         public Builder endDate(Optional<String> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * Maximum number of records to collect per request.
@@ -440,6 +469,7 @@ public class SourceDatadog {
             return this;
         }
 
+
         /**
          * List of queries to be run and used as inputs.
          */
@@ -457,6 +487,7 @@ public class SourceDatadog {
             this.queries = queries;
             return this;
         }
+
 
         /**
          * The search query. This just applies to Incremental syncs. If empty, it'll collect all logs.
@@ -476,6 +507,7 @@ public class SourceDatadog {
             return this;
         }
 
+
         /**
          * The site where Datadog data resides in.
          */
@@ -494,8 +526,10 @@ public class SourceDatadog {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This just applies to Incremental syncs.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated. This just applies to Incremental syncs.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -504,14 +538,15 @@ public class SourceDatadog {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated. This just applies to Incremental syncs.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated. This just applies to Incremental syncs.
          */
         public Builder startDate(Optional<String> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceDatadog build() {
             if (maxRecordsPerRequest == null) {
                 maxRecordsPerRequest = _SINGLETON_VALUE_MaxRecordsPerRequest.value();
@@ -522,16 +557,13 @@ public class SourceDatadog {
             if (startDate == null) {
                 startDate = _SINGLETON_VALUE_StartDate.value();
             }
+
             return new SourceDatadog(
-                apiKey,
-                applicationKey,
-                endDate,
-                maxRecordsPerRequest,
-                queries,
-                query,
-                site,
-                startDate);
+                apiKey, applicationKey, endDate,
+                maxRecordsPerRequest, queries, query,
+                site, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_MaxRecordsPerRequest =
                 new LazySingletonValue<>(

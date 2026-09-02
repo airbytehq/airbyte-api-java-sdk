@@ -20,7 +20,7 @@ public enum SourceDwollaEnvironment {
     @JsonValue
     private final String value;
 
-    private SourceDwollaEnvironment(String value) {
+    SourceDwollaEnvironment(String value) {
         this.value = value;
     }
     

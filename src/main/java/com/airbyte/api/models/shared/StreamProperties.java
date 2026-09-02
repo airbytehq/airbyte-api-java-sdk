@@ -14,7 +14,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -28,21 +27,31 @@ public class StreamProperties {
     @JsonProperty("defaultCursorField")
     private Optional<? extends List<String>> defaultCursorField;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("propertyFields")
     private Optional<? extends List<List<String>>> propertyFields;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceDefinedCursorField")
     private Optional<Boolean> sourceDefinedCursorField;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sourceDefinedPrimaryKey")
     private Optional<? extends List<List<String>>> sourceDefinedPrimaryKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("streamName")
     private Optional<String> streamName;
+
+
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("streamnamespace")
+    private Optional<String> streamnamespace;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("syncModes")
@@ -55,23 +64,28 @@ public class StreamProperties {
             @JsonProperty("sourceDefinedCursorField") Optional<Boolean> sourceDefinedCursorField,
             @JsonProperty("sourceDefinedPrimaryKey") Optional<? extends List<List<String>>> sourceDefinedPrimaryKey,
             @JsonProperty("streamName") Optional<String> streamName,
+            @JsonProperty("streamnamespace") Optional<String> streamnamespace,
             @JsonProperty("syncModes") Optional<? extends List<ConnectionSyncModeEnum>> syncModes) {
         Utils.checkNotNull(defaultCursorField, "defaultCursorField");
         Utils.checkNotNull(propertyFields, "propertyFields");
         Utils.checkNotNull(sourceDefinedCursorField, "sourceDefinedCursorField");
         Utils.checkNotNull(sourceDefinedPrimaryKey, "sourceDefinedPrimaryKey");
         Utils.checkNotNull(streamName, "streamName");
+        Utils.checkNotNull(streamnamespace, "streamnamespace");
         Utils.checkNotNull(syncModes, "syncModes");
         this.defaultCursorField = defaultCursorField;
         this.propertyFields = propertyFields;
         this.sourceDefinedCursorField = sourceDefinedCursorField;
         this.sourceDefinedPrimaryKey = sourceDefinedPrimaryKey;
         this.streamName = streamName;
+        this.streamnamespace = streamnamespace;
         this.syncModes = syncModes;
     }
     
     public StreamProperties() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty());
     }
 
     @SuppressWarnings("unchecked")
@@ -102,21 +116,28 @@ public class StreamProperties {
         return streamName;
     }
 
+    @JsonIgnore
+    public Optional<String> streamnamespace() {
+        return streamnamespace;
+    }
+
     @SuppressWarnings("unchecked")
     @JsonIgnore
     public Optional<List<ConnectionSyncModeEnum>> syncModes() {
         return (Optional<List<ConnectionSyncModeEnum>>) syncModes;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StreamProperties withDefaultCursorField(List<String> defaultCursorField) {
         Utils.checkNotNull(defaultCursorField, "defaultCursorField");
         this.defaultCursorField = Optional.ofNullable(defaultCursorField);
         return this;
     }
+
 
     public StreamProperties withDefaultCursorField(Optional<? extends List<String>> defaultCursorField) {
         Utils.checkNotNull(defaultCursorField, "defaultCursorField");
@@ -130,6 +151,7 @@ public class StreamProperties {
         return this;
     }
 
+
     public StreamProperties withPropertyFields(Optional<? extends List<List<String>>> propertyFields) {
         Utils.checkNotNull(propertyFields, "propertyFields");
         this.propertyFields = propertyFields;
@@ -141,6 +163,7 @@ public class StreamProperties {
         this.sourceDefinedCursorField = Optional.ofNullable(sourceDefinedCursorField);
         return this;
     }
+
 
     public StreamProperties withSourceDefinedCursorField(Optional<Boolean> sourceDefinedCursorField) {
         Utils.checkNotNull(sourceDefinedCursorField, "sourceDefinedCursorField");
@@ -154,6 +177,7 @@ public class StreamProperties {
         return this;
     }
 
+
     public StreamProperties withSourceDefinedPrimaryKey(Optional<? extends List<List<String>>> sourceDefinedPrimaryKey) {
         Utils.checkNotNull(sourceDefinedPrimaryKey, "sourceDefinedPrimaryKey");
         this.sourceDefinedPrimaryKey = sourceDefinedPrimaryKey;
@@ -166,9 +190,23 @@ public class StreamProperties {
         return this;
     }
 
+
     public StreamProperties withStreamName(Optional<String> streamName) {
         Utils.checkNotNull(streamName, "streamName");
         this.streamName = streamName;
+        return this;
+    }
+
+    public StreamProperties withStreamnamespace(String streamnamespace) {
+        Utils.checkNotNull(streamnamespace, "streamnamespace");
+        this.streamnamespace = Optional.ofNullable(streamnamespace);
+        return this;
+    }
+
+
+    public StreamProperties withStreamnamespace(Optional<String> streamnamespace) {
+        Utils.checkNotNull(streamnamespace, "streamnamespace");
+        this.streamnamespace = streamnamespace;
         return this;
     }
 
@@ -178,13 +216,13 @@ public class StreamProperties {
         return this;
     }
 
+
     public StreamProperties withSyncModes(Optional<? extends List<ConnectionSyncModeEnum>> syncModes) {
         Utils.checkNotNull(syncModes, "syncModes");
         this.syncModes = syncModes;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -195,22 +233,20 @@ public class StreamProperties {
         }
         StreamProperties other = (StreamProperties) o;
         return 
-            Objects.deepEquals(this.defaultCursorField, other.defaultCursorField) &&
-            Objects.deepEquals(this.propertyFields, other.propertyFields) &&
-            Objects.deepEquals(this.sourceDefinedCursorField, other.sourceDefinedCursorField) &&
-            Objects.deepEquals(this.sourceDefinedPrimaryKey, other.sourceDefinedPrimaryKey) &&
-            Objects.deepEquals(this.streamName, other.streamName) &&
-            Objects.deepEquals(this.syncModes, other.syncModes);
+            Utils.enhancedDeepEquals(this.defaultCursorField, other.defaultCursorField) &&
+            Utils.enhancedDeepEquals(this.propertyFields, other.propertyFields) &&
+            Utils.enhancedDeepEquals(this.sourceDefinedCursorField, other.sourceDefinedCursorField) &&
+            Utils.enhancedDeepEquals(this.sourceDefinedPrimaryKey, other.sourceDefinedPrimaryKey) &&
+            Utils.enhancedDeepEquals(this.streamName, other.streamName) &&
+            Utils.enhancedDeepEquals(this.streamnamespace, other.streamnamespace) &&
+            Utils.enhancedDeepEquals(this.syncModes, other.syncModes);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            defaultCursorField,
-            propertyFields,
-            sourceDefinedCursorField,
-            sourceDefinedPrimaryKey,
-            streamName,
+        return Utils.enhancedHash(
+            defaultCursorField, propertyFields, sourceDefinedCursorField,
+            sourceDefinedPrimaryKey, streamName, streamnamespace,
             syncModes);
     }
     
@@ -222,26 +258,31 @@ public class StreamProperties {
                 "sourceDefinedCursorField", sourceDefinedCursorField,
                 "sourceDefinedPrimaryKey", sourceDefinedPrimaryKey,
                 "streamName", streamName,
+                "streamnamespace", streamnamespace,
                 "syncModes", syncModes);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> defaultCursorField = Optional.empty();
- 
+
         private Optional<? extends List<List<String>>> propertyFields = Optional.empty();
- 
+
         private Optional<Boolean> sourceDefinedCursorField = Optional.empty();
- 
+
         private Optional<? extends List<List<String>>> sourceDefinedPrimaryKey = Optional.empty();
- 
+
         private Optional<String> streamName = Optional.empty();
- 
+
+        private Optional<String> streamnamespace = Optional.empty();
+
         private Optional<? extends List<ConnectionSyncModeEnum>> syncModes = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder defaultCursorField(List<String> defaultCursorField) {
             Utils.checkNotNull(defaultCursorField, "defaultCursorField");
@@ -255,6 +296,7 @@ public class StreamProperties {
             return this;
         }
 
+
         public Builder propertyFields(List<List<String>> propertyFields) {
             Utils.checkNotNull(propertyFields, "propertyFields");
             this.propertyFields = Optional.ofNullable(propertyFields);
@@ -266,6 +308,7 @@ public class StreamProperties {
             this.propertyFields = propertyFields;
             return this;
         }
+
 
         public Builder sourceDefinedCursorField(boolean sourceDefinedCursorField) {
             Utils.checkNotNull(sourceDefinedCursorField, "sourceDefinedCursorField");
@@ -279,6 +322,7 @@ public class StreamProperties {
             return this;
         }
 
+
         public Builder sourceDefinedPrimaryKey(List<List<String>> sourceDefinedPrimaryKey) {
             Utils.checkNotNull(sourceDefinedPrimaryKey, "sourceDefinedPrimaryKey");
             this.sourceDefinedPrimaryKey = Optional.ofNullable(sourceDefinedPrimaryKey);
@@ -290,6 +334,7 @@ public class StreamProperties {
             this.sourceDefinedPrimaryKey = sourceDefinedPrimaryKey;
             return this;
         }
+
 
         public Builder streamName(String streamName) {
             Utils.checkNotNull(streamName, "streamName");
@@ -303,6 +348,20 @@ public class StreamProperties {
             return this;
         }
 
+
+        public Builder streamnamespace(String streamnamespace) {
+            Utils.checkNotNull(streamnamespace, "streamnamespace");
+            this.streamnamespace = Optional.ofNullable(streamnamespace);
+            return this;
+        }
+
+        public Builder streamnamespace(Optional<String> streamnamespace) {
+            Utils.checkNotNull(streamnamespace, "streamnamespace");
+            this.streamnamespace = streamnamespace;
+            return this;
+        }
+
+
         public Builder syncModes(List<ConnectionSyncModeEnum> syncModes) {
             Utils.checkNotNull(syncModes, "syncModes");
             this.syncModes = Optional.ofNullable(syncModes);
@@ -314,15 +373,14 @@ public class StreamProperties {
             this.syncModes = syncModes;
             return this;
         }
-        
+
         public StreamProperties build() {
+
             return new StreamProperties(
-                defaultCursorField,
-                propertyFields,
-                sourceDefinedCursorField,
-                sourceDefinedPrimaryKey,
-                streamName,
+                defaultCursorField, propertyFields, sourceDefinedCursorField,
+                sourceDefinedPrimaryKey, streamName, streamnamespace,
                 syncModes);
         }
+
     }
 }

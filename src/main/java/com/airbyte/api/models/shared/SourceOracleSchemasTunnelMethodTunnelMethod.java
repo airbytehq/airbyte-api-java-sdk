@@ -19,7 +19,7 @@ public enum SourceOracleSchemasTunnelMethodTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourceOracleSchemasTunnelMethodTunnelMethod(String value) {
+    SourceOracleSchemasTunnelMethodTunnelMethod(String value) {
         this.value = value;
     }
     

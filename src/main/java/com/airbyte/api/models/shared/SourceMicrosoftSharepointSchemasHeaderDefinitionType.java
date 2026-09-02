@@ -14,7 +14,7 @@ public enum SourceMicrosoftSharepointSchemasHeaderDefinitionType {
     @JsonValue
     private final String value;
 
-    private SourceMicrosoftSharepointSchemasHeaderDefinitionType(String value) {
+    SourceMicrosoftSharepointSchemasHeaderDefinitionType(String value) {
         this.value = value;
     }
     

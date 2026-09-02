@@ -14,7 +14,7 @@ public enum MailjetSms {
     @JsonValue
     private final String value;
 
-    private MailjetSms(String value) {
+    MailjetSms(String value) {
         this.value = value;
     }
     

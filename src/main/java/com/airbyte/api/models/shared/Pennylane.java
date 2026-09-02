@@ -14,7 +14,7 @@ public enum Pennylane {
     @JsonValue
     private final String value;
 
-    private Pennylane(String value) {
+    Pennylane(String value) {
         this.value = value;
     }
     

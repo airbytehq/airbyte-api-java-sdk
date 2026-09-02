@@ -14,7 +14,7 @@ public enum Pingdom {
     @JsonValue
     private final String value;
 
-    private Pingdom(String value) {
+    Pingdom(String value) {
         this.value = value;
     }
     

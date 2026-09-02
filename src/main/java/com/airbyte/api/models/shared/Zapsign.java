@@ -14,7 +14,7 @@ public enum Zapsign {
     @JsonValue
     private final String value;
 
-    private Zapsign(String value) {
+    Zapsign(String value) {
         this.value = value;
     }
     

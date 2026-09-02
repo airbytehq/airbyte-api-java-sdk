@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceWorkable {
-
     /**
      * Your Workable account subdomain, e.g. https://your_account_subdomain.workable.com.
      */
@@ -22,10 +21,12 @@ public class SourceWorkable {
     private String accountSubdomain;
 
     /**
-     * Your Workable API Key. See &lt;a href="https://workable.readme.io/reference/generate-an-access-token"&gt;here&lt;/a&gt;.
+     * Your Workable API Key. See <a
+     * href="https://workable.readme.io/reference/generate-an-access-token">here</a>.
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Workable sourceType;
@@ -59,7 +60,8 @@ public class SourceWorkable {
     }
 
     /**
-     * Your Workable API Key. See &lt;a href="https://workable.readme.io/reference/generate-an-access-token"&gt;here&lt;/a&gt;.
+     * Your Workable API Key. See <a
+     * href="https://workable.readme.io/reference/generate-an-access-token">here</a>.
      */
     @JsonIgnore
     public String apiKey() {
@@ -79,9 +81,10 @@ public class SourceWorkable {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Workable account subdomain, e.g. https://your_account_subdomain.workable.com.
@@ -93,7 +96,8 @@ public class SourceWorkable {
     }
 
     /**
-     * Your Workable API Key. See &lt;a href="https://workable.readme.io/reference/generate-an-access-token"&gt;here&lt;/a&gt;.
+     * Your Workable API Key. See <a
+     * href="https://workable.readme.io/reference/generate-an-access-token">here</a>.
      */
     public SourceWorkable withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -110,7 +114,6 @@ public class SourceWorkable {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -121,18 +124,16 @@ public class SourceWorkable {
         }
         SourceWorkable other = (SourceWorkable) o;
         return 
-            Objects.deepEquals(this.accountSubdomain, other.accountSubdomain) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountSubdomain, other.accountSubdomain) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountSubdomain,
-            apiKey,
-            sourceType,
+        return Utils.enhancedHash(
+            accountSubdomain, apiKey, sourceType,
             startDate);
     }
     
@@ -144,18 +145,20 @@ public class SourceWorkable {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountSubdomain;
- 
+
         private String apiKey;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Workable account subdomain, e.g. https://your_account_subdomain.workable.com.
@@ -166,14 +169,17 @@ public class SourceWorkable {
             return this;
         }
 
+
         /**
-         * Your Workable API Key. See &lt;a href="https://workable.readme.io/reference/generate-an-access-token"&gt;here&lt;/a&gt;.
+         * Your Workable API Key. See <a
+         * href="https://workable.readme.io/reference/generate-an-access-token">here</a>.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Get data that was created since this date (format: YYYYMMDDTHHMMSSZ).
@@ -183,13 +189,13 @@ public class SourceWorkable {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceWorkable build() {
+
             return new SourceWorkable(
-                accountSubdomain,
-                apiKey,
-                startDate);
+                accountSubdomain, apiKey, startDate);
         }
+
 
         private static final LazySingletonValue<Workable> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

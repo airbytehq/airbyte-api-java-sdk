@@ -19,8 +19,8 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZendeskSupportAPIToken {
 
@@ -28,10 +28,13 @@ public class SourceZendeskSupportAPIToken {
     private Map<String, Object> additionalProperties;
 
     /**
-     * The value of the API token generated. See our &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide"&gt;full documentation&lt;/a&gt; for more information on generating this token.
+     * The value of the API token generated. See our <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide">full
+     * documentation</a> for more information on generating this token.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
@@ -61,7 +64,9 @@ public class SourceZendeskSupportAPIToken {
     }
 
     /**
-     * The value of the API token generated. See our &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide"&gt;full documentation&lt;/a&gt; for more information on generating this token.
+     * The value of the API token generated. See our <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide">full
+     * documentation</a> for more information on generating this token.
      */
     @JsonIgnore
     public String apiToken() {
@@ -82,9 +87,10 @@ public class SourceZendeskSupportAPIToken {
         return email;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public SourceZendeskSupportAPIToken withAdditionalProperty(String key, Object value) {
@@ -92,8 +98,7 @@ public class SourceZendeskSupportAPIToken {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public SourceZendeskSupportAPIToken withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -101,7 +106,9 @@ public class SourceZendeskSupportAPIToken {
     }
 
     /**
-     * The value of the API token generated. See our &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide"&gt;full documentation&lt;/a&gt; for more information on generating this token.
+     * The value of the API token generated. See our <a
+     * href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide">full
+     * documentation</a> for more information on generating this token.
      */
     public SourceZendeskSupportAPIToken withApiToken(String apiToken) {
         Utils.checkNotNull(apiToken, "apiToken");
@@ -118,7 +125,6 @@ public class SourceZendeskSupportAPIToken {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -129,18 +135,16 @@ public class SourceZendeskSupportAPIToken {
         }
         SourceZendeskSupportAPIToken other = (SourceZendeskSupportAPIToken) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.email, other.email);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.email, other.email);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            apiToken,
-            credentials,
+        return Utils.enhancedHash(
+            additionalProperties, apiToken, credentials,
             email);
     }
     
@@ -152,15 +156,16 @@ public class SourceZendeskSupportAPIToken {
                 "credentials", credentials,
                 "email", email);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private String apiToken;
- 
+
         private String email;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -181,14 +186,18 @@ public class SourceZendeskSupportAPIToken {
             return this;
         }
 
+
         /**
-         * The value of the API token generated. See our &lt;a href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide"&gt;full documentation&lt;/a&gt; for more information on generating this token.
+         * The value of the API token generated. See our <a
+         * href="https://docs.airbyte.com/integrations/sources/zendesk-support#setup-guide">full
+         * documentation</a> for more information on generating this token.
          */
         public Builder apiToken(String apiToken) {
             Utils.checkNotNull(apiToken, "apiToken");
             this.apiToken = apiToken;
             return this;
         }
+
 
         /**
          * The user email for your Zendesk account.
@@ -198,13 +207,14 @@ public class SourceZendeskSupportAPIToken {
             this.email = email;
             return this;
         }
-        
+
         public SourceZendeskSupportAPIToken build() {
+
             return new SourceZendeskSupportAPIToken(
-                apiToken,
-                email)
+                apiToken, email)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceZendeskSupportSchemasCredentials>> _SINGLETON_VALUE_Credentials =
                 new LazySingletonValue<>(

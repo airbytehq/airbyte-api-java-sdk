@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationDuckdb {
 
@@ -22,7 +22,9 @@ public class DestinationDuckdb {
     private Duckdb destinationType;
 
     /**
-     * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside that local mount. For more information check out our &lt;a href="https://docs.airbyte.io/integrations/destinations/duckdb"&gt;docs&lt;/a&gt;
+     * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside
+     * that local mount. For more information check out our <a
+     * href="https://docs.airbyte.io/integrations/destinations/duckdb">docs</a>
      */
     @JsonProperty("destination_path")
     private String destinationPath;
@@ -66,7 +68,9 @@ public class DestinationDuckdb {
     }
 
     /**
-     * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside that local mount. For more information check out our &lt;a href="https://docs.airbyte.io/integrations/destinations/duckdb"&gt;docs&lt;/a&gt;
+     * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside
+     * that local mount. For more information check out our <a
+     * href="https://docs.airbyte.io/integrations/destinations/duckdb">docs</a>
      */
     @JsonIgnore
     public String destinationPath() {
@@ -89,12 +93,15 @@ public class DestinationDuckdb {
         return schema;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside that local mount. For more information check out our &lt;a href="https://docs.airbyte.io/integrations/destinations/duckdb"&gt;docs&lt;/a&gt;
+     * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside
+     * that local mount. For more information check out our <a
+     * href="https://docs.airbyte.io/integrations/destinations/duckdb">docs</a>
      */
     public DestinationDuckdb withDestinationPath(String destinationPath) {
         Utils.checkNotNull(destinationPath, "destinationPath");
@@ -110,6 +117,7 @@ public class DestinationDuckdb {
         this.motherduckApiKey = Optional.ofNullable(motherduckApiKey);
         return this;
     }
+
 
     /**
      * API key to use for authentication to a MotherDuck database.
@@ -129,6 +137,7 @@ public class DestinationDuckdb {
         return this;
     }
 
+
     /**
      * Database schema name, default for duckdb is 'main'.
      */
@@ -138,7 +147,6 @@ public class DestinationDuckdb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +157,16 @@ public class DestinationDuckdb {
         }
         DestinationDuckdb other = (DestinationDuckdb) o;
         return 
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.destinationPath, other.destinationPath) &&
-            Objects.deepEquals(this.motherduckApiKey, other.motherduckApiKey) &&
-            Objects.deepEquals(this.schema, other.schema);
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.destinationPath, other.destinationPath) &&
+            Utils.enhancedDeepEquals(this.motherduckApiKey, other.motherduckApiKey) &&
+            Utils.enhancedDeepEquals(this.schema, other.schema);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationType,
-            destinationPath,
-            motherduckApiKey,
+        return Utils.enhancedHash(
+            destinationType, destinationPath, motherduckApiKey,
             schema);
     }
     
@@ -172,27 +178,32 @@ public class DestinationDuckdb {
                 "motherduckApiKey", motherduckApiKey,
                 "schema", schema);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String destinationPath;
- 
+
         private Optional<String> motherduckApiKey = Optional.empty();
- 
+
         private Optional<String> schema = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside that local mount. For more information check out our &lt;a href="https://docs.airbyte.io/integrations/destinations/duckdb"&gt;docs&lt;/a&gt;
+         * Path to the .duckdb file, or the text 'md:' to connect to MotherDuck. The file will be placed inside
+         * that local mount. For more information check out our <a
+         * href="https://docs.airbyte.io/integrations/destinations/duckdb">docs</a>
          */
         public Builder destinationPath(String destinationPath) {
             Utils.checkNotNull(destinationPath, "destinationPath");
             this.destinationPath = destinationPath;
             return this;
         }
+
 
         /**
          * API key to use for authentication to a MotherDuck database.
@@ -212,6 +223,7 @@ public class DestinationDuckdb {
             return this;
         }
 
+
         /**
          * Database schema name, default for duckdb is 'main'.
          */
@@ -229,13 +241,13 @@ public class DestinationDuckdb {
             this.schema = schema;
             return this;
         }
-        
+
         public DestinationDuckdb build() {
+
             return new DestinationDuckdb(
-                destinationPath,
-                motherduckApiKey,
-                schema);
+                destinationPath, motherduckApiKey, schema);
         }
+
 
         private static final LazySingletonValue<Duckdb> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

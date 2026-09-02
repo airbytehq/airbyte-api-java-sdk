@@ -15,11 +15,10 @@ import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationAwsDatalake {
 
+public class DestinationAwsDatalake {
     /**
      * target aws account id
      */
@@ -28,7 +27,8 @@ public class DestinationAwsDatalake {
     private Optional<String> awsAccountId;
 
     /**
-     * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
+     * The name of the S3 bucket. Read more <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">here</a>.
      */
     @JsonProperty("bucket_name")
     private String bucketName;
@@ -46,6 +46,7 @@ public class DestinationAwsDatalake {
     @JsonProperty("credentials")
     private AuthenticationMode credentials;
 
+
     @JsonProperty("destinationType")
     private AwsDatalake destinationType;
 
@@ -57,7 +58,8 @@ public class DestinationAwsDatalake {
     private Optional<? extends OutputFormatWildcard> format;
 
     /**
-     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
+     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers
+     * correctly as received from the source.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("glue_catalog_float_as_decimal")
@@ -71,14 +73,16 @@ public class DestinationAwsDatalake {
     private Optional<String> lakeformationDatabaseDefaultTagKey;
 
     /**
-     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
+     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for
+     * multiple values.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("lakeformation_database_default_tag_values")
     private Optional<String> lakeformationDatabaseDefaultTagValues;
 
     /**
-     * The default database this destination will use to create tables in per stream. Can be changed per connection by customizing the namespace.
+     * The default database this destination will use to create tables in per stream. Can be changed per
+     * connection by customizing the namespace.
      */
     @JsonProperty("lakeformation_database_name")
     private String lakeformationDatabaseName;
@@ -98,7 +102,9 @@ public class DestinationAwsDatalake {
     private Optional<? extends ChooseHowToPartitionData> partitioning;
 
     /**
-     * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+     * The region of the S3 bucket. See <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+     * for all region codes.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("region")
@@ -149,7 +155,10 @@ public class DestinationAwsDatalake {
             String bucketName,
             AuthenticationMode credentials,
             String lakeformationDatabaseName) {
-        this(Optional.empty(), bucketName, Optional.empty(), credentials, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), lakeformationDatabaseName, Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), bucketName, Optional.empty(),
+            credentials, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), lakeformationDatabaseName,
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -161,7 +170,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
+     * The name of the S3 bucket. Read more <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">here</a>.
      */
     @JsonIgnore
     public String bucketName() {
@@ -199,7 +209,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
+     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers
+     * correctly as received from the source.
      */
     @JsonIgnore
     public Optional<Boolean> glueCatalogFloatAsDecimal() {
@@ -215,7 +226,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
+     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for
+     * multiple values.
      */
     @JsonIgnore
     public Optional<String> lakeformationDatabaseDefaultTagValues() {
@@ -223,7 +235,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * The default database this destination will use to create tables in per stream. Can be changed per connection by customizing the namespace.
+     * The default database this destination will use to create tables in per stream. Can be changed per
+     * connection by customizing the namespace.
      */
     @JsonIgnore
     public String lakeformationDatabaseName() {
@@ -248,7 +261,9 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+     * The region of the S3 bucket. See <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+     * for all region codes.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -256,9 +271,10 @@ public class DestinationAwsDatalake {
         return (Optional<S3BucketRegion>) region;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * target aws account id
@@ -268,6 +284,7 @@ public class DestinationAwsDatalake {
         this.awsAccountId = Optional.ofNullable(awsAccountId);
         return this;
     }
+
 
     /**
      * target aws account id
@@ -279,7 +296,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
+     * The name of the S3 bucket. Read more <a
+     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">here</a>.
      */
     public DestinationAwsDatalake withBucketName(String bucketName) {
         Utils.checkNotNull(bucketName, "bucketName");
@@ -295,6 +313,7 @@ public class DestinationAwsDatalake {
         this.bucketPrefix = Optional.ofNullable(bucketPrefix);
         return this;
     }
+
 
     /**
      * S3 prefix
@@ -323,6 +342,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * Format of the data output.
      */
@@ -333,7 +353,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
+     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers
+     * correctly as received from the source.
      */
     public DestinationAwsDatalake withGlueCatalogFloatAsDecimal(boolean glueCatalogFloatAsDecimal) {
         Utils.checkNotNull(glueCatalogFloatAsDecimal, "glueCatalogFloatAsDecimal");
@@ -341,8 +362,10 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
-     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
+     * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers
+     * correctly as received from the source.
      */
     public DestinationAwsDatalake withGlueCatalogFloatAsDecimal(Optional<Boolean> glueCatalogFloatAsDecimal) {
         Utils.checkNotNull(glueCatalogFloatAsDecimal, "glueCatalogFloatAsDecimal");
@@ -359,6 +382,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * Add a default tag key to databases created by this destination
      */
@@ -369,7 +393,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
+     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for
+     * multiple values.
      */
     public DestinationAwsDatalake withLakeformationDatabaseDefaultTagValues(String lakeformationDatabaseDefaultTagValues) {
         Utils.checkNotNull(lakeformationDatabaseDefaultTagValues, "lakeformationDatabaseDefaultTagValues");
@@ -377,8 +402,10 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
-     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
+     * Add default values for the `Tag Key` to databases created by this destination. Comma separate for
+     * multiple values.
      */
     public DestinationAwsDatalake withLakeformationDatabaseDefaultTagValues(Optional<String> lakeformationDatabaseDefaultTagValues) {
         Utils.checkNotNull(lakeformationDatabaseDefaultTagValues, "lakeformationDatabaseDefaultTagValues");
@@ -387,7 +414,8 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * The default database this destination will use to create tables in per stream. Can be changed per connection by customizing the namespace.
+     * The default database this destination will use to create tables in per stream. Can be changed per
+     * connection by customizing the namespace.
      */
     public DestinationAwsDatalake withLakeformationDatabaseName(String lakeformationDatabaseName) {
         Utils.checkNotNull(lakeformationDatabaseName, "lakeformationDatabaseName");
@@ -403,6 +431,7 @@ public class DestinationAwsDatalake {
         this.lakeformationGovernedTables = Optional.ofNullable(lakeformationGovernedTables);
         return this;
     }
+
 
     /**
      * Whether to create tables as LF governed tables.
@@ -422,6 +451,7 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
      * Partition data by cursor fields when a cursor field is a date
      */
@@ -432,7 +462,9 @@ public class DestinationAwsDatalake {
     }
 
     /**
-     * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+     * The region of the S3 bucket. See <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+     * for all region codes.
      */
     public DestinationAwsDatalake withRegion(S3BucketRegion region) {
         Utils.checkNotNull(region, "region");
@@ -440,8 +472,11 @@ public class DestinationAwsDatalake {
         return this;
     }
 
+
     /**
-     * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+     * The region of the S3 bucket. See <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+     * for all region codes.
      */
     public DestinationAwsDatalake withRegion(Optional<? extends S3BucketRegion> region) {
         Utils.checkNotNull(region, "region");
@@ -449,7 +484,6 @@ public class DestinationAwsDatalake {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -460,36 +494,28 @@ public class DestinationAwsDatalake {
         }
         DestinationAwsDatalake other = (DestinationAwsDatalake) o;
         return 
-            Objects.deepEquals(this.awsAccountId, other.awsAccountId) &&
-            Objects.deepEquals(this.bucketName, other.bucketName) &&
-            Objects.deepEquals(this.bucketPrefix, other.bucketPrefix) &&
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.format, other.format) &&
-            Objects.deepEquals(this.glueCatalogFloatAsDecimal, other.glueCatalogFloatAsDecimal) &&
-            Objects.deepEquals(this.lakeformationDatabaseDefaultTagKey, other.lakeformationDatabaseDefaultTagKey) &&
-            Objects.deepEquals(this.lakeformationDatabaseDefaultTagValues, other.lakeformationDatabaseDefaultTagValues) &&
-            Objects.deepEquals(this.lakeformationDatabaseName, other.lakeformationDatabaseName) &&
-            Objects.deepEquals(this.lakeformationGovernedTables, other.lakeformationGovernedTables) &&
-            Objects.deepEquals(this.partitioning, other.partitioning) &&
-            Objects.deepEquals(this.region, other.region);
+            Utils.enhancedDeepEquals(this.awsAccountId, other.awsAccountId) &&
+            Utils.enhancedDeepEquals(this.bucketName, other.bucketName) &&
+            Utils.enhancedDeepEquals(this.bucketPrefix, other.bucketPrefix) &&
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.format, other.format) &&
+            Utils.enhancedDeepEquals(this.glueCatalogFloatAsDecimal, other.glueCatalogFloatAsDecimal) &&
+            Utils.enhancedDeepEquals(this.lakeformationDatabaseDefaultTagKey, other.lakeformationDatabaseDefaultTagKey) &&
+            Utils.enhancedDeepEquals(this.lakeformationDatabaseDefaultTagValues, other.lakeformationDatabaseDefaultTagValues) &&
+            Utils.enhancedDeepEquals(this.lakeformationDatabaseName, other.lakeformationDatabaseName) &&
+            Utils.enhancedDeepEquals(this.lakeformationGovernedTables, other.lakeformationGovernedTables) &&
+            Utils.enhancedDeepEquals(this.partitioning, other.partitioning) &&
+            Utils.enhancedDeepEquals(this.region, other.region);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            awsAccountId,
-            bucketName,
-            bucketPrefix,
-            credentials,
-            destinationType,
-            format,
-            glueCatalogFloatAsDecimal,
-            lakeformationDatabaseDefaultTagKey,
-            lakeformationDatabaseDefaultTagValues,
-            lakeformationDatabaseName,
-            lakeformationGovernedTables,
-            partitioning,
+        return Utils.enhancedHash(
+            awsAccountId, bucketName, bucketPrefix,
+            credentials, destinationType, format,
+            glueCatalogFloatAsDecimal, lakeformationDatabaseDefaultTagKey, lakeformationDatabaseDefaultTagValues,
+            lakeformationDatabaseName, lakeformationGovernedTables, partitioning,
             region);
     }
     
@@ -510,36 +536,38 @@ public class DestinationAwsDatalake {
                 "partitioning", partitioning,
                 "region", region);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> awsAccountId = Optional.empty();
- 
+
         private String bucketName;
- 
+
         private Optional<String> bucketPrefix = Optional.empty();
- 
+
         private AuthenticationMode credentials;
- 
+
         private Optional<? extends OutputFormatWildcard> format = Optional.empty();
- 
+
         private Optional<Boolean> glueCatalogFloatAsDecimal;
- 
+
         private Optional<String> lakeformationDatabaseDefaultTagKey = Optional.empty();
- 
+
         private Optional<String> lakeformationDatabaseDefaultTagValues = Optional.empty();
- 
+
         private String lakeformationDatabaseName;
- 
+
         private Optional<Boolean> lakeformationGovernedTables;
- 
+
         private Optional<? extends ChooseHowToPartitionData> partitioning;
- 
+
         private Optional<? extends S3BucketRegion> region;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * target aws account id
@@ -559,14 +587,17 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
-         * The name of the S3 bucket. Read more &lt;a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html"&gt;here&lt;/a&gt;.
+         * The name of the S3 bucket. Read more <a
+         * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html">here</a>.
          */
         public Builder bucketName(String bucketName) {
             Utils.checkNotNull(bucketName, "bucketName");
             this.bucketName = bucketName;
             return this;
         }
+
 
         /**
          * S3 prefix
@@ -586,6 +617,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * Choose How to Authenticate to AWS.
          */
@@ -594,6 +626,7 @@ public class DestinationAwsDatalake {
             this.credentials = credentials;
             return this;
         }
+
 
         /**
          * Format of the data output.
@@ -613,8 +646,10 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
-         * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
+         * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers
+         * correctly as received from the source.
          */
         public Builder glueCatalogFloatAsDecimal(boolean glueCatalogFloatAsDecimal) {
             Utils.checkNotNull(glueCatalogFloatAsDecimal, "glueCatalogFloatAsDecimal");
@@ -623,13 +658,15 @@ public class DestinationAwsDatalake {
         }
 
         /**
-         * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers correctly as received from the source.
+         * Cast float/double as decimal(38,18). This can help achieve higher accuracy and represent numbers
+         * correctly as received from the source.
          */
         public Builder glueCatalogFloatAsDecimal(Optional<Boolean> glueCatalogFloatAsDecimal) {
             Utils.checkNotNull(glueCatalogFloatAsDecimal, "glueCatalogFloatAsDecimal");
             this.glueCatalogFloatAsDecimal = glueCatalogFloatAsDecimal;
             return this;
         }
+
 
         /**
          * Add a default tag key to databases created by this destination
@@ -649,8 +686,10 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
-         * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
+         * Add default values for the `Tag Key` to databases created by this destination. Comma separate for
+         * multiple values.
          */
         public Builder lakeformationDatabaseDefaultTagValues(String lakeformationDatabaseDefaultTagValues) {
             Utils.checkNotNull(lakeformationDatabaseDefaultTagValues, "lakeformationDatabaseDefaultTagValues");
@@ -659,7 +698,8 @@ public class DestinationAwsDatalake {
         }
 
         /**
-         * Add default values for the `Tag Key` to databases created by this destination. Comma separate for multiple values.
+         * Add default values for the `Tag Key` to databases created by this destination. Comma separate for
+         * multiple values.
          */
         public Builder lakeformationDatabaseDefaultTagValues(Optional<String> lakeformationDatabaseDefaultTagValues) {
             Utils.checkNotNull(lakeformationDatabaseDefaultTagValues, "lakeformationDatabaseDefaultTagValues");
@@ -667,14 +707,17 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
-         * The default database this destination will use to create tables in per stream. Can be changed per connection by customizing the namespace.
+         * The default database this destination will use to create tables in per stream. Can be changed per
+         * connection by customizing the namespace.
          */
         public Builder lakeformationDatabaseName(String lakeformationDatabaseName) {
             Utils.checkNotNull(lakeformationDatabaseName, "lakeformationDatabaseName");
             this.lakeformationDatabaseName = lakeformationDatabaseName;
             return this;
         }
+
 
         /**
          * Whether to create tables as LF governed tables.
@@ -694,6 +737,7 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
          * Partition data by cursor fields when a cursor field is a date
          */
@@ -712,8 +756,11 @@ public class DestinationAwsDatalake {
             return this;
         }
 
+
         /**
-         * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+         * The region of the S3 bucket. See <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+         * for all region codes.
          */
         public Builder region(S3BucketRegion region) {
             Utils.checkNotNull(region, "region");
@@ -722,14 +769,16 @@ public class DestinationAwsDatalake {
         }
 
         /**
-         * The region of the S3 bucket. See &lt;a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions"&gt;here&lt;/a&gt; for all region codes.
+         * The region of the S3 bucket. See <a
+         * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions">here</a>
+         * for all region codes.
          */
         public Builder region(Optional<? extends S3BucketRegion> region) {
             Utils.checkNotNull(region, "region");
             this.region = region;
             return this;
         }
-        
+
         public DestinationAwsDatalake build() {
             if (glueCatalogFloatAsDecimal == null) {
                 glueCatalogFloatAsDecimal = _SINGLETON_VALUE_GlueCatalogFloatAsDecimal.value();
@@ -743,20 +792,14 @@ public class DestinationAwsDatalake {
             if (region == null) {
                 region = _SINGLETON_VALUE_Region.value();
             }
+
             return new DestinationAwsDatalake(
-                awsAccountId,
-                bucketName,
-                bucketPrefix,
-                credentials,
-                format,
-                glueCatalogFloatAsDecimal,
-                lakeformationDatabaseDefaultTagKey,
-                lakeformationDatabaseDefaultTagValues,
-                lakeformationDatabaseName,
-                lakeformationGovernedTables,
-                partitioning,
-                region);
+                awsAccountId, bucketName, bucketPrefix,
+                credentials, format, glueCatalogFloatAsDecimal,
+                lakeformationDatabaseDefaultTagKey, lakeformationDatabaseDefaultTagValues, lakeformationDatabaseName,
+                lakeformationGovernedTables, partitioning, region);
         }
+
 
         private static final LazySingletonValue<AwsDatalake> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

@@ -1,5 +1,13 @@
 # AccessTokenIsRequiredForAuthenticationRequests
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.AccessTokenIsRequiredForAuthenticationRequests;
+
+AccessTokenIsRequiredForAuthenticationRequests value = AccessTokenIsRequiredForAuthenticationRequests.ACCESS_TOKEN;
+```
+
 
 ## Values
 

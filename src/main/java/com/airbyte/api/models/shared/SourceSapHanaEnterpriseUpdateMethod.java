@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceSapHanaEnterpriseUpdateMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceSapHanaEnterpriseUpdateMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSapHanaEnterpriseUpdateMethod(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceSapHanaEnterpriseUpdateMethod {
 
     public static SourceSapHanaEnterpriseUpdateMethod of(SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor>(){}));
+        return new SourceSapHanaEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSapHanaEnterpriseUpdateMethod of(SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSapHanaEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC>(){}));
+        return new SourceSapHanaEnterpriseUpdateMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceSapHanaEnterpriseUpdateMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceSapHanaEnterpriseUpdateMethod {
             return false;
         }
         SourceSapHanaEnterpriseUpdateMethod other = (SourceSapHanaEnterpriseUpdateMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceSapHanaEnterpriseUpdateMethod {
 
         public _Deserializer() {
             super(SourceSapHanaEnterpriseUpdateMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseScanChangesWithUserDefinedCursor>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSapHanaEnterpriseReadChangesUsingChangeDataCaptureCDC>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceSapHanaEnterpriseUpdateMethod {
         return Utils.toString(SourceSapHanaEnterpriseUpdateMethod.class,
                 "value", value);
     }
- 
+
 }
 

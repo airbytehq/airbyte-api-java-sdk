@@ -14,7 +14,7 @@ public enum Postmarkapp {
     @JsonValue
     private final String value;
 
-    private Postmarkapp(String value) {
+    Postmarkapp(String value) {
         this.value = value;
     }
     

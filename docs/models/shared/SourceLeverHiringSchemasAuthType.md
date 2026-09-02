@@ -1,5 +1,13 @@
 # SourceLeverHiringSchemasAuthType
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceLeverHiringSchemasAuthType;
+
+SourceLeverHiringSchemasAuthType value = SourceLeverHiringSchemasAuthType.API_KEY;
+```
+
 
 ## Values
 

@@ -21,7 +21,7 @@ public enum URLRegion {
     @JsonValue
     private final String value;
 
-    private URLRegion(String value) {
+    URLRegion(String value) {
         this.value = value;
     }
     

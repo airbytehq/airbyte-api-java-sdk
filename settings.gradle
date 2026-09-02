@@ -8,3 +8,8 @@
  */
 
 rootProject.name = 'api'
+
+// Apply additional settings if the file exists
+if (file('settings-extra.gradle').exists()) {
+    apply from: 'settings-extra.gradle'
+}

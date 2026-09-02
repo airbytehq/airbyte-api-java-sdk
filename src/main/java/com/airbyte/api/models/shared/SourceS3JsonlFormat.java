@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceS3JsonlFormat {
 
@@ -25,7 +25,6 @@ public class SourceS3JsonlFormat {
 
     @JsonCreator
     public SourceS3JsonlFormat() {
-        
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
@@ -35,11 +34,11 @@ public class SourceS3JsonlFormat {
         return (Optional<SourceS3SchemasStreamsFiletype>) filetype;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class SourceS3JsonlFormat {
         }
         SourceS3JsonlFormat other = (SourceS3JsonlFormat) o;
         return 
-            Objects.deepEquals(this.filetype, other.filetype);
+            Utils.enhancedDeepEquals(this.filetype, other.filetype);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             filetype);
     }
     
@@ -64,17 +63,20 @@ public class SourceS3JsonlFormat {
         return Utils.toString(SourceS3JsonlFormat.class,
                 "filetype", filetype);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceS3JsonlFormat build() {
+
             return new SourceS3JsonlFormat(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceS3SchemasStreamsFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(

@@ -14,17 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ParquetColumnarStorage {
 
+public class ParquetColumnarStorage {
     /**
      * The compression algorithm used to compress data.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("compression_codec")
     private Optional<? extends DestinationAwsDatalakeCompressionCodecOptional> compressionCodec;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("format_type")
@@ -59,9 +59,10 @@ public class ParquetColumnarStorage {
         return (Optional<DestinationAwsDatalakeFormatTypeWildcard>) formatType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The compression algorithm used to compress data.
@@ -71,6 +72,7 @@ public class ParquetColumnarStorage {
         this.compressionCodec = Optional.ofNullable(compressionCodec);
         return this;
     }
+
 
     /**
      * The compression algorithm used to compress data.
@@ -87,13 +89,13 @@ public class ParquetColumnarStorage {
         return this;
     }
 
+
     public ParquetColumnarStorage withFormatType(Optional<? extends DestinationAwsDatalakeFormatTypeWildcard> formatType) {
         Utils.checkNotNull(formatType, "formatType");
         this.formatType = formatType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -104,15 +106,14 @@ public class ParquetColumnarStorage {
         }
         ParquetColumnarStorage other = (ParquetColumnarStorage) o;
         return 
-            Objects.deepEquals(this.compressionCodec, other.compressionCodec) &&
-            Objects.deepEquals(this.formatType, other.formatType);
+            Utils.enhancedDeepEquals(this.compressionCodec, other.compressionCodec) &&
+            Utils.enhancedDeepEquals(this.formatType, other.formatType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            compressionCodec,
-            formatType);
+        return Utils.enhancedHash(
+            compressionCodec, formatType);
     }
     
     @Override
@@ -121,16 +122,18 @@ public class ParquetColumnarStorage {
                 "compressionCodec", compressionCodec,
                 "formatType", formatType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationAwsDatalakeCompressionCodecOptional> compressionCodec;
- 
+
         private Optional<? extends DestinationAwsDatalakeFormatTypeWildcard> formatType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The compression algorithm used to compress data.
@@ -150,6 +153,7 @@ public class ParquetColumnarStorage {
             return this;
         }
 
+
         public Builder formatType(DestinationAwsDatalakeFormatTypeWildcard formatType) {
             Utils.checkNotNull(formatType, "formatType");
             this.formatType = Optional.ofNullable(formatType);
@@ -161,7 +165,7 @@ public class ParquetColumnarStorage {
             this.formatType = formatType;
             return this;
         }
-        
+
         public ParquetColumnarStorage build() {
             if (compressionCodec == null) {
                 compressionCodec = _SINGLETON_VALUE_CompressionCodec.value();
@@ -169,10 +173,11 @@ public class ParquetColumnarStorage {
             if (formatType == null) {
                 formatType = _SINGLETON_VALUE_FormatType.value();
             }
+
             return new ParquetColumnarStorage(
-                compressionCodec,
-                formatType);
+                compressionCodec, formatType);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationAwsDatalakeCompressionCodecOptional>> _SINGLETON_VALUE_CompressionCodec =
                 new LazySingletonValue<>(

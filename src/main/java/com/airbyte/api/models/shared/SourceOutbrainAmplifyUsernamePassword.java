@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceOutbrainAmplifyUsernamePassword {
-
     /**
      * Add Password for authentication.
      */
     @JsonProperty("password")
     private String password;
+
 
     @JsonProperty("type")
     private BothUsernameAndPasswordIsRequiredForAuthenticationRequest type;
@@ -62,9 +62,10 @@ public class SourceOutbrainAmplifyUsernamePassword {
         return username;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Add Password for authentication.
@@ -84,7 +85,6 @@ public class SourceOutbrainAmplifyUsernamePassword {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceOutbrainAmplifyUsernamePassword {
         }
         SourceOutbrainAmplifyUsernamePassword other = (SourceOutbrainAmplifyUsernamePassword) o;
         return 
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.type, other.type) &&
-            Objects.deepEquals(this.username, other.username);
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.type, other.type) &&
+            Utils.enhancedDeepEquals(this.username, other.username);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            password,
-            type,
-            username);
+        return Utils.enhancedHash(
+            password, type, username);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceOutbrainAmplifyUsernamePassword {
                 "type", type,
                 "username", username);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String password;
- 
+
         private String username;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Add Password for authentication.
@@ -135,6 +135,7 @@ public class SourceOutbrainAmplifyUsernamePassword {
             return this;
         }
 
+
         /**
          * Add Username for authentication.
          */
@@ -143,12 +144,13 @@ public class SourceOutbrainAmplifyUsernamePassword {
             this.username = username;
             return this;
         }
-        
+
         public SourceOutbrainAmplifyUsernamePassword build() {
+
             return new SourceOutbrainAmplifyUsernamePassword(
-                password,
-                username);
+                password, username);
         }
+
 
         private static final LazySingletonValue<BothUsernameAndPasswordIsRequiredForAuthenticationRequest> _SINGLETON_VALUE_Type =
                 new LazySingletonValue<>(

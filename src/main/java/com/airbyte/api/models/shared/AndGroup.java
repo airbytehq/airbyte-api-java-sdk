@@ -12,7 +12,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * AndGroup
@@ -23,6 +22,7 @@ public class AndGroup {
 
     @JsonProperty("expressions")
     private List<Expression> expressions;
+
 
     @JsonProperty("filter_type")
     private FilterType filterType;
@@ -45,9 +45,10 @@ public class AndGroup {
         return filterType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public AndGroup withExpressions(List<Expression> expressions) {
         Utils.checkNotNull(expressions, "expressions");
@@ -55,7 +56,6 @@ public class AndGroup {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -66,15 +66,14 @@ public class AndGroup {
         }
         AndGroup other = (AndGroup) o;
         return 
-            Objects.deepEquals(this.expressions, other.expressions) &&
-            Objects.deepEquals(this.filterType, other.filterType);
+            Utils.enhancedDeepEquals(this.expressions, other.expressions) &&
+            Utils.enhancedDeepEquals(this.filterType, other.filterType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            expressions,
-            filterType);
+        return Utils.enhancedHash(
+            expressions, filterType);
     }
     
     @Override
@@ -83,25 +82,29 @@ public class AndGroup {
                 "expressions", expressions,
                 "filterType", filterType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<Expression> expressions;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder expressions(List<Expression> expressions) {
             Utils.checkNotNull(expressions, "expressions");
             this.expressions = expressions;
             return this;
         }
-        
+
         public AndGroup build() {
+
             return new AndGroup(
                 expressions);
         }
+
 
         private static final LazySingletonValue<FilterType> _SINGLETON_VALUE_FilterType =
                 new LazySingletonValue<>(

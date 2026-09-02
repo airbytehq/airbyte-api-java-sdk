@@ -11,15 +11,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceCustomerIo {
 
     @JsonProperty("app_api_key")
     private String appApiKey;
 
+
     @JsonProperty("sourceType")
-    private CustomerIo sourceType;
+    private SourceCustomerIoCustomerIo sourceType;
 
     @JsonCreator
     public SourceCustomerIo(
@@ -35,13 +36,14 @@ public class SourceCustomerIo {
     }
 
     @JsonIgnore
-    public CustomerIo sourceType() {
+    public SourceCustomerIoCustomerIo sourceType() {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCustomerIo withAppApiKey(String appApiKey) {
         Utils.checkNotNull(appApiKey, "appApiKey");
@@ -49,7 +51,6 @@ public class SourceCustomerIo {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -60,15 +61,14 @@ public class SourceCustomerIo {
         }
         SourceCustomerIo other = (SourceCustomerIo) o;
         return 
-            Objects.deepEquals(this.appApiKey, other.appApiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.appApiKey, other.appApiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            appApiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            appApiKey, sourceType);
     }
     
     @Override
@@ -77,30 +77,34 @@ public class SourceCustomerIo {
                 "appApiKey", appApiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String appApiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder appApiKey(String appApiKey) {
             Utils.checkNotNull(appApiKey, "appApiKey");
             this.appApiKey = appApiKey;
             return this;
         }
-        
+
         public SourceCustomerIo build() {
+
             return new SourceCustomerIo(
                 appApiKey);
         }
 
-        private static final LazySingletonValue<CustomerIo> _SINGLETON_VALUE_SourceType =
+
+        private static final LazySingletonValue<SourceCustomerIoCustomerIo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(
                         "sourceType",
                         "\"customer-io\"",
-                        new TypeReference<CustomerIo>() {});
+                        new TypeReference<SourceCustomerIoCustomerIo>() {});
     }
 }

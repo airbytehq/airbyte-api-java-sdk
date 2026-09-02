@@ -12,11 +12,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourcePatchRequest {
 
+public class SourcePatchRequest {
     /**
      * The values required to configure the source.
      */
@@ -24,12 +23,18 @@ public class SourcePatchRequest {
     @JsonProperty("configuration")
     private Optional<? extends SourceConfiguration> configuration;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("name")
     private Optional<String> name;
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("resourceAllocation")
@@ -41,6 +46,7 @@ public class SourcePatchRequest {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secretId")
     private Optional<String> secretId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("workspaceId")
@@ -66,7 +72,8 @@ public class SourcePatchRequest {
     }
     
     public SourcePatchRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -84,7 +91,12 @@ public class SourcePatchRequest {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -105,9 +117,10 @@ public class SourcePatchRequest {
         return workspaceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The values required to configure the source.
@@ -117,6 +130,7 @@ public class SourcePatchRequest {
         this.configuration = Optional.ofNullable(configuration);
         return this;
     }
+
 
     /**
      * The values required to configure the source.
@@ -133,6 +147,7 @@ public class SourcePatchRequest {
         return this;
     }
 
+
     public SourcePatchRequest withName(Optional<String> name) {
         Utils.checkNotNull(name, "name");
         this.name = name;
@@ -140,7 +155,12 @@ public class SourcePatchRequest {
     }
 
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public SourcePatchRequest withResourceAllocation(ScopedResourceRequirements resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -148,8 +168,14 @@ public class SourcePatchRequest {
         return this;
     }
 
+
     /**
-     * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+     * actor or actor definition specific resource requirements. if default is set, these are the
+     * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+     * job type specific configurations.
+     * 
+     * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+     * connection level.
      */
     public SourcePatchRequest withResourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
         Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -166,6 +192,7 @@ public class SourcePatchRequest {
         return this;
     }
 
+
     /**
      * Optional secretID obtained through the  OAuth redirect flow.
      */
@@ -181,13 +208,13 @@ public class SourcePatchRequest {
         return this;
     }
 
+
     public SourcePatchRequest withWorkspaceId(Optional<String> workspaceId) {
         Utils.checkNotNull(workspaceId, "workspaceId");
         this.workspaceId = workspaceId;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -198,21 +225,18 @@ public class SourcePatchRequest {
         }
         SourcePatchRequest other = (SourcePatchRequest) o;
         return 
-            Objects.deepEquals(this.configuration, other.configuration) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.resourceAllocation, other.resourceAllocation) &&
-            Objects.deepEquals(this.secretId, other.secretId) &&
-            Objects.deepEquals(this.workspaceId, other.workspaceId);
+            Utils.enhancedDeepEquals(this.configuration, other.configuration) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.resourceAllocation, other.resourceAllocation) &&
+            Utils.enhancedDeepEquals(this.secretId, other.secretId) &&
+            Utils.enhancedDeepEquals(this.workspaceId, other.workspaceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            configuration,
-            name,
-            resourceAllocation,
-            secretId,
-            workspaceId);
+        return Utils.enhancedHash(
+            configuration, name, resourceAllocation,
+            secretId, workspaceId);
     }
     
     @Override
@@ -224,22 +248,24 @@ public class SourcePatchRequest {
                 "secretId", secretId,
                 "workspaceId", workspaceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceConfiguration> configuration = Optional.empty();
- 
+
         private Optional<String> name = Optional.empty();
- 
+
         private Optional<? extends ScopedResourceRequirements> resourceAllocation = Optional.empty();
- 
+
         private Optional<String> secretId = Optional.empty();
- 
+
         private Optional<String> workspaceId = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The values required to configure the source.
@@ -259,6 +285,7 @@ public class SourcePatchRequest {
             return this;
         }
 
+
         public Builder name(String name) {
             Utils.checkNotNull(name, "name");
             this.name = Optional.ofNullable(name);
@@ -271,8 +298,14 @@ public class SourcePatchRequest {
             return this;
         }
 
+
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(ScopedResourceRequirements resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
@@ -281,13 +314,19 @@ public class SourcePatchRequest {
         }
 
         /**
-         * actor or actor definition specific resource requirements. if default is set, these are the requirements that should be set for ALL jobs run for this actor definition. it is overriden by the job type specific configurations. if not set, the platform will use defaults. these values will be overriden by configuration at the connection level.
+         * actor or actor definition specific resource requirements. if default is set, these are the
+         * requirements that should be set for ALL jobs run for this actor definition. it is overriden by the
+         * job type specific configurations.
+         * 
+         * <p>if not set, the platform will use defaults. these values will be overriden by configuration at the
+         * connection level.
          */
         public Builder resourceAllocation(Optional<? extends ScopedResourceRequirements> resourceAllocation) {
             Utils.checkNotNull(resourceAllocation, "resourceAllocation");
             this.resourceAllocation = resourceAllocation;
             return this;
         }
+
 
         /**
          * Optional secretID obtained through the  OAuth redirect flow.
@@ -307,6 +346,7 @@ public class SourcePatchRequest {
             return this;
         }
 
+
         public Builder workspaceId(String workspaceId) {
             Utils.checkNotNull(workspaceId, "workspaceId");
             this.workspaceId = Optional.ofNullable(workspaceId);
@@ -318,14 +358,13 @@ public class SourcePatchRequest {
             this.workspaceId = workspaceId;
             return this;
         }
-        
+
         public SourcePatchRequest build() {
+
             return new SourcePatchRequest(
-                configuration,
-                name,
-                resourceAllocation,
-                secretId,
-                workspaceId);
+                configuration, name, resourceAllocation,
+                secretId, workspaceId);
         }
+
     }
 }

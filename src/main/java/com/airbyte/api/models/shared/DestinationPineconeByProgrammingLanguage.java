@@ -14,21 +14,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationPineconeByProgrammingLanguage
  * 
- * <p>Split the text by suitable delimiters based on the programming language. This is useful for splitting code into chunks.
+ * <p>Split the text by suitable delimiters based on the programming language. This is useful for
+ * splitting code into chunks.
  */
 public class DestinationPineconeByProgrammingLanguage {
-
     /**
      * Split code in suitable places based on the programming language
      */
     @JsonProperty("language")
     private DestinationPineconeLanguage language;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -56,9 +56,10 @@ public class DestinationPineconeByProgrammingLanguage {
         return (Optional<DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Split code in suitable places based on the programming language
@@ -69,7 +70,6 @@ public class DestinationPineconeByProgrammingLanguage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +80,14 @@ public class DestinationPineconeByProgrammingLanguage {
         }
         DestinationPineconeByProgrammingLanguage other = (DestinationPineconeByProgrammingLanguage) o;
         return 
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            language,
-            mode);
+        return Utils.enhancedHash(
+            language, mode);
     }
     
     @Override
@@ -97,14 +96,16 @@ public class DestinationPineconeByProgrammingLanguage {
                 "language", language,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationPineconeLanguage language;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Split code in suitable places based on the programming language
@@ -114,11 +115,13 @@ public class DestinationPineconeByProgrammingLanguage {
             this.language = language;
             return this;
         }
-        
+
         public DestinationPineconeByProgrammingLanguage build() {
+
             return new DestinationPineconeByProgrammingLanguage(
                 language);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationPineconeSchemasProcessingTextSplitterTextSplitterMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

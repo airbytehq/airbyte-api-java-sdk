@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMicrosoftOnedriveFormat
  * 
- * <p>The configuration options that are used to alter how to read incoming files that deviate from the standard formatting.
+ * <p>The configuration options that are used to alter how to read incoming files that deviate from the
+ * standard formatting.
  */
 @JsonDeserialize(using = SourceMicrosoftOnedriveFormat._Deserializer.class)
 public class SourceMicrosoftOnedriveFormat {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMicrosoftOnedriveFormat(TypedObject value) {
         this.value = value;
@@ -33,27 +33,27 @@ public class SourceMicrosoftOnedriveFormat {
 
     public static SourceMicrosoftOnedriveFormat of(SourceMicrosoftOnedriveAvroFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveAvroFormat>(){}));
+        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftOnedriveFormat of(SourceMicrosoftOnedriveCSVFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveCSVFormat>(){}));
+        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftOnedriveFormat of(SourceMicrosoftOnedriveJsonlFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveJsonlFormat>(){}));
+        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftOnedriveFormat of(SourceMicrosoftOnedriveParquetFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveParquetFormat>(){}));
+        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMicrosoftOnedriveFormat of(SourceMicrosoftOnedriveUnstructuredDocumentFormat value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMicrosoftOnedriveUnstructuredDocumentFormat>(){}));
+        return new SourceMicrosoftOnedriveFormat(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +79,7 @@ public class SourceMicrosoftOnedriveFormat {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +90,12 @@ public class SourceMicrosoftOnedriveFormat {
             return false;
         }
         SourceMicrosoftOnedriveFormat other = (SourceMicrosoftOnedriveFormat) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +103,11 @@ public class SourceMicrosoftOnedriveFormat {
 
         public _Deserializer() {
             super(SourceMicrosoftOnedriveFormat.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveCSVFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveParquetFormat>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveAvroFormat>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveJsonlFormat>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveCSVFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveJsonlFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveParquetFormat>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMicrosoftOnedriveUnstructuredDocumentFormat>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +116,6 @@ public class SourceMicrosoftOnedriveFormat {
         return Utils.toString(SourceMicrosoftOnedriveFormat.class,
                 "value", value);
     }
- 
+
 }
 

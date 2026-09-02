@@ -1,5 +1,13 @@
 # SourceZendeskSunshineSchemasAuthMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceZendeskSunshineSchemasAuthMethod;
+
+SourceZendeskSunshineSchemasAuthMethod value = SourceZendeskSunshineSchemasAuthMethod.API_TOKEN;
+```
+
 
 ## Values
 

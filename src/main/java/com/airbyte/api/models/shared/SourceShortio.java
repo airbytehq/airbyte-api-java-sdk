@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceShortio {
 
@@ -24,11 +24,13 @@ public class SourceShortio {
     @JsonProperty("secret_key")
     private String secretKey;
 
+
     @JsonProperty("sourceType")
     private Shortio sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private String startDate;
@@ -66,16 +68,18 @@ public class SourceShortio {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public String startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceShortio withDomainId(String domainId) {
         Utils.checkNotNull(domainId, "domainId");
@@ -93,7 +97,8 @@ public class SourceShortio {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceShortio withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -101,7 +106,6 @@ public class SourceShortio {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,18 +116,16 @@ public class SourceShortio {
         }
         SourceShortio other = (SourceShortio) o;
         return 
-            Objects.deepEquals(this.domainId, other.domainId) &&
-            Objects.deepEquals(this.secretKey, other.secretKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.domainId, other.domainId) &&
+            Utils.enhancedDeepEquals(this.secretKey, other.secretKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            domainId,
-            secretKey,
-            sourceType,
+        return Utils.enhancedHash(
+            domainId, secretKey, sourceType,
             startDate);
     }
     
@@ -135,24 +137,27 @@ public class SourceShortio {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String domainId;
- 
+
         private String secretKey;
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder domainId(String domainId) {
             Utils.checkNotNull(domainId, "domainId");
             this.domainId = domainId;
             return this;
         }
+
 
         /**
          * Short.io Secret Key
@@ -163,21 +168,23 @@ public class SourceShortio {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceShortio build() {
+
             return new SourceShortio(
-                domainId,
-                secretKey,
-                startDate);
+                domainId, secretKey, startDate);
         }
+
 
         private static final LazySingletonValue<Shortio> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

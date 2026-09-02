@@ -11,7 +11,8 @@ import java.util.Optional;
 /**
  * SourceZohoExpenseDataCenter
  * 
- * <p>The domain suffix for the Zoho Expense API based on your data center location (e.g., 'com', 'eu', 'in', etc.)
+ * <p>The domain suffix for the Zoho Expense API based on your data center location (e.g., 'com', 'eu',
+ * 'in', etc.)
  */
 public enum SourceZohoExpenseDataCenter {
     COM("com"),
@@ -26,7 +27,7 @@ public enum SourceZohoExpenseDataCenter {
     @JsonValue
     private final String value;
 
-    private SourceZohoExpenseDataCenter(String value) {
+    SourceZohoExpenseDataCenter(String value) {
         this.value = value;
     }
     

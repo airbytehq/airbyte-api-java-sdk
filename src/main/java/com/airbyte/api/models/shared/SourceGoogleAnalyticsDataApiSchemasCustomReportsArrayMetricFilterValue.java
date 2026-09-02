@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue._Deserializer.class)
 public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterVa
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsInt64Value value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsInt64Value>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue of(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsDoubleValue value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsDoubleValue>(){}));
+        return new SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterVa
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterVa
             return false;
         }
         SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue other = (SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -80,8 +79,8 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterVa
 
         public _Deserializer() {
             super(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsDoubleValue>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsInt64Value>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsInt64Value>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterMetricsFilter1ExpressionsDoubleValue>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -90,6 +89,6 @@ public class SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterVa
         return Utils.toString(SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayMetricFilterValue.class,
                 "value", value);
     }
- 
+
 }
 

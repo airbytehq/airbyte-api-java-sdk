@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class AuthenticateViaGoogleOAuth {
 
@@ -85,9 +85,10 @@ public class AuthenticateViaGoogleOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Client ID of your Google Sheets developer application.
@@ -116,7 +117,6 @@ public class AuthenticateViaGoogleOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +127,16 @@ public class AuthenticateViaGoogleOAuth {
         }
         AuthenticateViaGoogleOAuth other = (AuthenticateViaGoogleOAuth) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
             refreshToken);
     }
     
@@ -150,18 +148,20 @@ public class AuthenticateViaGoogleOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Client ID of your Google Sheets developer application.
@@ -172,6 +172,7 @@ public class AuthenticateViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * The Client Secret of your Google Sheets developer application.
          */
@@ -181,6 +182,7 @@ public class AuthenticateViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * The token for obtaining new access token.
          */
@@ -189,13 +191,13 @@ public class AuthenticateViaGoogleOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public AuthenticateViaGoogleOAuth build() {
+
             return new AuthenticateViaGoogleOAuth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationGoogleSheetsAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

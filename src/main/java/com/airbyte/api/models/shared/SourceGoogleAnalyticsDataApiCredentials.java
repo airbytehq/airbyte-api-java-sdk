@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceGoogleAnalyticsDataApiCredentials
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceGoogleAnalyticsDataApiCredentials {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceGoogleAnalyticsDataApiCredentials(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceGoogleAnalyticsDataApiCredentials {
 
     public static SourceGoogleAnalyticsDataApiCredentials of(SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiAuthenticateViaGoogleOauth>(){}));
+        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceGoogleAnalyticsDataApiCredentials of(SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceGoogleAnalyticsDataApiServiceAccountKeyAuthentication>(){}));
+        return new SourceGoogleAnalyticsDataApiCredentials(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceGoogleAnalyticsDataApiCredentials {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceGoogleAnalyticsDataApiCredentials {
             return false;
         }
         SourceGoogleAnalyticsDataApiCredentials other = (SourceGoogleAnalyticsDataApiCredentials) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -95,6 +94,6 @@ public class SourceGoogleAnalyticsDataApiCredentials {
         return Utils.toString(SourceGoogleAnalyticsDataApiCredentials.class,
                 "value", value);
     }
- 
+
 }
 

@@ -14,18 +14,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * Compression
  * 
- * <p>Whether the output files should be compressed. If compression is selected, the output filename will have an extra extension (GZIP: ".csv.gz").
+ * <p>Whether the output files should be compressed. If compression is selected, the output filename will
+ * have an extra extension (GZIP: ".csv.gz").
  */
 @JsonDeserialize(using = Compression._Deserializer.class)
 public class Compression {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private Compression(TypedObject value) {
         this.value = value;
@@ -33,12 +33,12 @@ public class Compression {
 
     public static Compression of(DestinationGcsNoCompression value) {
         Utils.checkNotNull(value, "value");
-        return new Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationGcsNoCompression>(){}));
+        return new Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static Compression of(Gzip value) {
         Utils.checkNotNull(value, "value");
-        return new Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Gzip>(){}));
+        return new Compression(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +61,7 @@ public class Compression {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +72,12 @@ public class Compression {
             return false;
         }
         Compression other = (Compression) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +85,8 @@ public class Compression {
 
         public _Deserializer() {
             super(Compression.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<Gzip>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsNoCompression>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationGcsNoCompression>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<Gzip>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +95,6 @@ public class Compression {
         return Utils.toString(Compression.class,
                 "value", value);
     }
- 
+
 }
 

@@ -2,6 +2,14 @@
 
 This parameter defines the database encryption algorithm.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.EncryptionAlgorithm;
+
+EncryptionAlgorithm value = EncryptionAlgorithm.AES256;
+```
+
 
 ## Values
 

@@ -11,15 +11,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceJustSift {
-
     /**
      * API token to use for accessing the Sift API. Obtain this token from your Sift account administrator.
      */
     @JsonProperty("api_token")
     private String apiToken;
+
 
     @JsonProperty("sourceType")
     private JustSift sourceType;
@@ -45,9 +45,10 @@ public class SourceJustSift {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API token to use for accessing the Sift API. Obtain this token from your Sift account administrator.
@@ -58,7 +59,6 @@ public class SourceJustSift {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -69,15 +69,14 @@ public class SourceJustSift {
         }
         SourceJustSift other = (SourceJustSift) o;
         return 
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiToken,
-            sourceType);
+        return Utils.enhancedHash(
+            apiToken, sourceType);
     }
     
     @Override
@@ -86,14 +85,16 @@ public class SourceJustSift {
                 "apiToken", apiToken,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API token to use for accessing the Sift API. Obtain this token from your Sift account administrator.
@@ -103,11 +104,13 @@ public class SourceJustSift {
             this.apiToken = apiToken;
             return this;
         }
-        
+
         public SourceJustSift build() {
+
             return new SourceJustSift(
                 apiToken);
         }
+
 
         private static final LazySingletonValue<JustSift> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

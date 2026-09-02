@@ -11,13 +11,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class PutDestinationRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private Optional<? extends DestinationPutRequest> destinationPutRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=destinationId")
     private String destinationId;
@@ -48,15 +49,17 @@ public class PutDestinationRequest {
         return destinationId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PutDestinationRequest withDestinationPutRequest(DestinationPutRequest destinationPutRequest) {
         Utils.checkNotNull(destinationPutRequest, "destinationPutRequest");
         this.destinationPutRequest = Optional.ofNullable(destinationPutRequest);
         return this;
     }
+
 
     public PutDestinationRequest withDestinationPutRequest(Optional<? extends DestinationPutRequest> destinationPutRequest) {
         Utils.checkNotNull(destinationPutRequest, "destinationPutRequest");
@@ -70,7 +73,6 @@ public class PutDestinationRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,15 +83,14 @@ public class PutDestinationRequest {
         }
         PutDestinationRequest other = (PutDestinationRequest) o;
         return 
-            Objects.deepEquals(this.destinationPutRequest, other.destinationPutRequest) &&
-            Objects.deepEquals(this.destinationId, other.destinationId);
+            Utils.enhancedDeepEquals(this.destinationPutRequest, other.destinationPutRequest) &&
+            Utils.enhancedDeepEquals(this.destinationId, other.destinationId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            destinationPutRequest,
-            destinationId);
+        return Utils.enhancedHash(
+            destinationPutRequest, destinationId);
     }
     
     @Override
@@ -98,16 +99,18 @@ public class PutDestinationRequest {
                 "destinationPutRequest", destinationPutRequest,
                 "destinationId", destinationId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends DestinationPutRequest> destinationPutRequest = Optional.empty();
- 
+
         private String destinationId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder destinationPutRequest(DestinationPutRequest destinationPutRequest) {
             Utils.checkNotNull(destinationPutRequest, "destinationPutRequest");
@@ -121,16 +124,18 @@ public class PutDestinationRequest {
             return this;
         }
 
+
         public Builder destinationId(String destinationId) {
             Utils.checkNotNull(destinationId, "destinationId");
             this.destinationId = destinationId;
             return this;
         }
-        
+
         public PutDestinationRequest build() {
+
             return new PutDestinationRequest(
-                destinationPutRequest,
-                destinationId);
+                destinationPutRequest, destinationId);
         }
+
     }
 }

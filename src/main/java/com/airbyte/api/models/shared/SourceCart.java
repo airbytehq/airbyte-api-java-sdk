@@ -14,14 +14,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceCart {
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("credentials")
     private Optional<? extends SourceCartAuthorizationMethod> credentials;
+
 
     @JsonProperty("sourceType")
     private Cart sourceType;
@@ -67,15 +68,17 @@ public class SourceCart {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCart withCredentials(SourceCartAuthorizationMethod credentials) {
         Utils.checkNotNull(credentials, "credentials");
         this.credentials = Optional.ofNullable(credentials);
         return this;
     }
+
 
     public SourceCart withCredentials(Optional<? extends SourceCartAuthorizationMethod> credentials) {
         Utils.checkNotNull(credentials, "credentials");
@@ -92,7 +95,6 @@ public class SourceCart {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,17 +105,15 @@ public class SourceCart {
         }
         SourceCart other = (SourceCart) o;
         return 
-            Objects.deepEquals(this.credentials, other.credentials) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.credentials, other.credentials) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            credentials,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            credentials, sourceType, startDate);
     }
     
     @Override
@@ -123,16 +123,18 @@ public class SourceCart {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourceCartAuthorizationMethod> credentials = Optional.empty();
- 
+
         private String startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder credentials(SourceCartAuthorizationMethod credentials) {
             Utils.checkNotNull(credentials, "credentials");
@@ -146,6 +148,7 @@ public class SourceCart {
             return this;
         }
 
+
         /**
          * The date from which you'd like to replicate the data
          */
@@ -154,12 +157,13 @@ public class SourceCart {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceCart build() {
+
             return new SourceCart(
-                credentials,
-                startDate);
+                credentials, startDate);
         }
+
 
         private static final LazySingletonValue<Cart> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -14,16 +14,17 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DestinationDynamodb {
 
+public class DestinationDynamodb {
     /**
-     * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.
+     * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the
+     * DynamoDB.
      */
     @JsonProperty("access_key_id")
     private String accessKeyId;
+
 
     @JsonProperty("destinationType")
     private Dynamodb destinationType;
@@ -78,11 +79,13 @@ public class DestinationDynamodb {
             String accessKeyId,
             String dynamodbTableNamePrefix,
             String secretAccessKey) {
-        this(accessKeyId, Optional.empty(), Optional.empty(), dynamodbTableNamePrefix, secretAccessKey);
+        this(accessKeyId, Optional.empty(), Optional.empty(),
+            dynamodbTableNamePrefix, secretAccessKey);
     }
 
     /**
-     * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.
+     * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the
+     * DynamoDB.
      */
     @JsonIgnore
     public String accessKeyId() {
@@ -127,12 +130,14 @@ public class DestinationDynamodb {
         return secretAccessKey;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.
+     * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the
+     * DynamoDB.
      */
     public DestinationDynamodb withAccessKeyId(String accessKeyId) {
         Utils.checkNotNull(accessKeyId, "accessKeyId");
@@ -148,6 +153,7 @@ public class DestinationDynamodb {
         this.dynamodbEndpoint = Optional.ofNullable(dynamodbEndpoint);
         return this;
     }
+
 
     /**
      * This is your DynamoDB endpoint url.(if you are working with AWS DynamoDB, just leave empty).
@@ -166,6 +172,7 @@ public class DestinationDynamodb {
         this.dynamodbRegion = Optional.ofNullable(dynamodbRegion);
         return this;
     }
+
 
     /**
      * The region of the DynamoDB.
@@ -194,7 +201,6 @@ public class DestinationDynamodb {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -205,23 +211,19 @@ public class DestinationDynamodb {
         }
         DestinationDynamodb other = (DestinationDynamodb) o;
         return 
-            Objects.deepEquals(this.accessKeyId, other.accessKeyId) &&
-            Objects.deepEquals(this.destinationType, other.destinationType) &&
-            Objects.deepEquals(this.dynamodbEndpoint, other.dynamodbEndpoint) &&
-            Objects.deepEquals(this.dynamodbRegion, other.dynamodbRegion) &&
-            Objects.deepEquals(this.dynamodbTableNamePrefix, other.dynamodbTableNamePrefix) &&
-            Objects.deepEquals(this.secretAccessKey, other.secretAccessKey);
+            Utils.enhancedDeepEquals(this.accessKeyId, other.accessKeyId) &&
+            Utils.enhancedDeepEquals(this.destinationType, other.destinationType) &&
+            Utils.enhancedDeepEquals(this.dynamodbEndpoint, other.dynamodbEndpoint) &&
+            Utils.enhancedDeepEquals(this.dynamodbRegion, other.dynamodbRegion) &&
+            Utils.enhancedDeepEquals(this.dynamodbTableNamePrefix, other.dynamodbTableNamePrefix) &&
+            Utils.enhancedDeepEquals(this.secretAccessKey, other.secretAccessKey);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessKeyId,
-            destinationType,
-            dynamodbEndpoint,
-            dynamodbRegion,
-            dynamodbTableNamePrefix,
-            secretAccessKey);
+        return Utils.enhancedHash(
+            accessKeyId, destinationType, dynamodbEndpoint,
+            dynamodbRegion, dynamodbTableNamePrefix, secretAccessKey);
     }
     
     @Override
@@ -234,31 +236,35 @@ public class DestinationDynamodb {
                 "dynamodbTableNamePrefix", dynamodbTableNamePrefix,
                 "secretAccessKey", secretAccessKey);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessKeyId;
- 
+
         private Optional<String> dynamodbEndpoint;
- 
+
         private Optional<? extends DynamoDBRegion> dynamodbRegion;
- 
+
         private String dynamodbTableNamePrefix;
- 
+
         private String secretAccessKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the DynamoDB.
+         * The access key id to access the DynamoDB. Airbyte requires Read and Write permissions to the
+         * DynamoDB.
          */
         public Builder accessKeyId(String accessKeyId) {
             Utils.checkNotNull(accessKeyId, "accessKeyId");
             this.accessKeyId = accessKeyId;
             return this;
         }
+
 
         /**
          * This is your DynamoDB endpoint url.(if you are working with AWS DynamoDB, just leave empty).
@@ -278,6 +284,7 @@ public class DestinationDynamodb {
             return this;
         }
 
+
         /**
          * The region of the DynamoDB.
          */
@@ -296,6 +303,7 @@ public class DestinationDynamodb {
             return this;
         }
 
+
         /**
          * The prefix to use when naming DynamoDB tables.
          */
@@ -305,6 +313,7 @@ public class DestinationDynamodb {
             return this;
         }
 
+
         /**
          * The corresponding secret to the access key id.
          */
@@ -313,7 +322,7 @@ public class DestinationDynamodb {
             this.secretAccessKey = secretAccessKey;
             return this;
         }
-        
+
         public DestinationDynamodb build() {
             if (dynamodbEndpoint == null) {
                 dynamodbEndpoint = _SINGLETON_VALUE_DynamodbEndpoint.value();
@@ -321,13 +330,12 @@ public class DestinationDynamodb {
             if (dynamodbRegion == null) {
                 dynamodbRegion = _SINGLETON_VALUE_DynamodbRegion.value();
             }
+
             return new DestinationDynamodb(
-                accessKeyId,
-                dynamodbEndpoint,
-                dynamodbRegion,
-                dynamodbTableNamePrefix,
-                secretAccessKey);
+                accessKeyId, dynamodbEndpoint, dynamodbRegion,
+                dynamodbTableNamePrefix, secretAccessKey);
         }
+
 
         private static final LazySingletonValue<Dynamodb> _SINGLETON_VALUE_DestinationType =
                 new LazySingletonValue<>(

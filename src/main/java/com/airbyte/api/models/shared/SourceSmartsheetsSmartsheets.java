@@ -14,7 +14,7 @@ public enum SourceSmartsheetsSmartsheets {
     @JsonValue
     private final String value;
 
-    private SourceSmartsheetsSmartsheets(String value) {
+    SourceSmartsheetsSmartsheets(String value) {
         this.value = value;
     }
     

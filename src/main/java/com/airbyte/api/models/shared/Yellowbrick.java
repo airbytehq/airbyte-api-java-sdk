@@ -14,7 +14,7 @@ public enum Yellowbrick {
     @JsonValue
     private final String value;
 
-    private Yellowbrick(String value) {
+    Yellowbrick(String value) {
         this.value = value;
     }
     

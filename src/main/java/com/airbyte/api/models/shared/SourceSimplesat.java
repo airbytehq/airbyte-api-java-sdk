@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceSimplesat {
 
@@ -28,6 +28,7 @@ public class SourceSimplesat {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<OffsetDateTime> endDate;
+
 
     @JsonProperty("sourceType")
     private Simplesat sourceType;
@@ -84,9 +85,10 @@ public class SourceSimplesat {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceSimplesat withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -102,6 +104,7 @@ public class SourceSimplesat {
         this.endDate = Optional.ofNullable(endDate);
         return this;
     }
+
 
     /**
      * Date till when the sync should end
@@ -121,6 +124,7 @@ public class SourceSimplesat {
         return this;
     }
 
+
     /**
      * Date from when the sync should start
      */
@@ -130,7 +134,6 @@ public class SourceSimplesat {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,18 +144,16 @@ public class SourceSimplesat {
         }
         SourceSimplesat other = (SourceSimplesat) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            endDate,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, endDate, sourceType,
             startDate);
     }
     
@@ -164,24 +165,27 @@ public class SourceSimplesat {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<OffsetDateTime> endDate = Optional.empty();
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Date till when the sync should end
@@ -201,6 +205,7 @@ public class SourceSimplesat {
             return this;
         }
 
+
         /**
          * Date from when the sync should start
          */
@@ -218,13 +223,13 @@ public class SourceSimplesat {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceSimplesat build() {
+
             return new SourceSimplesat(
-                apiKey,
-                endDate,
-                startDate);
+                apiKey, endDate, startDate);
         }
+
 
         private static final LazySingletonValue<Simplesat> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

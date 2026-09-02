@@ -1,5 +1,13 @@
 # SourceOracleSchemasEncryptionEncryptionMethod
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceOracleSchemasEncryptionEncryptionMethod;
+
+SourceOracleSchemasEncryptionEncryptionMethod value = SourceOracleSchemasEncryptionEncryptionMethod.ENCRYPTED_VERIFY_CERTIFICATE;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum Mailersend {
     @JsonValue
     private final String value;
 
-    private Mailersend(String value) {
+    Mailersend(String value) {
         this.value = value;
     }
     

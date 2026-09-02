@@ -11,8 +11,8 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class ListTagsRequest {
 
@@ -36,9 +36,10 @@ public class ListTagsRequest {
         return (Optional<List<String>>) workspaceIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public ListTagsRequest withWorkspaceIds(List<String> workspaceIds) {
         Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -46,13 +47,13 @@ public class ListTagsRequest {
         return this;
     }
 
+
     public ListTagsRequest withWorkspaceIds(Optional<? extends List<String>> workspaceIds) {
         Utils.checkNotNull(workspaceIds, "workspaceIds");
         this.workspaceIds = workspaceIds;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -63,12 +64,12 @@ public class ListTagsRequest {
         }
         ListTagsRequest other = (ListTagsRequest) o;
         return 
-            Objects.deepEquals(this.workspaceIds, other.workspaceIds);
+            Utils.enhancedDeepEquals(this.workspaceIds, other.workspaceIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             workspaceIds);
     }
     
@@ -77,14 +78,16 @@ public class ListTagsRequest {
         return Utils.toString(ListTagsRequest.class,
                 "workspaceIds", workspaceIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<String>> workspaceIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder workspaceIds(List<String> workspaceIds) {
             Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -97,10 +100,12 @@ public class ListTagsRequest {
             this.workspaceIds = workspaceIds;
             return this;
         }
-        
+
         public ListTagsRequest build() {
+
             return new ListTagsRequest(
                 workspaceIds);
         }
+
     }
 }

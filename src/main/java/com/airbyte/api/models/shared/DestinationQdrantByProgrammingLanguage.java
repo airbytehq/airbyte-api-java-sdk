@@ -14,21 +14,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * DestinationQdrantByProgrammingLanguage
  * 
- * <p>Split the text by suitable delimiters based on the programming language. This is useful for splitting code into chunks.
+ * <p>Split the text by suitable delimiters based on the programming language. This is useful for
+ * splitting code into chunks.
  */
 public class DestinationQdrantByProgrammingLanguage {
-
     /**
      * Split code in suitable places based on the programming language
      */
     @JsonProperty("language")
     private DestinationQdrantLanguage language;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -56,9 +56,10 @@ public class DestinationQdrantByProgrammingLanguage {
         return (Optional<DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode>) mode;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Split code in suitable places based on the programming language
@@ -69,7 +70,6 @@ public class DestinationQdrantByProgrammingLanguage {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +80,14 @@ public class DestinationQdrantByProgrammingLanguage {
         }
         DestinationQdrantByProgrammingLanguage other = (DestinationQdrantByProgrammingLanguage) o;
         return 
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.mode, other.mode);
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            language,
-            mode);
+        return Utils.enhancedHash(
+            language, mode);
     }
     
     @Override
@@ -97,14 +96,16 @@ public class DestinationQdrantByProgrammingLanguage {
                 "language", language,
                 "mode", mode);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationQdrantLanguage language;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Split code in suitable places based on the programming language
@@ -114,11 +115,13 @@ public class DestinationQdrantByProgrammingLanguage {
             this.language = language;
             return this;
         }
-        
+
         public DestinationQdrantByProgrammingLanguage build() {
+
             return new DestinationQdrantByProgrammingLanguage(
                 language);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationQdrantSchemasProcessingTextSplitterTextSplitterMode>> _SINGLETON_VALUE_Mode =
                 new LazySingletonValue<>(

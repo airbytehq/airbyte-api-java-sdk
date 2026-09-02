@@ -14,7 +14,7 @@ public enum OneHundredms {
     @JsonValue
     private final String value;
 
-    private OneHundredms(String value) {
+    OneHundredms(String value) {
         this.value = value;
     }
     

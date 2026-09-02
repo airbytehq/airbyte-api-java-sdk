@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceDriftAuthorizationMethod._Deserializer.class)
 public class SourceDriftAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceDriftAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceDriftAuthorizationMethod {
 
     public static SourceDriftAuthorizationMethod of(SourceDriftOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceDriftAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceDriftOAuth20>(){}));
+        return new SourceDriftAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceDriftAuthorizationMethod of(AccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceDriftAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<AccessToken>(){}));
+        return new SourceDriftAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceDriftAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceDriftAuthorizationMethod {
             return false;
         }
         SourceDriftAuthorizationMethod other = (SourceDriftAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceDriftAuthorizationMethod {
         return Utils.toString(SourceDriftAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

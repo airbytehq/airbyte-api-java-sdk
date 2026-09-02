@@ -14,7 +14,7 @@ public enum SourceMailchimpAuthType {
     @JsonValue
     private final String value;
 
-    private SourceMailchimpAuthType(String value) {
+    SourceMailchimpAuthType(String value) {
         this.value = value;
     }
     

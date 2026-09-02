@@ -17,20 +17,24 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceAmplitude {
 
+public class SourceAmplitude {
     /**
-     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Amplitude documentation&lt;/a&gt;, grouping by `Country` is optional. If you face issues fetching the stream or checking the connection please set this field to `False`.
+     * According to <a
+     * href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters">Amplitude
+     * documentation</a>, grouping by `Country` is optional. If you face issues fetching the stream or
+     * checking the connection please set this field to `False`.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("active_users_group_by_country")
     private Optional<Boolean> activeUsersGroupByCountry;
 
     /**
-     * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+     * Amplitude API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+     * information on how to obtain this key.
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -43,23 +47,30 @@ public class SourceAmplitude {
     private Optional<? extends DataRegion> dataRegion;
 
     /**
-     * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too large of a time range in te request can cause a timeout error. In this case, please provide a shorter time interval in hours.
+     * According to <a
+     * href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations">Considerations</a>
+     * too large of a time range in te request can cause a timeout error. In this case, please provide a
+     * shorter time interval in hours.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("request_time_range")
     private Optional<Long> requestTimeRange;
 
     /**
-     * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+     * Amplitude Secret Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+     * information on how to obtain this key.
      */
     @JsonProperty("secret_key")
     private String secretKey;
+
 
     @JsonProperty("sourceType")
     private Amplitude sourceType;
 
     /**
-     * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -91,11 +102,15 @@ public class SourceAmplitude {
             String apiKey,
             String secretKey,
             OffsetDateTime startDate) {
-        this(Optional.empty(), apiKey, Optional.empty(), Optional.empty(), secretKey, startDate);
+        this(Optional.empty(), apiKey, Optional.empty(),
+            Optional.empty(), secretKey, startDate);
     }
 
     /**
-     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Amplitude documentation&lt;/a&gt;, grouping by `Country` is optional. If you face issues fetching the stream or checking the connection please set this field to `False`.
+     * According to <a
+     * href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters">Amplitude
+     * documentation</a>, grouping by `Country` is optional. If you face issues fetching the stream or
+     * checking the connection please set this field to `False`.
      */
     @JsonIgnore
     public Optional<Boolean> activeUsersGroupByCountry() {
@@ -103,7 +118,9 @@ public class SourceAmplitude {
     }
 
     /**
-     * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+     * Amplitude API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+     * information on how to obtain this key.
      */
     @JsonIgnore
     public String apiKey() {
@@ -120,7 +137,10 @@ public class SourceAmplitude {
     }
 
     /**
-     * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too large of a time range in te request can cause a timeout error. In this case, please provide a shorter time interval in hours.
+     * According to <a
+     * href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations">Considerations</a>
+     * too large of a time range in te request can cause a timeout error. In this case, please provide a
+     * shorter time interval in hours.
      */
     @JsonIgnore
     public Optional<Long> requestTimeRange() {
@@ -128,7 +148,9 @@ public class SourceAmplitude {
     }
 
     /**
-     * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+     * Amplitude Secret Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+     * information on how to obtain this key.
      */
     @JsonIgnore
     public String secretKey() {
@@ -141,19 +163,24 @@ public class SourceAmplitude {
     }
 
     /**
-     * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     @JsonIgnore
     public OffsetDateTime startDate() {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Amplitude documentation&lt;/a&gt;, grouping by `Country` is optional. If you face issues fetching the stream or checking the connection please set this field to `False`.
+     * According to <a
+     * href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters">Amplitude
+     * documentation</a>, grouping by `Country` is optional. If you face issues fetching the stream or
+     * checking the connection please set this field to `False`.
      */
     public SourceAmplitude withActiveUsersGroupByCountry(boolean activeUsersGroupByCountry) {
         Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
@@ -161,8 +188,12 @@ public class SourceAmplitude {
         return this;
     }
 
+
     /**
-     * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Amplitude documentation&lt;/a&gt;, grouping by `Country` is optional. If you face issues fetching the stream or checking the connection please set this field to `False`.
+     * According to <a
+     * href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters">Amplitude
+     * documentation</a>, grouping by `Country` is optional. If you face issues fetching the stream or
+     * checking the connection please set this field to `False`.
      */
     public SourceAmplitude withActiveUsersGroupByCountry(Optional<Boolean> activeUsersGroupByCountry) {
         Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
@@ -171,7 +202,9 @@ public class SourceAmplitude {
     }
 
     /**
-     * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+     * Amplitude API Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+     * information on how to obtain this key.
      */
     public SourceAmplitude withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -188,6 +221,7 @@ public class SourceAmplitude {
         return this;
     }
 
+
     /**
      * Amplitude data region server
      */
@@ -198,7 +232,10 @@ public class SourceAmplitude {
     }
 
     /**
-     * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too large of a time range in te request can cause a timeout error. In this case, please provide a shorter time interval in hours.
+     * According to <a
+     * href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations">Considerations</a>
+     * too large of a time range in te request can cause a timeout error. In this case, please provide a
+     * shorter time interval in hours.
      */
     public SourceAmplitude withRequestTimeRange(long requestTimeRange) {
         Utils.checkNotNull(requestTimeRange, "requestTimeRange");
@@ -206,8 +243,12 @@ public class SourceAmplitude {
         return this;
     }
 
+
     /**
-     * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too large of a time range in te request can cause a timeout error. In this case, please provide a shorter time interval in hours.
+     * According to <a
+     * href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations">Considerations</a>
+     * too large of a time range in te request can cause a timeout error. In this case, please provide a
+     * shorter time interval in hours.
      */
     public SourceAmplitude withRequestTimeRange(Optional<Long> requestTimeRange) {
         Utils.checkNotNull(requestTimeRange, "requestTimeRange");
@@ -216,7 +257,9 @@ public class SourceAmplitude {
     }
 
     /**
-     * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+     * Amplitude Secret Key. See the <a
+     * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+     * information on how to obtain this key.
      */
     public SourceAmplitude withSecretKey(String secretKey) {
         Utils.checkNotNull(secretKey, "secretKey");
@@ -225,7 +268,8 @@ public class SourceAmplitude {
     }
 
     /**
-     * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
+     * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be
+     * replicated.
      */
     public SourceAmplitude withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -233,7 +277,6 @@ public class SourceAmplitude {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -244,24 +287,20 @@ public class SourceAmplitude {
         }
         SourceAmplitude other = (SourceAmplitude) o;
         return 
-            Objects.deepEquals(this.activeUsersGroupByCountry, other.activeUsersGroupByCountry) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.dataRegion, other.dataRegion) &&
-            Objects.deepEquals(this.requestTimeRange, other.requestTimeRange) &&
-            Objects.deepEquals(this.secretKey, other.secretKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.activeUsersGroupByCountry, other.activeUsersGroupByCountry) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.dataRegion, other.dataRegion) &&
+            Utils.enhancedDeepEquals(this.requestTimeRange, other.requestTimeRange) &&
+            Utils.enhancedDeepEquals(this.secretKey, other.secretKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            activeUsersGroupByCountry,
-            apiKey,
-            dataRegion,
-            requestTimeRange,
-            secretKey,
-            sourceType,
+        return Utils.enhancedHash(
+            activeUsersGroupByCountry, apiKey, dataRegion,
+            requestTimeRange, secretKey, sourceType,
             startDate);
     }
     
@@ -276,27 +315,32 @@ public class SourceAmplitude {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> activeUsersGroupByCountry;
- 
+
         private String apiKey;
- 
+
         private Optional<? extends DataRegion> dataRegion;
- 
+
         private Optional<Long> requestTimeRange;
- 
+
         private String secretKey;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Amplitude documentation&lt;/a&gt;, grouping by `Country` is optional. If you face issues fetching the stream or checking the connection please set this field to `False`.
+         * According to <a
+         * href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters">Amplitude
+         * documentation</a>, grouping by `Country` is optional. If you face issues fetching the stream or
+         * checking the connection please set this field to `False`.
          */
         public Builder activeUsersGroupByCountry(boolean activeUsersGroupByCountry) {
             Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
@@ -305,7 +349,10 @@ public class SourceAmplitude {
         }
 
         /**
-         * According to &lt;a href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters"&gt;Amplitude documentation&lt;/a&gt;, grouping by `Country` is optional. If you face issues fetching the stream or checking the connection please set this field to `False`.
+         * According to <a
+         * href="https://amplitude.com/docs/apis/analytics/dashboard-rest#query-parameters">Amplitude
+         * documentation</a>, grouping by `Country` is optional. If you face issues fetching the stream or
+         * checking the connection please set this field to `False`.
          */
         public Builder activeUsersGroupByCountry(Optional<Boolean> activeUsersGroupByCountry) {
             Utils.checkNotNull(activeUsersGroupByCountry, "activeUsersGroupByCountry");
@@ -313,14 +360,18 @@ public class SourceAmplitude {
             return this;
         }
 
+
         /**
-         * Amplitude API Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+         * Amplitude API Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+         * information on how to obtain this key.
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * Amplitude data region server
@@ -340,8 +391,12 @@ public class SourceAmplitude {
             return this;
         }
 
+
         /**
-         * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too large of a time range in te request can cause a timeout error. In this case, please provide a shorter time interval in hours.
+         * According to <a
+         * href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations">Considerations</a>
+         * too large of a time range in te request can cause a timeout error. In this case, please provide a
+         * shorter time interval in hours.
          */
         public Builder requestTimeRange(long requestTimeRange) {
             Utils.checkNotNull(requestTimeRange, "requestTimeRange");
@@ -350,7 +405,10 @@ public class SourceAmplitude {
         }
 
         /**
-         * According to &lt;a href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations"&gt;Considerations&lt;/a&gt; too large of a time range in te request can cause a timeout error. In this case, please provide a shorter time interval in hours.
+         * According to <a
+         * href="https://www.docs.developers.amplitude.com/analytics/apis/export-api/#considerations">Considerations</a>
+         * too large of a time range in te request can cause a timeout error. In this case, please provide a
+         * shorter time interval in hours.
          */
         public Builder requestTimeRange(Optional<Long> requestTimeRange) {
             Utils.checkNotNull(requestTimeRange, "requestTimeRange");
@@ -358,8 +416,11 @@ public class SourceAmplitude {
             return this;
         }
 
+
         /**
-         * Amplitude Secret Key. See the &lt;a href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide"&gt;setup guide&lt;/a&gt; for more information on how to obtain this key.
+         * Amplitude Secret Key. See the <a
+         * href="https://docs.airbyte.com/integrations/sources/amplitude#setup-guide">setup guide</a> for more
+         * information on how to obtain this key.
          */
         public Builder secretKey(String secretKey) {
             Utils.checkNotNull(secretKey, "secretKey");
@@ -367,15 +428,17 @@ public class SourceAmplitude {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be replicated.
+         * UTC date and time in the format 2021-01-25T00:00:00Z. Any data before this date will not be
+         * replicated.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAmplitude build() {
             if (activeUsersGroupByCountry == null) {
                 activeUsersGroupByCountry = _SINGLETON_VALUE_ActiveUsersGroupByCountry.value();
@@ -386,14 +449,12 @@ public class SourceAmplitude {
             if (requestTimeRange == null) {
                 requestTimeRange = _SINGLETON_VALUE_RequestTimeRange.value();
             }
+
             return new SourceAmplitude(
-                activeUsersGroupByCountry,
-                apiKey,
-                dataRegion,
-                requestTimeRange,
-                secretKey,
-                startDate);
+                activeUsersGroupByCountry, apiKey, dataRegion,
+                requestTimeRange, secretKey, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_ActiveUsersGroupByCountry =
                 new LazySingletonValue<>(

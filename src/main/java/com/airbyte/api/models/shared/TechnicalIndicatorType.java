@@ -26,7 +26,7 @@ public enum TechnicalIndicatorType {
     @JsonValue
     private final String value;
 
-    private TechnicalIndicatorType(String value) {
+    TechnicalIndicatorType(String value) {
         this.value = value;
     }
     

@@ -2,6 +2,14 @@
 
 A data source that is powered by the platform.
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DataSource;
+
+DataSource value = DataSource.METRICS;
+```
+
 
 ## Values
 

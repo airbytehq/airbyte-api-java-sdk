@@ -14,11 +14,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
-import java.util.Objects;
 import java.util.Optional;
 
-public class GetDestinationResponse implements Response {
 
+public class GetDestinationResponse implements Response {
     /**
      * HTTP response content type for this operation
      */
@@ -59,7 +58,8 @@ public class GetDestinationResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
-        this(contentType, Optional.empty(), statusCode, rawResponse);
+        this(contentType, Optional.empty(), statusCode,
+            rawResponse);
     }
 
     /**
@@ -95,9 +95,10 @@ public class GetDestinationResponse implements Response {
         return rawResponse;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * HTTP response content type for this operation
@@ -116,6 +117,7 @@ public class GetDestinationResponse implements Response {
         this.destinationResponse = Optional.ofNullable(destinationResponse);
         return this;
     }
+
 
     /**
      * Get a Destination by the id in the path.
@@ -144,7 +146,6 @@ public class GetDestinationResponse implements Response {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,18 +156,16 @@ public class GetDestinationResponse implements Response {
         }
         GetDestinationResponse other = (GetDestinationResponse) o;
         return 
-            Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.destinationResponse, other.destinationResponse) &&
-            Objects.deepEquals(this.statusCode, other.statusCode) &&
-            Objects.deepEquals(this.rawResponse, other.rawResponse);
+            Utils.enhancedDeepEquals(this.contentType, other.contentType) &&
+            Utils.enhancedDeepEquals(this.destinationResponse, other.destinationResponse) &&
+            Utils.enhancedDeepEquals(this.statusCode, other.statusCode) &&
+            Utils.enhancedDeepEquals(this.rawResponse, other.rawResponse);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            contentType,
-            destinationResponse,
-            statusCode,
+        return Utils.enhancedHash(
+            contentType, destinationResponse, statusCode,
             rawResponse);
     }
     
@@ -178,20 +177,22 @@ public class GetDestinationResponse implements Response {
                 "statusCode", statusCode,
                 "rawResponse", rawResponse);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String contentType;
- 
+
         private Optional<? extends DestinationResponse> destinationResponse = Optional.empty();
- 
+
         private Integer statusCode;
- 
+
         private HttpResponse<InputStream> rawResponse;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * HTTP response content type for this operation
@@ -201,6 +202,7 @@ public class GetDestinationResponse implements Response {
             this.contentType = contentType;
             return this;
         }
+
 
         /**
          * Get a Destination by the id in the path.
@@ -220,6 +222,7 @@ public class GetDestinationResponse implements Response {
             return this;
         }
 
+
         /**
          * HTTP response status code for this operation
          */
@@ -229,6 +232,7 @@ public class GetDestinationResponse implements Response {
             return this;
         }
 
+
         /**
          * Raw HTTP response; suitable for custom response parsing
          */
@@ -237,13 +241,13 @@ public class GetDestinationResponse implements Response {
             this.rawResponse = rawResponse;
             return this;
         }
-        
+
         public GetDestinationResponse build() {
+
             return new GetDestinationResponse(
-                contentType,
-                destinationResponse,
-                statusCode,
+                contentType, destinationResponse, statusCode,
                 rawResponse);
         }
+
     }
 }

@@ -1,5 +1,13 @@
 # CloseCom
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.CloseCom;
+
+CloseCom value = CloseCom.CLOSE_COM;
+```
+
 
 ## Values
 

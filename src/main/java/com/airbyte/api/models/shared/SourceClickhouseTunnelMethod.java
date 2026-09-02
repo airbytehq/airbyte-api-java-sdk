@@ -19,7 +19,7 @@ public enum SourceClickhouseTunnelMethod {
     @JsonValue
     private final String value;
 
-    private SourceClickhouseTunnelMethod(String value) {
+    SourceClickhouseTunnelMethod(String value) {
         this.value = value;
     }
     

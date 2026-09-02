@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * LSNCommitBehaviour
  * 
- * <p>Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After loading Data in the destination` is default. If `While reading Data` is selected, in case of a downstream failure (while loading data into the destination), next sync would result in a full sync.
+ * <p>Determines when Airbyte should flush the LSN of processed WAL logs in the source database. `After
+ * loading Data in the destination` is default. If `While reading Data` is selected, in case of a
+ * downstream failure (while loading data into the destination), next sync would result in a full sync.
  */
 public enum LSNCommitBehaviour {
     WHILE_READING_DATA("While reading Data"),
@@ -20,7 +22,7 @@ public enum LSNCommitBehaviour {
     @JsonValue
     private final String value;
 
-    private LSNCommitBehaviour(String value) {
+    LSNCommitBehaviour(String value) {
         this.value = value;
     }
     

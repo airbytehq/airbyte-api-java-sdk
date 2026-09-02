@@ -19,7 +19,7 @@ public enum SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilter
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValidEnums(String value) {
+    SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterValidEnums(String value) {
         this.value = value;
     }
     

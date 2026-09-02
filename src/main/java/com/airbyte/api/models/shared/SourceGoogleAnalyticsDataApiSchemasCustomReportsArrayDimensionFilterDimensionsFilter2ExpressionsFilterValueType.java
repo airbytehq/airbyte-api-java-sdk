@@ -14,7 +14,7 @@ public enum SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilter
     @JsonValue
     private final String value;
 
-    private SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2ExpressionsFilterValueType(String value) {
+    SourceGoogleAnalyticsDataApiSchemasCustomReportsArrayDimensionFilterDimensionsFilter2ExpressionsFilterValueType(String value) {
         this.value = value;
     }
     

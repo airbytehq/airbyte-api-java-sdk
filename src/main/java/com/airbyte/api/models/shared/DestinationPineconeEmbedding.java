@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * DestinationPineconeEmbedding
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class DestinationPineconeEmbedding {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private DestinationPineconeEmbedding(TypedObject value) {
         this.value = value;
@@ -33,27 +32,27 @@ public class DestinationPineconeEmbedding {
 
     public static DestinationPineconeEmbedding of(DestinationPineconeOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeOpenAI>(){}));
+        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPineconeEmbedding of(DestinationPineconeCohere value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeCohere>(){}));
+        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPineconeEmbedding of(DestinationPineconeFake value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeFake>(){}));
+        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPineconeEmbedding of(DestinationPineconeAzureOpenAI value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeAzureOpenAI>(){}));
+        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static DestinationPineconeEmbedding of(DestinationPineconeOpenAICompatible value) {
         Utils.checkNotNull(value, "value");
-        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<DestinationPineconeOpenAICompatible>(){}));
+        return new DestinationPineconeEmbedding(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -79,7 +78,7 @@ public class DestinationPineconeEmbedding {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -90,12 +89,12 @@ public class DestinationPineconeEmbedding {
             return false;
         }
         DestinationPineconeEmbedding other = (DestinationPineconeEmbedding) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -103,11 +102,11 @@ public class DestinationPineconeEmbedding {
 
         public _Deserializer() {
             super(DestinationPineconeEmbedding.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeOpenAICompatible>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeAzureOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeCohere>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<DestinationPineconeOpenAI>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeFake>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeCohere>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeFake>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeAzureOpenAI>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<DestinationPineconeOpenAICompatible>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -116,6 +115,6 @@ public class DestinationPineconeEmbedding {
         return Utils.toString(DestinationPineconeEmbedding.class,
                 "value", value);
     }
- 
+
 }
 
