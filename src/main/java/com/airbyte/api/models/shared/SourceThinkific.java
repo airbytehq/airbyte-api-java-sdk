@@ -11,21 +11,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceThinkific {
-
     /**
      * Your Thinkific API key for authentication.
      */
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("sourceType")
     private Thinkific sourceType;
 
     /**
-     * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is "example".
+     * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is
+     * "example".
      */
     @JsonProperty("subdomain")
     private String subdomain;
@@ -55,16 +56,18 @@ public class SourceThinkific {
     }
 
     /**
-     * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is "example".
+     * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is
+     * "example".
      */
     @JsonIgnore
     public String subdomain() {
         return subdomain;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Thinkific API key for authentication.
@@ -76,7 +79,8 @@ public class SourceThinkific {
     }
 
     /**
-     * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is "example".
+     * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is
+     * "example".
      */
     public SourceThinkific withSubdomain(String subdomain) {
         Utils.checkNotNull(subdomain, "subdomain");
@@ -84,7 +88,6 @@ public class SourceThinkific {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +98,15 @@ public class SourceThinkific {
         }
         SourceThinkific other = (SourceThinkific) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.subdomain, other.subdomain);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.subdomain, other.subdomain);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            sourceType,
-            subdomain);
+        return Utils.enhancedHash(
+            apiKey, sourceType, subdomain);
     }
     
     @Override
@@ -115,16 +116,18 @@ public class SourceThinkific {
                 "sourceType", sourceType,
                 "subdomain", subdomain);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String subdomain;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Thinkific API key for authentication.
@@ -135,20 +138,23 @@ public class SourceThinkific {
             return this;
         }
 
+
         /**
-         * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is "example".
+         * The subdomain of your Thinkific URL (e.g., if your URL is example.thinkific.com, your subdomain is
+         * "example".
          */
         public Builder subdomain(String subdomain) {
             Utils.checkNotNull(subdomain, "subdomain");
             this.subdomain = subdomain;
             return this;
         }
-        
+
         public SourceThinkific build() {
+
             return new SourceThinkific(
-                apiKey,
-                subdomain);
+                apiKey, subdomain);
         }
+
 
         private static final LazySingletonValue<Thinkific> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

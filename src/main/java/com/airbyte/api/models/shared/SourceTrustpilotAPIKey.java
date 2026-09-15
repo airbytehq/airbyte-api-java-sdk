@@ -14,13 +14,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * SourceTrustpilotAPIKey
  * 
- * <p>The API key authentication method gives you access to only the streams which are part of the Public API. When you want to get streams available via the Consumer API (e.g. the private reviews) you need to use authentication method OAuth 2.0.
+ * <p>The API key authentication method gives you access to only the streams which are part of the Public
+ * API. When you want to get streams available via the Consumer API (e.g. the private reviews) you need
+ * to use authentication method OAuth 2.0.
  */
 public class SourceTrustpilotAPIKey {
 
@@ -56,9 +57,10 @@ public class SourceTrustpilotAPIKey {
         return clientId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The API key of the Trustpilot API application.
@@ -69,7 +71,6 @@ public class SourceTrustpilotAPIKey {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -80,15 +81,14 @@ public class SourceTrustpilotAPIKey {
         }
         SourceTrustpilotAPIKey other = (SourceTrustpilotAPIKey) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId);
+        return Utils.enhancedHash(
+            authType, clientId);
     }
     
     @Override
@@ -97,14 +97,16 @@ public class SourceTrustpilotAPIKey {
                 "authType", authType,
                 "clientId", clientId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The API key of the Trustpilot API application.
@@ -114,11 +116,13 @@ public class SourceTrustpilotAPIKey {
             this.clientId = clientId;
             return this;
         }
-        
+
         public SourceTrustpilotAPIKey build() {
+
             return new SourceTrustpilotAPIKey(
                 clientId);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceTrustpilotSchemasAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

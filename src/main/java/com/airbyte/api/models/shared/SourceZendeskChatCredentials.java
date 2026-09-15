@@ -14,7 +14,7 @@ public enum SourceZendeskChatCredentials {
     @JsonValue
     private final String value;
 
-    private SourceZendeskChatCredentials(String value) {
+    SourceZendeskChatCredentials(String value) {
         this.value = value;
     }
     

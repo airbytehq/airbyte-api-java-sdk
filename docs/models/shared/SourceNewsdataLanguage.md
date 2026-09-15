@@ -1,5 +1,13 @@
 # SourceNewsdataLanguage
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.SourceNewsdataLanguage;
+
+SourceNewsdataLanguage value = SourceNewsdataLanguage.BE;
+```
+
 
 ## Values
 

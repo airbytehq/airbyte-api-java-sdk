@@ -14,7 +14,7 @@ public enum SourceZendeskSupportZendeskSupport {
     @JsonValue
     private final String value;
 
-    private SourceZendeskSupportZendeskSupport(String value) {
+    SourceZendeskSupportZendeskSupport(String value) {
         this.value = value;
     }
     

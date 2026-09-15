@@ -16,16 +16,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceStrava {
 
+public class SourceStrava {
     /**
      * The Athlete ID of your Strava developer application.
      */
     @JsonProperty("athlete_id")
     private long athleteId;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("auth_type")
@@ -48,6 +48,7 @@ public class SourceStrava {
      */
     @JsonProperty("refresh_token")
     private String refreshToken;
+
 
     @JsonProperty("sourceType")
     private Strava sourceType;
@@ -130,9 +131,10 @@ public class SourceStrava {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The Athlete ID of your Strava developer application.
@@ -179,7 +181,6 @@ public class SourceStrava {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -190,24 +191,20 @@ public class SourceStrava {
         }
         SourceStrava other = (SourceStrava) o;
         return 
-            Objects.deepEquals(this.athleteId, other.athleteId) &&
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.athleteId, other.athleteId) &&
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            athleteId,
-            authType,
-            clientId,
-            clientSecret,
-            refreshToken,
-            sourceType,
+        return Utils.enhancedHash(
+            athleteId, authType, clientId,
+            clientSecret, refreshToken, sourceType,
             startDate);
     }
     
@@ -222,22 +219,24 @@ public class SourceStrava {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Long athleteId;
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The Athlete ID of your Strava developer application.
@@ -248,6 +247,7 @@ public class SourceStrava {
             return this;
         }
 
+
         /**
          * The Client ID of your Strava developer application.
          */
@@ -256,6 +256,7 @@ public class SourceStrava {
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * The Client Secret of your Strava developer application.
@@ -266,6 +267,7 @@ public class SourceStrava {
             return this;
         }
 
+
         /**
          * The Refresh Token with the activity: read_all permissions.
          */
@@ -275,6 +277,7 @@ public class SourceStrava {
             return this;
         }
 
+
         /**
          * UTC date and time. Any data before this date will not be replicated.
          */
@@ -283,15 +286,14 @@ public class SourceStrava {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceStrava build() {
+
             return new SourceStrava(
-                athleteId,
-                clientId,
-                clientSecret,
-                refreshToken,
-                startDate);
+                athleteId, clientId, clientSecret,
+                refreshToken, startDate);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceStravaAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

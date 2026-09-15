@@ -14,7 +14,7 @@ public enum Stockdata {
     @JsonValue
     private final String value;
 
-    private Stockdata(String value) {
+    Stockdata(String value) {
         this.value = value;
     }
     

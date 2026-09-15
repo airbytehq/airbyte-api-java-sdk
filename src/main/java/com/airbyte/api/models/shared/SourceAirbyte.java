@@ -14,13 +14,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAirbyte {
 
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -32,8 +33,10 @@ public class SourceAirbyte {
     @JsonProperty("host")
     private Optional<String> host;
 
+
     @JsonProperty("sourceType")
     private Airbyte sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -59,7 +62,8 @@ public class SourceAirbyte {
             String clientId,
             String clientSecret,
             OffsetDateTime startDate) {
-        this(clientId, clientSecret, Optional.empty(), startDate);
+        this(clientId, clientSecret, Optional.empty(),
+            startDate);
     }
 
     @JsonIgnore
@@ -90,9 +94,10 @@ public class SourceAirbyte {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceAirbyte withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -115,6 +120,7 @@ public class SourceAirbyte {
         return this;
     }
 
+
     /**
      * The Host URL of your Self-Managed Deployment (e.x. airbtye.mydomain.com)
      */
@@ -130,7 +136,6 @@ public class SourceAirbyte {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -141,21 +146,18 @@ public class SourceAirbyte {
         }
         SourceAirbyte other = (SourceAirbyte) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            host,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            clientId, clientSecret, host,
+            sourceType, startDate);
     }
     
     @Override
@@ -167,20 +169,22 @@ public class SourceAirbyte {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> host = Optional.empty();
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -188,11 +192,13 @@ public class SourceAirbyte {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The Host URL of your Self-Managed Deployment (e.x. airbtye.mydomain.com)
@@ -212,19 +218,20 @@ public class SourceAirbyte {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceAirbyte build() {
+
             return new SourceAirbyte(
-                clientId,
-                clientSecret,
-                host,
+                clientId, clientSecret, host,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Airbyte> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceGnews {
 
+public class SourceGnews {
     /**
      * API Key
      */
@@ -27,104 +26,128 @@ public class SourceGnews {
     private String apiKey;
 
     /**
-     * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+     * This parameter allows you to specify the country where the news articles returned by the API were
+     * published, the contents of the articles are not necessarily related to the specified country. You
+     * have to set as value the 2 letters code of the country you want to filter.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("country")
     private Optional<? extends SourceGnewsCountry> country;
 
     /**
-     * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date smaller than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<String> endDate;
 
     /**
-     * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
+     * This parameter allows you to choose in which attributes the keywords are searched. The attributes
+     * that can be set are title, description and content. It is possible to combine several attributes.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("in")
     private Optional<? extends List<In>> in;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("language")
     private Optional<? extends SourceGnewsLanguage> language;
 
     /**
-     * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
+     * This parameter allows you to specify the attributes that you allow to return null values. The
+     * attributes that  can be set are title, description and content. It is possible to combine several
+     * attributes
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("nullable")
     private Optional<? extends List<Nullable>> nullable;
 
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     @JsonProperty("query")
     private String query;
 
     /**
-     * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
-     *   - publishedAt = sort by publication date, the articles with the most recent
+     * This parameter allows you to choose with which type of sorting the articles should be returned. Two
+     * values  are possible:
+     * - publishedAt = sort by publication date, the articles with the most recent
      * publication date are returned first
-     *   - relevance = sort by best match to keywords, the articles with the best
+     * - relevance = sort by best match to keywords, the articles with the best
      * match are returned first
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("sortby")
     private Optional<? extends SourceGnewsSortBy> sortby;
 
+
     @JsonProperty("sourceType")
     private Gnews sourceType;
 
     /**
-     * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date greater than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<String> startDate;
 
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("top_headlines_query")
@@ -178,7 +201,10 @@ public class SourceGnews {
     public SourceGnews(
             String apiKey,
             String query) {
-        this(apiKey, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), query, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(apiKey, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            query, Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -190,7 +216,9 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+     * This parameter allows you to specify the country where the news articles returned by the API were
+     * published, the contents of the articles are not necessarily related to the specified country. You
+     * have to set as value the 2 letters code of the country you want to filter.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -199,7 +227,8 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date smaller than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     @JsonIgnore
     public Optional<String> endDate() {
@@ -207,7 +236,8 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
+     * This parameter allows you to choose in which attributes the keywords are searched. The attributes
+     * that can be set are title, description and content. It is possible to combine several attributes.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -222,7 +252,9 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
+     * This parameter allows you to specify the attributes that you allow to return null values. The
+     * attributes that  can be set are title, description and content. It is possible to combine several
+     * attributes
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -231,26 +263,33 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     @JsonIgnore
     public String query() {
@@ -258,10 +297,11 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
-     *   - publishedAt = sort by publication date, the articles with the most recent
+     * This parameter allows you to choose with which type of sorting the articles should be returned. Two
+     * values  are possible:
+     * - publishedAt = sort by publication date, the articles with the most recent
      * publication date are returned first
-     *   - relevance = sort by best match to keywords, the articles with the best
+     * - relevance = sort by best match to keywords, the articles with the best
      * match are returned first
      */
     @SuppressWarnings("unchecked")
@@ -276,7 +316,8 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date greater than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     @JsonIgnore
     public Optional<String> startDate() {
@@ -284,26 +325,33 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     @JsonIgnore
     public Optional<String> topHeadlinesQuery() {
@@ -319,9 +367,10 @@ public class SourceGnews {
         return (Optional<TopHeadlinesTopic>) topHeadlinesTopic;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -333,7 +382,9 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+     * This parameter allows you to specify the country where the news articles returned by the API were
+     * published, the contents of the articles are not necessarily related to the specified country. You
+     * have to set as value the 2 letters code of the country you want to filter.
      */
     public SourceGnews withCountry(SourceGnewsCountry country) {
         Utils.checkNotNull(country, "country");
@@ -341,8 +392,11 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+     * This parameter allows you to specify the country where the news articles returned by the API were
+     * published, the contents of the articles are not necessarily related to the specified country. You
+     * have to set as value the 2 letters code of the country you want to filter.
      */
     public SourceGnews withCountry(Optional<? extends SourceGnewsCountry> country) {
         Utils.checkNotNull(country, "country");
@@ -351,7 +405,8 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date smaller than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     public SourceGnews withEndDate(String endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -359,8 +414,10 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date smaller than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     public SourceGnews withEndDate(Optional<String> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -369,7 +426,8 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
+     * This parameter allows you to choose in which attributes the keywords are searched. The attributes
+     * that can be set are title, description and content. It is possible to combine several attributes.
      */
     public SourceGnews withIn(List<In> in) {
         Utils.checkNotNull(in, "in");
@@ -377,8 +435,10 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
+     * This parameter allows you to choose in which attributes the keywords are searched. The attributes
+     * that can be set are title, description and content. It is possible to combine several attributes.
      */
     public SourceGnews withIn(Optional<? extends List<In>> in) {
         Utils.checkNotNull(in, "in");
@@ -392,6 +452,7 @@ public class SourceGnews {
         return this;
     }
 
+
     public SourceGnews withLanguage(Optional<? extends SourceGnewsLanguage> language) {
         Utils.checkNotNull(language, "language");
         this.language = language;
@@ -399,7 +460,9 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
+     * This parameter allows you to specify the attributes that you allow to return null values. The
+     * attributes that  can be set are title, description and content. It is possible to combine several
+     * attributes
      */
     public SourceGnews withNullable(List<Nullable> nullable) {
         Utils.checkNotNull(nullable, "nullable");
@@ -407,8 +470,11 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
+     * This parameter allows you to specify the attributes that you allow to return null values. The
+     * attributes that  can be set are title, description and content. It is possible to combine several
+     * attributes
      */
     public SourceGnews withNullable(Optional<? extends List<Nullable>> nullable) {
         Utils.checkNotNull(nullable, "nullable");
@@ -417,26 +483,33 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     public SourceGnews withQuery(String query) {
         Utils.checkNotNull(query, "query");
@@ -445,10 +518,11 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
-     *   - publishedAt = sort by publication date, the articles with the most recent
+     * This parameter allows you to choose with which type of sorting the articles should be returned. Two
+     * values  are possible:
+     * - publishedAt = sort by publication date, the articles with the most recent
      * publication date are returned first
-     *   - relevance = sort by best match to keywords, the articles with the best
+     * - relevance = sort by best match to keywords, the articles with the best
      * match are returned first
      */
     public SourceGnews withSortby(SourceGnewsSortBy sortby) {
@@ -457,11 +531,13 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
-     *   - publishedAt = sort by publication date, the articles with the most recent
+     * This parameter allows you to choose with which type of sorting the articles should be returned. Two
+     * values  are possible:
+     * - publishedAt = sort by publication date, the articles with the most recent
      * publication date are returned first
-     *   - relevance = sort by best match to keywords, the articles with the best
+     * - relevance = sort by best match to keywords, the articles with the best
      * match are returned first
      */
     public SourceGnews withSortby(Optional<? extends SourceGnewsSortBy> sortby) {
@@ -471,7 +547,8 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date greater than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     public SourceGnews withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -479,8 +556,10 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+     * This parameter allows you to filter the articles that have a publication date greater than or equal
+     * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
      */
     public SourceGnews withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -489,26 +568,33 @@ public class SourceGnews {
     }
 
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     public SourceGnews withTopHeadlinesQuery(String topHeadlinesQuery) {
         Utils.checkNotNull(topHeadlinesQuery, "topHeadlinesQuery");
@@ -516,27 +602,35 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
-     * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-     *   quotation marks are used to search for articles with the exact same keyword
-     * sequence. 
-     *   For example the query: "Apple iPhone" will return articles matching at
-     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-     *   search. By default the space character acts as an AND operator, it is
-     * possible to replace the space character 
-     *   by AND to obtain the same result. For example the query: Apple Microsoft
-     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-     *   It is important to note that this operator has a higher precedence than
-     * the AND operator. For example the 
-     *   query: Apple OR Microsoft will return all articles matching the keyword
-     * Apple as well as all articles matching 
-     *   the keyword Microsoft
-     * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-     *   specified keywords. To use it, you need to add NOT in front of each word
+     * This parameter allows you to specify your search keywords to find the news articles you are looking
+     * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+     * operators  with keywords.
+     * 
+     * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+     * quotation marks are used to search for articles with the exact same keyword
+     * sequence.
+     * For example the query: "Apple iPhone" will return articles matching at
+     * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+     * that several keywords are all used in the article
+     * search. By default the space character acts as an AND operator, it is
+     * possible to replace the space character
+     * by AND to obtain the same result. For example the query: Apple Microsoft
+     * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+     * articles matching the keyword a or the keyword b.
+     * It is important to note that this operator has a higher precedence than
+     * the AND operator. For example the
+     * query: Apple OR Microsoft will return all articles matching the keyword
+     * Apple as well as all articles matching
+     * the keyword Microsoft
+     * - Logical NOT Operator: This operator allows you to remove from the results the articles
+     * corresponding to the
+     * specified keywords. To use it, you need to add NOT in front of each word
      * or phrase surrounded by quotes.
-     *   For example the query: Apple NOT iPhone will return all articles matching
+     * For example the query: Apple NOT iPhone will return all articles matching
      * the keyword Apple but not the keyword
-     *   iPhone
+     * iPhone
      */
     public SourceGnews withTopHeadlinesQuery(Optional<String> topHeadlinesQuery) {
         Utils.checkNotNull(topHeadlinesQuery, "topHeadlinesQuery");
@@ -553,6 +647,7 @@ public class SourceGnews {
         return this;
     }
 
+
     /**
      * This parameter allows you to change the category for the request.
      */
@@ -562,7 +657,6 @@ public class SourceGnews {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -573,35 +667,27 @@ public class SourceGnews {
         }
         SourceGnews other = (SourceGnews) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.country, other.country) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.in, other.in) &&
-            Objects.deepEquals(this.language, other.language) &&
-            Objects.deepEquals(this.nullable, other.nullable) &&
-            Objects.deepEquals(this.query, other.query) &&
-            Objects.deepEquals(this.sortby, other.sortby) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.topHeadlinesQuery, other.topHeadlinesQuery) &&
-            Objects.deepEquals(this.topHeadlinesTopic, other.topHeadlinesTopic);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.country, other.country) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.in, other.in) &&
+            Utils.enhancedDeepEquals(this.language, other.language) &&
+            Utils.enhancedDeepEquals(this.nullable, other.nullable) &&
+            Utils.enhancedDeepEquals(this.query, other.query) &&
+            Utils.enhancedDeepEquals(this.sortby, other.sortby) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.topHeadlinesQuery, other.topHeadlinesQuery) &&
+            Utils.enhancedDeepEquals(this.topHeadlinesTopic, other.topHeadlinesTopic);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            country,
-            endDate,
-            in,
-            language,
-            nullable,
-            query,
-            sortby,
-            sourceType,
-            startDate,
-            topHeadlinesQuery,
-            topHeadlinesTopic);
+        return Utils.enhancedHash(
+            apiKey, country, endDate,
+            in, language, nullable,
+            query, sortby, sourceType,
+            startDate, topHeadlinesQuery, topHeadlinesTopic);
     }
     
     @Override
@@ -620,34 +706,36 @@ public class SourceGnews {
                 "topHeadlinesQuery", topHeadlinesQuery,
                 "topHeadlinesTopic", topHeadlinesTopic);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends SourceGnewsCountry> country = Optional.empty();
- 
+
         private Optional<String> endDate = Optional.empty();
- 
+
         private Optional<? extends List<In>> in = Optional.empty();
- 
+
         private Optional<? extends SourceGnewsLanguage> language = Optional.empty();
- 
+
         private Optional<? extends List<Nullable>> nullable = Optional.empty();
- 
+
         private String query;
- 
+
         private Optional<? extends SourceGnewsSortBy> sortby = Optional.empty();
- 
+
         private Optional<String> startDate = Optional.empty();
- 
+
         private Optional<String> topHeadlinesQuery = Optional.empty();
- 
+
         private Optional<? extends TopHeadlinesTopic> topHeadlinesTopic = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -658,8 +746,11 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+         * This parameter allows you to specify the country where the news articles returned by the API were
+         * published, the contents of the articles are not necessarily related to the specified country. You
+         * have to set as value the 2 letters code of the country you want to filter.
          */
         public Builder country(SourceGnewsCountry country) {
             Utils.checkNotNull(country, "country");
@@ -668,7 +759,9 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to specify the country where the news articles returned by the API were published, the contents of the articles are not necessarily related to the specified country. You have to set as value the 2 letters code of the country you want to filter.
+         * This parameter allows you to specify the country where the news articles returned by the API were
+         * published, the contents of the articles are not necessarily related to the specified country. You
+         * have to set as value the 2 letters code of the country you want to filter.
          */
         public Builder country(Optional<? extends SourceGnewsCountry> country) {
             Utils.checkNotNull(country, "country");
@@ -676,8 +769,10 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+         * This parameter allows you to filter the articles that have a publication date smaller than or equal
+         * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
          */
         public Builder endDate(String endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -686,7 +781,8 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to filter the articles that have a publication date smaller than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+         * This parameter allows you to filter the articles that have a publication date smaller than or equal
+         * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
          */
         public Builder endDate(Optional<String> endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -694,8 +790,10 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
+         * This parameter allows you to choose in which attributes the keywords are searched. The attributes
+         * that can be set are title, description and content. It is possible to combine several attributes.
          */
         public Builder in(List<In> in) {
             Utils.checkNotNull(in, "in");
@@ -704,13 +802,15 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to choose in which attributes the keywords are searched. The attributes that can be set are title, description and content. It is possible to combine several attributes.
+         * This parameter allows you to choose in which attributes the keywords are searched. The attributes
+         * that can be set are title, description and content. It is possible to combine several attributes.
          */
         public Builder in(Optional<? extends List<In>> in) {
             Utils.checkNotNull(in, "in");
             this.in = in;
             return this;
         }
+
 
         public Builder language(SourceGnewsLanguage language) {
             Utils.checkNotNull(language, "language");
@@ -724,8 +824,11 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
+         * This parameter allows you to specify the attributes that you allow to return null values. The
+         * attributes that  can be set are title, description and content. It is possible to combine several
+         * attributes
          */
         public Builder nullable(List<Nullable> nullable) {
             Utils.checkNotNull(nullable, "nullable");
@@ -734,7 +837,9 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to specify the attributes that you allow to return null values. The attributes that  can be set are title, description and content. It is possible to combine several attributes
+         * This parameter allows you to specify the attributes that you allow to return null values. The
+         * attributes that  can be set are title, description and content. It is possible to combine several
+         * attributes
          */
         public Builder nullable(Optional<? extends List<Nullable>> nullable) {
             Utils.checkNotNull(nullable, "nullable");
@@ -742,27 +847,35 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-         *   quotation marks are used to search for articles with the exact same keyword
-         * sequence. 
-         *   For example the query: "Apple iPhone" will return articles matching at
-         * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-         *   search. By default the space character acts as an AND operator, it is
-         * possible to replace the space character 
-         *   by AND to obtain the same result. For example the query: Apple Microsoft
-         * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-         *   It is important to note that this operator has a higher precedence than
-         * the AND operator. For example the 
-         *   query: Apple OR Microsoft will return all articles matching the keyword
-         * Apple as well as all articles matching 
-         *   the keyword Microsoft
-         * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-         *   specified keywords. To use it, you need to add NOT in front of each word
+         * This parameter allows you to specify your search keywords to find the news articles you are looking
+         * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+         * operators  with keywords.
+         * 
+         * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+         * quotation marks are used to search for articles with the exact same keyword
+         * sequence.
+         * For example the query: "Apple iPhone" will return articles matching at
+         * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+         * that several keywords are all used in the article
+         * search. By default the space character acts as an AND operator, it is
+         * possible to replace the space character
+         * by AND to obtain the same result. For example the query: Apple Microsoft
+         * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+         * articles matching the keyword a or the keyword b.
+         * It is important to note that this operator has a higher precedence than
+         * the AND operator. For example the
+         * query: Apple OR Microsoft will return all articles matching the keyword
+         * Apple as well as all articles matching
+         * the keyword Microsoft
+         * - Logical NOT Operator: This operator allows you to remove from the results the articles
+         * corresponding to the
+         * specified keywords. To use it, you need to add NOT in front of each word
          * or phrase surrounded by quotes.
-         *   For example the query: Apple NOT iPhone will return all articles matching
+         * For example the query: Apple NOT iPhone will return all articles matching
          * the keyword Apple but not the keyword
-         *   iPhone
+         * iPhone
          */
         public Builder query(String query) {
             Utils.checkNotNull(query, "query");
@@ -770,11 +883,13 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
-         *   - publishedAt = sort by publication date, the articles with the most recent
+         * This parameter allows you to choose with which type of sorting the articles should be returned. Two
+         * values  are possible:
+         * - publishedAt = sort by publication date, the articles with the most recent
          * publication date are returned first
-         *   - relevance = sort by best match to keywords, the articles with the best
+         * - relevance = sort by best match to keywords, the articles with the best
          * match are returned first
          */
         public Builder sortby(SourceGnewsSortBy sortby) {
@@ -784,10 +899,11 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to choose with which type of sorting the articles should be returned. Two values  are possible:
-         *   - publishedAt = sort by publication date, the articles with the most recent
+         * This parameter allows you to choose with which type of sorting the articles should be returned. Two
+         * values  are possible:
+         * - publishedAt = sort by publication date, the articles with the most recent
          * publication date are returned first
-         *   - relevance = sort by best match to keywords, the articles with the best
+         * - relevance = sort by best match to keywords, the articles with the best
          * match are returned first
          */
         public Builder sortby(Optional<? extends SourceGnewsSortBy> sortby) {
@@ -796,8 +912,10 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+         * This parameter allows you to filter the articles that have a publication date greater than or equal
+         * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -806,7 +924,8 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to filter the articles that have a publication date greater than or equal to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
+         * This parameter allows you to filter the articles that have a publication date greater than or equal
+         * to the  specified value. The date must respect the following format: YYYY-MM-DD hh:mm:ss (in UTC)
          */
         public Builder startDate(Optional<String> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -814,27 +933,35 @@ public class SourceGnews {
             return this;
         }
 
+
         /**
-         * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-         *   quotation marks are used to search for articles with the exact same keyword
-         * sequence. 
-         *   For example the query: "Apple iPhone" will return articles matching at
-         * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-         *   search. By default the space character acts as an AND operator, it is
-         * possible to replace the space character 
-         *   by AND to obtain the same result. For example the query: Apple Microsoft
-         * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-         *   It is important to note that this operator has a higher precedence than
-         * the AND operator. For example the 
-         *   query: Apple OR Microsoft will return all articles matching the keyword
-         * Apple as well as all articles matching 
-         *   the keyword Microsoft
-         * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-         *   specified keywords. To use it, you need to add NOT in front of each word
+         * This parameter allows you to specify your search keywords to find the news articles you are looking
+         * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+         * operators  with keywords.
+         * 
+         * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+         * quotation marks are used to search for articles with the exact same keyword
+         * sequence.
+         * For example the query: "Apple iPhone" will return articles matching at
+         * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+         * that several keywords are all used in the article
+         * search. By default the space character acts as an AND operator, it is
+         * possible to replace the space character
+         * by AND to obtain the same result. For example the query: Apple Microsoft
+         * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+         * articles matching the keyword a or the keyword b.
+         * It is important to note that this operator has a higher precedence than
+         * the AND operator. For example the
+         * query: Apple OR Microsoft will return all articles matching the keyword
+         * Apple as well as all articles matching
+         * the keyword Microsoft
+         * - Logical NOT Operator: This operator allows you to remove from the results the articles
+         * corresponding to the
+         * specified keywords. To use it, you need to add NOT in front of each word
          * or phrase surrounded by quotes.
-         *   For example the query: Apple NOT iPhone will return all articles matching
+         * For example the query: Apple NOT iPhone will return all articles matching
          * the keyword Apple but not the keyword
-         *   iPhone
+         * iPhone
          */
         public Builder topHeadlinesQuery(String topHeadlinesQuery) {
             Utils.checkNotNull(topHeadlinesQuery, "topHeadlinesQuery");
@@ -843,32 +970,40 @@ public class SourceGnews {
         }
 
         /**
-         * This parameter allows you to specify your search keywords to find the news articles you are looking for. The keywords will be used to return the most relevant articles. It is possible to use logical operators  with keywords. - Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by 
-         *   quotation marks are used to search for articles with the exact same keyword
-         * sequence. 
-         *   For example the query: "Apple iPhone" will return articles matching at
-         * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure that several keywords are all used in the article
-         *   search. By default the space character acts as an AND operator, it is
-         * possible to replace the space character 
-         *   by AND to obtain the same result. For example the query: Apple Microsoft
-         * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve articles matching the keyword a or the keyword b.
-         *   It is important to note that this operator has a higher precedence than
-         * the AND operator. For example the 
-         *   query: Apple OR Microsoft will return all articles matching the keyword
-         * Apple as well as all articles matching 
-         *   the keyword Microsoft
-         * - Logical NOT Operator: This operator allows you to remove from the results the articles corresponding to the
-         *   specified keywords. To use it, you need to add NOT in front of each word
+         * This parameter allows you to specify your search keywords to find the news articles you are looking
+         * for. The keywords will be used to return the most relevant articles. It is possible to use logical
+         * operators  with keywords.
+         * 
+         * <p>- Phrase Search Operator: This operator allows you to make an exact search. Keywords surrounded by
+         * quotation marks are used to search for articles with the exact same keyword
+         * sequence.
+         * For example the query: "Apple iPhone" will return articles matching at
+         * least once this sequence of keywords. - Logical AND Operator: This operator allows you to make sure
+         * that several keywords are all used in the article
+         * search. By default the space character acts as an AND operator, it is
+         * possible to replace the space character
+         * by AND to obtain the same result. For example the query: Apple Microsoft
+         * is equivalent to Apple AND Microsoft - Logical OR Operator: This operator allows you to retrieve
+         * articles matching the keyword a or the keyword b.
+         * It is important to note that this operator has a higher precedence than
+         * the AND operator. For example the
+         * query: Apple OR Microsoft will return all articles matching the keyword
+         * Apple as well as all articles matching
+         * the keyword Microsoft
+         * - Logical NOT Operator: This operator allows you to remove from the results the articles
+         * corresponding to the
+         * specified keywords. To use it, you need to add NOT in front of each word
          * or phrase surrounded by quotes.
-         *   For example the query: Apple NOT iPhone will return all articles matching
+         * For example the query: Apple NOT iPhone will return all articles matching
          * the keyword Apple but not the keyword
-         *   iPhone
+         * iPhone
          */
         public Builder topHeadlinesQuery(Optional<String> topHeadlinesQuery) {
             Utils.checkNotNull(topHeadlinesQuery, "topHeadlinesQuery");
             this.topHeadlinesQuery = topHeadlinesQuery;
             return this;
         }
+
 
         /**
          * This parameter allows you to change the category for the request.
@@ -887,21 +1022,16 @@ public class SourceGnews {
             this.topHeadlinesTopic = topHeadlinesTopic;
             return this;
         }
-        
+
         public SourceGnews build() {
+
             return new SourceGnews(
-                apiKey,
-                country,
-                endDate,
-                in,
-                language,
-                nullable,
-                query,
-                sortby,
-                startDate,
-                topHeadlinesQuery,
-                topHeadlinesTopic);
+                apiKey, country, endDate,
+                in, language, nullable,
+                query, sortby, startDate,
+                topHeadlinesQuery, topHeadlinesTopic);
         }
+
 
         private static final LazySingletonValue<Gnews> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

@@ -17,7 +17,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -26,20 +25,12 @@ import java.util.Optional;
  * <p>Config for custom insights
  */
 public class InsightConfig {
-
     /**
      * A list of chosen action_breakdowns for action_breakdowns
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("action_breakdowns")
-    private Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns;
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("action_report_time")
-    private Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime;
+    private Optional<? extends List<SourceFacebookMarketingValidActionBreakdowns>> actionBreakdowns;
 
     /**
      * A list of chosen breakdowns for breakdowns
@@ -49,7 +40,9 @@ public class InsightConfig {
     private Optional<? extends List<ValidBreakdowns>> breakdowns;
 
     /**
-     * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
+     * The date until which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be
+     * replicated. Not setting this option will result in always syncing the latest data.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
@@ -90,14 +83,21 @@ public class InsightConfig {
     private String name;
 
     /**
-     * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
     private Optional<OffsetDateTime> startDate;
 
     /**
-     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value for this field is 1, and the maximum is 89.
+     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals,
+     * where N is the number of days you specified. For example, if you set this value to 7, then all
+     * statistics will be reported as 7-day aggregates by starting from the start_date.
+     * 
+     * <p>If the start and end dates are October 1st and October 30th, then the connector will output 5
+     * records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value
+     * for this field is 1, and the maximum is 89.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("time_increment")
@@ -105,8 +105,7 @@ public class InsightConfig {
 
     @JsonCreator
     public InsightConfig(
-            @JsonProperty("action_breakdowns") Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns,
-            @JsonProperty("action_report_time") Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime,
+            @JsonProperty("action_breakdowns") Optional<? extends List<SourceFacebookMarketingValidActionBreakdowns>> actionBreakdowns,
             @JsonProperty("breakdowns") Optional<? extends List<ValidBreakdowns>> breakdowns,
             @JsonProperty("end_date") Optional<OffsetDateTime> endDate,
             @JsonProperty("fields") Optional<? extends List<SourceFacebookMarketingValidEnums>> fields,
@@ -117,7 +116,6 @@ public class InsightConfig {
             @JsonProperty("start_date") Optional<OffsetDateTime> startDate,
             @JsonProperty("time_increment") Optional<Long> timeIncrement) {
         Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
-        Utils.checkNotNull(actionReportTime, "actionReportTime");
         Utils.checkNotNull(breakdowns, "breakdowns");
         Utils.checkNotNull(endDate, "endDate");
         Utils.checkNotNull(fields, "fields");
@@ -128,7 +126,6 @@ public class InsightConfig {
         Utils.checkNotNull(startDate, "startDate");
         Utils.checkNotNull(timeIncrement, "timeIncrement");
         this.actionBreakdowns = actionBreakdowns;
-        this.actionReportTime = actionReportTime;
         this.breakdowns = breakdowns;
         this.endDate = endDate;
         this.fields = fields;
@@ -142,7 +139,10 @@ public class InsightConfig {
     
     public InsightConfig(
             String name) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), name, Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), name, Optional.empty(),
+            Optional.empty());
     }
 
     /**
@@ -150,17 +150,8 @@ public class InsightConfig {
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<List<ValidActionBreakdowns>> actionBreakdowns() {
-        return (Optional<List<ValidActionBreakdowns>>) actionBreakdowns;
-    }
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<SourceFacebookMarketingActionReportTime> actionReportTime() {
-        return (Optional<SourceFacebookMarketingActionReportTime>) actionReportTime;
+    public Optional<List<SourceFacebookMarketingValidActionBreakdowns>> actionBreakdowns() {
+        return (Optional<List<SourceFacebookMarketingValidActionBreakdowns>>) actionBreakdowns;
     }
 
     /**
@@ -173,7 +164,9 @@ public class InsightConfig {
     }
 
     /**
-     * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
+     * The date until which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be
+     * replicated. Not setting this option will result in always syncing the latest data.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> endDate() {
@@ -223,7 +216,8 @@ public class InsightConfig {
     }
 
     /**
-     * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     @JsonIgnore
     public Optional<OffsetDateTime> startDate() {
@@ -231,50 +225,40 @@ public class InsightConfig {
     }
 
     /**
-     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value for this field is 1, and the maximum is 89.
+     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals,
+     * where N is the number of days you specified. For example, if you set this value to 7, then all
+     * statistics will be reported as 7-day aggregates by starting from the start_date.
+     * 
+     * <p>If the start and end dates are October 1st and October 30th, then the connector will output 5
+     * records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value
+     * for this field is 1, and the maximum is 89.
      */
     @JsonIgnore
     public Optional<Long> timeIncrement() {
         return timeIncrement;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * A list of chosen action_breakdowns for action_breakdowns
      */
-    public InsightConfig withActionBreakdowns(List<ValidActionBreakdowns> actionBreakdowns) {
+    public InsightConfig withActionBreakdowns(List<SourceFacebookMarketingValidActionBreakdowns> actionBreakdowns) {
         Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
         this.actionBreakdowns = Optional.ofNullable(actionBreakdowns);
         return this;
     }
 
+
     /**
      * A list of chosen action_breakdowns for action_breakdowns
      */
-    public InsightConfig withActionBreakdowns(Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns) {
+    public InsightConfig withActionBreakdowns(Optional<? extends List<SourceFacebookMarketingValidActionBreakdowns>> actionBreakdowns) {
         Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
         this.actionBreakdowns = actionBreakdowns;
-        return this;
-    }
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    public InsightConfig withActionReportTime(SourceFacebookMarketingActionReportTime actionReportTime) {
-        Utils.checkNotNull(actionReportTime, "actionReportTime");
-        this.actionReportTime = Optional.ofNullable(actionReportTime);
-        return this;
-    }
-
-    /**
-     * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-     */
-    public InsightConfig withActionReportTime(Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime) {
-        Utils.checkNotNull(actionReportTime, "actionReportTime");
-        this.actionReportTime = actionReportTime;
         return this;
     }
 
@@ -287,6 +271,7 @@ public class InsightConfig {
         return this;
     }
 
+
     /**
      * A list of chosen breakdowns for breakdowns
      */
@@ -297,7 +282,9 @@ public class InsightConfig {
     }
 
     /**
-     * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
+     * The date until which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be
+     * replicated. Not setting this option will result in always syncing the latest data.
      */
     public InsightConfig withEndDate(OffsetDateTime endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -305,8 +292,11 @@ public class InsightConfig {
         return this;
     }
 
+
     /**
-     * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
+     * The date until which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be
+     * replicated. Not setting this option will result in always syncing the latest data.
      */
     public InsightConfig withEndDate(Optional<OffsetDateTime> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -322,6 +312,7 @@ public class InsightConfig {
         this.fields = Optional.ofNullable(fields);
         return this;
     }
+
 
     /**
      * A list of chosen fields for fields parameter
@@ -341,6 +332,7 @@ public class InsightConfig {
         return this;
     }
 
+
     /**
      * The insights job timeout
      */
@@ -359,6 +351,7 @@ public class InsightConfig {
         return this;
     }
 
+
     /**
      * The attribution window
      */
@@ -376,6 +369,7 @@ public class InsightConfig {
         this.level = Optional.ofNullable(level);
         return this;
     }
+
 
     /**
      * Chosen level for API
@@ -396,7 +390,8 @@ public class InsightConfig {
     }
 
     /**
-     * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     public InsightConfig withStartDate(OffsetDateTime startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -404,8 +399,10 @@ public class InsightConfig {
         return this;
     }
 
+
     /**
-     * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
+     * The date from which you'd like to replicate data for this stream, in the format
+     * YYYY-MM-DDT00:00:00Z.
      */
     public InsightConfig withStartDate(Optional<OffsetDateTime> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -414,7 +411,13 @@ public class InsightConfig {
     }
 
     /**
-     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value for this field is 1, and the maximum is 89.
+     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals,
+     * where N is the number of days you specified. For example, if you set this value to 7, then all
+     * statistics will be reported as 7-day aggregates by starting from the start_date.
+     * 
+     * <p>If the start and end dates are October 1st and October 30th, then the connector will output 5
+     * records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value
+     * for this field is 1, and the maximum is 89.
      */
     public InsightConfig withTimeIncrement(long timeIncrement) {
         Utils.checkNotNull(timeIncrement, "timeIncrement");
@@ -422,8 +425,15 @@ public class InsightConfig {
         return this;
     }
 
+
     /**
-     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value for this field is 1, and the maximum is 89.
+     * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals,
+     * where N is the number of days you specified. For example, if you set this value to 7, then all
+     * statistics will be reported as 7-day aggregates by starting from the start_date.
+     * 
+     * <p>If the start and end dates are October 1st and October 30th, then the connector will output 5
+     * records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value
+     * for this field is 1, and the maximum is 89.
      */
     public InsightConfig withTimeIncrement(Optional<Long> timeIncrement) {
         Utils.checkNotNull(timeIncrement, "timeIncrement");
@@ -431,7 +441,6 @@ public class InsightConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -442,32 +451,24 @@ public class InsightConfig {
         }
         InsightConfig other = (InsightConfig) o;
         return 
-            Objects.deepEquals(this.actionBreakdowns, other.actionBreakdowns) &&
-            Objects.deepEquals(this.actionReportTime, other.actionReportTime) &&
-            Objects.deepEquals(this.breakdowns, other.breakdowns) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.fields, other.fields) &&
-            Objects.deepEquals(this.insightsJobTimeout, other.insightsJobTimeout) &&
-            Objects.deepEquals(this.insightsLookbackWindow, other.insightsLookbackWindow) &&
-            Objects.deepEquals(this.level, other.level) &&
-            Objects.deepEquals(this.name, other.name) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.timeIncrement, other.timeIncrement);
+            Utils.enhancedDeepEquals(this.actionBreakdowns, other.actionBreakdowns) &&
+            Utils.enhancedDeepEquals(this.breakdowns, other.breakdowns) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.fields, other.fields) &&
+            Utils.enhancedDeepEquals(this.insightsJobTimeout, other.insightsJobTimeout) &&
+            Utils.enhancedDeepEquals(this.insightsLookbackWindow, other.insightsLookbackWindow) &&
+            Utils.enhancedDeepEquals(this.level, other.level) &&
+            Utils.enhancedDeepEquals(this.name, other.name) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.timeIncrement, other.timeIncrement);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            actionBreakdowns,
-            actionReportTime,
-            breakdowns,
-            endDate,
-            fields,
-            insightsJobTimeout,
-            insightsLookbackWindow,
-            level,
-            name,
-            startDate,
+        return Utils.enhancedHash(
+            actionBreakdowns, breakdowns, endDate,
+            fields, insightsJobTimeout, insightsLookbackWindow,
+            level, name, startDate,
             timeIncrement);
     }
     
@@ -475,7 +476,6 @@ public class InsightConfig {
     public String toString() {
         return Utils.toString(InsightConfig.class,
                 "actionBreakdowns", actionBreakdowns,
-                "actionReportTime", actionReportTime,
                 "breakdowns", breakdowns,
                 "endDate", endDate,
                 "fields", fields,
@@ -486,39 +486,39 @@ public class InsightConfig {
                 "startDate", startDate,
                 "timeIncrement", timeIncrement);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
-        private Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns = Optional.empty();
- 
-        private Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime;
- 
+
+        private Optional<? extends List<SourceFacebookMarketingValidActionBreakdowns>> actionBreakdowns = Optional.empty();
+
         private Optional<? extends List<ValidBreakdowns>> breakdowns = Optional.empty();
- 
+
         private Optional<OffsetDateTime> endDate = Optional.empty();
- 
+
         private Optional<? extends List<SourceFacebookMarketingValidEnums>> fields = Optional.empty();
- 
+
         private Optional<Long> insightsJobTimeout;
- 
+
         private Optional<Long> insightsLookbackWindow;
- 
+
         private Optional<? extends Level> level;
- 
+
         private String name;
- 
+
         private Optional<OffsetDateTime> startDate = Optional.empty();
- 
+
         private Optional<Long> timeIncrement;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
          * A list of chosen action_breakdowns for action_breakdowns
          */
-        public Builder actionBreakdowns(List<ValidActionBreakdowns> actionBreakdowns) {
+        public Builder actionBreakdowns(List<SourceFacebookMarketingValidActionBreakdowns> actionBreakdowns) {
             Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
             this.actionBreakdowns = Optional.ofNullable(actionBreakdowns);
             return this;
@@ -527,29 +527,12 @@ public class InsightConfig {
         /**
          * A list of chosen action_breakdowns for action_breakdowns
          */
-        public Builder actionBreakdowns(Optional<? extends List<ValidActionBreakdowns>> actionBreakdowns) {
+        public Builder actionBreakdowns(Optional<? extends List<SourceFacebookMarketingValidActionBreakdowns>> actionBreakdowns) {
             Utils.checkNotNull(actionBreakdowns, "actionBreakdowns");
             this.actionBreakdowns = actionBreakdowns;
             return this;
         }
 
-        /**
-         * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-         */
-        public Builder actionReportTime(SourceFacebookMarketingActionReportTime actionReportTime) {
-            Utils.checkNotNull(actionReportTime, "actionReportTime");
-            this.actionReportTime = Optional.ofNullable(actionReportTime);
-            return this;
-        }
-
-        /**
-         * Determines the report time of action stats. For example, if a person saw the ad on Jan 1st but converted on Jan 2nd, when you query the API with action_report_time=impression, you see a conversion on Jan 1st. When you query the API with action_report_time=conversion, you see a conversion on Jan 2nd.
-         */
-        public Builder actionReportTime(Optional<? extends SourceFacebookMarketingActionReportTime> actionReportTime) {
-            Utils.checkNotNull(actionReportTime, "actionReportTime");
-            this.actionReportTime = actionReportTime;
-            return this;
-        }
 
         /**
          * A list of chosen breakdowns for breakdowns
@@ -569,8 +552,11 @@ public class InsightConfig {
             return this;
         }
 
+
         /**
-         * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
+         * The date until which you'd like to replicate data for this stream, in the format
+         * YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be
+         * replicated. Not setting this option will result in always syncing the latest data.
          */
         public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -579,13 +565,16 @@ public class InsightConfig {
         }
 
         /**
-         * The date until which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be replicated. Not setting this option will result in always syncing the latest data.
+         * The date until which you'd like to replicate data for this stream, in the format
+         * YYYY-MM-DDT00:00:00Z. All data generated between the start date and this end date will be
+         * replicated. Not setting this option will result in always syncing the latest data.
          */
         public Builder endDate(Optional<OffsetDateTime> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * A list of chosen fields for fields parameter
@@ -605,6 +594,7 @@ public class InsightConfig {
             return this;
         }
 
+
         /**
          * The insights job timeout
          */
@@ -622,6 +612,7 @@ public class InsightConfig {
             this.insightsJobTimeout = insightsJobTimeout;
             return this;
         }
+
 
         /**
          * The attribution window
@@ -641,6 +632,7 @@ public class InsightConfig {
             return this;
         }
 
+
         /**
          * Chosen level for API
          */
@@ -659,6 +651,7 @@ public class InsightConfig {
             return this;
         }
 
+
         /**
          * The name value of insight
          */
@@ -668,8 +661,10 @@ public class InsightConfig {
             return this;
         }
 
+
         /**
-         * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
+         * The date from which you'd like to replicate data for this stream, in the format
+         * YYYY-MM-DDT00:00:00Z.
          */
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -678,7 +673,8 @@ public class InsightConfig {
         }
 
         /**
-         * The date from which you'd like to replicate data for this stream, in the format YYYY-MM-DDT00:00:00Z.
+         * The date from which you'd like to replicate data for this stream, in the format
+         * YYYY-MM-DDT00:00:00Z.
          */
         public Builder startDate(Optional<OffsetDateTime> startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -686,8 +682,15 @@ public class InsightConfig {
             return this;
         }
 
+
         /**
-         * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value for this field is 1, and the maximum is 89.
+         * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals,
+         * where N is the number of days you specified. For example, if you set this value to 7, then all
+         * statistics will be reported as 7-day aggregates by starting from the start_date.
+         * 
+         * <p>If the start and end dates are October 1st and October 30th, then the connector will output 5
+         * records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value
+         * for this field is 1, and the maximum is 89.
          */
         public Builder timeIncrement(long timeIncrement) {
             Utils.checkNotNull(timeIncrement, "timeIncrement");
@@ -696,18 +699,21 @@ public class InsightConfig {
         }
 
         /**
-         * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals, where N is the number of days you specified. For example, if you set this value to 7, then all statistics will be reported as 7-day aggregates by starting from the start_date. If the start and end dates are October 1st and October 30th, then the connector will output 5 records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value for this field is 1, and the maximum is 89.
+         * Time window in days by which to aggregate statistics. The sync will be chunked into N day intervals,
+         * where N is the number of days you specified. For example, if you set this value to 7, then all
+         * statistics will be reported as 7-day aggregates by starting from the start_date.
+         * 
+         * <p>If the start and end dates are October 1st and October 30th, then the connector will output 5
+         * records: 01 - 06, 07 - 13, 14 - 20, 21 - 27, and 28 - 30 (3 days only). The minimum allowed value
+         * for this field is 1, and the maximum is 89.
          */
         public Builder timeIncrement(Optional<Long> timeIncrement) {
             Utils.checkNotNull(timeIncrement, "timeIncrement");
             this.timeIncrement = timeIncrement;
             return this;
         }
-        
+
         public InsightConfig build() {
-            if (actionReportTime == null) {
-                actionReportTime = _SINGLETON_VALUE_ActionReportTime.value();
-            }
             if (insightsJobTimeout == null) {
                 insightsJobTimeout = _SINGLETON_VALUE_InsightsJobTimeout.value();
             }
@@ -720,25 +726,14 @@ public class InsightConfig {
             if (timeIncrement == null) {
                 timeIncrement = _SINGLETON_VALUE_TimeIncrement.value();
             }
+
             return new InsightConfig(
-                actionBreakdowns,
-                actionReportTime,
-                breakdowns,
-                endDate,
-                fields,
-                insightsJobTimeout,
-                insightsLookbackWindow,
-                level,
-                name,
-                startDate,
+                actionBreakdowns, breakdowns, endDate,
+                fields, insightsJobTimeout, insightsLookbackWindow,
+                level, name, startDate,
                 timeIncrement);
         }
 
-        private static final LazySingletonValue<Optional<? extends SourceFacebookMarketingActionReportTime>> _SINGLETON_VALUE_ActionReportTime =
-                new LazySingletonValue<>(
-                        "action_report_time",
-                        "\"mixed\"",
-                        new TypeReference<Optional<? extends SourceFacebookMarketingActionReportTime>>() {});
 
         private static final LazySingletonValue<Optional<Long>> _SINGLETON_VALUE_InsightsJobTimeout =
                 new LazySingletonValue<>(

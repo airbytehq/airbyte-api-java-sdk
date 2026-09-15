@@ -9,15 +9,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * JobTypeResourceLimit
  * 
- * <p>sets resource requirements for a specific job type for an actor or actor definition. these values override the default, if both are set.
+ * <p>sets resource requirements for a specific job type for an actor or actor definition. these values
+ * override the default, if both are set.
  */
 public class JobTypeResourceLimit {
-
     /**
      * enum that describes the different types of jobs that the platform runs.
      */
@@ -56,9 +55,10 @@ public class JobTypeResourceLimit {
         return resourceRequirements;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * enum that describes the different types of jobs that the platform runs.
@@ -78,7 +78,6 @@ public class JobTypeResourceLimit {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +88,14 @@ public class JobTypeResourceLimit {
         }
         JobTypeResourceLimit other = (JobTypeResourceLimit) o;
         return 
-            Objects.deepEquals(this.jobType, other.jobType) &&
-            Objects.deepEquals(this.resourceRequirements, other.resourceRequirements);
+            Utils.enhancedDeepEquals(this.jobType, other.jobType) &&
+            Utils.enhancedDeepEquals(this.resourceRequirements, other.resourceRequirements);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            jobType,
-            resourceRequirements);
+        return Utils.enhancedHash(
+            jobType, resourceRequirements);
     }
     
     @Override
@@ -106,16 +104,18 @@ public class JobTypeResourceLimit {
                 "jobType", jobType,
                 "resourceRequirements", resourceRequirements);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private JobType jobType;
- 
+
         private ResourceRequirements resourceRequirements;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * enum that describes the different types of jobs that the platform runs.
@@ -126,6 +126,7 @@ public class JobTypeResourceLimit {
             return this;
         }
 
+
         /**
          * optional resource requirements to run workers (blank for unbounded allocations)
          */
@@ -134,11 +135,12 @@ public class JobTypeResourceLimit {
             this.resourceRequirements = resourceRequirements;
             return this;
         }
-        
+
         public JobTypeResourceLimit build() {
+
             return new JobTypeResourceLimit(
-                jobType,
-                resourceRequirements);
+                jobType, resourceRequirements);
         }
+
     }
 }

@@ -14,7 +14,7 @@ public enum DestinationSnowflakeCortexSchemasProcessingMode {
     @JsonValue
     private final String value;
 
-    private DestinationSnowflakeCortexSchemasProcessingMode(String value) {
+    DestinationSnowflakeCortexSchemasProcessingMode(String value) {
         this.value = value;
     }
     

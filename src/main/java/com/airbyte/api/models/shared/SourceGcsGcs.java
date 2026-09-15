@@ -14,7 +14,7 @@ public enum SourceGcsGcs {
     @JsonValue
     private final String value;
 
-    private SourceGcsGcs(String value) {
+    SourceGcsGcs(String value) {
         this.value = value;
     }
     

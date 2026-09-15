@@ -22,7 +22,7 @@ public enum SourcePocketSortBy {
     @JsonValue
     private final String value;
 
-    private SourcePocketSortBy(String value) {
+    SourcePocketSortBy(String value) {
         this.value = value;
     }
     

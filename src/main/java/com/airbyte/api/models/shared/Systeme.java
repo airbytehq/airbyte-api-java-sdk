@@ -14,7 +14,7 @@ public enum Systeme {
     @JsonValue
     private final String value;
 
-    private Systeme(String value) {
+    Systeme(String value) {
         this.value = value;
     }
     

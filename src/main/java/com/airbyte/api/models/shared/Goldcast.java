@@ -14,7 +14,7 @@ public enum Goldcast {
     @JsonValue
     private final String value;
 
-    private Goldcast(String value) {
+    Goldcast(String value) {
         this.value = value;
     }
     

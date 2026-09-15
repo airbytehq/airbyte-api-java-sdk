@@ -11,7 +11,9 @@ import java.util.Optional;
 /**
  * DataType
  * 
- * <p>/latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical: Intervals of historic market data like OHLCV data or data for use in charting libraries. See &lt;a href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview"&gt;here&lt;/a&gt;.
+ * <p>/latest: Latest market ticker quotes and averages for cryptocurrencies and exchanges. /historical:
+ * Intervals of historic market data like OHLCV data or data for use in charting libraries. See <a
+ * href="https://coinmarketcap.com/api/documentation/v1/#section/Endpoint-Overview">here</a>.
  */
 public enum DataType {
     LATEST("latest"),
@@ -20,7 +22,7 @@ public enum DataType {
     @JsonValue
     private final String value;
 
-    private DataType(String value) {
+    DataType(String value) {
         this.value = value;
     }
     

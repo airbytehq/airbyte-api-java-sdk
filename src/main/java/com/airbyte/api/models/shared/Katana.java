@@ -14,7 +14,7 @@ public enum Katana {
     @JsonValue
     private final String value;
 
-    private Katana(String value) {
+    Katana(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum ApifyDataset {
     @JsonValue
     private final String value;
 
-    private ApifyDataset(String value) {
+    ApifyDataset(String value) {
         this.value = value;
     }
     

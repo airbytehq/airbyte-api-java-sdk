@@ -14,7 +14,7 @@ public enum SourceGoogleSheetsAuthType {
     @JsonValue
     private final String value;
 
-    private SourceGoogleSheetsAuthType(String value) {
+    SourceGoogleSheetsAuthType(String value) {
         this.value = value;
     }
     

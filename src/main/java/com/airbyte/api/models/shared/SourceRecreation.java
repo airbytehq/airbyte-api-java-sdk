@@ -13,20 +13,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceRecreation {
 
+public class SourceRecreation {
     /**
      * API Key
      */
     @JsonProperty("apikey")
     private String apikey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("query_campsites")
     private Optional<String> queryCampsites;
+
 
     @JsonProperty("sourceType")
     private Recreation sourceType;
@@ -65,9 +66,10 @@ public class SourceRecreation {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key
@@ -84,13 +86,13 @@ public class SourceRecreation {
         return this;
     }
 
+
     public SourceRecreation withQueryCampsites(Optional<String> queryCampsites) {
         Utils.checkNotNull(queryCampsites, "queryCampsites");
         this.queryCampsites = queryCampsites;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -101,17 +103,15 @@ public class SourceRecreation {
         }
         SourceRecreation other = (SourceRecreation) o;
         return 
-            Objects.deepEquals(this.apikey, other.apikey) &&
-            Objects.deepEquals(this.queryCampsites, other.queryCampsites) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apikey, other.apikey) &&
+            Utils.enhancedDeepEquals(this.queryCampsites, other.queryCampsites) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apikey,
-            queryCampsites,
-            sourceType);
+        return Utils.enhancedHash(
+            apikey, queryCampsites, sourceType);
     }
     
     @Override
@@ -121,16 +121,18 @@ public class SourceRecreation {
                 "queryCampsites", queryCampsites,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apikey;
- 
+
         private Optional<String> queryCampsites = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key
@@ -140,6 +142,7 @@ public class SourceRecreation {
             this.apikey = apikey;
             return this;
         }
+
 
         public Builder queryCampsites(String queryCampsites) {
             Utils.checkNotNull(queryCampsites, "queryCampsites");
@@ -152,12 +155,13 @@ public class SourceRecreation {
             this.queryCampsites = queryCampsites;
             return this;
         }
-        
+
         public SourceRecreation build() {
+
             return new SourceRecreation(
-                apikey,
-                queryCampsites);
+                apikey, queryCampsites);
         }
+
 
         private static final LazySingletonValue<Recreation> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

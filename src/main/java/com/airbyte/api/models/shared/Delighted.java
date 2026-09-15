@@ -14,7 +14,7 @@ public enum Delighted {
     @JsonValue
     private final String value;
 
-    private Delighted(String value) {
+    Delighted(String value) {
         this.value = value;
     }
     

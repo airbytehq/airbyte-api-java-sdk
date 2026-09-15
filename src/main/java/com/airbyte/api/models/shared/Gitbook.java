@@ -14,7 +14,7 @@ public enum Gitbook {
     @JsonValue
     private final String value;
 
-    private Gitbook(String value) {
+    Gitbook(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum Cloudbeds {
     @JsonValue
     private final String value;
 
-    private Cloudbeds(String value) {
+    Cloudbeds(String value) {
         this.value = value;
     }
     

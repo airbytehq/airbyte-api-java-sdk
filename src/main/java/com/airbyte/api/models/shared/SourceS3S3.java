@@ -14,7 +14,7 @@ public enum SourceS3S3 {
     @JsonValue
     private final String value;
 
-    private SourceS3S3(String value) {
+    SourceS3S3(String value) {
         this.value = value;
     }
     

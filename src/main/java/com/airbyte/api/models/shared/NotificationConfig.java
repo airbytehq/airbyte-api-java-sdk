@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -21,7 +20,6 @@ import java.util.Optional;
  * <p>Configures a notification.
  */
 public class NotificationConfig {
-
     /**
      * Configures an email notification.
      */
@@ -68,9 +66,10 @@ public class NotificationConfig {
         return (Optional<WebhookNotificationConfig>) webhook;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Configures an email notification.
@@ -80,6 +79,7 @@ public class NotificationConfig {
         this.email = Optional.ofNullable(email);
         return this;
     }
+
 
     /**
      * Configures an email notification.
@@ -99,6 +99,7 @@ public class NotificationConfig {
         return this;
     }
 
+
     /**
      * Configures a webhook notification.
      */
@@ -108,7 +109,6 @@ public class NotificationConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -119,15 +119,14 @@ public class NotificationConfig {
         }
         NotificationConfig other = (NotificationConfig) o;
         return 
-            Objects.deepEquals(this.email, other.email) &&
-            Objects.deepEquals(this.webhook, other.webhook);
+            Utils.enhancedDeepEquals(this.email, other.email) &&
+            Utils.enhancedDeepEquals(this.webhook, other.webhook);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            email,
-            webhook);
+        return Utils.enhancedHash(
+            email, webhook);
     }
     
     @Override
@@ -136,16 +135,18 @@ public class NotificationConfig {
                 "email", email,
                 "webhook", webhook);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends EmailNotificationConfig> email = Optional.empty();
- 
+
         private Optional<? extends WebhookNotificationConfig> webhook = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Configures an email notification.
@@ -165,6 +166,7 @@ public class NotificationConfig {
             return this;
         }
 
+
         /**
          * Configures a webhook notification.
          */
@@ -182,11 +184,12 @@ public class NotificationConfig {
             this.webhook = webhook;
             return this;
         }
-        
+
         public NotificationConfig build() {
+
             return new NotificationConfig(
-                email,
-                webhook);
+                email, webhook);
         }
+
     }
 }

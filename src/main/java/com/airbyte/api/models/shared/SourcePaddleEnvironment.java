@@ -20,7 +20,7 @@ public enum SourcePaddleEnvironment {
     @JsonValue
     private final String value;
 
-    private SourcePaddleEnvironment(String value) {
+    SourcePaddleEnvironment(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceBingAdsBingAds {
     @JsonValue
     private final String value;
 
-    private SourceBingAdsBingAds(String value) {
+    SourceBingAdsBingAds(String value) {
         this.value = value;
     }
     

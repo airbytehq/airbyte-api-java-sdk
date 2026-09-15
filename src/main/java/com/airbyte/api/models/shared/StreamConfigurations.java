@@ -13,7 +13,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -44,9 +43,10 @@ public class StreamConfigurations {
         return (Optional<List<StreamConfiguration>>) streams;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public StreamConfigurations withStreams(List<StreamConfiguration> streams) {
         Utils.checkNotNull(streams, "streams");
@@ -54,13 +54,13 @@ public class StreamConfigurations {
         return this;
     }
 
+
     public StreamConfigurations withStreams(Optional<? extends List<StreamConfiguration>> streams) {
         Utils.checkNotNull(streams, "streams");
         this.streams = streams;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -71,12 +71,12 @@ public class StreamConfigurations {
         }
         StreamConfigurations other = (StreamConfigurations) o;
         return 
-            Objects.deepEquals(this.streams, other.streams);
+            Utils.enhancedDeepEquals(this.streams, other.streams);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             streams);
     }
     
@@ -85,14 +85,16 @@ public class StreamConfigurations {
         return Utils.toString(StreamConfigurations.class,
                 "streams", streams);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends List<StreamConfiguration>> streams = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder streams(List<StreamConfiguration> streams) {
             Utils.checkNotNull(streams, "streams");
@@ -105,10 +107,12 @@ public class StreamConfigurations {
             this.streams = streams;
             return this;
         }
-        
+
         public StreamConfigurations build() {
+
             return new StreamConfigurations(
                 streams);
         }
+
     }
 }

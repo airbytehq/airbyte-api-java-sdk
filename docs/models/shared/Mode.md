@@ -1,5 +1,13 @@
 # Mode
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.Mode;
+
+Mode value = Mode.CBC;
+```
+
 
 ## Values
 

@@ -14,7 +14,7 @@ public enum Appcues {
     @JsonValue
     private final String value;
 
-    private Appcues(String value) {
+    Appcues(String value) {
         this.value = value;
     }
     

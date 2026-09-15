@@ -14,11 +14,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceYandexMetrica {
 
+public class SourceYandexMetrica {
     /**
      * Your Yandex Metrica API access token
      */
@@ -32,11 +31,13 @@ public class SourceYandexMetrica {
     private String counterId;
 
     /**
-     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
+     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till
+     * most recent date.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("end_date")
     private Optional<LocalDate> endDate;
+
 
     @JsonProperty("sourceType")
     private YandexMetrica sourceType;
@@ -68,7 +69,8 @@ public class SourceYandexMetrica {
             String authToken,
             String counterId,
             LocalDate startDate) {
-        this(authToken, counterId, Optional.empty(), startDate);
+        this(authToken, counterId, Optional.empty(),
+            startDate);
     }
 
     /**
@@ -88,7 +90,8 @@ public class SourceYandexMetrica {
     }
 
     /**
-     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
+     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till
+     * most recent date.
      */
     @JsonIgnore
     public Optional<LocalDate> endDate() {
@@ -108,9 +111,10 @@ public class SourceYandexMetrica {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Your Yandex Metrica API access token
@@ -131,7 +135,8 @@ public class SourceYandexMetrica {
     }
 
     /**
-     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
+     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till
+     * most recent date.
      */
     public SourceYandexMetrica withEndDate(LocalDate endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -139,8 +144,10 @@ public class SourceYandexMetrica {
         return this;
     }
 
+
     /**
-     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
+     * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till
+     * most recent date.
      */
     public SourceYandexMetrica withEndDate(Optional<LocalDate> endDate) {
         Utils.checkNotNull(endDate, "endDate");
@@ -157,7 +164,6 @@ public class SourceYandexMetrica {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -168,21 +174,18 @@ public class SourceYandexMetrica {
         }
         SourceYandexMetrica other = (SourceYandexMetrica) o;
         return 
-            Objects.deepEquals(this.authToken, other.authToken) &&
-            Objects.deepEquals(this.counterId, other.counterId) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.authToken, other.authToken) &&
+            Utils.enhancedDeepEquals(this.counterId, other.counterId) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authToken,
-            counterId,
-            endDate,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            authToken, counterId, endDate,
+            sourceType, startDate);
     }
     
     @Override
@@ -194,20 +197,22 @@ public class SourceYandexMetrica {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String authToken;
- 
+
         private String counterId;
- 
+
         private Optional<LocalDate> endDate = Optional.empty();
- 
+
         private LocalDate startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Your Yandex Metrica API access token
@@ -218,6 +223,7 @@ public class SourceYandexMetrica {
             return this;
         }
 
+
         /**
          * Counter ID
          */
@@ -227,8 +233,10 @@ public class SourceYandexMetrica {
             return this;
         }
 
+
         /**
-         * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
+         * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till
+         * most recent date.
          */
         public Builder endDate(LocalDate endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -237,13 +245,15 @@ public class SourceYandexMetrica {
         }
 
         /**
-         * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till most recent date.
+         * Starting point for your data replication, in format of "YYYY-MM-DD". If not provided will sync till
+         * most recent date.
          */
         public Builder endDate(Optional<LocalDate> endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
         }
+
 
         /**
          * Starting point for your data replication, in format of "YYYY-MM-DD".
@@ -253,14 +263,14 @@ public class SourceYandexMetrica {
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceYandexMetrica build() {
+
             return new SourceYandexMetrica(
-                authToken,
-                counterId,
-                endDate,
+                authToken, counterId, endDate,
                 startDate);
         }
+
 
         private static final LazySingletonValue<YandexMetrica> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

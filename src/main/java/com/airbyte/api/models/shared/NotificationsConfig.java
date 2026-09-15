@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -21,7 +20,6 @@ import java.util.Optional;
  * <p>Configures workspace notifications.
  */
 public class NotificationsConfig {
-
     /**
      * Configures a notification.
      */
@@ -87,7 +85,8 @@ public class NotificationsConfig {
     }
     
     public NotificationsConfig() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -144,9 +143,10 @@ public class NotificationsConfig {
         return (Optional<NotificationConfig>) syncDisabledWarning;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Configures a notification.
@@ -156,6 +156,7 @@ public class NotificationsConfig {
         this.connectionUpdate = Optional.ofNullable(connectionUpdate);
         return this;
     }
+
 
     /**
      * Configures a notification.
@@ -175,6 +176,7 @@ public class NotificationsConfig {
         return this;
     }
 
+
     /**
      * Configures a notification.
      */
@@ -192,6 +194,7 @@ public class NotificationsConfig {
         this.failure = Optional.ofNullable(failure);
         return this;
     }
+
 
     /**
      * Configures a notification.
@@ -211,6 +214,7 @@ public class NotificationsConfig {
         return this;
     }
 
+
     /**
      * Configures a notification.
      */
@@ -228,6 +232,7 @@ public class NotificationsConfig {
         this.syncDisabled = Optional.ofNullable(syncDisabled);
         return this;
     }
+
 
     /**
      * Configures a notification.
@@ -247,6 +252,7 @@ public class NotificationsConfig {
         return this;
     }
 
+
     /**
      * Configures a notification.
      */
@@ -256,7 +262,6 @@ public class NotificationsConfig {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -267,23 +272,19 @@ public class NotificationsConfig {
         }
         NotificationsConfig other = (NotificationsConfig) o;
         return 
-            Objects.deepEquals(this.connectionUpdate, other.connectionUpdate) &&
-            Objects.deepEquals(this.connectionUpdateActionRequired, other.connectionUpdateActionRequired) &&
-            Objects.deepEquals(this.failure, other.failure) &&
-            Objects.deepEquals(this.success, other.success) &&
-            Objects.deepEquals(this.syncDisabled, other.syncDisabled) &&
-            Objects.deepEquals(this.syncDisabledWarning, other.syncDisabledWarning);
+            Utils.enhancedDeepEquals(this.connectionUpdate, other.connectionUpdate) &&
+            Utils.enhancedDeepEquals(this.connectionUpdateActionRequired, other.connectionUpdateActionRequired) &&
+            Utils.enhancedDeepEquals(this.failure, other.failure) &&
+            Utils.enhancedDeepEquals(this.success, other.success) &&
+            Utils.enhancedDeepEquals(this.syncDisabled, other.syncDisabled) &&
+            Utils.enhancedDeepEquals(this.syncDisabledWarning, other.syncDisabledWarning);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            connectionUpdate,
-            connectionUpdateActionRequired,
-            failure,
-            success,
-            syncDisabled,
-            syncDisabledWarning);
+        return Utils.enhancedHash(
+            connectionUpdate, connectionUpdateActionRequired, failure,
+            success, syncDisabled, syncDisabledWarning);
     }
     
     @Override
@@ -296,24 +297,26 @@ public class NotificationsConfig {
                 "syncDisabled", syncDisabled,
                 "syncDisabledWarning", syncDisabledWarning);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends NotificationConfig> connectionUpdate = Optional.empty();
- 
+
         private Optional<? extends NotificationConfig> connectionUpdateActionRequired = Optional.empty();
- 
+
         private Optional<? extends NotificationConfig> failure = Optional.empty();
- 
+
         private Optional<? extends NotificationConfig> success = Optional.empty();
- 
+
         private Optional<? extends NotificationConfig> syncDisabled = Optional.empty();
- 
+
         private Optional<? extends NotificationConfig> syncDisabledWarning = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Configures a notification.
@@ -333,6 +336,7 @@ public class NotificationsConfig {
             return this;
         }
 
+
         /**
          * Configures a notification.
          */
@@ -350,6 +354,7 @@ public class NotificationsConfig {
             this.connectionUpdateActionRequired = connectionUpdateActionRequired;
             return this;
         }
+
 
         /**
          * Configures a notification.
@@ -369,6 +374,7 @@ public class NotificationsConfig {
             return this;
         }
 
+
         /**
          * Configures a notification.
          */
@@ -386,6 +392,7 @@ public class NotificationsConfig {
             this.success = success;
             return this;
         }
+
 
         /**
          * Configures a notification.
@@ -405,6 +412,7 @@ public class NotificationsConfig {
             return this;
         }
 
+
         /**
          * Configures a notification.
          */
@@ -422,15 +430,13 @@ public class NotificationsConfig {
             this.syncDisabledWarning = syncDisabledWarning;
             return this;
         }
-        
+
         public NotificationsConfig build() {
+
             return new NotificationsConfig(
-                connectionUpdate,
-                connectionUpdateActionRequired,
-                failure,
-                success,
-                syncDisabled,
-                syncDisabledWarning);
+                connectionUpdate, connectionUpdateActionRequired, failure,
+                success, syncDisabled, syncDisabledWarning);
         }
+
     }
 }

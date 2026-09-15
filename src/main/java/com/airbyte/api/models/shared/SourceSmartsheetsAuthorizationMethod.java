@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceSmartsheetsAuthorizationMethod._Deserializer.class)
 public class SourceSmartsheetsAuthorizationMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSmartsheetsAuthorizationMethod(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceSmartsheetsAuthorizationMethod {
 
     public static SourceSmartsheetsAuthorizationMethod of(SourceSmartsheetsOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSmartsheetsAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSmartsheetsOAuth20>(){}));
+        return new SourceSmartsheetsAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSmartsheetsAuthorizationMethod of(APIAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSmartsheetsAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<APIAccessToken>(){}));
+        return new SourceSmartsheetsAuthorizationMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceSmartsheetsAuthorizationMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceSmartsheetsAuthorizationMethod {
             return false;
         }
         SourceSmartsheetsAuthorizationMethod other = (SourceSmartsheetsAuthorizationMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceSmartsheetsAuthorizationMethod {
         return Utils.toString(SourceSmartsheetsAuthorizationMethod.class,
                 "value", value);
     }
- 
+
 }
 

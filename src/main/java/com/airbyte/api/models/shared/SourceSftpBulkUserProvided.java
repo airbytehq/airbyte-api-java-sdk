@@ -15,16 +15,16 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceSftpBulkUserProvided {
 
+public class SourceSftpBulkUserProvided {
     /**
      * The column names that will be used while emitting the CSV records
      */
     @JsonProperty("column_names")
     private List<String> columnNames;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("header_definition_type")
@@ -52,9 +52,10 @@ public class SourceSftpBulkUserProvided {
         return (Optional<SourceSftpBulkSchemasStreamsHeaderDefinitionType>) headerDefinitionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The column names that will be used while emitting the CSV records
@@ -65,7 +66,6 @@ public class SourceSftpBulkUserProvided {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -76,15 +76,14 @@ public class SourceSftpBulkUserProvided {
         }
         SourceSftpBulkUserProvided other = (SourceSftpBulkUserProvided) o;
         return 
-            Objects.deepEquals(this.columnNames, other.columnNames) &&
-            Objects.deepEquals(this.headerDefinitionType, other.headerDefinitionType);
+            Utils.enhancedDeepEquals(this.columnNames, other.columnNames) &&
+            Utils.enhancedDeepEquals(this.headerDefinitionType, other.headerDefinitionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            columnNames,
-            headerDefinitionType);
+        return Utils.enhancedHash(
+            columnNames, headerDefinitionType);
     }
     
     @Override
@@ -93,14 +92,16 @@ public class SourceSftpBulkUserProvided {
                 "columnNames", columnNames,
                 "headerDefinitionType", headerDefinitionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private List<String> columnNames;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The column names that will be used while emitting the CSV records
@@ -110,11 +111,13 @@ public class SourceSftpBulkUserProvided {
             this.columnNames = columnNames;
             return this;
         }
-        
+
         public SourceSftpBulkUserProvided build() {
+
             return new SourceSftpBulkUserProvided(
                 columnNames);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceSftpBulkSchemasStreamsHeaderDefinitionType>> _SINGLETON_VALUE_HeaderDefinitionType =
                 new LazySingletonValue<>(

@@ -13,16 +13,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceZohoInvoice {
 
     @JsonProperty("client_id")
     private String clientId;
 
+
     @JsonProperty("client_refresh_token")
     private String clientRefreshToken;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -34,8 +36,10 @@ public class SourceZohoInvoice {
     @JsonProperty("organization_id")
     private Optional<String> organizationId;
 
+
     @JsonProperty("region")
     private SourceZohoInvoiceRegion region;
+
 
     @JsonProperty("sourceType")
     private ZohoInvoice sourceType;
@@ -65,7 +69,8 @@ public class SourceZohoInvoice {
             String clientRefreshToken,
             String clientSecret,
             SourceZohoInvoiceRegion region) {
-        this(clientId, clientRefreshToken, clientSecret, Optional.empty(), region);
+        this(clientId, clientRefreshToken, clientSecret,
+            Optional.empty(), region);
     }
 
     @JsonIgnore
@@ -101,9 +106,10 @@ public class SourceZohoInvoice {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceZohoInvoice withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -132,6 +138,7 @@ public class SourceZohoInvoice {
         return this;
     }
 
+
     /**
      * To be provided if a user belongs to multiple organizations
      */
@@ -147,7 +154,6 @@ public class SourceZohoInvoice {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -158,23 +164,19 @@ public class SourceZohoInvoice {
         }
         SourceZohoInvoice other = (SourceZohoInvoice) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.region, other.region) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientRefreshToken, other.clientRefreshToken) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.region, other.region) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientRefreshToken,
-            clientSecret,
-            organizationId,
-            region,
-            sourceType);
+        return Utils.enhancedHash(
+            clientId, clientRefreshToken, clientSecret,
+            organizationId, region, sourceType);
     }
     
     @Override
@@ -187,22 +189,24 @@ public class SourceZohoInvoice {
                 "region", region,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientRefreshToken;
- 
+
         private String clientSecret;
- 
+
         private Optional<String> organizationId = Optional.empty();
- 
+
         private SourceZohoInvoiceRegion region;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -210,17 +214,20 @@ public class SourceZohoInvoice {
             return this;
         }
 
+
         public Builder clientRefreshToken(String clientRefreshToken) {
             Utils.checkNotNull(clientRefreshToken, "clientRefreshToken");
             this.clientRefreshToken = clientRefreshToken;
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * To be provided if a user belongs to multiple organizations
@@ -240,20 +247,20 @@ public class SourceZohoInvoice {
             return this;
         }
 
+
         public Builder region(SourceZohoInvoiceRegion region) {
             Utils.checkNotNull(region, "region");
             this.region = region;
             return this;
         }
-        
+
         public SourceZohoInvoice build() {
+
             return new SourceZohoInvoice(
-                clientId,
-                clientRefreshToken,
-                clientSecret,
-                organizationId,
-                region);
+                clientId, clientRefreshToken, clientSecret,
+                organizationId, region);
         }
+
 
         private static final LazySingletonValue<ZohoInvoice> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

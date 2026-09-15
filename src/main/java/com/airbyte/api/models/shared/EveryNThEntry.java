@@ -21,7 +21,6 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -34,19 +33,24 @@ public class EveryNThEntry {
     @JsonIgnore
     private Map<String, Object> additionalProperties;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("logging_type")
     private Optional<? extends DestinationDevNullLoggingType> loggingType;
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("max_entry_count")
     private Optional<Double> maxEntryCount;
 
     /**
-     * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
+     * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is
+     * logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
      */
     @JsonProperty("nth_entry_to_log")
     private long nthEntryToLog;
@@ -82,7 +86,10 @@ public class EveryNThEntry {
     }
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     @JsonIgnore
     public Optional<Double> maxEntryCount() {
@@ -90,16 +97,18 @@ public class EveryNThEntry {
     }
 
     /**
-     * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
+     * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is
+     * logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
      */
     @JsonIgnore
     public long nthEntryToLog() {
         return nthEntryToLog;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     @JsonAnySetter
     public EveryNThEntry withAdditionalProperty(String key, Object value) {
@@ -107,8 +116,7 @@ public class EveryNThEntry {
         Utils.checkNotNull(key, "key");
         additionalProperties.put(key, value); 
         return this;
-    }    
-
+    }
     public EveryNThEntry withAdditionalProperties(Map<String, Object> additionalProperties) {
         Utils.checkNotNull(additionalProperties, "additionalProperties");
         this.additionalProperties = additionalProperties;
@@ -121,6 +129,7 @@ public class EveryNThEntry {
         return this;
     }
 
+
     public EveryNThEntry withLoggingType(Optional<? extends DestinationDevNullLoggingType> loggingType) {
         Utils.checkNotNull(loggingType, "loggingType");
         this.loggingType = loggingType;
@@ -128,7 +137,10 @@ public class EveryNThEntry {
     }
 
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     public EveryNThEntry withMaxEntryCount(double maxEntryCount) {
         Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -136,8 +148,12 @@ public class EveryNThEntry {
         return this;
     }
 
+
     /**
-     * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+     * Number of entries to log. This destination is for testing only. So it won't make sense to log
+     * infinitely.
+     * 
+     * <p>The maximum is 1,000 entries.
      */
     public EveryNThEntry withMaxEntryCount(Optional<Double> maxEntryCount) {
         Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -146,7 +162,8 @@ public class EveryNThEntry {
     }
 
     /**
-     * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
+     * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is
+     * logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
      */
     public EveryNThEntry withNthEntryToLog(long nthEntryToLog) {
         Utils.checkNotNull(nthEntryToLog, "nthEntryToLog");
@@ -154,7 +171,6 @@ public class EveryNThEntry {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -165,18 +181,16 @@ public class EveryNThEntry {
         }
         EveryNThEntry other = (EveryNThEntry) o;
         return 
-            Objects.deepEquals(this.additionalProperties, other.additionalProperties) &&
-            Objects.deepEquals(this.loggingType, other.loggingType) &&
-            Objects.deepEquals(this.maxEntryCount, other.maxEntryCount) &&
-            Objects.deepEquals(this.nthEntryToLog, other.nthEntryToLog);
+            Utils.enhancedDeepEquals(this.additionalProperties, other.additionalProperties) &&
+            Utils.enhancedDeepEquals(this.loggingType, other.loggingType) &&
+            Utils.enhancedDeepEquals(this.maxEntryCount, other.maxEntryCount) &&
+            Utils.enhancedDeepEquals(this.nthEntryToLog, other.nthEntryToLog);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            additionalProperties,
-            loggingType,
-            maxEntryCount,
+        return Utils.enhancedHash(
+            additionalProperties, loggingType, maxEntryCount,
             nthEntryToLog);
     }
     
@@ -188,17 +202,18 @@ public class EveryNThEntry {
                 "maxEntryCount", maxEntryCount,
                 "nthEntryToLog", nthEntryToLog);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Map<String, Object> additionalProperties = new HashMap<>();
- 
+
         private Optional<? extends DestinationDevNullLoggingType> loggingType;
- 
+
         private Optional<Double> maxEntryCount;
- 
+
         private Long nthEntryToLog;
-        
+
         private Builder() {
           // force use of static builder() method
         }
@@ -219,6 +234,7 @@ public class EveryNThEntry {
             return this;
         }
 
+
         public Builder loggingType(DestinationDevNullLoggingType loggingType) {
             Utils.checkNotNull(loggingType, "loggingType");
             this.loggingType = Optional.ofNullable(loggingType);
@@ -231,8 +247,12 @@ public class EveryNThEntry {
             return this;
         }
 
+
         /**
-         * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+         * Number of entries to log. This destination is for testing only. So it won't make sense to log
+         * infinitely.
+         * 
+         * <p>The maximum is 1,000 entries.
          */
         public Builder maxEntryCount(double maxEntryCount) {
             Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -241,7 +261,10 @@ public class EveryNThEntry {
         }
 
         /**
-         * Number of entries to log. This destination is for testing only. So it won't make sense to log infinitely. The maximum is 1,000 entries.
+         * Number of entries to log. This destination is for testing only. So it won't make sense to log
+         * infinitely.
+         * 
+         * <p>The maximum is 1,000 entries.
          */
         public Builder maxEntryCount(Optional<Double> maxEntryCount) {
             Utils.checkNotNull(maxEntryCount, "maxEntryCount");
@@ -249,15 +272,17 @@ public class EveryNThEntry {
             return this;
         }
 
+
         /**
-         * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
+         * The N-th entry to log for each stream. N starts from 1. For example, when N = 1, every entry is
+         * logged; when N = 2, every other entry is logged; when N = 3, one out of three entries is logged.
          */
         public Builder nthEntryToLog(long nthEntryToLog) {
             Utils.checkNotNull(nthEntryToLog, "nthEntryToLog");
             this.nthEntryToLog = nthEntryToLog;
             return this;
         }
-        
+
         public EveryNThEntry build() {
             if (loggingType == null) {
                 loggingType = _SINGLETON_VALUE_LoggingType.value();
@@ -265,12 +290,12 @@ public class EveryNThEntry {
             if (maxEntryCount == null) {
                 maxEntryCount = _SINGLETON_VALUE_MaxEntryCount.value();
             }
+
             return new EveryNThEntry(
-                loggingType,
-                maxEntryCount,
-                nthEntryToLog)
+                loggingType, maxEntryCount, nthEntryToLog)
                 .withAdditionalProperties(additionalProperties);
         }
+
 
         private static final LazySingletonValue<Optional<? extends DestinationDevNullLoggingType>> _SINGLETON_VALUE_LoggingType =
                 new LazySingletonValue<>(

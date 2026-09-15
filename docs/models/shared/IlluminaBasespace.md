@@ -1,5 +1,13 @@
 # IlluminaBasespace
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.IlluminaBasespace;
+
+IlluminaBasespace value = IlluminaBasespace.ILLUMINA_BASESPACE;
+```
+
 
 ## Values
 

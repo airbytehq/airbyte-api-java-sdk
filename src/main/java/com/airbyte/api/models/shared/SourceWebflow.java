@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceWebflow {
 
+public class SourceWebflow {
     /**
      * The version of the Webflow API to use. See https://developers.webflow.com/#versioning
      */
@@ -26,7 +25,8 @@ public class SourceWebflow {
     private Optional<String> acceptVersion;
 
     /**
-     * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api
+     * The API token for authenticating to Webflow. See
+     * https://university.webflow.com/lesson/intro-to-the-webflow-api
      */
     @JsonProperty("api_key")
     private String apiKey;
@@ -36,6 +36,7 @@ public class SourceWebflow {
      */
     @JsonProperty("site_id")
     private String siteId;
+
 
     @JsonProperty("sourceType")
     private Webflow sourceType;
@@ -69,7 +70,8 @@ public class SourceWebflow {
     }
 
     /**
-     * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api
+     * The API token for authenticating to Webflow. See
+     * https://university.webflow.com/lesson/intro-to-the-webflow-api
      */
     @JsonIgnore
     public String apiKey() {
@@ -89,9 +91,10 @@ public class SourceWebflow {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * The version of the Webflow API to use. See https://developers.webflow.com/#versioning
@@ -101,6 +104,7 @@ public class SourceWebflow {
         this.acceptVersion = Optional.ofNullable(acceptVersion);
         return this;
     }
+
 
     /**
      * The version of the Webflow API to use. See https://developers.webflow.com/#versioning
@@ -112,7 +116,8 @@ public class SourceWebflow {
     }
 
     /**
-     * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api
+     * The API token for authenticating to Webflow. See
+     * https://university.webflow.com/lesson/intro-to-the-webflow-api
      */
     public SourceWebflow withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -129,7 +134,6 @@ public class SourceWebflow {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -140,18 +144,16 @@ public class SourceWebflow {
         }
         SourceWebflow other = (SourceWebflow) o;
         return 
-            Objects.deepEquals(this.acceptVersion, other.acceptVersion) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.siteId, other.siteId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.acceptVersion, other.acceptVersion) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.siteId, other.siteId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            acceptVersion,
-            apiKey,
-            siteId,
+        return Utils.enhancedHash(
+            acceptVersion, apiKey, siteId,
             sourceType);
     }
     
@@ -163,18 +165,20 @@ public class SourceWebflow {
                 "siteId", siteId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> acceptVersion = Optional.empty();
- 
+
         private String apiKey;
- 
+
         private String siteId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * The version of the Webflow API to use. See https://developers.webflow.com/#versioning
@@ -194,14 +198,17 @@ public class SourceWebflow {
             return this;
         }
 
+
         /**
-         * The API token for authenticating to Webflow. See https://university.webflow.com/lesson/intro-to-the-webflow-api
+         * The API token for authenticating to Webflow. See
+         * https://university.webflow.com/lesson/intro-to-the-webflow-api
          */
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * The id of the Webflow site you are requesting data from. See https://developers.webflow.com/#sites
@@ -211,13 +218,13 @@ public class SourceWebflow {
             this.siteId = siteId;
             return this;
         }
-        
+
         public SourceWebflow build() {
+
             return new SourceWebflow(
-                acceptVersion,
-                apiKey,
-                siteId);
+                acceptVersion, apiKey, siteId);
         }
+
 
         private static final LazySingletonValue<Webflow> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

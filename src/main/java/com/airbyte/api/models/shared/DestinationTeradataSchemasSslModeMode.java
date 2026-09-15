@@ -14,7 +14,7 @@ public enum DestinationTeradataSchemasSslModeMode {
     @JsonValue
     private final String value;
 
-    private DestinationTeradataSchemasSslModeMode(String value) {
+    DestinationTeradataSchemasSslModeMode(String value) {
         this.value = value;
     }
     

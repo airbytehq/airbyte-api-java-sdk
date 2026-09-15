@@ -14,7 +14,7 @@ public enum SourceSalesforceSalesforce {
     @JsonValue
     private final String value;
 
-    private SourceSalesforceSalesforce(String value) {
+    SourceSalesforceSalesforce(String value) {
         this.value = value;
     }
     

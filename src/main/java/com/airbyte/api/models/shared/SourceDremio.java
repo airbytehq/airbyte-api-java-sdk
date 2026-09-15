@@ -13,11 +13,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceDremio {
 
+public class SourceDremio {
     /**
      * API Key that is generated when you authenticate to Dremio API
      */
@@ -30,6 +29,7 @@ public class SourceDremio {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("base_url")
     private Optional<String> baseUrl;
+
 
     @JsonProperty("sourceType")
     private Dremio sourceType;
@@ -71,9 +71,10 @@ public class SourceDremio {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API Key that is generated when you authenticate to Dremio API
@@ -93,6 +94,7 @@ public class SourceDremio {
         return this;
     }
 
+
     /**
      * URL of your Dremio instance
      */
@@ -102,7 +104,6 @@ public class SourceDremio {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -113,17 +114,15 @@ public class SourceDremio {
         }
         SourceDremio other = (SourceDremio) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            baseUrl,
-            sourceType);
+        return Utils.enhancedHash(
+            apiKey, baseUrl, sourceType);
     }
     
     @Override
@@ -133,16 +132,18 @@ public class SourceDremio {
                 "baseUrl", baseUrl,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<String> baseUrl;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API Key that is generated when you authenticate to Dremio API
@@ -152,6 +153,7 @@ public class SourceDremio {
             this.apiKey = apiKey;
             return this;
         }
+
 
         /**
          * URL of your Dremio instance
@@ -170,15 +172,16 @@ public class SourceDremio {
             this.baseUrl = baseUrl;
             return this;
         }
-        
+
         public SourceDremio build() {
             if (baseUrl == null) {
                 baseUrl = _SINGLETON_VALUE_BaseUrl.value();
             }
+
             return new SourceDremio(
-                apiKey,
-                baseUrl);
+                apiKey, baseUrl);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_BaseUrl =
                 new LazySingletonValue<>(

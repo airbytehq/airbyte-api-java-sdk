@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceHighLevel {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("location_id")
     private String locationId;
 
+
     @JsonProperty("sourceType")
     private HighLevel sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -62,9 +65,10 @@ public class SourceHighLevel {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceHighLevel withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -84,7 +88,6 @@ public class SourceHighLevel {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,18 +98,16 @@ public class SourceHighLevel {
         }
         SourceHighLevel other = (SourceHighLevel) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.locationId, other.locationId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.locationId, other.locationId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            locationId,
-            sourceType,
+        return Utils.enhancedHash(
+            apiKey, locationId, sourceType,
             startDate);
     }
     
@@ -118,18 +119,20 @@ public class SourceHighLevel {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private String locationId;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -137,24 +140,26 @@ public class SourceHighLevel {
             return this;
         }
 
+
         public Builder locationId(String locationId) {
             Utils.checkNotNull(locationId, "locationId");
             this.locationId = locationId;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceHighLevel build() {
+
             return new SourceHighLevel(
-                apiKey,
-                locationId,
-                startDate);
+                apiKey, locationId, startDate);
         }
+
 
         private static final LazySingletonValue<HighLevel> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

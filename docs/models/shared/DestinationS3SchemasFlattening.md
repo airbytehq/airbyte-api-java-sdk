@@ -1,5 +1,13 @@
 # DestinationS3SchemasFlattening
 
+## Example Usage
+
+```java
+import com.airbyte.api.models.shared.DestinationS3SchemasFlattening;
+
+DestinationS3SchemasFlattening value = DestinationS3SchemasFlattening.NO_FLATTENING;
+```
+
 
 ## Values
 

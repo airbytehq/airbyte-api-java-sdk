@@ -14,7 +14,7 @@ public enum NinjaoneRmm {
     @JsonValue
     private final String value;
 
-    private NinjaoneRmm(String value) {
+    NinjaoneRmm(String value) {
         this.value = value;
     }
     

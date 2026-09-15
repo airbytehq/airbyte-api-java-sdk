@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * SourceMssqlEncryptedTrustServerCertificate
@@ -25,7 +24,6 @@ public class SourceMssqlEncryptedTrustServerCertificate {
 
     @JsonCreator
     public SourceMssqlEncryptedTrustServerCertificate() {
-        
         this.sslMethod = Builder._SINGLETON_VALUE_SslMethod.value();
     }
 
@@ -34,11 +32,11 @@ public class SourceMssqlEncryptedTrustServerCertificate {
         return sslMethod;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +47,12 @@ public class SourceMssqlEncryptedTrustServerCertificate {
         }
         SourceMssqlEncryptedTrustServerCertificate other = (SourceMssqlEncryptedTrustServerCertificate) o;
         return 
-            Objects.deepEquals(this.sslMethod, other.sslMethod);
+            Utils.enhancedDeepEquals(this.sslMethod, other.sslMethod);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             sslMethod);
     }
     
@@ -63,17 +61,20 @@ public class SourceMssqlEncryptedTrustServerCertificate {
         return Utils.toString(SourceMssqlEncryptedTrustServerCertificate.class,
                 "sslMethod", sslMethod);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceMssqlEncryptedTrustServerCertificate build() {
+
             return new SourceMssqlEncryptedTrustServerCertificate(
                 );
         }
+
 
         private static final LazySingletonValue<SourceMssqlSchemasSslMethod> _SINGLETON_VALUE_SslMethod =
                 new LazySingletonValue<>(

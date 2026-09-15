@@ -14,7 +14,7 @@ public enum SourceAirtableAirtable {
     @JsonValue
     private final String value;
 
-    private SourceAirtableAirtable(String value) {
+    SourceAirtableAirtable(String value) {
         this.value = value;
     }
     

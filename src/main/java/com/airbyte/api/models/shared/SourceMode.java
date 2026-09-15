@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceMode {
-
     /**
      * API secret to use as the password for Basic Authentication.
      */
@@ -27,8 +26,10 @@ public class SourceMode {
     @JsonProperty("api_token")
     private String apiToken;
 
+
     @JsonProperty("sourceType")
     private SourceModeMode sourceType;
+
 
     @JsonProperty("workspace")
     private String workspace;
@@ -73,9 +74,10 @@ public class SourceMode {
         return workspace;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * API secret to use as the password for Basic Authentication.
@@ -101,7 +103,6 @@ public class SourceMode {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,18 +113,16 @@ public class SourceMode {
         }
         SourceMode other = (SourceMode) o;
         return 
-            Objects.deepEquals(this.apiSecret, other.apiSecret) &&
-            Objects.deepEquals(this.apiToken, other.apiToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.workspace, other.workspace);
+            Utils.enhancedDeepEquals(this.apiSecret, other.apiSecret) &&
+            Utils.enhancedDeepEquals(this.apiToken, other.apiToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.workspace, other.workspace);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiSecret,
-            apiToken,
-            sourceType,
+        return Utils.enhancedHash(
+            apiSecret, apiToken, sourceType,
             workspace);
     }
     
@@ -135,18 +134,20 @@ public class SourceMode {
                 "sourceType", sourceType,
                 "workspace", workspace);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiSecret;
- 
+
         private String apiToken;
- 
+
         private String workspace;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * API secret to use as the password for Basic Authentication.
@@ -157,6 +158,7 @@ public class SourceMode {
             return this;
         }
 
+
         /**
          * API token to use as the username for Basic Authentication.
          */
@@ -166,18 +168,19 @@ public class SourceMode {
             return this;
         }
 
+
         public Builder workspace(String workspace) {
             Utils.checkNotNull(workspace, "workspace");
             this.workspace = workspace;
             return this;
         }
-        
+
         public SourceMode build() {
+
             return new SourceMode(
-                apiSecret,
-                apiToken,
-                workspace);
+                apiSecret, apiToken, workspace);
         }
+
 
         private static final LazySingletonValue<SourceModeMode> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

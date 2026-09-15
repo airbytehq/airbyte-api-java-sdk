@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGcsJsonlFormat {
 
@@ -25,7 +25,6 @@ public class SourceGcsJsonlFormat {
 
     @JsonCreator
     public SourceGcsJsonlFormat() {
-        
         this.filetype = Builder._SINGLETON_VALUE_Filetype.value();
     }
 
@@ -35,11 +34,11 @@ public class SourceGcsJsonlFormat {
         return (Optional<SourceGcsSchemasStreamsFiletype>) filetype;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
 
-    
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -50,12 +49,12 @@ public class SourceGcsJsonlFormat {
         }
         SourceGcsJsonlFormat other = (SourceGcsJsonlFormat) o;
         return 
-            Objects.deepEquals(this.filetype, other.filetype);
+            Utils.enhancedDeepEquals(this.filetype, other.filetype);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             filetype);
     }
     
@@ -64,17 +63,20 @@ public class SourceGcsJsonlFormat {
         return Utils.toString(SourceGcsJsonlFormat.class,
                 "filetype", filetype);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
-        
+
         private Builder() {
           // force use of static builder() method
         }
-        
+
         public SourceGcsJsonlFormat build() {
+
             return new SourceGcsJsonlFormat(
                 );
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGcsSchemasStreamsFiletype>> _SINGLETON_VALUE_Filetype =
                 new LazySingletonValue<>(

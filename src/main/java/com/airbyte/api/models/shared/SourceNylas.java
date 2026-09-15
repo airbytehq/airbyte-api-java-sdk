@@ -12,21 +12,25 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceNylas {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonProperty("api_server")
     private APIServer apiServer;
+
 
     @JsonProperty("end_date")
     private OffsetDateTime endDate;
 
+
     @JsonProperty("sourceType")
     private Nylas sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -73,9 +77,10 @@ public class SourceNylas {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceNylas withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -101,7 +106,6 @@ public class SourceNylas {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -112,21 +116,18 @@ public class SourceNylas {
         }
         SourceNylas other = (SourceNylas) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.apiServer, other.apiServer) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.apiServer, other.apiServer) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            apiServer,
-            endDate,
-            sourceType,
-            startDate);
+        return Utils.enhancedHash(
+            apiKey, apiServer, endDate,
+            sourceType, startDate);
     }
     
     @Override
@@ -138,20 +139,22 @@ public class SourceNylas {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private APIServer apiServer;
- 
+
         private OffsetDateTime endDate;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -159,11 +162,13 @@ public class SourceNylas {
             return this;
         }
 
+
         public Builder apiServer(APIServer apiServer) {
             Utils.checkNotNull(apiServer, "apiServer");
             this.apiServer = apiServer;
             return this;
         }
+
 
         public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
@@ -171,19 +176,20 @@ public class SourceNylas {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceNylas build() {
+
             return new SourceNylas(
-                apiKey,
-                apiServer,
-                endDate,
+                apiKey, apiServer, endDate,
                 startDate);
         }
+
 
         private static final LazySingletonValue<Nylas> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

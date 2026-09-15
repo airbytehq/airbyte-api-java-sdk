@@ -14,7 +14,7 @@ public enum Iterable {
     @JsonValue
     private final String value;
 
-    private Iterable(String value) {
+    Iterable(String value) {
         this.value = value;
     }
     

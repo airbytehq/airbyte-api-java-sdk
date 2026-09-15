@@ -14,7 +14,7 @@ public enum FormatTypeWildcard {
     @JsonValue
     private final String value;
 
-    private FormatTypeWildcard(String value) {
+    FormatTypeWildcard(String value) {
         this.value = value;
     }
     

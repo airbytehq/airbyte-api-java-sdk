@@ -14,7 +14,7 @@ public enum WebScrapper {
     @JsonValue
     private final String value;
 
-    private WebScrapper(String value) {
+    WebScrapper(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum DestinationElasticsearchMethod {
     @JsonValue
     private final String value;
 
-    private DestinationElasticsearchMethod(String value) {
+    DestinationElasticsearchMethod(String value) {
         this.value = value;
     }
     

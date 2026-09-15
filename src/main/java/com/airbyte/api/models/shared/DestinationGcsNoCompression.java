@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class DestinationGcsNoCompression {
 
@@ -40,9 +40,10 @@ public class DestinationGcsNoCompression {
         return (Optional<CompressionType>) compressionType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DestinationGcsNoCompression withCompressionType(CompressionType compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
@@ -50,13 +51,13 @@ public class DestinationGcsNoCompression {
         return this;
     }
 
+
     public DestinationGcsNoCompression withCompressionType(Optional<? extends CompressionType> compressionType) {
         Utils.checkNotNull(compressionType, "compressionType");
         this.compressionType = compressionType;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -67,12 +68,12 @@ public class DestinationGcsNoCompression {
         }
         DestinationGcsNoCompression other = (DestinationGcsNoCompression) o;
         return 
-            Objects.deepEquals(this.compressionType, other.compressionType);
+            Utils.enhancedDeepEquals(this.compressionType, other.compressionType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             compressionType);
     }
     
@@ -81,14 +82,16 @@ public class DestinationGcsNoCompression {
         return Utils.toString(DestinationGcsNoCompression.class,
                 "compressionType", compressionType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends CompressionType> compressionType;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder compressionType(CompressionType compressionType) {
             Utils.checkNotNull(compressionType, "compressionType");
@@ -101,14 +104,16 @@ public class DestinationGcsNoCompression {
             this.compressionType = compressionType;
             return this;
         }
-        
+
         public DestinationGcsNoCompression build() {
             if (compressionType == null) {
                 compressionType = _SINGLETON_VALUE_CompressionType.value();
             }
+
             return new DestinationGcsNoCompression(
                 compressionType);
         }
+
 
         private static final LazySingletonValue<Optional<? extends CompressionType>> _SINGLETON_VALUE_CompressionType =
                 new LazySingletonValue<>(

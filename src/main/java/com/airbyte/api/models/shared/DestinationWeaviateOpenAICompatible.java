@@ -15,7 +15,6 @@ import java.lang.Long;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -40,6 +39,7 @@ public class DestinationWeaviateOpenAICompatible {
      */
     @JsonProperty("dimensions")
     private long dimensions;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("mode")
@@ -72,7 +72,8 @@ public class DestinationWeaviateOpenAICompatible {
     public DestinationWeaviateOpenAICompatible(
             String baseUrl,
             long dimensions) {
-        this(Optional.empty(), baseUrl, dimensions, Optional.empty());
+        this(Optional.empty(), baseUrl, dimensions,
+            Optional.empty());
     }
 
     @JsonIgnore
@@ -110,15 +111,17 @@ public class DestinationWeaviateOpenAICompatible {
         return modelName;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DestinationWeaviateOpenAICompatible withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
         this.apiKey = Optional.ofNullable(apiKey);
         return this;
     }
+
 
     public DestinationWeaviateOpenAICompatible withApiKey(Optional<String> apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -153,6 +156,7 @@ public class DestinationWeaviateOpenAICompatible {
         return this;
     }
 
+
     /**
      * The name of the model to use for embedding
      */
@@ -162,7 +166,6 @@ public class DestinationWeaviateOpenAICompatible {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -173,21 +176,18 @@ public class DestinationWeaviateOpenAICompatible {
         }
         DestinationWeaviateOpenAICompatible other = (DestinationWeaviateOpenAICompatible) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.baseUrl, other.baseUrl) &&
-            Objects.deepEquals(this.dimensions, other.dimensions) &&
-            Objects.deepEquals(this.mode, other.mode) &&
-            Objects.deepEquals(this.modelName, other.modelName);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.baseUrl, other.baseUrl) &&
+            Utils.enhancedDeepEquals(this.dimensions, other.dimensions) &&
+            Utils.enhancedDeepEquals(this.mode, other.mode) &&
+            Utils.enhancedDeepEquals(this.modelName, other.modelName);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            baseUrl,
-            dimensions,
-            mode,
-            modelName);
+        return Utils.enhancedHash(
+            apiKey, baseUrl, dimensions,
+            mode, modelName);
     }
     
     @Override
@@ -199,20 +199,22 @@ public class DestinationWeaviateOpenAICompatible {
                 "mode", mode,
                 "modelName", modelName);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<String> apiKey;
- 
+
         private String baseUrl;
- 
+
         private Long dimensions;
- 
+
         private Optional<String> modelName;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
@@ -226,6 +228,7 @@ public class DestinationWeaviateOpenAICompatible {
             return this;
         }
 
+
         /**
          * The base URL for your OpenAI-compatible service
          */
@@ -235,6 +238,7 @@ public class DestinationWeaviateOpenAICompatible {
             return this;
         }
 
+
         /**
          * The number of dimensions the embedding model is generating
          */
@@ -243,6 +247,7 @@ public class DestinationWeaviateOpenAICompatible {
             this.dimensions = dimensions;
             return this;
         }
+
 
         /**
          * The name of the model to use for embedding
@@ -261,7 +266,7 @@ public class DestinationWeaviateOpenAICompatible {
             this.modelName = modelName;
             return this;
         }
-        
+
         public DestinationWeaviateOpenAICompatible build() {
             if (apiKey == null) {
                 apiKey = _SINGLETON_VALUE_ApiKey.value();
@@ -269,12 +274,12 @@ public class DestinationWeaviateOpenAICompatible {
             if (modelName == null) {
                 modelName = _SINGLETON_VALUE_ModelName.value();
             }
+
             return new DestinationWeaviateOpenAICompatible(
-                apiKey,
-                baseUrl,
-                dimensions,
+                apiKey, baseUrl, dimensions,
                 modelName);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_ApiKey =
                 new LazySingletonValue<>(

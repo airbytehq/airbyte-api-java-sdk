@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class DeleteTagRequest {
 
@@ -28,9 +28,10 @@ public class DeleteTagRequest {
         return tagId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public DeleteTagRequest withTagId(String tagId) {
         Utils.checkNotNull(tagId, "tagId");
@@ -38,7 +39,6 @@ public class DeleteTagRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -49,12 +49,12 @@ public class DeleteTagRequest {
         }
         DeleteTagRequest other = (DeleteTagRequest) o;
         return 
-            Objects.deepEquals(this.tagId, other.tagId);
+            Utils.enhancedDeepEquals(this.tagId, other.tagId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
+        return Utils.enhancedHash(
             tagId);
     }
     
@@ -63,24 +63,28 @@ public class DeleteTagRequest {
         return Utils.toString(DeleteTagRequest.class,
                 "tagId", tagId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String tagId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder tagId(String tagId) {
             Utils.checkNotNull(tagId, "tagId");
             this.tagId = tagId;
             return this;
         }
-        
+
         public DeleteTagRequest build() {
+
             return new DeleteTagRequest(
                 tagId);
         }
+
     }
 }

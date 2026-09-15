@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -22,7 +21,6 @@ import java.util.Optional;
  * <p>Indexing configuration
  */
 public class DestinationMilvusIndexing {
-
     /**
      * Authentication method
      */
@@ -88,7 +86,8 @@ public class DestinationMilvusIndexing {
             DestinationMilvusAuthentication auth,
             String collection,
             String host) {
-        this(auth, collection, Optional.empty(), host, Optional.empty(), Optional.empty());
+        this(auth, collection, Optional.empty(),
+            host, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -139,9 +138,10 @@ public class DestinationMilvusIndexing {
         return vectorField;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Authentication method
@@ -170,6 +170,7 @@ public class DestinationMilvusIndexing {
         return this;
     }
 
+
     /**
      * The database to connect to
      */
@@ -197,6 +198,7 @@ public class DestinationMilvusIndexing {
         return this;
     }
 
+
     /**
      * The field in the entity that contains the embedded text
      */
@@ -215,6 +217,7 @@ public class DestinationMilvusIndexing {
         return this;
     }
 
+
     /**
      * The field in the entity that contains the vector
      */
@@ -224,7 +227,6 @@ public class DestinationMilvusIndexing {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -235,23 +237,19 @@ public class DestinationMilvusIndexing {
         }
         DestinationMilvusIndexing other = (DestinationMilvusIndexing) o;
         return 
-            Objects.deepEquals(this.auth, other.auth) &&
-            Objects.deepEquals(this.collection, other.collection) &&
-            Objects.deepEquals(this.db, other.db) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.textField, other.textField) &&
-            Objects.deepEquals(this.vectorField, other.vectorField);
+            Utils.enhancedDeepEquals(this.auth, other.auth) &&
+            Utils.enhancedDeepEquals(this.collection, other.collection) &&
+            Utils.enhancedDeepEquals(this.db, other.db) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.textField, other.textField) &&
+            Utils.enhancedDeepEquals(this.vectorField, other.vectorField);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            auth,
-            collection,
-            db,
-            host,
-            textField,
-            vectorField);
+        return Utils.enhancedHash(
+            auth, collection, db,
+            host, textField, vectorField);
     }
     
     @Override
@@ -264,24 +262,26 @@ public class DestinationMilvusIndexing {
                 "textField", textField,
                 "vectorField", vectorField);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private DestinationMilvusAuthentication auth;
- 
+
         private String collection;
- 
+
         private Optional<String> db;
- 
+
         private String host;
- 
+
         private Optional<String> textField;
- 
+
         private Optional<String> vectorField;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Authentication method
@@ -292,6 +292,7 @@ public class DestinationMilvusIndexing {
             return this;
         }
 
+
         /**
          * The collection to load data into
          */
@@ -300,6 +301,7 @@ public class DestinationMilvusIndexing {
             this.collection = collection;
             return this;
         }
+
 
         /**
          * The database to connect to
@@ -319,6 +321,7 @@ public class DestinationMilvusIndexing {
             return this;
         }
 
+
         /**
          * The public endpoint of the Milvus instance.
          */
@@ -327,6 +330,7 @@ public class DestinationMilvusIndexing {
             this.host = host;
             return this;
         }
+
 
         /**
          * The field in the entity that contains the embedded text
@@ -346,6 +350,7 @@ public class DestinationMilvusIndexing {
             return this;
         }
 
+
         /**
          * The field in the entity that contains the vector
          */
@@ -363,7 +368,7 @@ public class DestinationMilvusIndexing {
             this.vectorField = vectorField;
             return this;
         }
-        
+
         public DestinationMilvusIndexing build() {
             if (db == null) {
                 db = _SINGLETON_VALUE_Db.value();
@@ -374,14 +379,12 @@ public class DestinationMilvusIndexing {
             if (vectorField == null) {
                 vectorField = _SINGLETON_VALUE_VectorField.value();
             }
+
             return new DestinationMilvusIndexing(
-                auth,
-                collection,
-                db,
-                host,
-                textField,
-                vectorField);
+                auth, collection, db,
+                host, textField, vectorField);
         }
+
 
         private static final LazySingletonValue<Optional<String>> _SINGLETON_VALUE_Db =
                 new LazySingletonValue<>(

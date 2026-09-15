@@ -13,13 +13,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceAkeneo {
 
     @JsonProperty("api_username")
     private String apiUsername;
+
 
     @JsonProperty("client_id")
     private String clientId;
@@ -30,12 +31,15 @@ public class SourceAkeneo {
     @JsonProperty("host")
     private String host;
 
+
     @JsonProperty("password")
     private String password;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("secret")
     private Optional<String> secret;
+
 
     @JsonProperty("sourceType")
     private Akeneo sourceType;
@@ -65,7 +69,8 @@ public class SourceAkeneo {
             String clientId,
             String host,
             String password) {
-        this(apiUsername, clientId, host, password, Optional.empty());
+        this(apiUsername, clientId, host,
+            password, Optional.empty());
     }
 
     @JsonIgnore
@@ -101,9 +106,10 @@ public class SourceAkeneo {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceAkeneo withApiUsername(String apiUsername) {
         Utils.checkNotNull(apiUsername, "apiUsername");
@@ -138,13 +144,13 @@ public class SourceAkeneo {
         return this;
     }
 
+
     public SourceAkeneo withSecret(Optional<String> secret) {
         Utils.checkNotNull(secret, "secret");
         this.secret = secret;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -155,23 +161,19 @@ public class SourceAkeneo {
         }
         SourceAkeneo other = (SourceAkeneo) o;
         return 
-            Objects.deepEquals(this.apiUsername, other.apiUsername) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.host, other.host) &&
-            Objects.deepEquals(this.password, other.password) &&
-            Objects.deepEquals(this.secret, other.secret) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.apiUsername, other.apiUsername) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.host, other.host) &&
+            Utils.enhancedDeepEquals(this.password, other.password) &&
+            Utils.enhancedDeepEquals(this.secret, other.secret) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiUsername,
-            clientId,
-            host,
-            password,
-            secret,
-            sourceType);
+        return Utils.enhancedHash(
+            apiUsername, clientId, host,
+            password, secret, sourceType);
     }
     
     @Override
@@ -184,22 +186,24 @@ public class SourceAkeneo {
                 "secret", secret,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiUsername;
- 
+
         private String clientId;
- 
+
         private String host;
- 
+
         private String password;
- 
+
         private Optional<String> secret = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiUsername(String apiUsername) {
             Utils.checkNotNull(apiUsername, "apiUsername");
@@ -207,11 +211,13 @@ public class SourceAkeneo {
             return this;
         }
 
+
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
             this.clientId = clientId;
             return this;
         }
+
 
         /**
          * https://cb8715249e.trial.akeneo.cloud
@@ -222,11 +228,13 @@ public class SourceAkeneo {
             return this;
         }
 
+
         public Builder password(String password) {
             Utils.checkNotNull(password, "password");
             this.password = password;
             return this;
         }
+
 
         public Builder secret(String secret) {
             Utils.checkNotNull(secret, "secret");
@@ -239,15 +247,14 @@ public class SourceAkeneo {
             this.secret = secret;
             return this;
         }
-        
+
         public SourceAkeneo build() {
+
             return new SourceAkeneo(
-                apiUsername,
-                clientId,
-                host,
-                password,
-                secret);
+                apiUsername, clientId, host,
+                password, secret);
         }
+
 
         private static final LazySingletonValue<Akeneo> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

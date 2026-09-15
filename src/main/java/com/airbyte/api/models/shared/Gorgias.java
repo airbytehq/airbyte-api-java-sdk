@@ -14,7 +14,7 @@ public enum Gorgias {
     @JsonValue
     private final String value;
 
-    private Gorgias(String value) {
+    Gorgias(String value) {
         this.value = value;
     }
     

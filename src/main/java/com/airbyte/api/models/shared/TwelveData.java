@@ -14,7 +14,7 @@ public enum TwelveData {
     @JsonValue
     private final String value;
 
-    private TwelveData(String value) {
+    TwelveData(String value) {
         this.value = value;
     }
     

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
 
@@ -85,9 +85,10 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
         return refreshToken;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Client ID for the Google Drive API
@@ -116,7 +117,6 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -127,18 +127,16 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
         }
         SourceGoogleDriveAuthenticateViaGoogleOAuth other = (SourceGoogleDriveAuthenticateViaGoogleOAuth) o;
         return 
-            Objects.deepEquals(this.authType, other.authType) &&
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.refreshToken, other.refreshToken);
+            Utils.enhancedDeepEquals(this.authType, other.authType) &&
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.refreshToken, other.refreshToken);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            authType,
-            clientId,
-            clientSecret,
+        return Utils.enhancedHash(
+            authType, clientId, clientSecret,
             refreshToken);
     }
     
@@ -150,18 +148,20 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
                 "clientSecret", clientSecret,
                 "refreshToken", refreshToken);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String refreshToken;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Client ID for the Google Drive API
@@ -172,6 +172,7 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * Client Secret for the Google Drive API
          */
@@ -181,6 +182,7 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
             return this;
         }
 
+
         /**
          * Refresh Token for the Google Drive API
          */
@@ -189,13 +191,13 @@ public class SourceGoogleDriveAuthenticateViaGoogleOAuth {
             this.refreshToken = refreshToken;
             return this;
         }
-        
+
         public SourceGoogleDriveAuthenticateViaGoogleOAuth build() {
+
             return new SourceGoogleDriveAuthenticateViaGoogleOAuth(
-                clientId,
-                clientSecret,
-                refreshToken);
+                clientId, clientSecret, refreshToken);
         }
+
 
         private static final LazySingletonValue<Optional<? extends SourceGoogleDriveAuthType>> _SINGLETON_VALUE_AuthType =
                 new LazySingletonValue<>(

@@ -19,7 +19,7 @@ public enum DestinationYellowbrickSchemasTunnelMethodTunnelMethod {
     @JsonValue
     private final String value;
 
-    private DestinationYellowbrickSchemasTunnelMethodTunnelMethod(String value) {
+    DestinationYellowbrickSchemasTunnelMethodTunnelMethod(String value) {
         this.value = value;
     }
     

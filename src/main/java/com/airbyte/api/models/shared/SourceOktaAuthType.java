@@ -14,7 +14,7 @@ public enum SourceOktaAuthType {
     @JsonValue
     private final String value;
 
-    private SourceOktaAuthType(String value) {
+    SourceOktaAuthType(String value) {
         this.value = value;
     }
     

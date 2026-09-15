@@ -11,13 +11,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class PatchSourceRequest {
 
     @SpeakeasyMetadata("request:mediaType=application/json")
     private Optional<? extends SourcePatchRequest> sourcePatchRequest;
+
 
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sourceId")
     private String sourceId;
@@ -48,15 +49,17 @@ public class PatchSourceRequest {
         return sourceId;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public PatchSourceRequest withSourcePatchRequest(SourcePatchRequest sourcePatchRequest) {
         Utils.checkNotNull(sourcePatchRequest, "sourcePatchRequest");
         this.sourcePatchRequest = Optional.ofNullable(sourcePatchRequest);
         return this;
     }
+
 
     public PatchSourceRequest withSourcePatchRequest(Optional<? extends SourcePatchRequest> sourcePatchRequest) {
         Utils.checkNotNull(sourcePatchRequest, "sourcePatchRequest");
@@ -70,7 +73,6 @@ public class PatchSourceRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -81,15 +83,14 @@ public class PatchSourceRequest {
         }
         PatchSourceRequest other = (PatchSourceRequest) o;
         return 
-            Objects.deepEquals(this.sourcePatchRequest, other.sourcePatchRequest) &&
-            Objects.deepEquals(this.sourceId, other.sourceId);
+            Utils.enhancedDeepEquals(this.sourcePatchRequest, other.sourcePatchRequest) &&
+            Utils.enhancedDeepEquals(this.sourceId, other.sourceId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            sourcePatchRequest,
-            sourceId);
+        return Utils.enhancedHash(
+            sourcePatchRequest, sourceId);
     }
     
     @Override
@@ -98,16 +99,18 @@ public class PatchSourceRequest {
                 "sourcePatchRequest", sourcePatchRequest,
                 "sourceId", sourceId);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<? extends SourcePatchRequest> sourcePatchRequest = Optional.empty();
- 
+
         private String sourceId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder sourcePatchRequest(SourcePatchRequest sourcePatchRequest) {
             Utils.checkNotNull(sourcePatchRequest, "sourcePatchRequest");
@@ -121,16 +124,18 @@ public class PatchSourceRequest {
             return this;
         }
 
+
         public Builder sourceId(String sourceId) {
             Utils.checkNotNull(sourceId, "sourceId");
             this.sourceId = sourceId;
             return this;
         }
-        
+
         public PatchSourceRequest build() {
+
             return new PatchSourceRequest(
-                sourcePatchRequest,
-                sourceId);
+                sourcePatchRequest, sourceId);
         }
+
     }
 }

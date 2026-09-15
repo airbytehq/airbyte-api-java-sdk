@@ -14,7 +14,7 @@ public enum Getgist {
     @JsonValue
     private final String value;
 
-    private Getgist(String value) {
+    Getgist(String value) {
         this.value = value;
     }
     

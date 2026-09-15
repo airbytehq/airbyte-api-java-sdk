@@ -12,18 +12,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
 import java.time.OffsetDateTime;
-import java.util.Objects;
+
 
 public class SourceRollbar {
 
     @JsonProperty("account_access_token")
     private String accountAccessToken;
 
+
     @JsonProperty("project_access_token")
     private String projectAccessToken;
 
+
     @JsonProperty("sourceType")
     private Rollbar sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
@@ -62,9 +65,10 @@ public class SourceRollbar {
         return startDate;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceRollbar withAccountAccessToken(String accountAccessToken) {
         Utils.checkNotNull(accountAccessToken, "accountAccessToken");
@@ -84,7 +88,6 @@ public class SourceRollbar {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,18 +98,16 @@ public class SourceRollbar {
         }
         SourceRollbar other = (SourceRollbar) o;
         return 
-            Objects.deepEquals(this.accountAccessToken, other.accountAccessToken) &&
-            Objects.deepEquals(this.projectAccessToken, other.projectAccessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate);
+            Utils.enhancedDeepEquals(this.accountAccessToken, other.accountAccessToken) &&
+            Utils.enhancedDeepEquals(this.projectAccessToken, other.projectAccessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountAccessToken,
-            projectAccessToken,
-            sourceType,
+        return Utils.enhancedHash(
+            accountAccessToken, projectAccessToken, sourceType,
             startDate);
     }
     
@@ -118,18 +119,20 @@ public class SourceRollbar {
                 "sourceType", sourceType,
                 "startDate", startDate);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountAccessToken;
- 
+
         private String projectAccessToken;
- 
+
         private OffsetDateTime startDate;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder accountAccessToken(String accountAccessToken) {
             Utils.checkNotNull(accountAccessToken, "accountAccessToken");
@@ -137,24 +140,26 @@ public class SourceRollbar {
             return this;
         }
 
+
         public Builder projectAccessToken(String projectAccessToken) {
             Utils.checkNotNull(projectAccessToken, "projectAccessToken");
             this.projectAccessToken = projectAccessToken;
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
-        
+
         public SourceRollbar build() {
+
             return new SourceRollbar(
-                accountAccessToken,
-                projectAccessToken,
-                startDate);
+                accountAccessToken, projectAccessToken, startDate);
         }
+
 
         private static final LazySingletonValue<Rollbar> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

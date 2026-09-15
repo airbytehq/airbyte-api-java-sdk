@@ -11,10 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourceActivecampaign {
-
     /**
      * Account Username
      */
@@ -26,6 +25,7 @@ public class SourceActivecampaign {
      */
     @JsonProperty("api_key")
     private String apiKey;
+
 
     @JsonProperty("sourceType")
     private Activecampaign sourceType;
@@ -62,9 +62,10 @@ public class SourceActivecampaign {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Account Username
@@ -84,7 +85,6 @@ public class SourceActivecampaign {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -95,17 +95,15 @@ public class SourceActivecampaign {
         }
         SourceActivecampaign other = (SourceActivecampaign) o;
         return 
-            Objects.deepEquals(this.accountUsername, other.accountUsername) &&
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.accountUsername, other.accountUsername) &&
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accountUsername,
-            apiKey,
-            sourceType);
+        return Utils.enhancedHash(
+            accountUsername, apiKey, sourceType);
     }
     
     @Override
@@ -115,16 +113,18 @@ public class SourceActivecampaign {
                 "apiKey", apiKey,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accountUsername;
- 
+
         private String apiKey;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Account Username
@@ -135,6 +135,7 @@ public class SourceActivecampaign {
             return this;
         }
 
+
         /**
          * API Key
          */
@@ -143,12 +144,13 @@ public class SourceActivecampaign {
             this.apiKey = apiKey;
             return this;
         }
-        
+
         public SourceActivecampaign build() {
+
             return new SourceActivecampaign(
-                accountUsername,
-                apiKey);
+                accountUsername, apiKey);
         }
+
 
         private static final LazySingletonValue<Activecampaign> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

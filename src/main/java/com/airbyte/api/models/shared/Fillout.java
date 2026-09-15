@@ -14,7 +14,7 @@ public enum Fillout {
     @JsonValue
     private final String value;
 
-    private Fillout(String value) {
+    Fillout(String value) {
         this.value = value;
     }
     

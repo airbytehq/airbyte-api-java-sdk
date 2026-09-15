@@ -11,12 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
+
 
 public class SourcePiwik {
 
     @JsonProperty("client_id")
     private String clientId;
+
 
     @JsonProperty("client_secret")
     private String clientSecret;
@@ -26,6 +27,7 @@ public class SourcePiwik {
      */
     @JsonProperty("organization_id")
     private String organizationId;
+
 
     @JsonProperty("sourceType")
     private Piwik sourceType;
@@ -67,9 +69,10 @@ public class SourcePiwik {
         return sourceType;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourcePiwik withClientId(String clientId) {
         Utils.checkNotNull(clientId, "clientId");
@@ -92,7 +95,6 @@ public class SourcePiwik {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -103,18 +105,16 @@ public class SourcePiwik {
         }
         SourcePiwik other = (SourcePiwik) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret) &&
-            Objects.deepEquals(this.organizationId, other.organizationId) &&
-            Objects.deepEquals(this.sourceType, other.sourceType);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret) &&
+            Utils.enhancedDeepEquals(this.organizationId, other.organizationId) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret,
-            organizationId,
+        return Utils.enhancedHash(
+            clientId, clientSecret, organizationId,
             sourceType);
     }
     
@@ -126,18 +126,20 @@ public class SourcePiwik {
                 "organizationId", organizationId,
                 "sourceType", sourceType);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
- 
+
         private String organizationId;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder clientId(String clientId) {
             Utils.checkNotNull(clientId, "clientId");
@@ -145,11 +147,13 @@ public class SourcePiwik {
             return this;
         }
 
+
         public Builder clientSecret(String clientSecret) {
             Utils.checkNotNull(clientSecret, "clientSecret");
             this.clientSecret = clientSecret;
             return this;
         }
+
 
         /**
          * The organization id appearing at URL of your piwik website
@@ -159,13 +163,13 @@ public class SourcePiwik {
             this.organizationId = organizationId;
             return this;
         }
-        
+
         public SourcePiwik build() {
+
             return new SourcePiwik(
-                clientId,
-                clientSecret,
-                organizationId);
+                clientId, clientSecret, organizationId);
         }
+
 
         private static final LazySingletonValue<Piwik> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

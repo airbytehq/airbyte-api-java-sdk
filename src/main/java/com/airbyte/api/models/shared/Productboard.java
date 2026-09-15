@@ -14,7 +14,7 @@ public enum Productboard {
     @JsonValue
     private final String value;
 
-    private Productboard(String value) {
+    Productboard(String value) {
         this.value = value;
     }
     

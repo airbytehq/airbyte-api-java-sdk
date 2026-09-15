@@ -14,7 +14,7 @@ public enum Svix {
     @JsonValue
     private final String value;
 
-    private Svix(String value) {
+    Svix(String value) {
         this.value = value;
     }
     

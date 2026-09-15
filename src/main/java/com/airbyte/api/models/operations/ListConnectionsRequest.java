@@ -15,11 +15,10 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-public class ListConnectionsRequest {
 
+public class ListConnectionsRequest {
     /**
      * Include deleted connections in the returned results.
      */
@@ -45,7 +44,8 @@ public class ListConnectionsRequest {
     private Optional<? extends List<String>> tagIds;
 
     /**
-     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed
+     * workspaces.
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspaceIds")
     private Optional<? extends List<String>> workspaceIds;
@@ -70,7 +70,8 @@ public class ListConnectionsRequest {
     }
     
     public ListConnectionsRequest() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(),
+            Optional.empty(), Optional.empty());
     }
 
     /**
@@ -107,7 +108,8 @@ public class ListConnectionsRequest {
     }
 
     /**
-     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed
+     * workspaces.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -115,9 +117,10 @@ public class ListConnectionsRequest {
         return (Optional<List<String>>) workspaceIds;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * Include deleted connections in the returned results.
@@ -127,6 +130,7 @@ public class ListConnectionsRequest {
         this.includeDeleted = Optional.ofNullable(includeDeleted);
         return this;
     }
+
 
     /**
      * Include deleted connections in the returned results.
@@ -146,6 +150,7 @@ public class ListConnectionsRequest {
         return this;
     }
 
+
     /**
      * Set the limit on the number of Connections returned. The default is 20.
      */
@@ -163,6 +168,7 @@ public class ListConnectionsRequest {
         this.offset = Optional.ofNullable(offset);
         return this;
     }
+
 
     /**
      * Set the offset to start at when returning Connections. The default is 0
@@ -182,6 +188,7 @@ public class ListConnectionsRequest {
         return this;
     }
 
+
     /**
      * The UUIDs of the tags you wish to list connections for. Empty list will retrieve all connections.
      */
@@ -192,7 +199,8 @@ public class ListConnectionsRequest {
     }
 
     /**
-     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed
+     * workspaces.
      */
     public ListConnectionsRequest withWorkspaceIds(List<String> workspaceIds) {
         Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -200,8 +208,10 @@ public class ListConnectionsRequest {
         return this;
     }
 
+
     /**
-     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed workspaces.
+     * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed
+     * workspaces.
      */
     public ListConnectionsRequest withWorkspaceIds(Optional<? extends List<String>> workspaceIds) {
         Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -209,7 +219,6 @@ public class ListConnectionsRequest {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -220,21 +229,18 @@ public class ListConnectionsRequest {
         }
         ListConnectionsRequest other = (ListConnectionsRequest) o;
         return 
-            Objects.deepEquals(this.includeDeleted, other.includeDeleted) &&
-            Objects.deepEquals(this.limit, other.limit) &&
-            Objects.deepEquals(this.offset, other.offset) &&
-            Objects.deepEquals(this.tagIds, other.tagIds) &&
-            Objects.deepEquals(this.workspaceIds, other.workspaceIds);
+            Utils.enhancedDeepEquals(this.includeDeleted, other.includeDeleted) &&
+            Utils.enhancedDeepEquals(this.limit, other.limit) &&
+            Utils.enhancedDeepEquals(this.offset, other.offset) &&
+            Utils.enhancedDeepEquals(this.tagIds, other.tagIds) &&
+            Utils.enhancedDeepEquals(this.workspaceIds, other.workspaceIds);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            includeDeleted,
-            limit,
-            offset,
-            tagIds,
-            workspaceIds);
+        return Utils.enhancedHash(
+            includeDeleted, limit, offset,
+            tagIds, workspaceIds);
     }
     
     @Override
@@ -246,22 +252,24 @@ public class ListConnectionsRequest {
                 "tagIds", tagIds,
                 "workspaceIds", workspaceIds);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private Optional<Boolean> includeDeleted;
- 
+
         private Optional<Integer> limit;
- 
+
         private Optional<Integer> offset;
- 
+
         private Optional<? extends List<String>> tagIds = Optional.empty();
- 
+
         private Optional<? extends List<String>> workspaceIds = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * Include deleted connections in the returned results.
@@ -281,6 +289,7 @@ public class ListConnectionsRequest {
             return this;
         }
 
+
         /**
          * Set the limit on the number of Connections returned. The default is 20.
          */
@@ -298,6 +307,7 @@ public class ListConnectionsRequest {
             this.limit = limit;
             return this;
         }
+
 
         /**
          * Set the offset to start at when returning Connections. The default is 0
@@ -317,6 +327,7 @@ public class ListConnectionsRequest {
             return this;
         }
 
+
         /**
          * The UUIDs of the tags you wish to list connections for. Empty list will retrieve all connections.
          */
@@ -335,8 +346,10 @@ public class ListConnectionsRequest {
             return this;
         }
 
+
         /**
-         * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed workspaces.
+         * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed
+         * workspaces.
          */
         public Builder workspaceIds(List<String> workspaceIds) {
             Utils.checkNotNull(workspaceIds, "workspaceIds");
@@ -345,14 +358,15 @@ public class ListConnectionsRequest {
         }
 
         /**
-         * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed workspaces.
+         * The UUIDs of the workspaces you wish to list connections for. Empty list will retrieve all allowed
+         * workspaces.
          */
         public Builder workspaceIds(Optional<? extends List<String>> workspaceIds) {
             Utils.checkNotNull(workspaceIds, "workspaceIds");
             this.workspaceIds = workspaceIds;
             return this;
         }
-        
+
         public ListConnectionsRequest build() {
             if (includeDeleted == null) {
                 includeDeleted = _SINGLETON_VALUE_IncludeDeleted.value();
@@ -363,13 +377,12 @@ public class ListConnectionsRequest {
             if (offset == null) {
                 offset = _SINGLETON_VALUE_Offset.value();
             }
+
             return new ListConnectionsRequest(
-                includeDeleted,
-                limit,
-                offset,
-                tagIds,
-                workspaceIds);
+                includeDeleted, limit, offset,
+                tagIds, workspaceIds);
         }
+
 
         private static final LazySingletonValue<Optional<Boolean>> _SINGLETON_VALUE_IncludeDeleted =
                 new LazySingletonValue<>(

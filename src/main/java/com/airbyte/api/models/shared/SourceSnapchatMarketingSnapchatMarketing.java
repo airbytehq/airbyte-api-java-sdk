@@ -14,7 +14,7 @@ public enum SourceSnapchatMarketingSnapchatMarketing {
     @JsonValue
     private final String value;
 
-    private SourceSnapchatMarketingSnapchatMarketing(String value) {
+    SourceSnapchatMarketingSnapchatMarketing(String value) {
         this.value = value;
     }
     

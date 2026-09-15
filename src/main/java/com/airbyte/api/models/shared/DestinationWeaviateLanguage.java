@@ -34,7 +34,7 @@ public enum DestinationWeaviateLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateLanguage(String value) {
+    DestinationWeaviateLanguage(String value) {
         this.value = value;
     }
     

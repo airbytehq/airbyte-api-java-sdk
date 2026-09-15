@@ -5,6 +5,7 @@ Direct loading using batched SQL INSERT statements. This method uses the BigQuer
 
 ## Fields
 
-| Field                                   | Type                                    | Required                                | Description                             |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| `method`                                | [Method](../../models/shared/Method.md) | :heavy_check_mark:                      | N/A                                     |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `additionalProperties`                             | Map\<String, *Object*>                             | :heavy_minus_sign:                                 | N/A                                                |
+| `method`                                           | [Optional\<Method>](../../models/shared/Method.md) | :heavy_minus_sign:                                 | N/A                                                |

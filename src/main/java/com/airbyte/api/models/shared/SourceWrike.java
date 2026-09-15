@@ -13,22 +13,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 import java.util.Optional;
 
-public class SourceWrike {
 
+public class SourceWrike {
     /**
-     * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
+     * Permanent access token. You can find documentation on how to acquire a permanent access token  <a
+     * href="https://developers.wrike.com/oauth-20-authorization/">here</a>
      */
     @JsonProperty("access_token")
     private String accessToken;
+
 
     @JsonProperty("sourceType")
     private Wrike sourceType;
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be
+     * replicated.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("start_date")
@@ -61,7 +63,8 @@ public class SourceWrike {
     }
 
     /**
-     * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
+     * Permanent access token. You can find documentation on how to acquire a permanent access token  <a
+     * href="https://developers.wrike.com/oauth-20-authorization/">here</a>
      */
     @JsonIgnore
     public String accessToken() {
@@ -74,7 +77,8 @@ public class SourceWrike {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be
+     * replicated.
      */
     @JsonIgnore
     public Optional<String> startDate() {
@@ -89,12 +93,14 @@ public class SourceWrike {
         return wrikeInstance;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
-     * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
+     * Permanent access token. You can find documentation on how to acquire a permanent access token  <a
+     * href="https://developers.wrike.com/oauth-20-authorization/">here</a>
      */
     public SourceWrike withAccessToken(String accessToken) {
         Utils.checkNotNull(accessToken, "accessToken");
@@ -103,7 +109,8 @@ public class SourceWrike {
     }
 
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be
+     * replicated.
      */
     public SourceWrike withStartDate(String startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -111,8 +118,10 @@ public class SourceWrike {
         return this;
     }
 
+
     /**
-     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
+     * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be
+     * replicated.
      */
     public SourceWrike withStartDate(Optional<String> startDate) {
         Utils.checkNotNull(startDate, "startDate");
@@ -129,6 +138,7 @@ public class SourceWrike {
         return this;
     }
 
+
     /**
      * Wrike's instance such as `app-us2.wrike.com`
      */
@@ -138,7 +148,6 @@ public class SourceWrike {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -149,18 +158,16 @@ public class SourceWrike {
         }
         SourceWrike other = (SourceWrike) o;
         return 
-            Objects.deepEquals(this.accessToken, other.accessToken) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.wrikeInstance, other.wrikeInstance);
+            Utils.enhancedDeepEquals(this.accessToken, other.accessToken) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.wrikeInstance, other.wrikeInstance);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            accessToken,
-            sourceType,
-            startDate,
+        return Utils.enhancedHash(
+            accessToken, sourceType, startDate,
             wrikeInstance);
     }
     
@@ -172,21 +179,24 @@ public class SourceWrike {
                 "startDate", startDate,
                 "wrikeInstance", wrikeInstance);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String accessToken;
- 
+
         private Optional<String> startDate = Optional.empty();
- 
+
         private Optional<String> wrikeInstance;
-        
+
         private Builder() {
           // force use of static builder() method
         }
 
+
         /**
-         * Permanent access token. You can find documentation on how to acquire a permanent access token  &lt;a href="https://developers.wrike.com/oauth-20-authorization/"&gt;here&lt;/a&gt;
+         * Permanent access token. You can find documentation on how to acquire a permanent access token  <a
+         * href="https://developers.wrike.com/oauth-20-authorization/">here</a>
          */
         public Builder accessToken(String accessToken) {
             Utils.checkNotNull(accessToken, "accessToken");
@@ -194,8 +204,10 @@ public class SourceWrike {
             return this;
         }
 
+
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be
+         * replicated.
          */
         public Builder startDate(String startDate) {
             Utils.checkNotNull(startDate, "startDate");
@@ -204,13 +216,15 @@ public class SourceWrike {
         }
 
         /**
-         * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be replicated.
+         * UTC date and time in the format 2017-01-25T00:00:00Z. Only comments after this date will be
+         * replicated.
          */
         public Builder startDate(Optional<String> startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         /**
          * Wrike's instance such as `app-us2.wrike.com`
@@ -229,16 +243,16 @@ public class SourceWrike {
             this.wrikeInstance = wrikeInstance;
             return this;
         }
-        
+
         public SourceWrike build() {
             if (wrikeInstance == null) {
                 wrikeInstance = _SINGLETON_VALUE_WrikeInstance.value();
             }
+
             return new SourceWrike(
-                accessToken,
-                startDate,
-                wrikeInstance);
+                accessToken, startDate, wrikeInstance);
         }
+
 
         private static final LazySingletonValue<Wrike> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

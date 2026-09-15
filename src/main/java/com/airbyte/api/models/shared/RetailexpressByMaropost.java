@@ -14,7 +14,7 @@ public enum RetailexpressByMaropost {
     @JsonValue
     private final String value;
 
-    private RetailexpressByMaropost(String value) {
+    RetailexpressByMaropost(String value) {
         this.value = value;
     }
     

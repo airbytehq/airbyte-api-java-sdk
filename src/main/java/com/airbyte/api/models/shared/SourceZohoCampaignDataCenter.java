@@ -19,7 +19,7 @@ public enum SourceZohoCampaignDataCenter {
     @JsonValue
     private final String value;
 
-    private SourceZohoCampaignDataCenter(String value) {
+    SourceZohoCampaignDataCenter(String value) {
         this.value = value;
     }
     

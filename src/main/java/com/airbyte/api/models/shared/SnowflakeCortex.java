@@ -14,7 +14,7 @@ public enum SnowflakeCortex {
     @JsonValue
     private final String value;
 
-    private SnowflakeCortex(String value) {
+    SnowflakeCortex(String value) {
         this.value = value;
     }
     

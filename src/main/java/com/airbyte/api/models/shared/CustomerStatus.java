@@ -23,7 +23,7 @@ public enum CustomerStatus {
     @JsonValue
     private final String value;
 
-    private CustomerStatus(String value) {
+    CustomerStatus(String value) {
         this.value = value;
     }
     

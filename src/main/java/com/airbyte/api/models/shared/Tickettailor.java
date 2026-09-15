@@ -14,7 +14,7 @@ public enum Tickettailor {
     @JsonValue
     private final String value;
 
-    private Tickettailor(String value) {
+    Tickettailor(String value) {
         this.value = value;
     }
     

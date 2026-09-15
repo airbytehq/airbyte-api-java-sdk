@@ -14,7 +14,7 @@ public enum DestinationWeaviateSchemasMode {
     @JsonValue
     private final String value;
 
-    private DestinationWeaviateSchemasMode(String value) {
+    DestinationWeaviateSchemasMode(String value) {
         this.value = value;
     }
     

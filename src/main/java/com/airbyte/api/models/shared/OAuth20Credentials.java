@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.lang.Override;
 import java.lang.String;
-import java.util.Objects;
 
 /**
  * OAuth20Credentials
@@ -17,7 +16,6 @@ import java.util.Objects;
  * <p>OAuth2.0 credentials used to authenticate admin actions (creating/deleting corpora)
  */
 public class OAuth20Credentials {
-
     /**
      * OAuth2.0 client id
      */
@@ -56,9 +54,10 @@ public class OAuth20Credentials {
         return clientSecret;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     /**
      * OAuth2.0 client id
@@ -78,7 +77,6 @@ public class OAuth20Credentials {
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -89,15 +87,14 @@ public class OAuth20Credentials {
         }
         OAuth20Credentials other = (OAuth20Credentials) o;
         return 
-            Objects.deepEquals(this.clientId, other.clientId) &&
-            Objects.deepEquals(this.clientSecret, other.clientSecret);
+            Utils.enhancedDeepEquals(this.clientId, other.clientId) &&
+            Utils.enhancedDeepEquals(this.clientSecret, other.clientSecret);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            clientId,
-            clientSecret);
+        return Utils.enhancedHash(
+            clientId, clientSecret);
     }
     
     @Override
@@ -106,16 +103,18 @@ public class OAuth20Credentials {
                 "clientId", clientId,
                 "clientSecret", clientSecret);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String clientId;
- 
+
         private String clientSecret;
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         /**
          * OAuth2.0 client id
@@ -126,6 +125,7 @@ public class OAuth20Credentials {
             return this;
         }
 
+
         /**
          * OAuth2.0 client secret
          */
@@ -134,11 +134,12 @@ public class OAuth20Credentials {
             this.clientSecret = clientSecret;
             return this;
         }
-        
+
         public OAuth20Credentials build() {
+
             return new OAuth20Credentials(
-                clientId,
-                clientSecret);
+                clientId, clientSecret);
         }
+
     }
 }

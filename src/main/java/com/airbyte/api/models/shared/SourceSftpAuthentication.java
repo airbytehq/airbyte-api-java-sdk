@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceSftpAuthentication
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceSftpAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceSftpAuthentication(TypedObject value) {
         this.value = value;
@@ -33,12 +32,12 @@ public class SourceSftpAuthentication {
 
     public static SourceSftpAuthentication of(SourceSftpPasswordAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpPasswordAuthentication>(){}));
+        return new SourceSftpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceSftpAuthentication of(SourceSftpSSHKeyAuthentication value) {
         Utils.checkNotNull(value, "value");
-        return new SourceSftpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceSftpSSHKeyAuthentication>(){}));
+        return new SourceSftpAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -61,7 +60,7 @@ public class SourceSftpAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -72,12 +71,12 @@ public class SourceSftpAuthentication {
             return false;
         }
         SourceSftpAuthentication other = (SourceSftpAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -85,8 +84,8 @@ public class SourceSftpAuthentication {
 
         public _Deserializer() {
             super(SourceSftpAuthentication.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpSSHKeyAuthentication>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceSftpPasswordAuthentication>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpPasswordAuthentication>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceSftpSSHKeyAuthentication>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -95,6 +94,6 @@ public class SourceSftpAuthentication {
         return Utils.toString(SourceSftpAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

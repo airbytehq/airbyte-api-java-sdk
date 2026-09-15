@@ -34,7 +34,7 @@ public enum DestinationQdrantLanguage {
     @JsonValue
     private final String value;
 
-    private DestinationQdrantLanguage(String value) {
+    DestinationQdrantLanguage(String value) {
         this.value = value;
     }
     

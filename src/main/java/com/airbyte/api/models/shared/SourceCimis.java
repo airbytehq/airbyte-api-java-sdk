@@ -17,36 +17,44 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+
 
 public class SourceCimis {
 
     @JsonProperty("api_key")
     private String apiKey;
 
+
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("daily_data_items")
     private Optional<? extends List<Object>> dailyDataItems;
 
+
     @JsonProperty("end_date")
     private OffsetDateTime endDate;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("hourly_data_items")
     private Optional<? extends List<Object>> hourlyDataItems;
 
+
     @JsonProperty("sourceType")
     private Cimis sourceType;
+
 
     @JsonProperty("start_date")
     private OffsetDateTime startDate;
 
+
     @JsonProperty("targets")
     private List<Object> targets;
 
+
     @JsonProperty("targets_type")
     private TargetsType targetsType;
+
 
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unit_of_measure")
@@ -87,7 +95,9 @@ public class SourceCimis {
             OffsetDateTime startDate,
             List<Object> targets,
             TargetsType targetsType) {
-        this(apiKey, Optional.empty(), endDate, Optional.empty(), startDate, targets, targetsType, Optional.empty());
+        this(apiKey, Optional.empty(), endDate,
+            Optional.empty(), startDate, targets,
+            targetsType, Optional.empty());
     }
 
     @JsonIgnore
@@ -138,9 +148,10 @@ public class SourceCimis {
         return (Optional<UnitOfMeasure>) unitOfMeasure;
     }
 
-    public final static Builder builder() {
+    public static Builder builder() {
         return new Builder();
-    }    
+    }
+
 
     public SourceCimis withApiKey(String apiKey) {
         Utils.checkNotNull(apiKey, "apiKey");
@@ -153,6 +164,7 @@ public class SourceCimis {
         this.dailyDataItems = Optional.ofNullable(dailyDataItems);
         return this;
     }
+
 
     public SourceCimis withDailyDataItems(Optional<? extends List<Object>> dailyDataItems) {
         Utils.checkNotNull(dailyDataItems, "dailyDataItems");
@@ -171,6 +183,7 @@ public class SourceCimis {
         this.hourlyDataItems = Optional.ofNullable(hourlyDataItems);
         return this;
     }
+
 
     public SourceCimis withHourlyDataItems(Optional<? extends List<Object>> hourlyDataItems) {
         Utils.checkNotNull(hourlyDataItems, "hourlyDataItems");
@@ -202,13 +215,13 @@ public class SourceCimis {
         return this;
     }
 
+
     public SourceCimis withUnitOfMeasure(Optional<? extends UnitOfMeasure> unitOfMeasure) {
         Utils.checkNotNull(unitOfMeasure, "unitOfMeasure");
         this.unitOfMeasure = unitOfMeasure;
         return this;
     }
 
-    
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -219,29 +232,23 @@ public class SourceCimis {
         }
         SourceCimis other = (SourceCimis) o;
         return 
-            Objects.deepEquals(this.apiKey, other.apiKey) &&
-            Objects.deepEquals(this.dailyDataItems, other.dailyDataItems) &&
-            Objects.deepEquals(this.endDate, other.endDate) &&
-            Objects.deepEquals(this.hourlyDataItems, other.hourlyDataItems) &&
-            Objects.deepEquals(this.sourceType, other.sourceType) &&
-            Objects.deepEquals(this.startDate, other.startDate) &&
-            Objects.deepEquals(this.targets, other.targets) &&
-            Objects.deepEquals(this.targetsType, other.targetsType) &&
-            Objects.deepEquals(this.unitOfMeasure, other.unitOfMeasure);
+            Utils.enhancedDeepEquals(this.apiKey, other.apiKey) &&
+            Utils.enhancedDeepEquals(this.dailyDataItems, other.dailyDataItems) &&
+            Utils.enhancedDeepEquals(this.endDate, other.endDate) &&
+            Utils.enhancedDeepEquals(this.hourlyDataItems, other.hourlyDataItems) &&
+            Utils.enhancedDeepEquals(this.sourceType, other.sourceType) &&
+            Utils.enhancedDeepEquals(this.startDate, other.startDate) &&
+            Utils.enhancedDeepEquals(this.targets, other.targets) &&
+            Utils.enhancedDeepEquals(this.targetsType, other.targetsType) &&
+            Utils.enhancedDeepEquals(this.unitOfMeasure, other.unitOfMeasure);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-            apiKey,
-            dailyDataItems,
-            endDate,
-            hourlyDataItems,
-            sourceType,
-            startDate,
-            targets,
-            targetsType,
-            unitOfMeasure);
+        return Utils.enhancedHash(
+            apiKey, dailyDataItems, endDate,
+            hourlyDataItems, sourceType, startDate,
+            targets, targetsType, unitOfMeasure);
     }
     
     @Override
@@ -257,34 +264,37 @@ public class SourceCimis {
                 "targetsType", targetsType,
                 "unitOfMeasure", unitOfMeasure);
     }
-    
+
+    @SuppressWarnings("UnusedReturnValue")
     public final static class Builder {
- 
+
         private String apiKey;
- 
+
         private Optional<? extends List<Object>> dailyDataItems = Optional.empty();
- 
+
         private OffsetDateTime endDate;
- 
+
         private Optional<? extends List<Object>> hourlyDataItems = Optional.empty();
- 
+
         private OffsetDateTime startDate;
- 
+
         private List<Object> targets;
- 
+
         private TargetsType targetsType;
- 
+
         private Optional<? extends UnitOfMeasure> unitOfMeasure = Optional.empty();
-        
+
         private Builder() {
           // force use of static builder() method
         }
+
 
         public Builder apiKey(String apiKey) {
             Utils.checkNotNull(apiKey, "apiKey");
             this.apiKey = apiKey;
             return this;
         }
+
 
         public Builder dailyDataItems(List<Object> dailyDataItems) {
             Utils.checkNotNull(dailyDataItems, "dailyDataItems");
@@ -298,11 +308,13 @@ public class SourceCimis {
             return this;
         }
 
+
         public Builder endDate(OffsetDateTime endDate) {
             Utils.checkNotNull(endDate, "endDate");
             this.endDate = endDate;
             return this;
         }
+
 
         public Builder hourlyDataItems(List<Object> hourlyDataItems) {
             Utils.checkNotNull(hourlyDataItems, "hourlyDataItems");
@@ -316,11 +328,13 @@ public class SourceCimis {
             return this;
         }
 
+
         public Builder startDate(OffsetDateTime startDate) {
             Utils.checkNotNull(startDate, "startDate");
             this.startDate = startDate;
             return this;
         }
+
 
         public Builder targets(List<Object> targets) {
             Utils.checkNotNull(targets, "targets");
@@ -328,11 +342,13 @@ public class SourceCimis {
             return this;
         }
 
+
         public Builder targetsType(TargetsType targetsType) {
             Utils.checkNotNull(targetsType, "targetsType");
             this.targetsType = targetsType;
             return this;
         }
+
 
         public Builder unitOfMeasure(UnitOfMeasure unitOfMeasure) {
             Utils.checkNotNull(unitOfMeasure, "unitOfMeasure");
@@ -345,18 +361,15 @@ public class SourceCimis {
             this.unitOfMeasure = unitOfMeasure;
             return this;
         }
-        
+
         public SourceCimis build() {
+
             return new SourceCimis(
-                apiKey,
-                dailyDataItems,
-                endDate,
-                hourlyDataItems,
-                startDate,
-                targets,
-                targetsType,
-                unitOfMeasure);
+                apiKey, dailyDataItems, endDate,
+                hourlyDataItems, startDate, targets,
+                targetsType, unitOfMeasure);
         }
+
 
         private static final LazySingletonValue<Cimis> _SINGLETON_VALUE_SourceType =
                 new LazySingletonValue<>(

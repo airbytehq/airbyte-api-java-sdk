@@ -14,7 +14,7 @@ public enum Metabase {
     @JsonValue
     private final String value;
 
-    private Metabase(String value) {
+    Metabase(String value) {
         this.value = value;
     }
     

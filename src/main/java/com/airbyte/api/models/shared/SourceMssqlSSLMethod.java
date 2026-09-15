@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 /**
  * SourceMssqlSSLMethod
@@ -25,7 +24,7 @@ import java.util.Objects;
 public class SourceMssqlSSLMethod {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceMssqlSSLMethod(TypedObject value) {
         this.value = value;
@@ -33,17 +32,17 @@ public class SourceMssqlSSLMethod {
 
     public static SourceMssqlSSLMethod of(SourceMssqlUnencrypted value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlUnencrypted>(){}));
+        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMssqlSSLMethod of(SourceMssqlEncryptedTrustServerCertificate value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlEncryptedTrustServerCertificate>(){}));
+        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceMssqlSSLMethod of(SourceMssqlEncryptedVerifyCertificate value) {
         Utils.checkNotNull(value, "value");
-        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceMssqlEncryptedVerifyCertificate>(){}));
+        return new SourceMssqlSSLMethod(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -67,7 +66,7 @@ public class SourceMssqlSSLMethod {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -78,12 +77,12 @@ public class SourceMssqlSSLMethod {
             return false;
         }
         SourceMssqlSSLMethod other = (SourceMssqlSSLMethod) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -91,9 +90,9 @@ public class SourceMssqlSSLMethod {
 
         public _Deserializer() {
             super(SourceMssqlSSLMethod.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlUnencrypted>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<SourceMssqlEncryptedTrustServerCertificate>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlUnencrypted>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<SourceMssqlEncryptedVerifyCertificate>() {}, JsonShape.DEFAULT));
         }
     }
     
@@ -102,6 +101,6 @@ public class SourceMssqlSSLMethod {
         return Utils.toString(SourceMssqlSSLMethod.class,
                 "value", value);
     }
- 
+
 }
 

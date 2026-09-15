@@ -14,13 +14,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
-import java.util.Objects;
 
 @JsonDeserialize(using = SourceLinkedinAdsAuthentication._Deserializer.class)
 public class SourceLinkedinAdsAuthentication {
 
     @JsonValue
-    private TypedObject value;
+    private final TypedObject value;
     
     private SourceLinkedinAdsAuthentication(TypedObject value) {
         this.value = value;
@@ -28,12 +27,12 @@ public class SourceLinkedinAdsAuthentication {
 
     public static SourceLinkedinAdsAuthentication of(SourceLinkedinAdsOAuth20 value) {
         Utils.checkNotNull(value, "value");
-        return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinAdsOAuth20>(){}));
+        return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
 
     public static SourceLinkedinAdsAuthentication of(SourceLinkedinAdsAccessToken value) {
         Utils.checkNotNull(value, "value");
-        return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SourceLinkedinAdsAccessToken>(){}));
+        return new SourceLinkedinAdsAuthentication(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<>(){}));
     }
     
     /**
@@ -56,7 +55,7 @@ public class SourceLinkedinAdsAuthentication {
      **/ 
     public java.lang.Object value() {
         return value.value();
-    }    
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -67,12 +66,12 @@ public class SourceLinkedinAdsAuthentication {
             return false;
         }
         SourceLinkedinAdsAuthentication other = (SourceLinkedinAdsAuthentication) o;
-        return Objects.deepEquals(this.value.value(), other.value.value()); 
+        return Utils.enhancedDeepEquals(this.value.value(), other.value.value());
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(value.value());
+        return Utils.enhancedHash(value.value());
     }
     
     @SuppressWarnings("serial")
@@ -90,6 +89,6 @@ public class SourceLinkedinAdsAuthentication {
         return Utils.toString(SourceLinkedinAdsAuthentication.class,
                 "value", value);
     }
- 
+
 }
 

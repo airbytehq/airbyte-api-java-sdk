@@ -14,7 +14,7 @@ public enum Finnhub {
     @JsonValue
     private final String value;
 
-    private Finnhub(String value) {
+    Finnhub(String value) {
         this.value = value;
     }
     

@@ -14,7 +14,7 @@ public enum SourceCartSchemasAuthType {
     @JsonValue
     private final String value;
 
-    private SourceCartSchemasAuthType(String value) {
+    SourceCartSchemasAuthType(String value) {
         this.value = value;
     }
     
